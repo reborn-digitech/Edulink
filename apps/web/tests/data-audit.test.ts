@@ -1092,10 +1092,11 @@ d("modules: the IQAC desk (4 October 2026)", () => {
    * against its snapshot; that no anonymous survey's response names its
    * respondent; and a faculty record's PAN against payroll's copy (a WARN:
    * two sealed copies the office keeps). Read at the audited schools and at
-   * ZZ Vidya College, where the fixture keeps a cycle and a filed AQAR.
+   * ZZ Vidya College, where the fixture keeps a cycle and a filed AQAR, and ZZ
+   * Shastri, where it keeps an engineering department's NBA SAR (5 Oct 2026).
    */
   const audited = async () => {
-    const vidya = await db.school.findMany({ where: { slug: "zz-vidya-college" }, select: { id: true, name: true } });
+    const vidya = await db.school.findMany({ where: { slug: { in: ["zz-vidya-college", "zz-shastri-college"] } }, select: { id: true, name: true } });
     return [...schools.map((s) => ({ id: s.id, name: s.name })), ...vidya.filter((v) => !schools.some((s) => s.id === v.id))];
   };
   const sha = async (text: string) => (await import("node:crypto")).createHash("sha256").update(text).digest("hex");
@@ -1113,13 +1114,14 @@ d("modules: the IQAC desk (4 October 2026)", () => {
     expect(failsOf("iqac-cgpa")).toEqual([]);
   });
 
+  // The councils' returns (5 Oct 2026) are checked the same way: an NBA SAR is rebuilt for its own department.
   it("iqac-filing: a filing's hash is its body's, and regenerating it from the rows gives the figures it printed", async () => {
     const { buildFiling } = await import("@/lib/iqac-filings");
     for (const s of await audited()) {
-      const filings = await db.collegeFiling.findMany({ where: { schoolId: s.id }, select: { id: true, kind: true, year: true, cycleId: true, body: true, hash: true, figuresJson: true } });
+      const filings = await db.collegeFiling.findMany({ where: { schoolId: s.id }, select: { id: true, kind: true, year: true, cycleId: true, departmentId: true, body: true, hash: true, figuresJson: true } });
       for (const f of filings) {
         if ((await sha(f.body)) !== f.hash) note("iqac-filing", "FAIL", s.name, `${f.kind} ${f.year}: the body no longer matches its hash`);
-        const again = await buildFiling(s.id, f.kind as never, f.year, f.cycleId);
+        const again = await buildFiling(s.id, f.kind as never, f.year, f.cycleId, f.departmentId);
         const stored = JSON.parse(f.figuresJson) as Record<string, number>;
         const moved = Object.keys({ ...stored, ...again.figures }).filter((k) => stored[k] !== again.figures[k]);
         if (moved.length) note("iqac-filing", "WARN", s.name, `${f.kind} ${f.year}: the records moved on since it was generated (${moved.slice(0, 5).map((k) => `${k} ${stored[k]}→${again.figures[k]}`).join(", ")})`);

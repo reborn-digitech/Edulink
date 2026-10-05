@@ -328,3 +328,34 @@ export const familyHostelLeaveCreateSchema = z
   .refine((v) => new Date(v.toAt).getTime() > new Date(v.fromAt).getTime(), { message: "order", path: ["toAt"] });
 export type FamilyHostelLeaveCreate = z.infer<typeof familyHostelLeaveCreateSchema>;
 export const familyHostelConsentSchema = z.object({ approve: z.boolean() });
+
+/**
+ * GET /api/v1/hostel/night?date= — the night-out register and the curfew at the gate (5 Oct 2026; the warden's
+ * campaign recommendation, office decision 9's "stored, not enforced"). Every approved leave that covers the night:
+ * by when each is due back (the leave's end, or for an outing at a college the hostel's curfew that evening), out
+ * and in at the gate, back late, or not back yet. `college` says whether a curfew applies at all.
+ */
+export const HOSTEL_NIGHT_STATES = ["NOT_OUT", "OUT", "OVERDUE", "BACK", "BACK_LATE"] as const;
+export const hostelNightSchema = z.object({
+  dateKey,
+  college: z.boolean(),
+  hostels: z.array(z.object({ id: z.string(), name: z.string(), curfewMinute: z.number().int(), nightOutAllowed: z.boolean() })),
+  leaves: z.array(
+    z.object({
+      leaveId: z.string(),
+      name: z.string(),
+      hostelName: z.string(),
+      roomNumber: z.string(),
+      kind: hostelLeaveKindSchema,
+      fromAt: iso,
+      toAt: iso,
+      backBy: iso,
+      curfew: z.boolean(),
+      outAt: iso.nullable(),
+      inAt: iso.nullable(),
+      state: z.enum(HOSTEL_NIGHT_STATES),
+    }),
+  ),
+});
+export type HostelNight = z.infer<typeof hostelNightSchema>;
+export const hostelNightQuerySchema = z.object({ date: dateKey.optional() });

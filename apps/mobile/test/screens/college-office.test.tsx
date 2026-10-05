@@ -4,6 +4,7 @@ import { StudentMoneyScreen } from "@/screens/college-office/money";
 import { StudentScholarshipsScreen } from "@/screens/college-office/scholarships";
 import { StudentAccountScreen } from "@/screens/college-office/student-account";
 import { AccountsHomeScreen } from "@/screens/college-office/accounts-home";
+import { AccountsLookupScreen } from "@/screens/college-office/lookup";
 import { json, me, mountStaff } from "./staff-harness";
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
@@ -58,6 +59,21 @@ describe("a college student's money (4 Oct 2026)", () => {
     expect(await screen.findByText("Nothing asked yet")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "My fees" }));
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/fees");
+  });
+});
+
+describe("a guardian's view of a college child's money (5 Oct 2026)", () => {
+  const child = (n: string, name: string) => ({ guardianshipId: `g${n}`, studentMembershipId: `m${n}`, studentUserId: `u${n}`, name, schoolId: "s1", schoolName: "ZZ Vidya College", leftAt: null, relation: "PARENT" });
+
+  it("reads the first child's ledger, and the other child's refusal as the server says it", async () => {
+    const { calls } = await mountStaff(<StudentMoneyScreen />, "PARENT", {
+      "GET /api/v1/family/children": () => json({ children: [child("1", "ZZ Ishaan Pathak"), child("2", "ZZ Ananya Pathak")] }),
+      "GET /api/v1/student/ledger": ({ url }) => (url.searchParams.get("childId") === "m2" ? json({ error: "ZZ Ananya has not shared her money with you.", code: "FORBIDDEN" }, 403) : json(ledger([{ label: "ZZ Odd semester", demand: 825_000, receivable: 0, paid: 400_000 }]))),
+    }, { me: { ...me("PARENT"), active: { schoolId: null, role: "PARENT", membershipId: null }, modules: ["ACADEMICS"] } });
+    expect(await screen.findByText("ZZ Odd semester")).toBeTruthy();
+    await fireEvent.press(screen.getByText("ZZ Ananya Pathak"));
+    expect(await screen.findByText("ZZ Ananya has not shared her money with you.")).toBeTruthy();
+    expect(calls().some((c) => c.line === "GET /api/v1/student/ledger?childId=m2")).toBe(true);
   });
 });
 
@@ -163,5 +179,34 @@ describe("the accounts desk at a glance (4 Oct 2026)", () => {
     expect(await screen.findByText("Nobody is overdue.")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Social Media" }));
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/bulletin");
+  });
+});
+
+describe("the accounts desk's look-up on the phone (5 Oct 2026)", () => {
+  beforeEach(() => mockRouter.push.mockClear());
+
+  it("finds a student by PRN and reads the ledger and the exam form's no-dues, desk by desk", async () => {
+    const { calls } = await mountStaff(<AccountsLookupScreen />, "ACCOUNTS", {
+      "GET /api/v1/accounts/lookup": ({ url }) => json({ items: url.searchParams.get("q") === "ZZPRN01" ? [{ studentMembershipId: "m1", name: "ZZ Ishaan Pathak", prn: "ZZPRN0123", studentCode: "ZZ-2025-01", programme: "ZZ BCom", yearOfStudy: 2 }] : [] }),
+      "GET /api/v1/accounts/ledger/m1": () => json(ledger([{ label: "ZZ Odd semester", demand: 825_000, receivable: 0, paid: 400_000 }])),
+      "GET /api/v1/accounts/no-dues/m1": () => json({ studentMembershipId: "m1", studentName: "ZZ Ishaan Pathak", event: "EXAM_FORM", completed: false, completedAt: null, lines: [{ desk: "ACCOUNTS", owedPaise: 425_000, itemsOut: 0, cleared: false, clearedByName: null, clearedAt: null }, { desk: "LIBRARY", owedPaise: 0, itemsOut: 0, cleared: true, clearedByName: "ZZ Librarian", clearedAt: "2026-10-01T05:00:00.000Z" }] }),
+    }, { me: atCollege("ACCOUNTS", ["ACADEMICS"]) });
+    await fireEvent.changeText(screen.getByLabelText("PRN, college code or name"), "ZZPRN01");
+    await fireEvent.press(screen.getByRole("button", { name: "Look up" }));
+    await fireEvent.press(await screen.findByText("ZZ Ishaan Pathak"));
+    expect(await screen.findByText("ZZ Odd semester")).toBeTruthy();
+    expect(await screen.findByText("No-dues · Exam form")).toBeTruthy();
+    expect(screen.getByText("Still open")).toBeTruthy();
+    expect(screen.getByText("Cleared")).toBeTruthy();
+    expect(calls().map((c) => c.line)).toEqual(expect.arrayContaining(["GET /api/v1/accounts/lookup?q=ZZPRN01", "GET /api/v1/accounts/ledger/m1", "GET /api/v1/accounts/no-dues/m1?event=EXAM_FORM"]));
+    // Nothing is written from here.
+    expect(calls().some((c) => c.line.startsWith("POST"))).toBe(false);
+  });
+
+  it("says when nobody matches, and the accounts home leads to the look-up", async () => {
+    await mountStaff(<AccountsLookupScreen />, "ACCOUNTS", { "GET /api/v1/accounts/lookup": () => json({ items: [] }) }, { me: atCollege("ACCOUNTS", ["ACADEMICS"]) });
+    await fireEvent.changeText(screen.getByLabelText("PRN, college code or name"), "ZZNOBODY");
+    await fireEvent.press(screen.getByRole("button", { name: "Look up" }));
+    expect(await screen.findByText('No student matches "ZZNOBODY"')).toBeTruthy();
   });
 });

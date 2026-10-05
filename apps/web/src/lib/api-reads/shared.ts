@@ -4,7 +4,8 @@ import "server-only";
 import { db } from "@/lib/db";
 import { AccessError, assertGuardianAccess } from "@/lib/tenancy";
 import { getSession, listContexts, type ActiveContext } from "@/lib/session";
-import { getT } from "@/lib/i18n/server";
+import { getLocale, getT } from "@/lib/i18n/server";
+import { localiseVars } from "@/lib/notice-dates";
 import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
 import { readJson, readJsonArray, type MediaItem } from "@/lib/json";
 import { NOTIFICATION_KINDS, POST_CATEGORIES, type NotificationKind, type PostCategory, type PostStatus, type Role } from "@/lib/constants";
@@ -196,6 +197,9 @@ export async function readPost(ctx: ActiveContext, postId: string) {
     audienceGrade: post.audienceGrade,
     requiresAck: post.requiresAck,
     canAck: post.canAck,
+    // A permission slip's question and its last day (5 Oct 2026, permission-slips.ts).
+    consentQuestion: post.consentQuestion ?? null,
+    consentBy: post.consentBy ?? null,
     acked: post.acks.length > 0,
     ackCount: post._count.acks,
     author: {
@@ -276,9 +280,10 @@ export async function readPeople(ctx: ActiveContext, opts: { school?: string; q?
 /* -------------------------------------------------------------------------- */
 
 /** A stored notification's sentence, said again in today's language when it has a key. */
-function sayAgain(t: Translate, key: string | null, vars: string, fallback: string): string {
+function sayAgain(t: Translate, key: string | null, vars: string, fallback: string, locale?: string): string {
   if (!key) return fallback;
-  const rendered = t(key as TranslationKey, readJson<Record<string, string | number>>(vars, {}));
+  // A date kept as a date (noticeDate, B-15) is said in the reader's language of today with the rest.
+  const rendered = t(key as TranslationKey, localiseVars(readJson<Record<string, string | number>>(vars, {}), locale));
   return rendered && rendered !== key ? rendered : fallback;
 }
 
@@ -291,6 +296,7 @@ export async function listNotifications(
   opts: { unreadOnly?: boolean; kind?: NotificationKind; cursor?: string; limit: number },
 ) {
   const t = await getT();
+  const locale = await getLocale();
   const where = { userId: ctx.user.id, ...(opts.unreadOnly ? { readAt: null } : {}), ...(opts.kind ? { kind: opts.kind } : {}) };
   // The cursor is a notification id; one that is not this person's (or is gone)
   // starts from the top rather than erroring or paging from a stranger's row.
@@ -310,8 +316,8 @@ export async function listNotifications(
     items: page.map((row) => ({
       id: row.id,
       kind: row.kind,
-      title: sayAgain(t, row.titleKey, row.titleVars, row.title),
-      body: sayAgain(t, row.bodyKey, row.bodyVars, row.body),
+      title: sayAgain(t, row.titleKey, row.titleVars, row.title, locale),
+      body: sayAgain(t, row.bodyKey, row.bodyVars, row.body, locale),
       url: row.url,
       read: row.readAt !== null,
       createdAt: iso(row.createdAt),

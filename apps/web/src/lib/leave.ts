@@ -34,7 +34,8 @@ import { LEAVE_KINDS, type LeaveKind, type LeaveRow } from "./leave-kinds";
 import type { TranslationKey } from "./i18n/dictionary";
 import { STAFF_ROLES } from "./staff-records";
 import { readJsonArray } from "./json";
-import { formatDateKey } from "./dates";
+// Dates in a notice are said in each reader's language (B-15, 5 Oct 2026).
+import { noticeDate } from "./notice-dates";
 
 export { LEAVE_KINDS, LEAVE_KIND_LABEL_KEY, LEAVE_STATUSES, LEAVE_STATUS_KEY } from "./leave-kinds";
 export type { LeaveKind, LeaveStatus, LeaveRow } from "./leave-kinds";
@@ -464,7 +465,7 @@ export async function decideLeave(
           titleKey: names.length === 1 ? "notifTitle.nowMarking" : "notifTitle.nowMarkingMany",
           titleVars: names.length === 1 ? { class: names[0]! } : { count: names.length },
           bodyKey: "notifBody.coverForLeave",
-          bodyVars: { name: applicantName, from: formatDateKey(request.fromDateKey), to: formatDateKey(request.toDateKey), classes: names.join(", ") },
+          bodyVars: { name: applicantName, from: noticeDate(request.fromDateKey), to: noticeDate(request.toDateKey), classes: names.join(", ") },
           url: "/teacher/attendance",
           urgent: true,
         });
@@ -479,8 +480,8 @@ export async function decideLeave(
     titleKey: decision === "APPROVED" ? "notifTitle.leaveApproved" : "notifTitle.leaveDeclined",
     ...(decision === "APPROVED"
       ? coversCreated > 0
-        ? { bodyKey: "notifBody.leaveApprovedCover" as const, bodyVars: { from: formatDateKey(request.fromDateKey), to: formatDateKey(request.toDateKey), count: coversCreated } }
-        : { bodyKey: "notifBody.leaveApprovedDates" as const, bodyVars: { from: formatDateKey(request.fromDateKey), to: formatDateKey(request.toDateKey) } }
+        ? { bodyKey: "notifBody.leaveApprovedCover" as const, bodyVars: { from: noticeDate(request.fromDateKey), to: noticeDate(request.toDateKey), count: coversCreated } }
+        : { bodyKey: "notifBody.leaveApprovedDates" as const, bodyVars: { from: noticeDate(request.fromDateKey), to: noticeDate(request.toDateKey) } }
       : opts.note?.trim()
         ? { body: opts.note.trim() }
         : { bodyKey: "notifBody.leaveDeclinedOffice" as const }),
@@ -618,7 +619,7 @@ export async function cancelLeave(ctx: ActiveContext, leaveId: string): Promise<
       subject: row.slot.subject,
       className: row.slot.class.name,
       period: row.slot.period.name,
-      date: row.dateKey,
+      date: noticeDate(row.dateKey),
       name: row.absent.user.preferredName ?? row.absent.user.name,
     };
     await notify({

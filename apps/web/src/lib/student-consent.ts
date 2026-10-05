@@ -80,6 +80,30 @@ export async function parentMaySee(studentMembershipId: string, grant: StudentCo
   return row !== null && row.revokedAt === null;
 }
 
+/**
+ * `parentMaySee` for a whole class at once (5 Oct 2026, the campaign's guardian-notice follow-up): of these
+ * students, the ones whose guardians may be told about `grant`. Two queries however many students — a class's
+ * "new work set" no longer asks once per pupil. Order kept; an id that is not a student is dropped.
+ */
+export async function studentsGuardiansMaySee(studentMembershipIds: readonly string[], grant: StudentConsentGrant, now: Date = new Date()): Promise<string[]> {
+  if (studentMembershipIds.length === 0) return [];
+  const rows = await db.membership.findMany({
+    where: { id: { in: [...studentMembershipIds] }, role: "STUDENT" },
+    select: { id: true, user: { select: { isMinor: true, birthdate: true } }, school: { select: { kind: true, timezone: true } } },
+  });
+  const open = new Set<string>();
+  const ask: string[] = [];
+  for (const m of rows) {
+    if (!isCollegeKind(m.school.kind) || isMinorToday(m.user, m.school.timezone, now)) open.add(m.id);
+    else ask.push(m.id);
+  }
+  if (ask.length > 0) {
+    const granted = await db.studentConsent.findMany({ where: { studentMembershipId: { in: ask }, grant, revokedAt: null }, select: { studentMembershipId: true } });
+    for (const g of granted) open.add(g.studentMembershipId);
+  }
+  return studentMembershipIds.filter((id) => open.has(id));
+}
+
 /** `parentMaySee`, as a refusal a door answers 403. */
 export async function assertParentMaySee(studentMembershipId: string, grant: StudentConsentGrant): Promise<void> {
   if (!(await parentMaySee(studentMembershipId, grant))) throw new AccessError("consent.refuseNotGranted");

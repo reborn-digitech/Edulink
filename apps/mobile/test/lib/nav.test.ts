@@ -131,10 +131,11 @@ describe("the college's roles (4 Oct 2026)", () => {
 
   it("gives faculty mentoring and an HOD their own teaching as tabs, each only while ACADEMICS is on", () => {
     const shown = (role: "FACULTY" | "HOD", modules: string[]) => TABS[role].filter((tab) => tabShown(tab, modules)).map((tab) => tab.name);
-    expect(shown("FACULTY", ["ACADEMICS"])).toEqual(["index", "academics-mentoring", "bulletin"]);
-    expect(shown("FACULTY", [])).toEqual(["index", "bulletin"]);
-    expect(shown("HOD", ["ACADEMICS"])).toEqual(["index", "teaching", "bulletin"]);
-    expect(shown("HOD", [])).toEqual(["index", "bulletin"]);
+    // Messages is theirs whatever is on (5 Oct 2026, test/lib/college-messages.test.ts).
+    expect(shown("FACULTY", ["ACADEMICS"])).toEqual(["index", "academics-mentoring", "bulletin", "messages"]);
+    expect(shown("FACULTY", [])).toEqual(["index", "bulletin", "messages"]);
+    expect(shown("HOD", ["ACADEMICS"])).toEqual(["index", "teaching", "bulletin", "messages"]);
+    expect(shown("HOD", [])).toEqual(["index", "bulletin", "messages"]);
   });
 
   it("puts my own leave in More for the three module staff roles, whose door names them", () => {

@@ -79,3 +79,6 @@ export async function audienceTokensFor(session: ActiveContext): Promise<string[
   }
   return [...out];
 }
+
+/** One student's audience tokens, for a reader of a notice who is not the student (a permission slip's audience, 5 Oct 2026). */
+export const studentTokensOf = (studentMembershipId: string): Promise<string[]> => studentTokens(studentMembershipId);

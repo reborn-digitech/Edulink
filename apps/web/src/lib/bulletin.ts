@@ -587,6 +587,9 @@ export async function createPost(
     /** A college's notice for one programme, department, division or batch (college-audience.ts). */
     audienceTarget?: AudienceTarget | null;
     requiresAck?: boolean;
+    /** A permission slip (5 Oct 2026, permission-slips.ts): the family's yes-or-no per child, until `consentBy`. */
+    consentQuestion?: string;
+    consentBy?: string;
   },
 ): Promise<{ postId: string; status: PostStatus }> {
   session = asFeedReader(session);
@@ -610,7 +613,11 @@ export async function createPost(
     isStaff && input.scope === "SCHOOL" && audience !== "TEACHERS"
       ? input.audienceGrade?.trim() || null
       : null;
-  const requiresAck = isStaff && input.requiresAck === true;
+  // A permission slip is the school asking every family in the audience, so it is staff's, never a staff-only notice,
+  // and always a circular — the reach report and the reminders come with it (5 Oct 2026).
+  const consentQuestion = isStaff && audience !== "TEACHERS" && input.consentQuestion?.trim() ? input.consentQuestion.trim().slice(0, 300) : null;
+  const consentBy = consentQuestion && input.consentBy && /^\d{4}-\d{2}-\d{2}$/.test(input.consentBy) ? input.consentBy : null;
+  const requiresAck = isStaff && (input.requiresAck === true || consentQuestion !== null);
   // A college's target narrows a school-wide notice; checked to be this college's programme, department, division or batch.
   const audienceTarget = isStaff && input.scope === "SCHOOL" && audience !== "TEACHERS" && input.audienceTarget ? await targetToken(schoolId, input.audienceTarget) : null;
 
@@ -680,6 +687,8 @@ export async function createPost(
       audienceGrade,
       audienceTarget,
       requiresAck,
+      consentQuestion,
+      consentBy,
       status,
       reviewedAt: status === "APPROVED" ? new Date() : null,
       reviewedByMembershipId: status === "APPROVED" ? membershipId : null,

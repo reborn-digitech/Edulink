@@ -10,7 +10,8 @@ import { EmptyState } from "@/components/ui/states";
 import { NotificationList, type NotificationItem } from "./list";
 import { BulkActions } from "./bulk-actions";
 import { NOTIFICATION_KINDS, NOTIFICATION_KIND_KEY, type NotificationKind } from "@/lib/constants";
-import { getT } from "@/lib/i18n/server";
+import { getLocale, getT } from "@/lib/i18n/server";
+import { localiseVars } from "@/lib/notice-dates";
 import { effectiveThresholds } from "@/lib/notification-housekeeping";
 import { DataToolbar } from "@/components/ui/data-toolbar";
 import { PageHeader } from "@/components/ui/page-header";
@@ -34,6 +35,7 @@ export default async function NotificationsPage({
   searchParams: Promise<{ filter?: string; kind?: string }>;
 }) {
   const t = await getT();
+  const locale = await getLocale();
   const session = await requireUser();
   const { filter, kind: rawKind } = await searchParams;
   const showUnreadOnly = filter === "unread";
@@ -142,8 +144,8 @@ export default async function NotificationsPage({
               kind: row.kind as NotificationKind,
               // Said again in the reader's language of today when the key
               // was kept; the stored sentence otherwise.
-              title: sayAgain(t, row.titleKey, row.titleVars, row.title),
-              body: sayAgain(t, row.bodyKey, row.bodyVars, row.body),
+              title: sayAgain(t, row.titleKey, row.titleVars, row.title, locale),
+              body: sayAgain(t, row.bodyKey, row.bodyVars, row.body, locale),
               url: row.url,
               read: row.readAt !== null,
               when: relativeTime(row.createdAt),
@@ -185,8 +187,9 @@ function fold(items: NotificationItem[]): NotificationItem[] {
  * one and the key is still in the dictionary; the sentence as written
  * otherwise. Never the bare key.
  */
-function sayAgain(t: Translate, key: string | null, vars: string, fallback: string): string {
+function sayAgain(t: Translate, key: string | null, vars: string, fallback: string, locale?: string): string {
   if (!key) return fallback;
-  const rendered = t(key as TranslationKey, readJson<Record<string, string | number>>(vars, {}));
+  // A date kept as a date (noticeDate, B-15) is said in the reader's language of today with the rest.
+  const rendered = t(key as TranslationKey, localiseVars(readJson<Record<string, string | number>>(vars, {}), locale));
   return rendered && rendered !== key ? rendered : fallback;
 }

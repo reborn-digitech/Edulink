@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { z } from "zod";
-import { bulletinCommentResultSchema, bulletinPostDetailSchema, bulletinReactResultSchema, okSchema, type bulletinReactionKindSchema } from "@edulink/contracts";
+import { bulletinCommentResultSchema, bulletinPostDetailSchema, bulletinReactResultSchema, okSchema, slipViewSchema, type bulletinReactionKindSchema } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text, useToast } from "@/components";
 import { Avatar } from "@/components/avatar";
 import { api, errorText } from "@/lib/api";
@@ -187,7 +187,9 @@ export function PostDetail() {
             {d.body ? <Text variant="base">{d.body}</Text> : null}
             <Media media={d.media} headers={headers} />
             <Tags tags={d.tags} />
-            {d.requiresAck && d.status === "APPROVED" ? (
+            {/* A permission slip (5 Oct 2026): the family's yes or no for each child; answering is also "seen". */}
+            {d.consentQuestion && d.status === "APPROVED" && (role === "PARENT" || role === "STUDENT") ? <SlipCard postId={postId!} /> : null}
+            {d.requiresAck && d.status === "APPROVED" && !(d.consentQuestion && (role === "PARENT" || role === "STUDENT")) ? (
               d.acked ? (
                 <Text variant="sm" bold tone="ok">
                   {t("bulletin.ackDone")}
@@ -333,6 +335,62 @@ function CommentView({ comment, reply, canReply, onReply }: { comment: Comment; 
           </View>
         ) : null}
       </View>
+    </View>
+  );
+}
+
+/**
+ * A permission slip on the phone (5 Oct 2026; GET and POST /api/v1/shared/bulletin/{postId}/consent): the question,
+ * the last day, and Yes / No for each of the reader's children in the circular's audience (an adult student: their
+ * own), the chosen one pressed; after the day, the answers only.
+ */
+function SlipCard({ postId }: { postId: string }) {
+  const t = useT();
+  const th = useTheme();
+  const toast = useToast();
+  const qc = useQueryClient();
+  const query = useQuery({ queryKey: ["bulletin", "slip", postId], queryFn: async () => slipViewSchema.parse(unwrap(await api().get(`/api/v1/shared/bulletin/${postId}/consent`))) });
+  const answer = useMutation({
+    mutationFn: async (v: { studentMembershipId: string; answer: "YES" | "NO" }) => slipViewSchema.parse(unwrap(await api().post(`/api/v1/shared/bulletin/${postId}/consent`, v))),
+    onSuccess: (view) => {
+      qc.setQueryData(["bulletin", "slip", postId], view);
+      toast.show(t("collegeDesks.slipSaved"), "ok");
+    },
+    onError: (e: Error) => toast.show(e.message, "danger"),
+  });
+  const s = query.data;
+  if (query.isError) return <Failed message={query.error.message} onRetry={() => void query.refetch()} />;
+  if (!s) return null;
+  return (
+    <View style={{ gap: th.space[2], padding: th.space[3], borderRadius: th.radius.md, borderWidth: 1, borderColor: th.border }}>
+      <Text bold>{s.question}</Text>
+      <Text variant="xs" tone="muted">
+        {s.consentBy ? t(s.open ? "collegeDesks.slipByLine" : "collegeDesks.slipClosedLine", { date: s.consentBy }) : t("collegeDesks.slipNoDay")}
+      </Text>
+      {s.children.length === 0 ? <Text variant="sm" tone="muted">{t("collegeDesks.slipNoChild")}</Text> : null}
+      {s.children.map((c) => (
+        <View key={c.studentMembershipId} style={{ gap: th.space[1] }}>
+          <Text variant="sm" bold>
+            {c.name}
+            {c.answer ? ` · ${t(c.answer === "YES" ? "collegeDesks.slipYesBy" : "collegeDesks.slipNoBy", { name: c.answeredByName ?? "" })}` : ""}
+          </Text>
+          {s.open ? (
+            <View style={{ flexDirection: "row", gap: th.space[2] }}>
+              {(["YES", "NO"] as const).map((a) => (
+                <Button
+                  key={a}
+                  label={t(a === "YES" ? "collegeDesks.slipYes" : "collegeDesks.slipNo")}
+                  variant={c.answer === a ? "primary" : "secondary"}
+                  accessibilityLabel={`${t(a === "YES" ? "collegeDesks.slipYes" : "collegeDesks.slipNo")}: ${c.name}`}
+                  accessibilityState={{ selected: c.answer === a, disabled: answer.isPending }}
+                  disabled={answer.isPending}
+                  onPress={() => answer.mutate({ studentMembershipId: c.studentMembershipId, answer: a })}
+                />
+              ))}
+            </View>
+          ) : null}
+        </View>
+      ))}
     </View>
   );
 }

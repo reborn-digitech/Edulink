@@ -13,4 +13,6 @@ export const DECISION_KIND_KEY: Record<DecisionKind, TranslationKey> = {
   condonation: "decisions.kindCondonation",
   concession: "decisions.kindConcession",
   lateRegistration: "decisions.kindLateRegistration",
+  refundException: "collegeDesks.kindRefundException",
+  expulsion: "collegeDesks.kindExpulsion",
 };

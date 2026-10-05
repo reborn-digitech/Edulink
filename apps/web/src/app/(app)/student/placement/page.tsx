@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BriefcaseIcon, ChalkboardTeacherIcon, DownloadSimpleIcon, IdentificationCardIcon, LightningIcon, NotebookIcon, SealCheckIcon } from "@phosphor-icons/react/ssr";
-import { INTERNSHIP_KINDS, INTERNSHIP_WINDOWS } from "@edulink/contracts";
+import { INTERNSHIP_WINDOWS, LAW_INTERNSHIP_WINDOWS, internshipKindsFor } from "@edulink/contracts";
+import { streamsOf } from "@/lib/streams";
 import { requireRole } from "@/lib/tenancy";
 import { getT } from "@/lib/i18n/server";
 import { institutionKindOf, isModuleOn } from "@/lib/modules";
@@ -34,6 +35,7 @@ const CHECK = "flex items-center gap-2 text-sm";
  */
 export default async function StudentPlacementPage({ searchParams }: { searchParams: Promise<{ ok?: string; error?: string }> }) {
   const ctx = await requireRole("STUDENT");
+  const streams = await streamsOf(ctx.schoolId);
   const t = await getT();
   const { ok, error } = await searchParams;
   const [on, kind] = await Promise.all([isModuleOn(ctx.schoolId, "PLACEMENT"), institutionKindOf(ctx.schoolId)]);
@@ -210,10 +212,11 @@ export default async function StudentPlacementPage({ searchParams }: { searchPar
             <input type="hidden" name="back" value={BACK} />
             <TextField label={t("placement.fieldInternCompany")} name="companyName" required maxLength={160} />
             <SelectField label={t("placement.fieldInternKind")} name="kind" defaultValue="INDUSTRY">
-              {INTERNSHIP_KINDS.map((k) => <option key={k} value={k}>{t(INTERNSHIP_KIND_KEY[k]!)}</option>)}
+              {/* The kinds the college's streams offer (stream records, 5 Oct 2026): a law college's court, firm and legal aid; a management college's summer. */}
+              {internshipKindsFor(streams).map((k) => <option key={k} value={k}>{t(INTERNSHIP_KIND_KEY[k]!)}</option>)}
             </SelectField>
             <SelectField label={t("placement.fieldWindow")} name="windowSemester" defaultValue="6">
-              {INTERNSHIP_WINDOWS.map((w) => <option key={w} value={w}>{t("placement.windowN", { semester: w })}</option>)}
+              {(streams.includes("LAW") ? LAW_INTERNSHIP_WINDOWS : INTERNSHIP_WINDOWS).map((w) => <option key={w} value={w}>{t("placement.windowN", { semester: w })}</option>)}
             </SelectField>
             <DateField label={t("placement.fieldFrom")} name="from" required />
             <DateField label={t("placement.fieldTo")} name="to" required />

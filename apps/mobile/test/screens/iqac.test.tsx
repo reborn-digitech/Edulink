@@ -140,6 +140,26 @@ describe("the IQAC coordinator's home on the phone (4 Oct 2026)", () => {
     expect(screen.getByText("AISHE data capture")).toBeTruthy();
   });
 
+  it("lists each filing with its year and where it stands, and says when there is none (5 Oct 2026)", async () => {
+    const filing = (id: string, kind: string, status: string) => ({ id, kind, year: 2025, format: "PDF", generatedAt: "2026-10-01T05:00:00.000Z", hash: "abc", status, checked: true, principalNote: "", signedOffAt: null, figures: {}, departmentId: null });
+    const { calls } = await mountStaff(<IqacHome />, "IQAC", {
+      "GET /api/v1/iqac/overview": () => json(overview),
+      "GET /api/v1/iqac/filings": () => json({ items: [filing("f1", "AQAR", "AWAITING_SIGNOFF"), filing("f2", "AISHE", "FILED"), filing("f3", "NBA_SAR", "DRAFT")], canGenerate: true, canSignOff: false }),
+    }, { me: atCollege("IQAC", ["ACADEMICS", "IQAC"]) });
+    expect(await screen.findByText("AQAR (yearly, September) · 2025-26")).toBeTruthy();
+    expect(screen.getByText("With the principal")).toBeTruthy();
+    expect(screen.getByText("AISHE data capture · 2025-26")).toBeTruthy();
+    expect(screen.getByText("Filed")).toBeTruthy();
+    // A kind the phone has no words for yet reads as its code, never a raw key.
+    expect(screen.getByText("NBA SAR · 2025-26")).toBeTruthy();
+    expect(calls().some((c) => c.line === "GET /api/v1/iqac/filings")).toBe(true);
+  });
+
+  it("says no filing is generated yet", async () => {
+    await mountStaff(<IqacHome />, "IQAC", { "GET /api/v1/iqac/overview": () => json(overview), "GET /api/v1/iqac/filings": () => json({ items: [], canGenerate: true, canSignOff: false }) }, { me: atCollege("IQAC", ["ACADEMICS", "IQAC"]) });
+    expect(await screen.findByText("No filing generated yet.")).toBeTruthy();
+  });
+
   it("says no cycle is open yet and offers the feed", async () => {
     await mountStaff(<IqacHome />, "IQAC", { "GET /api/v1/iqac/overview": () => json({ ...overview, cycle: null, nextBand: null, cheapest: [] }) }, { me: atCollege("IQAC", ["ACADEMICS", "IQAC"]) });
     expect(await screen.findByText("No NAAC cycle yet")).toBeTruthy();

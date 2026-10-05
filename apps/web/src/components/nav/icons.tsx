@@ -42,6 +42,11 @@ import {
   WalletIcon,
   TreeStructureIcon,
   HandshakeIcon,
+  // The duties' desks and stream records (5 Oct 2026).
+  FlaskIcon,
+  GavelIcon,
+  HandHeartIcon,
+  SirenIcon,
 } from "@phosphor-icons/react";
 
 /**
@@ -91,6 +96,10 @@ const ICONS: Record<string, Icon> = {
   medal: MedalIcon,
   wallet: WalletIcon,
   handshake: HandshakeIcon,
+  flask: FlaskIcon,
+  gavel: GavelIcon,
+  handHeart: HandHeartIcon,
+  siren: SirenIcon,
 };
 
 export function NavIcon({

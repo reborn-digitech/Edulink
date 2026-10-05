@@ -247,10 +247,10 @@ export const offeringSaveSchema = z.object({
 /* ------------------------------------------------------------- timetable */
 
 export const timetableQuerySchema = z.object({ termId: cuid.optional(), divisionId: cuid.optional(), facultyMembershipId: cuid.optional(), roomId: cuid.optional() });
-export const timetableCellSchema = z.object({ slotId: cuid, offeringId: cuid, weekday: z.number().int().min(0).max(6), periodId: cuid, kind: lectureKindSchema, courseCode: z.string(), courseName: z.string(), divisionName: z.string().nullable(), facultyName: z.string().nullable(), roomName: z.string().nullable(), startMinute: z.number().int(), endMinute: z.number().int() });
+export const timetableCellSchema = z.object({ slotId: cuid, offeringId: cuid, weekday: z.number().int().min(0).max(6), periodId: cuid, kind: lectureKindSchema, courseCode: z.string(), courseName: z.string(), divisionName: z.string().nullable(), facultyName: z.string().nullable(), roomName: z.string().nullable(), startMinute: z.number().int(), endMinute: z.number().int(), /** A LAB hour one batch does (stream records, 5 Oct 2026); absent from an older server. */ labBatchName: z.string().nullable().optional() });
 export type TimetableCell = z.infer<typeof timetableCellSchema>;
 export const academicsTimetableSchema = z.object({ termId: cuid.nullable(), termName: z.string().nullable(), weekdays: z.array(z.number().int()), periods: z.array(periodSchema), cells: z.array(timetableCellSchema) });
-export const timetableSlotSaveSchema = z.object({ offeringId: cuid, weekday: z.number().int().min(0).max(6), periodId: cuid, kind: lectureKindSchema, roomId: cuid.nullable() });
+export const timetableSlotSaveSchema = z.object({ offeringId: cuid, weekday: z.number().int().min(0).max(6), periodId: cuid, kind: lectureKindSchema, roomId: cuid.nullable(), /** A LAB hour for one of the division's batches (stream records, 5 Oct 2026); null or absent is the whole division. */ labBatchId: cuid.nullable().optional() });
 
 export const lectureSubstitutionsQuerySchema = z.object({ date: dateKey.optional() });
 export const lectureSubstitutionsSchema = z.object({
@@ -290,7 +290,7 @@ export const lateRegistrationsSchema = z.object({ items: z.array(lateRegistratio
 /* --------------------------------------------------------------- lectures */
 
 export const lecturesQuerySchema = z.object({ date: dateKey.optional() });
-export const lectureRowSchema = z.object({ lectureId: cuid, offeringId: cuid, dateKey: dateKey, startMinute: z.number().int(), endMinute: z.number().int(), kind: lectureKindSchema, courseCode: z.string(), courseName: z.string(), divisionName: z.string().nullable(), roomName: z.string().nullable(), registered: z.number().int(), marked: z.number().int(), substitute: z.boolean() });
+export const lectureRowSchema = z.object({ lectureId: cuid, offeringId: cuid, dateKey: dateKey, startMinute: z.number().int(), endMinute: z.number().int(), kind: lectureKindSchema, courseCode: z.string(), courseName: z.string(), divisionName: z.string().nullable(), roomName: z.string().nullable(), registered: z.number().int(), marked: z.number().int(), substitute: z.boolean(), /** The batch a LAB lecture is for (stream records, 5 Oct 2026); `registered` is then the batch's students. Absent from an older server. */ labBatchName: z.string().nullable().optional() });
 export type LectureRow = z.infer<typeof lectureRowSchema>;
 export const lecturesSchema = z.object({ dateKey: dateKey, closed: z.boolean(), lectures: z.array(lectureRowSchema) });
 export const lectureSheetSchema = z.object({

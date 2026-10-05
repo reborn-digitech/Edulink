@@ -8,7 +8,7 @@ import { z } from "zod";
  * alone. A module the college has off is a null section. Each approval names
  * the web page where the decision is made; the phone opens it there.
  */
-export const PRINCIPAL_COLLEGE_APPROVALS = ["leave", "condonation", "concession", "grace", "lateRegistration", "signoff", "payroll"] as const;
+export const PRINCIPAL_COLLEGE_APPROVALS = ["leave", "condonation", "concession", "grace", "lateRegistration", "signoff", "payroll", "refundException", "expulsion"] as const;
 export const principalCollegeApprovalSchema = z.object({ key: z.enum(PRINCIPAL_COLLEGE_APPROVALS), count: z.number().int(), href: z.string() });
 
 export const principalCollegeSchema = z.object({

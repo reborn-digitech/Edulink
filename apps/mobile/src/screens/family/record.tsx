@@ -5,6 +5,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { familyChildrenSchema, pupilRecordViewSchema, recordChangeSchema, recordChangesListSchema, type RecordChangeFile } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Loading, Screen, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
+import { bytesApi, shareBytes } from "@/lib/download";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
@@ -94,6 +95,8 @@ export function FamilyRecord() {
           <Failed message={query.error.message} onRetry={() => void query.refetch()} />
         )
       ) : null}
+      {/* The identity card (5 Oct 2026): a PDF drawn from the record on every read, shared from the phone. */}
+      {d ? <IdCardButton studentMembershipId={role === "PARENT" ? d.studentMembershipId : null} /> : null}
       {/* What has been asked of the office sits above the record: the form is long, and an ask that waits should be seen before it is asked again. */}
       {d ? <RecordChangesSection items={asks} recordKey={key} /> : null}
       {d ? (
@@ -135,5 +138,30 @@ export function CompleteRecordCard({ childId }: { childId?: string | null }) {
         {t("pupilRecord.completeCardBody", { fields: fieldList(t, d.missing) })}
       </Text>
     </Card>
+  );
+}
+
+/**
+ * The student's identity card as a PDF (5 Oct 2026; GET /api/v1/id-cards/pdf): a student's own, a guardian's child's.
+ * An adult at a college keeps their own card, and the server's refusal says so to a guardian who asks.
+ */
+export function IdCardButton({ studentMembershipId }: { studentMembershipId: string | null }) {
+  const t = useT();
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const download = async () => {
+    setBusy(true);
+    setError(null);
+    const fallback = t("common.somethingWrong");
+    const got = await bytesApi.get(`/api/v1/id-cards/pdf${studentMembershipId ? `?student=${encodeURIComponent(studentMembershipId)}` : ""}`, fallback);
+    const failed = got.ok ? await shareBytes(got, "id-card.pdf", fallback) : got.error;
+    setBusy(false);
+    setError(failed);
+  };
+  return (
+    <>
+      <Button label={t("collegeDesks.idCardDownload")} variant="secondary" busy={busy} onPress={() => void download()} />
+      {error ? <Failed message={error} /> : null}
+    </>
   );
 }

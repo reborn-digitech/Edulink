@@ -7,7 +7,7 @@ import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
  * language. Only keys of the namespaces the actions use are said; anything
  * else in the address is ignored rather than echoed.
  */
-const SAYABLE = /^(inventory|payroll|access|common|modules|academics)\.[A-Za-z0-9]+$/;
+const SAYABLE = /^(inventory|payroll|access|common|modules|academics|streamRecords)\.[A-Za-z0-9]+$/;
 
 export function ModuleFlash({ t, params }: { t: Translate; params: Record<string, string | string[] | undefined> }) {
   const one = (k: string) => (typeof params[k] === "string" ? (params[k] as string) : undefined);

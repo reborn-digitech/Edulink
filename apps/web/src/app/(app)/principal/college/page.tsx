@@ -40,6 +40,8 @@ const APPROVAL_KEY: Record<ApprovalLine["key"], TranslationKey> = {
   lateRegistration: "collegeHub.approvalLate",
   signoff: "collegeHub.approvalSignoff",
   payroll: "collegeHub.approvalPayroll",
+  refundException: "collegeDesks.approvalRefund",
+  expulsion: "collegeDesks.approvalExpulsion",
 };
 
 /**

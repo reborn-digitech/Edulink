@@ -8,6 +8,7 @@ import { readJson } from "./json";
 import { addDaysToKey, formatDateKey, isDateKey, zonedStartOfDay } from "./dates";
 import { translator, type Translate, type TranslationKey } from "./i18n/dictionary";
 import { normaliseLocale } from "./i18n/locales";
+import { formatPaise } from "@edulink/i18n";
 
 /**
  * The head's decision log.
@@ -47,13 +48,16 @@ export const DECISION_ACTIONS: Record<DecisionKind, readonly string[]> = {
   condonation: ["academics.condonation.approve", "academics.condonation.refuse"],
   concession: ["college.fees.concessionApprove", "college.fees.concessionRefuse"],
   lateRegistration: ["academics.late.approve", "academics.late.refuse"],
+  // The two the college office left (5 Oct 2026, head-approvals.ts).
+  refundException: ["college.admissions.refundException.approve", "college.admissions.refundException.refuse"],
+  expulsion: ["hostel.expulsion.approve", "hostel.expulsion.refuse"],
 };
 
 const KIND_OF_ACTION = new Map<string, DecisionKind>(
   DECISION_KINDS.flatMap((kind) => DECISION_ACTIONS[kind].map((action) => [action, kind] as const)),
 );
 
-const DECLINES = new Set(["leave.decline", "pupilRecord.change.decline", "certificate.requestDecline", "paper.sign.decline", "student.join.decline", "exam.grace.refuse", "academics.condonation.refuse", "college.fees.concessionRefuse", "academics.late.refuse"]);
+const DECLINES = new Set(["leave.decline", "pupilRecord.change.decline", "certificate.requestDecline", "paper.sign.decline", "student.join.decline", "exam.grace.refuse", "academics.condonation.refuse", "college.fees.concessionRefuse", "academics.late.refuse", "college.admissions.refundException.refuse", "hostel.expulsion.refuse"]);
 
 type Row = { id: string; action: string; targetType: string | null; targetId: string | null; meta: string; createdAt: Date };
 
@@ -191,6 +195,11 @@ async function resolveSentences(schoolId: string, rows: Row[], t: Translate, loc
   const studentNameOf = new Map<string, string>([...condonations, ...concessions, ...lates].map((r) => [r.id, personName(r.student.user, t)]));
   const collegeApplicantOf = new Map(
     (collegeApplicationIds.length ? await db.collegeApplication.findMany({ where: { id: { in: collegeApplicationIds }, schoolId }, select: { id: true, applicantName: true } }) : []).map((a) => [a.id, a.applicantName]),
+  );
+  // A hostel expulsion's boarder (5 Oct 2026), one query like the rest.
+  const expulsionIds = ids("HostelExpulsion");
+  const expelledOf = new Map(
+    (expulsionIds.length ? await db.hostelExpulsion.findMany({ where: { id: { in: expulsionIds }, schoolId }, select: { id: true, effectiveOn: true, allotment: { select: { student: studentOf } } } }) : []).map((x) => [x.id, { name: personName(x.allotment.student.user, t), effectiveOn: x.effectiveOn }]),
   );
 
   const [leaves, covers, pens, memberships, certificates, certificateRequests, joins, applications, classes] = await Promise.all([
@@ -347,6 +356,19 @@ async function resolveSentences(schoolId: string, rows: Row[], t: Translate, loc
       case "academics.late.refuse": {
         const name = studentNameOf.get(id) ?? t("decisions.someone");
         sentence = row.action === "academics.late.approve" ? t("decisions.lateRegistrationApproved", { name }) : t("decisions.lateRegistrationRefused", { name });
+        break;
+      }
+      case "college.admissions.refundException.approve":
+      case "college.admissions.refundException.refuse": {
+        const name = collegeApplicantOf.get(id) ?? t("decisions.someone");
+        sentence = row.action.endsWith(".approve") ? t("collegeDesks.decRefundApproved", { name, amount: formatPaise(Number(meta.askedPaise ?? 0), normaliseLocale(locale)) }) : t("collegeDesks.decRefundRefused", { name });
+        break;
+      }
+      case "hostel.expulsion.approve":
+      case "hostel.expulsion.refuse": {
+        const x = expelledOf.get(id);
+        const name = x?.name ?? t("decisions.someone");
+        sentence = row.action === "hostel.expulsion.approve" ? t("collegeDesks.decExpulsionApproved", { name, date: formatDateKey(x?.effectiveOn ?? String(meta.effectiveOn ?? ""), { day: "numeric", month: "short", year: "numeric" }, locale) }) : t("collegeDesks.decExpulsionRefused", { name });
         break;
       }
       default:

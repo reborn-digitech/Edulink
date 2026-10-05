@@ -49,7 +49,13 @@ export function TpoHome() {
           <Card title={t("placement.drivesTitle")}>
             {s.drives.length === 0 ? <Empty icon="briefcase" title={t("placement.noDrivesTitle")} body={t("placement.noDrivesBody")} action={<Button label={t("nav.more")} variant="secondary" onPress={() => router.push("/(app)/more" as never)} />} /> : null}
             {s.drives.map((d) => (
-              <Row key={d.id} title={d.title} caption={`${d.companyName} · ${packageRange(d.packageMinRupees, d.packageMaxRupees, t)} · ${t(DRIVE_STATUS_KEY[d.status]!)} · ${t("placement.colApplicants")} ${d.applicants} · ${t("placement.colOffers")} ${d.offers}`} />
+              <Row
+                key={d.id}
+                title={d.title}
+                caption={`${d.companyName} · ${packageRange(d.packageMinRupees, d.packageMaxRupees, t)} · ${t(DRIVE_STATUS_KEY[d.status]!)} · ${t("placement.colApplicants")} ${d.applicants} · ${t("placement.colOffers")} ${d.offers}`}
+                // The drive itself: its applicants, the shortlist and the rounds (5 Oct 2026).
+                onPress={() => router.push({ pathname: "/(app)/placement-drive", params: { driveId: d.id } } as never)}
+              />
             ))}
           </Card>
         </>

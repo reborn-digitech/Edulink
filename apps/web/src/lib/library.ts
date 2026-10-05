@@ -26,6 +26,7 @@ import { AccessError, assertGuardianAccess } from "./tenancy";
 import { assertModuleOn } from "./modules";
 import { audit } from "./audit";
 import { notify, notifyGuardians } from "./notify";
+import { consentApplies } from "./student-consent";
 import { forSchool } from "./tenant-context";
 import { addDaysToKey, todayKey } from "./dates";
 import { currentAcademicYear } from "./academic-year";
@@ -660,6 +661,9 @@ async function tellMember(schoolId: string, member: { kind: string; membership: 
   const own = member.membership.role === "STUDENT" ? "/student/library" : member.membership.role === "TEACHER" ? "/teacher/library" : "/notifications";
   await notify({ userId: member.membership.userId, schoolId, kind: "SYSTEM", titleKey: keys.title, titleVars: vars, bodyKey: keys.self, bodyVars: vars, url: own });
   if (!isPupilKind(member.kind)) return;
+  // An adult college student's library is theirs (5 Oct 2026): the family's library page names no grant, so it is refused
+  // to their guardians (default-deny, tenancy.ts), and the notice is not sent either.
+  if (await consentApplies(member.membership.id)) return;
   await notifyGuardians(member.membership.id, (childName) => ({ schoolId, kind: "SYSTEM", titleKey: keys.title, titleVars: vars, bodyKey: keys.child, bodyVars: { ...vars, name: childName }, url: `/parent/library?child=${member.membership.id}` }));
 }
 

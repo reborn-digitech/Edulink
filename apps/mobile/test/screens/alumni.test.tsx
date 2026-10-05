@@ -3,6 +3,7 @@ import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import type { RoleCode } from "@edulink/contracts";
 import { AlumniHome } from "@/screens/alumni/home";
 import { AlumniDirectory } from "@/screens/alumni/directory";
+import { AlumniCollegeScreen } from "@/screens/alumni/college";
 import { authorTag } from "@/screens/alumni/tag";
 import { json, me, mountStaff } from "./staff-harness";
 
@@ -113,5 +114,51 @@ describe("the feed's author tag", () => {
     expect(authorTag(t, "ALUMNUS", 2026)).toBe("Alumni · 2026");
     expect(authorTag(t, "STUDENT", null)).toBe("role.student");
     expect(authorTag(t, "ALUMNUS")).toBe("role.alumnus");
+  });
+});
+
+describe("a college alumnus's college on the phone (5 Oct 2026)", () => {
+  const iso = "2026-10-20T10:30:00.000Z";
+  const college = (over: Record<string, unknown> = {}) => ({
+    mentor: true,
+    slots: [{ id: "sl1", title: "ZZ Careers in analytics", startsAt: iso, endsAt: iso, mentorName: "ZZ Shreya", batchYear: 2025, seatsLeft: 1 }],
+    referrals: [],
+    gifts: [{ id: "g1", alumnusName: "ZZ Shreya", batchYear: 2025, kind: "DONATION", amountRupees: 5000, receiptRef: "ZZ-R-1", note: "", on: "2026-08-15" }],
+    meets: [{ id: "m1", title: "ZZ Alumni meet 2026", on: "2026-12-20", venue: "ZZ Hall", note: "", batchYear: null, registered: 4, mine: false }],
+    openDrives: [{ id: "d1", title: "ZZ Analyst", companyName: "ZZ Zeta" }],
+    surveyUrl: "/alumni/survey",
+    ...over,
+  });
+
+  it("refers into an open drive, goes to a meet, and sends the survey to the voice screen", async () => {
+    let going = false;
+    const { calls } = await mountStaff(<AlumniCollegeScreen />, "ALUMNUS", {
+      "GET /api/v1/alumni/college": () => json(college({ meets: [{ ...college().meets[0], mine: going, registered: going ? 5 : 4 }] })),
+      "POST /api/v1/alumni/college/referrals": () => json({ id: "r1", alumnusName: "ZZ Shreya", companyName: "ZZ Zeta", driveTitle: "ZZ Analyst", note: "ZZ My team is hiring", createdAt: iso }),
+      "POST /api/v1/alumni/college/meets/m1": () => {
+        going = true;
+        return json({ ...college().meets[0], mine: true, registered: 5 });
+      },
+    }, { me: meWith("ALUMNUS", ["ALUMNI", "ACADEMICS", "PLACEMENT"]) });
+    expect(await screen.findByText("ZZ Careers in analytics")).toBeTruthy();
+    expect(screen.getByText(/ZZ-R-1/)).toBeTruthy();
+    await fireEvent.press(screen.getByRole("radio", { name: "ZZ Analyst · ZZ Zeta" }));
+    await fireEvent.changeText(screen.getByLabelText("The opening, and how to reach it"), "ZZ My team is hiring");
+    await fireEvent.press(screen.getByRole("button", { name: "Send" }));
+    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/alumni/college/referrals")?.body).toEqual({ driveId: "d1", companyName: "", note: "ZZ My team is hiring" }));
+    await fireEvent.press(screen.getByRole("button", { name: "I will come: ZZ Alumni meet 2026" }));
+    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/alumni/college/meets/m1")?.body).toEqual({ going: true }));
+    await fireEvent.press(screen.getByRole("button", { name: "Answer the survey" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/voice");
+  });
+
+  it("opens the web to offer a mentoring slot, and hides referrals while placement is off", async () => {
+    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+    await mountStaff(<AlumniCollegeScreen />, "ALUMNUS", { "GET /api/v1/alumni/college": () => json(college({ surveyUrl: null })) }, { me: meWith("ALUMNUS", ["ALUMNI", "ACADEMICS"]) });
+    expect(await screen.findByText("ZZ Careers in analytics")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Send" })).toBeNull();
+    await fireEvent.press(screen.getByRole("button", { name: "Offer the time" }));
+    expect(open).toHaveBeenCalledWith(expect.stringMatching(/\/alumni\/college$/));
+    open.mockRestore();
   });
 });

@@ -195,7 +195,7 @@ export async function saveOfferingAction(form: FormData): Promise<void> {
 
 export async function saveSlotAction(form: FormData): Promise<void> {
   await runAction(`/admin/academics/timetable?termId=${encodeURIComponent(field(form, "termId"))}`, async () => {
-    await saveTimetableSlot(await requireApiUser(), timetableSlotSaveSchema.parse({ offeringId: field(form, "offeringId"), weekday: intField(form, "weekday"), periodId: field(form, "periodId"), kind: field(form, "kind") || "LECTURE", roomId: orNull(field(form, "roomId")) }));
+    await saveTimetableSlot(await requireApiUser(), timetableSlotSaveSchema.parse({ offeringId: field(form, "offeringId"), weekday: intField(form, "weekday"), periodId: field(form, "periodId"), kind: field(form, "kind") || "LECTURE", roomId: orNull(field(form, "roomId")), labBatchId: orNull(field(form, "labBatchId")) }));
     return "academics.slotSaved";
   });
 }

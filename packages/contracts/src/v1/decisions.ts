@@ -12,7 +12,8 @@ import { z } from "zod";
  * proposals, condonations an HOD forwarded, concessions above the office's limit and late
  * registrations — each decided by the principal and written as its module's audit row.
  */
-export const DECISION_KINDS = ["leave", "pen", "record", "certificate", "join", "admission", "grace", "condonation", "concession", "lateRegistration"] as const;
+/** And (5 Oct 2026) the two the college office left: a refund outside the slab, a hostel expulsion (lib/head-approvals.ts). */
+export const DECISION_KINDS = ["leave", "pen", "record", "certificate", "join", "admission", "grace", "condonation", "concession", "lateRegistration", "refundException", "expulsion"] as const;
 export const decisionKindSchema = z.enum(DECISION_KINDS);
 export type DecisionKind = z.infer<typeof decisionKindSchema>;
 

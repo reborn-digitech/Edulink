@@ -8,9 +8,11 @@ import { circularReach } from "@/lib/circulars";
 import type { CircularReach } from "@edulink/contracts";
 import { db } from "@/lib/db";
 import { AckButton } from "./ack-button";
+import { SlipAnswers, SlipReport } from "./slip";
+import { slipForReader, slipReport } from "@/lib/permission-slips";
 import { ReachReport } from "./reach-report";
 import { readJsonArray, type MediaItem } from "@/lib/json";
-import { relativeTime } from "@/lib/dates";
+import { formatDateKey, relativeTime } from "@/lib/dates";
 import { Avatar } from "@/components/ui/avatar";
 import { PersonLink } from "@/components/person-link";
 import { Badge } from "@/components/ui/badge";
@@ -20,7 +22,7 @@ import { ReplyToggle } from "./reply-toggle";
 import { ReactionRow } from "../reactions";
 import { PostMedia } from "../media";
 import { CATEGORY_KEYS } from "../categories";
-import { getT } from "@/lib/i18n/server";
+import { getLocale, getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { ROLE_META, type PostCategory, type Role } from "@/lib/constants";
 
@@ -37,10 +39,12 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: t("meta.post") };
 }
 
-export default async function PostPage({ params }: { params: Promise<{ postId: string }> }) {
+export default async function PostPage({ params, searchParams }: { params: Promise<{ postId: string }>; searchParams: Promise<{ ok?: string; error?: string }> }) {
   const t = await getT();
+  const locale = await getLocale();
   const session = await requireUser();
   const { postId } = await params;
+  const sp = await searchParams;
 
   let post;
   try {
@@ -85,8 +89,23 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
     }
   }
 
+  // A permission slip (5 Oct 2026, permission-slips.ts): the family's answers to give, or the staff's list of them.
+  let slip: Awaited<ReturnType<typeof slipForReader>> | null = null;
+  let slipAnswers: Awaited<ReturnType<typeof slipReport>> | null = null;
+  if (post.consentQuestion && post.status === "APPROVED") {
+    try {
+      if (session.role === "PARENT" || session.role === "STUDENT") slip = await slipForReader(session, post.id);
+      else if (readsReach) slipAnswers = await slipReport(session, post.id);
+    } catch (error) {
+      if (!(error instanceof AccessError)) throw error;
+    }
+  }
+  const slipDay = (key: string) => formatDateKey(key, { day: "numeric", month: "short", year: "numeric" }, locale);
+
   return (
     <div className="mx-auto max-w-2xl space-y-5">
+      {sp.ok ? <p role="status" className="rounded-[--radius-md] bg-ok-soft px-3 py-2 text-sm text-ok">{sp.ok}</p> : null}
+      {sp.error ? <p role="alert" className="rounded-[--radius-md] bg-danger-soft px-3 py-2 text-sm text-danger">{sp.error}</p> : null}
       <Link
         href="/bulletin"
         className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
@@ -185,7 +204,9 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
         {/* "Seen and understood" is the school's own instrument — a reader
             from another school on a global post is not on anyone's checklist
             and gets no button to press. */}
-        {post.canAck && (
+        {/* A permission slip's yes or no for each child (5 Oct 2026); answering is also "seen and understood". */}
+        {slip ? <SlipAnswers postId={post.id} slip={slip} t={t} day={slipDay} /> : null}
+        {post.canAck && !slip && (
           <div className="mt-4 rounded-[--radius-md] bg-accent-soft/40 p-3.5">
             <AckButton postId={post.id} acked={post.acks.length > 0} />
           </div>
@@ -194,6 +215,7 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
 
       {/* ---- who this circular has reached, class by class ---- */}
       {reach && <ReachReport reach={reach} office={session.role === "ADMIN" || session.role === "PRINCIPAL"} timezone={timezone} />}
+      {slipAnswers && <SlipReport report={slipAnswers} t={t} day={slipDay} />}
 
       <section aria-labelledby="comments">
         <h2 id="comments" className="text-sm font-semibold uppercase tracking-wide text-fg-muted">

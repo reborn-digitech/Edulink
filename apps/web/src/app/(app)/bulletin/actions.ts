@@ -136,6 +136,9 @@ export async function submitPost(formData: FormData): Promise<PostState> {
       audienceGrade: parsed.data.audienceGrade || undefined,
       audienceTarget: targetOf(String(formData.get("audienceTarget") ?? "")),
       requiresAck: parsed.data.requiresAck,
+      // A permission slip (5 Oct 2026): createPost keeps it to staff and makes it a circular.
+      consentQuestion: String(formData.get("consentQuestion") ?? "").trim() || undefined,
+      consentBy: String(formData.get("consentBy") ?? "").trim() || undefined,
     });
     revalidatePath("/bulletin");
     return { ok: true, errors: {}, ...result };

@@ -68,18 +68,21 @@ export const TABS: Record<RoleCode, Tab[]> = {
   // The college's seven (4 Oct 2026): a home that says whether the role's module is on; each module's builder adds the rest.
   // The bars (the integration's phone helper, 4 Oct 2026): the web NAV's primaries — the home and the college's feed
   // (GET /api/v1/shared/bulletin names the six in limitedRoles) — and, for FACULTY and HOD, the academics screen
-  // their doors name (mentoring; an HOD's own teaching). No Messages tab: a conversation's doors open to no college role.
+  // their doors name (mentoring; an HOD's own teaching) and Messages (5 Oct 2026: the rooms' doors, the people to
+  // write to and POST /api/v1/messages name FACULTY and HOD, as the web's /remarks does for them).
   // A home tab's label is a word or two (B-14, campaign 2026-10-04): "Head of department" and "Training and placement
   // officer" were cut off at 390 px; the department, the exam cell and placement name the desk instead.
   FACULTY: [
     { name: "index", labelKey: "role.faculty", icon: "chalkboard" },
     { name: "academics-mentoring", labelKey: "academics.mentoringTitle", icon: "chat", module: "ACADEMICS" },
     { name: "bulletin", labelKey: "nav.bulletin", icon: "megaphone" },
+    { name: "messages", labelKey: "nav.messages", icon: "envelope" },
   ],
   HOD: [
     { name: "index", labelKey: "mobile.tabDepartment", icon: "users" },
     { name: "teaching", labelKey: "academics.myTeaching", icon: "chalkboard", module: "ACADEMICS" },
     { name: "bulletin", labelKey: "nav.bulletin", icon: "megaphone" },
+    { name: "messages", labelKey: "nav.messages", icon: "envelope" },
   ],
   EXAM_CONTROLLER: [
     { name: "index", labelKey: "mobile.tabExamCell", icon: "clipboard" },
@@ -240,6 +243,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "placement.navParent", icon: "briefcase", group: "school", web: "/parent/placement" },
     // The parent survey of a child's college (campaign 2026-10-04, G-5): the voice screen, with no grievance line for a guardian.
     { labelKey: "iqac.navParentVoice", icon: "star", group: "school", screen: "/(app)/voice", module: "IQAC" },
+    // A college child's money net of the scholarship (5 Oct 2026, the web's /parent/money): a minor's always, an adult's under the MONEY grant.
+    { labelKey: "collegeOffice.moneyTitle", icon: "receipt", group: "school", screen: "/(app)/money", module: "ACADEMICS" },
   ],
   ADMIN: [
     { labelKey: "nav.classes", icon: "chalkboard", group: "daily", screen: "/(app)/classes" },
@@ -395,6 +400,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "iqac.navAlumniSurvey", icon: "star", group: "running", screen: "/(app)/voice", module: "IQAC" },
     // A paper asked for again — a copy of the leaving certificate, a bonafide (campaign 2026-10-04, G-6); the doors carry no module.
     { labelKey: "certificateRequests.alumniTitle", icon: "fileText", group: "school", screen: "/(app)/certificates" },
+    // The college's alumni additions (5 Oct 2026; the web's /alumni/college): ACADEMICS stands for "is a college", as on the web.
+    { labelKey: "placement.navAlumni", icon: "handshake", group: "school", screen: "/(app)/alumni-college", module: "ACADEMICS" },
   ],
   // The college's staff keep their account and their leave here; the college's feed is their tab (4 Oct 2026).
   // The teachers' survey (the IQAC module, 4 Oct 2026).
@@ -408,22 +415,74 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "collegeOffice.eResourcesTitle", icon: "globe", group: "school", screen: "/(app)/e-resources", module: "LIBRARY" },
     // Duties (5 Oct 2026): the anti-ragging register, for a member of the squad.
     { labelKey: "duties.antiRagging.title", icon: "shield", group: "running", screen: "/(app)/anti-ragging", module: "IQAC", duty: "ANTI_RAGGING_SQUAD" },
+    // The duties' desks (S2, 5 Oct 2026): each only for a FACULTY member holding the duty; the practical record for any teacher of a course with practicals.
+    { labelKey: "duties.lab.title", icon: "lightbulb", group: "running", screen: "/(app)/lab-desk", module: "ACADEMICS", duty: "LAB_INCHARGE" },
+    { labelKey: "duties.teachingPractice.title", icon: "chalkboard", group: "running", screen: "/(app)/teaching-practice", module: "ACADEMICS", duty: "PRACTICE_TEACHING_COORDINATOR" },
+    { labelKey: "duties.corps.nssTitle", icon: "handHeart", group: "running", screen: "/(app)/nss", module: "IQAC", duty: "NSS_OFFICER" },
+    { labelKey: "duties.corps.nccTitle", icon: "flag", group: "running", screen: "/(app)/ncc", module: "IQAC", duty: "NCC_OFFICER" },
+    { labelKey: "duties.research.title", icon: "medal", group: "running", screen: "/(app)/research-desk", module: "IQAC", duty: "RESEARCH_DEAN" },
+    { labelKey: "duties.examSquad.title", icon: "eye", group: "running", screen: "/(app)/exam-squad", module: "EXAMS", duty: "EXAM_SQUAD" },
+    { labelKey: "streamRecords.practicals.title", icon: "clipboard", group: "daily", screen: "/(app)/practicals", module: "ACADEMICS" },
   ],
   HOD: [
     ...COLLEGE_STAFF_MENU,
     { labelKey: "iqac.navVoice", icon: "star", group: "running", screen: "/(app)/voice", module: "IQAC" },
     // The college's academics (4 Oct 2026): the home tab is the department; an HOD's own teaching is a tab, mentoring is here.
     { labelKey: "academics.mentoringTitle", icon: "chat", group: "daily", screen: "/(app)/academics-mentoring", module: "ACADEMICS" },
+    // The department's lectures to cover and who stands in (5 Oct 2026; the web's /hod board).
+    { labelKey: "academics.tabSubstitutions", icon: "arrowsClockwise", group: "daily", screen: "/(app)/lecture-substitutions", module: "ACADEMICS" },
     { labelKey: "examCell.dutiesTitle", icon: "clipboard", group: "daily", screen: "/(app)/exam-duties", module: "EXAMS" },
     // The library's e-resources, opened through the app so each open counts (campaign 2026-10-04, G-3).
     { labelKey: "collegeOffice.eResourcesTitle", icon: "globe", group: "school", screen: "/(app)/e-resources", module: "LIBRARY" },
     // Duties (5 Oct 2026): the anti-ragging register, for an HOD on the squad.
     { labelKey: "duties.antiRagging.title", icon: "shield", group: "running", screen: "/(app)/anti-ragging", module: "IQAC", duty: "ANTI_RAGGING_SQUAD" },
+    // The duties' desks (S2, 5 Oct 2026): each only for an HOD holding the duty; the practical record for any teacher of a course with practicals.
+    { labelKey: "duties.lab.title", icon: "lightbulb", group: "running", screen: "/(app)/lab-desk", module: "ACADEMICS", duty: "LAB_INCHARGE" },
+    { labelKey: "duties.teachingPractice.title", icon: "chalkboard", group: "running", screen: "/(app)/teaching-practice", module: "ACADEMICS", duty: "PRACTICE_TEACHING_COORDINATOR" },
+    { labelKey: "duties.corps.nssTitle", icon: "handHeart", group: "running", screen: "/(app)/nss", module: "IQAC", duty: "NSS_OFFICER" },
+    { labelKey: "duties.corps.nccTitle", icon: "flag", group: "running", screen: "/(app)/ncc", module: "IQAC", duty: "NCC_OFFICER" },
+    { labelKey: "duties.research.title", icon: "medal", group: "running", screen: "/(app)/research-desk", module: "IQAC", duty: "RESEARCH_DEAN" },
+    { labelKey: "duties.examSquad.title", icon: "eye", group: "running", screen: "/(app)/exam-squad", module: "EXAMS", duty: "EXAM_SQUAD" },
+    { labelKey: "streamRecords.practicals.title", icon: "clipboard", group: "daily", screen: "/(app)/practicals", module: "ACADEMICS" },
   ],
-  EXAM_CONTROLLER: COLLEGE_STAFF_MENU,
-  IQAC: COLLEGE_STAFF_MENU,
-  TPO: COLLEGE_STAFF_MENU,
-  ACCOUNTS: COLLEGE_STAFF_MENU,
+  EXAM_CONTROLLER: [
+    ...COLLEGE_STAFF_MENU,
+    // The exam flying squad's desk (S2, 5 Oct 2026): the controller reads it without the duty, as the web's NAV.
+    { labelKey: "duties.examSquad.title", icon: "eye", group: "running", screen: "/(app)/exam-squad", module: "EXAMS" },
+  ],
+  // The desks' own pages (5 Oct 2026, the link walk's role audit): the web's NAV lists them for the IQAC, the TPO and the
+  // accounts desk, and the phone's More had none — only the home's numbers. Each opens the web signed in, under its module,
+  // as the registrar's college entries do; what the phone does itself (the IQAC's filings, the TPO's rounds) is on the home.
+  IQAC: [
+    ...COLLEGE_STAFF_MENU,
+    { labelKey: "iqac.navPredictor", icon: "chartLine", group: "daily", web: "/iqac/predictor", module: "IQAC" },
+    { labelKey: "iqac.navDocuments", icon: "clipboard", group: "daily", web: "/iqac/documents", module: "IQAC" },
+    { labelKey: "iqac.navSurveys", icon: "star", group: "daily", web: "/iqac/surveys", module: "IQAC" },
+    { labelKey: "iqac.navRegisters", icon: "books", group: "running", web: "/iqac/registers", module: "IQAC" },
+    { labelKey: "iqac.navGrievances", icon: "shield", group: "running", web: "/iqac/grievances", module: "IQAC" },
+    { labelKey: "iqac.navFacultyRecords", icon: "users", group: "running", web: "/admin/faculty-records", module: "IQAC" },
+    { labelKey: "placement.tabAnalytics", icon: "chartLine", group: "running", web: "/placement/analytics", module: "PLACEMENT" },
+  ],
+  TPO: [
+    ...COLLEGE_STAFF_MENU,
+    { labelKey: "placement.tabDrives", icon: "briefcase", group: "daily", web: "/placement/drives", module: "PLACEMENT" },
+    { labelKey: "placement.tabStudents", icon: "users", group: "daily", web: "/placement/students", module: "PLACEMENT" },
+    { labelKey: "placement.tabCompanies", icon: "handshake", group: "daily", web: "/placement/companies", module: "PLACEMENT" },
+    { labelKey: "placement.tabInternships", icon: "clipboard", group: "daily", web: "/placement/internships", module: "PLACEMENT" },
+    { labelKey: "placement.tabAnalytics", icon: "chartLine", group: "running", web: "/placement/analytics", module: "PLACEMENT" },
+  ],
+  ACCOUNTS: [
+    ...COLLEGE_STAFF_MENU,
+    { labelKey: "collegeDesks.lookupTitle", icon: "users", group: "daily", screen: "/(app)/accounts-lookup" },
+    { labelKey: "collegeOffice.navStructures", icon: "receipt", group: "daily", web: "/accounts/structures" },
+    { labelKey: "collegeOffice.navScholarships", icon: "receipt", group: "daily", web: "/accounts/scholarships", module: "SCHOLARSHIPS" },
+    { labelKey: "collegeOffice.navNoDues", icon: "checks", group: "daily", web: "/accounts/no-dues" },
+    { labelKey: "collegeOffice.navConcessions", icon: "clipboard", group: "daily", web: "/accounts/concessions" },
+    { labelKey: "collegeOffice.navStudents", icon: "users", group: "daily", web: "/accounts/students" },
+    { labelKey: "collegeOffice.navFeeLedger", icon: "receipt", group: "running", web: "/admin/fees" },
+    { labelKey: "payroll.title", icon: "receipt", group: "running", web: "/admin/payroll", module: "PAYROLL" },
+    { labelKey: "inventory.title", icon: "archive", group: "running", web: "/admin/inventory", module: "INVENTORY" },
+  ],
   RECRUITER: [{ labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" }],
 };
 
@@ -574,6 +633,21 @@ export const HIDDEN_SCREENS = [
   "e-resources",
   // Duties (5 Oct 2026): the anti-ragging register, from More and the duty card on the faculty's home.
   "anti-ragging",
+  // The duties' desks and the practical record (S2, 5 Oct 2026), from More and the duty card.
+  "lab-desk",
+  "practicals",
+  "teaching-practice",
+  "nss",
+  "ncc",
+  "research-desk",
+  "exam-squad",
+  // The S3 fixes (5 Oct 2026): the TPO's drive with its rounds, from the TPO's home; an HOD's lecture substitutions.
+  "placement-drive",
+  "lecture-substitutions",
+  // A college alumnus's college: mentoring, referrals, meets and gifts (5 Oct 2026).
+  "alumni-college",
+  // The accounts desk's look-up of a student by PRN: the ledger and the exam form's no-dues, read only (5 Oct 2026).
+  "accounts-lookup",
 ] as const;
 
 /** The More sheet's entries for a role, grouped in the web's order; an entry whose module the school has off, or whose duty the person does not hold (5 Oct 2026), is left out. */

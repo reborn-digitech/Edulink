@@ -209,3 +209,35 @@ describe("a post", () => {
     await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}`).length).toBe(2));
   });
 });
+
+describe("a permission slip on the phone (5 Oct 2026)", () => {
+  beforeEach(() => {
+    mockRouter.params = { postId: "p1" };
+  });
+  const SLIP = { ...DETAIL, title: "ZZ Planetarium trip", requiresAck: true, canAck: true, consentQuestion: "May your child go?", consentBy: "2099-12-31" };
+  const view = (answer: "YES" | "NO" | null, open = true) => ({ question: "May your child go?", consentBy: "2099-12-31", open, children: [{ studentMembershipId: "m-asha", name: "ZZ Asha", answer, answeredByName: answer ? "ZZ Parent" : null }] });
+
+  it("asks a guardian yes or no for each child and keeps the answer", async () => {
+    let answered: "YES" | "NO" | null = null;
+    const { calls } = await mount("PARENT", {
+      [`GET ${PATH}`]: () => json(SLIP),
+      [`GET ${PATH}/consent`]: () => json(view(answered)),
+      [`POST ${PATH}/consent`]: ({ init }) => {
+        answered = (JSON.parse(String(init.body)) as { answer: "YES" | "NO" }).answer;
+        return json(view(answered));
+      },
+    });
+    expect(await screen.findByText("May your child go?")).toBeTruthy();
+    // The slip replaces the bare "seen and understood" button.
+    expect(screen.queryByRole("button", { name: "Seen and understood" })).toBeNull();
+    fireEvent.press(screen.getByRole("button", { name: "Yes: ZZ Asha" }));
+    await waitFor(() => expect(calls().find((c) => c.line === `POST ${PATH}/consent`)?.body).toEqual({ studentMembershipId: "m-asha", answer: "YES" }));
+    expect(await screen.findByText(/ZZ Asha · Yes, from ZZ Parent/)).toBeTruthy();
+  });
+
+  it("after the day shows the answers and no buttons", async () => {
+    await mount("PARENT", { [`GET ${PATH}`]: () => json(SLIP), [`GET ${PATH}/consent`]: () => json(view("NO", false)) });
+    expect(await screen.findByText("Answers closed on 2099-12-31.")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Yes: ZZ Asha" })).toBeNull();
+  });
+});

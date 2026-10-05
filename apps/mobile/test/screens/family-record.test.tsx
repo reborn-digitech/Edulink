@@ -2,7 +2,9 @@ import { RECORD_CHANGE_FIELDS, recordChangeFileSchema } from "@edulink/contracts
 import { fireEvent, screen, waitFor, within } from "@testing-library/react-native";
 import { ToastProvider } from "@/components";
 import { bodyOf, calls, child, ID, ME_PARENT, ME_STUDENT, pending, refused, renderFamily, press } from "./family-helpers";
-import { FamilyRecord } from "@/screens/family/record";
+import { FamilyRecord, IdCardButton } from "@/screens/family/record";
+import * as Sharing from "expo-sharing";
+import { me, mountStaff, json } from "./staff-harness";
 import { ASKABLE, bodyFrom, CATEGORY_VALUES, changesFrom, FILING_FIELDS, formFrom, LANGUAGE_VALUES, NATIONALITY_VALUES, OPTIONAL_FIELDS, RELIGION_VALUES, REQUIRED_FIELDS, valueWords } from "@/screens/shared/pupil-record";
 
 const CHILDREN = { children: [child(ID.child, "ZZ Asha"), child(ID.child2, "ZZ Bela")] };
@@ -453,5 +455,24 @@ describe("the pupil record for the pupil", () => {
     await press(screen.getByRole("button", { name: "Take it back" }));
     await waitFor(() => expect(posts(fetch, WITHDRAW)).toHaveLength(1));
     expect(await screen.findByText("Request taken back")).toBeTruthy();
+  });
+});
+
+describe("the identity card from the record screen (5 Oct 2026)", () => {
+  const pdf = () => new Response(new Uint8Array([0x25, 0x50, 0x44, 0x46]), { status: 200, headers: { "content-type": "application/pdf" } });
+
+  it("shares a student's own card, asked without naming anyone", async () => {
+    (Sharing.shareAsync as jest.Mock).mockClear();
+    const { calls: seen } = await mountStaff(<IdCardButton studentMembershipId={null} />, "STUDENT", { "GET /api/v1/id-cards/pdf": () => pdf() });
+    fireEvent.press(screen.getByRole("button", { name: "Identity card (PDF)" }));
+    await waitFor(() => expect(Sharing.shareAsync).toHaveBeenCalledWith(expect.stringMatching(/id-card\.pdf$/), expect.objectContaining({ mimeType: "application/pdf" })));
+    expect(seen().map((c) => c.line)).toContain("GET /api/v1/id-cards/pdf");
+  });
+
+  it("asks for the chosen child's card, and shows an adult's refusal as the server says it", async () => {
+    const { calls: seen } = await mountStaff(<IdCardButton studentMembershipId="m-adult" />, "PARENT", { "GET /api/v1/id-cards/pdf": () => json({ error: "ZZ They have not shared this with you.", code: "FORBIDDEN" }, 403) }, { me: { ...me("PARENT"), active: { schoolId: null, role: "PARENT", membershipId: null } } });
+    fireEvent.press(screen.getByRole("button", { name: "Identity card (PDF)" }));
+    expect(await screen.findByText("ZZ They have not shared this with you.")).toBeTruthy();
+    expect(seen().map((c) => c.line)).toContain("GET /api/v1/id-cards/pdf?student=m-adult");
   });
 });

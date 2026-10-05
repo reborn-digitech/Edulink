@@ -57,6 +57,8 @@ import { createProject, reviewProject } from "@/lib/placement-projects";
 import { addColleague, answerInvitation, postRequirement, recruiterActor, recruiterActorForOffer, recruiterFeedback, registerCompany, removeColleague } from "@/lib/placement-recruiter";
 import { createMeet, linkMyCompany, offerMentorSlot, recordGift, referOpening, registerForMeet } from "@/lib/placement-alumni";
 import { closeBooking } from "@/lib/gig-sessions";
+import { consume, retryHintKey } from "@/lib/rate-limit";
+import { FANOUT_BUDGET, NOTICE_WRITE_BUDGET } from "@/lib/api-v1";
 
 /**
  * The placement module's web forms (4 October 2026): the cell's, the
@@ -121,6 +123,20 @@ async function run(formData: FormData, work: (ctx: ActiveContext) => Promise<Don
   revalidatePath(back.split("?")[0]!);
   if (!done) redirect(back);
   redirect(withMessage(back, "ok", typeof done === "string" ? t(done) : t(done.key, done.vars)));
+}
+
+/**
+ * The API doors' hourly budgets, on the same buckets, for the forms that do the same work (campaign S-18, 5 Oct 2026):
+ * a requirement to many colleges and a colleague's invitation spend `fanout`, round results and offers (each tells the
+ * students) spend `notice-write` — so the web is no way around POST /api/v1/recruiter/requirements and the rest. A
+ * refusal is the form's error line, "Too many requests. Try again in about N minutes."
+ */
+async function spend(ctx: ActiveContext, bucket: "fanout" | "notice-write", allowance: { limit: number; windowMs: number }): Promise<void> {
+  const gate = await consume(`${bucket}:${ctx.user.id}`, allowance.limit, allowance.windowMs);
+  if (gate.allowed) return;
+  const t = await getT();
+  const h = retryHintKey(gate.retryAfterSeconds);
+  throw new AccessError("refusal.tooManyRequests", "FORBIDDEN", { hint: t(h.key, h.vars) });
 }
 
 async function oneFile(formData: FormData, name: string): Promise<string | null> {
@@ -247,6 +263,7 @@ export async function resultsAction(formData: FormData): Promise<void> {
       .filter((r) => r.outcome);
     const input = parsed(roundResultsSaveSchema.safeParse({ round: num(formData, "round"), results }));
     const actor = ctx.role === "RECRUITER" ? await recruiterActor(ctx, driveId) : await cellActor(ctx, driveId);
+    await spend(ctx, "notice-write", NOTICE_WRITE_BUDGET);
     const r = await recordRoundResults(actor, input);
     return { key: "placement.resultsSaved", vars: { count: r.saved } };
   });
@@ -259,6 +276,7 @@ export async function offerAction(formData: FormData): Promise<void> {
     // median and the dream rule, and the letter is stored only for an offer that will be made.
     const input = parsed(offerSaveSchema.safeParse({ studentMembershipId: str(formData, "studentMembershipId"), packageRupees: lakh(formData, "package"), letterFileId: null }));
     const actor = ctx.role === "RECRUITER" ? await recruiterActor(ctx, driveId) : await cellActor(ctx, driveId);
+    await spend(ctx, "notice-write", NOTICE_WRITE_BUDGET);
     const storedFileId = await oneFile(formData, "letter");
     const o = await recordOffer(actor, input, { storedFileId });
     return { key: "placement.offerRecorded", vars: { name: o.studentName } };
@@ -398,6 +416,7 @@ export async function registerCompanyAction(formData: FormData): Promise<void> {
 
 export async function addColleagueAction(formData: FormData): Promise<void> {
   await run(formData, async (ctx) => {
+    await spend(ctx, "fanout", FANOUT_BUDGET);
     await addColleague(ctx, str(formData, "email"));
     return "placement.colleagueInvited";
   });
@@ -428,6 +447,7 @@ export async function removeColleagueAction(formData: FormData): Promise<void> {
 
 export async function postRequirementAction(formData: FormData): Promise<void> {
   await run(formData, async (ctx) => {
+    await spend(ctx, "fanout", FANOUT_BUDGET);
     const r = await postRequirement(
       ctx,
       parsed(

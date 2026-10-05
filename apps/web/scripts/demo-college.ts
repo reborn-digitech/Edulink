@@ -55,7 +55,9 @@ import { lockTotals } from "../src/lib/academics-assessment";
 import { classFor, courseOutcome, gradingTableOf, rulesOf, sgpaHundredths, termStatusOf } from "../src/lib/exam-cell-rules";
 import { placementTable } from "../src/lib/placement-analytics";
 import { seasonBatchFor } from "../src/lib/placement-rules";
-import { recomputeAsSystem, scoreQualitativeAs } from "../src/lib/iqac";
+import { iqacHash, recomputeAsSystem, respondentHash, scoreQualitativeAs } from "../src/lib/iqac";
+import { buildFiling } from "../src/lib/iqac-filings";
+import { addWorkingDays } from "../src/lib/iqac-rules";
 import { db, link, refuseUnlessLocal, switchModulesOn, upsertMembership, upsertUser, type Ctx } from "./zz-fixtures";
 import { PASSWORD } from "./demo-schools";
 
@@ -665,6 +667,33 @@ async function buildIqac(college: College, people: People, academics: Academics)
     if (kind === "IQAC") iqacMeeting = meeting.id;
   }
 
+  // The IQAC desk's own pages had nothing to show (the link walk of 5 Oct 2026: /iqac/surveys, /iqac/grievances and
+  // /iqac/documents each said "nothing yet" while the committee's minutes spoke of the term's two cases). Last year's
+  // satisfaction survey, closed with every student's answers and its action taken; the two grievances the minutes
+  // name, both closed within the fifteen working days; written before the cycle is computed so the predictor reads them.
+  const SSS_TITLE = "Student Satisfaction Survey 2025–26";
+  const sss =
+    (await db.survey.findFirst({ where: { schoolId: s, kind: "SSS", title: SSS_TITLE }, select: { id: true } })) ??
+    (await db.survey.create({ data: { schoolId: s, kind: "SSS", title: SSS_TITLE, opensOn: "2026-03-02", closesOn: "2026-03-31", questionsJson: JSON.stringify(Array.from({ length: 20 }, (_, i) => `Q${String(i + 1).padStart(2, "0")}`)), salt: "demo-college-sss-2025", createdByUserId: staff.iqac.userId }, select: { id: true } }));
+  for (const st of people.students) {
+    const respondent = respondentHash(sss.id, st.id, "demo-college-sss-2025");
+    const base = st.n % 3 === 0 ? 3 : 4;
+    const answers = Object.fromEntries(Array.from({ length: 20 }, (_, i) => [`Q${String(i + 1).padStart(2, "0")}`, Math.max(1, base - (i % 4 === 0 ? 1 : 0))]));
+    await db.surveyResponse.upsert({ where: { surveyId_respondentHash: { surveyId: sss.id, respondentHash: respondent } }, create: { schoolId: s, surveyId: sss.id, respondentHash: respondent, answersJson: JSON.stringify(answers), createdAt: new Date("2026-03-20T06:00:00Z") }, update: {} });
+  }
+  // Closed as the desk closes one: the salt wiped, so nobody can work back from a hash to a student.
+  await db.survey.updateMany({ where: { id: sss.id, closedAt: null }, data: { closedAt: new Date("2026-04-01T06:00:00Z"), salt: "" } });
+  await db.actionTakenReport.upsert({ where: { surveyId: sss.id }, create: { schoolId: s, surveyId: sss.id, text: "Library hours extended to 8 pm before the semester examinations; two remedial tutorials a week in Mathematical Physics.", publishedAt: new Date("2026-04-15T06:00:00Z"), createdByUserId: staff.iqac.userId }, update: {} });
+  const grievances: [number, string, string, string, string, string][] = [
+    [3, "ACADEMIC", "The practical batch for PHY302 clashes with the Mathematics elective on Wednesdays.", "2026-07-20", "The timetable committee moved the practical to Thursday afternoon.", "2026-07-29"],
+    [7, "FEES", "My scholarship is not shown against the odd-semester demand.", "2026-07-27", "The accounts office recorded the sanction against the demand; the net due is corrected.", "2026-08-05"],
+  ];
+  for (const [n, kind, text, filed, response, resolved] of grievances) {
+    if (await db.grievance.findFirst({ where: { schoolId: s, text }, select: { id: true } })) continue;
+    const by = people.students.find((x) => x.n === n)!;
+    await db.grievance.create({ data: { schoolId: s, byMembershipId: by.id, kind, committeeKind: "GRIEVANCE", text, status: "RESOLVED", filedAt: new Date(`${filed}T05:00:00Z`), dueOn: addWorkingDays(filed, 15), response, acknowledgedAt: new Date(`${filed}T09:00:00Z`), resolvedAt: new Date(`${resolved}T06:00:00Z`), decidedByUserId: staff.registrar.userId } });
+  }
+
   // The cycle: the affiliated framework over 2022–27, two figures the platform does not hold entered by the desk.
   const entered = JSON.stringify({ SANCTIONED_POSTS: { value: 8, byUserId: staff.iqac.userId, at: "2026-09-01T06:00:00.000Z", fileIds: [] }, BANDWIDTH_MBPS: { value: 200, byUserId: staff.iqac.userId, at: "2026-09-01T06:00:00.000Z", fileIds: [] } });
   const cycle =
@@ -675,6 +704,14 @@ async function buildIqac(college: College, people: People, academics: Academics)
     await recomputeAsSystem(s, cycle.id, staff.iqac.userId);
     await scoreQualitativeAs({ schoolId: s, userId: staff.iqac.userId, role: "IQAC", membershipId: staff.iqac.id }, cycle.id, "6.5.1", { score: 3, note: "The IQAC meets every term, reviews feedback and acts on it; minutes and the action taken are on record.", fileIds: [], evidence: [{ type: "CommitteeMeeting", id: iqacMeeting }] });
   }
+  // Last year's AQAR, cut from the rows by the filings library, signed off by the principal and filed (the desk's
+  // /iqac/documents showed "No filing generated yet"). Built once; data:audit's iqac-filing check re-cuts it.
+  if (!(await db.collegeFiling.findFirst({ where: { schoolId: s, kind: "AQAR", year: 2025 }, select: { id: true } }))) {
+    const built = await buildFiling(s, "AQAR", 2025, cycle.id);
+    await db.collegeFiling.create({ data: { schoolId: s, kind: "AQAR", cycleId: cycle.id, year: 2025, format: built.format, body: built.body, hash: iqacHash(built.body), figuresJson: JSON.stringify(built.figures), status: "FILED", checked: true, principalNote: "Approved for submission to the NAAC portal.", generatedAt: new Date("2026-09-08T06:00:00Z"), submittedAt: new Date("2026-09-10T06:00:00Z"), signedOffAt: new Date("2026-09-12T06:00:00Z"), signedOffByUserId: staff.principal.userId, generatedByUserId: staff.iqac.userId } });
+  }
+  // Generated before it was sent and signed (a first run of this script stamped it the day it ran).
+  await db.collegeFiling.updateMany({ where: { schoolId: s, kind: "AQAR", year: 2025, generatedAt: { gt: new Date("2026-09-10T06:00:00Z") } }, data: { generatedAt: new Date("2026-09-08T06:00:00Z") } });
   return { cycleId: cycle.id };
 }
 
@@ -735,6 +772,10 @@ async function countBlock(schoolId: string, emails: string[], companyId: string,
     programmeEnrolments: await db.programmeEnrolment.count({ where: s }),
     pupilRecords: await db.pupilRecord.count({ where: s }),
     alumniProfiles: await db.alumniProfile.count({ where: s }),
+    surveys: await db.survey.count({ where: s }),
+    surveyResponses: await db.surveyResponse.count({ where: s }),
+    grievances: await db.grievance.count({ where: s }),
+    collegeFilings: await db.collegeFiling.count({ where: s }),
   };
 }
 

@@ -190,10 +190,22 @@ async function view(r: NoDuesResult, studentName: string): Promise<NoDuesView> {
   };
 }
 
-/** A desk's read of one student's clearance. */
+/**
+ * WHAT A DESK SEES OF ANOTHER DESK'S LINE (the role audit of 5 Oct 2026). The librarian, the warden and an HOD keep
+ * one line each — the library's, the hostel's, the lab's — and need of the others only whether they stand cleared:
+ * the fee arrears the accounts line carries, in rupees, are the accounts desk's and the office's to read. Their
+ * reads of another desk's line say cleared or not, with no amount and no count.
+ */
+const FULL_READ: readonly Role[] = ["ACCOUNTS", "ADMIN", "PRINCIPAL"];
+function forDesk(role: Role, v: NoDuesView): NoDuesView {
+  if (FULL_READ.includes(role)) return v;
+  return { ...v, lines: v.lines.map((l) => (DESK_ROLES[l.desk].includes(role) ? l : { ...l, owedPaise: 0, itemsOut: 0 })) };
+}
+
+/** A desk's read of one student's clearance (another desk's amounts withheld from a single desk, `forDesk`). */
 export async function noDuesView(ctx: ActiveContext, studentMembershipId: string, event: NoDuesEvent): Promise<NoDuesView> {
   const s = await deskStudent(ctx, studentMembershipId, ANY_DESK);
-  return view(await noDuesFor(s.id, event), nameOf(s.user));
+  return forDesk(ctx.role!, await view(await noDuesFor(s.id, event), nameOf(s.user)));
 }
 
 /** The student's own clearances, every event. */
@@ -234,9 +246,12 @@ export async function noDuesList(ctx: ActiveContext, event: NoDuesEvent): Promis
   await assertCollege(ctx.schoolId);
   const students = await db.membership.findMany({ where: { schoolId: ctx.schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null }, select: { id: true, user: { select: { name: true, preferredName: true } } }, take: 3000 });
   const items = [];
+  // A single desk lists the students its own line holds up, and names only its own line (the role audit of 5 Oct 2026).
+  const mine = (desk: NoDuesDesk) => FULL_READ.includes(ctx.role!) || DESK_ROLES[desk].includes(ctx.role!);
   for (const s of students) {
     const r = await noDuesFor(s.id, event);
-    if (!r.completed) items.push({ studentMembershipId: s.id, studentName: nameOf(s.user), completed: false, uncleared: r.lines.filter((l) => !l.cleared).map((l) => l.desk) });
+    const uncleared = r.lines.filter((l) => !l.cleared && mine(l.desk)).map((l) => l.desk);
+    if (!r.completed && uncleared.length > 0) items.push({ studentMembershipId: s.id, studentName: nameOf(s.user), completed: false, uncleared });
   }
   return { items };
 }

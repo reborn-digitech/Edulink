@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { ClockIcon, ImageIcon, PaperPlaneTiltIcon, XIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
-import { SelectField, TextField } from "@/components/ui/field";
+import { DateField, SelectField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { submitPost } from "../actions";
@@ -69,6 +69,10 @@ export function ComposeForm({
   const [audienceGrade, setAudienceGrade] = useState("");
   const [audienceTarget, setAudienceTarget] = useState("");
   const [requiresAck, setRequiresAck] = useState(false);
+  // A permission slip (5 Oct 2026): the yes-or-no each child's family answers, and the last day to answer.
+  const [slip, setSlip] = useState(false);
+  const [consentQuestion, setConsentQuestion] = useState("");
+  const [consentBy, setConsentBy] = useState("");
   const [title, setTitle] = useState(initialTitle ?? "");
   const [body, setBody] = useState("");
   const [tags, setTags] = useState<string[]>(initialTags ?? []);
@@ -209,7 +213,10 @@ export function ComposeForm({
       payload.set("audience", scope === "SCHOOL" ? audience : "ALL");
       payload.set("audienceGrade", scope === "SCHOOL" && audience !== "TEACHERS" ? audienceGrade : "");
       payload.set("audienceTarget", scope === "SCHOOL" && audience !== "TEACHERS" ? audienceTarget : "");
-      payload.set("requiresAck", requiresAck ? "on" : "");
+      payload.set("requiresAck", requiresAck || slip ? "on" : "");
+      const asking = slip && !(scope === "SCHOOL" && audience === "TEACHERS");
+      payload.set("consentQuestion", asking ? consentQuestion.trim() : "");
+      payload.set("consentBy", asking ? consentBy : "");
       payload.set("title", title.trim());
       payload.set("body", body.trim());
       for (const tag of tags) payload.append("tags", tag);
@@ -402,6 +409,24 @@ export function ComposeForm({
             </span>
           </span>
         </label>
+      )}
+
+      {role !== "STUDENT" && !(scope === "SCHOOL" && audience === "TEACHERS") && (
+        <div className="space-y-3 rounded-[--radius-md] border border-border bg-surface p-3.5">
+          <label className="flex items-start gap-3">
+            <input type="checkbox" checked={slip} onChange={(e) => setSlip(e.target.checked)} className="mt-0.5 size-4 accent-[--color-accent]" />
+            <span className="min-w-0">
+              <span className="block text-sm font-medium text-fg">{t("collegeDesks.slipLabel")}</span>
+              <span className="mt-0.5 block text-xs leading-relaxed text-fg-muted">{t("collegeDesks.slipHint")}</span>
+            </span>
+          </label>
+          {slip ? (
+            <div className="grid gap-3 sm:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+              <TextField label={t("collegeDesks.slipQuestion")} value={consentQuestion} onChange={(e) => setConsentQuestion(e.target.value)} required minLength={3} maxLength={300} />
+              <DateField label={t("collegeDesks.slipBy")} value={consentBy} onChange={(e) => setConsentBy(e.target.value)} />
+            </div>
+          ) : null}
+        </div>
       )}
 
       <TextField

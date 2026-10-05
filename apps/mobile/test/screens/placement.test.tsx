@@ -3,6 +3,7 @@ import type { RoleCode } from "@edulink/contracts";
 import { StudentPlacementScreen } from "@/screens/placement/student";
 import { RecruiterDriveScreen, RecruiterPlacementHome } from "@/screens/placement/recruiter";
 import { TpoHome } from "@/screens/placement/tpo";
+import { TpoDriveScreen } from "@/screens/placement/tpo-drive";
 import { json, me, mountStaff } from "./staff-harness";
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
@@ -191,5 +192,51 @@ describe("the TPO on the phone (4 Oct 2026)", () => {
   it("is the college role home, saying so, while placement is off", async () => {
     await mountStaff(<TpoHome />, "TPO", {}, { me: atCollege("TPO", ["ALUMNI", "ACADEMICS"]) });
     expect(await screen.findByText("Placement is not switched on")).toBeTruthy();
+  });
+});
+
+describe("the TPO's drive on the phone (5 Oct 2026)", () => {
+  beforeEach(() => mockRouter.push.mockClear());
+  const view = (applications: unknown[], over: Record<string, unknown> = {}) => ({ ...drive("d2", { status: "SHORTLISTING", applicants: applications.length }), rule: { cgpaMin: 6, noLiveBacklogs: true, programmeIds: [], batchYear: 2027, genders: [] }, requirementId: null, poolSchools: [], eligibleCount: 4, invitedAt: iso, closedAt: null, applications, recruiterRating: null, recruiterFeedback: null, canEdit: true, ...over });
+
+  it("opens a drive from the home, and records the next round for each candidate, one press each", async () => {
+    await mountStaff(<TpoHome />, "TPO", { "GET /api/v1/placement/summary": () => json({ batchYear: 2027, table: { batchYear: 2027, finalYear: 3, placed: 0, higherStudies: 0, entrepreneurs: 0, placementIndex: null, medianSalaryRupees: null, offers: 0, byCompany: [], byProgramme: [], byCategory: [], bands: [], bySector: [], offersPerStudent: null }, drives: [drive("d2")], requirementsWaiting: 0, internshipsWaiting: 0, unverifiedCompanies: 0, canEdit: true }) }, { me: atCollege("TPO", ON) });
+    await fireEvent.press(await screen.findByText("ZZ Analyst d2"));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/placement-drive", params: { driveId: "d2" } });
+
+    mockRouter.params = { driveId: "d2" };
+    const fresh = application({ id: "a2", studentMembershipId: "m2", studentName: "ZZ Kabir", status: "APPLIED", results: [] });
+    const waiting = application({ id: "a3", studentMembershipId: "m3", studentName: "ZZ Minor Meera", status: "APPLIED", results: [], consentAt: null });
+    const { calls } = await mountStaff(<TpoDriveScreen />, "TPO", {
+      "GET /api/v1/placement/drives/d2": () => json(view([application(), fresh, waiting])),
+      "POST /api/v1/placement/drives/d2/results": () => json({ saved: 1, told: 1 }),
+    }, { me: atCollege("TPO", ON) });
+    expect(await screen.findByText("ZZ Riya")).toBeTruthy();
+    // ZZ Riya passed the shortlist: round 1 is next. ZZ Kabir is up for the shortlist. A minor waiting for a guardian is not offered a round.
+    expect(screen.getByRole("button", { name: "Shortlist (round 0): Through" })).toBeTruthy();
+    expect(screen.getAllByRole("button", { name: /: Through$/ })).toHaveLength(2);
+    expect(screen.getByText(/Waiting for your consent/)).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Round 1: Through" }));
+    await waitFor(() => expect(calls().some((c) => c.line === "POST /api/v1/placement/drives/d2/results")).toBe(true));
+    expect(calls().find((c) => c.line === "POST /api/v1/placement/drives/d2/results")?.body).toEqual({ round: 1, results: [{ studentMembershipId: "m1", outcome: "PASSED" }] });
+    expect(await screen.findByText("1 outcomes saved; the students are told.")).toBeTruthy();
+  });
+
+  it("offers no buttons on a pooled drive the college only guests, and shows a refusal as the server says it", async () => {
+    mockRouter.params = { driveId: "d2" };
+    let posted = false;
+    await mountStaff(<TpoDriveScreen />, "TPO", {
+      "GET /api/v1/placement/drives/d2": () => json(view([application({ results: [] })], { hosted: false, hostName: "ZZ Shastri" })),
+      "POST /api/v1/placement/drives/d2/results": () => {
+        posted = true;
+        return json({ error: "x" }, 403);
+      },
+    }, { me: atCollege("TPO", ON) });
+    expect(await screen.findByText("ZZ Riya")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: /Through/ })).toBeNull();
+    expect(posted).toBe(false);
+    mockRouter.params = { driveId: "d9" };
+    await mountStaff(<TpoDriveScreen />, "TPO", { "GET /api/v1/placement/drives/d9": () => json({ error: "ZZ That drive is not this college's.", code: "NOT_FOUND" }, 404) }, { me: atCollege("TPO", ON) });
+    expect(await screen.findByText("ZZ That drive is not this college's.")).toBeTruthy();
   });
 });

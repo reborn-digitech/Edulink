@@ -24,5 +24,5 @@ export const CORE: Endpoint[] = [
   { method: "POST", path: "/api/v1/files/{fileId}/link", summary: "A five-minute link that opens one file outside the app (a PDF in the phone's browser), for someone allowed to read it", access: "signed-in", response: c.fileLinkSchema, sample: (f) => (f.fileId ? `/api/v1/files/${encodeURIComponent(f.fileId)}/link` : null) },
   // ---- writes the outbox replays -------------------------------------------
   { method: "POST", path: "/api/v1/marks", summary: "Save one exam sheet for one class", access: ["TEACHER", "ADMIN"], request: c.marksBatchSchema, response: c.marksSavedSchema, emptyBodyStatus: 422 },
-  { method: "POST", path: "/api/v1/messages", summary: "Send one message into a room", access: "signed-in", limitedRoles: ["ALUMNUS"], request: c.conversationMessageSchema, response: c.messageSentSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/messages", summary: "Send one message into a room", access: "signed-in", limitedRoles: ["ALUMNUS", "FACULTY", "HOD"], request: c.conversationMessageSchema, response: c.messageSentSchema, emptyBodyStatus: 422 },
 ];

@@ -8,6 +8,7 @@ import { HodHomeScreen } from "@/screens/academics/hod";
 import { StudentAcademicsScreen } from "@/screens/academics/student";
 import { RegistrationScreen } from "@/screens/academics/registration";
 import { FamilyAcademicsScreen } from "@/screens/academics/family";
+import { LectureSubstitutionsScreen } from "@/screens/academics/substitutions";
 import { clock, projectionText, standingText } from "@/screens/academics/words";
 import { __setOutboxStore, listQueued, memoryOutbox } from "@/lib/outbox";
 import { json, me, mountStaff, offline } from "./staff-harness";
@@ -215,5 +216,44 @@ describe("a guardian's view", () => {
     allowed = true;
     await userEvent.setup().press(screen.getByRole("button", { name: "Try again" }));
     expect(await screen.findByText("PHY101 · 85%")).toBeTruthy();
+  });
+});
+
+describe("an HOD's lecture substitutions on the phone (5 Oct 2026)", () => {
+  const F1 = id("zzfaculty1");
+  const F2 = id("zzfaculty2");
+  const board = (over: Record<string, unknown> = {}) => ({
+    dateKey: "2026-10-05",
+    lectures: [{ lectureId: LECTURE, courseCode: "PHY101", courseName: "ZZ Mechanics", divisionName: "ZZ FY A", startMinute: 540, endMinute: 590, facultyName: "ZZ Away Teacher", reason: "ON_LEAVE", substituteMembershipId: null, substituteName: null, ...over }],
+    candidates: [{ membershipId: F1, name: "ZZ Free One", departmentId: null }, { membershipId: F2, name: "ZZ Free Two", departmentId: null }],
+  });
+
+  it("names who stands in for a lecture, and clears it", async () => {
+    const user = userEvent.setup();
+    let assigned: string | null = null;
+    const { calls } = await mountStaff(<LectureSubstitutionsScreen />, "HOD", {
+      "GET /api/v1/academics/substitutions": () => json(board(assigned ? { substituteMembershipId: assigned, substituteName: "ZZ Free Two" } : {})),
+      "POST /api/v1/academics/substitutions": ({ init }) => {
+        assigned = (JSON.parse(String(init.body)) as { substituteMembershipId: string | null }).substituteMembershipId;
+        return json({ changed: true });
+      },
+    }, { me: meAs("HOD") });
+    expect(await screen.findByText("PHY101 · ZZ Mechanics")).toBeTruthy();
+    expect(screen.getByText("Who stands in: Nobody yet")).toBeTruthy();
+    expect(screen.getByText("On leave")).toBeTruthy();
+    await user.press(screen.getByRole("radio", { name: "ZZ Free Two" }));
+    await user.press(screen.getByRole("button", { name: "Save: PHY101 · ZZ Mechanics" }));
+    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/academics/substitutions")?.body).toEqual({ lectureId: LECTURE, substituteMembershipId: F2 }));
+    expect(await screen.findByText("Who stands in: ZZ Free Two")).toBeTruthy();
+    await user.press(screen.getByRole("button", { name: "Clear: PHY101 · ZZ Mechanics" }));
+    await waitFor(() => expect(calls().filter((c) => c.line === "POST /api/v1/academics/substitutions").at(-1)?.body).toEqual({ lectureId: LECTURE, substituteMembershipId: null }));
+  });
+
+  it("says nobody is to be covered, and moves a day at a time", async () => {
+    const user = userEvent.setup();
+    const { calls } = await mountStaff(<LectureSubstitutionsScreen />, "HOD", { "GET /api/v1/academics/substitutions": () => json({ dateKey: "2026-10-05", lectures: [], candidates: [] }) }, { me: meAs("HOD") });
+    expect(await screen.findByText("Nobody to cover")).toBeTruthy();
+    await user.press(screen.getByRole("button", { name: "Next day" }));
+    await waitFor(() => expect(calls().some((c) => c.line === "GET /api/v1/academics/substitutions?date=2026-10-06")).toBe(true));
   });
 });

@@ -23,6 +23,7 @@ import { examAnalytics, resultsForDepartment } from "./exam-cell-marks";
 import { placementSummary } from "./placement-analytics";
 import { alumniCollegeAdmin } from "./placement-alumni";
 import { payrollSummary } from "./payroll";
+import { headApprovalCounts } from "./head-approvals";
 
 /**
  * THE PRINCIPAL'S COLLEGE (the integration builder, 4 October 2026).
@@ -46,7 +47,7 @@ import { payrollSummary } from "./payroll";
  * decision itself is the owning module's action, written as its audit row,
  * which the decision log (decision-log.ts) reads back. Not built anywhere,
  * so not shown: a refund outside the slab and a hostel expulsion (the office
- * builder's "not built" list).
+ * builder's "not built" list) — built since (5 Oct 2026, head-approvals.ts), each a line here with its page.
  */
 
 async function section<T>(label: string, read: () => Promise<T>): Promise<T | null> {
@@ -59,7 +60,7 @@ async function section<T>(label: string, read: () => Promise<T>): Promise<T | nu
   }
 }
 
-export type ApprovalLine = { key: "leave" | "condonation" | "concession" | "grace" | "lateRegistration" | "signoff" | "payroll"; count: number; href: string };
+export type ApprovalLine = { key: "leave" | "condonation" | "concession" | "grace" | "lateRegistration" | "signoff" | "payroll" | "refundException" | "expulsion"; count: number; href: string };
 
 export async function principalCollege(ctx: ActiveContext) {
   if (!ctx.schoolId || (ctx.role !== "PRINCIPAL" && ctx.role !== "ADMIN")) throw new AccessError("access.wrongRoleForThisAction");
@@ -125,6 +126,7 @@ export async function principalCollege(ctx: ActiveContext) {
       }
     : null;
 
+  const heads = await headApprovalCounts(schoolId);
   const approvals: ApprovalLine[] = [
     { key: "leave", count: leave?.length ?? 0, href: "/principal/leave" },
     { key: "condonation", count: condonations?.items.length ?? 0, href: "/admin/academics/condonations" },
@@ -133,6 +135,9 @@ export async function principalCollege(ctx: ActiveContext) {
     { key: "lateRegistration", count: lates?.items.filter((l) => l.status === "ASKED").length ?? 0, href: "/admin/academics/registration" },
     { key: "signoff", count: iqac?.counts.awaitingSignoff ?? 0, href: "/principal/accreditation" },
     { key: "payroll", count: sharedRuns ?? 0, href: "/admin/payroll" },
+    // The two the college office left (5 Oct 2026, head-approvals.ts), each on its own page.
+    ...(on("ADMISSIONS") ? [{ key: "refundException" as const, count: heads.refundException, href: "/admin/college-admissions/refunds" }] : []),
+    ...(on("HOSTEL") ? [{ key: "expulsion" as const, count: heads.expulsion, href: "/hostel/expulsions" }] : []),
   ];
 
   // Results and outcomes: the latest term the exam cell published, by department; the CO/PO attainment of this term's offerings.

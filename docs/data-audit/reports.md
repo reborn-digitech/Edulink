@@ -1,6 +1,6 @@
 # Data-flow audit — reports, exports and filings (second pass)
 
-Run: 2026-10-04T15:31:04.312Z · schools: Saraswati Arts and Science College, Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 220 WARN · 99 INFO
+Run: 2026-10-04T23:45:38.287Z · schools: Saraswati Arts and Science College, Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 220 WARN · 106 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees with its own rows; WARN = a stale snapshot or a figure a blank input makes wrong; INFO = inputs the school still has to enter.
 
@@ -161,33 +161,33 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | udise-teachers | ZZ Northgate School | ZZ PRAKASH SALUNKHE goes out with blank 3.2.8(a) |
 | udise-teachers | ZZ Northgate School | ZZ KIRAN VAIDYA goes out with blank 3.2.2, 3.2.3, 3.2.5, 3.2.12, 3.2.14, 3.2.8(a) |
 | udise-teachers | ZZ Northgate School | ZZ DEEPAK AHER goes out with blank 3.2.2, 3.2.3, 3.2.5, 3.2.12, 3.2.14, 3.2.8(a) |
-| board-sheets | Saraswati Arts and Science College | SNEHAL GAIKWAD has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | Saraswati Arts and Science College | OMKAR SHINDE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Saraswati Arts and Science College | ADITYA PATIL has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | Saraswati Arts and Science College | YASH CHAVAN has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Saraswati Arts and Science College | SAKSHI JADHAV has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Saraswati Arts and Science College | OMKAR SHINDE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Saraswati Arts and Science College | PRANAV KULKARNI has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Saraswati Arts and Science College | RUTUJA PAWAR has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Saraswati Arts and Science College | TEJAS MORE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | Saraswati Arts and Science College | PRANAV KULKARNI has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Saraswati Arts and Science College | SNEHAL GAIKWAD has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Saraswati Arts and Science College | YASH CHAVAN has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Saraswati Arts and Science College | no affiliation or index number on the filing identity — both board sheets carry a blank first column |
-| board-sheets | Saraswati Vidya Mandir | HARSHAD GAIKWAD has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | Saraswati Vidya Mandir | NUPUR AHIRE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Saraswati Vidya Mandir | GAYATRI THAKARE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | Saraswati Vidya Mandir | MANDAR BHOSALE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Saraswati Vidya Mandir | HARSHAD GAIKWAD has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Saraswati Vidya Mandir | KALYANI SHINDE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Saraswati Vidya Mandir | MANDAR BHOSALE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Saraswati Vidya Mandir | NUPUR AHIRE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Saraswati Vidya Mandir | PRATHAMESH NIKAM has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Sunrise Public School | YASHVI BHOSALE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | Sunrise Public School | MYRA REDDY has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Sunrise Public School | AARNA PATIL has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Sunrise Public School | DARSH DESHPANDE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Sunrise Public School | IRA JADHAV has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Sunrise Public School | KRISH SHARMA has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | Sunrise Public School | DARSH DESHPANDE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | Sunrise Public School | AARNA PATIL has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | ZZ Northgate School | ZZ YASH FERNANDES has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | ZZ Northgate School | ZZ VIKRAM DESAI has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | ZZ Northgate School | ZZ URVASHI CHAVAN has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | ZZ Northgate School | ZZ WAHEEDA ENGINEER has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | ZZ Northgate School | ZZ TARUN BHATT has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Sunrise Public School | MYRA REDDY has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | ZZ Northgate School | ZZ SNEHA APTE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | ZZ Northgate School | ZZ TARUN BHATT has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | ZZ Northgate School | ZZ URVASHI CHAVAN has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | ZZ Northgate School | ZZ VIKRAM DESAI has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | ZZ Northgate School | ZZ WAHEEDA ENGINEER has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | ZZ Northgate School | ZZ YASH FERNANDES has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | leaving-certificates | Saraswati Arts and Science College | 1 pupil(s) left with no departure record — no leaving certificate exists for them |
 | leaving-certificates | ZZ Northgate School | 1 pupil(s) left with no departure record — no leaving certificate exists for them |
 | inputs-pupils | Saraswati Arts and Science College | 9 of 10 pupils lack a contact number, the guardian's or the record's — feeds UDISE+ MOBILE NUMBER |
@@ -229,7 +229,7 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | inputs-pupils | ZZ Northgate School | 42 of 48 pupils lack household (occupations, income) — feeds RTE and EWS verification |
 | inputs-staff | ZZ Northgate School | 12 of 12 staff lack a phone — feeds DCF 3.2.8(a), substitution and leave texts |
 
-## INFO (99)
+## INFO (106)
 
 | check | school | detail |
 |---|---|---|
@@ -250,7 +250,14 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | register-csv | Sunrise Public School | grade 8: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
 | register-csv | Sunrise Public School | grade 9: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
 | register-csv | Sunrise Public School | grade 10: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
-| register-csv | ZZ Northgate School | no register to export |
+| register-csv | ZZ Northgate School | grade 3: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
+| register-csv | ZZ Northgate School | grade 4: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
+| register-csv | ZZ Northgate School | grade 5: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
+| register-csv | ZZ Northgate School | grade 6: 2 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
+| register-csv | ZZ Northgate School | grade 7: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
+| register-csv | ZZ Northgate School | grade 8: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
+| register-csv | ZZ Northgate School | grade 9: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
+| register-csv | ZZ Northgate School | grade 10: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
 | staff-csv | Saraswati Arts and Science College | 2 staff have no leave entitlement on their record — the desk sees no balance for them |
 | staff-csv | ZZ Northgate School | 4 staff have no leave entitlement on their record — the desk sees no balance for them |
 | report-card-items | Saraswati Arts and Science College | 0 card papers checked against their grades |

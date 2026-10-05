@@ -81,7 +81,8 @@ export function salaryBandOf(rupees: number): SalaryBand {
   return "12_PLUS";
 }
 
-export const INTERNSHIP_KINDS = ["INDUSTRY", "RESEARCH", "FAMILY_BUSINESS"] as const;
+/** The AICTE's three, then (stream records, 5 Oct 2026, ./stream-records.ts) a law student's COURT, FIRM and LEGAL_AID and a management student's SUMMER; `internshipKindsFor(streams)` says which a college offers. */
+export const INTERNSHIP_KINDS = ["INDUSTRY", "RESEARCH", "FAMILY_BUSINESS", "COURT", "FIRM", "LEGAL_AID", "SUMMER"] as const;
 export const internshipKindSchema = z.enum(INTERNSHIP_KINDS);
 export type InternshipKind = z.infer<typeof internshipKindSchema>;
 /** PROPOSED by the student → APPROVED by the cell or the HOD → SUBMITTED (report in) → EVALUATED (grade, visit, viva) → CREDITED; REFUSED at the first step. */
@@ -110,7 +111,8 @@ export const AICTE_INTERNSHIP_BTECH = {
   source: "AICTE Internship Policy (2019), aicte.gov.in",
 } as const;
 export const INTERNSHIP_WINDOWS = [2, 4, 6] as const;
-export const internshipWindowSchema = z.union([z.literal(2), z.literal(4), z.literal(6)]);
+/** 2, 4 or 6 for the AICTE's kinds; a law internship may also sit after semester 8 or 10 (LAW_INTERNSHIP_WINDOWS, 5 Oct 2026) — the library refuses the rest. */
+export const internshipWindowSchema = z.union([z.literal(2), z.literal(4), z.literal(6), z.literal(8), z.literal(10)]);
 
 export const ALUMNI_GIFT_KINDS = ["DONATION", "ENDOWMENT", "SCHOLARSHIP", "IN_KIND"] as const;
 export const alumniGiftKindSchema = z.enum(ALUMNI_GIFT_KINDS);

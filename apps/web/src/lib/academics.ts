@@ -680,6 +680,8 @@ const SLOT_SELECT = {
   kind: true,
   roomId: true,
   offering: { select: { termId: true, divisionId: true, facultyMembershipId: true, roomId: true, course: { select: { code: true, name: true } } } },
+  // A LAB hour for one batch (stream records, 5 Oct 2026).
+  labBatch: { select: { name: true } },
 } as const;
 
 /** The weekly grid of a term: a division's, a faculty member's, a room's, or (a student) their own. */
@@ -709,7 +711,7 @@ export async function timetableFor(c: Caller, query: { termId?: string; division
   return { ...base, cells: await cellsOf(slots, periods) };
 }
 
-type SlotRow = { id: string; offeringId: string; weekday: number; periodId: string; kind: string; roomId: string | null; offering: { termId: string; divisionId: string | null; facultyMembershipId: string | null; roomId: string | null; course: { code: string; name: string } } };
+type SlotRow = { id: string; offeringId: string; weekday: number; periodId: string; kind: string; roomId: string | null; offering: { termId: string; divisionId: string | null; facultyMembershipId: string | null; roomId: string | null; course: { code: string; name: string } }; labBatch?: { name: string } | null };
 
 export async function cellsOf(slots: SlotRow[], periods: { id: string; startMinute: number; endMinute: number }[]) {
   const periodBy = new Map(periods.map((p) => [p.id, p]));
@@ -726,7 +728,7 @@ export async function cellsOf(slots: SlotRow[], periods: { id: string; startMinu
     .map((s) => {
       const p = periodBy.get(s.periodId)!;
       const room = s.roomId ?? s.offering.roomId;
-      return { slotId: s.id, offeringId: s.offeringId, weekday: s.weekday, periodId: s.periodId, kind: s.kind as "LECTURE", courseCode: s.offering.course.code, courseName: s.offering.course.name, divisionName: s.offering.divisionId ? (divisions.get(s.offering.divisionId) ?? null) : null, facultyName: s.offering.facultyMembershipId ? (faculty.get(s.offering.facultyMembershipId) ?? null) : null, roomName: room ? (rooms.get(room) ?? null) : null, startMinute: p.startMinute, endMinute: p.endMinute };
+      return { slotId: s.id, offeringId: s.offeringId, weekday: s.weekday, periodId: s.periodId, kind: s.kind as "LECTURE", courseCode: s.offering.course.code, courseName: s.offering.course.name, divisionName: s.offering.divisionId ? (divisions.get(s.offering.divisionId) ?? null) : null, facultyName: s.offering.facultyMembershipId ? (faculty.get(s.offering.facultyMembershipId) ?? null) : null, roomName: room ? (rooms.get(room) ?? null) : null, startMinute: p.startMinute, endMinute: p.endMinute, labBatchName: s.labBatch?.name ?? null };
     })
     .sort((a, b) => a.weekday - b.weekday || a.startMinute - b.startMinute);
 }
@@ -751,31 +753,47 @@ export async function saveTimetableSlot(ctx: ActiveContext, input: z.infer<typeo
   if (!parseTeachingDays(school.teachingDays).includes(input.weekday)) throw new RuleRefusal("academics.refuseNotTeachingDay", 422, undefined, "weekday");
   const roomId = input.roomId ?? offering.roomId;
   if (input.roomId && !(await db.room.findFirst({ where: { id: input.roomId, schoolId: c.schoolId }, select: { id: true } }))) throw new RuleRefusal("academics.refuseUnknownRoom", 422, undefined, "roomId");
+  // A LAB hour for one batch of the offering's division (stream records, 5 Oct 2026): its students are the batch's.
+  const labBatchId = input.labBatchId ?? null;
+  const batch = labBatchId ? await db.labBatch.findFirst({ where: { id: labBatchId, schoolId: c.schoolId }, select: { id: true, divisionId: true, members: { select: { studentMembershipId: true } } } }) : null;
+  if (labBatchId && (!batch || input.kind !== "LAB" || batch.divisionId !== offering.divisionId)) throw new RuleRefusal("streamRecords.refuseBatch", 422, undefined, "labBatchId");
 
   const others = await db.offeringSlot.findMany({
     where: { schoolId: c.schoolId, weekday: input.weekday, periodId: input.periodId, offering: { termId: offering.termId }, NOT: { offeringId: offering.id } },
-    select: { roomId: true, offeringId: true, offering: { select: { divisionId: true, facultyMembershipId: true, roomId: true, course: { select: { code: true, kind: true } } } } },
+    select: { roomId: true, offeringId: true, labBatchId: true, labBatch: { select: { members: { select: { studentMembershipId: true } } } }, offering: { select: { divisionId: true, facultyMembershipId: true, roomId: true, course: { select: { code: true, kind: true } } } } },
   });
+  // Two different batches of one division at one hour (batch A in one lab, batch B in another) do not clash as a division.
+  const otherBatch = (o: (typeof others)[number]) => batch !== null && o.labBatchId !== null && o.labBatchId !== batch.id;
   for (const o of others) {
     if (offering.facultyMembershipId && o.offering.facultyMembershipId === offering.facultyMembershipId) throw new RuleRefusal("academics.refuseFacultyClash", 409, { course: o.offering.course.code }, "periodId");
     if (roomId && (o.roomId ?? o.offering.roomId) === roomId) throw new RuleRefusal("academics.refuseRoomClash", 409, { course: o.offering.course.code }, "roomId");
-    if (offering.divisionId && o.offering.divisionId === offering.divisionId && (offering.course.kind === "CORE" || o.offering.course.kind === "CORE")) throw new RuleRefusal("academics.refuseDivisionClash", 409, { course: o.offering.course.code }, "periodId");
+    if (offering.divisionId && o.offering.divisionId === offering.divisionId && (offering.course.kind === "CORE" || o.offering.course.kind === "CORE") && !otherBatch(o)) throw new RuleRefusal("academics.refuseDivisionClash", 409, { course: o.offering.course.code }, "periodId");
   }
   const mine = await db.courseRegistration.findMany({ where: { offeringId: offering.id, status: "REGISTERED" }, select: { studentMembershipId: true } });
-  if (others.length && mine.length) {
+  if (others.length && mine.length && !batch && !others.some((o) => o.labBatchId)) {
     const both = await db.courseRegistration.count({ where: { offeringId: { in: others.map((o) => o.offeringId) }, status: "REGISTERED", studentMembershipId: { in: mine.map((m) => m.studentMembershipId) } } });
     if (both > 0) throw new RuleRefusal("academics.refuseStudentClash", 409, { count: both }, "periodId");
+  } else if (others.length && mine.length) {
+    // With batches at this hour, a student clashes only where they are at both: this hour's batch (or its registrants) and the other hour's batch (or its registrants).
+    const here = new Set(batch ? batch.members.map((m) => m.studentMembershipId) : mine.map((m) => m.studentMembershipId));
+    const regs = await db.courseRegistration.findMany({ where: { offeringId: { in: others.map((o) => o.offeringId) }, status: "REGISTERED", studentMembershipId: { in: [...here] } }, select: { offeringId: true, studentMembershipId: true } });
+    const clash = new Set<string>();
+    for (const o of others) {
+      const there = o.labBatchId ? new Set((o.labBatch?.members ?? []).map((m) => m.studentMembershipId)) : null;
+      for (const r of regs) if (r.offeringId === o.offeringId && (!there || there.has(r.studentMembershipId))) clash.add(r.studentMembershipId);
+    }
+    if (clash.size > 0) throw new RuleRefusal("academics.refuseStudentClash", 409, { count: clash.size }, "periodId");
   }
   if (roomId) {
     const room = await db.room.findUniqueOrThrow({ where: { id: roomId }, select: { capacity: true } });
     const divisionSize = offering.divisionId ? await db.enrollment.count({ where: { status: "ACTIVE", class: { division: { id: offering.divisionId } } } }) : 0;
-    const need = Math.max(mine.length, divisionSize);
+    const need = batch ? batch.members.length : Math.max(mine.length, divisionSize);
     if (need > room.capacity) throw new RuleRefusal("academics.refuseRoomTooSmall", 409, { capacity: room.capacity, need }, "roomId");
   }
   const row = await db.offeringSlot.upsert({
     where: { offeringId_weekday_periodId: { offeringId: offering.id, weekday: input.weekday, periodId: input.periodId } },
-    create: { schoolId: c.schoolId, offeringId: offering.id, weekday: input.weekday, periodId: input.periodId, kind: input.kind, roomId: input.roomId },
-    update: { kind: input.kind, roomId: input.roomId },
+    create: { schoolId: c.schoolId, offeringId: offering.id, weekday: input.weekday, periodId: input.periodId, kind: input.kind, roomId: input.roomId, labBatchId },
+    update: { kind: input.kind, roomId: input.roomId, labBatchId },
     select: { id: true },
   });
   await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "academics.timetable.slot", targetType: "OfferingSlot", targetId: row.id, meta: { course: offering.course.code, weekday: input.weekday, periodId: input.periodId } });
@@ -812,12 +830,12 @@ export async function ensureLecturesForDay(schoolId: string, dateKey: string, of
   const weekday = weekdayOfKey(dateKey);
   const slots = await db.offeringSlot.findMany({
     where: { schoolId, weekday, offering: { termId: term.id, ...(offeringIds ? { id: { in: offeringIds } } : {}) } },
-    select: { id: true, offeringId: true, kind: true, roomId: true, periodId: true },
+    select: { id: true, offeringId: true, kind: true, roomId: true, periodId: true, labBatchId: true },
   });
   if (!slots.length) return { closed: false };
   const periods = new Map((await db.timetablePeriod.findMany({ where: { id: { in: [...new Set(slots.map((s) => s.periodId))] } }, select: { id: true, startMinute: true, endMinute: true } })).map((p) => [p.id, p]));
   await db.lecture.createMany({
-    data: slots.filter((s) => periods.has(s.periodId)).map((s) => ({ schoolId, offeringId: s.offeringId, slotId: s.id, dateKey, startMinute: periods.get(s.periodId)!.startMinute, endMinute: periods.get(s.periodId)!.endMinute, kind: s.kind, roomId: s.roomId })),
+    data: slots.filter((s) => periods.has(s.periodId)).map((s) => ({ schoolId, offeringId: s.offeringId, slotId: s.id, dateKey, startMinute: periods.get(s.periodId)!.startMinute, endMinute: periods.get(s.periodId)!.endMinute, kind: s.kind, roomId: s.roomId, labBatchId: s.labBatchId })),
     skipDuplicates: true,
   });
   return { closed: false };

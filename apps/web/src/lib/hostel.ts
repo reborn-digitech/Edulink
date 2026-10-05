@@ -25,6 +25,7 @@ import { notify, notifyGuardians } from "./notify";
 import { forSchool } from "./tenant-context";
 import { addDaysToKey, todayKey, weekdayOfKey, zonedStartOfDay } from "./dates";
 import { readContacts } from "./health";
+import { curfewRuleFor, returnIsLate } from "./hostel-night";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 
@@ -329,7 +330,8 @@ export async function takeRollCall(ctx: ActiveContext, input: HostelRollCallTake
       bodyVars: { name: childName, hostel: hostel.name },
       url: `/parent/hostel?child=${membershipId}`,
       urgent: true,
-    })).catch((error) => console.error("[hostel] absent notice failed", error));
+      // An adult college boarder's guardians hear of the hostel only under the grant their page reads (5 Oct 2026).
+    }), "HOSTEL_TRANSPORT").catch((error) => console.error("[hostel] absent notice failed", error));
   }
   return { rollCallId, ...c, replay: false };
 }
@@ -399,7 +401,7 @@ async function leaveAt(schoolId: string, leaveId: string) {
 /** Tells the boarder and their guardians what became of their leave. */
 async function tellFamily(schoolId: string, l: { id: string; membershipId: string; allotment: { student: Pupil } }, titleKey: "hostel.notifLeaveApproved" | "hostel.notifLeaveDeclined" | "hostel.notifLateTitle"): Promise<void> {
   await notify({ userId: l.allotment.student.userId, schoolId, kind: "SYSTEM", titleKey, titleVars: { name: nameOf(l.allotment.student) }, url: "/student/hostel" }).catch((error) => console.error("[hostel] notice failed", error));
-  await notifyGuardians(l.membershipId, (childName) => ({ schoolId, kind: "SYSTEM", titleKey, titleVars: { name: childName }, url: `/parent/hostel?child=${l.membershipId}` })).catch((error) => console.error("[hostel] notice failed", error));
+  await notifyGuardians(l.membershipId, (childName) => ({ schoolId, kind: "SYSTEM", titleKey, titleVars: { name: childName }, url: `/parent/hostel?child=${l.membershipId}` }), "HOSTEL_TRANSPORT").catch((error) => console.error("[hostel] notice failed", error));
 }
 
 /** The wardens of the school (the house's own first) and, for a late return, the office. */
@@ -435,13 +437,16 @@ export async function gateOut(ctx: ActiveContext, leaveId: string): Promise<Host
   return leaveRow(l.id);
 }
 
-/** The gate: back in. After the leave's end it is LATE, flagged to the wardens, the office and the family. */
+/**
+ * The gate: back in. After the leave's end it is LATE, flagged to the wardens, the office and the family — and at a
+ * college an outing (LOCAL) is late after the hostel's curfew that evening too (hostel-night.ts, 5 Oct 2026).
+ */
 export async function gateIn(ctx: ActiveContext, leaveId: string, now: Date = new Date()): Promise<HostelLeaveRow> {
   const staff = await staffOf(ctx, WRITERS);
   const l = await leaveAt(staff.schoolId, leaveId);
   if (!l.outAt) throw new AccessError("hostel.refuseNotOut");
   if (!l.inAt) {
-    const late = now.getTime() > l.toAt.getTime();
+    const late = returnIsLate(l, await curfewRuleFor(l.allotment.room.hostelId), now);
     const moved = await db.hostelLeave.updateMany({ where: { id: l.id, inAt: null }, data: { inAt: now, inByUserId: staff.userId, late } });
     if (moved.count === 1) {
       await audit({ schoolId: staff.schoolId, actorUserId: staff.userId, action: "hostel.leave.in", targetType: "HostelLeave", targetId: l.id, meta: { late } });
@@ -625,7 +630,7 @@ export async function recordHostelIncident(ctx: ActiveContext, input: HostelInci
       bodyVars: { name: childName },
       url: `/parent/incidents?child=${a.membershipId}&incident=${created.id}`,
       text: { templateKey: "incident", vars: { child: childName, summary: input.title.slice(0, 80), school: school.name }, purpose: `incident:${created.id}` },
-    }));
+    }), "HOSTEL_TRANSPORT");
     await db.incident.update({ where: { id: created.id }, data: { guardiansNotifiedAt: new Date() } });
   }
   await audit({ schoolId: staff.schoolId, actorUserId: staff.userId, action: "incident.record", targetType: "Incident", targetId: created.id, meta: { studentMembershipId: a.membershipId, kind: input.kind, severity: input.severity, notified: input.notifyGuardians, hostelId: a.room.hostelId } });

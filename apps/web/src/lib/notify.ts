@@ -7,6 +7,7 @@ import { DEFAULT_PREFS, type UserPrefs } from "./session";
 import { channel, publish } from "./realtime";
 import { translator, type TranslationKey } from "./i18n/dictionary";
 import { normaliseLocale } from "./i18n/locales";
+import { localiseVars } from "./notice-dates";
 import { readVapidConfig } from "./env";
 import { isPushServiceEndpoint } from "./validation";
 
@@ -38,7 +39,7 @@ export function isSendableEndpoint(endpoint: string): boolean {
 }
 import type { NotificationKind } from "./constants";
 import type { MessageTemplateKey } from "./message-templates";
-import { parentMaySee, type StudentConsentGrant } from "./student-consent";
+import { parentMaySee, studentsGuardiansMaySee, type StudentConsentGrant } from "./student-consent";
 
 /**
  * Notification delivery: in-app row + Web Push, honouring per-user channel
@@ -119,9 +120,11 @@ export async function notify(input: NotifyInput): Promise<void> {
 
   const prefs = readJson<UserPrefs>(user.prefs, DEFAULT_PREFS);
 
-  const t = translator(normaliseLocale(prefs.locale));
-  const title = input.titleKey ? t(input.titleKey, input.titleVars) : input.title;
-  const body = input.bodyKey ? t(input.bodyKey, input.bodyVars) : (input.body ?? "");
+  const locale = normaliseLocale(prefs.locale);
+  const t = translator(locale);
+  // A date variable (noticeDate) is said in the recipient's language too; the row keeps the date itself (B-15).
+  const title = input.titleKey ? t(input.titleKey, localiseVars(input.titleVars, locale)) : input.title;
+  const body = input.bodyKey ? t(input.bodyKey, localiseVars(input.bodyVars, locale)) : (input.body ?? "");
 
   // The in-app row is always written. Quiet hours silence the *interruption*,
   // never the record — a parent must still find the message in the morning.
@@ -227,7 +230,10 @@ export async function notifyGuardians(
 export async function notifyGuardiansOfClass(
   studentMembershipIds: string[],
   build: () => DistributiveOmit<NotifyInput, "userId">,
+  // As notifyGuardians' (5 Oct 2026): an adult college student's guardians hear of the class's work only under the grant.
+  grant?: StudentConsentGrant,
 ): Promise<number> {
+  if (grant) studentMembershipIds = await studentsGuardiansMaySee(studentMembershipIds, grant);
   if (studentMembershipIds.length === 0) return 0;
   const guardians = await db.guardianship.findMany({
     where: { studentMembershipId: { in: studentMembershipIds }, status: "ACTIVE" },

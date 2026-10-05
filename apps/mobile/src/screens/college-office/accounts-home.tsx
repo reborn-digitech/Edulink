@@ -23,6 +23,8 @@ export function AccountsHomeScreen() {
   const totals = o?.collection.reduce((a, r) => ({ demand: a.demand + r.demandPaise, collected: a.collected + r.collectedPaise, outstanding: a.outstanding + r.outstandingPaise }), { demand: 0, collected: 0, outstanding: 0 });
   return (
     <Screen title={t("role.accounts")} description={o ? t("collegeOffice.accountsIntro", { year: o.year?.name ?? "—" }) : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
+      {/* The counter question, from the phone (5 Oct 2026): a student by PRN, their ledger and no-dues. */}
+      <Button label={t("collegeDesks.lookupTitle")} onPress={() => router.push("/(app)/accounts-lookup" as never)} />
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {o && totals ? (

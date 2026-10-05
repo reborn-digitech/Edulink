@@ -4,7 +4,7 @@ import { db } from "./db";
 import { publish, channel } from "./realtime";
 import { notifyGuardians } from "./notify";
 import { audit } from "./audit";
-import { formatDateKey } from "./dates";
+import { noticeDate } from "./notice-dates";
 import { schoolDayOn } from "./holidays";
 import { absenceNotesOn } from "./absence-notes";
 import type { AttendanceStatus } from "./constants";
@@ -231,7 +231,8 @@ export async function saveAttendanceBatch(opts: {
   // with an absence note for the day (absence-notes.ts) is skipped.
   if (opts.notify !== false && newlyAbsent.length > 0) {
     const told = await absenceNotesOn(schoolId, newlyAbsent.map((n) => n.studentMembershipId), dateKey);
-    const pretty = formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" });
+    // The date said in each guardian's language, here and on their notifications page later (B-15, 5 Oct 2026).
+    const pretty = noticeDate(dateKey, "long");
     /**
      * Rendered in the GUARDIAN's language by `notify` (it reads the
      * recipient's prefs, not the teacher's), and the key is kept on the row

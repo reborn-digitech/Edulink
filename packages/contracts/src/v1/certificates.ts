@@ -607,3 +607,12 @@ export const penLookupSchema = z.object({
   pupil: z.object({ membershipId: z.string(), name: z.string(), className: z.string().nullable(), studentCode: z.string().nullable() }).nullable(),
 });
 export type PenLookup = z.infer<typeof penLookupSchema>;
+
+/**
+ * THE STUDENT'S IDENTITY CARD (5 Oct 2026, apps/web/src/lib/id-card.ts). GET /api/v1/id-cards/pdf?student= — one
+ * card as a PDF: a student's own (no `student`), a guardian's child's, the office's or the head's for anyone on the
+ * roll. GET /api/v1/id-cards/check?c= — the gate's read of a scanned card's code at the checker's own school.
+ */
+export const idCardPdfQuerySchema = z.object({ student: z.string().min(1).max(64).optional() });
+export const idCardCheckQuerySchema = z.object({ c: z.string().trim().min(1).max(40) });
+export const idCardCheckSchema = z.object({ found: z.boolean(), onRoll: z.boolean(), name: z.string().nullable(), group: z.string().nullable(), studentCode: z.string(), photoFileId: z.string().nullable(), schoolName: z.string().nullable() });

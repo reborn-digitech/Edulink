@@ -9,6 +9,7 @@ import { FILING_FORM_FIELDS, OPTIONAL_RECORD_FIELDS, REQUIRED_RECORD_FIELDS } fr
 import { Badge } from "@/components/ui/badge";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
+import { Button } from "@/components/ui/button";
 import { PupilRecordForm } from "@/components/pupil-record-form";
 import { RecordChangePanel } from "@/components/record-change-panel";
 import { PupilRecordPenChange } from "@/components/pupil-record-pen-change";
@@ -50,6 +51,14 @@ export default async function ParentRecordPage({ searchParams }: { searchParams:
         title={t("pupilRecord.title")}
         description={[view.studentName, view.className].filter(Boolean).join(" · ")}
         meta={view.complete ? <Badge tone="ok" size="sm">{t("pupilRecord.complete")}</Badge> : <Badge tone="warn" size="sm">{t("pupilRecord.incomplete", { count: view.missing.length })}</Badge>}
+        // The child's identity card (5 Oct 2026, id-card.ts); an adult at a college keeps their own, so the door refuses it.
+        actions={
+          <Button asChild variant="secondary" size="sm">
+            <a href={`/api/v1/id-cards/pdf?student=${encodeURIComponent(selectedId)}`} target="_blank" rel="noreferrer">
+              {t("collegeDesks.idCardDownload")}
+            </a>
+          </Button>
+        }
       />
 
       {changes.items.length > 0 && (

@@ -7,6 +7,7 @@ import { FILING_FORM_FIELDS, OPTIONAL_RECORD_FIELDS, REQUIRED_RECORD_FIELDS } fr
 import { Badge } from "@/components/ui/badge";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
+import { Button } from "@/components/ui/button";
 import { PupilRecordForm } from "@/components/pupil-record-form";
 import { RecordChangePanel } from "@/components/record-change-panel";
 import { PupilRecordPenChange } from "@/components/pupil-record-pen-change";
@@ -32,6 +33,14 @@ export default async function StudentRecordPage() {
         description={[view.studentName, view.className].filter(Boolean).join(" · ")}
         meta={view.complete ? <Badge tone="ok" size="sm">{t("pupilRecord.complete")}</Badge> : <Badge tone="warn" size="sm">{t("pupilRecord.incomplete", { count: view.missing.length })}</Badge>}
         back={{ href: "/student", label: t("nav.today") }}
+        // The identity card, a PDF drawn from the record on every read (5 Oct 2026, id-card.ts).
+        actions={
+          <Button asChild variant="secondary" size="sm">
+            <a href="/api/v1/id-cards/pdf" target="_blank" rel="noreferrer">
+              {t("collegeDesks.idCardDownload")}
+            </a>
+          </Button>
+        }
       />
       {changes.items.length > 0 && (
         <Card data-testid="record-changes">

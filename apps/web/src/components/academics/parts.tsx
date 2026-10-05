@@ -127,7 +127,7 @@ export function WeekList({ t, locale, weekdays, cells, linkFor }: { t: Translate
                     <span className="tabular-nums text-fg-muted">{clock(c.startMinute, c.endMinute)}</span>{" "}
                     {linkFor ? <Link className="font-medium text-accent-strong underline underline-offset-2" href={linkFor(c)}>{c.courseCode}</Link> : <span className="font-medium text-fg">{c.courseCode}</span>}{" "}
                     <span className="text-fg-muted">
-                      {[t(LECTURE_KIND_KEY[c.kind]!), c.divisionName, c.roomName, c.facultyName].filter(Boolean).join(" · ")}
+                      {[t(LECTURE_KIND_KEY[c.kind]!), c.divisionName, c.labBatchName ? t("streamRecords.batchN", { name: c.labBatchName }) : null, c.roomName, c.facultyName].filter(Boolean).join(" · ")}
                     </span>
                   </li>
                 ))}

@@ -193,6 +193,22 @@ describe("the exam controller's home on the phone", () => {
     open.mockRestore();
   });
 
+  it("under a session in assessment or published, says where its latest run stands and when the principal must publish (5 Oct 2026)", async () => {
+    const row = (id: number, name: string, status: string) => ({ id: ID(id), name, kind: "REGULAR", termId: ID(80), termName: "ZZ Odd term", status, formOpensAt: at, formClosesAt: at, forms: 3, submitted: 3, approved: 3, publishedAt: null });
+    const run = (over: Record<string, unknown>) => ({ id: ID(40), number: 1, status: "PUBLISHED", computedAt: at, publishedAt: "2026-09-12T05:00:00.000Z", reason: null, students: 10, passed: 8, atkt: 1, failed: 1, passRatePercent: 80, ...over });
+    const { calls } = await mountStaff(<ExamCellHome />, "EXAM_CONTROLLER", {
+      "GET /api/v1/exam-cell": () => json({ autonomous: true, canWrite: true, canApproveGrace: false, signatureSet: true, terms: [], feeHeads: [], graceWaiting: [], sessions: [row(31, "ZZ Summer 2026", "PUBLISHED"), row(32, "ZZ Winter 2026", "ASSESSMENT"), row(33, "ZZ Forms 2027", "FORMS")] }),
+      [`GET /api/v1/exam-cell/sessions/${ID(31)}/results`]: () => json({ run: run({}), rows: [] }),
+      [`GET /api/v1/exam-cell/sessions/${ID(32)}/results`]: () => json({ run: run({ id: ID(41), number: 2, status: "DRAFT", publishedAt: null, reason: "ZZ revaluation" }), rows: [] }),
+    }, { me: atCollege("EXAM_CONTROLLER", ["ACADEMICS", "EXAMS"]) });
+    expect(await screen.findByText(/^Run 1 · Published · published /)).toBeTruthy();
+    expect(screen.getAllByText("10 students: 8 passed, 1 ATKT, 1 failed (80%)")).toHaveLength(2);
+    expect(await screen.findByText("Run 2 · Draft")).toBeTruthy();
+    expect(screen.getByText("This run corrects a published result: the principal publishes it.")).toBeTruthy();
+    // A session still taking forms has no result to read.
+    expect(calls().some((c) => c.line.includes(`${ID(33)}/results`))).toBe(false);
+  });
+
   it("with no sessions offers the web, and with EXAMS off says so as the role's home", async () => {
     await mountStaff(<ExamCellHome />, "EXAM_CONTROLLER", { "GET /api/v1/exam-cell": () => json({ autonomous: true, canWrite: true, canApproveGrace: false, signatureSet: true, terms: [], feeHeads: [], sessions: [], graceWaiting: [] }) }, { me: atCollege("EXAM_CONTROLLER", ["EXAMS"]) });
     expect(await screen.findByText("No sessions yet")).toBeTruthy();

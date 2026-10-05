@@ -432,6 +432,8 @@ export async function createAssignment(
           body: input.title,
           url: "/parent/assignments",
         }),
+        // An adult college student's work is their results' business (the RESULTS grant), as the family's reads say.
+        "RESULTS",
       ),
     ]);
     notified = enrollments.length;
@@ -689,14 +691,18 @@ export async function saveGrades(
           body: assignment.title,
           url: "/student/assignments?tab=marked",
         });
-        await notifyGuardians(student.id, (childName) => ({
-          kind: "GRADE",
-          schoolId: ctx.schoolId,
-          titleKey: "notifTitle.childWorkMarked",
-          titleVars: { name: childName },
-          body: assignment.title,
-          url: "/parent/assignments?tab=marked",
-        }));
+        await notifyGuardians(
+          student.id,
+          (childName) => ({
+            kind: "GRADE",
+            schoolId: ctx.schoolId,
+            titleKey: "notifTitle.childWorkMarked",
+            titleVars: { name: childName },
+            body: assignment.title,
+            url: "/parent/assignments?tab=marked",
+          }),
+          "RESULTS",
+        );
       }),
     );
   }
@@ -750,6 +756,7 @@ export async function publishAssignment(
         body: assignment.title,
         url: "/parent/assignments",
       }),
+      "RESULTS",
     ),
   ]);
 

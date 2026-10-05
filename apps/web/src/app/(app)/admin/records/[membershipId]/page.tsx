@@ -41,9 +41,17 @@ export default async function OfficePupilRecordPage({ params }: { params: Promis
         meta={view.complete ? <Badge tone="ok" size="sm">{t("pupilRecord.complete")}</Badge> : <Badge tone="warn" size="sm">{t("pupilRecord.incomplete", { count: view.missing.length })}</Badge>}
         back={{ href: "/admin/records", label: t("pupilRecord.officeTitle") }}
         actions={
-          <Button asChild size="sm" icon={<SealCheckIcon weight="bold" />}>
-            <Link href={`/admin/certificates/issue?membershipId=${view.studentMembershipId}`}>{t("certificates.issueFor")}</Link>
-          </Button>
+          <>
+            <Button asChild size="sm" icon={<SealCheckIcon weight="bold" />}>
+              <Link href={`/admin/certificates/issue?membershipId=${view.studentMembershipId}`}>{t("certificates.issueFor")}</Link>
+            </Button>
+            {/* The identity card, a PDF drawn from the record on every read (5 Oct 2026, id-card.ts). */}
+            <Button asChild size="sm" variant="secondary">
+              <a href={`/api/v1/id-cards/pdf?student=${encodeURIComponent(view.studentMembershipId)}`} target="_blank" rel="noreferrer">
+                {t("collegeDesks.idCardDownload")}
+              </a>
+            </Button>
+          </>
         }
       />
       {/* What the family has asked to have changed: approving puts their values on the record below. */}

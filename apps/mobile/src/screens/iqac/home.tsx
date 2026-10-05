@@ -1,7 +1,8 @@
 import { View } from "react-native";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "expo-router";
-import { iqacOverviewSchema } from "@edulink/contracts";
+import { collegeFilingsSchema, iqacOverviewSchema, type CollegeFilingKind } from "@edulink/contracts";
+import type { TranslationKey } from "@edulink/i18n";
 import { Button, Card, Empty, Failed, Loading, Row, Screen, Stat, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
@@ -17,6 +18,11 @@ import { CollegeRoleHome } from "@/screens/college/role-home";
  * the regulators' calendar — with the sentence that the platform does not
  * score for NAAC. The predictor's detail, the filings and the registers are
  * on the web. While the college has IQAC off, the foundation's home says so.
+ *
+ * The filings' states (5 Oct 2026, the campaign's IQAC phone recommendation):
+ * each filing generated, its year and where it stands — a draft, with the
+ * principal, signed off, returned or filed — read from GET /api/v1/iqac/filings.
+ * Generating, sending and marking filed stay on the web's /iqac/documents.
  */
 export function IqacHome() {
   const t = useT();
@@ -26,6 +32,7 @@ export function IqacHome() {
   const me = session.status === "signed-in" ? session.me : null;
   const on = (me?.modules ?? []).includes("IQAC");
   const query = useQuery({ queryKey: ["iqac", "overview"], enabled: on, queryFn: async () => iqacOverviewSchema.parse(unwrap(await api().get("/api/v1/iqac/overview"))) });
+  const filings = useQuery({ queryKey: ["iqac", "filings"], enabled: on, queryFn: async () => collegeFilingsSchema.parse(unwrap(await api().get("/api/v1/iqac/filings"))) });
   if (!on) return <CollegeRoleHome role="IQAC" />;
   const o = query.data;
   return (
@@ -61,6 +68,17 @@ export function IqacHome() {
             <Row title={t("iqac.navSurveys")} caption={String(o.counts.openSurveys)} />
             <Row title={t("iqac.navGrievances")} caption={`${o.counts.openGrievances}${o.counts.overdueGrievances ? ` · ${t("iqac.overdueBadge")}` : ""}`} />
           </Card>
+          <Card title={t("iqac.navDocuments")}>
+            {filings.isError ? <Failed message={filings.error.message} onRetry={() => void filings.refetch()} /> : null}
+            {filings.data && filings.data.items.length === 0 ? (
+              <Text variant="sm" tone="muted">
+                {t("iqac.noFilings")}
+              </Text>
+            ) : null}
+            {filings.data?.items.slice(0, 12).map((f) => (
+              <Row key={f.id} title={`${filingKindLabel(f.kind, t)} · ${f.year}-${String((f.year + 1) % 100).padStart(2, "0")}`} caption={t(FILING_STATUS_KEY[f.status])} />
+            ))}
+          </Card>
           <Card title={t("iqac.calendarTitle")}>
             {o.calendar.map((c) => (
               <Row key={c.code} title={c.label} caption={`${t("iqac.calendarDue", { from: c.from, to: c.to })}${c.filedThisYear ? ` · ${t("iqac.calendarFiled")}` : ""}`} />
@@ -73,4 +91,29 @@ export function IqacHome() {
       ) : null}
     </Screen>
   );
+}
+
+/** Where a filing stands, in the web's words (iqac/documents). */
+const FILING_STATUS_KEY: Record<"DRAFT" | "AWAITING_SIGNOFF" | "SIGNED_OFF" | "RETURNED" | "FILED", TranslationKey> = {
+  DRAFT: "iqac.filingStatus.DRAFT",
+  AWAITING_SIGNOFF: "iqac.filingStatus.AWAITING_SIGNOFF",
+  SIGNED_OFF: "iqac.filingStatus.SIGNED_OFF",
+  RETURNED: "iqac.filingStatus.RETURNED",
+  FILED: "iqac.filingStatus.FILED",
+};
+
+/** The filings the phone has words for; a kind added since (a council's return) reads as its code until it has them. */
+const FILING_KIND_KEY: Partial<Record<CollegeFilingKind, TranslationKey>> = {
+  SSR: "iqac.filingKind.SSR",
+  AQAR: "iqac.filingKind.AQAR",
+  IIQA: "iqac.filingKind.IIQA",
+  NIRF: "iqac.filingKind.NIRF",
+  AISHE: "iqac.filingKind.AISHE",
+  AICTE_DISCLOSURE: "iqac.filingKind.AICTE_DISCLOSURE",
+  AFFILIATION_RETURN: "iqac.filingKind.AFFILIATION_RETURN",
+};
+
+export function filingKindLabel(kind: CollegeFilingKind, t: (key: TranslationKey) => string): string {
+  const key = FILING_KIND_KEY[kind];
+  return key ? t(key) : kind.replace(/_/g, " ");
 }

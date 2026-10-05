@@ -874,3 +874,20 @@ export async function cancelMyRequest(ctx: ActiveContext, requestId: string): Pr
   if (done.count === 0) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "inventory.request.cancel", targetType: "InventoryRequest", targetId: requestId });
 }
+
+/**
+ * A BREAKAGE IN A LAB (the lab in-charge's desk, 5 Oct 2026, duty-desks.ts):
+ * the broken things written off the lab's stock — a WRITE_OFF movement at the
+ * lab's place, referenced BREAKAGE, through the one writer above so the stock
+ * can never go below nothing. The caller has checked who may (a member holding
+ * LAB_INCHARGE, or the office) and audits it.
+ */
+export async function writeOffBreakage(input: { schoolId: string; itemCode: string; location: string; quantity: number; note: string; byUserId: string }): Promise<StockMovementView> {
+  const item = await itemByCode(input.schoolId, input.itemCode);
+  const result = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as Tx;
+    return applyMovement(tx, { schoolId: input.schoolId, itemId: item.id, kind: "WRITE_OFF", delta: -Math.abs(input.quantity), location: input.location, toRoom: input.location, reference: "BREAKAGE", note: input.note, byUserId: input.byUserId });
+  });
+  const row = await db.stockMovement.findUniqueOrThrow({ where: { id: result.id }, select: MOVEMENT_SELECT });
+  return (await movementViews([row]))[0]!;
+}

@@ -16,6 +16,7 @@ import { SelectField, TextField } from "@/components/ui/field";
 import { ModuleOff } from "@/components/module-off";
 import { APP_STATUS_KEY, CATEGORY_KEY, DOC_KEY, Flash, Hidden, NotCollege, QUOTA_KEY, Table, money } from "@/components/college-office/parts";
 import { admissionFeeAction, admitAction, cancelAdmissionAction, documentAction, offerAction, refundAction, supernumeraryAction, undertakingAction } from "../../../accounts/actions";
+import { askRefundExceptionAction, decideRefundExceptionAction } from "../refunds/actions";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -135,6 +136,21 @@ export default async function ApplicationPage({ params, searchParams }: { params
           })}
         </CardBody>
       </Card>
+      {ctx.role === "PRINCIPAL" && a.refundAsk?.status === "ASKED" ? (
+        // A refund outside the slab waits for the head's word (5 Oct 2026, head-approvals.ts).
+        <Card>
+          <CardHeader title={t("collegeDesks.refundTitle")} description={t("collegeDesks.refundWaiting", { amount: money(a.refundAsk.paise, locale), slab: money(a.refundPaise ?? 0, locale) })} />
+          <CardBody className="space-y-3">
+            <p className="text-sm">{a.refundAsk.reason}</p>
+            <form action={decideRefundExceptionAction} className="flex flex-wrap items-end gap-2">
+              <Hidden fields={{ back, applicationId: a.id }} />
+              <TextField name="note" maxLength={600} label={t("collegeDesks.decisionNote")} />
+              <Button type="submit" size="sm" name="decision" value="APPROVE">{t("collegeDesks.approve")}</Button>
+              <Button type="submit" size="sm" variant="secondary" name="decision" value="REFUSE">{t("collegeDesks.refuse")}</Button>
+            </form>
+          </CardBody>
+        </Card>
+      ) : null}
       {write ? (
         <Card>
           <CardHeader title={t("collegeOffice.seatTitle")} />
@@ -183,6 +199,29 @@ export default async function ApplicationPage({ params, searchParams }: { params
             {a.status === "CANCELLED" ? (
               <div className="space-y-2">
                 <p className="text-sm">{t("collegeOffice.refundLine", { amount: money(a.refundPaise ?? 0, locale), slab: t(`collegeOffice.slab${a.refundSlab ?? "NONE"}` as TranslationKey) })}</p>
+                {/* A refund outside the slab (5 Oct 2026): the office asks the principal; the bank reference waits for the answer. */}
+                {a.refundAsk ? (
+                  <p className={`text-sm ${a.refundAsk.status === "ASKED" ? "text-warn" : "text-fg-muted"}`}>
+                    {a.refundAsk.status === "ASKED"
+                      ? t("collegeDesks.refundWaiting", { amount: money(a.refundAsk.paise, locale), slab: money(a.refundPaise ?? 0, locale) })
+                      : a.refundAsk.status === "APPROVED"
+                        ? t("collegeDesks.refundApprovedLine", { amount: money(a.refundAsk.paise, locale), slab: money(a.refundAsk.slabPaise ?? 0, locale) })
+                        : t("collegeDesks.refundRefusedLine", { slab: money(a.refundPaise ?? 0, locale) })}
+                  </p>
+                ) : null}
+                {write && (!a.refundAsk || a.refundAsk.status === "REFUSED") ? (
+                  <details>
+                    <summary className="cursor-pointer text-sm text-accent-strong">{t("collegeDesks.refundTitle")}</summary>
+                    <p className="mt-2 text-sm text-fg-muted">{t("collegeDesks.refundIntro", { amount: money(a.refundPaise ?? 0, locale) })}</p>
+                    <form action={askRefundExceptionAction} className="mt-2 flex flex-wrap items-end gap-3">
+                      <Hidden fields={{ back, applicationId: a.id }} />
+                      <TextField name="amount" required inputMode="decimal" label={t("collegeDesks.refundField")} />
+                      <TextField name="reason" required minLength={10} maxLength={600} label={t("collegeDesks.refundReason")} />
+                      <Button type="submit" variant="secondary">{t("collegeDesks.refundAskButton")}</Button>
+                    </form>
+                  </details>
+                ) : null}
+
                 <form action={refundAction} className="flex flex-wrap items-end gap-3">
                   <Hidden fields={{ back, applicationId: a.id }} />
                   <TextField name="reference" required minLength={3} label={t("collegeOffice.bankReference")} />

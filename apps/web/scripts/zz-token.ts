@@ -86,6 +86,11 @@ async function main() {
   } else if (role === "TEACHER" || role === "STUDENT" || role === "DRIVER" || role === "LIBRARIAN" || role === "WARDEN" || role === "ALUMNUS") {
     // The module roles (3 Oct 2026) are Northgate memberships like a teacher's: zz.driver01, zz.librarian, zz.warden, zz.alumni01 (zz-fixtures.ts buildModuleRoles).
     userId = (await db.membership.findFirstOrThrow({ where: { schoolId: school.id, role, status: "ACTIVE", leftAt: null }, select: { userId: true } })).userId;
+  } else if (role === "PARENT" && email) {
+    // A named guardian (5 Oct 2026): the demo college's parent, or any ZZ guardian, with no school chosen.
+    if (!email.endsWith("@zz.test") && !email.endsWith("@demo.relay.test")) throw new Error("only ZZ and demo people");
+    userId = (await db.guardianship.findFirstOrThrow({ where: { parent: { email }, status: "ACTIVE" }, select: { parentUserId: true } })).parentUserId;
+    schoolId = null;
   } else if (role === "PARENT") {
     userId = (await db.guardianship.findFirstOrThrow({ where: { studentSchoolId: school.id, status: "ACTIVE" }, select: { parentUserId: true } })).parentUserId;
     schoolId = null;

@@ -26,6 +26,8 @@ const APPROVAL_KEY: Record<PrincipalCollegeGlance["approvals"][number]["key"], T
   lateRegistration: "collegeHub.approvalLate",
   signoff: "collegeHub.approvalSignoff",
   payroll: "collegeHub.approvalPayroll",
+  refundException: "collegeDesks.approvalRefund",
+  expulsion: "collegeDesks.approvalExpulsion",
 };
 
 /** True at a college whose ACADEMICS is on: the door's module, and the web's "is a college". */

@@ -363,6 +363,11 @@ export function applicationView(a: AppRow): CollegeApplicationView {
     refundRecordedAt: a.refundRecordedAt?.toISOString() ?? null,
     supernumeraryAt: a.supernumeraryAt?.toISOString() ?? null,
     supernumeraryReason: a.supernumeraryReason,
+    // A refund outside the slab (5 Oct 2026, lib/head-approvals.ts): the office's ask and the principal's word.
+    refundAsk:
+      a.refundAskStatus && a.refundAskPaise !== null && a.refundAskedAt
+        ? { paise: a.refundAskPaise, reason: a.refundAskReason ?? "", status: a.refundAskStatus as "ASKED" | "APPROVED" | "REFUSED", askedAt: a.refundAskedAt.toISOString(), decidedAt: a.refundDecidedAt?.toISOString() ?? null, note: a.refundDecisionNote, slabPaise: a.refundSlabPaise }
+        : null,
     createdAt: a.createdAt.toISOString(),
   };
 }
@@ -669,6 +674,8 @@ export async function recordRefund(ctx: ActiveContext, id: string, reference: st
   const a = await officeApp(d, id);
   if (a.status === "REFUNDED") return applicationView(a);
   if (a.status !== "CANCELLED") throw new AccessError("collegeOffice.refuseStep");
+  // A refund outside the slab waits for the principal before the bank pays anything (5 Oct 2026).
+  if (a.refundAskStatus === "ASKED") throw new AccessError("collegeDesks.refuseRefundWaiting");
   const updated = await db.collegeApplication.update({ where: { id: a.id }, data: { status: "REFUNDED", refundReference: reference.trim().slice(0, 80) }, include: APP_INCLUDE });
   await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "college.admissions.refund", targetType: "CollegeApplication", targetId: a.id, meta: { refundPaise: a.refundPaise } });
   return applicationView(updated);

@@ -26,7 +26,8 @@ export function Inbox() {
     queryFn: async () => inboxSchema.parse(unwrap(await api().get("/api/v1/shared/inbox"))),
   });
   const data = query.data;
-  const isTeacher = role === "TEACHER";
+  // A college's FACULTY and HOD converse as a teacher does (conversations.ts), so they read the teacher's words here.
+  const isTeacher = role === "TEACHER" || role === "FACULTY" || role === "HOD";
   const intro = isTeacher ? t("remarks.introTeacher") : role === "ADMIN" || role === "PRINCIPAL" ? t("remarks.introAdmin") : role === "STUDENT" ? t("remarks.introStudent") : t("remarks.introParent");
   const unread = (on: boolean) =>
     on ? (

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Wordmark } from "@/components/brand";
 import { publishedDisclosure } from "@/lib/iqac-filings";
+import { publicFaculty } from "@/lib/faculty-profile";
 import { getT } from "@/lib/i18n/server";
 import { TableScroll } from "@/components/ui/table-scroll";
 
@@ -25,6 +26,8 @@ export default async function DisclosurePage({ params }: { params: Promise<{ slu
   const t = await getT();
   const { slug } = await params;
   const doc = /^[a-z0-9-]{1,80}$/.test(slug) ? await publishedDisclosure(slug) : null;
+  // The faculty's own published pages (5 Oct 2026, faculty-profile.ts), linked when any teacher has put one up.
+  const faculty = doc ? await publicFaculty(slug) : null;
   return (
     <div className="min-h-safe bg-bg px-4 py-10 sm:px-8">
       <div className="mx-auto w-full max-w-3xl space-y-6">
@@ -42,6 +45,11 @@ export default async function DisclosurePage({ params }: { params: Promise<{ slu
               <h1 className="text-2xl font-bold tracking-tight text-fg">{doc.title}</h1>
               <p className="mt-1 text-sm text-fg-muted">{doc.subtitle}</p>
               <p className="mt-1 text-xs text-fg-muted">{t("iqac.publicIntro")}</p>
+              {faculty && faculty.profiles.length > 0 ? (
+                <Link className="mt-2 inline-flex min-h-11 items-center text-sm text-accent-strong underline" href={`/public/faculty/${slug}`}>
+                  {t("collegeDesks.disclosureFacultyLink")}
+                </Link>
+              ) : null}
             </div>
             {doc.sections.map((s, i) => (
               <section key={i} className="space-y-2">

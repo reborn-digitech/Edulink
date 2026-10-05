@@ -236,6 +236,8 @@ export const collegeApplicationSchema = z.object({
   /** LIFECYCLE-4: the principal's approval of a seat beyond the round's seats or the intake. */
   supernumeraryAt: isoOrNull.optional(),
   supernumeraryReason: z.string().nullable().optional(),
+  /** A refund outside the slab (5 Oct 2026): the office's ask and the principal's word on it; null while none was asked. */
+  refundAsk: z.object({ paise: paise, reason: z.string(), status: z.enum(["ASKED", "APPROVED", "REFUSED"]), askedAt: iso, decidedAt: isoOrNull, note: z.string().nullable(), slabPaise: paise.nullable() }).nullable().optional(),
   createdAt: iso,
 });
 export type CollegeApplicationView = z.infer<typeof collegeApplicationSchema>;
@@ -466,3 +468,55 @@ export const concessionDecidedSchema = z.object({ approvalStatus: z.string() });
 export const roomChangedSchema = z.object({ allotmentId: z.string() });
 export const hostelRulesSchema = z.object({ id: z.string(), curfewMinute: z.number().int(), nightOutAllowed: z.boolean(), messMonthlyPaise: z.number().int() });
 export const routeCollegeSchema = z.object({ id: z.string(), kind: z.string(), feePerTermPaise: z.number().int() });
+
+/**
+ * GET /api/v1/accounts/lookup?q= — the counter question (5 Oct 2026, the campaign's ACCOUNTS phone recommendation):
+ * a student of this college by PRN, college code or name, at most twenty, for the desk to open the ledger and the
+ * no-dues of. Read only.
+ */
+export const accountsLookupQuerySchema = z.object({ q: z.string().trim().min(2).max(60) });
+export const accountsLookupSchema = z.object({
+  items: z.array(z.object({ studentMembershipId: z.string(), name: z.string(), prn: z.string().nullable(), studentCode: z.string().nullable(), programme: z.string().nullable(), yearOfStudy: z.number().int().nullable() })),
+});
+export type AccountsLookup = z.infer<typeof accountsLookupSchema>;
+
+/**
+ * The principal's two approvals the college office's builder left (5 Oct 2026, integration decision 10): a refund
+ * outside the slab and a hostel expulsion. The office (or the warden) asks; only the principal decides; each
+ * decision is an audit row the head's decision log reads back.
+ */
+export const refundExceptionAskSchema = z.object({ refundPaise: paise, reason: z.string().trim().min(10).max(600) });
+export const headDecisionSchema = z.object({ approve: z.boolean(), note: z.string().trim().max(600).default("") });
+export const refundExceptionSchema = z.object({
+  applicationId: z.string(),
+  applicantName: z.string(),
+  status: z.enum(["ASKED", "APPROVED", "REFUSED"]),
+  slabPaise: paise,
+  askedPaise: paise,
+  reason: z.string(),
+  askedByName: z.string(),
+  askedAt: iso,
+  decidedAt: isoOrNull,
+  note: z.string().nullable(),
+});
+export const refundExceptionsSchema = z.object({ items: z.array(refundExceptionSchema), canDecide: z.boolean() });
+
+export const HOSTEL_EXPULSION_STATUSES = ["ASKED", "APPROVED", "REFUSED", "WITHDRAWN"] as const;
+export const hostelExpulsionProposeSchema = z.object({ allotmentId: id, reason: z.string().trim().min(10).max(1000), incidentId: id.nullable().default(null), effectiveOn: dateKey });
+export const hostelExpulsionSchema = z.object({
+  id: z.string(),
+  allotmentId: z.string(),
+  membershipId: z.string(),
+  name: z.string(),
+  hostelName: z.string(),
+  roomNumber: z.string(),
+  reason: z.string(),
+  incidentId: z.string().nullable(),
+  effectiveOn: dateKey,
+  status: z.enum(HOSTEL_EXPULSION_STATUSES),
+  proposedByName: z.string(),
+  proposedAt: iso,
+  decidedAt: isoOrNull,
+  decisionNote: z.string().nullable(),
+});
+export const hostelExpulsionsSchema = z.object({ items: z.array(hostelExpulsionSchema), canPropose: z.boolean(), canDecide: z.boolean() });

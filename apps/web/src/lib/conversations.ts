@@ -8,7 +8,7 @@ import { readJsonArray } from "./json";
 import { assertAlumnusMay, roomHasAlumnus } from "./alumni";
 import { assertModuleOn, isModuleOn } from "./modules";
 import type { ActiveContext } from "./session";
-import type { Role } from "./constants";
+import { isLimitedRole, type Role } from "./constants";
 
 /**
  * A person writing to a person, inside one school.
@@ -171,6 +171,10 @@ export async function peopleToMessage(
   for (const m of members) {
     const role = m.role as Role;
     if (!mayConverse(me, role)) continue;
+    // Only people who can open a room are offered (the role audit of 5 Oct 2026): a module role or a college desk
+    // (driver, librarian, warden, controller, IQAC, TPO, accounts) has no conversation door, so a message to them
+    // would wait unread for ever. A college's FACULTY and HOD converse as a teacher does.
+    if (isLimitedRole(role) && role !== "FACULTY" && role !== "HOD") continue;
     const detail =
       role === "STUDENT"
         ? (m.enrollments[0]?.class.name ?? null)

@@ -38,6 +38,10 @@ const TABS = [
   ["home", "/hostel", "hostel.tabToday"],
   ["rollcall", "/hostel/rollcall", "hostel.tabRollCall"],
   ["leave", "/hostel/leave", "hostel.tabLeave"],
+  // The night-out register and the curfew at the gate (5 Oct 2026).
+  ["night", "/hostel/night", "collegeDesks.nightTab"],
+  // A proposal to end a boarder's place, decided by the principal (5 Oct 2026).
+  ["expulsions", "/hostel/expulsions", "collegeDesks.expulsionsTab"],
   ["rooms", "/hostel/rooms", "hostel.tabRooms"],
   ["visitors", "/hostel/visitors", "hostel.tabVisitors"],
   ["menu", "/hostel/menu", "hostel.tabMenu"],

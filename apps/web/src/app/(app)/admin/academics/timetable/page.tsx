@@ -10,6 +10,7 @@ import { ModuleOff } from "@/components/module-off";
 import { LECTURE_KIND_KEY, OfficeTop, WeekList, clock } from "@/components/academics/parts";
 import { TermPicker } from "@/components/academics/term-picker";
 import { academicsStructure, academicsTimetable, listOfferings } from "@/lib/academics";
+import { labDivisions } from "@/lib/stream-records";
 import { weekdayName } from "@/lib/school-day";
 import { getT } from "@/lib/i18n/server";
 import { academicsGate, one, type SearchParams } from "../shared";
@@ -31,6 +32,8 @@ export default async function TimetablePage({ searchParams }: { searchParams: Se
   const divisionId = one(params.division);
   const [s, o] = await Promise.all([academicsStructure(ctx), listOfferings(ctx, { termId: one(params.termId) })]);
   const grid = await academicsTimetable(ctx, { termId: o.termId ?? undefined, divisionId });
+  // Lab batches (stream records, 5 Oct 2026): a LAB hour may be one batch's.
+  const batches = (await labDivisions(ctx.schoolId, divisionId)).flatMap((d) => d.batches.map((b) => ({ id: b.id, label: [d.name, t("streamRecords.batchN", { name: b.name })].join(" · ") })));
   const extra = divisionId ? `&division=${divisionId}` : "";
   return (
     <div className="space-y-6">
@@ -67,6 +70,12 @@ export default async function TimetablePage({ searchParams }: { searchParams: Se
                 <option value="">{t("academics.offeringRoom")}</option>
                 {s.rooms.map((r) => <option key={r.id} value={r.id}>{`${r.name} (${r.capacity})`}</option>)}
               </SelectField>
+              {batches.length ? (
+                <SelectField label={t("streamRecords.fieldLabBatch")} name="labBatchId" defaultValue="" hint={t("streamRecords.fieldLabBatchHint")}>
+                  <option value="">{t("streamRecords.wholeDivision")}</option>
+                  {batches.map((b) => <option key={b.id} value={b.id}>{b.label}</option>)}
+                </SelectField>
+              ) : null}
               <div>
                 <Button type="submit">{t("academics.addHour")}</Button>
               </div>
@@ -78,7 +87,7 @@ export default async function TimetablePage({ searchParams }: { searchParams: Se
               <ul className="mt-2 divide-y divide-border">
                 {grid.cells.map((c) => (
                   <li key={c.slotId} className="flex items-center justify-between gap-2 py-1.5">
-                    <span>{`${weekdayName(c.weekday, locale)} ${clock(c.startMinute, c.endMinute)} · ${c.courseCode}${c.divisionName ? ` · ${c.divisionName}` : ""}`}</span>
+                    <span>{`${weekdayName(c.weekday, locale)} ${clock(c.startMinute, c.endMinute)} · ${c.courseCode}${c.divisionName ? ` · ${c.divisionName}` : ""}${c.labBatchName ? ` · ${t("streamRecords.batchN", { name: c.labBatchName })}` : ""}`}</span>
                     <form action={removeSlotAction}>
                       <input type="hidden" name="termId" value={o.termId ?? ""} />
                       <input type="hidden" name="slotId" value={c.slotId} />

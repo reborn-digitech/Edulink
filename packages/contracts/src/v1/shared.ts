@@ -156,6 +156,9 @@ export const bulletinPostDetailSchema = z.object({
   requiresAck: z.boolean(),
   /** Whether the reader may press "seen and understood" — their own school's circular, approved. */
   canAck: z.boolean(),
+  /** A permission slip's question and the last day to answer (5 Oct 2026); absent or null on every other post. */
+  consentQuestion: z.string().nullable().optional(),
+  consentBy: z.string().nullable().optional(),
   acked: z.boolean(),
   ackCount: count,
   author: z.object({
@@ -192,6 +195,9 @@ export const bulletinCreatePostSchema = z.object({
   /** A college's notice for one programme, department, division or batch (4 Oct 2026; refused at a school). */
   audienceTarget: audienceTargetSchema.optional(),
   requiresAck: z.boolean().default(false),
+  /** A permission slip (5 Oct 2026): the yes-or-no each child's family answers, until `consentBy`; makes the post a circular. */
+  consentQuestion: z.string().trim().min(3).max(300).optional(),
+  consentBy: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "date").optional(),
 });
 export const bulletinPostCreatedSchema = z.object({ postId: z.string(), status: bulletinStatusSchema });
 
@@ -765,3 +771,26 @@ export const appReportBodySchema = z.object({
   }),
 });
 export const appReportResultSchema = z.object({ reportId: z.string(), reference: z.string() });
+
+/**
+ * A PERMISSION SLIP (5 Oct 2026, apps/web/src/lib/permission-slips.ts): a circular asking each child's family a
+ * yes-or-no. POST /api/v1/shared/bulletin/{postId}/consent answers for one child; GET the reader's children and their
+ * answers; GET …/consent/report the staff's list, child by child.
+ */
+export const SLIP_ANSWERS = ["YES", "NO"] as const;
+export const slipAnswerSchema = z.object({ studentMembershipId: z.string().min(1).max(64), answer: z.enum(SLIP_ANSWERS) });
+export const slipViewSchema = z.object({
+  question: z.string(),
+  consentBy: z.string().nullable(),
+  open: z.boolean(),
+  children: z.array(z.object({ studentMembershipId: z.string(), name: z.string(), answer: z.enum(SLIP_ANSWERS).nullable(), answeredByName: z.string().nullable() })),
+});
+export const slipReportSchema = z.object({
+  question: z.string(),
+  consentBy: z.string().nullable(),
+  open: z.boolean(),
+  yes: z.number().int(),
+  no: z.number().int(),
+  none: z.number().int(),
+  rows: z.array(z.object({ studentMembershipId: z.string(), name: z.string(), className: z.string().nullable(), answer: z.enum(SLIP_ANSWERS).nullable(), answeredByName: z.string().nullable(), answeredAt: z.string().datetime().nullable() })),
+});
