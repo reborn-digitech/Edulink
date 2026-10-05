@@ -1,5 +1,6 @@
 import "server-only";
-import { AICTE_INTERNSHIP_BTECH, type InternshipPropose, type InternshipView } from "@edulink/contracts";
+import { AICTE_INTERNSHIP_BTECH, LAW_INTERNSHIP_WINDOWS, internshipKindsFor, isLawInternshipKind, type InternshipPropose, type InternshipView } from "@edulink/contracts";
+import { streamsOf } from "./streams";
 import { db } from "./db";
 import { audit } from "./audit";
 import { notify, notifyGuardians } from "./notify";
@@ -121,7 +122,11 @@ export async function proposeInternship(ctx: ActiveContext, input: InternshipPro
   if (ctx.role !== "STUDENT" || !ctx.schoolId || !ctx.membershipId) throw new AccessError("access.wrongRoleForThisAction");
   await assertModuleOn(ctx.schoolId, "PLACEMENT");
   if (input.to < input.from) throw new RuleRefusal("placement.refuseInternshipDates", 422, undefined, "to");
-  if (!(AICTE_INTERNSHIP_BTECH.windows as readonly number[]).includes(input.windowSemester)) throw new RuleRefusal("placement.refuseInternshipWindow", 422, undefined, "windowSemester");
+  // The kinds a college offers follow its streams (stream records, 5 Oct 2026): a law college's COURT, FIRM and
+  // LEGAL_AID, which may sit after semester 8 or 10 too; a management college's SUMMER.
+  if (!internshipKindsFor(await streamsOf(ctx.schoolId)).includes(input.kind)) throw new RuleRefusal("streamRecords.refuseInternshipKind", 422, undefined, "kind");
+  const windows: readonly number[] = isLawInternshipKind(input.kind) ? LAW_INTERNSHIP_WINDOWS : AICTE_INTERNSHIP_BTECH.windows;
+  if (!windows.includes(input.windowSemester)) throw new RuleRefusal("placement.refuseInternshipWindow", 422, undefined, "windowSemester");
   const row = await db.internship.create({
     data: { schoolId: ctx.schoolId, studentMembershipId: ctx.membershipId, companyName: input.companyName, kind: input.kind, fromKey: input.from, toKey: input.to, hours: input.hours, windowSemester: input.windowSemester, supervisorName: input.supervisorName },
   });

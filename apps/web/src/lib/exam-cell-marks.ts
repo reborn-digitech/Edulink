@@ -11,6 +11,7 @@ import type { ActiveContext } from "./session";
 import { cellOf, formCourses, runView, sessionOf, statusAtLeast, type Cell } from "./exam-cell";
 import { coursesOf, internalsFor, offeringsOfTerm, seatsOf, studentIdsOf, termsOf, type CourseFacts } from "./exam-cell-academics";
 import { classFor, courseOutcome, csvFileName, csvLine, entriesAgree, milliText, parseResultFile, sgpaHundredths, sgpaNumber, tenths, termStatusOf, toMilli } from "./exam-cell-rules";
+import { internshipCreditsForTerm } from "./placement-internships";
 
 /**
  * THE EXAM CELL'S MARKS AND RESULTS (module EXAMS, 4 October 2026).
@@ -487,6 +488,10 @@ export async function publishRun(ctx: ActiveContext, sessionId: string, runId: s
   if (run.status !== "DRAFT") throw new RuleRefusal("examCell.refuseRunSuperseded", 409);
   const [courseRows, termRows] = await Promise.all([db.courseResult.findMany({ where: { runId: run.id } }), db.termResult.findMany({ where: { runId: run.id } })]);
   const ids = await studentIdsOf(cell.schoolId, termRows.map((r) => r.studentMembershipId));
+  // Internship credits CREDITED within the term's dates (a B.Tech's AICTE internship, a management summer
+  // internship, a law student's court internship — placement-internships.ts, 5 Oct 2026) go to the Academic
+  // Bank with the term's course credits: the credit push carries both.
+  const internshipTenths = new Map(await Promise.all(termRows.map(async (r) => [`${r.studentMembershipId}|${r.termId}`, (await internshipCreditsForTerm(r.studentMembershipId, r.termId)) * 10] as const)));
   const now = new Date();
   await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
@@ -512,8 +517,9 @@ export async function publishRun(ctx: ActiveContext, sessionId: string, runId: s
     for (const r of termRows) {
       const had = await tx.creditPush.findUnique({ where: { studentMembershipId_termId: { studentMembershipId: r.studentMembershipId, termId: r.termId } } });
       const apaarId = ids.get(r.studentMembershipId)?.apaarId ?? null;
-      if (!had) await tx.creditPush.create({ data: { schoolId: s.schoolId, studentMembershipId: r.studentMembershipId, termId: r.termId, runId: run.id, creditsTenths: r.creditsEarnedTenths, apaarId } });
-      else if (had.creditsTenths !== r.creditsEarnedTenths || had.runId !== run.id) await tx.creditPush.update({ where: { id: had.id }, data: { runId: run.id, creditsTenths: r.creditsEarnedTenths, apaarId, ...(had.creditsTenths !== r.creditsEarnedTenths ? { status: "PENDING", pushedAt: null, abcRef: null, error: null } : {}) } });
+      const creditsTenths = r.creditsEarnedTenths + (internshipTenths.get(`${r.studentMembershipId}|${r.termId}`) ?? 0);
+      if (!had) await tx.creditPush.create({ data: { schoolId: s.schoolId, studentMembershipId: r.studentMembershipId, termId: r.termId, runId: run.id, creditsTenths, apaarId } });
+      else if (had.creditsTenths !== creditsTenths || had.runId !== run.id) await tx.creditPush.update({ where: { id: had.id }, data: { runId: run.id, creditsTenths, apaarId, ...(had.creditsTenths !== creditsTenths ? { status: "PENDING", pushedAt: null, abcRef: null, error: null } : {}) } });
     }
   });
   await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "exam.result.publish", targetType: "ResultRun", targetId: run.id, meta: { number: run.number } });
