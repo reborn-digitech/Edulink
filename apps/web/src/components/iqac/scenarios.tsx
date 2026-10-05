@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { removeScenarioAction } from "@/app/(app)/iqac/simulator/actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 /**
  * The simulator's saved scenarios (module IQAC, 5 Oct 2026): each with what it
@@ -104,7 +105,7 @@ export function ScenarioPanel({ t, locale, list, base, back, compare }: { t: Tra
                 </p>
                 {compare.inputs.length === 0 ? <p className="text-fg-muted">{t("insights.simCompareNone")}</p> : null}
                 {compare.inputs.length ? (
-                  <div className="overflow-x-auto">
+                  <TableScroll>
                     <table className="w-full">
                       <caption className="py-1 text-left font-semibold">{t("insights.simCompareInputs")}</caption>
                       <tbody>
@@ -120,10 +121,10 @@ export function ScenarioPanel({ t, locale, list, base, back, compare }: { t: Tra
                         ))}
                       </tbody>
                     </table>
-                  </div>
+                  </TableScroll>
                 ) : null}
                 {compare.scores.length ? (
-                  <div className="overflow-x-auto">
+                  <TableScroll>
                     <table className="w-full">
                       <caption className="py-1 text-left font-semibold">{t("insights.simCompareScores")}</caption>
                       <tbody>
@@ -139,7 +140,7 @@ export function ScenarioPanel({ t, locale, list, base, back, compare }: { t: Tra
                         ))}
                       </tbody>
                     </table>
-                  </div>
+                  </TableScroll>
                 ) : null}
               </div>
             ) : null}

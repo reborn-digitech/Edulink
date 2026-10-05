@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { recomputeAction } from "@/app/(app)/iqac/actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 /**
  * "Actionable insights" (module IQAC, 5 Oct 2026), drawn on every
@@ -234,7 +235,7 @@ export function NirfInsightsSection({ t, insights, role }: { t: Translate; insig
           <p className="text-sm">{insights.nextBand ? t("insights.nirfBandLine", { band: insights.band.label, distance: insights.nextBand.distance.toFixed(2), next: insights.nextBand.label }) : t("insights.nirfBandTop", { band: insights.band.label })}</p>
         ) : null}
         <p className="text-sm text-fg-muted">{t("insights.nirfCheck")}</p>
-        <div className="overflow-x-auto">
+        <TableScroll>
           <table className="w-full text-sm">
             <tbody>
               {insights.parameters.map((p) => (
@@ -248,7 +249,7 @@ export function NirfInsightsSection({ t, insights, role }: { t: Translate; insig
               ))}
             </tbody>
           </table>
-        </div>
+        </TableScroll>
         <StepList t={t} rows={insights.ranked} role={role} limit={6} />
         <InsightsNotAScore t={t} />
       </CardBody>
