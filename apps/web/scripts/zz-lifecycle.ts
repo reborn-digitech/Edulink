@@ -1792,7 +1792,8 @@ async function runTerm(W: CollegeWorld, y: number, idx: number, termId: string, 
       let regs = await dbx.courseRegistration.findMany({ where: { offeringId: o.id, status: "REGISTERED" }, select: { studentMembershipId: true } });
       if (lec.labBatchId) {
         // A batch's LAB hour: the batch's students only (markLecture refuses anyone else — checked once, below).
-        const members = new Set((await dbx.labBatchMember.findMany({ where: { batchId: lec.labBatchId }, select: { studentMembershipId: true } })).map((m: Any) => m.studentMembershipId));
+        // The batch on the lecture's own day (S4B-0: membership is dated).
+        const members = new Set((await dbx.labBatchMember.findMany({ where: { batchId: lec.labBatchId, fromKey: { lte: day }, OR: [{ untilKey: null }, { untilKey: { gte: day } }] }, select: { studentMembershipId: true } })).map((m: Any) => m.studentMembershipId));
         if (!batchRefusalChecked) await outsideBatchCheck(teacher, lec.id, regs.map((r: Any) => r.studentMembershipId).find((id: string) => !members.has(id)) ?? null);
         regs = regs.filter((r: Any) => members.has(r.studentMembershipId));
       }

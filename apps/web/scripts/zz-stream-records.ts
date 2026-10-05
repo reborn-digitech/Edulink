@@ -59,7 +59,9 @@ export async function buildStreamRecords(db: PrismaClient): Promise<{ vidyaRecor
   await db.membership.update({ where: { id: f1.id }, data: { dutiesJson: JSON.stringify(DUTIES.filter((d) => ["LAB_INCHARGE", "NSS_OFFICER", "NCC_OFFICER", "ANTI_RAGGING_SQUAD", "RESEARCH_DEAN", "EXAM_SQUAD"].includes(d))) } });
 
   await db.labBatch.upsert({ where: { id: F.vidyaBatch(1) }, create: { id: F.vidyaBatch(1), schoolId: v, divisionId: division.id, name: "A", capacity: 20 }, update: { name: "A", capacity: 20 } });
-  for (const s of st) await db.labBatchMember.upsert({ where: { divisionId_studentMembershipId: { divisionId: division.id, studentMembershipId: s.id } }, create: { schoolId: v, batchId: F.vidyaBatch(1), divisionId: division.id, studentMembershipId: s.id }, update: { batchId: F.vidyaBatch(1) } });
+  // The fixture's batch holds from the start (fromKey ""); a dated row the office's re-split left is the fixture's to clear.
+  await db.labBatchMember.deleteMany({ where: { divisionId: division.id, studentMembershipId: { in: st.map((s) => s.id) }, fromKey: { not: "" } } });
+  for (const s of st) await db.labBatchMember.upsert({ where: { divisionId_studentMembershipId_fromKey: { divisionId: division.id, studentMembershipId: s.id, fromKey: "" } }, create: { schoolId: v, batchId: F.vidyaBatch(1), divisionId: division.id, studentMembershipId: s.id }, update: { batchId: F.vidyaBatch(1), untilKey: null } });
 
   const marks = [8, 7, 9];
   for (const [i, s] of st.entries()) {
@@ -131,7 +133,8 @@ export async function buildStreamRecords(db: PrismaClient): Promise<{ vidyaRecor
   // Batches A (the first two by roll) and B (the third): the office's even split at a size of two.
   for (const [n, name, of] of [[1, "A", people.slice(0, 2)], [2, "B", people.slice(2)]] as const) {
     await db.labBatch.upsert({ where: { id: X.batch(n) }, create: { id: X.batch(n), schoolId: t, divisionId: X.division, name, capacity: 2 }, update: { name, capacity: 2 } });
-    for (const p of of) await db.labBatchMember.upsert({ where: { divisionId_studentMembershipId: { divisionId: X.division, studentMembershipId: p.id } }, create: { schoolId: t, batchId: X.batch(n), divisionId: X.division, studentMembershipId: p.id }, update: { batchId: X.batch(n) } });
+    await db.labBatchMember.deleteMany({ where: { divisionId: X.division, studentMembershipId: { in: of.map((p) => p.id) }, fromKey: { not: "" } } });
+    for (const p of of) await db.labBatchMember.upsert({ where: { divisionId_studentMembershipId_fromKey: { divisionId: X.division, studentMembershipId: p.id, fromKey: "" } }, create: { schoolId: t, batchId: X.batch(n), divisionId: X.division, studentMembershipId: p.id }, update: { batchId: X.batch(n), untilKey: null } });
   }
   const sMarks = [9, 8, 7];
   for (const [i, p] of people.entries()) {

@@ -34,6 +34,7 @@ import { createSession } from "@/lib/session";
 import { __resetCookies, __setHeaders } from "../tests/stubs/next-headers";
 import { actionKey } from "@/lib/safety-labels";
 import { buildFiling } from "@/lib/iqac-filings";
+import { nbaFacts } from "@/lib/council-filings";
 import { regulatorCalendar } from "@/lib/operator-college";
 import { academicPerformance, apiMarks, cadreMarks, enrolmentMarks, firstYearSfrMarks, placementMarks, qualificationMarks, sfrMarks, successIndex, successMarks } from "@/lib/council-rules";
 import { GET as filingsGet, POST as filingsPost } from "@/app/api/v1/iqac/filings/route";
@@ -398,6 +399,45 @@ describe("the NBA SAR of an engineering department", () => {
     expect((await signoffPost(json("/x", { decision: "SIGN", note: "ZZ Approved." }), params({ filingId: first.id }))).status).toBe(200);
     await as(ids.techIqac, ids.tech, "IQAC");
     expect((await filingsPost(json("/api/v1/iqac/filings", { kind: "NBA_SAR", year: YEAR, departmentId: ids.mech }))).status).toBe(409);
+  });
+
+  /*
+   * S4B-1 (5 Oct 2026): a past SAR rebuilt later reads its own year. After the SAR for 2025-26 is built, the college
+   * moves on: three students enter in 2026, a teacher joins MECH in July 2026, one of the eight 2025 entrants leaves in
+   * July 2026 (after the year: still one of its students), and a 2024 entrant who left in May 2025 (before the year)
+   * is found on the roll. The rebuilt SAR prints the same figures; the 2026-27 SAR counts 8 + 3 = 11 students to
+   * 3 teachers. The old code counted every ACTIVE seat today (12, then SFR 4 → 6 with the new teacher counted too).
+   */
+  it("reads the SAR's own year, not today's: later entrants, a later teacher and later leavers change nothing it printed", async () => {
+    const s = ids.tech;
+    const before = await buildFiling(s, "NBA_SAR", YEAR, null, ids.mech);
+    expect(before.figures).toMatchObject({ students: 8, faculty: 2, sfr: 4, fysfr: 8 });
+    const be = await db.programme.findFirstOrThrow({ where: { schoolId: s, code: "BEME" }, select: { id: true } });
+    const scheme = await db.scheme.findFirstOrThrow({ where: { schoolId: s, programmeId: be.id }, select: { id: true } });
+    const made: string[] = [];
+    const person = async (who: string, role: string, leftAt: Date | null = null) => {
+      const u = await db.user.create({ data: { name: `ZZ CF ${who}`, email: `zz-cf-later-${who.toLowerCase()}-${made.length}-${STAMP}@test.invalid` }, select: { id: true } });
+      const m = await db.membership.create({ data: { userId: u.id, schoolId: s, role, status: "ACTIVE", leftAt }, select: { id: true } });
+      made.push(m.id);
+      return m.id;
+    };
+    for (let i = 0; i < 3; i++) await db.studentProgramme.create({ data: { schoolId: s, studentMembershipId: await person(`Entrant${i}`, "STUDENT"), programmeId: be.id, schemeId: scheme.id, entryYear: YEAR + 1 } });
+    await db.studentProgramme.create({ data: { schoolId: s, studentMembershipId: await person("EarlyLeaver", "STUDENT", new Date(`${YEAR}-05-20T12:00:00Z`)), programmeId: be.id, schemeId: scheme.id, entryYear: YEAR - 1, yearOfStudy: 2 } });
+    const teacher = await person("LaterTeacher", "FACULTY");
+    await db.departmentFaculty.create({ data: { schoolId: s, departmentId: ids.mech, membershipId: teacher } });
+    await db.facultyRecord.create({ data: { schoolId: s, membershipId: teacher, designation: "ASSISTANT_PROFESSOR", highestQualification: "PG", appointment: "REGULAR", joinedOn: `${YEAR + 1}-07-01` } });
+    const leaver = await db.studentProgramme.findFirstOrThrow({ where: { schoolId: s, programmeId: be.id, entryYear: YEAR }, select: { studentMembershipId: true } });
+    await db.membership.update({ where: { id: leaver.studentMembershipId }, data: { leftAt: new Date(`${YEAR + 1}-07-15T12:00:00Z`) } });
+    try {
+      const again = await buildFiling(s, "NBA_SAR", YEAR, null, ids.mech);
+      expect(again.figures).toEqual(before.figures);
+      expect(again.body).toBe(before.body);
+      const next = await nbaFacts(s, ids.mech, YEAR + 1);
+      expect([next.S, next.F, next.admitted, next.firstYearStudents]).toEqual([11, 3, 3, 3]);
+    } finally {
+      await db.membership.update({ where: { id: leaver.studentMembershipId }, data: { leftAt: null } });
+      await db.membership.deleteMany({ where: { id: { in: made } } });
+    }
   });
 });
 

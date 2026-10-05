@@ -43,6 +43,8 @@ import { importMarks, publishRun, runResults } from "@/lib/exam-cell-marks";
 import { placementRecords } from "@/lib/placement-record";
 import { gatherFacts, readEntered } from "@/lib/iqac-facts";
 import { leaveCollege } from "@/lib/college-records";
+import { messagingOverview } from "@/lib/messaging";
+import { reachableGuardians } from "./audit-recounts";
 import { createPost } from "@/lib/bulletin";
 import { listGlobalFeed, publishGlobally } from "@/lib/global-feed";
 import { addDaysToKey, todayKey } from "@/lib/dates";
@@ -106,6 +108,7 @@ afterAll(async () => {
     await db.session.deleteMany({ where: { userId: user.student } });
     await db.user.deleteMany({ where: { id: user.student } });
   }
+  if (user.parent) await db.user.deleteMany({ where: { id: user.parent } });
   await db.session.deleteMany({ where: { userId: { in: Object.values(user) }, userAgent: null, createdAt: { gte: new Date(STAMP) } } });
   await db.$disconnect();
 });
@@ -242,8 +245,19 @@ describe("a college year at ZZ Vidya College, role to role", () => {
   it("graduates: the leaving clearance complete, the alumnus row opens, and the alumnus reads the global feed once", async () => {
     expect((await noDuesFor(id.student!, "LEAVING")).completed).toBe(true);
     const admin = await as(user.admin!, "ADMIN");
+    // A parent on the student's record (S4B-2): the office's messaging reaches them while the child is on the roll.
+    user.parent = (await db.user.create({ data: { name: `${TAG} Parent`, email: `zz-yw-parent-${STAMP}@test.invalid`, phone: `+9197${SUFFIX}00` }, select: { id: true } })).id;
+    await db.guardianship.create({ data: { parentUserId: user.parent, studentMembershipId: id.student!, studentSchoolId: id.vidya!, relation: "PARENT", status: "ACTIVE" } });
+    const reachedBefore = (await messagingOverview(admin)).parentsTotal;
+    expect(await reachableGuardians(db, id.vidya!)).toMatchObject({ total: reachedBefore });
     const left = await leaveCollege(admin, id.student!, { leftOn: TODAY, reason: "GRADUATED" });
     expect(left.alumnus).toBe(true);
+    // The parent keeps the link, as at a school's departure (the family still reaches the record and the certificate);
+    // the office's messaging no longer counts them, and the data audit's recount agrees with it.
+    expect((await db.guardianship.findFirstOrThrow({ where: { parentUserId: user.parent, studentMembershipId: id.student } })).status).toBe("ACTIVE");
+    const after = await messagingOverview(admin);
+    expect(after.parentsTotal).toBe(reachedBefore - 1);
+    expect(await reachableGuardians(db, id.vidya!)).toEqual({ total: after.parentsTotal, withPhone: after.parentsWithPhone });
     const alumnusRow = await db.membership.findFirstOrThrow({ where: { userId: user.student, schoolId: id.vidya, role: "ALUMNUS", status: "ACTIVE" }, select: { id: true } });
     expect(alumnusRow.id).toBeTruthy();
     expect((await db.programmeEnrolment.findFirstOrThrow({ where: { studentMembershipId: id.student } })).status).toBe("COMPLETED");

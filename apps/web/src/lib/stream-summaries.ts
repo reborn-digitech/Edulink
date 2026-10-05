@@ -51,8 +51,8 @@ export async function practicalRecordSummary(schoolId: string, year: number): Pr
   const w = academicYearWindow(year);
   const [records, batches, batchMembers] = await Promise.all([
     db.practicalRecord.findMany({ where: { schoolId, performedOn: { gte: w.from, lte: w.to } }, select: { offeringId: true, studentMembershipId: true, signedAt: true, offering: { select: { course: { select: { code: true, name: true } } } } } }),
-    db.labBatch.count({ where: { schoolId, division: { academicYear: { in: yearLabels(year) } } } }),
-    db.labBatchMember.count({ where: { schoolId, batch: { division: { academicYear: { in: yearLabels(year) } } } } }),
+    db.labBatch.count({ where: { schoolId, division: { academicYear: { in: yearLabels(year) } }, members: { some: { untilKey: null } } } }),
+    db.labBatchMember.count({ where: { schoolId, untilKey: null, batch: { division: { academicYear: { in: yearLabels(year) } } } } }),
   ]);
   const byCourse = new Map<string, { courseCode: string; courseName: string; records: number; signed: number; students: Set<string> }>();
   for (const r of records) {

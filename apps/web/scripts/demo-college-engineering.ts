@@ -354,11 +354,11 @@ async function buildAcademics(college: College, people: People) {
     const half = Math.ceil(roster.length / names.length);
     for (const [i, st] of roster.entries()) {
       const name = names[Math.min(names.length - 1, Math.floor(i / half))]!;
-      await db.labBatchMember.upsert({ where: { divisionId_studentMembershipId: { divisionId: divisions[d.key]!.id, studentMembershipId: st.id } }, create: { schoolId: s, batchId: batches[d.key]![name]!, divisionId: divisions[d.key]!.id, studentMembershipId: st.id }, update: {} });
+      await db.labBatchMember.upsert({ where: { divisionId_studentMembershipId_fromKey: { divisionId: divisions[d.key]!.id, studentMembershipId: st.id, fromKey: "" } }, create: { schoolId: s, batchId: batches[d.key]![name]!, divisionId: divisions[d.key]!.id, studentMembershipId: st.id }, update: {} });
       batchMembers += 1;
     }
   }
-  const batchOf = async (studentId: string) => (await db.labBatchMember.findFirst({ where: { studentMembershipId: studentId, schoolId: s }, select: { batchId: true } }))?.batchId ?? null;
+  const batchOf = async (studentId: string) => (await db.labBatchMember.findFirst({ where: { studentMembershipId: studentId, schoolId: s, untilKey: null }, select: { batchId: true } }))?.batchId ?? null;
 
   // This term's offerings, their lecture hours and one LAB hour per batch, every student of the division registered.
   type Slot = { id: string; weekday: number; bell: number; batchId: string | null };

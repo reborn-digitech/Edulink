@@ -122,8 +122,10 @@ export async function assertFilingApplies(schoolId: string, kind: CollegeFilingK
 const PROGRAMME_SELECT = { id: true, code: true, name: true, level: true, durationYears: true, intake: true, departmentId: true, stream: true } as const;
 type ProgrammeRow = { id: string; code: string; name: string; level: string; durationYears: number; intake: number; departmentId: string; stream: string | null };
 
-export async function streamProgrammes(schoolId: string, stream: StreamCode): Promise<{ programmes: ProgrammeRow[]; wholeCollege: boolean }> {
-  const [streams, programmes] = await Promise.all([streamsOf(schoolId), db.programme.findMany({ where: { schoolId, archivedAt: null }, orderBy: { code: "asc" }, select: PROGRAMME_SELECT })]);
+export async function streamProgrammes(schoolId: string, stream: StreamCode, asOf?: Date): Promise<{ programmes: ProgrammeRow[]; wholeCollege: boolean }> {
+  // With `asOf` (a past year's NBA SAR), a programme archived after that instant still counts: it was running then.
+  const live = asOf ? { OR: [{ archivedAt: null }, { archivedAt: { gt: asOf } }] } : { archivedAt: null };
+  const [streams, programmes] = await Promise.all([streamsOf(schoolId), db.programme.findMany({ where: { schoolId, ...live }, orderBy: { code: "asc" }, select: PROGRAMME_SELECT })]);
   const own = programmes.filter((p) => p.stream === stream);
   if (own.length) return { programmes: own, wholeCollege: false };
   const only = streams.length === 1 && streams[0] === stream;
@@ -131,8 +133,8 @@ export async function streamProgrammes(schoolId: string, stream: StreamCode): Pr
 }
 
 /** The engineering departments an NBA SAR may be made for. */
-export async function nbaDepartments(schoolId: string): Promise<{ id: string; code: string; name: string }[]> {
-  const { programmes } = await streamProgrammes(schoolId, "ENGINEERING");
+export async function nbaDepartments(schoolId: string, asOf?: Date): Promise<{ id: string; code: string; name: string }[]> {
+  const { programmes } = await streamProgrammes(schoolId, "ENGINEERING", asOf);
   const ids = [...new Set(programmes.map((p) => p.departmentId))];
   if (!ids.length) return [];
   return db.department.findMany({ where: { schoolId, id: { in: ids } }, orderBy: { code: "asc" }, select: { id: true, code: true, name: true } });
@@ -140,19 +142,27 @@ export async function nbaDepartments(schoolId: string): Promise<{ id: string; co
 
 type Teacher = { membershipId: string; name: string; departmentId: string | null; departmentName: string; designation: string | null; qualification: string | null; appointment: string | null };
 
-/** FACULTY and HOD on the roll, with their department (the one they head, else the one they belong to) and their record. */
-async function teachers(schoolId: string, departmentIds: readonly string[] | null): Promise<Teacher[]> {
+/**
+ * FACULTY and HOD on the roll, with their department (the one they head, else the one they belong to) and their record.
+ * With `during` (an academic year's window, for a past year's NBA SAR): those on the staff at some point of that year —
+ * not left before it began (a leaver stays in the years they taught) and not joined after it ended (FacultyRecord.joinedOn;
+ * a teacher with no joining date recorded counts, as before, because an onboarded college's accounts are all made the
+ * day it moved in). The department link and the designation have no history and are read as they stand.
+ */
+async function teachers(schoolId: string, departmentIds: readonly string[] | null, during?: { from: string; to: string }): Promise<Teacher[]> {
+  const onRoll = during ? { OR: [{ status: "ACTIVE", leftAt: null }, { leftAt: { gte: new Date(`${during.from}T00:00:00.000Z`) } }] } : { status: "ACTIVE", leftAt: null };
   const [members, links, departments, records] = await Promise.all([
-    db.membership.findMany({ where: { schoolId, role: { in: ["FACULTY", "HOD"] }, status: "ACTIVE", leftAt: null }, orderBy: { user: { name: "asc" } }, select: { id: true, user: { select: { name: true } } } }),
+    db.membership.findMany({ where: { schoolId, role: { in: ["FACULTY", "HOD"] }, ...onRoll }, orderBy: { user: { name: "asc" } }, select: { id: true, user: { select: { name: true } } } }),
     db.departmentFaculty.findMany({ where: { schoolId }, select: { membershipId: true, departmentId: true } }),
     db.department.findMany({ where: { schoolId }, select: { id: true, name: true, hodMembershipId: true } }),
-    db.facultyRecord.findMany({ where: { schoolId }, select: { membershipId: true, designation: true, highestQualification: true, appointment: true, departmentId: true } }),
+    db.facultyRecord.findMany({ where: { schoolId }, select: { membershipId: true, designation: true, highestQualification: true, appointment: true, departmentId: true, joinedOn: true } }),
   ]);
   const link = new Map(links.map((l) => [l.membershipId, l.departmentId]));
   const head = new Map(departments.filter((d) => d.hodMembershipId).map((d) => [d.hodMembershipId!, d.id]));
   const deptName = new Map(departments.map((d) => [d.id, d.name]));
   const rec = new Map(records.map((r) => [r.membershipId, r]));
   return members
+    .filter((m) => !during || !rec.get(m.id)?.joinedOn || rec.get(m.id)!.joinedOn! <= during.to)
     .map((m) => {
       const r = rec.get(m.id);
       const departmentId = head.get(m.id) ?? link.get(m.id) ?? r?.departmentId ?? null;
@@ -401,18 +411,37 @@ async function apiOf(schoolId: string, studentIds: string[], window: { from: str
   return { appeared: rows.size, successful: gpas.length, api: academicPerformance(gpas, rows.size) };
 }
 
+/**
+ * THE FILING'S OWN YEAR (S4B-1, 5 Oct 2026, as LIFECYCLE-8 did for the AQAR in
+ * iqac-filings.ts). Every fact is read as it stood in the academic year the SAR
+ * covers, never on the day it is built, so a SAR filed in May and rebuilt by the
+ * data audit years later prints the same figures:
+ *   - the students (S, the SFR's numerator) are the seats that had entered by
+ *     that year (entryYear) and were on the roll during it — a student who left
+ *     (graduated, transferred) counts in the years they studied and not after;
+ *     a seat that is not ACTIVE and has no leaving date is not counted, as before;
+ *   - the first years are that year's entrants not exited by its end;
+ *   - the teachers (F) were on the staff during it (`teachers` with `during`);
+ *   - results are those published by its end, offers those made by its end and
+ *     not declined by then, programmes those not archived by then.
+ * Before, S was every ACTIVE seat today — next year's entrants and every
+ * graduate (nothing sets a seat COMPLETED; leaving sets the membership's leftAt)
+ * — so a past SAR's students and SFR grew every year after it was filed.
+ */
 export async function nbaFacts(schoolId: string, departmentId: string, year: number) {
+  const w = windowOf(year);
+  const asOf = new Date(`${w.to}T23:59:59.999Z`);
+  const yearStart = new Date(`${w.from}T00:00:00.000Z`);
   const department = await db.department.findFirst({ where: { id: departmentId, schoolId }, select: { id: true, code: true, name: true } });
-  const eligible = await nbaDepartments(schoolId);
+  const eligible = await nbaDepartments(schoolId, asOf);
   if (!department || !eligible.some((d) => d.id === departmentId)) throw new RuleRefusal("councilFilings.refuseDepartment", 422, undefined, "departmentId");
-  const { programmes: all } = await streamProgrammes(schoolId, "ENGINEERING");
+  const { programmes: all } = await streamProgrammes(schoolId, "ENGINEERING", asOf);
   const programmes = all.filter((p) => p.departmentId === departmentId);
   const pids = programmes.map((p) => p.id);
-  const w = windowOf(year);
-  const seats = await db.studentProgramme.findMany({ where: { schoolId, programmeId: { in: pids } }, select: { studentMembershipId: true, programmeId: true, entryYear: true, status: true } });
+  const seats = await db.studentProgramme.findMany({ where: { schoolId, programmeId: { in: pids }, entryYear: { lte: year } }, select: { studentMembershipId: true, programmeId: true, entryYear: true, status: true, student: { select: { leftAt: true } } } });
   const duration = new Map(programmes.map((p) => [p.id, p.durationYears]));
-  const active = seats.filter((s) => s.status === "ACTIVE");
-  const S = active.length;
+  const onRoll = (s: (typeof seats)[number]) => (s.student.leftAt ? s.student.leftAt >= yearStart : s.status === "ACTIVE");
+  const S = seats.filter(onRoll).length;
 
   // 4.1 — first-year admissions this year against the sanctioned intake.
   const intake = programmes.reduce((a, p) => a + p.intake, 0);
@@ -422,7 +451,7 @@ export async function nbaFacts(schoolId: string, departmentId: string, year: num
   // 4.2 — the latest three batches whose stipulated period ended by this year.
   const ended = seats.filter((s) => s.entryYear + (duration.get(s.programmeId) ?? 0) - 1 <= year);
   const batchYears = [...new Set(ended.map((s) => s.entryYear))].sort((a, b) => b - a).slice(0, 3);
-  const everRows = await termRows(schoolId, ended.filter((s) => batchYears.includes(s.entryYear)).map((s) => s.studentMembershipId), null);
+  const everRows = await termRows(schoolId, ended.filter((s) => batchYears.includes(s.entryYear)).map((s) => s.studentMembershipId), { from: "1970-01-01", to: w.to });
   const batches = batchYears.map((e) => {
     const cohort = ended.filter((s) => s.entryYear === e);
     const graduated = cohort.filter((s) => s.status === "COMPLETED");
@@ -443,7 +472,7 @@ export async function nbaFacts(schoolId: string, departmentId: string, year: num
       const students = (await batchStudents(schoolId, b)).filter((s) => s.programmeId && pidSet.has(s.programmeId));
       const ids = students.map((s) => s.id);
       const [offers, profiles] = ids.length
-        ? await Promise.all([db.offer.findMany({ where: { studentMembershipId: { in: ids }, declinedAt: null }, select: { studentMembershipId: true } }), db.placementProfile.findMany({ where: { studentMembershipId: { in: ids } }, select: { studentMembershipId: true, higherStudies: true, entrepreneur: true } })])
+        ? await Promise.all([db.offer.findMany({ where: { studentMembershipId: { in: ids }, createdAt: { lte: asOf }, OR: [{ declinedAt: null }, { declinedAt: { gt: asOf } }] }, select: { studentMembershipId: true } }), db.placementProfile.findMany({ where: { studentMembershipId: { in: ids } }, select: { studentMembershipId: true, higherStudies: true, entrepreneur: true } })])
         : [[], []];
       const placed = new Set(offers.map((o) => o.studentMembershipId));
       const prof = new Map(profiles.map((p) => [p.studentMembershipId, p]));
@@ -460,7 +489,7 @@ export async function nbaFacts(schoolId: string, departmentId: string, year: num
   const pl = placementMarks(placement.map((x) => x.index));
 
   // 5.1–5.3 — the department's teachers (visiting faculty are not counted).
-  const staff = (await teachers(schoolId, [departmentId])).filter((t) => t.appointment !== "VISITING");
+  const staff = (await teachers(schoolId, [departmentId], w)).filter((t) => t.appointment !== "VISITING");
   const F = staff.length;
   const professors = staff.filter((t) => t.designation === "PROFESSOR").length;
   const associates = staff.filter((t) => t.designation === "ASSOCIATE_PROFESSOR").length;
@@ -476,7 +505,7 @@ export async function nbaFacts(schoolId: string, departmentId: string, year: num
     ? await db.courseOffering.findMany({ where: { schoolId, course: { scheme: { programmeId: { in: pids } } }, term: { startsOn: { gte: w.from, lte: w.to } } }, orderBy: [{ course: { semester: "asc" } }, { course: { code: "asc" } }], select: { id: true, facultyMembershipId: true, course: { select: { code: true, name: true, semester: true } } } })
     : [];
   const firstYearFaculty = new Set(offerings.filter((o) => o.course.semester <= 2 && o.facultyMembershipId).map((o) => o.facultyMembershipId!)).size;
-  const firstYearStudents = seats.filter((s) => s.entryYear === year && s.status !== "EXITED").length;
+  const firstYearStudents = seats.filter((s) => s.entryYear === year && (s.status !== "EXITED" || (s.student.leftAt !== null && s.student.leftAt > asOf))).length;
   const fysfr = firstYearSfrMarks(firstYearStudents, firstYearFaculty);
   const attainment = [];
   for (const o of offerings) {

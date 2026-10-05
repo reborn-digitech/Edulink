@@ -24,6 +24,7 @@ import { classInsights, defaultWindow } from "@/lib/insights";
 import { buildProgressReport } from "@/lib/reports";
 import { schoolYearArchive, listClosedYears } from "@/lib/year-archive";
 import { messagingOverview, monthStartFor } from "@/lib/messaging";
+import { reachableGuardians } from "./audit-recounts";
 import { retentionPreview } from "@/lib/retention";
 import { HOLIDAY_KIND_META } from "@/lib/holiday-kinds";
 import { todayKey } from "@/lib/dates";
@@ -615,10 +616,10 @@ d("the figures the head, the family and the operator read", () => {
       const n = (st: string) => rows.find((r) => r.status === st)?._count ?? 0;
       const exp = { sent: n("SENT") + n("DELIVERED") + n("UNDELIVERED"), delivered: n("DELIVERED"), failed: n("FAILED") + n("UNDELIVERED"), skipped: n("SKIPPED") };
       for (const k of Object.keys(exp) as (keyof typeof exp)[]) if (ov.month[k] !== exp[k]) note("messaging", "FAIL", s.name, `month ${k}: overview ${ov.month[k]} vs raw ${exp[k]}`);
-      const guardians = await db.guardianship.findMany({ where: { studentSchoolId: s.id, status: "ACTIVE" }, select: { parentUserId: true, parent: { select: { phone: true } } }, distinct: ["parentUserId"] });
-      const withPhone = guardians.filter((g) => g.parent.phone).length;
-      if (ov.parentsTotal !== guardians.length || ov.parentsWithPhone !== withPhone) note("messaging", "FAIL", s.name, `parents ${ov.parentsWithPhone}/${ov.parentsTotal} vs raw ${withPhone}/${guardians.length}`);
-      if (guardians.length - withPhone > 0) note("messaging", "INFO", s.name, `${guardians.length - withPhone} guardian(s) have no phone — every text to them is SKIPPED`);
+      // The guardians of children on the roll (S4B-2): a leaver's parent keeps the link and is reached by nothing of the office's.
+      const { total: guardians, withPhone } = await reachableGuardians(db, s.id);
+      if (ov.parentsTotal !== guardians || ov.parentsWithPhone !== withPhone) note("messaging", "FAIL", s.name, `parents ${ov.parentsWithPhone}/${ov.parentsTotal} vs raw ${withPhone}/${guardians}`);
+      if (guardians - withPhone > 0) note("messaging", "INFO", s.name, `${guardians - withPhone} guardian(s) have no phone — every text to them is SKIPPED`);
       for (const b of await db.broadcast.findMany({ where: { schoolId: s.id }, select: { id: true, title: true, queued: true, sent: true, delivered: true, failed: true, skipped: true, recipients: true, status: true, messages: { select: { status: true } } } })) {
         const c = (st: string) => b.messages.filter((m) => m.status === st).length;
         const e = { sent: c("SENT") + c("DELIVERED") + c("UNDELIVERED"), delivered: c("DELIVERED"), failed: c("FAILED") + c("UNDELIVERED"), skipped: c("SKIPPED") };

@@ -755,12 +755,12 @@ export async function saveTimetableSlot(ctx: ActiveContext, input: z.infer<typeo
   if (input.roomId && !(await db.room.findFirst({ where: { id: input.roomId, schoolId: c.schoolId }, select: { id: true } }))) throw new RuleRefusal("academics.refuseUnknownRoom", 422, undefined, "roomId");
   // A LAB hour for one batch of the offering's division (stream records, 5 Oct 2026): its students are the batch's.
   const labBatchId = input.labBatchId ?? null;
-  const batch = labBatchId ? await db.labBatch.findFirst({ where: { id: labBatchId, schoolId: c.schoolId }, select: { id: true, divisionId: true, members: { select: { studentMembershipId: true } } } }) : null;
+  const batch = labBatchId ? await db.labBatch.findFirst({ where: { id: labBatchId, schoolId: c.schoolId }, select: { id: true, divisionId: true, members: { where: { untilKey: null }, select: { studentMembershipId: true } } } }) : null;
   if (labBatchId && (!batch || input.kind !== "LAB" || batch.divisionId !== offering.divisionId)) throw new RuleRefusal("streamRecords.refuseBatch", 422, undefined, "labBatchId");
 
   const others = await db.offeringSlot.findMany({
     where: { schoolId: c.schoolId, weekday: input.weekday, periodId: input.periodId, offering: { termId: offering.termId }, NOT: { offeringId: offering.id } },
-    select: { roomId: true, offeringId: true, labBatchId: true, labBatch: { select: { members: { select: { studentMembershipId: true } } } }, offering: { select: { divisionId: true, facultyMembershipId: true, roomId: true, course: { select: { code: true, kind: true } } } } },
+    select: { roomId: true, offeringId: true, labBatchId: true, labBatch: { select: { members: { where: { untilKey: null }, select: { studentMembershipId: true } } } }, offering: { select: { divisionId: true, facultyMembershipId: true, roomId: true, course: { select: { code: true, kind: true } } } } },
   });
   // Two different batches of one division at one hour (batch A in one lab, batch B in another) do not clash as a division.
   const otherBatch = (o: (typeof others)[number]) => batch !== null && o.labBatchId !== null && o.labBatchId !== batch.id;

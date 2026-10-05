@@ -209,6 +209,41 @@ describe("lab batches", () => {
     const marked = await markLecture(teacher, lecture.id, { clientId: `zz-sr-${STAMP}-2`, entries: [ids.s1M!, ids.s2M!, ids.s3M!].map((s) => ({ studentMembershipId: s, status: "PRESENT" as const })) });
     expect(marked).toMatchObject({ present: 3, absent: 0 });
   });
+
+  /*
+   * S4B-0: a re-split moved the students and kept the batch's id, so the lab just marked listed today's batch A —
+   * student 3 (marked present) vanished from it and could not be corrected, a student moved into A appeared on it.
+   * Membership is dated now: the change takes effect today, or tomorrow when the marked lab was today's.
+   */
+  it("leaves a marked lab's roster as it was when the division is re-split or a student is moved", async () => {
+    const admin = await as("admin", "ADMIN", ids.A!);
+    const teacher = await as("teacher", "FACULTY", ids.A!);
+    const day = await teachingDay(ids.A!);
+    const lecture = await db.lecture.findFirstOrThrow({ where: { offeringId: ids.o1!, dateKey: day }, select: { id: true } });
+    const re = await splitLabBatches(admin, { divisionId: ids.division!, size: 2 });
+    expect(re.divisions[0]!.batches.map((b) => [b.name, b.members.map((m) => m.rollNumber)])).toEqual([["A", [1, 2]], ["B", [3, 4]], ["C", [5]]]);
+    expect(re.divisions[0]!.batches[0]!.id).toBe(ids.batchA);
+    let sheet = await lectureSheet(teacher, lecture.id);
+    expect(sheet.entries.map((e) => [e.rollNumber, e.status])).toEqual([[1, "PRESENT"], [2, "PRESENT"], [3, "PRESENT"]]);
+    expect(sheet.lecture.registered).toBe(3);
+    // Student 3's mark on that lab can still be corrected.
+    expect(await markLecture(teacher, lecture.id, { clientId: `zz-sr-${STAMP}-3`, entries: [{ studentMembershipId: ids.s3M!, status: "LATE" }] })).toMatchObject({ present: 2, late: 1 });
+    // Student 4 moved into A is not put on A's lab held before the move.
+    await moveToLabBatch(admin, ids.batchA!, [ids.s4M!]);
+    sheet = await lectureSheet(teacher, lecture.id);
+    expect(sheet.entries.map((e) => e.rollNumber)).toEqual([1, 2, 3]);
+    await expect(markLecture(teacher, lecture.id, { clientId: `zz-sr-${STAMP}-4`, entries: [{ studentMembershipId: ids.s4M!, status: "PRESENT" }] })).rejects.toMatchObject({ key: "streamRecords.refuseNotInBatch" });
+    const from = day === TODAY ? addDaysToKey(TODAY, 1) : TODAY;
+    expect(await db.labBatchMember.findMany({ where: { studentMembershipId: ids.s3M! }, orderBy: { fromKey: "asc" }, select: { batchId: true, fromKey: true, untilKey: true } })).toEqual([
+      { batchId: ids.batchA, fromKey: "", untilKey: addDaysToKey(from, -1) },
+      { batchId: ids.batchB, fromKey: from, untilKey: null },
+    ]);
+    // Back to batches of three for the practical record below; C, which no marked lecture names, is removed.
+    const back = await splitLabBatches(admin, { divisionId: ids.division!, size: 3 });
+    expect(back.divisions[0]!.batches.map((b) => [b.name, b.members.map((m) => m.rollNumber)])).toEqual([["A", [1, 2, 3]], ["B", [4, 5]]]);
+    expect(await db.labBatch.count({ where: { divisionId: ids.division! } })).toBe(2);
+    expect((await lectureSheet(teacher, lecture.id)).entries.map((e) => [e.rollNumber, e.status])).toEqual([[1, "PRESENT"], [2, "PRESENT"], [3, "LATE"]]);
+  });
 });
 
 describe("the practical record", () => {

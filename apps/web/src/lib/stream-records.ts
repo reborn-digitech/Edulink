@@ -18,7 +18,7 @@ import { audit } from "./audit";
 import { assertCollege, assertModuleOn } from "./modules";
 import { streamsOf } from "./streams";
 import { myDuties } from "./duties";
-import { todayKey } from "./dates";
+import { addDaysToKey, todayKey } from "./dates";
 import { readJsonArray } from "./json";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
@@ -36,6 +36,23 @@ import { lawInternshipSummary, nssSummary, practicalRecordSummary, teachingPract
  *   A LAB hour may name a batch (academics.ts saveTimetableSlot) and its
  *   lectures carry it: the roster, the marks and the practical record are
  *   then the batch's members only (academics-attendance.ts).
+ *
+ *   MEMBERSHIP IS DATED (S4B-0, 5 Oct 2026). A re-split or a move used to
+ *   rewrite the rows, so a past LAB lecture of batch A listed today's A: a
+ *   student moved to B vanished from the sheets of the labs they sat (their
+ *   marks still counted, unseen and uncorrectable) and a student moved in
+ *   appeared on labs held before they came. Now a change takes effect on a
+ *   day (`effectiveFrom`): today, or the day after the division's latest
+ *   marked batch lecture when that is today; a changed row is closed the day
+ *   before and a new one opened (`refile`), a row that had not begun yet is
+ *   replaced. Until a batch lecture of the division has marks, the rows are
+ *   rewritten whole, as before (setting the batches up is not history). A
+ *   lecture reads the batch on its own day (`memberOn`, `holdsOn`); the office's
+ *   page, the practical sheet and the timetable read the open rows. A batch a
+ *   re-split no longer names is kept while a marked lecture names it (its slots fall
+ *   back to the whole division) and removed otherwise. Refusing a re-split
+ *   once a batch had a marked lecture was the other way; it would have stopped
+ *   the even semester's re-batching and every move after the first lab.
  *
  *   THE PRACTICAL RECORD. The offering's teacher (or the HOD of its
  *   department) writes each experiment a student performed and its marks;
@@ -80,6 +97,46 @@ export function currentRecordsYear(timeZone: string, now: Date = new Date()): nu
 
 /* ------------------------------------------------------------ lab batches */
 
+/** A batch row that holds on a day: opened on or before it ("" is since the batch began), not closed before it. */
+export const memberOn = (dateKey: string) => ({ fromKey: { lte: dateKey }, OR: [{ untilKey: null }, { untilKey: { gte: dateKey } }] });
+export const holdsOn = (m: { fromKey: string; untilKey: string | null }, dateKey: string): boolean => m.fromKey <= dateKey && (m.untilKey === null || m.untilKey >= dateKey);
+
+/**
+ * The day a change to a division's batches takes effect. "" (since the start:
+ * the rows are rewritten) while no batch lecture of the division has marks;
+ * after that today by the college's clock, or the day after the latest marked
+ * one when that is today — a marked lecture keeps the roster it was marked on.
+ */
+async function effectiveFrom(divisionId: string, timeZone: string): Promise<string> {
+  const last = await db.lecture.findFirst({ where: { labBatch: { divisionId }, attendance: { some: {} } }, orderBy: { dateKey: "desc" }, select: { dateKey: true } });
+  if (!last) return "";
+  const today = todayKey(timeZone);
+  const after = addDaysToKey(last.dateKey, 1);
+  return after > today ? after : today;
+}
+
+/**
+ * Files the division's students as `want` (student → batch id) from `from` on,
+ * the one writer of the rows' dates: an open row that already says so stays; a
+ * changed one closes the day before `from` (or goes, if it begins on or after
+ * it); the new row opens on `from`. With `wholeDivision`, an open row of a
+ * student `want` does not name (no longer seated in the division) closes too.
+ */
+async function refile(tx: Tx, schoolId: string, divisionId: string, want: Map<string, string>, from: string, wholeDivision: boolean): Promise<void> {
+  const whose = wholeDivision ? {} : { studentMembershipId: { in: [...want.keys()] } };
+  // Closed rows that begin on or after `from` hold no day any more (and, with "", nothing is marked: no history to keep).
+  await tx.labBatchMember.deleteMany({ where: { divisionId, ...whose, untilKey: { not: null }, fromKey: { gte: from } } });
+  const open = await tx.labBatchMember.findMany({ where: { divisionId, untilKey: null, ...whose }, select: { id: true, batchId: true, fromKey: true, studentMembershipId: true } });
+  const changed = open.filter((r) => want.get(r.studentMembershipId) !== r.batchId);
+  const close = changed.filter((r) => r.fromKey < from).map((r) => r.id);
+  const drop = changed.filter((r) => r.fromKey >= from).map((r) => r.id);
+  if (close.length) await tx.labBatchMember.updateMany({ where: { id: { in: close } }, data: { untilKey: addDaysToKey(from, -1) } });
+  if (drop.length) await tx.labBatchMember.deleteMany({ where: { id: { in: drop } } });
+  const kept = new Set(open.filter((r) => want.get(r.studentMembershipId) === r.batchId).map((r) => r.studentMembershipId));
+  const fresh = [...want].filter(([student]) => !kept.has(student));
+  if (fresh.length) await tx.labBatchMember.createMany({ data: fresh.map(([student, batchId]) => ({ schoolId, batchId, divisionId, studentMembershipId: student, fromKey: from })) });
+}
+
 /**
  * Divisions of the college (or one) with their students — the seats in the
  * division, by roll number — and their batches. The roll number is the
@@ -90,7 +147,7 @@ export async function labDivisions(schoolId: string, divisionId?: string): Promi
     where: { schoolId, ...(divisionId ? { id: divisionId } : {}) },
     orderBy: [{ academicYear: "desc" }, { yearOfStudy: "asc" }],
     take: 200,
-    select: { id: true, academicYear: true, yearOfStudy: true, classId: true, programme: { select: { code: true } }, class: { select: { name: true } }, labBatches: { orderBy: { name: "asc" }, select: { id: true, name: true, capacity: true, members: { select: { studentMembershipId: true } } } } },
+    select: { id: true, academicYear: true, yearOfStudy: true, classId: true, programme: { select: { code: true } }, class: { select: { name: true } }, labBatches: { orderBy: { name: "asc" }, select: { id: true, name: true, capacity: true, members: { where: { untilKey: null }, select: { studentMembershipId: true } }, _count: { select: { slots: true } } } } },
   });
   if (!divisions.length) return [];
   const [seats, rolls] = await Promise.all([
@@ -103,8 +160,9 @@ export async function labDivisions(schoolId: string, divisionId?: string): Promi
       .filter((s) => s.divisionId === d.id)
       .map((s) => ({ studentMembershipId: s.studentMembershipId, name: nameOf(s.student.user), rollNumber: rollBy.get(`${d.classId}|${s.studentMembershipId}`) ?? null }))
       .sort((a, b) => (a.rollNumber ?? 9999) - (b.rollNumber ?? 9999) || a.name.localeCompare(b.name));
-    const byId = new Map(people.map((p) => [p.studentMembershipId, p]));
-    const inBatch = new Set(d.labBatches.flatMap((b) => b.members.map((m) => m.studentMembershipId)));
+    // A batch a re-split retired (kept for its past lectures: no open member and no timetable hour) is not shown.
+    const shown = d.labBatches.filter((b) => b.members.length > 0 || b._count.slots > 0);
+    const inBatch = new Set(shown.flatMap((b) => b.members.map((m) => m.studentMembershipId)));
     return {
       divisionId: d.id,
       name: d.class.name,
@@ -112,7 +170,7 @@ export async function labDivisions(schoolId: string, divisionId?: string): Promi
       yearOfStudy: d.yearOfStudy,
       academicYear: d.academicYear,
       students: people.length,
-      batches: d.labBatches.map((b) => ({ id: b.id, name: b.name, capacity: b.capacity, members: b.members.map((m) => byId.get(m.studentMembershipId)).filter((x): x is NonNullable<typeof x> => Boolean(x)) })),
+      batches: shown.map((b) => ({ id: b.id, name: b.name, capacity: b.capacity, members: people.filter((p) => b.members.some((m) => m.studentMembershipId === p.studentMembershipId)) })),
       unbatched: people.filter((p) => !inBatch.has(p.studentMembershipId)),
     };
   });
@@ -132,7 +190,7 @@ export function evenSplit(count: number, size: number): number[] {
   return Array.from({ length: n }, (_, i) => base + (i < extra ? 1 : 0));
 }
 
-/** The office splits a division evenly into batches by roll number (re-splitting re-files everyone; a batch whose name is no longer used is removed, and a timetable hour naming it falls back to the whole division). */
+/** The office splits a division evenly into batches by roll number (re-splitting re-files everyone from the day it takes effect; a batch whose name is no longer used is removed — or kept for its past lectures — and a timetable hour naming it falls back to the whole division). */
 export async function splitLabBatches(ctx: ActiveContext, input: { divisionId: string; size?: number }): Promise<LabBatches> {
   const c = await recordsCaller(ctx, ["ADMIN"]);
   if (!labStreams(await streamsOf(c.schoolId))) throw new RuleRefusal("streamRecords.refuseNoLabs", 409);
@@ -144,23 +202,30 @@ export async function splitLabBatches(ctx: ActiveContext, input: { divisionId: s
   const sizes = evenSplit(people.length, size);
   if (sizes.length > BATCH_NAMES.length) throw new RuleRefusal("streamRecords.refuseTooManyBatches", 422, undefined, "size");
   const names = sizes.map((_, i) => BATCH_NAMES[i]!);
+  const from = await effectiveFrom(division.divisionId, c.timeZone);
   await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
-    await tx.labBatch.deleteMany({ where: { divisionId: division.divisionId, name: { notIn: names } } });
-    await tx.labBatchMember.deleteMany({ where: { divisionId: division.divisionId } });
+    const want = new Map<string, string>();
     let at = 0;
     for (const [i, name] of names.entries()) {
       const batch = await tx.labBatch.upsert({ where: { divisionId_name: { divisionId: division.divisionId, name } }, create: { schoolId: c.schoolId, divisionId: division.divisionId, name, capacity: size }, update: { capacity: size }, select: { id: true } });
-      const slice = people.slice(at, at + sizes[i]!);
+      for (const p of people.slice(at, at + sizes[i]!)) want.set(p.studentMembershipId, batch.id);
       at += sizes[i]!;
-      await tx.labBatchMember.createMany({ data: slice.map((p) => ({ schoolId: c.schoolId, batchId: batch.id, divisionId: division.divisionId, studentMembershipId: p.studentMembershipId })) });
     }
+    await refile(tx, c.schoolId, division.divisionId, want, from, true);
+    // The names no longer used: kept while a marked lecture names one (its past rosters), its hours falling back to the
+    // whole division; removed otherwise (an unmarked lecture of it then falls back to the whole division too).
+    const unused = await tx.labBatch.findMany({ where: { divisionId: division.divisionId, name: { notIn: names } }, select: { id: true, _count: { select: { lectures: { where: { attendance: { some: {} } } } } } } });
+    const keep = unused.filter((b) => b._count.lectures > 0).map((b) => b.id);
+    if (keep.length) await tx.offeringSlot.updateMany({ where: { labBatchId: { in: keep } }, data: { labBatchId: null } });
+    const remove = unused.filter((b) => b._count.lectures === 0).map((b) => b.id);
+    if (remove.length) await tx.labBatch.deleteMany({ where: { id: { in: remove } } });
   });
-  await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "streamRecords.labBatches.split", targetType: "Division", targetId: division.divisionId, meta: { batches: names.length, size, students: people.length } });
+  await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "streamRecords.labBatches.split", targetType: "Division", targetId: division.divisionId, meta: { batches: names.length, size, students: people.length, from } });
   return labBatches(ctx, { divisionId: division.divisionId });
 }
 
-/** The office moves some of a division's students into one of its batches (out of whichever batch of the division they were in). */
+/** The office moves some of a division's students into one of its batches (out of whichever batch of the division they were in), from the day it takes effect. */
 export async function moveToLabBatch(ctx: ActiveContext, batchId: string, studentMembershipIds: readonly string[]): Promise<LabBatches> {
   const c = await recordsCaller(ctx, ["ADMIN"]);
   const batch = await db.labBatch.findFirst({ where: { id: batchId, schoolId: c.schoolId }, select: { id: true, divisionId: true } });
@@ -168,18 +233,17 @@ export async function moveToLabBatch(ctx: ActiveContext, batchId: string, studen
   const ids = [...new Set(studentMembershipIds)];
   const seated = await db.studentProgramme.count({ where: { schoolId: c.schoolId, status: "ACTIVE", divisionId: batch.divisionId, studentMembershipId: { in: ids } } });
   if (seated !== ids.length) throw new RuleRefusal("streamRecords.refuseNotInDivision", 422, undefined, "studentMembershipIds");
+  const from = await effectiveFrom(batch.divisionId, c.timeZone);
   await db.$tenantTransaction(async (raw) => {
-    const tx = raw as Tx;
-    await tx.labBatchMember.deleteMany({ where: { divisionId: batch.divisionId, studentMembershipId: { in: ids } } });
-    await tx.labBatchMember.createMany({ data: ids.map((id) => ({ schoolId: c.schoolId, batchId: batch.id, divisionId: batch.divisionId, studentMembershipId: id })) });
+    await refile(raw as Tx, c.schoolId, batch.divisionId, new Map(ids.map((id) => [id, batch.id])), from, false);
   });
-  await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "streamRecords.labBatches.move", targetType: "LabBatch", targetId: batch.id, meta: { students: ids.length } });
+  await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "streamRecords.labBatches.move", targetType: "LabBatch", targetId: batch.id, meta: { students: ids.length, from } });
   return labBatches(ctx, { divisionId: batch.divisionId });
 }
 
-/** The members of a lab batch, for a lecture that names it (academics-attendance.ts). */
-export async function batchMemberIds(batchId: string): Promise<Set<string>> {
-  const rows = await db.labBatchMember.findMany({ where: { batchId }, select: { studentMembershipId: true } });
+/** The members of a lab batch on a lecture's day, for a lecture that names it (academics-attendance.ts). */
+export async function batchMemberIds(batchId: string, dateKey: string): Promise<Set<string>> {
+  const rows = await db.labBatchMember.findMany({ where: { batchId, ...memberOn(dateKey) }, select: { studentMembershipId: true } });
   return new Set(rows.map((r) => r.studentMembershipId));
 }
 
@@ -222,7 +286,7 @@ export async function practicalSheet(ctx: ActiveContext, query: { offeringId?: s
   const [regs, records, batches] = await Promise.all([
     db.courseRegistration.findMany({ where: { offeringId: chosen.id, status: "REGISTERED" }, select: { studentMembershipId: true, student: { select: { user: { select: { name: true, preferredName: true } }, enrollments: { where: { status: "ACTIVE", class: { division: { isNot: null } } }, select: { rollNumber: true, class: { select: { division: { select: { id: true } } } } } } } } } }),
     db.practicalRecord.findMany({ where: { offeringId: chosen.id }, orderBy: [{ experimentNo: "asc" }, { performedOn: "asc" }] }),
-    chosen.divisionId ? db.labBatchMember.findMany({ where: { divisionId: chosen.divisionId }, select: { studentMembershipId: true, batch: { select: { name: true } } } }) : Promise.resolve([]),
+    chosen.divisionId ? db.labBatchMember.findMany({ where: { divisionId: chosen.divisionId, untilKey: null }, select: { studentMembershipId: true, batch: { select: { name: true } } } }) : Promise.resolve([]),
   ]);
   const batchOf = new Map(batches.map((b) => [b.studentMembershipId, b.batch.name]));
   const students = regs

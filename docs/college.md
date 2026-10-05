@@ -82,7 +82,10 @@ handler (403 `duties.refuseNoDuty`), and the same rule runs in `permits()`, both
 
 **Records per stream** (migration `20261004222809_stream_records`, `src/lib/stream-records.ts`,
 `stream-summaries.ts`, pages under `/admin/stream-records`): lab batches (the office splits a division by roll
-number, twenty by default; a LAB timetable hour may name a batch and its lecture registers only the batch),
+number, twenty by default; a LAB timetable hour may name a batch and its lecture registers only the batch;
+membership is dated since migration `20261005040312_lab_batch_member_dates`, so a re-split or a move takes effect
+today — or tomorrow when one of the division's batch labs of today is marked — and a marked lab keeps the roster
+it was marked on; until the division's first batch lab is marked the rows are simply rewritten),
 the practical record (the offering's teacher or HOD writes, that teacher or a lab in-charge signs, a signed row
 is final), moot courts (law only), law internships of kind COURT, FIRM and LEGAL_AID with the Bar Council's
 minimum weeks, teaching practice (schools, postings, observations, the NCTE's twenty weeks), NSS and NCC
@@ -242,5 +245,8 @@ regulators' calendar with reminders from `accounts:tidy`, and recruiter accounts
   page (the ID card's QR has only its API door).
 - Streams: every council return against its council's real portal or inspection form (the NBA Tier-II marks
   and bands should be checked against nbaind.org's current SAR); the PCI, BCI and NCTE pages with data on a
-  live server (no ZZ or demo college has those streams); the NBA SAR's computed figures read today's students
-  and faculty, so a past year's SAR regenerated later drifts (data:audit WARNs; the lifecycle walk's S4B-1).
+  live server (no ZZ or demo college has those streams). The NBA SAR reads its own year since S4B-1 (students
+  entered by then and on the roll during it, teachers on the staff during it by their recorded joining date,
+  results and offers by the year's end); what still has no history and is read as it stands: a teacher's
+  department link and designation, a programme's intake, the placement profile's higher-studies flag. The
+  PCI, BCI and NCTE returns still read the rows as they stand.

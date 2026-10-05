@@ -10,7 +10,7 @@ import { parentMaySee } from "./student-consent";
 import { addDaysToKey, dateKeyRange, isDateKey, parseTeachingDays, todayKey, weekdayOfKey } from "./dates";
 import { academicsCaller, currentTerm, divisionNames, ensureLecturesForDay, hodDepartment, nameOf, type Caller } from "./academics";
 import { canMissMore, isEligible, percentOf } from "./academics-rules";
-import { batchMemberIds } from "./stream-records";
+import { batchMemberIds, holdsOn, memberOn } from "./stream-records";
 import type { ActiveContext } from "./session";
 
 /**
@@ -237,9 +237,10 @@ const LECTURE_SELECT = {
   _count: { select: { attendance: true } },
   // A LAB lecture for one batch (stream records, 5 Oct 2026): its roster is the batch's.
   labBatchId: true,
-  labBatch: { select: { name: true, _count: { select: { members: true } } } },
+  // Its members as dated rows: a lecture counts the batch of its own day (S4B-0).
+  labBatch: { select: { name: true, members: { select: { fromKey: true, untilKey: true } } } },
 } as const;
-type LectureFull = { id: string; offeringId: string; dateKey: string; startMinute: number; endMinute: number; kind: string; roomId: string | null; substituteMembershipId: string | null; offering: { divisionId: string | null; facultyMembershipId: string | null; roomId: string | null; course: { code: string; name: string; scheme: { programme: { departmentId: string } } }; _count: { registrations: number } }; _count: { attendance: number }; labBatchId?: string | null; labBatch?: { name: string; _count: { members: number } } | null };
+type LectureFull = { id: string; offeringId: string; dateKey: string; startMinute: number; endMinute: number; kind: string; roomId: string | null; substituteMembershipId: string | null; offering: { divisionId: string | null; facultyMembershipId: string | null; roomId: string | null; course: { code: string; name: string; scheme: { programme: { departmentId: string } } }; _count: { registrations: number } }; _count: { attendance: number }; labBatchId?: string | null; labBatch?: { name: string; members: { fromKey: string; untilKey: string | null }[] } | null };
 
 async function lectureRows(lectures: LectureFull[], me: string): Promise<LectureRow[]> {
   const divisions = await divisionNames(lectures.map((l) => l.offering.divisionId));
@@ -247,7 +248,7 @@ async function lectureRows(lectures: LectureFull[], me: string): Promise<Lecture
   const rooms = new Map((roomIds.length ? await db.room.findMany({ where: { id: { in: roomIds } }, select: { id: true, name: true } }) : []).map((r) => [r.id, r.name]));
   return lectures.map((l) => {
     const room = l.roomId ?? l.offering.roomId;
-    return { lectureId: l.id, offeringId: l.offeringId, dateKey: l.dateKey, startMinute: l.startMinute, endMinute: l.endMinute, kind: l.kind as "LECTURE", courseCode: l.offering.course.code, courseName: l.offering.course.name, divisionName: l.offering.divisionId ? (divisions.get(l.offering.divisionId) ?? null) : null, roomName: room ? (rooms.get(room) ?? null) : null, registered: l.labBatch ? l.labBatch._count.members : l.offering._count.registrations, marked: l._count.attendance, substitute: l.substituteMembershipId === me, labBatchName: l.labBatch?.name ?? null };
+    return { lectureId: l.id, offeringId: l.offeringId, dateKey: l.dateKey, startMinute: l.startMinute, endMinute: l.endMinute, kind: l.kind as "LECTURE", courseCode: l.offering.course.code, courseName: l.offering.course.name, divisionName: l.offering.divisionId ? (divisions.get(l.offering.divisionId) ?? null) : null, roomName: room ? (rooms.get(room) ?? null) : null, registered: l.labBatch ? l.labBatch.members.filter((m) => holdsOn(m, l.dateKey)).length : l.offering._count.registrations, marked: l._count.attendance, substitute: l.substituteMembershipId === me, labBatchName: l.labBatch?.name ?? null };
   });
 }
 
@@ -286,7 +287,7 @@ export async function lectureSheet(ctx: ActiveContext, lectureId: string): Promi
   ]);
   const statusBy = new Map(marks.map((m) => [m.studentMembershipId, m.status]));
   // A batch's lecture lists the batch's students alone (stream records, 5 Oct 2026).
-  const inBatch = lecture.labBatchId ? await batchMemberIds(lecture.labBatchId) : null;
+  const inBatch = lecture.labBatchId ? await batchMemberIds(lecture.labBatchId, lecture.dateKey) : null;
   const rows = await attendanceRows(c.schoolId, term.termId, { offeringIds: [lecture.offeringId] });
   const percentBy = new Map(rows.map((r) => [r.studentMembershipId, r.percent]));
   const entries = regs
@@ -338,7 +339,7 @@ export async function markLecture(ctx: ActiveContext, lectureId: string, input: 
     const registered = new Set((await tx.courseRegistration.findMany({ where: { offeringId: lecture.offeringId, status: "REGISTERED", studentMembershipId: { in: students } }, select: { studentMembershipId: true } })).map((r) => r.studentMembershipId));
     if (students.some((s) => !registered.has(s))) throw new RuleRefusal("academics.refuseNotRegistered", 422, undefined, "entries");
     if (lecture.labBatchId) {
-      const members = new Set((await tx.labBatchMember.findMany({ where: { batchId: lecture.labBatchId, studentMembershipId: { in: students } }, select: { studentMembershipId: true } })).map((m) => m.studentMembershipId));
+      const members = new Set((await tx.labBatchMember.findMany({ where: { batchId: lecture.labBatchId, studentMembershipId: { in: students }, ...memberOn(lecture.dateKey) }, select: { studentMembershipId: true } })).map((m) => m.studentMembershipId));
       if (students.some((s) => !members.has(s))) throw new RuleRefusal("streamRecords.refuseNotInBatch", 422, undefined, "entries");
     }
     // Frozen once the exam cell has decided the term's eligibility from it (campaign S-22): when the

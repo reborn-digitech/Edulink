@@ -9323,17 +9323,23 @@ model LabBatch {
 
 /// A student in a lab batch; `divisionId` repeats the batch's so a student is in one batch of a division at most.
 model LabBatchMember {
-  id                  String @id @default(cuid())
+  id                  String  @id @default(cuid())
   schoolId            String
   batchId             String
   divisionId          String
   studentMembershipId String
+  /// S4B-0 (5 Oct 2026): the days this row holds, as the college's date keys — "" is since the batch began, null
+  /// untilKey is still. A re-split or a move ends a changed row the day before it takes effect and opens a new one, so
+  /// a past LAB lecture's roster is the batch on its own day (stream-records.ts `memberOn`). One open row per student
+  /// and division, kept by the two writers (splitLabBatches, moveToLabBatch).
+  fromKey             String  @default("")
+  untilKey            String?
 
   school  School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   batch   LabBatch   @relation(fields: [batchId], references: [id], onDelete: Cascade)
   student Membership @relation("LabBatchMemberOf", fields: [studentMembershipId], references: [id], onDelete: Cascade)
 
-  @@unique([divisionId, studentMembershipId])
+  @@unique([divisionId, studentMembershipId, fromKey])
   @@index([batchId])
   @@index([schoolId])
 }

@@ -54,6 +54,23 @@ const findings: Finding[] = [];
 const note = (check: string, level: Finding["level"], school: string, detail: string) => findings.push({ check, level, school, detail });
 const failsOf = (check: string) => findings.filter((f) => f.check === check && f.level === "FAIL").map((f) => `${f.school}: ${f.detail}`);
 
+/**
+ * THE SCOPE (S4B-3, 5 Oct 2026). Some checks also read fixture colleges the
+ * default set (the demo schools and ZZ Northgate) does not name — ZZ Vidya and
+ * ZZ Shastri, every ZZ college for the PRN — because the default set keeps
+ * none of what they check. DATA_AUDIT_SCHOOLS names a run's scope exactly:
+ * when it is set, those checks read the named schools and nothing else (a
+ * lifecycle walk scoped to its own college used to report ZZ Shastri's
+ * fixture SAR among its WARNs). The last check below holds it.
+ */
+const SCOPE = process.env.DATA_AUDIT_SCHOOLS?.split(",").map((s) => s.trim()).filter(Boolean) ?? [];
+async function alsoReading(slugs: string[]): Promise<{ id: string; name: string }[]> {
+  const base = schools.map((s) => ({ id: s.id, name: s.name }));
+  if (SCOPE.length) return base;
+  const extra = await db.school.findMany({ where: { slug: { in: slugs } }, select: { id: true, name: true } });
+  return [...base, ...extra.filter((e) => !base.some((b) => b.id === e.id))];
+}
+
 type School = { id: string; name: string; slug: string; timezone: string; reportCardConfig: string | null; staffCheckInMinute: number; staffLateGraceMinutes: number; teachingDays: string };
 let schools: School[] = [];
 const actors = new Map<string, { admin: string | null; principal: string | null; parent: { userId: string; childId: string } | null }>();
@@ -989,8 +1006,7 @@ d("modules: the college's academics (4 October 2026)", () => {
    */
   it("academics-internal-lock: a locked offering's totals are its marks × weights, out of the scheme's internal total", async () => {
     const { lockTotals } = await import("@/lib/academics-assessment");
-    const vidya = await db.school.findMany({ where: { slug: "zz-vidya-college" }, select: { id: true, name: true } });
-    const audited = [...schools.map((s) => ({ id: s.id, name: s.name })), ...vidya.filter((v) => !schools.some((s) => s.id === v.id))];
+    const audited = await alsoReading(["zz-vidya-college"]);
     for (const s of audited) {
       const locks = await db.internalLock.findMany({ where: { schoolId: s.id }, select: { offeringId: true, outOf: true, totalsJson: true, offering: { select: { course: { select: { code: true, scheme: { select: { passingRules: true } } } } } } } });
       for (const l of locks) {
@@ -1018,7 +1034,7 @@ d("modules: the college's academics (4 October 2026)", () => {
    * write that went round the one writer.
    */
   it("college-prn: the seat's PRN is the record's", async () => {
-    const colleges = await db.school.findMany({ where: { kind: { in: ["COLLEGE", "AUTONOMOUS_COLLEGE"] }, OR: [{ slug: { startsWith: "zz-" } }, { id: { in: schools.map((s) => s.id) } }, { slug: "saraswati-college" }] }, select: { id: true, name: true } });
+    const colleges = await db.school.findMany({ where: { kind: { in: ["COLLEGE", "AUTONOMOUS_COLLEGE"] }, ...(SCOPE.length ? { id: { in: schools.map((s) => s.id) } } : { OR: [{ slug: { startsWith: "zz-" } }, { id: { in: schools.map((s) => s.id) } }, { slug: "saraswati-college" }] }) }, select: { id: true, name: true } });
     for (const s of colleges) {
       const seats = await db.studentProgramme.findMany({ where: { schoolId: s.id }, select: { prn: true, student: { select: { studentCode: true, pupilRecord: { select: { prn: true } } } } } });
       let checked = 0;
@@ -1044,10 +1060,7 @@ d("modules: the college exam cell (4 October 2026)", () => {
    * run; and an autonomous college's printing list counts the seats in its
    * hall, with the spare on top.
    */
-  async function examSchools() {
-    const colleges = await db.school.findMany({ where: { slug: { in: ["zz-vidya-college", "zz-shastri-college"] } }, select: { id: true, name: true } });
-    return [...schools.map((s) => ({ id: s.id, name: s.name })), ...colleges.filter((c) => !schools.some((s) => s.id === c.id))];
-  }
+  const examSchools = () => alsoReading(["zz-vidya-college", "zz-shastri-college"]);
 
   it("exam-sgpa: a term result's SGPA is its course rows' Σ credits × points ÷ Σ credits", async () => {
     const { sgpaCourses } = await import("@/lib/exam-cell-marks");
@@ -1095,10 +1108,7 @@ d("modules: the IQAC desk (4 October 2026)", () => {
    * ZZ Vidya College, where the fixture keeps a cycle and a filed AQAR, and ZZ
    * Shastri, where it keeps an engineering department's NBA SAR (5 Oct 2026).
    */
-  const audited = async () => {
-    const vidya = await db.school.findMany({ where: { slug: { in: ["zz-vidya-college", "zz-shastri-college"] } }, select: { id: true, name: true } });
-    return [...schools.map((s) => ({ id: s.id, name: s.name })), ...vidya.filter((v) => !schools.some((s) => s.id === v.id))];
-  };
+  const audited = () => alsoReading(["zz-vidya-college", "zz-shastri-college"]);
   const sha = async (text: string) => (await import("node:crypto")).createHash("sha256").update(text).digest("hex");
 
   it("iqac-cgpa: a cycle's stored CGPA is the CGPA of its latest metric scores", async () => {
@@ -1166,8 +1176,7 @@ d("modules: placement (4 October 2026)", () => {
   it("placement-season: a published season is what the offers and profiles give; internship credits stay within the policy", async () => {
     const { seasonDrift } = await import("@/lib/placement-analytics");
     const { AICTE_INTERNSHIP_BTECH } = await import("@edulink/contracts");
-    const vidya = await db.school.findMany({ where: { slug: "zz-vidya-college" }, select: { id: true, name: true } });
-    const audited = [...schools.map((s) => ({ id: s.id, name: s.name })), ...vidya.filter((v) => !schools.some((s) => s.id === v.id))];
+    const audited = await alsoReading(["zz-vidya-college"]);
     for (const s of audited) {
       const seasons = await db.placementSeason.count({ where: { schoolId: s.id } });
       for (const f of await seasonDrift(s.id)) note("placement-season", f.level, s.name, `batch ${f.batchYear}: ${f.detail}`);
@@ -1176,5 +1185,16 @@ d("modules: placement (4 October 2026)", () => {
       if (seasons || credited.length) note("placement-season", "INFO", s.name, `${seasons} season row(s) and ${credited.length} students' internship credits checked`);
     }
     expect(failsOf("placement-season")).toEqual([]);
+  });
+});
+
+d("the audit's scope (S4B-3, 5 October 2026)", () => {
+  // Runs last: every check above has noted what it found. Lines that name no school ("platform", "all", "server") are the platform's.
+  it("scope: a run scoped by DATA_AUDIT_SCHOOLS reports on the schools it names and no other", async () => {
+    if (!SCOPE.length) return;
+    const named = new Set(schools.map((s) => s.name));
+    const labels = [...new Set(findings.map((f) => f.school))].filter((l) => !named.has(l));
+    const others = new Set((await db.school.findMany({ where: { name: { in: labels } }, select: { name: true } })).map((s) => s.name));
+    expect([...new Set(findings.filter((f) => others.has(f.school)).map((f) => `${f.check}: ${f.school}`))]).toEqual([]);
   });
 });
