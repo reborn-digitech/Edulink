@@ -8,6 +8,7 @@
  *
  * Run: tsx --tsconfig scripts/tsconfig.json scripts/sweep.ts
  */
+import { streamedStatus } from "./streamed-status";
 import { PrismaClient } from "@prisma/client";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import { mkdir, writeFile, rm } from "node:fs/promises";
@@ -61,8 +62,12 @@ async function hit(actor: Actor | null, path: string): Promise<{ status: number;
         redirect: "manual",
       });
       const body = res.status === 200 ? await res.text() : "";
-      timings.push({ who: actor?.label ?? "anonymous", path, status: res.status, ms: Math.round(performance.now() - started) });
-      return { status: res.status, body, loc: res.headers.get("location") };
+      // A refusal thrown under a loading boundary streams as a 200 shell with
+      // the redirect or not-found digest in the payload; judge what the
+      // browser gets (scripts/streamed-status.ts, R-64).
+      const seen = streamedStatus(res.status, body, res.headers.get("location"));
+      timings.push({ who: actor?.label ?? "anonymous", path, status: seen.status, ms: Math.round(performance.now() - started) });
+      return { status: seen.status, body: seen.streamed ? "" : body, loc: seen.loc };
     } catch (error) {
       if (attempt >= 3) {
         // Three refusals of one page: the server, or the page? The health

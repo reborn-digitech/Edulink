@@ -267,6 +267,12 @@ export async function requestRecords(ctx: ActiveContext, membershipIds?: string[
   // or a ration-card answer from a family whose certificate details are done.
   const all = await officeRecords(ctx, false);
   const wanted = membershipIds && membershipIds.length > 0 ? new Set(membershipIds) : null;
+  // Every named pupil must be one of this school's: an id from another school (or
+  // none at all) is refused, not quietly skipped (the cross-school probe of 6 Oct 2026).
+  if (wanted) {
+    const own = new Set(all.rows.map((r) => r.studentMembershipId));
+    for (const id of wanted) if (!own.has(id)) throw new AccessError("access.entryNotFound", "NOT_FOUND");
+  }
   const targets = all.rows.filter((r) => (wanted ? wanted.has(r.studentMembershipId) && (r.missing.length > 0 || r.missingForFiling.length > 0) : r.missing.length > 0));
   const now = new Date();
   const families = new Set<string>();

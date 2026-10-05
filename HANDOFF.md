@@ -1,6 +1,6 @@
 # Shalaghar — handoff
 
-Written 2026-09-28 at commit `ff57b2d`; numbers refreshed 2026-10-05 at the close of the audit (on 62236666). This is the short map. The working rules a session must follow are in
+Written 2026-09-28 at commit `ff57b2d`; numbers refreshed 2026-10-06 at the close of the risks batch (on de8d160c). This is the short map. The working rules a session must follow are in
 [CLAUDE.md](CLAUDE.md), which Claude Code reads on its own. The long operator's manual is
 [apps/web/README.md](apps/web/README.md); the decisions are in [docs/decisions](docs/decisions);
 the audits are in [docs/data-audit](docs/data-audit) and [docs/security](docs/security).
@@ -86,10 +86,10 @@ packages/i18n        en / hi / mr dictionaries; every user-facing sentence is a 
 packages/api-client  The bearer-token fetch wrapper the phone uses.
 packages/tokens      Design tokens shared by web and phone: palettes, role accents, and the light frame
                      (navy menu and bars, tinted canvas, role-colour wash) chosen 2026-09-30.
-docs/api/openapi.json  Generated from the API catalog (npm run api:docs). 1,028 endpoints.
+docs/api/openapi.json  Generated from the API catalog (npm run api:docs). 1,102 endpoints.
 ```
 
-**Data.** Postgres, Prisma, 291 models, 88 migrations (counted 5 October 2026). Every school-owned table carries
+**Data.** Postgres, Prisma, 304 models, 96 migrations (counted 6 October 2026). Every school-owned table carries
 `schoolId` and is behind row-level security. The policies are generated (`npm run rls:generate`) and
 verified (`npm run rls:verify`); the app connects as `edulink_app`, which owns nothing and cannot
 bypass RLS, and sets the tenant per query inside its own transaction (`$tenantTransaction`, never a
@@ -137,10 +137,10 @@ cd apps/mobile && npx expo start --web   # phone's web target on :8081, needs th
 The verification chain a change is expected to pass, in order:
 
 1. `npm run typecheck`, scripts tsc, `eslint .`
-2. `npx vitest run` (3,563 tests passed in 330 files on 5 October 2026, 68 skipped; two audit suites are gated behind `DATA_AUDIT=1`)
+2. `npx vitest run` (3,815 tests passed in 375 files on 6 October 2026, 70 skipped; two audit suites are gated behind `DATA_AUDIT=1`)
 3. `npm run rls:verify` after any schema or policy change; `npm run api:docs` after any catalog or contract change
 4. `npm run i18n -- --max 113` (the count of hardcoded English; a job name counts as a string)
-5. Phone: `npm run battery` in `apps/mobile` (tsc, eslint, jest 1,736 tests in 216 suites on 5 October 2026 with coverage and the gates, Maestro check)
+5. Phone: `npm run battery` in `apps/mobile` (tsc, eslint, jest 1,792 tests in 219 suites on 6 October 2026 with coverage and the gates, Maestro check)
 6. `npm run sweep` (593 page loads by role) and `npm run api:sweep` (2,335 calls, every role against every door; run twice, the first warms the dev server). `--cross=school` and `--cross=person` are the tenant-isolation probes.
 7. `npm run build` with the dev server stopped, then `rm -rf .next`
 8. `npm run data:audit` when derived data or fixtures change (47 checks against the demo schools and ZZ Northgate)
@@ -177,7 +177,13 @@ notices it caused its actors, so a run leaves the fixtures as it found them.
   point and carries the commits, what stays open and how to rerun each layer; `08-remaining-risks.md` holds the
   decisions for the owner. Not run after the fixes: `api:sweep`, the page sweep, `next build`, the full axe walk,
   the Linux e2e baselines (controls are now 48 px and every card is rounded, so they need a CI dispatch with
-  `update_snapshots`).
+  `update_snapshots`). **The risks batch of 5 and 6 October** (section 10 of `00-overview.md`) then built or
+  decided every open finding and every remaining risk in seven area commits (`602d2bf0` to `de8d160c`): 85 of
+  86 findings fixed and the last one waiting on an owner's question; every risk row carrying a status (fixed,
+  decided with its pin, or the exact question for the owner); nine new small modules at a college (homework on
+  offerings, appointment letters, council notices, the reading-room register, pre-placement talks, soft-skills
+  training, a signed punch feed, Tally export, the peer-team visit file). Not built on purpose: R-4 (phone
+  parity of the college desks) and R-5 with R-56 (the clinical and studio desks); both keep their rows in 08.
 
 Recent history, newest first: seven derived-value fixes (ff57b2d); sweep reads the fixture school's
 calendar (c5a63c2); two Sunday-fragile tests (94ed3d6); nine audit fixes and the `accounts:tidy` job

@@ -276,6 +276,9 @@ describe("the pupil record", () => {
     const onlyMissing = await (await recordsGet(get("/api/v1/office/pupil-records?missing=1"))).json();
     expect(onlyMissing.rows.map((r: { studentMembershipId: string; missing: string[] }) => [r.studentMembershipId, r.missing.length])).toEqual([[pupilA, 2], [pupilB, 9]]);
 
+    // A pupil id that is not this school's (another school's, or invented) is refused, not skipped.
+    res = await requestPost(json("/api/v1/office/pupil-records/request", { membershipIds: [pupilA, "c" + "z".repeat(24)] }));
+    expect(res.status).toBe(404);
     res = await requestPost(json("/api/v1/office/pupil-records/request", {}));
     expect(await res.json()).toEqual({ asked: 2, families: 1 });
     const told = await db.notification.findMany({ where: { userId: { in: [parentUserId, pupilAUserId] }, schoolId }, select: { userId: true, url: true, kind: true } });

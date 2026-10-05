@@ -216,6 +216,8 @@ export type SweepFixture = {
   admissionSlotId: string | null;
   cancelledSlotId: string | null;
   applicationId: string | null;
+  /** This school's first attendance device (zz-college-extras.ts makes one at Vidya and one at Northgate), for the device doors. */
+  attendanceDeviceId: string | null;
   offeredApplicationId: string | null;
   acceptedApplicationId: string | null;
   admittedApplicationId: string | null;

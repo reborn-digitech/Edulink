@@ -10,11 +10,16 @@ import { requireApiSession } from "@/lib/api-reads/shared";
  * never a side (a pupil, a guardian) gets the 404 the GET gives it rather than
  * the lib's "not yours", so this is not a way to learn which ids exist.
  */
+/** The sides of a booking (api-catalog/account.ts BOOKING_SIDES): the school's office or teacher, and the expert. */
+const BOOKING_SIDES = ["ADMIN", "TEACHER", "EXPERT"];
+
 export async function POST(_request: Request, { params }: { params: Promise<{ bookingId: string }> }) {
   try {
     const ctx = await requireApiSession();
     const { bookingId } = await params;
-    if (ctx.role !== "ADMIN" && ctx.role !== "TEACHER" && ctx.role !== "EXPERT") throw new AccessError("access.bookingNotFound", "NOT_FOUND");
+    // Role before the id or the body: a side the door is not for is refused 403 (the catalog's BOOKING_SIDES), whatever the id says.
+    if (!BOOKING_SIDES.includes(ctx.role ?? "")) throw new AccessError("access.wrongRoleForThisAction");
+
     await cancelBooking(ctx, bookingId);
     return ok(okSchema.parse({ ok: true }));
   } catch (error) {

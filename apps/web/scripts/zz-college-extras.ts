@@ -116,6 +116,16 @@ export async function buildCollegeExtras(db: PrismaClient): Promise<{ talks: num
     create: { id: F.device, schoolId, name: "ZZ Main gate reader", kind: "RFID", location: "ZZ Main gate", scope: "BOTH", keySealed, keyLast4, keyVersion: 1, createdByUserId: admin.userId },
     update: { disabledAt: null, scope: "BOTH", keySealed, keyLast4 },
   });
+  // The same reader at ZZ Northgate School, so the school's ADMIN actor has a device of its own (the API sweep's device doors).
+  const northgate = await db.school.findUnique({ where: { slug: "zz-northgate-school" }, select: { id: true } });
+  const northgateAdmin = northgate ? await db.membership.findFirst({ where: { schoolId: northgate.id, role: "ADMIN", status: "ACTIVE" }, select: { userId: true } }) : null;
+  if (northgate && northgateAdmin) {
+    await db.attendanceDevice.upsert({
+      where: { id: F.deviceNorthgate },
+      create: { id: F.deviceNorthgate, schoolId: northgate.id, name: "ZZ Main gate reader", kind: "RFID", location: "ZZ Main gate", scope: "BOTH", keySealed: "", keyLast4: "", keyVersion: 1, createdByUserId: northgateAdmin.userId },
+      update: { disabledAt: null, scope: "BOTH" },
+    });
+  }
   await db.attendanceBadge.upsert({ where: { schoolId_code: { schoolId, code: "CARD-ZZ-F01" } }, create: { id: F.badge, schoolId, code: "CARD-ZZ-F01", membershipId: faculty01.id, createdByUserId: admin.userId }, update: { membershipId: faculty01.id } });
   await db.attendanceBadge.upsert({ where: { schoolId_code: { schoolId, code: "CARD-ZZ-S02" } }, create: { schoolId, code: "CARD-ZZ-S02", membershipId: s02.id, createdByUserId: admin.userId }, update: { membershipId: s02.id } });
   await db.attendancePunch.deleteMany({ where: { deviceId: F.device } });

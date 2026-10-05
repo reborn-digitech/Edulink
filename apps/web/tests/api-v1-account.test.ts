@@ -436,12 +436,17 @@ describe("an expert booking", () => {
     expect(staff.viewerIsExpert).toBe(false);
     expect(staff.canCancel).toBe(true);
 
+    // A side the door is not for is refused by role, before the id or the body is read (the API sweep of 6 Oct 2026):
+    // 403 for a real booking and for an id nobody holds alike, so a pupil learns nothing from the difference.
     await asPupil();
     const pupil = await bookingGet(get(), p(bookingId));
-    expect(pupil.status).toBe(404);
-    expect(await pupil.json()).toMatchObject({ code: "NOT_FOUND" });
+    expect(pupil.status).toBe(403);
+    expect(await pupil.json()).toMatchObject({ code: "FORBIDDEN" });
+    expect((await bookingGet(get(), p("zz-no-such-booking"))).status).toBe(403);
+    expect((await bookingMessagePost(json({}), p(bookingId))).status).toBe(403);
+    expect((await bookingCancelPost(post(), p(bookingId))).status).toBe(403);
     await asParent();
-    expect((await bookingGet(get(), p(bookingId))).status).toBe(404);
+    expect((await bookingGet(get(), p(bookingId))).status).toBe(403);
   });
 
   it("a message needs a body; one lands and reads back as mine", async () => {
@@ -460,13 +465,13 @@ describe("an expert booking", () => {
 
     // A pupil cannot write into it.
     await asPupil();
-    expect((await bookingMessagePost(json({ body: "ZZ hi" }), p(bookingId))).status).toBe(404);
+    expect((await bookingMessagePost(json({ body: "ZZ hi" }), p(bookingId))).status).toBe(403);
     expect(await db.expertMessage.count({ where: { bookingId } })).toBe(1);
   });
 
   it("a pupil cannot cancel it; the school can, and then it cannot be cancelled again", async () => {
     await asPupil();
-    expect((await bookingCancelPost(post(), p(bookingId))).status).toBe(404);
+    expect((await bookingCancelPost(post(), p(bookingId))).status).toBe(403);
     expect((await db.expertBooking.findUniqueOrThrow({ where: { id: bookingId } })).status).not.toBe("CANCELLED");
 
     await asTeacher();

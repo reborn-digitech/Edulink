@@ -82,6 +82,16 @@ describe("POST /api/attendance in the catalog", () => {
     for (const body of bodies) expect(attendanceRegisterBodySchema.safeParse(body).success, JSON.stringify(body).slice(0, 80)).toBe(attendanceBatchSchema.safeParse(body).success);
   });
 
+  it("a batch naming only pupils who are not in the class is refused with 422, not answered 200 with the rejections", async () => {
+    const e = door("POST", "/api/attendance");
+    const body = e.sampleBody!(fixture()) as { marks: { studentMembershipId: string }[] };
+    await signInAs("TEACHER");
+    const res = await attendancePost(post("/api/attendance", { ...body, marks: body.marks.map((m) => ({ ...m, studentMembershipId: "c" + "z".repeat(24) })) }));
+    const answer = await res.json();
+    expect([res.status, answer]).toEqual([422, expect.objectContaining({ rejected: [expect.objectContaining({ studentMembershipId: "c" + "z".repeat(24) })] })]);
+    expect(await db.attendanceSession.count({ where: { schoolId, classId } })).toBe(0);
+  });
+
   it("the sweep's sample is a register it may write: stored once and audited, then a replay with the same answer", async () => {
     const e = door("POST", "/api/attendance");
     const body = e.sampleBody!(fixture());

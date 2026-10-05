@@ -337,6 +337,7 @@ async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
     examSeriesId: await first(db.examSeries.findFirst({ where: { schoolId: s, archivedAt: null }, select: { id: true } })),
     examSlotId: await first(db.examSlot.findFirst({ where: { schoolId: s }, select: { id: true } })),
     assignmentId: await first(db.assignment.findFirst({ where: { schoolId: s }, select: { id: true } })),
+    attendanceDeviceId: await first(db.attendanceDevice.findFirst({ where: { schoolId: s }, orderBy: { id: "asc" }, select: { id: true } })),
     postId: await first(db.post.findFirst({ where: { schoolId: s }, select: { id: true } })),
     heldCommentId: await first(db.comment.findFirst({ where: { schoolId: s, status: "PENDING" }, orderBy: { createdAt: "asc" }, select: { id: true } })),
     // The fixture's own two rows, by id (zz-fixtures.ts `buildWaiting`), made new first: a request
@@ -1002,7 +1003,10 @@ async function main() {
       // the half of the contract an empty body cannot prove.
       if (goodBody && role && e.method !== "GET" && (e.access === "signed-in" || Array.isArray(e.access)) && actorPermits(e, role)) {
         const answer = await hit(e, tokens[role], path, JSON.stringify(goodBody));
-        const want = refusedOnClosedDay(e) ? [403] : [200, 201];
+        // A status the catalog declares for this role (statusByRole: a Northgate sample is another tenant's row to a college
+        // actor, an HOD may not write a college-wide visit) is the valid-body answer too; otherwise a permitted role gets through.
+        const declared = e.statusByRole?.[role];
+        const want = refusedOnClosedDay(e) ? [403] : declared !== undefined ? declared : [200, 201];
         results.push({ endpoint: `${e.method} ${e.path} (valid body)`, role, expected: wanted(want, off), got: answer.status, ok: judge(want, off, answer) });
       }
     }

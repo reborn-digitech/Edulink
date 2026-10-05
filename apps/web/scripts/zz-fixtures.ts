@@ -2560,6 +2560,11 @@ async function main() {
   const payroll = await buildPayroll(db, northgate.school, northgate.admin.id);
   // The college foundation (4 Oct 2026): ZZ Vidya College with every module and a person in every college role, ZZ Shastri Autonomous College, and a recruiter.
   const colleges = await buildColleges(db, ctx.passwordHash);
+  // The same locked payroll month at ZZ Vidya College (6 Oct 2026): the ACCOUNTS actor lives there, and the API sweep's
+  // valid-body probe of POST /admin/payroll/runs/{month}/share needs a run of its own school to share (it answered 404).
+  const vidyaAdmin = await db.membership.findFirst({ where: { schoolId: colleges.vidya.id, role: "ADMIN", status: "ACTIVE" }, select: { userId: true } });
+  const collegePayroll = vidyaAdmin ? await buildPayroll(db, { id: colleges.vidya.id, code: colleges.vidya.code }, vidyaAdmin.userId) : null;
+  if (collegePayroll) console.log(`  Payroll at ZZ Vidya College: ${collegePayroll.slips} slips for ${collegePayroll.month}${collegePayroll.made ? "" : " (already there)"}`);
   // The college's academics (4 Oct 2026): Vidya's departments, scheme, courses, this term, PHY101's twenty lectures, a condonation and locked internal marks (zz-academics.ts).
   const academics = await buildAcademics(db);
   if (academics) console.log(`  Academics at ZZ Vidya College: ${academics.lectures} PHY101 lectures, internal marks ${academics.locked ? "locked" : "open"}`);

@@ -18,6 +18,8 @@ export const COLLEGE_EXTRAS_FIXTURE = {
   futureSession: pad("zztrsess", 3),
   /** "ZZ Main gate reader", scope BOTH; its key is sealed and known to nobody (the fixture prints none). */
   device: pad("zzpunchdev", 1),
+  /** The same reader at ZZ Northgate School, so the school's ADMIN actor has a device of its own to edit and rotate. */
+  deviceNorthgate: pad("zzpunchdev", 2),
   badge: pad("zzbadge", 1),
   /** The NAAC peer-team visit of Vidya's cycle: a schedule of three slots and four evidence lines. */
   visit: pad("zzvisit", 1),

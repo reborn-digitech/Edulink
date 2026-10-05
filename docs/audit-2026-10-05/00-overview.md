@@ -105,7 +105,10 @@ the same fault.
 | `62236666` | The functional, validation, permission and parity fixes and the Medium clean-up: 27 findings fixed, two partly, one declined; the revaluation fee repair, validation on offers, ages, scores, homework and sanctions, ACCOUNTS and moot-court parity, doors for ten web-only writes, `/id-check` for staff. |
 | the closing commit | This refresh: this overview, the changelog hashes, HANDOFF.md and `docs/college.md`, and the phone's AM/PM time (`apps/mobile/src/lib/dates.ts`). |
 
-## 6. What remains open, and who owns it
+## 6. What remains open, and who owns it (as of 5 October; see section 10)
+
+
+Superseded on 6 October 2026 by section 10: the risks batch built or decided every row of this table except the ones section 10 lists as still open.
 
 From the Status cells of `02-findings.md` and `08-remaining-risks.md` (sections A, F and the carried G4 list).
 
@@ -129,7 +132,7 @@ From the Status cells of `02-findings.md` and `08-remaining-risks.md` (sections 
 | R-15, R-16: layers not run; CI refused on billing since `84cc987` | Owner | See section 7 and 8; clear billing, then dispatch the Linux baselines. |
 | The 34 decisions of 4 October (G4-1 to G4-34) | Owner | Carried forward in `08` section D, each with a recommendation. |
 
-## 7. What is untested
+## 7. What is untested (as of 5 October; section 10 says what the risks batch ran)
 
 Taken from the commit messages and the layers' lists; nothing here has been run.
 
@@ -183,3 +186,30 @@ build` against the running server; the sweeps only when asked (CLAUDE.md and the
 
 Weekly meter, as the coordinator gave it (read the live figure with the usage tool if it matters): request 2
 about 5 points and request 3 about 18, taking the weekly meter from 56 % at the start to 71 % at the close.
+
+## 10. The risks batch of 5 and 6 October 2026
+
+The owner's next ask, after the closing refresh: "fix the 5 open findings and the remaining risks as well". A Sonnet planner read `02-findings.md` and `08-remaining-risks.md` and placed all 99 ids once (`scratchpad/briefs/risks/plan.md`): 33 code fixes, 28 decisions whose recommended option is a code change (applied as recommended), 25 decisions whose recommended option is "keep" (applied by a pin: a comment where the rule lives, an existing test or a docs line, and "decided, keep" written under the row in 08), and 13 owner-only questions (kept in 08 with the exact question under "Question for the owner:", plus four questions split off rows that were otherwise built: the adult pupil's own slip answer, the internship diary cap, the device pass, the NIRF band minimums). Seven Opus builders ran in parallel from `scratchpad/briefs/risks/p*.md`: 1A and 1B (library and doors; 1B owned the migrations), 2 (pages), 3 (phone), 4 (scripts, fixtures, docs, the pins and the questions), 5A and 5B (the larger builds the plan had sized in weeks: homework at a college, appointment letters, council notices, the reading-room register, pre-placement talks, soft-skills training, a biometric punch feed, Tally export, the peer-team visit file). Their reports are `scratchpad/reports/risks-p*.md`.
+
+Deliberately not built in this wave, because they are new desks rather than fixes and the weekly meter would not cover them: R-4 (phone parity of the college desks, tranche one about two weeks) and R-5 with R-56 (the clinical desk for HEALTH_SCIENCES and PHARMACY and the studio desk for ARCHITECTURE, five to seven weeks); their duties stay hidden until built. Both keep their rows in 08.
+
+The commits, by area (a page edited by two packages lands with the pages; the files every package appended to landed first):
+
+| Hash | What |
+| --- | --- |
+| `602d2bf0` | The shared files: schema and eight migrations, rls.sql (318 policies), contracts, the catalog (1,102 endpoints), dictionaries, safety labels, nav, the docs with every status set. |
+| `d3b93625` | The library and doors (packages 1A and 1B): the grade-card check by code, three page-only screens given doors, the outsized-offer confirmation, twelve web-only writes given doors, the duty and expulsion items, the bare-client guard (R-49: one more instance found, the library fine's demand), the slip budget, the application's answer-by day, samples for every door, the one PAN writer, and the twenty-one decisions applied as code. |
+| `eb16387e` | The pages (package 2): sixteen action files on ActionForm, the two last targets under 44 px, coded words in the reader's language, the family's slip answer on the web, the analytics definitions, and every join with the new doors. |
+| `cd5bec9d` | The phone (package 3): the leave decider by role, Messages for the four college desks, celebrations and the practice journey, the TPO's offer with the confirmation, the account's language, the slip answer, the lab day, the moot's canEdit, the answer-by day, the exam deep links, the provisional label. |
+| `cfe5238c` | Scripts, fixtures and docs (package 4): the ZZ-only cleanup of empty registers (data:audit 0 FAIL), two-hour renewed sweep sessions, the warm page sweep, the health route's uptime, the admission-fee audit check, the demo calendar, the release checklist, the 25 pins and the 13 questions. |
+| `84cc9216` | The larger builds, first half (5A): homework at a college on `Assignment.offeringId`, appointment letters, student council notices, the reading-room register. |
+| `de8d160c` | The larger builds, second half (5B): pre-placement talks, soft-skills training, the signed punch feed with per-device keys, Tally export, the peer-team visit file. |
+| the closing commit | The changelog hashes, this section, HANDOFF.md, seven files the area commits missed, and the sweep results below. |
+
+Findings after the batch: 85 fixed, 1 partly (A3-S-15, whose last item is the owner's question), none open, none declined, of 86. Risks: every row of 08 carries a status line (fixed, decided with its pin, or the question), with R-4, R-5 and R-56 left to build.
+
+Verified on the combined tree before the commits: web, scripts, contracts and phone tsc exit 0; eslint --max-warnings=0 on the 353 changed web files and the phone's; the whole web suite 375 files passed, 2 skipped, 3,815 tests passed, 70 skipped, of 3,886 (one admissions-dates failure at the midnight rollover, 7 passed alone); the phone battery 219 suites, 1,792 tests, lines 97.71 %; rls:verify "All checks passed"; tenancy-shape 11 tests at 304 models; api:docs 1,102; i18n 113 ≤ 113; data:audit 0 FAIL, 0 WARN, 68 INFO; `corepack pnpm audit` 7 vulnerabilities (4 moderate, 3 high, 2 ignored), the same seven; the full `zz:fixtures` run exit 0. After the commits, as R-15 asks: the page sweep read 817/915 twice (98 refusals streamed as 200 under the loading boundaries of a641052b, R-64), then 915/915 twice once the sweep read the digest; the cross-school probe 394/396 and the cross-person probe 74/75 at first (two doors answering 200 to a foreign id without a leak, R-65, fixed in the closing commit with a test each), then 396/396 and 75/75; the API sweep in ten `--only` chunks with `zz:fixtures` before each (scratchpad/risks-sweep/run-chunks.sh; logs beside it), one pass of 19,633 calls over the 1,102 doors: 19,613 as expected and 20 unexpected (A 2,473/2,476, B 1,729/1,731, C 1,575/1,575, D 1,855/1,855, E 2,003/2,003, F 1,829/1,830, G 2,060/2,062, H 2,123/2,124, I 1,871/1,880, J 2,095/2,097). None of the 20 was a leak; each was a sample or fixture gap (the entrance-test sample on a sitting still ahead, the attendance device and the payroll run that existed only at one of the two fixture schools, a sanction above the claim's fees, a talk already held) or a handler that read the id or the body before the role (the three account booking doors and the mentoring close, now 403 by role first), or a status the catalog had declared for the role that the valid-body probe did not read (the HOD on a college-wide visit, the ACCOUNTS actor on another tenant's fee head; the probe honours `statusByRole` now). After the fixes and a fixture rebuild, a targeted rerun over those doors read 938/938. The whole pass was not rerun; the chunk figures above are the one pass as it ran.
+
+Untested after this batch: `next build` (the owner stops :3000 for it); the Linux e2e baselines (CI refused on billing, R-16); every new page in a browser and every new phone screen on a device; the punch door with a real reader and the Tally files in a real Tally; real mail and carrier delivery of the opt-out texts and the disable notices; Hindi and Marathi read by a speaker (R-14); the device pass in `docs/release-checklist.md`.
+
+Cost: the weekly meter read 72 % when the planner started and 81 % at the close of the batch (about 9 points: seven Opus builders, one Sonnet planner, the coordinator on Fable).

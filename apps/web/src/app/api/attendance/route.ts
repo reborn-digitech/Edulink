@@ -73,6 +73,12 @@ const timed = withMetrics("attendance", async (request: Request) => {
       actorUserId: ctx.user.id,
     });
 
+    // Nothing valid: every mark named a pupil who is not in this class, so the
+    // batch is refused rather than answered 200 with the rejections alone (the
+    // cross-person probe of 6 Oct 2026; the phone's outbox treats a 4xx as final).
+    if (result.sessionId === null && result.rejected.length > 0) {
+      return NextResponse.json({ error: (await getT())("attendance.dataInvalid"), rejected: result.rejected }, { status: 422 });
+    }
     return NextResponse.json(result, { status: 200 });
   } catch (error) {
     if (error instanceof AccessError) {
