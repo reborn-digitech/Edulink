@@ -4,8 +4,9 @@ import { getT } from "@/lib/i18n/server";
 import { listBoarders, listVisitors } from "@/lib/hostel";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { WardenFrame, inputClass, wardenContext, when } from "@/components/hostel/parts";
+import { WardenFrame, wardenContext, when } from "@/components/hostel/parts";
 import { visitorInAction, visitorOutAction } from "../actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -30,7 +31,7 @@ export default async function HostelVisitorsPage({ searchParams }: { searchParam
               <input type="hidden" name="back" value={back} />
               <label className="text-sm font-medium text-fg">
                 {t("hostel.toSee")}
-                <select name="allotmentId" required className={inputClass}>
+                <select name="allotmentId" required className={fieldClass("mt-1.5 block")}>
                   {boarders.items.map((b) => (
                     <option key={b.allotmentId} value={b.allotmentId}>
                       {b.name} · {b.hostelName} {b.roomNumber}
@@ -40,15 +41,15 @@ export default async function HostelVisitorsPage({ searchParams }: { searchParam
               </label>
               <label className="text-sm font-medium text-fg">
                 {t("hostel.visitorName")}
-                <input name="name" required maxLength={80} className={inputClass} />
+                <input name="name" required maxLength={80} className={fieldClass("mt-1.5 block")} />
               </label>
               <label className="text-sm font-medium text-fg">
                 {t("hostel.relation")}
-                <input name="relation" required maxLength={40} className={inputClass} />
+                <input name="relation" required maxLength={40} className={fieldClass("mt-1.5 block")} />
               </label>
               <label className="text-sm font-medium text-fg">
                 {t("hostel.note")}
-                <input name="note" maxLength={200} className={inputClass} />
+                <input name="note" maxLength={200} className={fieldClass("mt-1.5 block")} />
               </label>
               <div className="sm:col-span-2">
                 <Button type="submit">{t("hostel.signVisitorIn")}</Button>
@@ -60,7 +61,7 @@ export default async function HostelVisitorsPage({ searchParams }: { searchParam
       <form action="/hostel/visitors" method="get" className="flex flex-wrap items-end gap-2">
         <label className="text-sm font-medium text-fg">
           {t("hostel.day")}
-          <input type="date" name="date" defaultValue={book.dateKey} className={inputClass} />
+          <input type="date" name="date" defaultValue={book.dateKey} className={fieldClass("mt-1.5 block")} />
         </label>
         <Button type="submit" variant="secondary">
           {t("hostel.open")}

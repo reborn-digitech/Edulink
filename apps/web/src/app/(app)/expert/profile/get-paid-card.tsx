@@ -11,6 +11,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { useT } from "@/lib/i18n";
+import { formatUtcMoment } from "@/lib/dates";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 type Route = ExpertPayout["payout"]["route"];
@@ -153,7 +154,7 @@ export function GetPaidCard({ initial }: { initial: ExpertPayout }) {
           </div>
         )}
         {payout.payeeName && (
-          <div className="space-y-1 rounded-md border border-border p-3" data-testid="route-status">
+          <div className="space-y-1 rounded-[var(--radius-md)] border border-border p-3" data-testid="route-status">
             <Badge tone={ROUTE_TONE[route.status]}>{t(ROUTE_KEY[route.status])}</Badge>
             {route.needsResend && <p className="text-sm text-warn">{t("gigs.routeNeedsResend")}</p>}
             {route.requirements.map((r) => (
@@ -165,7 +166,8 @@ export function GetPaidCard({ initial }: { initial: ExpertPayout }) {
             {route.checkedAt && (
               <p className="text-xs text-fg-muted">
                 {t("gigs.routeCheckedLine", {
-                  date: new Date(route.checkedAt).toLocaleString(),
+                  // Not toLocaleString: the server and the browser printed it in two locales and hydration failed (A3-states-7).
+                  date: formatUtcMoment(new Date(route.checkedAt)),
                 })}
               </p>
             )}

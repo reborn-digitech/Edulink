@@ -14,6 +14,7 @@ import { TakePaymentForm } from "./take-payment-form";
 import { PaymentsTable } from "./payments-table";
 import { ConcessionsPanel } from "./concessions-panel";
 import { AssignPlanForm } from "./assign-plan-form";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -28,8 +29,8 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function PupilFeesPage({ params }: { params: Promise<{ studentMembershipId: string }> }) {
   const t = await getT();
   const locale = await getLocale();
-  const ctx = await requireRole("ADMIN", "PRINCIPAL");
-  const office = ctx.role === "ADMIN";
+  const ctx = await requireRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
+  const office = ctx.role === "ADMIN" || ctx.role === "ACCOUNTS";
   const { studentMembershipId } = await params;
   const school = await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } });
   const today = todayKey(school.timezone);
@@ -71,7 +72,7 @@ export default async function PupilFeesPage({ params }: { params: Promise<{ stud
             <CardHeader title={t("fees.pupilPlan")} description={ledger.plan ? ledger.plan.structureName : t("fees.pupilNoPlan")} />
             {office && ledger.year && (
               <CardBody>
-                <AssignPlanForm studentMembershipId={p.studentMembershipId} structures={published} currentStructureId={ledger.plan?.structureId ?? null} />
+                <AssignPlanForm studentMembershipId={p.studentMembershipId} structures={published} currentStructureId={ledger.plan?.structureId ?? null} academicYearId={ledger.year.id} />
               </CardBody>
             )}
           </Card>
@@ -99,28 +100,30 @@ export default async function PupilFeesPage({ params }: { params: Promise<{ stud
                             <span className="text-ok">{money(d.paidPaise)}</span> <span className="text-fg-muted">/</span> <strong className="text-fg">{money(d.netPaise)}</strong>
                           </span>
                         </summary>
-                        <table className="mt-2 w-full text-xs text-fg-muted">
-                          <thead>
-                            <tr className="text-left uppercase tracking-wide">
-                              <th className="py-1 pr-3 font-medium">{t("fees.receiptHead")}</th>
-                              <th className="py-1 pr-3 text-right font-medium">{t("fees.lineGross")}</th>
-                              <th className="py-1 pr-3 text-right font-medium">{t("fees.lineConcession")}</th>
-                              <th className="py-1 text-right font-medium">{t("fees.lineNet")}</th>
-                            </tr>
-                          </thead>
-                          <tbody className="tabular-nums">
-                            {d.lines.map((l) => (
-                              <tr key={l.headId}>
-                                <td className="py-1 pr-3">
-                                  {l.name} <span className="font-mono">{l.code}</span>
-                                </td>
-                                <td className="py-1 pr-3 text-right">{money(l.grossPaise)}</td>
-                                <td className="py-1 pr-3 text-right">{l.concessionPaise > 0 ? `−${money(l.concessionPaise)}` : "—"}</td>
-                                <td className="py-1 text-right text-fg">{money(l.grossPaise - l.concessionPaise)}</td>
+                        <TableScroll className="mt-2">
+                          <table className="w-full text-xs text-fg-muted">
+                            <thead>
+                              <tr className="text-left uppercase tracking-wide">
+                                <th className="py-1 pr-3 font-medium">{t("fees.receiptHead")}</th>
+                                <th className="py-1 pr-3 text-right font-medium">{t("fees.lineGross")}</th>
+                                <th className="py-1 pr-3 text-right font-medium">{t("fees.lineConcession")}</th>
+                                <th className="py-1 text-right font-medium">{t("fees.lineNet")}</th>
                               </tr>
-                            ))}
-                          </tbody>
-                        </table>
+                            </thead>
+                            <tbody className="tabular-nums">
+                              {d.lines.map((l) => (
+                                <tr key={l.headId}>
+                                  <td className="py-1 pr-3">
+                                    {l.name} <span className="font-mono">{l.code}</span>
+                                  </td>
+                                  <td className="py-1 pr-3 text-right">{money(l.grossPaise)}</td>
+                                  <td className="py-1 pr-3 text-right">{l.concessionPaise > 0 ? `−${money(l.concessionPaise)}` : "—"}</td>
+                                  <td className="py-1 text-right text-fg">{money(l.grossPaise - l.concessionPaise)}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </TableScroll>
                       </details>
                     </li>
                   ))}

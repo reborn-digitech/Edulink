@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { getT } from "@/lib/i18n/server";
 import { z } from "zod";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
+import { RuleRefusal } from "@/lib/rule-refusal";
 import { createAssignment, saveGrades, publishAssignment } from "@/lib/grading";
 import { assignmentSchema, gradeSchema, fieldErrors, type FieldErrors } from "@/lib/validation";
 import { storeAttachments, discard, AttachmentError } from "@/lib/uploads";
@@ -42,6 +43,7 @@ export async function newAssignment(formData: FormData): Promise<AssignmentState
     points: points === null || points === "" ? undefined : Number(points),
     dueAt: String(formData.get("dueAt") ?? ""),
     publish: formData.get("publish") === "true",
+    confirmPastDue: formData.get("confirmPastDue") === "true",
   });
   // Validate the assignment before writing any bytes, so a rejected form does
   // not leave handouts on disk.
@@ -67,6 +69,8 @@ export async function newAssignment(formData: FormData): Promise<AssignmentState
   } catch (error) {
     // Nothing will reference these now, and nothing can reach them either.
     await discard(attachments.map((a) => a.fileId));
+    // A due date already past, not confirmed (A3-journeys-25): said beside the date, where the tick box is.
+    if (error instanceof RuleRefusal) return { ok: false, errors: { dueDate: (await getT())(error.key, error.vars) } };
     if (error instanceof AccessError)
       return { ok: false, errors: { _form: (await getT())(error.key, error.vars) } };
     console.error("[newAssignment]", error);

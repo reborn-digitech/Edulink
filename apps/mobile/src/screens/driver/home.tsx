@@ -5,6 +5,7 @@ import { driverTodaySchema, minuteLabel, type DriverToday, type RosterEntry } fr
 import { Button, Card, Empty, Failed, Field, Loading, Screen, Text } from "@/components";
 import { api, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
+import { formatDate } from "@/lib/dates";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useSession } from "@/lib/session";
@@ -48,6 +49,9 @@ export function DriverHome() {
   });
   const live = query.data?.trips.find((x) => x.status === "LIVE") ?? null;
   const tracking = useRef<string | null>(null);
+  // Whether the phone is really sending: a trip started with a reason because
+  // location was refused runs without it, and the banner must not claim it (A3-journeys-37).
+  const [sending, setSending] = useState<boolean | null>(null);
   const waiting = useQuery({ queryKey: ["transport", "waiting"], enabled: Boolean(live), queryFn: waitingPositions, refetchInterval: 5_000 });
 
   useEffect(() => {
@@ -58,9 +62,10 @@ export function DriverHome() {
     if (!query.data) return;
     if (live && tracking.current !== live.id) {
       tracking.current = live.id;
-      void startTracking(live.id, { title: t("transport.foregroundTitle"), body: t("transport.foregroundBody") });
+      void startTracking(live.id, { title: t("transport.foregroundTitle"), body: t("transport.foregroundBody") }).then((r) => setSending(r === "started"));
     } else if (!live && tracking.current) {
       tracking.current = null;
+      setSending(null);
       void stopTracking();
     }
   }, [live, query.data, t]);
@@ -69,13 +74,13 @@ export function DriverHome() {
   const refresh = () => void client.invalidateQueries({ queryKey: ["transport"] });
   const d = query.data;
   return (
-    <Screen title={t("transport.driverTitle")} description={d?.dateKey} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
+    <Screen title={t("transport.driverTitle")} description={d ? formatDate(d.dateKey) : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {d?.consent.needed ? <Consent onDone={refresh} /> : null}
       {live ? (
         <Card title={t("transport.tripLive")}>
-          <Text>{t("transport.sending")}</Text>
+          {sending === false ? <Text tone="warn">{t("transport.notSending")}</Text> : sending ? <Text>{t("transport.sending")}</Text> : null}
           {waiting.data ? (
             <Text tone="warn" variant="sm">
               {t("transport.queued", { count: waiting.data })}
@@ -178,6 +183,11 @@ function TripCard({ trip, consentNeeded, onChanged }: { trip: Trip; consentNeede
   }
 
   const isLive = trip.status === "LIVE";
+  // Pupils with neither tick, counted for the end prompt: the trip used to end on "Not ticked" without saying so (A3-journeys-37).
+  const unticked = trip.roster.filter((r) => {
+    const local = ticks[r.allotmentId] ?? {};
+    return !(local.boarded ?? Boolean(r.boardedAt)) && !(local.alighted ?? Boolean(r.alightedAt));
+  }).length;
   return (
     <Card title={t("transport.tripTitle", { bus: trip.busRegistration, direction: t(DIRECTION_KEY[trip.direction] ?? "transport.directionMorning") })}>
       <Text tone="muted" variant="sm">
@@ -200,7 +210,7 @@ function TripCard({ trip, consentNeeded, onChanged }: { trip: Trip; consentNeede
       {isLive ? (
         confirmEnd ? (
           <View style={{ gap: th.space[2] }}>
-            <Text>{t("transport.endConfirm")}</Text>
+            <Text>{unticked > 0 ? t("transport.endConfirmUnticked", { count: unticked }) : t("transport.endConfirm")}</Text>
             <Button label={t("transport.endTrip")} variant="danger" busy={busy} onPress={() => void end()} />
           </View>
         ) : (

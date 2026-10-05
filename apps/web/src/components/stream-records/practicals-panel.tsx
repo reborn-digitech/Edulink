@@ -5,12 +5,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { DateField, TextField } from "@/components/ui/field";
+import { ActionForm } from "@/components/ui/action-form";
 import { EmptyState } from "@/components/ui/states";
 import { TableScroll } from "@/components/ui/table-scroll";
-import { INPUT, NUM, TD, TH } from "@/components/module-flash";
+import { NUM, TD, TH } from "@/components/module-flash";
 import { formatDateKey } from "@/lib/dates";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { savePracticalsAction, signPracticalsAction } from "@/app/(app)/admin/stream-records/actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * THE PRACTICAL RECORD on the web (5 Oct 2026), one panel for the faculty
@@ -106,7 +108,8 @@ export function PracticalsPanel({ sheet, t, locale, base, today }: { sheet: Prac
         <Card>
           <CardHeader title={t("streamRecords.practicals.addTitle")} description={t("streamRecords.practicals.addBody")} />
           <CardBody>
-            <form action={savePracticalsAction} className="space-y-4">
+            {/* Answers in place (A3-journeys-27): a refused mark keeps the sheet as typed and its box is marked. */}
+            <ActionForm action={savePracticalsAction} className="space-y-4">
               <input type="hidden" name="offeringId" value={offering.offeringId} />
               <input type="hidden" name="back" value={base} />
               <div className="grid gap-3 sm:grid-cols-3">
@@ -124,13 +127,13 @@ export function PracticalsPanel({ sheet, t, locale, base, today }: { sheet: Prac
                         {s.name}
                         {s.batchName ? <span className="text-xs text-fg-muted">{t("streamRecords.batchN", { name: s.batchName })}</span> : null}
                       </label>
-                      <input className={`${INPUT} w-20 text-right`} name={`marks:${s.studentMembershipId}`} inputMode="numeric" maxLength={3} aria-label={t("streamRecords.practicals.marksFor", { name: s.name })} placeholder={t("streamRecords.practicals.marks")} />
+                      <input className={fieldClass("w-20 text-right")} name={`marks:${s.studentMembershipId}`} inputMode="numeric" maxLength={3} aria-label={t("streamRecords.practicals.marksFor", { name: s.name })} placeholder={t("streamRecords.practicals.marks")} />
                     </li>
                   ))}
                 </ul>
               </fieldset>
               <Button type="submit">{t("streamRecords.practicals.save")}</Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}

@@ -8,6 +8,7 @@ import { useToast } from "@/components/ui/toast";
 import { setSubjects } from "./actions";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * The office's editor for what a teacher teaches, opened from the row's kebab.
@@ -74,7 +75,7 @@ export function SubjectsPanel({
               add();
             }
           }}
-          className="w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 py-2 text-sm text-fg outline-none focus:border-accent"
+          className={fieldClass()}
         />
         <Button size="sm" variant="ghost" onClick={add}>
           {t("common.add")}

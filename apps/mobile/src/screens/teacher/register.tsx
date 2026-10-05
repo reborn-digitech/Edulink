@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { usePrivateScreen } from "@/lib/private-screen";
 import { Pressable, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { onlineManager, useQuery, useQueryClient } from "@tanstack/react-query";
 import * as Haptics from "expo-haptics";
 import { attendanceClassesSchema, registerSchema, type RegisterBody } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, LiveNotice, Loading, Row, Screen, Text } from "@/components";
@@ -10,9 +10,9 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { newClientId } from "@/lib/outbox";
+import { newClientId, onQueueEvent } from "@/lib/outbox";
 import { useEvents } from "@/lib/use-events";
-import { OutboxBadge, dayLabel, postOrQueue, useOutboxRunner } from "./support";
+import { OutboxBadge, dayLabel, postOrQueue, useOutboxRunner, useQueuedCount } from "./support";
 import { REASON_KEY } from "../family/absence-notes";
 
 /**
@@ -28,7 +28,32 @@ const STATUS_KEY = { PRESENT: "attendance.present", LATE: "attendance.late", ABS
 const SHORT_KEY = { PRESENT: "attendance.presentShort", LATE: "attendance.lateShort", ABSENT: "attendance.absentShort", EXCUSED: "attendance.excusedShort" } as const;
 
 type Mark = { status: Status; note: string | null; clientId: string; markedAt: string };
-type SaveState = "idle" | "saving" | "saved" | "queued" | "error";
+/** `delivered`: marks that waited in the outbox have since reached the school (A3-journeys-32). */
+type SaveState = "idle" | "saving" | "saved" | "queued" | "delivered" | "error";
+
+/** The browser's word on the web target (React Query mirrors navigator.onLine); a phone never says offline and finds out on the first send. */
+function useOnline(): boolean {
+  return useSyncExternalStore(
+    (notify) => onlineManager.subscribe(notify),
+    () => onlineManager.isOnline(),
+    () => true,
+  );
+}
+
+/**
+ * The register's one line of state. Once the outbox has sent what it held
+ * the marks are at the school, so it says that rather than "Saved on this
+ * device" for ever; before anything is marked while offline it says the
+ * marks will wait on the device, rather than "Ready".
+ */
+export function registerStateKey(state: SaveState, online: boolean) {
+  if (state === "saving") return "teacher.saving" as const;
+  if (state === "saved") return "teacher.savedShort" as const;
+  if (state === "queued") return online ? ("teacher.savedOnDevice" as const) : ("teacher.registerOffline" as const);
+  if (state === "delivered") return "teacher.registerSent" as const;
+  if (state === "error") return "teacher.didNotSave" as const;
+  return online ? ("teacher.readyShort" as const) : ("teacher.registerOffline" as const);
+}
 
 export function Register() {
   // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
@@ -53,7 +78,7 @@ export function Register() {
   return (
     <Screen title={t("nav.register")} description={data ? `${t("teacher.dayLabel")}: ${dayLabel(data.dateKey, locale)}` : undefined} refreshing={classes.isRefetching} onRefresh={() => void classes.refetch()}>
       {classes.isPending ? <Loading /> : null}
-      {classes.isError ? <Failed message={classes.error.message} onRetry={() => void classes.refetch()} /> : null}
+      {classes.isError ? <Failed error={classes.error} onRetry={() => void classes.refetch()} /> : null}
       {data ? (
         <>
           <OutboxBadge />
@@ -111,6 +136,30 @@ function ClassRegister({ classId, date, onBack }: { classId: string; date?: stri
   const lastBody = useRef<{ classId: string; dateKey: string; marks: unknown[] } | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const tag = `attendance:${classId}`;
+  const online = useOnline();
+  // What this register put in the outbox: when the count for its tag falls back to
+  // nothing after it held something, the outbox sent it and the server took it.
+  const waiting = useQueuedCount(tag);
+  const held = useRef(false);
+  useEffect(() => {
+    if (waiting > 0) held.current = true;
+    else if (held.current) {
+      held.current = false;
+      setState((s) => (s === "queued" ? "delivered" : s));
+    }
+  }, [waiting]);
+  // A replay the server refused leaves the outbox too, and is not a delivery.
+  useEffect(
+    () =>
+      onQueueEvent((event) => {
+        if (event.type === "rejected" && event.item.tag === tag) {
+          held.current = false;
+          setState("error");
+          setError(t("teacher.didNotSave"));
+        }
+      }),
+    [tag, t],
+  );
 
   /* ---- a colleague's marks, live ----
    *
@@ -226,13 +275,13 @@ function ClassRegister({ classId, date, onBack }: { classId: string; date?: stri
   };
 
   const marked = data ? data.roster.length - unmarked.length : 0;
-  const stateLine = state === "saving" ? t("teacher.saving") : state === "saved" ? t("teacher.savedShort") : state === "queued" ? t("teacher.savedOnDevice") : state === "error" ? t("teacher.didNotSave") : t("teacher.readyShort");
+  const stateLine = t(registerStateKey(state, online));
 
   return (
     <Screen title={data?.class.name ?? t("nav.register")} description={data ? dayLabel(data.dateKey, locale) : undefined} refreshing={register.isRefetching} onRefresh={() => void register.refetch()}>
       <Button label={t("common.back")} variant="ghost" onPress={onBack} style={{ alignSelf: "flex-start" }} />
       {register.isPending ? <Loading /> : null}
-      {register.isError ? <Failed message={register.error.message} onRetry={() => void register.refetch()} /> : null}
+      {register.isError ? <Failed error={register.error} onRetry={() => void register.refetch()} /> : null}
       {data ? (
         <>
           {data.duty.reason === "COVER" && data.duty.coverUntil ? (
@@ -254,7 +303,7 @@ function ClassRegister({ classId, date, onBack }: { classId: string; date?: stri
             <Text variant="sm" bold tone={unmarked.length === 0 && data.roster.length > 0 ? "ok" : "fg"} accessibilityLiveRegion="polite">
               {unmarked.length === 0 && data.roster.length > 0 ? t("teacher.registerComplete") : t("teacher.markedOf", { marked, total: data.roster.length })}
             </Text>
-            <Text variant="xs" tone={state === "error" ? "danger" : "muted"} accessibilityLiveRegion="polite">
+            <Text variant="xs" tone={state === "error" ? "danger" : state === "delivered" ? "ok" : "muted"} accessibilityLiveRegion="polite" testID="register-state">
               {stateLine}
             </Text>
           </View>
@@ -291,7 +340,8 @@ function ClassRegister({ classId, date, onBack }: { classId: string; date?: stri
                         {t("teacher.noteFor", { name: p.name })}: {note}
                       </Text>
                     ) : null}
-                    <View style={{ flexDirection: "row", gap: th.space[2] }}>
+                    {/* One radio group per pupil, named with the pupil, as the web's register names it (A3-journeys-32). */}
+                    <View accessibilityRole="radiogroup" accessibilityLabel={t("teacher.attendanceFor", { name: p.name })} testID={`register-group-${p.membershipId}`} style={{ flexDirection: "row", gap: th.space[2] }}>
                       {STATUSES.map((s) => (
                         <StatusChip key={s} status={s} selected={current === s} disabled={data.readOnly} label={t(STATUS_KEY[s])} short={t(SHORT_KEY[s])} onPress={() => mark(p.membershipId, s, note)} />
                       ))}

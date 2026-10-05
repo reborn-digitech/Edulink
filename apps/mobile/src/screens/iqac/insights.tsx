@@ -1,13 +1,17 @@
 import { View } from "react-native";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "expo-router";
-import { naacInsightsSchema, type InsightCta, type NaacInsights } from "@edulink/contracts";
+import { naacInsightsSchema, type InsightCta, type NaacInsights, type RoleCode } from "@edulink/contracts";
+import type { TranslationKey } from "@edulink/i18n";
 import { Button, Card, Empty, Failed, Loading, Row, Screen, Stat, Text } from "@/components";
 import { api } from "@/lib/api";
 import { ApiRefused, unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
+import { useRole } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { openWeb } from "@/screens/family/shared";
+import { roleLabel } from "@/screens/staff/shared";
+import { formatDateTime } from "@/lib/dates";
 
 /**
  * Actionable insights on the phone (5 Oct 2026, the accreditation insights
@@ -34,10 +38,35 @@ export function useInsights(enabled = true) {
 /** True when the door said there is no open cycle to read. */
 export const noCycle = (error: unknown) => error instanceof ApiRefused && error.status === 404;
 
-/** A call to action as a row: the sentence, where the change is made and by whom, opening the web page. */
+type Tr = (key: TranslationKey, vars?: Record<string, string | number>) => string;
+
+/** Who makes a change, in the phone's language: at a college the office is "College office", as the server's ROLE_KEY says. */
+function whoLabel(t: Tr, role: RoleCode): string {
+  return role === "ADMIN" ? t("role.collegeAdmin") : roleLabel(t, role);
+}
+
+/**
+ * "Page — who", built here from the call to action's code and roles rather
+ * than read from `cta.label`: the server writes that in the account's
+ * language, and the phone may be set to another (A3-states-16).
+ */
+export function ctaLabel(t: Tr, cta: InsightCta): string {
+  return t("insights.ctaLabel", { page: t(`insights.cta.${cta.code}` as TranslationKey), who: cta.roles.map((r) => whoLabel(t, r)).join(", ") });
+}
+
+/**
+ * A call to action as a row, as the web's CtaLink: the viewer's own step opens
+ * the web page where the change is made; another role's step says whom to
+ * ask, with no link, because that page sends this viewer away (A3-journeys-23).
+ */
 function ActionRow({ sentence, cta, extra }: { sentence: string; cta: InsightCta; extra?: string }) {
   const t = useT();
-  return <Row title={sentence} caption={[cta.label, extra, t("mobile.openOnWeb")].filter(Boolean).join(" · ")} onPress={() => openWeb(cta.href)} />;
+  const role = useRole();
+  const label = ctaLabel(t, cta);
+  if (role && (cta.roles as string[]).includes(role)) {
+    return <Row title={sentence} caption={[label, extra, t("mobile.openOnWeb")].filter(Boolean).join(" · ")} onPress={() => openWeb(cta.href)} />;
+  }
+  return <Row title={sentence} caption={[t("insights.ctaAsk", { label }), extra].filter(Boolean).join(" · ")} />;
 }
 
 export function InsightsBody({ d }: { d: NaacInsights }) {
@@ -86,7 +115,7 @@ export function InsightsBody({ d }: { d: NaacInsights }) {
       {d.lastDone.length ? (
         <Card title={t("insightsPhone.lastDoneTitle")}>
           {d.lastDone.slice(0, 8).map((x) => (
-            <Row key={`${x.action}${x.at}`} title={x.label} caption={`${x.at.slice(0, 10)}${x.by ? ` · ${x.by}` : ""} · ${x.sinceCompute ? t("insightsPhone.lastDoneNew") : t("insightsPhone.lastDoneCounted")}`} />
+            <Row key={`${x.action}${x.at}`} title={x.labelKey ? t(x.labelKey as TranslationKey) : x.label} caption={`${formatDateTime(x.at)}${x.by ? ` · ${x.by}` : ""} · ${x.sinceCompute ? t("insightsPhone.lastDoneNew") : t("insightsPhone.lastDoneCounted")}`} />
           ))}
         </Card>
       ) : null}

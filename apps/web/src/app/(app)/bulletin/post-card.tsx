@@ -26,6 +26,7 @@ import { CATEGORY_KEYS } from "./categories";
 import { fontStack } from "@/lib/fonts";
 import { PostMedia } from "./media";
 import { ReactionRow } from "./reactions";
+import { fieldClass } from "@/components/ui/field-class";
 
 type Post = {
   id: string;
@@ -237,7 +238,7 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
                 rows={2}
                 autoFocus
                 placeholder={t("bulletin.rejectPlaceholder")}
-                className="w-full resize-y rounded-[var(--radius-md)] border border-border bg-surface p-3 text-sm outline-none focus:border-accent"
+                className={fieldClass("resize-y")}
               />
               <div className="flex gap-2">
                 <Button size="sm" variant="ghost" block onClick={() => setRejecting(false)}>
@@ -388,14 +389,14 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
               </button>
             )}
             {post.scope === "GLOBAL" && (
-              <Link
-                href="/bulletin/global"
-                title={t("bulletin.onGlobalFeed")}
-                className="inline-flex items-center gap-1 rounded-full bg-accent-soft px-2 py-0.5 text-xs font-semibold text-accent-strong"
-              >
-                <GlobeIcon weight="fill" className="size-3" />
-                {t("bulletin.onGlobalFeed")}
+              // The pill stays small; the link around it is the 44 px target (A3-states-11).
+              <Link href="/bulletin/global" title={t("bulletin.onGlobalFeed")} className="inline-flex min-h-11 items-center">
+                <span className="inline-flex items-center gap-1 rounded-full bg-accent-soft px-2 py-0.5 text-xs font-semibold text-accent-strong">
+                  <GlobeIcon weight="fill" className="size-3" />
+                  {t("bulletin.onGlobalFeed")}
+                </span>
               </Link>
+
             )}
             {viewerRole === "ADMIN" && (
               <button
@@ -518,7 +519,7 @@ function ReportSheet({
           rows={2}
           placeholder={t("bulletin.detailPlaceholder")}
           aria-label={t("bulletin.moreDetail")}
-          className="mt-3 w-full resize-y rounded-[var(--radius-md)] border border-border bg-surface p-3 text-sm outline-none focus:border-accent"
+          className={fieldClass("mt-3 resize-y")}
         />
 
         <div className="mt-3 flex gap-2">

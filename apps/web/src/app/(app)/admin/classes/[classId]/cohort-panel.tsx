@@ -11,6 +11,7 @@ import { searchCandidates, addToCohort, dropFromCohort } from "./actions";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 import { PersonLink } from "@/components/person-link";
+import { fieldClass } from "@/components/ui/field-class";
 
 type Member = {
   membershipId: string;
@@ -158,7 +159,7 @@ export function CohortPanel({
               onChange={(e) => onType(e.target.value)}
               placeholder={t("classes.searchPupils")}
               aria-label={t("classes.searchPupilsLabel")}
-              className="min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface pl-11 pr-3 text-[0.9375rem] outline-none focus:border-accent"
+              className={fieldClass("pl-11")}
             />
           </div>
 

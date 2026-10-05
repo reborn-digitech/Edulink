@@ -1,3 +1,4 @@
+import { isoToDisplayDate } from "@/lib/dates";
 import { FileTextIcon, NotebookIcon } from "@phosphor-icons/react/ssr";
 import { INDUSTRY_GRADES, type InternshipView } from "@edulink/contracts";
 import type { Translate } from "@/lib/i18n/dictionary";
@@ -15,10 +16,10 @@ import { INTERNSHIP_KIND_KEY, INTERNSHIP_STATUS_KEY, LINK } from "./parts";
  * record the industry grade, the visit and the viva; the cell or the HOD
  * decide the credits last. Each shows its diary and its files.
  */
-export function InternshipStaffList({ internships, t, back, canDecide, supervisors, rule }: { internships: InternshipView[]; t: Translate; back: string; canDecide: boolean; supervisors: { membershipId: string; name: string }[]; rule: { creditsMin: number; creditsMax: number; hoursMin: number; hoursMax: number } }) {
+export function InternshipStaffList({ internships, t, back, canDecide, supervisors, rule, aicte }: { internships: InternshipView[]; t: Translate; back: string; canDecide: boolean; supervisors: { membershipId: string; name: string }[]; rule: { creditsMin: number; creditsMax: number; hoursMin: number; hoursMax: number }; aicte: boolean }) {
   return (
     <Card>
-      <CardHeader icon={<NotebookIcon weight="duotone" className="size-5" />} title={t("placement.internshipsTitle", { count: internships.length })} description={t("placement.aicteRule", { creditsMin: rule.creditsMin, creditsMax: rule.creditsMax, hoursMin: rule.hoursMin, hoursMax: rule.hoursMax })} />
+      <CardHeader icon={<NotebookIcon weight="duotone" className="size-5" />} title={t("placement.internshipsTitle", { count: internships.length })} description={aicte ? t("placement.aicteRule", { creditsMin: rule.creditsMin, creditsMax: rule.creditsMax, hoursMin: rule.hoursMin, hoursMax: rule.hoursMax }) : t("placement.internshipRuleGeneral")} />
       <CardBody className="space-y-4">
         {internships.length === 0 ? <p className="text-sm text-fg-muted">{t("placement.noInternships")}</p> : null}
         {internships.map((i) => (
@@ -29,7 +30,7 @@ export function InternshipStaffList({ internships, t, back, canDecide, superviso
                   {i.studentName} · {i.companyName}
                 </div>
                 <div className="text-xs text-fg-muted">
-                  {t(INTERNSHIP_KIND_KEY[i.kind]!)} · {i.from} – {i.to} · {t("placement.hoursN", { hours: i.hours })} · {t("placement.windowN", { semester: i.windowSemester })}
+                  {t(INTERNSHIP_KIND_KEY[i.kind]!)} · {isoToDisplayDate(i.from)} – {isoToDisplayDate(i.to)} · {t("placement.hoursN", { hours: i.hours })} · {t("placement.windowN", { semester: i.windowSemester })}
                   {i.facultyName ? ` · ${t("placement.supervisedBy", { name: i.facultyName })}` : ""}
                 </div>
               </div>

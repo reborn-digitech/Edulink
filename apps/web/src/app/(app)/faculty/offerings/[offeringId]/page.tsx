@@ -9,7 +9,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { TabBar } from "@/components/ui/tabs";
 import { SelectField, TextAreaField, TextField } from "@/components/ui/field";
 import { ModuleOff } from "@/components/module-off";
-import { INPUT, LINK, ModuleFlash, NUM, TD, TH } from "@/components/module-flash";
+import { LINK, ModuleFlash, NUM, TD, TH } from "@/components/module-flash";
 import { INTERNAL_KIND_KEY, ITEM_KEY } from "@/components/academics/parts";
 import { AttendanceReportTable } from "@/components/academics/report-table";
 import { requireRole } from "@/lib/tenancy";
@@ -23,7 +23,9 @@ import { getLocale, getT } from "@/lib/i18n/server";
 import { coverageLineText } from "@/lib/count-copy";
 import type { ActiveContext } from "@/lib/session";
 import { addItemAction, lockAction, moderateAction, releaseAction, reviewAction, saveComponentAction, saveMarksAction, savePlanAction } from "../../actions";
+import { ActionForm } from "@/components/ui/action-form";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("academics.offeringTitle") };
@@ -41,7 +43,7 @@ type Tab = "file" | "marks" | "attendance";
 export default async function OfferingPage({ params, searchParams }: { params: Promise<{ offeringId: string }>; searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const ctx = await requireRole("FACULTY", "HOD");
   const [t, locale] = await Promise.all([getT(), getLocale()]);
-  if (!(await isModuleOn(ctx.schoolId, "ACADEMICS"))) return <ModuleOff module="ACADEMICS" t={t} college />;
+  if (!(await isModuleOn(ctx.schoolId, "ACADEMICS"))) return <ModuleOff page module="ACADEMICS" t={t} college />;
   const { offeringId } = await params;
   const sp = await searchParams;
   const tab: Tab = sp.tab === "marks" || sp.tab === "attendance" ? sp.tab : "file";
@@ -171,7 +173,7 @@ function FileTab({ t, file }: { t: T; file: Awaited<ReturnType<typeof courseFile
           {file.canReview ? (
             <form action={reviewAction} className="flex flex-wrap items-end gap-2">
               <input type="hidden" name="offeringId" value={file.offeringId} />
-              <input aria-label={t("academics.fieldNote")} className={`${INPUT} max-w-md`} name="note" maxLength={400} placeholder={t("academics.fieldNote")} />
+              <input aria-label={t("academics.fieldNote")} className={fieldClass("max-w-md")} name="note" maxLength={400} placeholder={t("academics.fieldNote")} />
               <Button type="submit" size="sm">{t("academics.markReviewed")}</Button>
             </form>
           ) : null}
@@ -223,7 +225,7 @@ async function MarksTab({ t, offeringId, ctx }: { t: T; offeringId: string; ctx:
           </ul>
         )}
         {sheet.canEnter ? (
-          <form action={saveComponentAction} className="grid gap-3 sm:grid-cols-6">
+          <ActionForm action={saveComponentAction} className="grid gap-3 sm:grid-cols-6">
             <input type="hidden" name="offeringId" value={offeringId} />
             <TextField className="sm:col-span-2" label={t("academics.fieldName")} name="name" required maxLength={80} />
             <SelectField label={t("academics.fieldKind")} name="kind" defaultValue="UNIT_TEST">
@@ -235,7 +237,7 @@ async function MarksTab({ t, offeringId, ctx }: { t: T; offeringId: string; ctx:
             <div>
               <Button type="submit" variant="secondary">{t("academics.addComponent")}</Button>
             </div>
-          </form>
+          </ActionForm>
         ) : null}
         {sheet.students.length && sheet.components.length ? (
           <TableScroll>
@@ -265,7 +267,7 @@ async function MarksTab({ t, offeringId, ctx }: { t: T; offeringId: string; ctx:
           </TableScroll>
         ) : null}
         {sheet.canEnter && sheet.components.some((k) => !k.released) && sheet.students.length ? (
-          <form action={saveMarksAction} className="space-y-3">
+          <ActionForm action={saveMarksAction} className="space-y-3">
             <input type="hidden" name="offeringId" value={offeringId} />
             <SelectField label={t("academics.fieldComponent")} name="componentId" required>
               {sheet.components.filter((k) => !k.released).map((k) => <option key={k.id} value={k.id}>{`${k.name} (${k.maxMarks})`}</option>)}
@@ -274,13 +276,13 @@ async function MarksTab({ t, offeringId, ctx }: { t: T; offeringId: string; ctx:
               {sheet.students.map((s) => (
                 <label key={s.studentMembershipId} className="flex items-center justify-between gap-2 text-sm">
                   <span>{`${s.rollNumber ?? ""} ${s.name}`}</span>
-                  <input className={`${INPUT} w-20 text-right`} name={`mark:${s.studentMembershipId}`} inputMode="decimal" aria-label={s.name} />
+                  <input className={fieldClass("w-20 text-right")} name={`mark:${s.studentMembershipId}`} inputMode="decimal" aria-label={s.name} />
                 </label>
               ))}
             </div>
             <TextAreaField label={t("academics.fieldSheet")} name="sheet" rows={3} hint={t("academics.fieldSheetHint")} />
             <Button type="submit">{t("academics.saveMarks")}</Button>
-          </form>
+          </ActionForm>
         ) : null}
         {sheet.canLock ? (
           <form action={lockAction}>

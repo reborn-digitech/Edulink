@@ -75,7 +75,7 @@ export function StaffRecord() {
   return (
     <Screen title={d ? t("staff.title", { name: d.name }) : t("people.staffRecordAction")} description={d ? t("staff.body", { name: d.name }) : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {/* The head's notes on this person — observations, targets, the year's appraisal; the office reads them. */}
       {d ? <Button label={t("appraisal.open")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/staff-appraisal", params: { membershipId: id } } as never)} /> : null}
       {/* Keyed by what was read: a record read again starts the form again from it. */}

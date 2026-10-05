@@ -1,4 +1,7 @@
-import { screenFor, webLinkOrNull } from "@/lib/links";
+import { Linking } from "react-native";
+import { screenFor, webLinkOrNull, webPathUrl } from "@/lib/links";
+import { API_BASE } from "@/lib/api";
+import { openWeb } from "@/screens/family/shared";
 
 describe("notification URLs map to screens", () => {
   it("the ones the server writes", () => {
@@ -78,5 +81,30 @@ describe("a typed link fit to open (PH-7)", () => {
     for (const bad of ["javascript:alert(1)", "intent://scan/#Intent;scheme=zxing;end", "sms:+911234567890", "tel:100", "edulink://(app)/fees", "file:///etc/hosts", "not a url", "", null, undefined]) {
       expect(webLinkOrNull(bad)).toBeNull();
     }
+  });
+});
+
+describe("a web page of our own, opened from the phone (A3-S-14, audit of 5 Oct 2026)", () => {
+  const base = "https://app.shalaghar.example";
+  it("is a single-slash path on the API's own origin, kept whole", () => {
+    expect(webPathUrl("/iqac/predictor", base)).toBe(`${base}/iqac/predictor`);
+    expect(webPathUrl("/iqac/predictor#entered", base)).toBe(`${base}/iqac/predictor#entered`);
+    expect(webPathUrl("/parent/fees?checkout=p%201", base)).toBe(`${base}/parent/fees?checkout=p%201`);
+    expect(webPathUrl("/@evil.example/x", base)).toBe(`${base}/@evil.example/x`);
+  });
+  it("refuses anything that could move the host or is not a path", () => {
+    for (const bad of ["@evil.example/x", "//evil.example/x", "/\\evil.example/x", "\\evil.example", "/\tevil", "/\t/evil.example/x", "/\n/evil.example", "https://evil.example/x", "javascript:alert(1)", "iqac/predictor", "", " /iqac"]) {
+      expect({ bad, url: webPathUrl(bad, base) }).toEqual({ bad, url: null });
+    }
+  });
+  it("openWeb opens the good one on the API's host and nothing for a bad one", () => {
+    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+    openWeb("/iqac/simulator");
+    expect(open).toHaveBeenCalledWith(`${API_BASE}/iqac/simulator`);
+    open.mockClear();
+    openWeb("@evil.example/x");
+    openWeb("//evil.example/x");
+    expect(open).not.toHaveBeenCalled();
+    open.mockRestore();
   });
 });

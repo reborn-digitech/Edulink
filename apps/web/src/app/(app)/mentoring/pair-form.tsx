@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { pair } from "./actions";
 import { useT } from "@/lib/i18n";
+import { fieldClass } from "@/components/ui/field-class";
 
 type Option = { id: string; name: string };
 type Expert = Option & { headline: string; verified: boolean };
@@ -71,7 +72,7 @@ export function PairForm({ experts, pupils }: { experts: Expert[]; pupils: Optio
           <select
             value={pupilId}
             onChange={(e) => setPupilId(e.target.value)}
-            className="mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
+            className={fieldClass("mt-1")}
           >
             <option value="">{t("mentoring.choosePupil")}</option>
             {pupils.map((pupil) => (
@@ -87,7 +88,7 @@ export function PairForm({ experts, pupils }: { experts: Expert[]; pupils: Optio
           <select
             value={expertId}
             onChange={(e) => setExpertId(e.target.value)}
-            className="mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
+            className={fieldClass("mt-1")}
           >
             <option value="">{t("mentoring.chooseMentor")}</option>
             {experts.map((expert) => (
@@ -113,7 +114,7 @@ export function PairForm({ experts, pupils }: { experts: Expert[]; pupils: Optio
             value={purpose}
             placeholder={t("mentoring.purposePlaceholder")}
             onChange={(e) => setPurpose(e.target.value)}
-            className="mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
+            className={fieldClass("mt-1")}
           />
           <span className="mt-1 block text-xs text-fg-subtle">{t("mentoring.guardianSees")}</span>
         </label>

@@ -72,7 +72,7 @@ export function FamilyHealth() {
       <Screen title={t("familyCare.myHealthTitle")} description={d ? t("familyCare.myHealthBody") : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
         {query.isPending ? <Loading /> : null}
         {refused ? <Empty icon="shield" title={t("familyCare.askGrownUpTitle")} body={t("familyCare.askGrownUpBody")} action={<Button label={t("nav.overview")} variant="secondary" onPress={() => router.push("/(app)" as never)} />} /> : null}
-        {query.isError && !refused ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+        {query.isError && !refused ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
         {d ? (
           <>
             <HealthCardView view={d} />
@@ -112,7 +112,7 @@ export function FamilyHealth() {
         children.data && pupils.length === 0 ? (
           <Empty title={t("parent.linkToYourChild")} body={t("parent.linkNeedCode")} action={<Button label={t("parent.linkToMyChild")} onPress={() => router.push("/(app)/link-child" as never)} />} />
         ) : (
-          <Failed message={query.error.message} onRetry={() => void query.refetch()} />
+          <Failed error={query.error} onRetry={() => void query.refetch()} />
         )
       ) : null}
       {d ? (
@@ -179,7 +179,7 @@ function WhoRead({ studentMembershipId, childName }: { studentMembershipId: stri
       {open ? (
         <View style={{ gap: th.space[2] }}>
           {query.isPending ? <Loading /> : null}
-          {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+          {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
           {d ? (
             <>
               <Text variant="xs" tone="muted">

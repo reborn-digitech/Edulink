@@ -36,6 +36,7 @@ export default async function ExpertInvitePage({
     return (
       <main className="mx-auto max-w-md px-5 py-16">
         <EmptyState
+          heading="h1"
           icon={<LinkBreakIcon weight="duotone" className="size-8" />}
           title={t("expert.inviteInvalid")}
           description={t("expert.inviteInvalidBody")}

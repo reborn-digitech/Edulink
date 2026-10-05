@@ -54,7 +54,7 @@ describe("the question bank's review flags and statistics", () => {
     expect(screen.getByText("Grade 6")).toBeTruthy();
     expect(screen.getByText("Grade not recorded")).toBeTruthy();
     expect(screen.getByText("10 answered · 60% right · 15 s")).toBeTruthy();
-    expect(screen.getByText(/^Counted .*Oct.* · Counted every night; today's answers appear tomorrow\.$/)).toBeTruthy();
+    expect(screen.getByText(/^Counted 01\/10\/2026 · Counted every night; today's answers appear tomorrow\.$/)).toBeTruthy();
     expect(calls().some((c) => c.line === `GET ${STATS_PATH}?questionId=q1`)).toBe(true);
   });
 

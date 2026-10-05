@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { DeskFrame, deskContext } from "@/components/library/desk";
 import { FineList, LoanList, ReservationList, money } from "@/components/library/parts";
 import { raiseFineAction } from "../../actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -42,7 +43,7 @@ export default async function LibraryMemberPage({ params, searchParams }: { para
               <input type="hidden" name="back" value={back} />
               <label className="min-w-0 flex-1 basis-48 text-sm font-medium text-fg">
                 {t("library.whichBook")}
-                <select name="issueId" required className="mt-1.5 block min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg">
+                <select name="issueId" required className={fieldClass("mt-1.5 block")}>
                   {open.map((l) => (
                     <option key={l.id} value={l.id}>
                       {l.title} · {l.accession}
@@ -52,14 +53,14 @@ export default async function LibraryMemberPage({ params, searchParams }: { para
               </label>
               <label className="min-w-0 basis-36 text-sm font-medium text-fg">
                 {t("library.fineReason")}
-                <select name="reason" required className="mt-1.5 block min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg">
+                <select name="reason" required className={fieldClass("mt-1.5 block")}>
                   <option value="DAMAGE">{t("library.reasonDAMAGE")}</option>
                   <option value="LOST">{t("library.reasonLOST")}</option>
                 </select>
               </label>
               <label className="min-w-0 basis-32 text-sm font-medium text-fg">
                 {t("library.amountRupees")}
-                <input name="amount" required inputMode="decimal" maxLength={10} className="mt-1.5 block min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg" />
+                <input name="amount" required inputMode="decimal" maxLength={10} className={fieldClass("mt-1.5 block")} />
               </label>
               <Button type="submit" variant="danger">
                 {t("library.raiseFineButton")}

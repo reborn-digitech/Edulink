@@ -4,6 +4,7 @@ import type { CertificateLayout } from "@edulink/contracts";
 import type { PaletteEntry } from "@/lib/certificates";
 import { useT } from "@/lib/i18n";
 import { fontStack, paragraphFont } from "@/lib/fonts";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 /**
  * The certificate as it will print, filled for the sample pupil in the
@@ -50,19 +51,21 @@ export function TemplatePreview({ palette, locale, title, intro, rows, outro, la
           </p>
         )}
         {shownRows.length > 0 && (
-          <table className="mt-4 w-full text-xs" data-testid="preview-rows">
-            <tbody>
-              {shownRows.map((row, index) => (
-                <tr key={row.key} className="border-b border-border/60">
-                  <td className={`w-6 py-1.5 pr-1.5 align-top tabular-nums ${muted}`}>{index + 1}.</td>
-                  <th scope="row" className={`py-1.5 pr-3 text-left align-top font-medium ${muted}`}>
-                    {row.label || "—"}
-                  </th>
-                  <td className="py-1.5 align-top font-medium">{fill(row.value) || "—"}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <TableScroll className="mt-4">
+            <table className="w-full text-xs" data-testid="preview-rows">
+              <tbody>
+                {shownRows.map((row, index) => (
+                  <tr key={row.key} className="border-b border-border/60">
+                    <td className={`w-6 py-1.5 pr-1.5 align-top tabular-nums ${muted}`}>{index + 1}.</td>
+                    <th scope="row" className={`py-1.5 pr-3 text-left align-top font-medium ${muted}`}>
+                      {row.label || "—"}
+                    </th>
+                    <td className="py-1.5 align-top font-medium">{fill(row.value) || "—"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </TableScroll>
         )}
         {outro.trim() && (
           <p style={{ fontFamily: fontStack(paragraphFont(layout.outroFont, layout.font), locale) }} className="mt-4 whitespace-pre-wrap text-xs leading-relaxed" data-testid="preview-outro">

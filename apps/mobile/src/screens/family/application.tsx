@@ -74,7 +74,7 @@ export function FamilyApplication() {
   return (
     <Screen title={a ? a.childName : t("admissions.myApplications")} description={a ? `${a.school.name} · ${a.cycle.name} · ${a.cycle.academicYearName}` : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {a ? (
         <>
           <Note tone={a.status === "ADMITTED" || a.status === "ACCEPTED" ? "ok" : a.status === "OFFERED" ? "warn" : "accent"}>

@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { InviteForm } from "./form";
 import { invitableRolesFor, type InvitableRole } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -38,16 +37,8 @@ export default async function NewInvitePage({
 
   return (
     <div className="mx-auto max-w-2xl">
-      <Link
-        href="/admin/invites"
-        className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
-      >
-        <ArrowLeftIcon weight="bold" className="size-4" />
-        {t("invites.allInvitations")}
-      </Link>
+      <PageHeader title={t("invites.invitePeople")} description={t("invites.newSubtitle")} back={{ href: "/admin/invites", label: t("invites.allInvitations") }} />
 
-      <h1 className="text-2xl font-bold tracking-tight text-fg">{t("invites.invitePeople")}</h1>
-      <p className="mt-1.5 text-sm text-fg-muted">{t("invites.newSubtitle")}</p>
 
       <InviteForm
         className="mt-7"

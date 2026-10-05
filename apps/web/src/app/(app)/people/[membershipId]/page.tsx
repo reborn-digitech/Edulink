@@ -1,19 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  ArrowLeftIcon,
-  ArrowSquareOutIcon,
-  BuildingsIcon,
-  ChalkboardTeacherIcon,
-  FirstAidKitIcon,
-  FolderUserIcon,
-  MedalIcon,
-  PaperPlaneTiltIcon,
-  PrinterIcon,
-  UsersThreeIcon,
-  WarningCircleIcon,
-} from "@phosphor-icons/react/ssr";
+import { ArrowSquareOutIcon, BuildingsIcon, ChalkboardTeacherIcon, FirstAidKitIcon, FolderUserIcon, MedalIcon, PaperPlaneTiltIcon, PrinterIcon, UsersThreeIcon, WarningCircleIcon } from "@phosphor-icons/react/ssr";
 import { AccessError, requireUser } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { healthCardFor } from "@/lib/health";
@@ -33,6 +21,7 @@ import { PersonLink } from "@/components/person-link";
 import { ROLE_META, type Role } from "@/lib/constants";
 import { getT, getLocale } from "@/lib/i18n/server";
 import { openConversationAction } from "../../remarks/conversation-actions";
+import { BackLink, PAGE_TITLE } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -207,17 +196,16 @@ export default async function PersonPage({
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
-      <Link href={backHref} className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg">
-        <ArrowLeftIcon weight="bold" className="size-4" />
-        {backHref === "/remarks" ? t("remarks.all") : t("reportView.back")}
-      </Link>
+      <BackLink href={backHref} label={backHref === "/remarks" ? t("remarks.all") : t("reportView.back")} />
 
       {/* Stacked on a phone, a row on a desk: an avatar, a name and a button
           sharing one row at 360px squeezed the name into one word a line. */}
       <header className="flex flex-col gap-4 rounded-[var(--radius-lg)] border border-border bg-surface p-5 sm:flex-row sm:items-center">
         <Avatar avatarKey={member.user.avatarKey} name={name} size="lg" ring />
         <div className="min-w-0 flex-1">
-          <h1 className="flex flex-wrap items-center gap-2 text-2xl font-bold tracking-tight text-fg">
+          {/* Beside the avatar, so not a PageHeader; the title has its look (A3-states-9). */}
+          <h1 className={PAGE_TITLE}>
+
             {name}
             <Badge tone="accent" size="sm">
               {t(ROLE_META[role].labelKey)}

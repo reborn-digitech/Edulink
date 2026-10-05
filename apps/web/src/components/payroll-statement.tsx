@@ -67,24 +67,26 @@ export function PayrollStatementView({ s, t, locale, yearHref }: { s: PayrollSta
                 </tbody>
               </table>
             </TableScroll>
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-border">
-                  <th scope="col" className={TH}>{t("payroll.colComponent")}</th>
-                  <th scope="col" className={TH}>{t("payroll.colKind")}</th>
-                  <th scope="col" className={`${TH} text-right`}>{t("payroll.colYear")}</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border">
-                {s.components.map((c) => (
-                  <tr key={`${c.code}|${c.label}`}>
-                    <td className={TD}>{c.label || t(CODE_LABEL_KEY[c.code as keyof typeof CODE_LABEL_KEY] as TranslationKey)}</td>
-                    <td className={TD}>{t(`payroll.kind${c.kind}`)}</td>
-                    <td className={NUM}>{money(c.paise)}</td>
+            <TableScroll>
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th scope="col" className={TH}>{t("payroll.colComponent")}</th>
+                    <th scope="col" className={TH}>{t("payroll.colKind")}</th>
+                    <th scope="col" className={`${TH} text-right`}>{t("payroll.colYear")}</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-border">
+                  {s.components.map((c) => (
+                    <tr key={`${c.code}|${c.label}`}>
+                      <td className={TD}>{c.label || t(CODE_LABEL_KEY[c.code as keyof typeof CODE_LABEL_KEY] as TranslationKey)}</td>
+                      <td className={TD}>{t(`payroll.kind${c.kind}`)}</td>
+                      <td className={NUM}>{money(c.paise)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </TableScroll>
           </>
         )}
       </CardBody>

@@ -7,7 +7,7 @@ import { AccessError } from "@/lib/access-error";
 import { RuleRefusal } from "@/lib/rule-refusal";
 import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
-import { councilView, defaultFilingYear } from "@/lib/council-filings";
+import { councilView } from "@/lib/council-filings";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardBody } from "@/components/ui/card";
@@ -51,7 +51,8 @@ export default async function CouncilPage({ params, searchParams }: { params: Pr
       </div>
     );
   }
-  const year = Number(query.year) >= 2000 && Number(query.year) <= 2100 ? Number(query.year) : defaultFilingYear();
+  // No year asked: the latest with a report, else the filing default (councilView, A3-journeys-34).
+  const year = Number(query.year) >= 2000 && Number(query.year) <= 2100 ? Number(query.year) : undefined;
   let view: CouncilView | null = null;
   let insights: Awaited<ReturnType<typeof nbaInsights>> | null = null;
   let refusal: string | null = null;

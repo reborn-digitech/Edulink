@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CaretDownIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
@@ -15,6 +16,7 @@ import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
 import { DeskNav, IqacFlash, NotAScore, day, keyed } from "@/components/iqac/parts";
 import { NaacInsightsSection } from "@/components/iqac/insights";
+import { OpenHashTarget } from "@/components/ui/open-hash-target";
 import { naacInsights } from "@/lib/iqac-insights";
 import { closeCycleAction, recomputeAction, saveInputsAction, scoreMetricAction } from "../actions";
 
@@ -110,10 +112,20 @@ export default async function PredictorPage({ searchParams }: { searchParams: Pr
       {/* Actionable insights (5 Oct 2026): the way to the next band, ranked, each with where the change is made. */}
       <NaacInsightsSection t={t} insights={insights} role={ctx.role} locale={locale} back={back} canRecompute={p.canEdit} simulatorHref={`/iqac/simulator?cycle=${cycleId}`} />
 
+      {/* Each criterion folds to its title and score: open, the seven criteria made the page 22,000 px tall at
+          390 px (A3-states-4). A link to a metric (#metric-2-6-3) opens its criterion (OpenHashTarget). */}
+      <OpenHashTarget />
       {p.criteria.map((c) => (
         <Card key={c.code} data-testid={`criterion-${c.code}`}>
-          <CardHeader title={c.code + ". " + c.name} description={[t("iqac.metricWeight", { weight: c.weight }), " · ", t("iqac.criterionScore", { score: c.score.toFixed(2) })].join("")} />
-          <CardBody className="space-y-5">
+          <details className="group">
+            <summary className="flex min-h-11 cursor-pointer list-none flex-wrap items-center justify-between gap-2 p-5 [&::-webkit-details-marker]:hidden">
+              <h2 className="min-w-0 text-base font-semibold text-fg">{c.code + ". " + c.name}</h2>
+              <span className="flex items-center gap-2 text-sm text-fg-muted">
+                {[t("iqac.metricWeight", { weight: c.weight }), " · ", t("iqac.criterionScore", { score: c.score.toFixed(2) })].join("")}
+                <CaretDownIcon weight="bold" className="size-4 transition-transform group-open:rotate-180" aria-hidden />
+              </span>
+            </summary>
+          <CardBody className="space-y-5 pt-0">
             {c.kis.map((k) => (
               <section key={k.code} className="space-y-3">
                 <h3 className="text-sm font-semibold text-fg">
@@ -201,6 +213,7 @@ export default async function PredictorPage({ searchParams }: { searchParams: Pr
               </section>
             ))}
           </CardBody>
+          </details>
         </Card>
       ))}
 

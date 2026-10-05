@@ -1,3 +1,4 @@
+import { isoToDisplayDate } from "@/lib/dates";
 import type { Metadata } from "next";
 import { randomBytes } from "node:crypto";
 import { CheckSquareIcon } from "@phosphor-icons/react/ssr";
@@ -30,14 +31,14 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function LecturePage({ params, searchParams }: { params: Promise<{ lectureId: string }>; searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const ctx = await requireRole("FACULTY", "HOD");
   const t = await getT();
-  if (!(await isModuleOn(ctx.schoolId, "ACADEMICS"))) return <ModuleOff module="ACADEMICS" t={t} college />;
+  if (!(await isModuleOn(ctx.schoolId, "ACADEMICS"))) return <ModuleOff page module="ACADEMICS" t={t} college />;
   const { lectureId } = await params;
   const sheet = await lectureSheet(ctx, lectureId);
   const l = sheet.lecture;
   const clientId = `web-${randomBytes(9).toString("hex")}`;
   return (
     <div className="space-y-6">
-      <PageHeader title={[l.courseCode, l.courseName].join(" · ")} description={[l.dateKey, clock(l.startMinute, l.endMinute), lectureKindLabel(l.kind, t, await streamsOf(ctx.schoolId)), l.divisionName, l.roomName].filter(Boolean).join(" · ")} />
+      <PageHeader title={[l.courseCode, l.courseName].join(" · ")} description={[isoToDisplayDate(l.dateKey), clock(l.startMinute, l.endMinute), lectureKindLabel(l.kind, t, await streamsOf(ctx.schoolId)), l.divisionName, l.roomName].filter(Boolean).join(" · ")} />
       <ModuleFlash t={t} params={await searchParams} />
       <Card>
         <CardHeader icon={<CheckSquareIcon weight="duotone" className="size-5" />} title={t("academics.registerTitle", { n: sheet.entries.length })} description={t("academics.registerBody", { threshold: sheet.threshold })} />
@@ -68,7 +69,7 @@ export default async function LecturePage({ params, searchParams }: { params: Pr
                   </li>
                 ))}
               </ul>
-              {sheet.canMark ? <Button type="submit">{t(l.marked ? "academics.saveChanges" : "academics.saveMarks")}</Button> : <p className="text-sm text-fg-muted">{t("academics.cannotMark")}</p>}
+              {sheet.canMark ? <Button type="submit">{t(l.marked ? "academics.saveChanges" : "academics.saveMarks")}</Button> : <p className="text-sm text-fg-muted">{t(sheet.frozen ? "academics.frozenLecture" : "academics.cannotMark")}</p>}
             </form>
           )}
         </CardBody>

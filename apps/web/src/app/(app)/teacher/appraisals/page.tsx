@@ -13,9 +13,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: t("appraisal.myTitle") };
 }
 
-/** What the head has shown me: my observations, targets and appraisals marked visible, newest first. Read-only. */
+/** What the head has shown me: my observations, targets and appraisals marked visible, newest first. Read-only. A college's FACULTY and HOD read theirs here too (A3-inventory-5). */
 export default async function MyAppraisalsPage() {
-  const ctx = await requireRole("TEACHER", "ADMIN", "PRINCIPAL");
+  const ctx = await requireRole("TEACHER", "ADMIN", "PRINCIPAL", "FACULTY", "HOD");
   const t = await getT();
   const { items } = await myAppraisals(ctx);
   return (

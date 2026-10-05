@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { DateField, TextField } from "./field";
 import { useT } from "@/lib/i18n";
+import { useFormFeedback } from "./action-form";
 
 /** What the hidden input posts: `YYYY-MM-DDTHH:mm`, or "" with no date; a time that is not HH:mm falls back to `defaultTime`. */
 export function dateTimeValue(date: string, time: string, defaultTime: string): string {
@@ -42,12 +43,15 @@ export function DateTimeField({
   className?: string;
 }) {
   const t = useT();
-  const [date, setDate] = useState(defaultValue ? defaultValue.slice(0, 10) : "");
-  const [time, setTime] = useState(defaultValue && defaultValue.length >= 16 ? defaultValue.slice(11, 16) : defaultTime);
+  // Inside an <ActionForm>: the refusal about this field, and what was typed before it.
+  const fed = useFormFeedback(name);
+  const start = fed.value ?? defaultValue;
+  const [date, setDate] = useState(start ? start.slice(0, 10) : "");
+  const [time, setTime] = useState(start && start.length >= 16 ? start.slice(11, 16) : defaultTime);
   const value = dateTimeValue(date, time, defaultTime);
   return (
     <div className={`grid grid-cols-[minmax(0,1fr)_8rem] items-start gap-2 ${className ?? ""}`}>
-      <DateField label={label} hint={hint} required={required} value={date} onChange={(e) => setDate(e.target.value)} />
+      <DateField label={label} hint={hint} error={fed.error} required={required} value={date} onChange={(e) => setDate(e.target.value)} />
       <TextField label={t("field.time")} aria-label={t("field.timeOf", { label })} type="time" value={time} onChange={(e) => setTime(e.target.value)} required={required} />
       <input type="hidden" name={name} value={value} />
     </div>

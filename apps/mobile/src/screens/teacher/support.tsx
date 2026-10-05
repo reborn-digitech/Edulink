@@ -9,6 +9,7 @@ import { useTheme } from "@/lib/theme";
 import { countQueued, enqueue, onQueueEvent } from "@/lib/outbox";
 import { flushOutbox, startOutboxRunner } from "@/lib/outbox-runner";
 import { ApiRefused } from "@/lib/query";
+import { formatDateTime, formatDayWithWeekday } from "@/lib/dates";
 
 /**
  * What the teacher's screens share: the outbox badge ("N waiting to send",
@@ -125,16 +126,12 @@ function tagFor(locale: string): string {
 
 /** "Mon, 7 Sept" from a YYYY-MM-DD key, in the reader's language. */
 export function dayLabel(dateKey: string, locale: string): string {
-  const d = new Date(`${dateKey}T00:00:00`);
-  if (Number.isNaN(d.getTime())) return dateKey;
-  return d.toLocaleDateString(tagFor(locale), { weekday: "short", day: "numeric", month: "short" });
+  return /^\d{4}-\d{2}-\d{2}$/.test(dateKey) ? formatDayWithWeekday(dateKey, locale) : dateKey;
 }
 
 /** "7 Sep, 14:05" from an ISO instant. */
 export function whenLabel(iso: string, locale: string): string {
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return iso;
-  return d.toLocaleString(tagFor(locale), { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+  return formatDateTime(iso);
 }
 
 /** "2 hours ago" / "in 3 days", the web's relativeTime. */

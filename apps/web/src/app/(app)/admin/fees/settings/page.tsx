@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
  */
 export default async function FeeSettingsPage() {
   const t = await getT();
-  const ctx = await requireRole("ADMIN");
+  const ctx = await requireRole("ADMIN", "ACCOUNTS");
   const [s, year, school] = await Promise.all([feeSettings(ctx.schoolId), currentAcademicYear(ctx.schoolId), db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } })]);
   const base = (process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000").replace(/\/$/, "");
   const webhookUrl = `${base}/api/webhooks/razorpay/${ctx.schoolId}`;

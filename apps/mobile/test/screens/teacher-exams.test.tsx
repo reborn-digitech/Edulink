@@ -49,7 +49,7 @@ describe("the teacher's exams", () => {
     expect(screen.getByText("Published")).toBeTruthy();
     expect(screen.getByText("ZZ Maths")).toBeTruthy();
     expect(screen.getByText(/09:00–11:00 · Out of 80$/)).toBeTruthy();
-    expect(screen.getByText(/^[A-Za-z]+ 16 · Out of 50$|^16 [A-Za-z]+ · Out of 50$/)).toBeTruthy();
+    expect(screen.getByText(/^16\/09\/2026 · Out of 50$/)).toBeTruthy();
     expect(screen.getByLabelText("Papers: 2")).toBeTruthy();
     await fireEvent.press(screen.getByText("ZZ Maths"));
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/marks", params: { classId: ID.class1, slotId: ID.slot1 } });

@@ -1,3 +1,4 @@
+import { isoToDisplayDate } from "@/lib/dates";
 import type { ReactNode } from "react";
 import { ExamIcon } from "@phosphor-icons/react/ssr";
 import type { MyExams } from "@edulink/contracts";
@@ -89,7 +90,11 @@ export function MyExamsView({ data, t, locale, back, ok, error, switcher, title 
           key={r.sessionId}
           result={r.result}
           t={t}
-          title={[r.sessionName, t("examCell.publishedOn", { date: day(r.publishedAt, locale) })].join(" · ")}
+          title={[r.sessionName, t("examCell.publishedOn", { date: day(r.publishedAt, locale) }), r.underCorrection.length ? t("examCell.underCorrection") : null].filter(Boolean).join(" · ")}
+          note={
+            // A revaluation changed marks the published result does not carry yet (A3-journeys-11).
+            r.underCorrection.length ? t("examCell.underCorrectionNote", { courses: r.result.courses.filter((c) => r.underCorrection.includes(c.courseId)).map((c) => c.code).join(", ") }) : undefined
+          }
           actions={
             act && r.revaluationOpenUntil
               ? (courseId) => (
@@ -131,7 +136,7 @@ export function MyExamsView({ data, t, locale, back, ok, error, switcher, title 
           <CardBody className="space-y-1 text-sm">
             {data.revaluations.map((r) => (
               <p key={r.id}>
-                {r.courseCode} · {t(REVAL_KIND_KEY[r.kind]!)} · {r.outcome ? t(REVAL_OUTCOME_KEY[r.outcome]!) : t("examCell.waitingDecision")}
+                {r.courseCode} · {t(REVAL_KIND_KEY[r.kind]!)} · {r.correction ? t("examCell.underCorrection") : r.outcome ? t(REVAL_OUTCOME_KEY[r.outcome]!) : t("examCell.waitingDecision")}
               </p>
             ))}
           </CardBody>
@@ -144,7 +149,7 @@ export function MyExamsView({ data, t, locale, back, ok, error, switcher, title 
           <CardBody className="space-y-1 text-sm">
             {data.backlogs.map((b) => (
               <p key={b.id}>
-                {b.courseCode} {b.courseName} · {t(BACKLOG_STATUS_KEY[b.status]!)} · {t("examCell.lastDay", { date: b.lastDay })}
+                {b.courseCode} {b.courseName} · {t(BACKLOG_STATUS_KEY[b.status]!)} · {t("examCell.lastDay", { date: isoToDisplayDate(b.lastDay) })}
               </p>
             ))}
           </CardBody>

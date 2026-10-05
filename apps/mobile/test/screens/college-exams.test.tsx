@@ -88,7 +88,7 @@ describe("a college student's exams on the phone", () => {
     expect(screen.getByText("No-dues not complete: LIBRARY")).toBeTruthy();
     expect(screen.getByText("CGPA 8.00 · 8 credits earned")).toBeTruthy();
     expect(screen.getByText("SGPA 8.00 · Pass · First class with distinction")).toBeTruthy();
-    expect(screen.getByText("Open · may be sat until 2033-05-20")).toBeTruthy();
+    expect(screen.getByText("Open · may be sat until 20/05/2033")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Submit my form" }));
     expect(await screen.findByText("Form submitted.")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Add backlog PHY203" }));
@@ -100,6 +100,20 @@ describe("a college student's exams on the phone", () => {
     await waitFor(() => expect(Sharing.shareAsync).toHaveBeenCalledWith(expect.stringMatching(/hall-ticket-HT0001\.pdf$/), expect.objectContaining({ mimeType: "application/pdf" })));
     await fireEvent.press(screen.getByRole("button", { name: "Grade card GC/2026/0001" }));
     await waitFor(() => expect(Sharing.shareAsync).toHaveBeenCalledWith(expect.stringMatching(/GC-2026-0001\.pdf$/), expect.anything()));
+  });
+
+  it("reads a changed revaluation as under correction until the corrected run is published, and says no fee was raised where none was (A3-journeys-10, -11)", async () => {
+    const changed = { ...mine().revaluations[0], status: "DECIDED", outcome: "CHANGED", oldExternalMilli: 44000, newExternalMilli: 52000, decidedAt: at, correction: "RUN_DUE" };
+    await mountStaff(<CollegeExamsScreen />, "STUDENT", {
+      "GET /api/v1/exam-cell/mine": () => json(mine({ results: [{ ...mine().results[0], underCorrection: [ID(5)] }], revaluations: [changed] })),
+      "POST /api/v1/exam-cell/mine/revaluations": () => json({ ok: true, id: ID(99), count: 0 }),
+    }, { me: atCollege("STUDENT", ["EXAMS"]) });
+    expect(await screen.findByText("ZZ Summer 2026 · Under correction")).toBeTruthy();
+    expect(screen.getByText("A revaluation changed your marks in PHY201. The result shown is the old one until the corrected result is published.")).toBeTruthy();
+    expect(screen.getByText("Under correction")).toBeTruthy();
+    expect(screen.queryByText("Marks changed")).toBeNull();
+    await fireEvent.press(screen.getByRole("button", { name: "Photocopy: PHY201" }));
+    expect(await screen.findByText("Asked; the exam cell decides it.")).toBeTruthy();
   });
 
   it("says when a PDF is refused", async () => {

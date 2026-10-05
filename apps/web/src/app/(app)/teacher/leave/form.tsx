@@ -20,6 +20,7 @@ import { DateField } from "@/components/ui/field";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 import { formatDateKey } from "@/lib/dates";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * Applying to be away.
@@ -164,7 +165,7 @@ export function LeaveForm({
               data-testid="leave-reason"
               value={reason}
               onChange={(e) => setReason(e.target.value)}
-              className="mt-1.5 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2.5 text-sm text-fg outline-none focus:border-accent"
+              className={fieldClass("mt-1.5")}
               />
           </label>
 
@@ -179,7 +180,7 @@ export function LeaveForm({
               value={nominee}
               data-testid="leave-nominee"
               onChange={(e) => setNominee(e.target.value)}
-              className="mt-1.5 min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-[0.9375rem] text-fg outline-none focus:border-accent"
+              className={fieldClass("mt-1.5")}
             >
               <option value="">{t("teacher.noSuggestion")}</option>
               {staff.map((person) => (

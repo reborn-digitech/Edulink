@@ -9,6 +9,7 @@ import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
+import { formatDate } from "@/lib/dates";
 
 /**
  * The IQAC module's respondent side on the phone (4 Oct 2026), the web's
@@ -43,7 +44,7 @@ function SurveyCard({ survey }: { survey: Survey }) {
   return (
     <Card title={survey.title}>
       <Text variant="sm" tone="muted">
-        {`${t(`iqac.surveyKind.${survey.kind}`)} · ${t("iqac.closesLine", { date: survey.closesOn })}`}
+        {`${t(`iqac.surveyKind.${survey.kind}`)} · ${t("iqac.closesLine", { date: formatDate(survey.closesOn) })}`}
       </Text>
       {survey.answered ? (
         <Text tone="ok">{t("iqac.alreadyAnswered")}</Text>
@@ -123,7 +124,7 @@ function GrievanceRow({ g }: { g: Grievance }) {
   const canEscalate = g.status !== "ESCALATED" && (g.overdue || g.status === "RESOLVED");
   return (
     <Card>
-      <Row title={t(`iqac.grievanceKind.${g.kind}`)} caption={`${t(`iqac.grievanceStatus.${g.status}`)} · ${t("iqac.dueLine", { date: g.dueOn })}${g.overdue ? ` · ${t("iqac.overdueBadge")}` : ""}`} />
+      <Row title={t(`iqac.grievanceKind.${g.kind}`)} caption={`${t(`iqac.grievanceStatus.${g.status}`)} · ${t("iqac.dueLine", { date: formatDate(g.dueOn) })}${g.overdue ? ` · ${t("iqac.overdueBadge")}` : ""}`} />
       <Text variant="sm">{g.text}</Text>
       {g.response ? <Text variant="sm">{t("iqac.responseLine", { text: g.response })}</Text> : null}
       {canEscalate ? (

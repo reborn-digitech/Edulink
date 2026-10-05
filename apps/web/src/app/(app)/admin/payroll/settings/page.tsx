@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
  */
 export default async function PayrollSettingsPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const { ctx, t, locale, on } = await payrollGate(true);
-  if (!on) return <ModuleOff module="PAYROLL" t={t} />;
+  if (!on) return <ModuleOff page module="PAYROLL" t={t} />;
   const params = await searchParams;
   const s = await settingsOf(ctx.schoolId);
   const pf = PF_RATES[PF_RATES.length - 1]!;

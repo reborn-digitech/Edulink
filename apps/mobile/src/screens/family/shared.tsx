@@ -5,6 +5,8 @@ import type { FamilyChild, familyExamsSchema } from "@edulink/contracts";
 import type { Translate, TranslationKey } from "@edulink/i18n";
 import { Button, Card, Row, Text } from "@/components";
 import { API_BASE } from "@/lib/api";
+import { formatWith, latn as latnOf, weekdayName as weekdayNameOf } from "@/lib/dates";
+import { webPathUrl } from "@/lib/links";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { KEYS, keyStore } from "@/lib/storage";
@@ -17,14 +19,18 @@ import { KEYS, keyStore } from "@/lib/storage";
  * reach into src/lib, and Intl is the same on both sides.
  */
 
-/** Opens the same page on the web, signed in there — for what the phone does not carry (practice questions, linking a child, a new post). */
+/**
+ * Opens the same page on the web, signed in there — for what the phone does not carry (practice questions, linking a child, a new post).
+ * Only a single-slash path on the API's own host (webPathUrl, A3-S-14): a server-sent "@evil.example/x" or "//host" opens nothing.
+ */
 export function openWeb(path: string): void {
-  void Linking.openURL(`${API_BASE}${path}`);
+  const url = webPathUrl(path, API_BASE);
+  if (url) void Linking.openURL(url);
 }
 
 /** The reader's locale with Latin digits pinned — the web's labelLocale: "१४" never comes back beside "सप्टेंबर", and a date's digits match the counts around it. */
 export function latn(locale = "en"): string {
-  return locale === "en" ? "en" : `${locale}-u-nu-latn`;
+  return latnOf(locale);
 }
 
 /* ------------------------------------------------------------------------- */
@@ -99,30 +105,14 @@ export function levelName(t: Translate, level: number): string {
 /* Dates and numbers                                                         */
 /* ------------------------------------------------------------------------- */
 
-/** A YYYY-MM-DD day key, formatted without a time zone ever moving it. */
+/** A YYYY-MM-DD day key, formatted without a time zone ever moving it: dd/mm/yyyy (src/lib/dates.ts). */
 export function formatDateKey(dateKey: string, locale = "en", opts: Intl.DateTimeFormatOptions = { day: "numeric", month: "short", year: "numeric" }): string {
-  const [y, m, d] = dateKey.split("-").map(Number);
-  if (!y || !m || !d) return dateKey;
-  try {
-    return new Intl.DateTimeFormat(latn(locale), { ...opts, timeZone: "UTC" }).format(new Date(Date.UTC(y, m - 1, d)));
-  } catch {
-    return dateKey;
-  }
+  return /^\d{4}-\d{2}-\d{2}$/.test(dateKey) ? formatWith(dateKey, opts, locale) : dateKey;
 }
 
-/** An ISO instant, in the school's zone when one is given (a meeting happens at the school). */
+/** An ISO instant, in the school's zone when one is given (a meeting happens at the school): dd/mm/yyyy HH:mm when it has a day. */
 export function formatInstant(iso: string, locale = "en", opts: Intl.DateTimeFormatOptions = { day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }, timeZone?: string): string {
-  const date = new Date(iso);
-  if (Number.isNaN(date.getTime())) return iso;
-  try {
-    return new Intl.DateTimeFormat(latn(locale), { ...opts, ...(timeZone ? { timeZone } : {}) }).format(date);
-  } catch {
-    try {
-      return new Intl.DateTimeFormat(latn(locale), opts).format(date);
-    } catch {
-      return date.toISOString().slice(0, 16).replace("T", " ");
-    }
-  }
+  return formatWith(iso, opts, locale, timeZone);
 }
 
 /** "in 2 days", "3 hours ago" — the web's relativeTime, in the reader's language. */
@@ -160,11 +150,7 @@ export function formatMilli(value: number | null | undefined): string {
 
 /** 0 = Sunday … 6 = Saturday, as the timetable's weekday numbers run. */
 export function weekdayName(weekday: number, locale = "en"): string {
-  try {
-    return new Intl.DateTimeFormat(latn(locale), { weekday: "long", timeZone: "UTC" }).format(new Date(Date.UTC(2023, 0, 1 + weekday)));
-  } catch {
-    return String(weekday);
-  }
+  return weekdayNameOf(weekday, locale);
 }
 
 /* ------------------------------------------------------------------------- */

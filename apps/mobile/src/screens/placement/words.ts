@@ -29,7 +29,12 @@ export function packageRange(min: number, max: number, t: Translate): string {
   return min === max ? lpa(min, t) : `${lpa(min, t)} – ${lpa(max, t)}`;
 }
 export function reasons(failed: EligibilityFail[], t: Translate): string[] {
-  return failed.map((f) => t(FAIL_KEY[f.code], { need: f.need ?? "", have: f.have ?? "—" }));
+  return failed.map((f) => t(FAIL_KEY[f.code], { need: needOf(f), have: f.have ?? "—" }));
+}
+/** A package floor (PLACED, in rupees) reads in lakh, as on the web (A3-journeys-19). */
+function needOf(f: EligibilityFail): string {
+  if (f.need === null) return "";
+  return f.code === "PLACED" && /^\d+(\.\d+)?$/.test(f.need) ? String(Math.round((Number(f.need) / 100_000) * 100) / 100) : f.need;
 }
 export function applicationLabel(a: Pick<DriveApplicationView, "status" | "round">, t: Translate): string {
   return a.status === "ROUND" ? t("placement.appRoundN", { round: a.round ?? 1 }) : t(APP_STATUS_KEY[a.status]!);

@@ -11,6 +11,7 @@ import { cn } from "@/lib/cn";
 import { generate, publish, saveCoScholastic, saveRemark, withdraw } from "./actions";
 import { useT } from "@/lib/i18n";
 import { EXAM_KIND_KEY, type ExamKind } from "@/lib/constants";
+import { fieldClass } from "@/components/ui/field-class";
 
 type Assessment = {
   assignmentId: string;
@@ -251,7 +252,7 @@ export function Builder({
                 value={termId}
                 data-testid="card-term"
                 onChange={(e) => chooseTerm(e.target.value)}
-                className="mt-1 min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+                className={fieldClass("mt-1")}
               >
                 {terms.map((term) => (
                   <option key={term.id} value={term.id}>
@@ -373,7 +374,7 @@ export function Builder({
               list="report-titles"
               disabled={mode === "term"}
               onChange={(e) => setTitle(e.target.value)}
-              className="mt-1 min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+              className={fieldClass("mt-1")}
             />
             <datalist id="report-titles">
               {existingTitles.map((existing) => (
@@ -397,13 +398,9 @@ export function Builder({
         <section className="border-t border-border pt-5">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
-              <h2 className="text-sm font-semibold text-fg">
-                3. Review and publish — {selectedTitle}
-              </h2>
+              <h2 className="text-sm font-semibold text-fg">{t("teaching.builderStepThree", { title: selectedTitle ?? "" })}</h2>
               <p className="mt-0.5 text-xs text-fg-muted">
-                {drafts} draft{drafts === 1 ? "" : "s"}
-                {published > 0 ? `, ${published} published` : ""}. Families see nothing until you
-                publish.
+                {drafts > 0 ? t("teaching.cardsStateDrafts", { drafts, published }) : t("teaching.cardsStateAllPublished", { published })}
               </p>
             </div>
             {drafts > 0 ? (
@@ -491,7 +488,7 @@ export function Builder({
 
                 {card.status === "DRAFT" && (
                   <label className="mt-2 block">
-                    <span className="sr-only">Remark for {card.studentName}</span>
+                    <span className="sr-only">{t("teaching.remarkFor", { name: card.studentName })}</span>
                     <textarea
                       rows={2}
                       maxLength={2000}
@@ -510,7 +507,7 @@ export function Builder({
                           }
                         });
                       }}
-                      className="w-full rounded-[var(--radius-sm)] border border-border bg-surface px-2.5 py-2 text-sm text-fg outline-none focus:border-accent"
+                      className={fieldClass()}
                     />
                   </label>
                 )}
@@ -535,7 +532,7 @@ export function Builder({
                                   <select
                                     value={current.grade ?? ""}
                                     onChange={(e) => setCo(card.id, area, { grade: e.target.value || null }, current)}
-                                    className="mt-1 min-h-10 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-2 text-sm text-fg outline-none focus:border-accent"
+                                    className={fieldClass("mt-1")}
                                   >
                                     <option value="">{t("reportCards.notGraded")}</option>
                                     {coScholastic.scale.map((g) => (
@@ -553,7 +550,7 @@ export function Builder({
                                     value={current.note}
                                     placeholder={t("common.optional")}
                                     onChange={(e) => setCo(card.id, area, { note: e.target.value }, current)}
-                                    className="mt-1 min-h-10 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-2 text-sm text-fg outline-none focus:border-accent"
+                                    className={fieldClass("mt-1")}
                                   />
                                 </label>
                               </div>

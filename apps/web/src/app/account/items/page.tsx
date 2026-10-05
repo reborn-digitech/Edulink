@@ -15,6 +15,7 @@ import { myInventory } from "@/lib/inventory";
 import { SCHOOL_STAFF_ROLES } from "@/lib/staff-records";
 import { getT } from "@/lib/i18n/server";
 import { askItemAction, cancelAskAction } from "./actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("inventory.myTitle") };
@@ -37,7 +38,7 @@ export default async function MyItemsPage({ searchParams }: { searchParams: Prom
       </div>
     );
   }
-  if (!(await isModuleOn(ctx.schoolId, "INVENTORY"))) return <ModuleOff module="INVENTORY" t={t} />;
+  if (!(await isModuleOn(ctx.schoolId, "INVENTORY"))) return <ModuleOff page module="INVENTORY" t={t} />;
   const mine = await myInventory(ctx);
   return (
     <div className="space-y-6">
@@ -49,16 +50,18 @@ export default async function MyItemsPage({ searchParams }: { searchParams: Prom
           {mine.issued.length === 0 ? (
             <EmptyState className="border-0 bg-transparent py-4" title={t("inventory.myIssuedNone")} description={t("inventory.myIssuedNoneBody")} />
           ) : (
-            <table className="w-full text-sm">
-              <tbody className="divide-y divide-border">
-                {mine.issued.map((i) => (
-                  <tr key={i.itemCode}>
-                    <td className={TD}>{i.itemName}</td>
-                    <td className={NUM}>{i.quantity} {i.unit}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <TableScroll>
+              <table className="w-full text-sm">
+                <tbody className="divide-y divide-border">
+                  {mine.issued.map((i) => (
+                    <tr key={i.itemCode}>
+                      <td className={TD}>{i.itemName}</td>
+                      <td className={NUM}>{i.quantity} {i.unit}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </TableScroll>
           )}
         </CardBody>
       </Card>

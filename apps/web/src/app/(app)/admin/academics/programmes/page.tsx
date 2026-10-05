@@ -10,13 +10,14 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { SelectField, TextAreaField, TextField } from "@/components/ui/field";
 import { ModuleOff } from "@/components/module-off";
-import { INPUT, TD, TH } from "@/components/module-flash";
+import { TD, TH } from "@/components/module-flash";
 import { AWARD_KEY, KIND_KEY, LEVEL_KEY, OfficeTop } from "@/components/academics/parts";
 import { academicsStructure } from "@/lib/academics";
 import { getT } from "@/lib/i18n/server";
 import { academicsGate, type SearchParams } from "../shared";
 import { saveCourseAction, saveMappingAction, saveOutcomesAction, saveProgrammeAction, saveSchemeAction } from "../actions";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("academics.tabProgrammes") };
@@ -27,7 +28,7 @@ const DEFAULT_GRADES = "O 10 90\nA+ 9 80\nA 8 70\nB+ 7 60\nB 6 50\nC 5 45\nP 4 4
 /** Programmes with their outcomes and exits, the university's schemes with grading and passing rules, and the courses of each scheme. */
 export default async function ProgrammesPage({ searchParams }: { searchParams: SearchParams }) {
   const { ctx, t, on, college, canEdit } = await academicsGate();
-  if (!on) return <ModuleOff module="ACADEMICS" t={t} college={college} />;
+  if (!on) return <ModuleOff page module="ACADEMICS" t={t} college={college} />;
   const params = await searchParams;
   const s = await academicsStructure(ctx);
   const dept = new Map(s.departments.map((d) => [d.id, d.name]));
@@ -179,7 +180,7 @@ export default async function ProgrammesPage({ searchParams }: { searchParams: S
                         <td className={TD}>
                           <form action={saveMappingAction} className="flex items-start gap-2">
                             <input type="hidden" name="courseId" value={k.id} />
-                            <textarea aria-label={t("academics.colMapping")} className={`${INPUT} min-w-40`} name="mapping" rows={2} defaultValue={k.mapping.map((x) => `${x.coCode} ${x.poCode} ${x.level}`).join("\n")} />
+                            <textarea aria-label={t("academics.colMapping")} className={fieldClass("min-w-40")} name="mapping" rows={2} defaultValue={k.mapping.map((x) => `${x.coCode} ${x.poCode} ${x.level}`).join("\n")} />
                             <Button type="submit" size="sm" variant="secondary">{t("common.save")}</Button>
                           </form>
                         </td>

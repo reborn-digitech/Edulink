@@ -6,11 +6,13 @@ import { isCollegeKind } from "@/lib/institution";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { sessionView } from "@/lib/exam-cell";
 import { resultsView } from "@/lib/exam-cell-marks";
+import { correctionsDue } from "@/lib/exam-cell-after";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { CellOff, Hidden, Labelled, RUN_STATUS_KEY, SessionFrame, TermResultCard, inputClass, when } from "@/components/exam-cell/parts";
+import { CellOff, Hidden, Labelled, RUN_STATUS_KEY, SessionFrame, TermResultCard, when } from "@/components/exam-cell/parts";
 import { publishRunAction, runResultsAction } from "../../../actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -29,13 +31,24 @@ export default async function ResultsPage({ params, searchParams }: { params: Pr
   const { sessionId } = await params;
   const { run, ok, error } = await searchParams;
   const s = await sessionView(ctx, sessionId);
-  const results = await resultsView(ctx, s.id, s.runs.some((r) => r.id === run) ? run : undefined);
+  const [results, due] = await Promise.all([resultsView(ctx, s.id, s.runs.some((r) => r.id === run) ? run : undefined), correctionsDue(ctx, s.id)]);
   const back = `/exam-cell/sessions/${s.id}/results`;
   return (
     <SessionFrame t={t} session={s} current="results" autonomous={s.autonomous} ok={ok} error={error}>
       <Card>
         <CardHeader title={t("examCell.runsTitle")} description={t("examCell.runsHint")} />
         <CardBody className="space-y-3">
+          {due.runDue > 0 ? (
+            // A revaluation changed marks and no run has carried them yet (A3-journeys-11): the form below computes it.
+            <p role="status" className="rounded-[var(--radius-md)] bg-warn-soft p-3 text-sm text-warn">
+              {t("examCell.correctionsRunDueNotice", { count: due.runDue })}
+            </p>
+          ) : null}
+          {due.publishDue > 0 ? (
+            <p role="status" className="rounded-[var(--radius-md)] bg-warn-soft p-3 text-sm text-warn">
+              {t("examCell.correctionsPublishDueNotice", { count: due.publishDue })}
+            </p>
+          ) : null}
           {s.runs.map((r) => (
             <div key={r.id} className="flex flex-wrap items-center justify-between gap-2 text-sm">
               <Link href={`${back}?run=${r.id}`} className="font-medium text-accent-strong hover:underline">
@@ -65,7 +78,7 @@ export default async function ResultsPage({ params, searchParams }: { params: Pr
               <Hidden fields={{ sessionId: s.id, back }} />
               {s.published ? (
                 <Labelled label={t("examCell.rerunReason")} className="min-w-64 flex-1">
-                  <input name="reason" required maxLength={300} className={inputClass} />
+                  <input name="reason" required maxLength={300} className={fieldClass()} />
                 </Labelled>
               ) : null}
               <Button type="submit" variant="secondary">

@@ -4,7 +4,7 @@ import type { ScenarioCompare } from "@edulink/contracts";
 import { AccessError } from "@/lib/access-error";
 import { RuleRefusal } from "@/lib/rule-refusal";
 import { compareScenarios, listScenarios, nbaInsights, simulateNbaDoor } from "@/lib/iqac-insights";
-import { defaultFilingYear, nbaDepartments } from "@/lib/council-filings";
+import { nbaDepartments } from "@/lib/council-filings";
 import type { Translate } from "@/lib/i18n/dictionary";
 import type { ActiveContext } from "@/lib/session";
 import { Card, CardBody } from "@/components/ui/card";
@@ -30,7 +30,8 @@ export async function orRefusal<T>(t: Translate, work: () => Promise<T>): Promis
 
 /** The SAR's simulator for one department and year: the desk's here, the HOD's at /hod/nba/simulator. */
 export async function NbaSimulatorPage({ ctx, t, locale, query, here, header, canSave }: { ctx: ActiveContext; t: Translate; locale: string; query: SimulatorQuery; here: string; header: ReactNode; canSave: boolean }) {
-  const year = Number(query.year) >= 2000 && Number(query.year) <= 2100 ? Number(query.year) : defaultFilingYear();
+  // No year asked: the latest with a report, else the filing default (A3-journeys-34).
+  const year = Number(query.year) >= 2000 && Number(query.year) <= 2100 ? Number(query.year) : undefined;
   const opened = await orRefusal(t, () => simulateNbaDoor(ctx, { year, departmentId: query.departmentId || undefined }));
   if (!opened.value) {
     return (

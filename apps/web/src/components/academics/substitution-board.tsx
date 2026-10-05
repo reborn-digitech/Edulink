@@ -3,7 +3,7 @@ import type { lectureSubstitutionsSchema } from "@edulink/contracts";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
-import { INPUT } from "@/components/module-flash";
+import { fieldClass } from "@/components/ui/field-class";
 import { setSubstituteAction } from "@/app/(app)/admin/academics/actions";
 import { clock } from "./parts";
 import type { Translate } from "@/lib/i18n/dictionary";
@@ -24,7 +24,7 @@ export function SubstitutionBoard({ t, board, canAssign, back }: { t: Translate;
             <form action={setSubstituteAction} className="flex items-center gap-2">
               <input type="hidden" name="lectureId" value={l.lectureId} />
               <input type="hidden" name="back" value={back} />
-              <select aria-label={t("academics.fieldSubstitute")} className={INPUT} name="substituteMembershipId" defaultValue={l.substituteMembershipId ?? ""}>
+              <select aria-label={t("academics.fieldSubstitute")} className={fieldClass()} name="substituteMembershipId" defaultValue={l.substituteMembershipId ?? ""}>
                 <option value="">{t("academics.noSubstitute")}</option>
                 {board.candidates.map((c) => <option key={c.membershipId} value={c.membershipId}>{c.name}</option>)}
               </select>

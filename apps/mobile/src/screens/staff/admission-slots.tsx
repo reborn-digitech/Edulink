@@ -102,7 +102,7 @@ export function AdmissionSlots() {
   return (
     <Screen title={t("admissions.slotsTitle")} description={t("admissions.testRequiredHint")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {query.data ? (
         slots.length === 0 ? (
           <Empty icon="calendar" title={t("admissions.noSlots")} body={t("admissions.noSlotsBody")} action={<Button label={t("admissions.title")} variant="secondary" onPress={() => router.push("/(app)/admissions" as never)} />} />

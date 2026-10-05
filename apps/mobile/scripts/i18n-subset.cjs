@@ -105,6 +105,8 @@ const SENT_BY_SERVER = [
   { screen: "src/screens/staff/timetable-editor.tsx", properties: ["teacherIssueKey"], written: ["lib/timetable.ts"] },
   // A bank statement line the office must key by hand, with why: previewBankImport.
   { screen: "src/screens/staff/fees.tsx", properties: ["problemKey"], written: ["lib/fees-bank-import.ts"] },
+  // "What you did last" on the accreditation insights: the audit action's words, looked up in ACTION_KEYS (A3-states-16).
+  { screen: "src/screens/iqac/insights.tsx", properties: ["labelKey"], written: ["lib/safety-labels.ts"] },
 ];
 
 /** The places the phone's source translates a sent key, as "screen property": what SENT_BY_SERVER has to cover. */

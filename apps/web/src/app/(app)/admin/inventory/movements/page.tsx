@@ -6,13 +6,14 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { SelectField, TextField } from "@/components/ui/field";
 import { ModuleOff } from "@/components/module-off";
-import { INPUT, LINK, NUM, TD, TH } from "@/components/module-flash";
+import { LINK, NUM, TD, TH } from "@/components/module-flash";
 import { inventorySetup, listItems, listMovements } from "@/lib/inventory";
 import { formatDateKey, formatInZone } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { inventoryGate, InventoryTop } from "../shared";
 import { recordMovementAction, stockTakeAction } from "../actions";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("inventory.tabMovements") };
@@ -32,7 +33,7 @@ function shift(month: string, by: number): string {
  */
 export default async function InventoryMovements({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const { ctx, t, locale, on, canEdit } = await inventoryGate();
-  if (!on) return <ModuleOff module="INVENTORY" t={t} />;
+  if (!on) return <ModuleOff page module="INVENTORY" t={t} />;
   const params = await searchParams;
   const month = typeof params.month === "string" && MONTH.test(params.month) ? params.month : new Date().toISOString().slice(0, 7);
   const location = typeof params.location === "string" ? params.location.slice(0, 60) : "";
@@ -137,7 +138,7 @@ export default async function InventoryMovements({ searchParams }: { searchParam
               <form method="get" action="/admin/inventory/movements" className="flex flex-wrap items-end gap-2">
                 <label className="block min-w-48 flex-1 text-sm">
                   <span className="mb-1 block font-medium text-fg">{t("inventory.fieldLocation")}</span>
-                  <input className={INPUT} name="location" list="inventory-locations" defaultValue={location} maxLength={60} required />
+                  <input className={fieldClass()} name="location" list="inventory-locations" defaultValue={location} maxLength={60} required />
                 </label>
                 <Button type="submit" variant="secondary" size="sm">{t("inventory.stockTakeStart")}</Button>
               </form>
@@ -161,7 +162,7 @@ export default async function InventoryMovements({ searchParams }: { searchParam
                               <th scope="row" className={`${TD} text-left font-medium`}>{i.name} <span className="text-xs text-fg-muted">{i.code}</span></th>
                               <td className={NUM}>{recorded} {i.unit}</td>
                               <td className={NUM}>
-                                <input aria-label={t("inventory.countedFor", { item: i.name })} className={`${INPUT} w-24 text-right`} type="number" min={0} name={`count:${i.code}`} placeholder={String(recorded)} />
+                                <input aria-label={t("inventory.countedFor", { item: i.name })} className={fieldClass("w-24 text-right")} type="number" min={0} name={`count:${i.code}`} placeholder={String(recorded)} />
                               </td>
                             </tr>
                           );

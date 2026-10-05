@@ -13,6 +13,7 @@ import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 import { PersonLink } from "@/components/person-link";
 import { isoToDisplayDate } from "@/lib/dates";
+import { fieldClass } from "@/components/ui/field-class";
 
 type ClassTeacherRow = {
   id: string;
@@ -206,7 +207,7 @@ export function Staffing({
             <select
               value={newTeacher}
               onChange={(e) => setNewTeacher(e.target.value)}
-              className="mt-1 min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+              className={fieldClass("mt-1")}
             >
               <option value="">{t("classes.chooseSomebody")}</option>
               {staff
@@ -224,7 +225,7 @@ export function Staffing({
             <select
               value={newRole}
               onChange={(e) => setNewRole(e.target.value as "LEAD" | "CO" | "SUBJECT")}
-              className="mt-1 min-h-11 rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+              className={fieldClass("w-auto mt-1")}
             >
               <option value="LEAD">{t("classes.classTeacher")}</option>
               <option value="CO">{t("classes.alsoTeachesShort")}</option>
@@ -283,7 +284,7 @@ export function Staffing({
                 value={who}
                 required
                 onChange={(e) => setWho(e.target.value)}
-                className="mt-1 min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-[0.9375rem] text-fg outline-none focus:border-accent"
+                className={fieldClass("mt-1")}
               >
                 <option value="">{t("classes.chooseSomebody")}</option>
                 {staff.map((person) => (
@@ -317,7 +318,7 @@ label={t("classes.lastDay")}
                 value={reason}
                 maxLength={200}
                 onChange={(e) => setReason(e.target.value)}
-                className="mt-1 min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-fg outline-none focus:border-accent"
+                className={fieldClass("mt-1")}
                 />
             </label>
 

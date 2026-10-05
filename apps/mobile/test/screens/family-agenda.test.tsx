@@ -39,7 +39,7 @@ describe("the fortnight agenda", () => {
     expect(screen.getByText(/ZZ Unit Test 1/)).toBeTruthy();
     expect(screen.getByText("ZZ Fractions sheet")).toBeTruthy();
     expect(screen.getByText("ZZ Maths help")).toBeTruthy();
-    expect(screen.getByText(/to Oct 10/)).toBeTruthy();
+    expect(screen.getByText(/to 10\/10\/2026/)).toBeTruthy();
     expect(screen.getByText(/₹2,500/)).toBeTruthy();
     // The two children are offered; the second child is asked for by id.
     await press(screen.getByRole("button", { name: /ZZ Bela/ }));

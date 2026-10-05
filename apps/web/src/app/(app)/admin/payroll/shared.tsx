@@ -7,15 +7,16 @@ import { getLocale, getT } from "@/lib/i18n/server";
 import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
- * The payroll pages' common top. The office runs payroll; the head reads the
- * summary and the runs (their slips only once the admin shares a run), so
- * the head's tabs are the overview alone and every other page asks for the
- * admin.
+ * The payroll pages' common top. The office runs payroll — the admin, and at a
+ * college its accounts desk, which the doors and payroll.ts's `keeps()` name
+ * (A3-inventory-2) — the head reads the summary and the runs (their slips only
+ * once a run is shared), so the head's tabs are the overview alone and every
+ * other page asks for the office.
  */
 export async function payrollGate(adminOnly = false) {
   const ctx = adminOnly ? await requireRole("ADMIN", "ACCOUNTS") : await requireRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
   const [t, locale, on] = await Promise.all([getT(), getLocale(), isModuleOn(ctx.schoolId, "PAYROLL")]);
-  return { ctx, t, locale, on, canEdit: ctx.role === "ADMIN" };
+  return { ctx, t, locale, on, canEdit: ctx.role === "ADMIN" || ctx.role === "ACCOUNTS" };
 }
 
 const TABS: { key: string; href: string; labelKey: TranslationKey; admin: boolean }[] = [

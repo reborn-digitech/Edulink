@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { askAboutAdmission } from "./actions";
 import { useT } from "@/lib/i18n";
 import { actionError } from "@/lib/action-error";
+import { fieldClass } from "@/components/ui/field-class";
 
 /** The admissions composer on a school's profile page. Parents only — the
  *  page only renders it for them. */
@@ -28,7 +29,7 @@ export function EnquireForm({ schoolId }: { schoolId: string }) {
         onChange={(e) => setBody(e.target.value)}
         rows={4}
         placeholder={t("explore.enquirePlaceholder")}
-        className="w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
+        className={fieldClass()}
       />
       {error && <p className="text-sm font-medium text-danger">{error}</p>}
       <Button

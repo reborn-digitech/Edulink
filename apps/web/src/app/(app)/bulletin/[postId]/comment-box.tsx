@@ -8,6 +8,7 @@ import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { useT } from "@/lib/i18n";
 import { comment } from "../actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 export function CommentBox({
   postId,
@@ -81,10 +82,7 @@ export function CommentBox({
         placeholder={t("bulletin.sayKind")}
         aria-invalid={Boolean(error) || undefined}
         aria-describedby={error ? `${id}-error` : `${id}-hint`}
-        className={cn(
-          "w-full resize-y rounded-[var(--radius-md)] border bg-surface p-3.5 text-[0.9375rem] leading-relaxed outline-none",
-          error ? "border-danger ring-2 ring-danger/25" : "border-border focus:border-accent",
-        )}
+        className={fieldClass("resize-y leading-relaxed", Boolean(error))}
       />
 
       <div className="flex items-center justify-between gap-3">

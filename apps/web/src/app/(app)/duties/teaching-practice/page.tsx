@@ -31,7 +31,7 @@ export default async function TeachingPracticePage({ searchParams }: { searchPar
   const { ctx, moduleOn } = await dutyPageContext("PRACTICE_TEACHING_COORDINATOR", "ACADEMICS");
   const t = await getT();
   const locale = await getLocale();
-  if (!moduleOn) return <ModuleOff module="ACADEMICS" t={t} college />;
+  if (!moduleOn) return <ModuleOff page module="ACADEMICS" t={t} college />;
   const params = await searchParams;
   const [d, school] = await Promise.all([teachingPracticeDesk(ctx), db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } })]);
   const today = todayKey(school.timezone);

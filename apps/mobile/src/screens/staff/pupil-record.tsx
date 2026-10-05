@@ -59,7 +59,7 @@ export function OfficePupilRecord() {
   return (
     <Screen title={d ? d.studentName : t("pupilRecord.title")} description={d ? [d.className, d.studentCode].filter(Boolean).join(" · ") || undefined : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d?.change ? <RecordChangeCard key={d.change.id} change={d.change} recordKey={key} /> : null}
       {d ? (
         <PupilRecordForm

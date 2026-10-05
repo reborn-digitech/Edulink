@@ -61,7 +61,7 @@ export function StaffApplications() {
       <Chips<StatusFilter> label={t("admissions.stage")} value={status} options={[{ value: "", label: t("admissions.allStatuses") }, ...STATUSES.map((s) => ({ value: s, label: t(STAGE[s].key) }))]} onChange={setStatus} />
       {grades.length > 1 ? <Chips label={t("admissions.grade")} value={grade} options={[{ value: "", label: t("admissions.allGrades") }, ...grades.map((g) => ({ value: g, label: g }))]} onChange={setGrade} /> : null}
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {query.data ? (
         items.length === 0 ? (
           <Empty icon="users" title={t("admissions.noApplications")} body={t("admissions.noApplicationsBody")} action={walkIn} />

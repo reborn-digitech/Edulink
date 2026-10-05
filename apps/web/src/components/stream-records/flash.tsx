@@ -36,6 +36,6 @@ export function RecordsFlash({ t, params }: { t: Translate; params: Record<strin
 
 /** Where a form may send its reader back to: these pages only, never an address from outside. */
 export function backPath(raw: string, fallback: string): string {
-  const ok = /^\/(admin\/stream-records|faculty\/practicals|hod\/practicals|duties\/[a-z-]+)(\/[a-z-]+)?(\?[A-Za-z0-9=&%-]*)?$/.test(raw);
+  const ok = /^\/(admin\/stream-records|faculty\/practicals|faculty\/moot-courts|hod\/practicals|duties\/[a-z-]+)(\/[a-z-]+)?(\?[A-Za-z0-9=&%-]*)?$/.test(raw);
   return ok ? raw : fallback;
 }

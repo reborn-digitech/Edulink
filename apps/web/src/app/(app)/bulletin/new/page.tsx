@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
+import { PageHeader } from "@/components/ui/page-header";
 import { requireUser } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { postableClasses } from "@/lib/bulletin";
@@ -28,17 +28,21 @@ export default async function NewPostPage({
   const t = await getT();
   const session = await requireUser();
 
+  const back = { href: "/bulletin", label: t("bulletin.title") };
   if (!session.schoolId || !session.role) {
     return (
-      <EmptyState
-        title={t("bulletin.noSchool")}
-        description={t("bulletin.pickBeforePosting")}
-        action={
-          <Button asChild>
-            <Link href="/switch">{t("bulletin.chooseSchool")}</Link>
-          </Button>
-        }
-      />
+      <div className="mx-auto max-w-xl space-y-6">
+        <PageHeader title={t("bulletin.newPost")} back={back} />
+        <EmptyState
+          title={t("bulletin.noSchool")}
+          description={t("bulletin.pickBeforePosting")}
+          action={
+            <Button asChild>
+              <Link href="/switch">{t("bulletin.chooseSchool")}</Link>
+            </Button>
+          }
+        />
+      </div>
     );
   }
 
@@ -78,29 +82,24 @@ export default async function NewPostPage({
 
   if (isStudent && classes.length === 0) {
     return (
-      <EmptyState
-        title={t("bulletin.notInClassTitle")}
-        description={t("bulletin.notInClassBody")}
-      />
+      <div className="mx-auto max-w-xl space-y-6">
+        <PageHeader title={t("bulletin.shareSomething")} back={back} />
+        <EmptyState
+          title={t("bulletin.notInClassTitle")}
+          description={t("bulletin.notInClassBody")}
+        />
+      </div>
     );
   }
 
   return (
     <div className="mx-auto max-w-xl">
-      <Link
-        href="/bulletin"
-        className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
-      >
-        <ArrowLeftIcon weight="bold" className="size-4" />
-        {t("bulletin.title")}
-      </Link>
+      <PageHeader
+        title={isStudent ? t("bulletin.shareSomething") : t("bulletin.newPost")}
+        description={isStudent ? t("bulletin.studentIntro") : t("bulletin.staffIntro")}
+        back={back}
+      />
 
-      <h1 className="text-2xl font-bold tracking-tight text-fg">
-        {isStudent ? t("bulletin.shareSomething") : t("bulletin.newPost")}
-      </h1>
-      <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">
-        {isStudent ? t("bulletin.studentIntro") : t("bulletin.staffIntro")}
-      </p>
 
       <ComposeForm
         initialTitle={prefill.title?.slice(0, 120)}

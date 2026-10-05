@@ -26,8 +26,6 @@ export const HOSTEL_KIND_KEY: Record<"BOYS" | "GIRLS" | "MIXED", TranslationKey>
 export const ROOM_KIND_KEY: Record<"DORMITORY" | "SHARED" | "SINGLE" | "SICK_BAY", TranslationKey> = { DORMITORY: "hostel.roomDORMITORY", SHARED: "hostel.roomSHARED", SINGLE: "hostel.roomSINGLE", SICK_BAY: "hostel.roomSICK_BAY" };
 export const WEEKDAY_KEY: Record<number, TranslationKey> = { 1: "hostel.day1", 2: "hostel.day2", 3: "hostel.day3", 4: "hostel.day4", 5: "hostel.day5", 6: "hostel.day6", 7: "hostel.day7" };
 
-export const inputClass = "mt-1.5 block min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3.5 text-[0.9375rem] text-fg";
-
 export async function wardenContext() {
   const ctx = await requireRole("WARDEN", "ADMIN", "PRINCIPAL");
   const [t, locale, on, school] = await Promise.all([getT(), getLocale(), isModuleOn(ctx.schoolId, "HOSTEL"), db.school.findUnique({ where: { id: ctx.schoolId }, select: { timezone: true } })]);

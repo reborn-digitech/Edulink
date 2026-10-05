@@ -10,6 +10,7 @@ import { useSession } from "@/lib/session";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { CollegeRoleHome } from "@/screens/college/role-home";
+import { formatDate } from "@/lib/dates";
 
 /**
  * The IQAC coordinator's home on the phone (the IQAC module, 4 Oct 2026), the
@@ -60,11 +61,12 @@ export function IqacHome() {
           {o.cheapest.length ? (
             <Card title={t("iqac.cheapestTitle")}>
               {o.cheapest.map((m) => (
-                <Row key={m.code} title={`${m.code} ${m.text}`} caption={t("iqac.cheapestRow", { gain: m.gainPerUnit.toFixed(4), unit: m.unit })} />
+                <Row key={m.code} title={`${m.code} ${m.text}`} caption={t("iqac.cheapestRow", { gain: m.gainPerUnit.toFixed(4), unit: unitLabel(t, m.unit) })} />
               ))}
             </Card>
           ) : null}
-          <Card title={t("insightsPhone.title")}>
+          {/* No title: the row under it says "Actionable insights", and the two read as one heading twice (A3-states-16). */}
+          <Card>
             <Row title={t("insightsPhone.insightsButton")} onPress={() => router.push("/(app)/iqac-insights" as never)} />
             <Row title={t("insightsPhone.scenariosButton")} onPress={() => router.push("/(app)/iqac-scenarios" as never)} />
           </Card>
@@ -85,7 +87,7 @@ export function IqacHome() {
           </Card>
           <Card title={t("iqac.calendarTitle")}>
             {o.calendar.map((c) => (
-              <Row key={c.code} title={c.label} caption={`${t("iqac.calendarDue", { from: c.from, to: c.to })}${c.filedThisYear ? ` · ${t("iqac.calendarFiled")}` : ""}`} />
+              <Row key={c.code} title={calendarLabel(t, c.code, c.label)} caption={`${t("iqac.calendarDue", { from: formatDate(c.from), to: formatDate(c.to) })}${c.filedThisYear ? ` · ${t("iqac.calendarFiled")}` : ""}`} />
             ))}
             <Text variant="xs" tone="muted">
               {t("iqac.calendarCheck")}
@@ -121,6 +123,18 @@ const FILING_KIND_KEY: Record<CollegeFilingKind, TranslationKey> = {
   NCTE_RETURN: "iqac.filingKind.NCTE_RETURN",
   NBA_SAR: "iqac.filingKind.NBA_SAR",
 };
+
+/** The lever's unit is a code ("student", "paper"): said in the phone's language, as the server's sentences say it. */
+const UNIT_CODES = ["course", "student", "stakeholder", "step", "programme", "teacher", "mentor", "year", "day", "complaint", "tenth", "lakh", "workshop", "paper", "book", "award", "activity", "mou", "computer", "mbps", "skill", "option", "event", "area", "person", "audit"];
+export function unitLabel(t: (key: TranslationKey) => string, code: string): string {
+  return UNIT_CODES.includes(code) ? t(`iqac.unit.${code}` as TranslationKey) : code;
+}
+
+/** A regulator's date in the phone's language: the server sends the code beside its own words (A3-states-16). */
+const CALENDAR_CODES = ["AQAR", "AISHE", "NIRF", "AICTE_EOA", "AFFILIATION"];
+export function calendarLabel(t: (key: TranslationKey) => string, code: string, label: string): string {
+  return CALENDAR_CODES.includes(code) ? t(`iqac.calendar.${code}` as TranslationKey) : label;
+}
 
 export function filingKindLabel(kind: CollegeFilingKind, t: (key: TranslationKey) => string): string {
   const key = FILING_KIND_KEY[kind] as TranslationKey | undefined;

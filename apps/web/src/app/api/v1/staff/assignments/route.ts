@@ -3,6 +3,7 @@ import { requireApiRole } from "@/lib/tenancy";
 import { staffAssignments } from "@/lib/api-reads/staff";
 import { createAssignment } from "@/lib/grading";
 import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
+import { moduleFailure } from "@/lib/rule-refusal";
 
 /** GET /api/v1/staff/assignments?state=&classId=&years=all — the assignments list, this academic year's by default. */
 export async function GET(request: Request) {
@@ -33,6 +34,7 @@ export async function POST(request: Request) {
     );
     return ok(assignmentCreatedSchema.parse(result));
   } catch (error) {
-    return apiFailure(error, "api/v1/staff/assignments");
+    // A due date already past without confirmPastDue is a 422 on dueAt (A3-journeys-25).
+    return moduleFailure(error, "api/v1/staff/assignments");
   }
 }

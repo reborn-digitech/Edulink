@@ -145,7 +145,7 @@ describe("a circular's reach report", () => {
   });
 
   it("a refusal is an alert with a retry", async () => {
-    const { calls } = await mount("TEACHER", { [`GET ${PATH}/reach`]: refused("ZZ Not your class", 404) });
+    const { calls } = await mount("TEACHER", { [`GET ${PATH}/reach`]: refused("ZZ Not your class", 503) });
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ Not your class");
     await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
     await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}/reach`)).toHaveLength(2));

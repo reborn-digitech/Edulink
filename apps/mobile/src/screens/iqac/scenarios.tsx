@@ -6,6 +6,7 @@ import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { openWeb } from "@/screens/family/shared";
 import { noCycle } from "./insights";
+import { formatDate } from "@/lib/dates";
 
 /**
  * The saved scenarios on the phone (5 Oct 2026), read-only: GET
@@ -21,7 +22,7 @@ function ScenarioRow({ s }: { s: Scenario }) {
   return (
     <Row
       title={s.name}
-      caption={`${t("insightsPhone.scenarioBy", { by: s.by, date: s.at.slice(0, 10) })} · ${s.delta === 0 ? t("insightsPhone.scenarioSame") : t("insightsPhone.scenarioDelta", { delta: delta(s.delta) })}`}
+      caption={`${t("insightsPhone.scenarioBy", { by: s.by, date: formatDate(s.at) })} · ${s.delta === 0 ? t("insightsPhone.scenarioSame") : t("insightsPhone.scenarioDelta", { delta: delta(s.delta) })}`}
       right={
         <Text bold tone={s.delta > 0 ? "ok" : s.delta < 0 ? "warn" : "fg"}>
           {t("insightsPhone.scenarioResult", { cgpa: s.result.toFixed(2), grade: s.grade ?? "—" })}

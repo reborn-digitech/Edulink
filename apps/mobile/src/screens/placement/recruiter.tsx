@@ -49,7 +49,7 @@ export function RecruiterPlacementHome() {
         </Card>
       ) : null}
       {drives.isPending ? <Loading /> : null}
-      {drives.isError ? <Failed message={drives.error.message} onRetry={() => void drives.refetch()} /> : null}
+      {drives.isError ? <Failed error={drives.error} onRetry={() => void drives.refetch()} /> : null}
       {d && !d.company ? (
         <Card title={t("placement.registerCompany")}>
           <Text variant="sm" tone="muted">
@@ -100,7 +100,7 @@ export function RecruiterDriveScreen() {
     <Screen title={d?.title ?? t("role.recruiter")} description={d ? `${d.collegeName} · ${packageRange(d.packageMinRupees, d.packageMaxRupees, t)}` : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {notice ? <Notice text={notice.text} tone={notice.tone} /> : null}
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         <>
           <Card>

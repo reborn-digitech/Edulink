@@ -8,6 +8,7 @@ import { resultsCsv } from "@/lib/exam-cell-marks";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CellOff, SessionFrame } from "@/components/exam-cell/parts";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -32,7 +33,7 @@ export default async function ExportPage({ params, searchParams }: { params: Pro
       <Card>
         <CardHeader title={which === "results" ? t("examCell.exportResults") : t("examCell.exportForms")} description={t("examCell.exportHint")} action={<Button asChild variant="secondary"><a href={`data:text/csv;charset=utf-8,${encodeURIComponent(file.csv)}`} download={file.name}>{t("examCell.download")}</a></Button>} />
         <CardBody>
-          <textarea readOnly value={file.csv} aria-label={t("examCell.exportTitle")} className="h-80 w-full rounded-[var(--radius-md)] border border-border bg-surface p-3 font-mono text-xs" />
+          <textarea readOnly value={file.csv} aria-label={t("examCell.exportTitle")} className={fieldClass("h-80 font-mono text-xs")} />
         </CardBody>
       </Card>
     </SessionFrame>

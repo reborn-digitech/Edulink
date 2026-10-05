@@ -42,7 +42,7 @@ export default async function AntiRaggingPage() {
   const locale = await getLocale();
   if (!isCollegeKind(await institutionKindOf(ctx.schoolId))) notFound();
   if ((ctx.role === "FACULTY" || ctx.role === "HOD") && !(await hasDuty(ctx, "ANTI_RAGGING_SQUAD"))) notFound();
-  if (!(await isModuleOn(ctx.schoolId, "IQAC"))) return <ModuleOff module="IQAC" t={t} college />;
+  if (!(await isModuleOn(ctx.schoolId, "IQAC"))) return <ModuleOff page module="IQAC" t={t} college />;
   const [r, school] = await Promise.all([antiRaggingRegister(ctx), db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } })]);
   const when = (iso: string) => new Intl.DateTimeFormat(locale, { dateStyle: "medium", timeStyle: "short", timeZone: school.timezone }).format(new Date(iso));
   return (

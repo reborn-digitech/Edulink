@@ -50,7 +50,7 @@ export function TpoDriveScreen() {
     <Screen title={d?.title ?? t("placement.tabDrives")} description={d ? `${d.companyName} · ${packageRange(d.packageMinRupees, d.packageMaxRupees, t)} · ${t(DRIVE_STATUS_KEY[d.status]!)}` : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {notice ? <Notice text={notice.text} tone={notice.tone} /> : null}
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         <>
           <Card>

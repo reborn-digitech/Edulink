@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { useT } from "@/lib/i18n";
 import { reviewComment } from "./actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * The two decisions on a held comment. Approve is one press: it is the safe
@@ -68,7 +69,7 @@ export function CommentReview({ commentId, postId, authorName }: { commentId: st
             maxLength={500}
             rows={2}
             aria-describedby={hintId}
-            className="w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
+            className={fieldClass()}
           />
           <p id={hintId} className="text-xs text-fg-muted">
             {t("bulletin.commentRemoveReasonHint")}

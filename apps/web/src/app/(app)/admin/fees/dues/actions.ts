@@ -8,7 +8,7 @@ import { failure, type ActionResult } from "../action-result";
 /** Everyone overdue hears now, whatever the daily job's buckets say. One notice per pupil. */
 export async function remindOverdueAction(): Promise<ActionResult & { families?: number; demands?: number }> {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const result = await remindNow(ctx);
     revalidatePath("/admin/fees/dues");
     return { ok: true, ...result };

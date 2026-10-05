@@ -3,8 +3,14 @@
 import { useEffect, useRef, useState, useTransition } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { MagnifyingGlassIcon, XIcon } from "@phosphor-icons/react";
-import { Spinner } from "@/components/ui/button";
+import { Button, Spinner } from "@/components/ui/button";
+import { Chip } from "@/components/ui/chip";
 import { cn } from "@/lib/cn";
+
+/** An active filter, pressed to remove it: the chip's 44 px with the accent tint the row had (A3-states-11: it was 24 px). */
+const ACTIVE_CHIP = "gap-1 border-transparent bg-accent-soft px-3 text-xs text-accent-strong hover:bg-accent-soft hover:text-accent-strong hover:opacity-80";
+
+import { fieldClass } from "./field-class";
 
 /**
  * Search, sort and filters for a page that shows a collection.
@@ -141,7 +147,7 @@ export function DataToolbar({
                 onChange={(e) => onType(e.target.value)}
                 placeholder={search.placeholder}
                 aria-label={search.label}
-                className="min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface pl-11 pr-11 text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+                className={fieldClass("pl-11 pr-11")}
               />
               {pending ? (
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-fg-subtle">
@@ -165,7 +171,7 @@ export function DataToolbar({
               value={facet.value}
               onChange={(e) => navigate({ [facet.key]: e.target.value === (facet.defaultValue ?? "") ? null : e.target.value })}
               aria-label={facet.label}
-              className="min-h-11 rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+              className={fieldClass("w-auto")}
             >
               {facet.options.map((o) => (
                 <option key={o.value} value={o.value}>
@@ -179,7 +185,7 @@ export function DataToolbar({
               value={sort.value}
               onChange={(e) => navigate({ [sortKey]: e.target.value === sort.defaultValue ? null : e.target.value })}
               aria-label={sort.label}
-              className="min-h-11 rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent sm:ml-auto"
+              className={fieldClass("w-auto sm:ml-auto")}
             >
               {sort.options.map((o) => (
                 <option key={o.value} value={o.value}>
@@ -197,19 +203,15 @@ export function DataToolbar({
           {facet.options.map((o) => {
             const on = facet.value === o.value;
             return (
-              <button
+              <Chip
                 key={o.value}
-                type="button"
-                aria-pressed={on}
+                pressed={on}
                 onClick={() => navigate({ [facet.key]: o.value === (facet.defaultValue ?? "") ? null : o.value })}
-                className={cn(
-                  "min-h-11 shrink-0 snap-start rounded-full px-3 text-xs font-medium transition-colors",
-                  on ? "bg-accent text-accent-fg" : "border border-border bg-surface text-fg-muted hover:bg-surface-muted hover:text-fg",
-                )}
+                className="shrink-0 snap-start gap-0 px-3 text-xs"
               >
                 {o.label}
                 {o.count !== undefined && <span className={cn("ml-1 tabular-nums", on ? "" : "text-fg-subtle")}>{o.count}</span>}
-              </button>
+              </Chip>
             );
           })}
         </div>
@@ -218,28 +220,29 @@ export function DataToolbar({
       {anyActive && (
         <div className="flex flex-wrap items-center gap-1.5 text-xs" aria-label={labels.activeFilters}>
           {search?.value && (
-            <button type="button" onClick={() => { setText(""); setOwn(null); navigate({ [searchKey]: null }); }} className="inline-flex items-center gap-1 rounded-full bg-accent-soft px-2.5 py-1 font-medium text-accent-strong hover:opacity-80">
+            <Chip onClick={() => { setText(""); setOwn(null); navigate({ [searchKey]: null }); }} className={ACTIVE_CHIP}>
               “{search.value}”
               <XIcon weight="bold" className="size-3" aria-hidden="true" />
-            </button>
+            </Chip>
           )}
           {active.map((facet) => {
             const chosen = facet.options.find((o) => o.value === facet.value);
             return (
-              <button
+              <Chip
                 key={facet.key}
-                type="button"
                 onClick={() => navigate({ [facet.key]: null })}
-                className="inline-flex items-center gap-1 rounded-full bg-accent-soft px-2.5 py-1 font-medium text-accent-strong hover:opacity-80"
+                className={ACTIVE_CHIP}
                 aria-label={`${facet.label}: ${chosen?.label ?? facet.value}`}
               >
                 {chosen?.label ?? facet.value}
                 <XIcon weight="bold" className="size-3" aria-hidden="true" />
-              </button>
+              </Chip>
             );
           })}
-          <button
+          <Button
             type="button"
+            variant="ghost"
+            size="sm"
             onClick={() => {
               setText("");
               setOwn(null);
@@ -247,10 +250,10 @@ export function DataToolbar({
               for (const f of facets) cleared[f.key] = null;
               navigate(cleared);
             }}
-            className="ml-1 font-medium text-fg-muted underline-offset-2 hover:text-fg hover:underline"
+            className="text-xs"
           >
             {labels.clearAll}
-          </button>
+          </Button>
         </div>
       )}
     </div>

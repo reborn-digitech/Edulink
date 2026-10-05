@@ -31,7 +31,7 @@ function previousMonth(): string {
  */
 export default async function PayrollOverview({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const { ctx, t, locale, on, canEdit } = await payrollGate();
-  if (!on) return <ModuleOff module="PAYROLL" t={t} />;
+  if (!on) return <ModuleOff page module="PAYROLL" t={t} />;
   const params = await searchParams;
   const s = await payrollSummary(ctx);
   const latest = s.runs.find((r) => r.status === "LOCKED");
@@ -122,26 +122,28 @@ export default async function PayrollOverview({ searchParams }: { searchParams: 
             {s.costByDepartment.length === 0 ? (
               <EmptyState className="border-0 bg-transparent py-4" title={t("payroll.noLockedRun")} description={t("payroll.noLockedRunBody")} />
             ) : (
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-border">
-                    <th scope="col" className={TH}>{t("payroll.colDepartment")}</th>
-                    <th scope="col" className={`${TH} text-right`}>{t("payroll.colPeople")}</th>
-                    <th scope="col" className={`${TH} text-right`}>{t("payroll.colGross")}</th>
-                    <th scope="col" className={`${TH} text-right`}>{t("payroll.colEmployer")}</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-border">
-                  {s.costByDepartment.map((d) => (
-                    <tr key={d.department}>
-                      <td className={TD}>{t(`payroll.dept${d.department}` as Parameters<typeof t>[0])}</td>
-                      <td className={NUM}>{d.headcount}</td>
-                      <td className={NUM}>{formatPaise(d.grossPaise, locale)}</td>
-                      <td className={NUM}>{formatPaise(d.employerPaise, locale)}</td>
+              <TableScroll>
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-border">
+                      <th scope="col" className={TH}>{t("payroll.colDepartment")}</th>
+                      <th scope="col" className={`${TH} text-right`}>{t("payroll.colPeople")}</th>
+                      <th scope="col" className={`${TH} text-right`}>{t("payroll.colGross")}</th>
+                      <th scope="col" className={`${TH} text-right`}>{t("payroll.colEmployer")}</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-border">
+                    {s.costByDepartment.map((d) => (
+                      <tr key={d.department}>
+                        <td className={TD}>{t(`payroll.dept${d.department}` as Parameters<typeof t>[0])}</td>
+                        <td className={NUM}>{d.headcount}</td>
+                        <td className={NUM}>{formatPaise(d.grossPaise, locale)}</td>
+                        <td className={NUM}>{formatPaise(d.employerPaise, locale)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </TableScroll>
             )}
           </CardBody>
         </Card>

@@ -5,6 +5,7 @@ import { ArrowRightIcon } from "@phosphor-icons/react/ssr";
 import { Card } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
 import { EmptyState } from "@/components/ui/states";
+import { PageHeader } from "@/components/ui/page-header";
 import { Button } from "@/components/ui/button";
 import { requireUser } from "@/lib/tenancy";
 import { myChildren, myRecord } from "@/lib/student-record";
@@ -53,16 +54,20 @@ export default async function RecordPage() {
   // what would put something here, and given the door they actually need.
   if (!record && children.length === 0) {
     return (
-      <EmptyState
-        title={t("record.noRecordYet")}
-        description={t("record.noRecordBody")}
-        action={
-          <Button asChild variant="secondary">
-            <Link href="/join">{t("record.joinWithCode")}</Link>
-          </Button>
-        }
-      />
+      <div className="space-y-6">
+        <PageHeader title={t("record.yourRecord")} />
+        <EmptyState
+          title={t("record.noRecordYet")}
+          description={t("record.noRecordBody")}
+          action={
+            <Button asChild variant="secondary">
+              <Link href="/join">{t("record.joinWithCode")}</Link>
+            </Button>
+          }
+        />
+      </div>
     );
+
   }
 
   // A guardian who has never been a pupil themselves goes straight to the one

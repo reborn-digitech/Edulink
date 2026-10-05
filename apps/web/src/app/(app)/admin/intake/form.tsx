@@ -23,6 +23,7 @@ import { useT } from "@/lib/i18n";
 import type { IntakeOutcome } from "@/lib/intake";
 import { FIRST_SIGNIN_TTL_DAYS } from "@/lib/first-signin-constants";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { fieldClass } from "@/components/ui/field-class";
 
 const EXAMPLE =
   "name,date of birth,class,guardian email,guardian name,relation,student code\n" +
@@ -292,7 +293,7 @@ export function IntakeForm({
           onChange={(e) => setText(e.target.value)}
           rows={10}
           placeholder={EXAMPLE}
-          className="mt-1.5 w-full rounded-[var(--radius-md)] border border-border bg-surface p-3.5 font-mono text-sm leading-relaxed outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+          className={fieldClass("mt-1.5 font-mono leading-relaxed text-sm")}
         />
         <p className="mt-1 text-xs text-fg-muted">{t("intake.columnsHelp")}</p>
         <p className="mt-1 text-xs text-fg-muted">{t("intake.penColumn")}</p>

@@ -9,8 +9,9 @@ import { marksSheet } from "@/lib/exam-cell-marks";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { CellOff, GRACE_STATUS_KEY, Hidden, Labelled, SessionFrame, day, inputClass, marks } from "@/components/exam-cell/parts";
+import { CellOff, GRACE_STATUS_KEY, Hidden, Labelled, SessionFrame, day, marks } from "@/components/exam-cell/parts";
 import { correctMarkAction, enterMarksAction, importMarksAction, moderationNoteAction, proposeGraceAction } from "../../../actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -92,7 +93,7 @@ export default async function MarksPage({ params, searchParams }: { params: Prom
                       {sheet.canEnter ? (
                         <td className="px-3 py-2">
                           <input type="hidden" name="studentMembershipId" value={r.studentMembershipId} />
-                          <input name={`marks_${r.studentMembershipId}`} aria-label={t("examCell.yourEntryFor", { name: r.name })} placeholder={t("examCell.entryPlaceholder")} className={`${inputClass} w-24`} />
+                          <input name={`marks_${r.studentMembershipId}`} aria-label={t("examCell.yourEntryFor", { name: r.name })} placeholder={t("examCell.entryPlaceholder")} className={fieldClass("w-24")} />
                         </td>
                       ) : null}
                     </tr>
@@ -115,7 +116,7 @@ export default async function MarksPage({ params, searchParams }: { params: Prom
           <CardBody>
             <form action={importMarksAction} className="space-y-3">
               <Hidden fields={{ sessionId: s.id, back }} />
-              <textarea name="text" required rows={6} placeholder="PRN,SEAT_NO,COURSE_CODE,INTERNAL,EXTERNAL" aria-label={t("examCell.importTitle")} className="w-full rounded-[var(--radius-md)] border border-border bg-surface p-3 font-mono text-xs" />
+              <textarea name="text" required rows={6} placeholder="PRN,SEAT_NO,COURSE_CODE,INTERNAL,EXTERNAL" aria-label={t("examCell.importTitle")} className={fieldClass("font-mono text-xs")} />
               <Button type="submit" variant="secondary">
                 {t("examCell.import")}
               </Button>
@@ -131,7 +132,7 @@ export default async function MarksPage({ params, searchParams }: { params: Prom
             <form action={correctMarkAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, courseId: sheet.courseId, back }} />
               <Labelled label={t("examCell.student")}>
-                <select name="studentMembershipId" className={inputClass}>
+                <select name="studentMembershipId" className={fieldClass()}>
                   {sheet.rows.map((r) => (
                     <option key={r.studentMembershipId} value={r.studentMembershipId}>
                       {r.name}
@@ -140,10 +141,10 @@ export default async function MarksPage({ params, searchParams }: { params: Prom
                 </select>
               </Labelled>
               <Labelled label={t("examCell.colExternal")}>
-                <input name="marks" required placeholder={t("examCell.entryPlaceholder")} className={`${inputClass} w-28`} />
+                <input name="marks" required placeholder={t("examCell.entryPlaceholder")} className={fieldClass("w-28")} />
               </Labelled>
               <Labelled label={t("examCell.reason")}>
-                <input name="reason" required minLength={5} maxLength={300} className={inputClass} />
+                <input name="reason" required minLength={5} maxLength={300} className={fieldClass()} />
               </Labelled>
               <Button type="submit" size="sm">
                 {t("examCell.correct")}
@@ -165,7 +166,7 @@ export default async function MarksPage({ params, searchParams }: { params: Prom
             <form action={proposeGraceAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, courseId: sheet.courseId, back }} />
               <Labelled label={t("examCell.student")}>
-                <select name="studentMembershipId" className={inputClass}>
+                <select name="studentMembershipId" className={fieldClass()}>
                   {sheet.rows.map((r) => (
                     <option key={r.studentMembershipId} value={r.studentMembershipId}>
                       {r.name}
@@ -174,16 +175,16 @@ export default async function MarksPage({ params, searchParams }: { params: Prom
                 </select>
               </Labelled>
               <Labelled label={t("examCell.graceMarks")}>
-                <input name="marks" type="number" step="0.5" min={0.5} max={20} required className={`${inputClass} w-24`} />
+                <input name="marks" type="number" step="0.5" min={0.5} max={20} required className={fieldClass("w-24")} />
               </Labelled>
               <Labelled label={t("examCell.graceRule")}>
-                <select name="rule" className={inputClass}>
+                <select name="rule" className={fieldClass()}>
                   <option value="TO_PASS">{t("examCell.ruleTO_PASS")}</option>
                   <option value="TO_CLASS">{t("examCell.ruleTO_CLASS")}</option>
                 </select>
               </Labelled>
               <Labelled label={t("examCell.reason")}>
-                <input name="reason" required minLength={5} maxLength={300} className={inputClass} />
+                <input name="reason" required minLength={5} maxLength={300} className={fieldClass()} />
               </Labelled>
               <Button type="submit" size="sm" variant="secondary">
                 {t("examCell.propose")}
@@ -205,7 +206,7 @@ export default async function MarksPage({ params, searchParams }: { params: Prom
             <form action={moderationNoteAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, courseId: sheet?.courseId, back }} />
               <Labelled label={t("examCell.committeeNote")} className="min-w-64 flex-1">
-                <input name="note" required minLength={5} maxLength={2000} className={inputClass} />
+                <input name="note" required minLength={5} maxLength={2000} className={fieldClass()} />
               </Labelled>
               <Button type="submit" size="sm" variant="secondary">
                 {t("examCell.record")}

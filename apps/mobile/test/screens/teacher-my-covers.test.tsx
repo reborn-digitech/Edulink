@@ -34,7 +34,7 @@ describe("the lessons I am covering", () => {
     expect(screen.getByText("Note: Take the reader")).toBeTruthy();
     expect(screen.getByText("Science · ZZ 6A")).toBeTruthy();
     expect(screen.getByText("Period 3 · Lab · For ZZ Bala")).toBeTruthy();
-    expect(screen.getByText("Thu, Sep 17")).toBeTruthy();
+    expect(screen.getByText("Thu, 17/09/2026")).toBeTruthy();
     expect(screen.queryByRole("button", { name: "Today" })).toBeNull();
   });
 
@@ -43,9 +43,9 @@ describe("the lessons I am covering", () => {
     await screen.findByText("English · ZZ 5B");
     await fireEvent.press(screen.getByRole("button", { name: "Next day" }));
     await waitFor(() => expect(calls().some((c) => c.line === `GET ${PATH}?date=2026-09-18`)).toBe(true));
-    await screen.findByText("Fri, Sep 18");
+    await screen.findByText("Fri, 18/09/2026");
     await fireEvent.press(screen.getByRole("button", { name: "Today" }));
-    await screen.findByText("Thu, Sep 17");
+    await screen.findByText("Thu, 17/09/2026");
     await fireEvent.press(screen.getByRole("button", { name: "Previous day" }));
     await waitFor(() => expect(calls().some((c) => c.line === `GET ${PATH}?date=2026-09-16`)).toBe(true));
   });

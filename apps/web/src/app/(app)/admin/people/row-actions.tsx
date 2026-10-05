@@ -7,6 +7,7 @@ import { useToast } from "@/components/ui/toast";
 import { suspend } from "./actions";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * The pause form, opened from the row's action menu (directory-menu.tsx).
@@ -64,7 +65,7 @@ export function PausePanel({
           rows={2}
           maxLength={500}
           onChange={(event) => setReason(event.target.value)}
-          className="mt-1 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 py-2 text-sm text-fg outline-none focus:border-accent"
+          className={fieldClass("mt-1")}
         />
       </label>
 

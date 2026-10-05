@@ -51,7 +51,7 @@ describe("a student's voice on the phone (the IQAC module, 4 Oct 2026)", () => {
     await fireEvent.press(screen.getByRole("switch", { name: "Keep my name from everyone but the office and the principal" }));
     await fireEvent.press(screen.getByRole("button", { name: "Send to the committee" }));
     expect(await screen.findByText("Sent to the committee.")).toBeTruthy();
-    expect(screen.getByText(/Due by 2026-10-21/)).toBeTruthy();
+    expect(screen.getByText(/Due by 21\/10\/2026/)).toBeTruthy();
     expect(calls().find((c) => c.line === "POST /api/v1/voice/grievances")?.body).toEqual({ kind: "RAGGING", text: filed.text, anonymousToStaff: true });
   });
 

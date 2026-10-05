@@ -142,7 +142,7 @@ function RevisionQuestion({
                       });
                     }}
                     className={cn(
-                      "rounded-lg border border-border px-3 py-2.5 text-left text-sm text-fg transition-colors",
+                      "rounded-[var(--radius-lg)] border border-border px-3 py-2.5 text-left text-sm text-fg transition-colors",
                       outcome === null && "hover:border-accent hover:bg-surface-muted",
                       isAnswer && "border-ok bg-ok-soft",
                       isChosenWrong && "border-danger bg-danger-soft",

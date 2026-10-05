@@ -54,7 +54,7 @@ function ChildPractice() {
         </Note>
       ) : null}
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         d.topics.length === 0 ? (
           <Empty title={t("feature.practice")} body={t("practice.parentPracticeEmpty", { name })} action={<Button label={t("nav.assignments")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/assignments", params: { child: childId ?? d.children[0]?.studentMembershipId ?? "" } } as never)} />} />
@@ -105,7 +105,7 @@ function PupilPractice() {
   return (
     <Screen title={t("feature.practice")} description={t("practice.intro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         topics.length === 0 ? (
           <Empty title={t("student.noTopics")} body={t("student.noTopicsBody")} action={<Button label={t("nav.assignments")} variant="secondary" onPress={() => router.push("/(app)/assignments" as never)} />} />

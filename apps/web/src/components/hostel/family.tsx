@@ -10,9 +10,12 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ModuleOff } from "@/components/module-off";
 import { Flash } from "@/components/library/parts";
-import { HOSTEL_KIND_KEY, LEAVE_KIND_KEY, LeaveSummary, MEAL_KEY, ROLL_STATUS_KEY, SLOT_KEY, inputClass } from "./parts";
+import { HOSTEL_KIND_KEY, LEAVE_KIND_KEY, LeaveSummary, MEAL_KEY, ROLL_STATUS_KEY, SLOT_KEY } from "./parts";
 import { cancelLeaveAction, consentAction, requestLeaveAction } from "@/app/(app)/hostel/actions";
 import type { ReactNode } from "react";
+import { ActionForm } from "@/components/ui/action-form";
+import { SelectField, TextField } from "@/components/ui/field";
+import { DateTimeField } from "@/components/ui/date-time-field";
 
 /**
  * A boarder's hostel, for the pupil (/student/hostel) and a guardian
@@ -80,39 +83,25 @@ export async function FamilyHostelView({ ctx, schoolId, childId, path, ok, error
           <Card>
             <CardHeader icon={<SuitcaseRollingIcon weight="duotone" className="size-5" />} title={t("hostel.askLeave")} description={h.canConsent ? t("hostel.askLeaveGuardian") : t("hostel.askLeavePupil")} />
             <CardBody>
-              <form action={requestLeaveAction} className="grid gap-3 sm:grid-cols-2">
+              {/* Answers in place (A3-journeys-27): back-before-out keeps the form as typed and is said under "back". */}
+              <ActionForm action={requestLeaveAction} className="grid gap-3 sm:grid-cols-2">
                 <input type="hidden" name="back" value={back} />
                 {childId ? <input type="hidden" name="childId" value={childId} /> : null}
-                <label className="text-sm font-medium text-fg">
-                  {t("hostel.leaveKind")}
-                  <select name="kind" required className={inputClass}>
-                    {HOSTEL_LEAVE_KINDS.map((k) => (
-                      <option key={k} value={k}>
-                        {t(LEAVE_KIND_KEY[k])}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <label className="text-sm font-medium text-fg">
-                  {t("hostel.destination")}
-                  <input name="destination" required maxLength={120} className={inputClass} />
-                </label>
-                <label className="text-sm font-medium text-fg">
-                  {t("hostel.leaveFrom")}
-                  <input type="datetime-local" name="fromAt" required className={inputClass} />
-                </label>
-                <label className="text-sm font-medium text-fg">
-                  {t("hostel.leaveTo")}
-                  <input type="datetime-local" name="toAt" required className={inputClass} />
-                </label>
-                <label className="text-sm font-medium text-fg sm:col-span-2">
-                  {t("hostel.leaveReason")}
-                  <input name="reason" maxLength={300} className={inputClass} />
-                </label>
+                <SelectField label={t("hostel.leaveKind")} name="kind" required>
+                  {HOSTEL_LEAVE_KINDS.map((k) => (
+                    <option key={k} value={k}>
+                      {t(LEAVE_KIND_KEY[k])}
+                    </option>
+                  ))}
+                </SelectField>
+                <TextField label={t("hostel.destination")} name="destination" required maxLength={120} />
+                <DateTimeField label={t("hostel.leaveFrom")} name="fromAt" required />
+                <DateTimeField label={t("hostel.leaveTo")} name="toAt" required />
+                <TextField className="sm:col-span-2" label={t("hostel.leaveReason")} name="reason" maxLength={300} />
                 <div className="sm:col-span-2">
                   <Button type="submit">{t("hostel.askLeaveButton")}</Button>
                 </div>
-              </form>
+              </ActionForm>
             </CardBody>
           </Card>
         </>

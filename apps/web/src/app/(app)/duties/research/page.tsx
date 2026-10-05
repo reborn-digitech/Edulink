@@ -19,18 +19,21 @@ export async function generateMetadata(): Promise<Metadata> {
 
 /**
  * THE RESEARCH DEAN'S DESK (5 Oct 2026): the college's whole research
- * register, each teacher's publications, projects and the API-score inputs
- * the office keeps on the faculty record, and the years. A read: the teacher
+ * register, each teacher's publications and projects, and the years; the
+ * API-score inputs the office keeps on the faculty record only to the office
+ * and the head (A3-S-11). A read: the teacher
  * adds their own research, the office keeps the faculty record.
  */
 export default async function ResearchDeskPage() {
   const { ctx, moduleOn } = await dutyPageContext("RESEARCH_DEAN", "IQAC");
   const t = await getT();
-  if (!moduleOn) return <ModuleOff module="IQAC" t={t} college />;
+  if (!moduleOn) return <ModuleOff page module="IQAC" t={t} college />;
   const d = await researchDesk(ctx);
   const pubs = d.perFaculty.reduce((a, f) => a + f.publications, 0);
   const projects = d.perFaculty.reduce((a, f) => a + f.projects, 0);
   const lakhs = Math.round(d.perFaculty.reduce((a, f) => a + f.amountLakhs, 0) * 100) / 100;
+  // The API-score columns are the office's and the head's (A3-S-11): the duty's holder reads the counts only.
+  const showApi = d.perFaculty.some((f) => f.apiScoreInputs !== null);
   return (
     <div className="space-y-6">
       <PageHeader title={t("duties.research.title")} description={t("duties.research.intro")} />
@@ -41,7 +44,7 @@ export default async function ResearchDeskPage() {
         <StatTile label={t("duties.research.statLakhs")} value={lakhs} />
       </div>
       <Card>
-        <CardHeader icon={<MedalIcon weight="duotone" className="size-5" />} title={t("duties.research.facultyTitle")} description={t("duties.research.facultyBody")} />
+        <CardHeader icon={<MedalIcon weight="duotone" className="size-5" />} title={t("duties.research.facultyTitle")} description={t(showApi ? "duties.research.facultyBody" : "duties.research.facultyBodyDuty")} />
         <CardBody>
           {d.perFaculty.length === 0 ? (
             <p className="text-sm text-fg-muted">{t("duties.research.noFaculty")}</p>
@@ -55,10 +58,14 @@ export default async function ResearchDeskPage() {
                     <th className={`${TH} text-right`}>{t("duties.research.colBooks")}</th>
                     <th className={`${TH} text-right`}>{t("duties.research.colProjects")}</th>
                     <th className={`${TH} text-right`}>{t("duties.research.colLakhs")}</th>
-                    <th className={`${TH} text-right`}>{t("duties.research.colTeaching")}</th>
-                    <th className={`${TH} text-right`}>{t("duties.research.colResearch")}</th>
-                    <th className={`${TH} text-right`}>{t("duties.research.colService")}</th>
-                    <th className={`${TH} text-right`}>{t("duties.research.colApi")}</th>
+                    {showApi ? (
+                      <>
+                        <th className={`${TH} text-right`}>{t("duties.research.colTeaching")}</th>
+                        <th className={`${TH} text-right`}>{t("duties.research.colResearch")}</th>
+                        <th className={`${TH} text-right`}>{t("duties.research.colService")}</th>
+                        <th className={`${TH} text-right`}>{t("duties.research.colApi")}</th>
+                      </>
+                    ) : null}
                   </tr>
                 </thead>
                 <tbody>
@@ -69,10 +76,14 @@ export default async function ResearchDeskPage() {
                       <td className={NUM}>{f.books}</td>
                       <td className={NUM}>{f.projects}</td>
                       <td className={NUM}>{f.amountLakhs}</td>
-                      <td className={NUM}>{f.apiScoreInputs.teaching}</td>
-                      <td className={NUM}>{f.apiScoreInputs.research}</td>
-                      <td className={NUM}>{f.apiScoreInputs.service}</td>
-                      <td className={NUM}>{f.apiScore}</td>
+                      {showApi ? (
+                        <>
+                          <td className={NUM}>{f.apiScoreInputs?.teaching ?? ""}</td>
+                          <td className={NUM}>{f.apiScoreInputs?.research ?? ""}</td>
+                          <td className={NUM}>{f.apiScoreInputs?.service ?? ""}</td>
+                          <td className={NUM}>{f.apiScore ?? ""}</td>
+                        </>
+                      ) : null}
                     </tr>
                   ))}
                 </tbody>

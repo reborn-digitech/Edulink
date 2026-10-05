@@ -11,6 +11,7 @@ import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
 import { bookSlotAction, cancelBookingAction } from "./actions";
 import { PageHeader } from "@/components/ui/page-header";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -142,7 +143,7 @@ export default async function ParentMeetingsPage({
                         return mine.length > 1 ? (
                           <select
                             name="studentMembershipId"
-                            className="rounded-lg border border-border bg-surface px-2 py-1.5 text-sm text-fg"
+                            className={fieldClass("w-auto")}
                           >
                             {mine.map((child) => (
                               <option key={child.studentMembershipId} value={child.studentMembershipId}>

@@ -43,6 +43,7 @@ import { ownWorkScope } from "@/lib/grading";
 import { getT, getLocale } from "@/lib/i18n/server";
 import { periodLabel } from "@/lib/coded-defaults";
 import { PersonLink } from "@/components/person-link";
+import { PAGE_TITLE } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -224,8 +225,10 @@ export default async function ParentDashboard({
       <div className="flex items-center gap-4">
         <Avatar avatarKey={student.user.avatarKey} name={student.user.name} size="lg" />
         <div className="min-w-0">
-          <h1 className="truncate text-2xl font-bold tracking-tight text-fg sm:text-3xl">
+          {/* Beside the avatar, so not a PageHeader; the title has its look, cut short on one line (A3-states-9). */}
+          <h1 className={cn(PAGE_TITLE, "block truncate")}>
             <PersonLink membershipId={selectedId} name={childName} />
+
           </h1>
           <p className="text-sm text-fg-muted">
             {student.school.name}

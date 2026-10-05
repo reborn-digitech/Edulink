@@ -119,7 +119,7 @@ function ParentFees() {
     <Screen title={t("fees.parentTitle")} description={t("fees.parentIntro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {d && d.children.length > 1 ? (
         <ChildSwitcher
-          pupils={d.children.map((c) => ({ guardianshipId: "", studentUserId: "", relation: "", leftAt: null, ...c }))}
+          pupils={d.children.map((c) => ({ guardianshipId: "", studentUserId: "", relation: "", ...c }))}
           selectedId={child?.studentMembershipId ?? null}
           onSelect={(id) => {
             setChildId(id);
@@ -136,7 +136,7 @@ function ParentFees() {
         </Note>
       ) : null}
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d && !child ? <Empty title={t("fees.parentNoChild")} action={<Button label={t("meta.linkChild")} variant="secondary" onPress={() => router.push("/(app)/link-child" as never)} />} /> : null}
       {child && !child.year ? <Empty title={t("fees.parentNoYear")} action={<Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />} /> : null}
       {child && child.year ? (
@@ -311,7 +311,7 @@ function OnlineWatch({ flow, onDone, onClose }: { flow: Extract<Flow, { kind: "o
           </Text>
         </Note>
       ) : null}
-      {status.isError ? <Failed message={status.error.message} onRetry={() => void status.refetch()} /> : null}
+      {status.isError ? <Failed error={status.error} onRetry={() => void status.refetch()} /> : null}
       <Button label={settled || timedOut ? t("common.back") : t("common.cancel")} variant="secondary" onPress={onClose} />
     </Card>
   );
@@ -537,7 +537,7 @@ function PupilFees() {
   return (
     <Screen title={t("fees.myFeesTitle")} description={d ? [d.schoolName, d.year?.name].filter(Boolean).join(" · ") : t("fees.pupilIntro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d && !d.allowed ? <Empty title={t("fees.myFeesTitle")} body={d.reason === "UNDER_AGE" ? t("fees.pupilNotAllowedAge", { age: d.fromAge ?? 0 }) : d.reason === "NO_BIRTHDATE" ? t("fees.pupilNotAllowedBirthdate") : t("fees.pupilNotAllowedOff")} action={<Button label={t("agenda.title")} variant="secondary" onPress={() => router.push("/(app)/agenda" as never)} />} /> : null}
       {d?.allowed ? (
         <>

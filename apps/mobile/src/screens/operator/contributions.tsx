@@ -49,7 +49,7 @@ function Queue() {
     <Screen title={t("gigs.queueTitle")} description={t("gigs.queueIntro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       <Chips label={t("enquiries.statusFilter")} value={status} options={STATUSES.map((s) => ({ value: s, label: d?.counts[s] !== undefined ? `${t(CONTRIBUTION_STATUS[s].label)} ${d.counts[s]}` : t(CONTRIBUTION_STATUS[s].label) }))} onChange={setStatus} />
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         d.rows.length === 0 ? (
           <Empty title={t("gigs.queueEmpty")} action={<Button label={t("appadmin.questionBank")} variant="secondary" onPress={() => router.push("/(app)/question-bank" as never)} />} />
@@ -76,7 +76,7 @@ function Review({ id }: { id: string }) {
   return (
     <Screen title={t("gigs.reviewTitle")} description={c ? [subjectName(t, c.topic.subject), t("appadmin.classN", { n: c.topic.classLevel }), c.topic.name, t("appadmin.levelN", { n: c.difficulty })].join(" · ") : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {c ? (
         <>
           <Pill label={t(CONTRIBUTION_STATUS[c.status].label)} tone={CONTRIBUTION_STATUS[c.status].tone} />

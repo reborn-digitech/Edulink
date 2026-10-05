@@ -46,7 +46,7 @@ export function RemarkNew() {
       onRefresh={() => void query.refetch()}
     >
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d && d.role === "TEACHER" ? (
         d.students.length === 0 ? (
           <Empty title={t("remarks.noStudentsYet")} body={t("remarks.noStudentsBody")} icon="users" action={<Button label={t("remarks.backToToday")} variant="secondary" onPress={() => router.push("/(app)" as never)} />} />

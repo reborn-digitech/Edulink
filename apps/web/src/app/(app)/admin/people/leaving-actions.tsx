@@ -11,6 +11,7 @@ import { DateField } from "@/components/ui/field";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
+import { fieldClass } from "@/components/ui/field-class";
 
 const REASONS = [
   { value: "TRANSFERRED", labelKey: "people.transferred" },
@@ -62,7 +63,7 @@ export function LeavingPanel({
         <select
           value={reason}
           onChange={(event) => setReason(event.target.value)}
-          className="mt-1 min-h-11 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+          className={fieldClass("mt-1")}
         >
           {REASONS.map((option) => (
             <option key={option.value} value={option.value}>
@@ -78,7 +79,7 @@ export function LeavingPanel({
           value={conduct}
           data-testid="leaving-conduct"
           onChange={(event) => setConduct(event.target.value)}
-          className="mt-1 min-h-11 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+          className={fieldClass("mt-1")}
         >
           <option value="EXCELLENT">{t("tc.conductExcellent")}</option>
           <option value="GOOD">{t("tc.conductGood")}</option>
@@ -99,7 +100,7 @@ export function LeavingPanel({
             maxLength={200}
             placeholder={t("people.destinationPlaceholder")}
             onChange={(event) => setDestination(event.target.value)}
-            className="mt-1 min-h-11 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+            className={fieldClass("mt-1")}
           />
         </label>
         <div className="min-w-[11rem]">
@@ -122,7 +123,7 @@ export function LeavingPanel({
           rows={2}
           maxLength={1000}
           onChange={(event) => setNote(event.target.value)}
-          className="mt-1 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 py-2 text-sm text-fg outline-none focus:border-accent"
+          className={fieldClass("mt-1")}
         />
       </label>
 

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
-import { INPUT } from "@/components/module-flash";
+import { fieldClass } from "@/components/ui/field-class";
 import { inventorySetup, listRequests } from "@/lib/inventory";
 import { formatInZone } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
 /** What staff have asked the stores for: the waiting ones first, each fulfilled from a place (issued to the asker) or declined with a reason. */
 export default async function InventoryRequests({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const { ctx, t, locale, on, canEdit } = await inventoryGate();
-  if (!on) return <ModuleOff module="INVENTORY" t={t} />;
+  if (!on) return <ModuleOff page module="INVENTORY" t={t} />;
   const params = await searchParams;
   const [{ requests }, setup] = await Promise.all([listRequests(ctx), inventorySetup(ctx)]);
   return (
@@ -50,14 +50,14 @@ export default async function InventoryRequests({ searchParams }: { searchParams
                       <form action={decideRequestAction} className="flex flex-wrap items-end gap-2">
                         <input type="hidden" name="requestId" value={r.id} />
                         <input type="hidden" name="decision" value="FULFIL" />
-                        {r.itemCode ? <input aria-label={t("inventory.fieldLocation")} className={`${INPUT} w-40`} name="location" list="request-locations" defaultValue={setup.locations[0] ?? ""} required maxLength={60} /> : null}
-                        <input aria-label={t("inventory.fieldNote")} className={`${INPUT} w-48`} name="note" maxLength={300} placeholder={t("inventory.fieldNote")} />
+                        {r.itemCode ? <input aria-label={t("inventory.fieldLocation")} className={fieldClass("w-40")} name="location" list="request-locations" defaultValue={setup.locations[0] ?? ""} required maxLength={60} /> : null}
+                        <input aria-label={t("inventory.fieldNote")} className={fieldClass("w-48")} name="note" maxLength={300} placeholder={t("inventory.fieldNote")} />
                         <Button type="submit" size="sm">{t("inventory.fulfil")}</Button>
                       </form>
                       <form action={decideRequestAction} className="flex flex-wrap items-end gap-2">
                         <input type="hidden" name="requestId" value={r.id} />
                         <input type="hidden" name="decision" value="DECLINE" />
-                        <input aria-label={t("inventory.declineWhy")} className={`${INPUT} w-48`} name="note" maxLength={300} placeholder={t("inventory.declineWhy")} />
+                        <input aria-label={t("inventory.declineWhy")} className={fieldClass("w-48")} name="note" maxLength={300} placeholder={t("inventory.declineWhy")} />
                         <Button type="submit" size="sm" variant="secondary">{t("inventory.decline")}</Button>
                       </form>
                     </div>

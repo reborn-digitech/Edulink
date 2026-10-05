@@ -272,7 +272,7 @@ describe("one school, for the operator", () => {
   });
 
   it("a refusal is an alert with a retry", async () => {
-    const { calls } = await mount({ "GET /api/v1/operator/schools/s1": refused("No such school.", 404) });
+    const { calls } = await mount({ "GET /api/v1/operator/schools/s1": refused("No such school.", 503) });
     expect(await screen.findByRole("alert")).toHaveTextContent("No such school.");
     await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
     await waitFor(() => expect(calls().filter((c) => c.line === "GET /api/v1/operator/schools/s1").length).toBe(2));

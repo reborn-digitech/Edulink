@@ -8,6 +8,7 @@ import { Button, Card, Failed, Field, Loading, Row, Screen, Text, useToast } fro
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { useSession } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { Pill, formatInstant, openWeb } from "@/screens/family/shared";
@@ -27,6 +28,8 @@ const GIFT_KIND_KEY: Record<string, TranslationKey> = { DONATION: "placement.gif
 export const ALUMNI_COLLEGE_KEY = ["alumni", "college"] as const;
 
 export function AlumniCollegeScreen() {
+  // No screenshots while it is up (A3-S-12, audit of 5 Oct 2026): the alumni's mentoring, referrals and gifts.
+  usePrivateScreen();
   const t = useT();
   const th = useTheme();
   const toast = useToast();

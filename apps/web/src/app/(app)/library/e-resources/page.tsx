@@ -27,7 +27,7 @@ export default async function EResourcesPage() {
   const ctx = await requireRole("STUDENT", "FACULTY", "HOD");
   const [t, kind] = await Promise.all([getT(), institutionKindOf(ctx.schoolId)]);
   if (!isCollegeKind(kind ?? "SCHOOL")) return <NotCollege t={t} />;
-  if (!(await isModuleOn(ctx.schoolId, "LIBRARY"))) return <ModuleOff module="LIBRARY" t={t} college />;
+  if (!(await isModuleOn(ctx.schoolId, "LIBRARY"))) return <ModuleOff page module="LIBRARY" t={t} college />;
   const { items } = await listEResources(ctx);
   return (
     <div className="space-y-6">

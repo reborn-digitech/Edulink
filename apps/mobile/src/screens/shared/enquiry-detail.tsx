@@ -86,7 +86,7 @@ export function EnquiryDetail() {
   return (
     <Screen title={title} description={data?.side === "school" ? data.fromName : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {data ? (
         <>
           <Pill tone={isOpen ? "ok" : "muted"} label={isOpen ? t("enquiries.openBadge") : t("enquiries.closedBadge")} />

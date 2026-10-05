@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function AlumniDirectoryPage() {
   const ctx = await requireRole("ALUMNUS", "ADMIN", "PRINCIPAL", "TEACHER");
   const t = await getT();
-  if (!(await isModuleOn(ctx.schoolId, "ALUMNI"))) return <ModuleOff module="ALUMNI" t={t} />;
+  if (!(await isModuleOn(ctx.schoolId, "ALUMNI"))) return <ModuleOff page module="ALUMNI" t={t} />;
   const directory = await alumniDirectory(ctx);
   const back = ctx.role === "ALUMNUS" ? "/alumni" : ctx.role === "ADMIN" ? "/admin/alumni" : null;
 

@@ -32,7 +32,7 @@ export default async function StudentScholarshipsPage({ searchParams }: { search
   const [t, locale, kind] = await Promise.all([getT(), getLocale(), institutionKindOf(ctx.schoolId)]);
   const sp = await searchParams;
   if (!isCollegeKind(kind ?? "SCHOOL")) return <NotCollege t={t} />;
-  if (!(await isModuleOn(ctx.schoolId, "SCHOLARSHIPS"))) return <ModuleOff module="SCHOLARSHIPS" t={t} college />;
+  if (!(await isModuleOn(ctx.schoolId, "SCHOLARSHIPS"))) return <ModuleOff page module="SCHOLARSHIPS" t={t} college />;
   const s = await myScholarships(ctx);
   const back = "/student/scholarships";
   return (

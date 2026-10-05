@@ -5,7 +5,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { SelectField, TextField } from "@/components/ui/field";
 import { ModuleOff } from "@/components/module-off";
-import { INPUT, NUM, TD, TH } from "@/components/module-flash";
+import { NUM, TD, TH } from "@/components/module-flash";
 import { OfficeTop } from "@/components/academics/parts";
 import { academicsStructure } from "@/lib/academics";
 import { streamsOf } from "@/lib/streams";
@@ -14,6 +14,7 @@ import { getT } from "@/lib/i18n/server";
 import { academicsGate, type SearchParams } from "./shared";
 import { saveDepartmentAction, saveSettingsAction, setFacultyDepartmentAction } from "./actions";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("academics.title") };
@@ -22,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
 /** The college's academic set-up: the dials, the departments with their heads, and which department each faculty member is in. */
 export default async function AcademicsSetupPage({ searchParams }: { searchParams: SearchParams }) {
   const { ctx, t, on, college, canEdit } = await academicsGate();
-  if (!on) return <ModuleOff module="ACADEMICS" t={t} college={college} />;
+  if (!on) return <ModuleOff page module="ACADEMICS" t={t} college={college} />;
   const params = await searchParams;
   const s = await academicsStructure(ctx);
   const deptName = new Map(s.departments.map((d) => [d.id, d.name]));
@@ -52,7 +53,12 @@ export default async function AcademicsSetupPage({ searchParams }: { searchParam
         <CardHeader icon={<BuildingsIcon weight="duotone" className="size-5" />} title={w("department", true)} description={t("academics.departmentsBody")} />
         <CardBody className="space-y-4">
           {s.departments.length === 0 ? (
-            <EmptyState className="border-0 bg-transparent py-4" title={t("academics.departmentsNone")} description={t("academics.departmentsNoneBody")} />
+            <EmptyState
+              className="border-0 bg-transparent py-4"
+              title={t("academics.departmentsNone")}
+              description={t("academics.departmentsNoneBody")}
+              action={canEdit ? <Button asChild size="sm" variant="secondary"><a href="#new-department">{t("academics.addDepartment")}</a></Button> : undefined}
+            />
           ) : (
             <TableScroll>
               <table className="w-full text-sm">
@@ -70,11 +76,11 @@ export default async function AcademicsSetupPage({ searchParams }: { searchParam
                 <tbody className="divide-y divide-border">
                   {s.departments.map((d) => (
                     <tr key={d.id}>
-                      <td className={TD}>{canEdit ? <input form={`dept-${d.id}`} aria-label={t("academics.fieldCode")} className={`${INPUT} min-w-24`} name="code" defaultValue={d.code} required /> : d.code}</td>
-                      <td className={TD}>{canEdit ? <input form={`dept-${d.id}`} aria-label={t("academics.fieldName")} className={`${INPUT} min-w-44`} name="name" defaultValue={d.name} required /> : d.name}</td>
+                      <td className={TD}>{canEdit ? <input form={`dept-${d.id}`} aria-label={t("academics.fieldCode")} className={fieldClass("min-w-24")} name="code" defaultValue={d.code} required /> : d.code}</td>
+                      <td className={TD}>{canEdit ? <input form={`dept-${d.id}`} aria-label={t("academics.fieldName")} className={fieldClass("min-w-44")} name="name" defaultValue={d.name} required /> : d.name}</td>
                       <td className={TD}>
                         {canEdit ? (
-                          <select form={`dept-${d.id}`} aria-label={t("academics.fieldHod")} className={`${INPUT} min-w-44`} name="hodMembershipId" defaultValue={d.hodMembershipId ?? ""}>
+                          <select form={`dept-${d.id}`} aria-label={t("academics.fieldHod")} className={fieldClass("min-w-44")} name="hodMembershipId" defaultValue={d.hodMembershipId ?? ""}>
                             <option value="">{t("academics.none")}</option>
                             {s.faculty.map((f) => (
                               <option key={f.membershipId} value={f.membershipId}>{f.name}</option>
@@ -82,7 +88,7 @@ export default async function AcademicsSetupPage({ searchParams }: { searchParam
                           </select>
                         ) : (d.hodName ?? "—")}
                       </td>
-                      <td className={NUM}>{canEdit ? <input form={`dept-${d.id}`} aria-label={t("academics.fieldFloor")} className={`${INPUT} min-w-20 text-right`} name="condoneFloorPercent" type="number" min={0} max={100} defaultValue={d.condoneFloorPercent} /> : `${d.condoneFloorPercent}%`}</td>
+                      <td className={NUM}>{canEdit ? <input form={`dept-${d.id}`} aria-label={t("academics.fieldFloor")} className={fieldClass("min-w-20 text-right")} name="condoneFloorPercent" type="number" min={0} max={100} defaultValue={d.condoneFloorPercent} /> : `${d.condoneFloorPercent}%`}</td>
                       <td className={NUM}>{d.faculty}</td>
                       <td className={NUM}>{d.students}</td>
                       {canEdit ? (
@@ -100,7 +106,8 @@ export default async function AcademicsSetupPage({ searchParams }: { searchParam
             </TableScroll>
           )}
           {canEdit ? (
-            <form action={saveDepartmentAction} className="grid gap-3 sm:grid-cols-4">
+            <form id="new-department" action={saveDepartmentAction} className="grid scroll-mt-20 gap-3 sm:grid-cols-4">
+
               <TextField label={t("academics.fieldCode")} name="code" required maxLength={20} />
               <TextField label={t("academics.fieldName")} name="name" required maxLength={120} />
               <SelectField label={t("academics.fieldHod")} name="hodMembershipId" defaultValue="">
@@ -133,7 +140,7 @@ export default async function AcademicsSetupPage({ searchParams }: { searchParam
                   {canEdit ? (
                     <form action={setFacultyDepartmentAction} className="flex items-center gap-2">
                       <input type="hidden" name="membershipId" value={f.membershipId} />
-                      <select aria-label={w("department")} className={INPUT} name="departmentId" defaultValue={f.departmentId ?? ""}>
+                      <select aria-label={w("department")} className={fieldClass()} name="departmentId" defaultValue={f.departmentId ?? ""}>
                         <option value="">{t("academics.none")}</option>
                         {s.departments.map((d) => (
                           <option key={d.id} value={d.id}>{d.name}</option>

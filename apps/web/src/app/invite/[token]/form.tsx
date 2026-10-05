@@ -11,6 +11,7 @@ import { cn } from "@/lib/cn";
 import { acceptInvite } from "./actions";
 import type { Role } from "@/lib/constants";
 import { useT } from "@/lib/i18n";
+import { fieldClass } from "@/components/ui/field-class";
 
 export function AcceptForm({
   token,
@@ -236,7 +237,7 @@ export function AcceptForm({
                   }
                 }}
                 placeholder={t("invite.subjectPlaceholder")}
-                className="min-h-12 flex-1 rounded-[var(--radius-md)] border border-border bg-surface px-3.5 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+                className={fieldClass("w-auto flex-1")}
               />
               <Button type="button" variant="secondary" onClick={addSubject}>
                 Add

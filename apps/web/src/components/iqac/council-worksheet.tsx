@@ -39,7 +39,7 @@ export function CouncilWorksheet({ t, locale, view, back }: { t: Translate; loca
         <p className="text-sm text-fg-muted">{t("councilFilings.noWorksheet")}</p>
       ) : (
         <Card>
-          <CardHeader title={nba ? t("councilFilings.criteriaTitle") : t("councilFilings.checklistTitle")} description={view.canEdit ? (view.updatedAt ? t("councilFilings.updatedOn", { date: day(view.updatedAt.slice(0, 10), locale) }) : undefined) : t("councilFilings.readOnly")} />
+          <CardHeader title={nba ? t("councilFilings.criteriaTitle") : t("councilFilings.checklistTitle")} description={view.canEdit ? (view.updatedAt ? t("councilFilings.updatedOn", { date: day(view.updatedAt.slice(0, 10), locale) }) : undefined) : view.signedOff ? t("councilFilings.refuseSignedOff") : t("councilFilings.readOnly")} />
           <CardBody>
             <form action={saveWorksheetAction} className="space-y-4">
               <input type="hidden" name="back" value={back} />

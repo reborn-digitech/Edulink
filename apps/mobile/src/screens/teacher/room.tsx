@@ -68,7 +68,7 @@ export function Room() {
   return (
     <Screen title={names || t("convo.message")} description={data ? t("convo.onlyYouAnd", { names }) : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {data ? (
         <>
           {data.messages.length === 0 ? (

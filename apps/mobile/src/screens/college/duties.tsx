@@ -7,8 +7,10 @@ import { Button, Card, Empty, Failed, Loading, Row, Screen, Stat, Text } from "@
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { useSession } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
+import { formatDate } from "@/lib/dates";
 
 /**
  * A COLLEGE TEACHER'S DUTIES ON THE PHONE (5 Oct 2026). /api/v1/me's `duties`
@@ -74,6 +76,8 @@ const STATUS_KEY: Record<string, TranslationKey> = {
  * committee.
  */
 export function AntiRaggingScreen() {
+  // No screenshots while it is up (A3-S-12, audit of 5 Oct 2026): the anti-ragging register: complaints and the students named.
+  usePrivateScreen();
   const t = useT();
   const th = useTheme();
   const router = useRouter();
@@ -114,7 +118,7 @@ export function AntiRaggingScreen() {
             {!r.hostelOn ? <Text tone="muted">{t("duties.antiRagging.noHostel")}</Text> : null}
             {r.hostelOn && r.rounds.length === 0 ? <Text tone="muted">{t("duties.antiRagging.roundsNoneBody")}</Text> : null}
             {r.rounds.map((round) => (
-              <Row key={round.id} title={`${round.hostelName} · ${round.at.slice(0, 10)}`} caption={[round.members, round.flagged ? t("duties.antiRagging.flagged") : t("duties.antiRagging.nothingFound")].join(" · ")} />
+              <Row key={round.id} title={`${round.hostelName} · ${formatDate(round.at)}`} caption={[round.members, round.flagged ? t("duties.antiRagging.flagged") : t("duties.antiRagging.nothingFound")].join(" · ")} />
             ))}
           </Card>
           <Card title={t("duties.antiRagging.complaintsTitle")}>

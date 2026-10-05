@@ -138,6 +138,14 @@ describe("the college's roles (4 Oct 2026)", () => {
     expect(shown("HOD", [])).toEqual(["index", "bulletin", "messages"]);
   });
 
+  it("lists my appraisals for FACULTY and HOD, whom the head may appraise, whatever is on (A3-inventory-5)", () => {
+    for (const role of ["FACULTY", "HOD"] as const) {
+      const screens = menuFor(role, []).flatMap((g) => g.items.map((i) => i.screen));
+      expect({ role, mine: screens.includes("/(app)/my-appraisals") }).toEqual({ role, mine: true });
+    }
+    for (const role of ["EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"] as const) expect(MENU[role].some((item) => item.screen === "/(app)/my-appraisals")).toBe(false);
+  });
+
   it("puts my own leave in More for the three module staff roles, whose door names them", () => {
     for (const role of ["DRIVER", "LIBRARIAN", "WARDEN"] as const) expect(MENU[role].some((item) => item.screen === "/(app)/leave")).toBe(true);
     expect(MENU.ALUMNUS.some((item) => item.screen === "/(app)/leave")).toBe(false);

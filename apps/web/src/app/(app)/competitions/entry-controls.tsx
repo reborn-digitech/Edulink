@@ -15,6 +15,7 @@ import {
   submitAction,
   withdrawAction,
 } from "./actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * The one control a child sees, and the one a guardian sees.
@@ -379,9 +380,7 @@ export function SubmitPanel({
         required
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? "entry-url-error" : undefined}
-        className={`w-full rounded-[var(--radius-md)] border bg-surface px-3 py-2.5 text-[0.9375rem] ${
-          error ? "border-danger" : "border-border"
-        }`}
+        className={fieldClass(undefined, Boolean(error))}
       />
       <p className="text-xs text-fg-muted">{t("competitions.linkToWork")}</p>
       {error && (

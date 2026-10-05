@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
 /** Condonations: what the HODs forwarded, for the principal to decide; the office reads every ask. */
 export default async function CondonationsAdminPage({ searchParams }: { searchParams: SearchParams }) {
   const { ctx, t, on, college } = await academicsGate();
-  if (!on) return <ModuleOff module="ACADEMICS" t={t} college={college} />;
+  if (!on) return <ModuleOff page module="ACADEMICS" t={t} college={college} />;
   const params = await searchParams;
   const all = one(params.all) === "1";
   const list = await listCondonations(ctx, all ? "ALL" : "OPEN");

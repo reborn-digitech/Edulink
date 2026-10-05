@@ -32,7 +32,7 @@ export default async function LabDeskPage({ searchParams }: { searchParams: Prom
   const { ctx, moduleOn } = await dutyPageContext("LAB_INCHARGE", "ACADEMICS");
   const t = await getT();
   const locale = await getLocale();
-  if (!moduleOn) return <ModuleOff module="ACADEMICS" t={t} college />;
+  if (!moduleOn) return <ModuleOff page module="ACADEMICS" t={t} college />;
   const params = await searchParams;
   const d = await labDesk(ctx);
   const holder = ctx.role === "FACULTY" || ctx.role === "HOD";

@@ -41,10 +41,23 @@ export default async function HodHomePage({ searchParams }: { searchParams: Prom
   const t = await getT();
   const locale = await getLocale();
   const [on, kind] = await Promise.all([isModuleOn(ctx.schoolId, "ACADEMICS"), institutionKindOf(ctx.schoolId)]);
-  if (!on) return <ModuleOff module="ACADEMICS" t={t} college={isCollegeKind(kind)} />;
+  if (!on) return <ModuleOff page module="ACADEMICS" t={t} college={isCollegeKind(kind)} />;
   const params = await searchParams;
   const home = await hodHome(ctx);
-  if (!home.department) return <EmptyState title={t("academics.noDepartmentTitle")} description={t("academics.noDepartmentBody")} />;
+  if (!home.department) {
+    // The set-up page the sentence names is the office's (ADMIN, PRINCIPAL); the head's own way on meanwhile is their teaching.
+    return (
+      <div className="space-y-6">
+        <PageHeader title={t("nav.hodHome")} />
+        <EmptyState
+          title={t("academics.noDepartmentTitle")}
+          description={t("academics.noDepartmentBody")}
+          action={<Button asChild size="sm" variant="secondary"><Link href="/faculty">{t("academics.myTeaching")}</Link></Button>}
+        />
+      </div>
+    );
+  }
+
   const [s, board] = await Promise.all([academicsStructure(ctx), lectureSubstitutions(ctx)]);
   return (
     <div className="space-y-6">

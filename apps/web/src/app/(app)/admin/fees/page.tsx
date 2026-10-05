@@ -34,7 +34,7 @@ export default async function FeesOverviewPage() {
   const t = await getT();
   const locale = await getLocale();
   const ctx = await requireRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
-  const office = ctx.role === "ADMIN";
+  const office = ctx.role === "ADMIN" || ctx.role === "ACCOUNTS";
   const o = await feeOverview(ctx);
   const money = (paise: number) => formatPaise(paise, locale);
   const dateOf = (key: string) => formatDateKey(key, { day: "numeric", month: "short" }, locale);

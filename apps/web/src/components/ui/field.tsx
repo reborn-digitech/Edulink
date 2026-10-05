@@ -12,7 +12,14 @@ import {
 import { CalendarBlankIcon } from "@phosphor-icons/react";
 import { displayDateToIso, isoToDisplayDate } from "@/lib/dates";
 import { cn } from "@/lib/cn";
+import { fieldClass } from "./field-class";
 import { useT } from "@/lib/i18n";
+import { useFormFeedback } from "./action-form";
+
+/** Inside an <ActionForm>, the value typed before a refusal, for a control the page does not hold itself. */
+function keepTyped<P extends { value?: unknown; defaultValue?: unknown }>(props: P, typed: string | undefined): P {
+  return typed === undefined || props.value !== undefined ? props : { ...props, defaultValue: typed };
+}
 
 /**
  * Form field with label, hint, inline error and character counter.
@@ -78,17 +85,6 @@ export function Field({ label, hint, error, required, children, className }: Fie
   );
 }
 
-const inputClasses = (invalid: boolean) =>
-  cn(
-    "w-full rounded-[var(--radius-md)] border bg-surface px-3.5 py-3 text-[0.9375rem] text-fg",
-    "min-h-12 placeholder:text-fg-subtle",
-    "transition-[border-color,box-shadow] duration-[var(--dur-fast)]",
-    "focus:outline-none focus-visible:outline-none",
-    invalid
-      ? "border-danger ring-2 ring-danger/25"
-      : "border-border hover:border-border-strong focus:border-accent focus:ring-2 focus:ring-accent-ring/40",
-  );
-
 export function TextField({
   label,
   hint,
@@ -97,16 +93,17 @@ export function TextField({
   className,
   ...props
 }: InputHTMLAttributes<HTMLInputElement> & { label: string; hint?: ReactNode; error?: string }) {
+  const fed = useFormFeedback(props.name);
   return (
-    <Field label={label} hint={hint} error={error} required={required} className={className}>
+    <Field label={label} hint={hint} error={error ?? fed.error} required={required} className={className}>
       {({ id, describedBy, invalid }) => (
         <input
           id={id}
           aria-describedby={describedBy}
           aria-invalid={invalid || undefined}
           required={required}
-          className={inputClasses(invalid)}
-          {...props}
+          className={fieldClass(undefined, invalid)}
+          {...keepTyped(props, fed.value)}
         />
       )}
     </Field>
@@ -125,8 +122,9 @@ export function TextAreaField({
   hint?: ReactNode;
   error?: string;
 }) {
+  const fed = useFormFeedback(props.name);
   return (
-    <Field label={label} hint={hint} error={error} required={required} className={className}>
+    <Field label={label} hint={hint} error={error ?? fed.error} required={required} className={className}>
       {({ id, describedBy, invalid }) => (
         <textarea
           id={id}
@@ -134,8 +132,8 @@ export function TextAreaField({
           aria-invalid={invalid || undefined}
           required={required}
           rows={4}
-          className={cn(inputClasses(invalid), "resize-y leading-relaxed")}
-          {...props}
+          className={fieldClass("resize-y leading-relaxed", invalid)}
+          {...keepTyped(props, fed.value)}
         />
       )}
     </Field>
@@ -155,22 +153,23 @@ export function SelectField({
   hint?: ReactNode;
   error?: string;
 }) {
+  const fed = useFormFeedback(props.name);
   return (
-    <Field label={label} hint={hint} error={error} required={required} className={className}>
+    <Field label={label} hint={hint} error={error ?? fed.error} required={required} className={className}>
       {({ id, describedBy, invalid }) => (
         <select
           id={id}
           aria-describedby={describedBy}
           aria-invalid={invalid || undefined}
           required={required}
-          className={cn(inputClasses(invalid), "appearance-none bg-no-repeat pr-10")}
+          className={fieldClass("appearance-none bg-no-repeat pr-10", invalid)}
           style={{
             backgroundImage:
               "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%2357607a' stroke-width='1.75' stroke-linecap='round'%3E%3Cpath d='M4 6.5 8 10.5 12 6.5'/%3E%3C/svg%3E\")",
             backgroundPosition: "right 0.85rem center",
             backgroundSize: "1rem",
           }}
-          {...props}
+          {...keepTyped(props, fed.value)}
         >
           {children}
         </select>
@@ -278,10 +277,11 @@ export function DateField({
 }) {
   const t = useT();
   const nativeRef = useRef<HTMLInputElement>(null);
+  const fed = useFormFeedback(name);
 
   const controlled = value !== undefined;
   const [typed, setTyped] = useState(() =>
-    isoToDisplayDate((controlled ? value : defaultValue) as string | undefined),
+    isoToDisplayDate((controlled ? value : (fed.value ?? defaultValue)) as string | undefined),
   );
   const [canPick, setCanPick] = useState(false);
 
@@ -329,7 +329,7 @@ export function DateField({
     <Field
       label={label}
       hint={hint ?? t("field.dateHint")}
-      error={error ?? (incomplete ? t("field.dateInvalid") : undefined)}
+      error={error ?? fed.error ?? (incomplete ? t("field.dateInvalid") : undefined)}
       required={required}
       className={className}
     >
@@ -347,7 +347,7 @@ export function DateField({
             aria-describedby={describedBy}
             aria-invalid={invalid || incomplete || undefined}
             onChange={(event) => report(event.target.value)}
-            className={inputClasses(invalid || incomplete)}
+            className={fieldClass(undefined, invalid || incomplete)}
             {...rest}
           />
 

@@ -35,12 +35,12 @@ describe("the teacher's profile", () => {
     expect(screen.getByText("M.Sc.")).toBeTruthy();
     // The DCF's two dates beside the day they joined this school.
     expect(screen.getByText("Joined the school on")).toBeTruthy();
-    expect(screen.getByText(/^(1 Jun 2019|Jun 1, 2019)$/)).toBeTruthy();
+    expect(screen.getByText(/^01\/06\/2019$/)).toBeTruthy();
     // "Date of birth" is the editable field above and the office's record row below.
     expect(screen.getAllByText("Date of birth")).toHaveLength(2);
-    expect(screen.getByText(/^(2 Apr 1988|Apr 2, 1988)$/)).toBeTruthy();
+    expect(screen.getByText(/^02\/04\/1988$/)).toBeTruthy();
     expect(screen.getByText("Joined service on")).toBeTruthy();
-    expect(screen.getByText(/^(15 Jun 2015|Jun 15, 2015)$/)).toBeTruthy();
+    expect(screen.getByText(/^15\/06\/2015$/)).toBeTruthy();
     expect(screen.getByText("3 of 12 days used · 9 left")).toBeTruthy();
     expect(screen.getByText("1 more being asked for")).toBeTruthy();
     expect(screen.getByText("Maths")).toBeTruthy();

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
+import { PageHeader } from "@/components/ui/page-header";
 import { requireRole, teacherClassIds } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { AssignmentForm } from "./form";
@@ -37,12 +36,16 @@ export default async function NewAssignmentPage({
     orderBy: { name: "asc" },
   });
 
+  const back = { href: "/teacher/assignments", label: t("teacher.allAssignments") };
   if (classes.length === 0) {
     return (
-      <EmptyState
-        title={t("teacher.noClassesYet")}
-        description={t("teacher.assignmentsBelongAdmin")}
-      />
+      <div className="mx-auto max-w-xl space-y-6">
+        <PageHeader title={t("teacher.setSomeWork")} back={back} />
+        <EmptyState
+          title={t("teacher.noClassesYet")}
+          description={t("teacher.assignmentsBelongAdmin")}
+        />
+      </div>
     );
   }
 
@@ -50,18 +53,8 @@ export default async function NewAssignmentPage({
 
   return (
     <div className="mx-auto max-w-xl">
-      <Link
-        href="/teacher/assignments"
-        className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
-      >
-        <ArrowLeftIcon weight="bold" className="size-4" />
-        {t("teacher.allAssignments")}
-      </Link>
+      <PageHeader title={t("teacher.setSomeWork")} description={t("teacher.publishExplainer")} back={back} />
 
-      <h1 className="text-2xl font-bold tracking-tight text-fg">{t("teacher.setSomeWork")}</h1>
-      <p className="mt-1.5 text-sm text-fg-muted">
-        {t("teacher.publishExplainer")}
-      </p>
 
       <AssignmentForm
         className="mt-7"

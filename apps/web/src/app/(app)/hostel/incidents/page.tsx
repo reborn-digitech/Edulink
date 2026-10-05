@@ -5,9 +5,10 @@ import { getT } from "@/lib/i18n/server";
 import { hostelIncidents, listBoarders } from "@/lib/hostel";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { WardenFrame, inputClass, wardenContext, when } from "@/components/hostel/parts";
+import { WardenFrame, wardenContext, when } from "@/components/hostel/parts";
 import { hostelIncidentAction } from "../actions";
 import { INCIDENT_KIND_KEY as KIND_KEY, INCIDENT_SEVERITY_KEY as SEVERITY_KEY } from "@/lib/incident-labels";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -34,7 +35,7 @@ export default async function HostelIncidentsPage({ searchParams }: { searchPara
               <input type="hidden" name="back" value="/hostel/incidents" />
               <label className="text-sm font-medium text-fg">
                 {t("hostel.pupil")}
-                <select name="allotmentId" required className={inputClass}>
+                <select name="allotmentId" required className={fieldClass("mt-1.5 block")}>
                   {boarders.items.map((b) => (
                     <option key={b.allotmentId} value={b.allotmentId}>
                       {b.name} · {b.hostelName} {b.roomNumber}
@@ -44,7 +45,7 @@ export default async function HostelIncidentsPage({ searchParams }: { searchPara
               </label>
               <label className="text-sm font-medium text-fg">
                 {t("hostel.incidentKind")}
-                <select name="kind" required className={inputClass}>
+                <select name="kind" required className={fieldClass("mt-1.5 block")}>
                   {INCIDENT_KINDS.map((k) => (
                     <option key={k} value={k}>
                       {t(KIND_KEY[k])}
@@ -54,7 +55,7 @@ export default async function HostelIncidentsPage({ searchParams }: { searchPara
               </label>
               <label className="text-sm font-medium text-fg">
                 {t("hostel.incidentSeverity")}
-                <select name="severity" className={inputClass}>
+                <select name="severity" className={fieldClass("mt-1.5 block")}>
                   {INCIDENT_SEVERITIES.map((k) => (
                     <option key={k} value={k}>
                       {t(SEVERITY_KEY[k])}
@@ -64,15 +65,15 @@ export default async function HostelIncidentsPage({ searchParams }: { searchPara
               </label>
               <label className="text-sm font-medium text-fg">
                 {t("hostel.incidentTitle")}
-                <input name="title" required maxLength={120} className={inputClass} />
+                <input name="title" required maxLength={120} className={fieldClass("mt-1.5 block")} />
               </label>
               <label className="text-sm font-medium text-fg sm:col-span-2">
                 {t("hostel.incidentBody")}
-                <textarea name="body" required maxLength={4000} rows={3} className="mt-1.5 block w-full rounded-[var(--radius-md)] border border-border bg-surface px-3.5 py-3 text-[0.9375rem] text-fg" />
+                <textarea name="body" required maxLength={4000} rows={3} className={fieldClass("mt-1.5 block")} />
               </label>
               <label className="text-sm font-medium text-fg sm:col-span-2">
                 {t("hostel.incidentAction")}
-                <textarea name="actionTaken" maxLength={2000} rows={2} className="mt-1.5 block w-full rounded-[var(--radius-md)] border border-border bg-surface px-3.5 py-3 text-[0.9375rem] text-fg" />
+                <textarea name="actionTaken" maxLength={2000} rows={2} className={fieldClass("mt-1.5 block")} />
               </label>
               <label className="flex min-h-11 items-center gap-2 text-sm text-fg sm:col-span-2">
                 <input type="checkbox" name="notifyGuardians" defaultChecked className="size-4" />

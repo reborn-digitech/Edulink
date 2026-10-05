@@ -109,7 +109,7 @@ describe("an application as the office sees it", () => {
     await fireEvent.changeText(screen.getAllByLabelText("Note")[0]!, "ZZ neat");
     await fireEvent.press(screen.getByRole("button", { name: "Record the result" }));
     await waitFor(() => expect(calls().find((c) => c.line === `POST ${BASE}/test`)?.body).toEqual({ score: "42/50", note: "ZZ neat" }));
-    expect(await screen.findByText(/^Sat .*2026$/)).toBeTruthy();
+    expect(await screen.findByText(/20\/09\/2026$/)).toBeTruthy();
     expect(screen.getByText("42/50")).toBeTruthy();
 
     await fireEvent.changeText(screen.getByLabelText("Answer by"), "2026-10-05");

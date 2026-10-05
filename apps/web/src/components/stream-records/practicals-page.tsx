@@ -26,7 +26,7 @@ export async function PracticalsPage({ roles, base, searchParams, back }: { role
   const t = await getT();
   const locale = await getLocale();
   if (!isCollegeKind(await institutionKindOf(ctx.schoolId))) notFound();
-  if (!(await isModuleOn(ctx.schoolId, "ACADEMICS"))) return <ModuleOff module="ACADEMICS" t={t} college />;
+  if (!(await isModuleOn(ctx.schoolId, "ACADEMICS"))) return <ModuleOff page module="ACADEMICS" t={t} college />;
   const params = await searchParams;
   const offeringId = typeof params.offeringId === "string" ? params.offeringId : undefined;
   let sheet;

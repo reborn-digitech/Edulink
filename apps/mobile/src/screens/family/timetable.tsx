@@ -61,7 +61,7 @@ export function FamilyTimetable() {
         </>
       ) : null}
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         d.grid.periods.length === 0 ? (
           <Empty

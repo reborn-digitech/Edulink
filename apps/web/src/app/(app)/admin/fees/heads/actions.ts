@@ -14,7 +14,7 @@ function refresh() {
 
 export async function saveHeadAction(input: { id?: string; name: string; code: string; kind: FeeHeadKind; sortOrder?: number }): Promise<ActionResult & { id?: string }> {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const id = await saveHead(ctx, input);
     refresh();
     return { ok: true, id };
@@ -25,7 +25,7 @@ export async function saveHeadAction(input: { id?: string; name: string; code: s
 
 export async function retireHeadAction(headId: string, restore: boolean): Promise<ActionResult> {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     await retireHead(ctx, headId, restore);
     refresh();
     return { ok: true };

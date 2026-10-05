@@ -20,6 +20,8 @@ import { useEvents } from "@/lib/use-events";
 import { LiveNotice } from "@/components/live-notice";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import type { RegisterAbsenceNote } from "@edulink/contracts";
+import { fieldClass } from "@/components/ui/field-class";
+import { PAGE_TITLE } from "@/components/ui/page-title";
 
 export type RosterEntry = {
   membershipId: string;
@@ -341,7 +343,9 @@ export function Register({
       <div className="sticky top-14 z-20 -mx-4 border-b border-border bg-bg/95 px-4 py-3 backdrop-blur-md sm:-mx-6 sm:px-6 lg:top-0">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="min-w-0">
-            <h1 className="truncate text-lg font-bold tracking-tight text-fg">{className}</h1>
+            {/* In the sticky bar that stays while the roll is marked, so not a PageHeader; the title has its look (A3-states-9). */}
+            <h1 className={cn(PAGE_TITLE, "block truncate")}>{className}</h1>
+
             <p className="text-xs text-fg-muted">
               {dateLabel} · {roster.length} student{roster.length === 1 ? "" : "s"}
             </p>
@@ -391,7 +395,7 @@ export function Register({
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder={t("teacher.findStudent")}
-          className="min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface pl-11 pr-4 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+          className={fieldClass("pl-11")}
         />
       </label>
 
@@ -651,7 +655,7 @@ function NoteSheet({
           rows={3}
           maxLength={500}
           placeholder={t("teacher.notePlaceholder")}
-          className="mt-3 w-full rounded-[var(--radius-md)] border border-border bg-surface p-3 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+          className={fieldClass("mt-3")}
         />
         <p className="mt-1 text-right text-xs text-fg-subtle">{value.length}/500</p>
 

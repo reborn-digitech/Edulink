@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
 /** Every item the stores keep, its stock at each place, and (for the admin) the form that adds or changes one by its code. */
 export default async function InventoryItems({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const { ctx, t, on, canEdit } = await inventoryGate();
-  if (!on) return <ModuleOff module="INVENTORY" t={t} />;
+  if (!on) return <ModuleOff page module="INVENTORY" t={t} />;
   const params = await searchParams;
   const [{ items }, setup] = await Promise.all([listItems(ctx, { archived: params.archived === "1" }), inventorySetup(ctx)]);
   return (

@@ -12,7 +12,7 @@ import { failure, type ActionResult } from "./action-result";
  */
 export async function carryForwardAction(input: { fromYearId: string; toYearId: string }): Promise<ActionResult & { pupils?: number; carriedPaise?: number }> {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const result = await carryForward(ctx, input);
     revalidatePath("/admin/fees");
     revalidatePath("/admin/fees/dues");

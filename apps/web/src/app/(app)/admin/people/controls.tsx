@@ -6,7 +6,9 @@ import { MagnifyingGlassIcon, XIcon } from "@phosphor-icons/react";
 import { Spinner } from "@/components/ui/button";
 import { useT } from "@/lib/i18n";
 import { ROLE_META, SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
-import { cn } from "@/lib/cn";
+import { Chip } from "@/components/ui/chip";
+
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * Directory search, filter and sort.
@@ -95,7 +97,7 @@ export function DirectoryControls({
           onChange={(e) => onType(e.target.value)}
           placeholder={t("people.searchPlaceholder")}
           aria-label={t("people.searchLabel")}
-          className="min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface pl-11 pr-11 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+          className={fieldClass("pl-11 pr-11")}
         />
         {pending && (
           <span className="absolute right-11 top-1/2 -translate-y-1/2 text-fg-subtle">
@@ -161,7 +163,7 @@ export function DirectoryControls({
             value={classId}
             onChange={(e) => navigate({ classId: e.target.value })}
             aria-label={t("people.filterByClass")}
-            className="ml-auto min-h-10 rounded-full border border-border bg-surface px-3.5 text-sm text-fg outline-none focus:border-accent"
+            className={fieldClass("w-auto ml-auto rounded-full")}
           >
             <option value="">{t("people.allClasses")}</option>
             {classes.map((klass) => (
@@ -176,7 +178,7 @@ export function DirectoryControls({
           value={sort}
           onChange={(e) => navigate({ sort: e.target.value })}
           aria-label={t("people.sortBy")}
-          className="min-h-10 rounded-full border border-border bg-surface px-3.5 text-sm text-fg outline-none focus:border-accent"
+          className={fieldClass("w-auto rounded-full")}
         >
           <option value="name">{t("people.sortName")}</option>
           <option value="recent">{t("people.sortRecent")}</option>
@@ -196,18 +198,9 @@ function FilterChip({
   children: React.ReactNode;
 }) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-pressed={active}
-      className={cn(
-        "min-h-10 rounded-full px-3.5 text-sm font-medium transition-colors",
-        active
-          ? "bg-accent text-accent-fg"
-          : "border border-border bg-surface text-fg-muted hover:bg-surface-muted hover:text-fg",
-      )}
-    >
+    <Chip onClick={onClick} pressed={active}>
       {children}
-    </button>
+    </Chip>
+
   );
 }

@@ -130,7 +130,7 @@ describe("a mentoring thread", () => {
   });
 
   it("a refused thread is an alert with a retry", async () => {
-    const { calls } = await mountStaff(<MentoringThread />, "STUDENT", { [`GET ${PATH}`]: refused("ZZ not in this mentorship", 404) });
+    const { calls } = await mountStaff(<MentoringThread />, "STUDENT", { [`GET ${PATH}`]: refused("ZZ not in this mentorship", 503) });
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ not in this mentorship");
     await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
     await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}`)).toHaveLength(2));

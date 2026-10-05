@@ -49,7 +49,7 @@ export function StaffAppraisal() {
   return (
     <Screen title={d ? t("appraisal.title", { name: d.name }) : t("appraisal.metaTitle")} description={d ? (d.canEdit ? t("appraisal.introHead") : t("appraisal.introOffice")) : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         <>
           <Text variant="xs" tone="muted">
@@ -212,7 +212,7 @@ export function MyAppraisals() {
   return (
     <Screen title={t("appraisal.myTitle")} description={t("appraisal.myIntro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         d.length === 0 ? (
           <Empty icon="clipboard" title={t("appraisal.myEmpty")} body={t("appraisal.myEmptyBody")} action={<Button label={t("common.retry")} variant="secondary" onPress={() => void query.refetch()} />} />

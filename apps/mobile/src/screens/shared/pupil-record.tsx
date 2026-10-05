@@ -295,13 +295,13 @@ export function PupilRecordForm({ view, intro, busy, refusal, onSave, onAsk, ext
       {refusal && !familySide ? <Failed message={refusal.message} /> : null}
       {REQUIRED_FIELDS.map((field) => input(field, false))}
       <View style={{ gap: th.space[3], paddingTop: th.space[2], borderTopWidth: 1, borderTopColor: th.border }}>
-        <Text variant="base" bold accessibilityRole="header">
+        <Text variant="base" bold accessibilityRole="header" level={3}>
           {t("pupilRecord.optional")}
         </Text>
         {OPTIONAL_FIELDS.map((field) => input(field, true))}
       </View>
       <View style={{ gap: th.space[3], paddingTop: th.space[2], borderTopWidth: 1, borderTopColor: th.border }}>
-        <Text variant="base" bold accessibilityRole="header">
+        <Text variant="base" bold accessibilityRole="header" level={3}>
           {t("pupilRecord.filingSection")}
         </Text>
         <Text variant="xs" tone="subtle">

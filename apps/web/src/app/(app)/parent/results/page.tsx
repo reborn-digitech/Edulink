@@ -23,7 +23,14 @@ export default async function ParentResultsPage({ searchParams }: { searchParams
   const { child } = await searchParams;
   const { children } = await listContexts(session.user.id);
   const selected = children.find((c) => c.studentMembershipId === child) ?? children[0];
-  if (!selected) return <EmptyState title={t("examCell.parentNoChild")} />;
+  if (!selected)
+    return (
+      <div className="space-y-5">
+        <PageHeader title={t("examCell.parentTitle")} />
+        <EmptyState title={t("examCell.parentNoChild")} />
+      </div>
+    );
+
   const switcher = children.length > 1 ? <ChildSwitcher pupils={children} selectedId={selected.studentMembershipId} basePath="/parent/results" /> : null;
   if (!(await isModuleOn(selected.schoolId, "EXAMS"))) return <CellOff t={t} college />;
   const data = await myExams(session, selected.studentMembershipId).catch((error: unknown) => {

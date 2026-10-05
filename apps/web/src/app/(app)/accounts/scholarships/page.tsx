@@ -12,7 +12,8 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { SelectField, TextField } from "@/components/ui/field";
+import { DateField, SelectField, TextField } from "@/components/ui/field";
+import { ActionForm } from "@/components/ui/action-form";
 import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
 import { CLAIM_STATUS_KEY, Flash, Hidden, NotCollege, SCHEME_KEY, Table, money } from "@/components/college-office/parts";
@@ -113,14 +114,14 @@ export default async function ScholarshipsPage({ searchParams }: { searchParams:
                       <details>
                         <summary className="cursor-pointer text-sm text-accent-strong">{t("collegeOffice.claimUpdate")}</summary>
                         <div className="mt-2 grid gap-2">
-                          <form action={updateClaimAction} className="flex flex-wrap items-end gap-2">
+                          <ActionForm action={updateClaimAction} className="flex flex-wrap items-end gap-2">
                             <Hidden fields={{ back, claimId: c.id, action: c.status === "APPLIED" ? "SANCTION" : "DISBURSE" }} />
                             <TextField name="amount" inputMode="decimal" required label={t("collegeOffice.amount")} />
-                            <TextField name="on" type="date" required label={t("collegeOffice.on")} />
+                            <DateField name="on" required label={t("collegeOffice.on")} />
                             {c.status === "SANCTIONED" ? <TextField name="reference" required minLength={3} label={t("collegeOffice.bankReference")} /> : null}
                             <Button type="submit" size="sm">{c.status === "APPLIED" ? t("collegeOffice.sanction") : t("collegeOffice.disburse")}</Button>
-                          </form>
-                          <form action={updateClaimAction} className="flex flex-wrap items-end gap-2">
+                          </ActionForm>
+                          <ActionForm action={updateClaimAction} className="flex flex-wrap items-end gap-2">
                             <Hidden fields={{ back, claimId: c.id }} />
                             <SelectField name="action" label={t("collegeOffice.colStatus")}>
                               <option value="LAPSE">{t("collegeOffice.claimLAPSED")}</option>
@@ -128,7 +129,7 @@ export default async function ScholarshipsPage({ searchParams }: { searchParams:
                             </SelectField>
                             <TextField name="reason" required minLength={3} label={t("collegeOffice.colReason")} />
                             <Button type="submit" size="sm" variant="danger">{t("collegeOffice.close")}</Button>
-                          </form>
+                          </ActionForm>
                         </div>
                       </details>
                     ) : null}
@@ -143,7 +144,8 @@ export default async function ScholarshipsPage({ searchParams }: { searchParams:
         <Card id="new-claim">
           <CardHeader title={t("collegeOffice.claimNew")} description={t("collegeOffice.claimNewIntro")} />
           <CardBody>
-            <form action={createClaimAction} className="grid gap-4 sm:grid-cols-2">
+            {/* The claim forms answer in place (A3-journeys-27): a refusal keeps what was typed, under the box it is about. */}
+            <ActionForm action={createClaimAction} className="grid gap-4 sm:grid-cols-2">
               <Hidden fields={{ back }} />
               <SelectField name="studentMembershipId" required label={t("collegeOffice.colName")}>
                 {students.map((s) => (
@@ -160,12 +162,12 @@ export default async function ScholarshipsPage({ searchParams }: { searchParams:
                 ))}
               </SelectField>
               <TextField name="portalApplicationId" minLength={4} label={t("collegeOffice.colPortalId")} />
-              <TextField name="appliedOn" type="date" label={t("collegeOffice.appliedOn")} />
+              <DateField name="appliedOn" label={t("collegeOffice.appliedOn")} />
               <TextField name="expected" inputMode="decimal" label={t("collegeOffice.colExpected")} hint={t("collegeOffice.expectedHint")} />
               <div className="sm:col-span-2">
                 <Button type="submit">{t("collegeOffice.claimSave")}</Button>
               </div>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}

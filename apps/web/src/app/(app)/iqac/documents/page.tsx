@@ -12,7 +12,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { SelectField, TextField } from "@/components/ui/field";
+import { CheckboxField, SelectField, TextField } from "@/components/ui/field";
 import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
 import { DeskNav, IqacFlash, NotAScore, day, keyed } from "@/components/iqac/parts";
@@ -151,6 +151,8 @@ export default async function DocumentsPage({ searchParams }: { searchParams: Pr
                   ))}
                 </SelectField>
               ) : null}
+              {/* A year already filed is made again only when asked (A3-journeys-35). */}
+              <CheckboxField name="again" value="1" label={t("iqac.againField")} description={t("iqac.againHint")} className="sm:col-span-3" />
               <Button type="submit">{t("iqac.generateButton")}</Button>
             </form>
           </CardBody>

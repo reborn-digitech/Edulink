@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { useT } from "@/lib/i18n";
 import { deleteSchoolsAction, removeSchoolsAction } from "./actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * Several schools, one press — the same two doors the single-school page
@@ -140,7 +141,7 @@ export function BulkSelectProvider({
                 onChange={(e) => setTyped(e.target.value)}
                 autoFocus
                 autoComplete="off"
-                className="mt-1.5 min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 font-mono text-sm outline-none focus:border-accent"
+                className={fieldClass("mt-1.5 font-mono text-sm")}
               />
             </label>
             <div className="mt-5 flex gap-2">

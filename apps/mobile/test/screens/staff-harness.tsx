@@ -54,7 +54,8 @@ export function gated(): { answer: Answer; open: (make: () => Response) => void 
  * answer, for a person with no school context at all — the server operator or
  * the content team, whose `active` is empty and whose flag sits on `user`.
  */
-export type MountOptions = { me?: unknown };
+/** `retry`: the app's own retry policy (makeQueryClient's shouldRetry) instead of none. */
+export type MountOptions = { me?: unknown; retry?: (count: number, error: unknown) => boolean };
 
 export async function mountStaff(ui: ReactElement, role: RoleCode, answers: Answers, options: MountOptions = {}) {
   __setKeyStore(memoryStore({ [KEYS.token]: "t" }));
@@ -70,7 +71,7 @@ export async function mountStaff(ui: ReactElement, role: RoleCode, answers: Answ
   __setApiClient(createApiClient({ baseUrl: "http://api.test", getToken: () => "t", fetch: fetch as unknown as typeof globalThis.fetch }));
   __setDownloadFetch(fetch as unknown as typeof globalThis.fetch);
   // No retries so an error shows at once; no gc timers, which would keep the runner alive.
-  const client = new QueryClient({ defaultOptions: { queries: { retry: false, gcTime: Infinity }, mutations: { retry: false, gcTime: Infinity } } });
+  const client = new QueryClient({ defaultOptions: { queries: { retry: options.retry ?? false, gcTime: Infinity }, mutations: { retry: false, gcTime: Infinity } } });
   const rendered = await renderApp(
     <QueryClientProvider client={client}>
       <SessionProvider>{ui}</SessionProvider>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { cn } from "@/lib/cn";
 import type { ReactNode } from "react";
+import { PAGE_TITLE } from "./page-title";
 
 /**
  * The top of a page: one title, one line under it, the page's actions on
@@ -17,6 +18,18 @@ import type { ReactNode } from "react";
  */
 /** An intro longer than this is clamped on a phone. About two lines at 390 px. */
 const LONG = 110;
+
+export { PAGE_TITLE };
+
+/** PageHeader's way back to the parent, for the pages that keep their own hero (see page-title.ts). */
+export function BackLink({ href, label, className }: { href: string; label: string; className?: string }) {
+  return (
+    <Link href={href} className={cn("inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg", className)}>
+      <ArrowLeftIcon weight="bold" className="size-4" />
+      {label}
+    </Link>
+  );
+}
 
 export function PageHeader({
   title,
@@ -35,15 +48,11 @@ export function PageHeader({
 }) {
   return (
     <header className={cn("space-y-3", className)}>
-      {back && (
-        <Link href={back.href} className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg">
-          <ArrowLeftIcon weight="bold" className="size-4" />
-          {back.label}
-        </Link>
-      )}
+      {back && <BackLink href={back.href} label={back.label} />}
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div className="min-w-0">
-          <h1 className="flex flex-wrap items-center gap-2 text-2xl font-bold tracking-tight text-fg sm:text-3xl">
+          <h1 className={PAGE_TITLE}>
+
             {title}
             {meta}
           </h1>

@@ -9,6 +9,7 @@ import { cn } from "@/lib/cn";
 import { sendConversationReply } from "../../conversation-actions";
 import { useT } from "@/lib/i18n";
 import { enqueue, newClientId } from "@/lib/offline-queue";
+import { fieldClass } from "@/components/ui/field-class";
 
 const MAX = 8000;
 
@@ -82,10 +83,7 @@ export function ConversationReplyBox({ conversationId, className }: { conversati
         placeholder={t("remarks.writeReplyPlaceholder")}
         aria-invalid={Boolean(error) || undefined}
         aria-describedby={error ? "conversation-reply-error" : "conversation-reply-hint"}
-        className={cn(
-          "w-full resize-y rounded-[var(--radius-md)] border bg-surface p-3.5 text-[0.9375rem] leading-relaxed outline-none",
-          error ? "border-danger ring-2 ring-danger/25" : "border-border focus:border-accent focus:ring-2 focus:ring-accent-ring/40",
-        )}
+        className={fieldClass("resize-y leading-relaxed", Boolean(error))}
       />
       <div className="flex items-center justify-between gap-3">
         {error ? (

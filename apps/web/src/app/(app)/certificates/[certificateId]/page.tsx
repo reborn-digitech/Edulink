@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { ArrowLeftIcon, DownloadSimpleIcon, WarningIcon } from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
@@ -11,6 +12,21 @@ import { PrintButton } from "../../reports/[studentMembershipId]/print-button";
 import { RevokeForm } from "./revoke-form";
 import { SignPaper } from "@/components/certificates/sign-paper";
 import { fontStack, paragraphFont } from "@/lib/fonts";
+import { TableScroll } from "@/components/ui/table-scroll";
+
+/**
+ * The address a printed page names for its check: the configured app address, else the host this page was served
+ * on. A paper that leaves the screen cannot follow "/certificates/check" (A3-journeys-30); the PDF already printed the
+ * whole address.
+ */
+async function siteOrigin(): Promise<string> {
+  const configured = process.env.NEXT_PUBLIC_APP_URL?.trim().replace(/\/$/, "");
+  if (configured) return configured;
+  const h = await headers();
+  const host = h.get("x-forwarded-host") ?? h.get("host") ?? "";
+  const proto = h.get("x-forwarded-proto") ?? (/^(localhost|127\.0\.0\.1)(:|$)/.test(host) ? "http" : "https");
+  return host ? `${proto}://${host}` : "";
+}
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -136,19 +152,21 @@ export default async function CertificatePage({ params, searchParams }: { params
         )}
 
         {cert.rows.length > 0 && (
-          <table className="mt-6 w-full text-sm" data-testid="certificate-rows">
-            <tbody>
-              {cert.rows.map((row, index) => (
-                <tr key={index} className="border-b border-border/60 print:border-black/10">
-                  <td className={`w-8 py-2 pr-2 align-top tabular-nums ${muted}`}>{index + 1}.</td>
-                  <th scope="row" className={`py-2 pr-4 text-left align-top font-medium ${muted}`}>
-                    {row.label}
-                  </th>
-                  <td className="py-2 align-top font-medium text-fg print:text-black">{row.value || "—"}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <TableScroll className="mt-6 print:overflow-visible">
+            <table className="w-full text-sm" data-testid="certificate-rows">
+              <tbody>
+                {cert.rows.map((row, index) => (
+                  <tr key={index} className="border-b border-border/60 print:border-black/10">
+                    <td className={`w-8 py-2 pr-2 align-top tabular-nums ${muted}`}>{index + 1}.</td>
+                    <th scope="row" className={`py-2 pr-4 text-left align-top font-medium ${muted}`}>
+                      {row.label}
+                    </th>
+                    <td className="py-2 align-top font-medium text-fg print:text-black">{row.value || "—"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </TableScroll>
         )}
 
         {cert.outro && (
@@ -192,7 +210,7 @@ export default async function CertificatePage({ params, searchParams }: { params
 
         <footer lang={readerLocale} className={`mt-8 border-t border-border pt-4 text-xs ${muted} print:border-black/20`}>
           {layout.footerNote && <p className="mb-1">{layout.footerNote}</p>}
-          <p>{t("certificates.verifyLine", { url: "/certificates/check", code: cert.code })}</p>
+          <p>{t("certificates.verifyLine", { url: `${await siteOrigin()}/certificates/check`, code: cert.code })}</p>
           <p className="mt-1">
             {[cert.issuedByName ? t("certificates.issuedBy", { name: cert.issuedByName }) : null, t("certificates.issuedOn", { date: formatDate(new Date(cert.issuedAt)) })].filter(Boolean).join(" · ")}
           </p>

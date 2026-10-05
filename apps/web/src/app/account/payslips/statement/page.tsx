@@ -20,7 +20,7 @@ export default async function MyStatementPage({ searchParams }: { searchParams: 
   const ctx = await requireUser();
   if (!ctx.schoolId || !ctx.role || !(SCHOOL_STAFF_ROLES as readonly string[]).includes(ctx.role)) redirect("/account/payslips");
   const [t, locale] = await Promise.all([getT(), getLocale()]);
-  if (!(await isModuleOn(ctx.schoolId, "PAYROLL"))) return <ModuleOff module="PAYROLL" t={t} />;
+  if (!(await isModuleOn(ctx.schoolId, "PAYROLL"))) return <ModuleOff page module="PAYROLL" t={t} />;
   const { year } = await searchParams;
   const s = await myStatement(ctx, year);
   return (

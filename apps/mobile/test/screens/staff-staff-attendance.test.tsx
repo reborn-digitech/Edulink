@@ -103,15 +103,15 @@ describe("the staff register", () => {
   it("the day arrows ask the API for that day, and tomorrow is out of reach", async () => {
     const { calls } = await mountStaff(compose(), "ADMIN", answers());
     await screen.findByText("ZZ Anita");
-    expect(screen.getByText("Thu, Sep 17")).toBeTruthy();
+    expect(screen.getByText("Thu, 17/09/2026")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Previous day" }));
     await waitFor(() => expect(calls().some((c) => c.line === `GET ${PATH}?date=2026-09-16`)).toBe(true));
-    await screen.findByText("Wed, Sep 16");
+    await screen.findByText("Wed, 16/09/2026");
     await fireEvent.press(screen.getByRole("button", { name: "Today" }));
-    await screen.findByText("Thu, Sep 17");
+    await screen.findByText("Thu, 17/09/2026");
     await fireEvent.press(screen.getByRole("button", { name: "Next day" }));
     await waitFor(() => expect(calls().some((c) => c.line === `GET ${PATH}?date=2026-09-18`)).toBe(true));
-    await screen.findByText("Fri, Sep 18");
+    await screen.findByText("Fri, 18/09/2026");
     // Today: no further forward, and no "Today" button to press.
     expect(screen.getByRole("button", { name: "Next day" })).toBeDisabled();
     expect(screen.queryByRole("button", { name: "Today" })).toBeNull();

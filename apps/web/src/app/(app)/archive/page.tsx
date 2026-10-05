@@ -25,7 +25,7 @@ import {
   type ArchiveYear,
 } from "@/lib/year-archive";
 import { db } from "@/lib/db";
-import { Card, CardBody } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { formatInZone } from "@/lib/dates";
@@ -33,6 +33,7 @@ import { cn } from "@/lib/cn";
 import { getT } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -102,20 +103,23 @@ export default async function ArchivePage({
 
   return (
     <div className="space-y-5">
-      <header className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="flex items-center gap-2 text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-            <ArchiveIcon weight="duotone" className="size-7 text-accent" />
+      <PageHeader
+        title={
+          <>
+            <ArchiveIcon weight="duotone" className="size-7 text-accent" aria-hidden="true" />
             {t("archive.title")}
-          </h1>
-          <p className="mt-1 max-w-prose text-sm text-fg-muted">{t("archive.intro")}</p>
-        </div>
-        {years.length > 0 && (
-          <Badge tone="neutral">
-            {years.length === 1 ? t("archive.yearsCountOne") : t("archive.yearsCount", { count: years.length })}
-          </Badge>
-        )}
-      </header>
+          </>
+        }
+        description={t("archive.intro")}
+        actions={
+          years.length > 0 ? (
+            <Badge tone="neutral">
+              {years.length === 1 ? t("archive.yearsCountOne") : t("archive.yearsCount", { count: years.length })}
+            </Badge>
+          ) : undefined
+        }
+      />
+
 
       {children.length > 1 && (
         <nav aria-label={t("archive.childLabel")} className="flex flex-wrap gap-2">
@@ -257,19 +261,19 @@ function Figure({
   value: string | number;
   hint?: string;
 }) {
+  // The card is the <div> a <dl> may hold, with only its <dt> and <dd> inside: the icon and the label in a span
+  // between them failed axe's definition-list and dlitem rules on every closed year (A3-states-6).
   return (
-    <Card>
+    <Card className="flex flex-col gap-1 p-4 sm:p-5">
       {/* Icon above the words on a phone, beside them on a desk: two tiles
           across a 360px screen leave no room for "Pupils on the roll" next
           to a circle. */}
-      <CardBody className="flex flex-col items-start gap-2 sm:flex-row sm:gap-3">
-        <span className="grid size-9 shrink-0 place-items-center rounded-full bg-accent-soft text-accent-strong sm:size-10">{icon}</span>
-        <span className="min-w-0">
-          <dt className="text-xs text-fg-muted">{label}</dt>
-          <dd className="text-2xl font-bold tabular-nums tracking-tight text-fg">{value}</dd>
-          {hint && <dd className="text-xs text-fg-muted">{hint}</dd>}
-        </span>
-      </CardBody>
+      <dt className="flex flex-col items-start gap-2 text-xs text-fg-muted sm:flex-row sm:items-center sm:gap-3">
+        <span aria-hidden="true" className="grid size-9 shrink-0 place-items-center rounded-full bg-accent-soft text-accent-strong sm:size-10">{icon}</span>
+        <span className="min-w-0">{label}</span>
+      </dt>
+      <dd className="text-2xl font-bold tabular-nums tracking-tight text-fg">{value}</dd>
+      {hint && <dd className="text-xs text-fg-muted">{hint}</dd>}
     </Card>
   );
 }

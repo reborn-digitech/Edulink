@@ -27,7 +27,7 @@ describe("absence notes for a guardian", () => {
   it("lists the days ahead with who filed each, and take-back only on the guardian's own", async () => {
     await renderFamily(<FamilyAttendance />, ME_PARENT, { "/api/v1/family/attendance": () => MONTH, [NOTES_PATH]: () => LIST([NOTE, OTHERS]) });
     expect(await screen.findByText("Absence notes")).toBeTruthy();
-    expect(await screen.findByText(/^Thursday, (10 September|September 10)$/)).toBeTruthy();
+    expect(await screen.findByText(/^Thursday, 10\/09\/2026$/)).toBeTruthy();
     expect(screen.getByText("Religious observance · “Back on Friday.” · Filed by ZZ Parent")).toBeTruthy();
     expect(screen.getByText("Illness · Filed by ZZ Asha")).toBeTruthy();
     expect(screen.getAllByRole("button", { name: /^Take it back:/ })).toHaveLength(1);
@@ -48,7 +48,7 @@ describe("absence notes for a guardian", () => {
     await waitFor(() => expect(calls(fetch, NOTES_PATH).filter((c) => c.init?.method === "POST")).toHaveLength(1));
     expect(bodyOf(calls(fetch, NOTES_PATH).find((c) => c.init?.method === "POST")!)).toEqual({ dateKey: "2026-09-15", reason: "TRAVEL", text: "Wedding in Nashik." });
     expect(await screen.findByText("The school has been told.")).toBeTruthy();
-    expect(screen.getByText(/^Tuesday, (15 September|September 15)$/)).toBeTruthy();
+    expect(screen.getByText(/^Tuesday, 15\/09\/2026$/)).toBeTruthy();
     expect(screen.getByLabelText("Day away").props.value).toBe("");
   });
 

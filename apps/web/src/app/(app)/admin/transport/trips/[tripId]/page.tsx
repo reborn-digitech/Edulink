@@ -27,7 +27,7 @@ export default async function TripPage({ params }: { params: Promise<{ tripId: s
   const ctx = await requireRole("ADMIN", "PRINCIPAL");
   const t = await getT();
   const locale = await getLocale();
-  if (!(await isModuleOn(ctx.schoolId, "TRANSPORT"))) return <ModuleOff module="TRANSPORT" t={t} />;
+  if (!(await isModuleOn(ctx.schoolId, "TRANSPORT"))) return <ModuleOff page module="TRANSPORT" t={t} />;
   const { tripId } = await params;
   const trip = await tripDetail(ctx, tripId).catch((error: unknown) => {
     if (error instanceof AccessError && error.code === "NOT_FOUND") return null;

@@ -24,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
  */
 export default async function ClaimsPage() {
   const t = await getT();
-  const ctx = await requireRole("ADMIN");
+  const ctx = await requireRole("ADMIN", "ACCOUNTS");
   const school = await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } });
   const { claims, waitingForUtr } = await listClaims(ctx, todayKey(school.timezone));
 

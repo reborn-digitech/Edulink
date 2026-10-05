@@ -28,6 +28,7 @@ export default async function ExpertPendingPage() {
   return (
     <div className="mx-auto max-w-lg space-y-6 py-10">
       <EmptyState
+        heading="h1"
         icon={<HourglassIcon weight="duotone" className="size-8" />}
         title={t("expert.underReview")}
         description={t("expert.underReviewBody")}

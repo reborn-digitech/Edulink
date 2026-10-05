@@ -92,7 +92,7 @@ export function FamilyRecord() {
         children.data && pupils.length === 0 ? (
           <Empty title={t("parent.linkToYourChild")} body={t("parent.linkNeedCode")} action={<Button label={t("parent.linkToMyChild")} onPress={() => router.push("/(app)/link-child" as never)} />} />
         ) : (
-          <Failed message={query.error.message} onRetry={() => void query.refetch()} />
+          <Failed error={query.error} onRetry={() => void query.refetch()} />
         )
       ) : null}
       {/* The identity card (5 Oct 2026): a PDF drawn from the record on every read, shared from the phone. */}

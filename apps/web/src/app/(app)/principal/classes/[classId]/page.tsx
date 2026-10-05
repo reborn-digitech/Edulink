@@ -126,7 +126,7 @@ export default async function PrincipalClassPage({
         <div className="flex flex-wrap items-center gap-2">
           <Link
             href={`/attendance/history?classId=${classId}`}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-fg hover:bg-surface-muted"
+            className="inline-flex items-center gap-1.5 rounded-[var(--radius-lg)] border border-border px-3 py-1.5 text-sm font-medium text-fg hover:bg-surface-muted"
           >
             <ClockCounterClockwiseIcon weight="bold" className="size-4" />
             {t("attendanceHistory.link")}

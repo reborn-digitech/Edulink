@@ -230,7 +230,7 @@ describe("one competition", () => {
   });
 
   it("a refused competition is an alert with a retry", async () => {
-    const { calls } = await mountStaff(<CompetitionDetail />, "STUDENT", { [`GET ${PATH}`]: refused("ZZ not found", 404) });
+    const { calls } = await mountStaff(<CompetitionDetail />, "STUDENT", { [`GET ${PATH}`]: refused("ZZ not found", 503) });
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ not found");
     await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
     await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}`)).toHaveLength(2));

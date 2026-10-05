@@ -138,6 +138,8 @@ export async function submitWork(input: unknown): Promise<SubmitState> {
   });
 
   revalidatePath("/student/assignments");
+  // The home's "things to do" count too: it kept the handed-in piece until a reload (A3-journeys-25).
+  revalidatePath("/student");
   revalidatePath(`/teacher/assignments/${assignmentId}`);
 
   return { ok: true, submittedAt: submittedAt.toISOString() };

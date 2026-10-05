@@ -3,6 +3,7 @@ import type { TranslationKey } from "@edulink/i18n";
 import type { ApiResult } from "@edulink/contracts";
 import { Text } from "@/components";
 import { API_BASE, errorText } from "@/lib/api";
+import { formatWith } from "@/lib/dates";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 
@@ -27,15 +28,10 @@ export function openWeb(path: string): void {
   void Linking.openURL(`${API_BASE}${path}`);
 }
 
-/** "2026-09-07" → "7 Sept" in the reader's language; the key itself if the date cannot be read. */
+/** "2026-09-07" → "07/09/2026"; the key itself if the date cannot be read. */
 export function formatDateKey(key: string, locale?: string, options: Intl.DateTimeFormatOptions = { day: "numeric", month: "short" }): string {
-  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(key);
-  if (!m) return key;
-  try {
-    return new Date(Date.UTC(Number(m[1]), Number(m[2]) - 1, Number(m[3]))).toLocaleDateString(locale && locale !== "en" ? `${locale}-u-nu-latn` : locale, { ...options, timeZone: "UTC" });
-  } catch {
-    return key;
-  }
+  // dd/mm/yyyy whenever a day is asked for (src/lib/dates.ts, A3-journeys-31).
+  return /^\d{4}-\d{2}-\d{2}$/.test(key) ? formatWith(key, options, locale ?? "en") : key;
 }
 
 /** A from–to line, or the one day when both are the same. */
@@ -106,7 +102,10 @@ export function Chips<T extends string>({
               onPress={() => onChange(o.value)}
               style={({ pressed }) => ({
                 minHeight: th.tap,
+                // A long reason wraps inside its chip instead of running past the card (A3-states-15).
+                maxWidth: "100%",
                 paddingHorizontal: th.space[4],
+                paddingVertical: th.space[2],
                 borderRadius: th.radius.md,
                 justifyContent: "center",
                 backgroundColor: on ? th.accent : th.surfaceMuted,
@@ -115,7 +114,7 @@ export function Chips<T extends string>({
                 opacity: pressed || disabled ? 0.7 : 1,
               })}
             >
-              <Text variant="sm" bold={on} style={{ color: on ? th.accentFg : th.fg }}>
+              <Text variant="sm" bold={on} style={{ color: on ? th.accentFg : th.fg, flexShrink: 1 }}>
                 {o.label}
               </Text>
             </Pressable>

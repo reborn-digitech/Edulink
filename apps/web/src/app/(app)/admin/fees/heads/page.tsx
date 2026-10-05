@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
 /** The lines a receipt is made of: tuition, transport, exams. The office's alone. */
 export default async function FeeHeadsPage() {
   const t = await getT();
-  const ctx = await requireRole("ADMIN");
+  const ctx = await requireRole("ADMIN", "ACCOUNTS");
   const heads = await listHeads(ctx.schoolId, { includeRetired: true });
 
   return (

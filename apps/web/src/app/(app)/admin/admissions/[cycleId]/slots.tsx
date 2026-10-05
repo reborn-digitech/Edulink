@@ -14,6 +14,7 @@ import { actionError } from "@/lib/action-error";
 import { formatInZone } from "@/lib/dates";
 import { useT } from "@/lib/i18n";
 import { cancelSlotAction, publishSlotsAction } from "../actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 type Slot = z.infer<typeof entranceSlotSchema>;
 
@@ -176,7 +177,7 @@ export function SlotsPanel({
                 aria-describedby={describedBy}
                 value={startsAt}
                 onChange={(e) => setStartsAt(e.target.value)}
-                className="min-h-10 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-[0.9375rem] text-fg focus:border-accent focus:outline-none"
+                className={fieldClass()}
               />
             )}
           </Field>

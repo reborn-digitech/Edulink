@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { EMPLOYMENT_TYPE_KEYS, type EmploymentType } from "@/lib/constants";
 import { EnquireForm } from "../enquire-form";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -36,28 +37,33 @@ export default async function VacancyPage({
 
   return (
     <div className="mx-auto max-w-2xl space-y-6">
-      <div>
-        <div className="flex flex-wrap items-center gap-2">
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{posting.title}</h1>
-          {posting.status === "CLOSED" && (
-            <Badge tone="neutral" size="sm">
-              {t("vacancies.closedBadge")}
-            </Badge>
-          )}
-          {posting.ours && (
-            <Badge tone="info" size="sm">
-              {t("explore.yourSchool")}
-            </Badge>
-          )}
-        </div>
-        <p className="mt-1 text-sm text-fg-muted">
-          {[posting.schoolName, posting.city, posting.region].filter(Boolean).join(" · ")}
-          {" · "}
-          {t(EMPLOYMENT_TYPE_KEYS[posting.employmentType as EmploymentType] ?? "vacancies.typeFullTime")}
-          {" · "}
-          {t("vacancies.postedAgo", { when: relative(posting.createdAt) })}
-        </p>
-      </div>
+      <PageHeader
+        title={posting.title}
+        meta={
+          <>
+            {posting.status === "CLOSED" && (
+              <Badge tone="neutral" size="sm">
+                {t("vacancies.closedBadge")}
+              </Badge>
+            )}
+            {posting.ours && (
+              <Badge tone="info" size="sm">
+                {t("explore.yourSchool")}
+              </Badge>
+            )}
+          </>
+        }
+        description={
+          <>
+            {[posting.schoolName, posting.city, posting.region].filter(Boolean).join(" · ")}
+            {" · "}
+            {t(EMPLOYMENT_TYPE_KEYS[posting.employmentType as EmploymentType] ?? "vacancies.typeFullTime")}
+            {" · "}
+            {t("vacancies.postedAgo", { when: relative(posting.createdAt) })}
+          </>
+        }
+      />
+
 
       {posting.status === "CLOSED" && (
         <p className="text-sm font-medium text-fg-muted">{t("vacancies.closedNotice")}</p>

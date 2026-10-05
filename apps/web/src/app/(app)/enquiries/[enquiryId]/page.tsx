@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { requireUser, AccessError } from "@/lib/tenancy";
 import { readEnquiry } from "@/lib/enquiries";
@@ -8,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { cn } from "@/lib/cn";
 import { ThreadControls } from "./thread-controls";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -42,22 +42,17 @@ export default async function EnquiryThreadPage({
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
-      <div>
-        <div className="flex flex-wrap items-center gap-2">
-          <h1 className="text-xl font-bold tracking-tight text-fg sm:text-2xl">{title}</h1>
+      <PageHeader
+        title={title}
+        back={{ href: "/enquiries", label: t("enquiries.title") }}
+        description={thread.side === "school" ? thread.fromName : undefined}
+        meta={
           <Badge tone={thread.status === "OPEN" ? "ok" : "neutral"} size="sm">
             {thread.status === "OPEN" ? t("enquiries.openBadge") : t("enquiries.closedBadge")}
           </Badge>
-        </div>
-        {thread.side === "school" && (
-          <p className="mt-1 text-sm text-fg-muted">{thread.fromName}</p>
-        )}
-        <p className="mt-1 text-sm">
-          <Link href="/enquiries" className="font-medium text-accent hover:underline">
-            ← {t("enquiries.title")}
-          </Link>
-        </p>
-      </div>
+        }
+      />
+
 
       <ol className="space-y-3">
         {thread.messages.map((message) => (

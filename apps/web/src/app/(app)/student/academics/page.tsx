@@ -17,6 +17,7 @@ import { isCollegeKind } from "@/lib/institution";
 import { studentAcademics } from "@/lib/academics-homes";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { askCondonationAction } from "./actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("academics.studentTitle") };
@@ -32,7 +33,7 @@ export default async function StudentAcademicsPage({ searchParams }: { searchPar
   const ctx = await requireRole("STUDENT");
   const [t, locale, streams] = await Promise.all([getT(), getLocale(), streamsOf(ctx.schoolId)]);
   const [on, kind] = await Promise.all([isModuleOn(ctx.schoolId, "ACADEMICS"), institutionKindOf(ctx.schoolId)]);
-  if (!on) return <ModuleOff module="ACADEMICS" t={t} college={isCollegeKind(kind)} />;
+  if (!on) return <ModuleOff page module="ACADEMICS" t={t} college={isCollegeKind(kind)} />;
   const a = await studentAcademics(ctx);
   const term = a.registration.term;
   const short = a.attendance.filter((x) => !x.eligible);
@@ -107,22 +108,24 @@ export default async function StudentAcademicsPage({ searchParams }: { searchPar
             a.marks.map((m) => (
               <div key={m.offeringId}>
                 <h3 className="text-sm font-semibold text-fg">{`${m.courseCode} · ${m.courseName}`}</h3>
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-b border-border">
-                      <th scope="col" className={TH}>{t("academics.fieldComponent")}</th>
-                      <th scope="col" className={`${TH} text-right`}>{t("academics.colMarksOf")}</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-border">
-                    {m.components.map((k) => (
-                      <tr key={k.name}>
-                        <td className={TD}>{`${k.name} · ${t(INTERNAL_KIND_KEY[k.kind]!)}`}</td>
-                        <td className={NUM}>{k.marks === null ? t("academics.absentShort") : `${k.marks} / ${k.maxMarks}`}</td>
+                <TableScroll>
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-border">
+                        <th scope="col" className={TH}>{t("academics.fieldComponent")}</th>
+                        <th scope="col" className={`${TH} text-right`}>{t("academics.colMarksOf")}</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody className="divide-y divide-border">
+                      {m.components.map((k) => (
+                        <tr key={k.name}>
+                          <td className={TD}>{`${k.name} · ${t(INTERNAL_KIND_KEY[k.kind]!)}`}</td>
+                          <td className={NUM}>{k.marks === null ? t("academics.absentShort") : `${k.marks} / ${k.maxMarks}`}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </TableScroll>
               </div>
             ))
           )}

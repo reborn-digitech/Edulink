@@ -229,7 +229,7 @@ export function OperatorSchool() {
   return (
     <Screen title={school?.name ?? t("root.schoolMeta")} description={description} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d && school ? (
         school.removedAt ? (
           <>
@@ -243,7 +243,7 @@ export function OperatorSchool() {
             <Subscription schoolId={schoolId} d={d} onDone={changed} />
             <Contact schoolId={schoolId} contact={d.contact} onDone={changed} />
             <Invites schoolId={schoolId} invites={d.invites} onChanged={changed} />
-            {support.isError ? <Failed message={support.error.message} onRetry={() => void support.refetch()} /> : null}
+            {support.isError ? <Failed error={support.error} onRetry={() => void support.refetch()} /> : null}
             {support.data ? (
               <>
                 <Support schoolId={schoolId} data={support.data} pending={d.invites.filter((i) => i.status === "PENDING")} onDone={changed} />
@@ -673,7 +673,7 @@ function Plan({ schoolId, data, onDone }: { schoolId: string; data: OperatorScho
       <Text variant="xs" tone="muted">
         {t("root.planExplainer")}
       </Text>
-      {plans.isError ? <Failed message={plans.error.message} onRetry={() => void plans.refetch()} /> : null}
+      {plans.isError ? <Failed error={plans.error} onRetry={() => void plans.refetch()} /> : null}
       {plans.data ? <Chips label={t("root.planTitle")} value={chosen} options={options} onChange={setChosen} /> : null}
       <Button label={t("root.planAssign")} busy={assign.isPending} disabled={chosen === current} onPress={() => assign.mutate(chosen || null)} />
       <Button label={t("root.planManage")} variant="ghost" onPress={() => openWeb("/root/plans")} />
@@ -793,7 +793,7 @@ function Subscription({ schoolId, d, onDone }: { schoolId: string; d: OperatorSc
         </Text>
       ) : null}
       <Chips label={t("root.subscriptionStatus")} value={form.status} options={statusOptions} onChange={set("status")} />
-      {partners.isError ? <Failed message={partners.error.message} onRetry={() => void partners.refetch()} /> : null}
+      {partners.isError ? <Failed error={partners.error} onRetry={() => void partners.refetch()} /> : null}
       {partners.data ? <Chips label={t("root.commissionPartner")} value={form.partnerId} options={partnerOptions} onChange={set("partnerId")} /> : null}
       <View style={{ flexDirection: "row", gap: th.space[3] }}>
         <View style={{ flex: 1 }}>

@@ -12,7 +12,7 @@ import { fixedAssetRegisterExport, stockExport } from "@/lib/inventory";
  */
 export async function GET(request: Request, { params }: { params: Promise<{ kind: string }> }) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const { kind } = await params;
     const file = kind === "fixed-assets" ? await fixedAssetRegisterExport(ctx) : kind === "stock" ? await stockExport(ctx) : null;
     if (!file) return new Response(null, { status: 404 });

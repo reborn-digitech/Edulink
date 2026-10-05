@@ -3,7 +3,8 @@ import Link from "next/link";
 import { CaretRightIcon, ClipboardTextIcon, PlusIcon } from "@phosphor-icons/react/ssr";
 import { requireRole, teacherClassIds } from "@/lib/tenancy";
 import { db } from "@/lib/db";
-import { relativeTime } from "@/lib/dates";
+import { dateKeyInZone, relativeTime } from "@/lib/dates";
+import { admissionDaysByClass, rollOn } from "@/lib/exams";
 import { formatMilli } from "@/lib/validation";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -41,13 +42,17 @@ export default async function AssignmentsPage({
 
   if (classIds.length === 0) {
     return (
-      <EmptyState
-        icon={<ClipboardTextIcon weight="duotone" className="size-8" />}
-        title={t("teacher.noClassesYet")}
-        description={t("teacher.assignmentsBelong")}
-      />
+      <div className="space-y-6">
+        <PageHeader title={t("teacher.assignments")} />
+        <EmptyState
+          icon={<ClipboardTextIcon weight="duotone" className="size-8" />}
+          title={t("teacher.noClassesYet")}
+          description={t("teacher.assignmentsBelong")}
+        />
+      </div>
     );
   }
+
 
   /**
    * THIS YEAR BY DEFAULT. A class row lives for years, and a teacher who
@@ -91,15 +96,26 @@ export default async function AssignmentsPage({
     },
     include: {
       class: { select: { name: true, color: true, _count: { select: { enrollments: { where: { status: "ACTIVE" } } } } } },
+      examSlot: { select: { dateKey: true } },
       _count: { select: { submissions: true, grades: true } },
     },
     orderBy: [{ publishedAt: "desc" }, { createdAt: "desc" }],
     take: 100,
   });
+  // The roll a piece of work is marked against: the class now, less a pupil
+  // admitted after its day — an exam paper's date, else the due day, else the
+  // day it was set (A3-journeys-16: two children admitted in October read as
+  // "2 to mark" on September's papers).
+  const [admitted, school] = await Promise.all([
+    admissionDaysByClass([...new Set(fetched.map((a) => a.classId))]),
+    db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } }),
+  ]);
+  const rollFor = (a: (typeof fetched)[number]) =>
+    rollOn(a.class._count.enrollments, admitted.get(a.classId), a.examSlot?.dateKey ?? dateKeyInZone(a.dueAt ?? a.publishedAt ?? a.createdAt, school.timezone));
   // Overdue AND still unmarked for somebody: the second half is arithmetic on
   // the counts the row carries.
   const assignments = fetched.filter((a) =>
-    state === "overdue" ? a._count.grades < a.class._count.enrollments : true,
+    state === "overdue" ? a._count.grades < rollFor(a) : true,
   );
   const total = showAll ? allCount : thisYearCount;
   const carry = new URLSearchParams({ ...(state ? { state } : {}), ...(classFilter ? { classId: classFilter } : {}) }).toString();
@@ -160,7 +176,7 @@ export default async function AssignmentsPage({
       ) : (
         <ul className="space-y-2">
           {assignments.map((assignment) => {
-            const roster = assignment.class._count.enrollments;
+            const roster = rollFor(assignment);
             const graded = assignment._count.grades;
             const allGraded = roster > 0 && graded >= roster;
 

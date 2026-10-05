@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeftIcon, TrophyIcon } from "@phosphor-icons/react/ssr";
+import { TrophyIcon } from "@phosphor-icons/react/ssr";
 import { AccessError, requireUser } from "@/lib/tenancy";
 import { getCompetition, listEntriesForResults } from "@/lib/competitions";
 import { EmptyState } from "@/components/ui/states";
 import { Button } from "@/components/ui/button";
 import { ResultsRow } from "./results-row";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -48,18 +49,12 @@ export default async function EntriesPage({
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
-      <Link
-        href={`/competitions/${competitionId}`}
-        className="inline-flex items-center gap-1.5 text-sm text-fg-muted hover:text-fg"
-      >
-        <ArrowLeftIcon weight="bold" className="size-4" />
-        {competition.title}
-      </Link>
+      <PageHeader
+        title={t("competitions.entriesAndResults")}
+        description={t("competitions.yourPupilsOnly")}
+        back={{ href: `/competitions/${competitionId}`, label: competition.title }}
+      />
 
-      <header className="space-y-1">
-        <h1 className="text-2xl font-bold tracking-tight">{t("competitions.entriesAndResults")}</h1>
-        <p className="text-sm text-fg-muted">{t("competitions.yourPupilsOnly")}</p>
-      </header>
 
       {entries.length === 0 ? (
         <EmptyState

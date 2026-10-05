@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { useT } from "@/lib/i18n";
-import { linkAllExpertsAction, recordGigPaymentAction, recordPayoutAction, retryPaymentAction, saveCompanyAction, saveGigSettingsAction, switchPaymentsAction } from "./actions";
+import { linkAllExpertsAction, recordGigPaymentAction, recordPayoutAction, retryPaymentAction, saveCompanyAction, saveGigSettingsAction, suspendPayeeAction, switchPaymentsAction } from "./actions";
 
 export type Dial = {
   key: string;
@@ -326,5 +326,37 @@ export function PayoutForm({ payoutId, name, disabled }: { payoutId: string; nam
         </Button>
       </div>
     </form>
+  );
+}
+
+/** Stop paying one expert, with a reason they read, or pay them again (A3-inventory-8). */
+export function SuspendPayee({ expertUserId, name, suspended }: { expertUserId: string; name: string; suspended: boolean }) {
+  const t = useT();
+  const router = useRouter();
+  const { toast } = useToast();
+  const [pending, startTransition] = useTransition();
+  const [note, setNote] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const send = () =>
+    startTransition(async () => {
+      setError(null);
+      const result = await suspendPayeeAction({ expertUserId, name, suspended: !suspended, note: suspended ? undefined : note });
+      if (!result.ok) return setError(result.error);
+      setNote("");
+      toast({ tone: "ok", title: result.message });
+      router.refresh();
+    });
+  return (
+    <div className="flex flex-wrap items-end gap-2" data-testid="gig-payee-suspend">
+      {!suspended && <TextField label={t("gigs.opPayeeStopReason")} value={note} onChange={(e) => setNote(e.target.value)} maxLength={300} className="min-w-[12rem]" />}
+      <Button type="button" size="sm" variant={suspended ? "secondary" : "ghost"} disabled={pending} loading={pending} onClick={send}>
+        {t(suspended ? "gigs.opPayeeResume" : "gigs.opPayeeStop")}
+      </Button>
+      {error && (
+        <span role="alert" className="text-sm font-medium text-danger">
+          {error}
+        </span>
+      )}
+    </div>
   );
 }

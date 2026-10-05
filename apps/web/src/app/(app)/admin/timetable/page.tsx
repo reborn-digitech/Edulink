@@ -20,6 +20,7 @@ import { CopySections } from "./copy-sections";
 import { getT } from "@/lib/i18n/server";
 import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/ui/page-header";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -136,7 +137,7 @@ export default async function AdminTimetablePage({
                   id="class-picker"
                   name="class"
                   defaultValue={selected?.id ?? ""}
-                  className="min-h-11 min-w-[14rem] rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg"
+                  className={fieldClass("w-auto min-w-[14rem]")}
                 >
                   {classes.map((klass) => (
                     <option key={klass.id} value={klass.id}>

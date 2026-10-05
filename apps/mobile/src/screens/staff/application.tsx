@@ -102,7 +102,7 @@ export function StaffApplication() {
   return (
     <Screen title={a ? t("admissions.applicationTitle", { serial: a.serial }) : t("admissions.pipelineTitle")} description={a ? `${a.childName} · ${a.cycle.name}` : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {a ? (
         <>
           <View style={{ flexDirection: "row", alignItems: "center", gap: th.space[2] }}>

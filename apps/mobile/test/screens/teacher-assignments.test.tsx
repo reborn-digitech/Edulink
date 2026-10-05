@@ -107,11 +107,15 @@ describe("the teacher's assignments", () => {
     await fireEvent.changeText(screen.getByLabelText("Title"), "ZZ Quiz on fractions");
     await fireEvent.press(screen.getByRole("radio", { name: "Quiz" }));
     await fireEvent.changeText(screen.getByLabelText("Due date"), "2026-09-20");
+    // A due date already past: the first press says so and sends nothing; the second sets it anyway (A3-journeys-25).
+    await fireEvent.press(screen.getByRole("button", { name: "Publish now" }));
+    expect(await screen.findByText("The due date has already passed. Press again to set the work anyway.")).toBeTruthy();
+    expect(calls().filter((c) => c.line === "POST /api/v1/teaching/assignments")).toHaveLength(0);
     await fireEvent.press(screen.getByRole("button", { name: "Publish now" }));
     await screen.findByText("Work set. 24 students and their guardians were told.");
     const post = calls().find((c) => c.line === "POST /api/v1/teaching/assignments")!;
     const body = teachingNewAssignmentSchema.parse(post.body);
-    expect(body).toMatchObject({ classId: ID.class1, title: "ZZ Quiz on fractions", body: "", category: "Quiz", points: 20, publish: true, handouts: [] });
+    expect(body).toMatchObject({ classId: ID.class1, title: "ZZ Quiz on fractions", body: "", category: "Quiz", points: 20, publish: true, handouts: [], confirmPastDue: true });
     expect(body.dueAt).toBe(new Date("2026-09-20T16:00:00").toISOString());
     expect(screen.queryByLabelText("Title")).toBeNull();
   });

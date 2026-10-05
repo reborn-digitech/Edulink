@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function StudentCourseFilePage({ params }: { params: Promise<{ offeringId: string }> }) {
   const ctx = await requireRole("STUDENT");
   const t = await getT();
-  if (!(await isModuleOn(ctx.schoolId, "ACADEMICS"))) return <ModuleOff module="ACADEMICS" t={t} college />;
+  if (!(await isModuleOn(ctx.schoolId, "ACADEMICS"))) return <ModuleOff page module="ACADEMICS" t={t} college />;
   const file = await courseFile(ctx, (await params).offeringId);
   return (
     <div className="space-y-6">

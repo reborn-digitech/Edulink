@@ -242,7 +242,7 @@ describe("the report-card builder", () => {
     await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
     await waitFor(() => expect(calls().filter((c) => c.line === `POST ${BASE}/generate`)).toHaveLength(2));
 
-    const load = await mountStaff(builder(), "TEACHER", { [`GET ${BASE}`]: refused("ZZ not your class", 404) });
+    const load = await mountStaff(builder(), "TEACHER", { [`GET ${BASE}`]: refused("ZZ not your class", 503) });
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ not your class");
     await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
     await waitFor(() => expect(load.calls().filter((c) => c.line === `GET ${BASE}`)).toHaveLength(2));

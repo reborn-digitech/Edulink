@@ -14,6 +14,7 @@ import { useTheme } from "@/lib/theme";
 import { Notice } from "../staff/shared";
 import { ChildSwitcher, childQuery, formatInstant } from "../family/shared";
 import { BACKLOG_KEY, CLASS_KEY, CREDIT_KEY, DOC_KIND_KEY, FORM_STATUS_KEY, RESULT_KEY, REVAL_KIND_KEY, REVAL_OUTCOME_KEY, marks } from "./words";
+import { formatDate } from "@/lib/dates";
 
 /**
  * A college student's exams on the phone (module EXAMS, 4 Oct 2026) — the
@@ -44,7 +45,7 @@ export function CollegeExamsScreen() {
   const failed = (e: Error) => setNotice({ tone: "danger", text: e.message });
   const submit = useMutation({ mutationFn: async (formId: string) => examActionResultSchema.parse(unwrap(await api().post(`/api/v1/exam-cell/forms/${formId}/submit`, {}))), onSuccess: () => done(t("examCell.formSubmitted")), onError: failed });
   const backlog = useMutation({ mutationFn: async (v: { sessionId: string; courseId: string }) => examActionResultSchema.parse(unwrap(await api().post("/api/v1/exam-cell/mine/backlogs", v))), onSuccess: () => done(t("examCell.backlogAdded")), onError: failed });
-  const reval = useMutation({ mutationFn: async (v: { sessionId: string; courseId: string; kind: "PHOTOCOPY" | "REVAL" }) => examActionResultSchema.parse(unwrap(await api().post("/api/v1/exam-cell/mine/revaluations", v))), onSuccess: () => done(t("examCell.revalAsked")), onError: failed });
+  const reval = useMutation({ mutationFn: async (v: { sessionId: string; courseId: string; kind: "PHOTOCOPY" | "REVAL" }) => examActionResultSchema.parse(unwrap(await api().post("/api/v1/exam-cell/mine/revaluations", v))), onSuccess: (r) => done(t(r.count === 0 ? "examCell.revalAskedNoFee" : "examCell.revalAsked")), onError: failed });
   const share = async (key: string, path: string, fileName: string) => {
     setBusy(key);
     setNotice(null);
@@ -108,7 +109,8 @@ export function CollegeExamsScreen() {
         </Card>
       ) : null}
       {d?.results.map((r) => (
-        <Card key={r.sessionId} title={r.sessionName}>
+        <Card key={r.sessionId} title={r.underCorrection.length ? `${r.sessionName} · ${t("examCell.underCorrection")}` : r.sessionName}>
+          {r.underCorrection.length ? <Text tone="warn">{t("examCell.underCorrectionNote", { courses: r.result.courses.filter((c) => r.underCorrection.includes(c.courseId)).map((c) => c.code).join(", ") })}</Text> : null}
           <Text bold>
             {[`${t("examCell.sgpaLabel")} ${r.result.sgpa?.toFixed(2) ?? "—"}`, t(RESULT_KEY[r.result.status]!), r.result.cls ? t(CLASS_KEY[r.result.cls]!) : null].filter(Boolean).join(" · ")}
           </Text>
@@ -136,14 +138,14 @@ export function CollegeExamsScreen() {
       {d && d.revaluations.length > 0 ? (
         <Card title={t("examCell.revaluationsTitle")}>
           {d.revaluations.map((r) => (
-            <Row key={r.id} title={`${r.courseCode} · ${t(REVAL_KIND_KEY[r.kind]!)}`} caption={r.outcome ? t(REVAL_OUTCOME_KEY[r.outcome]!) : t("examCell.waitingDecision")} />
+            <Row key={r.id} title={`${r.courseCode} · ${t(REVAL_KIND_KEY[r.kind]!)}`} caption={r.correction ? t("examCell.underCorrection") : r.outcome ? t(REVAL_OUTCOME_KEY[r.outcome]!) : t("examCell.waitingDecision")} />
           ))}
         </Card>
       ) : null}
       {d && d.backlogs.length > 0 ? (
         <Card title={t("examCell.backlogsTitle")}>
           {d.backlogs.map((b) => (
-            <Row key={b.id} title={`${b.courseCode} ${b.courseName}`} caption={`${t(BACKLOG_KEY[b.status]!)} · ${t("examCell.lastDay", { date: b.lastDay })}`} />
+            <Row key={b.id} title={`${b.courseCode} ${b.courseName}`} caption={`${t(BACKLOG_KEY[b.status]!)} · ${t("examCell.lastDay", { date: formatDate(b.lastDay) })}`} />
           ))}
         </Card>
       ) : null}

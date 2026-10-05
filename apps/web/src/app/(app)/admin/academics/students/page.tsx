@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 /** Each student's seat: programme, scheme, year and semester, division with roll number, the university's PRN. */
 export default async function StudentsPage({ searchParams }: { searchParams: SearchParams }) {
   const { ctx, t, on, college, canEdit } = await academicsGate();
-  if (!on) return <ModuleOff module="ACADEMICS" t={t} college={college} />;
+  if (!on) return <ModuleOff page module="ACADEMICS" t={t} college={college} />;
   const params = await searchParams;
   const programmeId = one(params.programme);
   const [s, seats] = await Promise.all([academicsStructure(ctx), listSeats(ctx, { programmeId })]);

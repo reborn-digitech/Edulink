@@ -413,6 +413,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
   FACULTY: [
     ...COLLEGE_STAFF_MENU,
     { labelKey: "iqac.navVoice", icon: "star", group: "running", screen: "/(app)/voice", module: "IQAC" },
+    // What the head has shown me of my appraisals (A3-inventory-5, audit of 5 Oct 2026): the head may appraise a FACULTY or HOD member.
+    { labelKey: "appraisal.myTitle", icon: "clipboard", group: "running", screen: "/(app)/my-appraisals" },
     // The college's academics (4 Oct 2026): the home tab is the day; mentoring is a tab of theirs.
     // Exam duties (the exam cell, 4 Oct 2026): invigilation, papers to set, bundles, remuneration.
     { labelKey: "examCell.dutiesTitle", icon: "clipboard", group: "daily", screen: "/(app)/exam-duties", module: "EXAMS" },
@@ -428,10 +430,14 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "duties.research.title", icon: "medal", group: "running", screen: "/(app)/research-desk", module: "IQAC", duty: "RESEARCH_DEAN" },
     { labelKey: "duties.examSquad.title", icon: "eye", group: "running", screen: "/(app)/exam-squad", module: "EXAMS", duty: "EXAM_SQUAD" },
     { labelKey: "streamRecords.practicals.title", icon: "clipboard", group: "daily", screen: "/(app)/practicals", module: "ACADEMICS", streams: LAB_STREAMS },
+    // A law college's moot courts (A3-inventory-4, audit of 5 Oct 2026): the doors name FACULTY and HOD; hidden where the recorded streams have no LAW.
+    { labelKey: "streamRecords.moots.title", icon: "trophy", group: "daily", screen: "/(app)/moot-courts", module: "ACADEMICS", streams: ["LAW"] },
   ],
   HOD: [
     ...COLLEGE_STAFF_MENU,
     { labelKey: "iqac.navVoice", icon: "star", group: "running", screen: "/(app)/voice", module: "IQAC" },
+    // What the head has shown me of my appraisals (A3-inventory-5, audit of 5 Oct 2026): the head may appraise a FACULTY or HOD member.
+    { labelKey: "appraisal.myTitle", icon: "clipboard", group: "running", screen: "/(app)/my-appraisals" },
     // The college's academics (4 Oct 2026): the home tab is the department; an HOD's own teaching is a tab, mentoring is here.
     { labelKey: "academics.mentoringTitle", icon: "chat", group: "daily", screen: "/(app)/academics-mentoring", module: "ACADEMICS" },
     // The department's lectures to cover and who stands in (5 Oct 2026; the web's /hod board).
@@ -449,6 +455,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "duties.research.title", icon: "medal", group: "running", screen: "/(app)/research-desk", module: "IQAC", duty: "RESEARCH_DEAN" },
     { labelKey: "duties.examSquad.title", icon: "eye", group: "running", screen: "/(app)/exam-squad", module: "EXAMS", duty: "EXAM_SQUAD" },
     { labelKey: "streamRecords.practicals.title", icon: "clipboard", group: "daily", screen: "/(app)/practicals", module: "ACADEMICS", streams: LAB_STREAMS },
+    // A law college's moot courts (A3-inventory-4, audit of 5 Oct 2026): the doors name FACULTY and HOD; hidden where the recorded streams have no LAW.
+    { labelKey: "streamRecords.moots.title", icon: "trophy", group: "daily", screen: "/(app)/moot-courts", module: "ACADEMICS", streams: ["LAW"] },
   ],
   EXAM_CONTROLLER: [
     ...COLLEGE_STAFF_MENU,
@@ -659,6 +667,8 @@ export const HIDDEN_SCREENS = [
   "alumni-college",
   // The accounts desk's look-up of a student by PRN: the ledger and the exam form's no-dues, read only (5 Oct 2026).
   "accounts-lookup",
+  // A law college's moot courts, for FACULTY and HOD from More (A3-inventory-4, audit of 5 Oct 2026).
+  "moot-courts",
 ] as const;
 
 /** The More sheet's entries for a role, grouped in the web's order; an entry whose module the school has off, or whose duty the person does not hold (5 Oct 2026), is left out. */

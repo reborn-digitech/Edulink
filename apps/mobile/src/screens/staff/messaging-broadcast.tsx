@@ -50,7 +50,7 @@ export function MessagingBroadcast() {
     <Screen title={b ? t("messaging.detailTitle", { title: b.title }) : t("messaging.broadcastsTitle")} description={b ? [audienceLabel(t, b.audience), `${t("messaging.colBy")} ${b.author}`, formatInstant(b.createdAt, locale)].join(" · ") : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {id === null ? <Empty title={t("messaging.notFound")} action={back} /> : null}
       {id !== null && query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d && b ? (
         <>
           <View style={{ flexDirection: "row", gap: th.space[3], flexWrap: "wrap" }}>

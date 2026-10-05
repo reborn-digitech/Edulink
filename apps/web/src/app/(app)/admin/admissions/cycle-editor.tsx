@@ -182,7 +182,7 @@ export function CycleEditor({
   }
 
   const iconButton =
-    "grid size-10 shrink-0 place-items-center rounded-[var(--radius-md)] text-fg-muted hover:bg-surface-muted hover:text-danger focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-40";
+    "grid size-11 shrink-0 place-items-center rounded-[var(--radius-md)] text-fg-muted hover:bg-surface-muted hover:text-danger focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-40";
   const compact = "[&_input]:min-h-10 [&_input]:py-2";
 
   return (

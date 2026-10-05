@@ -8,6 +8,7 @@ import { offer, withdraw } from "./actions";
 import { useT } from "@/lib/i18n";
 import { actionError } from "@/lib/action-error";
 import { formatUtcMoment, formatUtcTime } from "@/lib/dates";
+import { fieldClass } from "@/components/ui/field-class";
 
 type Slot = {
   id: string;
@@ -94,7 +95,7 @@ export function SlotManager({ slots }: { slots: Slot[] }) {
               type="datetime-local"
               value={start}
               onChange={(e) => setStart(e.target.value)}
-              className="mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
+              className={fieldClass("mt-1")}
             />
           </label>
           <label className="flex-1 text-xs text-fg-muted">
@@ -103,7 +104,7 @@ export function SlotManager({ slots }: { slots: Slot[] }) {
               type="datetime-local"
               value={end}
               onChange={(e) => setEnd(e.target.value)}
-              className="mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
+              className={fieldClass("mt-1")}
             />
           </label>
         </div>
@@ -111,8 +112,9 @@ export function SlotManager({ slots }: { slots: Slot[] }) {
           type="text"
           value={note}
           placeholder={t("expert.timeNotePlaceholder")}
+          aria-label={t("expert.timeNotePlaceholder")}
           onChange={(e) => setNote(e.target.value)}
-          className="w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
+          className={fieldClass()}
         />
         {error && <p className="text-sm font-medium text-danger">{error}</p>}
         <Button

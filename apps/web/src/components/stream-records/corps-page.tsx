@@ -30,7 +30,7 @@ export async function CorpsPage({ corps, searchParams }: { corps: CorpsCode; sea
   const { ctx, moduleOn } = await dutyPageContext(corps === "NSS" ? "NSS_OFFICER" : "NCC_OFFICER", "IQAC");
   const t = await getT();
   const locale = await getLocale();
-  if (!moduleOn) return <ModuleOff module="IQAC" t={t} college />;
+  if (!moduleOn) return <ModuleOff page module="IQAC" t={t} college />;
   const params = await searchParams;
   const [d, school] = await Promise.all([corpsDesk(ctx, corps), db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } })]);
   const today = todayKey(school.timezone);

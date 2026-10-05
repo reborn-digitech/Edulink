@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
+import { PageHeader } from "@/components/ui/page-header";
 import { redirect } from "next/navigation";
 import { requireUser } from "@/lib/tenancy";
 import { studentsForTeacher, teachersForStudent } from "@/lib/remarks";
@@ -87,15 +87,18 @@ export default async function NewRemarkPage({
 
   if (students.length === 0) {
     return (
-      <EmptyState
-        title={t("remarks.noStudentsYet")}
-        description={t("remarks.noStudentsBody")}
-        action={
-          <Button asChild variant="secondary">
-            <Link href="/teacher">{t("remarks.backToToday")}</Link>
-          </Button>
-        }
-      />
+      <div className="mx-auto max-w-xl space-y-6">
+        <PageHeader title={t("remarks.newMessage")} back={{ href: "/remarks", label: t("remarks.all") }} />
+        <EmptyState
+          title={t("remarks.noStudentsYet")}
+          description={t("remarks.noStudentsBody")}
+          action={
+            <Button asChild variant="secondary">
+              <Link href="/teacher">{t("remarks.backToToday")}</Link>
+            </Button>
+          }
+        />
+      </div>
     );
   }
 
@@ -103,18 +106,11 @@ export default async function NewRemarkPage({
 
   return (
     <div className="mx-auto max-w-xl">
-      <Link
-        href="/remarks"
-        className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
-      >
-        <ArrowLeftIcon weight="bold" className="size-4" />
-        {t("remarks.all")}
-      </Link>
-
-      <h1 className="text-2xl font-bold tracking-tight text-fg">{t("remarks.newMessage")}</h1>
-      <p className="mt-1.5 text-sm text-fg-muted">
-        {t("remarks.goesToGuardiansOnly")}
-      </p>
+      <PageHeader
+        title={t("remarks.newMessage")}
+        description={t("remarks.goesToGuardiansOnly")}
+        back={{ href: "/remarks", label: t("remarks.all") }}
+      />
 
       <ComposeForm className="mt-7" students={students} preselected={preselected} />
     </div>
@@ -126,19 +122,10 @@ export default async function NewRemarkPage({
    provider above it (the week-grid precedent). */
 function AskShell({ title, children, t }: { title: string; children: React.ReactNode; t: Translate }) {
   return (
-    <div className="mx-auto max-w-xl">
-      <Link
-        href="/remarks"
-        className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
-      >
-        <ArrowLeftIcon weight="bold" className="size-4" />
-        {t("remarks.all")}
-      </Link>
-      <h1 className="text-2xl font-bold tracking-tight text-fg">{title}</h1>
-      <p className="mb-6 mt-1 text-sm text-fg-muted">
-        {t("remarks.oneConversation")}
-      </p>
+    <div className="mx-auto max-w-xl space-y-6">
+      <PageHeader title={title} description={t("remarks.oneConversation")} back={{ href: "/remarks", label: t("remarks.all") }} />
       {children}
     </div>
+
   );
 }

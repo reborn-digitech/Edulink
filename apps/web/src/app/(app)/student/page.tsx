@@ -22,6 +22,8 @@ import { getAttendanceSummary, currentStreakFor, todayAttendanceFor } from "@/li
 import { addDaysToKey, formatDateKey, isWithin, relativeTime, todayKey, weekdayOfKey } from "@/lib/dates";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
+import { cn } from "@/lib/cn";
+
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { StudentWelcome } from "./welcome";
@@ -30,6 +32,7 @@ import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
 import { getT, getLocale } from "@/lib/i18n/server";
 import { periodLabel } from "@/lib/coded-defaults";
 import { PersonLink } from "@/components/person-link";
+import { PAGE_TITLE } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -120,8 +123,10 @@ export default async function StudentHome() {
       <div className="flex items-center gap-4">
         <Avatar avatarKey={membership.user.avatarKey} name={membership.user.name} size="lg" ring />
         <div className="min-w-0">
-          <h1 className="truncate text-2xl font-bold tracking-tight text-fg sm:text-3xl">
+          {/* Beside the avatar, so not a PageHeader; the title has its look, cut short on one line (A3-states-9). */}
+          <h1 className={cn(PAGE_TITLE, "block truncate")}>
             {t("student.hiName", { name })}
+
           </h1>
           <p className="text-sm text-fg-muted">
             {formatDateKey(today, { weekday: "long", day: "numeric", month: "long" }, locale)}

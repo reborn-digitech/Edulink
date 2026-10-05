@@ -73,7 +73,7 @@ export function SchoolProfile() {
   return (
     <Screen title={d?.name ?? t("explore.title")} description={place || undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         <>
           {d.verified || d.ours ? (

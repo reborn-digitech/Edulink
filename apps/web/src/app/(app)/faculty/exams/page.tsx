@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { FileField } from "@/components/ui/file-field";
 import { CellOff, DUTY_STATUS_KEY, Flash, Hidden, Labelled, PAPER_STATUS_KEY, REMUNERATION_KEY, money, when } from "@/components/exam-cell/parts";
 import { submitPaperAction } from "../../exam-cell/actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -57,7 +58,7 @@ export default async function FacultyExamsPage({ searchParams }: { searchParams:
                     <Hidden fields={{ paperId: p.id, back }} />
                     <FileField label={t("examCell.paperFile")} name="file" accept="application/pdf" required />
                     <Labelled label={t("examCell.coMap")}>
-                      <textarea name="coMap" required rows={3} placeholder={t("examCell.coMapPlaceholder")} className="w-full rounded-[var(--radius-md)] border border-border bg-surface p-2 text-sm" />
+                      <textarea name="coMap" required rows={3} placeholder={t("examCell.coMapPlaceholder")} className={fieldClass()} />
                     </Labelled>
                     <div>
                       <Button type="submit" size="sm">

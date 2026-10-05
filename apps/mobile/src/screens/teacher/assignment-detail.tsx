@@ -67,7 +67,7 @@ export function AssignmentDetail() {
   return (
     <Screen title={a?.title ?? t("teacher.assignments")} description={description} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? <Gradebook book={d} /> : null}
     </Screen>
   );

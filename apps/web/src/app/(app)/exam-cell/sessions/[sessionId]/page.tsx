@@ -11,8 +11,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { DateField } from "@/components/ui/field";
 import { DateTimeField } from "@/components/ui/date-time-field";
-import { CellOff, FORM_STATUS_KEY, Hidden, Labelled, SessionFrame, inputClass, localInput, money, when } from "@/components/exam-cell/parts";
+import { CellOff, FORM_STATUS_KEY, Hidden, Labelled, SessionFrame, localInput, money, when } from "@/components/exam-cell/parts";
 import { decideFormAction, generateFormsAction, sessionStatusAction, submitFormAction, updateSessionAction } from "../../actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -97,7 +98,7 @@ export default async function SessionFormsPage({ params, searchParams }: { param
                     <form action={decideFormAction} className="flex flex-wrap items-end gap-2">
                       <Hidden fields={{ formId: f.id, back }} />
                       <Labelled label={t("examCell.reason")} className="min-w-48 flex-1">
-                        <input name="reason" maxLength={300} className={inputClass} />
+                        <input name="reason" maxLength={300} className={fieldClass()} />
                       </Labelled>
                       <label className="flex min-h-11 items-center gap-2 text-sm">
                         <input type="checkbox" name="waiveFee" value="1" /> {t("examCell.waiveFee")}
@@ -124,10 +125,10 @@ export default async function SessionFormsPage({ params, searchParams }: { param
             <form action={updateSessionAction} className="grid gap-4 sm:grid-cols-2">
               <Hidden fields={{ sessionId: s.id, back }} />
               <Labelled label={t("examCell.fieldName")}>
-                <input name="name" required defaultValue={s.name} className={inputClass} />
+                <input name="name" required defaultValue={s.name} className={fieldClass()} />
               </Labelled>
               <Labelled label={t("examCell.fieldTerm")}>
-                <select name="termId" defaultValue={s.termId} className={inputClass}>
+                <select name="termId" defaultValue={s.termId} className={fieldClass()}>
                   {terms.map((x) => (
                     <option key={x.id} value={x.id}>
                       {x.name}
@@ -136,7 +137,7 @@ export default async function SessionFormsPage({ params, searchParams }: { param
                 </select>
               </Labelled>
               <Labelled label={t("examCell.fieldKind")}>
-                <select name="kind" defaultValue={s.kind} className={inputClass}>
+                <select name="kind" defaultValue={s.kind} className={fieldClass()}>
                   <option value="REGULAR">{t("examCell.kindREGULAR")}</option>
                   <option value="SUPPLEMENTARY">{t("examCell.kindSUPPLEMENTARY")}</option>
                 </select>
@@ -145,20 +146,20 @@ export default async function SessionFormsPage({ params, searchParams }: { param
               <DateTimeField label={t("examCell.fieldOpens")} name="formOpensAt" defaultValue={localInput(s.formOpensAt)} defaultTime="00:00" />
               <DateTimeField label={t("examCell.fieldCloses")} name="formClosesAt" defaultValue={localInput(s.formClosesAt)} defaultTime="23:59" />
               <Labelled label={t("examCell.fieldFeePerCourse")}>
-                <input name="feePerCourse" defaultValue={String(s.feePerCoursePaise / 100)} className={inputClass} />
+                <input name="feePerCourse" defaultValue={String(s.feePerCoursePaise / 100)} className={fieldClass()} />
               </Labelled>
               <Labelled label={t("examCell.fieldFeePerBacklog")}>
-                <input name="feePerBacklog" defaultValue={String(s.feePerBacklogPaise / 100)} className={inputClass} />
+                <input name="feePerBacklog" defaultValue={String(s.feePerBacklogPaise / 100)} className={fieldClass()} />
               </Labelled>
               <Labelled label={t("examCell.fieldPhotocopyFee")}>
-                <input name="photocopyFee" defaultValue={String(s.photocopyFeePaise / 100)} className={inputClass} />
+                <input name="photocopyFee" defaultValue={String(s.photocopyFeePaise / 100)} className={fieldClass()} />
               </Labelled>
               <Labelled label={t("examCell.fieldRevalFee")}>
-                <input name="revalFee" defaultValue={String(s.revalFeePaise / 100)} className={inputClass} />
+                <input name="revalFee" defaultValue={String(s.revalFeePaise / 100)} className={fieldClass()} />
               </Labelled>
               <DateField label={t("examCell.fieldLateFrom")} name="slabFrom1" defaultValue={slab?.fromDateKey ?? ""} />
               <Labelled label={t("examCell.fieldLateFee")}>
-                <input name="slabFee1" defaultValue={slab ? String(slab.paise / 100) : ""} className={inputClass} />
+                <input name="slabFee1" defaultValue={slab ? String(slab.paise / 100) : ""} className={fieldClass()} />
               </Labelled>
               <div className="sm:col-span-2">
                 <Button type="submit">{t("examCell.saveSession")}</Button>

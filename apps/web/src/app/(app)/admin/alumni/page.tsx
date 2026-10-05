@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
 import { AlumnusControls, FeedModeForm, NoteForm } from "./controls";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -101,7 +102,7 @@ export default async function AdminAlumniPage({ searchParams }: { searchParams: 
             <label htmlFor="alumni-q" className="sr-only">
               {t("alumni.adminSearch")}
             </label>
-            <input id="alumni-q" name="q" defaultValue={q ?? ""} placeholder={t("alumni.adminSearch")} className="h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3.5 text-[0.9375rem] text-fg" />
+            <input id="alumni-q" name="q" defaultValue={q ?? ""} placeholder={t("alumni.adminSearch")} className={fieldClass()} />
           </form>
           {view.alumni.length === 0 ? (
             <EmptyState icon={<GraduationCapIcon weight="duotone" className="size-8" />} title={t("alumni.adminNoAlumni")} />

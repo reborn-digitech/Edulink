@@ -104,7 +104,7 @@ describe("an enquiry thread", () => {
   });
 
   it("a refused enquiry is an alert with a retry; no id is an error", async () => {
-    const { calls } = await mountStaff(<EnquiryDetail />, "ADMIN", { [`GET ${PATH}`]: refused("ZZ not yours", 404) });
+    const { calls } = await mountStaff(<EnquiryDetail />, "ADMIN", { [`GET ${PATH}`]: refused("ZZ not yours", 503) });
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ not yours");
     await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
     await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}`)).toHaveLength(2));

@@ -9,6 +9,7 @@ import { unwrap } from "@/lib/query";
 import { bytesApi, shareBytes } from "@/lib/download";
 import { useLocale, useT } from "@/lib/i18n";
 import { monthLabel } from "../staff/payroll";
+import { formatDate } from "@/lib/dates";
 
 export const MY_PAYSLIPS_PATH = "/api/v1/account/payslips";
 export const MY_PAYSLIPS_KEY = ["account", "payslips"] as const;
@@ -82,7 +83,7 @@ export function MyPayslips() {
             ) : (
               <>
                 <Text variant="sm" tone="muted">
-                  {t("payroll.myStructureBody", { name: d.structure.name, from: d.structure.effectiveFrom })}
+                  {t("payroll.myStructureBody", { name: d.structure.name, from: formatDate(d.structure.effectiveFrom) })}
                 </Text>
                 {d.structure.components.map((c) => (
                   <Row key={c.code} title={c.label || t(CODE_KEY[c.code] ?? "payroll.codeOtherEarning")} caption={c.monthlyPaise ? money(c.monthlyPaise) : t("payroll.byTheRules")} />

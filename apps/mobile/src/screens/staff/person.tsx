@@ -2,11 +2,12 @@ import { useState } from "react";
 import { View } from "react-native";
 import { usePrivateScreen } from "@/lib/private-screen";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { LEAVING_CONDUCTS, LEAVING_REASON_CODES, leavingResultSchema, type LeavingBody } from "@edulink/contracts";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { adminPeopleQuerySchema, adminPeopleSchema, LEAVING_CONDUCTS, LEAVING_REASON_CODES, leavingResultSchema, type AdminPeople, type LeavingBody } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
-import { Button, Card, Failed, Field, Row, Screen, Text, useToast } from "@/components";
+import { Button, Card, Failed, Field, Loading, Row, Screen, Text, useToast } from "@/components";
 import { api, errorText } from "@/lib/api";
+import { ApiRefused, unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { Chips, formatDateKey, must, Refusal } from "./shared";
@@ -28,6 +29,58 @@ export function leavingBodyFrom(form: { reason: Reason; conduct: Conduct | ""; d
   };
 }
 
+type PersonRow = AdminPeople["members"][number];
+
+/**
+ * Where the directory lists this person: the name the row carried, searched
+ * in the tab the row came from (left, paused or on the roll), and the row
+ * whose membership id it is. The phone has no door for one person, and the
+ * directory's is the office's own list, so a stale or made-up id finds no row.
+ */
+export function personLookupPath(params: { name?: string; role?: string; left?: string; status?: string }): string {
+  const p = new URLSearchParams();
+  p.set("q", (params.name ?? "").slice(0, 80));
+  const role = adminPeopleQuerySchema.shape.role.safeParse(params.role);
+  if (role.success && role.data) p.set("role", role.data);
+  p.set("status", params.left === "1" ? "LEFT" : params.status === "SUSPENDED" ? "SUSPENDED" : "ACTIVE");
+  return `/api/v1/admin/people?${p.toString()}`;
+}
+
+/**
+ * The person is fetched before anything is drawn: an id that is not one of
+ * this school's people (a stale link, another school's, made up) used to
+ * open as an empty editable screen — "Legal name for", "Pause ’s access?" —
+ * with a Save that could only fail (A3-states-15). Now it is the not-found
+ * sentence with the way back.
+ */
+export function Person() {
+  const t = useT();
+  const params = useLocalSearchParams<{ membershipId?: string; name?: string; role?: string; left?: string; status?: string }>();
+  const membershipId = params.membershipId ?? "";
+  const name = params.name ?? "";
+  const found = useQuery({
+    // Not under ["admin", "people"]: an action here refreshes the directory, and
+    // re-asking here with the tab the row came from would miss a person just paused.
+    queryKey: ["person", membershipId, name, params.role ?? "", params.left ?? "", params.status ?? ""],
+    queryFn: async () => {
+      const notHere = new ApiRefused(404, t("refusal.notAMemberHere"), "NOT_FOUND");
+      if (!membershipId || !name) throw notHere;
+      const page = adminPeopleSchema.parse(unwrap(await api().get(personLookupPath(params))));
+      const row = page.members.find((m) => m.membershipId === membershipId);
+      if (!row) throw notHere;
+      return row;
+    },
+  });
+  if (!found.data) {
+    return (
+      <Screen title={name || t("nav.people")}>
+        {found.isPending ? <Loading /> : <Failed error={found.error} onRetry={() => void found.refetch()} />}
+      </Screen>
+    );
+  }
+  return <PersonFound row={found.data} />;
+}
+
 /**
  * One person from the directory — the web's row menu as a screen. For a
  * member of staff, their record. For a pupil, their health card and school
@@ -36,8 +89,9 @@ export function leavingBodyFrom(form: { reason: Reason; conduct: Conduct | ""; d
  *
  * THE FORM SAYS WHAT THE FAMILY WILL GET before the button is pressed:
  * everything typed here is printed on a paper they hand to the next school.
+ * What it starts from is the directory's row as the server has it now.
  */
-export function Person() {
+function PersonFound({ row }: { row: PersonRow }) {
   // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
   usePrivateScreen();
   const t = useT();
@@ -45,13 +99,12 @@ export function Person() {
   const router = useRouter();
   const qc = useQueryClient();
   const toast = useToast();
-  const params = useLocalSearchParams<{ membershipId?: string; name?: string; role?: string; left?: string; leavingOn?: string; status?: string; birthdate?: string; subjects?: string }>();
-  const membershipId = params.membershipId ?? "";
-  const name = params.name ?? "";
-  const isPupil = params.role === "STUDENT";
-  const teaches = params.role === "TEACHER" || params.role === "PRINCIPAL";
-  const [left, setLeft] = useState(params.left === "1");
-  const [leavingOn, setLeavingOn] = useState<string | null>(params.leavingOn || null);
+  const membershipId = row.membershipId;
+  const name = row.name;
+  const isPupil = row.role === "STUDENT";
+  const teaches = row.role === "TEACHER" || row.role === "PRINCIPAL";
+  const [left, setLeft] = useState(row.leftAt !== null);
+  const [leavingOn, setLeavingOn] = useState<string | null>(row.scheduledDeparture?.leaveOnKey ?? null);
   const [reason, setReason] = useState<Reason>("TRANSFERRED");
   const [conduct, setConduct] = useState<Conduct | "">("GOOD");
   const [destination, setDestination] = useState("");
@@ -125,9 +178,9 @@ export function Person() {
       {!left ? (
         <>
           <LegalName membershipId={membershipId} name={name} onDone={refreshed} />
-          <Birthdate membershipId={membershipId} name={name} initial={params.birthdate ?? ""} onDone={refreshed} />
-          {teaches ? <Subjects membershipId={membershipId} name={name} initial={params.subjects ?? ""} onDone={refreshed} /> : null}
-          <Pause membershipId={membershipId} name={name} paused={params.status === "SUSPENDED"} onDone={refreshed} />
+          <Birthdate membershipId={membershipId} name={name} initial={row.birthdateKey ?? ""} onDone={refreshed} />
+          {teaches ? <Subjects membershipId={membershipId} name={name} initial={row.subjects.join(",")} onDone={refreshed} /> : null}
+          <Pause membershipId={membershipId} name={name} paused={row.status === "SUSPENDED"} onDone={refreshed} />
         </>
       ) : null}
       {isPupil && left ? (

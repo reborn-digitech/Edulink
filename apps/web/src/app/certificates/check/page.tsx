@@ -8,6 +8,7 @@ import { CODE_LOOKUPS, consumeByCaller } from "@/lib/rate-limit";
 import { formatDate } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { CERTIFICATE_KIND_KEY } from "@/components/certificates/labels";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -32,7 +33,7 @@ export default async function CertificateCheckPage({ searchParams }: { searchPar
   const result = code && !limited ? await verifyByCode(code) : null;
 
   return (
-    <div className="flex min-h-safe flex-col justify-center bg-bg px-4 py-10 sm:px-8">
+    <main id="main" className="flex min-h-safe flex-col justify-center bg-bg px-4 py-10 sm:px-8">
       <div className="mx-auto w-full max-w-sm">
         <Link href="/" className="mb-8 inline-block" aria-label={t("common.homeLink")}>
           <Wordmark />
@@ -52,7 +53,7 @@ export default async function CertificateCheckPage({ searchParams }: { searchPar
               autoCapitalize="characters"
               spellCheck={false}
               required
-              className="mt-1.5 min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 font-mono text-[0.9375rem] uppercase tracking-widest text-fg outline-none focus:border-accent"
+              className={fieldClass("mt-1.5 font-mono uppercase tracking-widest")}
               data-testid="verify-code"
             />
           </label>
@@ -106,6 +107,6 @@ export default async function CertificateCheckPage({ searchParams }: { searchPar
           </section>
         )}
       </div>
-    </div>
+    </main>
   );
 }

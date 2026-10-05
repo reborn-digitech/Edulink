@@ -95,7 +95,7 @@ describe("a booking", () => {
   });
 
   it("a refusal is an alert with a retry", async () => {
-    const { calls } = await mount({ [`GET ${PATH}`]: refused("ZZ Booking not found", 404) });
+    const { calls } = await mount({ [`GET ${PATH}`]: refused("ZZ Booking not found", 503) });
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ Booking not found");
     await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
     await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}`).length).toBe(2));

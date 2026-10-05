@@ -106,8 +106,8 @@ export function CertificateIssue() {
         <Empty icon="users" title={t("pupilRecord.noPupils")} body={t("pupilRecord.noPupilsBody")} action={<Button label={t("pupilRecord.officeTitle")} variant="secondary" onPress={() => router.push("/(app)/pupil-records" as never)} />} />
       ) : null}
       {pending ? <Loading /> : null}
-      {record.isError ? <Failed message={record.error.message} onRetry={() => void record.refetch()} /> : null}
-      {templates.isError ? <Failed message={templates.error.message} onRetry={() => void templates.refetch()} /> : null}
+      {record.isError ? <Failed error={record.error} onRetry={() => void record.refetch()} /> : null}
+      {templates.isError ? <Failed error={templates.error} onRetry={() => void templates.refetch()} /> : null}
       {d && templates.data ? (
         active.length === 0 ? (
           <Empty icon="fileText" title={t("certificates.noTemplates")} body={t("certificates.noTemplatesBody")} action={<Button label={t("certificates.templatesTitle")} variant="secondary" onPress={() => openWeb("/admin/certificates")} />} />
@@ -192,7 +192,7 @@ function RequestQueue({ active, onIssue }: { active: string[]; onIssue: (r: Cert
     onError: (e) => setRefusal(e instanceof Refusal ? e : new Refusal(e.message, 0, {})),
   });
   if (query.isPending) return <Loading />;
-  if (query.isError) return <Failed message={query.error.message} onRetry={() => void query.refetch()} />;
+  if (query.isError) return <Failed error={query.error} onRetry={() => void query.refetch()} />;
   const d = query.data;
   return (
     <Card title={t("certificateRequests.queueTitle")} action={d.pending > 0 ? <Pill label={t("certificateRequests.pendingCount", { count: d.pending })} tone="warn" /> : undefined}>

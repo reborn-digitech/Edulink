@@ -7,14 +7,14 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
+import { formatMonth } from "@/lib/dates";
 
 export const PAYROLL_PATH = "/api/v1/admin/payroll";
 export const PAYROLL_KEY = ["admin", "payroll"] as const;
 
 /** "September 2026" in the reader's language. */
 export function monthLabel(month: string, locale: string, short = false): string {
-  const [y, m] = month.split("-").map(Number) as [number, number];
-  return new Intl.DateTimeFormat(locale === "en" ? "en-IN" : `${locale}-IN`, { month: short ? "short" : "long", year: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(y, m - 1, 1)));
+  return /^\d{4}-\d{2}$/.test(month) ? formatMonth(`${month}-01`, locale, short) : month;
 }
 
 /**

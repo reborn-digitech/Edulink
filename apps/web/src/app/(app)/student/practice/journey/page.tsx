@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowLeftIcon, MedalIcon, FlameIcon, SparkleIcon } from "@phosphor-icons/react/ssr";
+import { MedalIcon, FlameIcon, SparkleIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { journey } from "@/lib/practice-insights";
 import { relativeTime } from "@/lib/dates";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -27,19 +27,8 @@ export default async function JourneyPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <Link
-          href="/student/practice"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
-        >
-          <ArrowLeftIcon weight="bold" className="size-4" />
-          {t("feature.practice")}
-        </Link>
-        <h1 className="mt-2 text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("journey.title")}
-        </h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("journey.intro")}</p>
-      </div>
+      <PageHeader title={t("journey.title")} description={t("journey.intro")} back={{ href: "/student/practice", label: t("feature.practice") }} />
+
 
       {/* ---- the three numbers that are only yours ---- */}
       <div className="grid gap-3 sm:grid-cols-3">
@@ -87,7 +76,7 @@ export default async function JourneyPage() {
                   {month.tiers > 0 ? month.tiers : ""}
                 </span>
                 <div
-                  className="w-full rounded-t-md bg-accent-soft"
+                  className="w-full rounded-t-[var(--radius-md)] bg-accent-soft"
                   style={{ height: `${Math.max(4, (month.tiers / maxMonthly) * 96)}px` }}
                 />
                 <span className="text-xs text-fg-muted">{month.label}</span>

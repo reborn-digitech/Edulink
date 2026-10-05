@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { fieldClass } from "@/components/ui/field-class";
 import { useToast } from "@/components/ui/toast";
 import { inviteParentAction } from "./actions";
 import { actionError } from "@/lib/action-error";
@@ -56,9 +57,6 @@ export function ParentLinkPanel({
     });
   }
 
-  const inputClass =
-    "w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 py-2 text-sm text-fg outline-none focus:border-accent";
-
   return (
     <div className="w-full rounded-[var(--radius-md)] border border-border bg-surface-muted p-3">
       <p className="text-sm font-semibold text-fg">{t("people.linkParentTitle", { name })}</p>
@@ -72,7 +70,7 @@ export function ParentLinkPanel({
             autoFocus
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className={`mt-1 ${inputClass}`}
+            className={fieldClass("mt-1")}
             data-testid="parent-email"
           />
         </label>
@@ -81,7 +79,7 @@ export function ParentLinkPanel({
           <input
             value={parentName}
             onChange={(e) => setParentName(e.target.value)}
-            className={`mt-1 ${inputClass}`}
+            className={fieldClass("mt-1")}
             data-testid="parent-name"
           />
         </label>
@@ -90,7 +88,7 @@ export function ParentLinkPanel({
           <select
             value={relation}
             onChange={(e) => setRelation(e.target.value as (typeof GUARDIAN_RELATIONS)[number])}
-            className={`mt-1 ${inputClass}`}
+            className={fieldClass("mt-1")}
           >
             {GUARDIAN_RELATIONS.map((r) => (
               <option key={r} value={r}>

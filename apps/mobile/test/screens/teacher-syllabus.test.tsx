@@ -62,7 +62,7 @@ describe("a class's syllabus", () => {
     expect(screen.getByLabelText("Chapters: 1/3")).toBeTruthy();
     expect(screen.getByLabelText("Lessons: 2")).toBeTruthy();
     expect(screen.getByText("1. ZZ Fractions")).toBeTruthy();
-    expect(screen.getByText("Periods 8 · Done Sep 10 by ZZ Teacher · Lessons 2")).toBeTruthy();
+    expect(screen.getByText("Periods 8 · Done 10/09/2026 by ZZ Teacher · Lessons 2")).toBeTruthy();
     expect(screen.getByRole("radio", { name: "Mark done: ZZ Fractions" })).toBeChecked();
     expect(screen.getByRole("radio", { name: "In progress: ZZ Decimals" })).toBeChecked();
     expect(screen.getByRole("radio", { name: "Not started: ZZ Geometry" })).toBeChecked();
@@ -196,7 +196,7 @@ describe("a class's syllabus", () => {
   });
 
   it("a refusal is an alert with a retry", async () => {
-    fakeApi({ [PATH]: () => refusal("ZZ not yours", 403) });
+    fakeApi({ [PATH]: () => refusal("ZZ not yours", 503) });
     await renderTeacher(page());
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ not yours");
     expect(screen.getByRole("button", { name: "Try again" })).toBeTruthy();

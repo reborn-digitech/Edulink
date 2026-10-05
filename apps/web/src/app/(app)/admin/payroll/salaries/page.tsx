@@ -30,7 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
  */
 export default async function PayrollSalaries({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const { ctx, t, locale, on } = await payrollGate(true);
-  if (!on) return <ModuleOff module="PAYROLL" t={t} />;
+  if (!on) return <ModuleOff page module="PAYROLL" t={t} />;
   const params = await searchParams;
   const [list, school] = await Promise.all([listSalaries(ctx), db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } })]);
   const today = todayKey(school.timezone);

@@ -13,6 +13,8 @@ import { FeedFilters } from "./feed-filters";
 import { isModuleRole, POST_CATEGORIES, type PostCategory, type PostStatus } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
+import { ChipLink } from "@/components/ui/chip";
+
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -51,18 +53,22 @@ export default async function BulletinPage({
 
   if (!activeSchoolId) {
     return (
-      <EmptyState
-        icon={<MegaphoneIcon weight="duotone" className="size-8" />}
-        title={t("bulletin.noSchool")}
-        description={t("bulletin.noSchoolBody")}
-        action={
-          <Button asChild>
-            <Link href="/switch">{t("bulletin.chooseSchool")}</Link>
-          </Button>
-        }
-      />
+      <div className="space-y-6">
+        <PageHeader title={t("bulletin.title")} />
+        <EmptyState
+          icon={<MegaphoneIcon weight="duotone" className="size-8" />}
+          title={t("bulletin.noSchool")}
+          description={t("bulletin.noSchoolBody")}
+          action={
+            <Button asChild>
+              <Link href="/switch">{t("bulletin.chooseSchool")}</Link>
+            </Button>
+          }
+        />
+      </div>
     );
   }
+
 
   const isStaff = session.role === "ADMIN" || session.role === "TEACHER";
   const showPending = filter === "pending" && isStaff;
@@ -133,15 +139,9 @@ export default async function BulletinPage({
       {parentSchools.length > 1 && (
         <nav aria-label={t("bulletin.chooseSchool")} className="flex flex-wrap gap-2">
           {parentSchools.map((s) => (
-            <Link
-              key={s.id}
-              href={`/bulletin?school=${s.id}`}
-              className={`rounded-full px-3 py-1.5 text-sm font-medium ${
-                activeSchoolId === s.id ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
-              }`}
-            >
+            <ChipLink key={s.id} href={`/bulletin?school=${s.id}`} current={activeSchoolId === s.id}>
               {s.name}
-            </Link>
+            </ChipLink>
           ))}
         </nav>
       )}
@@ -166,7 +166,7 @@ export default async function BulletinPage({
               key={t.id || "all"}
               href={t.id ? `/bulletin?filter=${t.id}` : "/bulletin"}
               aria-current={active ? "page" : undefined}
-              className={`flex-1 rounded-[var(--radius-sm)] px-3 py-2 text-center text-sm font-medium ${
+              className={`flex min-h-11 flex-1 items-center justify-center rounded-[var(--radius-sm)] px-3 text-center text-sm font-medium ${
                 active ? "bg-surface text-fg shadow-sm" : "text-fg-muted"
               }`}
             >

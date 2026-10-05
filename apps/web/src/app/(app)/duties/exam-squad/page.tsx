@@ -31,7 +31,7 @@ export default async function ExamSquadPage({ searchParams }: { searchParams: Pr
   const { ctx, moduleOn } = await dutyPageContext("EXAM_SQUAD", "EXAMS", ["ADMIN", "PRINCIPAL", "EXAM_CONTROLLER"]);
   const t = await getT();
   const locale = await getLocale();
-  if (!moduleOn) return <ModuleOff module="EXAMS" t={t} college />;
+  if (!moduleOn) return <ModuleOff page module="EXAMS" t={t} college />;
   const params = await searchParams;
   const [d, school] = await Promise.all([examSquadDesk(ctx), db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } })]);
   const when = (iso: string) => new Intl.DateTimeFormat(locale, { dateStyle: "medium", timeStyle: "short", timeZone: school.timezone }).format(new Date(iso));

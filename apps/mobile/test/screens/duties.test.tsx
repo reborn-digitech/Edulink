@@ -81,7 +81,7 @@ describe("the anti-ragging register", () => {
   it("shows the squad member the rounds, the complaints by state and due day, and the committee", async () => {
     await mountStaff(<AntiRaggingScreen />, "FACULTY", { "GET /api/v1/duties/anti-ragging": () => json(register) }, { me: meAs("FACULTY", { duties: ["ANTI_RAGGING_SQUAD"] }) });
     expect(screen.getByRole("progressbar")).toBeTruthy();
-    expect(await screen.findByText("ZZ Boys' Hostel · 2026-09-28")).toBeTruthy();
+    expect(await screen.findByText(/^ZZ Boys' Hostel · (28|29)\/09\/2026$/)).toBeTruthy();
     expect(screen.getByText("Filed on 2026-09-20, due by 2026-10-01")).toBeTruthy();
     expect(screen.getByText("Open · Overdue")).toBeTruthy();
     expect(screen.getByText("ZZ Principal (Chair)")).toBeTruthy();

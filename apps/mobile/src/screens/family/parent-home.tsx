@@ -63,7 +63,7 @@ export function ParentHome() {
       <FamilyApplicationsCard />
       {children.isError && !overview.data ? <Failed message={children.error.message} onRetry={refresh} /> : null}
       {overview.isPending && !noChildren && !children.isError ? <Loading /> : null}
-      {overview.isError ? <Failed message={overview.error.message} onRetry={() => void overview.refetch()} /> : null}
+      {overview.isError ? <Failed error={overview.error} onRetry={() => void overview.refetch()} /> : null}
       {overview.data ? overview.data.left ? <ChildLeft data={overview.data} /> : <ChildDay data={overview.data} /> : null}
     </Screen>
   );

@@ -1,18 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  ArrowLeftIcon,
-  BooksIcon,
-  CalendarCheckIcon,
-  ChartBarIcon,
-  ChatCircleDotsIcon,
-  FileTextIcon,
-  ClipboardTextIcon,
-  FirstAidKitIcon,
-  UsersThreeIcon,
-  WarningCircleIcon,
-} from "@phosphor-icons/react/ssr";
+import { BooksIcon, CalendarCheckIcon, ChartBarIcon, ChatCircleDotsIcon, FileTextIcon, ClipboardTextIcon, FirstAidKitIcon, UsersThreeIcon, WarningCircleIcon } from "@phosphor-icons/react/ssr";
 import { requireRole, assertClassAccess, AccessError } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { getAttendanceSummary } from "@/lib/attendance";
@@ -29,6 +18,7 @@ import { ClassCode } from "./class-code";
 import { GradeWeights } from "./weights";
 import { getT } from "@/lib/i18n/server";
 import { PersonLink } from "@/components/person-link";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -155,36 +145,34 @@ export default async function ClassDetailPage({
 
   return (
     <div className="space-y-5">
-      <Link
-        href="/teacher/classes"
-        className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
-      >
-        <ArrowLeftIcon weight="bold" className="size-4" />
-        {t("teacher.myClasses")}
-      </Link>
+      <PageHeader
+        back={{ href: "/teacher/classes", label: t("teacher.myClasses") }}
+        title={
+          <>
+            <span
+              aria-hidden="true"
+              className="h-8 w-1.5 shrink-0 rounded-full"
+              style={{ backgroundColor: klass.color ?? "var(--accent)" }}
+            />
+            {klass.name}
+          </>
+        }
+        description={
+          <>
+            {roster.length} student{roster.length === 1 ? "" : "s"}
+            {klass.subject ? ` · ${klass.subject}` : ""}
+            {klass.room ? ` · Room ${klass.room}` : ""}
+          </>
+        }
+        actions={
+          <Button asChild>
+            <Link href={`/teacher/attendance?classId=${klass.id}`}>
+              {todaySession ? t("teacher.editTodaysRegister") : t("teacher.takeRegister")}
+            </Link>
+          </Button>
+        }
+      />
 
-      <div className="flex flex-wrap items-end justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <span
-            aria-hidden="true"
-            className="h-12 w-1.5 shrink-0 rounded-full"
-            style={{ backgroundColor: klass.color ?? "var(--accent)" }}
-          />
-          <div>
-            <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{klass.name}</h1>
-            <p className="mt-0.5 text-sm text-fg-muted">
-              {roster.length} student{roster.length === 1 ? "" : "s"}
-              {klass.subject ? ` · ${klass.subject}` : ""}
-              {klass.room ? ` · Room ${klass.room}` : ""}
-            </p>
-          </div>
-        </div>
-        <Button asChild>
-          <Link href={`/teacher/attendance?classId=${klass.id}`}>
-            {todaySession ? t("teacher.editTodaysRegister") : t("teacher.takeRegister")}
-          </Link>
-        </Button>
-      </div>
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <StatTile
@@ -328,7 +316,7 @@ export default async function ClassDetailPage({
                     href={`/incidents/new?student=${student.membershipId}`}
                     aria-label={t("incidents.recordFor", { name: student.name })}
                     title={t("incidents.recordFor", { name: student.name })}
-                    className="grid size-10 shrink-0 place-items-center rounded-[var(--radius-md)] text-fg-muted hover:bg-surface-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+                    className="grid size-11 shrink-0 place-items-center rounded-[var(--radius-md)] text-fg-muted hover:bg-surface-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
                   >
                     <FirstAidKitIcon weight="bold" className="size-5" aria-hidden="true" />
                   </Link>

@@ -13,6 +13,7 @@ import { weekdayName } from "@/lib/school-day";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import type { TimetableImportPreview } from "@/lib/timetable";
 import { previewImport, runImport } from "./actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 const EXAMPLE = "day,period,class,subject,teacher,room\nMonday,1,Class 5 A,Maths,rao@example.com,12\nMonday,2,Class 5 A,English,Mrs Khan,12";
 
@@ -111,7 +112,7 @@ export function ImportForm() {
           }}
           rows={8}
           placeholder={EXAMPLE}
-          className="mt-1.5 w-full rounded-[var(--radius-md)] border border-border bg-surface p-3.5 font-mono text-sm leading-relaxed outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+          className={fieldClass("mt-1.5 font-mono leading-relaxed text-sm")}
         />
         <p className="mt-1 text-xs text-fg-muted">{t("officeBulk.timetableImportColumns")}</p>
       </div>

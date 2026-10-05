@@ -4,6 +4,8 @@ import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { MagnifyingGlassIcon, PaperPlaneTiltIcon, WarningIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
+import { Chip } from "@/components/ui/chip";
+
 import { TextField } from "@/components/ui/field";
 import { Avatar } from "@/components/ui/avatar";
 import { useToast } from "@/components/ui/toast";
@@ -11,6 +13,7 @@ import { cn } from "@/lib/cn";
 import { startThread } from "../actions";
 import { useT } from "@/lib/i18n";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
+import { fieldClass } from "@/components/ui/field-class";
 
 type Student = {
   membershipId: string;
@@ -117,7 +120,7 @@ export function ComposeForm({
             onChange={(e) => setQuery(e.target.value)}
             placeholder={t("remarks.findStudent")}
             aria-label={t("remarks.searchStudents")}
-            className="min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface pl-11 pr-4 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+            className={fieldClass("pl-11")}
           />
         </div>
 
@@ -204,14 +207,9 @@ export function ComposeForm({
         />
         <div className="mt-2 flex flex-wrap gap-1.5">
           {SUGGESTIONS.map((suggestion) => (
-            <button
-              key={suggestion}
-              type="button"
-              onClick={() => setSubject(t(suggestion))}
-              className="rounded-full border border-border bg-surface px-3 py-1.5 text-xs font-medium text-fg-muted hover:bg-surface-muted hover:text-fg"
-            >
+            <Chip key={suggestion} onClick={() => setSubject(t(suggestion))}>
               {t(suggestion)}
-            </button>
+            </Chip>
           ))}
         </div>
       </div>
@@ -227,12 +225,7 @@ export function ComposeForm({
           rows={6}
           placeholder={t("remarks.messagePlaceholder")}
           aria-invalid={Boolean(errors.body) || undefined}
-          className={cn(
-            "mt-1.5 w-full resize-y rounded-[var(--radius-md)] border bg-surface p-3.5 text-[0.9375rem] leading-relaxed outline-none",
-            errors.body
-              ? "border-danger ring-2 ring-danger/25"
-              : "border-border focus:border-accent focus:ring-2 focus:ring-accent-ring/40",
-          )}
+          className={fieldClass("mt-1.5 resize-y leading-relaxed", Boolean(errors.body))}
         />
         {errors.body && (
           <p role="alert" className="mt-1.5 text-xs font-medium text-danger">

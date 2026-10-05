@@ -54,7 +54,7 @@ describe("the lab in-charge's desk", () => {
     expect(screen.getByText("ZZ Beaker (BEAKER): 40 pcs\nZZ-OSC-1 · ZZ Oscilloscope")).toBeTruthy();
     expect(screen.getByText("Batch A: ZZ Asha")).toBeTruthy();
     expect(screen.getByText("ZZ Beaker (BEAKER) · 2")).toBeTruthy();
-    const bilal = "PHY101 · exp. 1, ZZ Ohm's law · ZZ Bilal · 2026-09-30";
+    const bilal = "PHY101 · exp. 1, ZZ Ohm's law · ZZ Bilal · 30/09/2026";
     await userEvent.setup().press(screen.getByRole("checkbox", { name: bilal }));
     await fireEvent.press(screen.getByRole("button", { name: "Sign the ticked rows" }));
     await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/stream-records/practicals/sign")?.body).toEqual({ recordIds: [id("rec1")] }));
@@ -65,7 +65,7 @@ describe("the lab in-charge's desk", () => {
 
   it("lets the office read the rows without signing, and refuses a teacher without the duty", async () => {
     await mountStaff(<LabDeskScreen />, "ADMIN", { "GET /api/v1/duties/lab": () => json({ ...labDesk, inventoryOn: false, labs: [], divisions: [], breakages: [] }) }, { me: meAs("ADMIN") });
-    expect(await screen.findByText("PHY101 · exp. 1, ZZ Ohm's law · ZZ Asha · 2026-09-30")).toBeTruthy();
+    expect(await screen.findByText("PHY101 · exp. 1, ZZ Ohm's law · ZZ Asha · 30/09/2026")).toBeTruthy();
     expect(screen.queryByRole("button", { name: "Sign the ticked rows" })).toBeNull();
     expect(screen.getByText("The college does not keep its stores in the app, so breakages are not written off here.")).toBeTruthy();
     const { calls } = await mountStaff(<LabDeskScreen />, "FACULTY", {}, { me: meAs("FACULTY", { duties: ["NSS_OFFICER"] }) });
@@ -184,7 +184,7 @@ describe("teaching practice", () => {
     );
     expect(await screen.findByText("ZZ Asha · ZZ Model School")).toBeTruthy();
     expect(screen.getByText("UDISE 27000000001 · ZZ Head · 1 postings")).toBeTruthy();
-    expect(screen.getByText("2026-09-15, watched by ZZ Neha · Grade B · ZZ steady")).toBeTruthy();
+    expect(screen.getByText("15/09/2026, watched by ZZ Neha · Grade B · ZZ steady")).toBeTruthy();
     await fireEvent.press(screen.getByRole("radio", { name: "A" }));
     await fireEvent.changeText(screen.getByLabelText("Note"), "ZZ confident");
     await fireEvent.press(screen.getByRole("button", { name: "Record the lesson: ZZ Asha" }));
@@ -290,7 +290,7 @@ describe("the exam flying squad", () => {
     const { calls } = await mountStaff(<ExamSquadScreen />, "FACULTY", { "GET /api/v1/duties/exam-squad": () => json(squad), "POST /api/v1/duties/exam-squad/visits": () => json({ id: id("vis2") }) }, { me: meAs("FACULTY", { duties: ["EXAM_SQUAD"] }) });
     expect(await screen.findByText("PHY101 · ZZ Mechanics")).toBeTruthy();
     expect(screen.getByText("Something found · ZZ Neha, ZZ Ravi · ZZ chits found")).toBeTruthy();
-    expect(screen.getByText("PHY101 · ZZ Oct 2026 · 2026-10-05 · ZZ Bilal")).toBeTruthy();
+    expect(screen.getByText("PHY101 · ZZ Oct 2026 · 05/10/2026 · ZZ Bilal")).toBeTruthy();
     expect(screen.getByText("Waiting for the committee")).toBeTruthy();
     await fireEvent.changeText(screen.getByLabelText("Who went"), "ZZ Neha");
     await fireEvent.press(screen.getByRole("switch", { name: "Something was found (the exam controllers are told)" }));

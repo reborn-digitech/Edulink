@@ -60,7 +60,7 @@ function ChildAttendance() {
       {d ? <ChildSwitcher pupils={d.children} selectedId={d.child.studentMembershipId} onSelect={setChildId} /> : null}
       {d?.child.leftAt ? <ChildLeftBanner name={name} leftAt={d.child.leftAt} /> : null}
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d && summary ? (
         <>
           <View style={{ flexDirection: "row", gap: th.space[2], flexWrap: "wrap" }}>
@@ -138,7 +138,7 @@ function PupilAttendance() {
   return (
     <Screen title={t("nav.attendance")} description={d ? t("student.lastFourWeeks") : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         <>
           <View style={{ flexDirection: "row", gap: th.space[3], flexWrap: "wrap" }}>

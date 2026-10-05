@@ -53,7 +53,7 @@ export function TeacherClassDetail() {
       onRefresh={() => void query.refetch()}
     >
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {data ? (
         <>
           <View style={{ flexDirection: "row", gap: th.space[3], flexWrap: "wrap" }}>

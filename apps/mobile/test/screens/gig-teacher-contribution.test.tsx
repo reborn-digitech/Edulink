@@ -44,12 +44,16 @@ describe("one question for the bank", () => {
     await fireEvent.changeText(screen.getByLabelText("Find a chapter"), "shap");
     await fireEvent.press(await screen.findByRole("button", { name: /Class 3 · ZZ Shapes/ }));
     expect(screen.getByText(/^Chapter: .*Class 3 · ZZ Shapes$/)).toBeTruthy();
-    await fireEvent.press(screen.getByRole("button", { name: "Level 2" }));
+    // The level and the correct option are radio groups that wrap under their label, not a sideways strip (A3-states-17).
+    expect(screen.getByText("Level")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("radio", { name: "Level 2" }));
+    expect(screen.getByRole("radio", { name: "Level 2" })).toBeChecked();
     // The options are typed in the third and fourth rows; the fourth is the right one.
     await fill("English", EN, [2, 3]);
     await fill("Hindi", HI, [2, 3]);
     await fill("Marathi", MR, [2, 3]);
-    await fireEvent.press(screen.getByRole("button", { name: "Option 4" }));
+    await fireEvent.press(screen.getByRole("radio", { name: "Option 4" }));
+    expect(screen.getByRole("radio", { name: "Option 4" })).toBeChecked();
     await fireEvent.press(screen.getByRole("switch", { name: /^This is my own work/ }));
     await fireEvent.press(screen.getByRole("button", { name: "Send to the content team" }));
     await waitFor(() => expect(mockRouter.replace).toHaveBeenCalledWith("/(app)/contributions"));

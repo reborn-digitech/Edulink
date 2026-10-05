@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { momentFormatter } from "@/lib/school-zone";
 import { ShieldCheckIcon } from "@phosphor-icons/react/ssr";
 import { isCollegeKind } from "@edulink/contracts";
 import { requireRole } from "@/lib/tenancy";
@@ -27,10 +28,11 @@ export async function generateMetadata(): Promise<Metadata> {
  */
 export default async function HostelSquadPage({ searchParams }: { searchParams: Promise<{ ok?: string; error?: string }> }) {
   const ctx = await requireRole("WARDEN", "ADMIN", "PRINCIPAL");
+  const moment = await momentFormatter(ctx.schoolId);
   const [t, kind] = await Promise.all([getT(), institutionKindOf(ctx.schoolId)]);
   const sp = await searchParams;
   if (!isCollegeKind(kind ?? "SCHOOL")) return <NotCollege t={t} />;
-  if (!(await isModuleOn(ctx.schoolId, "HOSTEL"))) return <ModuleOff module="HOSTEL" t={t} college />;
+  if (!(await isModuleOn(ctx.schoolId, "HOSTEL"))) return <ModuleOff page module="HOSTEL" t={t} college />;
   const [rounds, ht, hostels, boarders, rooms] = await Promise.all([
     listSquadRounds(ctx),
     hostelTable(ctx.schoolId),
@@ -60,7 +62,7 @@ export default async function HostelSquadPage({ searchParams }: { searchParams: 
             <Table head={[t("collegeOffice.colWhen"), t("collegeOffice.colHostel"), t("collegeOffice.colMembers"), t("collegeOffice.note")]} testId="squad-rounds">
               {rounds.items.map((r) => (
                 <tr key={r.id}>
-                  <td className="py-2 pr-3">{new Date(r.at).toLocaleString()}</td>
+                  <td className="py-2 pr-3">{moment(r.at)}</td>
                   <td className="py-2 pr-3">{r.hostelName}</td>
                   <td className="py-2 pr-3">{r.members}</td>
                   <td className="py-2 pr-3">

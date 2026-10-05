@@ -99,7 +99,7 @@ export function Apply() {
   return (
     <Screen title={title} description={open ? t("admissions.applyIntro", { cycle: open.name, year: open.academicYearName }) : undefined}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {query.data ? (
         !open ? (
           <Empty icon="buildings" title={t("admissions.noOpenCycle")} action={<Button label={t("admissions.findSchools")} variant="secondary" onPress={() => router.push("/(app)/explore" as never)} />} />

@@ -7,6 +7,7 @@ import { cn } from "@/lib/cn";
 import { relativeTime } from "@/lib/dates";
 import { actionKey, isSensitiveAction, type AuditEntry } from "@/lib/safety-labels";
 import { useT } from "@/lib/i18n";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * Audit log viewer.
@@ -56,7 +57,7 @@ export function AuditTable({ rows }: { rows: AuditEntry[] }) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={t("safety.searchAuditPlaceholder")}
-            className="min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface pl-11 pr-4 text-[0.9375rem] outline-none focus:border-accent"
+            className={fieldClass("pl-11")}
           />
         </label>
         <button

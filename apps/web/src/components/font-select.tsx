@@ -13,7 +13,9 @@ import { useT } from "@/lib/i18n";
 export function FontSelect({ value, locale, onChange, disabled, testId, label, defaultLabel, hint, className }: { value: string; locale: string; onChange: (key: FontKey) => void; disabled?: boolean; testId?: string; /** For a part of a document: what the select is for, what "default" means there (the paper's face), and no hint or another. */ label?: string; defaultLabel?: string; hint?: string | null; className?: string }) {
   const t = useT();
   const first = scriptOf(locale);
-  const groups = ([first, first === "latin" ? "devanagari" : "latin"] as const).map((script) => ({ script, faces: FONTS.filter((f) => f.scripts.includes(script)) }));
+  // A face that sets both scripts (Mukta) is listed once, under the document's script: listed in both groups it read as
+  // two fonts (A3-journeys-40).
+  const groups = ([first, first === "latin" ? "devanagari" : "latin"] as const).map((script, i) => ({ script, faces: FONTS.filter((f) => f.scripts.includes(script) && (i === 0 || !f.scripts.includes(first))) }));
   return (
     <SelectField label={label ?? t("fonts.label")} hint={hint === undefined ? t("fonts.hint") : (hint ?? undefined)} value={value} disabled={disabled} className={className} onChange={(e) => onChange(e.target.value as FontKey)} data-testid={testId}>
       <option value="default">{defaultLabel ?? t("fonts.appDefault")}</option>

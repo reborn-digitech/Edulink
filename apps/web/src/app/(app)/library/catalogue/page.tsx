@@ -24,10 +24,11 @@ export default async function LibraryCataloguePage({ searchParams }: { searchPar
   const back = `/library/catalogue${q ? `?q=${encodeURIComponent(q)}` : ""}`;
   return (
     <DeskFrame t={t} on current="catalogue" title={t("library.tabCatalogue")} description={t("library.catalogueIntro")} ok={ok} error={error}>
-      <CatalogueSearch items={page.items} q={q} t={t} back={back} action="/library/catalogue" desk nextHref={page.nextCursor ? `/library/catalogue?q=${encodeURIComponent(q)}&cursor=${page.nextCursor}` : null} />
+      <CatalogueSearch items={page.items} q={q} t={t} back={back} action="/library/catalogue" desk nextHref={page.nextCursor ? `/library/catalogue?q=${encodeURIComponent(q)}&cursor=${page.nextCursor}` : null} addHref={canWrite ? "#add-title" : undefined} />
       {canWrite ? (
         <>
-          <Card>
+          <Card id="add-title" className="scroll-mt-20">
+
             <CardHeader icon={<PlusIcon weight="duotone" className="size-5" />} title={t("library.addTitle")} description={t("library.addTitleHint")} />
             <CardBody>
               <form action={createTitleAction} className="grid gap-4 sm:grid-cols-2">

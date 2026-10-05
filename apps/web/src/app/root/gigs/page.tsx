@@ -9,7 +9,7 @@ import { getLocale, getT } from "@/lib/i18n/server";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
-import { CompanyForm, LinkAllExperts, PaymentForm, PaymentsSwitch, PayoutForm, RetryPayment, SettingsForm } from "./forms";
+import { CompanyForm, LinkAllExperts, PaymentForm, PaymentsSwitch, PayoutForm, RetryPayment, SettingsForm, SuspendPayee } from "./forms";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("gigs.operatorTitle") };
@@ -250,6 +250,7 @@ export default async function RootGigsPage() {
                       <p className="break-words text-sm font-medium text-fg">{a.expertName}</p>
                       <p className="text-xs text-fg-muted">{[!a.kycVerified ? t("gigs.opRouteNoKyc") : null, !a.linked && !a.readyToLink ? t("gigs.opRouteIncomplete") : null, a.needsResend ? t("gigs.opRouteResend") : null, ...a.requirements.map((r) => t("gigs.routeRequirement", { field: r.field }))].filter(Boolean).join(" · ")}</p>
                       {a.error && <p className="break-all font-mono text-xs text-danger">{a.error}</p>}
+                      <SuspendPayee expertUserId={a.expertUserId} name={a.expertName} suspended={a.suspended} />
                     </div>
                     <span className="flex flex-wrap gap-1">
                       <Badge tone={a.status === "ACTIVATED" ? "ok" : a.status === "NEEDS_CLARIFICATION" ? "warn" : a.status === "SUSPENDED" ? "danger" : "neutral"}>{t(`gigs.routeStatus${a.status}`)}</Badge>

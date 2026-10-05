@@ -41,7 +41,7 @@ export default async function FacultyHomePage({ searchParams }: { searchParams: 
   const streams = await streamsOf(ctx.schoolId);
   const locale = await getLocale();
   const [on, kind] = await Promise.all([isModuleOn(ctx.schoolId, "ACADEMICS"), institutionKindOf(ctx.schoolId)]);
-  if (!on) return <ModuleOff module="ACADEMICS" t={t} college={isCollegeKind(kind)} />;
+  if (!on) return <ModuleOff page module="ACADEMICS" t={t} college={isCollegeKind(kind)} />;
   const params = await searchParams;
   const home = await facultyHome(ctx);
   const state = loadState(home.hours, home.settings.loadMinHours, home.settings.loadMaxHours);

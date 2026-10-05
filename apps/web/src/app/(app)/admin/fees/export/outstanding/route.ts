@@ -6,7 +6,7 @@ import { outstandingExport } from "@/lib/fees-reports";
 /** Everyone with something outstanding this year, with ageing — the defaulter list, as a CSV file. */
 export async function GET(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const file = await outstandingExport(ctx);
     return exportResponse(request, file);
   } catch (error) {

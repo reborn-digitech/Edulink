@@ -25,6 +25,7 @@ import { registerSchool, checkEmailAvailable } from "./actions";
 import { passwordStrength } from "@/lib/password-strength";
 import { useT } from "@/lib/i18n";
 import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * Three-step school registration.
@@ -434,7 +435,7 @@ export function RegisterWizard() {
                 onChange={(e) => set("about", e.target.value)}
                 rows={3}
                 placeholder={t("register.aboutHint")}
-                className="mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
+                className={fieldClass("mt-1")}
               />
               <span className="mt-1 block text-xs font-normal text-fg-muted">
                 {t("register.aboutWhy")}

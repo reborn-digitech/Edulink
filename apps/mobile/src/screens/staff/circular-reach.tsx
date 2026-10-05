@@ -74,7 +74,7 @@ export function StaffCircularReach() {
   return (
     <Screen title={d?.title ?? t("circulars.metaTitle")} description={d ? `${audienceLabel(t, d.audience)} · ${t("circulars.published", { when: when(d.publishedAt) })}` : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         <>
           <Card title={t("circulars.reachTitle")}>

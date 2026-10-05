@@ -1,3 +1,5 @@
+import { momentFormatter } from "@/lib/school-zone";
+import { isoToDisplayDate } from "@/lib/dates";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BriefcaseIcon, ChalkboardTeacherIcon, DownloadSimpleIcon, IdentificationCardIcon, LightningIcon, NotebookIcon, SealCheckIcon } from "@phosphor-icons/react/ssr";
@@ -35,6 +37,7 @@ const CHECK = "flex items-center gap-2 text-sm";
  */
 export default async function StudentPlacementPage({ searchParams }: { searchParams: Promise<{ ok?: string; error?: string }> }) {
   const ctx = await requireRole("STUDENT");
+  const moment = await momentFormatter(ctx.schoolId);
   const streams = await streamsOf(ctx.schoolId);
   const t = await getT();
   const { ok, error } = await searchParams;
@@ -183,7 +186,7 @@ export default async function StudentPlacementPage({ searchParams }: { searchPar
                 <span className="font-medium">{i.companyName} · {t(INTERNSHIP_KIND_KEY[i.kind]!)}</span>
                 <Badge tone={i.status === "CREDITED" ? "ok" : "accent"}>{t(INTERNSHIP_STATUS_KEY[i.status]!)}</Badge>
               </div>
-              <div className="text-xs text-fg-muted">{i.from} – {i.to} · {t("placement.hoursN", { hours: i.hours })}{i.credits !== null ? ` · ${t("placement.creditsIs", { credits: i.credits })}` : ""}</div>
+              <div className="text-xs text-fg-muted">{isoToDisplayDate(i.from)} – {isoToDisplayDate(i.to)} · {t("placement.hoursN", { hours: i.hours })}{i.credits !== null ? ` · ${t("placement.creditsIs", { credits: i.credits })}` : ""}</div>
               {["APPROVED", "SUBMITTED"].includes(i.status) ? (
                 <form action={diaryAction} className="grid gap-2 sm:grid-cols-[10rem_6rem_1fr_auto] sm:items-end">
                   <input type="hidden" name="back" value={BACK} />
@@ -247,7 +250,7 @@ export default async function StudentPlacementPage({ searchParams }: { searchPar
             {p.mentorSlots.map((s) => (
               <div key={s.id} className="flex justify-between gap-3">
                 <span>{s.title} · {s.mentorName}{s.batchYear ? ` (${s.batchYear})` : ""}</span>
-                <span className="text-fg-muted">{new Date(s.startsAt).toLocaleString()}</span>
+                <span className="text-fg-muted">{moment(s.startsAt)}</span>
               </div>
             ))}
             {p.mentorSlots.length ? <Link className={LINK} href="/sessions">{t("placement.bookInSessions")}</Link> : null}

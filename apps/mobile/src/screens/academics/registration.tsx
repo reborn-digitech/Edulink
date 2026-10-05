@@ -7,6 +7,7 @@ import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { Notice } from "../staff/shared";
 import { KIND_KEY } from "./words";
+import { formatDate } from "@/lib/dates";
 
 /**
  * A student's course registration on the phone (4 Oct 2026) — the web's
@@ -44,7 +45,7 @@ export function RegistrationScreen() {
       {v?.programme && v.term ? (
         <Card title={t("academics.chooseCourses")}>
           <Text variant="sm" tone="muted">
-            {v.open ? (v.lateUntil ? t("academics.lateOpenUntil", { until: v.lateUntil }) : t("academics.windowOpen", { to: v.term.registrationClosesOn })) : t("academics.windowShut", { from: v.term.registrationOpensOn, to: v.term.registrationClosesOn })}
+            {v.open ? (v.lateUntil ? t("academics.lateOpenUntil", { until: formatDate(v.lateUntil) }) : t("academics.windowOpen", { to: formatDate(v.term.registrationClosesOn) })) : t("academics.windowShut", { from: formatDate(v.term.registrationOpensOn), to: formatDate(v.term.registrationClosesOn) })}
           </Text>
           <Text variant="sm">{t("academics.creditsBand", { chosen: credits, min: v.minCredits, max: v.maxCredits })}</Text>
           {v.offerings.map((o) => (

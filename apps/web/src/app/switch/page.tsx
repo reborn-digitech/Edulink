@@ -50,6 +50,7 @@ export default async function SwitchPage() {
       <main id="main" className="mx-auto max-w-md px-4 py-16">
         <Wordmark className="mb-8" />
         <EmptyState
+          heading="h1"
           title={t("switch.notPartOfSchool")}
           description={t("switch.notPartBody")}
           action={

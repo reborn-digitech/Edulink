@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 /** Lecture attendance across the college: by offering, or the defaulters, against each programme's rule — the eligibility list the exam forms read. */
 export default async function AttendanceAdminPage({ searchParams }: { searchParams: SearchParams }) {
   const { ctx, t, locale, on, college } = await academicsGate();
-  if (!on) return <ModuleOff module="ACADEMICS" t={t} college={college} />;
+  if (!on) return <ModuleOff page module="ACADEMICS" t={t} college={college} />;
   const params = await searchParams;
   const defaulters = one(params.defaulters) === "1";
   const [s, report, school] = await Promise.all([

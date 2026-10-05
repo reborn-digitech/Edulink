@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
-import { ModuleFlash, INPUT, LINK, NUM, TD, TH } from "@/components/module-flash";
+import { ModuleFlash, LINK, NUM, TD, TH } from "@/components/module-flash";
 import { PageHeader } from "@/components/ui/page-header";
 import { AccessError } from "@/lib/access-error";
 import { RuleRefusal } from "@/lib/rule-refusal";
@@ -20,6 +20,8 @@ import { getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { monthName, payrollGate } from "../../shared";
 import { draftRunAction, editSlipAction, lockRunAction, shareRunAction } from "../../actions";
+import { fieldClass } from "@/components/ui/field-class";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata({ params }: { params: Promise<{ month: string }> }): Promise<Metadata> {
   return { title: `${(await params).month} · ${(await getT())("payroll.title")}` };
@@ -33,7 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ month: st
  */
 export default async function PayrollRunPage({ params, searchParams }: { params: Promise<{ month: string }>; searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const { ctx, t, locale, on, canEdit } = await payrollGate();
-  if (!on) return <ModuleOff module="PAYROLL" t={t} />;
+  if (!on) return <ModuleOff page module="PAYROLL" t={t} />;
   const { month } = await params;
   const sp = await searchParams;
   let run;
@@ -151,24 +153,26 @@ export default async function PayrollRunPage({ params, searchParams }: { params:
                       </span>
                     </summary>
                     <div className="mt-3 grid gap-4 md:grid-cols-2">
-                      <table className="w-full text-sm">
-                        <thead>
-                          <tr className="border-b border-border">
-                            <th scope="col" className={TH}>{t("payroll.colComponent")}</th>
-                            <th scope="col" className={`${TH} text-right`}>{t("payroll.colFull")}</th>
-                            <th scope="col" className={`${TH} text-right`}>{t("payroll.colThisMonth")}</th>
-                          </tr>
-                        </thead>
-                        <tbody className="divide-y divide-border">
-                          {s.lines.map((l, i) => (
-                            <tr key={`${l.code}-${i}`}>
-                              <td className={TD}>{label(l.code, l.label)} <span className="text-xs text-fg-muted">{t(`payroll.kind${l.kind}`)}</span></td>
-                              <td className={NUM}>{money(l.fullPaise)}</td>
-                              <td className={NUM}>{money(l.paise)}</td>
+                      <TableScroll>
+                        <table className="w-full text-sm">
+                          <thead>
+                            <tr className="border-b border-border">
+                              <th scope="col" className={TH}>{t("payroll.colComponent")}</th>
+                              <th scope="col" className={`${TH} text-right`}>{t("payroll.colFull")}</th>
+                              <th scope="col" className={`${TH} text-right`}>{t("payroll.colThisMonth")}</th>
                             </tr>
-                          ))}
-                        </tbody>
-                      </table>
+                          </thead>
+                          <tbody className="divide-y divide-border">
+                            {s.lines.map((l, i) => (
+                              <tr key={`${l.code}-${i}`}>
+                                <td className={TD}>{label(l.code, l.label)} <span className="text-xs text-fg-muted">{t(`payroll.kind${l.kind}`)}</span></td>
+                                <td className={NUM}>{money(l.fullPaise)}</td>
+                                <td className={NUM}>{money(l.paise)}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </TableScroll>
                       <div className="space-y-3">
                         <p className="text-sm">
                           <a className={`${LINK} inline-flex items-center gap-1`} href={`/api/v1/admin/payroll/runs/${run.month}/slips/${s.membershipId}/pdf`} target="_blank" rel="noreferrer">
@@ -188,19 +192,19 @@ export default async function PayrollRunPage({ params, searchParams }: { params:
                             <input type="hidden" name="membershipId" value={s.membershipId} />
                             <label className="text-xs">
                               <span className="mb-1 block font-medium text-fg">{t("payroll.fieldArrears")}</span>
-                              <input className={INPUT} name="arrears" inputMode="decimal" defaultValue={s.arrearsPaise ? (s.arrearsPaise / 100).toFixed(2) : ""} />
+                              <input className={fieldClass()} name="arrears" inputMode="decimal" defaultValue={s.arrearsPaise ? (s.arrearsPaise / 100).toFixed(2) : ""} />
                             </label>
                             <label className="text-xs">
                               <span className="mb-1 block font-medium text-fg">{t("payroll.fieldTds")}</span>
-                              <input className={INPUT} name="tds" inputMode="decimal" defaultValue={s.tdsOverridePaise === null ? "" : (s.tdsOverridePaise / 100).toFixed(2)} />
+                              <input className={fieldClass()} name="tds" inputMode="decimal" defaultValue={s.tdsOverridePaise === null ? "" : (s.tdsOverridePaise / 100).toFixed(2)} />
                             </label>
                             <label className="text-xs">
                               <span className="mb-1 block font-medium text-fg">{t("payroll.fieldLopDays", { found: s.lopOverrideDays === null ? s.lopDays : "—" })}</span>
-                              <input className={INPUT} name="lopDays" inputMode="decimal" defaultValue={s.lopOverrideDays === null ? "" : String(s.lopOverrideDays)} />
+                              <input className={fieldClass()} name="lopDays" inputMode="decimal" defaultValue={s.lopOverrideDays === null ? "" : String(s.lopOverrideDays)} />
                             </label>
                             <label className="text-xs">
                               <span className="mb-1 block font-medium text-fg">{t("payroll.fieldNotes")}</span>
-                              <input className={INPUT} name="notes" maxLength={300} defaultValue={s.notes} />
+                              <input className={fieldClass()} name="notes" maxLength={300} defaultValue={s.notes} />
                             </label>
                             <div className="sm:col-span-2">
                               <Button type="submit" size="sm" variant="secondary">{t("payroll.saveSlip")}</Button>

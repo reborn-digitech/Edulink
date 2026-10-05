@@ -33,8 +33,8 @@ const PAGE_SIZE = 50;
 export default async function DuesPage({ searchParams }: { searchParams: Promise<{ status?: string; classId?: string; q?: string; page?: string }> }) {
   const t = await getT();
   const locale = await getLocale();
-  const ctx = await requireRole("ADMIN", "PRINCIPAL");
-  const office = ctx.role === "ADMIN";
+  const ctx = await requireRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
+  const office = ctx.role === "ADMIN" || ctx.role === "ACCOUNTS";
   const params = await searchParams;
   const status: Status = STATUSES.includes(params.status as Status) ? (params.status as Status) : "all";
   const q = (params.q ?? "").trim().slice(0, 80);

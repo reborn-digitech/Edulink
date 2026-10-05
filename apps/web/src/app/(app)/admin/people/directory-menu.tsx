@@ -347,7 +347,8 @@ function MenuItem({
       onClick={onClick}
       disabled={disabled}
       className={cn(
-        "flex w-full items-center gap-2.5 px-3.5 py-2.5 text-left text-sm font-medium transition-colors disabled:opacity-50",
+        "flex min-h-11 w-full items-center gap-2.5 px-3.5 py-2.5 text-left text-sm font-medium transition-colors disabled:opacity-50",
+
         tone === "danger" ? "text-danger hover:bg-danger-soft" : "text-fg hover:bg-surface-muted",
       )}
     >

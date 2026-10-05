@@ -8,9 +8,11 @@ import { TableScroll } from "@/components/ui/table-scroll";
 /**
  * One school's month against its plan, as four tiles — each cap beside its
  * count, over-cap in red — and the months before it as a small table. A
- * server component: the school page and nothing else renders it.
+ * server component: the operator's school page, and the school's own settings
+ * page with `office` (A3-inventory-8: GET /office/usage had no caller), where
+ * the operator's "run the job" hint is not said.
  */
-export async function UsageCard({ usage }: { usage: OfficeUsage }) {
+export async function UsageCard({ usage, office = false }: { usage: OfficeUsage; office?: boolean }) {
   const t = await getT();
   const locale = await getLocale();
   const c = usage.counts;
@@ -35,7 +37,7 @@ export async function UsageCard({ usage }: { usage: OfficeUsage }) {
         {tile(t("root.usageStorage"), c?.storageMb, usage.caps.storageMb, usage.over.storageMb, " MB")}
         <StatTile label={t("root.usageActive")} value={c ? c.activeUsers.toLocaleString() : "—"} />
       </div>
-      {!c && <p className="text-xs text-fg-muted">{t("root.usageRunNow")}</p>}
+      {!c && <p className="text-xs text-fg-muted">{t(office ? "settings.usageNotYet" : "root.usageRunNow")}</p>}
       {usage.history.length > 0 && (
         <TableScroll>
           <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-fg-muted">{t("root.usageHistory")}</p>

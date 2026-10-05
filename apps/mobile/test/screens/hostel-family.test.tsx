@@ -1,4 +1,4 @@
-import { screen, userEvent, waitFor } from "@testing-library/react-native";
+import { screen, userEvent, waitFor, within } from "@testing-library/react-native";
 import type { RoleCode } from "@edulink/contracts";
 import { FamilyHostelScreen } from "@/screens/hostel/family";
 import { instantOf, whenOf } from "@/screens/hostel/words";
@@ -27,6 +27,8 @@ const view = (extra: Record<string, unknown> = {}) => ({
 describe("the helpers", () => {
   it("read a typed day and time in the device's zone, and refuse what is not one", () => {
     expect(instantOf("2026-10-10 16:00")).toBe(new Date(2026, 9, 10, 16, 0).toISOString());
+    expect(instantOf("10/10/2026 16:00")).toBe(new Date(2026, 9, 10, 16, 0).toISOString());
+    expect(whenOf(new Date(2026, 9, 10, 16, 0).toISOString(), "mr")).toBe("10/10/2026 16:00");
     expect(instantOf("2026-02-30 16:00")).toBeNull();
     expect(instantOf("tomorrow")).toBeNull();
     expect(whenOf("not a date", "en")).toBe("not a date");
@@ -59,6 +61,22 @@ describe("a boarder's hostel on the phone (3 Oct 2026)", () => {
     await userEvent.setup().press(screen.getByRole("button", { name: "Consent" }));
     expect(await screen.findByText("You consented; the warden is told.")).toBeTruthy();
     expect(calls().find((c) => c.line.endsWith("/consent"))?.body).toEqual({ approve: true });
+  });
+
+  it("puts both answers with the leave they answer, gives the sections second-level headings, and prints the times dd/mm/yyyy (A3-journeys-29)", async () => {
+    const night = leave("AWAITING_CONSENT", { id: "czz00000000000000000leav2", kind: "NIGHT_OUT", destination: "ZZ Night out" });
+    const dentist = leave("PENDING", { id: "czz00000000000000000leav3", kind: "MEDICAL", destination: "ZZ Dentist" });
+    await mountStaff(<FamilyHostelScreen />, "PARENT", { "GET /api/v1/family/children": () => json({ children: [child(CHILD, "ZZ Asha")] }), "GET /api/v1/family/hostel": () => json(view({ leave: [night, dentist] })) }, { me: PARENT });
+    const answers = await screen.findByTestId("consent-czz00000000000000000leav2");
+    expect(within(answers).getByRole("button", { name: "Consent" })).toBeTruthy();
+    expect(within(answers).getByRole("button", { name: "Do not consent" })).toBeTruthy();
+    expect(screen.getAllByRole("button", { name: "Do not consent" })).toHaveLength(1);
+    expect(screen.queryByTestId("consent-czz00000000000000000leav3")).toBeNull();
+    const levels = screen.getAllByRole("header").map((h) => [String(h.props.children), h.props["aria-level"]]);
+    expect(levels[0]).toEqual(["Hostel", 1]);
+    expect(levels.slice(1).every(([, level]) => level === 2)).toBe(true);
+    expect(screen.getAllByText(/^10\/10\/2026 \d\d:\d\d to 12\/10\/2026 \d\d:\d\d/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText("25/10/2026 16:00")).toHaveLength(2);
   });
 
   it("refuses consent", async () => {

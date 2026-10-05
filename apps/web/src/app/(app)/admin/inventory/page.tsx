@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
 /** The stores and the asset register at a glance: what is low, what moved last, who is waiting. */
 export default async function InventoryOverview({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const { ctx, t, locale, on } = await inventoryGate();
-  if (!on) return <ModuleOff module="INVENTORY" t={t} />;
+  if (!on) return <ModuleOff page module="INVENTORY" t={t} />;
   const params = await searchParams;
   const s = await inventorySummary(ctx);
   return (

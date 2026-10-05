@@ -6,6 +6,8 @@ import { field, intField, runAction } from "@/lib/module-actions";
 import { RuleRefusal } from "@/lib/rule-refusal";
 import { moveToLabBatch, saveMootCourt, savePracticals, signPracticals, splitLabBatches } from "@/lib/stream-records";
 import { backPath } from "@/components/stream-records/flash";
+import { answerForm } from "@/lib/form-action";
+import type { FormState } from "@/lib/form-state";
 
 /**
  * The stream records' writes from the web (5 Oct 2026): lab batches and moot
@@ -32,21 +34,33 @@ export async function moveToLabBatchAction(form: FormData): Promise<void> {
   });
 }
 
-/** One experiment from the record's form: "marks:<membershipId>" per student ticked in "student"; a blank mark is none. */
-export async function savePracticalsAction(form: FormData): Promise<void> {
-  const offeringId = field(form, "offeringId");
+/**
+ * One experiment from the record's form: "marks:<membershipId>" per student
+ * ticked in "student"; a blank mark is none. Answers in place
+ * (A3-journeys-27): a refused mark keeps the whole sheet as typed and is the
+ * box marked and focused.
+ */
+export async function savePracticalsAction(previous: FormState, form: FormData): Promise<FormState> {
   const back = backPath(field(form, "back"), "/faculty/practicals");
-  await runAction(`${back.split("?")[0]}?offeringId=${encodeURIComponent(offeringId)}`, async () => {
-    const ids = form.getAll("student").map(String).filter(Boolean);
-    if (!ids.length) throw new RuleRefusal("streamRecords.chooseStudents", 422);
-    const entries = ids.map((id) => {
-      const raw = field(form, `marks:${id}`);
-      if (raw && !/^\d{1,3}$/.test(raw)) throw new RuleRefusal("streamRecords.refuseMarks", 422);
-      return { studentMembershipId: id, marks: raw ? Number(raw) : null };
-    });
-    await savePracticals(await requireApiUser(), practicalSaveSchema.parse({ offeringId, experimentNo: intField(form, "experimentNo"), title: field(form, "title"), performedOn: field(form, "performedOn"), entries }));
-    return "streamRecords.practicalSaved";
-  });
+  const ids = form.getAll("student").map(String).filter(Boolean);
+  // The schema's "entries.<i>.marks" is the box of the i-th student ticked.
+  const fields = Object.fromEntries([["entries", ""], ...ids.map((id, i) => [`entries.${i}.marks`, `marks:${id}`])]);
+  return answerForm(
+    previous,
+    form,
+    async () => {
+      const offeringId = field(form, "offeringId");
+      if (!ids.length) throw new RuleRefusal("streamRecords.chooseStudents", 422);
+      const entries = ids.map((id) => {
+        const raw = field(form, `marks:${id}`);
+        if (raw && !/^\d{1,3}$/.test(raw)) throw new RuleRefusal("streamRecords.refuseMarks", 422, undefined, `marks:${id}`);
+        return { studentMembershipId: id, marks: raw ? Number(raw) : null };
+      });
+      await savePracticals(await requireApiUser(), practicalSaveSchema.parse({ offeringId, experimentNo: intField(form, "experimentNo"), title: field(form, "title"), performedOn: field(form, "performedOn"), entries }));
+      return "streamRecords.practicalSaved";
+    },
+    { revalidate: [back], fields },
+  );
 }
 
 export async function signPracticalsAction(form: FormData): Promise<void> {
@@ -61,9 +75,9 @@ export async function signPracticalsAction(form: FormData): Promise<void> {
   });
 }
 
-/** A moot from the office's form: up to four teams, "team<n>Name", "team<n>Outcome" and the members ticked as "team<n>Member". */
+/** A moot from the form (the office's, or a faculty member's or HOD's at /faculty/moot-courts): up to four teams, "team<n>Name", "team<n>Outcome" and the members ticked as "team<n>Member". */
 export async function saveMootCourtAction(form: FormData): Promise<void> {
-  await runAction("/admin/stream-records/moot-courts", async () => {
+  await runAction(backPath(field(form, "back"), "/admin/stream-records/moot-courts"), async () => {
     const teams = [1, 2, 3, 4]
       .map((n) => ({ name: field(form, `team${n}Name`), outcome: field(form, `team${n}Outcome`) || "PARTICIPATED", membershipIds: form.getAll(`team${n}Member`).map(String).filter(Boolean) }))
       .filter((team) => team.name)

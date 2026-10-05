@@ -13,6 +13,7 @@ import { useT } from "@/lib/i18n";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { recordValueText } from "@/components/pupil-record-words";
 import { decideRecordChangeAction, withdrawRecordChangeAction } from "@/app/(app)/parent/record/actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 const STATUS = { PENDING: { key: "recordChanges.statusPending", tone: "warn" }, APPLIED: { key: "recordChanges.statusApplied", tone: "ok" }, DECLINED: { key: "recordChanges.statusDeclined", tone: "danger" }, WITHDRAWN: { key: "recordChanges.statusWithdrawn", tone: "neutral" } } as const;
 
@@ -80,7 +81,7 @@ export function RecordChangePanel({ change }: { change: RecordChangeView }) {
             <label htmlFor={reasonId} className="block text-xs font-semibold text-fg">
               {t("recordChanges.declineReasonLabel")}
             </label>
-            <textarea id={reasonId} value={reason} onChange={(event) => setReason(event.target.value)} maxLength={400} rows={2} className="w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg" />
+            <textarea id={reasonId} value={reason} onChange={(event) => setReason(event.target.value)} maxLength={400} rows={2} className={fieldClass()} />
             <div className="flex flex-wrap gap-2">
               <Button size="sm" variant="danger" loading={pending} onClick={decline} data-testid="record-change-decline-confirm">
                 {t("recordChanges.decline")}

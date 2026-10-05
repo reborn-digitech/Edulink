@@ -15,6 +15,7 @@ export function EmptyState({
   secondaryAction,
   className,
   tone = "neutral",
+  heading: Heading = "h2",
 }: {
   icon?: ReactNode;
   title: string;
@@ -23,6 +24,12 @@ export function EmptyState({
   secondaryAction?: ReactNode;
   className?: string;
   tone?: "neutral" | "celebrate";
+  /**
+   * h1 only where the empty state IS the page and no PageHeader stands above it (a signed-out invite that no longer
+   * works, the role chooser with nothing to choose). Everywhere else a page keeps its PageHeader and this stays an h2
+   * (A3-states-9: 47 routes had no h1 because a first-run page returned the empty state in place of its header).
+   */
+  heading?: "h1" | "h2";
 }) {
   return (
     <div
@@ -43,7 +50,7 @@ export function EmptyState({
           {icon}
         </div>
       )}
-      <h2 className="text-base font-semibold text-fg">{title}</h2>
+      <Heading className={cn("font-semibold text-fg", Heading === "h1" ? "text-xl" : "text-base")}>{title}</Heading>
       {description && (
         <p className="mt-1.5 max-w-sm text-sm leading-relaxed text-fg-muted">{description}</p>
       )}

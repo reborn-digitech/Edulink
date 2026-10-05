@@ -5,9 +5,9 @@ import { useRouter } from "next/navigation";
 import { CheckCircleIcon, PaperPlaneTiltIcon, PencilSimpleIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
-import { cn } from "@/lib/cn";
 import { submitWork } from "./actions";
 import { useT } from "@/lib/i18n";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * Hand-in panel, collapsed until the student opens it.
@@ -111,10 +111,7 @@ export function SubmitPanel({
         placeholder={t("student.answerPlaceholder")}
         aria-invalid={Boolean(error) || undefined}
         aria-describedby={error ? `submit-error-${assignmentId}` : undefined}
-        className={cn(
-          "w-full resize-y rounded-[var(--radius-sm)] border bg-surface p-3 text-[0.9375rem] leading-relaxed outline-none",
-          error ? "border-danger ring-2 ring-danger/25" : "border-border focus:border-accent",
-        )}
+        className={fieldClass("resize-y leading-relaxed", Boolean(error))}
       />
 
       {error && (

@@ -34,7 +34,7 @@ describe("syllabus coverage", () => {
     expect(screen.getByLabelText("Overall: 35%")).toBeTruthy();
     expect(screen.getByLabelText("Behind: 1")).toBeTruthy();
     expect(screen.getByText("2026-27 · 40% of the year gone · 1 classes behind")).toBeTruthy();
-    expect(screen.getByText("4/10 · Should be at 4 of 10 by now · Last taught Sep 16")).toBeTruthy();
+    expect(screen.getByText("4/10 · Should be at 4 of 10 by now · Last taught 16/09/2026")).toBeTruthy();
     expect(screen.getByText("1/10 · Should be at 4 of 10 by now · Not started")).toBeTruthy();
     expect(screen.getByText("On track")).toBeTruthy();
     // "Behind" is the Stat label and the one row's pill.

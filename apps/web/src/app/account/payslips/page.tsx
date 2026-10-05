@@ -44,7 +44,7 @@ export default async function MyPayslipsPage({ searchParams }: { searchParams: P
       </div>
     );
   }
-  if (!(await isModuleOn(ctx.schoolId, "PAYROLL"))) return <ModuleOff module="PAYROLL" t={t} />;
+  if (!(await isModuleOn(ctx.schoolId, "PAYROLL"))) return <ModuleOff page module="PAYROLL" t={t} />;
   const mine = await myPayslips(ctx);
   const money = (p: number) => formatPaise(p, locale, { always: true });
   const month = (m: string) => {
@@ -101,20 +101,22 @@ export default async function MyPayslipsPage({ searchParams }: { searchParams: P
           {!mine.structure ? (
             <EmptyState className="border-0 bg-transparent py-4" title={t("payroll.myStructureNone")} description={t("payroll.myStructureNoneBody")} />
           ) : (
-            <table className="w-full text-sm">
-              <tbody className="divide-y divide-border">
-                {mine.structure.components.map((c) => (
-                  <tr key={c.code}>
-                    <td className={TD}>{c.label || t(CODE_LABEL_KEY[c.code] as TranslationKey)} <span className="text-xs text-fg-muted">{t(`payroll.kind${c.kind}`)}</span></td>
-                    <td className={NUM}>{c.monthlyPaise ? money(c.monthlyPaise) : t("payroll.byTheRules")}</td>
+            <TableScroll>
+              <table className="w-full text-sm">
+                <tbody className="divide-y divide-border">
+                  {mine.structure.components.map((c) => (
+                    <tr key={c.code}>
+                      <td className={TD}>{c.label || t(CODE_LABEL_KEY[c.code] as TranslationKey)} <span className="text-xs text-fg-muted">{t(`payroll.kind${c.kind}`)}</span></td>
+                      <td className={NUM}>{c.monthlyPaise ? money(c.monthlyPaise) : t("payroll.byTheRules")}</td>
+                    </tr>
+                  ))}
+                  <tr className="font-semibold">
+                    <td className={TD}>{t("payroll.monthlyGross")}</td>
+                    <td className={NUM}>{money(mine.structure.monthlyGrossPaise)}</td>
                   </tr>
-                ))}
-                <tr className="font-semibold">
-                  <td className={TD}>{t("payroll.monthlyGross")}</td>
-                  <td className={NUM}>{money(mine.structure.monthlyGrossPaise)}</td>
-                </tr>
-              </tbody>
-            </table>
+                </tbody>
+              </table>
+            </TableScroll>
           )}
         </CardBody>
       </Card>

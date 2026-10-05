@@ -4,11 +4,12 @@ import { ForkKnifeIcon } from "@phosphor-icons/react/ssr";
 import { MESS_MEALS } from "@edulink/contracts";
 import { getT } from "@/lib/i18n/server";
 import { messMenu, messSheet } from "@/lib/hostel";
-import { todayKey } from "@/lib/dates";
+import { todayKey, isoToDisplayDate } from "@/lib/dates";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MEAL_KEY, WEEKDAY_KEY, WardenFrame, wardenContext } from "@/components/hostel/parts";
 import { messAttendanceAction, saveMenuAction } from "../actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -43,7 +44,7 @@ export default async function HostelMenuPage({ searchParams }: { searchParams: P
                     {MESS_MEALS.map((m) => (
                       <label key={m} className="text-xs text-fg-muted">
                         {t(MEAL_KEY[m])}
-                        <input name={`m-${d}-${m}`} defaultValue={items.get(`${d}-${m}`) ?? ""} maxLength={300} className="mt-1 block min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg" />
+                        <input name={`m-${d}-${m}`} defaultValue={items.get(`${d}-${m}`) ?? ""} maxLength={300} className={fieldClass("mt-1 block")} />
                       </label>
                     ))}
                   </fieldset>
@@ -52,7 +53,7 @@ export default async function HostelMenuPage({ searchParams }: { searchParams: P
               </form>
               {sheets[i] ? (
                 <div className="mt-6 space-y-3 border-t border-border pt-4">
-                  <h3 className="text-sm font-semibold text-fg">{t("hostel.messTitle", { date: today })}</h3>
+                  <h3 className="text-sm font-semibold text-fg">{t("hostel.messTitle", { date: isoToDisplayDate(today) })}</h3>
                   <p className="flex flex-wrap gap-3 text-sm">
                     {MESS_MEALS.map((m) => (
                       <Link key={m} href={`/hostel/menu?meal=${m}`} aria-current={m === meal ? "page" : undefined} className={m === meal ? "font-semibold text-accent-strong" : "text-fg-muted hover:text-fg"}>

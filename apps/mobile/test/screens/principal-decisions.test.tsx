@@ -23,7 +23,7 @@ describe("the head's decision log", () => {
     });
     expect(await screen.findByText("Applied the record change for Asha Patil (1 fields)")).toBeTruthy();
     expect(screen.getByText("Declined R. Desai's leave, 03/10/2026")).toBeTruthy();
-    expect(screen.getByText("Oct 1, 2026 · Record changes")).toBeTruthy();
+    expect(screen.getByText("01/10/2026 · Record changes")).toBeTruthy();
     expect(screen.getByText("2 of 2")).toBeTruthy();
     expect(screen.getByText("Decisions")).toBeTruthy();
   });

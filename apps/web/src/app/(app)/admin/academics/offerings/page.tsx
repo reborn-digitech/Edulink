@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
 /** The term's offerings with faculty and weekly load, each faculty member's hours against the band, and students per faculty member by department. */
 export default async function OfferingsPage({ searchParams }: { searchParams: SearchParams }) {
   const { ctx, t, on, college, canEdit } = await academicsGate();
-  if (!on) return <ModuleOff module="ACADEMICS" t={t} college={college} />;
+  if (!on) return <ModuleOff page module="ACADEMICS" t={t} college={college} />;
   const params = await searchParams;
   const [s, o] = await Promise.all([academicsStructure(ctx), listOfferings(ctx, { termId: one(params.termId) })]);
   return (

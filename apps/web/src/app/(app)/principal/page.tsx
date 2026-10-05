@@ -298,8 +298,11 @@ export default async function PrincipalDashboard({
             <EmptyState
               title={t("principal.noClasses")}
               description={t("principal.noClassesBody")}
+              // The admin makes classes (/admin/classes is ADMIN's); a principal is told who does it.
+              action={ctx.role === "ADMIN" ? <Button asChild size="sm"><Link href="/admin/classes/new">{t("classes.createClass")}</Link></Button> : undefined}
             />
           ) : concerns.length === 0 ? (
+
             <p className="text-sm text-fg-muted">
               {noAttendanceYet
                 ? t("principal.noAttendanceInWindow")

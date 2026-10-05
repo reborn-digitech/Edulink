@@ -56,7 +56,7 @@ function ChildAssignments() {
     <Screen title={t("nav.assignments")} description={d ? `${t("assignments.forChild", { name })} · ${t("diary.intro")}` : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {d ? <ChildSwitcher pupils={d.children} selectedId={childId ?? d.children[0]?.studentMembershipId ?? null} onSelect={setChildId} /> : null}
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         <>
           <Tabs
@@ -136,7 +136,7 @@ function PupilAssignments() {
       onRefresh={() => void query.refetch()}
     >
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         <>
           <Tabs

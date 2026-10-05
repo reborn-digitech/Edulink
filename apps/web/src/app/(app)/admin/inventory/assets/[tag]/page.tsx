@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ tag: stri
 /** One asset: its facts and worth, what happened to it, and (for the admin) what can happen next. */
 export default async function AssetPage({ params, searchParams }: { params: Promise<{ tag: string }>; searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const { ctx, t, locale, on, canEdit } = await inventoryGate();
-  if (!on) return <ModuleOff module="INVENTORY" t={t} />;
+  if (!on) return <ModuleOff page module="INVENTORY" t={t} />;
   const tag = decodeURIComponent((await params).tag);
   const sp = await searchParams;
   let detail;

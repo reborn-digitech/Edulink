@@ -25,6 +25,8 @@ import { CATEGORY_KEYS } from "../categories";
 import { getLocale, getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { ROLE_META, type PostCategory, type Role } from "@/lib/constants";
+import { PAGE_TITLE } from "@/components/ui/page-header";
+import { cn } from "@/lib/cn";
 
 /* Same keys the feed card uses — the deep link must not say less than the
    card the reader clicked. */
@@ -152,7 +154,9 @@ export default async function PostPage({ params, searchParams }: { params: Promi
           )}
         </header>
 
-        <h1 className="mt-4 text-2xl font-bold leading-snug tracking-tight text-fg">
+        {/* Under the author's line in an article, so not a PageHeader; the title has its look (A3-states-9). */}
+        <h1 className={cn(PAGE_TITLE, "mt-4 leading-snug")}>
+
           {post.title}
         </h1>
 

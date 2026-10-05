@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { NAAC_FRAMEWORKS, NBA_SAR_ITEMS, itemKey, type NaacFrameworkCode, type NaacScenarioInputs, type NbaInputs, type NirfInputs } from "@edulink/contracts";
 import { FORMULAS, type Facts } from "@/lib/iqac-rules";
-import { nbaTotals, nirfScore, simulateNaac } from "@/lib/accreditation-insights";
+import { NAAC_WHOLES, NBA_PART_WHOLES, NIRF_PART_WHOLES, holdParts, nbaTotals, nirfScore, raiseWholes, simulateNaac } from "@/lib/accreditation-insights";
 import { useT } from "@/lib/i18n";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
@@ -21,12 +21,16 @@ import { saveNaacScenarioAction, saveNbaScenarioAction } from "@/app/(app)/iqac/
  * second copy of a formula. NIRF's estimate beside it; the NBA SAR's
  * simulator below for an engineering department. Saving a scenario posts the
  * inputs; the server recomputes the result (iqac-insights.ts saveScenario).
+ * A part is held to its whole as it is typed (A3-journeys-13): 50 passed of 3
+ * appeared reads 3, and the server refuses a stored one that is not.
  */
 
 const QL_STEPS = [0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4];
 const READ_ONLY_FACTS = new Set(["windowYears"]);
 const fmt = (x: number | null | undefined, d = 2) => (x === null || x === undefined ? "—" : x.toFixed(d));
 const signed = (x: number) => `${x > 0 ? "+" : ""}${x.toFixed(2)}`;
+/** What a figure field shows: a ratio the records give as 66.66666666666666 reads 66.6667 (A3-journeys-33); the state keeps the exact value until the person types. */
+const round4 = (x: number) => Math.round(x * 1e4) / 1e4;
 
 function NumberWithSlider({ id, label, value, today, max, step, onChange, hint }: { id: string; label: string; value: number | null; today: number | null; max: number; step: number; onChange: (v: number | null) => void; hint: string }) {
   const changed = (value ?? null) !== (today ?? null);
@@ -39,10 +43,14 @@ function NumberWithSlider({ id, label, value, today, max, step, onChange, hint }
         inputMode="decimal"
         min={0}
         step="any"
-        value={value ?? ""}
+        value={value === null ? "" : round4(value)}
         onChange={(e) => onChange(e.target.value === "" ? null : Math.max(0, Number(e.target.value)))}
       />
-      <input type="range" aria-label={label} className="h-11 w-full accent-[var(--accent)]" min={0} max={Math.max(max, value ?? 0)} step={step} value={value ?? 0} onChange={(e) => onChange(Number(e.target.value))} />
+      {/* No slider for a blank figure (it drew at 0 as if 0 were the figure), and a fine step for a figure that is
+          not whole, which a step of 1 drew rounded (21.8 at 22; A3-journeys-33). */}
+      {value === null ? null : (
+        <input type="range" aria-label={label} className="h-11 w-full accent-[var(--accent)]" min={0} max={Math.max(max, value)} step={Number.isInteger(value) && (today === null || Number.isInteger(today)) ? step : Math.min(step, 0.1)} value={value} onChange={(e) => onChange(Number(e.target.value))} />
+      )}
     </div>
   );
 }
@@ -132,7 +140,7 @@ export function NaacSimulator({ framework, baseline, initial, cycleId, back, can
                   {g.keys.map((k) => {
                     const base = baseline.facts[k] ?? null;
                     const isMean = k === "sssMean";
-                    return <NumberWithSlider key={k} id={k} label={label(k)} value={facts[k] ?? null} today={base} max={isMean ? 4 : Math.max(10, Math.ceil((base ?? 0) * 2) + 10)} step={isMean ? 0.1 : 1} hint={t("insights.simTodayValue", { value: String(base ?? "—") })} onChange={(v) => setFacts((f) => ({ ...f, [k]: v }))} />;
+                    return <NumberWithSlider key={k} id={k} label={label(k)} value={facts[k] ?? null} today={base} max={isMean ? 4 : Math.max(10, Math.ceil((base ?? 0) * 2) + 10)} step={isMean ? 0.1 : 1} hint={t("insights.simTodayValue", { value: String(base ?? "—") })} onChange={(v) => setFacts((f) => holdParts(NAAC_WHOLES, { ...f, [k]: v }, k))} />;
                   })}
                 </div>
               ) : null}
@@ -164,7 +172,7 @@ export function NaacSimulator({ framework, baseline, initial, cycleId, back, can
             </p>
             <div className="grid gap-3 sm:grid-cols-2">
               {(Object.keys(nirf) as (keyof NirfInputs)[]).map((k) => (
-                <TextField key={k} label={t(`insights.nirfLever.${k}` as TranslationKey)} type="number" inputMode="decimal" min={0} max={k.startsWith("f") && k.length === 2 ? 1 : k === "faculty" || k === "intake" ? undefined : 100} step="any" value={nirf[k] ?? ""} hint={t("insights.simTodayValue", { value: String(fmt(baseline.nirf?.[k] ?? null)) })} onChange={(e) => setNirf((n) => (n ? { ...n, [k]: e.target.value === "" ? null : Math.max(0, Number(e.target.value)) } : n))} />
+                <TextField key={k} label={t(`insights.nirfLever.${k}` as TranslationKey)} type="number" inputMode="decimal" min={0} max={k.startsWith("f") && k.length === 2 ? 1 : k === "faculty" || k === "intake" ? undefined : 100} step="any" value={nirf[k] === null || nirf[k] === undefined ? "" : round4(nirf[k])} hint={t("insights.simTodayValue", { value: String(fmt(baseline.nirf?.[k] ?? null)) })} onChange={(e) => setNirf((n) => (n ? holdParts(NIRF_PART_WHOLES, { ...n, [k]: e.target.value === "" ? null : Math.max(0, Number(e.target.value)) }, k) : n))} />
               ))}
             </div>
           </CardBody>
@@ -178,7 +186,7 @@ export function NaacSimulator({ framework, baseline, initial, cycleId, back, can
             <form action={saveNaacScenarioAction} className="grid gap-3 sm:grid-cols-3 sm:items-end">
               <input type="hidden" name="back" value={back} />
               <input type="hidden" name="cycleId" value={cycleId} />
-              <input type="hidden" name="inputs" value={JSON.stringify({ facts, ql, nirf })} />
+              <input type="hidden" name="inputs" value={JSON.stringify({ facts: holdParts(NAAC_WHOLES, facts), ql, nirf: nirf ? holdParts(NIRF_PART_WHOLES, nirf) : nirf })} />
               <TextField name="name" label={t("insights.simNameField")} required minLength={2} maxLength={120} className="sm:col-span-2" />
               <Button type="submit">{t("insights.simSave")}</Button>
             </form>
@@ -222,7 +230,8 @@ export function NbaSimulator({ baseline, initial, year, departmentId, back, canS
     let v = Math.max(0, Number(raw));
     if (f.max !== undefined) v = Math.min(f.max, v);
     if (f.int) v = Math.round(v);
-    setInputs((i) => ({ ...i, [k]: v }));
+    // A part above its whole (A3-journeys-13): a designated teacher beyond F is one more teacher; F typed below them holds them.
+    setInputs((i) => raiseWholes(NBA_PART_WHOLES, { ...i, [k]: v }, k));
   };
   return (
     <div className="space-y-5">

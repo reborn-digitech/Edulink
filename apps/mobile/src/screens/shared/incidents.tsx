@@ -123,7 +123,7 @@ export function IncidentNotes({ notes, footer, bare }: { notes: IncidentView["no
   if (bare) {
     return (
       <View style={{ gap: th.space[1], paddingTop: th.space[2], borderTopWidth: 1, borderTopColor: th.border }}>
-        <Text variant="base" bold accessibilityRole="header">
+        <Text variant="base" bold accessibilityRole="header" level={3}>
           {t("incidents.notes")}
         </Text>
         {body}

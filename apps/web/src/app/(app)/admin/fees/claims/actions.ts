@@ -14,7 +14,7 @@ function refresh() {
 
 export async function confirmClaimAction(paymentId: string): Promise<ActionResult & { receiptId?: string; serial?: string }> {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const result = await confirmClaim(ctx, paymentId);
     refresh();
     return { ok: true, ...result };
@@ -25,7 +25,7 @@ export async function confirmClaimAction(paymentId: string): Promise<ActionResul
 
 export async function rejectClaimAction(paymentId: string, reason: string): Promise<ActionResult> {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     await rejectClaim(ctx, paymentId, reason);
     refresh();
     return { ok: true };
@@ -37,7 +37,7 @@ export async function rejectClaimAction(paymentId: string, reason: string): Prom
 /** Writes nothing: the preview of what a pasted statement would confirm. */
 export async function matchBankAction(csv: string): Promise<ActionResult & { matches?: BankMatch[] }> {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const { matches } = await matchBankRows(ctx, csv);
     return { ok: true, matches };
   } catch (error) {
@@ -48,7 +48,7 @@ export async function matchBankAction(csv: string): Promise<ActionResult & { mat
 /** Confirms the matched claims one by one; a refusal on one does not stop the rest, and each is reported by name. */
 export async function applyMatchesAction(paymentIds: string[]): Promise<ActionResult & { confirmed?: number; failed?: { paymentId: string; error: string }[] }> {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const t = await getT();
     let confirmed = 0;
     const failed: { paymentId: string; error: string }[] = [];

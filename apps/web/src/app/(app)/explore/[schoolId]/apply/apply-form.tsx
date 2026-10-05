@@ -56,15 +56,18 @@ export function ApplyForm({
   function submit(event: React.FormEvent) {
     event.preventDefault();
     setError(null);
+    // Each box says what is wrong with it, and the line at the top names the
+    // first one (A3-journeys-27) — not "Some of this needs another look." twice.
     const errors: Record<string, string> = {};
-    const needed = t("common.checkTheForm");
-    if (!childName.trim()) errors.childName = needed;
-    if (!grade) errors.grade = needed;
+    const labels: Record<string, string> = { childName: t("admissions.childName"), grade: t("admissions.gradeApplied"), penNumber: t("admissions.penNumber") };
+    if (!childName.trim()) errors.childName = t("refusal.required");
+    if (!grade) errors.grade = t("refusal.required");
     const pen = penNumber.replace(/[\s-]/g, "");
     if (pen && !/^\d{11}$/.test(pen)) errors.penNumber = t("pupilRecord.penFormat");
     setFieldErrors(errors);
-    if (Object.keys(errors).length > 0) {
-      setError(needed);
+    const first = Object.keys(errors)[0];
+    if (first) {
+      setError(t("common.checkField", { field: labels[first]! }));
       return;
     }
     startTransition(async () => {

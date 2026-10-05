@@ -11,6 +11,7 @@ import { useSession } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { openWeb } from "@/screens/family/shared";
 import { useInsights } from "../iqac/insights";
+import { formatDate } from "@/lib/dates";
 
 /**
  * The college at a glance and what waits for the head's word (campaign
@@ -88,7 +89,7 @@ export function CollegeGlance({ d }: { d: PrincipalCollegeGlance }) {
           />
         ))}
       </Card>
-      <Card title={t("collegeHub.glanceTitle", { date: d.today })}>
+      <Card title={t("collegeHub.glanceTitle", { date: formatDate(d.today) })}>
         <View style={{ flexDirection: "row", gap: th.space[3], flexWrap: "wrap" }}>
           {d.faculty ? <Stat label={t("collegeHub.facultyPresent")} value={d.faculty.closed ? "—" : t("collegeHub.ofTotal", { n: d.faculty.present, total: d.faculty.total })} tone="accent" /> : null}
           {d.fees ? <Stat label={t("collegeHub.feesCollected", { year: d.fees.year ?? "—" })} value={money(d.fees.collectedPaise)} tone={d.fees.outstandingPaise > 0 ? "warn" : "ok"} /> : null}

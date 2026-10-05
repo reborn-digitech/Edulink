@@ -7,15 +7,14 @@ import { hostelsView, pupilsWithoutBed } from "@/lib/hostel";
 import { todayKey } from "@/lib/dates";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { HOSTEL_KIND_KEY, ROOM_KIND_KEY, WardenFrame, inputClass, wardenContext } from "@/components/hostel/parts";
+import { HOSTEL_KIND_KEY, ROOM_KIND_KEY, WardenFrame, wardenContext } from "@/components/hostel/parts";
 import { allotAction, endAllotmentAction, saveHostelAction, saveRoomAction } from "../actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
   return { title: t("hostel.tabRooms"), robots: { index: false, follow: false } };
 }
-
-const small = "mt-1 block min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg";
 
 /**
  * Houses, rooms and beds: who sleeps where, a free bed for a pupil, a bed
@@ -40,7 +39,7 @@ export default async function HostelRoomsPage({ searchParams }: { searchParams: 
               <input type="hidden" name="back" value={back} />
               <label className="text-sm font-medium text-fg">
                 {t("hostel.pupil")}
-                <select name="membershipId" required className={inputClass}>
+                <select name="membershipId" required className={fieldClass("mt-1.5 block")}>
                   {pupils.map((p) => (
                     <option key={p.membershipId} value={p.membershipId}>
                       {p.name}
@@ -51,7 +50,7 @@ export default async function HostelRoomsPage({ searchParams }: { searchParams: 
               </label>
               <label className="text-sm font-medium text-fg">
                 {t("hostel.bed")}
-                <select name="bed" required className={inputClass}>
+                <select name="bed" required className={fieldClass("mt-1.5 block")}>
                   {freeBeds.map((b) => (
                     <option key={b.value} value={b.value}>
                       {b.label}
@@ -61,7 +60,7 @@ export default async function HostelRoomsPage({ searchParams }: { searchParams: 
               </label>
               <label className="text-sm font-medium text-fg">
                 {t("hostel.fromDate")}
-                <input type="date" name="fromDate" required defaultValue={today} className={inputClass} />
+                <input type="date" name="fromDate" required defaultValue={today} className={fieldClass("mt-1.5 block")} />
               </label>
               <div className="sm:col-span-3">
                 <Button type="submit">{t("hostel.allotButton")}</Button>
@@ -102,7 +101,7 @@ export default async function HostelRoomsPage({ searchParams }: { searchParams: 
                               <label className="sr-only" htmlFor={`to-${b.allotmentId}`}>
                                 {t("hostel.toDate")}
                               </label>
-                              <input id={`to-${b.allotmentId}`} type="date" name="toDate" required defaultValue={today} className="min-h-11 rounded-[var(--radius-md)] border border-border bg-surface px-2 text-sm text-fg" />
+                              <input id={`to-${b.allotmentId}`} type="date" name="toDate" required defaultValue={today} className={fieldClass("w-auto")} />
                               <Button type="submit" size="sm" variant="ghost">
                                 {t("hostel.endBed")}
                               </Button>
@@ -121,19 +120,19 @@ export default async function HostelRoomsPage({ searchParams }: { searchParams: 
                 <input type="hidden" name="hostelId" value={h.id} />
                 <label className="text-xs text-fg-muted">
                   {t("hostel.roomNumber")}
-                  <input name="number" required maxLength={20} className={small} />
+                  <input name="number" required maxLength={20} className={fieldClass("mt-1 block")} />
                 </label>
                 <label className="text-xs text-fg-muted">
                   {t("hostel.floor")}
-                  <input name="floor" maxLength={20} className={small} />
+                  <input name="floor" maxLength={20} className={fieldClass("mt-1 block")} />
                 </label>
                 <label className="text-xs text-fg-muted">
                   {t("hostel.beds")}
-                  <input name="beds" type="number" min={1} max={100} required defaultValue={2} className={small} />
+                  <input name="beds" type="number" min={1} max={100} required defaultValue={2} className={fieldClass("mt-1 block")} />
                 </label>
                 <label className="text-xs text-fg-muted">
                   {t("hostel.roomKind")}
-                  <select name="kind" defaultValue="SHARED" className={small}>
+                  <select name="kind" defaultValue="SHARED" className={fieldClass("mt-1 block")}>
                     {HOSTEL_ROOM_KINDS.map((k) => (
                       <option key={k} value={k}>
                         {t(ROOM_KIND_KEY[k])}
@@ -161,11 +160,11 @@ export default async function HostelRoomsPage({ searchParams }: { searchParams: 
               <input type="hidden" name="back" value={back} />
               <label className="text-sm font-medium text-fg">
                 {t("hostel.hostelName")}
-                <input name="name" required maxLength={80} className={inputClass} />
+                <input name="name" required maxLength={80} className={fieldClass("mt-1.5 block")} />
               </label>
               <label className="text-sm font-medium text-fg">
                 {t("hostel.hostelKind")}
-                <select name="kind" required className={inputClass}>
+                <select name="kind" required className={fieldClass("mt-1.5 block")}>
                   {HOSTEL_KINDS.map((k) => (
                     <option key={k} value={k}>
                       {t(HOSTEL_KIND_KEY[k])}
@@ -175,11 +174,11 @@ export default async function HostelRoomsPage({ searchParams }: { searchParams: 
               </label>
               <label className="text-sm font-medium text-fg">
                 {t("hostel.capacity")}
-                <input name="capacity" type="number" min={0} max={5000} required defaultValue={0} className={inputClass} />
+                <input name="capacity" type="number" min={0} max={5000} required defaultValue={0} className={fieldClass("mt-1.5 block")} />
               </label>
               <label className="text-sm font-medium text-fg">
                 {t("hostel.wardenInCharge")}
-                <select name="wardenMembershipId" className={inputClass}>
+                <select name="wardenMembershipId" className={fieldClass("mt-1.5 block")}>
                   <option value="">{t("hostel.noWarden")}</option>
                   {view.wardens.map((w) => (
                     <option key={w.membershipId} value={w.membershipId}>

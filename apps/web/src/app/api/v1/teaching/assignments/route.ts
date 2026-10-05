@@ -2,7 +2,8 @@ import { teachingAssignmentCreatedSchema, teachingNewAssignmentSchema } from "@e
 import { requireApiRole } from "@/lib/tenancy";
 import { createAssignment } from "@/lib/grading";
 import { spendTickets, ticketedHandouts } from "@/lib/api-reads/teaching";
-import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
+import { apiInvalid, ok, readJson } from "@/lib/api-v1";
+import { moduleFailure } from "@/lib/rule-refusal";
 
 /**
  * POST /api/v1/teaching/assignments — set a new piece of work WITH handouts,
@@ -25,6 +26,7 @@ export async function POST(request: Request) {
     await spendTickets(attachments.map((a) => a.fileId));
     return ok(teachingAssignmentCreatedSchema.parse({ ...result, handouts: attachments.length }), 201);
   } catch (error) {
-    return apiFailure(error, "api/v1/teaching/assignments");
+    // A due date already past without confirmPastDue is a 422 on dueAt (A3-journeys-25).
+    return moduleFailure(error, "api/v1/teaching/assignments");
   }
 }

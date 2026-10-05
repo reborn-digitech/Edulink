@@ -9,8 +9,9 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
-import { CellOff, Hidden, Labelled, PAPER_STATUS_KEY, SessionFrame, day, inputClass } from "@/components/exam-cell/parts";
+import { CellOff, Hidden, Labelled, PAPER_STATUS_KEY, SessionFrame, day } from "@/components/exam-cell/parts";
 import { allocationAction, assignPaperAction, moderatePaperAction, printingAction, returnAllocationAction } from "../../../actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -66,7 +67,7 @@ export default async function ConductPage({ params, searchParams }: { params: Pr
                     <form action={moderatePaperAction} className="flex flex-wrap items-end gap-2">
                       <Hidden fields={{ paperId: p.id, back }} />
                       <Labelled label={t("examCell.moderationNote")}>
-                        <input name="note" required minLength={3} maxLength={1000} className={inputClass} />
+                        <input name="note" required minLength={3} maxLength={1000} className={fieldClass()} />
                       </Labelled>
                       <Button type="submit" size="sm" variant="secondary">
                         {t("examCell.markModerated")}
@@ -81,7 +82,7 @@ export default async function ConductPage({ params, searchParams }: { params: Pr
             <form action={assignPaperAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, back }} />
               <Labelled label={t("examCell.paper")}>
-                <select name="scheduleId" className={inputClass}>
+                <select name="scheduleId" className={fieldClass()}>
                   {s.schedule.map((x) => (
                     <option key={x.id} value={x.id}>
                       {x.code}
@@ -90,7 +91,7 @@ export default async function ConductPage({ params, searchParams }: { params: Pr
                 </select>
               </Labelled>
               <Labelled label={t("examCell.setter")}>
-                <select name="setterMembershipId" className={inputClass}>
+                <select name="setterMembershipId" className={fieldClass()}>
                   {faculty.map((m) => (
                     <option key={m.membershipId} value={m.membershipId}>
                       {m.name}
@@ -118,7 +119,7 @@ export default async function ConductPage({ params, searchParams }: { params: Pr
             <form action={printingAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, back }} />
               <Labelled label={t("examCell.spare")}>
-                <input name="spare" type="number" min={0} max={50} defaultValue={2} className={`${inputClass} w-24`} />
+                <input name="spare" type="number" min={0} max={50} defaultValue={2} className={fieldClass("w-24")} />
               </Labelled>
               <Button type="submit" size="sm" variant="secondary">
                 {t("examCell.buildPrinting")}
@@ -152,7 +153,7 @@ export default async function ConductPage({ params, searchParams }: { params: Pr
             <form action={allocationAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, back }} />
               <Labelled label={t("examCell.paper")}>
-                <select name="scheduleId" className={inputClass}>
+                <select name="scheduleId" className={fieldClass()}>
                   {s.schedule.map((x) => (
                     <option key={x.id} value={x.id}>
                       {x.code}
@@ -161,7 +162,7 @@ export default async function ConductPage({ params, searchParams }: { params: Pr
                 </select>
               </Labelled>
               <Labelled label={t("examCell.assessor")}>
-                <select name="assessorMembershipId" className={inputClass}>
+                <select name="assessorMembershipId" className={fieldClass()}>
                   {faculty.map((m) => (
                     <option key={m.membershipId} value={m.membershipId}>
                       {m.name}
@@ -170,10 +171,10 @@ export default async function ConductPage({ params, searchParams }: { params: Pr
                 </select>
               </Labelled>
               <Labelled label={t("examCell.bundle")}>
-                <input name="bundle" required maxLength={40} className={`${inputClass} w-28`} />
+                <input name="bundle" required maxLength={40} className={fieldClass("w-28")} />
               </Labelled>
               <Labelled label={t("examCell.count")}>
-                <input name="count" type="number" min={1} max={500} required className={`${inputClass} w-24`} />
+                <input name="count" type="number" min={1} max={500} required className={fieldClass("w-24")} />
               </Labelled>
               <Button type="submit" size="sm">
                 {t("examCell.allot")}

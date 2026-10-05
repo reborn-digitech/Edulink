@@ -11,10 +11,11 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
-import { DateField } from "@/components/ui/field";
+import { DateField, SelectField, TextField } from "@/components/ui/field";
+import { ActionForm } from "@/components/ui/action-form";
 import { DateTimeField } from "@/components/ui/date-time-field";
 import { FileField } from "@/components/ui/file-field";
-import { CellOff, Flash, Hidden, Labelled, SESSION_STATUS_KEY, KIND_KEY, day, inputClass } from "@/components/exam-cell/parts";
+import { CellOff, Flash, Hidden, SESSION_STATUS_KEY, KIND_KEY, day } from "@/components/exam-cell/parts";
 import { createSessionAction, decideGraceAction, signatureAction } from "./actions";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -122,58 +123,41 @@ export default async function ExamCellPage({ searchParams }: { searchParams: Pro
             {home.terms.length === 0 ? (
               <p className="text-sm text-fg-muted">{t("examCell.noTerms")}</p>
             ) : (
-              <form action={createSessionAction} className="grid gap-4 sm:grid-cols-2">
+              /* Answers in place (A3-journeys-27): a bad fee or date keeps every box as typed and is said under its own. */
+              <ActionForm action={createSessionAction} className="grid gap-4 sm:grid-cols-2">
                 <Hidden fields={{ back: "/exam-cell" }} />
-                <Labelled label={t("examCell.fieldName")}>
-                  <input name="name" required minLength={2} maxLength={120} className={inputClass} />
-                </Labelled>
-                <Labelled label={t("examCell.fieldTerm")}>
-                  <select name="termId" required className={inputClass}>
-                    {home.terms.map((x) => (
-                      <option key={x.id} value={x.id}>
-                        {x.name}
-                      </option>
-                    ))}
-                  </select>
-                </Labelled>
-                <Labelled label={t("examCell.fieldKind")}>
-                  <select name="kind" className={inputClass}>
-                    <option value="REGULAR">{t("examCell.kindREGULAR")}</option>
-                    <option value="SUPPLEMENTARY">{t("examCell.kindSUPPLEMENTARY")}</option>
-                  </select>
-                </Labelled>
-                <Labelled label={t("examCell.fieldFeeHead")}>
-                  <select name="feeHeadId" className={inputClass}>
-                    <option value="">{t("examCell.noFeeHead")}</option>
-                    {home.feeHeads.map((h) => (
-                      <option key={h.id} value={h.id}>
-                        {h.name}
-                      </option>
-                    ))}
-                  </select>
-                </Labelled>
+                <TextField label={t("examCell.fieldName")} name="name" required minLength={2} maxLength={120} />
+                <SelectField label={t("examCell.fieldTerm")} name="termId" required>
+                  {home.terms.map((x) => (
+                    <option key={x.id} value={x.id}>
+                      {x.name}
+                    </option>
+                  ))}
+                </SelectField>
+                <SelectField label={t("examCell.fieldKind")} name="kind">
+                  <option value="REGULAR">{t("examCell.kindREGULAR")}</option>
+                  <option value="SUPPLEMENTARY">{t("examCell.kindSUPPLEMENTARY")}</option>
+                </SelectField>
+                <SelectField label={t("examCell.fieldFeeHead")} name="feeHeadId">
+                  <option value="">{t("examCell.noFeeHead")}</option>
+                  {home.feeHeads.map((h) => (
+                    <option key={h.id} value={h.id}>
+                      {h.name}
+                    </option>
+                  ))}
+                </SelectField>
                 <DateTimeField label={t("examCell.fieldOpens")} name="formOpensAt" defaultTime="00:00" />
                 <DateTimeField label={t("examCell.fieldCloses")} name="formClosesAt" defaultTime="23:59" />
-                <Labelled label={t("examCell.fieldFeePerCourse")}>
-                  <input name="feePerCourse" inputMode="decimal" className={inputClass} />
-                </Labelled>
-                <Labelled label={t("examCell.fieldFeePerBacklog")}>
-                  <input name="feePerBacklog" inputMode="decimal" className={inputClass} />
-                </Labelled>
-                <Labelled label={t("examCell.fieldPhotocopyFee")}>
-                  <input name="photocopyFee" inputMode="decimal" className={inputClass} />
-                </Labelled>
-                <Labelled label={t("examCell.fieldRevalFee")}>
-                  <input name="revalFee" inputMode="decimal" className={inputClass} />
-                </Labelled>
+                <TextField label={t("examCell.fieldFeePerCourse")} name="feePerCourse" inputMode="decimal" />
+                <TextField label={t("examCell.fieldFeePerBacklog")} name="feePerBacklog" inputMode="decimal" />
+                <TextField label={t("examCell.fieldPhotocopyFee")} name="photocopyFee" inputMode="decimal" />
+                <TextField label={t("examCell.fieldRevalFee")} name="revalFee" inputMode="decimal" />
                 <DateField label={t("examCell.fieldLateFrom")} name="slabFrom1" />
-                <Labelled label={t("examCell.fieldLateFee")}>
-                  <input name="slabFee1" inputMode="decimal" className={inputClass} />
-                </Labelled>
+                <TextField label={t("examCell.fieldLateFee")} name="slabFee1" inputMode="decimal" />
                 <div className="sm:col-span-2">
                   <Button type="submit">{t("examCell.createSession")}</Button>
                 </div>
-              </form>
+              </ActionForm>
             )}
           </CardBody>
         </Card>

@@ -30,15 +30,17 @@ export async function generateMetadata(): Promise<Metadata> {
  * given up — the refund the slab allows, recorded, then its bank reference.
  */
 export default async function ApplicationPage({ params, searchParams }: { params: Promise<{ applicationId: string }>; searchParams: Promise<{ ok?: string; error?: string }> }) {
-  const ctx = await requireRole("ADMIN", "PRINCIPAL");
+  const ctx = await requireRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
   const [t, locale, kind] = await Promise.all([getT(), getLocale(), institutionKindOf(ctx.schoolId)]);
   const { applicationId } = await params;
   const sp = await searchParams;
   if (!isCollegeKind(kind ?? "SCHOOL")) return <NotCollege t={t} />;
-  if (!(await isModuleOn(ctx.schoolId, "ADMISSIONS"))) return <ModuleOff module="ADMISSIONS" t={t} college />;
+  if (!(await isModuleOn(ctx.schoolId, "ADMISSIONS"))) return <ModuleOff page module="ADMISSIONS" t={t} college />;
   const a = await getApplication(ctx, applicationId);
   const programme = await db.programme.findFirst({ where: { id: a.programmeId, schoolId: ctx.schoolId }, select: { code: true, name: true } });
   const write = ctx.role === "ADMIN";
+  // The accounts desk records the admission fee and the bank's refund reference, as its two doors permit (A3-inventory-3).
+  const moneyDesk = ctx.role === "ADMIN" || ctx.role === "ACCOUNTS";
   const back = `/admin/college-admissions/${a.id}`;
   const open = a.status === "APPLIED" || a.status === "SCRUTINY" || a.status === "OFFERED";
   return (
@@ -151,11 +153,11 @@ export default async function ApplicationPage({ params, searchParams }: { params
           </CardBody>
         </Card>
       ) : null}
-      {write ? (
+      {moneyDesk ? (
         <Card>
           <CardHeader title={t("collegeOffice.seatTitle")} />
           <CardBody className="space-y-4">
-            {open ? (
+            {write && open ? (
               <form action={offerAction}>
                 <Hidden fields={{ back, applicationId: a.id }} />
                 <Button type="submit" disabled={!a.scrutinyComplete || !a.antiRaggingStudentAt || !a.antiRaggingParentAt}>{t("collegeOffice.offer")}</Button>
@@ -176,7 +178,7 @@ export default async function ApplicationPage({ params, searchParams }: { params
                 <Button type="submit" variant="secondary">{t("collegeOffice.recordFee")}</Button>
               </form>
             ) : null}
-            {a.status === "FEE_DUE" && (a.admissionFeePaidAt || !a.admissionFeePaise) ? (
+            {write && a.status === "FEE_DUE" && (a.admissionFeePaidAt || !a.admissionFeePaise) ? (
               <form action={admitAction} className="flex flex-wrap items-end gap-3">
                 <Hidden fields={{ back, applicationId: a.id }} />
                 <TextField name="prn" label={t("collegeOffice.prn")} />
@@ -185,7 +187,7 @@ export default async function ApplicationPage({ params, searchParams }: { params
                 <Button type="submit">{t("collegeOffice.admit")}</Button>
               </form>
             ) : null}
-            {a.status !== "CANCELLED" && a.status !== "REFUNDED" ? (
+            {write && a.status !== "CANCELLED" && a.status !== "REFUNDED" ? (
               <details>
                 <summary className="cursor-pointer text-sm text-danger">{t("collegeOffice.cancelSeat")}</summary>
                 <form action={cancelAdmissionAction} className="mt-2 flex flex-wrap items-end gap-3">

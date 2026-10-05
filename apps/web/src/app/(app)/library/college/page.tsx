@@ -28,7 +28,7 @@ export default async function LibraryCollegePage({ searchParams }: { searchParam
   const [t, locale, kind] = await Promise.all([getT(), getLocale(), institutionKindOf(ctx.schoolId)]);
   const sp = await searchParams;
   if (!isCollegeKind(kind ?? "SCHOOL")) return <NotCollege t={t} />;
-  if (!(await isModuleOn(ctx.schoolId, "LIBRARY"))) return <ModuleOff module="LIBRARY" t={t} college />;
+  if (!(await isModuleOn(ctx.schoolId, "LIBRARY"))) return <ModuleOff page module="LIBRARY" t={t} college />;
   const [eres, lt] = await Promise.all([listEResources(ctx), libraryTable(ctx.schoolId)]);
   const write = ctx.role !== "PRINCIPAL";
   const back = "/library/college";

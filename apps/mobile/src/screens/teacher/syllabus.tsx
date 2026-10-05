@@ -76,7 +76,7 @@ export function TeacherSyllabus() {
       onRefresh={() => void query.refetch()}
     >
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         d.subjects.length === 0 || !current ? (
           <Empty icon="books" title={t("syllabus.noSubjects")} action={<Button label={t("nav.timetable")} variant="secondary" onPress={() => router.push("/(app)/timetable" as never)} />} />
@@ -347,7 +347,7 @@ function ApplyTemplate({ classId, subject, units, onClose }: { classId: string; 
         {t("planTemplates.hint")}
       </Text>
       {list.isPending ? <Loading /> : null}
-      {list.isError ? <Failed message={list.error.message} onRetry={() => void list.refetch()} /> : null}
+      {list.isError ? <Failed error={list.error} onRetry={() => void list.refetch()} /> : null}
       {list.data && items.length === 0 ? (
         <Empty icon="clipboard" title={t("planTemplates.none")} action={<Button label={t("common.cancel")} variant="secondary" onPress={onClose} />} />
       ) : null}

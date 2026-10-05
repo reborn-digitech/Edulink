@@ -27,7 +27,7 @@ export default async function ExamCheckPage({ searchParams }: { searchParams: Pr
   const limited = gate !== null && !gate.allowed;
   const result = code && !limited ? await checkExamDocument(school, code) : null;
   return (
-    <div className="flex min-h-safe flex-col justify-center bg-bg px-4 py-10 sm:px-8">
+    <main id="main" className="flex min-h-safe flex-col justify-center bg-bg px-4 py-10 sm:px-8">
       <div className="mx-auto w-full max-w-sm">
         <Link href="/" className="mb-8 inline-block" aria-label={t("common.homeLink")}>
           <Wordmark />
@@ -66,6 +66,6 @@ export default async function ExamCheckPage({ searchParams }: { searchParams: Pr
           </section>
         ) : null}
       </div>
-    </div>
+    </main>
   );
 }

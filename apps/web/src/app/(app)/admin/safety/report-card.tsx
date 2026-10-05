@@ -13,6 +13,7 @@ import { reasonKey, type ReportGroup } from "@/lib/safety-labels";
 import { dismiss, takeDown } from "./actions";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
+import { fieldClass } from "@/components/ui/field-class";
 
 const URGENT = new Set(["UNSAFE", "BULLYING"]);
 
@@ -238,7 +239,7 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
                     ? t("safety.removePlaceholder")
                     : t("safety.dismissPlaceholder")
                 }
-                className="w-full resize-y rounded-[var(--radius-md)] border border-border bg-surface p-3 text-sm outline-none focus:border-accent"
+                className={fieldClass("resize-y")}
               />
               <div className="flex gap-2">
                 <Button

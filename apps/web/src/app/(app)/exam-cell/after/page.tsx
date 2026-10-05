@@ -1,4 +1,6 @@
+import { isoToDisplayDate } from "@/lib/dates";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { requireRole } from "@/lib/tenancy";
 import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
@@ -8,8 +10,9 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { BACKLOG_STATUS_KEY, CREDIT_STATUS_KEY, CellOff, DOC_KIND_KEY, Flash, Hidden, Labelled, REVAL_KIND_KEY, REVAL_OUTCOME_KEY, day, inputClass, marks, money } from "@/components/exam-cell/parts";
+import { BACKLOG_STATUS_KEY, CREDIT_STATUS_KEY, CellOff, DOC_KIND_KEY, Flash, Hidden, Labelled, REVAL_KIND_KEY, REVAL_OUTCOME_KEY, day, marks, money } from "@/components/exam-cell/parts";
 import { convocationAction, decideRevaluationAction, issueDocumentAction, pushCreditsAction } from "../actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -50,11 +53,20 @@ export default async function AfterPage({ searchParams }: { searchParams: Promis
                 {r.outcome ? ` · ${t(REVAL_OUTCOME_KEY[r.outcome]!)}` : ""}
                 {r.outcome === "CHANGED" ? ` · ${marks(r.oldExternalMilli)} → ${marks(r.newExternalMilli)}` : ""}
               </p>
+              {r.correction ? (
+                // The changed mark reaches the result only through a run (A3-journeys-11).
+                <p className="flex flex-wrap items-center gap-2">
+                  <Badge tone="warn">{t(r.correction === "RUN_DUE" ? "examCell.correctionRunDue" : "examCell.correctionPublishDue")}</Badge>
+                  <Link href={`/exam-cell/sessions/${r.sessionId}/results`} className="font-medium text-accent-strong hover:underline">
+                    {t("examCell.openResults")}
+                  </Link>
+                </p>
+              ) : null}
               {w && r.status === "ASKED" ? (
                 <form action={decideRevaluationAction} className="flex flex-wrap items-end gap-2">
                   <Hidden fields={{ revaluationId: r.id, back }} />
                   <Labelled label={t("examCell.outcome")}>
-                    <select name="outcome" className={inputClass}>
+                    <select name="outcome" className={fieldClass()}>
                       {(r.kind === "PHOTOCOPY" ? (["PROVIDED"] as const) : (["UNCHANGED", "CHANGED"] as const)).map((o) => (
                         <option key={o} value={o}>
                           {t(REVAL_OUTCOME_KEY[o]!)}
@@ -64,11 +76,11 @@ export default async function AfterPage({ searchParams }: { searchParams: Promis
                   </Labelled>
                   {r.kind === "REVAL" ? (
                     <Labelled label={t("examCell.newMarks")}>
-                      <input name="marks" inputMode="decimal" className={`${inputClass} w-24`} />
+                      <input name="marks" inputMode="decimal" className={fieldClass("w-24")} />
                     </Labelled>
                   ) : null}
                   <Labelled label={t("examCell.note")}>
-                    <input name="note" maxLength={300} className={inputClass} />
+                    <input name="note" maxLength={300} className={fieldClass()} />
                   </Labelled>
                   <Button type="submit" size="sm">
                     {t("examCell.decide")}
@@ -87,7 +99,7 @@ export default async function AfterPage({ searchParams }: { searchParams: Promis
             {a.backlogs.map((b) => (
               <li key={b.id} className="flex flex-wrap items-center justify-between gap-2 px-5 py-2 text-sm">
                 <span>
-                  {b.studentName} · {b.courseCode} {b.courseName} · {t("examCell.attempts", { count: b.attempts })} · {t("examCell.lastDay", { date: b.lastDay })}
+                  {b.studentName} · {b.courseCode} {b.courseName} · {t("examCell.attempts", { count: b.attempts })} · {t("examCell.lastDay", { date: isoToDisplayDate(b.lastDay) })}
                 </span>
                 <Badge tone={b.status === "OPEN" ? "warn" : b.status === "CLEARED" ? "ok" : "danger"}>{t(BACKLOG_STATUS_KEY[b.status]!)}</Badge>
               </li>
@@ -111,7 +123,7 @@ export default async function AfterPage({ searchParams }: { searchParams: Promis
             <form action={issueDocumentAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ back }} />
               <Labelled label={t("examCell.student")}>
-                <select name="studentMembershipId" className={inputClass}>
+                <select name="studentMembershipId" className={fieldClass()}>
                   {a.students.map((s) => (
                     <option key={s.membershipId} value={s.membershipId}>
                       {s.name} {s.code ?? ""}
@@ -120,7 +132,7 @@ export default async function AfterPage({ searchParams }: { searchParams: Promis
                 </select>
               </Labelled>
               <Labelled label={t("examCell.docKind")}>
-                <select name="kind" className={inputClass}>
+                <select name="kind" className={fieldClass()}>
                   <option value="GRADE_CARD">{t("examCell.docGradeCard")}</option>
                   <option value="TRANSCRIPT">{t("examCell.docTranscript")}</option>
                   {a.autonomous ? <option value="DEGREE">{t("examCell.docDegree")}</option> : null}
@@ -166,7 +178,7 @@ export default async function AfterPage({ searchParams }: { searchParams: Promis
               <form action={convocationAction} className="flex flex-wrap items-end gap-2">
                 <Hidden fields={{ back }} />
                 <Labelled label={t("examCell.year")}>
-                  <input name="year" type="number" min={2000} max={2100} required className={`${inputClass} w-28`} />
+                  <input name="year" type="number" min={2000} max={2100} required className={fieldClass("w-28")} />
                 </Labelled>
                 <label className="flex min-h-11 items-center gap-2 text-sm">
                   <input type="checkbox" name="finalize" value="1" /> {t("examCell.finalize")}

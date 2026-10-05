@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { useT } from "@/lib/i18n";
 import { decideGuardianClaim, decideJoinRequest } from "./actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * The two decisions on somebody waiting. Letting in is one press. Declining
@@ -72,7 +73,7 @@ export function Decide({ kind, id, name }: { kind: "join" | "claim"; id: string;
             maxLength={300}
             rows={2}
             aria-describedby={hintId}
-            className="w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
+            className={fieldClass()}
           />
           <p id={hintId} className="text-xs text-fg-muted">
             {t(kind === "join" ? "joinRequests.declineReasonHint" : "joinRequests.declineReasonHintClaim")}

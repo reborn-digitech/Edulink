@@ -147,7 +147,7 @@ describe("one class", () => {
   });
 
   it("a refusal is an alert with a retry", async () => {
-    fakeApi({ [PATH]: () => refusal("ZZ not yours", 403) });
+    fakeApi({ [PATH]: () => refusal("ZZ not yours", 503) });
     await renderTeacher(page());
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ not yours");
     expect(screen.getByRole("button", { name: "Try again" })).toBeTruthy();

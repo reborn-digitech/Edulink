@@ -12,6 +12,7 @@ import { createClass, setClassTeacher } from "../actions";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
+import { fieldClass } from "@/components/ui/field-class";
 
 /* The swatch labels are the `aria-label` a screen reader announces, so they are
    words rather than decoration — keys, like everything else a reader hears. */
@@ -203,7 +204,7 @@ export function ClassForm({
             <select
               value={gradeLevel}
               onChange={(e) => setGradeLevel(e.target.value)}
-              className="mt-1 min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-[0.9375rem] text-fg outline-none focus:border-accent"
+              className={fieldClass("mt-1")}
             >
               <option value="">{t("classes.notTiedToGrade")}</option>
               {grades.map((grade) => (
@@ -294,7 +295,7 @@ export function ClassForm({
                 }
                 aria-pressed={teacherId === teacher.membershipId}
                 className={cn(
-                  "flex w-full items-center gap-3 rounded-[var(--radius-md)] border p-2.5 text-left transition-colors",
+                  "flex min-h-12 w-full items-center gap-3 rounded-[var(--radius-md)] border p-2.5 text-left transition-colors",
                   teacherId === teacher.membershipId
                     ? "border-accent bg-accent-soft"
                     : "border-border hover:bg-surface-muted",

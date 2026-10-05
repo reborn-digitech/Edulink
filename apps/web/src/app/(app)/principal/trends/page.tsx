@@ -114,67 +114,71 @@ export default async function PrincipalTrendsPage({ searchParams }: { searchPara
             <Card>
               <CardHeader title={t("trends.bySubject")} description={t("trends.bySubjectHint")} />
               <CardBody className="p-0">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr>
-                      <th scope="col" className={th}>{t("trends.term")}</th>
-                      <th scope="col" className={th}>{t("trends.subject")}</th>
-                      <th scope="col" className={th}>{t("trends.average")}</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-border">
-                    {view.terms.flatMap((term) =>
-                      term.bySubject.map((row, i) => (
-                        <tr key={`${term.termId}:${row.subject}`}>
-                          <td className={`${td} text-xs text-fg-muted`}>{i === 0 ? `${term.termName} · ${term.yearName}` : ""}</td>
-                          <td className={td}>{row.subject}</td>
-                          <td className={td}>
-                            <Bar percent={row.averagePercent} tone="bg-ok" />
-                            <span className="block text-xs text-fg-muted">{t("trends.papers", { count: row.papers })}</span>
-                          </td>
-                        </tr>
-                      )),
-                    )}
-                    {view.terms.every((term) => term.bySubject.length === 0) && (
+                <TableScroll>
+                  <table className="w-full text-sm">
+                    <thead>
                       <tr>
-                        <td colSpan={3} className="px-3 py-6 text-center text-sm text-fg-muted">{t("trends.noMarks")}</td>
+                        <th scope="col" className={th}>{t("trends.term")}</th>
+                        <th scope="col" className={th}>{t("trends.subject")}</th>
+                        <th scope="col" className={th}>{t("trends.average")}</th>
                       </tr>
-                    )}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody className="divide-y divide-border">
+                      {view.terms.flatMap((term) =>
+                        term.bySubject.map((row, i) => (
+                          <tr key={`${term.termId}:${row.subject}`}>
+                            <td className={`${td} text-xs text-fg-muted`}>{i === 0 ? `${term.termName} · ${term.yearName}` : ""}</td>
+                            <td className={td}>{row.subject}</td>
+                            <td className={td}>
+                              <Bar percent={row.averagePercent} tone="bg-ok" />
+                              <span className="block text-xs text-fg-muted">{t("trends.papers", { count: row.papers })}</span>
+                            </td>
+                          </tr>
+                        )),
+                      )}
+                      {view.terms.every((term) => term.bySubject.length === 0) && (
+                        <tr>
+                          <td colSpan={3} className="px-3 py-6 text-center text-sm text-fg-muted">{t("trends.noMarks")}</td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </TableScroll>
               </CardBody>
             </Card>
             <Card>
               <CardHeader title={t("trends.byTeacher")} description={t("trends.byTeacherHint")} />
               <CardBody className="p-0">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr>
-                      <th scope="col" className={th}>{t("trends.term")}</th>
-                      <th scope="col" className={th}>{t("trends.teacher")}</th>
-                      <th scope="col" className={th}>{t("trends.average")}</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-border">
-                    {view.terms.flatMap((term) =>
-                      term.byTeacher.map((row, i) => (
-                        <tr key={`${term.termId}:${row.membershipId}`}>
-                          <td className={`${td} text-xs text-fg-muted`}>{i === 0 ? `${term.termName} · ${term.yearName}` : ""}</td>
-                          <td className={td}>{row.name}</td>
-                          <td className={td}>
-                            <Bar percent={row.averagePercent} tone="bg-ok" />
-                            <span className="block text-xs text-fg-muted">{t("trends.papers", { count: row.papers })}</span>
-                          </td>
-                        </tr>
-                      )),
-                    )}
-                    {view.terms.every((term) => term.byTeacher.length === 0) && (
+                <TableScroll>
+                  <table className="w-full text-sm">
+                    <thead>
                       <tr>
-                        <td colSpan={3} className="px-3 py-6 text-center text-sm text-fg-muted">{t("trends.noMarks")}</td>
+                        <th scope="col" className={th}>{t("trends.term")}</th>
+                        <th scope="col" className={th}>{t("trends.teacher")}</th>
+                        <th scope="col" className={th}>{t("trends.average")}</th>
                       </tr>
-                    )}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody className="divide-y divide-border">
+                      {view.terms.flatMap((term) =>
+                        term.byTeacher.map((row, i) => (
+                          <tr key={`${term.termId}:${row.membershipId}`}>
+                            <td className={`${td} text-xs text-fg-muted`}>{i === 0 ? `${term.termName} · ${term.yearName}` : ""}</td>
+                            <td className={td}>{row.name}</td>
+                            <td className={td}>
+                              <Bar percent={row.averagePercent} tone="bg-ok" />
+                              <span className="block text-xs text-fg-muted">{t("trends.papers", { count: row.papers })}</span>
+                            </td>
+                          </tr>
+                        )),
+                      )}
+                      {view.terms.every((term) => term.byTeacher.length === 0) && (
+                        <tr>
+                          <td colSpan={3} className="px-3 py-6 text-center text-sm text-fg-muted">{t("trends.noMarks")}</td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </TableScroll>
               </CardBody>
             </Card>
           </div>

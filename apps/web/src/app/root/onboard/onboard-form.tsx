@@ -76,12 +76,13 @@ export function OnboardForm({ plans, partners }: { plans: PlanOption[]; partners
       slug: school.slug.trim() || undefined,
       contactEmail: school.contactEmail,
       timezone: school.timezone,
-      board: (school.board || null) as OperatorOnboardBody["board"],
+      // A school's board and grades; a college has neither (A3-journeys-40), so a value typed before switching the kind is not sent.
+      board: (isCollegeKind(school.kind) ? null : school.board || null) as OperatorOnboardBody["board"],
       city: school.city || null,
       region: school.region || null,
       country: school.country || null,
-      gradeLow: school.gradeLow || null,
-      gradeHigh: school.gradeHigh || null,
+      gradeLow: isCollegeKind(school.kind) ? null : school.gradeLow || null,
+      gradeHigh: isCollegeKind(school.kind) ? null : school.gradeHigh || null,
       kind: school.kind as InstitutionKind,
       // A college's two references (4 Oct 2026), sent only for a college.
       ...(isCollegeKind(school.kind) ? { affiliatingUniversity: school.university.trim() || null, aisheCode: school.aishe.trim().toUpperCase() || null, streams } : {}),
@@ -138,19 +139,23 @@ export function OnboardForm({ plans, partners }: { plans: PlanOption[]; partners
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           <TextField label={t("root.timezone")} required value={school.timezone} onChange={(e) => setS("timezone")(e.target.value)} hint={t("root.timezoneHint")} />
-          <SelectField label={t("root.board")} value={school.board} onChange={(e) => setS("board")(e.target.value)}>
-            <option value="">{t("root.boardNone")}</option>
-            {SCHOOL_BOARDS.map((b) => (
-              <option key={b} value={b}>
-                {t(`filings.board${b}` as TranslationKey)}
-              </option>
-            ))}
-          </SelectField>
+          {!isCollegeKind(school.kind) && (
+            <SelectField label={t("root.board")} value={school.board} onChange={(e) => setS("board")(e.target.value)}>
+              <option value="">{t("root.boardNone")}</option>
+              {SCHOOL_BOARDS.map((b) => (
+                <option key={b} value={b}>
+                  {t(`filings.board${b}` as TranslationKey)}
+                </option>
+              ))}
+            </SelectField>
+          )}
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <TextField label={t("root.lowestGrade")} value={school.gradeLow} placeholder="3" onChange={(e) => setS("gradeLow")(e.target.value)} />
-          <TextField label={t("root.highestGrade")} value={school.gradeHigh} placeholder="10" onChange={(e) => setS("gradeHigh")(e.target.value)} />
-        </div>
+        {!isCollegeKind(school.kind) && (
+          <div className="grid gap-4 sm:grid-cols-2">
+            <TextField label={t("root.lowestGrade")} value={school.gradeLow} placeholder="3" onChange={(e) => setS("gradeLow")(e.target.value)} />
+            <TextField label={t("root.highestGrade")} value={school.gradeHigh} placeholder="10" onChange={(e) => setS("gradeHigh")(e.target.value)} />
+          </div>
+        )}
         <div className="grid gap-4 sm:grid-cols-2">
           <TextField label={t("root.city")} value={school.city} onChange={(e) => setS("city")(e.target.value)} />
           <LocationFields country={school.country} region={school.region} onCountryChange={setS("country")} onRegionChange={setS("region")} countryLabel={t("root.country")} regionLabel={t("root.stateRegion")} />

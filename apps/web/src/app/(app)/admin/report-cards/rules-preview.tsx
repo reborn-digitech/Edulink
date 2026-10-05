@@ -4,6 +4,7 @@ import type { ReportCardLayout } from "@edulink/contracts";
 import { useT } from "@/lib/i18n";
 import { fontStack } from "@/lib/fonts";
 import type { LiveBand } from "./scale-bar";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 /**
  * A sample report card, drawn by the rules as they stand in the form. The
@@ -63,39 +64,41 @@ export function RulesPreview({ schoolName, locale, bands, areas, coScale, layout
           <p className={`text-xs ${muted}`}>{[t("certificateSample.className"), t("reportCardConfig.sampleTerm")].join(" · ")}</p>
         </div>
 
-        <table className="mt-3 w-full text-xs" data-testid="preview-subjects">
-          <thead>
-            <tr className={`border-b border-border text-left ${muted}`}>
-              <th scope="col" className="py-1.5 pr-2 font-medium">{t("reportView.subject")}</th>
-              <th scope="col" className="py-1.5 pr-2 text-right font-medium">{t("reportView.percent")}</th>
-              {letters && <th scope="col" className="py-1.5 pr-2 font-medium">{t("reportView.grade")}</th>}
-              {points && <th scope="col" className="py-1.5 text-right font-medium">{t("reportView.points")}</th>}
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row) => (
-              <tr key={row.subject} className="border-b border-border/60" data-testid="preview-subject">
-                <th scope="row" className="py-1.5 pr-2 text-left font-medium">{row.subject}</th>
-                <td className="py-1.5 pr-2 text-right tabular-nums">{row.percent}</td>
-                {letters && (
-                  <td className="py-1.5 pr-2" data-testid="preview-grade">
-                    <span className="font-semibold">{row.band?.label ?? "—"}</span>
-                    {row.band?.descriptor && <span className={`ml-1.5 ${muted}`}>{row.band.descriptor}</span>}
-                  </td>
-                )}
-                {points && <td className="py-1.5 text-right tabular-nums">{row.band?.points ?? "—"}</td>}
+        <TableScroll className="mt-3">
+          <table className="w-full text-xs" data-testid="preview-subjects">
+            <thead>
+              <tr className={`border-b border-border text-left ${muted}`}>
+                <th scope="col" className="py-1.5 pr-2 font-medium">{t("reportView.subject")}</th>
+                <th scope="col" className="py-1.5 pr-2 text-right font-medium">{t("reportView.percent")}</th>
+                {letters && <th scope="col" className="py-1.5 pr-2 font-medium">{t("reportView.grade")}</th>}
+                {points && <th scope="col" className="py-1.5 text-right font-medium">{t("reportView.points")}</th>}
               </tr>
-            ))}
-          </tbody>
-          <tfoot>
-            <tr className="font-semibold">
-              <th scope="row" className="py-1.5 pr-2 text-left">{t("reportView.overall")}</th>
-              <td className="py-1.5 pr-2 text-right tabular-nums">{overall}</td>
-              {letters && <td className="py-1.5 pr-2">{bandOf(overall, bands)?.label ?? "—"}</td>}
-              {points && <td className="py-1.5 text-right tabular-nums" data-testid="preview-mean-points">{meanPoints ?? "—"}</td>}
-            </tr>
-          </tfoot>
-        </table>
+            </thead>
+            <tbody>
+              {rows.map((row) => (
+                <tr key={row.subject} className="border-b border-border/60" data-testid="preview-subject">
+                  <th scope="row" className="py-1.5 pr-2 text-left font-medium">{row.subject}</th>
+                  <td className="py-1.5 pr-2 text-right tabular-nums">{row.percent}</td>
+                  {letters && (
+                    <td className="py-1.5 pr-2" data-testid="preview-grade">
+                      <span className="font-semibold">{row.band?.label ?? "—"}</span>
+                      {row.band?.descriptor && <span className={`ml-1.5 ${muted}`}>{row.band.descriptor}</span>}
+                    </td>
+                  )}
+                  {points && <td className="py-1.5 text-right tabular-nums">{row.band?.points ?? "—"}</td>}
+                </tr>
+              ))}
+            </tbody>
+            <tfoot>
+              <tr className="font-semibold">
+                <th scope="row" className="py-1.5 pr-2 text-left">{t("reportView.overall")}</th>
+                <td className="py-1.5 pr-2 text-right tabular-nums">{overall}</td>
+                {letters && <td className="py-1.5 pr-2">{bandOf(overall, bands)?.label ?? "—"}</td>}
+                {points && <td className="py-1.5 text-right tabular-nums" data-testid="preview-mean-points">{meanPoints ?? "—"}</td>}
+              </tr>
+            </tfoot>
+          </table>
+        </TableScroll>
 
         {layout.showCoScholastic && areas.length > 0 && (
           <div className="mt-4" data-testid="preview-co">

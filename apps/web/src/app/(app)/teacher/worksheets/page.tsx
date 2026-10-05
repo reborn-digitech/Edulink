@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { getT } from "@/lib/i18n/server";
 import { FreshSeedInput } from "./fresh-seed";
 import { PageHeader } from "@/components/ui/page-header";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -46,7 +47,7 @@ export default async function WorksheetsPage() {
               <select
                 name="slug"
                 required
-                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
+                className={fieldClass()}
               >
                 {topics.map((topic) => (
                   <option key={topic.slug} value={topic.slug}>
@@ -63,7 +64,7 @@ export default async function WorksheetsPage() {
                 name="level"
                 required
                 defaultValue="3"
-                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
+                className={fieldClass()}
               >
                 {Array.from({ length: MAX_LEVEL }, (_, i) => (
                   <option key={i + 1} value={i + 1}>
@@ -81,7 +82,7 @@ export default async function WorksheetsPage() {
                 max={30}
                 defaultValue={10}
                 required
-                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
+                className={fieldClass()}
               />
             </label>
             <div className="flex items-end">

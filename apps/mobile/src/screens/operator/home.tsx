@@ -24,6 +24,7 @@ import { useSession } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { Chips, openWeb } from "../staff/shared";
 import { Note, Pill, relativeTime } from "../family/shared";
+import { formatDate } from "@/lib/dates";
 
 type Section = "schools" | "jobs" | "experts" | "team" | "log";
 type SchoolState = "live" | "noadmin" | "unverified" | "removed" | "all";
@@ -227,7 +228,7 @@ function Dashboard({ d, onOpen }: { d: OperatorDashboard; onOpen: (schoolId: str
               key={s.id}
               icon="receipt"
               title={s.name}
-              caption={`${s.dueAt} · ${dueLine(s.daysToDue)}`}
+              caption={`${formatDate(s.dueAt)} · ${dueLine(s.daysToDue)}`}
               right={<Pill label={statusKey(s.status)} tone={s.daysToDue < 0 ? "danger" : "warn"} />}
               onPress={() => onOpen(s.id)}
             />

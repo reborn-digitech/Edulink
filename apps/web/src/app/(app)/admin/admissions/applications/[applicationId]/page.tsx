@@ -68,7 +68,8 @@ export default async function OfficeApplicationPage({
     }),
     view.can.admit
       ? db.class.findMany({
-          where: { schoolId: ctx.schoolId, archivedAt: null },
+          // Only a class of the grade applied for (or one given no grade): admit() refuses any other (A3-journeys-40).
+          where: { schoolId: ctx.schoolId, archivedAt: null, OR: [{ gradeLevel: { equals: view.gradeApplied, mode: "insensitive" } }, { gradeLevel: null }] },
           orderBy: { name: "asc" },
           select: { id: true, name: true, gradeLevel: true },
         })

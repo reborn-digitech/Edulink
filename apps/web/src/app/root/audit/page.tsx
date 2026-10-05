@@ -9,6 +9,7 @@ import { EmptyState } from "@/components/ui/states";
 import { formatInZone, relativeTime } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata() {
   const t = await getT();
@@ -95,7 +96,7 @@ export default async function ServerAuditPage({
             <select
               name="action"
               defaultValue={params.action ?? ""}
-              className="mt-1 min-h-10 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg"
+              className={fieldClass("mt-1")}
             >
               <option value="">{t("root.auditAll")}</option>
               {families.map((f) => (
@@ -120,16 +121,16 @@ export default async function ServerAuditPage({
               type="search"
               name="q"
               defaultValue={params.q ?? ""}
-              className="mt-1 min-h-10 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg"
+              className={fieldClass("mt-1")}
             />
           </label>
           <label className="block text-xs font-medium text-fg-muted">
             {t("root.auditFrom")}
-            <input type="date" name="from" defaultValue={params.from ?? ""} className="mt-1 min-h-10 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg" />
+            <input type="date" name="from" defaultValue={params.from ?? ""} className={fieldClass("mt-1")} />
           </label>
           <label className="block text-xs font-medium text-fg-muted">
             {t("root.auditTo")}
-            <input type="date" name="to" defaultValue={params.to ?? ""} className="mt-1 min-h-10 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg" />
+            <input type="date" name="to" defaultValue={params.to ?? ""} className={fieldClass("mt-1")} />
           </label>
           <div className="flex items-end gap-2">
             <button

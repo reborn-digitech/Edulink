@@ -24,6 +24,7 @@ import { cn } from "@/lib/cn";
 import { PersonLink } from "@/components/person-link";
 import { PageHeader } from "@/components/ui/page-header";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -53,13 +54,17 @@ export default async function AttendanceHistoryPage({
 
   if (classes.length === 0) {
     return (
-      <EmptyState
-        icon={<ClockCounterClockwiseIcon weight="duotone" className="size-8" />}
-        title={t("attendanceHistory.noClasses")}
-        description={t("attendanceHistory.noClassesBody")}
-      />
+      <div className="space-y-6">
+        <PageHeader title={t("attendanceHistory.title")} />
+        <EmptyState
+          icon={<ClockCounterClockwiseIcon weight="duotone" className="size-8" />}
+          title={t("attendanceHistory.noClasses")}
+          description={t("attendanceHistory.noClassesBody")}
+        />
+      </div>
     );
   }
+
 
   const thisMonth = todayKey(school.timezone).slice(0, 7);
   const month = params.month && MONTH_KEY.test(params.month) ? params.month : thisMonth;
@@ -94,7 +99,7 @@ export default async function AttendanceHistoryPage({
           <select
             name="classId"
             defaultValue={selectedId ?? ""}
-            className="rounded-lg border border-border bg-surface px-3 py-2 text-sm text-fg"
+            className={fieldClass("w-auto")}
           >
             {!selectedId && <option value="">{t("attendanceHistory.chooseClass")}</option>}
             {classes.map((klass) => (
@@ -113,7 +118,7 @@ export default async function AttendanceHistoryPage({
             name="month"
             defaultValue={month}
             max={thisMonth}
-            className="rounded-lg border border-border bg-surface px-3 py-2 text-sm text-fg"
+            className={fieldClass("w-auto")}
           />
         </label>
         <Button type="submit" variant="secondary" size="sm">
@@ -295,7 +300,7 @@ async function Mark({ status }: { status: AttendanceStatus | null }) {
   return (
     <span
       title={t(meta.labelKey)}
-      className="inline-grid size-6 place-items-center rounded-md text-xs font-bold"
+      className="inline-grid size-6 place-items-center rounded-[var(--radius-md)] text-xs font-bold"
       style={{ backgroundColor: `var(--att-${meta.token}-soft)`, color: `var(--att-${meta.token})` }}
     >
       {t(meta.shortKey)}

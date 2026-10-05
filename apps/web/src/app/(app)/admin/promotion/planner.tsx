@@ -14,6 +14,7 @@ import { useT } from "@/lib/i18n";
 import { cn } from "@/lib/cn";
 import { nameCarriesSection, withSection } from "@/lib/class-names";
 import { promoteSchoolAction } from "./actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 /** A new class this row owns beyond its own destination — the B to its A. */
 type Extra = { key: string; name: string; grade: string; section: string };
@@ -328,18 +329,23 @@ export function PromotionPlanner({ plan }: { plan: PromotionClass[] }) {
                   {klass.pupils.length > 0 && (
                     <div>
                       <div className="flex flex-wrap items-center gap-3">
-                        <button
+                        <Button
                           type="button"
+                          variant="ghost"
+                          size="sm"
                           onClick={() => update(klass.id, { open: !row.open })}
-                          className="inline-flex items-center gap-1 text-xs font-medium text-fg-muted hover:text-fg"
                           aria-expanded={row.open}
+                          icon={row.open ? <CaretUpIcon className="size-3.5" /> : <CaretDownIcon className="size-3.5" />}
                         >
-                          {row.open ? <CaretUpIcon className="size-3.5" /> : <CaretDownIcon className="size-3.5" />}
                           {t("promotion.sortPupils")}
-                        </button>
+                        </Button>
                         {row.kind !== "LEAVE" && row.kind !== "STAY" && (
-                          <button
+                          <Button
                             type="button"
+                            variant="ghost"
+                            size="sm"
+                            className="text-accent-strong"
+                            icon={<PlusIcon className="size-3.5" />}
                             data-testid={`promo-add-section-${klass.id}`}
                             onClick={() => {
                               const used = [row.newSection, ...row.extras.map((e) => e.section)];
@@ -355,11 +361,10 @@ export function PromotionPlanner({ plan }: { plan: PromotionClass[] }) {
                                 ...(row.kind === "NEW" ? { newSection: mainSection, newName: withSection(row.newName, mainSection) } : {}),
                               });
                             }}
-                            className="inline-flex items-center gap-1 text-xs font-medium text-accent-strong hover:underline"
                           >
-                            <PlusIcon className="size-3.5" />
                             {t("promotion.addSection")}
-                          </button>
+                          </Button>
+
                         )}
                       </div>
                       {row.open && (
@@ -370,7 +375,7 @@ export function PromotionPlanner({ plan }: { plan: PromotionClass[] }) {
                               const held = row.holdBack.has(p.membershipId);
                               const dest = row.assign.get(p.membershipId) ?? WITH;
                               return (
-                                <li key={p.membershipId} className={cn("flex items-center gap-2 rounded-md px-2 py-1 text-sm", held ? "bg-warn-soft" : "hover:bg-surface-muted")}>
+                                <li key={p.membershipId} className={cn("flex items-center gap-2 rounded-[var(--radius-md)] px-2 py-1 text-sm", held ? "bg-warn-soft" : "hover:bg-surface-muted")}>
                                   <label className="flex min-w-0 flex-1 cursor-pointer items-center gap-2">
                                     <input
                                       type="checkbox"
@@ -396,7 +401,7 @@ export function PromotionPlanner({ plan }: { plan: PromotionClass[] }) {
                                         else assign.set(p.membershipId, e.target.value);
                                         update(klass.id, { assign });
                                       }}
-                                      className="max-w-[11rem] rounded-[var(--radius-sm)] border border-border bg-surface px-1.5 py-0.5 text-xs text-fg"
+                                      className={fieldClass("w-auto max-w-[11rem]")}
                                     >
                                       <option value={WITH}>{row.kind === "STAY" ? t("promotion.staysHere") : t("promotion.withTheClass")}</option>
                                       {pupilOptions.map((d) => (

@@ -5,6 +5,8 @@ import { RecruiterDriveScreen, RecruiterPlacementHome } from "@/screens/placemen
 import { TpoHome } from "@/screens/placement/tpo";
 import { TpoDriveScreen } from "@/screens/placement/tpo-drive";
 import { json, me, mountStaff } from "./staff-harness";
+import { BackCtx } from "@/components/chrome";
+import { shouldRetry } from "@/lib/query";
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
 jest.mock("expo-router", () => ({ useRouter: () => mockRouter, usePathname: () => "/", useLocalSearchParams: () => mockRouter.params }));
@@ -76,6 +78,17 @@ describe("a student's placement on the phone (4 Oct 2026)", () => {
     await waitFor(() => expect(calls().some((c) => c.line === "POST /api/v1/student/placement/drives/d1/apply")).toBe(true));
     expect(calls().find((c) => c.line === "POST /api/v1/student/placement/drives/d1/apply")?.body).toEqual({ consent: true });
     expect(await screen.findByText("Applied. The company sees your profile and record for this drive.")).toBeTruthy();
+  });
+
+  it("tells a minor their application waits for the guardian, never that the company sees it (A3-journeys-20)", async () => {
+    await mountStaff(<StudentPlacementScreen />, "STUDENT", {
+      "GET /api/v1/student/placement": () => json(placement()),
+      "POST /api/v1/student/placement/drives/d1/apply": () => json(application({ id: "a9", driveId: "d1", status: "APPLIED", results: [], consentAt: null })),
+    }, { me: atCollege("STUDENT", ON) });
+    await fireEvent.press(await screen.findByRole("switch", { name: "I agree to share my profile and record with ZZ Zeta Analytics for this drive." }));
+    await fireEvent.press(screen.getByRole("button", { name: "Apply" }));
+    expect(await screen.findByText("Applied. Your guardian is asked to consent; the company sees nothing until they do.")).toBeTruthy();
+    expect(screen.queryByText("Applied. The company sees your profile and record for this drive.")).toBeNull();
   });
 
   it("answers an offer, withdraws an application, opens the practice and the mentors' times", async () => {
@@ -159,12 +172,12 @@ describe("the recruiter on the phone (4 Oct 2026)", () => {
       "GET /api/v1/recruiter/drives/d2": () => json({ ...recruiterDrive, applicants: [application()] }),
       "POST /api/v1/placement/drives/d2/results": () => json({ saved: 1, told: 1 }),
     }, { me: recruiterMe });
-    expect(await screen.findByText("2 students qualify at the college.")).toBeTruthy();
+    expect(await screen.findByText("Students who qualify at the college: 2.")).toBeTruthy();
     expect(screen.getByText("ZZ Riya")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Round 1: Through" }));
     await waitFor(() => expect(calls().some((c) => c.line === "POST /api/v1/placement/drives/d2/results")).toBe(true));
     expect(calls().find((c) => c.line === "POST /api/v1/placement/drives/d2/results")?.body).toEqual({ round: 1, results: [{ studentMembershipId: "m1", outcome: "PASSED" }] });
-    expect(await screen.findByText("1 outcomes saved; the students are told.")).toBeTruthy();
+    expect(await screen.findByText("Outcomes saved: 1; the students are told.")).toBeTruthy();
   });
 
   it("says a closed drive is not found", async () => {
@@ -172,14 +185,39 @@ describe("the recruiter on the phone (4 Oct 2026)", () => {
     await mountStaff(<RecruiterDriveScreen />, "RECRUITER", { "GET /api/v1/recruiter/drives/d9": () => json({ error: "That drive is not one you can see, or it has closed.", code: "NOT_FOUND" }, 404) }, { me: recruiterMe });
     expect(await screen.findByText("That drive is not one you can see, or it has closed.")).toBeTruthy();
   });
+
+  it("leaves the skeleton for the not-found sentence at once, offering the way back and no retry (A3-states-14)", async () => {
+    mockRouter.params = { driveId: "d9" };
+    const onBack = jest.fn();
+    const { calls } = await mountStaff(
+      <BackCtx.Provider value={{ onBack }}>
+        <RecruiterDriveScreen />
+      </BackCtx.Provider>,
+      "RECRUITER",
+      { "GET /api/v1/recruiter/drives/d9": () => json({ error: "That drive is not one you can see, or it has closed.", code: "NOT_FOUND" }, 404) },
+      { me: recruiterMe, retry: shouldRetry },
+    );
+    expect(screen.getByRole("progressbar")).toBeTruthy();
+    // The app's policy asks once: a 404 is the server's answer, not a flicker
+    // (the old one retried after a second, and a loaded run saw only the skeleton).
+    expect(await screen.findByText("That drive is not one you can see, or it has closed.", {}, { timeout: 500 })).toBeTruthy();
+    expect(screen.queryByRole("progressbar")).toBeNull();
+    expect(calls().filter((c) => c.line === "GET /api/v1/recruiter/drives/d9")).toHaveLength(1);
+    expect(screen.queryByRole("button", { name: "Try again" })).toBeNull();
+    const backs = screen.getAllByRole("button", { name: "Back" });
+    await fireEvent.press(backs[backs.length - 1]!);
+    expect(onBack).toHaveBeenCalled();
+  });
 });
 
 describe("the TPO on the phone (4 Oct 2026)", () => {
   it("shows the season and the drives", async () => {
     const table = { batchYear: 2027, finalYear: 3, placed: 1, higherStudies: 0, entrepreneurs: 0, placementIndex: 0.333, medianSalaryRupees: 650_000, offers: 1, byCompany: [], byProgramme: [], byCategory: [], bands: [], bySector: [], offersPerStudent: 1 };
-    await mountStaff(<TpoHome />, "TPO", { "GET /api/v1/placement/summary": () => json({ batchYear: 2027, table, drives: [drive("d1")], requirementsWaiting: 1, internshipsWaiting: 2, unverifiedCompanies: 0, canEdit: true }) }, { me: atCollege("TPO", ON) });
+    await mountStaff(<TpoHome />, "TPO", { "GET /api/v1/placement/summary": () => json({ batchYear: 2027, table, drives: [drive("d1")], requirementsWaiting: 1, internshipsWaiting: 2, unverifiedCompanies: 1, canEdit: true }) }, { me: atCollege("TPO", ON) });
     expect(await screen.findByText("₹6.5 lakh a year")).toBeTruthy();
     expect(screen.getByText("2 internships to approve")).toBeTruthy();
+    // One unchecked company reads singular (A3-journeys-40).
+    expect(screen.getByText("1 company to check")).toBeTruthy();
     expect(screen.getByText("ZZ Analyst d1")).toBeTruthy();
   });
 
@@ -219,7 +257,7 @@ describe("the TPO's drive on the phone (5 Oct 2026)", () => {
     await fireEvent.press(screen.getByRole("button", { name: "Round 1: Through" }));
     await waitFor(() => expect(calls().some((c) => c.line === "POST /api/v1/placement/drives/d2/results")).toBe(true));
     expect(calls().find((c) => c.line === "POST /api/v1/placement/drives/d2/results")?.body).toEqual({ round: 1, results: [{ studentMembershipId: "m1", outcome: "PASSED" }] });
-    expect(await screen.findByText("1 outcomes saved; the students are told.")).toBeTruthy();
+    expect(await screen.findByText("Outcomes saved: 1; the students are told.")).toBeTruthy();
   });
 
   it("offers no buttons on a pooled drive the college only guests, and shows a refusal as the server says it", async () => {

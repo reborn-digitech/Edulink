@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { AccessError, requireUser } from "@/lib/tenancy";
 import { buildProgressReport } from "@/lib/reports";
 import { recordsForStudentMembership } from "@/lib/school-record";
@@ -12,6 +10,9 @@ import { Avatar } from "@/components/ui/avatar";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
 import { PrintButton } from "./print-button";
 import { getT } from "@/lib/i18n/server";
+import { TableScroll } from "@/components/ui/table-scroll";
+import { BackLink, PAGE_TITLE } from "@/components/ui/page-header";
+import { cn } from "@/lib/cn";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -73,20 +74,16 @@ export default async function ReportPage({
   return (
     <div className="mx-auto max-w-3xl space-y-6 print:max-w-none">
       <div className="no-print flex flex-wrap items-center justify-between gap-3">
-        <Link
-          href={session.role === "PARENT" ? "/parent" : "/teacher/classes"}
-          className="inline-flex items-center gap-1.5 text-sm text-fg-muted hover:text-fg"
-        >
-          <ArrowLeftIcon weight="bold" className="size-4" />
-          {t("common.back")}
-        </Link>
+        <BackLink href={session.role === "PARENT" ? "/parent" : "/teacher/classes"} label={t("common.back")} />
         <PrintButton />
       </div>
 
       <header className="flex flex-wrap items-center gap-4 border-b border-border pb-5">
         <Avatar avatarKey={report.student.avatarKey} name={report.student.name} size="lg" />
         <div className="min-w-0 flex-1">
-          <h1 className="text-2xl font-bold tracking-tight">{report.student.name}</h1>
+          {/* Beside the avatar on a sheet that prints, so not a PageHeader; the title has its look (A3-states-9). */}
+          <h1 className={cn(PAGE_TITLE, "print:text-black")}>{report.student.name}</h1>
+
           <p className="text-sm text-fg-muted">
             {report.school.name}
             {report.student.gradeLevel ? ` · ${t("reportView.gradeLevel", { level: report.student.gradeLevel })}` : ""}
@@ -160,32 +157,34 @@ export default async function ReportPage({
                   : t("reportView.uncategorisedMany", { count: report.grades.uncategorised })}
               </p>
             )}
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-fg-muted">
-                  <th scope="col" className="py-1.5 font-medium">{t("reportView.work")}</th>
-                  <th scope="col" className="py-1.5 font-medium">{t("reportView.klass")}</th>
-                  <th scope="col" className="py-1.5 text-right font-medium">{t("reportView.score")}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {report.grades.marked.map((row, index) => (
-                  <tr key={`${row.title}-${index}`} className="border-b border-border/60 align-top">
-                    <td className="py-1.5">
-                      {row.title}
-                      {row.comment && (
-                        <span className="block text-xs italic text-fg-muted">“{row.comment}”</span>
-                      )}
-                    </td>
-                    <td className="py-1.5 text-fg-muted">{row.className}</td>
-                    <td className="py-1.5 text-right tabular-nums">
-                      {formatMilli(row.scoreMilli)}
-                      {row.pointsMilli ? ` / ${formatMilli(row.pointsMilli)}` : ""}
-                    </td>
+            <TableScroll className="print:overflow-visible">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-fg-muted">
+                    <th scope="col" className="py-1.5 font-medium">{t("reportView.work")}</th>
+                    <th scope="col" className="py-1.5 font-medium">{t("reportView.klass")}</th>
+                    <th scope="col" className="py-1.5 text-right font-medium">{t("reportView.score")}</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {report.grades.marked.map((row, index) => (
+                    <tr key={`${row.title}-${index}`} className="border-b border-border/60 align-top">
+                      <td className="py-1.5">
+                        {row.title}
+                        {row.comment && (
+                          <span className="block text-xs italic text-fg-muted">“{row.comment}”</span>
+                        )}
+                      </td>
+                      <td className="py-1.5 text-fg-muted">{row.className}</td>
+                      <td className="py-1.5 text-right tabular-nums">
+                        {formatMilli(row.scoreMilli)}
+                        {row.pointsMilli ? ` / ${formatMilli(row.pointsMilli)}` : ""}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </TableScroll>
           </>
         )}
       </section>

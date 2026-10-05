@@ -39,4 +39,3 @@ export const TH = "py-2 pr-3 text-left text-xs font-semibold uppercase tracking-
 export const TD = "py-2 pr-3 align-top";
 export const NUM = "py-2 pr-3 text-right tabular-nums align-top";
 export const LINK = "font-medium text-accent-strong underline underline-offset-2 hover:text-accent";
-export const INPUT = "w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg";

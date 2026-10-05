@@ -65,6 +65,7 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
     return (
       <Shell t={t}>
         <EmptyState
+          heading="h1"
           title={t("invite.invalidTitle")}
           description={t("invite.invalidBody")}
           action={

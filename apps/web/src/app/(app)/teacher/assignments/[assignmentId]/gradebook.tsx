@@ -21,6 +21,7 @@ import { fromMilli } from "@/lib/validation";
 import { cn } from "@/lib/cn";
 import { submitGrades } from "../actions";
 import { useT } from "@/lib/i18n";
+import { fieldClass } from "@/components/ui/field-class";
 
 export type GradeRow = {
   membershipId: string;
@@ -204,7 +205,7 @@ export function Gradebook({
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder={t("teacher.findStudent")}
-          className="min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface pl-11 pr-4 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+          className={fieldClass("pl-11")}
         />
       </label>
 
@@ -318,11 +319,9 @@ export function Gradebook({
                         aria-label={t("teacher.markFor", { name: row.name })}
                         aria-invalid={isInvalid || undefined}
                         placeholder="—"
-                        className={cn(
-                          "h-11 w-16 rounded-[var(--radius-sm)] border bg-surface text-center text-base font-bold tabular-nums outline-none",
-                          isInvalid
-                            ? "border-danger text-danger"
-                            : "border-border focus:border-accent focus:ring-2 focus:ring-accent-ring/40",
+                        className={fieldClass(
+                          cn("w-16 px-1 text-center text-base font-bold tabular-nums", isInvalid && "text-danger"),
+                          isInvalid,
                         )}
                       />
                       {maxPoints !== null && (
@@ -365,7 +364,7 @@ export function Gradebook({
                         rows={2}
                         autoFocus
                         placeholder={t("teacher.commentPlaceholder")}
-                        className="w-full resize-y rounded-[var(--radius-sm)] border border-border bg-surface p-2.5 text-sm outline-none focus:border-accent"
+                        className={fieldClass("resize-y")}
                       />
                       <p className="mt-1 text-xs text-fg-muted">
                         {t("teacher.familySeesThis")}

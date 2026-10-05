@@ -10,6 +10,7 @@ import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { newAssignment } from "../actions";
 import { useT } from "@/lib/i18n";
+import { fieldClass } from "@/components/ui/field-class";
 
 const CATEGORIES = ["Homework", "Classwork", "Quiz", "Test", "Project", "Reading"];
 
@@ -34,6 +35,11 @@ export function AssignmentForm({
   const [points, setPoints] = useState("20");
   const [dueDate, setDueDate] = useState("");
   const [dueTime, setDueTime] = useState("16:00");
+  // A due date already past stands only when the teacher ticks that they mean it (A3-journeys-25).
+  const [confirmPastDue, setConfirmPastDue] = useState(false);
+  const [duePast, setDuePast] = useState(false);
+  // Read when the date or time changes (an event, not the render, may ask the clock).
+  const notePast = (date: string, time: string) => setDuePast(date !== "" && new Date(`${date}T${time || "16:00"}:00`).getTime() < Date.now());
   const [files, setFiles] = useState<File[]>([]);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -73,6 +79,7 @@ export function AssignmentForm({
       if (pointsValue !== undefined) payload.set("points", String(pointsValue));
       payload.set("dueAt", dueAt ?? "");
       payload.set("publish", String(publish));
+      if (confirmPastDue) payload.set("confirmPastDue", "true");
       for (const file of files) payload.append("files", file);
 
       const result = await newAssignment(payload);
@@ -103,6 +110,8 @@ export function AssignmentForm({
         setBody("");
         setFiles([]);
         setDueDate("");
+        setConfirmPastDue(false);
+        setDuePast(false);
         router.refresh();
         window.scrollTo({ top: 0 });
         return;
@@ -158,7 +167,7 @@ export function AssignmentForm({
           onChange={(e) => setBody(e.target.value.slice(0, 20_000))}
           rows={5}
           placeholder={t("teacher.instructionsPlaceholder")}
-          className="mt-1.5 w-full resize-y rounded-[var(--radius-md)] border border-border bg-surface p-3.5 text-[0.9375rem] leading-relaxed outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+          className={fieldClass("mt-1.5 resize-y leading-relaxed")}
         />
         <p className="mt-1 text-xs text-fg-muted">{t("teacher.instructionsHint")}</p>
       </div>
@@ -202,16 +211,28 @@ export function AssignmentForm({
           label={t("teacher.dueDate")}
           value={dueDate}
           error={errors.dueDate}
-          onChange={(e) => setDueDate(e.target.value)}
+          onChange={(e) => {
+            setDueDate(e.target.value);
+            notePast(e.target.value, dueTime);
+          }}
         />
         <TextField
           label={t("teacher.dueTime")}
           type="time"
           value={dueTime}
-          onChange={(e) => setDueTime(e.target.value)}
+          onChange={(e) => {
+            setDueTime(e.target.value);
+            notePast(dueDate, e.target.value);
+          }}
           hint={t("teacher.dueTimeHint")}
         />
       </div>
+      {duePast ? (
+        <label className="flex min-h-11 cursor-pointer items-center gap-2 text-sm text-fg">
+          <input type="checkbox" className="size-4 accent-[var(--accent)]" checked={confirmPastDue} onChange={(e) => setConfirmPastDue(e.target.checked)} />
+          {t("teacher.pastDueConfirm")}
+        </label>
+      ) : null}
 
       <div className="flex flex-col gap-2 border-t border-border pt-5 sm:flex-row">
         <Button

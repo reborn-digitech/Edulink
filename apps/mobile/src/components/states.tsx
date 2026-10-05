@@ -6,7 +6,8 @@ import { haptics } from "@/lib/haptics";
 import { Text } from "./text";
 import { Button } from "./button";
 import { Icon } from "./icon";
-import { Bone } from "./chrome";
+import { Bone, useBack } from "./chrome";
+import { isNotFound } from "@/lib/query";
 
 /**
  * The four states every screen has, from one set: the web's EmptyState and
@@ -64,17 +65,27 @@ export function Empty({ title, body, action, icon = "tray" }: { title: string; b
   );
 }
 
-export function Failed({ message, onRetry }: { message: string; onRetry?: () => void }) {
+/**
+ * An error with what can be done about it. Pass the query's `error` and a
+ * refusal that asking again cannot change (403, 404, 410: not found, not
+ * yours, gone) offers the way back instead of "Try again" (A3-states-15);
+ * a network failure or a 5xx keeps the retry.
+ */
+export function Failed({ message, error, onRetry }: { message?: string; error?: unknown; onRetry?: () => void }) {
   const t = useTheme();
   const tr = useT();
+  const back = useBack();
+  const final = isNotFound(error);
+  const said = message ?? (error instanceof Error ? error.message : tr("common.tryAgain"));
   return (
     <View style={{ padding: t.space[5], gap: t.space[3], backgroundColor: t.dangerSoft, borderRadius: t.radius.lg }}>
       {/* The sentence is the alert; the button stays its own element, so a
           screen reader reaches it instead of hearing one grouped blob. */}
       <Text variant="base" bold tone="danger" accessibilityRole="alert" accessibilityLiveRegion="assertive">
-        {message}
+        {said}
       </Text>
-      {onRetry ? <Button label={tr("common.retry")} variant="secondary" onPress={onRetry} /> : null}
+      {onRetry && !final ? <Button label={tr("common.retry")} variant="secondary" onPress={onRetry} /> : null}
+      {final && back ? <Button label={tr("common.back")} variant="secondary" onPress={back.onBack} /> : null}
     </View>
   );
 }
@@ -85,7 +96,8 @@ export function Failed({ message, onRetry }: { message: string; onRetry?: () => 
  * in a chevron unless something else sits on the right, so it looks like
  * something that opens.
  */
-export function Row({ title, caption, right, onPress, icon }: { title: string; caption?: string; right?: ReactNode; onPress?: () => void; icon?: string }) {
+/** `label` replaces what a screen reader says for a tappable row (title and caption by default), for a row whose state is drawn beside it. */
+export function Row({ title, caption, right, onPress, icon, label }: { title: string; caption?: string; right?: ReactNode; onPress?: () => void; icon?: string; label?: string }) {
   const t = useTheme();
   const inner = (
     <View style={{ minHeight: t.tap, flexDirection: "row", alignItems: "center", gap: t.space[3], paddingVertical: t.space[2] }}>
@@ -112,7 +124,7 @@ export function Row({ title, caption, right, onPress, icon }: { title: string; c
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={caption ? `${title}, ${caption}` : title}
+      accessibilityLabel={label ?? (caption ? `${title}, ${caption}` : title)}
       onPress={() => {
         haptics.tap();
         onPress();

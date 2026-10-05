@@ -10,6 +10,7 @@ import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 import { REVIEW_AUDIENCES, type ReviewAudience } from "@/lib/constants";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
+import { fieldClass } from "@/components/ui/field-class";
 
 const AUDIENCE_KEY: Record<ReviewAudience, TranslationKey> = {
   STUDENTS: "reviews.audienceStudents",
@@ -104,7 +105,7 @@ export function OpenRoundForm({
           <select
             value={audience}
             onChange={(event) => setAudience(event.target.value as ReviewAudience)}
-            className="mt-1 min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+            className={fieldClass("mt-1")}
           >
             {REVIEW_AUDIENCES.map((option) => (
               <option key={option} value={option}>

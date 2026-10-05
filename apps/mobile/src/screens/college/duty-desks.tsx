@@ -25,10 +25,12 @@ import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Stat, SwitchR
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { useSession } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { Chips, MultiChips } from "../staff/shared";
 import { todayKey } from "../teacher/support";
+import { formatDate, formatDateTime } from "@/lib/dates";
 
 /**
  * THE DUTIES' DESKS ON THE PHONE (5 Oct 2026), the web's /duties/<x> pages and
@@ -116,12 +118,8 @@ function useWrite<A, R>(fn: (args: A) => Promise<R>, saved: (r: R) => string, re
 }
 
 /** "2026-10-05T09:30:00Z" as the reader's day and time on the device's clock; the ISO text if it cannot be read. */
-function when(iso: string, locale: string): string {
-  try {
-    return new Date(iso).toLocaleString(locale === "en" ? "en-IN" : `${locale}-IN-u-nu-latn`, { dateStyle: "medium", timeStyle: "short" });
-  } catch {
-    return iso.slice(0, 16).replace("T", " ");
-  }
+function when(iso: string, _locale?: string): string {
+  return formatDateTime(iso);
 }
 
 /* ----------------------------------------------------------- sign rows */
@@ -212,7 +210,7 @@ export function LabDeskScreen() {
             </Text>
             {d.inventoryOn && d.breakages.length === 0 ? <Text tone="muted">{t("duties.lab.noBreakages")}</Text> : null}
             {d.breakages.map((b) => (
-              <Row key={b.id} title={`${b.itemName} (${b.itemCode}) · ${b.quantity}`} caption={[b.at.slice(0, 10), b.location, b.note, b.byName].filter(Boolean).join(" · ")} />
+              <Row key={b.id} title={`${b.itemName} (${b.itemCode}) · ${b.quantity}`} caption={[formatDate(b.at), b.location, b.note, b.byName].filter(Boolean).join(" · ")} />
             ))}
           </Card>
         </>
@@ -222,7 +220,7 @@ export function LabDeskScreen() {
 }
 
 function labSignLine(t: T, r: { courseCode: string; experimentNo: number; title: string; studentName: string; performedOn: string }): string {
-  return t("duties.lab.signLine", { course: r.courseCode, n: r.experimentNo, title: r.title, student: r.studentName, day: r.performedOn });
+  return t("duties.lab.signLine", { course: r.courseCode, n: r.experimentNo, title: r.title, student: r.studentName, day: formatDate(r.performedOn) });
 }
 
 /* ------------------------------------------------- the practical record */
@@ -285,7 +283,7 @@ export function PracticalsScreen() {
             rows={unsigned}
             line={(row) => {
               const r = unsigned.find((x) => x.id === row.id)!;
-              return t("streamRecords.practicals.signLine", { n: r.experimentNo, title: r.title, student: r.studentName, day: r.performedOn });
+              return t("streamRecords.practicals.signLine", { n: r.experimentNo, title: r.title, student: r.studentName, day: formatDate(r.performedOn) });
             }}
             onSigned={() => sheet.refetch()}
           />
@@ -419,11 +417,11 @@ function Posting({ posting: p, canObserve, today, onSaved }: { posting: Teaching
     <View style={{ gap: th.space[2], paddingVertical: th.space[2], borderTopWidth: 1, borderTopColor: th.border }}>
       <Text bold>{`${p.studentName} · ${p.practiceSchoolName}`}</Text>
       <Text variant="sm" tone="muted">
-        {t("duties.teachingPractice.spanLine", { from: p.from, to: p.to, weeks: p.weeks, planned: p.lessonsPlanned, observed: p.observations.length })}
+        {t("duties.teachingPractice.spanLine", { from: formatDate(p.from), to: formatDate(p.to), weeks: p.weeks, planned: p.lessonsPlanned, observed: p.observations.length })}
       </Text>
       {p.observations.map((o) => (
         <Text key={o.id} variant="sm">
-          {[t("duties.teachingPractice.observationLine", { day: o.at, observer: o.observerName }), t("duties.teachingPractice.gradeN", { grade: o.grade }), o.note || null].filter(Boolean).join(" · ")}
+          {[t("duties.teachingPractice.observationLine", { day: formatDate(o.at), observer: o.observerName }), t("duties.teachingPractice.gradeN", { grade: o.grade }), o.note || null].filter(Boolean).join(" · ")}
         </Text>
       ))}
       {canObserve ? (
@@ -556,22 +554,23 @@ export function ResearchDeskScreen() {
           </StatRow>
           <Card title={t("duties.research.facultyTitle")}>
             <Text variant="sm" tone="muted">
-              {t("duties.research.facultyBody")}
+              {t(d.perFaculty.some((f) => f.apiScoreInputs !== null) ? "duties.research.facultyBody" : "duties.research.facultyBodyDuty")}
             </Text>
             {d.perFaculty.length === 0 ? <Text tone="muted">{t("duties.research.noFaculty")}</Text> : null}
             {d.perFaculty.map((f) => (
               <Row
                 key={f.membershipId}
                 icon="medal"
-                title={`${f.name} · ${t("duties.research.colApi")} ${f.apiScore}`}
+                title={f.apiScore === null ? f.name : `${f.name} · ${t("duties.research.colApi")} ${f.apiScore}`}
                 caption={[
                   `${t("duties.research.colPublications")} ${f.publications}`,
                   `${t("duties.research.colBooks")} ${f.books}`,
                   `${t("duties.research.colProjects")} ${f.projects}`,
                   t("duties.research.lakhsN", { lakhs: f.amountLakhs }),
-                  `${t("duties.research.colTeaching")} ${f.apiScoreInputs.teaching}`,
-                  `${t("duties.research.colResearch")} ${f.apiScoreInputs.research}`,
-                  `${t("duties.research.colService")} ${f.apiScoreInputs.service}`,
+                  // The API score is the office's and the head's (A3-S-11): null to the duty's holder.
+                  ...(f.apiScoreInputs
+                    ? [`${t("duties.research.colTeaching")} ${f.apiScoreInputs.teaching}`, `${t("duties.research.colResearch")} ${f.apiScoreInputs.research}`, `${t("duties.research.colService")} ${f.apiScoreInputs.service}`]
+                    : []),
                 ].join(" · ")}
               />
             ))}
@@ -600,6 +599,8 @@ export function ResearchDeskScreen() {
 
 /** The exam flying squad's desk: GET /api/v1/duties/exam-squad. Papers and halls, the visits, the cases; a squad member logs a visit. */
 export function ExamSquadScreen() {
+  // No screenshots while it is up (A3-S-12, audit of 5 Oct 2026): the flying squad's malpractice cases, by student.
+  usePrivateScreen();
   const t = useT();
   const { locale } = useLocale();
   const guard = useDeskGuard("EXAM_SQUAD", "EXAMS", ["ADMIN", "PRINCIPAL", "EXAM_CONTROLLER"]);
@@ -643,7 +644,7 @@ export function ExamSquadScreen() {
             </Text>
             {d.cases.length === 0 ? <Text tone="muted">{t("duties.examSquad.noCases")}</Text> : null}
             {d.cases.map((c) => (
-              <Row key={c.id} icon="warning" title={t("duties.examSquad.caseLine", { course: c.courseCode, session: c.sessionName, day: c.reportedOn, student: c.studentName })} caption={c.decided ? t("duties.examSquad.decided") : t("duties.examSquad.pending")} />
+              <Row key={c.id} icon="warning" title={t("duties.examSquad.caseLine", { course: c.courseCode, session: c.sessionName, day: formatDate(c.reportedOn), student: c.studentName })} caption={c.decided ? t("duties.examSquad.decided") : t("duties.examSquad.pending")} />
             ))}
           </Card>
         </>

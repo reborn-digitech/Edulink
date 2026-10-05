@@ -14,7 +14,7 @@ import { failure, type ActionResult } from "./action-result";
  */
 export async function previewBankImportAction(csv: string): Promise<ActionResult & { preview?: BankImportPreview }> {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const preview = await previewBankImport(ctx, csv.slice(0, 500_000));
     return { ok: true, preview };
   } catch (error) {
@@ -24,7 +24,7 @@ export async function previewBankImportAction(csv: string): Promise<ActionResult
 
 export async function commitBankImportAction(csv: string): Promise<ActionResult & { result?: BankImportResult }> {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const t = await getT();
     const result = await commitBankImport(ctx, csv.slice(0, 500_000), (e) => t(e.key, e.vars));
     revalidatePath("/admin/fees");

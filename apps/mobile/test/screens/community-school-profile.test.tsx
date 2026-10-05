@@ -112,7 +112,7 @@ describe("a school's profile", () => {
   });
 
   it("a refusal is an alert with a retry; no id is an error that asks nothing", async () => {
-    const { calls } = await mountStaff(<SchoolProfile />, "PARENT", { [`GET ${PATH}`]: refused("ZZ no such school", 404) });
+    const { calls } = await mountStaff(<SchoolProfile />, "PARENT", { [`GET ${PATH}`]: refused("ZZ no such school", 503) });
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ no such school");
     await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
     await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}`)).toHaveLength(2));

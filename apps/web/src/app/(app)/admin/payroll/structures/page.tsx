@@ -7,7 +7,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { TextField } from "@/components/ui/field";
 import { ModuleOff } from "@/components/module-off";
-import { INPUT } from "@/components/module-flash";
+import { fieldClass } from "@/components/ui/field-class";
 import { listStructures } from "@/lib/payroll";
 import { CODE_LABEL_KEY } from "@/lib/payroll-rules";
 import { getT } from "@/lib/i18n/server";
@@ -47,13 +47,13 @@ function StructureForm({ t, s }: { t: Translate; s: SalaryStructureView | null }
                     </label>
                   </td>
                   <td className="py-1.5 pr-2">
-                    {code === "OTHER_EARNING" || code === "OTHER_DEDUCTION" ? <input aria-label={t("payroll.fieldLabel")} className={INPUT} name={`label:${code}`} maxLength={60} defaultValue={c?.label ?? ""} placeholder={t("payroll.fieldLabel")} /> : null}
+                    {code === "OTHER_EARNING" || code === "OTHER_DEDUCTION" ? <input aria-label={t("payroll.fieldLabel")} className={fieldClass()} name={`label:${code}`} maxLength={60} defaultValue={c?.label ?? ""} placeholder={t("payroll.fieldLabel")} /> : null}
                   </td>
                   <td className="py-1.5 pr-2">
                     {free ? (
                       <span className="text-xs text-fg-muted">{code === "BASIC" ? t("payroll.basicFromSalary") : code === "ADVANCE" ? t("payroll.advanceFromRecords") : t("payroll.statutoryRule")}</span>
                     ) : (
-                      <select aria-label={t("payroll.fieldFormula")} className={INPUT} name={`formula:${code}`} defaultValue={c?.formula ?? "FIXED"}>
+                      <select aria-label={t("payroll.fieldFormula")} className={fieldClass()} name={`formula:${code}`} defaultValue={c?.formula ?? "FIXED"}>
                         {SALARY_FORMULAS.filter((f) => !(earning && f === "PERCENT_OF_GROSS")).map((f) => (
                           <option key={f} value={f}>{t(`payroll.formula${f}`)}</option>
                         ))}
@@ -61,7 +61,7 @@ function StructureForm({ t, s }: { t: Translate; s: SalaryStructureView | null }
                     )}
                   </td>
                   <td className="py-1.5">
-                    {free ? null : <input aria-label={t("payroll.fieldValue")} className={`${INPUT} w-32 text-right`} name={`value:${code}`} inputMode="decimal" defaultValue={c ? (pct ? String(c.value / 100) : (c.value / 100).toFixed(2)) : ""} placeholder={t("payroll.valueHint")} />}
+                    {free ? null : <input aria-label={t("payroll.fieldValue")} className={fieldClass("w-32 text-right")} name={`value:${code}`} inputMode="decimal" defaultValue={c ? (pct ? String(c.value / 100) : (c.value / 100).toFixed(2)) : ""} placeholder={t("payroll.valueHint")} />}
                   </td>
                 </tr>
               );
@@ -84,7 +84,7 @@ function StructureForm({ t, s }: { t: Translate; s: SalaryStructureView | null }
 /** Salary structures: named sets of components each salary is built on. */
 export default async function PayrollStructures({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const { ctx, t, on } = await payrollGate(true);
-  if (!on) return <ModuleOff module="PAYROLL" t={t} />;
+  if (!on) return <ModuleOff page module="PAYROLL" t={t} />;
   const params = await searchParams;
   const { structures } = await listStructures(ctx);
   return (

@@ -111,7 +111,7 @@ describe("one vacancy", () => {
   });
 
   it("a refusal is an alert with a retry; no id is an error that asks nothing", async () => {
-    const { calls } = await mountStaff(<VacancyDetail />, "TEACHER", { [`GET ${PATH}`]: refused("ZZ no such vacancy", 404) });
+    const { calls } = await mountStaff(<VacancyDetail />, "TEACHER", { [`GET ${PATH}`]: refused("ZZ no such vacancy", 503) });
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ no such vacancy");
     await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
     await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}`)).toHaveLength(2));

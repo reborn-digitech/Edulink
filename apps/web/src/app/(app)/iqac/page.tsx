@@ -90,9 +90,16 @@ export default async function IqacHome({ searchParams }: { searchParams: Promise
       ) : (
         <Card>
           <CardBody className="space-y-4 pt-5">
-            <EmptyState icon={<MedalIcon weight="duotone" className="size-8" />} title={t("iqac.noCycleTitle")} description={t("iqac.noCycleBody")} />
+            <EmptyState
+              icon={<MedalIcon weight="duotone" className="size-8" />}
+              title={t("iqac.noCycleTitle")}
+              // The IQAC and the office open a cycle (DESK_WRITE); the principal reads, and is told who does it.
+              description={canEdit ? t("iqac.noCycleBody") : t("iqac.noCycleBodyReader")}
+              action={canEdit ? <Button asChild size="sm" variant="secondary"><a href="#open-cycle">{t("iqac.openCycle")}</a></Button> : undefined}
+            />
             {canEdit ? (
-              <form action={openCycleAction} className="grid gap-3 sm:grid-cols-3 sm:items-end">
+              <form id="open-cycle" action={openCycleAction} className="grid scroll-mt-20 gap-3 sm:grid-cols-3 sm:items-end">
+
                 <input type="hidden" name="back" value="/iqac" />
                 <DateField name="windowFrom" label={t("iqac.windowFrom")} required defaultValue={`${year - 5}-06-01`} />
                 <DateField name="windowTo" label={t("iqac.windowTo")} required defaultValue={`${year}-05-31`} />
@@ -116,7 +123,7 @@ export default async function IqacHome({ searchParams }: { searchParams: Promise
                   <span>
                     <span className="font-mono text-fg-muted">{m.code}</span> {m.text}
                   </span>
-                  <Badge tone="ok">{t("iqac.cheapestRow", { gain: m.gainPerUnit.toFixed(4), unit: m.unit })}</Badge>
+                  <Badge tone="ok">{t("iqac.cheapestRow", { gain: m.gainPerUnit.toFixed(4), unit: tt("iqac.unit." + m.unit) })}</Badge>
                 </li>
               ))}
             </ol>

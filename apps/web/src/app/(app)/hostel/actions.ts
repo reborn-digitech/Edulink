@@ -14,6 +14,8 @@ import {
 } from "@edulink/contracts";
 import { AccessError, requireApiUser } from "@/lib/tenancy";
 import { getT } from "@/lib/i18n/server";
+import { answerForm } from "@/lib/form-action";
+import type { FormState } from "@/lib/form-state";
 import { db } from "@/lib/db";
 import { zonedStartOfDay } from "@/lib/dates";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
@@ -60,9 +62,17 @@ function backOf(formData: FormData): string {
 const withMessage = (back: string, key: "ok" | "error", text: string) => `${back}${back.includes("?") ? "&" : "?"}${key}=${encodeURIComponent(text)}`;
 const str = (formData: FormData, name: string) => String(formData.get(name) ?? "").trim();
 
-class FormError extends Error {}
-function parsed<T>(result: { success: true; data: T } | { success: false }): T {
-  if (!result.success) throw new FormError();
+/** A form the action could not read: the box it is about when known, the schema's error as the cause when it came from one (lib/form-state.ts reads both). */
+class FormError extends Error {
+  constructor(
+    readonly formField?: string,
+    cause?: unknown,
+  ) {
+    super("form", cause === undefined ? undefined : { cause });
+  }
+}
+function parsed<T>(result: { success: true; data: T } | { success: false; error?: unknown }): T {
+  if (!result.success) throw new FormError(undefined, result.error);
   return result.data;
 }
 
@@ -86,9 +96,9 @@ async function run(formData: FormData, work: (ctx: ActiveContext) => Promise<Don
 }
 
 /** "2026-10-04T18:30" typed in the school's own time, as an instant. */
-function instantIn(local: string, timeZone: string): string {
+function instantIn(local: string, timeZone: string, name?: string): string {
   const m = /^(\d{4}-\d{2}-\d{2})T(\d{2}):(\d{2})$/.exec(local);
-  if (!m) throw new FormError();
+  if (!m) throw new FormError(name);
   return new Date(zonedStartOfDay(m[1]!, timeZone).getTime() + (Number(m[2]) * 60 + Number(m[3])) * 60_000).toISOString();
 }
 
@@ -200,16 +210,27 @@ export async function hostelIncidentAction(formData: FormData): Promise<void> {
   });
 }
 
-export async function requestLeaveAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx): Promise<Done> => {
-    const childId = str(formData, "childId") || undefined;
-    const membershipId = childId ?? ctx.membershipId ?? "";
-    const school = await db.membership.findUnique({ where: { id: membershipId }, select: { school: { select: { timezone: true } } } });
-    const tz = school?.school.timezone ?? "Asia/Kolkata";
-    const input = parsed(familyHostelLeaveCreateSchema.safeParse({ childId, kind: str(formData, "kind"), fromAt: instantIn(str(formData, "fromAt"), tz), toAt: instantIn(str(formData, "toAt"), tz), destination: str(formData, "destination"), reason: str(formData, "reason") }));
-    const l = await requestLeave(ctx, input);
-    return l.status === "AWAITING_CONSENT" ? "hostel.askedNeedsConsent" : "hostel.askedToWarden";
-  });
+/**
+ * Leave answers in place (A3-journeys-27): back-before-out keeps every box as
+ * typed and is said under "back", not as "Some of this needs another look."
+ * at the page's top.
+ */
+export async function requestLeaveAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return answerForm(
+    previous,
+    formData,
+    async () => {
+      const ctx = await requireApiUser();
+      const childId = str(formData, "childId") || undefined;
+      const membershipId = childId ?? ctx.membershipId ?? "";
+      const school = await db.membership.findUnique({ where: { id: membershipId }, select: { school: { select: { timezone: true } } } });
+      const tz = school?.school.timezone ?? "Asia/Kolkata";
+      const input = parsed(familyHostelLeaveCreateSchema.safeParse({ childId, kind: str(formData, "kind"), fromAt: instantIn(str(formData, "fromAt"), tz, "fromAt"), toAt: instantIn(str(formData, "toAt"), tz, "toAt"), destination: str(formData, "destination"), reason: str(formData, "reason") }));
+      const l = await requestLeave(ctx, input);
+      return l.status === "AWAITING_CONSENT" ? "hostel.askedNeedsConsent" : "hostel.askedToWarden";
+    },
+    { revalidate: [backOf(formData)], fields: { "hostel.refuseLeaveDates": "fromAt", "collegeOffice.refuseNightOut": "kind" } },
+  );
 }
 
 export async function consentAction(formData: FormData): Promise<void> {

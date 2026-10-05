@@ -27,6 +27,7 @@ export function CertificateRequestForm({ kinds, childId }: { kinds: CertificateK
   const [kind, setKind] = useState<CertificateKind | "">(kinds[0] ?? "");
   const [purpose, setPurpose] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<{ kind?: string; purpose?: string }>({});
 
   if (kinds.length === 0) {
     return <p className="text-sm text-fg-muted" data-testid="request-no-kinds">{t("certificateRequests.noKinds")}</p>;
@@ -35,8 +36,11 @@ export function CertificateRequestForm({ kinds, childId }: { kinds: CertificateK
   function submit(event: React.FormEvent) {
     event.preventDefault();
     setError(null);
-    if (!kind || !purpose.trim()) {
-      setError(t("common.checkTheForm"));
+    // The box that is empty says so, and the line at the top names it (A3-journeys-27).
+    const missing = { kind: kind ? undefined : t("refusal.required"), purpose: purpose.trim() ? undefined : t("refusal.required") };
+    setFieldErrors(missing);
+    if (missing.kind || missing.purpose) {
+      setError(t("common.checkField", { field: missing.kind ? t("certificateRequests.kind") : t("certificateRequests.purpose") }));
       return;
     }
     startTransition(async () => {
@@ -59,7 +63,7 @@ export function CertificateRequestForm({ kinds, childId }: { kinds: CertificateK
         </p>
       )}
       <div className="grid gap-3 sm:grid-cols-2">
-        <SelectField label={t("certificateRequests.kind")} required value={kind} onChange={(e) => setKind(e.target.value as CertificateKind)} data-testid="request-kind">
+        <SelectField label={t("certificateRequests.kind")} required error={fieldErrors.kind} value={kind} onChange={(e) => setKind(e.target.value as CertificateKind)} data-testid="request-kind">
           {kinds.map((k) => (
             <option key={k} value={k}>
               {t(CERTIFICATE_KIND_KEY[k])}
@@ -69,6 +73,7 @@ export function CertificateRequestForm({ kinds, childId }: { kinds: CertificateK
         <TextField
           label={t("certificateRequests.purpose")}
           required
+          error={fieldErrors.purpose}
           value={purpose}
           maxLength={200}
           autoComplete="off"

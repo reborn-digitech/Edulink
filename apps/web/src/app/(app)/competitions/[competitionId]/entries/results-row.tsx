@@ -8,6 +8,7 @@ import { useToast } from "@/components/ui/toast";
 import { fromMilli } from "@/lib/validation";
 import { useT } from "@/lib/i18n";
 import { recordResultAction } from "../../actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * One child's entry, and what it scored.
@@ -104,7 +105,7 @@ export function ResultsRow({
             inputMode="decimal"
             value={score}
             onChange={(event) => setScore(event.target.value)}
-            className="w-24 rounded-[var(--radius-md)] border border-border bg-surface px-2.5 py-2 text-sm"
+            className={fieldClass("w-24")}
           />
         </div>
         <div>
@@ -116,7 +117,7 @@ export function ResultsRow({
             inputMode="numeric"
             value={place}
             onChange={(event) => setPlace(event.target.value)}
-            className="w-20 rounded-[var(--radius-md)] border border-border bg-surface px-2.5 py-2 text-sm"
+            className={fieldClass("w-20")}
           />
         </div>
         <Button type="submit" size="sm" variant="secondary" disabled={pending || !dirty}>

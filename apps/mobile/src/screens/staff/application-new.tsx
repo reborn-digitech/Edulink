@@ -84,7 +84,7 @@ export function ApplicationNew() {
   return (
     <Screen title={t("admissions.walkIn")} description={t("admissions.walkInIntro")}>
       {cycles.isPending ? <Loading /> : null}
-      {cycles.isError ? <Failed message={cycles.error.message} onRetry={() => void cycles.refetch()} /> : null}
+      {cycles.isError ? <Failed error={cycles.error} onRetry={() => void cycles.refetch()} /> : null}
       {cycles.data ? (
         open.length === 0 ? (
           <Empty icon="users" title={t("admissions.noCycles")} body={t("admissions.noCyclesBody")} action={<Button label={t("admissions.newCycle")} variant="secondary" onPress={() => openWeb("/admin/admissions")} />} />

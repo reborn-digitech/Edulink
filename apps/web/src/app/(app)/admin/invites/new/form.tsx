@@ -19,6 +19,7 @@ import { createInvites, type CreateInvitesState } from "../actions";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 import { ROLE_META, INVITABLE_ROLES, isModuleRole, isTeachingRole, type InvitableRole } from "@/lib/constants";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * Bulk invite composer.
@@ -246,7 +247,7 @@ export function InviteForm({
           onChange={(e) => setText(e.target.value)}
           rows={8}
           placeholder={"name,email,subjects\nPriya Raman,priya@school.org,Maths;Science\nTom Fielding,tom@school.org,English"}
-          className="mt-1.5 w-full rounded-[var(--radius-md)] border border-border bg-surface p-3.5 font-mono text-sm leading-relaxed outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+          className={fieldClass("mt-1.5 font-mono leading-relaxed text-sm")}
         />
         <p className="mt-1 text-xs text-fg-muted">{t("invites.headerOptional")}</p>
       </div>

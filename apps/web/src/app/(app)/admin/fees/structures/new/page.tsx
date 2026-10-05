@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function NewStructurePage() {
   const t = await getT();
-  const ctx = await requireRole("ADMIN");
+  const ctx = await requireRole("ADMIN", "ACCOUNTS");
   const [school, heads, year] = await Promise.all([
     db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } }),
     listHeads(ctx.schoolId),

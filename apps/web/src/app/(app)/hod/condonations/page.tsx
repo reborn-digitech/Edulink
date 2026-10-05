@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function HodCondonationsPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const ctx = await requireRole("HOD");
   const t = await getT();
-  if (!(await isModuleOn(ctx.schoolId, "ACADEMICS"))) return <ModuleOff module="ACADEMICS" t={t} college />;
+  if (!(await isModuleOn(ctx.schoolId, "ACADEMICS"))) return <ModuleOff page module="ACADEMICS" t={t} college />;
   const params = await searchParams;
   const all = params.all === "1";
   const list = await listCondonations(ctx, all ? "ALL" : "OPEN");

@@ -1,3 +1,4 @@
+import { isoToDisplayDate } from "@/lib/dates";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BedIcon, ClipboardTextIcon, DoorOpenIcon, UsersIcon, WarningCircleIcon } from "@phosphor-icons/react/ssr";
@@ -60,7 +61,7 @@ export default async function HostelHomePage({ searchParams }: { searchParams: P
             <ul className="space-y-1 text-sm text-fg">
               {o.absentees.map((a, k) => (
                 <li key={`${a.name}-${k}`}>
-                  {a.name} · {t("hostel.roomShort", { room: a.roomNumber })} · {a.hostelName} · {t(SLOT_KEY[a.slot])} {a.dateKey}
+                  {a.name} · {t("hostel.roomShort", { room: a.roomNumber })} · {a.hostelName} · {t(SLOT_KEY[a.slot])} {isoToDisplayDate(a.dateKey)}
                 </li>
               ))}
             </ul>

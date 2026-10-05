@@ -30,11 +30,11 @@ const STATUS_KEY: Record<string, TranslationKey> = { ASKED: "collegeDesks.status
  * from the cancelled seat's own page.
  */
 export default async function RefundExceptionsPage({ searchParams }: { searchParams: Promise<{ ok?: string; error?: string }> }) {
-  const ctx = await requireRole("ADMIN", "PRINCIPAL");
+  const ctx = await requireRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
   const [t, locale, kind] = await Promise.all([getT(), getLocale(), institutionKindOf(ctx.schoolId)]);
   const sp = await searchParams;
   if (!isCollegeKind(kind ?? "SCHOOL")) return <NotCollege t={t} />;
-  if (!(await isModuleOn(ctx.schoolId, "ADMISSIONS"))) return <ModuleOff module="ADMISSIONS" t={t} college />;
+  if (!(await isModuleOn(ctx.schoolId, "ADMISSIONS"))) return <ModuleOff page module="ADMISSIONS" t={t} college />;
   const list = await refundExceptions(ctx);
   const back = "/admin/college-admissions/refunds";
   return (

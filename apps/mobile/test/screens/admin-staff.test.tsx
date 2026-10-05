@@ -32,7 +32,7 @@ describe("the staff roster", () => {
     gate.open(() => json(ROSTER));
     await screen.findByText("ZZ Teacher");
     expect(screen.getByText("1 Teacher · 1 School admin")).toBeTruthy();
-    expect(screen.getByText(/^Senior teacher · Maths, Physics · Class teacher of ZZ Class A · Joined .* · Joined service on (15 Jun|Jun 15) · Date of birth: (2 Apr|Apr 2) · 4 of 12 days used · 8 left · 1 more being asked for$/)).toBeTruthy();
+    expect(screen.getByText(/^Senior teacher · Maths, Physics · Class teacher of ZZ Class A · Joined .* · Joined service on 15\/06\/2015 · Date of birth: 02\/04\/1988 · 4 of 12 days used · 8 left · 1 more being asked for$/)).toBeTruthy();
     expect(screen.getByText("ZZ-T-01")).toBeTruthy();
     expect(screen.getByText("ZZ Office (Zed)")).toBeTruthy();
     expect(screen.getByText("School admin")).toBeTruthy();

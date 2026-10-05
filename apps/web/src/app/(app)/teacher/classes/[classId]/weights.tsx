@@ -8,6 +8,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/cn";
 import { saveWeights } from "./actions";
 import { useT } from "@/lib/i18n";
+import { fieldClass } from "@/components/ui/field-class";
 
 type Row = { name: string; percent: string };
 
@@ -95,7 +96,7 @@ export function GradeWeights({
                 placeholder={t("teacher.categoryPlaceholder")}
                 aria-label={t("teacher.categoryName", { n: index + 1 })}
                 onChange={(e) => update(index, { name: e.target.value })}
-                className="min-w-0 flex-1 rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
+                className={fieldClass("w-auto min-w-0 flex-1")}
               />
               <div className="flex items-center gap-1.5">
                 <input
@@ -108,7 +109,7 @@ export function GradeWeights({
                   placeholder="20"
                   aria-label={t("teacher.categoryWeight", { n: index + 1 })}
                   onChange={(e) => update(index, { percent: e.target.value })}
-                  className="w-20 rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-right text-sm tabular-nums text-fg"
+                  className={fieldClass("w-20 text-right tabular-nums")}
                 />
                 <span className="text-sm text-fg-muted">%</span>
               </div>

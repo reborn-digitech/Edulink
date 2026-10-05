@@ -6,13 +6,15 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { SelectField, TextField } from "@/components/ui/field";
 import { ModuleOff } from "@/components/module-off";
-import { INPUT, LINK, NUM, TD } from "@/components/module-flash";
+import { LINK, NUM, TD } from "@/components/module-flash";
 import { inventorySetup, listItems, listPurchases } from "@/lib/inventory";
 import { db } from "@/lib/db";
 import { formatDateKey, todayKey } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { inventoryGate, InventoryTop } from "../shared";
 import { recordPurchaseAction } from "../actions";
+import { fieldClass } from "@/components/ui/field-class";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("inventory.tabPurchases") };
@@ -27,7 +29,7 @@ const LINES = [0, 1, 2, 3, 4, 5];
  */
 export default async function InventoryPurchases({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const { ctx, t, locale, on, canEdit } = await inventoryGate();
-  if (!on) return <ModuleOff module="INVENTORY" t={t} />;
+  if (!on) return <ModuleOff page module="INVENTORY" t={t} />;
   const params = await searchParams;
   const [{ purchases }, setup, { items }, school] = await Promise.all([listPurchases(ctx), inventorySetup(ctx), listItems(ctx), db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } })]);
   return (
@@ -55,17 +57,19 @@ export default async function InventoryPurchases({ searchParams }: { searchParam
                       </>
                     ) : null}
                   </p>
-                  <table className="mt-2 w-full text-xs">
-                    <tbody>
-                      {p.lines.map((l, i) => (
-                        <tr key={i}>
-                          <td className={TD}>{l.description}{l.itemCode ? <span className="text-fg-muted"> · {l.itemCode}</span> : null}</td>
-                          <td className={NUM}>{l.quantity} × {formatPaise(l.unitPaise, locale, { always: true })}</td>
-                          <td className={NUM}>{formatPaise(l.totalPaise, locale, { always: true })}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                  <TableScroll className="mt-2">
+                    <table className="w-full text-xs">
+                      <tbody>
+                        {p.lines.map((l, i) => (
+                          <tr key={i}>
+                            <td className={TD}>{l.description}{l.itemCode ? <span className="text-fg-muted"> · {l.itemCode}</span> : null}</td>
+                            <td className={NUM}>{l.quantity} × {formatPaise(l.unitPaise, locale, { always: true })}</td>
+                            <td className={NUM}>{formatPaise(l.totalPaise, locale, { always: true })}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </TableScroll>
                   {p.note ? <p className="mt-1 text-xs text-fg-muted">{p.note}</p> : null}
                 </li>
               ))}
@@ -105,15 +109,15 @@ export default async function InventoryPurchases({ searchParams }: { searchParam
                 <p className="text-xs text-fg-muted">{t("inventory.linesHint")}</p>
                 {LINES.map((i) => (
                   <div key={i} className="grid gap-2 sm:grid-cols-[1fr_2fr_6rem_8rem]">
-                    <select aria-label={t("inventory.lineItem", { n: i + 1 })} name={`code${i}`} defaultValue="" className={INPUT}>
+                    <select aria-label={t("inventory.lineItem", { n: i + 1 })} name={`code${i}`} defaultValue="" className={fieldClass()}>
                       <option value="">{t("inventory.lineNoItem")}</option>
                       {items.map((it) => (
                         <option key={it.id} value={it.code}>{it.name}</option>
                       ))}
                     </select>
-                    <input aria-label={t("inventory.lineDescription", { n: i + 1 })} name={`desc${i}`} maxLength={120} className={INPUT} placeholder={t("inventory.lineDescriptionPlaceholder")} />
-                    <input aria-label={t("inventory.lineQuantity", { n: i + 1 })} name={`qty${i}`} type="number" min={1} className={INPUT} placeholder={t("inventory.fieldQuantity")} />
-                    <input aria-label={t("inventory.lineUnitPrice", { n: i + 1 })} name={`unit${i}`} inputMode="decimal" className={INPUT} placeholder={t("inventory.fieldUnitPrice")} />
+                    <input aria-label={t("inventory.lineDescription", { n: i + 1 })} name={`desc${i}`} maxLength={120} className={fieldClass()} placeholder={t("inventory.lineDescriptionPlaceholder")} />
+                    <input aria-label={t("inventory.lineQuantity", { n: i + 1 })} name={`qty${i}`} type="number" min={1} className={fieldClass()} placeholder={t("inventory.fieldQuantity")} />
+                    <input aria-label={t("inventory.lineUnitPrice", { n: i + 1 })} name={`unit${i}`} inputMode="decimal" className={fieldClass()} placeholder={t("inventory.fieldUnitPrice")} />
                   </div>
                 ))}
               </fieldset>

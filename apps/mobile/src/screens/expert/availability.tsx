@@ -133,7 +133,7 @@ export function ExpertAvailability() {
             ) : (
               [...days.entries()].map(([dayKey, slots]) => (
                 <View key={dayKey} style={{ gap: th.space[1] }}>
-                  <Text variant="sm" bold tone="muted" accessibilityRole="header">
+                  <Text variant="sm" bold tone="muted" accessibilityRole="header" level={3}>
                     {formatDateKey(dayKey, locale, { weekday: "short", day: "numeric", month: "short", year: "numeric" })}
                   </Text>
                   {slots.map((slot) => {

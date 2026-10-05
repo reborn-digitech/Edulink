@@ -170,7 +170,7 @@ export function HealthCardView({ view, onEdit }: { view: HealthCard; onEdit?: ()
       <Line label={t("health.dietary")} value={card.dietary} />
       <Line label={t("health.notes")} value={card.notes} />
       <View style={{ gap: th.space[1], paddingTop: th.space[2], borderTopWidth: 1, borderTopColor: th.border }}>
-        <Text variant="base" bold accessibilityRole="header">
+        <Text variant="base" bold accessibilityRole="header" level={3}>
           {t("health.doctor")}
         </Text>
         {card.doctorName || card.doctorPhone ? (
@@ -182,7 +182,7 @@ export function HealthCardView({ view, onEdit }: { view: HealthCard; onEdit?: ()
         )}
       </View>
       <View style={{ gap: th.space[1], paddingTop: th.space[2], borderTopWidth: 1, borderTopColor: th.border }}>
-        <Text variant="base" bold accessibilityRole="header">
+        <Text variant="base" bold accessibilityRole="header" level={3}>
           {t("health.contacts")}
         </Text>
         {card.contacts.length === 0 ? (
@@ -245,7 +245,7 @@ export function HealthCardForm({ initial, busy, refusal, onSave, onCancel }: { i
       <Field label={t("health.notes")} hint={t("health.notesHint")} value={form.notes} onChangeText={(v) => set("notes", v)} multiline maxLength={500} error={issue("notes")} />
 
       <View style={{ gap: th.space[2], paddingTop: th.space[2], borderTopWidth: 1, borderTopColor: th.border }}>
-        <Text variant="base" bold accessibilityRole="header">
+        <Text variant="base" bold accessibilityRole="header" level={3}>
           {t("health.doctor")}
         </Text>
         <Field label={t("health.doctorName")} value={form.doctorName} onChangeText={(v) => set("doctorName", v)} maxLength={80} error={issue("doctorName")} />
@@ -253,7 +253,7 @@ export function HealthCardForm({ initial, busy, refusal, onSave, onCancel }: { i
       </View>
 
       <View style={{ gap: th.space[2], paddingTop: th.space[2], borderTopWidth: 1, borderTopColor: th.border }}>
-        <Text variant="base" bold accessibilityRole="header">
+        <Text variant="base" bold accessibilityRole="header" level={3}>
           {t("health.contacts")}
         </Text>
         <Text variant="xs" tone="muted">

@@ -15,6 +15,7 @@ import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { CERTIFICATE_KIND_KEY } from "@/components/certificates/labels";
 import { IssueForm } from "./issue-form";
 import { RequestQueue } from "./request-queue";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("certificates.issueTitle") };
@@ -114,7 +115,7 @@ export default async function IssueCertificatePage({ searchParams }: { searchPar
                   defaultValue={q}
                   maxLength={80}
                   autoComplete="off"
-                  className="mt-1.5 min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-[0.9375rem] text-fg outline-none focus:border-accent"
+                  className={fieldClass("mt-1.5")}
                 />
               </label>
               <Button type="submit" variant="secondary" icon={<MagnifyingGlassIcon weight="bold" />}>

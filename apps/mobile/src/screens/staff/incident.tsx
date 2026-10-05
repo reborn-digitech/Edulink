@@ -80,7 +80,7 @@ export function StaffIncident() {
   return (
     <Screen title={d?.title ?? t("incidents.title")} description={d ? [d.studentName, d.className].filter(Boolean).join(" · ") : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         <>
           <IncidentBadges kind={d.kind} severity={d.severity} status={d.status} />

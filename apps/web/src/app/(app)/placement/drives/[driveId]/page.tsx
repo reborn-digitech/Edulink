@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { momentFormatter } from "@/lib/school-zone";
 import { notFound } from "next/navigation";
 import { CalendarBlankIcon, ChatTextIcon, FunnelIcon, InfoIcon } from "@phosphor-icons/react/ssr";
 import { DRIVE_STATUSES } from "@edulink/contracts";
@@ -27,6 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
  */
 export default async function DrivePage({ params, searchParams }: { params: Promise<{ driveId: string }>; searchParams: Promise<{ ok?: string; error?: string }> }) {
   const { ctx, t, on, college } = await cellContext();
+  const moment = await momentFormatter(ctx.schoolId);
   const { driveId } = await params;
   const { ok, error } = await searchParams;
   const back = { href: "/placement/drives", label: t("placement.tabDrives") };
@@ -36,7 +38,8 @@ export default async function DrivePage({ params, searchParams }: { params: Prom
     throw e;
   });
   const here = `/placement/drives/${d.id}`;
-  const next = DRIVE_STATUSES.slice(DRIVE_STATUSES.indexOf(d.status) + 1);
+  // A drive for a company nobody has checked goes no further than a draft (A3-journeys-12): the page says why and offers only closing.
+  const next = DRIVE_STATUSES.slice(DRIVE_STATUSES.indexOf(d.status) + 1).filter((s) => d.companyVerified || s === "CLOSED");
   const liveDrive = ["OPEN", "SHORTLISTING", "ROUNDS", "OFFERS"].includes(d.status);
   return (
     <CellFrame t={t} on college={college} current="drives" title={d.title} description={[d.companyName, t(DRIVE_KIND_KEY[d.kind]!), packageRange(d.packageMinRupees, d.packageMaxRupees, t)].join(" · ")} ok={ok} error={error} back={back}>
@@ -44,6 +47,12 @@ export default async function DrivePage({ params, searchParams }: { params: Prom
         <CardHeader icon={<InfoIcon weight="duotone" className="size-5" />} title={t("placement.aboutDrive")} action={statusBadge(d.status, t)} />
         <CardBody className="space-y-3 text-sm">
           {d.hosted ? null : <p className="text-fg-muted">{t("placement.guestNote", { name: d.hostName })}</p>}
+          {d.companyVerified ? null : (
+            <p className="flex flex-wrap items-center gap-2" data-testid="drive-unchecked">
+              <Badge tone="warn">{t("placement.unverified")}</Badge>
+              {t("placement.refuseDriveUnchecked")}
+            </p>
+          )}
           {d.jd ? <p className="whitespace-pre-line">{d.jd}</p> : null}
           <dl className="grid gap-2 sm:grid-cols-2">
             <div>
@@ -74,7 +83,7 @@ export default async function DrivePage({ params, searchParams }: { params: Prom
               {d.schedule.map((s, i) => (
                 <li key={i} className="flex items-center gap-2">
                   <CalendarBlankIcon className="size-4 text-fg-muted" aria-hidden />
-                  {s.label} · {new Date(s.at).toLocaleString()}
+                  {s.label} · {moment(s.at)}
                 </li>
               ))}
             </ul>
@@ -105,7 +114,7 @@ export default async function DrivePage({ params, searchParams }: { params: Prom
           ) : null}
           {liveDrive && ctx.role === "TPO" ? (
             <div className="flex flex-wrap gap-2">
-              {d.status === "OPEN" ? (
+              {d.status === "OPEN" && d.companyVerified ? (
                 <form action={inviteAction}>
                   <input type="hidden" name="back" value={here} />
                   <input type="hidden" name="driveId" value={d.id} />

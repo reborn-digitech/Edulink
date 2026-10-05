@@ -6,6 +6,7 @@ import { Card, CardBody } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { LeaveSummary, WardenFrame, wardenContext } from "@/components/hostel/parts";
 import { decideLeaveAction, gateInAction, gateOutAction } from "../actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -50,7 +51,7 @@ export default async function HostelLeavePage({ searchParams }: { searchParams: 
                           <input type="hidden" name="back" value={back} />
                           <label className="text-xs text-fg-muted">
                             {t("hostel.decisionNote")}
-                            <input name="note" maxLength={300} className="mt-1 block min-h-11 w-56 max-w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg" />
+                            <input name="note" maxLength={300} className={fieldClass("mt-1 block w-56 max-w-full")} />
                           </label>
                           <Button type="submit" size="sm" name="decision" value="APPROVE">
                             {t("hostel.approve")}

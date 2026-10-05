@@ -59,7 +59,7 @@ function Topics() {
         </>
       ) : null}
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {query.data ? (
         topics.length === 0 ? (
           narrowed ? (
@@ -142,7 +142,7 @@ function Chapter({ topicId, questionId }: { topicId: string; questionId: string 
   const states = (
     <>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
     </>
   );
 
@@ -282,7 +282,7 @@ function QuestionStats({ questionId }: { questionId: string }) {
   return (
     <Card title={t("bankStats.title")}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d && d.asked === 0 ? (
         <Text variant="sm" tone="muted">
           {t("bankStats.none")}

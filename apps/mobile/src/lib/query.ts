@@ -3,16 +3,34 @@ import { QueryClient } from "@tanstack/react-query";
 /**
  * Server state lives in React Query. Five minutes fresh: a register or a
  * feed re-fetches on focus, not on every render; a 401 is never retried
- * (the session provider signs the person out instead); everything else gets
- * one retry, because a phone's network flickers.
+ * (the session provider signs the person out instead); a refusal the server
+ * meant (any other 4xx but 408 and 429: not found, not yours, invalid) is not
+ * retried either, because asking again gets the same answer and the screen
+ * sat on its skeleton through the retry's wait (A3-states-14); a network
+ * failure or a 5xx gets one retry, because a phone's network flickers.
  */
+export function shouldRetry(count: number, error: unknown): boolean {
+  if (error instanceof ApiRefused && isFinalRefusal(error.status)) return false;
+  return count < 1;
+}
+
+/** A 4xx that asking again cannot change (401 included; 408 and 429 are worth one more try). */
+export function isFinalRefusal(status: number): boolean {
+  return status >= 400 && status < 500 && status !== 408 && status !== 429;
+}
+
+/** Not found, not yours or gone: the screen has nothing to show and a retry cannot help. */
+export function isNotFound(error: unknown): boolean {
+  return error instanceof ApiRefused && (error.status === 403 || error.status === 404 || error.status === 410);
+}
+
 export function makeQueryClient(): QueryClient {
   return new QueryClient({
     defaultOptions: {
       queries: {
         staleTime: 5 * 60_000,
         gcTime: 30 * 60_000,
-        retry: (count, error) => !(error instanceof ApiRefused && error.status === 401) && count < 1,
+        retry: shouldRetry,
         refetchOnWindowFocus: true,
         // Try once even when the browser says it is offline (the web target's
         // navigator.onLine; a phone never wires onlineManager): a cached screen

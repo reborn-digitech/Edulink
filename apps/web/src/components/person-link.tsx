@@ -30,7 +30,7 @@ export function PersonLink({
     <Link
       href={`/people/${membershipId}`}
       // A finger's worth of height around a name set in small type, without moving the line it sits in: padding the negative margins take back.
-      className={cn("-mx-1 -my-2.5 inline-block rounded-sm px-1 py-2.5 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent", className)}
+      className={cn("-mx-1 -my-2.5 inline-block rounded-[var(--radius-sm)] px-1 py-2.5 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent", className)}
       aria-label={children ? name : undefined}
     >
       {children ?? name}

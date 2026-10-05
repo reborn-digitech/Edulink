@@ -14,6 +14,8 @@ import { saveMarksAction } from "./actions";
 import { MarksForm } from "./marks-form";
 import { MarksSheet } from "./marks-sheet";
 import { PageHeader } from "@/components/ui/page-header";
+import { ChipLink } from "@/components/ui/chip";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -40,7 +42,8 @@ export default async function TeacherExamsPage({
   if (classes.length === 0) {
     return (
       <div className="space-y-6">
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("exams.marksTitle")}</h1>
+        <PageHeader title={t("exams.marksTitle")} />
+
         <EmptyState
           icon={<ExamIcon weight="duotone" className="size-8" />}
           title={t("exams.marksTitle")}
@@ -88,15 +91,13 @@ export default async function TeacherExamsPage({
       {classes.length > 1 && (
         <nav aria-label={t("nav.classes")} className="flex flex-wrap gap-2">
           {classes.map((c) => (
-            <Link
+            <ChipLink
               key={c.id}
               href={`/teacher/exams?classId=${c.id}`}
-              className={`rounded-full px-3 py-1.5 text-sm font-medium ${
-                selectedClass.id === c.id ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
-              }`}
+              current={selectedClass.id === c.id}
             >
               {c.name}
-            </Link>
+            </ChipLink>
           ))}
         </nav>
       )}
@@ -127,15 +128,13 @@ export default async function TeacherExamsPage({
       ) : (
         <nav aria-label={t("exams.pickPaper")} className="flex flex-wrap gap-2">
           {slots.map((slot) => (
-            <Link
+            <ChipLink
               key={slot.id}
               href={`/teacher/exams?classId=${selectedClass.id}&slotId=${slot.id}`}
-              className={`rounded-full px-3 py-1.5 text-sm font-medium ${
-                selectedSlot?.id === slot.id ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
-              }`}
+              current={selectedSlot?.id === slot.id}
             >
               {slot.seriesName} · {slot.subject} · {formatDateKey(slot.dateKey, undefined, locale)}
-            </Link>
+            </ChipLink>
           ))}
         </nav>
       )}
@@ -203,7 +202,7 @@ export default async function TeacherExamsPage({
                           max={grid.maxMarks}
                           step="0.5"
                           defaultValue={pupil.marks ?? ""}
-                          className="w-24 rounded-lg border border-border bg-surface px-3 py-2 text-right text-fg"
+                          className={fieldClass("w-24 text-right")}
                         />
                         <span className="text-xs text-fg-muted">/ {grid.maxMarks}</span>
                       </div>

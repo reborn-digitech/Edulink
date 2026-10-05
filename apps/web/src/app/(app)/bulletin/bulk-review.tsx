@@ -7,6 +7,7 @@ import { Card, CardBody } from "@/components/ui/card";
 import { useToast } from "@/components/ui/toast";
 import { reviewAllFrom } from "./actions";
 import { useT } from "@/lib/i18n";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * The flood control. Rendered on the review tab, admin only, and only for an
@@ -76,7 +77,7 @@ export function BulkReview({
                     value={reason}
                     onChange={(e) => setReason(e.target.value)}
                     placeholder={t("bulletin.bulkReasonPlaceholder")}
-                    className="min-w-64 flex-1 rounded-[var(--radius-md)] border border-border bg-surface px-3 py-1.5 text-sm text-fg"
+                    className={fieldClass("w-auto min-w-64 flex-1")}
                   />
                   <Button size="sm" variant="danger" loading={pending} disabled={reason.trim().length < 3} onClick={() => run(author.authorUserId, "REJECT")}>
                     {t("bulletin.bulkRejectCta", { count: author.count })}

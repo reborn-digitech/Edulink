@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function AlumniSharePage() {
   const ctx = await requireRole("ALUMNUS");
   const t = await getT();
-  if (!(await isModuleOn(ctx.schoolId, "ALUMNI"))) return <ModuleOff module="ALUMNI" t={t} />;
+  if (!(await isModuleOn(ctx.schoolId, "ALUMNI"))) return <ModuleOff page module="ALUMNI" t={t} />;
   const home = await alumniHome(ctx);
   const open = home.feedMode === "POST" && !home.muted;
   return (

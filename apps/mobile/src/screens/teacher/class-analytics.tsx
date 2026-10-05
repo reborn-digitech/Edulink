@@ -60,7 +60,7 @@ export function ClassAnalytics() {
         onChange={setWindow}
       />
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         <>
           <Text variant="xs" tone="muted">

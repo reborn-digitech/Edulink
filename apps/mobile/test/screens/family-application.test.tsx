@@ -78,7 +78,7 @@ describe("one of the guardian's applications", () => {
 
   it("shows the result once the test is sat", async () => {
     await mountStaff(compose(), "PARENT", { [GET]: () => json(application({ documentsMissing: [], testSlot: slot(), testedAt: "2026-09-20T05:00:00.000Z", testScore: "42/50" })) });
-    expect(await screen.findByText(/^Sat .*2026$/)).toBeTruthy();
+    expect(await screen.findByText(/20\/09\/2026$/)).toBeTruthy();
     expect(screen.getByText("42/50")).toBeTruthy();
     expect(screen.queryByText("No sitting booked yet.")).toBeNull();
   });

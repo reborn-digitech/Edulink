@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { gradesInRange } from "@/lib/superuser";
 import { ClassForm } from "./form";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -37,16 +36,8 @@ export default async function NewClassPage() {
 
   return (
     <div className="mx-auto max-w-xl">
-      <Link
-        href="/admin/classes"
-        className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
-      >
-        <ArrowLeftIcon weight="bold" className="size-4" />
-        {t("classes.allClasses")}
-      </Link>
+      <PageHeader title={t("classes.createClass")} description={t("classes.createSubtitle")} back={{ href: "/admin/classes", label: t("classes.allClasses") }} />
 
-      <h1 className="text-2xl font-bold tracking-tight text-fg">{t("classes.createClass")}</h1>
-      <p className="mt-1.5 text-sm text-fg-muted">{t("classes.createSubtitle")}</p>
 
       <ClassForm
         className="mt-7"

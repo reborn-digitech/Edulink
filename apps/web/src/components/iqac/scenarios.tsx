@@ -2,11 +2,13 @@ import Link from "next/link";
 import type { ScenarioCompare, Scenarios } from "@edulink/contracts";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { ConfirmSubmit } from "@/components/ui/confirm-submit";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { removeScenarioAction } from "@/app/(app)/iqac/simulator/actions";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * The simulator's saved scenarios (module IQAC, 5 Oct 2026): each with what it
@@ -61,9 +63,9 @@ export function ScenarioPanel({ t, locale, list, base, back, compare }: { t: Tra
                       <form action={removeScenarioAction}>
                         <input type="hidden" name="back" value={back} />
                         <input type="hidden" name="scenarioId" value={s.id} />
-                        <Button type="submit" size="sm" variant="ghost">
+                        <ConfirmSubmit size="sm" variant="ghost" confirm={t("insights.simRemoveConfirm", { name: s.name })}>
                           {t("insights.simRemove")}
-                        </Button>
+                        </ConfirmSubmit>
                       </form>
                     ) : null}
                   </div>
@@ -85,7 +87,7 @@ export function ScenarioPanel({ t, locale, list, base, back, compare }: { t: Tra
               {(["a", "b"] as const).map((side, i) => (
                 <label key={side} className="grid gap-1 text-sm font-medium">
                   {t(side === "a" ? "insights.simCompareA" : "insights.simCompareB")}
-                  <select name={side} defaultValue={compare?.[side].id ?? list.items[i]?.id} className="min-h-11 rounded-[var(--radius-md)] border border-border bg-surface px-3">
+                  <select name={side} defaultValue={compare?.[side].id ?? list.items[i]?.id} className={fieldClass("w-auto")}>
                     {list.items.map((s) => (
                       <option key={s.id} value={s.id}>
                         {s.name}
@@ -108,6 +110,15 @@ export function ScenarioPanel({ t, locale, list, base, back, compare }: { t: Tra
                   <TableScroll>
                     <table className="w-full">
                       <caption className="py-1 text-left font-semibold">{t("insights.simCompareInputs")}</caption>
+                      {/* Column headers: without them neither eyes nor a screen reader could tell First from Second from the change (A3-journeys-33). */}
+                      <thead className="text-xs text-fg-muted">
+                        <tr className="border-b border-border">
+                          <th scope="col" className="py-1 pr-3 text-left font-medium">{t("insights.simColFigure")}</th>
+                          <th scope="col" className="py-1 pr-3 text-right font-medium">{compare.a.name}</th>
+                          <th scope="col" className="py-1 pr-3 text-right font-medium">{compare.b.name}</th>
+                          <th scope="col" className="py-1 text-right font-medium">{t("insights.simColChange")}</th>
+                        </tr>
+                      </thead>
                       <tbody>
                         {compare.inputs.map((r) => (
                           <tr key={r.key} className="border-b border-border last:border-0">
@@ -127,6 +138,15 @@ export function ScenarioPanel({ t, locale, list, base, back, compare }: { t: Tra
                   <TableScroll>
                     <table className="w-full">
                       <caption className="py-1 text-left font-semibold">{t("insights.simCompareScores")}</caption>
+                      {/* Column headers: without them neither eyes nor a screen reader could tell First from Second from the change (A3-journeys-33). */}
+                      <thead className="text-xs text-fg-muted">
+                        <tr className="border-b border-border">
+                          <th scope="col" className="py-1 pr-3 text-left font-medium">{t("insights.simColMetric")}</th>
+                          <th scope="col" className="py-1 pr-3 text-right font-medium">{compare.a.name}</th>
+                          <th scope="col" className="py-1 pr-3 text-right font-medium">{compare.b.name}</th>
+                          <th scope="col" className="py-1 text-right font-medium">{t("insights.simColChange")}</th>
+                        </tr>
+                      </thead>
                       <tbody>
                         {compare.scores.map((r) => (
                           <tr key={r.code} className="border-b border-border last:border-0">

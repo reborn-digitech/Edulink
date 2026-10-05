@@ -60,7 +60,7 @@ export function LectureScreen({ lectureId }: { lectureId: string }) {
               options={(["PRESENT", "ABSENT", "LATE"] as const).map((v) => ({ value: v, label: t(MARK_KEY[v]) }))}
             />
           ))}
-          {s.canMark ? <Button label={t(s.lecture.marked ? "academics.saveChanges" : "academics.saveMarks")} busy={save.isPending} onPress={() => save.mutate()} /> : <Text tone="muted">{t("academics.cannotMark")}</Text>}
+          {s.canMark ? <Button label={t(s.lecture.marked ? "academics.saveChanges" : "academics.saveMarks")} busy={save.isPending} onPress={() => save.mutate()} /> : <Text tone="muted">{t(s.frozen ? "academics.frozenLecture" : "academics.cannotMark")}</Text>}
         </Card>
       ) : null}
     </Screen>

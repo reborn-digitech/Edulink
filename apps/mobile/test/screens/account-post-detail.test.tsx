@@ -203,7 +203,7 @@ describe("a post", () => {
   });
 
   it("a refusal is an alert with a retry", async () => {
-    const { calls } = await mount("PARENT", { [`GET ${PATH}`]: refused("ZZ Post not found", 404) });
+    const { calls } = await mount("PARENT", { [`GET ${PATH}`]: refused("ZZ Post not found", 503) });
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ Post not found");
     await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
     await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}`).length).toBe(2));
@@ -237,7 +237,7 @@ describe("a permission slip on the phone (5 Oct 2026)", () => {
 
   it("after the day shows the answers and no buttons", async () => {
     await mount("PARENT", { [`GET ${PATH}`]: () => json(SLIP), [`GET ${PATH}/consent`]: () => json(view("NO", false)) });
-    expect(await screen.findByText("Answers closed on 2099-12-31.")).toBeTruthy();
+    expect(await screen.findByText("Answers closed on 31/12/2099.")).toBeTruthy();
     expect(screen.queryByRole("button", { name: "Yes: ZZ Asha" })).toBeNull();
   });
 });

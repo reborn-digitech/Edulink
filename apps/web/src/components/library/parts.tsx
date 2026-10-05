@@ -8,6 +8,7 @@ import { EmptyState } from "@/components/ui/states";
 import { formatDateKey } from "@/lib/dates";
 import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
 import { cancelReservationAction, renewAction, reserveAction, settleFineAction, waiveFineAction } from "@/app/(app)/library/actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * The library's shared pieces (module LIBRARY, 3 Oct 2026): the message a
@@ -125,7 +126,7 @@ export function FineList({ fines, t, locale, back, desk, canSettle, title, showM
                     <Hidden fields={{ fineId: f.id, back }} />
                     <label className="min-w-0 flex-1 basis-48 text-xs text-fg-muted">
                       {t("library.waiveReason")}
-                      <input name="reason" required minLength={3} maxLength={300} className="mt-1 block min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg" />
+                      <input name="reason" required minLength={3} maxLength={300} className={fieldClass("mt-1 block")} />
                     </label>
                     <Button type="submit" size="sm" variant="ghost">
                       {t("library.waive")}
@@ -177,7 +178,8 @@ export function ReservationList({ items, t, back, title, desk, canCancel = true 
 }
 
 /** The catalogue's search box and its results; a member may reserve, the desk opens the title. */
-export function CatalogueSearch({ items, q, t, back, action, reserveFor, desk, nextHref }: { items: LibraryTitleRow[]; q: string; t: Translate; back: string; action: string; reserveFor?: { childId?: string } | null; desk: boolean; nextHref?: string | null }) {
+/** `addHref`: where the desk adds a book (the form on its own page), offered when the catalogue is empty. */
+export function CatalogueSearch({ items, q, t, back, action, reserveFor, desk, nextHref, addHref }: { items: LibraryTitleRow[]; q: string; t: Translate; back: string; action: string; reserveFor?: { childId?: string } | null; desk: boolean; nextHref?: string | null; addHref?: string }) {
   return (
     <Card>
       <CardHeader icon={<MagnifyingGlassIcon weight="duotone" className="size-5" />} title={t("library.catalogueTitle")} description={t("library.catalogueHint")} />
@@ -186,14 +188,20 @@ export function CatalogueSearch({ items, q, t, back, action, reserveFor, desk, n
           {reserveFor?.childId ? <input type="hidden" name="child" value={reserveFor.childId} /> : null}
           <label className="min-w-0 flex-1 basis-56 text-sm font-medium text-fg">
             {t("library.searchLabel")}
-            <input name="q" defaultValue={q} maxLength={100} className="mt-1.5 block min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3.5 text-[0.9375rem] text-fg" />
+            <input name="q" defaultValue={q} maxLength={100} className={fieldClass("mt-1.5 block")} />
           </label>
           <Button type="submit" variant="secondary">
             {t("library.search")}
           </Button>
         </form>
         {items.length === 0 ? (
-          <EmptyState icon={<BookOpenIcon weight="duotone" className="size-8" />} title={t("library.noTitlesTitle")} description={q ? t("library.noTitlesSearch") : t("library.noTitlesBody")} />
+          <EmptyState
+            icon={<BookOpenIcon weight="duotone" className="size-8" />}
+            title={t("library.noTitlesTitle")}
+            description={q ? t("library.noTitlesSearch") : t("library.noTitlesBody")}
+            action={addHref && !q ? <Button asChild size="sm"><a href={addHref}>{t("library.addTitle")}</a></Button> : undefined}
+          />
+
         ) : (
           <ul className="divide-y divide-border rounded-[var(--radius-md)] border border-border">
             {items.map((b) => (

@@ -19,6 +19,7 @@ import { ModuleOff } from "@/components/module-off";
 import { BusMap } from "@/components/transport/bus-map";
 import { directionLabel, statusLabel, statusTone } from "@/components/transport/labels";
 import { AllotForm, AssignmentForm, BusForm, EndButton, RouteEditor, SettingsForm, TransportLive } from "./forms";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -315,7 +316,7 @@ async function Seats({ ctx, t, overview, classId }: { ctx: Parameters<typeof lis
               <input type="hidden" name="tab" value="pupils" />
               <label className="text-sm">
                 <span className="mb-1 block font-medium text-fg">{t("transport.chooseClass")}</span>
-                <select name="class" defaultValue={classId ?? ""} className="min-h-11 rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm">
+                <select name="class" defaultValue={classId ?? ""} className={fieldClass("w-auto")}>
                   <option value="">{t("transport.chooseClassPrompt")}</option>
                   {data.classes.map((c) => (
                     <option key={c.id} value={c.id}>

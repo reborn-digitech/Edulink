@@ -54,18 +54,21 @@ export default async function AttendancePage({
 
   if (classIds.length === 0) {
     return (
-      <EmptyState
-        icon={<ChalkboardTeacherIcon weight="duotone" className="size-8" />}
-        title={t("teacher.noRegisterToday")}
-        description={t("teacher.noRegisterBody")}
-        action={
-          ctx.role === "ADMIN" ? (
-            <Button asChild>
-              <Link href="/admin/classes/new">{t("teacher.createClass")}</Link>
-            </Button>
-          ) : undefined
-        }
-      />
+      <div className="space-y-6">
+        <PageHeader title={t("teacher.takeRegister")} />
+        <EmptyState
+          icon={<ChalkboardTeacherIcon weight="duotone" className="size-8" />}
+          title={t("teacher.noRegisterToday")}
+          description={t("teacher.noRegisterBody")}
+          action={
+            ctx.role === "ADMIN" ? (
+              <Button asChild>
+                <Link href="/admin/classes/new">{t("teacher.createClass")}</Link>
+              </Button>
+            ) : undefined
+          }
+        />
+      </div>
     );
   }
 
@@ -171,11 +174,14 @@ export default async function AttendancePage({
   const duty = await registerDuty(ctx, selectedId, dateKey);
   if (!duty.may) {
     return (
-      <EmptyState
-        icon={<ChalkboardTeacherIcon weight="duotone" className="size-8" />}
-        title={t("teacher.notYourRegister")}
-        description={t("teacher.notYoursBody")}
-      />
+      <div className="space-y-6">
+        <PageHeader title={t("teacher.takeRegister")} />
+        <EmptyState
+          icon={<ChalkboardTeacherIcon weight="duotone" className="size-8" />}
+          title={t("teacher.notYourRegister")}
+          description={t("teacher.notYoursBody")}
+        />
+      </div>
     );
   }
 
@@ -184,8 +190,14 @@ export default async function AttendancePage({
   await assertClassAccessForRegister(ctx, selectedId, duty);
   const register = await getRegister(ctx.schoolId, selectedId, dateKey);
   if (!register) {
-    return <EmptyState title={t("teacher.classNotFound")} description={t("teacher.mayBeArchived")} />;
+    return (
+      <div className="space-y-6">
+        <PageHeader title={t("teacher.takeRegister")} />
+        <EmptyState title={t("teacher.classNotFound")} description={t("teacher.mayBeArchived")} />
+      </div>
+    );
   }
+
 
   return (
     <div className="space-y-4">

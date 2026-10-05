@@ -31,12 +31,18 @@ function backOf(formData: FormData): string {
 const withMessage = (back: string, key: "ok" | "error", text: string) => `${back}${back.includes("?") ? "&" : "?"}${key}=${encodeURIComponent(text)}`;
 const str = (f: FormData, name: string) => String(f.get(name) ?? "").trim();
 
-async function run(formData: FormData, work: () => Promise<TranslationKey>): Promise<void> {
-  const back = backOf(formData);
+async function run(formData: FormData, work: () => Promise<TranslationKey | { done: TranslationKey; load: string | undefined }>): Promise<void> {
+  let back = backOf(formData);
   const t = await getT();
   let done: TranslationKey;
   try {
-    done = await work();
+    const result = await work();
+    if (typeof result === "string") done = result;
+    else {
+      done = result.done;
+      // Saving keeps the saved figures on screen instead of resetting them to today (A3-journeys-33).
+      if (result.load) back = `${back}${back.includes("?") ? "&" : "?"}load=${encodeURIComponent(result.load)}`;
+    }
   } catch (error) {
     if (error instanceof AccessError || error instanceof RuleRefusal) redirect(withMessage(back, "error", t(error.key as TranslationKey, (error as { vars?: Record<string, string | number> }).vars)));
     if (error instanceof SyntaxError || error instanceof FormError) redirect(withMessage(back, "error", t("common.checkTheForm")));
@@ -56,16 +62,17 @@ function parsedSave(raw: unknown) {
 export async function saveNaacScenarioAction(formData: FormData) {
   await run(formData, async () => {
     const ctx = await requireApiUser();
-    await saveScenario(ctx, parsedSave({ kind: "NAAC", cycleId: str(formData, "cycleId"), name: str(formData, "name"), inputs: JSON.parse(str(formData, "inputs") || "{}") }));
-    return "insights.simSaved";
+    const list = await saveScenario(ctx, parsedSave({ kind: "NAAC", cycleId: str(formData, "cycleId"), name: str(formData, "name"), inputs: JSON.parse(str(formData, "inputs") || "{}") }));
+    // The list is newest first, so the scenario just saved leads it.
+    return { done: "insights.simSaved", load: list.items[0]?.id };
   });
 }
 
 export async function saveNbaScenarioAction(formData: FormData) {
   await run(formData, async () => {
     const ctx = await requireApiUser();
-    await saveScenario(ctx, parsedSave({ kind: "NBA", year: Number(str(formData, "year")), departmentId: str(formData, "departmentId"), name: str(formData, "name"), inputs: JSON.parse(str(formData, "inputs") || "{}") }));
-    return "insights.simSaved";
+    const list = await saveScenario(ctx, parsedSave({ kind: "NBA", year: Number(str(formData, "year")), departmentId: str(formData, "departmentId"), name: str(formData, "name"), inputs: JSON.parse(str(formData, "inputs") || "{}") }));
+    return { done: "insights.simSaved", load: list.items[0]?.id };
   });
 }
 

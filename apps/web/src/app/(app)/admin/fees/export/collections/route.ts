@@ -12,7 +12,7 @@ import { collectionsExport } from "@/lib/fees-reports";
  */
 export async function GET(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const school = await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } });
     const today = todayKey(school.timezone);
     const url = new URL(request.url);

@@ -148,7 +148,7 @@ export function InvitePeople() {
         </Card>
       )}
       {invites.isPending ? <Loading /> : null}
-      {invites.isError ? <Failed message={invites.error.message} onRetry={() => void invites.refetch()} /> : null}
+      {invites.isError ? <Failed error={invites.error} onRetry={() => void invites.refetch()} /> : null}
       {d ? (
         d.invites.length === 0 ? (
           <Empty

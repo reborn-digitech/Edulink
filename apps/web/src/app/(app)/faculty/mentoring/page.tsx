@@ -8,7 +8,7 @@ import { EmptyState } from "@/components/ui/states";
 import { PageHeader } from "@/components/ui/page-header";
 import { SelectField, TextField } from "@/components/ui/field";
 import { ModuleOff } from "@/components/module-off";
-import { INPUT, ModuleFlash } from "@/components/module-flash";
+import { ModuleFlash } from "@/components/module-flash";
 import { FLAG_KEY } from "@/components/academics/parts";
 import { requireRole } from "@/lib/tenancy";
 import { isModuleOn } from "@/lib/modules";
@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function MentoringPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const ctx = await requireRole("FACULTY", "HOD");
   const t = await getT();
-  if (!(await isModuleOn(ctx.schoolId, "ACADEMICS"))) return <ModuleOff module="ACADEMICS" t={t} college />;
+  if (!(await isModuleOn(ctx.schoolId, "ACADEMICS"))) return <ModuleOff page module="ACADEMICS" t={t} college />;
   const m = await mentoringView(ctx);
   const [s, seats] = m.canOrganise ? await Promise.all([academicsStructure(ctx), listSeats(ctx, {})]) : [null, null];
   return (
@@ -88,7 +88,7 @@ export default async function MentoringPage({ searchParams }: { searchParams: Pr
                 <legend className="mb-1 text-sm font-medium text-fg">{t("academics.fieldMenteeList")}</legend>
                 {seats.seats.map((x) => (
                   <label key={x.studentMembershipId} className="flex min-h-11 items-center gap-2 text-sm">
-                    <input type="checkbox" name="studentMembershipId" value={x.studentMembershipId} className={`${INPUT} size-5 w-5 p-0`} />
+                    <input type="checkbox" name="studentMembershipId" value={x.studentMembershipId} className="size-5 shrink-0 accent-[var(--accent)]" />
                     {`${x.name} · ${x.programmeCode}`}
                   </label>
                 ))}

@@ -55,7 +55,7 @@ export function WindowPicker({ span }: { span: Span }) {
           disabled={pending}
           onClick={() => choose(option.span)}
           className={cn(
-            "min-h-10 rounded-[var(--radius-sm)] px-3 text-sm font-medium transition-colors disabled:opacity-60",
+            "min-h-11 rounded-[var(--radius-sm)] px-3 text-sm font-medium transition-colors disabled:opacity-60",
             option.span === span ? "bg-surface text-fg shadow-sm" : "text-fg-muted hover:text-fg",
           )}
         >

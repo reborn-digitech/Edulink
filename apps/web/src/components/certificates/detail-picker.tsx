@@ -6,6 +6,7 @@ import type { PaletteEntry, PaletteGroup } from "@/lib/certificates";
 import { Button } from "@/components/ui/button";
 import { useLocale, useT } from "@/lib/i18n";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * The list a detail is chosen from: what the certificate can print about a
@@ -88,7 +89,7 @@ export function DetailPicker({ palette, onPick, onBlank, label, intro, variant =
           <label className="relative block">
             <span className="sr-only">{t("certificates.pickSearch")}</span>
             <MagnifyingGlassIcon weight="bold" className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-fg-subtle" aria-hidden="true" />
-            <input type="search" autoFocus value={query} onChange={(e) => setQuery(e.target.value)} placeholder={t("certificates.pickSearch")} autoComplete="off" className="min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface py-2 pl-9 pr-3 text-sm text-fg outline-none focus:border-accent" data-testid="detail-search" />
+            <input type="search" autoFocus value={query} onChange={(e) => setQuery(e.target.value)} placeholder={t("certificates.pickSearch")} autoComplete="off" className={fieldClass("pl-9")} data-testid="detail-search" />
           </label>
 
           <div className="max-h-80 space-y-3 overflow-y-auto pr-1" tabIndex={0} role="region" aria-label={label}>

@@ -4,7 +4,7 @@ import { UserIcon } from "@phosphor-icons/react/ssr";
 import { isCollegeKind } from "@edulink/contracts";
 import { requireRole } from "@/lib/tenancy";
 import { institutionKindOf } from "@/lib/modules";
-import { officeLedger } from "@/lib/college-fees";
+import { claimShownPaise, officeLedger } from "@/lib/college-fees";
 import { noDuesView } from "@/lib/no-dues";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { db } from "@/lib/db";
@@ -82,7 +82,7 @@ export default async function StudentsPage({ searchParams }: { searchParams: Pro
                 <ul className="space-y-1 text-sm">
                   {ledger.claims.map((c) => (
                     <li key={c.id}>
-                      {t(SCHEME_KEY(c.scheme))}: {t(CLAIM_STATUS_KEY(c.status))} · {money(c.receivablePaise, locale)}
+                      {t(SCHEME_KEY(c.scheme))}: {t(CLAIM_STATUS_KEY(c.status))} · {money(claimShownPaise(c), locale)}
                     </li>
                   ))}
                 </ul>

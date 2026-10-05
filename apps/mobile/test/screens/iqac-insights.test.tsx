@@ -92,6 +92,35 @@ describe("actionable insights on the phone", () => {
     open.mockRestore();
   });
 
+  it("says another role's step as 'Ask: page — who' with no link, and opens the IQAC's own (A3-journeys-23)", async () => {
+    const open = openUrl();
+    const EXAMS = { code: "EXAMS", href: "/exam-cell", roles: ["EXAM_CONTROLLER"], label: "Exam cell and results — Exam controller" };
+    const own = { ...SURVEYS, label: "Surveys — IQAC coordinator" };
+    const d = { ...INSIGHTS, paths: [{ ...INSIGHTS.paths[0], steps: [{ code: "2.6.3", delta: 2, unit: "pct", points: 0.02, sentence: "Raise the pass percentage of 2.6.3.", cta: EXAMS }, { code: "2.7.1", delta: 3, unit: "tenth", points: 0.05, sentence: "Raise 2.7.1 by 3 tenths.", cta: own }] }], ranked: [], qualitative: [] };
+    await mountStaff(<InsightsScreen />, "IQAC", { "GET /api/v1/iqac/insights": () => json(d) }, { me: atCollege("IQAC", ["ACADEMICS", "IQAC"]) });
+    expect(await screen.findByText("Raise the pass percentage of 2.6.3.")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: /Raise the pass percentage of 2\.6\.3\./ })).toBeNull();
+    expect(screen.getByText(/^Ask: Exam cell and results — Exam controller/)).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: /Raise 2\.7\.1 by 3 tenths\..*Surveys — IQAC coordinator.*Open on the web/ }));
+    expect(open).toHaveBeenCalledWith(expect.stringMatching(/\/iqac\/surveys$/));
+    expect(open).not.toHaveBeenCalledWith(expect.stringMatching(/\/exam-cell$/));
+    open.mockRestore();
+  });
+
+  it("says the who, the page and what was done in the phone's own words, from the codes, not the server's sentence (A3-states-16)", async () => {
+    const d = {
+      ...INSIGHTS,
+      paths: [{ ...INSIGHTS.paths[0], steps: [{ code: "2.4.2", delta: 2, unit: "teacher", points: 0.0431, sentence: "Two more teachers with a PhD move 2.4.2.", cta: { code: "FACULTY_RECORDS", href: "/admin/faculty-records", roles: ["ADMIN"], label: "ACCOUNT-LANGUAGE LABEL" } }] }],
+      ranked: [],
+      qualitative: [],
+      lastDone: [{ action: "iqac.metric.score", label: "ACCOUNT-LANGUAGE ACTION", labelKey: "audit.iqacMetricScore", at: "2026-10-04T09:00:00.000Z", by: "ZZ Vidya IQAC", cta: "QUALITATIVE", sinceCompute: false }],
+    };
+    await mountStaff(<InsightsScreen />, "IQAC", { "GET /api/v1/iqac/insights": () => json(d) }, { me: atCollege("IQAC", ["ACADEMICS", "IQAC"]) });
+    expect(await screen.findByText(/^Ask: Faculty records — College office/)).toBeTruthy();
+    expect(screen.getByText("Scored a qualitative NAAC metric")).toBeTruthy();
+    expect(screen.queryByText(/ACCOUNT-LANGUAGE/)).toBeNull();
+  });
+
   it("shows any other refusal as it is said, with a retry", async () => {
     await mountStaff(<InsightsScreen />, "IQAC", { "GET /api/v1/iqac/insights": refused("Something went wrong") }, { me: atCollege("IQAC", ["ACADEMICS", "IQAC"]) });
     expect(await screen.findByRole("alert")).toHaveTextContent("Something went wrong");
@@ -108,7 +137,7 @@ describe("the saved scenarios on the phone", () => {
     expect(await screen.findByText("ZZ More PhDs")).toBeTruthy();
     expect(screen.getByText("Today: CGPA 1.42")).toBeTruthy();
     expect(screen.getByText("1.58 · C")).toBeTruthy();
-    expect(screen.getByText(/ZZ Vidya IQAC · 2026-10-05 · \+0\.16 against today/)).toBeTruthy();
+    expect(screen.getByText(/ZZ Vidya IQAC · 05\/10\/2026 · \+0\.16 against today/)).toBeTruthy();
     expect(screen.getByText(/-0\.12 against today/)).toBeTruthy();
     expect(screen.getByText(/Same as today/)).toBeTruthy();
     expect(calls().some((c) => c.line === "GET /api/v1/iqac/scenarios?kind=NAAC")).toBe(true);
@@ -139,6 +168,16 @@ describe("the entries to the screens", () => {
     cycle: CYCLE, nextBand: { grade: "C", min: 1.51, distance: 0.09 }, cheapest: [],
     counts: { research: 0, activities: 0, committees: 0, openSurveys: 0, openGrievances: 0, overdueGrievances: 0, filings: 0, awaitingSignoff: 0 }, calendar: [], nirf: { partial: 0, coveredMarks: 0, parameters: [] }, disclosurePublishedAt: null,
   };
+
+  it("the IQAC home names the insights once, and the regulators' dates in the phone's words (A3-states-16)", async () => {
+    const calendar = [{ code: "AISHE", label: "ACCOUNT-LANGUAGE AISHE", from: "2026-10-01", to: "2027-01-31", filing: "AISHE", filedThisYear: false }, { code: "AFFILIATION", label: "ACCOUNT-LANGUAGE AFFILIATION", from: "2026-11-01", to: "2026-12-31", filing: "AFFILIATION_RETURN", filedThisYear: true }];
+    await mountStaff(<IqacHome />, "IQAC", { "GET /api/v1/iqac/overview": () => json({ ...OVERVIEW, calendar, cheapest: [{ code: "1.3.2", text: "ZZ metric", gainPerUnit: 0.004, unit: "mou" }] }) }, { me: atCollege("IQAC", ["ACADEMICS", "IQAC"]) });
+    expect(await screen.findByText("AISHE data capture")).toBeTruthy();
+    expect(screen.getByText(/MoU/)).toBeTruthy();
+    expect(screen.getByText("University affiliation return")).toBeTruthy();
+    expect(screen.queryByText(/ACCOUNT-LANGUAGE/)).toBeNull();
+    expect(screen.getAllByText("Actionable insights")).toHaveLength(1);
+  });
 
   it("the IQAC home opens the insights and the scenarios", async () => {
     await mountStaff(<IqacHome />, "IQAC", { "GET /api/v1/iqac/overview": () => json(OVERVIEW) }, { me: atCollege("IQAC", ["ACADEMICS", "IQAC"]) });

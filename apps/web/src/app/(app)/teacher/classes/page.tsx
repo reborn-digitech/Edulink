@@ -7,6 +7,8 @@ import { todayKey } from "@/lib/dates";
 import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+
 import { getT } from "@/lib/i18n/server";
 import { CelebrationsLink } from "@/components/celebrations/celebrations-link";
 import { PageHeader } from "@/components/ui/page-header";
@@ -32,13 +34,19 @@ export default async function TeacherClassesPage() {
 
   if (classIds.length === 0) {
     return (
-      <EmptyState
-        icon={<ChalkboardTeacherIcon weight="duotone" className="size-8" />}
-        title={t("teacher.noClassesAssigned")}
-        description={t("teacher.noClassesAssignedBody")}
-      />
+      <div className="space-y-6">
+        <PageHeader title={t("teacher.myClasses")} />
+        <EmptyState
+          icon={<ChalkboardTeacherIcon weight="duotone" className="size-8" />}
+          title={t("teacher.noClassesAssigned")}
+          description={t("teacher.noClassesAssignedBody")}
+          // With no class there is no roll to open; the notices are where the school reaches a teacher meanwhile.
+          action={<Button asChild size="sm" variant="secondary"><Link href="/bulletin">{t("nav.bulletin")}</Link></Button>}
+        />
+      </div>
     );
   }
+
 
   const school = await db.school.findUniqueOrThrow({
     where: { id: ctx.schoolId },

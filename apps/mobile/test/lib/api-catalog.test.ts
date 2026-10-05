@@ -40,6 +40,9 @@ export function callsInSource(): Call[] {
     for (const m of text.matchAll(/\.request(?:<[^>]*>)?\(\s*"(GET|POST|PUT|PATCH|DELETE)",\s*[`"](\/api\/v1\/[^"`?]*)/g)) calls.push({ method: m[1]!, path: m[2]!, where });
     for (const m of text.matchAll(/method:\s*"(GET|POST|PUT|PATCH|DELETE)"[^}]{0,200}?path:\s*[`"](\/api\/v1\/[^"`?]*)/gs)) calls.push({ method: m[1]!, path: m[2]!, where });
     for (const m of text.matchAll(/path:\s*[`"](\/api\/v1\/[^"`?]*)[`"][^}]{0,200}?method:\s*"(GET|POST|PUT|PATCH|DELETE)"/gs)) calls.push({ method: m[2]!, path: m[1]!, where });
+    // The outbox's writes, postOrQueue / writeOrQueue / enqueue({ url }): a POST unless the item says otherwise — and the
+    // register's, POST /api/attendance, sits outside /api/v1 and is in the document since A3-inventory-9 (5 Oct 2026).
+    for (const m of text.matchAll(/\burl:\s*[`"](\/api\/[^"`?]*)[`"](?:[^}]{0,200}?method:\s*"(GET|POST|PUT|PATCH|DELETE)")?/gs)) calls.push({ method: m[2] ?? "POST", path: m[1]!, where });
   }
   return calls.map((c) => ({ ...c, path: literalPath(c.path) }));
 }

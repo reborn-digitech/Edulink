@@ -1,6 +1,7 @@
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { ToastProvider } from "@/components";
 import { leavingBodyFrom, Person, splitSubjects } from "@/screens/staff/person";
+import { BackCtx } from "@/components/chrome";
 import { json, mountStaff, type Answers } from "./staff-harness";
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
@@ -9,6 +10,32 @@ jest.mock("expo-router", () => ({ useRouter: () => mockRouter, useLocalSearchPar
 const PUPIL = { membershipId: "m7", name: "ZZ Pupil", role: "STUDENT", left: "", leavingOn: "" };
 const LEAVING = "/api/v1/admin/people/m7/leaving";
 
+/** The directory's row for the person the route names, as GET /api/v1/admin/people has it. */
+const rowFor = (p: Record<string, string>) => ({
+  membershipId: p.membershipId,
+  role: p.role ?? "STUDENT",
+  status: p.status || "ACTIVE",
+  name: p.name,
+  preferredName: null,
+  email: null,
+  avatarKey: null,
+  birthdateKey: p.birthdate || null,
+  studentCode: null,
+  title: null,
+  subjects: p.subjects ? p.subjects.split(",") : [],
+  joinedAt: "2026-06-01T00:00:00.000Z",
+  leftAt: p.left === "1" ? "2026-09-01T00:00:00.000Z" : null,
+  suspendedAt: null,
+  suspendedReason: null,
+  enrolledIn: [],
+  teaches: [],
+  staffRecord: null,
+  schoolRecord: null,
+  scheduledDeparture: p.leavingOn ? { leaveOnKey: p.leavingOn } : null,
+  pendingParentInvites: [],
+});
+const directory = (members: unknown[]) => json({ members, total: members.length, page: 1, pages: 1, pageSize: 50, classes: [], roleCounts: [], suspendedCount: 0, leftCount: 0, filters: { q: "", role: null, status: "ACTIVE", classId: null, sort: "name" } });
+
 const mount = (params: Record<string, string>, answers: Answers = {}) => {
   mockRouter.params = params;
   return mountStaff(
@@ -16,7 +43,7 @@ const mount = (params: Record<string, string>, answers: Answers = {}) => {
       <Person />
     </ToastProvider>,
     "ADMIN",
-    answers,
+    { "GET /api/v1/admin/people": () => directory([rowFor(params)]), ...answers },
   );
 };
 
@@ -26,6 +53,38 @@ describe("what the leaving form sends", () => {
   it("leaves a blank line out, sends a blank day as null and no conduct as null", () => {
     expect(leavingBodyFrom({ reason: "LEFT", conduct: "", destination: "  ", note: "", leftOn: "" })).toEqual({ reason: "LEFT", conduct: null, leftOn: null });
     expect(leavingBodyFrom({ reason: "TRANSFERRED", conduct: "GOOD", destination: " ZZ Elsewhere ", note: " Family moved. ", leftOn: " 2026-10-15 " })).toEqual({ reason: "TRANSFERRED", conduct: "GOOD", destination: "ZZ Elsewhere", note: "Family moved.", leftOn: "2026-10-15" });
+  });
+});
+
+describe("a person the school does not have (A3-states-15)", () => {
+  it("asks the directory first and, finding no row, draws no form: the not-found sentence and the way back, no retry", async () => {
+    const onBack = jest.fn();
+    mockRouter.params = { membershipId: "00000000-0000-4000-8000-000000000000" };
+    await mountStaff(
+      <BackCtx.Provider value={{ onBack }}>
+        <ToastProvider>
+          <Person />
+        </ToastProvider>
+      </BackCtx.Provider>,
+      "ADMIN",
+      { "GET /api/v1/admin/people": () => directory([]) },
+    );
+    expect(await screen.findByText("That person is not a member of this school.")).toBeTruthy();
+    expect(screen.queryByText(/^Legal name for/)).toBeNull();
+    expect(screen.queryByText(/^Date of birth for/)).toBeNull();
+    expect(screen.queryByText(/access\?$/)).toBeNull();
+    expect(screen.queryByRole("button", { name: "Save" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Try again" })).toBeNull();
+    const backs = screen.getAllByRole("button", { name: "Back" });
+    await fireEvent.press(backs[backs.length - 1]!);
+    expect(onBack).toHaveBeenCalled();
+  });
+
+  it("an id the directory's page does not hold under that name is not found either; the search is the row's tab", async () => {
+    const { calls } = await mount({ membershipId: "m404", name: "ZZ Pupil", role: "STUDENT", left: "1" }, { "GET /api/v1/admin/people": () => directory([rowFor({ ...PUPIL, membershipId: "m7" })]) });
+    expect(await screen.findByText("That person is not a member of this school.")).toBeTruthy();
+    expect(calls().find((c) => c.line.startsWith("GET /api/v1/admin/people"))?.line).toBe("GET /api/v1/admin/people?q=ZZ+Pupil&role=STUDENT&status=LEFT");
+    expect(screen.queryByRole("button", { name: "Undo leaving" })).toBeNull();
   });
 });
 

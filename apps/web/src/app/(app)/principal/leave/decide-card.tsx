@@ -13,6 +13,7 @@ import { useT } from "@/lib/i18n";
 import { cn } from "@/lib/cn";
 import { formatDateKey } from "@/lib/dates";
 import { PersonLink } from "@/components/person-link";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * One request, and the decision.
@@ -176,7 +177,7 @@ export function DecideCard({
             data-testid="leave-cover"
             disabled={classesCovered === 0}
             onChange={(e) => setCover(e.target.value)}
-            className="mt-1.5 min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent disabled:opacity-60"
+            className={fieldClass("mt-1.5 disabled:opacity-60")}
           >
             <option value="">{t("principal.nobodyYet")}</option>
             {staff.map((person) => (
@@ -217,7 +218,7 @@ export function DecideCard({
                         onChange={(e) =>
                           setGroupCover((prev) => ({ ...prev, [key]: e.target.value }))
                         }
-                        className="mt-1 min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+                        className={fieldClass("mt-1")}
                       >
                         <option value="">{t("principal.nobodyYet")}</option>
                         {group.options.map((person) => (
@@ -245,7 +246,7 @@ export function DecideCard({
             maxLength={1000}
             value={note}
             onChange={(e) => setNote(e.target.value)}
-            className="mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg outline-none focus:border-accent"
+            className={fieldClass("mt-1")}
           />
         </label>
       )}

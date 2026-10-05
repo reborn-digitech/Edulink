@@ -23,7 +23,7 @@ const STATUS_TONE = { ASKED: "warn", APPROVED: "ok", REFUSED: "danger" } as cons
 /** Registration on a student's behalf, and late registrations: the office asks, the principal decides. */
 export default async function RegistrationAdminPage({ searchParams }: { searchParams: SearchParams }) {
   const { ctx, t, on, college, canEdit } = await academicsGate();
-  if (!on) return <ModuleOff module="ACADEMICS" t={t} college={college} />;
+  if (!on) return <ModuleOff page module="ACADEMICS" t={t} college={college} />;
   const params = await searchParams;
   const student = one(params.student);
   const [s, late, seats] = await Promise.all([academicsStructure(ctx), listLateRegistrations(ctx), listSeats(ctx, {})]);

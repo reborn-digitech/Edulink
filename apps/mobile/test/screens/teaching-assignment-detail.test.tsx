@@ -108,7 +108,7 @@ describe("one assignment's gradebook", () => {
     await fireEvent.changeText(screen.getByLabelText("Mark for ZZ Bhavesh"), "");
     expect(screen.getByText("2 not saved yet")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Save marks" }));
-    expect(await screen.findByText("2 marks saved")).toBeTruthy();
+    expect(await screen.findByText("Marks saved: 2")).toBeTruthy();
     expect(teachingGradesBodySchema.parse(calls().find((c) => c.line === GRADES)!.body)).toEqual({
       grades: [
         { studentMembershipId: ID.pupil1, score: 17.5, comment: "ZZ neat steps" },
@@ -182,7 +182,7 @@ describe("one assignment's gradebook", () => {
     // Nothing is lost: the mark is still on the card.
     expect(screen.getByLabelText("Mark for ZZ Asha")).toHaveDisplayValue("10");
 
-    const load = await mountStaff(detail(), "TEACHER", { [GET]: refused("ZZ not your class", 404) });
+    const load = await mountStaff(detail(), "TEACHER", { [GET]: refused("ZZ not your class", 503) });
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ not your class");
     await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
     await waitFor(() => expect(load.calls().filter((c) => c.line === GET)).toHaveLength(2));

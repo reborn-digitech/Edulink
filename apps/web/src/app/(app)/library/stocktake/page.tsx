@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { DeskFrame, deskContext } from "@/components/library/desk";
 import { COPY_STATUS_KEY } from "@/components/library/parts";
 import { stockSeenAction, stockTakeFormAction } from "../actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -36,7 +37,7 @@ export default async function LibraryStockTakePage({ searchParams }: { searchPar
               <input type="hidden" name="back" value={back} />
               <label className="min-w-0 flex-1 basis-56 text-sm font-medium text-fg">
                 {t("library.accession")}
-                <input name="accession" required autoFocus autoComplete="off" maxLength={30} className="mt-1.5 block min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3.5 text-[0.9375rem] text-fg" />
+                <input name="accession" required autoFocus autoComplete="off" maxLength={30} className={fieldClass("mt-1.5 block")} />
               </label>
               <Button type="submit">{t("library.markSeen")}</Button>
             </form>

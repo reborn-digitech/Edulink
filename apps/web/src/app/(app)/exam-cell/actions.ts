@@ -30,10 +30,12 @@ import { parseRupees } from "@edulink/i18n";
 import { AccessError, requireApiUser } from "@/lib/tenancy";
 import { RuleRefusal } from "@/lib/rule-refusal";
 import { getT } from "@/lib/i18n/server";
+import { answerForm } from "@/lib/form-action";
+import type { FieldMap, FormState } from "@/lib/form-state";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import type { ActiveContext } from "@/lib/session";
 import { assignInvigilator, buildSeating, createSession, decideForm, decideMalpractice, generateForms, issueHallTickets, markDutyDone, reportMalpractice, saveRemuneration, saveRoom, saveSchedule, setSessionStatus, submitForm, swapInvigilator, updateSession } from "@/lib/exam-cell";
-import { addModerationNote, correctMark, decideGrace, enterMarks, importMarks, proposeGrace, publishRun, runResults } from "@/lib/exam-cell-marks";
+import { addModerationNote, correctMark, decideGrace, enterMarks, importMarks, importReport, proposeGrace, publishRun, runResults } from "@/lib/exam-cell-marks";
 import { addBacklog, askRevaluation, assignPaper, buildConvocation, buildPrintingLists, decideRevaluation, issueDocument, moderatePaper, pushCredits, returnAllocation, saveAllocation, saveControllerSignature, submitPaper } from "@/lib/exam-cell-after";
 
 /**
@@ -75,8 +77,16 @@ const instant = (formData: FormData, name: string) => {
   return Number.isNaN(d.getTime()) ? "bad" : d.toISOString();
 };
 
-type Done = TranslationKey | { key: TranslationKey; vars: Record<string, string | number> } | null;
-class FormError extends Error {}
+type Done = TranslationKey | { key: TranslationKey; vars: Record<string, string | number> } | { text: string } | null;
+/** A form the action could not read: the box it is about when the action knows it, the schema's error as the cause when it came from one (lib/form-state.ts reads both). */
+class FormError extends Error {
+  constructor(
+    readonly formField?: string,
+    cause?: unknown,
+  ) {
+    super("form", cause === undefined ? undefined : { cause });
+  }
+}
 
 async function run(formData: FormData, work: (ctx: ActiveContext) => Promise<Done>): Promise<void> {
   const back = backOf(formData);
@@ -93,18 +103,18 @@ async function run(formData: FormData, work: (ctx: ActiveContext) => Promise<Don
   }
   revalidatePath(back.split("?")[0]!);
   if (!done) redirect(back);
-  redirect(withMessage(back, "ok", typeof done === "string" ? t(done) : t(done.key, done.vars)));
+  redirect(withMessage(back, "ok", typeof done === "string" ? t(done) : "text" in done ? done.text : t(done.key, done.vars)));
 }
 
-function parsed<T>(result: { success: true; data: T } | { success: false }): T {
-  if (!result.success) throw new FormError();
+function parsed<T>(result: { success: true; data: T } | { success: false; error?: unknown }): T {
+  if (!result.success) throw new FormError(undefined, result.error);
   return result.data;
 }
 
 function sessionInput(formData: FormData) {
   const opens = instant(formData, "formOpensAt");
   const closes = instant(formData, "formClosesAt");
-  if (opens === "bad" || closes === "bad") throw new FormError();
+  if (opens === "bad" || closes === "bad") throw new FormError(opens === "bad" ? "formOpensAt" : "formClosesAt");
   const slabs = [1, 2, 3]
     .map((i) => ({ fromDateKey: str(formData, `slabFrom${i}`), paise: rupees(formData, `slabFee${i}`) }))
     .filter((s) => s.fromDateKey !== "");
@@ -127,12 +137,30 @@ function sessionInput(formData: FormData) {
 
 /* --------------------------------------------------------------- sessions */
 
-export async function createSessionAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
-    const input = sessionInput(formData);
-    await createSession(ctx, input);
-    return { key: "examCell.sessionCreated", vars: { name: input.name } };
-  });
+/** The session form's boxes by the schema's names (the fees are typed in rupees and checked in paise). */
+const SESSION_FIELDS: FieldMap = {
+  feePerCoursePaise: "feePerCourse",
+  feePerBacklogPaise: "feePerBacklog",
+  photocopyFeePaise: "photocopyFee",
+  revalFeePaise: "revalFee",
+  "lateFeeSlabs.0.paise": "slabFee1",
+  "lateFeeSlabs.0.fromDateKey": "slabFrom1",
+  lateFeeSlabs: "slabFrom1",
+};
+
+/** A new session answers in place (A3-journeys-27): a bad fee or date keeps the form as typed and is said under its box. */
+export async function createSessionAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return answerForm(
+    previous,
+    formData,
+    async () => {
+      const ctx = await requireApiUser();
+      const input = sessionInput(formData);
+      await createSession(ctx, input);
+      return { key: "examCell.sessionCreated", vars: { name: input.name } };
+    },
+    { revalidate: [backOf(formData)], fields: SESSION_FIELDS },
+  );
 }
 
 export async function updateSessionAction(formData: FormData): Promise<void> {
@@ -271,7 +299,8 @@ export async function importMarksAction(formData: FormData): Promise<void> {
   await run(formData, async (ctx) => {
     const input = parsed(examMarksImportSchema.safeParse({ text: str(formData, "text") }));
     const r = await importMarks(ctx, str(formData, "sessionId"), input.text);
-    return { key: "examCell.importDone", vars: { created: r.created, updated: r.updated, unchanged: r.unchanged, unmatched: r.unmatched.length } };
+    // The counts and each row not written with its reason (A3-journeys-17).
+    return { text: importReport(await getT(), r) };
   });
 }
 
@@ -417,8 +446,8 @@ export async function submitPaperAction(formData: FormData): Promise<void> {
 
 export async function askRevaluationAction(formData: FormData): Promise<void> {
   await run(formData, async (ctx) => {
-    await askRevaluation(ctx, parsed(myRevaluationAskSchema.safeParse({ sessionId: str(formData, "sessionId"), courseId: str(formData, "courseId"), kind: str(formData, "kind") })));
-    return "examCell.revalAsked";
+    const r = await askRevaluation(ctx, parsed(myRevaluationAskSchema.safeParse({ sessionId: str(formData, "sessionId"), courseId: str(formData, "courseId"), kind: str(formData, "kind") })));
+    return r.count ? "examCell.revalAsked" : "examCell.revalAskedNoFee";
   });
 }
 

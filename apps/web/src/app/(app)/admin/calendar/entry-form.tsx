@@ -125,16 +125,19 @@ export function EntryForm({ today }: { today: string }) {
           hint={t("calendar.endsHint")}
         />
       ) : (
-        <button
+        <Button
           type="button"
+          variant="link"
+          size="sm"
+          className="self-start px-0"
           onClick={() => {
             setMultiDay(true);
             setEnd(start);
           }}
-          className="text-sm font-medium text-accent-strong underline underline-offset-4"
         >
           {t("calendar.lastsLonger")}
-        </button>
+        </Button>
+
       )}
 
       <TextAreaField

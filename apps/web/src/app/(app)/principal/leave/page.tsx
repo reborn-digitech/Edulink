@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { leaveBalancesFor, leaveDayCounterFor } from "@/lib/staff-records";
-import { CalendarCheckIcon , UsersThreeIcon } from "@phosphor-icons/react/ssr";
+import { CalendarCheckIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import {
@@ -20,6 +20,7 @@ import { getT } from "@/lib/i18n/server";
 import { formatDateKey } from "@/lib/dates";
 import { PersonLink } from "@/components/person-link";
 import { TabBar } from "@/components/ui/tabs";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -183,17 +184,16 @@ export default async function PrincipalLeavePage({
 
   return (
     <div className="mx-auto max-w-2xl space-y-6">
-      <div>
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-            {t("principal.staffLeave")}
-          </h1>
+      <PageHeader
+        title={t("principal.staffLeave")}
+        description={t("principal.staffLeaveBody")}
+        actions={
           <Button asChild variant="secondary" size="sm" icon={<UsersThreeIcon weight="bold" />}>
             <Link href="/principal/staff">{t("staff.rosterTitle")}</Link>
           </Button>
-        </div>
-        <p className="mt-1 text-sm leading-relaxed text-fg-muted">{t("principal.staffLeaveBody")}</p>
-      </div>
+        }
+      />
+
 
       {/* Waiting and decided as two tabs: the decided list grew below the
           fold and the one request that needed an answer sat above sixty

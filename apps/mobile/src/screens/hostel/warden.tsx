@@ -7,6 +7,7 @@ import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text } from "
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { useSession } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { newClientId } from "@/lib/outbox";
@@ -14,6 +15,7 @@ import { Chips, Notice } from "../staff/shared";
 import { OutboxBadge, postOrQueue, useOutboxRunner } from "../teacher/support";
 import { ModuleRoleHome } from "../modules/role-home";
 import { LEAVE_KIND_KEY, LEAVE_STATUS_KEY, ROLL_KEY, whenOf } from "./words";
+import { formatDate } from "@/lib/dates";
 
 type Mode = "roll" | "leave" | "night" | "visitors";
 
@@ -28,6 +30,8 @@ type Mode = "roll" | "leave" | "night" | "visitors";
  * Switched off, the home says so.
  */
 export function WardenHome() {
+  // No screenshots while it is up (A3-S-12, audit of 5 Oct 2026): the boarders, their leave and their visitors.
+  usePrivateScreen();
   const session = useSession();
   const t = useT();
   const [mode, setMode] = useState<Mode>("roll");
@@ -102,7 +106,7 @@ function RollCall({ hostelId }: { hostelId: string }) {
       {sheet.isPending ? <Loading /> : null}
       {sheet.isError ? <Failed message={sheet.error.message} onRetry={() => void sheet.refetch()} /> : null}
       {s ? (
-        <Card title={`${s.hostelName} · ${s.dateKey}`}>
+        <Card title={`${s.hostelName} · ${formatDate(s.dateKey)}`}>
           <Text variant="sm" tone="muted">
             {s.taken ? t("hostel.rollTakenAt", { at: whenOf(s.taken.at, locale), name: s.taken.byName }) : t("hostel.rollHint")}
           </Text>
@@ -225,7 +229,7 @@ function Night({ onLeave }: { onLeave: () => void }) {
           <Row key={h.id} title={h.name} caption={[n.college ? t("collegeDesks.nightCurfew", { time: hhmm(h.curfewMinute) }) : null, t(h.nightOutAllowed ? "collegeDesks.nightOutsAllowed" : "collegeDesks.nightOutsNotAllowed")].filter(Boolean).join(" · ")} />
         ))}
       </Card>
-      <Card title={`${t("collegeDesks.nightTitle")} · ${n.dateKey}`}>
+      <Card title={`${t("collegeDesks.nightTitle")} · ${formatDate(n.dateKey)}`}>
         {n.leaves.length === 0 ? <Empty icon="calendar" title={t("collegeDesks.nightNone")} body={t("collegeDesks.nightNoneBody", { date: n.dateKey })} action={<Button label={t("collegeDesks.nightOpenLeave")} variant="secondary" onPress={onLeave} />} /> : null}
         {n.leaves.map((l) => (
           <View key={l.leaveId} style={{ gap: th.space[1] }}>

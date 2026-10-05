@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { fieldClass } from "@/components/ui/field-class";
 import { saveProfile, setPublished } from "./actions";
 import { useT } from "@/lib/i18n";
 import { actionError } from "@/lib/action-error";
@@ -29,9 +30,6 @@ export function DirectoryForm({
   const [contactId, setContactId] = useState(initialContactId ?? "");
   const [error, setError] = useState<string | null>(null);
 
-  const inputClass =
-    "mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg";
-
   return (
     <div className="space-y-4">
       <label className="block text-sm font-medium text-fg">
@@ -41,13 +39,13 @@ export function DirectoryForm({
           onChange={(e) => setAbout(e.target.value)}
           rows={6}
           placeholder={t("explore.aboutHint")}
-          className={inputClass}
+          className={fieldClass("mt-1")}
         />
       </label>
 
       <label className="block text-sm font-medium text-fg">
         {t("explore.contactLabel")}
-        <select value={contactId} onChange={(e) => setContactId(e.target.value)} className={inputClass}>
+        <select value={contactId} onChange={(e) => setContactId(e.target.value)} className={fieldClass("mt-1")}>
           <option value="">{t("explore.noContact")}</option>
           {candidates.map((candidate) => (
             <option key={candidate.membershipId} value={candidate.membershipId}>

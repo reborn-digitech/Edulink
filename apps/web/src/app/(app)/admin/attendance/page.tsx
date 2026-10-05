@@ -19,6 +19,7 @@ import { alertGuardiansAction } from "./actions";
 import { PersonLink } from "@/components/person-link";
 import { DataToolbar } from "@/components/ui/data-toolbar";
 import { PageHeader } from "@/components/ui/page-header";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -120,7 +121,7 @@ export default async function AdminAttendancePage({
                   {point.percent === null ? "—" : `${point.percent}%`}
                 </span>
                 <div
-                  className="w-full rounded-t-md bg-accent-soft"
+                  className="w-full rounded-t-[var(--radius-md)] bg-accent-soft"
                   style={{ height: `${barHeight(point.percent)}px` }}
                 />
                 <span className="text-[10px] text-fg-muted">{point.label}</span>
@@ -232,7 +233,7 @@ export default async function AdminAttendancePage({
               <select
                 name="classId"
                 required
-                className="rounded-lg border border-border bg-surface px-3 py-2 text-fg"
+                className={fieldClass("w-auto")}
               >
                 {classes.map((klass) => (
                   <option key={klass.id} value={klass.id}>
@@ -248,7 +249,7 @@ export default async function AdminAttendancePage({
                 name="month"
                 defaultValue={thisMonth}
                 required
-                className="rounded-lg border border-border bg-surface px-3 py-2 text-fg"
+                className={fieldClass("w-auto")}
               />
             </label>
             <Button type="submit" variant="secondary" className={EXPORT_BUTTON} icon={<DownloadSimpleIcon weight="bold" />}>

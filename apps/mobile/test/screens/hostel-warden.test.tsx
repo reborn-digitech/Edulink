@@ -51,7 +51,7 @@ describe("the warden's hostel on the phone (3 Oct 2026)", () => {
       { "GET /api/v1/hostel/hostels": () => json(hostels()), "GET /api/v1/hostel/rollcall": () => json(sheet(false)), "POST /api/v1/hostel/rollcall": () => json({ rollCallId: "r1", present: 0, onLeave: 1, absent: 1, replay: false }) },
       { me: meWith(["HOSTEL"]) },
     );
-    expect(await screen.findByText("ZZ Tilak House · 2026-10-04")).toBeTruthy();
+    expect(await screen.findByText("ZZ Tilak House · 04/10/2026")).toBeTruthy();
     const absent = screen.getAllByRole("radio", { name: "Absent" });
     await userEvent.setup().press(absent[0]!);
     await userEvent.setup().press(screen.getByRole("button", { name: "Save the roll call" }));

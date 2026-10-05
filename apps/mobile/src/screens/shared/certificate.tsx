@@ -91,7 +91,7 @@ export function CertificateView() {
       </View>
       {pdfError ? <Failed message={pdfError} onRetry={() => void downloadPdf()} /> : null}
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {c ? (
         <>
           {c.revokedAt ? (

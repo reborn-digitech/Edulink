@@ -8,13 +8,12 @@ import { Button } from "@/components/ui/button";
 import { DeskFrame, deskContext } from "@/components/library/desk";
 import { COPY_STATUS_KEY, day, money } from "@/components/library/parts";
 import { issueAction, returnAction } from "./actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
   return { title: t("modules.libraryName"), robots: { index: false, follow: false } };
 }
-
-const input = "mt-1.5 block min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3.5 text-[0.9375rem] text-fg";
 
 /**
  * The library desk (module LIBRARY, 3 Oct 2026) — the LIBRARIAN's home, and
@@ -51,7 +50,7 @@ export default async function LibraryDeskPage({ searchParams }: { searchParams: 
           <form action="/library" method="get" className="flex flex-wrap items-end gap-2">
             <label className="min-w-0 flex-1 basis-56 text-sm font-medium text-fg">
               {t("library.codeLabel")}
-              <input name="code" defaultValue={code} autoFocus autoComplete="off" maxLength={40} className={input} />
+              <input name="code" defaultValue={code} autoFocus autoComplete="off" maxLength={40} className={fieldClass("mt-1.5 block")} />
             </label>
             <Button type="submit">{t("library.find")}</Button>
           </form>
@@ -105,7 +104,7 @@ export default async function LibraryDeskPage({ searchParams }: { searchParams: 
                     <input type="hidden" name="code" value={code} />
                     <label className="min-w-0 flex-1 basis-56 text-sm font-medium text-fg">
                       {t("library.lendToWho")}
-                      <input name="member" defaultValue={member} maxLength={80} className={input} />
+                      <input name="member" defaultValue={member} maxLength={80} className={fieldClass("mt-1.5 block")} />
                     </label>
                     <Button type="submit" variant="secondary">
                       {t("library.findPerson")}
@@ -152,7 +151,7 @@ export default async function LibraryDeskPage({ searchParams }: { searchParams: 
               <input type="hidden" name="back" value={back} />
               <label className="min-w-0 flex-1 basis-56 text-sm font-medium text-fg">
                 {t("library.accession")}
-                <input name="accession" required maxLength={30} autoComplete="off" className={input} />
+                <input name="accession" required maxLength={30} autoComplete="off" className={fieldClass("mt-1.5 block")} />
               </label>
               <Button type="submit" variant="secondary">
                 {t("library.takeBack")}

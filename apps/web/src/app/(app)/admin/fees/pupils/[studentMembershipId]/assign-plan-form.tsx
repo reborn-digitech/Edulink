@@ -7,10 +7,10 @@ import { SelectField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
-import { assignPupilAction } from "./actions";
+import { assignPupilAction, removePlanAction } from "./actions";
 
-/** One pupil onto a published structure; the demands are generated on assignment. */
-export function AssignPlanForm({ studentMembershipId, structures, currentStructureId }: { studentMembershipId: string; structures: { id: string; name: string; gradeLevel: string | null }[]; currentStructureId: string | null }) {
+/** One pupil onto a published structure; the demands are generated on assignment. Off it again while nothing is paid. */
+export function AssignPlanForm({ studentMembershipId, structures, currentStructureId, academicYearId }: { studentMembershipId: string; structures: { id: string; name: string; gradeLevel: string | null }[]; currentStructureId: string | null; academicYearId: string }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
@@ -29,6 +29,21 @@ export function AssignPlanForm({ studentMembershipId, structures, currentStructu
         return;
       }
       toast({ tone: "ok", title: t("fees.settingsSaved") });
+      router.refresh();
+    });
+  }
+
+  function remove() {
+    if (!window.confirm(t("fees.pupilRemovePlanConfirm"))) return;
+    setError(null);
+    startTransition(async () => {
+      const result = await removePlanAction(studentMembershipId, academicYearId);
+      if (!result.ok) {
+        setError(actionError(t, result, "common.tryAgain"));
+        return;
+      }
+      setStructureId("");
+      toast({ tone: "ok", title: t("fees.pupilPlanRemoved") });
       router.refresh();
     });
   }
@@ -56,6 +71,11 @@ export function AssignPlanForm({ studentMembershipId, structures, currentStructu
           {t("fees.assignGo")}
         </Button>
       </div>
+      {currentStructureId ? (
+        <Button type="button" variant="ghost" size="sm" onClick={remove} disabled={pending}>
+          {t("fees.pupilRemovePlan")}
+        </Button>
+      ) : null}
     </form>
   );
 }

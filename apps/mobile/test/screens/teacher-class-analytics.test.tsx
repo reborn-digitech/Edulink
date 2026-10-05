@@ -39,13 +39,13 @@ describe("a class as numbers", () => {
     const { calls } = await mountStaff(<ClassAnalytics />, "TEACHER", { [`GET ${PATH}`]: () => json(VIEW) });
     expect(await screen.findByText("ZZ 8A: the numbers")).toBeTruthy();
     expect(calls().some((c) => c.line === `GET ${analyticsPath(CLASS, "term")}`)).toBe(true);
-    expect(screen.getByText("ZZ Term 1 · Aug 1 – Oct 1")).toBeTruthy();
+    expect(screen.getByText("ZZ Term 1 · 01/08/2026 – 01/10/2026")).toBeTruthy();
     expect(screen.getByLabelText("Attendance: 88%")).toBeTruthy();
     expect(screen.getByLabelText("Exams: 2")).toBeTruthy();
     expect(screen.getByLabelText("Work handed in: 50%")).toBeTruthy();
     expect(screen.getByLabelText("Flagged: 2")).toBeTruthy();
     expect(screen.getByText("ZZ Exam 2")).toBeTruthy();
-    expect(screen.getByText("Mid-term · Sep 26 · 4 marked")).toBeTruthy();
+    expect(screen.getByText("Mid-term · 26/09/2026 · 4 marked")).toBeTruthy();
     expect(screen.getByText("0 under 33 · 1 at 33–49 · 2 at 50–74 · 1 at 75 and over")).toBeTruthy();
     expect(screen.getByLabelText("Late: 3")).toBeTruthy();
     expect(screen.getByLabelText("Missing: 6")).toBeTruthy();

@@ -80,7 +80,7 @@ export function TeacherAssignments() {
       onRefresh={() => void query.refetch()}
     >
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d && d.classOptions.length === 0 ? (
         <Empty title={t("teacher.noClassesYet")} body={t("teacher.assignmentsBelong")} action={<Button label={t("nav.classes")} variant="secondary" onPress={() => router.push("/(app)/classes" as never)} />} />
       ) : null}
@@ -179,6 +179,8 @@ function NewAssignment({ classes, initialClassId, onDone, onClose }: { classes: 
   const [points, setPoints] = useState("20");
   const [dueDate, setDueDate] = useState("");
   const [dueTime, setDueTime] = useState("16:00");
+  // A due date already past: the first press says so, the second sets the work anyway (A3-journeys-25).
+  const [pastDueWarned, setPastDueWarned] = useState<string | null>(null);
   const [handouts, setHandouts] = useState<Picked[]>([]);
   const [attaching, setAttaching] = useState(false);
   const [attachError, setAttachError] = useState<string | null>(null);
@@ -216,6 +218,11 @@ function NewAssignment({ classes, initialClassId, onDone, onClose }: { classes: 
       if (Number.isNaN(combined.getTime())) next.dueDate = t("teacher.checkHighlighted");
       else dueAt = combined.toISOString();
     }
+    const pastDue = dueAt !== undefined && new Date(dueAt).getTime() < Date.now();
+    if (pastDue && pastDueWarned !== dueAt && Object.keys(next).length === 0) {
+      setPastDueWarned(dueAt!);
+      next.dueDate = t("teacher.pastDuePressAgain");
+    }
     const parsed = teachingNewAssignmentSchema.safeParse({
       classId,
       title: title.trim(),
@@ -224,6 +231,7 @@ function NewAssignment({ classes, initialClassId, onDone, onClose }: { classes: 
       points: pointsValue,
       dueAt,
       publish,
+      ...(pastDue ? { confirmPastDue: true } : {}),
       handouts: handouts.map((h) => ({ fileId: h.fileId, name: h.name })),
     });
     if (!parsed.success) for (const issue of parsed.error.issues) next[String(issue.path[0] ?? "")] = t("teacher.checkHighlighted");

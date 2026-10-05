@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeftIcon, LockKeyIcon } from "@phosphor-icons/react/ssr";
+import { LockKeyIcon } from "@phosphor-icons/react/ssr";
 import { requireUser, AccessError } from "@/lib/tenancy";
 import { getConversation, markConversationRead } from "@/lib/conversations";
 import { getT } from "@/lib/i18n/server";
@@ -14,6 +13,7 @@ import { db } from "@/lib/db";
 import { cn } from "@/lib/cn";
 import { ROLE_META } from "@/lib/constants";
 import { CloseConversationButton } from "../../../alumni/close-conversation";
+import { BackLink, PAGE_TITLE } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -49,17 +49,16 @@ export default async function ConversationPage({ params }: { params: Promise<{ c
 
   return (
     <div className="mx-auto flex max-w-2xl flex-col">
-      <Link href="/remarks" className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg">
-        <ArrowLeftIcon weight="bold" className="size-4" />
-        {t("remarks.all")}
-      </Link>
+      <BackLink href="/remarks" label={t("remarks.all")} className="mb-4" />
 
       <header className="flex items-center gap-3 rounded-[var(--radius-lg)] border border-border bg-surface p-4">
         <PersonLink membershipId={other?.membershipId} name={names} className="shrink-0 rounded-full">
           <Avatar avatarKey={other?.avatarKey} name={names} size="md" />
         </PersonLink>
         <div className="min-w-0 flex-1">
-          <h1 className="flex flex-wrap items-center gap-2 text-lg font-bold tracking-tight text-fg">
+          {/* The avatar beside the title is why this is not a PageHeader; the title has its look (A3-states-9). */}
+          <h1 className={PAGE_TITLE}>
+
             <PersonLink membershipId={other?.membershipId} name={names} />
             {other?.role && (
               <Badge tone="neutral" size="sm">

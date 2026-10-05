@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { getT, getRelativeTime, getLocale } from "@/lib/i18n/server";
 import { EMPLOYMENT_TYPE_KEYS, type EmploymentType } from "@/lib/constants";
 import { EnquireForm } from "../enquire-form";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -51,23 +52,26 @@ export default async function SchoolProfilePage({
 
   return (
     <div className="mx-auto max-w-2xl space-y-6">
-      <div>
-        <div className="flex flex-wrap items-center gap-2">
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{school.name}</h1>
-          {school.verified && (
-            <Badge tone="accent" size="sm">
-              <SealCheckIcon weight="fill" className="mr-1 inline size-3" />
-              {t("explore.verifiedBadge")}
-            </Badge>
-          )}
-          {school.ours && (
-            <Badge tone="info" size="sm">
-              {t("explore.yourSchool")}
-            </Badge>
-          )}
-        </div>
-        {place && <p className="mt-1 text-sm text-fg-muted">{place}</p>}
-      </div>
+      <PageHeader
+        title={school.name}
+        description={place || undefined}
+        meta={
+          <>
+            {school.verified && (
+              <Badge tone="accent" size="sm">
+                <SealCheckIcon weight="fill" className="mr-1 inline size-3" />
+                {t("explore.verifiedBadge")}
+              </Badge>
+            )}
+            {school.ours && (
+              <Badge tone="info" size="sm">
+                {t("explore.yourSchool")}
+              </Badge>
+            )}
+          </>
+        }
+      />
+
 
       {/* The prospectus numbers — counts and only counts; see school-profile.ts. */}
       <dl className="grid grid-cols-2 gap-2 sm:grid-cols-4">

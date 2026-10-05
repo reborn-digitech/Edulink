@@ -35,7 +35,7 @@ export function Screen({
     <View style={{ paddingHorizontal: t.space[4], paddingTop: back ? t.space[1] : t.space[3], paddingBottom: t.space[2], gap: t.space[1] }}>
       {back ? <BackButton onBack={back.onBack} /> : null}
       {title ? (
-      <Text variant="2xl" bold accessibilityRole="header">
+      <Text variant="2xl" bold accessibilityRole="header" level={1}>
         {title}
       </Text>
       ) : null}

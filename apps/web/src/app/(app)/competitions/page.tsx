@@ -10,6 +10,7 @@ import { ConsentControls } from "./entry-controls";
 import { formatDate } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { DataToolbar } from "@/components/ui/data-toolbar";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -103,19 +104,18 @@ export default async function CompetitionsPage({
 
   return (
     <div className="mx-auto max-w-3xl space-y-5">
-      <header className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight">{t("competitions.title")}</h1>
-          <p className="text-sm text-fg-muted">{t("competitions.intro")}</p>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {session.role === "ADMIN" && (
+      <PageHeader
+        title={t("competitions.title")}
+        description={t("competitions.intro")}
+        actions={
+          session.role === "ADMIN" ? (
             <Button asChild size="sm">
               <Link href="/competitions/new">{t("competitions.postOne")}</Link>
             </Button>
-          )}
-        </div>
-      </header>
+          ) : undefined
+        }
+      />
+
 
       {waiting.length > 0 && (
         <section aria-labelledby="waiting-heading" className="space-y-2.5">

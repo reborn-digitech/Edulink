@@ -7,6 +7,7 @@ import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text } from "
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { Pill } from "../family/shared";
 
 /**
@@ -21,6 +22,8 @@ import { Pill } from "../family/shared";
 const DESK_KEY: Record<string, TranslationKey> = { ACCOUNTS: "collegeOffice.deskACCOUNTS", LIBRARY: "collegeOffice.deskLIBRARY", HOSTEL: "collegeOffice.deskHOSTEL", LAB: "collegeOffice.deskLAB" };
 
 export function AccountsLookupScreen() {
+  // No screenshots while it is up (A3-S-12, audit of 5 Oct 2026): the accounts desk's look-up: a student's ledger and no-dues.
+  usePrivateScreen();
   const t = useT();
   const { locale } = useLocale();
   const [typed, setTyped] = useState("");

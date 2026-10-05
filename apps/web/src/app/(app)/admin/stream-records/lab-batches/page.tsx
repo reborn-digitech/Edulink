@@ -32,7 +32,7 @@ export default async function LabBatchesPage({ searchParams }: { searchParams: P
   const ctx = await requireRole("ADMIN", "PRINCIPAL");
   const t = await getT();
   if (!isCollegeKind(await institutionKindOf(ctx.schoolId))) notFound();
-  if (!(await isModuleOn(ctx.schoolId, "ACADEMICS"))) return <ModuleOff module="ACADEMICS" t={t} college />;
+  if (!(await isModuleOn(ctx.schoolId, "ACADEMICS"))) return <ModuleOff page module="ACADEMICS" t={t} college />;
   const params = await searchParams;
   const data = await labBatches(ctx);
   return (

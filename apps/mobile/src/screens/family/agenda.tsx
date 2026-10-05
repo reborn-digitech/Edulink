@@ -59,7 +59,7 @@ export function FamilyAgenda() {
       ) : null}
       <Chips label={t("agenda.title")} value={days} onChange={setDays} options={[{ value: "14", label: t("agenda.days14") }, { value: "30", label: t("agenda.days30") }]} />
       {query.isPending && (role === "PARENT" || role === "STUDENT") ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d && d.rows.length === 0 ? <Empty title={t("agenda.empty", { days: d.days })} action={<Button label={t("nav.timetable")} variant="secondary" onPress={() => router.push("/(app)/timetable" as never)} />} /> : null}
       {groups.map((g) => (
         <Card key={g.dateKey} title={dayLabel(g.dateKey)}>

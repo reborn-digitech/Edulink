@@ -12,6 +12,7 @@ import { useSession } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { Notice } from "../staff/shared";
 import { INTERNSHIP_STATUS_KEY, OUTCOME_KEY, applicationLabel, offerLine, packageRange, reasons } from "./words";
+import { formatDateRange, formatDateTime } from "@/lib/dates";
 
 /**
  * A student's placement on the phone (the placement module, 4 Oct 2026), the
@@ -35,8 +36,9 @@ export function StudentPlacementScreen() {
   const fail = (e: Error) => setNotice({ tone: "danger", text: e.message });
   const apply = useMutation({
     mutationFn: async (driveId: string) => applicationViewSchema.parse(unwrap(await api().post(`/api/v1/student/placement/drives/${driveId}/apply`, { consent: true }))),
-    onSuccess: () => {
-      setNotice({ tone: "ok", text: t("placement.applied") });
+    // A minor's application waits for the guardian: say so, not that the company sees the record (A3-journeys-20).
+    onSuccess: (app) => {
+      setNotice({ tone: "ok", text: t(app.consentAt ? "placement.applied" : "placement.appliedAwaitsGuardian") });
       refresh();
     },
     onError: fail,
@@ -154,7 +156,7 @@ export function StudentPlacementScreen() {
               {t("placement.myInternshipsIntro", { credits: p.internshipCredits })}
             </Text>
             {p.internships.map((i) => (
-              <Row key={i.id} title={i.companyName} caption={`${i.from} – ${i.to} · ${t(INTERNSHIP_STATUS_KEY[i.status]!)}${i.credits !== null ? ` · ${t("placement.creditsIs", { credits: i.credits })}` : ""}`} />
+              <Row key={i.id} title={i.companyName} caption={`${formatDateRange(i.from, i.to)} · ${t(INTERNSHIP_STATUS_KEY[i.status]!)}${i.credits !== null ? ` · ${t("placement.creditsIs", { credits: i.credits })}` : ""}`} />
             ))}
           </Card>
 
@@ -171,7 +173,7 @@ export function StudentPlacementScreen() {
             </Text>
             {p.mentorSlots.length === 0 ? <Text tone="muted">{t("placement.noMentorSlots")}</Text> : null}
             {p.mentorSlots.map((s) => (
-              <Row key={s.id} title={s.title} caption={`${s.mentorName}${s.batchYear ? ` (${s.batchYear})` : ""} · ${new Date(s.startsAt).toLocaleString()}`} />
+              <Row key={s.id} title={s.title} caption={`${s.mentorName}${s.batchYear ? ` (${s.batchYear})` : ""} · ${formatDateTime(s.startsAt)}`} />
             ))}
             {p.mentorSlots.length ? <Button label={t("placement.bookInSessions")} variant="secondary" onPress={() => router.push("/(app)/sessions" as never)} /> : null}
           </Card>

@@ -11,6 +11,7 @@ import { cn } from "@/lib/cn";
 import { useT } from "@/lib/i18n";
 import { savePrefs } from "./actions";
 import type { UserPrefs } from "@/lib/session";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * Appearance and notification preferences.
@@ -180,7 +181,7 @@ export function AppearanceForm({
                   onChange={(e) =>
                     update({ quietHours: { ...draft.quietHours!, start: e.target.value } })
                   }
-                  className="mt-1 min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 outline-none focus:border-accent"
+                  className={fieldClass("mt-1")}
                 />
               </label>
               <label className="block">
@@ -192,12 +193,7 @@ export function AppearanceForm({
                     update({ quietHours: { ...draft.quietHours!, end: e.target.value } })
                   }
                   aria-invalid={Boolean(errors["quietHours.end"]) || undefined}
-                  className={cn(
-                    "mt-1 min-h-12 w-full rounded-[var(--radius-md)] border bg-surface px-3 outline-none",
-                    errors["quietHours.end"]
-                      ? "border-danger ring-2 ring-danger/25"
-                      : "border-border focus:border-accent",
-                  )}
+                  className={fieldClass("mt-1", Boolean(errors["quietHours.end"]))}
                 />
               </label>
               {errors["quietHours.end"] && (

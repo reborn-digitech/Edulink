@@ -12,7 +12,7 @@ import { payrollExport } from "@/lib/payroll";
  */
 export async function GET(_request: Request, { params }: { params: Promise<{ month: string; kind: string }> }) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const { month, kind } = await params;
     const code = PAYROLL_EXPORT_KINDS.find((k) => PAYROLL_EXPORT_SLUG[k] === kind);
     if (!code) return new Response(null, { status: 404 });

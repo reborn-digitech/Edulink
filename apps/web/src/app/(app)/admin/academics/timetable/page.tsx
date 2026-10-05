@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
  */
 export default async function TimetablePage({ searchParams }: { searchParams: SearchParams }) {
   const { ctx, t, locale, on, college, canEdit, streams } = await academicsGate();
-  if (!on) return <ModuleOff module="ACADEMICS" t={t} college={college} />;
+  if (!on) return <ModuleOff page module="ACADEMICS" t={t} college={college} />;
   const params = await searchParams;
   const divisionId = one(params.division);
   const [s, o] = await Promise.all([academicsStructure(ctx), listOfferings(ctx, { termId: one(params.termId) })]);

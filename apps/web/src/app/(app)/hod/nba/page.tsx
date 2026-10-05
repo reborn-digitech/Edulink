@@ -5,7 +5,7 @@ import { requireRole } from "@/lib/tenancy";
 import { AccessError } from "@/lib/access-error";
 import { RuleRefusal } from "@/lib/rule-refusal";
 import { isModuleOn } from "@/lib/modules";
-import { councilView, defaultFilingYear, filingsOf } from "@/lib/council-filings";
+import { councilView, filingsOf } from "@/lib/council-filings";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardBody } from "@/components/ui/card";
@@ -41,14 +41,16 @@ export default async function HodNbaPage({ searchParams }: { searchParams: Promi
       </div>
     );
   }
-  const year = Number(query.year) >= 2000 && Number(query.year) <= 2100 ? Number(query.year) : defaultFilingYear();
+  // No year asked: the latest with a report, else the filing default (councilView, A3-journeys-34).
+  const year = Number(query.year) >= 2000 && Number(query.year) <= 2100 ? Number(query.year) : undefined;
   let view: CouncilView | null = null;
   let insights: Awaited<ReturnType<typeof nbaInsights>> | null = null;
   let refusal: string | null = null;
   if ((await filingsOf(ctx.schoolId)).includes("NBA_SAR")) {
     try {
       // Actionable insights (5 Oct 2026) read the same department and year as the worksheet.
-      [view, insights] = await Promise.all([councilView(ctx, "NBA_SAR", { year }), nbaInsights(ctx, { year })]);
+      view = await councilView(ctx, "NBA_SAR", { year });
+      insights = await nbaInsights(ctx, { year: view.year });
     } catch (error) {
       if (!(error instanceof AccessError) && !(error instanceof RuleRefusal)) throw error;
       refusal = t(error.key);

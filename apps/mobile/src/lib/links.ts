@@ -1,3 +1,5 @@
+import { WEB_PATH_PATTERN } from "@edulink/contracts";
+
 /**
  * The server writes web URLs into notifications (/teacher/attendance?classId=…,
  * /remarks/c/…). This maps them to the app's screens, so a push tap opens
@@ -178,6 +180,26 @@ export function webLinkOrNull(url: string | null | undefined): string | null {
   try {
     const parsed = new URL(trimmed);
     return parsed.protocol === "https:" || parsed.protocol === "http:" ? trimmed : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * One of our own web pages, by its path, as a URL on the API's origin (A3-S-14,
+ * audit of 5 Oct 2026). Only a single-slash path is taken: no "//host", no
+ * backslash, no space or control character (the URL parser drops a tab, so
+ * "/\t/host" would become "//host"), nothing before the first "/" such as
+ * "@evil.example"; and the URL parsed against `base` must still be on
+ * `base`'s origin. Anything else is null, and nothing opens. The pattern is
+ * the contracts' WEB_PATH_PATTERN, which the insights CTA's href is held to.
+ */
+export function webPathUrl(path: string, base: string): string | null {
+  if (!WEB_PATH_PATTERN.test(path)) return null;
+  try {
+    const origin = new URL(base).origin;
+    const url = new URL(path, origin);
+    return url.origin === origin ? url.toString() : null;
   } catch {
     return null;
   }

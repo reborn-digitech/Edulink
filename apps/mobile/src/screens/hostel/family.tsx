@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { familyChildrenSchema, familyHostelSchema, hostelLeaveRowSchema, HOSTEL_LEAVE_KINDS, type HostelLeaveKind } from "@edulink/contracts";
@@ -8,9 +9,10 @@ import { unwrap } from "@/lib/query";
 import { usePrivateScreen } from "@/lib/private-screen";
 import { useLocale, useT } from "@/lib/i18n";
 import { useRole, useSession } from "@/lib/session";
+import { useTheme } from "@/lib/theme";
 import { Chips, Notice } from "../staff/shared";
 import { ChildSwitcher, childQuery } from "../family/shared";
-import { LEAVE_KIND_KEY, LEAVE_STATUS_KEY, MEAL_KEY, ROLL_KEY, SLOT_KEY, instantOf, whenOf } from "./words";
+import { LEAVE_KIND_KEY, LEAVE_STATUS_KEY, MEAL_KEY, ROLL_KEY, SLOT_KEY, WHEN_HINT, instantOf, whenOf } from "./words";
 
 /**
  * A boarder's hostel on the phone (module HOSTEL, 3 Oct 2026) — the web's
@@ -23,6 +25,7 @@ export function FamilyHostelScreen() {
   usePrivateScreen();
   const t = useT();
   const { locale } = useLocale();
+  const th = useTheme();
   const role = useRole();
   const router = useRouter();
   const session = useSession();
@@ -113,8 +116,8 @@ export function FamilyHostelScreen() {
             </Text>
             <Chips label={t("hostel.leaveKind")} value={kind} onChange={setKind} options={HOSTEL_LEAVE_KINDS.map((k) => ({ value: k, label: t(LEAVE_KIND_KEY[k]) }))} />
             <Field label={t("hostel.destination")} value={destination} onChangeText={setDestination} />
-            <Field label={t("hostel.leaveFrom")} hint="2026-10-10 16:00" value={from} onChangeText={setFrom} autoCorrect={false} />
-            <Field label={t("hostel.leaveTo")} hint="2026-10-12 18:00" value={to} onChangeText={setTo} autoCorrect={false} error={formError} />
+            <Field label={t("hostel.leaveFrom")} hint={WHEN_HINT} value={from} onChangeText={setFrom} autoCorrect={false} />
+            <Field label={t("hostel.leaveTo")} hint={WHEN_HINT} value={to} onChangeText={setTo} autoCorrect={false} error={formError} />
             <Field label={t("hostel.leaveReason")} value={reason} onChangeText={setReason} />
             <Button label={t("hostel.askLeaveButton")} busy={ask.isPending} onPress={submit} />
           </Card>
@@ -123,21 +126,26 @@ export function FamilyHostelScreen() {
       {d ? (
         <Card title={t("hostel.leaveTitle")}>
           {d.leave.length === 0 ? <Text tone="muted">{t("hostel.noLeave")}</Text> : null}
-          {d.leave.map((l) => (
-            <Row
-              key={l.id}
-              title={`${t(LEAVE_KIND_KEY[l.kind])} · ${l.destination}`}
-              caption={`${t("hostel.fromTo", { from: whenOf(l.fromAt, locale), to: whenOf(l.toAt, locale) })} · ${t(LEAVE_STATUS_KEY[l.status])}${l.late ? ` · ${t("hostel.late")}` : ""}`}
-              right={
-                d.canConsent && l.status === "AWAITING_CONSENT" ? (
-                  <Button label={t("hostel.consent")} disabled={answer.isPending} onPress={() => answer.mutate({ id: l.id, approve: true })} />
-                ) : !l.outAt && ["AWAITING_CONSENT", "PENDING", "APPROVED"].includes(l.status) ? (
-                  <Button label={t("hostel.cancelLeave")} variant="ghost" disabled={takeBack.isPending} onPress={() => takeBack.mutate(l.id)} />
-                ) : undefined
-              }
-            />
-          ))}
-          {d.canConsent ? d.leave.filter((l) => l.status === "AWAITING_CONSENT").map((l) => <Button key={`no-${l.id}`} label={t("hostel.refuseConsent")} variant="ghost" disabled={answer.isPending} onPress={() => answer.mutate({ id: l.id, approve: false })} />) : null}
+          {d.leave.map((l) => {
+            // Both answers sit under the leave they answer: "Do not consent" used to
+            // trail the whole list, away from the night-out it refused (A3-journeys-29).
+            const asked = d.canConsent && l.status === "AWAITING_CONSENT";
+            return (
+              <View key={l.id} style={{ gap: th.space[2] }}>
+                <Row
+                  title={`${t(LEAVE_KIND_KEY[l.kind])} · ${l.destination}`}
+                  caption={`${t("hostel.fromTo", { from: whenOf(l.fromAt, locale), to: whenOf(l.toAt, locale) })} · ${t(LEAVE_STATUS_KEY[l.status])}${l.late ? ` · ${t("hostel.late")}` : ""}`}
+                  right={!asked && !l.outAt && ["AWAITING_CONSENT", "PENDING", "APPROVED"].includes(l.status) ? <Button label={t("hostel.cancelLeave")} variant="ghost" disabled={takeBack.isPending} onPress={() => takeBack.mutate(l.id)} /> : undefined}
+                />
+                {asked ? (
+                  <View testID={`consent-${l.id}`} style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+                    <Button label={t("hostel.consent")} disabled={answer.isPending} onPress={() => answer.mutate({ id: l.id, approve: true })} />
+                    <Button label={t("hostel.refuseConsent")} variant="ghost" disabled={answer.isPending} onPress={() => answer.mutate({ id: l.id, approve: false })} />
+                  </View>
+                ) : null}
+              </View>
+            );
+          })}
         </Card>
       ) : null}
     </Screen>

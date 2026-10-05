@@ -12,6 +12,7 @@ import { CheckboxField, TextAreaField, TextField } from "@/components/ui/field";
 import { ModuleOff } from "@/components/module-off";
 import { IqacFlash, day, keyed } from "@/components/iqac/parts";
 import { atrAction, surveyLinkAction, transcribeAction } from "../../actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -31,7 +32,7 @@ export default async function SurveyResultsPage({ params, searchParams }: { para
   const tt = keyed(t);
   const { surveyId } = await params;
   const { ok, error } = await searchParams;
-  if (!(await isModuleOn(ctx.schoolId, "IQAC"))) return <ModuleOff module="IQAC" t={t} college />;
+  if (!(await isModuleOn(ctx.schoolId, "IQAC"))) return <ModuleOff page module="IQAC" t={t} college />;
   const r = await surveyResults(ctx, surveyId);
   const desk = ctx.role === "IQAC" || ctx.role === "ADMIN";
   const back = `/iqac/surveys/${surveyId}`;
@@ -55,32 +56,34 @@ export default async function SurveyResultsPage({ params, searchParams }: { para
           {r.suppressed ? (
             <p className="text-sm text-fg-muted">{t("iqac.suppressed")}</p>
           ) : (
-            <table className="w-full text-left text-sm">
-              <thead className="text-fg-muted">
-                <tr>
-                  <th className="py-2 pr-2 font-medium">{t("iqac.titleField")}</th>
-                  <th className="py-2 pr-2 font-medium">{t("iqac.meanLabel")}</th>
-                  {SURVEY_SCALE.map((v) => (
-                    <th key={v} className="py-2 pr-2 font-medium">
-                      {tt("iqac.scale.s" + v)}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {r.questions.map((q) => (
-                  <tr key={q.code} className="border-t border-border">
-                    <td className="py-2 pr-2">{q.label}</td>
-                    <td className="py-2 pr-2 font-semibold">{q.mean?.toFixed(2) ?? "—"}</td>
-                    {q.counts.map((n, i) => (
-                      <td key={i} className="py-2 pr-2">
-                        {n}
-                      </td>
+            <TableScroll>
+              <table className="w-full text-left text-sm">
+                <thead className="text-fg-muted">
+                  <tr>
+                    <th className="py-2 pr-2 font-medium">{t("iqac.titleField")}</th>
+                    <th className="py-2 pr-2 font-medium">{t("iqac.meanLabel")}</th>
+                    {SURVEY_SCALE.map((v) => (
+                      <th key={v} className="py-2 pr-2 font-medium">
+                        {tt("iqac.scale.s" + v)}
+                      </th>
                     ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {r.questions.map((q) => (
+                    <tr key={q.code} className="border-t border-border">
+                      <td className="py-2 pr-2">{q.label}</td>
+                      <td className="py-2 pr-2 font-semibold">{q.mean?.toFixed(2) ?? "—"}</td>
+                      {q.counts.map((n, i) => (
+                        <td key={i} className="py-2 pr-2">
+                          {n}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </TableScroll>
           )}
         </CardBody>
       </Card>

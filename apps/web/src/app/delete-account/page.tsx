@@ -34,7 +34,7 @@ export default async function DeleteAccountPage() {
             <Wordmark size={26} />
           </Link>
           {!session && (
-            <Link href="/login" className="text-sm font-medium text-fg-muted hover:text-fg">
+            <Link href="/login" className="inline-flex min-h-11 items-center px-1 text-sm font-medium text-fg-muted hover:text-fg">
               {t("login.title")}
             </Link>
           )}

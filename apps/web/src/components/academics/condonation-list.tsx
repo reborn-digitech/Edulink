@@ -1,7 +1,7 @@
 import type { Condonation } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
-import { INPUT } from "@/components/module-flash";
+import { fieldClass } from "@/components/ui/field-class";
 import { decideCondonationAction } from "@/app/(app)/admin/academics/actions";
 import { CondonationBadge, GROUND_KEY } from "./parts";
 import type { Translate } from "@/lib/i18n/dictionary";
@@ -39,7 +39,7 @@ export function CondonationList({ t, items, decider, back }: { t: Translate; ite
               <form action={decideCondonationAction} className="flex flex-wrap items-center gap-2">
                 <input type="hidden" name="id" value={c.id} />
                 <input type="hidden" name="back" value={back} />
-                <input aria-label={t("academics.fieldNote")} className={`${INPUT} max-w-xs`} name="note" maxLength={400} placeholder={t("academics.fieldNote")} />
+                <input aria-label={t("academics.fieldNote")} className={fieldClass("max-w-xs")} name="note" maxLength={400} placeholder={t("academics.fieldNote")} />
                 <Button type="submit" size="sm" name="decision" value="APPROVE">{t("academics.approve")}</Button>
                 {decider === "HOD" ? <Button type="submit" size="sm" variant="secondary" name="decision" value="FORWARD">{t("academics.forward")}</Button> : null}
                 <Button type="submit" size="sm" variant="ghost" name="decision" value="REFUSE">{t("academics.refuse")}</Button>

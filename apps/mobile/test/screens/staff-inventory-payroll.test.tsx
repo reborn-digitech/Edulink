@@ -128,7 +128,7 @@ describe("my payslips on the phone", () => {
     });
     expect(await screen.findByText("August 2026")).toBeTruthy();
     expect(screen.getByText("Net ₹20,500.00 · Gross ₹22,500.00")).toBeTruthy();
-    expect(screen.getByText("ZZ Teaching staff, from 2026-04-01.")).toBeTruthy();
+    expect(screen.getByText("ZZ Teaching staff, from 01/04/2026.")).toBeTruthy();
     expect(screen.getByText("Provident fund")).toBeTruthy();
     expect(screen.getByText("By the rules")).toBeTruthy();
     expect(screen.getByText("ZZ wedding · ₹3,000.00 still to go")).toBeTruthy();

@@ -361,8 +361,8 @@ export async function saveProfileAction(formData: FormData): Promise<void> {
 export async function applyAction(formData: FormData): Promise<void> {
   await run(formData, async (ctx) => {
     if (formData.get("consent") !== "on") throw new RuleRefusal("placement.refuseNeedConsent", 422);
-    await applyToDrive(ctx, str(formData, "driveId"));
-    return "placement.applied";
+    const app = await applyToDrive(ctx, str(formData, "driveId"));
+    return app.consentAt ? "placement.applied" : "placement.appliedAwaitsGuardian";
   });
 }
 

@@ -204,7 +204,7 @@ function Staffing({ classId, office }: { classId: string; office: OfficeClass })
         ) : staff.isPending ? (
           <Loading />
         ) : staff.isError ? (
-          <Failed message={staff.error.message} onRetry={() => void staff.refetch()} />
+          <Failed error={staff.error} onRetry={() => void staff.refetch()} />
         ) : candidates.length === 0 ? (
           <Empty icon="chalkboard" title={t("admin.noTeachersYet")} body={t("admin.noTeachersBody")} action={<Button label={t("admin.inviteFirstTeacher")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/invites", params: { role: "TEACHER" } } as never)} />} />
         ) : (

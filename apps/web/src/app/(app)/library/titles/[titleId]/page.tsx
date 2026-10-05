@@ -11,6 +11,7 @@ import { DeskFrame, deskContext } from "@/components/library/desk";
 import { CATEGORY_KEY, COPY_STATUS_KEY, LANGUAGE_KEY, day } from "@/components/library/parts";
 import { addCopyAction, copyStatusAction, updateTitleAction } from "../../actions";
 import { notFound } from "next/navigation";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -56,7 +57,7 @@ export default async function LibraryTitlePage({ params, searchParams }: { param
                     <label className="sr-only" htmlFor={`st-${c.id}`}>
                       {t("library.copyState")}
                     </label>
-                    <select id={`st-${c.id}`} name="status" defaultValue={c.status} className="min-h-11 rounded-[var(--radius-md)] border border-border bg-surface px-2 text-sm text-fg">
+                    <select id={`st-${c.id}`} name="status" defaultValue={c.status} className={fieldClass("w-auto")}>
                       {LIBRARY_DESK_STATUSES.map((s) => (
                         <option key={s} value={s}>
                           {t(COPY_STATUS_KEY[s])}

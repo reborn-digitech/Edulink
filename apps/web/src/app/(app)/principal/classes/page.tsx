@@ -6,6 +6,7 @@ import { requireRole } from "@/lib/tenancy";
 import { ATTENDANCE_CONCERN_PERCENT, classInsights, parseSpan, windowFor } from "@/lib/insights";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
+import { Button } from "@/components/ui/button";
 import { formatDateKey } from "@/lib/dates";
 import { WindowPicker } from "../window-picker";
 import { getT } from "@/lib/i18n/server";
@@ -95,7 +96,10 @@ export default async function PrincipalClassesPage({
             <EmptyState
               title={t("principal.noClasses")}
               description={t("principal.noClassesBody")}
+              // The admin makes classes (/admin/classes is ADMIN's); a principal is told who does it.
+              action={ctx.role === "ADMIN" && allInsights.length === 0 ? <Button asChild size="sm"><Link href="/admin/classes/new">{t("classes.createClass")}</Link></Button> : undefined}
             />
+
           ) : (
             <ul className="space-y-2">
               {insights.map((klass) => {

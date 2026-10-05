@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { book } from "./actions";
 import { useT } from "@/lib/i18n";
 import { actionError } from "@/lib/action-error";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * Booking a slot, with the topic asked for BEFORE the claim.
@@ -39,7 +40,7 @@ export function BookButton({ slotId, expertName }: { slotId: string; expertName:
           autoFocus
           value={topic}
           onChange={(e) => setTopic(e.target.value)}
-          className="mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
+          className={fieldClass("mt-1")}
         />
       </label>
       {error && <p className="text-sm font-medium text-danger">{error}</p>}

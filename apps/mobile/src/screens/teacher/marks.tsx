@@ -93,7 +93,7 @@ export function MarksGrid() {
     <Screen title={t("exams.marksTitle")} description={t("exams.marksIntro")} refreshing={exams.isRefetching || grid.isRefetching} onRefresh={() => void Promise.all([exams.refetch(), grid.refetch()])}>
       <OutboxBadge />
       {exams.isPending ? <Loading /> : null}
-      {exams.isError ? <Failed message={exams.error.message} onRetry={() => void exams.refetch()} /> : null}
+      {exams.isError ? <Failed error={exams.error} onRetry={() => void exams.refetch()} /> : null}
       {exams.data && !klass ? (
         exams.data.classes.length === 0 ? (
           <Empty title={t("teacher.noClassesYet")} body={t("teacher.noClassesBody")} action={<Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />} />
@@ -142,7 +142,7 @@ export function MarksGrid() {
         </Card>
       ) : null}
       {klass && slotId && grid.isPending ? <Loading /> : null}
-      {grid.isError ? <Failed message={grid.error.message} onRetry={() => void grid.refetch()} /> : null}
+      {grid.isError ? <Failed error={grid.error} onRetry={() => void grid.refetch()} /> : null}
       {sheet ? (
         <Card title={`${sheet.subject} · ${sheet.seriesName}`}>
           <Text variant="sm" tone="muted">

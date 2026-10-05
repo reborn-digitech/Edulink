@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { DateField } from "@/components/ui/field";
+import { DateField, SelectField, TextField } from "@/components/ui/field";
+import { ActionForm } from "@/components/ui/action-form";
 import { ExamIcon, PlusIcon, WarningIcon, CalendarCheckIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
@@ -95,61 +96,42 @@ export default async function AdminExamsPage({
           description={t("exams.newSeriesHint")}
         />
         <CardBody>
-          <form action={createSeriesAction} className="grid gap-3 sm:grid-cols-3">
-            <label className="block text-sm sm:col-span-2">
-              <span className="mb-1 block font-medium text-fg">{t("exams.fieldName")}</span>
-              <input
-                type="text"
-                name="name"
-                required
-                maxLength={120}
-                placeholder={t("exams.namePlaceholder")}
-                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
-              />
-            </label>
-            <label className="block text-sm">
-              <span className="mb-1 block font-medium text-fg">{t("exams.fieldGrade")}</span>
-              <select
-                name="gradeLevel"
-                required
-                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
-              >
-                {grades.map((grade) => (
-                  <option key={grade} value={grade}>
-                    {t("practice.classN", { n: grade })}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label className="block text-sm">
-              <span className="mb-1 block font-medium text-fg">{t("exams.fieldKind")}</span>
-              <select
-                name="kind"
-                required
-                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
-              >
-                {EXAM_KINDS.map((kind) => (
-                  <option key={kind} value={kind}>
-                    {t(EXAM_KIND_KEY[kind])}
-                  </option>
-                ))}
-              </select>
-            </label>
+          {/* Answers in place (A3-journeys-27): a refusal keeps what was typed and sits under its box; a new series is announced and scrolled to. */}
+          <ActionForm action={createSeriesAction} className="grid gap-3 sm:grid-cols-3">
+            <TextField
+              className="sm:col-span-2"
+              label={t("exams.fieldName")}
+              name="name"
+              required
+              maxLength={120}
+              placeholder={t("exams.namePlaceholder")}
+            />
+            <SelectField label={t("exams.fieldGrade")} name="gradeLevel" required>
+              {grades.map((grade) => (
+                <option key={grade} value={grade}>
+                  {t("practice.classN", { n: grade })}
+                </option>
+              ))}
+            </SelectField>
+            <SelectField label={t("exams.fieldKind")} name="kind" required>
+              {EXAM_KINDS.map((kind) => (
+                <option key={kind} value={kind}>
+                  {t(EXAM_KIND_KEY[kind])}
+                </option>
+              ))}
+            </SelectField>
             {terms.length > 0 && (
-              <label className="block text-sm">
-                <span className="mb-1 block font-medium text-fg">{t("terms.examTerm")}</span>
-                <select name="termId" className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg" defaultValue={terms.find((x) => x.current)?.id ?? ""}>
-                  <option value="">{t("terms.examNoTerm")}</option>
-                  {terms.map((term) => (
-                    <option key={term.id} value={term.id}>{term.name}</option>
-                  ))}
-                </select>
-              </label>
+              <SelectField label={t("terms.examTerm")} name="termId" defaultValue={terms.find((x) => x.current)?.id ?? ""}>
+                <option value="">{t("terms.examNoTerm")}</option>
+                {terms.map((term) => (
+                  <option key={term.id} value={term.id}>{term.name}</option>
+                ))}
+              </SelectField>
             )}
             <div className="sm:col-span-3">
               <Button type="submit">{t("exams.createSeries")}</Button>
             </div>
-          </form>
+          </ActionForm>
         </CardBody>
       </Card>
         </div>
@@ -194,7 +176,7 @@ export default async function AdminExamsPage({
         />
       ) : (
         series.map((s) => (
-          <Card key={s.id}>
+          <Card key={s.id} id={`series-${s.id}`} tabIndex={-1} className="scroll-mt-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-ring/40">
             <CardHeader
               icon={<CalendarCheckIcon weight="duotone" className="size-5" />}
               title={[s.name, t(EXAM_KIND_KEY[s.kind as ExamKind]), t("practice.classN", { n: s.gradeLevel }), s.term?.name].filter(Boolean).join(" · ")}
@@ -270,48 +252,13 @@ export default async function AdminExamsPage({
                 </TableScroll>
               )}
 
-              <form action={addSlotAction} className="grid gap-3 sm:grid-cols-5">
+              <ActionForm action={addSlotAction} className="grid gap-3 sm:grid-cols-5">
                 <input type="hidden" name="seriesId" value={s.id} />
-                <label className="block text-sm">
-                  <span className="mb-1 block font-medium text-fg">{t("exams.colSubject")}</span>
-                  <input
-                    type="text"
-                    name="subject"
-                    required
-                    maxLength={80}
-                    className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
-                  />
-                </label>
+                <TextField label={t("exams.colSubject")} name="subject" required maxLength={80} />
                 <DateField label={t("exams.colDay")} name="dateKey" required />
-                <label className="block text-sm">
-                  <span className="mb-1 block font-medium text-fg">{t("exams.fieldStart")}</span>
-                  <input
-                    type="time"
-                    name="startTime"
-                    className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
-                  />
-                </label>
-                <label className="block text-sm">
-                  <span className="mb-1 block font-medium text-fg">{t("exams.fieldEnd")}</span>
-                  <input
-                    type="time"
-                    name="endTime"
-                    className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
-                  />
-                </label>
-                <label className="block text-sm">
-                  <span className="mb-1 block font-medium text-fg">{t("exams.colMaxMarks")}</span>
-                  <input
-                    type="number"
-                    name="maxMarks"
-                    required
-                    min={1}
-                    max={1000}
-                    step="0.5"
-                    defaultValue={80}
-                    className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
-                  />
-                </label>
+                <TextField label={t("exams.fieldStart")} name="startTime" type="time" />
+                <TextField label={t("exams.fieldEnd")} name="endTime" type="time" />
+                <TextField label={t("exams.colMaxMarks")} name="maxMarks" type="number" required min={1} max={1000} step="0.5" defaultValue={80} />
                 <label className="flex items-center gap-2 text-xs text-fg-muted sm:col-span-5">
                   <input type="checkbox" name="evenIfClosed" />
                   {t("exams.evenIfClosed")}
@@ -321,7 +268,7 @@ export default async function AdminExamsPage({
                     {t("exams.addPaper")}
                   </Button>
                 </div>
-              </form>
+              </ActionForm>
             </CardBody>
           </Card>
         ))

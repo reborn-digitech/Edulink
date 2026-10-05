@@ -2,12 +2,7 @@ import type { Metadata } from "next";
 import { nameCarriesSection } from "@/lib/codes";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  ArrowLeftIcon,
-  CertificateIcon,
-  ChalkboardTeacherIcon,
-  UsersThreeIcon,
-} from "@phosphor-icons/react/ssr";
+import { CertificateIcon, ChalkboardTeacherIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { listCovers } from "@/lib/register-duty";
@@ -19,6 +14,7 @@ import { CohortPanel } from "./cohort-panel";
 import { listCohort } from "@/lib/cohort";
 import { getT } from "@/lib/i18n/server";
 import { Button } from "@/components/ui/button";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -102,32 +98,28 @@ export default async function ClassStaffingPage({
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
-      <Link
-        href="/admin/classes"
-        className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
-      >
-        <ArrowLeftIcon weight="bold" className="size-4" />
-        {t("classes.allClasses")}
-      </Link>
-
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{title}</h1>
-        <p className="mt-1 flex flex-wrap items-center gap-2 text-sm text-fg-muted">
-          {klass.gradeLevel ? <span>{t("classes.grade", { grade: klass.gradeLevel })}</span> : null}
-          {klass.subject ? <span>· {klass.subject}</span> : null}
-          <span>
-            ·{" "}
-            {klass._count.enrollments === 1
-              ? t("classes.studentsOne")
-              : t("classes.studentsMany", { count: klass._count.enrollments })}
+      <PageHeader
+        title={title}
+        back={{ href: "/admin/classes", label: t("classes.allClasses") }}
+        description={
+          <span className="flex flex-wrap items-center gap-2">
+            {klass.gradeLevel ? <span>{t("classes.grade", { grade: klass.gradeLevel })}</span> : null}
+            {klass.subject ? <span>· {klass.subject}</span> : null}
+            <span>
+              ·{" "}
+              {klass._count.enrollments === 1
+                ? t("classes.studentsOne")
+                : t("classes.studentsMany", { count: klass._count.enrollments })}
+            </span>
+            {klass.archivedAt && (
+              <Badge tone="neutral" size="sm">
+                {t("classes.archived")}
+              </Badge>
+            )}
           </span>
-          {klass.archivedAt && (
-            <Badge tone="neutral" size="sm">
-              {t("classes.archived")}
-            </Badge>
-          )}
-        </p>
-      </div>
+        }
+      />
+
 
       <Card>
         <CardHeader

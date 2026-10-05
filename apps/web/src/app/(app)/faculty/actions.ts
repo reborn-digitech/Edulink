@@ -9,6 +9,8 @@ import { lockInternal, moderateComponent, releaseComponent, saveComponent, saveI
 import { addCourseFileItem, reviewCourseFile, saveCoursePlan } from "@/lib/academics-coursefile";
 import { addMentoringNote, saveMentoringGroup } from "@/lib/academics-mentoring";
 import { discard, storeAttachments } from "@/lib/uploads";
+import { answerForm } from "@/lib/form-action";
+import type { FormState } from "@/lib/form-state";
 
 /**
  * The faculty member's and the HOD's academics writes (4 October 2026):
@@ -30,22 +32,28 @@ export async function markLectureAction(form: FormData): Promise<void> {
   });
 }
 
-export async function saveComponentAction(form: FormData): Promise<void> {
-  await runAction(offeringPath(form, "marks"), async () => {
-    const coCodes = field(form, "coCodes").split(/[\s,]+/).map((x) => x.trim().toUpperCase()).filter(Boolean);
-    await saveComponent(await requireApiUser(), field(form, "offeringId"), internalComponentSaveSchema.parse({ id: field(form, "id") || undefined, name: field(form, "name"), kind: field(form, "kind"), maxMarks: intField(form, "maxMarks"), weight: intField(form, "weight"), coCodes }));
-    return "academics.componentSaved";
-  });
+/** Internal marks answer in place (A3-journeys-27): a weight over the internal maximum stays typed and is said under the weight. */
+export async function saveComponentAction(previous: FormState, form: FormData): Promise<FormState> {
+  return answerForm(
+    previous,
+    form,
+    async () => {
+      const coCodes = field(form, "coCodes").split(/[\s,]+/).map((x) => x.trim().toUpperCase()).filter(Boolean);
+      await saveComponent(await requireApiUser(), field(form, "offeringId"), internalComponentSaveSchema.parse({ id: field(form, "id") || undefined, name: field(form, "name"), kind: field(form, "kind"), maxMarks: intField(form, "maxMarks"), weight: intField(form, "weight"), coCodes }));
+      return "academics.componentSaved";
+    },
+    { revalidate: [offeringPath(form, "marks")] },
+  );
 }
 
 /** One component's marks from the grid ("mark:<membershipId>", blank skipped, "AB" absent) or a pasted sheet. */
-export async function saveMarksAction(form: FormData): Promise<void> {
-  await runAction(offeringPath(form, "marks"), async () => {
+export async function saveMarksAction(previous: FormState, form: FormData): Promise<FormState> {
+  return answerForm(previous, form, async () => {
     const ctx = await requireApiUser();
     const sheet = field(form, "sheet");
     if (sheet) {
       const r = await saveInternalMarks(ctx, field(form, "offeringId"), { componentId: field(form, "componentId"), sheet });
-      if (r.skipped.length) throw new RuleRefusal("academics.sheetSkipped", 422, { saved: r.saved, skipped: r.skipped.length });
+      if (r.skipped.length) throw new RuleRefusal("academics.sheetSkipped", 422, { saved: r.saved, skipped: r.skipped.length }, "sheet");
       return "academics.marksSaved";
     }
     const entries: { studentMembershipId: string; marks: number | null }[] = [];
@@ -55,12 +63,12 @@ export async function saveMarksAction(form: FormData): Promise<void> {
       if (!raw) continue;
       if (/^ab$/i.test(raw)) entries.push({ studentMembershipId: k.slice(5), marks: null });
       else if (/^\d+(\.\d)?$/.test(raw)) entries.push({ studentMembershipId: k.slice(5), marks: Number(raw) });
-      else throw new RuleRefusal("academics.refuseBadMarks", 422, { value: raw.slice(0, 10) });
+      else throw new RuleRefusal("academics.refuseBadMarks", 422, { value: raw.slice(0, 10) }, k);
     }
     if (!entries.length) return "academics.marksSaved";
     await saveInternalMarks(ctx, field(form, "offeringId"), { componentId: field(form, "componentId"), entries });
     return "academics.marksSaved";
-  });
+  }, { revalidate: [offeringPath(form, "marks")], fields: { entries: "" } });
 }
 
 export async function moderateAction(form: FormData): Promise<void> {

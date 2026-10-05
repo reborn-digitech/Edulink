@@ -5,7 +5,7 @@ import { formatPaise } from "@edulink/i18n";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { requireApiOperator, AccessError } from "@/lib/tenancy";
 import { gigSettings, recordGigPayment, saveGigSettings, type GigSettingsView } from "@/lib/gig-questions";
-import { type CompanyInput, linkAllExperts, type PayoutRecordInput, recordPayout, retrySeatPayment, saveCompanyDetails, setPaymentsEnabled } from "@/lib/gig-payments";
+import { type CompanyInput, linkAllExperts, type PayoutRecordInput, recordPayout, retrySeatPayment, saveCompanyDetails, setPaymentsEnabled, suspendPayee } from "@/lib/gig-payments";
 
 type Result = { ok: true; message: string } | { ok: false; error: string };
 
@@ -138,6 +138,20 @@ export async function recordPayoutAction(input: { payoutId: string; name: string
         number: result.invoice.number,
       }),
     };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** The operator stops paying an expert, with a reason they read, or lifts the stop (A3-inventory-8: the door POST /operator/gigs/payees/{expertUserId}/suspend had no caller). */
+export async function suspendPayeeAction(input: { expertUserId: string; name: string; suspended: boolean; note?: string }): Promise<Result> {
+  try {
+    const ctx = await requireApiOperator();
+    const result = await suspendPayee(ctx, input.expertUserId, { suspended: input.suspended, note: input.note ?? null });
+    const t = await getT();
+    if (!result.ok) return { ok: false, error: t(result.errorKey, result.vars) };
+    revalidatePath("/root/gigs");
+    return { ok: true, message: t(input.suspended ? "gigs.opPayeeStopped" : "gigs.opPayeeResumed", { name: input.name }) };
   } catch (error) {
     return failure(error);
   }

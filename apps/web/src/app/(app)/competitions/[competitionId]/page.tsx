@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  ArrowLeftIcon,
-  ArrowSquareOutIcon,
-  CalendarBlankIcon,
-  SealCheckIcon,
-  ShieldCheckIcon,
-} from "@phosphor-icons/react/ssr";
+import { ArrowSquareOutIcon, CalendarBlankIcon, SealCheckIcon, ShieldCheckIcon } from "@phosphor-icons/react/ssr";
 import { formatDate } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { requireUser } from "@/lib/tenancy";
@@ -23,6 +17,7 @@ import {
   ResultBadge,
   SubmitPanel,
 } from "../entry-controls";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -68,32 +63,30 @@ export default async function CompetitionPage({
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
-      <Link
-        href="/competitions"
-        className="inline-flex items-center gap-1.5 text-sm text-fg-muted hover:text-fg"
-      >
-        <ArrowLeftIcon weight="bold" className="size-4" />
-        {t("competitions.title")}
-      </Link>
-
-      <header className="space-y-2">
-        <div className="flex flex-wrap items-center gap-2">
-          <h1 className="text-2xl font-bold tracking-tight">{competition.title}</h1>
-          {competition.verified && (
-            <span className="inline-flex items-center gap-1 text-sm font-medium text-accent-strong">
-              <SealCheckIcon weight="fill" className="size-4" />
-              {t("competitions.verified")}
-            </span>
-          )}
-          {competition.status !== "PUBLISHED" && (
-            <span className="rounded-[var(--radius-sm)] bg-surface-muted px-2 py-0.5 text-xs font-medium text-fg-muted">
-              {competition.status === "DRAFT" ? t("competitions.notPublishedYet") : t("competitions.archived")}
-            </span>
-          )}
-        </div>
+      <div className="space-y-2">
+        <PageHeader
+          title={competition.title}
+          back={{ href: "/competitions", label: t("competitions.title") }}
+          meta={
+            <>
+              {competition.verified && (
+                <span className="inline-flex items-center gap-1 text-sm font-medium text-accent-strong">
+                  <SealCheckIcon weight="fill" className="size-4" />
+                  {t("competitions.verified")}
+                </span>
+              )}
+              {competition.status !== "PUBLISHED" && (
+                <span className="rounded-[var(--radius-sm)] bg-surface-muted px-2 py-0.5 text-xs font-medium text-fg-muted">
+                  {competition.status === "DRAFT" ? t("competitions.notPublishedYet") : t("competitions.archived")}
+                </span>
+              )}
+            </>
+          }
+        />
         <p className="text-fg-muted">{competition.summary}</p>
         <p className="text-sm text-fg-muted">{t("competitions.runBy", { name: competition.organizerName })}</p>
-      </header>
+      </div>
+
 
       {/* What the caller can do about it, before the wall of detail. */}
       <Card>

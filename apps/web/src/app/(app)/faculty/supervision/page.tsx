@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hasStream } from "@/lib/streams";
 import { requireRole } from "@/lib/tenancy";
 import { getT } from "@/lib/i18n/server";
 import { institutionKindOf, isModuleOn } from "@/lib/modules";
@@ -36,7 +37,7 @@ export default async function SupervisionPage({ searchParams }: { searchParams: 
     <div className="space-y-5">
       <PageHeader title={t("placement.supervisionTitle")} description={t("placement.supervisionIntro")} />
       <Flash ok={ok} error={error} />
-      <InternshipStaffList internships={mine} t={t} back="/faculty/supervision" canDecide={false} supervisors={[]} rule={internshipRule} />
+      <InternshipStaffList internships={mine} t={t} back="/faculty/supervision" canDecide={false} supervisors={[]} rule={internshipRule} aicte={await hasStream(ctx.schoolId, "ENGINEERING")} />
       <ProjectList projects={projects.projects.filter((p) => p.guideMembershipId === ctx.membershipId)} t={t} back="/faculty/supervision" myMembershipId={ctx.membershipId} />
     </div>
   );

@@ -72,7 +72,6 @@ export function Hidden({ fields }: { fields: Record<string, string | undefined> 
   );
 }
 
-export const inputClass = "min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent";
 export const labelClass = "block text-sm font-medium text-fg";
 
 /** A labelled field: the label above whatever control is given. */
@@ -115,10 +114,15 @@ export function CellOff({ t, college }: { t: Translate; college: boolean }) {
 }
 
 /** One term's result: each course's grade and points, then the SGPA, credits, standing and class. */
-export function TermResultCard({ result, t, title, actions }: { result: TermResultView; t: Translate; title: string; actions?: (courseId: string) => ReactNode }) {
+export function TermResultCard({ result, t, title, actions, note }: { result: TermResultView; t: Translate; title: string; actions?: (courseId: string) => ReactNode; note?: string }) {
   return (
     <Card>
       <CardHeader title={title} description={[[t("examCell.sgpaLabel"), result.sgpa?.toFixed(2) ?? "—"].join(" "), t("examCell.creditsOf", { earned: result.creditsEarned, of: result.creditsAttempted }), t(TERM_STATUS_KEY[result.status]!), result.cls ? t(CLASS_KEY[result.cls]!) : null].filter(Boolean).join(" · ")} />
+      {note ? (
+        <p role="status" className="mx-5 mb-3 rounded-[var(--radius-md)] bg-warn-soft p-3 text-sm text-warn">
+          {note}
+        </p>
+      ) : null}
       <CardBody className="relative overflow-x-auto p-0" tabIndex={0} role="group">
         <table className="w-full text-sm">
           <thead className="bg-surface-muted text-left text-xs text-fg-muted">

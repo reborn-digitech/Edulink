@@ -35,7 +35,7 @@ describe("the head's notes on a member of staff", () => {
     expect(await screen.findByText("ZZ Asha: observations and appraisal")).toBeTruthy();
     expect(screen.getByText("New entries are filed under 2026–27.")).toBeTruthy();
     expect(screen.getByText("Observation")).toBeTruthy();
-    expect(screen.getByText("Sep 15, 2026")).toBeTruthy();
+    expect(screen.getByText("15/09/2026")).toBeTruthy();
     expect(screen.getByText("4/5")).toBeTruthy();
     expect(screen.getByText("Only the head and the office")).toBeTruthy();
     expect(screen.getByText("A lively lesson on fractions.")).toBeTruthy();
@@ -94,5 +94,13 @@ describe("what the head has shown me", () => {
     expect(screen.queryByRole("button", { name: /^Edit:/ })).toBeNull();
     await mountStaff(page(<MyAppraisals />), "TEACHER", { [MINE]: () => json({ items: [] }) });
     expect(await screen.findByText("Nothing shared with you yet")).toBeTruthy();
+  });
+
+  it("a college's FACULTY and HOD read theirs through the same door (A3-inventory-5)", async () => {
+    for (const role of ["FACULTY", "HOD"] as const) {
+      const { calls } = await mountStaff(page(<MyAppraisals />), role, { [MINE]: () => json({ items: [entry({ visibleToStaff: true, kind: "APPRAISAL" })] }) });
+      expect(await screen.findByText("A lively lesson on fractions.")).toBeTruthy();
+      expect(calls().some((c) => c.line === MINE)).toBe(true);
+    }
   });
 });

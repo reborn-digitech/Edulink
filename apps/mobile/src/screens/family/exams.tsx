@@ -78,7 +78,7 @@ export function FamilyExams() {
         ]}
       />
       {exams.isPending ? <Loading /> : null}
-      {exams.isError ? <Failed message={exams.error.message} onRetry={() => void exams.refetch()} /> : null}
+      {exams.isError ? <Failed error={exams.error} onRetry={() => void exams.refetch()} /> : null}
 
       {d && tab === "marks" ? (
         anyMarks ? (
@@ -125,7 +125,7 @@ export function FamilyExams() {
       {tab === "cards" ? (
         <>
           {cards.isPending ? <Loading /> : null}
-          {cards.isError ? <Failed message={cards.error.message} onRetry={() => void cards.refetch()} /> : null}
+          {cards.isError ? <Failed error={cards.error} onRetry={() => void cards.refetch()} /> : null}
           {cards.data ? (
             count(cards.data.groups) === 0 ? (
               <Empty
@@ -211,7 +211,7 @@ function ReportCardView({ cardId, onBack }: { cardId: string; onBack: () => void
       <Button variant="secondary" label={t("reportView.downloadPdf")} icon={<Icon name="fileText" size={18} color={th.fg} weight="bold" />} busy={pdfBusy} disabled={!c} onPress={() => void downloadPdf()} />
       {pdfError ? <Failed message={pdfError} onRetry={() => void downloadPdf()} /> : null}
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {c ? (
         <>
           {c.status !== "PUBLISHED" ? (

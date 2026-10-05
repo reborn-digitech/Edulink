@@ -7,6 +7,7 @@ import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { Chips, Notice } from "../staff/shared";
 import { FLAG_KEY } from "./words";
+import { formatDate } from "@/lib/dates";
 
 /**
  * A mentor's groups on the phone (the college's academics, 4 Oct 2026) —
@@ -54,7 +55,7 @@ export function MentoringScreen() {
               </>
             ) : null}
             {g.notes.slice(0, 5).map((n) => (
-              <Row key={n.id} title={n.studentName} caption={`${n.at.slice(0, 10)} · ${n.note}`} />
+              <Row key={n.id} title={n.studentName} caption={`${formatDate(n.at)} · ${n.note}`} />
             ))}
           </Card>
         );

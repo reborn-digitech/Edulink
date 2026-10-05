@@ -30,8 +30,8 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function StructurePage({ params, searchParams }: { params: Promise<{ structureId: string }>; searchParams: Promise<{ classId?: string }> }) {
   const t = await getT();
   const locale = await getLocale();
-  const ctx = await requireRole("ADMIN", "PRINCIPAL");
-  const office = ctx.role === "ADMIN";
+  const ctx = await requireRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
+  const office = ctx.role === "ADMIN" || ctx.role === "ACCOUNTS";
   const { structureId } = await params;
   const { classId } = await searchParams;
   const money = (paise: number) => formatPaise(paise, locale);

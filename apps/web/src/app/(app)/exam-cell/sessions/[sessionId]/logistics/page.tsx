@@ -9,8 +9,9 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { DateTimeField } from "@/components/ui/date-time-field";
-import { CellOff, DUTY_STATUS_KEY, Hidden, Labelled, MALPRACTICE_KEY, REMUNERATION_KEY, SessionFrame, inputClass, money, when } from "@/components/exam-cell/parts";
+import { CellOff, DUTY_STATUS_KEY, Hidden, Labelled, MALPRACTICE_KEY, REMUNERATION_KEY, SessionFrame, money, when } from "@/components/exam-cell/parts";
 import { assignInvigilatorAction, buildSeatingAction, decideMalpracticeAction, dutyDoneAction, issueTicketsAction, reportMalpracticeAction, saveRemunerationAction, saveRoomAction, saveScheduleAction, swapInvigilatorAction } from "../../../actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -85,10 +86,10 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
                   <form action={saveRoomAction} className="flex flex-wrap items-end gap-2">
                     <Hidden fields={{ sessionId: s.id, scheduleId: x.id, back }} />
                     <Labelled label={t("examCell.hallName")}>
-                      <input name="name" required maxLength={60} className={inputClass} />
+                      <input name="name" required maxLength={60} className={fieldClass()} />
                     </Labelled>
                     <Labelled label={t("examCell.capacity")}>
-                      <input name="capacity" type="number" min={2} max={500} required className={inputClass} />
+                      <input name="capacity" type="number" min={2} max={500} required className={fieldClass()} />
                     </Labelled>
                     <Button type="submit" size="sm" variant="secondary">
                       {t("examCell.addHall")}
@@ -111,7 +112,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
             <form action={saveScheduleAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, back }} />
               <Labelled label={t("examCell.course")}>
-                <select name="courseId" required className={inputClass}>
+                <select name="courseId" required className={fieldClass()}>
                   {s.courses.map((c) => (
                     <option key={c.courseId} value={c.courseId}>
                       {c.code} {c.name}
@@ -128,7 +129,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
               </Labelled>
               <DateTimeField label={t("examCell.when")} name="at" defaultTime="10:00" required className="w-full sm:w-auto sm:min-w-[20rem]" />
               <Labelled label={t("examCell.duration")}>
-                <input name="durationMin" type="number" min={30} max={360} defaultValue={180} className={inputClass} />
+                <input name="durationMin" type="number" min={30} max={360} defaultValue={180} className={fieldClass()} />
               </Labelled>
               <Button type="submit" size="sm">
                 {t("examCell.addPaper")}
@@ -163,7 +164,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
             <form action={assignInvigilatorAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, back }} />
               <Labelled label={t("examCell.hall")}>
-                <select name="examRoomId" required className={inputClass}>
+                <select name="examRoomId" required className={fieldClass()}>
                   {s.schedule.flatMap((x) =>
                     x.rooms.map((r) => (
                       <option key={r.id} value={r.id}>
@@ -174,7 +175,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
                 </select>
               </Labelled>
               <Labelled label={t("examCell.staff")}>
-                <select name="staffMembershipId" required className={inputClass}>
+                <select name="staffMembershipId" required className={fieldClass()}>
                   {staffOptions}
                 </select>
               </Labelled>
@@ -185,7 +186,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
             <form action={swapInvigilatorAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ back }} />
               <Labelled label={t("examCell.duty")}>
-                <select name="invigilationId" required className={inputClass}>
+                <select name="invigilationId" required className={fieldClass()}>
                   {s.schedule.flatMap((x) =>
                     x.rooms.flatMap((r) =>
                       r.invigilators
@@ -200,12 +201,12 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
                 </select>
               </Labelled>
               <Labelled label={t("examCell.swapTo")}>
-                <select name="staffMembershipId" required className={inputClass}>
+                <select name="staffMembershipId" required className={fieldClass()}>
                   {staffOptions}
                 </select>
               </Labelled>
               <Labelled label={t("examCell.reason")}>
-                <input name="note" required minLength={3} maxLength={300} className={inputClass} />
+                <input name="note" required minLength={3} maxLength={300} className={fieldClass()} />
               </Labelled>
               <Button type="submit" size="sm" variant="secondary">
                 {t("examCell.swap")}
@@ -233,7 +234,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
                 <form action={decideMalpracticeAction} className="flex flex-wrap items-end gap-2">
                   <Hidden fields={{ malpracticeId: m.id, back }} />
                   <Labelled label={t("examCell.decision")}>
-                    <select name="decision" className={inputClass}>
+                    <select name="decision" className={fieldClass()}>
                       {MALPRACTICE_DECISIONS.map((d) => (
                         <option key={d} value={d}>
                           {t(MALPRACTICE_KEY[d]!)}
@@ -242,7 +243,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
                     </select>
                   </Labelled>
                   <Labelled label={t("examCell.committeeNote")}>
-                    <input name="note" required minLength={3} maxLength={1000} className={inputClass} />
+                    <input name="note" required minLength={3} maxLength={1000} className={fieldClass()} />
                   </Labelled>
                   <Button type="submit" size="sm">
                     {t("examCell.record")}
@@ -255,7 +256,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
             <form action={reportMalpracticeAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, back }} />
               <Labelled label={t("examCell.paper")}>
-                <select name="scheduleId" className={inputClass}>
+                <select name="scheduleId" className={fieldClass()}>
                   {s.schedule.map((x) => (
                     <option key={x.id} value={x.id}>
                       {x.code}
@@ -264,7 +265,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
                 </select>
               </Labelled>
               <Labelled label={t("examCell.student")}>
-                <select name="studentMembershipId" className={inputClass}>
+                <select name="studentMembershipId" className={fieldClass()}>
                   {sitting.map((f) => (
                     <option key={f.studentMembershipId} value={f.studentMembershipId}>
                       {f.name}
@@ -273,7 +274,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
                 </select>
               </Labelled>
               <Labelled label={t("examCell.whatHappened")}>
-                <input name="note" required minLength={5} maxLength={1000} className={inputClass} />
+                <input name="note" required minLength={5} maxLength={1000} className={fieldClass()} />
               </Labelled>
               <Button type="submit" size="sm" variant="secondary">
                 {t("examCell.reportCase")}
@@ -295,12 +296,12 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
             <form action={saveRemunerationAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, back }} />
               <Labelled label={t("examCell.staff")}>
-                <select name="staffMembershipId" className={inputClass}>
+                <select name="staffMembershipId" className={fieldClass()}>
                   {staffOptions}
                 </select>
               </Labelled>
               <Labelled label={t("examCell.payKind")}>
-                <select name="kind" className={inputClass}>
+                <select name="kind" className={fieldClass()}>
                   {REMUNERATION_KINDS.map((k) => (
                     <option key={k} value={k}>
                       {t(REMUNERATION_KEY[k]!)}
@@ -309,10 +310,10 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
                 </select>
               </Labelled>
               <Labelled label={t("examCell.count")}>
-                <input name="count" type="number" min={0} max={1000} required className={inputClass} />
+                <input name="count" type="number" min={0} max={1000} required className={fieldClass()} />
               </Labelled>
               <Labelled label={t("examCell.rate")}>
-                <input name="rate" inputMode="decimal" required className={inputClass} />
+                <input name="rate" inputMode="decimal" required className={fieldClass()} />
               </Labelled>
               <Button type="submit" size="sm" variant="secondary">
                 {t("examCell.save")}

@@ -1,4 +1,4 @@
-import { screen, waitFor } from "@testing-library/react-native";
+import { screen, waitFor, within } from "@testing-library/react-native";
 import * as Haptics from "expo-haptics";
 import { onlineManager } from "@tanstack/react-query";
 import { attendanceClassesSchema, registerSchema } from "@edulink/contracts";
@@ -77,7 +77,7 @@ describe("the register", () => {
   });
 
   it("a refused list is an alert with a retry", async () => {
-    fakeApi({ "/api/v1/staff/attendance/classes": () => refusal("ZZ not allowed", 403) });
+    fakeApi({ "/api/v1/staff/attendance/classes": () => refusal("ZZ not allowed", 503) });
     await renderTeacher(<Register />);
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ not allowed");
     expect(screen.getByRole("button", { name: "Try again" })).toBeTruthy();
@@ -135,6 +135,21 @@ describe("the register", () => {
     expect(replay.headers.Authorization).toBe("Bearer t");
     expect(replay.body).toEqual(JSON.parse(queued[0]!.body));
     await waitFor(() => expect(screen.queryByText("1 waiting to send")).toBeNull());
+    // Sent from the outbox, the line says the marks reached the school, not "Saved on this device" (A3-journeys-32).
+    await waitFor(() => expect(screen.getByTestId("register-state")).toHaveTextContent("Sent: the marks reached the school."));
+    expect(screen.queryByText("Saved on this device")).toBeNull();
+  });
+
+  it("names each pupil's Present/Late/Absent/Excused as one group, as the web's register does (A3-journeys-32)", async () => {
+    mockRouter.params = { classId: ID.class1 };
+    fakeApi({ "/api/v1/staff/attendance/register": () => json(REGISTER) });
+    await renderTeacher(<Register />);
+    await screen.findByText("1 of 2 marked");
+    const group = screen.getByTestId(`register-group-${ID.pupil1}`);
+    expect(group.props.accessibilityRole).toBe("radiogroup");
+    expect(group.props.accessibilityLabel).toBe("Attendance for ZZ Asha");
+    expect(within(group).getAllByRole("radio").map((r) => r.props.accessibilityLabel)).toEqual(["Present", "Late", "Absent", "Excused"]);
+    expect(screen.getByTestId(`register-group-${ID.pupil2}`).props.accessibilityLabel).toBe("Attendance for ZZ Bhavesh");
   });
 
   it("known to be offline, a tap goes straight to the outbox with no fetch first, as the web's register does", async () => {
@@ -144,8 +159,12 @@ describe("the register", () => {
     await screen.findByText("1 of 2 marked");
     onlineManager.setOnline(false);
     try {
+      // Offline before anything is marked: the line says the marks will wait, not "Ready" (A3-journeys-32).
+      await waitFor(() => expect(screen.getByTestId("register-state")).toHaveTextContent("Offline: marks stay on this device and send when you are back."));
+      expect(screen.queryByText("Ready")).toBeNull();
       await tap(screen.getAllByRole("radio", { name: "Late" })[0]!);
-      await waitFor(() => expect(screen.getByText("Saved on this device")).toBeTruthy(), slow);
+      await waitFor(() => expect(screen.getByText("1 waiting to send")).toBeTruthy(), slow);
+      expect(screen.getByTestId("register-state")).toHaveTextContent("Offline: marks stay on this device and send when you are back.");
       expect(callsTo(fetch, "/api/attendance")).toHaveLength(0);
       const queued = await listQueued(`attendance:${ID.class1}`);
       expect(queued).toHaveLength(1);
@@ -158,6 +177,7 @@ describe("the register", () => {
     expect(callsTo(fetch, "/api/attendance")[0]!.headers["X-Edulink-Replay"]).toBe("1");
     await waitFor(() => expect(screen.queryByText("1 waiting to send")).toBeNull());
     expect(await listQueued()).toHaveLength(0);
+    await waitFor(() => expect(screen.getByTestId("register-state")).toHaveTextContent("Sent: the marks reached the school."));
   });
 
   it("a mark the server would not take (a pupil no longer in the class) is said beside the saved state", async () => {

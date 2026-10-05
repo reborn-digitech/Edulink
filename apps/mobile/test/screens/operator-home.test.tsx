@@ -127,9 +127,9 @@ describe("the operator's home", () => {
     expect(screen.getByLabelText("Jobs overdue: 2")).toBeTruthy();
     expect(screen.getByLabelText("Commission owed this month: ₹250")).toBeTruthy();
     expect(screen.getByText("Due within a week")).toBeTruthy();
-    expect(screen.getByText("2026-09-27 · 5 days overdue")).toBeTruthy();
-    expect(screen.getByText("2026-10-05 · Due in 3 days")).toBeTruthy();
-    await fireEvent.press(screen.getByRole("button", { name: /^ZZ Hillside, 2026-09-27/ }));
+    expect(screen.getByText("27/09/2026 · 5 days overdue")).toBeTruthy();
+    expect(screen.getByText("05/10/2026 · Due in 3 days")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: /^ZZ Hillside, 27\/09\/2026/ }));
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/operator-school", params: { schoolId: "s3" } });
     expect(screen.getByText("Onboarding a school is done on the web, where one form takes everything at once.")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Onboard a school" }));

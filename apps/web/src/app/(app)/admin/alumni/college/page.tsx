@@ -14,6 +14,7 @@ import { ModuleOff } from "@/components/module-off";
 import { EmptyState } from "@/components/ui/states";
 import { Flash, GIFT_KIND_KEY, TABLE, TD, TH } from "@/components/placement/parts";
 import { createMeetAction, giftAction } from "@/app/(app)/placement/actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -50,28 +51,30 @@ export default async function AdminAlumniCollegePage({ searchParams }: { searchP
       <Card>
         <CardHeader icon={<TableIcon weight="duotone" className="size-5" />} title={t("placement.batchTableTitle")} description={t("placement.batchTableIntro")} />
         <CardBody className="p-0">
-          <table className={TABLE}>
-            <thead>
-              <tr className="border-b border-border">
-                <th className={TH}>{t("placement.colBatch")}</th>
-                <th className={TH}>{t("placement.colAlumni")}</th>
-                <th className={TH}>{t("placement.colListed")}</th>
-                <th className={TH}>{t("placement.colMentors")}</th>
-                <th className={TH}>{t("placement.colGifts")}</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-border">
-              {a.batches.map((b) => (
-                <tr key={b.batchYear}>
-                  <td className={TD}>{b.batchYear}</td>
-                  <td className={TD}>{b.alumni}</td>
-                  <td className={TD}>{b.listed}</td>
-                  <td className={TD}>{b.mentors}</td>
-                  <td className={TD}>{b.gifts}</td>
+          <TableScroll>
+            <table className={TABLE}>
+              <thead>
+                <tr className="border-b border-border">
+                  <th className={TH}>{t("placement.colBatch")}</th>
+                  <th className={TH}>{t("placement.colAlumni")}</th>
+                  <th className={TH}>{t("placement.colListed")}</th>
+                  <th className={TH}>{t("placement.colMentors")}</th>
+                  <th className={TH}>{t("placement.colGifts")}</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y divide-border">
+                {a.batches.map((b) => (
+                  <tr key={b.batchYear}>
+                    <td className={TD}>{b.batchYear}</td>
+                    <td className={TD}>{b.alumni}</td>
+                    <td className={TD}>{b.listed}</td>
+                    <td className={TD}>{b.mentors}</td>
+                    <td className={TD}>{b.gifts}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </TableScroll>
         </CardBody>
       </Card>
       <Card>

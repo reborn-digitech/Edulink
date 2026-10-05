@@ -7,7 +7,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { SelectField, TextField } from "@/components/ui/field";
 import { ModuleOff } from "@/components/module-off";
-import { INPUT } from "@/components/module-flash";
+import { fieldClass } from "@/components/ui/field-class";
 import { listAdvances, listSalaries } from "@/lib/payroll";
 import { formatInZone } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
  */
 export default async function PayrollAdvances({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const { ctx, t, locale, on } = await payrollGate(true);
-  if (!on) return <ModuleOff module="PAYROLL" t={t} />;
+  if (!on) return <ModuleOff page module="PAYROLL" t={t} />;
   const params = await searchParams;
   const [{ advances }, { staff }] = await Promise.all([listAdvances(ctx), listSalaries(ctx)]);
   const money = (p: number) => formatPaise(p, locale);
@@ -58,14 +58,14 @@ export default async function PayrollAdvances({ searchParams }: { searchParams: 
                       <form action={decideAdvanceAction} className="flex flex-wrap items-end gap-2">
                         <input type="hidden" name="advanceId" value={a.id} />
                         <input type="hidden" name="decision" value="RECORD" />
-                        <input aria-label={t("payroll.fieldAmount")} className={`${INPUT} w-32`} name="amount" inputMode="decimal" defaultValue={(a.amountPaise / 100).toFixed(2)} />
-                        <input aria-label={t("payroll.fieldInstalment")} className={`${INPUT} w-32`} name="instalment" inputMode="decimal" required placeholder={t("payroll.fieldInstalment")} />
+                        <input aria-label={t("payroll.fieldAmount")} className={fieldClass("w-32")} name="amount" inputMode="decimal" defaultValue={(a.amountPaise / 100).toFixed(2)} />
+                        <input aria-label={t("payroll.fieldInstalment")} className={fieldClass("w-32")} name="instalment" inputMode="decimal" required placeholder={t("payroll.fieldInstalment")} />
                         <Button type="submit" size="sm">{t("payroll.recordAdvance")}</Button>
                       </form>
                       <form action={decideAdvanceAction} className="flex flex-wrap items-end gap-2">
                         <input type="hidden" name="advanceId" value={a.id} />
                         <input type="hidden" name="decision" value="DECLINE" />
-                        <input aria-label={t("payroll.declineWhy")} className={`${INPUT} w-48`} name="note" maxLength={300} placeholder={t("payroll.declineWhy")} />
+                        <input aria-label={t("payroll.declineWhy")} className={fieldClass("w-48")} name="note" maxLength={300} placeholder={t("payroll.declineWhy")} />
                         <Button type="submit" size="sm" variant="secondary">{t("payroll.declineAdvance")}</Button>
                       </form>
                     </div>

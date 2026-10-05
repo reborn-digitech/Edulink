@@ -21,7 +21,7 @@ export default async function StudentRegistrationPage({ searchParams }: { search
   const ctx = await requireRole("STUDENT");
   const t = await getT();
   const [on, kind] = await Promise.all([isModuleOn(ctx.schoolId, "ACADEMICS"), institutionKindOf(ctx.schoolId)]);
-  if (!on) return <ModuleOff module="ACADEMICS" t={t} college={isCollegeKind(kind)} />;
+  if (!on) return <ModuleOff page module="ACADEMICS" t={t} college={isCollegeKind(kind)} />;
   const view = await registrationView(ctx, {});
   return (
     <div className="space-y-6">

@@ -10,6 +10,8 @@ import { EmptyState } from "@/components/ui/states";
 import { SelectField, TextField } from "@/components/ui/field";
 import { ModuleOff } from "@/components/module-off";
 import { LINK, NUM, TD, TH } from "@/components/module-flash";
+import { ChipLink } from "@/components/ui/chip";
+
 import { inventorySetup, listAssets, listItems } from "@/lib/inventory";
 import { getT } from "@/lib/i18n/server";
 import { inventoryGate, InventoryTop } from "../shared";
@@ -32,7 +34,7 @@ const TONE: Record<AssetStatus, "ok" | "neutral" | "warn" | "danger"> = { IN_USE
  */
 export default async function InventoryAssets({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const { ctx, t, locale, on, canEdit } = await inventoryGate();
-  if (!on) return <ModuleOff module="INVENTORY" t={t} />;
+  if (!on) return <ModuleOff page module="INVENTORY" t={t} />;
   const params = await searchParams;
   const status = typeof params.status === "string" && (ASSET_STATUSES as readonly string[]).includes(params.status) ? (params.status as AssetStatus) : undefined;
   const [register, setup, { items }] = await Promise.all([listAssets(ctx, { status }), inventorySetup(ctx), listItems(ctx)]);
@@ -58,10 +60,10 @@ export default async function InventoryAssets({ searchParams }: { searchParams: 
           }
         />
         <CardBody className="space-y-3">
-          <nav aria-label={t("inventory.filterStatus")} className="flex flex-wrap gap-3 text-sm">
-            <Link className={LINK} aria-current={!status ? "page" : undefined} href="/admin/inventory/assets">{t("inventory.allStatuses")}</Link>
+          <nav aria-label={t("inventory.filterStatus")} className="flex flex-wrap gap-1.5">
+            <ChipLink current={!status} href="/admin/inventory/assets">{t("inventory.allStatuses")}</ChipLink>
             {ASSET_STATUSES.map((s) => (
-              <Link key={s} className={LINK} aria-current={status === s ? "page" : undefined} href={`/admin/inventory/assets?status=${s}`}>{t(`inventory.status${s}`)}</Link>
+              <ChipLink key={s} current={status === s} href={`/admin/inventory/assets?status=${s}`}>{t(`inventory.status${s}`)}</ChipLink>
             ))}
           </nav>
           {register.assets.length === 0 ? (

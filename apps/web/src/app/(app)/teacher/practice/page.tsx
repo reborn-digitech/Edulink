@@ -18,6 +18,8 @@ import { formatDate } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { setPractice, removePractice } from "./actions";
 import { PageHeader } from "@/components/ui/page-header";
+import { ChipLink } from "@/components/ui/chip";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -57,10 +59,9 @@ export default async function TeacherPracticePage({
   if (classes.length === 0) {
     return (
       <div className="space-y-6">
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("practice.teacherTitle")}
-        </h1>
+        <PageHeader title={t("practice.teacherTitle")} />
         <EmptyState
+
           icon={<BrainIcon weight="duotone" className="size-8" />}
           title={t("practice.teacherTitle")}
           description={t("teacher.noClassesYet")}
@@ -100,15 +101,13 @@ export default async function TeacherPracticePage({
       {classes.length > 1 && (
         <nav aria-label={t("nav.classes")} className="flex flex-wrap gap-2">
           {classes.map((c) => (
-            <Link
+            <ChipLink
               key={c.id}
               href={`/teacher/practice?classId=${c.id}`}
-              className={`rounded-full px-3 py-1.5 text-sm font-medium ${
-                selected.id === c.id ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
-              }`}
+              current={selected.id === c.id}
             >
               {c.name}
-            </Link>
+            </ChipLink>
           ))}
         </nav>
       )}
@@ -225,7 +224,7 @@ export default async function TeacherPracticePage({
               <select
                 name="topicSlug"
                 required
-                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
+                className={fieldClass()}
               >
                 {topicOptions.map((topic) => (
                   <option key={topic.slug} value={topic.slug}>
@@ -242,7 +241,7 @@ export default async function TeacherPracticePage({
                 name="targetLevel"
                 required
                 defaultValue="3"
-                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
+                className={fieldClass()}
               >
                 {Array.from({ length: MAX_LEVEL }, (_, i) => (
                   <option key={i + 1} value={i + 1}>
@@ -257,7 +256,7 @@ export default async function TeacherPracticePage({
                 type="text"
                 name="note"
                 maxLength={200}
-                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
+                className={fieldClass()}
               />
             </label>
             <DateField label={t("practice.fieldDue")} name="dueAt" />
@@ -278,7 +277,7 @@ export default async function TeacherPracticePage({
             <p className="py-4 text-center text-sm text-fg-muted">{t("practice.assignmentsEmpty")}</p>
           ) : (
             assignments.map((a) => (
-              <div key={a.id} className="rounded-lg border border-border p-4">
+              <div key={a.id} className="rounded-[var(--radius-lg)] border border-border p-4">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div>
                     <p className="font-semibold text-fg">{a.topicName}</p>

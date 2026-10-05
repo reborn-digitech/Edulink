@@ -339,7 +339,7 @@ export function AppShell({
             onClick={() => setMoreOpen(false)}
             className="absolute inset-0 bg-black/40"
           />
-          <div data-chrome className="absolute inset-x-0 bottom-0 max-h-[80vh] overflow-y-auto rounded-t-2xl bg-surface p-4 pb-safe shadow-xl animate-in-up">
+          <div data-chrome className="absolute inset-x-0 bottom-0 max-h-[80vh] overflow-y-auto rounded-t-[var(--radius-xl)] bg-surface p-4 pb-safe shadow-xl animate-in-up">
             {secondary.map(({ group, items: list }) => (
               <div key={group} className="mb-4">
                 <p className="px-2 pb-1 text-[0.65rem] font-semibold uppercase tracking-wider text-fg-subtle">

@@ -3,6 +3,7 @@ import { MagnifyingGlassIcon } from "@phosphor-icons/react/ssr";
 import { POST_CATEGORIES, type PostCategory } from "@/lib/constants";
 import { CATEGORY_KEYS } from "./categories";
 import { getT } from "@/lib/i18n/server";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * The search bar and category chips, shared by the school and global feeds.
@@ -57,7 +58,7 @@ export async function FeedFilters({
             defaultValue={q ?? ""}
             placeholder={t("bulletin.searchPlaceholder")}
             aria-label={t("bulletin.searchLabel")}
-            className="min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface pl-10 pr-3.5 text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+            className={fieldClass("pl-10")}
           />
         </div>
         <button
@@ -116,7 +117,8 @@ export async function FeedFilters({
         </Link>
         <Link
           href="/bulletin/celebrations"
-          className="shrink-0 rounded-full border border-dashed border-border px-3 py-1.5 text-xs font-medium text-fg-muted hover:text-fg"
+          className="inline-flex min-h-11 shrink-0 items-center rounded-full border border-dashed border-border px-3 text-xs font-medium text-fg-muted hover:text-fg"
+
         >
           {t("celebrations.upcomingLink")}
         </Link>

@@ -17,6 +17,7 @@ import { PersonLink } from "@/components/person-link";
 import { getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { AskFamiliesButton } from "./ask-button";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("pupilRecord.officeTitle") };
@@ -89,7 +90,7 @@ export default async function PupilRecordsPage({ searchParams }: { searchParams:
                 pattern="[0-9]{11}"
                 autoComplete="off"
                 aria-describedby="find-by-pen-hint"
-                className="mt-1.5 min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 font-mono text-[0.9375rem] text-fg outline-none focus:border-accent"
+                className={fieldClass("mt-1.5 font-mono")}
               />
             </label>
             <Button type="submit" variant="secondary" icon={<MagnifyingGlassIcon weight="bold" />}>

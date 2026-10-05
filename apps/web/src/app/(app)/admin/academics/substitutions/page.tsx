@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
 /** The lecture substitution board: lectures whose faculty member is on leave or absent on the staff register, and who stands in. */
 export default async function SubstitutionsPage({ searchParams }: { searchParams: SearchParams }) {
   const { ctx, t, on, college, canEdit } = await academicsGate();
-  if (!on) return <ModuleOff module="ACADEMICS" t={t} college={college} />;
+  if (!on) return <ModuleOff page module="ACADEMICS" t={t} college={college} />;
   const params = await searchParams;
   const [board, locale] = await Promise.all([lectureSubstitutions(ctx, one(params.date)), getLocale()]);
   return (

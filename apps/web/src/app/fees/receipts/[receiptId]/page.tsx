@@ -51,7 +51,10 @@ export default async function FeeReceiptPage({ params }: { params: Promise<{ rec
     { label: t("fees.receiptSerial"), value: receipt.serial },
     { label: t("fees.receiptDate"), value: formatDate(new Date(snapshot.payment.paidAt), timezone) },
     { label: t("fees.receiptPupil"), value: snapshot.pupil.name || dash },
-    { label: t("fees.receiptCode"), value: snapshot.pupil.studentCode ?? dash },
+    // "Admission no." is the school's admission register number (A3-journeys-26); it printed the platform's student code,
+    // which opens an account and does not belong on a paper that changes hands (the certificates' rule). A receipt written
+    // before the number was frozen with it shows a dash.
+    { label: t("fees.receiptCode"), value: snapshot.pupil.admissionNumber || dash },
     { label: t("fees.receiptClass"), value: snapshot.pupil.className ?? snapshot.pupil.gradeLevel ?? dash },
     { label: t("fees.receiptYear"), value: snapshot.year || dash },
   ];

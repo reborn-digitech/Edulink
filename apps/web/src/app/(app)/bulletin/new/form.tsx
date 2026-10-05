@@ -13,6 +13,7 @@ import { FontSelect } from "@/components/font-select";
 import type { FontKey } from "@/lib/fonts";
 import { POST_CATEGORIES, type PostCategory, type Role } from "@/lib/constants";
 import { CATEGORY_KEYS } from "../categories";
+import { fieldClass } from "@/components/ui/field-class";
 
 /**
  * Mirror MAX_UPLOAD_BYTES / MAX_VIDEO_BYTES in storage.ts. Duplicated rather
@@ -458,7 +459,7 @@ export function ComposeForm({
               ? t("bulletin.bodyPlaceholderStudent")
               : t("bulletin.bodyPlaceholderStaff")
           }
-          className="mt-1.5 w-full resize-y rounded-[var(--radius-md)] border border-border bg-surface p-3.5 text-[0.9375rem] leading-relaxed outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+          className={fieldClass("mt-1.5 resize-y leading-relaxed")}
         />
       </div>
 
@@ -572,7 +573,7 @@ export function ComposeForm({
               }
             }}
             placeholder={t("bulletin.tagPlaceholder")}
-            className="min-h-12 flex-1 rounded-[var(--radius-md)] border border-border bg-surface px-3.5 text-[0.9375rem] outline-none focus:border-accent"
+            className={fieldClass("w-auto flex-1")}
           />
           <Button type="button" variant="secondary" onClick={addTag}>
             {t("common.add")}

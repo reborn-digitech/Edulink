@@ -121,6 +121,7 @@ describe("the driver's home (transport, 3 Oct 2026)", () => {
     expect(await screen.findByText("Trip running")).toBeTruthy();
     expect(screen.getByText("Battery low: the office can see it.")).toBeTruthy();
     await waitFor(() => expect(mockStart).toHaveBeenCalledWith(TRIP, expect.anything()));
+    expect(await screen.findByText("Sending the bus's location")).toBeTruthy();
     await userEvent.setup().press(screen.getByRole("button", { name: "Mark ZZ Asha on the bus" }));
     await waitFor(async () => expect(await listQueued(BOARDINGS_TAG)).toHaveLength(1));
     expect(JSON.parse((await listQueued(BOARDINGS_TAG))[0]!.body)).toMatchObject({ allotmentId: SEAT, boarded: true });
@@ -132,6 +133,20 @@ describe("the driver's home (transport, 3 Oct 2026)", () => {
     await userEvent.setup().press(buttons[buttons.length - 1]!);
     await waitFor(() => expect(calls().some((c) => c.line === `POST /api/v1/transport/trips/${TRIP}/end`)).toBe(true));
     await waitFor(() => expect(mockStop).toHaveBeenCalled());
+  });
+
+  it("live without location (started with a reason): says nothing is sent, and the end prompt counts the pupils never ticked (A3-journeys-37)", async () => {
+    mockStart.mockImplementation(async () => "denied");
+    try {
+      await mountStaff(<DriverHome />, "DRIVER", { "GET /api/v1/transport/today": () => json(day([trip("LIVE", { startReason: "Road closed at the corner" })])) }, { me: meWith(["TRANSPORT"]) });
+      expect(await screen.findByText("Trip running")).toBeTruthy();
+      expect(await screen.findByText("Location is off on this phone, so the bus's position is not being sent.")).toBeTruthy();
+      expect(screen.queryByText("Sending the bus's location")).toBeNull();
+      fireEvent.press(screen.getByRole("button", { name: "End trip" }));
+      expect(await screen.findByText("Pupils not ticked on or off: 1. End this trip anyway? The bus's location stops being sent.")).toBeTruthy();
+    } finally {
+      mockStart.mockImplementation(async () => "started");
+    }
   });
 
   it("an ended trip reads its ticks and offers no start", async () => {

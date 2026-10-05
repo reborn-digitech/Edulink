@@ -27,8 +27,8 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function FeeStructuresPage({ searchParams }: { searchParams: Promise<{ show?: string }> }) {
   const t = await getT();
   const locale = await getLocale();
-  const ctx = await requireRole("ADMIN", "PRINCIPAL");
-  const office = ctx.role === "ADMIN";
+  const ctx = await requireRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
+  const office = ctx.role === "ADMIN" || ctx.role === "ACCOUNTS";
   const { show } = await searchParams;
   const includeArchived = show === "archived";
   const [all, heads] = await Promise.all([listStructures(ctx, { includeArchived: true }), db.feeHead.count({ where: { schoolId: ctx.schoolId, retiredAt: null } })]);

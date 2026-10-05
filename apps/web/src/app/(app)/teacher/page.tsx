@@ -233,15 +233,20 @@ export default async function TeacherHome() {
     if (week.slots.length === 0) {
       return (
         <div className="space-y-6">
+          <PageHeader title={t("teacher.today")} description={<>{formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" }, locale)} ·{" "}
+              {school.name}</>} />
           {coversCard}
           <EmptyState
             icon={<ClipboardTextIcon weight="duotone" className="size-8" />}
             title={t("teacher.noClassesYet")}
             description={t("teacher.noClassesBody")}
+            // No class and no lesson: the notices are where the school reaches this teacher meanwhile.
+            action={<Button asChild size="sm" variant="secondary"><Link href="/bulletin">{t("nav.bulletin")}</Link></Button>}
           />
         </div>
       );
     }
+
 
     return (
       <div className="space-y-6">

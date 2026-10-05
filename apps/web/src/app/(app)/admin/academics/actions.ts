@@ -21,6 +21,8 @@ import {
 import { requireApiUser } from "@/lib/tenancy";
 import { field, intField, runAction } from "@/lib/module-actions";
 import { RuleRefusal } from "@/lib/rule-refusal";
+import { answerForm } from "@/lib/form-action";
+import type { FormState } from "@/lib/form-state";
 import {
   createDivision,
   removeTimetableSlot,
@@ -157,11 +159,12 @@ export async function saveMappingAction(form: FormData): Promise<void> {
   });
 }
 
-export async function saveTermAction(form: FormData): Promise<void> {
-  await runAction("/admin/academics/terms", async () => {
+/** The term form answers in place (A3-journeys-27): a refusal keeps the dates typed and sits under the field it is about. */
+export async function saveTermAction(previous: FormState, form: FormData): Promise<FormState> {
+  return answerForm(previous, form, async () => {
     await saveTerm(await requireApiUser(), termSaveSchema.parse({ id: field(form, "id") || undefined, name: field(form, "name"), academicYear: field(form, "academicYear"), startsOn: field(form, "startsOn"), endsOn: field(form, "endsOn"), registrationOpensOn: field(form, "registrationOpensOn"), registrationClosesOn: field(form, "registrationClosesOn") }));
     return "academics.saved";
-  });
+  }, { revalidate: ["/admin/academics/terms"] });
 }
 
 export async function saveRoomAction(form: FormData): Promise<void> {
@@ -171,11 +174,11 @@ export async function saveRoomAction(form: FormData): Promise<void> {
   });
 }
 
-export async function createDivisionAction(form: FormData): Promise<void> {
-  await runAction("/admin/academics/terms", async () => {
+export async function createDivisionAction(previous: FormState, form: FormData): Promise<FormState> {
+  return answerForm(previous, form, async () => {
     await createDivision(await requireApiUser(), divisionSaveSchema.parse({ programmeId: field(form, "programmeId"), yearOfStudy: intField(form, "yearOfStudy"), name: field(form, "name"), academicYear: field(form, "academicYear") }));
     return "academics.saved";
-  });
+  }, { revalidate: ["/admin/academics/terms"] });
 }
 
 export async function saveSeatAction(form: FormData): Promise<void> {

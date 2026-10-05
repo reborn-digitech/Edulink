@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { getT } from "@/lib/i18n/server";
 import { publishSlotsAction, cancelSlotAction } from "./actions";
 import { PageHeader } from "@/components/ui/page-header";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -66,7 +67,7 @@ export default async function TeacherMeetingsPage({
                 name="time"
                 required
                 defaultValue="15:00"
-                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
+                className={fieldClass()}
               />
             </label>
             <label className="block text-sm">
@@ -78,7 +79,7 @@ export default async function TeacherMeetingsPage({
                 max={120}
                 defaultValue={15}
                 required
-                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
+                className={fieldClass()}
               />
             </label>
             <label className="block text-sm">
@@ -90,7 +91,7 @@ export default async function TeacherMeetingsPage({
                 max={20}
                 defaultValue={6}
                 required
-                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
+                className={fieldClass()}
               />
             </label>
             <label className="block text-sm">
@@ -100,7 +101,7 @@ export default async function TeacherMeetingsPage({
                 name="location"
                 maxLength={120}
                 placeholder={t("meetings.wherePlaceholder")}
-                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
+                className={fieldClass()}
               />
             </label>
             <div className="sm:col-span-5">

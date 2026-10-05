@@ -1,6 +1,8 @@
 import { screen, fireEvent } from "@testing-library/react-native";
 import { renderApp as render } from "../utils";
 import { Button, Empty, Failed, Field, Loading } from "@/components";
+import { BackCtx } from "@/components/chrome";
+import { ApiRefused } from "@/lib/query";
 
 /** One render per test: the shared set speaks to a screen reader. */
 describe("the shared components", () => {
@@ -36,6 +38,22 @@ describe("the shared components", () => {
     expect(screen.getByRole("alert")).toBeTruthy();
     fireEvent.press(screen.getByRole("button", { name: "Try again" }));
     expect(retry).toHaveBeenCalled();
+  });
+
+  it("a not-found refusal offers the way back, never a retry; a server failure keeps the retry (A3-states-15)", async () => {
+    const retry = jest.fn();
+    const onBack = jest.fn();
+    await render(
+      <BackCtx.Provider value={{ onBack }}>
+        <Failed error={new ApiRefused(404, "That person is not at your school.", "NOT_FOUND")} onRetry={retry} />
+        <Failed error={new ApiRefused(503, "The server is busy.", "SERVER")} onRetry={retry} />
+      </BackCtx.Provider>,
+    );
+    expect(screen.getByText("That person is not at your school.")).toBeTruthy();
+    expect(screen.getByText("The server is busy.")).toBeTruthy();
+    expect(screen.getAllByRole("button", { name: "Try again" })).toHaveLength(1);
+    fireEvent.press(screen.getByRole("button", { name: "Back" }));
+    expect(onBack).toHaveBeenCalled();
   });
 
   it("a field is labelled and reads its error", async () => {

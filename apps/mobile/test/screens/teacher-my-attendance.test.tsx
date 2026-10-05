@@ -100,7 +100,7 @@ describe("my attendance", () => {
 
   it("the month's figures and every day, each with how it was recorded; the arrows move the month", async () => {
     const { calls } = await mountStaff(compose(), "TEACHER", { [`GET ${ME_PATH}`]: () => json(MINE) });
-    await screen.findByText("Thu, Sep 17");
+    await screen.findByText("Thu, 17/09/2026");
     expect(screen.getByLabelText("Present: 10")).toBeTruthy();
     expect(screen.getByLabelText("Late: 1")).toBeTruthy();
     expect(screen.getByLabelText("Absent: 1")).toBeTruthy();

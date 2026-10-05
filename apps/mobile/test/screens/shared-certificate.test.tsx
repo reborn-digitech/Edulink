@@ -178,7 +178,7 @@ describe("one certificate", () => {
   });
 
   it("a refusal is an alert with a retry", async () => {
-    await mountStaff(compose(), "PARENT", { [GET]: refused("ZZ not yours", 404) });
+    await mountStaff(compose(), "PARENT", { [GET]: refused("ZZ not yours", 503) });
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ not yours");
     expect(screen.getByRole("button", { name: "Try again" })).toBeTruthy();
   });

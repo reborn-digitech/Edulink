@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeftIcon, GraduationCapIcon } from "@phosphor-icons/react/ssr";
+import { GraduationCapIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { promotionPlan } from "@/lib/promotion";
 import { currentAcademicYear } from "@/lib/academic-year";
 import { EmptyState } from "@/components/ui/states";
 import { PromotionPlanner } from "./planner";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -26,18 +27,10 @@ export default async function PromotionPage() {
 
   return (
     <div className="space-y-5">
-      <Link
-        href="/admin/classes"
-        className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
-      >
-        <ArrowLeftIcon weight="bold" className="size-4" />
-        {t("nav.classes")}
-      </Link>
-
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("promotion.title")}</h1>
-        <p className="mt-1 max-w-prose text-sm text-fg-muted">{t("promotion.intro")}</p>
+        <PageHeader title={t("promotion.title")} description={t("promotion.intro")} back={{ href: "/admin/classes", label: t("nav.classes") }} />
         {/* The calendar's close-year panel links here; this is the link back.
+
             The two are separate doors on purpose — moving children is a
             decision, filing the year is another — but an admin who only finds
             one of them leaves every pupil's Past years empty, which is exactly

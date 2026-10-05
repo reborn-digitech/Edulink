@@ -14,10 +14,12 @@ import { TeachingWeekForm } from "./teaching-week-form";
 import { SelfReadAgeForm } from "./self-read-age-form";
 import { parseTeachingDays } from "@/lib/dates";
 import { AUTO_READ_AFTER_DAYS, EXPIRE_READ_AFTER_DAYS } from "@/lib/notification-housekeeping";
-import { BroomIcon, CalendarCheckIcon, CertificateIcon, EyeIcon, GlobeIcon, PuzzlePieceIcon } from "@phosphor-icons/react/ssr";
+import { BroomIcon, CalendarCheckIcon, CertificateIcon, ChartBarIcon, EyeIcon, GlobeIcon, PuzzlePieceIcon } from "@phosphor-icons/react/ssr";
 import { isCollegeKind } from "@/lib/institution";
 import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
+import { officeUsage } from "@/lib/plans";
+import { UsageCard } from "@/app/root/usage-card";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -31,7 +33,7 @@ export default async function SettingsPage() {
   // The directory profile used to be its own page behind a card here whose
   // whole body was a link — a route that existed to hold one form. The form
   // lives on this page now, with the other three.
-  const [school, directory, freshCandidates] = await Promise.all([
+  const [school, directory, freshCandidates, usage] = await Promise.all([
     db.school.findUniqueOrThrow({
     where: { id: ctx.schoolId },
     select: {
@@ -59,6 +61,8 @@ export default async function SettingsPage() {
     }),
     readOwnProfileSettings(ctx),
     listContactCandidates(ctx),
+    // The school's own month against its plan (A3-inventory-8): the GET /office/usage door's read, on the office's page.
+    officeUsage(ctx),
   ]);
   const candidates =
     directory.admissionsContactMembershipId &&
@@ -110,6 +114,13 @@ export default async function SettingsPage() {
           </CardBody>
         </Card>
       )}
+
+      <Card id="usage">
+        <CardHeader icon={<ChartBarIcon weight="duotone" className="size-5" />} title={t("settings.usageTitle")} description={t("settings.usageBody")} />
+        <CardBody>
+          <UsageCard usage={usage} office />
+        </CardBody>
+      </Card>
 
       <Card>
         <CardHeader

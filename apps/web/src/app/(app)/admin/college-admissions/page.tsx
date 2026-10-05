@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import Link from "next/link";
 import { ClipboardTextIcon, DownloadSimpleIcon } from "@phosphor-icons/react/ssr";
 import { ADMISSION_QUOTAS, ADMISSION_ROUND_KINDS, CAP_SHEET_COLUMNS, COLLEGE_CATEGORIES, isCollegeKind } from "@edulink/contracts";
@@ -30,7 +31,9 @@ export async function generateMetadata(): Promise<Metadata> {
  * university inspects it. The school's own admissions pages are untouched.
  */
 export default async function CollegeAdmissionsPage({ searchParams }: { searchParams: Promise<{ ok?: string; error?: string; round?: string }> }) {
-  const ctx = await requireRole("ADMIN", "PRINCIPAL");
+  const ctx = await requireRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
+  // The accounts desk reads one application and the refunds, never the list (its doors, A3-inventory-3): its way in is the refunds page.
+  if (ctx.role === "ACCOUNTS") redirect("/admin/college-admissions/refunds");
   const [t, kind] = await Promise.all([getT(), institutionKindOf(ctx.schoolId)]);
   const sp = await searchParams;
   if (!isCollegeKind(kind ?? "SCHOOL")) return <NotCollege t={t} />;

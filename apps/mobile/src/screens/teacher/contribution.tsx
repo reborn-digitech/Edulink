@@ -8,7 +8,11 @@ import { api, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { Chips, Note, param, Pill, subjectName } from "@/screens/family/shared";
+import { Note, param, Pill, subjectName } from "@/screens/family/shared";
+// The level and the correct option are a choice of one, so a radio group that
+// wraps under its own label: the family's filter chips scroll sideways with no
+// sign there is more, and "Level 6" sat past the card's edge (A3-states-17).
+import { Chips } from "@/screens/staff/shared";
 import { CONTRIBUTION_STATUS, CONTRIBUTIONS_KEY } from "./contributions";
 
 /**

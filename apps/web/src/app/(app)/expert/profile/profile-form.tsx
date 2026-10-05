@@ -4,11 +4,14 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { PlusIcon, XIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
+import { Chip } from "@/components/ui/chip";
+
 import { useToast } from "@/components/ui/toast";
 import { save } from "./actions";
 import { EXPERT_OFFERINGS, EXPERT_OFFERING_META, type ExpertOffering } from "@/lib/constants";
 import { useT } from "@/lib/i18n";
 import { actionError } from "@/lib/action-error";
+import { fieldClass } from "@/components/ui/field-class";
 
 type Props = {
   headline: string;
@@ -117,7 +120,7 @@ export function ProfileForm({
           maxLength={120}
           onChange={(e) => setHead(e.target.value)}
           placeholder={t("expert.headlinePlaceholder")}
-          className="mt-1.5 min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+          className={fieldClass("mt-1.5")}
         />
       </label>
 
@@ -129,7 +132,7 @@ export function ProfileForm({
           value={about}
           maxLength={4000}
           onChange={(e) => setAbout(e.target.value)}
-          className="mt-1.5 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2.5 text-sm leading-relaxed text-fg outline-none focus:border-accent"
+          className={fieldClass("mt-1.5 leading-relaxed")}
         />
       </label>
 
@@ -141,7 +144,7 @@ export function ProfileForm({
           value={org}
           maxLength={160}
           onChange={(e) => setOrg(e.target.value)}
-          className="mt-1.5 min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+          className={fieldClass("mt-1.5")}
         />
       </label>
 
@@ -155,15 +158,14 @@ export function ProfileForm({
           <ul className="mt-2 flex flex-wrap gap-1.5">
             {tags.map((tag) => (
               <li key={tag}>
-                <button
-                  type="button"
+                <Chip
                   onClick={() => setTags(tags.filter((t) => t !== tag))}
-                  className="flex items-center gap-1.5 rounded-full bg-accent-soft py-1 pl-3 pr-2 text-xs font-medium text-accent-strong"
+                  className="border-transparent bg-accent-soft pl-3 pr-2.5 text-xs text-accent-strong hover:bg-accent-soft hover:text-accent-strong hover:opacity-80"
                 >
                   {tag}
                   <XIcon weight="bold" className="size-3.5" aria-hidden="true" />
                   <span className="sr-only">{t("expert.removeSpecialism", { tag })}</span>
-                </button>
+                </Chip>
               </li>
             ))}
           </ul>
@@ -190,7 +192,7 @@ export function ProfileForm({
                 : t("expert.specialismPlaceholder")
             }
             aria-label={t("expert.addSpecialism")}
-            className="min-h-11 flex-1 rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent disabled:opacity-50"
+            className={fieldClass("w-auto flex-1 disabled:opacity-50")}
           />
           <Button
             variant="secondary"
@@ -254,7 +256,7 @@ export function ProfileForm({
               value={capacity}
               onChange={(e) => setCapacity(e.target.value)}
               placeholder="3"
-              className="mt-1.5 min-h-11 w-28 rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+              className={fieldClass("mt-1.5 w-28")}
             />
           </label>
         )}
@@ -269,7 +271,7 @@ export function ProfileForm({
           maxLength={64}
           onChange={(e) => setZone(e.target.value)}
           placeholder={t("expert.timezonePlaceholder")}
-          className="mt-1.5 min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+          className={fieldClass("mt-1.5")}
         />
       </label>
 

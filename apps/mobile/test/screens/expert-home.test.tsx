@@ -37,7 +37,7 @@ describe("the expert's bookings", () => {
     expect(screen.getByLabelText("Messages: 2")).toBeTruthy();
     expect(screen.getByText("Coming up")).toBeTruthy();
     expect(screen.getByText("Your bookings")).toBeTruthy();
-    expect(screen.getByText(/^ZZ Topic b1 · .*9:30/)).toBeTruthy();
+    expect(screen.getByText(/^ZZ Topic b1 · Thu, 10\/01\/2030 \d\d:\d\d/)).toBeTruthy();
     expect(screen.getByText("confirmed")).toBeTruthy();
     expect(screen.getByText("completed")).toBeTruthy();
     expect(screen.getByText("cancelled")).toBeTruthy();

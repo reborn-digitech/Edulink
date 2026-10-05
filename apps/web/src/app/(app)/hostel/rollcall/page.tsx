@@ -6,8 +6,9 @@ import { formatDateKey } from "@/lib/dates";
 import { hostelsView, rollCallSheet } from "@/lib/hostel";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ROLL_STATUS_KEY, SLOT_KEY, WardenFrame, inputClass, wardenContext, when } from "@/components/hostel/parts";
+import { ROLL_STATUS_KEY, SLOT_KEY, WardenFrame, wardenContext, when } from "@/components/hostel/parts";
 import { rollCallAction } from "../actions";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -34,7 +35,7 @@ export default async function HostelRollCallPage({ searchParams }: { searchParam
       <form action="/hostel/rollcall" method="get" className="flex flex-wrap items-end gap-2">
         <label className="min-w-0 flex-1 basis-48 text-sm font-medium text-fg">
           {t("hostel.whichHostel")}
-          <select name="hostel" defaultValue={hostelId} className={inputClass}>
+          <select name="hostel" defaultValue={hostelId} className={fieldClass("mt-1.5 block")}>
             {view.hostels.map((h) => (
               <option key={h.id} value={h.id}>
                 {h.name}
@@ -44,7 +45,7 @@ export default async function HostelRollCallPage({ searchParams }: { searchParam
         </label>
         <label className="min-w-0 basis-40 text-sm font-medium text-fg">
           {t("hostel.whichSlot")}
-          <select name="slot" defaultValue={slot} className={inputClass}>
+          <select name="slot" defaultValue={slot} className={fieldClass("mt-1.5 block")}>
             {HOSTEL_ROLL_SLOTS.map((s) => (
               <option key={s} value={s}>
                 {t(SLOT_KEY[s])}

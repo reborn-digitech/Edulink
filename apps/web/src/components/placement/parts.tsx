@@ -54,7 +54,12 @@ export function packageRange(min: number, max: number, t: Translate): string {
 
 /** Each failed condition as a sentence: "CGPA 6.80 is below 7.00". */
 export function reasons(failed: EligibilityFail[], t: Translate): string[] {
-  return failed.map((f) => t(FAIL_KEY[f.code], { need: f.need ?? "", have: f.have ?? "—" }));
+  return failed.map((f) => t(FAIL_KEY[f.code], { need: needOf(f), have: f.have ?? "—" }));
+}
+/** The figure a reason names: a package floor (PLACED, in rupees) reads in lakh, never "3750000" (A3-journeys-19). */
+export function needOf(f: EligibilityFail): string {
+  if (f.need === null) return "";
+  return f.code === "PLACED" && /^\d+(\.\d+)?$/.test(f.need) ? String(Math.round((Number(f.need) / 100_000) * 100) / 100) : f.need;
 }
 
 export function statusBadge(status: string, t: Translate) {

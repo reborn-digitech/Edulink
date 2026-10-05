@@ -13,6 +13,7 @@ import { ArrowLeftIcon, DownloadSimpleIcon } from "@phosphor-icons/react/ssr";
 import { PrintButton } from "../../reports/[studentMembershipId]/print-button";
 import { SignPaper } from "@/components/certificates/sign-paper";
 import { fontStack } from "@/lib/fonts";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -196,110 +197,114 @@ export default async function ReportCardPage({
         {card.subjects.length > 0 ? (
           <section className="mt-6">
             <h3 className="text-sm font-semibold text-fg print:text-black">{t("reportView.scholastic")}</h3>
-            <table className="mt-2 w-full text-sm" data-testid="subject-table">
-              <thead>
-                <tr className={headRow}>
-                  <th scope="col" className={head}>
-                    {t("reportView.subject")}
-                  </th>
-                  <th scope="col" className={head}>
-                    {card.scope === "YEAR" ? t("reportView.terms") : t("reportView.papers")}
-                  </th>
-                  {showMarksColumn && (
-                    <th scope="col" className={`${head} text-right`}>
-                      {t("reportView.mark")}
+            <TableScroll className="mt-2 print:overflow-visible">
+              <table className="w-full text-sm" data-testid="subject-table">
+                <thead>
+                  <tr className={headRow}>
+                    <th scope="col" className={head}>
+                      {t("reportView.subject")}
                     </th>
-                  )}
-                  <th scope="col" className={`${head} text-right`}>
-                    {t("reportView.percent")}
-                  </th>
-                  {showGradeColumn && (
-                    <th scope="col" className={`${head} text-right`}>
-                      {t("reportView.grade")}
+                    <th scope="col" className={head}>
+                      {card.scope === "YEAR" ? t("reportView.terms") : t("reportView.papers")}
                     </th>
-                  )}
-                  {showPointsColumn && (
-                    <th scope="col" className={`${head} text-right`}>
-                      {t("reportView.points")}
-                    </th>
-                  )}
-                </tr>
-              </thead>
-              <tbody>
-                {card.subjects.map((subject) => (
-                  <tr key={subject.subject} className={bodyRow}>
-                    <td className={`${cell} pr-3 font-medium`}>{subject.subject}</td>
-                    <td className={`${cell} pr-3 text-xs text-fg-muted print:text-black/70`}>
-                      {subject.parts.map((part, index) => (
-                        <span key={index} className="block whitespace-nowrap tabular-nums">
-                          {part.label}
-                          {part.scoreMilli !== null && part.pointsMilli
-                            ? ` ${formatMilli(part.scoreMilli)}/${formatMilli(part.pointsMilli)}`
-                            : part.percent !== null
-                              ? ` ${part.percent.toFixed(1)}%`
-                              : ""}
-                          {part.weight !== null ? ` (${Math.round(part.weight)}%)` : ""}
-                        </span>
-                      ))}
-                    </td>
                     {showMarksColumn && (
-                      <td className={`${cell} text-right tabular-nums`}>
-                        {subject.scoreMilli !== null && subject.scoreMilli !== undefined && subject.pointsMilli ? `${formatMilli(subject.scoreMilli)}/${formatMilli(subject.pointsMilli)}` : "—"}
-                      </td>
+                      <th scope="col" className={`${head} text-right`}>
+                        {t("reportView.mark")}
+                      </th>
                     )}
-                    <td className={`${cell} text-right tabular-nums`}>{subject.percent === null ? "—" : `${subject.percent.toFixed(1)}%`}</td>
-                    {showGradeColumn && <td className={`${cell} text-right font-semibold`}>{subject.letter ?? "—"}</td>}
-                    {showPointsColumn && <td className={`${cell} text-right tabular-nums`}>{subject.points === null ? "—" : subject.points}</td>}
+                    <th scope="col" className={`${head} text-right`}>
+                      {t("reportView.percent")}
+                    </th>
+                    {showGradeColumn && (
+                      <th scope="col" className={`${head} text-right`}>
+                        {t("reportView.grade")}
+                      </th>
+                    )}
+                    {showPointsColumn && (
+                      <th scope="col" className={`${head} text-right`}>
+                        {t("reportView.points")}
+                      </th>
+                    )}
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {card.subjects.map((subject) => (
+                    <tr key={subject.subject} className={bodyRow}>
+                      <td className={`${cell} pr-3 font-medium`}>{subject.subject}</td>
+                      <td className={`${cell} pr-3 text-xs text-fg-muted print:text-black/70`}>
+                        {subject.parts.map((part, index) => (
+                          <span key={index} className="block whitespace-nowrap tabular-nums">
+                            {part.label}
+                            {part.scoreMilli !== null && part.pointsMilli
+                              ? ` ${formatMilli(part.scoreMilli)}/${formatMilli(part.pointsMilli)}`
+                              : part.percent !== null
+                                ? ` ${part.percent.toFixed(1)}%`
+                                : ""}
+                            {part.weight !== null ? ` (${Math.round(part.weight)}%)` : ""}
+                          </span>
+                        ))}
+                      </td>
+                      {showMarksColumn && (
+                        <td className={`${cell} text-right tabular-nums`}>
+                          {subject.scoreMilli !== null && subject.scoreMilli !== undefined && subject.pointsMilli ? `${formatMilli(subject.scoreMilli)}/${formatMilli(subject.pointsMilli)}` : "—"}
+                        </td>
+                      )}
+                      <td className={`${cell} text-right tabular-nums`}>{subject.percent === null ? "—" : `${subject.percent.toFixed(1)}%`}</td>
+                      {showGradeColumn && <td className={`${cell} text-right font-semibold`}>{subject.letter ?? "—"}</td>}
+                      {showPointsColumn && <td className={`${cell} text-right tabular-nums`}>{subject.points === null ? "—" : subject.points}</td>}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </TableScroll>
           </section>
         ) : (
         <section className="mt-6">
           <h3 className="text-sm font-semibold text-fg print:text-black">
             {t("reportView.whatThisCovers")}
           </h3>
-          <table className="mt-2 w-full text-sm">
-            <thead>
-              <tr className="border-b border-border text-left text-xs text-fg-muted print:border-black/20 print:text-black/70">
-                <th scope="col" className="py-2 font-medium">
-                  {t("reportView.assessment")}
-                </th>
-                <th scope="col" className="py-2 text-right font-medium">
-                  {t("reportView.mark")}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {card.items.map((item, index) => (
-                <tr key={index} className="border-b border-border/60 print:border-black/10">
-                  <td className="py-2 pr-3 text-fg print:text-black">
-                    {item.title}
-                    {item.category && (
-                      <span className="block text-xs text-fg-muted print:text-black/60">
-                        {item.category}
-                      </span>
-                    )}
-                  </td>
-                  <td className="py-2 text-right tabular-nums text-fg print:text-black">
-                    {item.scoreMilli === null ? (
-                      // Blank, not zero. A test the child has not sat is not a
-                      // mark of nought, and the card must not imply it was.
-                      <span className="text-fg-muted print:text-black/50">not marked</span>
-                    ) : (
-                      // formatMilli keeps a deliberate half-mark as 67.5 —
-                      // toFixed(0) showed a number no teacher entered.
-                      <>
-                        {formatMilli(item.scoreMilli)}
-                        {item.pointsMilli ? ` / ${formatMilli(item.pointsMilli)}` : ""}
-                      </>
-                    )}
-                  </td>
+          <TableScroll className="mt-2 print:overflow-visible">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-border text-left text-xs text-fg-muted print:border-black/20 print:text-black/70">
+                  <th scope="col" className="py-2 font-medium">
+                    {t("reportView.assessment")}
+                  </th>
+                  <th scope="col" className="py-2 text-right font-medium">
+                    {t("reportView.mark")}
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {card.items.map((item, index) => (
+                  <tr key={index} className="border-b border-border/60 print:border-black/10">
+                    <td className="py-2 pr-3 text-fg print:text-black">
+                      {item.title}
+                      {item.category && (
+                        <span className="block text-xs text-fg-muted print:text-black/60">
+                          {item.category}
+                        </span>
+                      )}
+                    </td>
+                    <td className="py-2 text-right tabular-nums text-fg print:text-black">
+                      {item.scoreMilli === null ? (
+                        // Blank, not zero. A test the child has not sat is not a
+                        // mark of nought, and the card must not imply it was.
+                        <span className="text-fg-muted print:text-black/50">not marked</span>
+                      ) : (
+                        // formatMilli keeps a deliberate half-mark as 67.5 —
+                        // toFixed(0) showed a number no teacher entered.
+                        <>
+                          {formatMilli(item.scoreMilli)}
+                          {item.pointsMilli ? ` / ${formatMilli(item.pointsMilli)}` : ""}
+                        </>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </TableScroll>
         </section>
         )}
 
@@ -307,29 +312,31 @@ export default async function ReportCardPage({
         {coRows.length > 0 && (
           <section className="mt-6">
             <h3 className="text-sm font-semibold text-fg print:text-black">{t("reportView.coScholastic")}</h3>
-            <table className="mt-2 w-full text-sm" data-testid="co-scholastic-table">
-              <thead>
-                <tr className={headRow}>
-                  <th scope="col" className={head}>
-                    {t("reportView.subject")}
-                  </th>
-                  <th scope="col" className={`${head} text-right`}>
-                    {t("reportView.grade")}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {coRows.map((row) => (
-                  <tr key={row.area} className={bodyRow}>
-                    <td className={`${cell} pr-3`}>
-                      {row.area}
-                      {row.note && <span className="block text-xs text-fg-muted print:text-black/60">{row.note}</span>}
-                    </td>
-                    <td className={`${cell} text-right font-semibold`}>{row.grade ?? "—"}</td>
+            <TableScroll className="mt-2 print:overflow-visible">
+              <table className="w-full text-sm" data-testid="co-scholastic-table">
+                <thead>
+                  <tr className={headRow}>
+                    <th scope="col" className={head}>
+                      {t("reportView.subject")}
+                    </th>
+                    <th scope="col" className={`${head} text-right`}>
+                      {t("reportView.grade")}
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {coRows.map((row) => (
+                    <tr key={row.area} className={bodyRow}>
+                      <td className={`${cell} pr-3`}>
+                        {row.area}
+                        {row.note && <span className="block text-xs text-fg-muted print:text-black/60">{row.note}</span>}
+                      </td>
+                      <td className={`${cell} text-right font-semibold`}>{row.grade ?? "—"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </TableScroll>
           </section>
         )}
 
@@ -342,39 +349,41 @@ export default async function ReportCardPage({
             <p className="mt-0.5 text-xs text-fg-muted print:text-black/70">
               {t("reportView.practiceHint")}
             </p>
-            <table className="mt-2 w-full text-sm">
-              <thead>
-                <tr className="border-b border-border text-left text-xs text-fg-muted print:border-black/20 print:text-black/70">
-                  <th scope="col" className="py-2 font-medium">
-                    {t("practice.colChapter")}
-                  </th>
-                  <th scope="col" className="py-2 text-right font-medium">
-                    {t("practice.colLevel")}
-                  </th>
-                  <th scope="col" className="py-2 text-right font-medium">
-                    {t("practice.colBadges")}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {card.practice.map((row, index) => (
-                  <tr key={index} className="border-b border-border/60 print:border-black/10">
-                    <td className="py-2 pr-3 text-fg print:text-black">
-                      {row.name}
-                      <span className="block text-xs text-fg-muted print:text-black/60">
-                        {subjectName(row.subject)}
-                      </span>
-                    </td>
-                    <td className="py-2 text-right tabular-nums text-fg print:text-black">
-                      L{row.level}/6
-                    </td>
-                    <td className="py-2 text-right tabular-nums text-fg print:text-black">
-                      {row.tiers}/6
-                    </td>
+            <TableScroll className="mt-2 print:overflow-visible">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-border text-left text-xs text-fg-muted print:border-black/20 print:text-black/70">
+                    <th scope="col" className="py-2 font-medium">
+                      {t("practice.colChapter")}
+                    </th>
+                    <th scope="col" className="py-2 text-right font-medium">
+                      {t("practice.colLevel")}
+                    </th>
+                    <th scope="col" className="py-2 text-right font-medium">
+                      {t("practice.colBadges")}
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {card.practice.map((row, index) => (
+                    <tr key={index} className="border-b border-border/60 print:border-black/10">
+                      <td className="py-2 pr-3 text-fg print:text-black">
+                        {row.name}
+                        <span className="block text-xs text-fg-muted print:text-black/60">
+                          {subjectName(row.subject)}
+                        </span>
+                      </td>
+                      <td className="py-2 text-right tabular-nums text-fg print:text-black">
+                        L{row.level}/6
+                      </td>
+                      <td className="py-2 text-right tabular-nums text-fg print:text-black">
+                        {row.tiers}/6
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </TableScroll>
           </section>
         )}
 

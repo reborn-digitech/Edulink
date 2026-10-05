@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { momentFormatter } from "@/lib/school-zone";
 import Link from "next/link";
 import { CalendarCheckIcon, ChalkboardTeacherIcon, GiftIcon, HandshakeIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
@@ -32,6 +33,7 @@ const BACK = "/alumni/college";
  */
 export default async function AlumniCollegePage({ searchParams }: { searchParams: Promise<{ ok?: string; error?: string }> }) {
   const ctx = await requireRole("ALUMNUS");
+  const moment = await momentFormatter(ctx.schoolId);
   const t = await getT();
   const { ok, error } = await searchParams;
   const [on, kind, placementOn] = await Promise.all([isModuleOn(ctx.schoolId, "ALUMNI"), institutionKindOf(ctx.schoolId), isModuleOn(ctx.schoolId, "PLACEMENT")]);
@@ -63,7 +65,7 @@ export default async function AlumniCollegePage({ searchParams }: { searchParams
             {c.slots.map((s) => (
               <div key={s.id} className="flex justify-between gap-3">
                 <span>{s.title}</span>
-                <span className="text-fg-muted">{new Date(s.startsAt).toLocaleString()} · {s.seatsLeft > 0 ? t("placement.slotFree") : t("placement.slotTaken")}</span>
+                <span className="text-fg-muted">{moment(s.startsAt)} · {s.seatsLeft > 0 ? t("placement.slotFree") : t("placement.slotTaken")}</span>
               </div>
             ))}
             {bookings.map((b) => (

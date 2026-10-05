@@ -67,7 +67,7 @@ export function Thread() {
   return (
     <Screen title={data?.subject ?? t("remarks.title")} description={data ? t("remarks.onlyVisibleTo", { student: data.student.name, teacher: data.teacher.name }) : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {data ? (
         <>
           {data.messages.length === 0 ? (

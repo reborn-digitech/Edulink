@@ -74,6 +74,14 @@ describe("the family's fees", () => {
     expect(screen.getByText(/Waiting for the office to confirm/)).toBeTruthy();
   });
 
+  it("a child who has left stays in the chooser, labelled as left (A3-journeys-15)", async () => {
+    const LEFT = { studentMembershipId: "czz0000000000000000left01", name: "ZZ Ravi", schoolId: "s1", schoolName: "ZZ School", leftAt: "2026-10-05T06:30:00.000Z" };
+    await renderFamily(<FamilyFees />, ME_PARENT, { [PATH]: () => ({ children: [{ ...FAMILY.children[0], leftAt: null }, LEFT], child: CHILD }) });
+    expect(await screen.findByRole("button", { name: "ZZ Ravi, ZZ School" })).toBeTruthy();
+    expect(screen.getByText("ZZ School · Left")).toBeTruthy();
+    expect(screen.getByText("ZZ School")).toBeTruthy();
+  });
+
   it("choosing fewer instalments changes the total, and the buttons wait when nothing is chosen", async () => {
     await renderFamily(<FamilyFees />, ME_PARENT, { [PATH]: () => FAMILY });
     await press(await screen.findByRole("checkbox", { name: /ZZ Term 1/ }));
@@ -246,7 +254,7 @@ describe("choosing a fee plan and the payment calendar", () => {
     const { fetch } = await renderFamily(<FamilyFees />, ME_PARENT, { [PATH]: () => FAMILY, [PLANS_PATH]: () => PLANS(), [CALENDAR_PATH]: () => CALENDAR, [ENROL_PATH]: () => ({ ok: true, structureId: PLAN.id, demands: 2 }) });
     expect(await screen.findByText("ZZ Grade 5 fees")).toBeTruthy();
     expect(screen.getByText(/2 instalments · ₹12,500/)).toBeTruthy();
-    expect(screen.getByText(/ZZ Term 1 · Jun 15, 2026 · ₹5,000/)).toBeTruthy();
+    expect(screen.getByText(/ZZ Term 1 · 15\/06\/2026 · ₹5,000/)).toBeTruthy();
     expect(calls(fetch, PLANS_PATH)[0]!.url.searchParams.get("student")).toBe(ID.child);
     await press(screen.getByRole("button", { name: "Choose this plan" }));
     expect(await screen.findByText("Put ZZ Asha on ZZ Grade 5 fees?")).toBeTruthy();
@@ -275,11 +283,11 @@ describe("choosing a fee plan and the payment calendar", () => {
 
   it("the calendar lists every date with its kind, amount and state, in the server's order", async () => {
     await renderFamily(<FamilyFees />, ME_PARENT, { [PATH]: () => FAMILY, [PLANS_PATH]: () => PLANS(), [CALENDAR_PATH]: () => CALENDAR });
-    expect(await screen.findByText("Jun 15, 2026 · ZZ Term 1")).toBeTruthy();
+    expect(await screen.findByText("15/06/2026 · ZZ Term 1")).toBeTruthy();
     expect(screen.getByText("Instalment · ₹5,000")).toBeTruthy();
     // "Overdue" is also the pick list's word for Term 1; the calendar's own pill sits beside its row.
     expect(screen.getAllByText("Overdue").length).toBeGreaterThanOrEqual(2);
-    expect(screen.getByText("Oct 8, 2026 · ZZ Term 2")).toBeTruthy();
+    expect(screen.getByText("08/10/2026 · ZZ Term 2")).toBeTruthy();
     expect(screen.getByText("Reminder · ₹7,500")).toBeTruthy();
     expect(screen.getAllByText("Upcoming")).toHaveLength(2);
   });
@@ -290,9 +298,9 @@ describe("a pupil's own fees", () => {
     await renderFamily(<FamilyFees />, ME_STUDENT, { [MINE_PATH]: () => MINE() });
     expect(await screen.findByText(/Ask a grown-up at home to pay/)).toBeTruthy();
     expect(screen.getByLabelText("Outstanding: ₹7,500")).toBeTruthy();
-    expect(screen.getByLabelText("Next due: Oct 15, 2026")).toBeTruthy();
+    expect(screen.getByLabelText("Next due: 15/10/2026")).toBeTruthy();
     expect(screen.getByText("ZZ Term 2")).toBeTruthy();
-    expect(screen.getByText(/Due Oct 15, 2026 · Paid ₹0/)).toBeTruthy();
+    expect(screen.getByText(/Due 15\/10\/2026 · Paid ₹0/)).toBeTruthy();
     expect(screen.queryByRole("button", { name: "Pay online" })).toBeNull();
     expect(screen.queryByRole("button", { name: "Pay by UPI" })).toBeNull();
     expect(screen.queryByRole("checkbox")).toBeNull();

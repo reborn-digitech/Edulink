@@ -107,7 +107,7 @@ export default async function ClassAnalyticsPage({ params, searchParams }: { par
               {view.attendance.trend.map((point, index) => (
                 <div key={index} className="flex flex-1 flex-col items-center gap-1">
                   <span className="text-xs font-semibold tabular-nums text-fg">{fmt(point.percent)}</span>
-                  <div className="w-full rounded-t-md bg-accent-soft" style={{ height: `${barHeight(point.percent)}px` }} />
+                  <div className="w-full rounded-t-[var(--radius-md)] bg-accent-soft" style={{ height: `${barHeight(point.percent)}px` }} />
                   <span className="text-[10px] text-fg-muted">{point.label}</span>
                 </div>
               ))}

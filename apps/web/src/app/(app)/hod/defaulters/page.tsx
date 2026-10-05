@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function HodDefaultersPage() {
   const ctx = await requireRole("HOD");
   const [t, locale] = await Promise.all([getT(), getLocale()]);
-  if (!(await isModuleOn(ctx.schoolId, "ACADEMICS"))) return <ModuleOff module="ACADEMICS" t={t} college />;
+  if (!(await isModuleOn(ctx.schoolId, "ACADEMICS"))) return <ModuleOff page module="ACADEMICS" t={t} college />;
   const [report, school] = await Promise.all([attendanceReport(ctx, { defaultersOnly: "1" }), db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } })]);
   return (
     <div className="space-y-6">

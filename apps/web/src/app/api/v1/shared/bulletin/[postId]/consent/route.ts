@@ -1,6 +1,6 @@
 import { slipAnswerSchema, slipViewSchema } from "@edulink/contracts";
 import { answerSlip, assertSlipAnswerRole, slipForReader } from "@/lib/permission-slips";
-import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
+import { NOTICE_WRITE_BUDGET, apiFailure, apiInvalid, budget, ok, readJson } from "@/lib/api-v1";
 import { requireApiSession } from "@/lib/api-reads/shared";
 
 type Params = { params: Promise<{ postId: string }> };
@@ -22,6 +22,9 @@ export async function POST(request: Request, { params }: Params) {
     const ctx = await requireApiSession();
     // The role before the body: the wrong role gets 403, not the body's 422.
     assertSlipAnswerRole(ctx);
+    // Counted per person (A3-S-9): each answer checks the child and redraws the slip.
+    const refused = await budget(`slip-answer:${ctx.user.id}`, NOTICE_WRITE_BUDGET.limit, NOTICE_WRITE_BUDGET.windowMs);
+    if (refused) return refused;
     const { postId } = await params;
     const parsed = slipAnswerSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);

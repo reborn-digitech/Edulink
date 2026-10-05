@@ -34,7 +34,7 @@ export default async function LoginPage({
   const ssoProviders = enabledProviders();
 
   return (
-    <div className="grid min-h-safe bg-bg lg:grid-cols-2">
+    <main id="main" className="grid min-h-safe bg-bg lg:grid-cols-2">
       <div className="flex flex-col justify-center px-4 py-10 sm:px-8">
         <div className="mx-auto w-full max-w-sm">
           <Link href="/" className="mb-8 inline-block" aria-label={t("common.homeLink")}>
@@ -190,6 +190,6 @@ export default async function LoginPage({
           <footer className="mt-4 text-sm text-white/80">{t("login.quoteAttribution")}</footer>
         </blockquote>
       </div>
-    </div>
+    </main>
   );
 }

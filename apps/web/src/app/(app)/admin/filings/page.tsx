@@ -13,6 +13,7 @@ import { getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { AskFamiliesButton } from "../records/ask-button";
 import { IdentityForm } from "./identity-form";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("filings.metaTitle") };
@@ -148,7 +149,7 @@ export default async function FilingsPage() {
                       {sheet.byGrade && (
                         <label className="block text-sm">
                           <span className="mb-1 block font-medium text-fg">{t("filings.grade")}</span>
-                          <select name="grade" required className="rounded-lg border border-border bg-surface px-3 py-2 text-fg">
+                          <select name="grade" required className={fieldClass("w-auto")}>
                             {view.grades.map((g) => (
                               <option key={g.gradeLevel} value={g.gradeLevel}>
                                 {g.gradeLevel} · {g.pupils}

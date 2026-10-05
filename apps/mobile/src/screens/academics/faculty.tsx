@@ -9,6 +9,7 @@ import { useSession } from "@/lib/session";
 import { CollegeRoleHome } from "@/screens/college/role-home";
 import { DutyCard } from "@/screens/college/duties";
 import { LECTURE_KIND_KEY, clock } from "./words";
+import { formatDate } from "@/lib/dates";
 
 /**
  * A faculty member's day on the phone (the college's academics, 4 Oct 2026)
@@ -33,7 +34,7 @@ export function FacultyHomeScreen({ asTeaching = false }: { asTeaching?: boolean
       {home.isError ? <Failed message={home.error.message} onRetry={() => void home.refetch()} /> : null}
       {h ? (
         <>
-          <Card title={t("academics.todayTitle", { date: h.today.dateKey })}>
+          <Card title={t("academics.todayTitle", { date: formatDate(h.today.dateKey) })}>
             {h.today.closed ? <Text tone="muted">{t("academics.closedToday")}</Text> : null}
             {!h.today.closed && h.today.lectures.length === 0 ? <Text tone="muted">{t("academics.noLecturesToday")}</Text> : null}
             {h.today.lectures.map((l) => (
@@ -68,7 +69,7 @@ export function FacultyHomeScreen({ asTeaching = false }: { asTeaching?: boolean
           ) : null}
           {/* My duties (5 Oct 2026): a FACULTY's here; an HOD's on the department home. */}
           {asTeaching ? null : <DutyCard />}
-          <Button label={t("academics.mentoringLink", { n: h.mentoringGroups })} variant="secondary" onPress={() => router.push("/(app)/academics-mentoring" as never)} />
+          <Button label={h.mentoringGroups === 1 ? t("academics.mentoringLinkOne") : t("academics.mentoringLink", { n: h.mentoringGroups })} variant="secondary" onPress={() => router.push("/(app)/academics-mentoring" as never)} />
           {payroll ? <Button label={t("payroll.myTitle")} variant="secondary" onPress={() => router.push("/(app)/payslips" as never)} /> : null}
         </>
       ) : null}

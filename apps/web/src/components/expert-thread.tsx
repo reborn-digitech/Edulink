@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/cn";
 import { useT } from "@/lib/i18n";
 import { actionError } from "@/lib/action-error";
+import { fieldClass } from "@/components/ui/field-class";
 
 export type ThreadMessage = {
   id: string;
@@ -73,7 +74,7 @@ export function ExpertThread({
             value={body}
             onChange={(e) => setBody(e.target.value)}
             placeholder={t("expert.writeMessage")}
-            className="w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
+            className={fieldClass()}
           />
           {error && <p className="text-sm font-medium text-danger">{error}</p>}
           <Button

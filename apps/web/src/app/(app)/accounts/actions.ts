@@ -20,6 +20,8 @@ import { AttachmentError, storeAttachments } from "@/lib/uploads";
 import { AccessError, requireApiUser } from "@/lib/tenancy";
 import { RuleRefusal } from "@/lib/rule-refusal";
 import { getT } from "@/lib/i18n/server";
+import { answerForm } from "@/lib/form-action";
+import type { FieldMap, FormState } from "@/lib/form-state";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import type { ActiveContext } from "@/lib/session";
 import { admitStudent, approveSupernumerary, cancelAdmission, createApplication, importAllotments, offerSeat, recordAdmissionFee, recordRefund, recordUndertaking, saveRound, setDocument } from "@/lib/college-admissions";
@@ -62,9 +64,14 @@ const int = (formData: FormData, name: string) => {
 const rupees = (formData: FormData, name: string) => parseRupees(str(formData, name)) ?? Number.NaN;
 
 type Done = TranslationKey | { key: TranslationKey; vars: Record<string, string | number> } | null;
-class FormError extends Error {}
-function parsed<T>(result: { success: true; data: T } | { success: false }): T {
-  if (!result.success) throw new FormError();
+/** A form the schema refused, its error the cause (lib/form-state.ts reads which box it is about). */
+class FormError extends Error {
+  constructor(cause?: unknown) {
+    super("form", cause === undefined ? undefined : { cause });
+  }
+}
+function parsed<T>(result: { success: true; data: T } | { success: false; error?: unknown }): T {
+  if (!result.success) throw new FormError(result.error);
   return result.data;
 }
 
@@ -248,28 +255,48 @@ export async function routeFeesAction(formData: FormData): Promise<void> {
 
 /* ------------------------------ Scholarships ------------------------------ */
 
-export async function createClaimAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
-    const expected = str(formData, "expected");
-    await createClaim(ctx, parsed(scholarshipClaimCreateSchema.safeParse({ studentMembershipId: str(formData, "studentMembershipId"), scheme: str(formData, "scheme"), ...(str(formData, "portalApplicationId") ? { portalApplicationId: str(formData, "portalApplicationId") } : {}), ...(str(formData, "appliedOn") ? { appliedOn: str(formData, "appliedOn") } : {}), ...(expected ? { expectedPaise: rupees(formData, "expected") } : {}) })));
-    return "collegeOffice.claimSaved";
-  });
+/**
+ * The scholarship forms answer in place (A3-journeys-27): a refusal keeps
+ * what was typed and is said under the box it is about. Which box each of
+ * the library's refusals and the schema's figures is:
+ */
+const CLAIM_FIELDS: FieldMap = { "collegeOffice.refuseSchemeNotOpen": "scheme", "collegeOffice.refuseDates": "appliedOn", expectedPaise: "expected" };
+const CLAIM_STEP_FIELDS: FieldMap = { "collegeOffice.refuseDates": "on", "collegeOffice.refuseDisbursedAmount": "amount", amountPaise: "amount" };
+
+export async function createClaimAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return answerForm(
+    previous,
+    formData,
+    async () => {
+      const ctx = await requireApiUser();
+      const expected = str(formData, "expected");
+      await createClaim(ctx, parsed(scholarshipClaimCreateSchema.safeParse({ studentMembershipId: str(formData, "studentMembershipId"), scheme: str(formData, "scheme"), ...(str(formData, "portalApplicationId") ? { portalApplicationId: str(formData, "portalApplicationId") } : {}), ...(str(formData, "appliedOn") ? { appliedOn: str(formData, "appliedOn") } : {}), ...(expected ? { expectedPaise: rupees(formData, "expected") } : {}) })));
+      return "collegeOffice.claimSaved";
+    },
+    { revalidate: [backOf(formData)], fields: CLAIM_FIELDS },
+  );
 }
 
-export async function updateClaimAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
-    const action = str(formData, "action");
-    const body =
-      action === "SANCTION"
-        ? { action, amountPaise: rupees(formData, "amount"), on: str(formData, "on") }
-        : action === "DISBURSE"
-          ? { action, amountPaise: rupees(formData, "amount"), on: str(formData, "on"), reference: str(formData, "reference") }
-          : action === "PORTAL_ID"
-            ? { action, portalApplicationId: str(formData, "portalApplicationId") }
-            : { action, reason: str(formData, "reason") };
-    await updateClaim(ctx, str(formData, "claimId"), parsed(scholarshipClaimUpdateSchema.safeParse(body)));
-    return "collegeOffice.claimUpdated";
-  });
+export async function updateClaimAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return answerForm(
+    previous,
+    formData,
+    async () => {
+      const ctx = await requireApiUser();
+      const action = str(formData, "action");
+      const body =
+        action === "SANCTION"
+          ? { action, amountPaise: rupees(formData, "amount"), on: str(formData, "on") }
+          : action === "DISBURSE"
+            ? { action, amountPaise: rupees(formData, "amount"), on: str(formData, "on"), reference: str(formData, "reference") }
+            : action === "PORTAL_ID"
+              ? { action, portalApplicationId: str(formData, "portalApplicationId") }
+              : { action, reason: str(formData, "reason") };
+      await updateClaim(ctx, str(formData, "claimId"), parsed(scholarshipClaimUpdateSchema.safeParse(body)));
+      return "collegeOffice.claimUpdated";
+    },
+    { revalidate: [backOf(formData)], fields: CLAIM_STEP_FIELDS },
+  );
 }
 
 /* ------------------------------ No-dues, leaving -------------------------- */

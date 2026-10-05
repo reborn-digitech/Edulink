@@ -20,6 +20,7 @@ import {
   ADMISSION_STATUS_KEY,
   ADMISSION_STATUS_TONE,
 } from "@/components/admissions/labels";
+import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("admissions.pipelineTitle") };
@@ -49,9 +50,6 @@ export default async function ApplicationsPage({
     cyclesView(ctx),
     officeApplications(ctx, query),
   ]);
-  const select =
-    "min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent";
-
   return (
     <div className="space-y-6">
       <PageHeader
@@ -83,7 +81,7 @@ export default async function ApplicationsPage({
               <select
                 name="cycleId"
                 defaultValue={query.cycleId ?? ""}
-                className={`mt-1.5 ${select}`}
+                className={fieldClass("mt-1.5")}
               >
                 <option value="">{t("admissions.allCycles")}</option>
                 {view.cycles.map((c) => (
@@ -100,7 +98,7 @@ export default async function ApplicationsPage({
               <select
                 name="status"
                 defaultValue={query.status ?? ""}
-                className={`mt-1.5 ${select}`}
+                className={fieldClass("mt-1.5")}
               >
                 <option value="">{t("admissions.allStatuses")}</option>
                 {ADMISSION_STATUSES.map((s) => (
@@ -121,7 +119,7 @@ export default async function ApplicationsPage({
                 maxLength={20}
                 autoComplete="off"
                 placeholder={t("admissions.allGrades")}
-                className={`mt-1.5 ${select}`}
+                className={fieldClass("mt-1.5")}
               />
             </label>
             <Button

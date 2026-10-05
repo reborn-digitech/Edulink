@@ -34,7 +34,7 @@ describe("the expert's availability", () => {
     expect(screen.getByText("ZZ Robotics")).toBeTruthy();
     expect(screen.getByText("Booked by ZZ School")).toBeTruthy();
     expect(screen.getByText("14:00 – 15:00")).toBeTruthy();
-    expect(screen.getAllByRole("header", { name: /Jan/ })).toHaveLength(2);
+    expect(screen.getAllByRole("header", { name: /\/01\/2030/ })).toHaveLength(2);
     // Two free windows may be removed; the booked one may not.
     expect(screen.getAllByRole("button", { name: "Remove" })).toHaveLength(2);
   });

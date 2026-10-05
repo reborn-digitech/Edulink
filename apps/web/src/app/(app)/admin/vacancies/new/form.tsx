@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { fieldClass } from "@/components/ui/field-class";
 import { post } from "../actions";
 import { useT } from "@/lib/i18n";
 import { actionError } from "@/lib/action-error";
@@ -39,9 +40,6 @@ export function NewVacancyForm({
   );
   const [error, setError] = useState<string | null>(null);
 
-  const inputClass =
-    "mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg";
-
   return (
     <div className="space-y-4">
       <label className="block text-sm font-medium text-fg">
@@ -51,7 +49,7 @@ export function NewVacancyForm({
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder={t("vacancies.titlePlaceholder")}
-          className={inputClass}
+          className={fieldClass("mt-1")}
         />
       </label>
 
@@ -62,7 +60,7 @@ export function NewVacancyForm({
           onChange={(e) => setBody(e.target.value)}
           rows={8}
           placeholder={t("vacancies.bodyPlaceholder")}
-          className={inputClass}
+          className={fieldClass("mt-1")}
         />
       </label>
 
@@ -73,7 +71,7 @@ export function NewVacancyForm({
           value={subjects}
           onChange={(e) => setSubjects(e.target.value)}
           placeholder={t("vacancies.subjectsHint")}
-          className={inputClass}
+          className={fieldClass("mt-1")}
         />
       </label>
 
@@ -83,7 +81,7 @@ export function NewVacancyForm({
           <select
             value={employmentType}
             onChange={(e) => setEmploymentType(e.target.value)}
-            className={inputClass}
+            className={fieldClass("mt-1")}
           >
             {EMPLOYMENT_TYPES.map((type) => (
               <option key={type} value={type}>
@@ -98,7 +96,7 @@ export function NewVacancyForm({
           <select
             value={contactId}
             onChange={(e) => setContactId(e.target.value)}
-            className={inputClass}
+            className={fieldClass("mt-1")}
           >
             {candidates.map((candidate) => (
               <option key={candidate.membershipId} value={candidate.membershipId}>

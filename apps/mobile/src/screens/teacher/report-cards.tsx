@@ -59,7 +59,7 @@ function PickClass({ onPick }: { onPick: (classId: string) => void }) {
   return (
     <Screen title={t("teacher.reportCards")} description={t("teaching.pickClassForCards")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d && d.classes.length === 0 ? (
         <Empty title={t("teacher.noClassesYet")} icon="chalkboard" action={<Button label={t("nav.classes")} variant="secondary" onPress={() => router.push("/(app)/classes" as never)} />} />
       ) : null}
@@ -169,7 +169,7 @@ function Builder({ classId }: { classId: string }) {
   return (
     <Screen title={t("teacher.reportCards")} description={d?.class.heading} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         <>
           {d.titles.length > 1 && selected ? (
@@ -257,7 +257,7 @@ function Builder({ classId }: { classId: string }) {
                 <Stat label={t("teacher.published")} value={published} tone={published > 0 ? "ok" : "fg"} />
               </View>
               <Text variant="xs" tone="muted">
-                {t("teaching.familiesSeeNothing")}
+                {drafts > 0 ? t("teaching.familiesSeeNothing") : t("teaching.cardsStateAllPublished", { published })}
               </Text>
               {setWrite.isError ? <Failed message={setWrite.error.message} onRetry={() => setWrite.mutate(selected)} /> : null}
               {confirming ? (

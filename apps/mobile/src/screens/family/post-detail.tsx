@@ -15,6 +15,7 @@ import { AUDIENCE, CATEGORY, Media, Reactions, Tags } from "./bulletin";
 import { Confirm, Note, param, Pill, relativeTime, useAuthHeaders } from "./shared";
 import { CommentReview } from "./comment-review";
 import { authorTag } from "@/screens/alumni/tag";
+import { formatDate } from "@/lib/dates";
 
 type Detail = z.infer<typeof bulletinPostDetailSchema>;
 type Comment = Detail["comments"][number];
@@ -160,7 +161,7 @@ export function PostDetail() {
   return (
     <Screen title={t("meta.post")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         <>
           <Card>
@@ -359,13 +360,13 @@ function SlipCard({ postId }: { postId: string }) {
     onError: (e: Error) => toast.show(e.message, "danger"),
   });
   const s = query.data;
-  if (query.isError) return <Failed message={query.error.message} onRetry={() => void query.refetch()} />;
+  if (query.isError) return <Failed error={query.error} onRetry={() => void query.refetch()} />;
   if (!s) return null;
   return (
     <View style={{ gap: th.space[2], padding: th.space[3], borderRadius: th.radius.md, borderWidth: 1, borderColor: th.border }}>
       <Text bold>{s.question}</Text>
       <Text variant="xs" tone="muted">
-        {s.consentBy ? t(s.open ? "collegeDesks.slipByLine" : "collegeDesks.slipClosedLine", { date: s.consentBy }) : t("collegeDesks.slipNoDay")}
+        {s.consentBy ? t(s.open ? "collegeDesks.slipByLine" : "collegeDesks.slipClosedLine", { date: formatDate(s.consentBy) }) : t("collegeDesks.slipNoDay")}
       </Text>
       {s.children.length === 0 ? <Text variant="sm" tone="muted">{t("collegeDesks.slipNoChild")}</Text> : null}
       {s.children.map((c) => (

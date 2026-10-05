@@ -100,7 +100,7 @@ export function ListEditor({ gradeLevel, subject, units, readOnly = false }: { g
     });
   }
 
-  const iconButton = "grid size-10 shrink-0 place-items-center rounded-[var(--radius-md)] text-fg-muted hover:bg-surface-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-40 disabled:hover:bg-transparent";
+  const iconButton = "grid size-11 shrink-0 place-items-center rounded-[var(--radius-md)] text-fg-muted hover:bg-surface-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-40 disabled:hover:bg-transparent";
 
   return (
     <form onSubmit={submit} noValidate className="space-y-5" data-testid="syllabus-list-editor">

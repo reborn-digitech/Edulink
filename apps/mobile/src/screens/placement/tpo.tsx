@@ -44,7 +44,7 @@ export function TpoHome() {
           <Card title={t("placement.waitingTitle")}>
             <Row title={t("placement.waitingRequirements", { count: s.requirementsWaiting })} />
             <Row title={t("placement.waitingInternships", { count: s.internshipsWaiting })} />
-            <Row title={t("placement.waitingCompanies", { count: s.unverifiedCompanies })} />
+            <Row title={s.unverifiedCompanies === 1 ? t("placement.waitingCompaniesOne") : t("placement.waitingCompanies", { count: s.unverifiedCompanies })} />
           </Card>
           <Card title={t("placement.drivesTitle")}>
             {s.drives.length === 0 ? <Empty icon="briefcase" title={t("placement.noDrivesTitle")} body={t("placement.noDrivesBody")} action={<Button label={t("nav.more")} variant="secondary" onPress={() => router.push("/(app)/more" as never)} />} /> : null}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hasStream } from "@/lib/streams";
 import { PlusIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { getT } from "@/lib/i18n/server";
@@ -65,7 +66,7 @@ export default async function HodProjectsPage({ searchParams }: { searchParams: 
         </CardBody>
       </Card>
       <ProjectList projects={projects.projects} t={t} back={back} myMembershipId={ctx.membershipId} />
-      <InternshipStaffList internships={internships.internships} t={t} back={back} canDecide={internships.canDecide} supervisors={guides} rule={internships.rule} />
+      <InternshipStaffList internships={internships.internships} t={t} back={back} canDecide={internships.canDecide} supervisors={guides} rule={internships.rule} aicte={await hasStream(ctx.schoolId, "ENGINEERING")} />
     </div>
   );
 }

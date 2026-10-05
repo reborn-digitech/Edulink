@@ -72,6 +72,8 @@ describe("a faculty member's day on the phone (4 Oct 2026)", () => {
     expect(await screen.findByText("09:00–09:50 · PHY101")).toBeTruthy();
     expect(screen.getByText("PHY101 · ZZ Mechanics")).toBeTruthy();
     expect(screen.getByText("CHE101 · ZZ Unit test")).toBeTruthy();
+    // One group reads singular, as the web's mentoringLinkText (it read "Mentoring (1 groups)", A3-journeys-40).
+    expect(screen.getByRole("button", { name: "Mentoring (1 group)" })).toBeTruthy();
     await userEvent.setup().press(screen.getByRole("button", { name: "Mark the lecture" }));
     expect(mockPush).toHaveBeenCalledWith(`/(app)/lecture?id=${LECTURE}`);
     await userEvent.setup().press(screen.getByText("PHY101 · ZZ Mechanics"));
@@ -105,6 +107,12 @@ describe("marking a lecture", () => {
     await mountStaff(<LectureScreen lectureId={LECTURE} />, "FACULTY", { [`GET /api/v1/academics/lectures/${LECTURE}`]: () => json(sheet), [`POST /api/v1/academics/lectures/${LECTURE}/attendance`]: offline }, { me: meAs("FACULTY") });
     await userEvent.setup().press(await screen.findByRole("button", { name: "Save" }));
     await waitFor(async () => expect((await listQueued(`lecture:${LECTURE}`)).length).toBe(1));
+  });
+
+  it("says up front, with no Save, that a lecture the exam eligibility was decided from is closed (A3-journeys-7)", async () => {
+    await mountStaff(<LectureScreen lectureId={LECTURE} />, "FACULTY", { [`GET /api/v1/academics/lectures/${LECTURE}`]: () => json({ ...sheet, canMark: false, frozen: true }) }, { me: meAs("FACULTY") });
+    expect(await screen.findByText("The exam eligibility was decided from this lecture's attendance, so it can no longer be changed. Lectures after the decision can still be marked.")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Save" })).toBeNull();
   });
 });
 

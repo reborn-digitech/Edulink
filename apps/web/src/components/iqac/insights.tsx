@@ -33,7 +33,9 @@ export function InsightsNotAScore({ t }: { t: Translate }) {
 export function CtaLink({ t, cta, role }: { t: Translate; cta: InsightCta; role: Who }) {
   if (role && (cta.roles as string[]).includes(role)) {
     return (
-      <Button asChild size="sm" variant="secondary">
+      // A label such as "Programmes, courses and mentoring — College office" is wider than a 390 px screen: the
+      // button wraps instead of the kit's single line, which scrolled /iqac sideways by 35 px (A3-states-4).
+      <Button asChild size="sm" variant="secondary" className="h-auto max-w-full whitespace-normal py-2 text-left">
         <Link href={cta.href} data-testid={`cta-${cta.code}`}>
           {cta.label}
         </Link>

@@ -7,6 +7,7 @@ import { reply, close } from "../actions";
 import { useT } from "@/lib/i18n";
 import { actionError } from "@/lib/action-error";
 import { useToast } from "@/components/ui/toast";
+import { fieldClass } from "@/components/ui/field-class";
 
 /** The reply box, and — on the school's side — the close switch. */
 export function ThreadControls({
@@ -31,7 +32,7 @@ export function ThreadControls({
         onChange={(e) => setBody(e.target.value)}
         rows={3}
         placeholder={t("enquiries.replyPlaceholder")}
-        className="w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
+        className={fieldClass()}
       />
       {error && <p className="text-sm font-medium text-danger">{error}</p>}
       <div className="flex flex-wrap items-center gap-2">

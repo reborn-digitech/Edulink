@@ -100,7 +100,7 @@ export function MentoringThread() {
   return (
     <Screen title={data ? `${data.studentName} & ${data.expertName}` : t("feature.mentoring")} description={data?.purpose} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {data ? (
         <>
           <Note tone="accent">

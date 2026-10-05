@@ -62,7 +62,7 @@ export function FamilyTransport() {
     <Screen title={d ? t("transport.forChild", { name: d.childName }) : t("transport.parentTitle")} description={d?.schoolName} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {role === "PARENT" ? <ChildSwitcher pupils={pupils} selectedId={d?.studentMembershipId ?? childId} onSelect={setChildId} /> : null}
       {query.isPending ? <Loading /> : null}
-      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {d && !d.moduleOn ? <Empty icon="bus" title={t("modules.offTitle", { module: t("modules.transportName") })} body={t("modules.offBody", { module: t("modules.transportName") })} action={<Button label={t("nav.overview")} variant="secondary" onPress={() => router.push("/(app)" as never)} />} /> : null}
       {d && d.moduleOn && !d.seat ? <Empty icon="bus" title={t("transport.noSeat", { name: d.childName })} body={t("transport.noSeatBody")} action={<Button label={t("nav.overview")} variant="secondary" onPress={() => router.push("/(app)" as never)} />} /> : null}
       {d?.seat ? (

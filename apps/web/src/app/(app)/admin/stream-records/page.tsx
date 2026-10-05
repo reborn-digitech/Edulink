@@ -29,7 +29,7 @@ export default async function StreamRecordsPage() {
   const ctx = await requireRole("ADMIN", "PRINCIPAL");
   const t = await getT();
   if (!isCollegeKind(await institutionKindOf(ctx.schoolId))) notFound();
-  if (!(await isModuleOn(ctx.schoolId, "ACADEMICS"))) return <ModuleOff module="ACADEMICS" t={t} college />;
+  if (!(await isModuleOn(ctx.schoolId, "ACADEMICS"))) return <ModuleOff page module="ACADEMICS" t={t} college />;
   const s = await streamRecordsSummary(ctx);
   const yearLabel = `${s.year}–${String((s.year + 1) % 100).padStart(2, "0")}`;
   const corpsOn = s.streams.some((x) => x !== "HEALTH_SCIENCES");

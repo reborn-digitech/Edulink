@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
 /** A member of staff's yearly earnings statement, for the office. */
 export default async function PayrollStatementPage({ params, searchParams }: { params: Promise<{ membershipId: string }>; searchParams: Promise<{ year?: string }> }) {
   const { ctx, t, locale, on } = await payrollGate(true);
-  if (!on) return <ModuleOff module="PAYROLL" t={t} />;
+  if (!on) return <ModuleOff page module="PAYROLL" t={t} />;
   const { membershipId } = await params;
   const { year } = await searchParams;
   let s;
