@@ -6,7 +6,7 @@ import { notify } from "./notify";
 import { AccessError, assertClassAccess } from "./tenancy";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
-import { formatDateKey } from "./dates";
+import { noticeDate } from "./notice-dates";
 
 /**
  * Who may take a class's register today.
@@ -341,8 +341,8 @@ export async function arrangeCover(
       titleKey: "notifTitle.nowMarking",
       titleVars: { class: klass.name },
       ...(input.fromDateKey === input.toDateKey
-        ? { bodyKey: "notifBody.coverOn" as const, bodyVars: { date: formatDateKey(input.fromDateKey), reason: input.reason?.trim() ?? "" } }
-        : { bodyKey: "notifBody.coverFromTo" as const, bodyVars: { from: formatDateKey(input.fromDateKey), to: formatDateKey(input.toDateKey), reason: input.reason?.trim() ?? "" } }),
+        ? { bodyKey: "notifBody.coverOn" as const, bodyVars: { date: noticeDate(input.fromDateKey), reason: input.reason?.trim() ?? "" } }
+        : { bodyKey: "notifBody.coverFromTo" as const, bodyVars: { from: noticeDate(input.fromDateKey), to: noticeDate(input.toDateKey), reason: input.reason?.trim() ?? "" } }),
       url: "/teacher/attendance",
       urgent: true,
     });
@@ -396,8 +396,8 @@ export async function cancelCover(
     titleKey: "notifTitle.noLongerMarking",
     titleVars: { class: cover.class.name },
     ...(cover.fromDateKey === cover.toDateKey
-      ? { bodyKey: "notifBody.coverCancelledOn" as const, bodyVars: { date: cover.fromDateKey } }
-      : { bodyKey: "notifBody.coverCancelledFromTo" as const, bodyVars: { from: cover.fromDateKey, to: cover.toDateKey } }),
+      ? { bodyKey: "notifBody.coverCancelledOn" as const, bodyVars: { date: noticeDate(cover.fromDateKey) } }
+      : { bodyKey: "notifBody.coverCancelledFromTo" as const, bodyVars: { from: noticeDate(cover.fromDateKey), to: noticeDate(cover.toDateKey) } }),
     url: "/teacher/attendance",
     urgent: true,
   });

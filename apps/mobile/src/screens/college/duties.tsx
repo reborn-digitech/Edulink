@@ -19,6 +19,13 @@ import { useTheme } from "@/lib/theme";
  */
 export const DUTY_SCREENS: Partial<Record<DutyCode, { screen: string; module: SchoolModuleCode }>> = {
   ANTI_RAGGING_SQUAD: { screen: "/(app)/anti-ragging", module: "IQAC" },
+  // The duties' desks (S2, 5 Oct 2026): screens/college/duty-desks.tsx. CLINICAL_COORDINATOR and STUDIO_COORDINATOR have none yet.
+  LAB_INCHARGE: { screen: "/(app)/lab-desk", module: "ACADEMICS" },
+  PRACTICE_TEACHING_COORDINATOR: { screen: "/(app)/teaching-practice", module: "ACADEMICS" },
+  NSS_OFFICER: { screen: "/(app)/nss", module: "IQAC" },
+  NCC_OFFICER: { screen: "/(app)/ncc", module: "IQAC" },
+  RESEARCH_DEAN: { screen: "/(app)/research-desk", module: "IQAC" },
+  EXAM_SQUAD: { screen: "/(app)/exam-squad", module: "EXAMS" },
 };
 
 /** The card on a FACULTY's or HOD's home: one row per duty; nothing when they hold none. */

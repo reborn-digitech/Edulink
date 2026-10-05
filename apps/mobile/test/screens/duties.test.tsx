@@ -58,9 +58,9 @@ describe("the duty's entries", () => {
 
 describe("the duty card", () => {
   it("lists the faculty member's duties on their home and opens the anti-ragging register", async () => {
-    await mountStaff(<FacultyHomeScreen />, "FACULTY", { "GET /api/v1/academics/faculty-home": () => json(home) }, { me: meAs("FACULTY", { duties: ["LAB_INCHARGE", "ANTI_RAGGING_SQUAD"] }) });
+    await mountStaff(<FacultyHomeScreen />, "FACULTY", { "GET /api/v1/academics/faculty-home": () => json(home) }, { me: meAs("FACULTY", { duties: ["CLINICAL_COORDINATOR", "ANTI_RAGGING_SQUAD"] }) });
     expect(await screen.findByText("My duties")).toBeTruthy();
-    expect(screen.getByText("Lab in-charge")).toBeTruthy();
+    expect(screen.getByText("Clinical coordinator")).toBeTruthy();
     expect(screen.getByText("Its page is on its way.")).toBeTruthy();
     expect(screen.getByText("Anti-ragging squad")).toBeTruthy();
     await userEvent.setup().press(screen.getByRole("button", { name: "Open" }));

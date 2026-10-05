@@ -10,12 +10,13 @@ import type { DutyCode, SchoolModuleCode } from "@edulink/contracts";
  */
 export const DUTY_PAGES: Record<DutyCode, { href: string; screen: string; module: SchoolModuleCode } | null> = {
   ANTI_RAGGING_SQUAD: { href: "/duties/anti-ragging", screen: "/(app)/anti-ragging", module: "IQAC" },
-  LAB_INCHARGE: null,
-  CLINICAL_COORDINATOR: null,
-  PRACTICE_TEACHING_COORDINATOR: null,
-  STUDIO_COORDINATOR: null,
-  NSS_OFFICER: null,
-  NCC_OFFICER: null,
-  RESEARCH_DEAN: null,
-  EXAM_SQUAD: null,
+  LAB_INCHARGE: { href: "/duties/lab", screen: "/(app)/lab-desk", module: "ACADEMICS" },
+  // Its records are coming (the preset's notBuilt): the page says so in the preset's sentence.
+  CLINICAL_COORDINATOR: { href: "/duties/clinical", screen: "", module: "ACADEMICS" },
+  PRACTICE_TEACHING_COORDINATOR: { href: "/duties/teaching-practice", screen: "/(app)/teaching-practice", module: "ACADEMICS" },
+  STUDIO_COORDINATOR: { href: "/duties/studio", screen: "", module: "ACADEMICS" },
+  NSS_OFFICER: { href: "/duties/nss", screen: "/(app)/nss", module: "IQAC" },
+  NCC_OFFICER: { href: "/duties/ncc", screen: "/(app)/ncc", module: "IQAC" },
+  RESEARCH_DEAN: { href: "/duties/research", screen: "/(app)/research-desk", module: "IQAC" },
+  EXAM_SQUAD: { href: "/duties/exam-squad", screen: "/(app)/exam-squad", module: "EXAMS" },
 };
