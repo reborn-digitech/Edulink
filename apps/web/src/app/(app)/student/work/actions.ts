@@ -9,6 +9,7 @@ import { notify } from "@/lib/notify";
 import { audit } from "@/lib/audit";
 import { publish, channel } from "@/lib/realtime";
 import { readAttachments } from "@/lib/files";
+import { teacherWorkUrl } from "@/lib/grading";
 
 const submitSchema = z.object({
   assignmentId: z.string().cuid(),
@@ -118,15 +119,18 @@ export async function submitWork(input: unknown): Promise<SubmitState> {
       titleKey: "notifTitle.handedWorkIn",
       titleVars: { name: student.user.preferredName ?? student.user.name },
       body: assignment.title,
-      url: `/teacher/assignments/${assignmentId}`,
+      url: teacherWorkUrl({ id: assignmentId, offeringId: assignment.offeringId }),
     });
   }
 
-  publish([channel.class(assignment.classId), channel.school(ctx.schoolId)], {
-    type: "assignment.published",
-    classId: assignment.classId,
-    assignmentId,
-  });
+  // A class's live channel; a college offering's work (R-48) has no class.
+  if (assignment.classId) {
+    publish([channel.class(assignment.classId), channel.school(ctx.schoolId)], {
+      type: "assignment.published",
+      classId: assignment.classId,
+      assignmentId,
+    });
+  }
 
   await audit({
     schoolId: ctx.schoolId,
