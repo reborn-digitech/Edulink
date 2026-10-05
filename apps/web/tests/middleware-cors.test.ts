@@ -28,8 +28,9 @@ describe("CORS on /api/v1", () => {
 
   it("covers the API and the files it names, and nothing else under /api", () => {
     // A picture in a post is fetched with the bearer token, so the browser asks first: the same answer, the same list of origins.
-    // The first entry is every page, for its nonce (tests/csp.test.ts); the rest are the doors CORS answers at.
-    expect(config.matcher.slice(1, 4)).toEqual(["/api/v1/:path*", "/api/attendance", "/api/files/:path*"]);
+    // The middleware sees every request but Next's own files (A3-S-3, tests/csp.test.ts); CORS_PATHS picks the doors
+    // CORS answers at, so a path outside them gets no CORS header (below).
+    expect(config.matcher).toEqual(["/((?!_next/).*)"]);
     // An API path outside those doors passes through with nothing added, whoever asks.
     const other = middleware(new NextRequest("http://localhost:3000/api/push", { method: "OPTIONS", headers: { origin: "http://localhost:8081" } }));
     expect(other.status).toBe(200);

@@ -14,7 +14,7 @@ import { answerSlipAction } from "./slip-actions";
  */
 export function SlipAnswers({ postId, slip, t, day }: { postId: string; slip: z.infer<typeof slipViewSchema>; t: Translate; day: (key: string) => string }) {
   return (
-    <section aria-labelledby="slip" className="mt-4 space-y-3 rounded-[--radius-md] border border-border bg-accent-soft/30 p-3.5">
+    <section aria-labelledby="slip" className="mt-4 space-y-3 rounded-[var(--radius-md)] border border-border bg-accent-soft/30 p-3.5">
       <h2 id="slip" className="text-sm font-semibold text-fg">{slip.question}</h2>
       <p className="text-xs text-fg-muted">{slip.consentBy ? t(slip.open ? "collegeDesks.slipByLine" : "collegeDesks.slipClosedLine", { date: day(slip.consentBy) }) : t("collegeDesks.slipNoDay")}</p>
       {slip.children.length === 0 ? <p className="text-sm text-fg-muted">{t("collegeDesks.slipNoChild")}</p> : null}
@@ -50,7 +50,7 @@ export function SlipAnswers({ postId, slip, t, day }: { postId: string; slip: z.
 
 export function SlipReport({ report, t, day }: { report: z.infer<typeof slipReportSchema>; t: Translate; day: (key: string) => string }) {
   return (
-    <section aria-labelledby="slip-report" className="space-y-3 rounded-[--radius-lg] border border-border bg-surface p-5">
+    <section aria-labelledby="slip-report" className="space-y-3 rounded-[var(--radius-lg)] border border-border bg-surface p-5">
       <h2 id="slip-report" className="text-base font-semibold text-fg">{t("collegeDesks.slipReportTitle")}</h2>
       <p className="text-sm text-fg-muted">
         {report.question} · {t("collegeDesks.slipCounts", { yes: report.yes, no: report.no, none: report.none })}

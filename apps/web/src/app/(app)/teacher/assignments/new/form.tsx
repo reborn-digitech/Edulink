@@ -124,7 +124,7 @@ export function AssignmentForm({
       {errors._form && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
         >
           {errors._form}
         </p>
@@ -158,7 +158,7 @@ export function AssignmentForm({
           onChange={(e) => setBody(e.target.value.slice(0, 20_000))}
           rows={5}
           placeholder={t("teacher.instructionsPlaceholder")}
-          className="mt-1.5 w-full resize-y rounded-[--radius-md] border border-border bg-surface p-3.5 text-[0.9375rem] leading-relaxed outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+          className="mt-1.5 w-full resize-y rounded-[var(--radius-md)] border border-border bg-surface p-3.5 text-[0.9375rem] leading-relaxed outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
         />
         <p className="mt-1 text-xs text-fg-muted">{t("teacher.instructionsHint")}</p>
       </div>

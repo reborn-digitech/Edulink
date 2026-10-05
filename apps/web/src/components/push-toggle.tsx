@@ -189,7 +189,7 @@ export function PushToggle({ className }: { className?: string }) {
   const shell = (children: React.ReactNode) => (
     <div
       className={cn(
-        "flex flex-wrap items-center gap-3 rounded-[--radius-md] border border-border p-4",
+        "flex flex-wrap items-center gap-3 rounded-[var(--radius-md)] border border-border p-4",
         className,
       )}
     >

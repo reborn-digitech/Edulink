@@ -57,7 +57,7 @@ export function TemplatesList({ templates, school }: { templates: TemplateView[]
                 aria-expanded={expanded}
                 aria-controls={panelId}
                 onClick={() => setOpen(expanded ? null : tpl.key)}
-                className="inline-flex min-h-10 items-center gap-1 rounded-[--radius-sm] px-2 text-sm font-medium text-accent-strong hover:bg-accent-soft"
+                className="inline-flex min-h-10 items-center gap-1 rounded-[var(--radius-sm)] px-2 text-sm font-medium text-accent-strong hover:bg-accent-soft"
               >
                 {t("messaging.templatePreview")}
                 {expanded ? <CaretUpIcon weight="bold" className="size-4" aria-hidden="true" /> : <CaretDownIcon weight="bold" className="size-4" aria-hidden="true" />}
@@ -66,7 +66,7 @@ export function TemplatesList({ templates, school }: { templates: TemplateView[]
             {expanded && (
               <ul id={panelId} className="mt-3 space-y-2">
                 {MESSAGE_LOCALES.map((lang) => (
-                  <li key={lang} className="rounded-[--radius-md] bg-surface-muted px-3 py-2">
+                  <li key={lang} className="rounded-[var(--radius-md)] bg-surface-muted px-3 py-2">
                     <Badge tone="outline" size="sm">
                       {LOCALES.find((l) => l.code === lang)?.native ?? lang}
                     </Badge>

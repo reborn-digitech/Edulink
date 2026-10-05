@@ -91,7 +91,7 @@ export default async function MergeAccountsPage() {
               {absorbed.map((account) => (
                 <li
                   key={account.id}
-                  className="flex items-center justify-between gap-3 rounded-[--radius-sm] bg-surface-muted p-3 text-sm"
+                  className="flex items-center justify-between gap-3 rounded-[var(--radius-sm)] bg-surface-muted p-3 text-sm"
                 >
                   <span className="min-w-0 truncate font-medium text-fg">{account.name}</span>
                   <span className="shrink-0 font-mono text-xs text-fg-muted">

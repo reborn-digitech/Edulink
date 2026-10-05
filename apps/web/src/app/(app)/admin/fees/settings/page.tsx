@@ -50,16 +50,16 @@ export default async function FeeSettingsPage() {
         />
         <CardBody className="space-y-4">
           <p className="text-sm text-fg">{s.gateway ? t("fees.gatewayOn", { keyId: s.gateway.keyId, mode: s.gateway.mode === "LIVE" ? t("fees.gatewayLive") : t("fees.gatewayTest"), when: formatDate(s.gateway.updatedAt, school.timezone) }) : t("fees.gatewayOff")}</p>
-          {s.transport === "devbox" && <p className="rounded-[--radius-md] bg-info-soft px-3 py-2 text-xs text-info">{t("fees.gatewayDevbox")}</p>}
-          {s.transport === "off" && <p className="rounded-[--radius-md] bg-warn-soft px-3 py-2 text-xs text-warn">{t("fees.gatewayServerOff")}</p>}
+          {s.transport === "devbox" && <p className="rounded-[var(--radius-md)] bg-info-soft px-3 py-2 text-xs text-info">{t("fees.gatewayDevbox")}</p>}
+          {s.transport === "off" && <p className="rounded-[var(--radius-md)] bg-warn-soft px-3 py-2 text-xs text-warn">{t("fees.gatewayServerOff")}</p>}
           {!s.sealingAvailable ? (
-            <p className="rounded-[--radius-md] border border-warn/30 bg-warn-soft px-3 py-2 text-sm text-warn">{t("fees.gatewayNoKey")}</p>
+            <p className="rounded-[var(--radius-md)] border border-warn/30 bg-warn-soft px-3 py-2 text-sm text-warn">{t("fees.gatewayNoKey")}</p>
           ) : (
             <GatewayForm hasGateway={Boolean(s.gateway)} />
           )}
           <div className="space-y-1.5">
             <p className="text-xs text-fg-muted">{t("fees.gatewayWebhookUrl")}</p>
-            <code className="block select-all break-all rounded-[--radius-sm] bg-surface-muted px-3 py-2 text-xs text-fg">{webhookUrl}</code>
+            <code className="block select-all break-all rounded-[var(--radius-sm)] bg-surface-muted px-3 py-2 text-xs text-fg">{webhookUrl}</code>
           </div>
         </CardBody>
       </Card>

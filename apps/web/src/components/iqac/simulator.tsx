@@ -31,7 +31,7 @@ const signed = (x: number) => `${x > 0 ? "+" : ""}${x.toFixed(2)}`;
 function NumberWithSlider({ id, label, value, today, max, step, onChange, hint }: { id: string; label: string; value: number | null; today: number | null; max: number; step: number; onChange: (v: number | null) => void; hint: string }) {
   const changed = (value ?? null) !== (today ?? null);
   return (
-    <div className={`space-y-1 rounded-[--radius-md] border p-3 ${changed ? "border-accent" : "border-border"}`} data-testid={`sim-${id}`}>
+    <div className={`space-y-1 rounded-[var(--radius-md)] border p-3 ${changed ? "border-accent" : "border-border"}`} data-testid={`sim-${id}`}>
       <TextField
         label={label}
         hint={hint}
@@ -42,7 +42,7 @@ function NumberWithSlider({ id, label, value, today, max, step, onChange, hint }
         value={value ?? ""}
         onChange={(e) => onChange(e.target.value === "" ? null : Math.max(0, Number(e.target.value)))}
       />
-      <input type="range" aria-label={label} className="h-11 w-full accent-[--color-accent]" min={0} max={Math.max(max, value ?? 0)} step={step} value={value ?? 0} onChange={(e) => onChange(Number(e.target.value))} />
+      <input type="range" aria-label={label} className="h-11 w-full accent-[var(--accent)]" min={0} max={Math.max(max, value ?? 0)} step={step} value={value ?? 0} onChange={(e) => onChange(Number(e.target.value))} />
     </div>
   );
 }

@@ -10,9 +10,9 @@ export function Card({
     <div
       className={cn(
         // min-w-0: a card in a grid or flex row is sized by its column, not by the widest table inside it, which once pushed the fees page 110 px past a phone's edge.
-        "min-w-0 rounded-[--radius-lg] border border-border bg-surface shadow-sm",
+        "min-w-0 rounded-[var(--radius-lg)] border border-border bg-surface shadow-sm",
         interactive &&
-          "transition-[transform,box-shadow,border-color] duration-[--dur] ease-[--ease-out] hover:-translate-y-0.5 hover:shadow-md hover:border-border-strong active:translate-y-0",
+          "transition-[transform,box-shadow,border-color] duration-[var(--dur)] ease-[var(--ease-out)] hover:-translate-y-0.5 hover:shadow-md hover:border-border-strong active:translate-y-0",
         className,
       )}
       {...props}
@@ -46,7 +46,7 @@ export function CardHeader({
     <div id={id} className={cn("flex flex-wrap items-start justify-between gap-3 p-5 pb-3", className)}>
       <div className="flex min-w-0 flex-1 basis-56 items-start gap-3">
         {icon && (
-          <span className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-[--radius-sm] bg-accent-soft text-accent-strong">
+          <span className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-[var(--radius-sm)] bg-accent-soft text-accent-strong">
             {icon}
           </span>
         )}
@@ -105,7 +105,7 @@ export function StatTile({
   return (
     <div
       className={cn(
-        "rounded-[--radius-lg] border border-border bg-surface p-4 shadow-sm",
+        "rounded-[var(--radius-lg)] border border-border bg-surface p-4 shadow-sm",
         className,
       )}
     >

@@ -38,7 +38,7 @@ export default async function SurveyLinkPage({ params, searchParams }: { params:
           <Wordmark />
         </Link>
         {errorText ? (
-          <p role="alert" className="mb-4 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-3 py-2 text-sm font-medium text-warn">
+          <p role="alert" className="mb-4 rounded-[var(--radius-md)] border border-warn/30 bg-warn-soft px-3 py-2 text-sm font-medium text-warn">
             {errorText}
           </p>
         ) : null}
@@ -64,7 +64,7 @@ export default async function SurveyLinkPage({ params, searchParams }: { params:
                   <legend className="text-sm font-medium text-fg">{q.label}</legend>
                   <div className="flex flex-wrap gap-2">
                     {SURVEY_SCALE.map((v) => (
-                      <label key={v} className="flex min-h-11 items-center gap-2 rounded-[--radius-md] border border-border px-3 text-sm">
+                      <label key={v} className="flex min-h-11 items-center gap-2 rounded-[var(--radius-md)] border border-border px-3 text-sm">
                         <input type="radio" name={`q_${q.code}`} value={v} required />
                         {t(`iqac.scale.s${v}` as TranslationKey)}
                       </label>

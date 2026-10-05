@@ -22,7 +22,7 @@ export function InternshipStaffList({ internships, t, back, canDecide, superviso
       <CardBody className="space-y-4">
         {internships.length === 0 ? <p className="text-sm text-fg-muted">{t("placement.noInternships")}</p> : null}
         {internships.map((i) => (
-          <div key={i.id} className="space-y-3 rounded-[--radius-md] border border-border p-4 text-sm">
+          <div key={i.id} className="space-y-3 rounded-[var(--radius-md)] border border-border p-4 text-sm">
             <div className="flex flex-wrap items-start justify-between gap-2">
               <div>
                 <div className="font-medium">

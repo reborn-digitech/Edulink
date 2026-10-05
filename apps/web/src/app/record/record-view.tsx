@@ -69,7 +69,7 @@ export async function RecordView({ record, self }: { record: StudentRecord; self
         the app has gone needs to know it has not been taken from them. The
         record is the thing that stays; everything missing was the school's.
       */}
-      <div className="rounded-[--radius-md] border border-border bg-surface-muted p-4">
+      <div className="rounded-[var(--radius-md)] border border-border bg-surface-muted p-4">
         <p className="text-sm leading-relaxed text-fg-muted">
           {/* Whole paragraphs — the bold "yours" went with the fragments, and
               the possessive in the parent's version is a placeholder for the
@@ -112,7 +112,7 @@ export async function RecordView({ record, self }: { record: StudentRecord; self
 
 function Figure({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-[--radius-md] border border-border bg-surface p-3 text-center">
+    <div className="rounded-[var(--radius-md)] border border-border bg-surface p-3 text-center">
       <p className="text-xl font-bold tabular-nums text-fg">{value}</p>
       <p className="mt-0.5 text-xs text-fg-muted">{label}</p>
     </div>
@@ -147,7 +147,7 @@ function SchoolBlock({ school, t }: { school: RecordSchool; t: Translate }) {
       />
       <CardBody className="space-y-4">
         {school.certificate && (
-          <div className="rounded-[--radius-md] border border-border bg-surface-muted p-3">
+          <div className="rounded-[var(--radius-md)] border border-border bg-surface-muted p-3">
             <p className="flex items-center gap-1.5 text-sm font-semibold text-fg">
               <CertificateIcon weight="duotone" className="size-4" aria-hidden="true" />
               {REASON_KEY[school.certificate.reason]
@@ -207,7 +207,7 @@ function SchoolBlock({ school, t }: { school: RecordSchool; t: Translate }) {
           ) : (
             <ul className="mt-2 space-y-2">
               {school.cards.map((card) => (
-                <li key={card.id} className="rounded-[--radius-sm] bg-surface-muted p-3">
+                <li key={card.id} className="rounded-[var(--radius-sm)] bg-surface-muted p-3">
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
                     <p className="text-sm font-semibold text-fg">{card.title}</p>
                     {card.overallPercent !== null && (

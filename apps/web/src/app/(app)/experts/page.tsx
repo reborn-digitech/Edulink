@@ -180,7 +180,7 @@ export default async function ExpertsPage({
                         {expert.openSlots.map((slot) => (
                           <li
                             key={slot.id}
-                            className="flex flex-wrap items-center gap-3 rounded-[--radius-md] border border-border p-3"
+                            className="flex flex-wrap items-center gap-3 rounded-[var(--radius-md)] border border-border p-3"
                           >
                             <div className="min-w-0 flex-1">
                               <p className="text-sm font-medium text-fg">

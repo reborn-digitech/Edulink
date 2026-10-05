@@ -136,7 +136,7 @@ export default async function AdminTimetablePage({
                   id="class-picker"
                   name="class"
                   defaultValue={selected?.id ?? ""}
-                  className="min-h-11 min-w-[14rem] rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg"
+                  className="min-h-11 min-w-[14rem] rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg"
                 >
                   {classes.map((klass) => (
                     <option key={klass.id} value={klass.id}>
@@ -158,8 +158,8 @@ export default async function AdminTimetablePage({
                   aria-current={selected?.id === klass.id ? "page" : undefined}
                   className={
                     selected?.id === klass.id
-                      ? "rounded-[--radius-md] bg-accent px-3 py-2 text-sm font-semibold text-accent-fg"
-                      : "rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:border-border-strong hover:text-fg"
+                      ? "rounded-[var(--radius-md)] bg-accent px-3 py-2 text-sm font-semibold text-accent-fg"
+                      : "rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:border-border-strong hover:text-fg"
                   }
                 >
                   {klass.name}

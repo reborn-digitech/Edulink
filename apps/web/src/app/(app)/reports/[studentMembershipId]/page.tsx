@@ -122,7 +122,7 @@ export default async function ReportPage({
             </p>
             <dl className="grid grid-cols-2 gap-2 sm:grid-cols-4">
               {statuses.map((status) => (
-                <div key={status} className="rounded-[--radius-md] border border-border p-2.5">
+                <div key={status} className="rounded-[var(--radius-md)] border border-border p-2.5">
                   <dt className="text-xs uppercase tracking-wide text-fg-muted">
                     {t(ATTENDANCE_META[status].labelKey)}
                   </dt>
@@ -208,7 +208,7 @@ export default async function ReportPage({
           <p className="text-xs text-fg-muted">{t("reportView.badgesExplainer")}</p>
           <ul className="grid gap-2 sm:grid-cols-2">
             {report.badges.map((badge) => (
-              <li key={badge.id} className="rounded-[--radius-md] border border-border p-2.5">
+              <li key={badge.id} className="rounded-[var(--radius-md)] border border-border p-2.5">
                 <p className="text-sm font-medium">{t(badge.labelKey)}</p>
                 <p className="text-xs text-fg-muted">{t(badge.descriptionKey)}</p>
               </li>

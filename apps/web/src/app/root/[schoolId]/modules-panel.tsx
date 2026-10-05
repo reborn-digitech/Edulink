@@ -52,7 +52,7 @@ export function ModulesPanel({ schoolId, modules }: { schoolId: string; modules:
         {modules.map(({ module, on, alwaysOn, byPlatform }) => {
           const name = t(MODULE_META[module].nameKey);
           return (
-            <li key={module} className="flex flex-wrap items-center justify-between gap-2 rounded-[--radius-md] border border-border px-3 py-2 text-sm">
+            <li key={module} className="flex flex-wrap items-center justify-between gap-2 rounded-[var(--radius-md)] border border-border px-3 py-2 text-sm">
               <span className="flex flex-wrap items-center gap-2">
                 <span className="font-medium text-fg">{name}</span>
                 <Badge size="sm" tone={on ? "ok" : "neutral"}>

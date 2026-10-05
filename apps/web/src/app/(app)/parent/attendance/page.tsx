@@ -202,7 +202,7 @@ export default async function ParentAttendancePage({
       {absenceNotes && <AbsenceNotesCard initial={absenceNotes} />}
 
       {summary.percent !== null && summary.percent < 90 && (
-        <p className="rounded-[--radius-md] border border-warn/40 bg-warn-soft p-4 text-sm leading-relaxed text-warn">
+        <p className="rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft p-4 text-sm leading-relaxed text-warn">
           {t("parent.below90Body", { name: childName })}{" "}
           <Link href="/remarks" className="font-semibold underline underline-offset-2">
             {t("parent.messagesPageLink")}

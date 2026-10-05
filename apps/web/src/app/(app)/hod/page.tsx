@@ -58,10 +58,10 @@ export default async function HodHomePage({ searchParams }: { searchParams: Prom
         <StatTile label={t("academics.statOfferings")} value={home.offerings.length} />
         <StatTile label={t("academics.statBehind")} value={home.offerings.filter((o) => o.behind).length} tone={home.offerings.some((o) => o.behind) ? "warn" : "ok"} />
         {/* The whole tile is the link: a bare number was a 15×28 px target (the walk of 4 October). */}
-        <Link href="/hod/defaulters" className="block rounded-[--radius-lg] hover:shadow-md">
+        <Link href="/hod/defaulters" className="block rounded-[var(--radius-lg)] hover:shadow-md">
           <StatTile className="h-full" label={t("academics.statDefaulters")} value={home.defaulters} tone={home.defaulters ? "warn" : "ok"} />
         </Link>
-        <Link href="/hod/condonations" className="block rounded-[--radius-lg] hover:shadow-md">
+        <Link href="/hod/condonations" className="block rounded-[var(--radius-lg)] hover:shadow-md">
           <StatTile className="h-full" label={t("academics.statCondonations")} value={home.condonationsWaiting} tone={home.condonationsWaiting ? "warn" : "neutral"} />
         </Link>
       </div>

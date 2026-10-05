@@ -43,7 +43,7 @@ export default async function HostelMenuPage({ searchParams }: { searchParams: P
                     {MESS_MEALS.map((m) => (
                       <label key={m} className="text-xs text-fg-muted">
                         {t(MEAL_KEY[m])}
-                        <input name={`m-${d}-${m}`} defaultValue={items.get(`${d}-${m}`) ?? ""} maxLength={300} className="mt-1 block min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg" />
+                        <input name={`m-${d}-${m}`} defaultValue={items.get(`${d}-${m}`) ?? ""} maxLength={300} className="mt-1 block min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg" />
                       </label>
                     ))}
                   </fieldset>

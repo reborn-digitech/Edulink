@@ -22,6 +22,7 @@ import { INVITE_TTL_DAYS } from "./constants";
 import { normaliseLocation } from "./places";
 import type { ActiveContext } from "./session";
 import { kycViews } from "./expert-kyc";
+import { isValidTimeZone } from "./dates";
 import type { ExpertKyc } from "@edulink/contracts";
 
 /**
@@ -212,6 +213,8 @@ export async function createSchool(
 
   const rangeProblem = checkGradeRange(details.gradeLow, details.gradeHigh);
   if (rangeProblem) return { ok: false, errorKey: rangeProblem };
+  // Every day the school keeps is cut in this zone: one the runtime cannot resolve took down the operator's list (A3-journeys-2).
+  if (!isValidTimeZone(details.timezone)) return { ok: false, errorKey: "refusal.timezoneUnknown" };
   // A server action's argument is the browser's word: the kind is one of the four or it is refused.
   if (details.kind !== undefined && !(INSTITUTION_KINDS as readonly string[]).includes(details.kind)) return { ok: false, errorKey: "institution.refuseUnknownKind" };
   // A college comes with its streams (5 Oct 2026): none, or a word off the list, is refused before anything is written.
@@ -294,6 +297,7 @@ export async function updateSchool(
   }
   const rangeProblem = checkGradeRange(details.gradeLow, details.gradeHigh);
   if (rangeProblem) return { ok: false, errorKey: rangeProblem };
+  if (details.timezone !== undefined && !isValidTimeZone(details.timezone)) return { ok: false, errorKey: "refusal.timezoneUnknown" };
 
   const existing = await db.school.findUnique({
     where: { id: schoolId },

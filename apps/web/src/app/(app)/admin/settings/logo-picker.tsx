@@ -153,7 +153,7 @@ export function LogoPicker({
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-center gap-4">
-        <span className="grid size-20 shrink-0 place-items-center overflow-hidden rounded-[--radius-lg] border border-border bg-surface-muted">
+        <span className="grid size-20 shrink-0 place-items-center overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface-muted">
           {preview ? (
             /* eslint-disable-next-line @next/next/no-img-element */
             <img src={preview} alt={t("settings.newLogoAlt")} className="size-full object-cover" />
@@ -233,7 +233,7 @@ export function LogoPicker({
       {error && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
         >
           {error}
         </p>
@@ -241,7 +241,7 @@ export function LogoPicker({
 
       {/* ---- crop controls, only while something is picked ---- */}
       {source && (
-        <div className="space-y-3 rounded-[--radius-md] border border-accent bg-accent-soft/40 p-4">
+        <div className="space-y-3 rounded-[var(--radius-md)] border border-accent bg-accent-soft/40 p-4">
           <label className="block">
             <span className="block text-sm font-medium text-fg">{t("settings.zoom")}</span>
             <input
@@ -251,7 +251,7 @@ export function LogoPicker({
               step={0.05}
               value={zoom}
               onChange={(e) => void adjust({ zoom: Number(e.target.value) })}
-              className="mt-1 w-full accent-[--accent]"
+              className="mt-1 w-full accent-[var(--accent)]"
             />
           </label>
 
@@ -265,7 +265,7 @@ export function LogoPicker({
                 step={4}
                 value={offsetX}
                 onChange={(e) => void adjust({ x: Number(e.target.value) })}
-                className="mt-1 w-full accent-[--accent]"
+                className="mt-1 w-full accent-[var(--accent)]"
               />
             </label>
             <label className="block">
@@ -277,7 +277,7 @@ export function LogoPicker({
                 step={4}
                 value={offsetY}
                 onChange={(e) => void adjust({ y: Number(e.target.value) })}
-                className="mt-1 w-full accent-[--accent]"
+                className="mt-1 w-full accent-[var(--accent)]"
               />
             </label>
           </div>

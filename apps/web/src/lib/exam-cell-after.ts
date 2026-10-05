@@ -460,7 +460,8 @@ export async function hallTicketForPdf(ctx: ActiveContext, ticketId: string) {
       return { code: sch?.courseCode ?? courses.get(c.courseId)?.code ?? "—", name: sch?.courseName ?? courses.get(c.courseId)?.name ?? "—", kind: c.kind, at: sch?.at ?? null, room: seat?.room.name ?? null, seatNo: seat?.seatNo ?? null };
     })
     .sort((a, b) => (a.at?.getTime() ?? Infinity) - (b.at?.getTime() ?? Infinity));
-  const avatar = ticket.student.user.avatarKey?.startsWith("upload:") ? ticket.student.user.avatarKey.slice(7) : null;
+  // No photo from the avatar key: an `upload:` key read any stored blob, unchecked (A3-S-1; id-card.ts says why).
+  const avatar: string | null = null;
   return { ticket, school, papers, prn: ids.get(ticket.studentMembershipId)?.prn ?? null, programme: programme.get(ticket.studentMembershipId)?.programmeName ?? null, photoFileId: avatar };
 }
 

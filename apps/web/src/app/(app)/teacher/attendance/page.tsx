@@ -208,7 +208,7 @@ export default async function AttendancePage({
       {duty.reason === "COVER" && (
         // Said out loud, because somebody marking a register they do not
         // normally mark should know why they can, and until when.
-        <p className="rounded-[--radius-md] border border-accent/30 bg-accent-soft px-4 py-3 text-sm font-medium text-accent-strong">
+        <p className="rounded-[var(--radius-md)] border border-accent/30 bg-accent-soft px-4 py-3 text-sm font-medium text-accent-strong">
           {t("teacher.coveringUntil", {
             date: formatDateKey(duty.coverUntil!, { day: "numeric", month: "long" }),
           })}
@@ -335,7 +335,7 @@ function ClosedDayNotice({
         role="status"
         data-testid="register-day-notice"
         data-kind="not-teaching"
-        className="flex items-start gap-2.5 rounded-[--radius-md] border border-warn/40 bg-warn-soft/50 p-3.5"
+        className="flex items-start gap-2.5 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft/50 p-3.5"
       >
         <WarningIcon weight="fill" className="mt-0.5 size-5 shrink-0 text-warn" aria-hidden="true" />
         <p className="text-sm text-fg">{sundayNote}</p>
@@ -348,7 +348,7 @@ function ClosedDayNotice({
 
   if (!calendar.closed) {
     return (
-      <p data-testid="register-day-notice" data-kind="open" className="rounded-[--radius-md] border border-border bg-surface-muted px-3.5 py-2.5 text-sm text-fg-muted">
+      <p data-testid="register-day-notice" data-kind="open" className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-3.5 py-2.5 text-sm text-fg-muted">
         <span className="font-semibold text-fg">{names}</span> — {openDayNote(pretty)}
       </p>
     );
@@ -359,7 +359,7 @@ function ClosedDayNotice({
       role="status"
       data-testid="register-day-notice"
       data-kind="closed"
-      className="flex items-start gap-2.5 rounded-[--radius-md] border border-warn/40 bg-warn-soft/50 p-3.5"
+      className="flex items-start gap-2.5 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft/50 p-3.5"
     >
       <WarningIcon weight="fill" className="mt-0.5 size-5 shrink-0 text-warn" aria-hidden="true" />
       <p className="text-sm text-fg">

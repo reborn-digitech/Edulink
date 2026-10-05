@@ -82,7 +82,7 @@ export default async function PeoplePage({
       <PageHeader title={t("convo.pickPerson")} description={t("convo.rule")} />
 
       {errorText && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger">
           {errorText}
         </p>
       )}
@@ -90,7 +90,7 @@ export default async function PeoplePage({
       {canWriteAboutPupil && (
         <Link
           href="/remarks/new"
-          className="flex items-center gap-3 rounded-[--radius-md] border border-border bg-surface p-3.5 hover:bg-surface-muted"
+          className="flex items-center gap-3 rounded-[var(--radius-md)] border border-border bg-surface p-3.5 hover:bg-surface-muted"
         >
           <span className="grid size-10 shrink-0 place-items-center rounded-full bg-accent-soft text-accent-strong">
             <UserCircleIcon weight="duotone" className="size-5" />
@@ -149,7 +149,7 @@ export default async function PeoplePage({
               <h2 id={`group-${group.key}`} className="mb-2 text-xs font-semibold uppercase tracking-wide text-fg-muted">
                 {t(GROUP_KEY[group.key])} · {group.people.length}
               </h2>
-              <ul className="divide-y divide-border overflow-hidden rounded-[--radius-lg] border border-border bg-surface">
+              <ul className="divide-y divide-border overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface">
                 {group.people.map((person) => (
                   <li key={person.userId}>
                     <form action={openConversationAction} className="flex items-center gap-3 p-3.5">

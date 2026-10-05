@@ -204,7 +204,7 @@ async function YearView({
                   href={`/archive?year=${year.id}${childSuffix}`}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "flex items-center gap-2 rounded-[--radius-md] border px-3.5 py-2.5 text-sm font-semibold transition-colors",
+                    "flex items-center gap-2 rounded-[var(--radius-md)] border px-3.5 py-2.5 text-sm font-semibold transition-colors",
                     active
                       ? "border-accent bg-accent text-accent-fg"
                       : "border-border bg-surface text-fg-muted hover:border-border-strong hover:text-fg",
@@ -222,7 +222,7 @@ async function YearView({
 
       {/* ---- the year ---- */}
       <div className="min-w-0 space-y-4">
-        <div className="rounded-[--radius-lg] border border-border bg-surface p-4">
+        <div className="rounded-[var(--radius-lg)] border border-border bg-surface p-4">
           <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">{t("archive.yearLabel")}</p>
           <h2 className="mt-0.5 text-xl font-bold tracking-tight text-fg">{selectedYear.name}</h2>
           <p className="mt-1 text-sm text-fg-muted">
@@ -331,7 +331,7 @@ async function PupilYear({
 
       <Section icon={<ClipboardTextIcon weight="duotone" className="size-4" />} title={t("archive.reportCards")}>
         {data.reportCards.length === 0 ? (
-          <p className="rounded-[--radius-md] bg-surface-muted p-4 text-sm text-fg-muted">{t("archive.noReportCards")}</p>
+          <p className="rounded-[var(--radius-md)] bg-surface-muted p-4 text-sm text-fg-muted">{t("archive.noReportCards")}</p>
         ) : (
           <ul className="grid gap-2 sm:grid-cols-2">
             {data.reportCards.map((card) => (
@@ -353,7 +353,7 @@ async function PupilYear({
 
       <Section icon={<MedalIcon weight="duotone" className="size-4" />} title={t("archive.badges")}>
         {data.badges.length === 0 ? (
-          <p className="rounded-[--radius-md] bg-surface-muted p-4 text-sm text-fg-muted">{t("archive.badgesNone")}</p>
+          <p className="rounded-[var(--radius-md)] bg-surface-muted p-4 text-sm text-fg-muted">{t("archive.badgesNone")}</p>
         ) : (
           <ul className="flex flex-wrap gap-2">
             {data.badges.map((badge) => (
@@ -405,9 +405,9 @@ async function TeacherYear({
 
       <Section icon={<ChalkboardTeacherIcon weight="duotone" className="size-4" />} title={t("archive.classes")}>
         {data.classes.length === 0 ? (
-          <p className="rounded-[--radius-md] bg-surface-muted p-4 text-sm text-fg-muted">{t("archive.classesNone")}</p>
+          <p className="rounded-[var(--radius-md)] bg-surface-muted p-4 text-sm text-fg-muted">{t("archive.classesNone")}</p>
         ) : (
-          <TableScroll className="rounded-[--radius-lg] border border-border bg-surface">
+          <TableScroll className="rounded-[var(--radius-lg)] border border-border bg-surface">
             <table className="w-full text-sm">
               <thead>
                 <tr className="text-left text-xs uppercase tracking-wide text-fg-muted">
@@ -474,11 +474,11 @@ async function SchoolYear({
 
       <Section icon={<ExamIcon weight="duotone" className="size-4" />} title={t("archive.examSeriesTitle")}>
         {data.examSeries.length === 0 ? (
-          <p className="rounded-[--radius-md] bg-surface-muted p-4 text-sm text-fg-muted">{t("archive.examSeriesNone")}</p>
+          <p className="rounded-[var(--radius-md)] bg-surface-muted p-4 text-sm text-fg-muted">{t("archive.examSeriesNone")}</p>
         ) : (
           <ul className="grid gap-2 sm:grid-cols-2">
             {data.examSeries.map((series) => (
-              <li key={series.id} className="flex items-center justify-between gap-3 rounded-[--radius-md] border border-border bg-surface px-3.5 py-2.5 text-sm">
+              <li key={series.id} className="flex items-center justify-between gap-3 rounded-[var(--radius-md)] border border-border bg-surface px-3.5 py-2.5 text-sm">
                 <span className="truncate font-medium text-fg">{series.name}</span>
                 <Badge tone="neutral" size="sm">
                   {series.gradeLevel}

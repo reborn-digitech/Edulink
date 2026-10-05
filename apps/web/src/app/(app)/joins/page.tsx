@@ -43,7 +43,7 @@ export default async function JoinsPage() {
           </h2>
           <ul className="space-y-2">
             {joins.map((join) => (
-              <li key={join.id} className="rounded-[--radius-md] border border-border bg-surface p-4" data-testid="waiting-join">
+              <li key={join.id} className="rounded-[var(--radius-md)] border border-border bg-surface p-4" data-testid="waiting-join">
                 <p className="font-semibold text-fg">{join.name}</p>
                 <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-fg-muted">
                   <Badge tone="neutral" size="sm">

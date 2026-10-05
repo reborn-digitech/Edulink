@@ -30,7 +30,7 @@ export default async function AlumniStaffPage({ searchParams }: { searchParams: 
         {t("modules.alumniName")}
       </Link>
       <PageHeader title={t("alumni.staffTitle")} description={t("alumni.staffIntro")} />
-      {home.muted && <p role="status" className="rounded-[--radius-md] border border-warn/40 bg-warn-soft px-4 py-3 text-sm font-medium text-warn">{t("alumni.mutedBanner")}</p>}
+      {home.muted && <p role="status" className="rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft px-4 py-3 text-sm font-medium text-warn">{t("alumni.mutedBanner")}</p>}
       <form className="flex gap-2" role="search">
         <label htmlFor="alumni-staff-q" className="sr-only">
           {t("alumni.staffSearch")}
@@ -40,7 +40,7 @@ export default async function AlumniStaffPage({ searchParams }: { searchParams: 
           name="q"
           defaultValue={q ?? ""}
           placeholder={t("alumni.staffSearch")}
-          className="h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3.5 text-[0.9375rem] text-fg"
+          className="h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3.5 text-[0.9375rem] text-fg"
         />
       </form>
       {people.length === 0 ? (

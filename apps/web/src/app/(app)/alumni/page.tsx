@@ -55,7 +55,7 @@ export default async function AlumniHome() {
       </p>
 
       {home.muted && (
-        <p role="status" className="flex items-start gap-2 rounded-[--radius-md] border border-warn/40 bg-warn-soft px-4 py-3 text-sm font-medium text-warn">
+        <p role="status" className="flex items-start gap-2 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft px-4 py-3 text-sm font-medium text-warn">
           <PauseCircleIcon weight="fill" className="mt-0.5 size-4 shrink-0" aria-hidden />
           <span>
             {t("alumni.mutedBanner")}
@@ -135,7 +135,7 @@ export default async function AlumniHome() {
           ) : (
             <ul className="space-y-4">
               {home.notes.map((note) => (
-                <li key={note.id} className="rounded-[--radius-md] border border-border p-4">
+                <li key={note.id} className="rounded-[var(--radius-md)] border border-border p-4">
                   <p className="text-xs text-fg-muted">
                     {note.batchYear ? t("alumni.noteForBatch", { year: note.batchYear }) : t("alumni.noteForAll")} ·{" "}
                     {formatInZone(note.createdAt, "Asia/Kolkata", { dateStyle: "medium" })}

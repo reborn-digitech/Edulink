@@ -37,7 +37,7 @@ export function PairForm({ experts, pupils }: { experts: Expert[]; pupils: Optio
 
   if (experts.length === 0 || pupils.length === 0) {
     return (
-      <p className="flex items-start gap-2 rounded-[--radius-md] border border-border bg-surface-muted p-3 text-xs text-fg-muted">
+      <p className="flex items-start gap-2 rounded-[var(--radius-md)] border border-border bg-surface-muted p-3 text-xs text-fg-muted">
         <WarningIcon weight="bold" className="mt-0.5 size-4 shrink-0" />
         <span>
           {experts.length === 0 ? t("mentoring.noExpertsYet") : t("mentoring.noPupils")}
@@ -71,7 +71,7 @@ export function PairForm({ experts, pupils }: { experts: Expert[]; pupils: Optio
           <select
             value={pupilId}
             onChange={(e) => setPupilId(e.target.value)}
-            className="mt-1 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
+            className="mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
           >
             <option value="">{t("mentoring.choosePupil")}</option>
             {pupils.map((pupil) => (
@@ -87,7 +87,7 @@ export function PairForm({ experts, pupils }: { experts: Expert[]; pupils: Optio
           <select
             value={expertId}
             onChange={(e) => setExpertId(e.target.value)}
-            className="mt-1 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
+            className="mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
           >
             <option value="">{t("mentoring.chooseMentor")}</option>
             {experts.map((expert) => (
@@ -113,7 +113,7 @@ export function PairForm({ experts, pupils }: { experts: Expert[]; pupils: Optio
             value={purpose}
             placeholder={t("mentoring.purposePlaceholder")}
             onChange={(e) => setPurpose(e.target.value)}
-            className="mt-1 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
+            className="mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
           />
           <span className="mt-1 block text-xs text-fg-subtle">{t("mentoring.guardianSees")}</span>
         </label>

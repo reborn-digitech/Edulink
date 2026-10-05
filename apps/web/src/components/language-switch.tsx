@@ -62,7 +62,7 @@ export function LanguageSwitch({
       <div
         role="radiogroup"
         aria-label={t("language.groupLabel")}
-        className="flex flex-1 flex-wrap gap-1 rounded-[--radius-md] bg-surface-muted p-1"
+        className="flex flex-1 flex-wrap gap-1 rounded-[var(--radius-md)] bg-surface-muted p-1"
       >
         {LOCALES.map((language) => {
           const active = language.code === current;
@@ -76,7 +76,7 @@ export function LanguageSwitch({
               lang={language.code}
               onClick={() => choose(language.code)}
               className={cn(
-                "min-h-11 flex-1 rounded-[--radius-sm] px-3 py-1.5 text-sm font-medium transition-colors",
+                "min-h-11 flex-1 rounded-[var(--radius-sm)] px-3 py-1.5 text-sm font-medium transition-colors",
                 "disabled:opacity-60",
                 active ? "bg-surface text-fg shadow-sm" : "text-fg-muted hover:text-fg",
               )}

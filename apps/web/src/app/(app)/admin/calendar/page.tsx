@@ -208,7 +208,7 @@ export default async function CalendarPage({
                 {leave.map((row) => (
                   <li
                     key={row.id}
-                    className="flex flex-wrap items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
+                    className="flex flex-wrap items-center gap-3 rounded-[var(--radius-sm)] bg-surface-muted p-3"
                   >
                     <span className="min-w-0 flex-1">
                       <PersonLink membershipId={row.applicantMembershipId} name={row.applicantName} className="block truncate text-sm font-medium text-fg" />
@@ -255,7 +255,7 @@ export default async function CalendarPage({
                 {birthdays.map((row) => (
                   <li
                     key={`${row.membershipId}-${row.dateKey}`}
-                    className="flex flex-wrap items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
+                    className="flex flex-wrap items-center gap-3 rounded-[var(--radius-sm)] bg-surface-muted p-3"
                   >
                     <span className="min-w-0 flex-1">
                       <PersonLink membershipId={row.membershipId} name={row.name} className="block truncate text-sm font-medium text-fg" />

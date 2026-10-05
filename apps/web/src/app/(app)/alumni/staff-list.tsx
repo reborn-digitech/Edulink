@@ -13,7 +13,7 @@ import { openConversationAction } from "../remarks/conversation-actions";
  */
 export function StaffList({ people, schoolId, t, disabled }: { people: StaffPerson[]; schoolId: string; t: Translate; disabled?: boolean }) {
   return (
-    <ul className="divide-y divide-border overflow-hidden rounded-[--radius-lg] border border-border bg-surface">
+    <ul className="divide-y divide-border overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface">
       {people.map((person) => (
         <li key={person.userId}>
           <form action={openConversationAction} className="flex items-center gap-3 p-3.5">

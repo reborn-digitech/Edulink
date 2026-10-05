@@ -62,3 +62,26 @@ describe("a hidden file input is not an unlabelled control (B-08)", () => {
     expect(bad).toEqual([]);
   });
 });
+
+describe("design tokens reach the CSS (A3-states-1)", () => {
+  it("no utility names a CSS variable in square brackets, which Tailwind 4 prints as a bare value and the browser drops", () => {
+    // Tailwind 4 reads a bracketed bare variable (rounded- then [--radius-md]) as the literal value, printing
+    // `border-radius: --radius-md;`, so every card, button and field was square and every transition 0 s. The variable
+    // form is the bracketed var(): rounded- then [var(--radius-md)]. Tailwind 4's parenthesised shorthand compiles too,
+    // but tailwind-merge 2.6 (cn) does not know it, so cn() would keep it beside an override such as rounded-full and let
+    // the stylesheet's order decide. Both spellings are refused. (Written apart here: Tailwind scans this file too.)
+    const all = (dir: string): string[] =>
+      readdirSync(dir).flatMap((name) => {
+        const path = join(dir, name);
+        return statSync(path).isDirectory() ? all(path) : /\.(tsx?|css)$/.test(path) ? [path] : [];
+      });
+    const bad: string[] = [];
+    for (const file of all(SRC)) {
+      const text = readFileSync(file, "utf8");
+      for (const m of text.matchAll(/\b[a-z][\w:-]*-(?:\[--[A-Za-z][\w-]*\]|\(--[A-Za-z][\w-]*\))/g)) {
+        bad.push(`${relative(process.cwd(), file)}:${text.slice(0, m.index).split("\n").length} ${m[0]}`);
+      }
+    }
+    expect(bad).toEqual([]);
+  });
+});

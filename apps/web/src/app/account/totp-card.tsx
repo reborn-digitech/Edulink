@@ -87,14 +87,14 @@ export function TotpCard({ enabled, recoveryLeft, available }: { enabled: boolea
       <CardHeader icon={<ShieldCheckIcon weight="duotone" className="size-5" />} title={t("totp.title")} description={t("totp.description")} />
       <CardBody className="space-y-4">
         {error && (
-          <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+          <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
             {error}
           </p>
         )}
 
         {/* ---- the recovery codes, this once ---- */}
         {recoveryCodes && (
-          <div className="space-y-3 rounded-[--radius-md] border border-ok/30 bg-ok-soft p-4">
+          <div className="space-y-3 rounded-[var(--radius-md)] border border-ok/30 bg-ok-soft p-4">
             <p className="text-sm font-semibold text-fg">{t("totp.recoveryTitle")}</p>
             <p className="text-sm leading-relaxed text-fg-muted">{t("totp.recoveryBody")}</p>
             <ul className="grid grid-cols-2 gap-2 font-mono text-sm" data-testid="recovery-codes">
@@ -125,7 +125,7 @@ export function TotpCard({ enabled, recoveryLeft, available }: { enabled: boolea
         {/* ---- on ---- */}
         {enabled && !recoveryCodes && (
           <div className="space-y-3">
-            <p className="flex flex-wrap items-center gap-2 rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2.5 text-sm">
+            <p className="flex flex-wrap items-center gap-2 rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2.5 text-sm">
               <CheckCircleIcon weight="fill" className="size-4 shrink-0 text-ok" />
               <span className="font-medium text-fg">{t("totp.on")}</span>
               <span className="text-xs text-fg-muted">{t("totp.recoveryLeft", { count: recoveryLeft })}</span>

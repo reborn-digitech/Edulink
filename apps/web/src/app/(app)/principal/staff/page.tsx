@@ -166,7 +166,7 @@ export default async function PrincipalStaffPage({
                       )}
                     </div>
                     {showBalance && (
-                      <div className="w-full rounded-[--radius-md] bg-surface-muted px-3 py-2 sm:w-auto sm:shrink-0 sm:text-right">
+                      <div className="w-full rounded-[var(--radius-md)] bg-surface-muted px-3 py-2 sm:w-auto sm:shrink-0 sm:text-right">
                         <p className="text-[0.65rem] font-semibold uppercase tracking-wide text-fg-subtle">{t("staff.balanceTitle")}</p>
                         <p className="mt-0.5 text-sm font-semibold text-fg">
                           {balance.entitlement === null
@@ -184,7 +184,7 @@ export default async function PrincipalStaffPage({
         </ul>
       )}
 
-      <p className="flex items-center gap-2 rounded-[--radius-md] bg-surface-muted p-3.5 text-xs leading-relaxed text-fg-muted">
+      <p className="flex items-center gap-2 rounded-[var(--radius-md)] bg-surface-muted p-3.5 text-xs leading-relaxed text-fg-muted">
         <IdentificationCardIcon className="size-4 shrink-0" aria-hidden="true" />
         <span>
           {t("staff.rosterReadOnly")}{" "}

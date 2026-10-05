@@ -115,7 +115,7 @@ export default async function FeesOverviewPage() {
                 { href: "/admin/fees/settings", title: t("fees.setUpSettings"), hint: t("fees.setUpSettingsHint"), done: o.options.online || o.options.upi },
               ].map((step) => (
                 <li key={step.href}>
-                  <Link href={step.href} className="block h-full rounded-[--radius-md] border border-border bg-surface-muted p-4 transition-colors hover:border-border-strong">
+                  <Link href={step.href} className="block h-full rounded-[var(--radius-md)] border border-border bg-surface-muted p-4 transition-colors hover:border-border-strong">
                     <span className="flex items-center justify-between gap-2">
                       <span className="text-sm font-semibold text-fg">{step.title}</span>
                       {step.done && <Badge tone="ok" size="sm">✓</Badge>}

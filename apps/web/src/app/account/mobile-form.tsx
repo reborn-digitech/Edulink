@@ -95,7 +95,7 @@ export function MobileForm({
   if (step === "code") {
     return (
       <form onSubmit={confirm} className="space-y-3" noValidate>
-        <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2.5 text-sm leading-relaxed text-fg">
+        <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2.5 text-sm leading-relaxed text-fg">
           {/* One sentence with a placeholder — see the matching note in
               `EmailForm`. */}
           {t("account.mobileCodeSent", { digits: hint })}
@@ -109,7 +109,7 @@ export function MobileForm({
         {error && (
           <p
             role="alert"
-            className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
+            className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
           >
             {error}
           </p>
@@ -152,7 +152,7 @@ export function MobileForm({
   return (
     <form onSubmit={send} className="space-y-3" noValidate>
       {current && (
-        <p className="flex flex-wrap items-center gap-2 rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2.5 text-sm">
+        <p className="flex flex-wrap items-center gap-2 rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2.5 text-sm">
           <CheckCircleIcon weight="fill" className="size-4 shrink-0 text-ok" />
           <span className="font-medium text-fg">{formatPhone(current)}</span>
           <span className="text-xs text-fg-muted">
@@ -174,7 +174,7 @@ export function MobileForm({
       {error && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
         >
           {error}
         </p>

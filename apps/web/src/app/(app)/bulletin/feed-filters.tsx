@@ -57,12 +57,12 @@ export async function FeedFilters({
             defaultValue={q ?? ""}
             placeholder={t("bulletin.searchPlaceholder")}
             aria-label={t("bulletin.searchLabel")}
-            className="min-h-11 w-full rounded-[--radius-md] border border-border bg-surface pl-10 pr-3.5 text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+            className="min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface pl-10 pr-3.5 text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
           />
         </div>
         <button
           type="submit"
-          className="min-h-11 rounded-[--radius-md] bg-surface-muted px-4 text-sm font-medium text-fg hover:bg-border"
+          className="min-h-11 rounded-[var(--radius-md)] bg-surface-muted px-4 text-sm font-medium text-fg hover:bg-border"
         >
           {t("bulletin.searchButton")}
         </button>

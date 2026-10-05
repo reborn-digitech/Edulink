@@ -56,7 +56,7 @@ export default async function CircularPrintPage({ params }: { params: Promise<{ 
 
       <article
         data-testid="circular-print"
-        className="mx-auto max-w-[210mm] rounded-[--radius-lg] border border-border bg-white p-10 text-[#111] shadow-sm print:max-w-none print:rounded-none print:border-0 print:p-0 print:shadow-none"
+        className="mx-auto max-w-[210mm] rounded-[var(--radius-lg)] border border-border bg-white p-10 text-[#111] shadow-sm print:max-w-none print:rounded-none print:border-0 print:p-0 print:shadow-none"
         style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
       >
         <header className="flex items-start gap-4 border-b-2 border-[#111] pb-4">
@@ -90,7 +90,7 @@ export default async function CircularPrintPage({ params }: { params: Promise<{ 
               <li key={item.fileId}>
                 {/* Served through /api/files, which re-checks who may see the post; never next/image. */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={`/api/files/${item.fileId}`} alt={item.alt} className="w-full rounded-[--radius-md] border border-[#ddd] object-contain" />
+                <img src={`/api/files/${item.fileId}`} alt={item.alt} className="w-full rounded-[var(--radius-md)] border border-[#ddd] object-contain" />
               </li>
             ))}
           </ul>

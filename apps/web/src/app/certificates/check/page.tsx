@@ -52,7 +52,7 @@ export default async function CertificateCheckPage({ searchParams }: { searchPar
               autoCapitalize="characters"
               spellCheck={false}
               required
-              className="mt-1.5 min-h-12 w-full rounded-[--radius-md] border border-border bg-surface px-3 font-mono text-[0.9375rem] uppercase tracking-widest text-fg outline-none focus:border-accent"
+              className="mt-1.5 min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 font-mono text-[0.9375rem] uppercase tracking-widest text-fg outline-none focus:border-accent"
               data-testid="verify-code"
             />
           </label>
@@ -62,7 +62,7 @@ export default async function CertificateCheckPage({ searchParams }: { searchPar
         </form>
 
         {limited && (
-          <p role="alert" className="mt-6 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-3 py-2 text-sm font-medium text-warn">
+          <p role="alert" className="mt-6 rounded-[var(--radius-md)] border border-warn/30 bg-warn-soft px-3 py-2 text-sm font-medium text-warn">
             {t("common.tryAgainMoment")}
           </p>
         )}

@@ -50,7 +50,7 @@ export function InstallCard() {
   return (
     <section
       aria-label={t("ui.installCardTitle")}
-      className="flex flex-col gap-3 rounded-[--radius-lg] border border-border bg-surface p-5 sm:flex-row sm:items-center sm:justify-between"
+      className="flex flex-col gap-3 rounded-[var(--radius-lg)] border border-border bg-surface p-5 sm:flex-row sm:items-center sm:justify-between"
     >
       <div className="flex items-start gap-3">
         <DeviceMobileIcon weight="duotone" className="mt-0.5 size-6 shrink-0 text-accent-strong" aria-hidden />

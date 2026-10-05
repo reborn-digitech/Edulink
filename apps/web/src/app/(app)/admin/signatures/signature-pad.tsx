@@ -126,7 +126,7 @@ export function SignaturePad({ which, current }: { which: "mine" | "seal"; curre
       <div className="flex flex-wrap items-center gap-3">
         {current ? (
           // eslint-disable-next-line @next/next/no-img-element -- a picture kept in the row, handed over as a data URL
-          <img src={current} alt={t(words.current)} className={`rounded-[--radius-md] border border-border bg-white object-contain p-2 ${seal ? "size-28" : "h-20 w-60"}`} data-testid={`signature-${which}-current`} />
+          <img src={current} alt={t(words.current)} className={`rounded-[var(--radius-md)] border border-border bg-white object-contain p-2 ${seal ? "size-28" : "h-20 w-60"}`} data-testid={`signature-${which}-current`} />
         ) : (
           <p className="text-sm text-fg-muted" data-testid={`signature-${which}-none`}>
             {t(words.none)}
@@ -147,7 +147,7 @@ export function SignaturePad({ which, current }: { which: "mine" | "seal"; curre
           height={size.height}
           role="img"
           aria-label={t(seal ? "signatures.sealTitle" : "signatures.drawBox")}
-          className={`w-full touch-none rounded-[--radius-md] border border-dashed border-border-strong bg-white ${seal ? "max-w-[14rem] cursor-default" : "max-w-[30rem] cursor-crosshair"}`}
+          className={`w-full touch-none rounded-[var(--radius-md)] border border-dashed border-border-strong bg-white ${seal ? "max-w-[14rem] cursor-default" : "max-w-[30rem] cursor-crosshair"}`}
           style={{ aspectRatio: `${size.width} / ${size.height}` }}
           onPointerDown={(event) => {
             if (seal) return;

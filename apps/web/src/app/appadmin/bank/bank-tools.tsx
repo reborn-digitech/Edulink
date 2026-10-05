@@ -85,7 +85,7 @@ export function BankTools({ subject }: { subject: string | null }) {
             <input
               type="file"
               accept={SPREADSHEET_ACCEPT}
-              className="block w-full text-sm text-fg-muted file:mr-3 file:rounded-[--radius-sm] file:border file:border-border file:bg-surface file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-fg"
+              className="block w-full text-sm text-fg-muted file:mr-3 file:rounded-[var(--radius-sm)] file:border file:border-border file:bg-surface file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-fg"
               onChange={(e) => void pick(e.target.files?.[0] ?? null)}
             />
             {fileName && <span className="mt-1 block text-xs text-fg-muted">{fileName}</span>}
@@ -111,7 +111,7 @@ export function BankTools({ subject }: { subject: string | null }) {
           </div>
 
           {preview && (
-            <div className="space-y-2 rounded-[--radius-sm] border border-border bg-surface-muted/60 p-3 text-sm" aria-live="polite">
+            <div className="space-y-2 rounded-[var(--radius-sm)] border border-border bg-surface-muted/60 p-3 text-sm" aria-live="polite">
               <p className="font-medium text-fg">
                 {outcome?.preview && outcome.preview.written > 0
                   ? t("bankImport.resultWritten", { written: outcome.preview.written })

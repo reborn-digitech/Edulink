@@ -129,7 +129,7 @@ export function HealthCardEditor({ view, timezone }: { view: HealthCardView; tim
       {view.card ? (
         <HealthCardSummary card={view.card} timezone={timezone} />
       ) : (
-        <div className="rounded-[--radius-md] border border-dashed border-border bg-surface/60 px-4 py-6 text-center">
+        <div className="rounded-[var(--radius-md)] border border-dashed border-border bg-surface/60 px-4 py-6 text-center">
           <p className="text-sm font-semibold text-fg">{t("health.noCardYet")}</p>
           <p className="mt-1 text-sm text-fg-muted">{view.canEdit ? t("health.noCardYetBody", { name: view.studentName }) : t("health.noCardStaffBody")}</p>
         </div>
@@ -191,7 +191,7 @@ function HealthCardForm({ view, onDone }: { view: HealthCardView; onDone: () => 
   return (
     <form onSubmit={submit} noValidate className="space-y-5" data-testid="health-card-form">
       {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
           {error}
         </p>
       )}
@@ -223,7 +223,7 @@ function HealthCardForm({ view, onDone }: { view: HealthCardView; onDone: () => 
         <legend className="text-sm font-semibold text-fg">{t("health.contacts")}</legend>
         <p className="text-xs text-fg-muted">{t("health.contactsHint")}</p>
         {values.contacts.map((contact, index) => (
-          <div key={index} className="rounded-[--radius-md] border border-border p-3">
+          <div key={index} className="rounded-[var(--radius-md)] border border-border p-3">
             <div className="grid gap-3 sm:grid-cols-3">
               <TextField label={t("health.contactName")} required maxLength={80} autoComplete="off" value={contact.name} error={contactErrors[index]} onChange={(e) => setContact(index, { name: e.target.value })} />
               <TextField label={t("health.contactRelation")} maxLength={40} autoComplete="off" value={contact.relation} onChange={(e) => setContact(index, { relation: e.target.value })} />
@@ -357,10 +357,10 @@ export function HealthCheckForm({ studentMembershipId, today }: { studentMembers
   }
 
   return (
-    <form onSubmit={submit} noValidate className="space-y-4 rounded-[--radius-md] border border-border p-4" data-testid="health-check-form">
+    <form onSubmit={submit} noValidate className="space-y-4 rounded-[var(--radius-md)] border border-border p-4" data-testid="health-check-form">
       <p className="text-sm font-semibold text-fg">{t("health.recordCheck")}</p>
       {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
           {error}
         </p>
       )}

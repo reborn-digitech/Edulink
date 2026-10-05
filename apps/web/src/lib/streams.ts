@@ -3,6 +3,7 @@ import { cache } from "react";
 import {
   isCollegeKind,
   isProfessionalStream,
+  parseDuties,
   parseStreams,
   presetUnion,
   STREAMS,
@@ -108,8 +109,36 @@ export async function setStreams(ctx: ActiveContext, streams: readonly string[])
   if (refusal) throw new RuleRefusal(refusal, 422, undefined, "streams");
   const next = cleanStreams(streams);
   const before = parseStreams(school.streamsJson);
-  if (before.length === next.length && before.every((s, i) => s === next[i])) return { streams: next, changed: false };
+  if (before.length === next.length && before.every((s, i) => s === next[i])) {
+    // Run on the same list too, so a college whose duties outlived an earlier change is put right by saving it again.
+    await pruneDuties(ctx.schoolId, ctx.user.id, next);
+    return { streams: next, changed: false };
+  }
   await db.school.update({ where: { id: ctx.schoolId }, data: { streamsJson: JSON.stringify(next) } });
   await audit({ schoolId: ctx.schoolId, actorUserId: ctx.user.id, action: "college.streams.set", targetType: "School", targetId: ctx.schoolId, meta: { from: before, to: next } });
+  await pruneDuties(ctx.schoolId, ctx.user.id, next);
   return { streams: next, changed: true };
+}
+
+/**
+ * A DUTY DOES NOT OUTLIVE THE STREAM THAT OFFERED IT (A3-S-2, 5 Oct 2026).
+ * The gate and the desks read a teacher's held duties as they are stored, so
+ * a college that dropped Science kept its lab in-charges live, and the
+ * registrar's panel — which draws only offered duties and re-sent the stale
+ * one — could not take it away (422 on every save). When the streams change,
+ * every teacher's duties the new streams no longer offer are taken off, each
+ * audited as the registrar's own `people.duties.set` with the reason. Reads
+ * the new list, not presetOf: streamsOf is cached for the request and still
+ * holds the old one.
+ */
+async function pruneDuties(schoolId: string, actorUserId: string, streams: readonly StreamCode[]): Promise<void> {
+  const offered = new Set<string>(streamPreset(streams).duties);
+  const holders = await db.membership.findMany({ where: { schoolId, role: { in: ["FACULTY", "HOD"] }, NOT: { dutiesJson: "[]" } }, select: { id: true, dutiesJson: true } });
+  for (const m of holders) {
+    const held = parseDuties(m.dutiesJson);
+    const kept = held.filter((d) => offered.has(d));
+    if (kept.length === held.length) continue;
+    await db.membership.update({ where: { id: m.id }, data: { dutiesJson: JSON.stringify(kept) } });
+    await audit({ schoolId, actorUserId, action: "people.duties.set", targetType: "Membership", targetId: m.id, meta: { from: held, to: kept, reason: "college.streams.set" } });
+  }
 }

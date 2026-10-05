@@ -240,7 +240,7 @@ export function RulesForm({ view, schoolName, schoolLocale, readOnly = false }: 
     });
   }
 
-  const iconButton = "grid size-11 shrink-0 place-items-center rounded-[--radius-md] text-fg-muted hover:bg-surface-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-40";
+  const iconButton = "grid size-11 shrink-0 place-items-center rounded-[var(--radius-md)] text-fg-muted hover:bg-surface-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-40";
   const layoutLabel: Record<(typeof LAYOUT_TOGGLES)[number], string> = {
     showAttendance: t("reportCardConfig.showAttendance"),
     showPractice: t("reportCardConfig.showPractice"),
@@ -269,7 +269,7 @@ export function RulesForm({ view, schoolName, schoolLocale, readOnly = false }: 
     layout: false,
   };
   const note = (tone: "ok" | "warn", text: string, testId?: string) => (
-    <p className={`flex items-start gap-2 rounded-[--radius-md] border px-3 py-2 text-sm ${tone === "warn" ? "border-warn/40 bg-warn-soft text-fg" : "border-border bg-surface-muted text-fg-muted"}`} data-testid={testId}>
+    <p className={`flex items-start gap-2 rounded-[var(--radius-md)] border px-3 py-2 text-sm ${tone === "warn" ? "border-warn/40 bg-warn-soft text-fg" : "border-border bg-surface-muted text-fg-muted"}`} data-testid={testId}>
       {tone === "warn" && <WarningCircleIcon weight="fill" className="mt-0.5 size-4 shrink-0 text-warn" aria-hidden="true" />}
       <span>{text}</span>
     </p>
@@ -294,12 +294,12 @@ export function RulesForm({ view, schoolName, schoolLocale, readOnly = false }: 
     <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)]">
       <form onSubmit={submit} noValidate className="min-w-0 space-y-6" data-testid="report-card-rules">
         {readOnly && (
-          <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted" data-testid="office-sets-this">
+          <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted" data-testid="office-sets-this">
             {t("common.officeSetsThis")}
           </p>
         )}
 
-        <div role="tablist" aria-label={t("reportCardConfig.tabsLabel")} className="flex flex-wrap gap-1 rounded-[--radius-md] border border-border bg-surface-muted p-1">
+        <div role="tablist" aria-label={t("reportCardConfig.tabsLabel")} className="flex flex-wrap gap-1 rounded-[var(--radius-md)] border border-border bg-surface-muted p-1">
           {SECTIONS.map((sec, index) => (
             <button
               key={sec.id}
@@ -318,7 +318,7 @@ export function RulesForm({ view, schoolName, schoolLocale, readOnly = false }: 
                 setSection(next.id);
                 document.getElementById(`${tabsId}-tab-${next.id}`)?.focus();
               }}
-              className={`inline-flex min-h-11 flex-1 items-center justify-center gap-1.5 rounded-[--radius-sm] px-3 text-sm font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${section === sec.id ? "bg-surface text-fg shadow-sm" : "text-fg-muted hover:text-fg"}`}
+              className={`inline-flex min-h-11 flex-1 items-center justify-center gap-1.5 rounded-[var(--radius-sm)] px-3 text-sm font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${section === sec.id ? "bg-surface text-fg shadow-sm" : "text-fg-muted hover:text-fg"}`}
               data-testid={`rules-tab-${sec.id}`}
             >
               {t(sec.key)}
@@ -368,7 +368,7 @@ export function RulesForm({ view, schoolName, schoolLocale, readOnly = false }: 
                         const removeLabel = [t("reportCardConfig.removeBand"), band.label || band.minPercent].join(": ");
                         const quiet = "sm:[&>label]:sr-only";
                         return (
-                          <li key={band.key} className="grid grid-cols-2 items-start gap-2 rounded-[--radius-md] border border-border p-3 sm:grid-cols-[6rem_6rem_6rem_minmax(0,1fr)_2.75rem]" data-testid="band-row">
+                          <li key={band.key} className="grid grid-cols-2 items-start gap-2 rounded-[var(--radius-md)] border border-border p-3 sm:grid-cols-[6rem_6rem_6rem_minmax(0,1fr)_2.75rem]" data-testid="band-row">
                             <TextField label={t("reportCardConfig.bandLabel")} value={band.label} maxLength={12} autoComplete="off" onChange={(e) => updateBand(band.key, { label: e.target.value })} className={quiet} data-testid="band-label" />
                             <TextField label={t("reportCardConfig.bandMin")} type="number" inputMode="numeric" min={0} max={100} step={1} value={band.minPercent} error={fieldErrors[`band-${band.key}`]} onChange={(e) => updateBand(band.key, { minPercent: e.target.value })} className={quiet} data-testid="band-min" />
                             <TextField label={t("reportCardConfig.bandPoints")} type="number" inputMode="decimal" min={0} max={10} step={0.5} value={band.points} error={fieldErrors[`points-${band.key}`]} onChange={(e) => updateBand(band.key, { points: e.target.value })} className={quiet} />
@@ -396,7 +396,7 @@ export function RulesForm({ view, schoolName, schoolLocale, readOnly = false }: 
               <CardBody className="space-y-5">
                 <fieldset className="space-y-2" data-testid="rules-areas">
                   <legend className="text-sm font-medium text-fg">{t("reportCardConfig.areasList")}</legend>
-                  {areas.length === 0 && <p className="rounded-[--radius-md] border border-dashed border-border p-3 text-sm text-fg-muted">{t("reportCardConfig.areasNone")}</p>}
+                  {areas.length === 0 && <p className="rounded-[var(--radius-md)] border border-dashed border-border p-3 text-sm text-fg-muted">{t("reportCardConfig.areasNone")}</p>}
                   <ol className="space-y-2">
                     {areas.map((area, index) => {
                       const name = area.name || String(index + 1);
@@ -464,7 +464,7 @@ export function RulesForm({ view, schoolName, schoolLocale, readOnly = false }: 
               <CardHeader title={t("reportCardConfig.termWeightsTitle")} description={t("reportCardConfig.termWeightsIntro")} />
               <CardBody className="space-y-3">
                 {view.terms.length === 0 ? (
-                  <p className="rounded-[--radius-md] border border-dashed border-border p-3 text-sm text-fg-muted">{t("reportCardConfig.noTerms")}</p>
+                  <p className="rounded-[var(--radius-md)] border border-dashed border-border p-3 text-sm text-fg-muted">{t("reportCardConfig.noTerms")}</p>
                 ) : (
                   <>
                     <div className="grid gap-3 sm:grid-cols-3">
@@ -523,7 +523,7 @@ export function RulesForm({ view, schoolName, schoolLocale, readOnly = false }: 
           </div>
 
           {error && (
-            <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+            <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
               {error}
             </p>
           )}

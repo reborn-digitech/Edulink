@@ -116,7 +116,7 @@ export function WalkInForm({ cycles }: { cycles: CycleOption[] }) {
       {error && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
         >
           {error}
         </p>

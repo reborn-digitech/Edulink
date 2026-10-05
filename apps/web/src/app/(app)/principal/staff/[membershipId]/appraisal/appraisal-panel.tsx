@@ -40,7 +40,7 @@ export function AppraisalPanel({ membershipId, items, canEdit, today }: { member
         </Button>
       )}
       {canEdit && adding && (
-        <section aria-label={t("appraisal.add")} className="rounded-[--radius-md] border border-border p-3.5">
+        <section aria-label={t("appraisal.add")} className="rounded-[var(--radius-md)] border border-border p-3.5">
           <h3 className="mb-3 text-sm font-semibold text-fg">{t("appraisal.add")}</h3>
           <EntryForm membershipId={membershipId} initial={blank(today)} onDone={() => setAdding(false)} />
         </section>

@@ -76,7 +76,7 @@ export default async function DocumentsPage({ searchParams }: { searchParams: Pr
         <CardBody>
           <ul className="grid gap-3 sm:grid-cols-2" data-testid="filing-cards">
             {[...council.items].sort((a, b) => Number(b.applies) - Number(a.applies)).map((item) => (
-              <li key={item.kind} data-testid={`filing-card-${item.kind}`} data-applies={item.applies ? "1" : "0"} className={`space-y-2 rounded-[--radius-md] border p-3 text-sm ${item.applies ? "border-border" : "border-dashed border-border bg-surface-muted text-fg-muted"}`}>
+              <li key={item.kind} data-testid={`filing-card-${item.kind}`} data-applies={item.applies ? "1" : "0"} className={`space-y-2 rounded-[var(--radius-md)] border p-3 text-sm ${item.applies ? "border-border" : "border-dashed border-border bg-surface-muted text-fg-muted"}`}>
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="font-medium">{tt("iqac.filingKind." + item.kind)}</span>
                   {item.applies ? <Badge tone="ok">{t("councilFilings.yours")}</Badge> : null}

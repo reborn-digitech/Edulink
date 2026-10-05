@@ -55,7 +55,7 @@ export function UnlinkChild({ studentMembershipId, name }: { studentMembershipId
   }
 
   return (
-    <form onSubmit={submit} noValidate className="w-full space-y-3 rounded-[--radius-md] border border-danger/30 bg-danger-soft/40 p-3" data-testid="unlink-child-form">
+    <form onSubmit={submit} noValidate className="w-full space-y-3 rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft/40 p-3" data-testid="unlink-child-form">
       <p className="text-sm font-semibold text-fg">{t("familyCare.unlinkTitle")}</p>
       <p className="text-xs leading-relaxed text-fg-muted">{t("familyCare.unlinkBody", { name })}</p>
       <TextField label={t("familyCare.unlinkTypeName", { name })} value={typed} onChange={(e) => setTyped(e.target.value)} error={error ?? undefined} autoComplete="off" />

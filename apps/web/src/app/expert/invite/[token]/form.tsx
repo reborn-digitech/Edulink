@@ -41,7 +41,7 @@ export function AcceptForm({
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="mt-1 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
+          className="mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
         />
       </label>
       <label className="block text-sm text-fg-muted">
@@ -51,7 +51,7 @@ export function AcceptForm({
           autoComplete="username"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="mt-1 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
+          className="mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
         />
       </label>
       <label className="block text-sm text-fg-muted">
@@ -61,7 +61,7 @@ export function AcceptForm({
           autoComplete="new-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="mt-1 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
+          className="mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
         />
       </label>
       <label className="block text-sm text-fg-muted">
@@ -71,7 +71,7 @@ export function AcceptForm({
           value={headline}
           placeholder={t("expert.whatYouDoPlaceholder")}
           onChange={(e) => setHeadline(e.target.value)}
-          className="mt-1 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
+          className="mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
         />
       </label>
 

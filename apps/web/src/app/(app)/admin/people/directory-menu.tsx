@@ -161,7 +161,7 @@ export function DirectoryMenu({
               className="fixed inset-0 z-30 cursor-default"
               onClick={() => setOpen(false)}
             />
-            <div className="absolute right-0 top-full z-40 mt-1 w-56 overflow-hidden rounded-[--radius-md] border border-border bg-surface py-1 shadow-lg animate-in-up">
+            <div className="absolute right-0 top-full z-40 mt-1 w-56 overflow-hidden rounded-[var(--radius-md)] border border-border bg-surface py-1 shadow-lg animate-in-up">
               {!hasLeft &&
                 (suspended ? (
                   <MenuItem

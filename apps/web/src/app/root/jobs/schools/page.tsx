@@ -47,7 +47,7 @@ export default async function JobHealthBySchoolPage() {
         </p>
       </div>
 
-      <div className="rounded-[--radius-md] bg-surface-muted p-3.5 text-sm leading-relaxed text-fg-muted">
+      <div className="rounded-[var(--radius-md)] bg-surface-muted p-3.5 text-sm leading-relaxed text-fg-muted">
         <p>{t("root.jobHealthAsOf")}</p>
         <p className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs">
           {runs.map((r) => (
@@ -59,13 +59,13 @@ export default async function JobHealthBySchoolPage() {
       </div>
 
       {hasStuck && (
-        <p className="flex items-start gap-2 rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm leading-relaxed text-fg">
+        <p className="flex items-start gap-2 rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm leading-relaxed text-fg">
           <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0 text-danger" aria-hidden="true" />
           {t("root.jobHealthStuckHint")}
         </p>
       )}
       {hasMissing && (
-        <p className="flex items-start gap-2 rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm leading-relaxed text-fg">
+        <p className="flex items-start gap-2 rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm leading-relaxed text-fg">
           <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0 text-danger" aria-hidden="true" />
           {t("root.jobHealthMissingHint")}
         </p>

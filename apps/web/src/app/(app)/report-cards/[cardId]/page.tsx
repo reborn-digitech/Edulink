@@ -92,7 +92,7 @@ export default async function ReportCardPage({
       {card.signatures
         .filter((s) => s.can.decide)
         .map((s) => (
-          <div key={s.id} className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-[--radius-md] border border-warn/40 bg-warn-soft px-4 py-3 text-sm text-fg print:hidden" data-testid="signature-waits">
+          <div key={s.id} className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft px-4 py-3 text-sm text-fg print:hidden" data-testid="signature-waits">
             <span>{t("signatures.signsWholeSet", { count: card.setCount })}</span>
             <SignPaper signatureId={s.id} label={[card.className, card.title].join(", ")} />
           </div>
@@ -119,12 +119,12 @@ export default async function ReportCardPage({
       {card.status !== "PUBLISHED" && (
         // Only staff can see a draft at all, but a teacher printing one by
         // mistake and handing it to a parent is the accident worth preventing.
-        <p className="mb-4 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-semibold text-warn print:hidden">
+        <p className="mb-4 rounded-[var(--radius-md)] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-semibold text-warn print:hidden">
           {t("reportView.draftBanner")}
         </p>
       )}
 
-      <div style={{ fontFamily: fontStack(layout.font, readerLocale) }} data-testid="card-sheet" className="rounded-[--radius-lg] border border-border bg-surface p-6 print:rounded-none print:border-0 print:bg-white print:p-0 print:text-black sm:p-8">
+      <div style={{ fontFamily: fontStack(layout.font, readerLocale) }} data-testid="card-sheet" className="rounded-[var(--radius-lg)] border border-border bg-surface p-6 print:rounded-none print:border-0 print:bg-white print:p-0 print:text-black sm:p-8">
         {/* ---------------- letterhead ---------------- */}
         <header className="flex items-start gap-4 border-b border-border pb-5 print:border-black/20">
           {logoUrl && (
@@ -132,7 +132,7 @@ export default async function ReportCardPage({
             <img
               src={logoUrl}
               alt=""
-              className="size-16 shrink-0 rounded-[--radius-md] object-contain"
+              className="size-16 shrink-0 rounded-[var(--radius-md)] object-contain"
             />
           )}
           <div className="min-w-0 flex-1">
@@ -444,7 +444,7 @@ export default async function ReportCardPage({
 
 function Figure({ label, value, hint }: { label: string; value: string; hint: string }) {
   return (
-    <div className="rounded-[--radius-md] bg-surface-muted p-4 print:bg-transparent print:p-0">
+    <div className="rounded-[var(--radius-md)] bg-surface-muted p-4 print:bg-transparent print:p-0">
       <p className="text-xs font-medium text-fg-muted print:text-black/70">{label}</p>
       <p className="mt-0.5 text-3xl font-bold tabular-nums text-fg print:text-black">{value}</p>
       <p className="mt-0.5 text-xs text-fg-muted print:text-black/70">{hint}</p>

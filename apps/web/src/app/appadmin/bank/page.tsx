@@ -84,7 +84,7 @@ export default async function BankPage({
         // count; the first is open, every one is when the list has been narrowed;
         // inside, a chapter is a row, not a card.
         [...bySubject.entries()].map(([subject, subjectTopics], index) => (
-          <details key={subject} open={narrowed || index === 0} className="group rounded-[--radius-lg] border border-border bg-surface shadow-sm">
+          <details key={subject} open={narrowed || index === 0} className="group rounded-[var(--radius-lg)] border border-border bg-surface shadow-sm">
             <summary className="tap flex cursor-pointer list-none items-center justify-between gap-3 px-4 text-sm font-semibold text-fg [&::-webkit-details-marker]:hidden">
               <span className="flex items-center gap-2">
                 <CaretRightIcon weight="bold" className="size-4 text-fg-subtle transition-transform group-open:rotate-90" aria-hidden="true" />

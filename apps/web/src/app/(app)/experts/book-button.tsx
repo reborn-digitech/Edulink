@@ -39,7 +39,7 @@ export function BookButton({ slotId, expertName }: { slotId: string; expertName:
           autoFocus
           value={topic}
           onChange={(e) => setTopic(e.target.value)}
-          className="mt-1 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
+          className="mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
         />
       </label>
       {error && <p className="text-sm font-medium text-danger">{error}</p>}

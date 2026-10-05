@@ -42,7 +42,7 @@ export default async function MootCourtsPage({ searchParams }: { searchParams: P
     <div className="space-y-6">
       <PageHeader title={t("streamRecords.moots.title")} description={t("streamRecords.moots.intro")} back={{ href: "/admin/stream-records", label: t("streamRecords.title") }} />
       <RecordsFlash t={t} params={params} />
-      {!data.offered ? <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted">{t("streamRecords.moots.notOffered")}</p> : null}
+      {!data.offered ? <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted">{t("streamRecords.moots.notOffered")}</p> : null}
 
       <Card>
         <CardHeader icon={<GavelIcon weight="duotone" className="size-5" />} title={t("streamRecords.moots.listTitle")} />
@@ -101,7 +101,7 @@ export default async function MootCourtsPage({ searchParams }: { searchParams: P
                 </SelectField>
               </div>
               {[1, 2, 3, 4].map((n) => (
-                <fieldset key={n} className="rounded-[--radius-md] border border-border p-3">
+                <fieldset key={n} className="rounded-[var(--radius-md)] border border-border p-3">
                   <legend className="px-1 text-sm font-medium text-fg">{t("streamRecords.moots.teamN", { n })}</legend>
                   <div className="grid gap-3 sm:grid-cols-2">
                     <TextField name={`team${n}Name`} label={t("streamRecords.moots.fieldTeam")} maxLength={80} required={n <= 2} />
@@ -118,7 +118,7 @@ export default async function MootCourtsPage({ searchParams }: { searchParams: P
                         {data.students.map((s) => (
                           <li key={s.membershipId}>
                             <label className="flex min-h-11 items-center gap-2 text-sm text-fg">
-                              <input type="checkbox" name={`team${n}Member`} value={s.membershipId} className="size-4 accent-[--accent]" />
+                              <input type="checkbox" name={`team${n}Member`} value={s.membershipId} className="size-4 accent-[var(--accent)]" />
                               {s.name}
                             </label>
                           </li>

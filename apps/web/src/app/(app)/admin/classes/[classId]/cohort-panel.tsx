@@ -145,7 +145,7 @@ export function CohortPanel({
       </div>
 
       {open && (
-        <div className="rounded-[--radius-md] border border-border p-4">
+        <div className="rounded-[var(--radius-md)] border border-border p-4">
           <div className="relative">
             <MagnifyingGlassIcon
               className="pointer-events-none absolute left-3.5 top-1/2 size-5 -translate-y-1/2 text-fg-subtle"
@@ -158,7 +158,7 @@ export function CohortPanel({
               onChange={(e) => onType(e.target.value)}
               placeholder={t("classes.searchPupils")}
               aria-label={t("classes.searchPupilsLabel")}
-              className="min-h-12 w-full rounded-[--radius-md] border border-border bg-surface pl-11 pr-3 text-[0.9375rem] outline-none focus:border-accent"
+              className="min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface pl-11 pr-3 text-[0.9375rem] outline-none focus:border-accent"
             />
           </div>
 
@@ -186,7 +186,7 @@ export function CohortPanel({
                         aria-pressed={on}
                         onClick={() => toggle(candidate.membershipId)}
                         className={cn(
-                          "flex w-full items-center gap-3 rounded-[--radius-sm] p-2.5 text-left transition-colors",
+                          "flex w-full items-center gap-3 rounded-[var(--radius-sm)] p-2.5 text-left transition-colors",
                           on ? "bg-accent-soft text-accent-strong" : "hover:bg-surface-muted",
                         )}
                       >
@@ -240,7 +240,7 @@ export function CohortPanel({
       )}
 
       {members.length === 0 ? (
-        <p className="rounded-[--radius-md] border border-dashed border-border p-4 text-sm text-fg-muted">
+        <p className="rounded-[var(--radius-md)] border border-dashed border-border p-4 text-sm text-fg-muted">
           {t("classes.nobodyInClass")}
         </p>
       ) : (
@@ -248,7 +248,7 @@ export function CohortPanel({
           {members.map((member) => (
             <li
               key={member.membershipId}
-              className="flex flex-wrap items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
+              className="flex flex-wrap items-center gap-3 rounded-[var(--radius-sm)] bg-surface-muted p-3"
             >
               <span className="min-w-0 flex-1">
                 <PersonLink membershipId={member.membershipId} name={member.name} className="block truncate text-sm font-medium text-fg" />

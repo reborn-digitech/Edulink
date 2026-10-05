@@ -270,7 +270,7 @@ export default async function StudentHome() {
                   <li key={assignment.id}>
                     <Link
                       href="/student/assignments"
-                      className="flex items-center justify-between gap-3 rounded-[--radius-md] border border-border p-3 hover:bg-surface-muted/60"
+                      className="flex items-center justify-between gap-3 rounded-[var(--radius-md)] border border-border p-3 hover:bg-surface-muted/60"
                     >
                       <span className="min-w-0">
                         <span className="block truncate text-sm font-semibold text-fg">

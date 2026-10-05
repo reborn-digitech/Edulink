@@ -182,7 +182,7 @@ export function CycleEditor({
   }
 
   const iconButton =
-    "grid size-10 shrink-0 place-items-center rounded-[--radius-md] text-fg-muted hover:bg-surface-muted hover:text-danger focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-40";
+    "grid size-10 shrink-0 place-items-center rounded-[var(--radius-md)] text-fg-muted hover:bg-surface-muted hover:text-danger focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-40";
   const compact = "[&_input]:min-h-10 [&_input]:py-2";
 
   return (
@@ -195,7 +195,7 @@ export function CycleEditor({
       {error && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
         >
           {error}
         </p>

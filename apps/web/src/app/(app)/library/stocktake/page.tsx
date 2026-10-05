@@ -36,7 +36,7 @@ export default async function LibraryStockTakePage({ searchParams }: { searchPar
               <input type="hidden" name="back" value={back} />
               <label className="min-w-0 flex-1 basis-56 text-sm font-medium text-fg">
                 {t("library.accession")}
-                <input name="accession" required autoFocus autoComplete="off" maxLength={30} className="mt-1.5 block min-h-12 w-full rounded-[--radius-md] border border-border bg-surface px-3.5 text-[0.9375rem] text-fg" />
+                <input name="accession" required autoFocus autoComplete="off" maxLength={30} className="mt-1.5 block min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3.5 text-[0.9375rem] text-fg" />
               </label>
               <Button type="submit">{t("library.markSeen")}</Button>
             </form>
@@ -53,7 +53,7 @@ export default async function LibraryStockTakePage({ searchParams }: { searchPar
           {st.startedAt && st.unseen.length > 0 ? (
             <div>
               <h3 className="text-sm font-semibold text-fg">{t("library.notSeenYet")}</h3>
-              <ul className="mt-2 divide-y divide-border rounded-[--radius-md] border border-border">
+              <ul className="mt-2 divide-y divide-border rounded-[var(--radius-md)] border border-border">
                 {st.unseen.map((c) => (
                   <li key={c.accession} className="px-4 py-2 text-sm">
                     <span className="font-medium text-fg">{c.accession}</span> <span className="text-fg-muted">· {c.title}{c.rack ? ` · ${t("library.rackShort", { rack: c.rack })}` : ""} · {t(COPY_STATUS_KEY[c.status])}</span>

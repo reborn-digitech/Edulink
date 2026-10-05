@@ -89,7 +89,7 @@ export default async function MessagingPage() {
               ))}
             </ul>
             {o.transports.problems.length > 0 && (
-              <div className="rounded-[--radius-md] bg-warn-soft px-3 py-2 text-xs text-warn">
+              <div className="rounded-[var(--radius-md)] bg-warn-soft px-3 py-2 text-xs text-warn">
                 <p className="font-medium">{t("messaging.transportProblems")}</p>
                 <ul className="mt-1 list-disc space-y-0.5 pl-4">
                   {o.transports.problems.map((problem) => (

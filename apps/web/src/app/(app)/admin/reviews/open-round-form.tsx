@@ -59,7 +59,7 @@ export function OpenRoundForm({
   }
 
   return (
-    <div className="rounded-[--radius-md] border border-border bg-surface p-4">
+    <div className="rounded-[var(--radius-md)] border border-border bg-surface p-4">
       <h2 className="text-sm font-semibold text-fg">{t("reviews.openRound")}</h2>
 
       <fieldset className="mt-3">
@@ -79,7 +79,7 @@ export function OpenRoundForm({
         <ul className="mt-1.5 grid max-h-48 grid-cols-1 gap-1 overflow-y-auto sm:grid-cols-2">
           {teachers.map((teacher) => (
             <li key={teacher.membershipId}>
-              <label className="flex min-h-9 cursor-pointer items-center gap-2 rounded-[--radius-sm] px-2 text-sm text-fg hover:bg-surface-muted">
+              <label className="flex min-h-9 cursor-pointer items-center gap-2 rounded-[var(--radius-sm)] px-2 text-sm text-fg hover:bg-surface-muted">
                 <input
                   type="checkbox"
                   checked={chosen.has(teacher.membershipId)}
@@ -89,7 +89,7 @@ export function OpenRoundForm({
                     else next.delete(teacher.membershipId);
                     setChosen(next);
                   }}
-                  className="size-4 accent-[--color-accent]"
+                  className="size-4 accent-[var(--accent)]"
                 />
                 <span className="truncate">{teacher.name}</span>
               </label>
@@ -104,7 +104,7 @@ export function OpenRoundForm({
           <select
             value={audience}
             onChange={(event) => setAudience(event.target.value as ReviewAudience)}
-            className="mt-1 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+            className="mt-1 min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
           >
             {REVIEW_AUDIENCES.map((option) => (
               <option key={option} value={option}>

@@ -208,7 +208,7 @@ function PupilRow({ pupil, t }: { pupil: PupilInsight; t: Translate }) {
     pupil.attendancePercent !== null && pupil.attendancePercent < ATTENDANCE_CONCERN_PERCENT;
 
   return (
-    <li className="flex flex-wrap items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3">
+    <li className="flex flex-wrap items-center gap-3 rounded-[var(--radius-sm)] bg-surface-muted p-3">
       <span className="min-w-0 flex-1">
         <PersonLink membershipId={pupil.membershipId} name={pupil.name} className="block truncate text-sm font-medium text-fg" />
         <span className="block text-xs text-fg-muted">

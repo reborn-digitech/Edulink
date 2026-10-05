@@ -69,7 +69,7 @@ export default async function HostelRollCallPage({ searchParams }: { searchParam
                 <input type="hidden" name="dateKey" value={sheet.dateKey} />
                 <input type="hidden" name="slot" value={sheet.slot} />
                 <input type="hidden" name="clientId" value={`web-${randomUUID()}`} />
-                <ul className="divide-y divide-border rounded-[--radius-md] border border-border">
+                <ul className="divide-y divide-border rounded-[var(--radius-md)] border border-border">
                   {sheet.entries.map((e) => (
                     <li key={e.allotmentId} className="flex flex-wrap items-center justify-between gap-3 px-4 py-2.5">
                       <input type="hidden" name="allotmentId" value={e.allotmentId} />

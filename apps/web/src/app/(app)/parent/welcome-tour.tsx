@@ -82,7 +82,7 @@ export function WelcomeTour() {
   return (
     <section
       aria-label={t("welcomeTour.title")}
-      className="rounded-[--radius-lg] border border-accent/30 bg-accent-soft/40 p-5"
+      className="rounded-[var(--radius-lg)] border border-accent/30 bg-accent-soft/40 p-5"
     >
       <div className="flex items-start justify-between gap-3">
         <div>
@@ -112,7 +112,7 @@ export function WelcomeTour() {
           <li key={door.href}>
             <Link
               href={door.href}
-              className="flex items-center gap-2.5 rounded-[--radius-md] border border-border bg-surface px-3.5 py-2.5 text-sm font-medium text-fg hover:border-accent"
+              className="flex items-center gap-2.5 rounded-[var(--radius-md)] border border-border bg-surface px-3.5 py-2.5 text-sm font-medium text-fg hover:border-accent"
             >
               <door.icon weight="duotone" className="size-5 shrink-0 text-accent-strong" />
               {door.label}

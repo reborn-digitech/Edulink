@@ -103,7 +103,7 @@ export function ReactionRow({
               aria-pressed={pressed}
               className={cn(
                 "peer inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 text-sm font-semibold",
-                "transition-[transform,background-color] duration-[--dur-fast] active:scale-90",
+                "transition-[transform,background-color] duration-[var(--dur-fast)] active:scale-90",
                 pressed
                   ? "bg-accent-soft text-accent-strong"
                   : "text-fg-muted hover:bg-surface-muted hover:text-fg",
@@ -130,8 +130,8 @@ export function ReactionRow({
               aria-hidden="true"
               className={cn(
                 "pointer-events-none absolute -top-8 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap",
-                "rounded-[--radius-sm] bg-fg px-2 py-1 text-xs font-semibold text-surface shadow-md",
-                "opacity-0 transition-opacity duration-[--dur-fast]",
+                "rounded-[var(--radius-sm)] bg-fg px-2 py-1 text-xs font-semibold text-surface shadow-md",
+                "opacity-0 transition-opacity duration-[var(--dur-fast)]",
                 "peer-hover:opacity-100 peer-focus-visible:opacity-100",
               )}
             >

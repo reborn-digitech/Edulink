@@ -105,7 +105,7 @@ export default async function AdminReviewsPage({
             {rounds.map((round) => (
               <li
                 key={round.id}
-                className="flex flex-wrap items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
+                className="flex flex-wrap items-center gap-3 rounded-[var(--radius-sm)] bg-surface-muted p-3"
               >
                 <span className="min-w-0 flex-1">
                   <span className="block text-sm font-medium text-fg">

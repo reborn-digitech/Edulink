@@ -58,7 +58,7 @@ export function BadgeGrid({ badges }: { badges: Badge[] }) {
       )}
 
       {earned.length === 0 && (
-        <p className="rounded-[--radius-md] bg-surface-muted p-4 text-center text-sm text-fg-muted">
+        <p className="rounded-[var(--radius-md)] bg-surface-muted p-4 text-center text-sm text-fg-muted">
           {t("student.badgesTurnUp")}
         </p>
       )}
@@ -88,7 +88,7 @@ function BadgeCard({ badge }: { badge: Badge }) {
   return (
     <div
       className={cn(
-        "flex items-center gap-3 rounded-[--radius-md] border p-3",
+        "flex items-center gap-3 rounded-[var(--radius-md)] border p-3",
         badge.earned ? "border-accent/40 bg-accent-soft" : "border-border bg-surface",
       )}
     >
@@ -111,7 +111,7 @@ function BadgeCard({ badge }: { badge: Badge }) {
           <div className="mt-1.5">
             <div className="h-1.5 overflow-hidden rounded-full bg-surface-sunken">
               <div
-                className="h-full rounded-full bg-accent transition-[width] duration-[--dur-slow]"
+                className="h-full rounded-full bg-accent transition-[width] duration-[var(--dur-slow)]"
                 style={{
                   width: `${Math.min(100, (badge.progress.current / badge.progress.target) * 100)}%`,
                 }}

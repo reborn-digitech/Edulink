@@ -25,7 +25,7 @@ export async function DutyCards({ ctx, t }: { ctx: Pick<ActiveContext, "role" | 
             const page = DUTY_PAGES[duty];
             const open = page && modulesOn.includes(page.module);
             return (
-              <li key={duty} data-duty={duty} className="rounded-[--radius-md] border border-border px-3 py-2.5">
+              <li key={duty} data-duty={duty} className="rounded-[var(--radius-md)] border border-border px-3 py-2.5">
                 <p className="text-sm font-semibold text-fg">{t(`duties.${duty}.name`)}</p>
                 <p className="text-xs leading-relaxed text-fg-muted">{t(`duties.${duty}.what`)}</p>
                 {open ? (

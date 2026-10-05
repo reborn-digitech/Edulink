@@ -39,7 +39,7 @@ export default async function LabBatchesPage({ searchParams }: { searchParams: P
     <div className="space-y-6">
       <PageHeader title={t("streamRecords.batches.title")} description={t("streamRecords.batches.intro", { size: data.defaultSize })} back={{ href: "/admin/stream-records", label: t("streamRecords.title") }} />
       <RecordsFlash t={t} params={params} />
-      {!data.offered ? <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted">{t("streamRecords.batches.notOffered")}</p> : null}
+      {!data.offered ? <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted">{t("streamRecords.batches.notOffered")}</p> : null}
       {data.divisions.length === 0 ? (
         <EmptyState icon={<UsersThreeIcon weight="duotone" className="size-6" />} title={t("streamRecords.batches.noDivisions")} description={t("streamRecords.batches.noDivisionsBody")} action={<Button asChild size="sm" variant="secondary"><Link href="/admin/academics/terms">{t("streamRecords.batches.toAcademics")}</Link></Button>} />
       ) : (
@@ -50,7 +50,7 @@ export default async function LabBatchesPage({ searchParams }: { searchParams: P
               {d.batches.length === 0 ? <p className="text-sm text-fg-muted">{t("streamRecords.batches.none")}</p> : null}
               <div className="grid gap-3 sm:grid-cols-2">
                 {d.batches.map((b) => (
-                  <div key={b.id} className="rounded-[--radius-md] border border-border p-3">
+                  <div key={b.id} className="rounded-[var(--radius-md)] border border-border p-3">
                     <p className="text-sm font-semibold text-fg">{t("streamRecords.batchN", { name: b.name })} <span className="font-normal text-fg-muted">· {t("streamRecords.batches.members", { count: b.members.length, capacity: b.capacity })}</span></p>
                     <ul className="mt-1 text-sm text-fg">
                       {b.members.map((m) => (

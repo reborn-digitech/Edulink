@@ -50,7 +50,7 @@ export default async function HostelLeavePage({ searchParams }: { searchParams: 
                           <input type="hidden" name="back" value={back} />
                           <label className="text-xs text-fg-muted">
                             {t("hostel.decisionNote")}
-                            <input name="note" maxLength={300} className="mt-1 block min-h-11 w-56 max-w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg" />
+                            <input name="note" maxLength={300} className="mt-1 block min-h-11 w-56 max-w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg" />
                           </label>
                           <Button type="submit" size="sm" name="decision" value="APPROVE">
                             {t("hostel.approve")}

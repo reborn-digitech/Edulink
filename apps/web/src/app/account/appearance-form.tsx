@@ -157,7 +157,7 @@ export function AppearanceForm({
           )}
         </div>
 
-        <fieldset className="rounded-[--radius-md] border border-border p-4">
+        <fieldset className="rounded-[var(--radius-md)] border border-border p-4">
           <legend className="px-1 text-sm font-medium text-fg">{t("prefs.quietHours")}</legend>
           <p className="text-xs leading-relaxed text-fg-muted">{t("prefs.quietHoursHint")}</p>
 
@@ -180,7 +180,7 @@ export function AppearanceForm({
                   onChange={(e) =>
                     update({ quietHours: { ...draft.quietHours!, start: e.target.value } })
                   }
-                  className="mt-1 min-h-12 w-full rounded-[--radius-md] border border-border bg-surface px-3 outline-none focus:border-accent"
+                  className="mt-1 min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 outline-none focus:border-accent"
                 />
               </label>
               <label className="block">
@@ -193,7 +193,7 @@ export function AppearanceForm({
                   }
                   aria-invalid={Boolean(errors["quietHours.end"]) || undefined}
                   className={cn(
-                    "mt-1 min-h-12 w-full rounded-[--radius-md] border bg-surface px-3 outline-none",
+                    "mt-1 min-h-12 w-full rounded-[var(--radius-md)] border bg-surface px-3 outline-none",
                     errors["quietHours.end"]
                       ? "border-danger ring-2 ring-danger/25"
                       : "border-border focus:border-accent",
@@ -297,7 +297,7 @@ function OptionRow({
       <div
         role="radiogroup"
         aria-label={label}
-        className="mt-2 flex flex-wrap gap-1 rounded-[--radius-md] bg-surface-muted p-1"
+        className="mt-2 flex flex-wrap gap-1 rounded-[var(--radius-md)] bg-surface-muted p-1"
       >
         {options.map((option) => {
           const active = option.value === value;
@@ -309,7 +309,7 @@ function OptionRow({
               aria-checked={active}
               onClick={() => onChange(option.value)}
               className={cn(
-                "min-h-11 flex-1 rounded-[--radius-sm] px-3 text-sm font-medium transition-colors",
+                "min-h-11 flex-1 rounded-[var(--radius-sm)] px-3 text-sm font-medium transition-colors",
                 active ? "bg-surface text-fg shadow-sm" : "text-fg-muted hover:text-fg",
               )}
             >

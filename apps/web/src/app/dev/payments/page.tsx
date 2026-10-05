@@ -71,7 +71,7 @@ export default async function DevPaymentsPage({ searchParams }: { searchParams: 
       </div>
 
       {outcome && (
-        <p className="mb-4 rounded-[--radius-md] border border-border bg-surface-muted px-4 py-2 text-sm text-fg" data-testid="dev-payments-outcome">
+        <p className="mb-4 rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-2 text-sm text-fg" data-testid="dev-payments-outcome">
           <code>{outcome}</code>
         </p>
       )}

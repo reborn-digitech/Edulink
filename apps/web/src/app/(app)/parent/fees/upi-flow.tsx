@@ -82,7 +82,7 @@ export function UpiFlow({ studentMembershipId, demandIds, onClose }: { studentMe
   }
 
   return (
-    <div className="space-y-4 rounded-[--radius-md] border border-border bg-surface-muted p-4" aria-live="polite" data-testid="fees-upi-flow">
+    <div className="space-y-4 rounded-[var(--radius-md)] border border-border bg-surface-muted p-4" aria-live="polite" data-testid="fees-upi-flow">
       <div>
         <p className="text-sm font-semibold text-fg">{t("fees.upiFlowTitle")}</p>
         <p className="mt-0.5 text-xs leading-relaxed text-fg-muted">{t("fees.upiFlowIntro")}</p>

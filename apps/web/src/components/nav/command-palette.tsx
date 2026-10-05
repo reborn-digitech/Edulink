@@ -246,7 +246,7 @@ export function CommandPalette({
         aria-modal="true"
         aria-label={t("palette.dialogLabel")}
         onClick={(event) => event.stopPropagation()}
-        className="w-full max-w-lg overflow-hidden rounded-[--radius-lg] border border-border bg-surface shadow-lg animate-in-up"
+        className="w-full max-w-lg overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface shadow-lg animate-in-up"
       >
         <div className="flex items-center gap-3 border-b border-border px-4">
           <MagnifyingGlassIcon className="size-5 shrink-0 text-fg-subtle" aria-hidden="true" />
@@ -289,7 +289,7 @@ export function CommandPalette({
                       setQuery("");
                     }}
                     className={cn(
-                      "flex w-full items-center gap-3 rounded-[--radius-md] px-3 py-2.5 text-left",
+                      "flex w-full items-center gap-3 rounded-[var(--radius-md)] px-3 py-2.5 text-left",
                       index === cursor ? "bg-accent-soft text-accent-strong" : "text-fg",
                     )}
                   >

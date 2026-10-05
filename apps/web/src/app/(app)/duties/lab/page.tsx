@@ -69,7 +69,7 @@ export default async function LabDeskPage({ searchParams }: { searchParams: Prom
           ) : (
             <div className="grid gap-4 lg:grid-cols-2">
               {d.labs.map((lab) => (
-                <section key={lab.roomId} className="rounded-[--radius-md] border border-border p-3" data-lab={lab.roomId}>
+                <section key={lab.roomId} className="rounded-[var(--radius-md)] border border-border p-3" data-lab={lab.roomId}>
                   <h3 className="text-sm font-semibold text-fg">{lab.name} <span className="font-normal text-fg-muted">· {t("duties.lab.seats", { count: lab.capacity })}</span></h3>
                   {d.inventoryOn ? (
                     <>
@@ -138,7 +138,7 @@ export default async function LabDeskPage({ searchParams }: { searchParams: Prom
                 {d.toSign.map((r) => (
                   <li key={r.id}>
                     <label className="flex min-h-11 items-center gap-2 py-1.5">
-                      <input type="checkbox" name="record" value={r.id} defaultChecked className="size-4 accent-[--accent]" />
+                      <input type="checkbox" name="record" value={r.id} defaultChecked className="size-4 accent-[var(--accent)]" />
                       <span>{t("duties.lab.signLine", { course: r.courseCode, n: r.experimentNo, title: r.title, student: r.studentName, day: formatDateKey(r.performedOn, { dateStyle: "medium" }, locale) })}</span>
                     </label>
                   </li>

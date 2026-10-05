@@ -67,7 +67,7 @@ export default async function AlumniCollegePage({ searchParams }: { searchParams
               </div>
             ))}
             {bookings.map((b) => (
-              <div key={b.id} className="flex flex-wrap items-center justify-between gap-3 rounded-[--radius-md] border border-border p-2">
+              <div key={b.id} className="flex flex-wrap items-center justify-between gap-3 rounded-[var(--radius-md)] border border-border p-2">
                 <span>{b.title} · {b.studentName} · <span className="text-fg-muted">{b.purpose}</span></span>
                 {b.canClose ? (
                   <div className="flex gap-2">

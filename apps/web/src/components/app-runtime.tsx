@@ -186,7 +186,7 @@ export function AppRuntime({ owner }: { owner: string | null }) {
         className={cn(
           "fixed inset-x-0 top-0 z-[90] flex items-center justify-center gap-2",
           "bg-warn px-4 py-2 pt-[calc(env(safe-area-inset-top,0px)+0.5rem)] text-sm font-semibold text-white",
-          "transition-transform duration-[--dur] ease-[--ease-out]",
+          "transition-transform duration-[var(--dur)] ease-[var(--ease-out)]",
           online ? "-translate-y-full" : "translate-y-0",
         )}
       >
@@ -209,7 +209,7 @@ export function AppRuntime({ owner }: { owner: string | null }) {
           <button
             type="button"
             onClick={() => window.location.reload()}
-            className="rounded-[--radius-md] bg-accent px-4 py-2 text-sm font-semibold text-accent-fg"
+            className="rounded-[var(--radius-md)] bg-accent px-4 py-2 text-sm font-semibold text-accent-fg"
           >
             {t("ui.refresh")}
           </button>

@@ -39,7 +39,7 @@ export default async function RecruiterHome({ searchParams }: { searchParams: Pr
     return (
       <div className="space-y-6">
         <PageHeader title={t("recruiter.homeTitle", { company: ctx.recruiter.companyName })} description={t("recruiter.homeIntro")} />
-        <p className="rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm text-fg">{t("recruiter.refuseUnverified")}</p>
+        <p className="rounded-[var(--radius-md)] border border-warn/30 bg-warn-soft px-4 py-3 text-sm text-fg">{t("recruiter.refuseUnverified")}</p>
       </div>
     );
   }
@@ -47,7 +47,7 @@ export default async function RecruiterHome({ searchParams }: { searchParams: Pr
   return (
     <div className="space-y-6">
       <PageHeader title={t("recruiter.homeTitle", { company: company?.name ?? ctx.recruiter.companyName })} description={t("recruiter.homeIntro")} />
-      {!ctx.recruiter.emailVerified && <p className="rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm text-fg">{t("recruiter.verifyEmail")}</p>}
+      {!ctx.recruiter.emailVerified && <p className="rounded-[var(--radius-md)] border border-warn/30 bg-warn-soft px-4 py-3 text-sm text-fg">{t("recruiter.verifyEmail")}</p>}
       <Flash ok={ok} error={error} />
       {invitations.length ? (
         <Card>
@@ -127,7 +127,7 @@ export default async function RecruiterHome({ searchParams }: { searchParams: Pr
             <CardBody className="space-y-3 text-sm">
               {drives.length === 0 ? <EmptyState icon={<BriefcaseIcon weight="duotone" className="size-8" />} title={t("recruiter.noDrivesTitle")} description={t("recruiter.noDrivesBody")} /> : null}
               {drives.map((d) => (
-                <div key={d.id} className="flex flex-wrap items-center justify-between gap-3 rounded-[--radius-md] border border-border p-3">
+                <div key={d.id} className="flex flex-wrap items-center justify-between gap-3 rounded-[var(--radius-md)] border border-border p-3">
                   <div>
                     <Link className={LINK} href={`/recruiter/drives/${d.id}`}>{d.title}</Link>
                     <div className="text-xs text-fg-muted">

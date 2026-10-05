@@ -113,7 +113,7 @@ export function DayPanel({ periods }: { periods: PeriodRow[] }) {
       {clashes.length > 0 && (
         <p
           role="status"
-          className="rounded-[--radius-md] border border-warning/30 bg-warning-soft px-3 py-2 text-sm text-warning"
+          className="rounded-[var(--radius-md)] border border-warning/30 bg-warning-soft px-3 py-2 text-sm text-warning"
         >
           {clashes.map(([a, b]) => t("timetable.overlaps", { a, b })).join("; ")}
           {t("timetable.overlapNote")}
@@ -136,7 +136,7 @@ export function DayPanel({ periods }: { periods: PeriodRow[] }) {
           ) : (
             <li
               key={period.id}
-              className="flex flex-wrap items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
+              className="flex flex-wrap items-center gap-3 rounded-[var(--radius-sm)] bg-surface-muted p-3"
             >
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-sm font-medium text-fg">{periodLabel(period.name, t)}</span>
@@ -171,7 +171,7 @@ export function DayPanel({ periods }: { periods: PeriodRow[] }) {
       )}
 
       {retired.length > 0 && (
-        <details className="rounded-[--radius-sm] border border-border p-3">
+        <details className="rounded-[var(--radius-sm)] border border-border p-3">
           <summary className="cursor-pointer text-sm font-medium text-fg-muted">
             {retired.length === 1
               ? t("timetable.retiredCountOne")
@@ -263,13 +263,13 @@ function PeriodForm({
   return (
     <form
       onSubmit={submit}
-      className="space-y-3 rounded-[--radius-sm] border border-border bg-surface p-3"
+      className="space-y-3 rounded-[var(--radius-sm)] border border-border bg-surface p-3"
       noValidate
     >
       {error && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
         >
           {error}
         </p>

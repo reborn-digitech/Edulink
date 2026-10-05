@@ -58,7 +58,7 @@ export function SlotManager({ slots }: { slots: Slot[] }) {
         {slots.map((slot) => (
           <li
             key={slot.id}
-            className="flex flex-wrap items-center gap-3 rounded-[--radius-md] border border-border p-3"
+            className="flex flex-wrap items-center gap-3 rounded-[var(--radius-md)] border border-border p-3"
           >
             <div className="min-w-0 flex-1">
               <p className="text-sm font-medium text-fg">
@@ -86,7 +86,7 @@ export function SlotManager({ slots }: { slots: Slot[] }) {
         ))}
       </ul>
 
-      <div className="space-y-2 rounded-[--radius-md] border border-border bg-surface-muted p-3">
+      <div className="space-y-2 rounded-[var(--radius-md)] border border-border bg-surface-muted p-3">
         <div className="flex flex-wrap gap-2">
           <label className="flex-1 text-xs text-fg-muted">
             {t("expert.starts")}
@@ -94,7 +94,7 @@ export function SlotManager({ slots }: { slots: Slot[] }) {
               type="datetime-local"
               value={start}
               onChange={(e) => setStart(e.target.value)}
-              className="mt-1 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
+              className="mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
             />
           </label>
           <label className="flex-1 text-xs text-fg-muted">
@@ -103,7 +103,7 @@ export function SlotManager({ slots }: { slots: Slot[] }) {
               type="datetime-local"
               value={end}
               onChange={(e) => setEnd(e.target.value)}
-              className="mt-1 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
+              className="mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
             />
           </label>
         </div>
@@ -112,7 +112,7 @@ export function SlotManager({ slots }: { slots: Slot[] }) {
           value={note}
           placeholder={t("expert.timeNotePlaceholder")}
           onChange={(e) => setNote(e.target.value)}
-          className="w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
+          className="w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
         />
         {error && <p className="text-sm font-medium text-danger">{error}</p>}
         <Button

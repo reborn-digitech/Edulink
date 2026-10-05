@@ -95,7 +95,7 @@ export function DirectoryControls({
           onChange={(e) => onType(e.target.value)}
           placeholder={t("people.searchPlaceholder")}
           aria-label={t("people.searchLabel")}
-          className="min-h-12 w-full rounded-[--radius-md] border border-border bg-surface pl-11 pr-11 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+          className="min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface pl-11 pr-11 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
         />
         {pending && (
           <span className="absolute right-11 top-1/2 -translate-y-1/2 text-fg-subtle">

@@ -52,7 +52,7 @@ export function LoginForm({ className }: { className?: string }) {
 
   if (magicSent) {
     return (
-      <div className={cn("rounded-[--radius-lg] border border-border bg-surface p-6 text-center", className)}>
+      <div className={cn("rounded-[var(--radius-lg)] border border-border bg-surface p-6 text-center", className)}>
         <div className="mx-auto mb-4 grid size-14 place-items-center rounded-full bg-accent-soft text-accent-strong animate-pop">
           <PaperPlaneTiltIcon weight="duotone" className="size-7" />
         </div>
@@ -72,7 +72,7 @@ export function LoginForm({ className }: { className?: string }) {
       {errors._form && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
         >
           {errors._form}
         </p>

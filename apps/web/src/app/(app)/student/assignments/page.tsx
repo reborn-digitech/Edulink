@@ -144,7 +144,7 @@ export default async function StudentAssignmentsPage({
                     </span>
                   </div>
                   {item.comment && (
-                    <p className="mt-1.5 rounded-[--radius-sm] bg-surface-muted p-2.5 text-sm italic text-fg-muted">
+                    <p className="mt-1.5 rounded-[var(--radius-sm)] bg-surface-muted p-2.5 text-sm italic text-fg-muted">
                       &ldquo;{item.comment}&rdquo;
                     </p>
                   )}

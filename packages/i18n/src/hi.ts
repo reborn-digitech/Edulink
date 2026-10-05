@@ -5938,6 +5938,14 @@ export const hi: Dictionary = {
     reasonSpam: "स्पैम",
     reasonOther: "कुछ और",
   },
+  appError: {
+    title: "हमारी ओर से कुछ गड़बड़ हुई",
+    body: "यह पन्ना अभी नहीं दिख सका। फिर से कोशिश करें, या अपने मुख्य पन्ने पर लौटें।",
+    retry: "फिर से कोशिश करें",
+    home: "अपने मुख्य पन्ने पर लौटें",
+    reference: "संदर्भ: {digest}",
+  },
+
   notFound: {
     title: "वह पन्ना यहाँ नहीं है",
     body: "लिंक पुराना हो सकता है, या जिस चीज़ की ओर वह इशारा करता था वह हट गई होगी। कुछ टूटा नहीं है।",
@@ -13292,6 +13300,7 @@ export const hi: Dictionary = {
     expulsionLine: "{hostel} {room} · {date} से · प्रस्तावक {name}",
     refuseRefundNotCancelled: "स्लैब से अलग धनवापसी रद्द प्रवेश पर ही माँगी जाती है।",
     refuseRefundAlreadyAsked: "वह धनवापसी पहले से प्रधानाचार्य के पास है।",
+    refuseOwnAsk: "इस पर कोई और निर्णय करेगा: यह अनुरोध आपने ही किया था।",
     refuseRefundDecided: "प्रधानाचार्य उस धनवापसी पर पहले ही निर्णय कर चुके हैं।",
     refuseRefundSameAsSlab: "स्लैब यही देता है। अलग राशि माँगें, या धनवापसी दर्ज करें।",
     refuseRefundWaiting: "स्लैब से अलग माँगी गई धनवापसी पर प्रधानाचार्य ने अभी उत्तर नहीं दिया है।",

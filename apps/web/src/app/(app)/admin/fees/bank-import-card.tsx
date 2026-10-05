@@ -66,7 +66,7 @@ export function BankImportCard() {
     <div className="space-y-4" data-testid="bank-import">
       <form onSubmit={check} noValidate className="space-y-3">
         {error && (
-          <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+          <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
             {error}
           </p>
         )}
@@ -103,7 +103,7 @@ export function BankImportCard() {
             <Badge tone="neutral">{t("officeBulk.bankCountAlready", { count: preview.counts.already })}</Badge>
             <Badge tone={preview.counts.unmatched > 0 ? "warn" : "neutral"}>{t("officeBulk.bankCountUnmatched", { count: preview.counts.unmatched })}</Badge>
           </p>
-          <TableScroll className="rounded-[--radius-md] border border-border">
+          <TableScroll className="rounded-[var(--radius-md)] border border-border">
             <table className="w-full text-sm">
               <thead className="text-left text-xs uppercase tracking-wide text-fg-muted">
                 <tr>

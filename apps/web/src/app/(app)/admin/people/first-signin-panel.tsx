@@ -44,14 +44,14 @@ export function FirstSignInPanel({
   }
 
   return (
-    <div className="w-full rounded-[--radius-md] border border-border bg-surface-muted p-3" data-testid="first-signin-panel">
+    <div className="w-full rounded-[var(--radius-md)] border border-border bg-surface-muted p-3" data-testid="first-signin-panel">
       <p className="text-sm font-semibold text-fg">{t("firstSignin.panelTitle", { name })}</p>
       <p className="mt-1 text-xs leading-relaxed text-fg-muted">{t("firstSignin.panelBody", { name, url, days: FIRST_SIGNIN_TTL_DAYS })}</p>
 
       {error && <p role="alert" className="mt-2 text-sm font-medium text-danger">{error}</p>}
 
       {issued && (
-        <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 rounded-[--radius-md] bg-surface p-3 text-sm">
+        <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 rounded-[var(--radius-md)] bg-surface p-3 text-sm">
           <dt className="text-fg-muted">{t("firstSignin.handleLabel")}</dt>
           <dd className="font-mono font-semibold text-fg" data-testid="issued-handle">{issued.handle}</dd>
           <dt className="text-fg-muted">{t("firstSignin.codeLabel")}</dt>

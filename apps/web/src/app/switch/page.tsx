@@ -150,9 +150,9 @@ export default async function SwitchPage() {
       {(session.user.isAppAdmin || session.user.isSuperuser) && (
         <Link
           href="/appadmin"
-          className="mt-3 flex items-center gap-3 rounded-[--radius-md] border border-dashed border-border p-4 text-left transition-colors hover:bg-surface-muted"
+          className="mt-3 flex items-center gap-3 rounded-[var(--radius-md)] border border-dashed border-border p-4 text-left transition-colors hover:bg-surface-muted"
         >
-          <span className="grid size-11 shrink-0 place-items-center rounded-[--radius-md] bg-surface-muted text-fg-muted">
+          <span className="grid size-11 shrink-0 place-items-center rounded-[var(--radius-md)] bg-surface-muted text-fg-muted">
             <BuildingsIcon weight="duotone" className="size-5" />
           </span>
           <span className="min-w-0 flex-1">
@@ -168,9 +168,9 @@ export default async function SwitchPage() {
       {session.user.isSuperuser && (
         <Link
           href="/root"
-          className="mt-3 flex items-center gap-3 rounded-[--radius-md] border border-dashed border-border p-4 text-left transition-colors hover:bg-surface-muted"
+          className="mt-3 flex items-center gap-3 rounded-[var(--radius-md)] border border-dashed border-border p-4 text-left transition-colors hover:bg-surface-muted"
         >
-          <span className="grid size-11 shrink-0 place-items-center rounded-[--radius-md] bg-surface-muted text-fg-muted">
+          <span className="grid size-11 shrink-0 place-items-center rounded-[var(--radius-md)] bg-surface-muted text-fg-muted">
             <BuildingsIcon weight="duotone" className="size-5" />
           </span>
           <span className="min-w-0 flex-1">
@@ -209,7 +209,7 @@ function ContextButton({
         aria-label={[subtitle, title].join(" — ")}
         className="flex w-full items-center gap-3 p-4 text-left"
       >
-        <span className="grid size-11 shrink-0 place-items-center rounded-[--radius-md] bg-accent-soft text-sm font-bold uppercase text-accent-strong">
+        <span className="grid size-11 shrink-0 place-items-center rounded-[var(--radius-md)] bg-accent-soft text-sm font-bold uppercase text-accent-strong">
           {title.slice(0, 2)}
         </span>
         <span className="min-w-0 flex-1">

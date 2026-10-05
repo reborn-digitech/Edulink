@@ -105,7 +105,7 @@ export function InviteForm({
 
     return (
       <div className={cn("space-y-4", className)}>
-        <div className="rounded-[--radius-lg] border border-border bg-surface p-6 text-center">
+        <div className="rounded-[var(--radius-lg)] border border-border bg-surface p-6 text-center">
           <div className="mx-auto mb-4 grid size-16 place-items-center rounded-full bg-ok-soft text-ok animate-confetti">
             <CheckCircleIcon weight="fill" className="size-10" />
           </div>
@@ -134,7 +134,7 @@ export function InviteForm({
 
         {/* Everything that did NOT go through, stated plainly. */}
         {(skipped.length > 0 || failed.length > 0 || result.problems.length > 0) && (
-          <div className="rounded-[--radius-lg] border border-warn/40 bg-warn-soft p-4">
+          <div className="rounded-[var(--radius-lg)] border border-warn/40 bg-warn-soft p-4">
             <h3 className="flex items-center gap-2 text-sm font-bold text-warn">
               <WarningIcon weight="fill" className="size-4" />
               {t("invites.notSent", {
@@ -175,7 +175,7 @@ export function InviteForm({
       {error && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
         >
           {error}
         </p>
@@ -246,14 +246,14 @@ export function InviteForm({
           onChange={(e) => setText(e.target.value)}
           rows={8}
           placeholder={"name,email,subjects\nPriya Raman,priya@school.org,Maths;Science\nTom Fielding,tom@school.org,English"}
-          className="mt-1.5 w-full rounded-[--radius-md] border border-border bg-surface p-3.5 font-mono text-sm leading-relaxed outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+          className="mt-1.5 w-full rounded-[var(--radius-md)] border border-border bg-surface p-3.5 font-mono text-sm leading-relaxed outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
         />
         <p className="mt-1 text-xs text-fg-muted">{t("invites.headerOptional")}</p>
       </div>
 
       {/* Live preview from the real parser. */}
       {preview && (
-        <div className="rounded-[--radius-md] border border-border bg-surface-muted p-3.5">
+        <div className="rounded-[var(--radius-md)] border border-border bg-surface-muted p-3.5">
           <p className="text-sm font-semibold text-fg">
             {t("invites.readyToInvite", { count: preview.valid.length })}
             {preview.problems.length > 0 && (
@@ -325,7 +325,7 @@ export function InviteForm({
             : t("invites.sendInvitations")}
       </Button>
 
-      <p className="rounded-[--radius-md] bg-surface-muted p-3.5 text-xs leading-relaxed text-fg-muted">
+      <p className="rounded-[var(--radius-md)] bg-surface-muted p-3.5 text-xs leading-relaxed text-fg-muted">
         {t("invites.orShareCodePrefix")}{" "}
         <code className="rounded bg-surface px-1.5 py-0.5 font-semibold text-fg">{schoolCode}</code>{" "}
         {t("invites.orShareCodeSuffix")}

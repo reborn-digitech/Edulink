@@ -59,7 +59,7 @@ export default async function ThreadPage({ params }: { params: Promise<{ threadI
         {t("remarks.all")}
       </Link>
 
-      <header className="flex items-start gap-3 rounded-[--radius-lg] border border-border bg-surface p-4">
+      <header className="flex items-start gap-3 rounded-[var(--radius-lg)] border border-border bg-surface p-4">
         <PersonLink membershipId={thread.student.membershipId} name={thread.student.fullName} className="shrink-0 rounded-full">
           <Avatar avatarKey={thread.student.avatarKey} name={thread.student.fullName} size="md" />
         </PersonLink>
@@ -106,7 +106,7 @@ export default async function ThreadPage({ params }: { params: Promise<{ threadI
               </p>
               <div
                 className={cn(
-                  "mt-1 inline-block whitespace-pre-wrap rounded-[--radius-lg] px-4 py-2.5 text-left text-[0.9375rem] leading-relaxed",
+                  "mt-1 inline-block whitespace-pre-wrap rounded-[var(--radius-lg)] px-4 py-2.5 text-left text-[0.9375rem] leading-relaxed",
                   message.mine
                     ? "bg-accent text-accent-fg"
                     : "border border-border bg-surface text-fg",
@@ -127,7 +127,7 @@ export default async function ThreadPage({ params }: { params: Promise<{ threadI
       </ol>
 
       {thread.closedAt ? (
-        <p className="mt-6 rounded-[--radius-md] bg-surface-muted p-4 text-center text-sm text-fg-muted">
+        <p className="mt-6 rounded-[var(--radius-md)] bg-surface-muted p-4 text-center text-sm text-fg-muted">
           {t("remarks.closed")}
         </p>
       ) : (

@@ -75,9 +75,9 @@ export function AttachmentList({
           {attachments.map((attachment) => (
             <li
               key={attachment.fileId}
-              className="flex items-center gap-2.5 rounded-[--radius-md] border border-border bg-surface p-2.5"
+              className="flex items-center gap-2.5 rounded-[var(--radius-md)] border border-border bg-surface p-2.5"
             >
-              <span className="grid size-9 shrink-0 place-items-center rounded-[--radius-sm] bg-surface-muted text-fg-muted">
+              <span className="grid size-9 shrink-0 place-items-center rounded-[var(--radius-sm)] bg-surface-muted text-fg-muted">
                 <KindIcon mime={attachment.mime} />
               </span>
 

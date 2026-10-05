@@ -76,7 +76,7 @@ export function BulkReview({
                     value={reason}
                     onChange={(e) => setReason(e.target.value)}
                     placeholder={t("bulletin.bulkReasonPlaceholder")}
-                    className="min-w-64 flex-1 rounded-[--radius-md] border border-border bg-surface px-3 py-1.5 text-sm text-fg"
+                    className="min-w-64 flex-1 rounded-[var(--radius-md)] border border-border bg-surface px-3 py-1.5 text-sm text-fg"
                   />
                   <Button size="sm" variant="danger" loading={pending} disabled={reason.trim().length < 3} onClick={() => run(author.authorUserId, "REJECT")}>
                     {t("bulletin.bulkRejectCta", { count: author.count })}

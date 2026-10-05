@@ -100,7 +100,7 @@ export function StaffRecordPanel({
   );
 
   return (
-    <div className="w-full rounded-[--radius-md] border border-border bg-surface-muted p-3" data-testid="staff-record-panel">
+    <div className="w-full rounded-[var(--radius-md)] border border-border bg-surface-muted p-3" data-testid="staff-record-panel">
       <p className="text-sm font-semibold text-fg">{t("staff.title", { name })}</p>
       <p className="mt-1 text-xs leading-relaxed text-fg-muted">{t("staff.body", { name })}</p>
       {error && <p role="alert" className="mt-2 text-sm font-medium text-danger">{error}</p>}

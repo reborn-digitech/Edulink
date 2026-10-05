@@ -45,7 +45,7 @@ export default async function TeacherContributionsPage() {
           </Button>
         }
       />
-      <p className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg" data-testid="gig-rule">
+      <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg" data-testid="gig-rule">
         {t("gigs.ruleLine", { free: settings.questionFreeCount, rate: money(settings.questionRatePaise), cap: settings.questionMonthlyCap })}
       </p>
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-5" data-testid="gig-standing">

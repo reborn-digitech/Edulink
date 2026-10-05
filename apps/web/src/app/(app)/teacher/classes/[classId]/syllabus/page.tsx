@@ -149,13 +149,13 @@ export default async function ClassSyllabusPage({ params, searchParams }: { para
               <CardHeader icon={<NotePencilIcon weight="duotone" className="size-5" />} title={t("syllabus.lessons")} description={t("syllabus.lessonsHint")} />
               <CardBody className="space-y-5">
                 {view.canEdit && (
-                  <section aria-label={t("syllabus.planLesson")} className="rounded-[--radius-md] border border-border p-3.5">
+                  <section aria-label={t("syllabus.planLesson")} className="rounded-[var(--radius-md)] border border-border p-3.5">
                     <h3 className="mb-3 text-sm font-semibold text-fg">{t("syllabus.planLesson")}</h3>
                     <LessonForm key={view.subject} classId={view.classId} subject={view.subject} today={today} units={view.units.map((u) => ({ id: u.id, title: u.title }))} />
                   </section>
                 )}
                 {view.canEdit && (
-                  <section aria-label={t("planTemplates.title")} className="rounded-[--radius-md] border border-border p-3.5">
+                  <section aria-label={t("planTemplates.title")} className="rounded-[var(--radius-md)] border border-border p-3.5">
                     <h3 className="mb-1 text-sm font-semibold text-fg">{t("planTemplates.title")}</h3>
                     <p className="mb-3 text-xs text-fg-muted">{t("planTemplates.hint")}</p>
                     <ApplyTemplatePanel key={`${view.subject}:${templates.length}`} classId={view.classId} templates={templates} units={view.units.map((u) => ({ id: u.id, title: u.title }))} today={today} />

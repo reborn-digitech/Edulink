@@ -79,7 +79,7 @@ export function ForgotForm({
   if (step === "code") {
     return (
       <form onSubmit={finish} className={cn("space-y-4", className)} noValidate>
-        <div className="rounded-[--radius-md] border border-border bg-surface-muted p-4">
+        <div className="rounded-[var(--radius-md)] border border-border bg-surface-muted p-4">
           <div className="mb-2 grid size-10 place-items-center rounded-full bg-accent-soft text-accent-strong">
             <PaperPlaneTiltIcon weight="duotone" className="size-5" />
           </div>
@@ -107,7 +107,7 @@ export function ForgotForm({
         {errors._form && (
           <p
             role="alert"
-            className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
+            className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
           >
             {errors._form}
           </p>
@@ -172,7 +172,7 @@ export function ForgotForm({
       {errors._form && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
         >
           {errors._form}
         </p>

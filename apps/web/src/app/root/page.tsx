@@ -73,13 +73,13 @@ export default async function RootPage({
         </Button>
       </div>
 
-      <p className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg-muted">{t("root.dashboardIntro")}</p>
+      <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg-muted">{t("root.dashboardIntro")}</p>
 
       {/* The tiles: every real live school, whatever the chips below say. */}
       <section aria-label={t("root.dashboard")}>
         <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
           {tiles.map((tile) => (
-            <li key={tile.label} className="rounded-[--radius-md] border border-border bg-surface px-3 py-2.5">
+            <li key={tile.label} className="rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2.5">
               <p className="text-[0.6875rem] font-semibold uppercase tracking-wide text-fg-muted">{tile.label}</p>
               <p className={`mt-0.5 text-lg font-bold tabular-nums ${tile.tone === "danger" ? "text-danger" : tile.tone === "warn" ? "text-warn" : tile.tone === "ok" ? "text-ok" : "text-fg"}`}>{tile.value}</p>
             </li>

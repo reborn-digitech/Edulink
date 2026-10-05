@@ -109,7 +109,7 @@ export function ClassForm({
 
   if (created) {
     return (
-      <div className={cn("rounded-[--radius-lg] border border-border bg-surface p-6 text-center", className)}>
+      <div className={cn("rounded-[var(--radius-lg)] border border-border bg-surface p-6 text-center", className)}>
         <div className="mx-auto mb-4 grid size-16 place-items-center rounded-full bg-ok-soft text-ok animate-confetti">
           <CheckCircleIcon weight="fill" className="size-10" />
         </div>
@@ -117,7 +117,7 @@ export function ClassForm({
         <p className="mx-auto mt-2 max-w-sm text-sm text-fg-muted">{t("classes.readyBody")}</p>
 
         <div className="mx-auto mt-5 flex max-w-xs items-center gap-2">
-          <code className="flex-1 rounded-[--radius-md] border-2 border-dashed border-accent bg-accent-soft px-4 py-3.5 text-xl font-bold tracking-[0.15em] text-accent-strong">
+          <code className="flex-1 rounded-[var(--radius-md)] border-2 border-dashed border-accent bg-accent-soft px-4 py-3.5 text-xl font-bold tracking-[0.15em] text-accent-strong">
             {created.joinCode}
           </code>
           <Button
@@ -167,7 +167,7 @@ export function ClassForm({
       {errors._form && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
         >
           {errors._form}
         </p>
@@ -203,7 +203,7 @@ export function ClassForm({
             <select
               value={gradeLevel}
               onChange={(e) => setGradeLevel(e.target.value)}
-              className="mt-1 min-h-12 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-[0.9375rem] text-fg outline-none focus:border-accent"
+              className="mt-1 min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-[0.9375rem] text-fg outline-none focus:border-accent"
             >
               <option value="">{t("classes.notTiedToGrade")}</option>
               {grades.map((grade) => (
@@ -262,7 +262,7 @@ export function ClassForm({
               aria-label={t(option.nameKey)}
               className={cn(
                 "grid size-11 place-items-center rounded-full transition-transform active:scale-90",
-                color === option.value && "ring-2 ring-accent ring-offset-2 ring-offset-[--surface]",
+                color === option.value && "ring-2 ring-accent ring-offset-2 ring-offset-[var(--surface)]",
               )}
             >
               <span className="size-7 rounded-full" style={{ backgroundColor: option.value }} />
@@ -294,7 +294,7 @@ export function ClassForm({
                 }
                 aria-pressed={teacherId === teacher.membershipId}
                 className={cn(
-                  "flex w-full items-center gap-3 rounded-[--radius-md] border p-2.5 text-left transition-colors",
+                  "flex w-full items-center gap-3 rounded-[var(--radius-md)] border p-2.5 text-left transition-colors",
                   teacherId === teacher.membershipId
                     ? "border-accent bg-accent-soft"
                     : "border-border hover:bg-surface-muted",

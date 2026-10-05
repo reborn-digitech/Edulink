@@ -95,7 +95,7 @@ export function GradeWeights({
                 placeholder={t("teacher.categoryPlaceholder")}
                 aria-label={t("teacher.categoryName", { n: index + 1 })}
                 onChange={(e) => update(index, { name: e.target.value })}
-                className="min-w-0 flex-1 rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
+                className="min-w-0 flex-1 rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
               />
               <div className="flex items-center gap-1.5">
                 <input
@@ -108,7 +108,7 @@ export function GradeWeights({
                   placeholder="20"
                   aria-label={t("teacher.categoryWeight", { n: index + 1 })}
                   onChange={(e) => update(index, { percent: e.target.value })}
-                  className="w-20 rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-right text-sm tabular-nums text-fg"
+                  className="w-20 rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-right text-sm tabular-nums text-fg"
                 />
                 <span className="text-sm text-fg-muted">%</span>
               </div>
@@ -154,7 +154,7 @@ export function GradeWeights({
         </div>
 
         {unweighted.length > 0 && (
-          <p className="flex items-start gap-2 rounded-[--radius-md] border border-warn/40 bg-warn-soft/40 p-3 text-xs text-fg">
+          <p className="flex items-start gap-2 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft/40 p-3 text-xs text-fg">
             <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0 text-warn" />
             <span>
               {t("teacher.unweightedWarning", {

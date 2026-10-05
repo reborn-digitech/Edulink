@@ -52,7 +52,7 @@ export function PausePanel({
   }
 
   return (
-    <div className="w-full rounded-[--radius-md] border border-warn/30 bg-warn-soft p-3">
+    <div className="w-full rounded-[var(--radius-md)] border border-warn/30 bg-warn-soft p-3">
       <p className="text-sm font-semibold text-fg">{t("people.pauseTitle", { name })}</p>
       <p className="mt-1 text-xs leading-relaxed text-fg-muted">{t("people.pauseBody")}</p>
 
@@ -64,7 +64,7 @@ export function PausePanel({
           rows={2}
           maxLength={500}
           onChange={(event) => setReason(event.target.value)}
-          className="mt-1 w-full rounded-[--radius-sm] border border-border bg-surface px-3 py-2 text-sm text-fg outline-none focus:border-accent"
+          className="mt-1 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 py-2 text-sm text-fg outline-none focus:border-accent"
         />
       </label>
 

@@ -2,9 +2,10 @@
  * The request header the middleware writes on every request it sees — "<METHOD>
  * <pathname>" — so the session's role gate (role-gate.ts, read by getSession)
  * knows which door or page a session is being resolved for. Set by the
- * middleware, overwriting whatever a client sent, on every path it matches
- * (every page and every /api/v1 door). A client can only ever make its own
- * request narrower with it: the gate denies or passes, never widens.
+ * middleware, overwriting whatever a client sent, on EVERY request but Next's
+ * own /_next/ files (A3-S-3, 5 Oct 2026: it once skipped a path ending in an
+ * extension, and a client's own stamp reached the gate there). The gate trusts
+ * it only because nothing reaches the app without passing the middleware.
  *
  * Its own file, importing nothing, because the middleware runs on the edge.
  */

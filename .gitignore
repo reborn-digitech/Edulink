@@ -20,3 +20,6 @@ dist/
 next-env.d.ts
 .tmp-orphan-store/
 .pg-client/
+
+# Load-test bearer sessions written by ops/load/college-check.ts --emit-cookies (A3-S-13, 5 Oct 2026): live tokens, never committed.
+ops/load/*cookies*.json

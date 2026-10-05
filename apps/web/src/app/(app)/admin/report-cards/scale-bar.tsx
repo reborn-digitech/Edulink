@@ -45,7 +45,7 @@ export function ScaleBar({ bands }: { bands: LiveBand[] }) {
 
   return (
     <div className="space-y-1.5" data-testid="scale-bar">
-      <div role="img" aria-label={[t("reportCardConfig.scaleBar"), ...stretches.map((s) => t("reportCardConfig.bandRange", { label: s.band.label, from: s.from, to: s.to }))].join(". ")} className="flex h-10 w-full overflow-hidden rounded-[--radius-md] border border-border bg-surface-muted">
+      <div role="img" aria-label={[t("reportCardConfig.scaleBar"), ...stretches.map((s) => t("reportCardConfig.bandRange", { label: s.band.label, from: s.from, to: s.to }))].join(". ")} className="flex h-10 w-full overflow-hidden rounded-[var(--radius-md)] border border-border bg-surface-muted">
         {uncovered > 0 && <div style={{ width: `${uncovered}%` }} className="bg-[repeating-linear-gradient(45deg,transparent,transparent_4px,var(--warn)_4px,var(--warn)_5px)] opacity-60" data-testid="scale-gap" />}
         {stretches
           .filter((s) => s.to >= s.from)

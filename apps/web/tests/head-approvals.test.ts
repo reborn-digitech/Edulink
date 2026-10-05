@@ -157,3 +157,27 @@ describe("the head's own record", () => {
     ]);
   });
 });
+
+describe("four eyes on a head's approval (A3-S-4)", () => {
+  it("refuses the person who asked or proposed, though they also hold PRINCIPAL; another principal still decides", async () => {
+    // One person holding ADMIN and PRINCIPAL at the college, as the ZZ Banyan multi-role accounts do.
+    const both = await db.user.create({ data: { name: "ZZ Heads Both", email: `zz-heads-both-${STAMP}@test.invalid`, isMinor: false }, select: { id: true } });
+    ids.users.push(both.id);
+    await db.membership.createMany({ data: [{ userId: both.id, schoolId: ids.college, role: "ADMIN", status: "ACTIVE" }, { userId: both.id, schoolId: ids.college, role: "PRINCIPAL", status: "ACTIVE" }] });
+    const app = await db.collegeApplication.findUniqueOrThrow({ where: { id: ids.app }, select: { roundId: true, programmeId: true } });
+    const second = (await db.collegeApplication.create({ data: { schoolId: ids.college, roundId: app.roundId, programmeId: app.programmeId, number: 2, applicantName: "ZZ Heads Second", category: "OPEN", quota: "CAP", status: "CANCELLED", cancelledAt: new Date(), cancelReason: "ZZ moved", refundPaise: 1_000_000, refundSlab: "WITHIN_15_AFTER", refundRecordedAt: new Date() }, select: { id: true } })).id;
+    await askRefundException(await ctxAs(both.id, "ADMIN"), second, { refundPaise: 1_500_000, reason: "ZZ asked by the dual holder" });
+    await expect(decideRefundException(await ctxAs(both.id, "PRINCIPAL"), second, { approve: true, note: "" })).rejects.toMatchObject({ key: "collegeDesks.refuseOwnAsk" });
+    expect((await db.collegeApplication.findUniqueOrThrow({ where: { id: second }, select: { refundAskStatus: true } })).refundAskStatus).toBe("ASKED");
+    await decideRefundException(await ctxAs(ids.principal, "PRINCIPAL"), second, { approve: false, note: "ZZ another head" });
+
+    const pupil = await db.user.create({ data: { name: "ZZ Heads Boarder Three", email: `zz-heads-boarder3-${STAMP}@test.invalid`, isMinor: false }, select: { id: true } });
+    ids.users.push(pupil.id);
+    const member = await db.membership.create({ data: { userId: pupil.id, schoolId: ids.college, role: "STUDENT", status: "ACTIVE" }, select: { id: true } });
+    const room = await db.hostelAllotment.findUniqueOrThrow({ where: { id: ids.allotment }, select: { roomId: true } });
+    const place = (await db.hostelAllotment.create({ data: { schoolId: ids.college, membershipId: member.id, roomId: room.roomId, bed: 1, fromDate: "2026-07-01", status: "ACTIVE", allottedByUserId: ids.admin }, select: { id: true } })).id;
+    const x = await proposeExpulsion(await ctxAs(both.id, "ADMIN"), { allotmentId: place, reason: "ZZ proposed by the dual holder", incidentId: null, effectiveOn: "2099-01-01" });
+    await expect(decideExpulsion(await ctxAs(both.id, "PRINCIPAL"), x.id, { approve: true, note: "" })).rejects.toMatchObject({ key: "collegeDesks.refuseOwnAsk" });
+    expect((await decideExpulsion(await ctxAs(ids.principal, "PRINCIPAL"), x.id, { approve: false, note: "ZZ another head" })).status).toBe("REFUSED");
+  });
+});

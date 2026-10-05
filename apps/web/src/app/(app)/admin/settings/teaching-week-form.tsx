@@ -53,7 +53,7 @@ export function TeachingWeekForm({ initialDays }: { initialDays: number[] }) {
   return (
     <form onSubmit={submit} noValidate className="space-y-3" data-testid="teaching-week-form">
       {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
           {error}
         </p>
       )}
@@ -67,7 +67,7 @@ export function TeachingWeekForm({ initialDays }: { initialDays: number[] }) {
                 key={day}
                 className={`flex min-h-10 cursor-pointer items-center gap-2 rounded-full border px-3 text-sm transition-colors hover:bg-surface-muted ${on ? "border-accent bg-accent-soft font-medium text-accent-strong" : "border-border text-fg"}`}
               >
-                <input type="checkbox" name="teachingDay" value={day} checked={on} onChange={() => toggle(day)} className="size-4 accent-[--accent]" />
+                <input type="checkbox" name="teachingDay" value={day} checked={on} onChange={() => toggle(day)} className="size-4 accent-[var(--accent)]" />
                 {weekdayName(day, locale)}
               </label>
             );

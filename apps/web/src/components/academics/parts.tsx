@@ -129,7 +129,7 @@ export function WeekList({ t, locale, weekdays, cells, linkFor, streams = [] }: 
       {weekdays.map((d) => {
         const day = cells.filter((c) => c.weekday === d);
         return (
-          <section key={d} className="rounded-[--radius-md] border border-border p-3">
+          <section key={d} className="rounded-[var(--radius-md)] border border-border p-3">
             <h3 className="mb-2 text-sm font-semibold text-fg">
               <abbr title={weekdayName(d, locale)} className="no-underline">{weekdayShortName(d, locale)}</abbr>
             </h3>

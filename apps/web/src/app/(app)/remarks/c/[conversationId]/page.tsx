@@ -54,7 +54,7 @@ export default async function ConversationPage({ params }: { params: Promise<{ c
         {t("remarks.all")}
       </Link>
 
-      <header className="flex items-center gap-3 rounded-[--radius-lg] border border-border bg-surface p-4">
+      <header className="flex items-center gap-3 rounded-[var(--radius-lg)] border border-border bg-surface p-4">
         <PersonLink membershipId={other?.membershipId} name={names} className="shrink-0 rounded-full">
           <Avatar avatarKey={other?.avatarKey} name={names} size="md" />
         </PersonLink>
@@ -77,7 +77,7 @@ export default async function ConversationPage({ params }: { params: Promise<{ c
       </p>
 
       {conversation.messages.length === 0 ? (
-        <p className="mt-6 rounded-[--radius-md] bg-surface-muted p-4 text-center text-sm text-fg-muted">
+        <p className="mt-6 rounded-[var(--radius-md)] bg-surface-muted p-4 text-center text-sm text-fg-muted">
           {t("convo.sayHello", { name: other?.name ?? names })}
         </p>
       ) : (
@@ -96,7 +96,7 @@ export default async function ConversationPage({ params }: { params: Promise<{ c
                 </p>
                 <div
                   className={cn(
-                    "mt-1 inline-block whitespace-pre-wrap rounded-[--radius-lg] px-4 py-2.5 text-left text-[0.9375rem] leading-relaxed",
+                    "mt-1 inline-block whitespace-pre-wrap rounded-[var(--radius-lg)] px-4 py-2.5 text-left text-[0.9375rem] leading-relaxed",
                     message.mine ? "bg-accent text-accent-fg" : "border border-border bg-surface text-fg",
                   )}
                 >
@@ -114,7 +114,7 @@ export default async function ConversationPage({ params }: { params: Promise<{ c
 
       {/* A room with a former pupil (the alumni module): staff may close it; closed, the alumnus reads and does not write. */}
       {(conversation.canClose || conversation.closedAt) && (
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-[--radius-md] bg-surface-muted p-3 text-sm text-fg-muted">
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-[var(--radius-md)] bg-surface-muted p-3 text-sm text-fg-muted">
           {conversation.closedAt && <p>{conversation.canClose ? t("alumni.closedStaffNotice") : t("alumni.closedNotice")}</p>}
           {conversation.canClose && <CloseConversationButton conversationId={conversation.id} closed={conversation.closedAt !== null} />}
         </div>

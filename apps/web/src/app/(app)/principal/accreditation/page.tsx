@@ -71,7 +71,7 @@ export default async function AccreditationPage({ searchParams }: { searchParams
             <EmptyState title={t("iqac.nothingToSign")} />
           ) : (
             waiting.map((f) => (
-              <form key={f.id} action={signoffAction} className="space-y-3 rounded-[--radius-md] border border-border p-3" data-testid={`signoff-${f.id}`}>
+              <form key={f.id} action={signoffAction} className="space-y-3 rounded-[var(--radius-md)] border border-border p-3" data-testid={`signoff-${f.id}`}>
                 <input type="hidden" name="back" value={back} />
                 <input type="hidden" name="filingId" value={f.id} />
                 <p className="text-sm font-medium">

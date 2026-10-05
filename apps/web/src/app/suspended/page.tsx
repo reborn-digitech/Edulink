@@ -73,7 +73,7 @@ export default async function SuspendedPage() {
             {suspended.map((entry) => (
               <li
                 key={entry.schoolId}
-                className="rounded-[--radius-sm] bg-surface-muted px-3.5 py-2.5 text-sm font-medium text-fg"
+                className="rounded-[var(--radius-sm)] bg-surface-muted px-3.5 py-2.5 text-sm font-medium text-fg"
               >
                 {entry.schoolName}
               </li>

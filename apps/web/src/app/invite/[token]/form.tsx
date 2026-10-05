@@ -115,7 +115,7 @@ export function AcceptForm({
       {errors._form && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
         >
           {errors._form}
         </p>
@@ -236,7 +236,7 @@ export function AcceptForm({
                   }
                 }}
                 placeholder={t("invite.subjectPlaceholder")}
-                className="min-h-12 flex-1 rounded-[--radius-md] border border-border bg-surface px-3.5 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+                className="min-h-12 flex-1 rounded-[var(--radius-md)] border border-border bg-surface px-3.5 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
               />
               <Button type="button" variant="secondary" onClick={addSubject}>
                 Add

@@ -47,7 +47,7 @@ export function LegalNamePanel({ membershipId, name, initial, onClose }: { membe
   const unchanged = value.replace(/\s+/g, " ").trim() === initial;
 
   return (
-    <div className="w-full rounded-[--radius-md] border border-border bg-surface-muted p-3">
+    <div className="w-full rounded-[var(--radius-md)] border border-border bg-surface-muted p-3">
       <p className="text-sm font-semibold text-fg">{t("people.legalNameTitle", { name })}</p>
       <p className="mt-1 text-xs leading-relaxed text-fg-muted">{t("people.legalNameBody")}</p>
 

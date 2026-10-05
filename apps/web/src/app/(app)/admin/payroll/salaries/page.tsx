@@ -39,7 +39,7 @@ export default async function PayrollSalaries({ searchParams }: { searchParams: 
     <div className="space-y-6">
       <PayrollTop t={t} current="salaries" params={params} admin />
       {!list.sealingAvailable ? (
-        <p role="alert" className="flex items-start gap-2 rounded-[--radius-md] border border-warn/40 bg-warn-soft px-3 py-2 text-sm text-warn">
+        <p role="alert" className="flex items-start gap-2 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft px-3 py-2 text-sm text-warn">
           <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
           {t("payroll.noSealing")}
         </p>

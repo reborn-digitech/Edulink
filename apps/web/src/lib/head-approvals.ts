@@ -90,6 +90,8 @@ export async function decideRefundException(ctx: ActiveContext, applicationId: s
   await assertCollege(me.schoolId);
   const a = await db.collegeApplication.findFirst({ where: { id: applicationId, schoolId: me.schoolId }, select: { id: true, status: true, applicantName: true, refundPaise: true, refundAskPaise: true, refundAskStatus: true, refundAskedByUserId: true } });
   if (!a || !a.refundAskStatus) throw new AccessError("collegeOffice.notFound", "NOT_FOUND");
+  // FOUR EYES (A3-S-4, 5 Oct 2026): one person holding ADMIN and PRINCIPAL asked as the office and approved as the head.
+  if (a.refundAskedByUserId === me.userId) throw new AccessError("collegeDesks.refuseOwnAsk");
   const target = input.approve ? "APPROVED" : "REFUSED";
   if (a.refundAskStatus === target) return;
   if (a.refundAskStatus !== "ASKED") throw new AccessError("collegeDesks.refuseRefundDecided");
@@ -203,8 +205,10 @@ export async function proposeExpulsion(ctx: ActiveContext, input: { allotmentId:
 export async function decideExpulsion(ctx: ActiveContext, expulsionId: string, input: { approve: boolean; note: string }, now: Date = new Date()): Promise<Expulsion> {
   const me = caller(ctx, HEAD);
   await assertModuleOn(me.schoolId, "HOSTEL");
-  const x = await db.hostelExpulsion.findFirst({ where: { id: expulsionId, schoolId: me.schoolId }, select: { id: true, status: true, allotmentId: true, membershipId: true, effectiveOn: true } });
+  const x = await db.hostelExpulsion.findFirst({ where: { id: expulsionId, schoolId: me.schoolId }, select: { id: true, status: true, allotmentId: true, membershipId: true, effectiveOn: true, proposedByUserId: true } });
   if (!x) throw new AccessError("collegeDesks.refuseExpulsionMissing", "NOT_FOUND");
+  // FOUR EYES (A3-S-4): the head does not decide an expulsion they proposed themselves (as the office or the warden).
+  if (x.proposedByUserId === me.userId) throw new AccessError("collegeDesks.refuseOwnAsk");
   const target = input.approve ? "APPROVED" : "REFUSED";
   if (x.status === target) return (await expulsionRows(me.schoolId, { id: x.id }))[0]!;
   if (x.status !== "ASKED") throw new AccessError("collegeDesks.refuseExpulsionDecided");

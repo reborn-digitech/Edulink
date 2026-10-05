@@ -71,7 +71,7 @@ export function CurationRow({ entry }: { entry: CurationEntry }) {
   }
 
   return (
-    <div className="rounded-[--radius-md] border border-border bg-surface p-4">
+    <div className="rounded-[var(--radius-md)] border border-border bg-surface p-4">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="flex flex-wrap items-center gap-2 text-base font-bold text-fg">
@@ -134,7 +134,7 @@ export function CurationRow({ entry }: { entry: CurationEntry }) {
       )}
 
       {/* The papers: the KYC column. The ids open through /api/files, which admits the expert and the operator only. */}
-      <div className="mt-3 space-y-2 rounded-[--radius-md] border border-border bg-surface-muted p-3" data-testid="kyc-row">
+      <div className="mt-3 space-y-2 rounded-[var(--radius-md)] border border-border bg-surface-muted p-3" data-testid="kyc-row">
         <p className="flex flex-wrap items-center gap-2 text-sm">
           <span className="font-semibold text-fg">{t("expert.kycColumn")}</span>
           <Badge tone={KYC_TONE[kyc.status]} size="sm">

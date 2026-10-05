@@ -17,7 +17,7 @@ export async function ReviewDashboard({ rows }: { rows: TeacherReviewRow[] }) {
 
   if (rated.length === 0) {
     return (
-      <p className="rounded-[--radius-md] bg-surface-muted p-4 text-sm text-fg-muted">
+      <p className="rounded-[var(--radius-md)] bg-surface-muted p-4 text-sm text-fg-muted">
         {t("reviews.noRatingsYet")}
       </p>
     );
@@ -26,7 +26,7 @@ export async function ReviewDashboard({ rows }: { rows: TeacherReviewRow[] }) {
   return (
     <ul className="space-y-2">
       {rated.map((row) => (
-        <li key={row.membershipId} className="rounded-[--radius-md] border border-border bg-surface p-4">
+        <li key={row.membershipId} className="rounded-[var(--radius-md)] border border-border bg-surface p-4">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <p className="font-semibold text-fg">{row.name}</p>
             <p className="flex items-baseline gap-2 text-sm text-fg-muted">

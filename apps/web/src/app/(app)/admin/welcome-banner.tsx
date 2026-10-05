@@ -20,7 +20,7 @@ export function WelcomeBanner({ schoolName, schoolCode }: { schoolName: string; 
   if (dismissed) return null;
 
   return (
-    <div className="relative overflow-hidden rounded-[--radius-lg] border border-accent/30 bg-accent-soft p-5 animate-pop">
+    <div className="relative overflow-hidden rounded-[var(--radius-lg)] border border-accent/30 bg-accent-soft p-5 animate-pop">
       <button
         type="button"
         onClick={() => setDismissed(true)}
@@ -41,7 +41,7 @@ export function WelcomeBanner({ schoolName, schoolCode }: { schoolName: string; 
           <p className="mt-1 text-sm leading-relaxed text-fg-muted">{t("admin.welcomeBody")}</p>
 
           <div className="mt-3 flex flex-wrap items-center gap-2">
-            <code className="rounded-[--radius-sm] border-2 border-dashed border-accent bg-surface px-3 py-2 text-base font-bold tracking-[0.12em] text-accent-strong">
+            <code className="rounded-[var(--radius-sm)] border-2 border-dashed border-accent bg-surface px-3 py-2 text-base font-bold tracking-[0.12em] text-accent-strong">
               {schoolCode}
             </code>
             <Button

@@ -40,7 +40,7 @@ export default async function ReviewContributionPage({ params }: { params: Promi
         back={{ href: "/appadmin/contributions", label: t("gigs.queueTitle") }}
         meta={<Badge tone={TONE[c.status]}>{t(`gigs.status${c.status}`)}</Badge>}
       />
-      <div className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg" data-testid="gig-author">
+      <div className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg" data-testid="gig-author">
         <p className="font-medium">{t("gigs.from", { name: c.authorName, school: c.authorSchoolName })}</p>
         <p className="text-fg-muted">{t("gigs.authorStanding", { accepted: c.authorAccepted, paid: c.authorPaidThisMonth })}</p>
         {c.status === "SUBMITTED" && (
@@ -51,7 +51,7 @@ export default async function ReviewContributionPage({ params }: { params: Promi
       </div>
       <QuestionRead en={c.en} hi={c.hi} mr={c.mr} answerIndex={c.answerIndex} labels={{ en: t("gigs.english"), hi: t("gigs.hindi"), mr: t("gigs.marathi"), correct: t("gigs.correctOption"), solution: t("appadmin.solutionLabel") }} />
       {c.reviewNote && (
-        <div className="rounded-[--radius-md] border border-border bg-surface px-4 py-3">
+        <div className="rounded-[var(--radius-md)] border border-border bg-surface px-4 py-3">
           <p className="text-xs font-medium text-fg-muted">{t("gigs.noteLabel")}</p>
           <p className="mt-1 whitespace-pre-wrap break-words text-sm text-fg">{c.reviewNote}</p>
         </div>

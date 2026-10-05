@@ -69,7 +69,7 @@ export default async function AssignmentPage({
       </form>
 
       {assignment.body && (
-        <div className="whitespace-pre-wrap rounded-[--radius-md] border border-border bg-surface p-4 text-sm leading-relaxed text-fg-muted">
+        <div className="whitespace-pre-wrap rounded-[var(--radius-md)] border border-border bg-surface p-4 text-sm leading-relaxed text-fg-muted">
           {assignment.body}
         </div>
       )}

@@ -290,7 +290,7 @@ export function PromotionPlanner({ plan }: { plan: PromotionClass[] }) {
                   {row.extras.length > 0 && (
                     <ul className="space-y-2">
                       {row.extras.map((extra) => (
-                        <li key={extra.key} className="grid gap-2 rounded-[--radius-md] border border-dashed border-border p-2 sm:grid-cols-[1fr_auto_auto_auto] sm:items-end">
+                        <li key={extra.key} className="grid gap-2 rounded-[var(--radius-md)] border border-dashed border-border p-2 sm:grid-cols-[1fr_auto_auto_auto] sm:items-end">
                           <TextField
                             label={t("promotion.newClassName")}
                             value={extra.name}
@@ -363,7 +363,7 @@ export function PromotionPlanner({ plan }: { plan: PromotionClass[] }) {
                         )}
                       </div>
                       {row.open && (
-                        <div className="mt-2 rounded-[--radius-md] border border-border p-3">
+                        <div className="mt-2 rounded-[var(--radius-md)] border border-border p-3">
                           <p className="mb-2 text-xs text-fg-muted">{t("promotion.sortPupilsHint")}</p>
                           <ul className="grid gap-1 sm:grid-cols-2">
                             {klass.pupils.map((p) => {
@@ -396,7 +396,7 @@ export function PromotionPlanner({ plan }: { plan: PromotionClass[] }) {
                                         else assign.set(p.membershipId, e.target.value);
                                         update(klass.id, { assign });
                                       }}
-                                      className="max-w-[11rem] rounded-[--radius-sm] border border-border bg-surface px-1.5 py-0.5 text-xs text-fg"
+                                      className="max-w-[11rem] rounded-[var(--radius-sm)] border border-border bg-surface px-1.5 py-0.5 text-xs text-fg"
                                     >
                                       <option value={WITH}>{row.kind === "STAY" ? t("promotion.staysHere") : t("promotion.withTheClass")}</option>
                                       {pupilOptions.map((d) => (
@@ -445,7 +445,7 @@ export function PromotionPlanner({ plan }: { plan: PromotionClass[] }) {
               {t("promotion.go")}
             </Button>
           ) : (
-            <div className="rounded-[--radius-md] border border-warn/40 bg-warn-soft/50 p-3">
+            <div className="rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft/50 p-3">
               <p className="text-sm text-fg">{t("promotion.confirm", { moving: totals.moving, leaving: totals.leaving })}</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 <Button onClick={submit} loading={pending}>

@@ -40,7 +40,7 @@ export default async function ContentTeamPage() {
         </Button>
       </div>
 
-      <p className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg-muted">
+      <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg-muted">
         {t("root.contentTeamIntro")}
       </p>
 

@@ -48,7 +48,7 @@ export function RemovePanel({
   const [blockers, setBlockers] = useState<RemovalBlocker | null>(null);
 
   return (
-    <div className="w-full rounded-[--radius-md] border border-danger/30 bg-danger-soft p-3">
+    <div className="w-full rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft p-3">
       <p className="text-sm font-semibold text-fg">{t("people.removeTitle", { name })}</p>
       <p className="mt-1 text-xs leading-relaxed text-fg-muted">
         {t("people.removeBodyPrefix")}{" "}
@@ -62,7 +62,7 @@ export function RemovePanel({
       <p className="mt-2 text-xs leading-relaxed text-fg-muted">{t("people.accountUntouched")}</p>
 
       {error && (
-        <div role="alert" className="mt-3 rounded-[--radius-sm] bg-surface p-2.5">
+        <div role="alert" className="mt-3 rounded-[var(--radius-sm)] bg-surface p-2.5">
           <p className="text-xs font-semibold text-danger">{error}</p>
           {blockers && (
             <ul className="mt-1.5 space-y-0.5 text-xs text-fg-muted">

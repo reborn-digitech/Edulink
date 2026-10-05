@@ -96,20 +96,20 @@ export function MergeForm() {
           {/* Paired One/Many keys, whole sentences — the bold on the number
               went with the fragments, the way it did on the invitation page. */}
           <ul className="space-y-1.5 text-sm text-fg">
-            <li className="rounded-[--radius-sm] bg-surface-muted p-3">
+            <li className="rounded-[var(--radius-sm)] bg-surface-muted p-3">
               {counts.schools === 1
                 ? t("merge.schoolsMovedOne")
                 : t("merge.schoolsMovedMany", { count: counts.schools })}
             </li>
             {counts.certificates > 0 && (
-              <li className="rounded-[--radius-sm] bg-surface-muted p-3">
+              <li className="rounded-[var(--radius-sm)] bg-surface-muted p-3">
                 {counts.certificates === 1
                   ? t("merge.recordsMovedOne")
                   : t("merge.recordsMovedMany", { count: counts.certificates })}
               </li>
             )}
             {counts.children > 0 && (
-              <li className="rounded-[--radius-sm] bg-surface-muted p-3">
+              <li className="rounded-[var(--radius-sm)] bg-surface-muted p-3">
                 {counts.children === 1
                   ? t("merge.childrenMovedOne")
                   : t("merge.childrenMovedMany", { count: counts.children })}
@@ -141,7 +141,7 @@ export function MergeForm() {
           description={t("merge.nothingChangedYet")}
         />
         <CardBody className="space-y-5">
-          <div className="rounded-[--radius-md] border border-border bg-surface-muted p-4">
+          <div className="rounded-[var(--radius-md)] border border-border bg-surface-muted p-4">
             <p className="text-lg font-bold text-fg">{other.name}</p>
             <p className="mt-0.5 font-mono text-sm text-fg-muted">{other.loginName}</p>
 
@@ -150,7 +150,7 @@ export function MergeForm() {
                 {other.schools.map((school) => (
                   <li
                     key={school.schoolId}
-                    className="flex items-center justify-between gap-3 rounded-[--radius-sm] bg-surface p-3"
+                    className="flex items-center justify-between gap-3 rounded-[var(--radius-sm)] bg-surface p-3"
                   >
                     <span className="min-w-0">
                       <span className="block truncate text-sm font-medium text-fg">
@@ -190,7 +190,7 @@ export function MergeForm() {
             )}
           </div>
 
-          <div className="rounded-[--radius-md] border border-warn/30 bg-warn-soft p-4">
+          <div className="rounded-[var(--radius-md)] border border-warn/30 bg-warn-soft p-4">
             <p className="text-sm font-semibold text-fg">{t("merge.cannotBeUndone")}</p>
             <p className="mt-1 text-sm leading-relaxed text-fg-muted">
               {/* Whole sentence with a placeholder; the mono styling on the
@@ -202,7 +202,7 @@ export function MergeForm() {
           {error && (
             <p
               role="alert"
-              className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+              className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
             >
               {error}
             </p>
@@ -228,7 +228,7 @@ export function MergeForm() {
       {error && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
         >
           {error}
         </p>

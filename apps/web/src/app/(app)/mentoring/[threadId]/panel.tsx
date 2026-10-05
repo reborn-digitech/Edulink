@@ -51,7 +51,7 @@ export function MentorPanel({
   return (
     <div className="space-y-4">
       {isGuardian && awaitingConsent && (
-        <div className="space-y-2 rounded-[--radius-md] border border-warn/40 bg-warn-soft/30 p-3.5">
+        <div className="space-y-2 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft/30 p-3.5">
           <p className="text-sm font-medium text-fg">{t("mentoring.doYouAgree")}</p>
           <p className="text-xs text-fg-muted">{t("mentoring.canReadAndEnd")}</p>
           <div className="flex flex-wrap gap-2">

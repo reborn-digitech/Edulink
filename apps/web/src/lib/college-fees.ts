@@ -222,6 +222,8 @@ export async function decideConcession(ctx: ActiveContext, concessionId: string,
   const d = await collegeDesk(ctx, ["PRINCIPAL"]);
   const c = await db.feeConcession.findFirst({ where: { id: concessionId, schoolId: d.schoolId }, select: { id: true, approvalStatus: true, studentMembershipId: true, academicYearId: true, grantedByUserId: true } });
   if (!c) throw new AccessError("collegeOffice.notFound", "NOT_FOUND");
+  // FOUR EYES (A3-S-4, 5 Oct 2026): a concession over the limit is approved by someone other than whoever granted it.
+  if (c.grantedByUserId === d.userId) throw new AccessError("collegeDesks.refuseOwnAsk");
   if (c.approvalStatus !== "PENDING") return { approvalStatus: c.approvalStatus };
   const approvalStatus = input.approve ? "APPROVED" : "REFUSED";
   await db.$tenantTransaction(async (raw) => {

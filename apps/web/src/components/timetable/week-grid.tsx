@@ -237,7 +237,7 @@ export function WeekGridView({
                     <li
                       key={period.id}
                       className={cn(
-                        "flex gap-3 rounded-[--radius-sm] p-2.5",
+                        "flex gap-3 rounded-[var(--radius-sm)] p-2.5",
                         period.kind === "BREAK" ? "bg-surface-muted/60" : "bg-surface-muted",
                       )}
                     >
@@ -288,7 +288,7 @@ export function WeekGridView({
                   key={day.weekday}
                   scope="col"
                   className={cn(
-                    "rounded-[--radius-sm] p-2 text-left align-bottom",
+                    "rounded-[var(--radius-sm)] p-2 text-left align-bottom",
                     day.isToday && "bg-accent-soft",
                     // A shut day is told by its heading ("School shut") and a dashed, empty-looking cell, never by
                     // fading: opacity took the muted text under 4.5:1 (axe color-contrast, 17 nodes at 1280 px).
@@ -317,7 +317,7 @@ export function WeekGridView({
                     return (
                       <td
                         key={day.weekday}
-                        className="rounded-[--radius-sm] bg-surface-muted/60 p-2 align-top text-xs text-fg-muted"
+                        className="rounded-[var(--radius-sm)] bg-surface-muted/60 p-2 align-top text-xs text-fg-muted"
                       >
                         {periodLabel(period.name, t)}
                       </td>
@@ -327,7 +327,7 @@ export function WeekGridView({
                     <td
                       key={day.weekday}
                       className={cn(
-                        "rounded-[--radius-sm] p-2 align-top",
+                        "rounded-[var(--radius-sm)] p-2 align-top",
                         entries.length > 0 ? "bg-surface-muted" : "bg-surface-muted/40",
                         day.closed && "border border-dashed border-border bg-transparent",
                       )}

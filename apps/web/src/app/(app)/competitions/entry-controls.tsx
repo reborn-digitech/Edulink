@@ -89,7 +89,7 @@ export function EntryStatus({
   return (
     <div className="flex flex-wrap items-center gap-2.5">
       <span
-        className={`inline-flex items-center gap-1.5 rounded-[--radius-md] px-2.5 py-1.5 text-sm font-medium ${
+        className={`inline-flex items-center gap-1.5 rounded-[var(--radius-md)] px-2.5 py-1.5 text-sm font-medium ${
           awaitingConsent ? "bg-warn-soft text-warn" : "bg-ok-soft text-ok"
         }`}
       >
@@ -292,7 +292,7 @@ export function OrganiserControls({
       {/* The cross-school board. Says what it ranks, every time it is offered —
           an organiser deciding whether to publish one should not have to
           remember that it is schools and not children. */}
-      <div className="rounded-[--radius-sm] border border-border p-3">
+      <div className="rounded-[var(--radius-sm)] border border-border p-3">
         <p className="text-sm font-medium text-fg">
           {leaderboardEnabled ? t("competitions.boardPublished") : t("competitions.noBoard")}
         </p>
@@ -379,7 +379,7 @@ export function SubmitPanel({
         required
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? "entry-url-error" : undefined}
-        className={`w-full rounded-[--radius-md] border bg-surface px-3 py-2.5 text-[0.9375rem] ${
+        className={`w-full rounded-[var(--radius-md)] border bg-surface px-3 py-2.5 text-[0.9375rem] ${
           error ? "border-danger" : "border-border"
         }`}
       />
@@ -401,7 +401,7 @@ export function ResultBadge({ scoreMilli, rank }: { scoreMilli: number | null; r
   const t = useT();
   if (scoreMilli === null && rank === null) return null;
   return (
-    <p className="inline-flex items-center gap-2 rounded-[--radius-md] bg-ok-soft px-2.5 py-1.5 text-sm font-medium text-ok">
+    <p className="inline-flex items-center gap-2 rounded-[var(--radius-md)] bg-ok-soft px-2.5 py-1.5 text-sm font-medium text-ok">
       <TrophyIcon weight="fill" className="size-4" />
       {/* The ordinal ("3rd") is an English VALUE, like a date — the word
           around it is the part that translates. */}

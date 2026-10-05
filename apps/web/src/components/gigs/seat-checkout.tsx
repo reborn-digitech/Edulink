@@ -164,7 +164,7 @@ export function SeatCheckout({ checkout, paymentId, onClose }: { checkout?: GigC
 
   const amount = order ? formatPaise(order.amountPaise, locale) : null;
   return (
-    <div className="w-full space-y-3 rounded-[--radius-md] border border-border bg-surface-muted p-4" aria-live="polite" data-testid="seat-checkout">
+    <div className="w-full space-y-3 rounded-[var(--radius-md)] border border-border bg-surface-muted p-4" aria-live="polite" data-testid="seat-checkout">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <p className="text-sm font-semibold text-fg">{t("gigs.payTitle")}</p>
         {amount && <p className="text-sm font-semibold tabular-nums text-fg">{amount}</p>}

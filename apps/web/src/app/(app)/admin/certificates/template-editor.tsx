@@ -251,7 +251,7 @@ export function TemplateEditor({ view, palette, template, readOnly = false }: { 
     });
   }
 
-  const iconButton = "grid size-11 shrink-0 place-items-center rounded-[--radius-md] text-fg-muted hover:bg-surface-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-40";
+  const iconButton = "grid size-11 shrink-0 place-items-center rounded-[var(--radius-md)] text-fg-muted hover:bg-surface-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-40";
   const layoutLabel: Record<(typeof LAYOUT_TOGGLES)[number], string> = {
     showLogo: t("certificates.showLogo"),
     showAddress: t("certificates.showAddress"),
@@ -281,7 +281,7 @@ export function TemplateEditor({ view, palette, template, readOnly = false }: { 
     <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)]">
       <form onSubmit={submit} noValidate className="min-w-0 space-y-6" data-testid="certificate-template-editor">
         {readOnly && (
-          <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted" data-testid="office-sets-this">
+          <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted" data-testid="office-sets-this">
             {t("common.officeSetsThis")}
           </p>
         )}
@@ -336,7 +336,7 @@ export function TemplateEditor({ view, palette, template, readOnly = false }: { 
 
               <fieldset className="space-y-2" data-testid="template-rows">
                 <legend className="text-sm font-medium text-fg">{t("certificates.rows")}</legend>
-                {draft.rows.length === 0 && <p className="rounded-[--radius-md] border border-dashed border-border px-3 py-4 text-center text-sm text-fg-muted">{t("certificates.noRowsYet")}</p>}
+                {draft.rows.length === 0 && <p className="rounded-[var(--radius-md)] border border-dashed border-border px-3 py-4 text-center text-sm text-fg-muted">{t("certificates.noRowsYet")}</p>}
                 {/* The two columns are named once, above the rows; each row's own labels are a screen reader's. */}
                 {draft.rows.length > 0 && (
                   <div className="hidden grid-cols-[1.5rem_minmax(0,1fr)_minmax(0,1.3fr)] gap-2 px-3 text-xs font-medium text-fg-muted sm:grid" aria-hidden="true">
@@ -355,7 +355,7 @@ export function TemplateEditor({ view, palette, template, readOnly = false }: { 
                           if (el) rowEls.current.set(row.key, el);
                           else rowEls.current.delete(row.key);
                         }}
-                        className={`rounded-[--radius-md] border px-3 pb-1 pt-3 ${dragging === row.key ? "border-accent bg-accent-soft shadow-md" : "border-border"}`}
+                        className={`rounded-[var(--radius-md)] border px-3 pb-1 pt-3 ${dragging === row.key ? "border-accent bg-accent-soft shadow-md" : "border-border"}`}
                         data-testid="template-row"
                         data-dragging={dragging === row.key || undefined}
                       >
@@ -451,12 +451,12 @@ export function TemplateEditor({ view, palette, template, readOnly = false }: { 
           </Card>
 
           {unknown.length > 0 && !error && (
-            <p className="rounded-[--radius-md] border border-warn/40 bg-warn-soft px-3 py-2 text-sm text-fg" data-testid="unknown-details">
+            <p className="rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft px-3 py-2 text-sm text-fg" data-testid="unknown-details">
               {t("certificates.unknownDetails", { list: unknown.map((k) => `[[${k}]]`).join(", ") })}
             </p>
           )}
           {error && (
-            <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+            <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
               {error}
             </p>
           )}

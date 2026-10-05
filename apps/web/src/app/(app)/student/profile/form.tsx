@@ -86,7 +86,7 @@ export function ProfileForm({
       {errors._form && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
         >
           {errors._form}
         </p>
@@ -113,7 +113,7 @@ export function ProfileForm({
         <div
           role="radiogroup"
           aria-label={t("student.chooseAvatar")}
-          className="grid max-h-72 grid-cols-5 gap-2 overflow-y-auto rounded-[--radius-lg] border border-border bg-surface p-3 scrollbar-thin sm:grid-cols-6"
+          className="grid max-h-72 grid-cols-5 gap-2 overflow-y-auto rounded-[var(--radius-lg)] border border-border bg-surface p-3 scrollbar-thin sm:grid-cols-6"
         >
           {AVATAR_PRESETS.map((preset) => {
             const selected = preset === draft.avatarKey;
@@ -126,9 +126,9 @@ export function ProfileForm({
                 aria-label={describeAvatar(preset, t)}
                 onClick={() => setDraft((d) => ({ ...d, avatarKey: preset }))}
                 className={cn(
-                  "rounded-full transition-transform duration-[--dur-fast] active:scale-90",
+                  "rounded-full transition-transform duration-[var(--dur-fast)] active:scale-90",
                   selected
-                    ? "ring-[3px] ring-accent ring-offset-2 ring-offset-[--surface]"
+                    ? "ring-[3px] ring-accent ring-offset-2 ring-offset-[var(--surface)]"
                     : "hover:scale-105",
                 )}
               >
@@ -162,7 +162,7 @@ export function ProfileForm({
 
       {/* Read-only facts, kept together so they are easy to find and hard to
           mistake for something editable. */}
-      <dl className="divide-y divide-border rounded-[--radius-md] border border-border">
+      <dl className="divide-y divide-border rounded-[var(--radius-md)] border border-border">
         <div className="flex items-baseline justify-between gap-4 px-4 py-3">
           <dt className="text-sm text-fg-muted">{t("student.fullName")}</dt>
           <dd className="text-right text-sm font-medium text-fg">{fullName}</dd>
@@ -197,7 +197,7 @@ export function ProfileForm({
           onChange={(e) => setDraft((d) => ({ ...d, birthdate: e.target.value }))}
         />
       ) : (
-        <dl className="divide-y divide-border rounded-[--radius-md] border border-border">
+        <dl className="divide-y divide-border rounded-[var(--radius-md)] border border-border">
           <div className="flex items-baseline justify-between gap-4 px-4 py-3">
             <dt className="text-sm text-fg-muted">
               {t("student.birthdate")}
@@ -211,7 +211,7 @@ export function ProfileForm({
       )}
 
       {dirty && (
-        <div className="sticky bottom-[calc(env(safe-area-inset-bottom,0px)+4.5rem)] flex items-center gap-3 rounded-[--radius-lg] border border-accent bg-surface p-3 shadow-lg lg:bottom-4">
+        <div className="sticky bottom-[calc(env(safe-area-inset-bottom,0px)+4.5rem)] flex items-center gap-3 rounded-[var(--radius-lg)] border border-accent bg-surface p-3 shadow-lg lg:bottom-4">
           <p className="min-w-0 flex-1 text-sm font-medium text-fg">{t("student.unsaved")}</p>
           <Button type="submit" loading={pending} icon={<FloppyDiskIcon weight="bold" />}>
             {t("student.save")}

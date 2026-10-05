@@ -29,7 +29,7 @@ export async function CelebrationsLink({ session }: { session: ActiveContext }) 
   return (
     <Link
       href="/bulletin/celebrations"
-      className="flex items-center gap-3 rounded-[--radius-md] border border-border bg-surface p-4 hover:bg-surface-muted"
+      className="flex items-center gap-3 rounded-[var(--radius-md)] border border-border bg-surface p-4 hover:bg-surface-muted"
     >
       <span className="grid size-11 shrink-0 place-items-center rounded-full bg-accent-soft text-accent-strong">
         <CakeIcon weight="duotone" className="size-6" />

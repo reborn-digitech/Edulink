@@ -117,7 +117,7 @@ export function DecideCard({
   }
 
   return (
-    <div className="rounded-[--radius-md] border border-border bg-surface p-4" data-testid="leave-decide" data-leave-id={request.id}>
+    <div className="rounded-[var(--radius-md)] border border-border bg-surface p-4" data-testid="leave-decide" data-leave-id={request.id}>
       <div className="flex flex-wrap items-start gap-3">
         <div className="min-w-0 flex-1">
           <PersonLink membershipId={request.applicantMembershipId} name={request.applicantName} className="block font-semibold text-fg" />
@@ -158,7 +158,7 @@ export function DecideCard({
         </Badge>
       </div>
 
-      <div className="mt-4 rounded-[--radius-sm] bg-surface-muted p-3">
+      <div className="mt-4 rounded-[var(--radius-sm)] bg-surface-muted p-3">
         <label className="block">
           <span className="block text-xs font-medium text-fg">{t("principal.whoCovers")}</span>
           <span className="mt-0.5 block text-xs text-fg-muted">
@@ -176,7 +176,7 @@ export function DecideCard({
             data-testid="leave-cover"
             disabled={classesCovered === 0}
             onChange={(e) => setCover(e.target.value)}
-            className="mt-1.5 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent disabled:opacity-60"
+            className="mt-1.5 min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent disabled:opacity-60"
           >
             <option value="">{t("principal.nobodyYet")}</option>
             {staff.map((person) => (
@@ -217,7 +217,7 @@ export function DecideCard({
                         onChange={(e) =>
                           setGroupCover((prev) => ({ ...prev, [key]: e.target.value }))
                         }
-                        className="mt-1 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+                        className="mt-1 min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
                       >
                         <option value="">{t("principal.nobodyYet")}</option>
                         {group.options.map((person) => (
@@ -245,7 +245,7 @@ export function DecideCard({
             maxLength={1000}
             value={note}
             onChange={(e) => setNote(e.target.value)}
-            className="mt-1 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg outline-none focus:border-accent"
+            className="mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg outline-none focus:border-accent"
           />
         </label>
       )}

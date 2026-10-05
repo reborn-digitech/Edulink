@@ -49,7 +49,7 @@ export default async function RootExpertsPage({
             ? t("expert.curationNobodyYet")
             : t("expert.curationCount", { waiting: allWaiting.length, listed: allListed.length })} />
 
-      <p className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg-muted">
+      <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg-muted">
         {t("expert.curationNote")}
       </p>
 

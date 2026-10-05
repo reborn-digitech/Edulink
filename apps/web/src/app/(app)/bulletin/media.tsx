@@ -65,7 +65,7 @@ export function PostMedia({ media }: { media: Item[] }) {
             playsInline
             preload="metadata"
             aria-label={item.alt}
-            className="mt-3 max-h-[32rem] w-full rounded-[--radius-md] border border-border bg-black object-contain"
+            className="mt-3 max-h-[32rem] w-full rounded-[var(--radius-md)] border border-border bg-black object-contain"
           />
         ) : (
           <button
@@ -81,7 +81,7 @@ export function PostMedia({ media }: { media: Item[] }) {
               sizes="(min-width: 1024px) 640px, 100vw"
               alt={item.alt}
               loading="lazy"
-              className="max-h-[28rem] w-full rounded-[--radius-md] border border-border bg-surface-muted object-contain"
+              className="max-h-[28rem] w-full rounded-[var(--radius-md)] border border-border bg-surface-muted object-contain"
             />
           </button>
         )}
@@ -98,7 +98,7 @@ export function PostMedia({ media }: { media: Item[] }) {
     <>
       <ul
         className={cn(
-          "mt-3 grid gap-1 overflow-hidden rounded-[--radius-md]",
+          "mt-3 grid gap-1 overflow-hidden rounded-[var(--radius-md)]",
           items.length === 2 && "aspect-[2/1] grid-cols-2",
           items.length === 3 && "aspect-[3/2] grid-cols-2 grid-rows-2",
           items.length >= 4 && "aspect-square grid-cols-2 grid-rows-2 sm:aspect-[3/2]",

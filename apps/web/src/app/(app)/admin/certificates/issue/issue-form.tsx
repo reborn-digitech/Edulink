@@ -91,7 +91,7 @@ export function IssueForm({
     <form onSubmit={submit} noValidate className="space-y-4" data-testid="issue-form">
       {requestId && <input type="hidden" name="requestId" value={requestId} />}
       {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
           {error}
         </p>
       )}

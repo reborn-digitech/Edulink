@@ -76,13 +76,13 @@ export default async function MailboxPage() {
                     action={email.purpose ? <Badge tone="accent" size="sm">{email.purpose}</Badge> : null}
                   />
                   <CardBody>
-                    <pre className="overflow-x-auto whitespace-pre-wrap rounded-[--radius-sm] bg-surface-muted p-3 text-xs leading-relaxed text-fg-muted">
+                    <pre className="overflow-x-auto whitespace-pre-wrap rounded-[var(--radius-sm)] bg-surface-muted p-3 text-xs leading-relaxed text-fg-muted">
                       {email.text}
                     </pre>
                     {link && (
                       <Link
                         href={link}
-                        className="mt-3 inline-flex min-h-11 items-center rounded-[--radius-md] bg-accent px-4 font-semibold text-accent-fg"
+                        className="mt-3 inline-flex min-h-11 items-center rounded-[var(--radius-md)] bg-accent px-4 font-semibold text-accent-fg"
                       >
                         Open the link
                       </Link>

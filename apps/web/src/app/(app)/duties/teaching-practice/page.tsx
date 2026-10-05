@@ -40,7 +40,7 @@ export default async function TeachingPracticePage({ searchParams }: { searchPar
     <div className="space-y-6">
       <PageHeader title={t("duties.teachingPractice.title")} description={t("duties.teachingPractice.intro", { weeks: d.summary.minimumWeeks })} />
       <RecordsFlash t={t} params={params} />
-      {!d.offered ? <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted">{t("duties.teachingPractice.notOffered")}</p> : null}
+      {!d.offered ? <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted">{t("duties.teachingPractice.notOffered")}</p> : null}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <StatTile label={t("streamRecords.statPracticeSchools")} value={d.summary.practiceSchools} />
         <StatTile label={t("streamRecords.statPostings")} value={d.summary.postings} />

@@ -103,11 +103,11 @@ export function LeaveForm({
       )}
 
       {open && (
-        <form onSubmit={submit} className="rounded-[--radius-lg] border border-border bg-surface p-5" data-testid="leave-form">
+        <form onSubmit={submit} className="rounded-[var(--radius-lg)] border border-border bg-surface p-5" data-testid="leave-form">
           {error && (
             <p
               role="alert"
-              className="mb-4 rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+              className="mb-4 rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
             >
               {error}
             </p>
@@ -132,7 +132,7 @@ export function LeaveForm({
 
           <fieldset className="mt-4">
             <legend className="text-sm font-medium text-fg">{t("teacher.kindOfLeave")}</legend>
-            <div className="mt-2 flex flex-wrap gap-1 rounded-[--radius-md] bg-surface-muted p-1">
+            <div className="mt-2 flex flex-wrap gap-1 rounded-[var(--radius-md)] bg-surface-muted p-1">
               {LEAVE_KINDS.map((option) => (
                 <button
                   key={option}
@@ -141,7 +141,7 @@ export function LeaveForm({
                   aria-checked={kind === option}
                   onClick={() => setKind(option)}
                   className={cn(
-                    "min-h-11 flex-1 rounded-[--radius-sm] px-3 text-sm font-medium transition-colors",
+                    "min-h-11 flex-1 rounded-[var(--radius-sm)] px-3 text-sm font-medium transition-colors",
                     kind === option ? "bg-surface text-fg shadow-sm" : "text-fg-muted hover:text-fg",
                   )}
                 >
@@ -164,7 +164,7 @@ export function LeaveForm({
               data-testid="leave-reason"
               value={reason}
               onChange={(e) => setReason(e.target.value)}
-              className="mt-1.5 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2.5 text-sm text-fg outline-none focus:border-accent"
+              className="mt-1.5 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2.5 text-sm text-fg outline-none focus:border-accent"
               />
           </label>
 
@@ -179,7 +179,7 @@ export function LeaveForm({
               value={nominee}
               data-testid="leave-nominee"
               onChange={(e) => setNominee(e.target.value)}
-              className="mt-1.5 min-h-12 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-[0.9375rem] text-fg outline-none focus:border-accent"
+              className="mt-1.5 min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-[0.9375rem] text-fg outline-none focus:border-accent"
             >
               <option value="">{t("teacher.noSuggestion")}</option>
               {staff.map((person) => (
@@ -208,7 +208,7 @@ export function LeaveForm({
           {requests.map((request) => (
             <li
               key={request.id}
-              className="rounded-[--radius-md] border border-border bg-surface p-4"
+              className="rounded-[var(--radius-md)] border border-border bg-surface p-4"
               data-testid="leave-request"
               data-leave-id={request.id}
               data-status={request.status}
@@ -233,7 +233,7 @@ export function LeaveForm({
                     {request.reason}
                   </p>
                   {request.decisionNote && (
-                    <p className="mt-2 rounded-[--radius-sm] bg-surface-muted p-2.5 text-sm leading-relaxed text-fg-muted">
+                    <p className="mt-2 rounded-[var(--radius-sm)] bg-surface-muted p-2.5 text-sm leading-relaxed text-fg-muted">
                       {request.decidedByName ? `${request.decidedByName}: ` : ""}
                       {request.decisionNote}
                     </p>

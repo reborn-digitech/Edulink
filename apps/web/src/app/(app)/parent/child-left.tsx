@@ -67,7 +67,7 @@ export async function ChildLeftBanner({ child }: { child: LeftChild }) {
   return (
     <p
       data-testid="child-left-banner"
-      className="flex flex-wrap items-center gap-x-2 gap-y-1 rounded-[--radius-md] border border-warn/40 bg-warn-soft px-4 py-3 text-sm text-fg"
+      className="flex flex-wrap items-center gap-x-2 gap-y-1 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft px-4 py-3 text-sm text-fg"
     >
       <GraduationCapIcon weight="fill" className="size-4 shrink-0 text-warn" aria-hidden="true" />
       <span>{t("parent.childLeftBanner", { name: child.name, date: formatDate(child.leftAt) })}</span>

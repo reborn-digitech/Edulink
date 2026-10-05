@@ -142,7 +142,7 @@ export function AppShell({
           {user.isSuperuser && (
             <Link
               href="/root"
-              className="mb-2 flex items-center gap-2 rounded-[--radius-md] border border-dashed border-border px-3 py-2.5 text-sm font-medium text-fg-muted transition-colors hover:bg-surface-muted hover:text-fg"
+              className="mb-2 flex items-center gap-2 rounded-[var(--radius-md)] border border-dashed border-border px-3 py-2.5 text-sm font-medium text-fg-muted transition-colors hover:bg-surface-muted hover:text-fg"
             >
               <NavIcon name="buildings" className="size-5" />
               {t("shell.serverAdmin")}
@@ -153,7 +153,7 @@ export function AppShell({
           {action && (
             <Link
               href={action.href}
-              className="mb-2 flex items-center gap-2 rounded-[--radius-md] bg-accent px-3 py-2.5 text-sm font-semibold text-accent-fg shadow-sm hover:brightness-110 active:brightness-95"
+              className="mb-2 flex items-center gap-2 rounded-[var(--radius-md)] bg-accent px-3 py-2.5 text-sm font-semibold text-accent-fg shadow-sm hover:brightness-110 active:brightness-95"
             >
               <NavIcon name={action.icon} className="size-5" weight="bold" />
               <span className="flex-1">{t(action.labelKey)}</span>
@@ -164,7 +164,7 @@ export function AppShell({
           <Link
             href="/notifications"
             className={cn(
-              "mb-2 flex items-center gap-2 rounded-[--radius-md] px-3 py-2.5 text-sm font-medium transition-colors hover:bg-surface-muted hover:text-fg",
+              "mb-2 flex items-center gap-2 rounded-[var(--radius-md)] px-3 py-2.5 text-sm font-medium transition-colors hover:bg-surface-muted hover:text-fg",
               pathname.startsWith("/notifications") ? "bg-accent-soft text-accent-strong" : "text-fg-muted",
             )}
           >
@@ -179,7 +179,7 @@ export function AppShell({
           <button
             type="button"
             onClick={() => setPaletteOpen(true)}
-            className="mb-2 flex w-full items-center gap-2 rounded-[--radius-md] border border-border px-3 py-2.5 text-sm text-fg-muted transition-colors hover:bg-surface-muted hover:text-fg"
+            className="mb-2 flex w-full items-center gap-2 rounded-[var(--radius-md)] border border-border px-3 py-2.5 text-sm text-fg-muted transition-colors hover:bg-surface-muted hover:text-fg"
           >
             <MagnifyingGlassIcon className="size-4" aria-hidden="true" />
             <span className="flex-1 text-left">{t("shell.search")}</span>
@@ -190,7 +190,7 @@ export function AppShell({
 
           <Link
             href="/account"
-            className="flex items-center gap-2.5 rounded-[--radius-md] p-2 transition-colors hover:bg-surface-muted"
+            className="flex items-center gap-2.5 rounded-[var(--radius-md)] p-2 transition-colors hover:bg-surface-muted"
           >
             <Avatar avatarKey={user.avatarKey} name={user.name} size="sm" />
             <span className="min-w-0 flex-1">
@@ -279,7 +279,7 @@ export function AppShell({
           className={cn(
             "fixed bottom-[calc(env(safe-area-inset-bottom,0px)+5.25rem)] right-4 z-40",
             "flex h-14 items-center gap-2 rounded-full bg-accent px-5 font-semibold text-accent-fg shadow-lg",
-            "transition-transform duration-[--dur-fast] active:scale-95",
+            "transition-transform duration-[var(--dur-fast)] active:scale-95",
             "lg:hidden print:hidden",
           )}
         >
@@ -306,7 +306,7 @@ export function AppShell({
                   aria-current={active ? "page" : undefined}
                   className={cn(
                     "flex min-h-[3.5rem] flex-col items-center justify-center gap-0.5 px-1 py-1.5",
-                    "transition-colors duration-[--dur-fast]",
+                    "transition-colors duration-[var(--dur-fast)]",
                     active ? "text-accent-strong" : "text-fg-muted",
                   )}
                 >
@@ -352,7 +352,7 @@ export function AppShell({
                         href={item.href}
                         onClick={() => setMoreOpen(false)}
                         className={cn(
-                          "flex min-h-11 items-center gap-2.5 rounded-[--radius-md] px-3 text-sm font-medium",
+                          "flex min-h-11 items-center gap-2.5 rounded-[var(--radius-md)] px-3 text-sm font-medium",
                           isActive(pathname, item) ? "bg-accent-soft text-accent-strong" : "text-fg hover:bg-surface-muted",
                         )}
                       >
@@ -386,8 +386,8 @@ function SideLink({ item, active, t, badge = 0 }: { item: NavItem; active: boole
       href={item.href}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "flex items-center gap-3 rounded-[--radius-md] px-3 py-2.5 text-sm font-medium",
-        "transition-colors duration-[--dur-fast]",
+        "flex items-center gap-3 rounded-[var(--radius-md)] px-3 py-2.5 text-sm font-medium",
+        "transition-colors duration-[var(--dur-fast)]",
         active
           ? "bg-accent-soft text-accent-strong"
           : "text-fg-muted hover:bg-surface-muted hover:text-fg",
@@ -410,7 +410,7 @@ export function SignOutButton() {
     <form action="/api/auth/logout" method="post">
       <button
         type="submit"
-        className="flex w-full items-center gap-2 rounded-[--radius-md] px-3 py-2.5 text-sm font-medium text-danger transition-colors hover:bg-danger-soft"
+        className="flex w-full items-center gap-2 rounded-[var(--radius-md)] px-3 py-2.5 text-sm font-medium text-danger transition-colors hover:bg-danger-soft"
       >
         <SignOutIcon className="size-5" aria-hidden="true" />
         {t("shell.signOut")}

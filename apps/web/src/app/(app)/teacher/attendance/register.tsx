@@ -391,7 +391,7 @@ export function Register({
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder={t("teacher.findStudent")}
-          className="min-h-12 w-full rounded-[--radius-md] border border-border bg-surface pl-11 pr-4 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+          className="min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface pl-11 pr-4 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
         />
       </label>
 
@@ -462,7 +462,7 @@ function StudentRow({
         // button left the name 18 px — "Z…" at 390 px, nothing at 360 px —
         // so the name keeps at least 7 rem and the buttons drop to a second
         // line, right-aligned, when the row cannot hold them all.
-        "flex flex-wrap items-center gap-3 rounded-[--radius-lg] border bg-surface p-2.5 pl-3 transition-colors",
+        "flex flex-wrap items-center gap-3 rounded-[var(--radius-lg)] border bg-surface p-2.5 pl-3 transition-colors",
         entry.status ? "border-border" : "border-dashed border-border-strong",
       )}
       data-testid="register-row"
@@ -501,7 +501,7 @@ function StudentRow({
               : t("teacher.addNoteFor", { name: entry.name })
           }
           className={cn(
-            "tap grid shrink-0 place-items-center rounded-[--radius-sm]",
+            "tap grid shrink-0 place-items-center rounded-[var(--radius-sm)]",
             entry.note ? "text-accent-strong" : "text-fg-subtle hover:text-fg",
           )}
         >
@@ -533,8 +533,8 @@ function StudentRow({
               title={t(meta.labelKey)}
               data-testid={`register-mark-${status}`}
               className={cn(
-                "grid size-11 place-items-center rounded-[--radius-sm] text-sm font-bold",
-                "transition-[transform,background-color,color] duration-[--dur-fast]",
+                "grid size-11 place-items-center rounded-[var(--radius-sm)] text-sm font-bold",
+                "transition-[transform,background-color,color] duration-[var(--dur-fast)]",
                 "active:scale-90 disabled:opacity-50",
                 active ? "shadow-sm" : "text-fg-subtle hover:bg-surface-muted",
               )}
@@ -637,7 +637,7 @@ function NoteSheet({
         aria-modal="true"
         aria-label={t("teacher.noteFor", { name: entry.name })}
         onClick={(event) => event.stopPropagation()}
-        className="w-full max-w-md rounded-t-[--radius-xl] border border-border bg-surface p-5 pb-[calc(env(safe-area-inset-bottom,0px)+1.25rem)] shadow-lg animate-sheet-up sm:rounded-[--radius-xl] sm:pb-5"
+        className="w-full max-w-md rounded-t-[var(--radius-xl)] border border-border bg-surface p-5 pb-[calc(env(safe-area-inset-bottom,0px)+1.25rem)] shadow-lg animate-sheet-up sm:rounded-[var(--radius-xl)] sm:pb-5"
       >
         <h2 className="text-base font-bold text-fg">{t("teacher.noteFor", { name: entry.name })}</h2>
         <p className="mt-0.5 text-xs text-fg-muted">
@@ -651,7 +651,7 @@ function NoteSheet({
           rows={3}
           maxLength={500}
           placeholder={t("teacher.notePlaceholder")}
-          className="mt-3 w-full rounded-[--radius-md] border border-border bg-surface p-3 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+          className="mt-3 w-full rounded-[var(--radius-md)] border border-border bg-surface p-3 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
         />
         <p className="mt-1 text-right text-xs text-fg-subtle">{value.length}/500</p>
 

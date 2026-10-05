@@ -43,7 +43,7 @@ export default async function RootGigsPage() {
   return (
     <div className="space-y-6">
       <PageHeader title={t("gigs.operatorTitle")} description={t("gigs.operatorIntro")} />
-      <p className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg" data-testid="gig-month">
+      <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg" data-testid="gig-month">
         {t("gigs.monthLine", {
           month: o.month,
           spent: money(o.spentThisMonthPaise),
@@ -192,7 +192,7 @@ export default async function RootGigsPage() {
         <CardHeader title={t("gigs.opCompanyTitle")} description={t("gigs.opCompanyIntro")} />
         <CardBody className="space-y-3" data-testid="gig-company-card">
           {payouts.company.missing.length > 0 && (
-            <p className="rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm text-fg" data-testid="gig-company-missing">
+            <p className="rounded-[var(--radius-md)] border border-warn/30 bg-warn-soft px-4 py-3 text-sm text-fg" data-testid="gig-company-missing">
               {t("gigs.opCompanyMissing", {
                 missing: payouts.company.missing.map((m) => t(`gigs.opMissing${m === "legalName" ? "LegalName" : m === "gstin" ? "Gstin" : "StateCode"}`)).join(", "),
               })}
@@ -271,7 +271,7 @@ export default async function RootGigsPage() {
           <p className="text-xs text-fg-muted">{t("gigs.opTransport", { transport: payouts.transport })}</p>
           <dl className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
             {[[t("gigs.opCommission"), payouts.commissionThisMonthPaise], [t("gigs.opGst"), payouts.gstThisMonthPaise], [t("gigs.opHeld"), payouts.heldPaise], [t("gigs.opReleased"), payouts.releasedThisMonthPaise], ...(payouts.duePaise > 0 ? [[t("gigs.opDue"), payouts.duePaise]] : []), ...(payouts.paidOutThisMonthPaise > 0 ? [[t("gigs.opPaidOut"), payouts.paidOutThisMonthPaise]] : []), [t("gigs.opRefunded"), payouts.refundedThisMonthPaise]].map(([label, value]) => (
-              <div key={String(label)} className="rounded-[--radius-md] border border-border bg-surface px-3 py-2">
+              <div key={String(label)} className="rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2">
                 <dt className="text-xs uppercase tracking-wide text-fg-muted">{label}</dt>
                 <dd className="text-lg font-bold tabular-nums text-fg">{money(Number(value))}</dd>
               </div>

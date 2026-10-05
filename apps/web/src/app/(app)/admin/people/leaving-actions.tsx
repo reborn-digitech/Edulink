@@ -53,7 +53,7 @@ export function LeavingPanel({
   const [error, setError] = useState<string | null>(null);
 
   return (
-    <div className="w-full rounded-[--radius-md] border border-border bg-surface-muted p-3">
+    <div className="w-full rounded-[var(--radius-md)] border border-border bg-surface-muted p-3">
       <p className="text-sm font-semibold text-fg">{t("people.leavingTitle", { name })}</p>
       <p className="mt-1 text-xs leading-relaxed text-fg-muted">{t("people.leavingBody")}</p>
 
@@ -62,7 +62,7 @@ export function LeavingPanel({
         <select
           value={reason}
           onChange={(event) => setReason(event.target.value)}
-          className="mt-1 min-h-11 w-full rounded-[--radius-sm] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+          className="mt-1 min-h-11 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
         >
           {REASONS.map((option) => (
             <option key={option.value} value={option.value}>
@@ -78,7 +78,7 @@ export function LeavingPanel({
           value={conduct}
           data-testid="leaving-conduct"
           onChange={(event) => setConduct(event.target.value)}
-          className="mt-1 min-h-11 w-full rounded-[--radius-sm] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+          className="mt-1 min-h-11 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
         >
           <option value="EXCELLENT">{t("tc.conductExcellent")}</option>
           <option value="GOOD">{t("tc.conductGood")}</option>
@@ -99,7 +99,7 @@ export function LeavingPanel({
             maxLength={200}
             placeholder={t("people.destinationPlaceholder")}
             onChange={(event) => setDestination(event.target.value)}
-            className="mt-1 min-h-11 w-full rounded-[--radius-sm] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+            className="mt-1 min-h-11 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
           />
         </label>
         <div className="min-w-[11rem]">
@@ -122,7 +122,7 @@ export function LeavingPanel({
           rows={2}
           maxLength={1000}
           onChange={(event) => setNote(event.target.value)}
-          className="mt-1 w-full rounded-[--radius-sm] border border-border bg-surface px-3 py-2 text-sm text-fg outline-none focus:border-accent"
+          className="mt-1 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 py-2 text-sm text-fg outline-none focus:border-accent"
         />
       </label>
 

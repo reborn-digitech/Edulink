@@ -84,7 +84,7 @@ export default async function AdminExamsPage({
           the form folds away behind its own heading so the list is what a
           visit opens on. */}
       <details open={total === 0} className="group">
-        <summary className="cursor-pointer list-none rounded-[--radius-md] border border-border bg-surface px-4 py-3 text-sm font-semibold text-fg hover:bg-surface-muted [&::-webkit-details-marker]:hidden">
+        <summary className="cursor-pointer list-none rounded-[var(--radius-md)] border border-border bg-surface px-4 py-3 text-sm font-semibold text-fg hover:bg-surface-muted [&::-webkit-details-marker]:hidden">
           + {t("exams.newSeriesTitle")}
         </summary>
         <div className="mt-3">

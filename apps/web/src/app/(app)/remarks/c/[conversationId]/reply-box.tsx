@@ -83,7 +83,7 @@ export function ConversationReplyBox({ conversationId, className }: { conversati
         aria-invalid={Boolean(error) || undefined}
         aria-describedby={error ? "conversation-reply-error" : "conversation-reply-hint"}
         className={cn(
-          "w-full resize-y rounded-[--radius-md] border bg-surface p-3.5 text-[0.9375rem] leading-relaxed outline-none",
+          "w-full resize-y rounded-[var(--radius-md)] border bg-surface p-3.5 text-[0.9375rem] leading-relaxed outline-none",
           error ? "border-danger ring-2 ring-danger/25" : "border-border focus:border-accent focus:ring-2 focus:ring-accent-ring/40",
         )}
       />

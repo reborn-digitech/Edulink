@@ -135,7 +135,7 @@ export function NotificationList({ items }: { items: NotificationItem[] }) {
     </ul>
     {items.length > shown && (
       <div className="border-t border-border p-3 text-center">
-        <button type="button" onClick={() => setShown((n) => n + PAGE)} className="tap rounded-[--radius-md] px-4 text-sm font-medium text-accent-strong hover:bg-surface-muted">
+        <button type="button" onClick={() => setShown((n) => n + PAGE)} className="tap rounded-[var(--radius-md)] px-4 text-sm font-medium text-accent-strong hover:bg-surface-muted">
           {t("common.showMore", { count: items.length - shown })}
         </button>
       </div>

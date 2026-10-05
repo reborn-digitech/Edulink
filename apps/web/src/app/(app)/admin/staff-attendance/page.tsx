@@ -107,7 +107,7 @@ export default async function StaffAttendancePage({ searchParams }: { searchPara
           </div>
 
           {register.closed && (
-            <p className="flex items-center gap-2 rounded-[--radius-md] border border-warn/40 bg-warn-soft px-3 py-2 text-sm text-warn">
+            <p className="flex items-center gap-2 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft px-3 py-2 text-sm text-warn">
               <WarningIcon weight="fill" className="size-4 shrink-0" aria-hidden="true" />
               {register.closedName ? t("staffAttendance.closedDay", { name: register.closedName }) : t("staffAttendance.sunday")}
             </p>

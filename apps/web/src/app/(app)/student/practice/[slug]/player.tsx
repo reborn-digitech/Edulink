@@ -314,7 +314,7 @@ export function Player({
         aria-label={t("practice.questionsAnswered")}
       >
         <div
-          className="h-full rounded-full bg-accent transition-[width] duration-[--dur-slow]"
+          className="h-full rounded-full bg-accent transition-[width] duration-[var(--dur-slow)]"
           style={{ width: `${(question.askedCount / Math.max(1, question.totalCount)) * 100}%` }}
         />
       </div>
@@ -335,7 +335,7 @@ export function Player({
                     onClick={() => choose(index)}
                     aria-pressed={isChosen}
                     className={cn(
-                      "flex w-full items-center gap-3 rounded-[--radius-md] border p-3.5 text-left transition-colors",
+                      "flex w-full items-center gap-3 rounded-[var(--radius-md)] border p-3.5 text-left transition-colors",
                       "disabled:cursor-default",
                       !shown && "border-border hover:bg-surface-muted",
                       // Right and wrong are never colour alone — each carries an
@@ -362,7 +362,7 @@ export function Player({
           </ul>
 
           {shown && (
-            <div className="rounded-[--radius-md] border border-border bg-surface-muted p-3.5">
+            <div className="rounded-[var(--radius-md)] border border-border bg-surface-muted p-3.5">
               <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
                 {t("practice.howItWorks")}
               </p>
@@ -379,7 +379,7 @@ export function Player({
           )}
 
           {offlineAnswer && (
-            <div className="flex items-start gap-2.5 rounded-[--radius-md] border border-warn/40 bg-warn-soft/40 p-3.5">
+            <div className="flex items-start gap-2.5 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft/40 p-3.5">
               <WifiSlashIcon weight="fill" className="mt-0.5 size-5 shrink-0 text-warn" />
               <div>
                 <p className="text-sm font-semibold text-fg">{t("practice.offlineSavedTitle")}</p>
@@ -407,7 +407,7 @@ export function Player({
               {t("practice.skipNext")}
             </Button>
           ) : confirmReveal ? (
-            <div className="space-y-2 rounded-[--radius-md] border border-warn/40 bg-warn-soft/30 p-3.5">
+            <div className="space-y-2 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft/30 p-3.5">
               <p className="text-sm font-medium text-fg">
                 {forfeited
                   ? t("practice.showWorkingThis")

@@ -226,7 +226,7 @@ export default async function AdminDashboard({
               aria-label={t("admin.setupProgress")}
             >
               <div
-                className="h-full rounded-full bg-accent transition-[width] duration-[--dur-slow] ease-[--ease-out]"
+                className="h-full rounded-full bg-accent transition-[width] duration-[var(--dur-slow)] ease-[var(--ease-out)]"
                 style={{ width: `${(checklist.done / checklist.total) * 100}%` }}
               />
             </div>
@@ -236,7 +236,7 @@ export default async function AdminDashboard({
                 <li key={step.id}>
                   <div
                     className={cn(
-                      "flex items-center gap-3 rounded-[--radius-md] border p-3",
+                      "flex items-center gap-3 rounded-[var(--radius-md)] border p-3",
                       step.done ? "border-transparent bg-ok-soft/50" : "border-border bg-surface",
                     )}
                   >
@@ -405,13 +405,13 @@ export default async function AdminDashboard({
           />
           <CardBody className="pt-0">
             {jobStory.entries.some((e) => (e.counts.stuck ?? 0) > 0) && (
-              <p className="mb-3 flex items-start gap-2 rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium leading-relaxed text-danger">
+              <p className="mb-3 flex items-start gap-2 rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium leading-relaxed text-danger">
                 <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
                 {t("admin.jobStoryStuck")}
               </p>
             )}
             {jobStory.entries.some((e) => (e.counts.missing ?? 0) > 0) && (
-              <p className="mb-3 flex items-start gap-2 rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium leading-relaxed text-danger">
+              <p className="mb-3 flex items-start gap-2 rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium leading-relaxed text-danger">
                 <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
                 {t("admin.jobStoryMissing")}
               </p>

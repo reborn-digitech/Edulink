@@ -6,6 +6,7 @@
 import { describe, expect, it } from "vitest";
 import { NextRequest } from "next/server";
 import { contentSecurityPolicy, isPage, NONCE_HEADER } from "@/lib/csp";
+import { unstable_doesMiddlewareMatch } from "next/experimental/testing/server";
 import { config, middleware } from "@/middleware";
 
 const directive = (policy: string, name: string) => policy.split("; ").find((d) => d.startsWith(`${name} `)) ?? "";
@@ -47,9 +48,17 @@ describe("what is a page", () => {
     for (const p of ["/api/health", "/api/v1/me", "/api/files/a.png", "/_next/static/chunks/x.js", "/sw.js", "/manifest.webmanifest", "/icons/icon-192.png", "/favicon.ico"]) expect(isPage(p), p).toBe(false);
   });
 
-  it("the matcher sends the middleware every page, the three CORS doors and the three locked cookie doors, and nothing else under /api", () => {
-    expect(config.matcher).toHaveLength(7);
-    expect(config.matcher.slice(1)).toEqual(["/api/v1/:path*", "/api/attendance", "/api/files/:path*", "/api/push", "/api/practice/:path*", "/api/auth/:path*"]);
+  it("the matcher sends the middleware every request but Next's own files, a path with an extension and every /api route included (A3-S-3)", () => {
+    const at = (path: string) => unstable_doesMiddlewareMatch({ config, url: `http://localhost:3000${path}` });
+    for (const p of ["/", "/login", "/library/titles/x.ab", "/people/x.png", "/iqac/documents/x.ab", "/api/v1/me", "/api/attendance", "/api/files/a.png", "/api/push", "/api/practice/x", "/api/auth/logout", "/api/health", "/api/webhooks/gateway/sessions", "/sw.js", "/favicon.ico", "/i18n/en.abc.json"]) expect(at(p), p).toBe(true);
+    for (const p of ["/_next/static/chunks/x.js", "/_next/image"]) expect(at(p), p).toBe(false);
+  });
+
+  it("overwrites a route stamp the client sent, on a path that ends in an extension too (A3-S-3)", () => {
+    for (const path of ["/library/titles/x.ab", "/people/x.ab", "/api/health"]) {
+      const response = middleware(new NextRequest(`http://localhost:3000${path}`, { headers: { "x-edulink-route": "GET /hostel" } }));
+      expect(response.headers.get("x-middleware-request-x-edulink-route"), path).toBe(`GET ${path}`);
+    }
   });
 });
 

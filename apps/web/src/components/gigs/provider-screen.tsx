@@ -30,12 +30,12 @@ export async function ProviderScreen({ ctx }: { ctx: ActiveContext }) {
     <div className="space-y-6">
       <PageHeader title={t("gigs.providerTitle")} description={t(view.kind === "EXPERT" ? "gigs.providerIntroEXPERT" : "gigs.providerIntroTEACHER")} />
       {!view.enabled || !d ? (
-        <p className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3 text-sm text-fg" data-testid="guidance-off">
+        <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-3 text-sm text-fg" data-testid="guidance-off">
           {t("gigs.guidanceOff")}
         </p>
       ) : (
         <>
-          <div className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg" data-testid="provider-duty">
+          <div className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg" data-testid="provider-duty">
             {view.kind === "EXPERT" ? (
               <>
                 <p>{t("gigs.dutyStart", { done: d.deliveredOneToOnes, workshops: d.heldWorkshops, start: d.startOneToOnes, startWorkshops: d.startWorkshops })}</p>
@@ -50,7 +50,7 @@ export async function ProviderScreen({ ctx }: { ctx: ActiveContext }) {
             <CardBody className="space-y-4">
               <OfferForm workshops={view.kind === "EXPERT"} maxSeats={settings.workshopMaxSeats} gate={gate} />
               {gate && (
-                <div className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3" data-testid="paid-gate">
+                <div className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-3" data-testid="paid-gate">
                   <p className="text-sm font-medium text-fg">{t("gigs.gateTitle")}</p>
                   <p className="mb-2 text-xs text-fg-muted">{t("gigs.gateIntro")}</p>
                   <PaidGateList gate={gate} />
@@ -78,7 +78,7 @@ export async function ProviderScreen({ ctx }: { ctx: ActiveContext }) {
                         {s.cancelled ? <Badge tone="neutral">{t("gigs.slotIsCancelled")}</Badge> : !s.started && <CancelWithReason id={s.id} what="slot" title={s.title} />}
                       </div>
                       {s.bookings.length > 0 && (
-                        <ul className="space-y-2 rounded-[--radius-md] bg-surface-muted px-3 py-2">
+                        <ul className="space-y-2 rounded-[var(--radius-md)] bg-surface-muted px-3 py-2">
                           {s.bookings.map((b) => (
                             <li key={b.id} className="space-y-1.5" data-testid="provider-seat">
                               <div className="flex flex-wrap items-start justify-between gap-2">

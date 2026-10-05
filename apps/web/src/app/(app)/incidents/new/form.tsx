@@ -85,7 +85,7 @@ export function IncidentForm({ studentMembershipId }: { studentMembershipId: str
   return (
     <form onSubmit={submit} noValidate className="space-y-5" data-testid="incident-form">
       {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
           {error}
         </p>
       )}
@@ -96,9 +96,9 @@ export function IncidentForm({ studentMembershipId }: { studentMembershipId: str
           {INCIDENT_KINDS.map((k) => (
             <label
               key={k}
-              className={`flex min-h-11 cursor-pointer items-center gap-3 rounded-[--radius-md] border px-3.5 py-2 text-sm transition-colors hover:bg-surface-muted ${kind === k ? "border-accent bg-accent-soft text-accent-strong" : "border-border text-fg"}`}
+              className={`flex min-h-11 cursor-pointer items-center gap-3 rounded-[var(--radius-md)] border px-3.5 py-2 text-sm transition-colors hover:bg-surface-muted ${kind === k ? "border-accent bg-accent-soft text-accent-strong" : "border-border text-fg"}`}
             >
-              <input type="radio" name="kind" value={k} checked={kind === k} onChange={() => setKind(k)} className="size-4 accent-[--accent]" />
+              <input type="radio" name="kind" value={k} checked={kind === k} onChange={() => setKind(k)} className="size-4 accent-[var(--accent)]" />
               <span className="font-medium">{t(INCIDENT_KIND_KEY[k])}</span>
             </label>
           ))}

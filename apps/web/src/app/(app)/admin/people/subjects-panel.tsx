@@ -58,7 +58,7 @@ export function SubjectsPanel({
   }
 
   return (
-    <div className="w-full rounded-[--radius-md] border border-border bg-surface-muted p-3">
+    <div className="w-full rounded-[var(--radius-md)] border border-border bg-surface-muted p-3">
       <p className="text-sm font-semibold text-fg">{t("reviews.subjectsFor", { name })}</p>
 
       <div className="mt-2 flex gap-2">
@@ -74,7 +74,7 @@ export function SubjectsPanel({
               add();
             }
           }}
-          className="w-full rounded-[--radius-sm] border border-border bg-surface px-3 py-2 text-sm text-fg outline-none focus:border-accent"
+          className="w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 py-2 text-sm text-fg outline-none focus:border-accent"
         />
         <Button size="sm" variant="ghost" onClick={add}>
           {t("common.add")}

@@ -97,7 +97,7 @@ export function ComposeForm({
       {errors._form && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
         >
           {errors._form}
         </p>
@@ -117,19 +117,19 @@ export function ComposeForm({
             onChange={(e) => setQuery(e.target.value)}
             placeholder={t("remarks.findStudent")}
             aria-label={t("remarks.searchStudents")}
-            className="min-h-12 w-full rounded-[--radius-md] border border-border bg-surface pl-11 pr-4 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+            className="min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface pl-11 pr-4 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
           />
         </div>
 
         {filtered.length === 0 ? (
-          <p className="mt-3 rounded-[--radius-md] bg-surface-muted p-4 text-center text-sm text-fg-muted">
+          <p className="mt-3 rounded-[var(--radius-md)] bg-surface-muted p-4 text-center text-sm text-fg-muted">
             {t("remarks.nobodyMatches", { query })}
           </p>
         ) : (
           <div
             role="radiogroup"
             aria-label={t("remarks.chooseStudent")}
-            className="mt-2 max-h-64 space-y-1.5 overflow-y-auto rounded-[--radius-md] border border-border p-2 scrollbar-thin"
+            className="mt-2 max-h-64 space-y-1.5 overflow-y-auto rounded-[var(--radius-md)] border border-border p-2 scrollbar-thin"
           >
             {filtered.map((student) => {
               const active = student.membershipId === studentId;
@@ -148,7 +148,7 @@ export function ComposeForm({
                     });
                   }}
                   className={cn(
-                    "flex w-full items-center gap-3 rounded-[--radius-sm] p-2.5 text-left transition-colors",
+                    "flex w-full items-center gap-3 rounded-[var(--radius-sm)] p-2.5 text-left transition-colors",
                     active ? "bg-accent-soft" : "hover:bg-surface-muted",
                   )}
                 >
@@ -186,7 +186,7 @@ export function ComposeForm({
 
       {/* Told BEFORE writing, not after sending into the void. (§9) */}
       {selected && selected.guardianCount === 0 && (
-        <p className="flex items-start gap-2 rounded-[--radius-md] border border-warn/40 bg-warn-soft p-3.5 text-sm text-warn">
+        <p className="flex items-start gap-2 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft p-3.5 text-sm text-warn">
           <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0" />
           <span>{t("remarks.noGuardianWarning", { name: selected.fullName })}</span>
         </p>
@@ -228,7 +228,7 @@ export function ComposeForm({
           placeholder={t("remarks.messagePlaceholder")}
           aria-invalid={Boolean(errors.body) || undefined}
           className={cn(
-            "mt-1.5 w-full resize-y rounded-[--radius-md] border bg-surface p-3.5 text-[0.9375rem] leading-relaxed outline-none",
+            "mt-1.5 w-full resize-y rounded-[var(--radius-md)] border bg-surface p-3.5 text-[0.9375rem] leading-relaxed outline-none",
             errors.body
               ? "border-danger ring-2 ring-danger/25"
               : "border-border focus:border-accent focus:ring-2 focus:ring-accent-ring/40",

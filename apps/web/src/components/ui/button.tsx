@@ -14,9 +14,9 @@ const button = cva(
   [
     "relative inline-flex select-none items-center justify-center gap-2",
     "font-semibold whitespace-nowrap",
-    "rounded-[--radius-md]",
+    "rounded-[var(--radius-md)]",
     "transition-[transform,background-color,border-color,color,box-shadow,opacity]",
-    "duration-[--dur-fast] ease-[--ease-out]",
+    "duration-[var(--dur-fast)] ease-[var(--ease-out)]",
     "active:scale-[0.97]",
     "disabled:pointer-events-none disabled:opacity-55",
     "aria-busy:cursor-progress",

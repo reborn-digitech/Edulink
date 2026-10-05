@@ -12,7 +12,7 @@ export function QuestionRead({ en, hi, mr, answerIndex, labels }: { en: Text; hi
   return (
     <div className="grid gap-4 lg:grid-cols-3">
       {columns.map(([lang, name, text]) => (
-        <section key={lang} lang={lang} className="min-w-0 space-y-3 rounded-[--radius-lg] border border-border bg-surface p-4" data-testid={`gig-read-${lang}`}>
+        <section key={lang} lang={lang} className="min-w-0 space-y-3 rounded-[var(--radius-lg)] border border-border bg-surface p-4" data-testid={`gig-read-${lang}`}>
           <h3 className="text-sm font-semibold text-fg">{name}</h3>
           <p className="whitespace-pre-wrap break-words text-sm leading-relaxed text-fg">{text.stem}</p>
           <ol className="space-y-1.5 text-sm text-fg">

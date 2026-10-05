@@ -44,7 +44,7 @@ export function WindowPicker({ span }: { span: Span }) {
     <div
       role="radiogroup"
       aria-label={t("principal.howFarBack")}
-      className="flex flex-wrap gap-1 rounded-[--radius-md] bg-surface-muted p-1"
+      className="flex flex-wrap gap-1 rounded-[var(--radius-md)] bg-surface-muted p-1"
     >
       {SPANS.map((option) => (
         <button
@@ -55,7 +55,7 @@ export function WindowPicker({ span }: { span: Span }) {
           disabled={pending}
           onClick={() => choose(option.span)}
           className={cn(
-            "min-h-10 rounded-[--radius-sm] px-3 text-sm font-medium transition-colors disabled:opacity-60",
+            "min-h-10 rounded-[var(--radius-sm)] px-3 text-sm font-medium transition-colors disabled:opacity-60",
             option.span === span ? "bg-surface text-fg shadow-sm" : "text-fg-muted hover:text-fg",
           )}
         >

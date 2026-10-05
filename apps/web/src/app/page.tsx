@@ -41,7 +41,7 @@ export default async function LandingPage() {
           aria-label={t("common.mainContent")}
           className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6"
         >
-          <Link href="/" className="rounded-[--radius-sm]" aria-label={t("common.homeLink")}>
+          <Link href="/" className="rounded-[var(--radius-sm)]" aria-label={t("common.homeLink")}>
             <Wordmark />
           </Link>
           <div className="flex items-center gap-2">
@@ -208,7 +208,7 @@ export default async function LandingPage() {
                 { n: 2, title: t("landing.step2Title"), body: t("landing.step2Body") },
                 { n: 3, title: t("landing.step3Title"), body: t("landing.step3Body") },
               ].map((step) => (
-                <li key={step.n} className="rounded-[--radius-lg] border border-border bg-bg p-5">
+                <li key={step.n} className="rounded-[var(--radius-lg)] border border-border bg-bg p-5">
                   <span className="grid size-9 place-items-center rounded-full bg-accent text-sm font-bold text-accent-fg">
                     {step.n}
                   </span>
@@ -265,9 +265,9 @@ function RoleCard({
     // mechanism the real dashboards use, so this preview cannot drift.
     <div
       data-role={role}
-      className="rounded-[--radius-lg] border border-border bg-bg p-5 transition-[transform,box-shadow] duration-[--dur] ease-[--ease-out] hover:-translate-y-1 hover:shadow-md"
+      className="rounded-[var(--radius-lg)] border border-border bg-bg p-5 transition-[transform,box-shadow] duration-[var(--dur)] ease-[var(--ease-out)] hover:-translate-y-1 hover:shadow-md"
     >
-      <span className="grid size-12 place-items-center rounded-[--radius-md] bg-accent-soft text-accent-strong">
+      <span className="grid size-12 place-items-center rounded-[var(--radius-md)] bg-accent-soft text-accent-strong">
         {icon}
       </span>
       <h3 className="mt-4 text-lg font-bold text-fg">{title}</h3>
@@ -286,8 +286,8 @@ function RoleCard({
 
 function Feature({ icon, title, body }: { icon: React.ReactNode; title: string; body: string }) {
   return (
-    <div className="rounded-[--radius-lg] border border-border bg-surface p-6">
-      <span className="grid size-11 place-items-center rounded-[--radius-md] bg-accent-soft text-accent-strong">
+    <div className="rounded-[var(--radius-lg)] border border-border bg-surface p-6">
+      <span className="grid size-11 place-items-center rounded-[var(--radius-md)] bg-accent-soft text-accent-strong">
         {icon}
       </span>
       <h3 className="mt-4 text-lg font-bold text-fg">{title}</h3>
@@ -316,7 +316,7 @@ function AttendancePreview({ t }: { t: Translate }) {
   return (
     <div
       data-role="teacher"
-      className="mx-auto max-w-md overflow-hidden rounded-[--radius-xl] border border-border bg-surface shadow-lg"
+      className="mx-auto max-w-md overflow-hidden rounded-[var(--radius-xl)] border border-border bg-surface shadow-lg"
     >
       <div className="flex items-center justify-between gap-3 border-b border-border bg-accent-soft px-4 py-3">
         <div>

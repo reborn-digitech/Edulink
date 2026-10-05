@@ -77,7 +77,7 @@ export function ImportForm() {
   return (
     <form onSubmit={check} noValidate className="space-y-4" data-testid="timetable-import">
       {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger">
           {error}
         </p>
       )}
@@ -111,13 +111,13 @@ export function ImportForm() {
           }}
           rows={8}
           placeholder={EXAMPLE}
-          className="mt-1.5 w-full rounded-[--radius-md] border border-border bg-surface p-3.5 font-mono text-sm leading-relaxed outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+          className="mt-1.5 w-full rounded-[var(--radius-md)] border border-border bg-surface p-3.5 font-mono text-sm leading-relaxed outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
         />
         <p className="mt-1 text-xs text-fg-muted">{t("officeBulk.timetableImportColumns")}</p>
       </div>
 
       {preview && (
-        <div className="space-y-2.5 rounded-[--radius-md] border border-border bg-surface-muted p-3.5" data-testid="timetable-import-preview">
+        <div className="space-y-2.5 rounded-[var(--radius-md)] border border-border bg-surface-muted p-3.5" data-testid="timetable-import-preview">
           <p className="text-sm font-semibold text-fg">
             {t("officeBulk.timetableReady", { count: preview.rows.length })}
             {replaces > 0 && <span className="text-fg-muted"> · {t("officeBulk.timetableReplaces", { count: replaces })}</span>}

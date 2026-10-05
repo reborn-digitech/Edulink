@@ -12,6 +12,7 @@ import { notify } from "./notify";
 import { readJsonArray, writeJson } from "./json";
 import { forJoinCode } from "./tenant-context";
 import { asTheSchool } from "./expert-binding";
+import { isValidTimeZone } from "./dates";
 import type { ActiveContext } from "./session";
 
 /**
@@ -1020,11 +1021,7 @@ export async function updateOwnProfile(
   const timezone = input.timezone.trim() || "UTC";
   // Rejected rather than silently corrected: a slot written against a timezone
   // nobody can resolve is a meeting at an unknown hour.
-  try {
-    new Intl.DateTimeFormat("en", { timeZone: timezone });
-  } catch {
-    throw new AccessError("access.thatIsNotATimezoneThisServer");
-  }
+  if (!isValidTimeZone(timezone)) throw new AccessError("access.thatIsNotATimezoneThisServer");
 
   /**
    * WHAT THEY ARE OFFERING, validated against the list rather than trusted.

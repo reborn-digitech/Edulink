@@ -301,7 +301,7 @@ export function RegisterWizard() {
                 disabled={i >= step}
                 aria-current={state === "current" ? "step" : undefined}
                 className={cn(
-                  "flex min-h-11 flex-1 items-center gap-2 rounded-[--radius-md] px-2.5 py-2 text-left transition-colors",
+                  "flex min-h-11 flex-1 items-center gap-2 rounded-[var(--radius-md)] px-2.5 py-2 text-left transition-colors",
                   i < step && "cursor-pointer hover:bg-surface-muted",
                   i >= step && "cursor-default",
                 )}
@@ -336,9 +336,9 @@ export function RegisterWizard() {
         })}
       </ol>
 
-      <div className="rounded-[--radius-lg] border border-border bg-surface p-5 shadow-sm sm:p-7">
+      <div className="rounded-[var(--radius-lg)] border border-border bg-surface p-5 shadow-sm sm:p-7">
         <div className="mb-6 flex items-start gap-3">
-          <span className="grid size-11 shrink-0 place-items-center rounded-[--radius-md] bg-accent-soft text-accent-strong">
+          <span className="grid size-11 shrink-0 place-items-center rounded-[var(--radius-md)] bg-accent-soft text-accent-strong">
             <StepIcon weight="duotone" className="size-6" />
           </span>
           <div>
@@ -362,7 +362,7 @@ export function RegisterWizard() {
         {errors._form && (
           <p
             role="alert"
-            className="mb-5 rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+            className="mb-5 rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
           >
             {errors._form}
           </p>
@@ -434,7 +434,7 @@ export function RegisterWizard() {
                 onChange={(e) => set("about", e.target.value)}
                 rows={3}
                 placeholder={t("register.aboutHint")}
-                className="mt-1 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
+                className="mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
               />
               <span className="mt-1 block text-xs font-normal text-fg-muted">
                 {t("register.aboutWhy")}
@@ -556,7 +556,7 @@ export function RegisterWizard() {
 
         {step === 2 && (
           <div className="space-y-5">
-            <dl className="divide-y divide-border rounded-[--radius-md] border border-border">
+            <dl className="divide-y divide-border rounded-[var(--radius-md)] border border-border">
               <Row label={t("register.rowSchool")} value={draft.name} />
               <Row label={t("register.rowContact")} value={draft.contactEmail} />
               {draft.city && (
@@ -584,7 +584,7 @@ export function RegisterWizard() {
               }}
             />
 
-            <p className="rounded-[--radius-md] bg-surface-muted p-4 text-xs leading-relaxed text-fg-muted">
+            <p className="rounded-[var(--radius-md)] bg-surface-muted p-4 text-xs leading-relaxed text-fg-muted">
               {t("register.dataNote")}
             </p>
             <p className="text-xs">
@@ -641,7 +641,7 @@ function StrengthMeter({ strength }: { strength: ReturnType<typeof passwordStren
           <span
             key={i}
             className={cn(
-              "h-1.5 flex-1 rounded-full transition-colors duration-[--dur]",
+              "h-1.5 flex-1 rounded-full transition-colors duration-[var(--dur)]",
               i < strength.score ? tones[strength.score] : "bg-border",
             )}
           />
@@ -672,7 +672,7 @@ function SuccessPanel({
   const { toast } = useToast();
 
   return (
-    <div className="rounded-[--radius-lg] border border-border bg-surface p-8 text-center shadow-sm">
+    <div className="rounded-[var(--radius-lg)] border border-border bg-surface p-8 text-center shadow-sm">
       <div className="mx-auto mb-5 grid size-20 place-items-center rounded-full bg-ok-soft text-ok animate-confetti">
         <CheckCircleIcon weight="fill" className="size-12" />
       </div>
@@ -681,7 +681,7 @@ function SuccessPanel({
       <p className="mx-auto mt-2 max-w-md text-fg-muted">{t("register.readyBody")}</p>
 
       <div className="mx-auto mt-6 flex max-w-xs items-center gap-2">
-        <code className="flex-1 rounded-[--radius-md] border-2 border-dashed border-accent bg-accent-soft px-4 py-3.5 text-xl font-bold tracking-[0.15em] text-accent-strong">
+        <code className="flex-1 rounded-[var(--radius-md)] border-2 border-dashed border-accent bg-accent-soft px-4 py-3.5 text-xl font-bold tracking-[0.15em] text-accent-strong">
           {code}
         </code>
         <Button

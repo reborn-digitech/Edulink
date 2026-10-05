@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: t("hostel.tabRooms"), robots: { index: false, follow: false } };
 }
 
-const small = "mt-1 block min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg";
+const small = "mt-1 block min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg";
 
 /**
  * Houses, rooms and beds: who sleeps where, a free bed for a pupil, a bed
@@ -76,7 +76,7 @@ export default async function HostelRoomsPage({ searchParams }: { searchParams: 
           <CardHeader icon={<HouseLineIcon weight="duotone" className="size-5" />} title={h.name} description={[t(HOSTEL_KIND_KEY[h.kind]), t("hostel.occupancy", { occupied: h.occupied, beds: h.beds }), h.wardenName ? t("hostel.wardenIs", { name: h.wardenName }) : null].filter(Boolean).join(" · ")} />
           <CardBody className="space-y-4">
             {h.rooms.map((r) => (
-              <div key={r.id} className="rounded-[--radius-md] border border-border p-3">
+              <div key={r.id} className="rounded-[var(--radius-md)] border border-border p-3">
                 <p className="text-sm font-semibold text-fg">
                   {t("hostel.roomShort", { room: r.number })} <span className="font-normal text-fg-muted">· {t(ROOM_KIND_KEY[r.kind])} · {t("hostel.occupancy", { occupied: r.occupied, beds: r.beds })}</span>
                 </p>
@@ -102,7 +102,7 @@ export default async function HostelRoomsPage({ searchParams }: { searchParams: 
                               <label className="sr-only" htmlFor={`to-${b.allotmentId}`}>
                                 {t("hostel.toDate")}
                               </label>
-                              <input id={`to-${b.allotmentId}`} type="date" name="toDate" required defaultValue={today} className="min-h-11 rounded-[--radius-md] border border-border bg-surface px-2 text-sm text-fg" />
+                              <input id={`to-${b.allotmentId}`} type="date" name="toDate" required defaultValue={today} className="min-h-11 rounded-[var(--radius-md)] border border-border bg-surface px-2 text-sm text-fg" />
                               <Button type="submit" size="sm" variant="ghost">
                                 {t("hostel.endBed")}
                               </Button>

@@ -126,7 +126,7 @@ export function Avatar({
       className={cn(
         "relative inline-block shrink-0 overflow-hidden rounded-full",
         SIZES[size],
-        ring && "ring-2 ring-accent ring-offset-2 ring-offset-[--surface]",
+        ring && "ring-2 ring-accent ring-offset-2 ring-offset-[var(--surface)]",
         className,
       )}
       // The visible name is almost always adjacent, so the image itself is

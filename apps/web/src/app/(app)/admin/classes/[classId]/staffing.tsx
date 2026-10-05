@@ -150,7 +150,7 @@ export function Staffing({
         <p className="mt-0.5 text-xs leading-relaxed text-fg-muted">{t("classes.classTeachersBody")}</p>
 
         {teachers.length === 0 ? (
-          <p className="mt-3 rounded-[--radius-md] border border-dashed border-border p-4 text-sm text-fg-muted">
+          <p className="mt-3 rounded-[var(--radius-md)] border border-dashed border-border p-4 text-sm text-fg-muted">
             {t("classes.nobodyAssigned")}
           </p>
         ) : (
@@ -158,7 +158,7 @@ export function Staffing({
             {teachers.map((row) => (
               <li
                 key={row.id}
-                className="flex flex-wrap items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
+                className="flex flex-wrap items-center gap-3 rounded-[var(--radius-sm)] bg-surface-muted p-3"
               >
                 <span className="min-w-0 flex-1">
                   <PersonLink membershipId={row.membershipId} name={row.name} className="block truncate text-sm font-medium text-fg" />
@@ -206,7 +206,7 @@ export function Staffing({
             <select
               value={newTeacher}
               onChange={(e) => setNewTeacher(e.target.value)}
-              className="mt-1 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+              className="mt-1 min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
             >
               <option value="">{t("classes.chooseSomebody")}</option>
               {staff
@@ -224,7 +224,7 @@ export function Staffing({
             <select
               value={newRole}
               onChange={(e) => setNewRole(e.target.value as "LEAD" | "CO" | "SUBJECT")}
-              className="mt-1 min-h-11 rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+              className="mt-1 min-h-11 rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
             >
               <option value="LEAD">{t("classes.classTeacher")}</option>
               <option value="CO">{t("classes.alsoTeachesShort")}</option>
@@ -242,7 +242,7 @@ export function Staffing({
           // No database constraint forces exactly one — a job share is real, and
           // a school mid-handover has two for a fortnight. Having NONE is the
           // case nobody intends, so that is the one worth saying.
-          <p className="mt-3 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn">
+          <p className="mt-3 rounded-[var(--radius-md)] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn">
             {t("classes.noLeadWarning")}
           </p>
         )}
@@ -250,7 +250,7 @@ export function Staffing({
         {takers === 0 && (
           // Said out loud rather than discovered on a Monday morning. It is
           // allowed — an admin can always mark it — but it is rarely intended.
-          <p className="mt-3 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn">
+          <p className="mt-3 rounded-[var(--radius-md)] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn">
             {t("classes.onlyAdminWarning")}
           </p>
         )}
@@ -270,7 +270,7 @@ export function Staffing({
         </div>
 
         {open && (
-          <form onSubmit={submitCover} className="mt-3 rounded-[--radius-md] border border-border p-4">
+          <form onSubmit={submitCover} className="mt-3 rounded-[var(--radius-md)] border border-border p-4">
             {error && (
               <p role="alert" className="mb-3 text-sm font-medium text-danger">
                 {error}
@@ -283,7 +283,7 @@ export function Staffing({
                 value={who}
                 required
                 onChange={(e) => setWho(e.target.value)}
-                className="mt-1 min-h-12 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-[0.9375rem] text-fg outline-none focus:border-accent"
+                className="mt-1 min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-[0.9375rem] text-fg outline-none focus:border-accent"
               >
                 <option value="">{t("classes.chooseSomebody")}</option>
                 {staff.map((person) => (
@@ -317,7 +317,7 @@ label={t("classes.lastDay")}
                 value={reason}
                 maxLength={200}
                 onChange={(e) => setReason(e.target.value)}
-                className="mt-1 min-h-12 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-fg outline-none focus:border-accent"
+                className="mt-1 min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-fg outline-none focus:border-accent"
                 />
             </label>
 
@@ -337,7 +337,7 @@ label={t("classes.lastDay")}
             {covers.map((cover) => (
               <li
                 key={cover.id}
-                className="flex flex-wrap items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
+                className="flex flex-wrap items-center gap-3 rounded-[var(--radius-sm)] bg-surface-muted p-3"
               >
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-sm font-medium text-fg">{cover.name}</span>

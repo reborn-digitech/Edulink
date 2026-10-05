@@ -86,7 +86,7 @@ export default async function CompetitionPage({
             </span>
           )}
           {competition.status !== "PUBLISHED" && (
-            <span className="rounded-[--radius-sm] bg-surface-muted px-2 py-0.5 text-xs font-medium text-fg-muted">
+            <span className="rounded-[var(--radius-sm)] bg-surface-muted px-2 py-0.5 text-xs font-medium text-fg-muted">
               {competition.status === "DRAFT" ? t("competitions.notPublishedYet") : t("competitions.archived")}
             </span>
           )}
@@ -266,7 +266,7 @@ export default async function CompetitionPage({
                   key={row.schoolId}
                   className={
                     row.isOwnSchool
-                      ? "flex items-baseline gap-3 rounded-[--radius-sm] bg-accent-soft px-2 py-2.5"
+                      ? "flex items-baseline gap-3 rounded-[var(--radius-sm)] bg-accent-soft px-2 py-2.5"
                       : "flex items-baseline gap-3 px-2 py-2.5"
                   }
                 >

@@ -41,7 +41,7 @@ export function ScenarioPanel({ t, locale, list, base, back, compare }: { t: Tra
           ) : (
             <ul className="space-y-3">
               {list.items.map((s) => (
-                <li key={s.id} className="space-y-2 rounded-[--radius-md] border border-border p-3 text-sm" data-testid={`scenario-${s.id}`}>
+                <li key={s.id} className="space-y-2 rounded-[var(--radius-md)] border border-border p-3 text-sm" data-testid={`scenario-${s.id}`}>
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="font-medium">{s.name}</span>
                     <span className="flex flex-wrap items-center gap-2">
@@ -85,7 +85,7 @@ export function ScenarioPanel({ t, locale, list, base, back, compare }: { t: Tra
               {(["a", "b"] as const).map((side, i) => (
                 <label key={side} className="grid gap-1 text-sm font-medium">
                   {t(side === "a" ? "insights.simCompareA" : "insights.simCompareB")}
-                  <select name={side} defaultValue={compare?.[side].id ?? list.items[i]?.id} className="min-h-11 rounded-[--radius-md] border border-border bg-surface px-3">
+                  <select name={side} defaultValue={compare?.[side].id ?? list.items[i]?.id} className="min-h-11 rounded-[var(--radius-md)] border border-border bg-surface px-3">
                     {list.items.map((s) => (
                       <option key={s.id} value={s.id}>
                         {s.name}

@@ -31,7 +31,7 @@ export function RegistrationForm({ t, view, action, hidden = {} }: { t: Translat
         <form action={action} className="space-y-3">
           {Object.entries(hidden).map(([k, v]) => <input key={k} type="hidden" name={k} value={v} />)}
           <input type="hidden" name="termId" value={view.term.id} />
-          <ul className="divide-y divide-border rounded-[--radius-md] border border-border text-sm">
+          <ul className="divide-y divide-border rounded-[var(--radius-md)] border border-border text-sm">
             {view.offerings.map((o) => (
               <li key={o.offeringId}>
                 <label className="flex min-h-11 cursor-pointer items-center gap-3 px-3 py-2">

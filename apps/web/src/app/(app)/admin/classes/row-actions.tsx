@@ -73,7 +73,7 @@ export function ClassRowActions({
               className="fixed inset-0 z-30 cursor-default"
               onClick={() => setOpen(false)}
             />
-            <div className="absolute right-0 top-full z-40 mt-1 w-56 overflow-hidden rounded-[--radius-md] border border-border bg-surface py-1 shadow-lg animate-in-up">
+            <div className="absolute right-0 top-full z-40 mt-1 w-56 overflow-hidden rounded-[var(--radius-md)] border border-border bg-surface py-1 shadow-lg animate-in-up">
               {!archived && (
                 <>
                   <MenuItem
@@ -158,7 +158,7 @@ export function ClassRowActions({
             aria-modal="true"
             aria-labelledby="archive-title"
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-sm rounded-[--radius-lg] border border-border bg-surface p-5 shadow-lg animate-pop"
+            className="w-full max-w-sm rounded-[var(--radius-lg)] border border-border bg-surface p-5 shadow-lg animate-pop"
           >
             <h2 id="archive-title" className="text-lg font-bold text-fg">
               {t("classes.archiveTitle", { name: className })}

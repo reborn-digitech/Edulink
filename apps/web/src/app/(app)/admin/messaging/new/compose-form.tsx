@@ -89,7 +89,7 @@ export function ComposeForm({ school, classes, grades }: { school: string; class
   return (
     <form onSubmit={send} noValidate className="space-y-6">
       {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
           {error}
         </p>
       )}
@@ -111,7 +111,7 @@ export function ComposeForm({ school, classes, grades }: { school: string; class
 
       <div className="space-y-1.5">
         <p className="text-sm font-medium text-fg">{t("messaging.templatePreview")}</p>
-        <p className="rounded-[--radius-md] bg-surface-muted px-3 py-2 text-sm leading-relaxed text-fg" aria-live="polite">
+        <p className="rounded-[var(--radius-md)] bg-surface-muted px-3 py-2 text-sm leading-relaxed text-fg" aria-live="polite">
           {renderTemplate("circular", locale, { school, notice: trimmed || "…" })}
         </p>
       </div>
@@ -120,7 +120,7 @@ export function ComposeForm({ school, classes, grades }: { school: string; class
         <legend className="text-sm font-medium text-fg">{t("messaging.composeAudience")}</legend>
         <div className="grid gap-2 sm:grid-cols-2">
           {KINDS.map((k) => (
-            <label key={k} className="flex min-h-11 cursor-pointer items-center gap-3 rounded-[--radius-md] border border-border p-3 text-sm hover:bg-surface-muted">
+            <label key={k} className="flex min-h-11 cursor-pointer items-center gap-3 rounded-[var(--radius-md)] border border-border p-3 text-sm hover:bg-surface-muted">
               <input
                 type="radio"
                 name="audience"
@@ -130,7 +130,7 @@ export function ComposeForm({ school, classes, grades }: { school: string; class
                   setKind(k);
                   setPreview(null);
                 }}
-                className="size-4 accent-[--accent]"
+                className="size-4 accent-[var(--accent)]"
               />
               <span className="font-medium text-fg">{kindLabel[k]}</span>
             </label>
@@ -165,7 +165,7 @@ export function ComposeForm({ school, classes, grades }: { school: string; class
       </fieldset>
 
       {preview && (
-        <div className="rounded-[--radius-md] border border-border bg-surface-muted p-4 text-sm" aria-live="polite">
+        <div className="rounded-[var(--radius-md)] border border-border bg-surface-muted p-4 text-sm" aria-live="polite">
           <p className="font-semibold text-fg">{t("messaging.previewTitle")}</p>
           <ul className="mt-1.5 space-y-0.5 text-fg-muted tabular-nums">
             <li>{t("messaging.previewRecipients", { count: preview.recipients })}</li>

@@ -178,7 +178,7 @@ export default async function StudentPlacementPage({ searchParams }: { searchPar
         <CardHeader icon={<NotebookIcon weight="duotone" className="size-5" />} title={t("placement.myInternships")} description={t("placement.myInternshipsIntro", { credits: p.internshipCredits })} />
         <CardBody className="space-y-4 text-sm">
           {p.internships.map((i) => (
-            <div key={i.id} className="space-y-2 rounded-[--radius-md] border border-border p-3">
+            <div key={i.id} className="space-y-2 rounded-[var(--radius-md)] border border-border p-3">
               <div className="flex flex-wrap justify-between gap-2">
                 <span className="font-medium">{i.companyName} · {t(INTERNSHIP_KIND_KEY[i.kind]!)}</span>
                 <Badge tone={i.status === "CREDITED" ? "ok" : "accent"}>{t(INTERNSHIP_STATUS_KEY[i.status]!)}</Badge>

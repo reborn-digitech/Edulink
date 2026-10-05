@@ -315,7 +315,7 @@ async function Seats({ ctx, t, overview, classId }: { ctx: Parameters<typeof lis
               <input type="hidden" name="tab" value="pupils" />
               <label className="text-sm">
                 <span className="mb-1 block font-medium text-fg">{t("transport.chooseClass")}</span>
-                <select name="class" defaultValue={classId ?? ""} className="min-h-11 rounded-[--radius-md] border border-border bg-surface px-3 text-sm">
+                <select name="class" defaultValue={classId ?? ""} className="min-h-11 rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm">
                   <option value="">{t("transport.chooseClassPrompt")}</option>
                   {data.classes.map((c) => (
                     <option key={c.id} value={c.id}>

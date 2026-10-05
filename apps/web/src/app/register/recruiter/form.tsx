@@ -34,7 +34,7 @@ export function RecruiterRegisterForm() {
   return (
     <form onSubmit={submit} className="space-y-5" noValidate>
       {error && !error.field && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger">
           {error.text}
         </p>
       )}

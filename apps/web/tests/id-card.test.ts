@@ -11,6 +11,10 @@ import { __resetCookies, __setHeaders } from "../tests/stubs/next-headers";
 import { checkIdCode, idCardFor } from "@/lib/id-card";
 import { renderIdCardPdf } from "@/lib/id-card-pdf";
 import { translator } from "@/lib/i18n/dictionary";
+import { readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
+import { studentJoinSchema } from "@/lib/validation";
+import { AVATAR_PRESETS } from "@/components/ui/avatar";
 import { GET as pdfGet } from "@/app/api/v1/id-cards/pdf/route";
 import { GET as checkGet } from "@/app/api/v1/id-cards/check/route";
 
@@ -125,5 +129,34 @@ describe("the gate's check of a scanned card", () => {
     // The college's student, scanned at the school: not found, as a made-up code is.
     expect(await checkIdCode(teacher, `ZZC-${SUFFIX}-09`)).toMatchObject({ found: false, name: null });
     expect(await checkIdCode(teacher, "ZZ-MADE-UP")).toMatchObject({ found: false });
+  });
+});
+
+describe("a card's photo is never a blob named by the avatar key (A3-S-1)", () => {
+  const blob = "upload:9ee6262d-0000-4000-8000-19f75e7f7dba.png";
+
+  it("refuses an upload key at a pupil's self-join, as every other avatar writer does", () => {
+    const base = { schoolCode: "ZZCODE", name: "ZZ Card Joiner", password: "zz-a-long-password" };
+    expect(studentJoinSchema.safeParse({ ...base, avatarKey: blob }).success).toBe(false);
+    expect(studentJoinSchema.safeParse({ ...base, avatarKey: "preset:not-a-creature" }).success).toBe(false);
+    expect(studentJoinSchema.safeParse({ ...base, avatarKey: AVATAR_PRESETS[0] }).success).toBe(true);
+  });
+
+  it("draws no photo and hands out no file id for a pupil whose key names a stored file", async () => {
+    await db.user.update({ where: { id: ids.pupilUser }, data: { avatarKey: blob } });
+    try {
+      expect((await idCardFor(await as(ids.pupilUser, ids.school, "STUDENT"))).photoFileId).toBeNull();
+      expect((await checkIdCode(await as(ids.admin, ids.school, "ADMIN"), `ZZC-${SUFFIX}-01`)).photoFileId).toBeNull();
+    } finally {
+      await db.user.update({ where: { id: ids.pupilUser }, data: { avatarKey: null } });
+    }
+  });
+
+  it("is read from the avatar key nowhere in the library (the hall ticket was the second sink)", () => {
+    const lib = join(process.cwd(), "src", "lib");
+    const bad = readdirSync(lib)
+      .filter((f) => /\.tsx?$/.test(f))
+      .filter((f) => /avatarKey\??\.startsWith\("upload:"\)/.test(readFileSync(join(lib, f), "utf8")));
+    expect(bad).toEqual([]);
   });
 });

@@ -204,7 +204,7 @@ export function Gradebook({
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder={t("teacher.findStudent")}
-          className="min-h-12 w-full rounded-[--radius-md] border border-border bg-surface pl-11 pr-4 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+          className="min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface pl-11 pr-4 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
         />
       </label>
 
@@ -234,7 +234,7 @@ export function Gradebook({
               <li key={row.membershipId}>
                 <div
                   className={cn(
-                    "rounded-[--radius-lg] border bg-surface p-2.5 pl-3 transition-colors",
+                    "rounded-[var(--radius-lg)] border bg-surface p-2.5 pl-3 transition-colors",
                     isInvalid
                       ? "border-danger"
                       : isDirty
@@ -278,7 +278,7 @@ export function Gradebook({
                         aria-label={openWork === row.membershipId ? t("teacher.hideWork", { name: row.name }) : t("teacher.seeWork", { name: row.name })}
                         aria-expanded={openWork === row.membershipId}
                         className={cn(
-                          "tap grid shrink-0 place-items-center rounded-[--radius-sm]",
+                          "tap grid shrink-0 place-items-center rounded-[var(--radius-sm)]",
                           row.work.attachments.length > 0 ? "text-accent-strong" : "text-fg-subtle hover:text-fg",
                         )}
                       >
@@ -298,7 +298,7 @@ export function Gradebook({
                       }
                       aria-expanded={openComment === row.membershipId}
                       className={cn(
-                        "tap grid shrink-0 place-items-center rounded-[--radius-sm]",
+                        "tap grid shrink-0 place-items-center rounded-[var(--radius-sm)]",
                         draft.comment ? "text-accent-strong" : "text-fg-subtle hover:text-fg",
                       )}
                     >
@@ -319,7 +319,7 @@ export function Gradebook({
                         aria-invalid={isInvalid || undefined}
                         placeholder="—"
                         className={cn(
-                          "h-11 w-16 rounded-[--radius-sm] border bg-surface text-center text-base font-bold tabular-nums outline-none",
+                          "h-11 w-16 rounded-[var(--radius-sm)] border bg-surface text-center text-base font-bold tabular-nums outline-none",
                           isInvalid
                             ? "border-danger text-danger"
                             : "border-border focus:border-accent focus:ring-2 focus:ring-accent-ring/40",
@@ -365,7 +365,7 @@ export function Gradebook({
                         rows={2}
                         autoFocus
                         placeholder={t("teacher.commentPlaceholder")}
-                        className="w-full resize-y rounded-[--radius-sm] border border-border bg-surface p-2.5 text-sm outline-none focus:border-accent"
+                        className="w-full resize-y rounded-[var(--radius-sm)] border border-border bg-surface p-2.5 text-sm outline-none focus:border-accent"
                       />
                       <p className="mt-1 text-xs text-fg-muted">
                         {t("teacher.familySeesThis")}
@@ -381,7 +381,7 @@ export function Gradebook({
 
       {/* Sticky save bar — stays until there is nothing unsaved. */}
       {dirtyIds.length > 0 && (
-        <div className="sticky bottom-[calc(env(safe-area-inset-bottom,0px)+4.5rem)] z-30 flex items-center gap-3 rounded-[--radius-lg] border border-accent bg-surface p-3 shadow-lg lg:bottom-4">
+        <div className="sticky bottom-[calc(env(safe-area-inset-bottom,0px)+4.5rem)] z-30 flex items-center gap-3 rounded-[var(--radius-lg)] border border-accent bg-surface p-3 shadow-lg lg:bottom-4">
           <CheckCircleIcon weight="fill" className="size-5 shrink-0 text-accent" />
           <p className="min-w-0 flex-1 text-sm font-medium text-fg">
             {dirtyIds.length} unsaved change{dirtyIds.length === 1 ? "" : "s"}

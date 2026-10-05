@@ -311,7 +311,7 @@ export default async function PrincipalDashboard({
                 <li key={klass.classId}>
                   <Link
                     href={`/principal/classes/${klass.classId}?days=${span}`}
-                    className="flex flex-wrap items-center gap-3 rounded-[--radius-md] bg-surface-muted p-3.5 transition-colors hover:bg-surface"
+                    className="flex flex-wrap items-center gap-3 rounded-[var(--radius-md)] bg-surface-muted p-3.5 transition-colors hover:bg-surface"
                   >
                     <span className="min-w-0 flex-1">
                       <span className="block truncate font-semibold text-fg">

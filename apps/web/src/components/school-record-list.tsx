@@ -49,7 +49,7 @@ export function SchoolRecordList({
       {records.map((record) => (
         <li
           key={record.id}
-          className="rounded-[--radius-md] border border-border p-4 print:border-black/20"
+          className="rounded-[var(--radius-md)] border border-border p-4 print:border-black/20"
         >
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
             <span className="grid size-9 shrink-0 place-items-center rounded-full bg-surface-muted text-fg-muted print:hidden">
@@ -68,7 +68,7 @@ export function SchoolRecordList({
           </div>
 
           <dl className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
-            <div className="rounded-[--radius-sm] bg-surface-muted p-2.5 print:bg-transparent print:p-0">
+            <div className="rounded-[var(--radius-sm)] bg-surface-muted p-2.5 print:bg-transparent print:p-0">
               <dt className="text-xs text-fg-muted">{t("record.attendance")}</dt>
               <dd className="text-lg font-semibold tabular-nums text-fg">
                 {/* Never 0% for a child nobody ever marked. A pupil who joined
@@ -82,7 +82,7 @@ export function SchoolRecordList({
                   : `${record.attendancePresent} of ${record.attendanceMarked} days`}
               </dd>
             </div>
-            <div className="rounded-[--radius-sm] bg-surface-muted p-2.5 print:bg-transparent print:p-0">
+            <div className="rounded-[var(--radius-sm)] bg-surface-muted p-2.5 print:bg-transparent print:p-0">
               <dt className="text-xs text-fg-muted">{t("ui.reportCardsIssued")}</dt>
               <dd className="text-lg font-semibold tabular-nums text-fg">
                 {record.reportCardCount}
@@ -92,7 +92,7 @@ export function SchoolRecordList({
               </dd>
             </div>
             {record.destination && (
-              <div className="rounded-[--radius-sm] bg-surface-muted p-2.5 print:bg-transparent print:p-0">
+              <div className="rounded-[var(--radius-sm)] bg-surface-muted p-2.5 print:bg-transparent print:p-0">
                 <dt className="text-xs text-fg-muted">{t("ui.wentOnTo")}</dt>
                 <dd className="text-sm font-medium text-fg">{record.destination}</dd>
               </div>

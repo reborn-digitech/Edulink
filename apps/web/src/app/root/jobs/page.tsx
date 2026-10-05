@@ -173,7 +173,7 @@ export default async function JobsPage({
             key={tile.key}
             href={state === tile.key ? "/root/jobs" : `/root/jobs?state=${tile.key}`}
             aria-current={state === tile.key ? "true" : undefined}
-            className="block rounded-[--radius-lg] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+            className="block rounded-[var(--radius-lg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
           >
             <Card className={cn("p-3.5", state === tile.key && "ring-2 ring-accent")}>
               <p className={cn("flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide", tile.className)}>
@@ -198,7 +198,7 @@ export default async function JobsPage({
           {RETENTION_KEYS.map((key) => {
             const days = RETENTION_DAYS_OF[key](retention.config);
             return (
-              <div key={key} className="flex items-baseline justify-between gap-3 rounded-[--radius-md] bg-surface-2 px-3 py-2 text-sm">
+              <div key={key} className="flex items-baseline justify-between gap-3 rounded-[var(--radius-md)] bg-surface-2 px-3 py-2 text-sm">
                 <dt className="text-fg">{t(RETENTION_LABEL[key])}</dt>
                 <dd className="text-right tabular-nums text-fg-muted">
                   {days === 0 ? t("root.retentionForever") : t("root.retentionDays", { days })}
@@ -261,7 +261,7 @@ export default async function JobsPage({
                     <>
                       <dt className="text-fg-muted">{t("root.jobErrorLabel")}</dt>
                       <dd>
-                        <code className="block whitespace-pre-wrap rounded-[--radius-sm] bg-danger-soft px-2 py-1 font-mono text-xs text-danger">
+                        <code className="block whitespace-pre-wrap rounded-[var(--radius-sm)] bg-danger-soft px-2 py-1 font-mono text-xs text-danger">
                           {job.lastRun.error}
                         </code>
                       </dd>
@@ -297,7 +297,7 @@ export default async function JobsPage({
         })}
       </ul>
 
-      <p className="rounded-[--radius-md] bg-surface-muted p-3.5 text-sm leading-relaxed text-fg-muted">
+      <p className="rounded-[var(--radius-md)] bg-surface-muted p-3.5 text-sm leading-relaxed text-fg-muted">
         {t("root.jobsHow")}{" "}
         <code className="rounded bg-surface px-1.5 py-0.5 font-semibold text-fg">npm run cron:install</code>
       </p>

@@ -75,7 +75,7 @@ export default async function AssetPage({ params, searchParams }: { params: Prom
         <Card>
           <CardHeader title={t("inventory.assetActionsTitle")} description={t("inventory.assetActionsBody")} />
           <CardBody className="grid gap-4 md:grid-cols-2">
-            <form action={assetActionAction} className="space-y-2 rounded-[--radius-md] border border-border p-3">
+            <form action={assetActionAction} className="space-y-2 rounded-[var(--radius-md)] border border-border p-3">
               <input type="hidden" name="tag" value={a.tagNumber} />
               <input type="hidden" name="action" value="ASSIGN" />
               <SelectField label={t("inventory.fieldCustodian")} name="custodianMembershipId" defaultValue={a.custodianMembershipId ?? ""}>
@@ -87,14 +87,14 @@ export default async function AssetPage({ params, searchParams }: { params: Prom
               <TextField label={t("inventory.fieldNote")} name="note" maxLength={300} />
               <Button type="submit" size="sm">{t("inventory.actionAssign")}</Button>
             </form>
-            <form action={assetActionAction} className="space-y-2 rounded-[--radius-md] border border-border p-3">
+            <form action={assetActionAction} className="space-y-2 rounded-[var(--radius-md)] border border-border p-3">
               <input type="hidden" name="tag" value={a.tagNumber} />
               <input type="hidden" name="action" value="MOVE" />
               <TextField label={t("inventory.fieldNewLocation")} name="location" required maxLength={60} defaultValue={a.location} />
               <TextField label={t("inventory.fieldNote")} name="note" maxLength={300} />
               <Button type="submit" size="sm">{t("inventory.actionMove")}</Button>
             </form>
-            <form action={assetActionAction} className="space-y-2 rounded-[--radius-md] border border-border p-3">
+            <form action={assetActionAction} className="space-y-2 rounded-[var(--radius-md)] border border-border p-3">
               <input type="hidden" name="tag" value={a.tagNumber} />
               <input type="hidden" name="action" value="AUDIT" />
               <SelectField label={t("inventory.fieldCondition")} name="condition" defaultValue={a.condition}>
@@ -105,7 +105,7 @@ export default async function AssetPage({ params, searchParams }: { params: Prom
               <TextField label={t("inventory.fieldNote")} name="note" maxLength={300} />
               <Button type="submit" size="sm" variant="secondary">{t("inventory.actionAudit")}</Button>
             </form>
-            <form action={assetActionAction} className="space-y-2 rounded-[--radius-md] border border-border p-3">
+            <form action={assetActionAction} className="space-y-2 rounded-[var(--radius-md)] border border-border p-3">
               <input type="hidden" name="tag" value={a.tagNumber} />
               <input type="hidden" name="action" value={a.status === "REPAIR" ? "REPAIRED" : "REPAIR"} />
               {a.status === "REPAIR" ? (
@@ -118,7 +118,7 @@ export default async function AssetPage({ params, searchParams }: { params: Prom
               <TextField label={t("inventory.fieldNote")} name="note" maxLength={300} />
               <Button type="submit" size="sm" variant="secondary">{a.status === "REPAIR" ? t("inventory.actionRepaired") : t("inventory.actionRepair")}</Button>
             </form>
-            <form action={assetActionAction} className="space-y-2 rounded-[--radius-md] border border-danger/40 p-3 md:col-span-2">
+            <form action={assetActionAction} className="space-y-2 rounded-[var(--radius-md)] border border-danger/40 p-3 md:col-span-2">
               <input type="hidden" name="tag" value={a.tagNumber} />
               <input type="hidden" name="action" value="DISPOSE" />
               <p className="text-sm text-fg-muted">{t("inventory.disposeBody")}</p>

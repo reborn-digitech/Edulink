@@ -83,7 +83,7 @@ export function RegisterForm({ register, timezone }: { register: StaffRegisterVi
   return (
     <form onSubmit={submit} noValidate className="space-y-4" data-testid="staff-register-form">
       {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
           {error}
         </p>
       )}
@@ -125,7 +125,7 @@ export function RegisterForm({ register, timezone }: { register: StaffRegisterVi
                         key={status}
                         className={`flex min-h-10 cursor-pointer items-center gap-2 rounded-full border px-3 text-sm transition-colors hover:bg-surface-muted ${on ? "border-accent bg-accent-soft font-medium text-accent-strong" : "border-border text-fg"}`}
                       >
-                        <input type="radio" name={`status-${row.membershipId}`} value={status} checked={on} onChange={() => set(row.membershipId, { status })} className="size-4 accent-[--accent]" />
+                        <input type="radio" name={`status-${row.membershipId}`} value={status} checked={on} onChange={() => set(row.membershipId, { status })} className="size-4 accent-[var(--accent)]" />
                         {t(STAFF_STATUS_KEY[status])}
                       </label>
                     );
@@ -188,11 +188,11 @@ export function SettingsForm({ checkInMinute, lateGraceMinutes }: { checkInMinut
   }
 
   return (
-    <details className="rounded-[--radius-md] border border-border">
+    <details className="rounded-[var(--radius-md)] border border-border">
       <summary className="cursor-pointer px-3.5 py-2.5 text-sm font-medium text-fg">{t("staffAttendance.changeSettings")}</summary>
       <form onSubmit={submit} noValidate className="space-y-3 border-t border-border px-3.5 py-3">
         {error && (
-          <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+          <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
             {error}
           </p>
         )}

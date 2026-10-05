@@ -110,7 +110,7 @@ export async function CorpsPage({ corps, searchParams }: { corps: CorpsCode; sea
                   {notEnrolled.map((s) => (
                     <li key={s.membershipId}>
                       <label className="flex min-h-11 items-center gap-2 text-sm text-fg">
-                        <input type="checkbox" name="student" value={s.membershipId} className="size-4 accent-[--accent]" />
+                        <input type="checkbox" name="student" value={s.membershipId} className="size-4 accent-[var(--accent)]" />
                         {s.name}
                       </label>
                     </li>
@@ -162,7 +162,7 @@ export async function CorpsPage({ corps, searchParams }: { corps: CorpsCode; sea
                   {d.enrolled.map((e) => (
                     <li key={e.studentMembershipId}>
                       <label className="flex min-h-11 items-center gap-2 text-sm text-fg">
-                        <input type="checkbox" name="participant" value={e.studentMembershipId} defaultChecked className="size-4 accent-[--accent]" />
+                        <input type="checkbox" name="participant" value={e.studentMembershipId} defaultChecked className="size-4 accent-[var(--accent)]" />
                         {e.name}
                       </label>
                     </li>

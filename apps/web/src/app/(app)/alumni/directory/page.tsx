@@ -55,7 +55,7 @@ export default async function AlumniDirectoryPage() {
       {directory.entries.length === 0 ? (
         <EmptyState icon={<AddressBookIcon weight="duotone" className="size-8" />} title={t("alumni.directoryEmpty")} />
       ) : (
-        <ul className="divide-y divide-border overflow-hidden rounded-[--radius-lg] border border-border bg-surface" data-testid="alumni-directory">
+        <ul className="divide-y divide-border overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface" data-testid="alumni-directory">
           {directory.entries.map((entry) => (
             <li key={entry.membershipId} className="flex items-start gap-3 p-4">
               <Avatar avatarKey={entry.avatarKey} name={entry.name} size="md" />

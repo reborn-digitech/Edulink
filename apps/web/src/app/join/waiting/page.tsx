@@ -80,7 +80,7 @@ export default async function JoinWaitingPage({ searchParams }: { searchParams: 
         {requests.length > 0 && (
           <ul className="mt-6 space-y-2">
             {requests.map((request) => (
-              <li key={request.id} className="flex flex-wrap items-center justify-between gap-2 rounded-[--radius-md] border border-border bg-surface p-4" data-testid="my-join-request">
+              <li key={request.id} className="flex flex-wrap items-center justify-between gap-2 rounded-[var(--radius-md)] border border-border bg-surface p-4" data-testid="my-join-request">
                 <div className="min-w-0">
                   <p className="font-semibold text-fg">
                     {request.className ? t("joinRequests.waitingRowClass", { className: request.className, school: request.schoolName }) : request.schoolName}

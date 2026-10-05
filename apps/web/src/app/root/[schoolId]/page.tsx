@@ -93,7 +93,7 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
           what it was — but every door that would grow it again is gone. */}
       {school.removedAt ? (
         <div className="space-y-4">
-          <p className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg-muted">
+          <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg-muted">
             {t("root.removeExplainer")}
           </p>
           <p className="text-sm leading-relaxed text-fg-muted">{t("root.restoreExplainer")}</p>

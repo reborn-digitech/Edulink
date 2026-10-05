@@ -41,7 +41,7 @@ export default async function MarksPage({ params, searchParams }: { params: Prom
         <CardBody className="flex flex-wrap gap-2">
           {s.marks.length === 0 ? <p className="text-sm text-fg-muted">{t("examCell.noMarksYet")}</p> : null}
           {s.marks.map((m) => (
-            <Link key={m.courseId} href={`/exam-cell/sessions/${s.id}/marks?course=${m.courseId}`} className={`rounded-[--radius-md] border px-3 py-2 text-sm ${m.courseId === courseId ? "border-accent text-accent-strong" : "border-border text-fg"}`}>
+            <Link key={m.courseId} href={`/exam-cell/sessions/${s.id}/marks?course=${m.courseId}`} className={`rounded-[var(--radius-md)] border px-3 py-2 text-sm ${m.courseId === courseId ? "border-accent text-accent-strong" : "border-border text-fg"}`}>
               <span className="font-semibold">{m.code}</span> · {t("examCell.marksCounts", { matched: m.matched, expected: m.expected, mismatched: m.mismatched })}
             </Link>
           ))}
@@ -115,7 +115,7 @@ export default async function MarksPage({ params, searchParams }: { params: Prom
           <CardBody>
             <form action={importMarksAction} className="space-y-3">
               <Hidden fields={{ sessionId: s.id, back }} />
-              <textarea name="text" required rows={6} placeholder="PRN,SEAT_NO,COURSE_CODE,INTERNAL,EXTERNAL" aria-label={t("examCell.importTitle")} className="w-full rounded-[--radius-md] border border-border bg-surface p-3 font-mono text-xs" />
+              <textarea name="text" required rows={6} placeholder="PRN,SEAT_NO,COURSE_CODE,INTERNAL,EXTERNAL" aria-label={t("examCell.importTitle")} className="w-full rounded-[var(--radius-md)] border border-border bg-surface p-3 font-mono text-xs" />
               <Button type="submit" variant="secondary">
                 {t("examCell.import")}
               </Button>

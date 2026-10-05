@@ -8,7 +8,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { createSession, getSession } from "@/lib/session";
 import { __resetCookies, __setHeaders } from "../tests/stubs/next-headers";
-import { createPost } from "@/lib/bulletin";
+import { createPost, getPost, listFeed, postableClasses } from "@/lib/bulletin";
 import { answerSlip, slipForReader, slipReport } from "@/lib/permission-slips";
 import { POST as consentPost } from "@/app/api/v1/shared/bulletin/[postId]/consent/route";
 
@@ -134,5 +134,32 @@ describe("a permission slip", () => {
     await expect(slipReport(await as(ids.otherTeacher, "TEACHER"), ids.slip)).rejects.toMatchObject({ code: "NOT_FOUND" });
     await expect(slipReport(await as(ids.p1, "PARENT", null), ids.slip)).rejects.toMatchObject({ key: "access.wrongRoleForThisAction" });
     expect(await db.auditLog.count({ where: { schoolId: ids.school, action: "circular.slip.answer" } })).toBe(3);
+  });
+});
+
+describe("a class slip reaches the family it asks (A3-journeys-1, A3-S-9)", () => {
+  it("is in a guardian's feed and opens for them when a child of theirs is in the class", async () => {
+    for (const parent of [ids.p1, ids.p2]) {
+      const session = await as(parent, "PARENT", null);
+      expect((await listFeed(session)).map((p) => p.id)).toContain(ids.slip);
+      expect((await getPost(session, ids.slip)).id).toBe(ids.slip);
+    }
+  });
+
+  it("stays out of the feed, the post and the slip of a family with no child in that class", async () => {
+    const other = (await createPost(await as(ids.admin, "ADMIN"), { scope: "CLASS", classId: ids.class2, title: "ZZ 5B museum", body: "", tags: [], media: [], consentQuestion: "May your child visit the museum?", consentBy: "2099-12-31" })).postId;
+    const p1 = await as(ids.p1, "PARENT", null);
+    expect((await listFeed(p1)).map((p) => p.id)).not.toContain(other);
+    await expect(getPost(p1, other)).rejects.toMatchObject({ code: "NOT_FOUND" });
+    // Before, the slip door answered the question and its day to any guardian with a child at the school.
+    await expect(slipForReader(p1, other)).rejects.toMatchObject({ code: "NOT_FOUND" });
+    await expect(slipForReader(await as(ids.pupil1User, "STUDENT"), other)).rejects.toMatchObject({ code: "NOT_FOUND" });
+    const p2 = await as(ids.p2, "PARENT", null);
+    expect((await listFeed(p2)).map((p) => p.id)).toContain(other);
+    expect((await slipForReader(p2, other)).children.map((c) => c.name)).toEqual(["ZZ Slips Pupil Three"]);
+  });
+
+  it("lets a guardian read their children's classes but post to none", async () => {
+    expect(await postableClasses({ ...(await as(ids.p1, "PARENT", null)), schoolId: ids.school })).toEqual([]);
   });
 });

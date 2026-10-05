@@ -28,7 +28,7 @@ export function EnquireForm({ schoolId }: { schoolId: string }) {
         onChange={(e) => setBody(e.target.value)}
         rows={4}
         placeholder={t("explore.enquirePlaceholder")}
-        className="w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
+        className="w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
       />
       {error && <p className="text-sm font-medium text-danger">{error}</p>}
       <Button

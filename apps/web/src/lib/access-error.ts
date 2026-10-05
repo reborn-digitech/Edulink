@@ -12,6 +12,25 @@ import type { SchoolModuleCode } from "@edulink/contracts";
  * assertions read it directly; `key` is the typed alias boundaries use.
  */
 export class AccessError extends Error {
+  /**
+   * A REFUSAL THAT REACHES A PAGE'S RENDER IS THE APP'S 404 (A3-states-2, 5 Oct 2026).
+   *
+   * A route handler and a server action catch an AccessError and answer it in
+   * words (apiFailure, the action boundaries); a page did not, so a stale or
+   * mistyped id — `sessionOf`'s NOT_FOUND, another faculty member's lecture —
+   * escaped the render and Next answered 500 with its bare "Application error"
+   * on twelve college route templates. Next reads `digest` to tell its own
+   * not-found interrupt from a crash (`notFound()` throws exactly this digest),
+   * so every NOT_FOUND, FORBIDDEN or MODULE_OFF refusal now renders the
+   * app's not-found page with the shell, in the reader's language, with a 404
+   * — on every page at once rather than a try/catch per page. FORBIDDEN is a
+   * 404 on purpose: "not here" and "not yours" must read the same (not-found.tsx).
+   * UNAUTHENTICATED keeps no digest: a page gates with requireUser/requireRole,
+   * which redirect, and page-gates.test.ts holds that. Code that catches the
+   * error by class (`instanceof AccessError`) is unaffected.
+   */
+  readonly digest?: string;
+
   constructor(
     readonly key: TranslationKey,
     /** MODULE_OFF: a door whose module the school has not switched on — a 403 whose envelope code says so (ModuleOffError). */
@@ -21,8 +40,12 @@ export class AccessError extends Error {
   ) {
     super(key);
     this.name = "AccessError";
+    if (code !== "UNAUTHENTICATED") this.digest = PAGE_NOT_FOUND_DIGEST;
   }
 }
+
+/** The digest `notFound()` from next/navigation throws (HTTP_ERROR_FALLBACK_ERROR_CODE;404); held by tests/page-not-found.test.ts against the framework's own. */
+export const PAGE_NOT_FOUND_DIGEST = "NEXT_HTTP_ERROR_FALLBACK;404";
 
 /**
  * A door, page or write whose module this school has not switched on. A 403

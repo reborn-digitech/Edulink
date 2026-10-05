@@ -47,7 +47,7 @@ export function CancelButton({ bookingId }: { bookingId: string }) {
         {error && (
           <p
             role="alert"
-            className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
+            className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
           >
             {error}
           </p>
@@ -60,7 +60,7 @@ export function CancelButton({ bookingId }: { bookingId: string }) {
   }
 
   return (
-    <div className="space-y-3 rounded-[--radius-md] border border-border bg-surface-muted p-3">
+    <div className="space-y-3 rounded-[var(--radius-md)] border border-border bg-surface-muted p-3">
       <p className="text-sm leading-relaxed text-fg">
         {/* Says what actually happens, to both parties, before they press it. */}
         {t("expert.cancelWarning")}
@@ -69,7 +69,7 @@ export function CancelButton({ bookingId }: { bookingId: string }) {
       {error && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
         >
           {error}
         </p>

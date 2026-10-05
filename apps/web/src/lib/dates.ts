@@ -403,14 +403,40 @@ export function sameCalendarDay(a: Date | null | undefined, b: Date | null | und
   );
 }
 
-/** True if the IANA zone is one this runtime actually knows. */
+/**
+ * True if `tz` is an IANA zone this runtime knows: "Asia/Kolkata", "UTC".
+ *
+ * Every attendance day, every due date and every "today" of a school is cut
+ * in its zone, so a zone the runtime cannot resolve throws a RangeError on
+ * every page that asks — the operator's college list answered 500 for EVERY
+ * college while one row said "Mars/Olympus" (A3-journeys-2, 5 Oct 2026),
+ * because onboarding stored it unchecked. Three tests: the IANA shape (an
+ * area and a place, or UTC — an offset such as "+05:30" resolves in modern
+ * runtimes but is not a zone and has no daylight rules); the runtime resolves
+ * it; and the zone it resolves to is on `Intl.supportedValuesOf("timeZone")`.
+ * The last is on the resolved name because ICU lists the canonical
+ * "Asia/Calcutta" and not "Asia/Kolkata", which resolves to it.
+ */
 export function isValidTimeZone(tz: string): boolean {
+  if (typeof tz !== "string" || !/^(?:UTC|[A-Za-z]+(?:\/[A-Za-z0-9_+-]+){1,2})$/.test(tz)) return false;
+  let resolved: string;
   try {
-    new Intl.DateTimeFormat("en", { timeZone: tz });
-    return true;
+    resolved = new Intl.DateTimeFormat("en", { timeZone: tz }).resolvedOptions().timeZone;
   } catch {
     return false;
   }
+  const known = typeof Intl.supportedValuesOf === "function" ? Intl.supportedValuesOf("timeZone") : null;
+  return known === null || resolved === "UTC" || known.includes(resolved) || known.includes(tz);
+}
+
+/**
+ * A stored zone, safe to cut a day with: the school's own, or India's when
+ * the row holds one no runtime resolves. For READS that must not fall over on
+ * one bad row (the operator's college list); every write refuses such a zone
+ * (isValidTimeZone), so this only ever meets a row written before that check.
+ */
+export function safeTimeZone(tz: string | null | undefined, fallback = "Asia/Kolkata"): string {
+  return tz && isValidTimeZone(tz) ? tz : fallback;
 }
 
 /* -------------------------------------------------------------------------- */

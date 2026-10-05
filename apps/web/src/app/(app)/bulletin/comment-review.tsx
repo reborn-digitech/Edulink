@@ -68,7 +68,7 @@ export function CommentReview({ commentId, postId, authorName }: { commentId: st
             maxLength={500}
             rows={2}
             aria-describedby={hintId}
-            className="w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
+            className="w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
           />
           <p id={hintId} className="text-xs text-fg-muted">
             {t("bulletin.commentRemoveReasonHint")}

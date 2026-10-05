@@ -59,7 +59,7 @@ export default async function LecturePage({ params, searchParams }: { params: Pr
                     <fieldset className="flex gap-1" disabled={!sheet.canMark}>
                       <legend className="sr-only">{e.name}</legend>
                       {LECTURE_MARKS.map((m) => (
-                        <label key={m} className="flex min-h-11 cursor-pointer items-center gap-1 rounded-[--radius-md] border border-border px-2">
+                        <label key={m} className="flex min-h-11 cursor-pointer items-center gap-1 rounded-[var(--radius-md)] border border-border px-2">
                           <input type="radio" name={`mark:${e.studentMembershipId}`} value={m} defaultChecked={(e.status ?? "PRESENT") === m} />
                           {t(MARK_KEY[m]!)}
                         </label>

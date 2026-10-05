@@ -46,7 +46,7 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
                 {c.name} · {c.schoolName}
               </h2>
             )}
-            <p className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg" data-testid="session-allowance">
+            <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg" data-testid="session-allowance">
               {t("gigs.allowanceLine", { oneLeft: c.allowance.ONE_TO_ONE.left, oneAllowed: c.allowance.ONE_TO_ONE.allowed, workLeft: c.allowance.WORKSHOP.left, workAllowed: c.allowance.WORKSHOP.allowed })}
             </p>
             <Card>

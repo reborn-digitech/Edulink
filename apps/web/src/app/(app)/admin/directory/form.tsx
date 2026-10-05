@@ -30,7 +30,7 @@ export function DirectoryForm({
   const [error, setError] = useState<string | null>(null);
 
   const inputClass =
-    "mt-1 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg";
+    "mt-1 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg";
 
   return (
     <div className="space-y-4">

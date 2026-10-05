@@ -88,8 +88,8 @@ export default async function ClassTimetablesPage({
                 aria-current={selected?.id === klass.id ? "page" : undefined}
                 className={
                   selected?.id === klass.id
-                    ? "rounded-[--radius-md] bg-accent px-3 py-2 text-sm font-semibold text-accent-fg"
-                    : "rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:border-border-strong hover:text-fg"
+                    ? "rounded-[var(--radius-md)] bg-accent px-3 py-2 text-sm font-semibold text-accent-fg"
+                    : "rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:border-border-strong hover:text-fg"
                 }
               >
                 {klass.name}
@@ -101,14 +101,14 @@ export default async function ClassTimetablesPage({
           <nav aria-label={t("principal.week")} className="flex flex-wrap items-center gap-2">
             <Link
               href={link(previous, selected?.id)}
-              className="rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:text-fg"
+              className="rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:text-fg"
             >
               {t("principal.previous")}
             </Link>
             {!isThisWeek && (
               <Link
                 href={link(weekStartKey(today), selected?.id)}
-                className="rounded-[--radius-md] bg-accent-soft px-3 py-2 text-sm font-semibold text-accent-strong"
+                className="rounded-[var(--radius-md)] bg-accent-soft px-3 py-2 text-sm font-semibold text-accent-strong"
               >
                 {t("principal.thisWeek")}
               </Link>
@@ -120,7 +120,7 @@ export default async function ClassTimetablesPage({
             </span>
             <Link
               href={link(next, selected?.id)}
-              className="rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:text-fg"
+              className="rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:text-fg"
             >
               {t("principal.next")}
             </Link>
@@ -132,7 +132,7 @@ export default async function ClassTimetablesPage({
           {gaps.length > 0 && (
             <p
               role="status"
-              className="flex items-start gap-2 rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
+              className="flex items-start gap-2 rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
             >
               <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0" />
               <span>

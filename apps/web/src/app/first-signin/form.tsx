@@ -35,7 +35,7 @@ export function FirstSignInForm({ className, initialHandle = "" }: { className?:
   return (
     <form onSubmit={submit} className={cn("space-y-4", className)} noValidate data-testid="first-signin-form">
       {errors._form && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger">
           {errors._form}
         </p>
       )}

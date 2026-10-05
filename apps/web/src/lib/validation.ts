@@ -9,6 +9,7 @@ import {
   INVITABLE_ROLES,
 } from "./constants";
 import { isDateKey, isValidTimeZone } from "./dates";
+import { AVATAR_PRESETS } from "@/components/ui/avatar";
 import type { Translate, TranslationKey } from "./i18n/dictionary";
 
 /**
@@ -209,7 +210,9 @@ export const studentJoinSchema = z.object({
   classCode: trimmed(0, 32).optional(),
   name: trimmed(2, 120),
   preferredName: trimmed(0, 60).optional(),
-  avatarKey: trimmed(1, 60),
+  // One of the drawn presets, as every other avatar writer insists (account.ts): an `upload:<fileId>` key here was drawn
+  // straight onto the ID card and the hall ticket from the blob store, any school's file (A3-S-1, 5 Oct 2026).
+  avatarKey: trimmed(1, 60).refine((key) => AVATAR_PRESETS.includes(key), "refusal.notValid"),
   birthdate: dateKeySchema.optional(),
   password: passwordSchema,
 });

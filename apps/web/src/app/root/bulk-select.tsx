@@ -88,7 +88,7 @@ export function BulkSelectProvider({
         <div
           role="region"
           aria-label={t("root.selectedCount", { count: chosen.length })}
-          className="sticky bottom-20 z-30 flex flex-wrap items-center gap-2 rounded-[--radius-lg] border border-border bg-surface p-3 shadow-lg lg:bottom-4"
+          className="sticky bottom-20 z-30 flex flex-wrap items-center gap-2 rounded-[var(--radius-lg)] border border-border bg-surface p-3 shadow-lg lg:bottom-4"
         >
           <span className="flex items-center gap-1.5 text-sm font-semibold text-fg">
             <CheckSquareIcon weight="fill" className="size-5 text-accent" />
@@ -115,7 +115,7 @@ export function BulkSelectProvider({
             aria-modal="true"
             aria-labelledby="bulk-title"
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-md rounded-[--radius-lg] border border-border bg-surface p-5 shadow-lg animate-pop"
+            className="w-full max-w-md rounded-[var(--radius-lg)] border border-border bg-surface p-5 shadow-lg animate-pop"
           >
             <h2 id="bulk-title" className="text-lg font-bold text-fg">
               {mode === "remove" ? t("root.bulkRemoveTitle", { count: chosen.length }) : t("root.bulkDeleteTitle", { count: chosen.length })}
@@ -123,7 +123,7 @@ export function BulkSelectProvider({
             <p className="mt-2 text-sm leading-relaxed text-fg-muted">
               {mode === "remove" ? t("root.bulkRemoveBody") : t("root.bulkDeleteBody")}
             </p>
-            <ul className="mt-3 max-h-40 space-y-1 overflow-y-auto rounded-[--radius-md] bg-surface-muted p-3 text-sm">
+            <ul className="mt-3 max-h-40 space-y-1 overflow-y-auto rounded-[var(--radius-md)] bg-surface-muted p-3 text-sm">
               {chosen.map((s) => (
                 <li key={s.id} className="truncate font-medium text-fg">
                   {s.name}
@@ -140,7 +140,7 @@ export function BulkSelectProvider({
                 onChange={(e) => setTyped(e.target.value)}
                 autoFocus
                 autoComplete="off"
-                className="mt-1.5 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 font-mono text-sm outline-none focus:border-accent"
+                className="mt-1.5 min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 font-mono text-sm outline-none focus:border-accent"
               />
             </label>
             <div className="mt-5 flex gap-2">

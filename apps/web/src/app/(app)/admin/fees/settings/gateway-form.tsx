@@ -76,7 +76,7 @@ export function GatewayForm({ hasGateway }: { hasGateway: boolean }) {
   return (
     <form onSubmit={submit} noValidate className="space-y-4">
       {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
           {error}
         </p>
       )}

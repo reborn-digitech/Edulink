@@ -63,7 +63,7 @@ export default async function AdminCircularsPage() {
           }
         />
       ) : (
-        <TableScroll className="rounded-[--radius-lg] border border-border bg-surface shadow-sm">
+        <TableScroll className="rounded-[var(--radius-lg)] border border-border bg-surface shadow-sm">
           <table className="w-full text-sm" data-testid="circulars-list">
             <thead className="text-left text-xs uppercase tracking-wide text-fg-muted">
               <tr>

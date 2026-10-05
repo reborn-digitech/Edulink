@@ -58,7 +58,7 @@ export default async function DeleteAccountPage() {
         <section aria-labelledby="what-title" className="mt-9 space-y-3 text-fg">
           <h2 id="what-title" className="text-xl font-semibold tracking-tight">{t("deletion.whatTitle")}</h2>
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-[--radius-md] border border-border bg-surface p-4">
+            <div className="rounded-[var(--radius-md)] border border-border bg-surface p-4">
               <h3 className="text-sm font-semibold uppercase tracking-wide text-fg-muted">{t("deletion.removedTitle")}</h3>
               <ul className="mt-2 list-disc space-y-1.5 pl-5">
                 <li>{t("deletion.removed1")}</li>
@@ -66,7 +66,7 @@ export default async function DeleteAccountPage() {
                 <li>{t("deletion.removed3")}</li>
               </ul>
             </div>
-            <div className="rounded-[--radius-md] border border-border bg-surface p-4">
+            <div className="rounded-[var(--radius-md)] border border-border bg-surface p-4">
               <h3 className="text-sm font-semibold uppercase tracking-wide text-fg-muted">{t("deletion.keptTitle")}</h3>
               <ul className="mt-2 list-disc space-y-1.5 pl-5">
                 <li>{t("deletion.kept1")}</li>

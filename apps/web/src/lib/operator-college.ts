@@ -30,7 +30,7 @@ import { isAlwaysOn, switchModuleFor } from "./modules";
 import { MODULE_META } from "./module-meta";
 import { placementSummary } from "./placement-analytics";
 import { gradeOf } from "./iqac-rules";
-import { addDaysToKey, todayKey, zonedStartOfDay } from "./dates";
+import { addDaysToKey, safeTimeZone, todayKey, zonedStartOfDay } from "./dates";
 
 /**
  * THE OPERATOR'S COLLEGE CONSOLE (4 October 2026). Whoever runs the server
@@ -148,7 +148,8 @@ export async function listColleges(session: ActiveContext, opts: CollegesOpts = 
       const [programmes, students, health] = await Promise.all([
         db.programme.findMany({ where: { schoolId: s.id, archivedAt: null }, orderBy: { code: "asc" }, select: { code: true, name: true, intake: true } }),
         db.membership.count({ where: { schoolId: s.id, role: "STUDENT", status: "ACTIVE", leftAt: null } }),
-        healthOf(s.id, s.timezone, now),
+        // One row's unknown zone (A3-journeys-2) must not take down the list for every college: read it as India's.
+        healthOf(s.id, safeTimeZone(s.timezone), now),
       ]);
       // The college's log says the platform read its numbers — counts only.
       await audit({
@@ -331,7 +332,7 @@ export async function remindRegulatorDeadlines(now: Date = new Date(), scope: { 
   const colleges = await collegeSubjects({ schoolIds: scope.schoolIds });
   const out: RegulatorRemindOutcome = { colleges: colleges.length, windows: 0, reminded: 0, muted: 0, people: 0 };
   for (const college of colleges) {
-    const today = todayKey(college.timezone, now);
+    const today = todayKey(safeTimeZone(college.timezone), now);
     const horizon = addDaysToKey(today, REGULATOR_REMIND_AHEAD_DAYS);
     for (const row of REGULATOR_DEADLINES) {
       if (!deadlineApplies(row, college)) continue;

@@ -44,12 +44,12 @@ export function PayChooser({ studentMembershipId, demands, options, resumePaymen
 
   return (
     <div className="space-y-4" data-testid="fees-pay-chooser">
-      <ul className="divide-y divide-border rounded-[--radius-md] border border-border">
+      <ul className="divide-y divide-border rounded-[var(--radius-md)] border border-border">
         <li className="px-3 py-2">
           <label className="flex cursor-pointer items-center gap-3 text-sm font-medium text-fg">
             <input
               type="checkbox"
-              className="size-5 shrink-0 accent-[--accent]"
+              className="size-5 shrink-0 accent-[var(--accent)]"
               checked={allSelected}
               disabled={flow !== null}
               onChange={() => setSelected(allSelected ? new Set() : new Set(demands.map((d) => d.id)))}
@@ -60,7 +60,7 @@ export function PayChooser({ studentMembershipId, demands, options, resumePaymen
         {demands.map((d) => (
           <li key={d.id} className="px-3 py-2" data-testid="fees-pay-demand" data-demand-id={d.id}>
             <label className="flex cursor-pointer items-center gap-3">
-              <input type="checkbox" className="size-5 shrink-0 accent-[--accent]" checked={selected.has(d.id)} disabled={flow !== null} onChange={() => toggle(d.id)} />
+              <input type="checkbox" className="size-5 shrink-0 accent-[var(--accent)]" checked={selected.has(d.id)} disabled={flow !== null} onChange={() => toggle(d.id)} />
               <span className="min-w-0 flex-1">
                 <span className="block text-sm font-medium text-fg">{d.label}</span>
                 <span className="block text-xs text-fg-muted">
@@ -109,7 +109,7 @@ export function PayChooser({ studentMembershipId, demands, options, resumePaymen
       {flow?.kind === "upi" && <UpiFlow key={flow.demandIds.join(",")} studentMembershipId={studentMembershipId} demandIds={flow.demandIds} onClose={() => setFlow(null)} />}
 
       {options.bankNote && (
-        <div className="flex items-start gap-3 rounded-[--radius-md] border border-border bg-surface-muted p-3.5 text-sm">
+        <div className="flex items-start gap-3 rounded-[var(--radius-md)] border border-border bg-surface-muted p-3.5 text-sm">
           <BankIcon weight="duotone" className="mt-0.5 size-5 shrink-0 text-fg-muted" />
           <div className="min-w-0">
             <p className="font-medium text-fg">{t("fees.parentPayBank")}</p>

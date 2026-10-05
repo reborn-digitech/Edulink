@@ -44,7 +44,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
         <CardBody className="space-y-4">
           {s.schedule.length === 0 ? <p className="text-sm text-fg-muted">{t("examCell.noSchedule")}</p> : null}
           {s.schedule.map((x) => (
-            <div key={x.id} className="space-y-2 rounded-[--radius-md] border border-border p-3">
+            <div key={x.id} className="space-y-2 rounded-[var(--radius-md)] border border-border p-3">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <p className="text-sm font-semibold text-fg">
                   {x.code} {x.name}
@@ -220,7 +220,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
         <CardBody className="space-y-3">
           {s.malpractice.length === 0 ? <p className="text-sm text-fg-muted">{t("examCell.noMalpractice")}</p> : null}
           {s.malpractice.map((m) => (
-            <div key={m.id} className="space-y-2 rounded-[--radius-md] border border-border p-3 text-sm">
+            <div key={m.id} className="space-y-2 rounded-[var(--radius-md)] border border-border p-3 text-sm">
               <p className="font-medium text-fg">
                 {m.studentName} · {m.courseCode}
               </p>

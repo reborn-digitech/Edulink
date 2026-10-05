@@ -50,7 +50,7 @@ export default async function ParentLinkPage() {
         <p className="mt-2 text-fg-muted">{t("parent.linkNeedCode")}</p>
 
         {children.length > 0 && (
-          <div className="mt-6 rounded-[--radius-lg] border border-border bg-surface p-4">
+          <div className="mt-6 rounded-[var(--radius-lg)] border border-border bg-surface p-4">
             <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
               {t("parent.alreadyLinked")}
             </p>
@@ -70,7 +70,7 @@ export default async function ParentLinkPage() {
         {claims.length > 0 && (
           <ul className="mt-6 space-y-2" data-testid="my-claims">
             {claims.map((claim) => (
-              <li key={claim.id} className="rounded-[--radius-md] border border-border bg-surface px-4 py-3 text-sm text-fg">
+              <li key={claim.id} className="rounded-[var(--radius-md)] border border-border bg-surface px-4 py-3 text-sm text-fg">
                 {t(CLAIM_KEY[claim.status], { school: claim.schoolName })}
                 {claim.declineReason && <span className="mt-1 block text-fg-muted">{t("joinRequests.reasonGiven", { reason: claim.declineReason })}</span>}
               </li>

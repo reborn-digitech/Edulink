@@ -148,7 +148,7 @@ export default async function BulletinPage({
 
       {/* Students get told the rule up front, not after their post disappears. */}
       {session.role === "STUDENT" && !showMine && (
-        <p className="rounded-[--radius-md] bg-accent-soft p-3.5 text-xs leading-relaxed text-fg-muted">
+        <p className="rounded-[var(--radius-md)] bg-accent-soft p-3.5 text-xs leading-relaxed text-fg-muted">
           {/* Whole sentences, with the link standing alone after them — a
               fragment on each side of a link cannot be reordered. */}
           {t("bulletin.studentNotice")}{" "}
@@ -158,7 +158,7 @@ export default async function BulletinPage({
         </p>
       )}
 
-      <nav className="flex gap-1 rounded-[--radius-md] bg-surface-muted p-1" aria-label={t("bulletin.filter")}>
+      <nav className="flex gap-1 rounded-[var(--radius-md)] bg-surface-muted p-1" aria-label={t("bulletin.filter")}>
         {tabs.map((t) => {
           const active = (filter ?? "") === t.id;
           return (
@@ -166,7 +166,7 @@ export default async function BulletinPage({
               key={t.id || "all"}
               href={t.id ? `/bulletin?filter=${t.id}` : "/bulletin"}
               aria-current={active ? "page" : undefined}
-              className={`flex-1 rounded-[--radius-sm] px-3 py-2 text-center text-sm font-medium ${
+              className={`flex-1 rounded-[var(--radius-sm)] px-3 py-2 text-center text-sm font-medium ${
                 active ? "bg-surface text-fg shadow-sm" : "text-fg-muted"
               }`}
             >

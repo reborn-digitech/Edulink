@@ -22,7 +22,7 @@ import { bookSlotAction, respondAction, withdrawAction } from "../actions";
  * because the school is told and the form is closed for good.
  */
 const errorBox =
-  "rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger";
+  "rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger";
 
 type SlotOption = {
   id: string;

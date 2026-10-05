@@ -54,7 +54,7 @@ export function CalendarCard({ initialUrl }: { initialUrl: string | null }) {
         {absolute ? (
           <div className="space-y-2">
             <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">{t("expert.calendarUrl")}</p>
-            <code className="block break-all rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2 text-xs text-fg" data-testid="calendar-url">
+            <code className="block break-all rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2 text-xs text-fg" data-testid="calendar-url">
               {absolute}
             </code>
             <p className="text-xs text-fg-muted">{t("expert.calendarRotateHint")}</p>

@@ -35,9 +35,10 @@ type PublicFaculty = z.infer<typeof publicFacultySchema>;
 
 const SELF = ["FACULTY", "HOD"] as const;
 
-async function me(ctx: ActiveContext) {
+/** The member themself. `module: false` for taking a page DOWN, which a college that switched IQAC off must still allow (A3-S-5). */
+async function me(ctx: ActiveContext, opts: { module: boolean } = { module: true }) {
   if (!ctx.schoolId || !ctx.membershipId || !ctx.role || !(SELF as readonly string[]).includes(ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
-  await assertModuleOn(ctx.schoolId, "IQAC");
+  if (opts.module) await assertModuleOn(ctx.schoolId, "IQAC");
   return { schoolId: ctx.schoolId, membershipId: ctx.membershipId, userId: ctx.user.id };
 }
 
@@ -67,7 +68,10 @@ async function snapshotOf(schoolId: string, membershipId: string, now: Date): Pr
 
 /** My page: whether the office has written my record, what would be published from it today, and whether it is up. */
 export async function myPublicProfile(ctx: ActiveContext, now: Date = new Date()): Promise<MyProfile> {
-  const m = await me(ctx);
+  return profileOf(await me(ctx), now);
+}
+
+async function profileOf(m: { schoolId: string; membershipId: string }, now: Date): Promise<MyProfile> {
   const [preview, row, school] = await Promise.all([
     snapshotOf(m.schoolId, m.membershipId, now),
     db.facultyPublicProfile.findFirst({ where: { schoolId: m.schoolId, record: { membershipId: m.membershipId } }, select: { publishedAt: true } }),
@@ -78,7 +82,7 @@ export async function myPublicProfile(ctx: ActiveContext, now: Date = new Date()
 
 /** Publish (or refresh) my page from today's rows, or take it down. Taking down what is not up is the same. */
 export async function setMyPublicProfile(ctx: ActiveContext, publish: boolean, now: Date = new Date()): Promise<MyProfile> {
-  const m = await me(ctx);
+  const m = await me(ctx, { module: publish });
   const school = await db.school.findUniqueOrThrow({ where: { id: m.schoolId }, select: { slug: true, kind: true } });
   if (!isCollegeKind(school.kind)) throw new AccessError("collegeOffice.refuseNotCollege");
   const record = await db.facultyRecord.findFirst({ where: { schoolId: m.schoolId, membershipId: m.membershipId }, select: { id: true } });
@@ -100,17 +104,30 @@ export async function setMyPublicProfile(ctx: ActiveContext, publish: boolean, n
     await db.facultyRecord.update({ where: { id: record.id }, data: { publicProfileAt: null } });
     if (gone.count > 0) await audit({ schoolId: m.schoolId, actorUserId: m.userId, action: "faculty.profile.unpublish", targetType: "FacultyRecord", targetId: record.id, meta: {} });
   }
-  return myPublicProfile(ctx, now);
+  return profileOf(m, now);
 }
 
 /** The office takes a page down — a member who has left, a page that should not be up. Never puts one up. */
 export async function officeTakeDownProfile(ctx: ActiveContext, membershipId: string): Promise<void> {
   if (!ctx.schoolId || ctx.role !== "ADMIN") throw new AccessError("access.wrongRoleForThisAction");
-  const record = await db.facultyRecord.findFirst({ where: { schoolId: ctx.schoolId, membershipId }, select: { id: true } });
-  if (!record) throw new AccessError("collegeDesks.refuseProfileNoRecord", "NOT_FOUND");
+  if (!(await takeDownProfileOf(ctx.schoolId, membershipId, ctx.user.id, "office"))) throw new AccessError("collegeDesks.refuseProfileNoRecord", "NOT_FOUND");
+}
+
+/**
+ * A PAGE COMES DOWN WITH ITS MEMBER (A3-S-5, 5 Oct 2026). A teacher whose
+ * access the office ends (membership.ts suspendMembership — a member of staff
+ * leaves by being paused; a pupil's departure is another path) can no longer
+ * reach "take my page down", and the signed-out page went on naming them as
+ * the college's staff. The office's pause calls this; so does the office's own
+ * takedown. False when the member has no record (nothing could be up).
+ */
+export async function takeDownProfileOf(schoolId: string, membershipId: string, actorUserId: string, reason: "office" | "membership.suspend"): Promise<boolean> {
+  const record = await db.facultyRecord.findFirst({ where: { schoolId, membershipId }, select: { id: true } });
+  if (!record) return false;
   const gone = await db.facultyPublicProfile.deleteMany({ where: { facultyRecordId: record.id } });
   await db.facultyRecord.update({ where: { id: record.id }, data: { publicProfileAt: null } });
-  if (gone.count > 0) await audit({ schoolId: ctx.schoolId, actorUserId: ctx.user.id, action: "faculty.profile.takedown", targetType: "FacultyRecord", targetId: record.id, meta: {} });
+  if (gone.count > 0) await audit({ schoolId, actorUserId, action: "faculty.profile.takedown", targetType: "FacultyRecord", targetId: record.id, meta: { reason } });
+  return true;
 }
 
 /** For the signed-out page: a college's published profiles by its slug, by name. Reads only the rows the policy opens to anyone. */

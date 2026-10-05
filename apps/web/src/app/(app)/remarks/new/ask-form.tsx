@@ -101,7 +101,7 @@ export function AskForm({
       {errors._form && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
         >
           {errors._form}
         </p>
@@ -146,7 +146,7 @@ export function AskForm({
                   onClick={() => setTeacherId(teacher.membershipId)}
                   aria-pressed={teacherId === teacher.membershipId}
                   className={cn(
-                    "flex w-full items-center gap-3 rounded-[--radius-md] border p-3 text-left",
+                    "flex w-full items-center gap-3 rounded-[var(--radius-md)] border p-3 text-left",
                     teacherId === teacher.membershipId
                       ? "border-accent bg-accent-soft"
                       : "border-border bg-surface hover:border-border-strong",
@@ -180,7 +180,7 @@ export function AskForm({
         discovered afterwards. A pupil should know their guardians read this; a
         guardian should know their child does.
       */}
-      <p className="flex items-start gap-2 rounded-[--radius-md] border border-border bg-surface-muted p-3 text-xs leading-relaxed text-fg-muted">
+      <p className="flex items-start gap-2 rounded-[var(--radius-md)] border border-border bg-surface-muted p-3 text-xs leading-relaxed text-fg-muted">
         <UsersThreeIcon weight="duotone" className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
         <span>
           {selfOnly ? t("remarks.roomSelf") : t("remarks.roomChild")}{" "}

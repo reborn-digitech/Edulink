@@ -67,11 +67,13 @@ export async function setDuties(ctx: ActiveContext, membershipId: string, duties
   if (!isDutyRole(member.role)) throw new RuleRefusal("duties.refuseNotTeacher", 422, undefined, "duties");
   const offered = await offeredDuties(ctx.schoolId);
   if (duties.some((d) => !(DUTIES as readonly string[]).includes(d))) throw new RuleRefusal("duties.refuseUnknown", 422, undefined, "duties");
-  const notOffered = duties.filter((d) => !offered.includes(d as DutyCode));
-  if (notOffered.length) throw new RuleRefusal("duties.refuseNotOffered", 422, undefined, "duties");
-  const set = new Set(duties);
-  const next = DUTIES.filter((d) => set.has(d));
   const before = parseDuties(member.dutiesJson);
+  // Only a duty being GIVEN must be offered (A3-S-2): one the teacher already holds that the streams no longer offer
+  // is not refused but taken off, so the panel, which re-sends what it was drawn with, saves and clears it.
+  const notOffered = duties.filter((d) => !offered.includes(d as DutyCode) && !before.includes(d as DutyCode));
+  if (notOffered.length) throw new RuleRefusal("duties.refuseNotOffered", 422, undefined, "duties");
+  const set = new Set(duties.filter((d) => offered.includes(d as DutyCode)));
+  const next = DUTIES.filter((d) => set.has(d));
   const answer: MemberDuties = { membershipId: member.id, role: member.role, duties: next, offered };
   if (before.length === next.length && before.every((d, i) => d === next[i])) return answer;
   await db.membership.update({ where: { id: member.id }, data: { dutiesJson: JSON.stringify(next) } });

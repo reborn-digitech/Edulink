@@ -198,7 +198,7 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
           the class code now also does for somebody already signed in.
         */}
         {hasAccount && role === "STUDENT" && (
-          <p className="mt-3 rounded-[--radius-md] border border-ok/30 bg-ok-soft px-3.5 py-2.5 text-xs leading-relaxed text-fg">
+          <p className="mt-3 rounded-[var(--radius-md)] border border-ok/30 bg-ok-soft px-3.5 py-2.5 text-xs leading-relaxed text-fg">
             {t("invite.changedSchool", { school: context?.school.name ?? "" })}
           </p>
         )}
@@ -210,7 +210,7 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
           anybody should meet by surprise.
         */}
         {signedInAs && (
-          <p className="mt-3 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-3.5 py-2.5 text-xs leading-relaxed text-fg">
+          <p className="mt-3 rounded-[var(--radius-md)] border border-warn/30 bg-warn-soft px-3.5 py-2.5 text-xs leading-relaxed text-fg">
             {t("invite.signedInAs", {
               name: signedInAs,
               invited: invite.email ?? t("invite.thePersonItWasSentTo"),

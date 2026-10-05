@@ -98,11 +98,11 @@ export default async function ClassesPage({
       </div>
 
       {archivedCount > 0 && (
-        <nav className="flex gap-1 rounded-[--radius-md] bg-surface-muted p-1" aria-label={t("classes.filter")}>
+        <nav className="flex gap-1 rounded-[var(--radius-md)] bg-surface-muted p-1" aria-label={t("classes.filter")}>
           <Link
             href={carry ? `/admin/classes?${carry.slice(1)}` : "/admin/classes"}
             aria-current={!showArchived ? "page" : undefined}
-            className={`flex-1 rounded-[--radius-sm] px-3 py-2 text-center text-sm font-medium ${
+            className={`flex-1 rounded-[var(--radius-sm)] px-3 py-2 text-center text-sm font-medium ${
               !showArchived ? "bg-surface text-fg shadow-sm" : "text-fg-muted"
             }`}
           >
@@ -111,7 +111,7 @@ export default async function ClassesPage({
           <Link
             href={`/admin/classes?archived=1${carry}`}
             aria-current={showArchived ? "page" : undefined}
-            className={`flex-1 rounded-[--radius-sm] px-3 py-2 text-center text-sm font-medium ${
+            className={`flex-1 rounded-[var(--radius-sm)] px-3 py-2 text-center text-sm font-medium ${
               showArchived ? "bg-surface text-fg shadow-sm" : "text-fg-muted"
             }`}
           >

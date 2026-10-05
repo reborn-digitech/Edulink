@@ -23,7 +23,7 @@ export async function ReachReport({ reach, office, timezone }: { reach: Circular
   const staffOnly = reach.audience === "TEACHERS";
 
   return (
-    <section aria-labelledby="reach-report" className="space-y-4 rounded-[--radius-lg] border border-border bg-surface p-5" data-testid="reach-report">
+    <section aria-labelledby="reach-report" className="space-y-4 rounded-[var(--radius-lg)] border border-border bg-surface p-5" data-testid="reach-report">
       <div>
         <h2 id="reach-report" className="text-sm font-semibold uppercase tracking-wide text-fg-muted">
           {t("circulars.reachTitle")}
@@ -92,7 +92,7 @@ export async function ReachReport({ reach, office, timezone }: { reach: Circular
             {group.outstanding.length === 0 ? (
               <p className="mt-1 text-xs text-ok">{t("circulars.everyoneReached")}</p>
             ) : (
-              <div className="relative mt-2 overflow-x-auto rounded-[--radius-md] border border-border" tabIndex={0}>
+              <div className="relative mt-2 overflow-x-auto rounded-[var(--radius-md)] border border-border" tabIndex={0}>
                 <table className="w-full text-sm">
                   <caption className="sr-only">
                     {group.className || t("circulars.audienceTeachers")} · {t("circulars.outstanding")}

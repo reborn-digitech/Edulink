@@ -74,7 +74,7 @@ export default async function NotificationsPage({
 
       {totalCount > 0 && (
         <>
-          <nav className="flex gap-1 rounded-[--radius-md] bg-surface-muted p-1" aria-label={t("bulletin.filter")}>
+          <nav className="flex gap-1 rounded-[var(--radius-md)] bg-surface-muted p-1" aria-label={t("bulletin.filter")}>
             {TABS.map((tab) => {
               const active = (tab.id === "unread") === showUnreadOnly;
               return (
@@ -82,7 +82,7 @@ export default async function NotificationsPage({
                   key={tab.id}
                   href={`${tab.id === "unread" ? "/notifications?filter=unread" : "/notifications"}${kind ? `${tab.id === "unread" ? "&" : "?"}kind=${kind}` : ""}`}
                   aria-current={active ? "page" : undefined}
-                  className={`flex-1 rounded-[--radius-sm] px-3 py-2 text-center text-sm font-medium ${
+                  className={`flex-1 rounded-[var(--radius-sm)] px-3 py-2 text-center text-sm font-medium ${
                     active ? "bg-surface text-fg shadow-sm" : "text-fg-muted"
                   }`}
                 >

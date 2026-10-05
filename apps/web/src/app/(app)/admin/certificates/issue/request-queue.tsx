@@ -159,7 +159,7 @@ export function RequestQueue({ items, pending }: { items: CertificateRequestView
                         decline(item.id);
                       }}
                       noValidate
-                      className="flex flex-wrap items-end gap-3 rounded-[--radius-md] border border-danger/30 bg-danger-soft/40 p-3"
+                      className="flex flex-wrap items-end gap-3 rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft/40 p-3"
                       data-testid={`decline-form-${item.id}`}
                     >
                       <TextField

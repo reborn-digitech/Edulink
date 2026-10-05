@@ -207,7 +207,7 @@ describe("⚠ the sign-up wizard, for a child with no account", () => {
   it("makes the account and a request — and no membership, no enrolment, nothing of the school", async () => {
     const { joinAsStudent } = await import("@/app/join/actions");
     current = null;
-    const result = await joinAsStudent({ schoolCode: classCode, name: "ZZ Wizard Pupil", avatarKey: "fox", birthdate: "2015-06-01", password: "Plum-Kettle-Orbit-42" });
+    const result = await joinAsStudent({ schoolCode: classCode, name: "ZZ Wizard Pupil", avatarKey: "preset:fox-sunset", birthdate: "2015-06-01", password: "Plum-Kettle-Orbit-42" });
     expect(result.ok, JSON.stringify(result.errors)).toBe(true);
     expect(result.redirectTo).toMatch(/^\/join\/waiting\?handle=zzwizardpupi\./);
 

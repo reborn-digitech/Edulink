@@ -47,7 +47,7 @@ export function AskForm({ experts, openRequests, max }: {
         description={t("mentoring.askDescription")}
       />
       <CardBody className="space-y-4">
-        <p className="rounded-[--radius-md] border border-border bg-surface-muted p-3 text-sm leading-relaxed text-fg-muted">
+        <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted p-3 text-sm leading-relaxed text-fg-muted">
           {/* One paragraph — the bold spans went with the fragments. */}
           {t("mentoring.askExplainer")}
         </p>
@@ -70,7 +70,7 @@ export function AskForm({ experts, openRequests, max }: {
                       onClick={() => setChosen(expert.id === chosen ? null : expert.id)}
                       aria-pressed={chosen === expert.id}
                       className={cn(
-                        "w-full rounded-[--radius-md] border p-3 text-left",
+                        "w-full rounded-[var(--radius-md)] border p-3 text-left",
                         chosen === expert.id
                           ? "border-accent bg-accent-soft"
                           : "border-border bg-surface hover:border-border-strong",

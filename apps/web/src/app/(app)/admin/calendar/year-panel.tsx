@@ -143,7 +143,7 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
     <div className="space-y-5">
       {/* ---------------- what is running ---------------- */}
       {current ? (
-        <div className="flex flex-wrap items-center gap-3 rounded-[--radius-md] border border-ok/40 bg-ok-soft/40 p-3">
+        <div className="flex flex-wrap items-center gap-3 rounded-[var(--radius-md)] border border-ok/40 bg-ok-soft/40 p-3">
           <span className="grid size-9 shrink-0 place-items-center rounded-full bg-ok text-white">
             <CheckCircleIcon weight="fill" className="size-5" />
           </span>
@@ -180,7 +180,7 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
             .map((year) => (
               <li
                 key={year.id}
-                className="flex flex-wrap items-center gap-2 rounded-[--radius-md] border border-border p-2.5 text-sm"
+                className="flex flex-wrap items-center gap-2 rounded-[var(--radius-md)] border border-border p-2.5 text-sm"
               >
                 <span className="flex-1 font-medium text-fg">{year.name}</span>
                 <span className="text-fg-muted">
@@ -215,11 +215,11 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
 
       {/* ---------------- add a year ---------------- */}
       {showForm ? (
-        <form onSubmit={submit} className="space-y-4 rounded-[--radius-md] border border-border p-4" noValidate>
+        <form onSubmit={submit} className="space-y-4 rounded-[var(--radius-md)] border border-border p-4" noValidate>
           {error && (
             <p
               role="alert"
-              className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
+              className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
             >
               {error}
             </p>
@@ -270,7 +270,7 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
 
       {/* ---------------- close the year ---------------- */}
       {current && candidates.length > 0 && (
-        <div className="rounded-[--radius-md] border border-warn/40 bg-warn-soft/30 p-4">
+        <div className="rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft/30 p-4">
           <div className="flex items-start gap-2.5">
             <WarningIcon weight="fill" className="mt-0.5 size-5 shrink-0 text-warn" />
             <div className="min-w-0 space-y-1">

@@ -164,7 +164,7 @@ export function StudentJoinFlow() {
             key={s}
             aria-hidden="true"
             className={cn(
-              "h-2 flex-1 rounded-full transition-colors duration-[--dur]",
+              "h-2 flex-1 rounded-full transition-colors duration-[var(--dur)]",
               i < index ? "bg-ok" : i === index ? "bg-accent" : "bg-border",
             )}
           />
@@ -177,7 +177,7 @@ export function StudentJoinFlow() {
       {errors._form && (
         <p
           role="alert"
-          className="mb-5 rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+          className="mb-5 rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
         >
           {errors._form}
         </p>
@@ -222,7 +222,7 @@ export function StudentJoinFlow() {
               aria-invalid={Boolean(errors.code) || undefined}
               aria-describedby={errors.code ? "join-code-error" : undefined}
               className={cn(
-                "w-full rounded-[--radius-lg] border-2 bg-surface px-4 py-5 text-center",
+                "w-full rounded-[var(--radius-lg)] border-2 bg-surface px-4 py-5 text-center",
                 "font-mono text-3xl font-bold tracking-[0.2em] uppercase text-fg",
                 "outline-none placeholder:text-fg-subtle placeholder:tracking-[0.2em]",
                 errors.code
@@ -240,7 +240,7 @@ export function StudentJoinFlow() {
           </div>
 
           {found ? (
-            <div className="mt-4 flex items-center gap-3 rounded-[--radius-lg] border-2 border-ok bg-ok-soft p-4 animate-pop">
+            <div className="mt-4 flex items-center gap-3 rounded-[var(--radius-lg)] border-2 border-ok bg-ok-soft p-4 animate-pop">
               <CheckCircleIcon weight="fill" className="size-7 shrink-0 text-ok" />
               <div className="min-w-0">
                 <p className="font-bold text-fg">{found.schoolName}</p>
@@ -334,7 +334,7 @@ export function StudentJoinFlow() {
           <div
             role="radiogroup"
             aria-label={t("join.chooseAvatar")}
-            className="mt-6 grid max-h-80 grid-cols-5 gap-2 overflow-y-auto rounded-[--radius-lg] border border-border bg-surface p-3 scrollbar-thin sm:grid-cols-6"
+            className="mt-6 grid max-h-80 grid-cols-5 gap-2 overflow-y-auto rounded-[var(--radius-lg)] border border-border bg-surface p-3 scrollbar-thin sm:grid-cols-6"
           >
             {AVATAR_PRESETS.map((preset) => {
               const selected = preset === avatarKey;
@@ -347,9 +347,9 @@ export function StudentJoinFlow() {
                   aria-label={describeAvatar(preset, t)}
                   onClick={() => setAvatarKey(preset)}
                   className={cn(
-                    "rounded-full transition-transform duration-[--dur-fast] active:scale-90",
+                    "rounded-full transition-transform duration-[var(--dur-fast)] active:scale-90",
                     selected
-                      ? "ring-[3px] ring-accent ring-offset-2 ring-offset-[--surface]"
+                      ? "ring-[3px] ring-accent ring-offset-2 ring-offset-[var(--surface)]"
                       : "hover:scale-105",
                   )}
                 >
@@ -424,7 +424,7 @@ export function StudentJoinFlow() {
             )}
           </div>
 
-          <div className="mt-6 flex items-start gap-3 rounded-[--radius-md] bg-accent-soft p-4">
+          <div className="mt-6 flex items-start gap-3 rounded-[var(--radius-md)] bg-accent-soft p-4">
             <SparkleIcon weight="fill" className="mt-0.5 size-5 shrink-0 text-accent-strong" />
             <p className="text-sm leading-relaxed text-fg-muted">
               {/* ⚠ ONE KEY PER SENTENCE, and the bold on the school name is

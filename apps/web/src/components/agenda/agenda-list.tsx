@@ -81,7 +81,7 @@ export async function AgendaList({ agenda }: { agenda: Agenda }) {
             {dayLabel(day.dateKey)}
             {day.dateKey === agenda.fromKey || day.dateKey === tomorrow ? <span className="ml-2 font-normal text-fg-muted">{formatDateKey(day.dateKey, { weekday: "short", day: "numeric", month: "short" }, locale)}</span> : null}
           </h2>
-          <ul className="divide-y divide-border rounded-[--radius-lg] border border-border bg-surface shadow-sm">
+          <ul className="divide-y divide-border rounded-[var(--radius-lg)] border border-border bg-surface shadow-sm">
             {day.rows.map((row) => (
               <li key={row.id} data-kind={row.kind}>
                 <Link href={row.href} className="flex items-center gap-3 px-4 py-3 hover:bg-surface-muted/60">

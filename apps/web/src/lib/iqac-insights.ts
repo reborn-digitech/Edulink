@@ -526,8 +526,6 @@ export async function saveScenario(ctx: ActiveContext, input: ScenarioSave): Pro
 
 /** The write itself, for a desk already checked (the door above) or the fixture's own IQAC (zz-iqac.ts, with a fixed id). */
 export async function writeScenario(desk: Desk, input: ScenarioSave, id?: string): Promise<{ id: string; kind: string; cycleId: string | null; year: number | null; departmentId: string | null; result: number }> {
-  const count = await db.iqacScenario.count({ where: { schoolId: desk.schoolId } });
-  if (count >= MAX_SCENARIOS) throw new RuleRefusal("insights.refuseTooMany", 409, { max: MAX_SCENARIOS });
   let data: { kind: string; cycleId: string | null; year: number | null; departmentId: string | null; inputsJson: string; cgpa: number | null; marks: number | null; result: number };
   if (input.kind === "NAAC") {
     const cycle = await cycleFor(desk, input.cycleId);
@@ -550,7 +548,16 @@ export async function writeScenario(desk: Desk, input: ScenarioSave, id?: string
     data = { kind: "NBA", cycleId: null, year: input.year, departmentId: dept.id, inputsJson: JSON.stringify(input.inputs), cgpa: null, marks, result: marks };
   }
   const { result, ...row } = data;
-  const created = await db.iqacScenario.create({ data: { ...(id ? { id } : {}), schoolId: desk.schoolId, name: input.name, createdByUserId: desk.userId, ...row }, select: { id: true } });
+  // THE CAP IS ONE STEP WITH THE WRITE (A3-S-7, 5 Oct 2026): counted and inserted under the college's own lock, so
+  // two saves at the hundredth row cannot both pass a count taken before either wrote.
+  const created = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as typeof db;
+    // Upper case: SQL does not mind, and the i18n audit does not read a query as a sentence.
+    await tx.$queryRaw`SELECT 1 FROM PG_ADVISORY_XACT_LOCK(HASHTEXT(${`iqac-scenarios:${desk.schoolId}`}))`;
+    const count = await tx.iqacScenario.count({ where: { schoolId: desk.schoolId } });
+    if (count >= MAX_SCENARIOS) throw new RuleRefusal("insights.refuseTooMany", 409, { max: MAX_SCENARIOS });
+    return tx.iqacScenario.create({ data: { ...(id ? { id } : {}), schoolId: desk.schoolId, name: input.name, createdByUserId: desk.userId, ...row }, select: { id: true } });
+  });
   await audit({ schoolId: desk.schoolId, actorUserId: desk.userId, action: "iqac.scenario.save", targetType: "IqacScenario", targetId: created.id, meta: { kind: data.kind, name: input.name, result, cycleId: data.cycleId, year: data.year, departmentId: data.departmentId } });
   return { id: created.id, kind: data.kind, cycleId: data.cycleId, year: data.year, departmentId: data.departmentId, result };
 }

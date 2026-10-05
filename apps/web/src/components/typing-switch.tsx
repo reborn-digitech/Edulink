@@ -276,7 +276,7 @@ export function TypingSwitch({ className }: { className?: string }) {
         </button>
       </span>
       {hint && (
-        <span role="status" aria-live="polite" style={{ left: hint.left, top: hint.top }} className="pointer-events-none fixed z-50 rounded-[--radius-sm] border border-border bg-surface px-2 py-1 text-sm text-fg shadow-md" data-testid="typing-hint">
+        <span role="status" aria-live="polite" style={{ left: hint.left, top: hint.top }} className="pointer-events-none fixed z-50 rounded-[var(--radius-sm)] border border-border bg-surface px-2 py-1 text-sm text-fg shadow-md" data-testid="typing-hint">
           {hint.text}
         </span>
       )}

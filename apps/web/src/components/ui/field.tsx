@@ -80,9 +80,9 @@ export function Field({ label, hint, error, required, children, className }: Fie
 
 const inputClasses = (invalid: boolean) =>
   cn(
-    "w-full rounded-[--radius-md] border bg-surface px-3.5 py-3 text-[0.9375rem] text-fg",
+    "w-full rounded-[var(--radius-md)] border bg-surface px-3.5 py-3 text-[0.9375rem] text-fg",
     "min-h-12 placeholder:text-fg-subtle",
-    "transition-[border-color,box-shadow] duration-[--dur-fast]",
+    "transition-[border-color,box-shadow] duration-[var(--dur-fast)]",
     "focus:outline-none focus-visible:outline-none",
     invalid
       ? "border-danger ring-2 ring-danger/25"
@@ -198,8 +198,8 @@ export function CheckboxField({
       <label
         htmlFor={id}
         className={cn(
-          "flex cursor-pointer items-start gap-3 rounded-[--radius-md] border p-3.5",
-          "transition-colors duration-[--dur-fast] hover:bg-surface-muted",
+          "flex cursor-pointer items-start gap-3 rounded-[var(--radius-md)] border p-3.5",
+          "transition-colors duration-[var(--dur-fast)] hover:bg-surface-muted",
           error ? "border-danger" : "border-border",
         )}
       >
@@ -208,7 +208,7 @@ export function CheckboxField({
           type="checkbox"
           aria-describedby={error ? errorId : undefined}
           aria-invalid={Boolean(error) || undefined}
-          className="mt-0.5 size-5 shrink-0 accent-[--accent]"
+          className="mt-0.5 size-5 shrink-0 accent-[var(--accent)]"
           {...props}
         />
         <span className="min-w-0">
@@ -373,7 +373,7 @@ export function DateField({
               type="button"
               onClick={() => nativeRef.current?.showPicker?.()}
               aria-label={t("field.openCalendar")}
-              className="grid min-h-11 w-11 shrink-0 place-items-center rounded-[--radius-md] border border-border text-fg-muted transition-colors hover:bg-surface-muted hover:text-fg"
+              className="grid min-h-11 w-11 shrink-0 place-items-center rounded-[var(--radius-md)] border border-border text-fg-muted transition-colors hover:bg-surface-muted hover:text-fg"
             >
               <CalendarBlankIcon weight="regular" className="size-5" aria-hidden="true" />
             </button>

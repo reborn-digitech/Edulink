@@ -9,6 +9,7 @@ import { isMinorToday } from "./student-consent";
 import { forSchool } from "./tenant-context";
 import { todayKey } from "./dates";
 import { studentTokensOf } from "./college-audience";
+import { canReadPost } from "./bulletin";
 import type { ActiveContext } from "./session";
 
 /**
@@ -148,10 +149,13 @@ export async function slipForReader(ctx: ActiveContext, postId: string, now: Dat
     // A guardian reaches the post through a child at its school, as the feed does.
     const linked = p?.schoolId ? await db.guardianship.findFirst({ where: { parentUserId: ctx.user.id, status: "ACTIVE", studentSchoolId: p.schoolId }, select: { id: true } }) : null;
     if (!p?.schoolId || !linked) throw new AccessError("access.postNotFound", "NOT_FOUND");
+    // A child at the school is not a child in the class: the post's own visibility decides (A3-S-9).
+    if (!(await canReadPost(ctx, postId))) throw new AccessError("access.postNotFound", "NOT_FOUND");
     return forSchool(p.schoolId, async () => slipFor(ctx, await slipPost(postId, p.schoolId!), now));
   }
   if (ctx.role !== "STUDENT") throw new AccessError("access.wrongRoleForThisAction");
   if (!ctx.schoolId) throw new AccessError("access.postNotFound", "NOT_FOUND");
+  if (!(await canReadPost(ctx, postId))) throw new AccessError("access.postNotFound", "NOT_FOUND");
   return slipFor(ctx, await slipPost(postId, ctx.schoolId), now);
 }
 

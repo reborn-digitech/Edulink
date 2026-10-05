@@ -56,7 +56,7 @@ export default async function LoginPage({
           {expired === "1" && (
             <p
               role="status"
-              className="mt-5 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn"
+              className="mt-5 rounded-[var(--radius-md)] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn"
             >
               {t("login.expired")}
             </p>
@@ -74,7 +74,7 @@ export default async function LoginPage({
           {link && (
             <p
               role="status"
-              className="mt-5 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn"
+              className="mt-5 rounded-[var(--radius-md)] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn"
             >
               {link === "expired"
                 ? t("login.linkExpired")
@@ -90,7 +90,7 @@ export default async function LoginPage({
           {sso && (
             <p
               role="status"
-              className="mt-5 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn"
+              className="mt-5 rounded-[var(--radius-md)] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn"
             >
               {sso === "unverified"
                 ? t("sso.unverifiedEmail")
@@ -109,7 +109,7 @@ export default async function LoginPage({
           {step === "expired" && (
             <p
               role="status"
-              className="mt-5 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn"
+              className="mt-5 rounded-[var(--radius-md)] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn"
             >
               {t("totp.stepExpired")}
             </p>
@@ -118,7 +118,7 @@ export default async function LoginPage({
           {reset === "1" && (
             <p
               role="status"
-              className="mt-5 rounded-[--radius-md] border border-ok/30 bg-ok-soft px-4 py-3 text-sm font-medium text-ok"
+              className="mt-5 rounded-[var(--radius-md)] border border-ok/30 bg-ok-soft px-4 py-3 text-sm font-medium text-ok"
             >
               {t("login.passwordChangedNotice")}
             </p>
@@ -135,7 +135,7 @@ export default async function LoginPage({
                 <a
                   key={provider}
                   href={`/api/sso/${provider}/start`}
-                  className="flex min-h-12 w-full items-center justify-center gap-2 rounded-[--radius-md] border border-border bg-surface px-4 text-sm font-semibold text-fg hover:border-accent"
+                  className="flex min-h-12 w-full items-center justify-center gap-2 rounded-[var(--radius-md)] border border-border bg-surface px-4 text-sm font-semibold text-fg hover:border-accent"
                 >
                   {t("login.ssoContinue", { provider: SSO_BRAND[provider] })}
                 </a>

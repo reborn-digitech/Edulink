@@ -56,7 +56,7 @@ export default async function LibraryTitlePage({ params, searchParams }: { param
                     <label className="sr-only" htmlFor={`st-${c.id}`}>
                       {t("library.copyState")}
                     </label>
-                    <select id={`st-${c.id}`} name="status" defaultValue={c.status} className="min-h-11 rounded-[--radius-md] border border-border bg-surface px-2 text-sm text-fg">
+                    <select id={`st-${c.id}`} name="status" defaultValue={c.status} className="min-h-11 rounded-[var(--radius-md)] border border-border bg-surface px-2 text-sm text-fg">
                       {LIBRARY_DESK_STATUSES.map((s) => (
                         <option key={s} value={s}>
                           {t(COPY_STATUS_KEY[s])}

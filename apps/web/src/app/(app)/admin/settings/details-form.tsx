@@ -151,7 +151,7 @@ export function DetailsForm({ school }: { school: School }) {
       {errors._form && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
         >
           {errors._form}
         </p>
@@ -189,7 +189,7 @@ export function DetailsForm({ school }: { school: School }) {
               className={cn(
                 "grid size-11 place-items-center rounded-full transition-transform active:scale-90",
                 draft.brandPrimary === option.value &&
-                  "ring-2 ring-accent ring-offset-2 ring-offset-[--surface]",
+                  "ring-2 ring-accent ring-offset-2 ring-offset-[var(--surface)]",
               )}
             >
               {option.value ? (
@@ -296,7 +296,7 @@ export function DetailsForm({ school }: { school: School }) {
       </SelectField>
 
       {dirty && (
-        <div className="sticky bottom-[calc(env(safe-area-inset-bottom,0px)+4.5rem)] flex items-center gap-3 rounded-[--radius-lg] border border-accent bg-surface p-3 shadow-lg lg:bottom-4">
+        <div className="sticky bottom-[calc(env(safe-area-inset-bottom,0px)+4.5rem)] flex items-center gap-3 rounded-[var(--radius-lg)] border border-accent bg-surface p-3 shadow-lg lg:bottom-4">
           <p className="min-w-0 flex-1 text-sm font-medium text-fg">{t("settings.unsaved")}</p>
           <Button type="submit" loading={pending} icon={<FloppyDiskIcon weight="bold" />}>
             {t("common.save")}

@@ -116,9 +116,15 @@ function cors(request: NextRequest) {
   return response;
 }
 
-// Every page, for its nonce; of the API, the doors CORS answers at —
+// EVERY REQUEST BUT NEXT'S OWN FILES (A3-S-3, 5 Oct 2026). The middleware is
+// the only writer of the route stamp the session's gate reads, and it can only
+// overwrite what a client sent on a request it sees. It used to skip any path
+// ending in an extension and every /api route but the ones below, so a page
+// path such as /library/titles/x.ab carried a client's own
+// "x-edulink-route: GET /hostel" to the gate and the default-deny page gate
+// passed a warden (each page's own requireRole still refused). Now every path
+// is stamped: a page gets its nonce (isPage), the CORS doors their headers —
 // /api/attendance among them, because the phone posts the same body the web
-// form does, on purpose, so the outbox replay is byte-identical to the web's —
-// and the three cookie doors the Origin lock guards.
-// Next's own files and anything with an extension never reach this.
-export const config = { matcher: ["/((?!api/|_next/|.*\\.[A-Za-z0-9]{2,12}$).*)", "/api/v1/:path*", "/api/attendance", "/api/files/:path*", "/api/push", "/api/practice/:path*", "/api/auth/:path*"] };
+// form does, so the outbox replay is byte-identical — the cookie doors the
+// Origin lock, and everything else, a file from public/ included, the stamp.
+export const config = { matcher: ["/((?!_next/).*)"] };

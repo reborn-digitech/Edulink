@@ -12,6 +12,7 @@ import { ModuleOff } from "@/components/module-off";
 import { ModuleFlash, INPUT, LINK, NUM, TD, TH } from "@/components/module-flash";
 import { PageHeader } from "@/components/ui/page-header";
 import { AccessError } from "@/lib/access-error";
+import { RuleRefusal } from "@/lib/rule-refusal";
 import { runView } from "@/lib/payroll";
 import { CODE_LABEL_KEY } from "@/lib/payroll-rules";
 import { formatInZone } from "@/lib/dates";
@@ -39,7 +40,8 @@ export default async function PayrollRunPage({ params, searchParams }: { params:
   try {
     run = await runView(ctx, month);
   } catch (error) {
-    if (error instanceof AccessError) notFound();
+    // A month that is not YYYY-MM ("zz-nope") is a RuleRefusal 422 from runView: the URL names no run, so 404 (A3-states-2).
+    if (error instanceof AccessError || error instanceof RuleRefusal) notFound();
     throw error;
   }
   const money = (p: number) => formatPaise(p, locale, { always: true });
@@ -112,7 +114,7 @@ export default async function PayrollRunPage({ params, searchParams }: { params:
               </ul>
             ) : null}
             {run.missingSalary.length ? (
-              <p className="flex items-start gap-2 rounded-[--radius-md] border border-warn/40 bg-warn-soft px-3 py-2 text-sm text-warn">
+              <p className="flex items-start gap-2 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft px-3 py-2 text-sm text-warn">
                 <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
                 <span>
                   {t("payroll.missingSalary", { names: run.missingSalary.map((m) => m.name).join(", ") })}{" "}

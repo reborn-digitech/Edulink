@@ -44,7 +44,7 @@ export default async function SubstitutionsPrintPage({ searchParams }: { searchP
         <PrintButton />
       </div>
 
-      <div className="rounded-[--radius-lg] border border-border bg-surface p-6 print:rounded-none print:border-0 print:bg-white print:p-0 print:text-black sm:p-8">
+      <div className="rounded-[var(--radius-lg)] border border-border bg-surface p-6 print:rounded-none print:border-0 print:bg-white print:p-0 print:text-black sm:p-8">
         <header className="border-b border-border pb-4 print:border-black/20">
           <h1 className="text-xl font-bold tracking-tight text-fg print:text-black">{t("substitutions.forDay", { date: dayLabel })}</h1>
           <p className="mt-1 text-sm text-fg-muted print:text-black/70">

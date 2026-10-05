@@ -86,7 +86,7 @@ export default async function CelebrationsPage() {
       ) : (
         <div className="space-y-3">
           {later && (
-            <p className="rounded-[--radius-md] bg-accent-soft p-3.5 text-sm text-fg-muted">{t("celebrations.laterNote")}</p>
+            <p className="rounded-[var(--radius-md)] bg-accent-soft p-3.5 text-sm text-fg-muted">{t("celebrations.laterNote")}</p>
           )}
           {[...byDay.entries()].map(([dateKey, list]) => (
             <Card key={dateKey}>

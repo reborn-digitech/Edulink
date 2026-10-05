@@ -68,7 +68,13 @@ async function cardOf(schoolId: string, membershipId: string): Promise<IdCard> {
   return {
     school: { name: m.school.name, brandPrimary: m.school.brandPrimary, college },
     name: m.user.preferredName ?? m.user.name,
-    photoFileId: m.user.avatarKey?.startsWith("upload:") ? m.user.avatarKey.slice(7) : null,
+    /**
+     * NO PHOTO FROM THE AVATAR KEY (A3-S-1, 5 Oct 2026). An `upload:<fileId>` key was read straight from the blob
+     * store (readStoredFile checks no owner and no school), so a pupil's self-join could draw any school's stored image
+     * onto their card, and the look-up door handed the file id out. No writer stores an upload avatar (every one is
+     * held to AVATAR_PRESETS); when a moderated photo exists it comes through files.ts for the pupil's own record.
+     */
+    photoFileId: null,
     group,
     studentCode: m.studentCode,
     prn: college ? (m.pupilRecord?.prn ?? null) : null,

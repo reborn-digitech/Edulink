@@ -25,12 +25,12 @@ export function BusMap({ stops = [], buses = [], track = [], className, testId }
   const [zoomDelta, setZoomDelta] = useState(0);
   const points: LatLng[] = [...stops, ...buses];
   if (points.length === 0) {
-    return <p className="rounded-[--radius-md] border border-dashed border-border p-6 text-center text-sm text-fg-muted">{t("transport.mapNoPoints")}</p>;
+    return <p className="rounded-[var(--radius-md)] border border-dashed border-border p-6 text-center text-sm text-fg-muted">{t("transport.mapNoPoints")}</p>;
   }
   const view = mapView(points, W, H, zoomDelta);
   const path = (list: LatLng[]) => list.map((p, i) => `${i === 0 ? "M" : "L"}${view.place(p).x.toFixed(1)},${view.place(p).y.toFixed(1)}`).join(" ");
   return (
-    <div className={`relative overflow-hidden rounded-[--radius-md] border border-border bg-surface-muted ${className ?? ""}`} data-testid={testId}>
+    <div className={`relative overflow-hidden rounded-[var(--radius-md)] border border-border bg-surface-muted ${className ?? ""}`} data-testid={testId}>
       <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={t("transport.mapAria")} className="block h-auto w-full" preserveAspectRatio="xMidYMid slice">
         {view.tiles.map((tile) => (
           <image key={tile.key} href={tile.url} x={tile.x} y={tile.y} width={256} height={256} />
@@ -66,10 +66,10 @@ export function BusMap({ stops = [], buses = [], track = [], className, testId }
         })}
       </svg>
       <div className="absolute right-2 top-2 flex flex-col gap-1">
-        <button type="button" onClick={() => setZoomDelta((z) => Math.min(z + 1, 4))} aria-label={t("transport.mapZoomIn")} className="flex size-11 items-center justify-center rounded-[--radius-md] border border-border bg-surface text-fg shadow-sm hover:bg-surface-muted">
+        <button type="button" onClick={() => setZoomDelta((z) => Math.min(z + 1, 4))} aria-label={t("transport.mapZoomIn")} className="flex size-11 items-center justify-center rounded-[var(--radius-md)] border border-border bg-surface text-fg shadow-sm hover:bg-surface-muted">
           <PlusIcon weight="bold" className="size-4" />
         </button>
-        <button type="button" onClick={() => setZoomDelta((z) => Math.max(z - 1, -6))} aria-label={t("transport.mapZoomOut")} className="flex size-11 items-center justify-center rounded-[--radius-md] border border-border bg-surface text-fg shadow-sm hover:bg-surface-muted">
+        <button type="button" onClick={() => setZoomDelta((z) => Math.max(z - 1, -6))} aria-label={t("transport.mapZoomOut")} className="flex size-11 items-center justify-center rounded-[var(--radius-md)] border border-border bg-surface text-fg shadow-sm hover:bg-surface-muted">
           <MinusIcon weight="bold" className="size-4" />
         </button>
       </div>

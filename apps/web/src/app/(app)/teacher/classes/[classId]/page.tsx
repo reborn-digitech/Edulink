@@ -205,7 +205,7 @@ export default async function ClassDetailPage({
           icon={<ClipboardTextIcon weight="duotone" className="size-5" />}
           hint={ungraded === 0 ? t("teacher.nothingWaiting") : t("teacher.handedInNotMarked")}
         />
-        <Link href={filter === "concern" ? `/teacher/classes/${klass.id}` : `/teacher/classes/${klass.id}?filter=concern#roster`} className={`block rounded-[--radius-lg] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${filter === "concern" ? "ring-2 ring-accent" : ""}`} aria-current={filter === "concern" ? "true" : undefined}>
+        <Link href={filter === "concern" ? `/teacher/classes/${klass.id}` : `/teacher/classes/${klass.id}?filter=concern#roster`} className={`block rounded-[var(--radius-lg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${filter === "concern" ? "ring-2 ring-accent" : ""}`} aria-current={filter === "concern" ? "true" : undefined}>
           <StatTile
             label={t("teacher.attendanceConcern")}
             value={ofConcern.length}
@@ -214,7 +214,7 @@ export default async function ClassDetailPage({
             hint={t("teacher.belowNinety", { days: RANGE_DAYS })}
           />
         </Link>
-        <Link href={filter === "noguardian" ? `/teacher/classes/${klass.id}` : `/teacher/classes/${klass.id}?filter=noguardian#roster`} className={`block rounded-[--radius-lg] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${filter === "noguardian" ? "ring-2 ring-accent" : ""}`} aria-current={filter === "noguardian" ? "true" : undefined}>
+        <Link href={filter === "noguardian" ? `/teacher/classes/${klass.id}` : `/teacher/classes/${klass.id}?filter=noguardian#roster`} className={`block rounded-[var(--radius-lg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${filter === "noguardian" ? "ring-2 ring-accent" : ""}`} aria-current={filter === "noguardian" ? "true" : undefined}>
           <StatTile
             label={t("teacher.noGuardian")}
             value={withoutGuardian}
@@ -328,7 +328,7 @@ export default async function ClassDetailPage({
                     href={`/incidents/new?student=${student.membershipId}`}
                     aria-label={t("incidents.recordFor", { name: student.name })}
                     title={t("incidents.recordFor", { name: student.name })}
-                    className="grid size-10 shrink-0 place-items-center rounded-[--radius-md] text-fg-muted hover:bg-surface-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+                    className="grid size-10 shrink-0 place-items-center rounded-[var(--radius-md)] text-fg-muted hover:bg-surface-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
                   >
                     <FirstAidKitIcon weight="bold" className="size-5" aria-hidden="true" />
                   </Link>

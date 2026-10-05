@@ -50,7 +50,7 @@ export function ResultsRow({
     place !== (rank === null ? "" : String(rank));
 
   return (
-    <li className="rounded-[--radius-md] border border-border bg-surface p-3.5">
+    <li className="rounded-[var(--radius-md)] border border-border bg-surface p-3.5">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <p className="font-medium">{studentName}</p>
         {awaitingConsent ? (
@@ -104,7 +104,7 @@ export function ResultsRow({
             inputMode="decimal"
             value={score}
             onChange={(event) => setScore(event.target.value)}
-            className="w-24 rounded-[--radius-md] border border-border bg-surface px-2.5 py-2 text-sm"
+            className="w-24 rounded-[var(--radius-md)] border border-border bg-surface px-2.5 py-2 text-sm"
           />
         </div>
         <div>
@@ -116,7 +116,7 @@ export function ResultsRow({
             inputMode="numeric"
             value={place}
             onChange={(event) => setPlace(event.target.value)}
-            className="w-20 rounded-[--radius-md] border border-border bg-surface px-2.5 py-2 text-sm"
+            className="w-20 rounded-[var(--radius-md)] border border-border bg-surface px-2.5 py-2 text-sm"
           />
         </div>
         <Button type="submit" size="sm" variant="secondary" disabled={pending || !dirty}>

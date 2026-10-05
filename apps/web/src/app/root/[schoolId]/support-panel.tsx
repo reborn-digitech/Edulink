@@ -54,7 +54,7 @@ export function SupportPanel({ schoolId, admins, pending }: { schoolId: string; 
       {pending.length > 0 && (
         <ul className="space-y-2">
           {pending.map((inv) => (
-            <li key={inv.id} className="flex flex-wrap items-center justify-between gap-2 rounded-[--radius-md] border border-border px-3 py-2 text-sm">
+            <li key={inv.id} className="flex flex-wrap items-center justify-between gap-2 rounded-[var(--radius-md)] border border-border px-3 py-2 text-sm">
               <span className="min-w-0 truncate">
                 {inv.email ?? "—"} <span className="text-xs text-fg-muted">· {inv.role === "PRINCIPAL" ? t("role.principal") : t("root.administrator")}</span>
               </span>
@@ -71,7 +71,7 @@ export function SupportPanel({ schoolId, admins, pending }: { schoolId: string; 
       ) : (
         <ul className="space-y-2">
           {admins.map((a) => (
-            <li key={a.userId} className="space-y-2 rounded-[--radius-md] border border-border px-3 py-2">
+            <li key={a.userId} className="space-y-2 rounded-[var(--radius-md)] border border-border px-3 py-2">
               <div className="flex flex-wrap items-center gap-2 text-sm">
                 <span className="font-semibold text-fg">{a.name}</span>
                 <span className="text-xs text-fg-muted">{a.role === "PRINCIPAL" ? t("role.principal") : t("root.administrator")}</span>

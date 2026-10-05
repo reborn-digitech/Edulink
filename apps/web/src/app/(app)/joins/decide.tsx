@@ -72,7 +72,7 @@ export function Decide({ kind, id, name }: { kind: "join" | "claim"; id: string;
             maxLength={300}
             rows={2}
             aria-describedby={hintId}
-            className="w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
+            className="w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
           />
           <p id={hintId} className="text-xs text-fg-muted">
             {t(kind === "join" ? "joinRequests.declineReasonHint" : "joinRequests.declineReasonHintClaim")}

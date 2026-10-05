@@ -40,7 +40,7 @@ export function PracticalsPanel({ sheet, t, locale, base, today }: { sheet: Prac
                 <Link
                   href={`${base}?offeringId=${o.offeringId}`}
                   aria-current={o.offeringId === sheet.offeringId ? "page" : undefined}
-                  className={`inline-flex min-h-11 items-center rounded-[--radius-md] border px-3 text-sm ${o.offeringId === sheet.offeringId ? "border-accent bg-accent-soft font-semibold text-accent-strong" : "border-border text-fg hover:bg-surface-muted"}`}
+                  className={`inline-flex min-h-11 items-center rounded-[var(--radius-md)] border px-3 text-sm ${o.offeringId === sheet.offeringId ? "border-accent bg-accent-soft font-semibold text-accent-strong" : "border-border text-fg hover:bg-surface-muted"}`}
                 >
                   {[o.courseCode, o.divisionName].filter(Boolean).join(" · ")}
                 </Link>
@@ -120,7 +120,7 @@ export function PracticalsPanel({ sheet, t, locale, base, today }: { sheet: Prac
                   {sheet.students.map((s) => (
                     <li key={s.studentMembershipId} className="flex items-center gap-2">
                       <label className="flex min-h-11 flex-1 items-center gap-2 text-sm text-fg">
-                        <input type="checkbox" name="student" value={s.studentMembershipId} defaultChecked className="size-4 accent-[--accent]" />
+                        <input type="checkbox" name="student" value={s.studentMembershipId} defaultChecked className="size-4 accent-[var(--accent)]" />
                         {s.name}
                         {s.batchName ? <span className="text-xs text-fg-muted">{t("streamRecords.batchN", { name: s.batchName })}</span> : null}
                       </label>
@@ -146,7 +146,7 @@ export function PracticalsPanel({ sheet, t, locale, base, today }: { sheet: Prac
                 {unsigned.map((r) => (
                   <li key={r.id}>
                     <label className="flex min-h-11 items-center gap-2 py-1.5">
-                      <input type="checkbox" name="record" value={r.id} defaultChecked className="size-4 accent-[--accent]" />
+                      <input type="checkbox" name="record" value={r.id} defaultChecked className="size-4 accent-[var(--accent)]" />
                       <span className="min-w-0">{t("streamRecords.practicals.signLine", { n: r.experimentNo, title: r.title, student: r.studentName, day: formatDateKey(r.performedOn, { dateStyle: "medium" }, locale) })}</span>
                       {r.marks !== null ? <Badge tone="neutral">{r.marks}</Badge> : null}
                     </label>

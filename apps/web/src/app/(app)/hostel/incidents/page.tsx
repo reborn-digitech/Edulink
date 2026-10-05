@@ -68,11 +68,11 @@ export default async function HostelIncidentsPage({ searchParams }: { searchPara
               </label>
               <label className="text-sm font-medium text-fg sm:col-span-2">
                 {t("hostel.incidentBody")}
-                <textarea name="body" required maxLength={4000} rows={3} className="mt-1.5 block w-full rounded-[--radius-md] border border-border bg-surface px-3.5 py-3 text-[0.9375rem] text-fg" />
+                <textarea name="body" required maxLength={4000} rows={3} className="mt-1.5 block w-full rounded-[var(--radius-md)] border border-border bg-surface px-3.5 py-3 text-[0.9375rem] text-fg" />
               </label>
               <label className="text-sm font-medium text-fg sm:col-span-2">
                 {t("hostel.incidentAction")}
-                <textarea name="actionTaken" maxLength={2000} rows={2} className="mt-1.5 block w-full rounded-[--radius-md] border border-border bg-surface px-3.5 py-3 text-[0.9375rem] text-fg" />
+                <textarea name="actionTaken" maxLength={2000} rows={2} className="mt-1.5 block w-full rounded-[var(--radius-md)] border border-border bg-surface px-3.5 py-3 text-[0.9375rem] text-fg" />
               </label>
               <label className="flex min-h-11 items-center gap-2 text-sm text-fg sm:col-span-2">
                 <input type="checkbox" name="notifyGuardians" defaultChecked className="size-4" />

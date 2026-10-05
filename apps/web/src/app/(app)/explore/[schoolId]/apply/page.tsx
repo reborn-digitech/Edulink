@@ -67,7 +67,7 @@ export default async function ApplyPage({
         <Card>
           <CardBody className="space-y-4 pt-5">
             {open.notice && (
-              <p className="whitespace-pre-wrap rounded-[--radius-md] bg-surface-muted px-3 py-2 text-sm text-fg">
+              <p className="whitespace-pre-wrap rounded-[var(--radius-md)] bg-surface-muted px-3 py-2 text-sm text-fg">
                 {open.notice}
               </p>
             )}

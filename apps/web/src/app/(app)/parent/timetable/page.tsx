@@ -90,14 +90,14 @@ export default async function ParentTimetablePage({
       <nav aria-label={t("parent.week")} className="flex flex-wrap items-center gap-2">
         <Link
           href={link_(previous)}
-          className="rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:text-fg"
+          className="rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:text-fg"
         >
           {t("parent.previousWeek")}
         </Link>
         {!isThisWeek && (
           <Link
             href={link_(weekStartKey(today))}
-            className="rounded-[--radius-md] bg-accent-soft px-3 py-2 text-sm font-semibold text-accent-strong"
+            className="rounded-[var(--radius-md)] bg-accent-soft px-3 py-2 text-sm font-semibold text-accent-strong"
           >
             {t("parent.thisWeek")}
           </Link>
@@ -107,7 +107,7 @@ export default async function ParentTimetablePage({
         </span>
         <Link
           href={link_(next)}
-          className="rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:text-fg"
+          className="rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:text-fg"
         >
           {t("parent.nextWeek")}
         </Link>

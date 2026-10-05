@@ -125,7 +125,7 @@ function EntryRow({ entry, past }: { entry: Entry; past: boolean }) {
 
   if (editing) {
     return (
-      <li className="space-y-3 rounded-[--radius-md] border border-accent bg-accent-soft/30 p-3">
+      <li className="space-y-3 rounded-[var(--radius-md)] border border-accent bg-accent-soft/30 p-3">
         {error && (
           <p role="alert" className="text-sm font-medium text-danger">
             {error}
@@ -186,7 +186,7 @@ function EntryRow({ entry, past }: { entry: Entry; past: boolean }) {
   return (
     <li
       className={cn(
-        "flex flex-wrap items-center gap-x-3 gap-y-1.5 rounded-[--radius-md] border border-border p-3",
+        "flex flex-wrap items-center gap-x-3 gap-y-1.5 rounded-[var(--radius-md)] border border-border p-3",
         past && "opacity-60",
       )}
     >

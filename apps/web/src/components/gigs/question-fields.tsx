@@ -55,7 +55,7 @@ export function QuestionFields({ value, onChange, disabled }: { value: QuestionD
       </SelectField>
       <div className="grid gap-4 lg:grid-cols-3">
         {LANGUAGES.map((l) => (
-          <fieldset key={l} lang={l} data-typing={l} disabled={disabled} className="min-w-0 space-y-3 rounded-[--radius-lg] border border-border bg-surface p-4" data-testid={`gig-${l}`}>
+          <fieldset key={l} lang={l} data-typing={l} disabled={disabled} className="min-w-0 space-y-3 rounded-[var(--radius-lg)] border border-border bg-surface p-4" data-testid={`gig-${l}`}>
             <legend className="px-1 text-sm font-semibold text-fg">{names[l]}</legend>
             {l !== "en" && <p className="text-xs text-fg-muted">{t("gigs.devanagariHint")}</p>}
             <TextAreaField label={t("appadmin.stemLabel")} rows={3} maxLength={2000} value={value[l].stem} onChange={(e) => patch(l, { stem: e.target.value })} data-testid={`gig-${l}-stem`} />
@@ -65,7 +65,7 @@ export function QuestionFields({ value, onChange, disabled }: { value: QuestionD
                   {l === "en" ? (
                     // The label is the target: a finger presses the square around the dot, not the dot.
                     <label className="inline-flex size-11 shrink-0 cursor-pointer items-center justify-center">
-                      <input type="radio" name="gig-answer" aria-label={t("appadmin.correctOne", { n: index + 1 })} checked={value.answerIndex === index} onChange={() => onChange({ ...value, answerIndex: index })} className="size-5 accent-[--color-accent]" data-testid={`gig-answer-${index}`} />
+                      <input type="radio" name="gig-answer" aria-label={t("appadmin.correctOne", { n: index + 1 })} checked={value.answerIndex === index} onChange={() => onChange({ ...value, answerIndex: index })} className="size-5 accent-[var(--accent)]" data-testid={`gig-answer-${index}`} />
                     </label>
                   ) : (
                     <span className="inline-flex size-11 shrink-0 items-center justify-center" aria-hidden="true">

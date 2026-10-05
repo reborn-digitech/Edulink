@@ -90,7 +90,7 @@ export async function IncidentNotes({ notes, timezone }: { notes: IncidentView["
   return (
     <ol className="space-y-3">
       {notes.map((note) => (
-        <li key={note.id} className="rounded-[--radius-md] border border-border bg-surface/60 px-3.5 py-2.5">
+        <li key={note.id} className="rounded-[var(--radius-md)] border border-border bg-surface/60 px-3.5 py-2.5">
           <p className="whitespace-pre-wrap text-sm leading-relaxed text-fg">{note.body}</p>
           <p className="mt-1 text-xs text-fg-muted">
             {note.authorName ? `${note.authorName} · ` : ""}

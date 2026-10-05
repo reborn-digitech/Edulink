@@ -31,7 +31,7 @@ export function ThreadControls({
         onChange={(e) => setBody(e.target.value)}
         rows={3}
         placeholder={t("enquiries.replyPlaceholder")}
-        className="w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
+        className="w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
       />
       {error && <p className="text-sm font-medium text-danger">{error}</p>}
       <div className="flex flex-wrap items-center gap-2">

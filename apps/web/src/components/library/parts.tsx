@@ -125,7 +125,7 @@ export function FineList({ fines, t, locale, back, desk, canSettle, title, showM
                     <Hidden fields={{ fineId: f.id, back }} />
                     <label className="min-w-0 flex-1 basis-48 text-xs text-fg-muted">
                       {t("library.waiveReason")}
-                      <input name="reason" required minLength={3} maxLength={300} className="mt-1 block min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg" />
+                      <input name="reason" required minLength={3} maxLength={300} className="mt-1 block min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg" />
                     </label>
                     <Button type="submit" size="sm" variant="ghost">
                       {t("library.waive")}
@@ -186,7 +186,7 @@ export function CatalogueSearch({ items, q, t, back, action, reserveFor, desk, n
           {reserveFor?.childId ? <input type="hidden" name="child" value={reserveFor.childId} /> : null}
           <label className="min-w-0 flex-1 basis-56 text-sm font-medium text-fg">
             {t("library.searchLabel")}
-            <input name="q" defaultValue={q} maxLength={100} className="mt-1.5 block min-h-12 w-full rounded-[--radius-md] border border-border bg-surface px-3.5 text-[0.9375rem] text-fg" />
+            <input name="q" defaultValue={q} maxLength={100} className="mt-1.5 block min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3.5 text-[0.9375rem] text-fg" />
           </label>
           <Button type="submit" variant="secondary">
             {t("library.search")}
@@ -195,7 +195,7 @@ export function CatalogueSearch({ items, q, t, back, action, reserveFor, desk, n
         {items.length === 0 ? (
           <EmptyState icon={<BookOpenIcon weight="duotone" className="size-8" />} title={t("library.noTitlesTitle")} description={q ? t("library.noTitlesSearch") : t("library.noTitlesBody")} />
         ) : (
-          <ul className="divide-y divide-border rounded-[--radius-md] border border-border">
+          <ul className="divide-y divide-border rounded-[var(--radius-md)] border border-border">
             {items.map((b) => (
               <li key={b.id} className="flex flex-wrap items-center justify-between gap-3 px-4 py-3">
                 <div className="min-w-0">

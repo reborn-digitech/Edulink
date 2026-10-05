@@ -80,7 +80,7 @@ export default async function SafetyPage({
           <CardBody>
             <ul className="space-y-2">
               {visits.map((visit) => (
-                <li key={visit.id} className="rounded-[--radius-sm] bg-surface-muted p-3">
+                <li key={visit.id} className="rounded-[var(--radius-sm)] bg-surface-muted p-3">
                   <p className="flex flex-wrap items-center gap-2 text-sm font-medium text-fg">
                     {visit.operatorName}
                     {visit.live && (
@@ -103,13 +103,13 @@ export default async function SafetyPage({
         </Card>
       )}
 
-      <nav className="flex gap-1 rounded-[--radius-md] bg-surface-muted p-1" aria-label={tr("safety.section")}>
+      <nav className="flex gap-1 rounded-[var(--radius-md)] bg-surface-muted p-1" aria-label={tr("safety.section")}>
         {TABS.map((t) => (
           <Link
             key={t.id}
             href={`/admin/safety?tab=${t.id}`}
             aria-current={active === t.id ? "page" : undefined}
-            className={`flex-1 rounded-[--radius-sm] px-3 py-2 text-center text-sm font-medium ${
+            className={`flex-1 rounded-[var(--radius-sm)] px-3 py-2 text-center text-sm font-medium ${
               active === t.id ? "bg-surface text-fg shadow-sm" : "text-fg-muted"
             }`}
           >

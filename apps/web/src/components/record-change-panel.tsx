@@ -80,7 +80,7 @@ export function RecordChangePanel({ change }: { change: RecordChangeView }) {
             <label htmlFor={reasonId} className="block text-xs font-semibold text-fg">
               {t("recordChanges.declineReasonLabel")}
             </label>
-            <textarea id={reasonId} value={reason} onChange={(event) => setReason(event.target.value)} maxLength={400} rows={2} className="w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg" />
+            <textarea id={reasonId} value={reason} onChange={(event) => setReason(event.target.value)} maxLength={400} rows={2} className="w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg" />
             <div className="flex flex-wrap gap-2">
               <Button size="sm" variant="danger" loading={pending} onClick={decline} data-testid="record-change-decline-confirm">
                 {t("recordChanges.decline")}

@@ -141,7 +141,7 @@ export function DataToolbar({
                 onChange={(e) => onType(e.target.value)}
                 placeholder={search.placeholder}
                 aria-label={search.label}
-                className="min-h-11 w-full rounded-[--radius-md] border border-border bg-surface pl-11 pr-11 text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+                className="min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface pl-11 pr-11 text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
               />
               {pending ? (
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-fg-subtle">
@@ -165,7 +165,7 @@ export function DataToolbar({
               value={facet.value}
               onChange={(e) => navigate({ [facet.key]: e.target.value === (facet.defaultValue ?? "") ? null : e.target.value })}
               aria-label={facet.label}
-              className="min-h-11 rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+              className="min-h-11 rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
             >
               {facet.options.map((o) => (
                 <option key={o.value} value={o.value}>
@@ -179,7 +179,7 @@ export function DataToolbar({
               value={sort.value}
               onChange={(e) => navigate({ [sortKey]: e.target.value === sort.defaultValue ? null : e.target.value })}
               aria-label={sort.label}
-              className="min-h-11 rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent sm:ml-auto"
+              className="min-h-11 rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent sm:ml-auto"
             >
               {sort.options.map((o) => (
                 <option key={o.value} value={o.value}>

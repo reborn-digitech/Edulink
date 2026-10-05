@@ -68,7 +68,7 @@ export default async function TermsPage({ searchParams }: { searchParams: Search
           ) : (
             <ul className="flex flex-wrap gap-2 text-sm">
               {s.rooms.map((r) => (
-                <li key={r.id} className="rounded-[--radius-md] border border-border px-3 py-1.5">
+                <li key={r.id} className="rounded-[var(--radius-md)] border border-border px-3 py-1.5">
                   <span className="font-medium text-fg">{r.name}</span> <span className="text-fg-muted">· {roomKindLabel(r.kind, t, streams)} · {t("academics.seats", { n: r.capacity })}</span>
                 </li>
               ))}

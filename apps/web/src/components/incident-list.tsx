@@ -95,7 +95,7 @@ export async function IncidentLog({ ctx, basePath, params, teacher }: { ctx: Act
           description={teacher ? t("incidents.noneTeacherBody") : t("incidents.noneBody")}
         />
       ) : (
-        <TableScroll className="rounded-[--radius-lg] border border-border bg-surface shadow-sm">
+        <TableScroll className="rounded-[var(--radius-lg)] border border-border bg-surface shadow-sm">
           <table className="w-full text-sm" data-testid="incident-log">
             <thead className="text-left text-xs uppercase tracking-wide text-fg-muted">
               <tr>

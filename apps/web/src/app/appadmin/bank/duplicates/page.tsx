@@ -45,7 +45,7 @@ export default async function DuplicatesPage() {
                     {pair.similarity >= 1 ? t("bankImport.identical") : t("bankImport.similarPercent", { percent: Math.round(pair.similarity * 100) })}
                   </Badge>
                   {[pair.a, pair.b].map((side) => (
-                    <Link key={side.id} href={`/appadmin/bank/${side.topicId}/${side.id}`} className="block rounded-[--radius-sm] px-2 py-1.5 hover:bg-surface-muted/60">
+                    <Link key={side.id} href={`/appadmin/bank/${side.topicId}/${side.id}`} className="block rounded-[var(--radius-sm)] px-2 py-1.5 hover:bg-surface-muted/60">
                       <span className="block text-sm text-fg">{side.stem}</span>
                       <span className="block text-xs text-fg-muted">
                         {t("appadmin.classN", { n: side.classLevel })} · {side.topicName}

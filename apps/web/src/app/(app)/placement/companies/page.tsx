@@ -38,7 +38,7 @@ export default async function CompaniesPage({ searchParams }: { searchParams: Pr
         <CardBody className="space-y-3">
           {requirements.length === 0 ? <p className="text-sm text-fg-muted">{t("placement.noRequirements")}</p> : null}
           {requirements.map((r) => (
-            <div key={r.id} className="flex flex-wrap items-start justify-between gap-3 rounded-[--radius-md] border border-border p-3 text-sm">
+            <div key={r.id} className="flex flex-wrap items-start justify-between gap-3 rounded-[var(--radius-md)] border border-border p-3 text-sm">
               <div className="space-y-1">
                 <div className="font-medium">
                   {r.role} · {r.companyName} {r.companyVerified ? null : <Badge tone="warn">{t("placement.unverified")}</Badge>}

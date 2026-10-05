@@ -87,7 +87,7 @@ export default async function JoinPage({
             <p className="mt-1 text-sm text-fg-muted">{t("join.waitingBody")}</p>
             <ul className="mt-3 space-y-2">
               {waiting.map((invite) => (
-                <li key={invite.id} className="flex flex-wrap items-center justify-between gap-2 rounded-[--radius-md] border border-border p-3">
+                <li key={invite.id} className="flex flex-wrap items-center justify-between gap-2 rounded-[var(--radius-md)] border border-border p-3">
                   <span className="text-sm font-medium text-fg">
                     {t("join.waitingAs", {
                       school: invite.schoolName,
@@ -121,7 +121,7 @@ export default async function JoinPage({
              load-bearing markup rather than a hook invented for a test. */
           <section
             aria-labelledby="signed-in-warning"
-            className="mt-6 rounded-[--radius-md] border border-warn/30 bg-warn-soft p-4"
+            className="mt-6 rounded-[var(--radius-md)] border border-warn/30 bg-warn-soft p-4"
           >
             <p id="signed-in-warning" className="text-sm font-semibold text-fg">
               {t("join.signedInAs", { name: signedInAs })}
@@ -196,7 +196,7 @@ function JoinOption({
   return (
     <Card interactive data-role={role} className="overflow-hidden">
       <Link href={href} className="flex items-center gap-4 p-5">
-        <span className="grid size-14 shrink-0 place-items-center rounded-[--radius-md] bg-accent-soft text-accent-strong">
+        <span className="grid size-14 shrink-0 place-items-center rounded-[var(--radius-md)] bg-accent-soft text-accent-strong">
           {icon}
         </span>
         <span className="min-w-0 flex-1">

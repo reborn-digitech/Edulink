@@ -104,8 +104,8 @@ export default async function PostPage({ params, searchParams }: { params: Promi
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
-      {sp.ok ? <p role="status" className="rounded-[--radius-md] bg-ok-soft px-3 py-2 text-sm text-ok">{sp.ok}</p> : null}
-      {sp.error ? <p role="alert" className="rounded-[--radius-md] bg-danger-soft px-3 py-2 text-sm text-danger">{sp.error}</p> : null}
+      {sp.ok ? <p role="status" className="rounded-[var(--radius-md)] bg-ok-soft px-3 py-2 text-sm text-ok">{sp.ok}</p> : null}
+      {sp.error ? <p role="alert" className="rounded-[var(--radius-md)] bg-danger-soft px-3 py-2 text-sm text-danger">{sp.error}</p> : null}
       <Link
         href="/bulletin"
         className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
@@ -114,7 +114,7 @@ export default async function PostPage({ params, searchParams }: { params: Promi
         {t("bulletin.title")}
       </Link>
 
-      <article className="rounded-[--radius-lg] border border-border bg-surface p-5">
+      <article className="rounded-[var(--radius-lg)] border border-border bg-surface p-5">
         <header className="flex items-start gap-3">
           <PersonLink membershipId={post.membershipByUser.get(post.author.id)} name={post.author.preferredName ?? post.author.name} className="shrink-0 rounded-full">
             <Avatar
@@ -207,7 +207,7 @@ export default async function PostPage({ params, searchParams }: { params: Promi
         {/* A permission slip's yes or no for each child (5 Oct 2026); answering is also "seen and understood". */}
         {slip ? <SlipAnswers postId={post.id} slip={slip} t={t} day={slipDay} /> : null}
         {post.canAck && !slip && (
-          <div className="mt-4 rounded-[--radius-md] bg-accent-soft/40 p-3.5">
+          <div className="mt-4 rounded-[var(--radius-md)] bg-accent-soft/40 p-3.5">
             <AckButton postId={post.id} acked={post.acks.length > 0} />
           </div>
         )}
@@ -227,7 +227,7 @@ export default async function PostPage({ params, searchParams }: { params: Promi
         </h2>
 
         {post.comments.length === 0 ? (
-          <p className="mt-2 rounded-[--radius-md] bg-surface-muted p-4 text-sm text-fg-muted">
+          <p className="mt-2 rounded-[var(--radius-md)] bg-surface-muted p-4 text-sm text-fg-muted">
             {t("bulletin.noCommentsYet")}
           </p>
         ) : (
@@ -255,7 +255,7 @@ export default async function PostPage({ params, searchParams }: { params: Promi
               const mine = entry.authorUserId === session.user.id;
               return (
                 <div
-                  className={`flex gap-3 rounded-[--radius-md] border p-3 ${
+                  className={`flex gap-3 rounded-[var(--radius-md)] border p-3 ${
                     held ? "border-warn/40 bg-warn-soft/40" : "border-border bg-surface"
                   }`}
                 >

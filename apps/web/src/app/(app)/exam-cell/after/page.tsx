@@ -40,7 +40,7 @@ export default async function AfterPage({ searchParams }: { searchParams: Promis
         <CardBody className="space-y-3">
           {a.revaluations.length === 0 ? <p className="text-sm text-fg-muted">{t("examCell.noRevaluations")}</p> : null}
           {a.revaluations.map((r) => (
-            <div key={r.id} className="space-y-2 rounded-[--radius-md] border border-border p-3 text-sm">
+            <div key={r.id} className="space-y-2 rounded-[var(--radius-md)] border border-border p-3 text-sm">
               <p className="font-medium">
                 {r.studentName} · {r.courseCode} · {t(REVAL_KIND_KEY[r.kind]!)} · {r.sessionName}
               </p>

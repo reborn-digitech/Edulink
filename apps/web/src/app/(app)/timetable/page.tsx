@@ -79,14 +79,14 @@ export default async function MyTimetablePage({
       <nav aria-label={t("principal.week")} className="flex flex-wrap items-center gap-2">
         <Link
           href={`/timetable?week=${previous}`}
-          className="rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:text-fg"
+          className="rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:text-fg"
         >
           {t("principal.previous")}
         </Link>
         {!isThisWeek && (
           <Link
             href="/timetable"
-            className="rounded-[--radius-md] bg-accent-soft px-3 py-2 text-sm font-semibold text-accent-strong"
+            className="rounded-[var(--radius-md)] bg-accent-soft px-3 py-2 text-sm font-semibold text-accent-strong"
           >
             {t("principal.thisWeek")}
           </Link>
@@ -98,7 +98,7 @@ export default async function MyTimetablePage({
         </span>
         <Link
           href={`/timetable?week=${next}`}
-          className="rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:text-fg"
+          className="rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm font-medium text-fg-muted hover:text-fg"
         >
           {t("principal.next")}
         </Link>

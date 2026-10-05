@@ -20,7 +20,7 @@ export async function CompleteRecordCard({ missing, href }: { missing: string[];
     <Card className="border-warn/40" data-testid="complete-record-card">
       <CardBody className="flex flex-wrap items-center justify-between gap-3 pt-5">
         <div className="flex min-w-0 flex-1 basis-56 items-start gap-3">
-          <span className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-[--radius-sm] bg-warn-soft text-warn">
+          <span className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-[var(--radius-sm)] bg-warn-soft text-warn">
             <FolderUserIcon weight="duotone" className="size-5" />
           </span>
           <div className="min-w-0">

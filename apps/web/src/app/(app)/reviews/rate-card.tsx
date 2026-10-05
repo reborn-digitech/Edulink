@@ -60,7 +60,7 @@ export function RateCard({
   }
 
   return (
-    <div className="rounded-[--radius-md] border border-border bg-surface p-4">
+    <div className="rounded-[var(--radius-md)] border border-border bg-surface p-4">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <PersonLink membershipId={teacherMembershipId} name={teacherName} className="font-semibold text-fg" />
         <p className="inline-flex items-center gap-1 text-xs text-fg-muted">

@@ -14,14 +14,14 @@ export async function HeldComments({ comments }: { comments: HeldComment[] }) {
   const t = await getT();
   const relativeTime = await getRelativeTime();
   return (
-    <section aria-labelledby="held-comments" className="rounded-[--radius-lg] border border-warn/40 bg-warn-soft/30 p-4">
+    <section aria-labelledby="held-comments" className="rounded-[var(--radius-lg)] border border-warn/40 bg-warn-soft/30 p-4">
       <h2 id="held-comments" className="text-sm font-semibold text-fg">
         {t("bulletin.heldCommentsTitle")} ({comments.length})
       </h2>
       <p className="mt-1 text-xs leading-relaxed text-fg-muted">{t("bulletin.heldCommentsBody")}</p>
       <ul className="mt-3 space-y-2">
         {comments.map((comment) => (
-          <li key={comment.id} className="rounded-[--radius-md] border border-border bg-surface p-3">
+          <li key={comment.id} className="rounded-[var(--radius-md)] border border-border bg-surface p-3">
             <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-fg-muted">
               <span className="font-semibold text-fg">{comment.authorName}</span>
               <span>· {relativeTime(comment.createdAt)}</span>

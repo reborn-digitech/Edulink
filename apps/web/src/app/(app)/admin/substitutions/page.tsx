@@ -81,7 +81,7 @@ export default async function SubstitutionsPage({ searchParams }: { searchParams
           <BoardLive dateKey={date} />
 
           {board.closed ? (
-            <p className="flex items-center gap-2 rounded-[--radius-md] border border-warn/40 bg-warn-soft px-3 py-2 text-sm text-warn">
+            <p className="flex items-center gap-2 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft px-3 py-2 text-sm text-warn">
               <WarningIcon weight="fill" className="size-4 shrink-0" aria-hidden="true" />
               {board.closedName ? t("substitutions.closedNamed", { name: board.closedName }) : t("substitutions.closedDay")}
             </p>

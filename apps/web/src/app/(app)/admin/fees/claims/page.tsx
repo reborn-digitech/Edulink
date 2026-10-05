@@ -40,7 +40,7 @@ export default async function ClaimsPage() {
         // `relative` makes the scroller the containing block of the header's
         // sr-only label (position: absolute), which otherwise escapes the
         // scroll and widens the whole page on a phone.
-        <div className="relative overflow-x-auto rounded-[--radius-lg] border border-border bg-surface shadow-sm" tabIndex={0}>
+        <div className="relative overflow-x-auto rounded-[var(--radius-lg)] border border-border bg-surface shadow-sm" tabIndex={0}>
           <table className="w-full text-sm">
             <thead className="text-left text-xs uppercase tracking-wide text-fg-muted">
               <tr>

@@ -83,7 +83,7 @@ export default async function CertificatePage({ params }: { params: Promise<{ re
 
       <article
         data-testid="transfer-certificate"
-        className="mx-auto max-w-[210mm] rounded-[--radius-lg] border border-border bg-white p-10 text-[#111] shadow-sm print:max-w-none print:rounded-none print:border-0 print:p-0 print:shadow-none"
+        className="mx-auto max-w-[210mm] rounded-[var(--radius-lg)] border border-border bg-white p-10 text-[#111] shadow-sm print:max-w-none print:rounded-none print:border-0 print:p-0 print:shadow-none"
         style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
       >
         <header className="flex items-start gap-4 border-b-2 border-[#111] pb-4">

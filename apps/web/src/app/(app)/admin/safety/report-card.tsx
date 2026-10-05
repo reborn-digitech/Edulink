@@ -50,7 +50,7 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
   return (
     <article
       className={cn(
-        "overflow-hidden rounded-[--radius-lg] border bg-surface shadow-sm",
+        "overflow-hidden rounded-[var(--radius-lg)] border bg-surface shadow-sm",
         urgent && !readOnly ? "border-danger/50" : "border-border",
       )}
     >
@@ -95,7 +95,7 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
 
         {/* ---- the reported content itself ---- */}
         {group.target.available ? (
-          <div className="rounded-[--radius-md] border border-border bg-surface-muted p-3.5">
+          <div className="rounded-[var(--radius-md)] border border-border bg-surface-muted p-3.5">
             {group.target.kind === "POST" && (
               <>
                 <p className="flex flex-wrap items-center gap-2 text-xs text-fg-muted">
@@ -179,7 +179,7 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
           </div>
         ) : (
           /* A dangling report must still be clearable. (§5) */
-          <div className="rounded-[--radius-md] border border-dashed border-border p-3.5">
+          <div className="rounded-[var(--radius-md)] border border-dashed border-border p-3.5">
             <p className="text-sm font-medium text-fg-muted">{t("safety.noLongerAvailable")}</p>
             <p className="mt-1 text-xs leading-relaxed text-fg-subtle">
               {t("safety.noLongerAvailableBody")}
@@ -188,7 +188,7 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
         )}
 
         {/* ---- what the reporters said ---- */}
-        <details className="rounded-[--radius-md] border border-border">
+        <details className="rounded-[var(--radius-md)] border border-border">
           <summary className="cursor-pointer px-3.5 py-2.5 text-sm font-medium text-fg">
             {group.count === 1 ? t("safety.whatReporterSaid") : t("safety.whatReportersSaid")}
           </summary>
@@ -210,7 +210,7 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
         </details>
 
         {readOnly && group.resolutionNote && (
-          <div className="rounded-[--radius-md] bg-surface-muted p-3.5">
+          <div className="rounded-[var(--radius-md)] bg-surface-muted p-3.5">
             <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
               {t("safety.whatYouDecided")}
             </p>
@@ -238,7 +238,7 @@ export function ReportCard({ group, readOnly }: { group: ReportGroup; readOnly?:
                     ? t("safety.removePlaceholder")
                     : t("safety.dismissPlaceholder")
                 }
-                className="w-full resize-y rounded-[--radius-md] border border-border bg-surface p-3 text-sm outline-none focus:border-accent"
+                className="w-full resize-y rounded-[var(--radius-md)] border border-border bg-surface p-3 text-sm outline-none focus:border-accent"
               />
               <div className="flex gap-2">
                 <Button

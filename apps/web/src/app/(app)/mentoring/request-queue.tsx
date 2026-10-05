@@ -61,7 +61,7 @@ export function RequestQueue({ requests }: { requests: PendingRequest[] }) {
         {requests.map((request) => (
           <div
             key={request.threadId}
-            className="rounded-[--radius-md] border border-border bg-surface p-4"
+            className="rounded-[var(--radius-md)] border border-border bg-surface p-4"
           >
             <p className="text-sm font-semibold text-fg">
               {request.studentName} → {request.expertName}

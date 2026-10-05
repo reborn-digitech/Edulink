@@ -205,7 +205,7 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
   return (
     <form onSubmit={submit} noValidate className="space-y-5" data-testid="pupil-record-form">
       {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
           {error}
         </p>
       )}
@@ -223,7 +223,7 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
       ))}
 
       {filing.length > 0 && (
-        <fieldset className="space-y-3 rounded-[--radius-md] border border-border p-4" data-testid="record-filing-section">
+        <fieldset className="space-y-3 rounded-[var(--radius-md)] border border-border p-4" data-testid="record-filing-section">
           <legend className="px-1 text-sm font-semibold text-fg">{t("pupilRecord.filingSection")}</legend>
           <p className="text-xs leading-relaxed text-fg-muted">{t("pupilRecord.filingIntro")}</p>
           <div className="grid gap-3 sm:grid-cols-2">{filing.map((f) => field(f, hintFor[f] ? t(hintFor[f]!) : undefined))}</div>
@@ -248,7 +248,7 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
       )}
 
       {!office && asking && (
-        <div className="space-y-3 rounded-[--radius-md] border border-border bg-surface-muted p-4" data-testid="record-ask-box">
+        <div className="space-y-3 rounded-[var(--radius-md)] border border-border bg-surface-muted p-4" data-testid="record-ask-box">
           <p className="text-sm leading-relaxed text-fg-muted">
             {t("recordChanges.formIntro")}
             {view.change ? ` ${t("recordChanges.replaceNote")}` : ""}

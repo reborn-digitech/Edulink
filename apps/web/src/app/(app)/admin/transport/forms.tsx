@@ -111,7 +111,7 @@ export function RouteEditor({ route, onDone }: { route?: TransportRoute; onDone?
         <p className="text-xs text-fg-muted">{t("transport.stopsHint")}</p>
         <ol className="space-y-3">
           {stops.map((s, i) => (
-            <li key={s.id ?? `new-${i}`} className="rounded-[--radius-md] border border-border p-3">
+            <li key={s.id ?? `new-${i}`} className="rounded-[var(--radius-md)] border border-border p-3">
               <div className="mb-2 flex items-center justify-between gap-2">
                 <span className="text-sm font-semibold text-fg">{t("transport.stopNumber", { n: i + 1 })}</span>
                 <span className="flex gap-1">

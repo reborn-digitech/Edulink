@@ -33,7 +33,7 @@ export function IqacFlash({ ok, error }: { ok?: string; error?: string }) {
 /** Never a promise: said on every page that shows a score. */
 export function NotAScore({ t }: { t: Translate }) {
   return (
-    <p className="flex items-start gap-2 rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted" data-testid="iqac-not-a-score">
+    <p className="flex items-start gap-2 rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted" data-testid="iqac-not-a-score">
       <InfoIcon weight="duotone" className="mt-0.5 size-4 shrink-0" aria-hidden />
       {t("iqac.notAScore")}
     </p>
@@ -97,7 +97,7 @@ export function SurveyForms({ t, surveys, back, locale }: { t: Translate; survey
                     <legend className="text-sm font-medium text-fg">{q.label}</legend>
                     <div className="flex flex-wrap gap-2">
                       {SURVEY_SCALE.map((v) => (
-                        <label key={v} className="flex min-h-11 items-center gap-2 rounded-[--radius-md] border border-border px-3 text-sm">
+                        <label key={v} className="flex min-h-11 items-center gap-2 rounded-[var(--radius-md)] border border-border px-3 text-sm">
                           <input type="radio" name={`q_${q.code}`} value={v} required />
                           {tt("iqac.scale.s" + v)}
                         </label>

@@ -42,7 +42,7 @@ export function DecideForm({ contributionId, topicId, initial, canAdd }: { contr
   return (
     <div className="space-y-4" data-testid="gig-decide">
       {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger" data-testid="gig-decide-error">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger" data-testid="gig-decide-error">
           {error}
         </p>
       )}

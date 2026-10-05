@@ -7,6 +7,7 @@ import { notify } from "./notify";
 import { AccessError } from "./tenancy";
 import { forOwnSchools } from "./tenant-context";
 import { syncStandinsHeldBy, syncStandinsForTeacherClasses } from "./standin-guardian";
+import { takeDownProfileOf } from "./faculty-profile";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 
@@ -152,6 +153,12 @@ export async function suspendMembership(
     await syncStandinsHeldBy({ schoolId, userId: target.userId, actorUserId: ctx.user.id }).catch(
       (error) => console.error("[suspendMembership] standin sync failed", error),
     );
+  }
+
+  // A college teacher's public page comes down with their access (A3-S-5): paused, they cannot reach "take my page
+  // down", and the signed-out page would go on naming them as the college's staff. Reinstated, they publish again.
+  if (target && (target.role === "FACULTY" || target.role === "HOD")) {
+    await takeDownProfileOf(schoolId, membershipId, ctx.user.id, "membership.suspend");
   }
 
   // NO NOTIFICATION IS SENT HERE, and the reason is worth stating rather than

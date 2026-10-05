@@ -68,7 +68,7 @@ export default async function InsideSchoolPage({
               ].map(([label, value]) => (
                 <li
                   key={String(label)}
-                  className="rounded-[--radius-md] border border-border p-3 text-center"
+                  className="rounded-[var(--radius-md)] border border-border p-3 text-center"
                 >
                   <p className="text-xl font-bold tabular-nums text-fg">{value}</p>
                   <p className="mt-0.5 text-xs text-fg-muted">{label}</p>
@@ -95,7 +95,7 @@ export default async function InsideSchoolPage({
           ) : (
             <ul className="space-y-2">
               {history.map((row) => (
-                <li key={row.id} className="rounded-[--radius-sm] bg-surface-muted p-3">
+                <li key={row.id} className="rounded-[var(--radius-sm)] bg-surface-muted p-3">
                   <p className="text-sm font-medium text-fg">
                     {row.operatorName}
                     {row.live && ` · ${t("root.openNow")}`}

@@ -119,7 +119,7 @@ export default async function RemarksPage({
               <span className="font-normal text-fg-muted">· {shownConversations.length}</span>
             </h2>
             {shownConversations.length === 0 ? (
-              <p className="rounded-[--radius-md] bg-surface-muted p-4 text-sm text-fg-muted">
+              <p className="rounded-[var(--radius-md)] bg-surface-muted p-4 text-sm text-fg-muted">
                 {q ? t("convo.nothingMatches", { query: rawQ ?? "" }) : t("convo.none")}
               </p>
             ) : (
@@ -188,7 +188,7 @@ export default async function RemarksPage({
                       : t("remarks.introParent")}
               </p>
               {shownThreads.length === 0 ? (
-                <p className="rounded-[--radius-md] bg-surface-muted p-4 text-sm text-fg-muted">
+                <p className="rounded-[var(--radius-md)] bg-surface-muted p-4 text-sm text-fg-muted">
                   {q
                     ? t("convo.nothingMatches", { query: rawQ ?? "" })
                     : isTeacher

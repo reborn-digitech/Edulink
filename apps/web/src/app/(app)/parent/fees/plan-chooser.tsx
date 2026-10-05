@@ -57,11 +57,11 @@ export function PlanChooser({ plans, childName }: { plans: FamilyFeePlans; child
     <div className="space-y-3" data-testid="fees-plan-chooser">
       <p className="text-sm text-fg-muted">{t("fees.plansIntro", { name: childName })}</p>
       {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
           {error}
         </p>
       )}
-      <ul className="divide-y divide-border rounded-[--radius-md] border border-border">
+      <ul className="divide-y divide-border rounded-[var(--radius-md)] border border-border">
         {plans.plans.map((p) => (
           <li key={p.id} className="space-y-2 px-4 py-3" data-testid="fees-plan" data-plan={p.id}>
             <div className="flex flex-wrap items-center justify-between gap-2">

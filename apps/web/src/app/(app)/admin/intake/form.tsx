@@ -131,7 +131,7 @@ export function IntakeForm({
     const others = result.outcomes.filter((o) => o.status !== "admitted");
     return (
       <div className={cn("space-y-4", className)}>
-        <div className="rounded-[--radius-lg] border border-border bg-surface p-6 text-center">
+        <div className="rounded-[var(--radius-lg)] border border-border bg-surface p-6 text-center">
           {result.admitted > 0 ? (
             <div className="mx-auto mb-4 grid size-16 place-items-center rounded-full bg-ok-soft text-ok animate-confetti">
               <CheckCircleIcon weight="fill" className="size-10" />
@@ -172,7 +172,7 @@ export function IntakeForm({
         </div>
 
         {admitted.length > 0 && (
-          <TableScroll className="rounded-[--radius-lg] border border-border bg-surface">
+          <TableScroll className="rounded-[var(--radius-lg)] border border-border bg-surface">
             <table className="w-full text-sm" data-testid="intake-admitted">
               <thead className="bg-surface-muted text-left text-xs uppercase tracking-wide text-fg-muted">
                 <tr>
@@ -220,7 +220,7 @@ export function IntakeForm({
         )}
 
         {(others.length > 0 || state.problems.length > 0) && (
-          <div className="rounded-[--radius-lg] border border-warn/40 bg-warn-soft p-4">
+          <div className="rounded-[var(--radius-lg)] border border-warn/40 bg-warn-soft p-4">
             <h3 className="flex items-center gap-2 text-sm font-bold text-warn">
               <WarningIcon weight="fill" className="size-4" />
               {t("invites.notSent", { count: others.length + state.problems.length })}
@@ -254,7 +254,7 @@ export function IntakeForm({
   return (
     <form onSubmit={submit} className={cn("space-y-5", className)} noValidate>
       {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger">
           {error}
         </p>
       )}
@@ -292,14 +292,14 @@ export function IntakeForm({
           onChange={(e) => setText(e.target.value)}
           rows={10}
           placeholder={EXAMPLE}
-          className="mt-1.5 w-full rounded-[--radius-md] border border-border bg-surface p-3.5 font-mono text-sm leading-relaxed outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+          className="mt-1.5 w-full rounded-[var(--radius-md)] border border-border bg-surface p-3.5 font-mono text-sm leading-relaxed outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
         />
         <p className="mt-1 text-xs text-fg-muted">{t("intake.columnsHelp")}</p>
         <p className="mt-1 text-xs text-fg-muted">{t("intake.penColumn")}</p>
       </div>
 
       {preview && (
-        <div className="rounded-[--radius-md] border border-border bg-surface-muted p-3.5" data-testid="intake-preview">
+        <div className="rounded-[var(--radius-md)] border border-border bg-surface-muted p-3.5" data-testid="intake-preview">
           <p className="text-sm font-semibold text-fg">
             {t("intake.readyToAdmit", { count: preview.valid.length })}
             {preview.problems.length > 0 && (

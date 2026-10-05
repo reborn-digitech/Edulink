@@ -14,7 +14,7 @@ export function FacultyProfileCard({ p, t, footer }: { p: FacultyProfileSnapshot
     return word === `${key}.${code}` ? code : word;
   };
   return (
-    <article className="space-y-2 rounded-[--radius-lg] border border-border bg-surface p-4">
+    <article className="space-y-2 rounded-[var(--radius-lg)] border border-border bg-surface p-4">
       <h2 className="text-lg font-semibold text-fg">{p.name}</h2>
       <p className="text-sm text-fg-muted">
         {[said("iqac.designation", p.designation), p.departmentName, said("iqac.qualification", p.qualification), p.netSetQualified ? t("collegeDesks.publicNetSet") : null, t("collegeDesks.publicYears", { years: p.experienceYears })].filter(Boolean).join(" · ")}

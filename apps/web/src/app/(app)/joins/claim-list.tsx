@@ -12,7 +12,7 @@ export async function ClaimList({ claims }: { claims: WaitingClaim[] }) {
   return (
     <ul className="space-y-2">
       {claims.map((claim) => (
-        <li key={claim.id} className="rounded-[--radius-md] border border-border bg-surface p-4" data-testid="waiting-claim">
+        <li key={claim.id} className="rounded-[var(--radius-md)] border border-border bg-surface p-4" data-testid="waiting-claim">
           <p className="font-semibold text-fg">{t("joinRequests.claimLine", { claimant: claim.claimantName, child: claim.childName })}</p>
           <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-fg-muted">
             <Badge tone="neutral" size="sm">

@@ -20,7 +20,7 @@ export function ResendButton({ token }: { token: string }) {
 
   if (sent) {
     return (
-      <p className="mt-4 rounded-[--radius-md] border border-ok/30 bg-ok-soft px-3 py-2.5 text-sm font-medium text-ok">
+      <p className="mt-4 rounded-[var(--radius-md)] border border-ok/30 bg-ok-soft px-3 py-2.5 text-sm font-medium text-ok">
         {t("verify.resendSent")}
       </p>
     );
@@ -31,7 +31,7 @@ export function ResendButton({ token }: { token: string }) {
       {error && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
         >
           {error}
         </p>

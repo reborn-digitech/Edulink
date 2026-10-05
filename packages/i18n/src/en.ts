@@ -6319,6 +6319,14 @@ export const en = {
   /* Audit actions. One entry per key written by `audit()`; an unknown key   */
   /* falls back to the raw key, which is a debugging aid rather than prose.  */
   /* ---------------------------------------------------------------------- */
+  appError: {
+    title: "Something went wrong on our side",
+    body: "This page could not be shown just now. Try again, or go back to your home page.",
+    retry: "Try again",
+    home: "Back to your home page",
+    reference: "Reference: {digest}",
+  },
+
   notFound: {
     title: "That page is not here",
     body: "The link may be old, or the thing it pointed at may have moved. Nothing is broken.",
@@ -13760,6 +13768,7 @@ export const en = {
     expulsionLine: "{hostel} {room} · from {date} · proposed by {name}",
     refuseRefundNotCancelled: "A refund outside the slab is asked on a cancelled seat.",
     refuseRefundAlreadyAsked: "That refund is already with the principal.",
+    refuseOwnAsk: "Someone else decides this: you asked for it yourself.",
     refuseRefundDecided: "The principal has already decided that refund.",
     refuseRefundSameAsSlab: "That is what the slab gives. Ask for a different amount, or record the refund.",
     refuseRefundWaiting: "The principal has not yet answered the refund asked outside the slab.",

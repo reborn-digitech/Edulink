@@ -10,6 +10,7 @@ import { createSession, getSession } from "@/lib/session";
 import { __resetCookies, __setHeaders } from "../tests/stubs/next-headers";
 import { myPublicProfile, officeTakeDownProfile, publicFaculty, setMyPublicProfile } from "@/lib/faculty-profile";
 import { robotsFor } from "@/lib/robots";
+import { suspendMembership } from "@/lib/membership";
 import { GET as publicGet } from "@/app/api/v1/public/faculty/[slug]/route";
 
 const owner = new PrismaClient();
@@ -123,5 +124,29 @@ describe("my public page", () => {
     expect(down.publishedAt).toBeNull();
     expect((await publicFaculty(SLUG)).profiles).toEqual([]);
     expect(await owner.auditLog.count({ where: { schoolId: ids.college, action: { in: ["faculty.profile.publish", "faculty.profile.unpublish", "faculty.profile.takedown"] } } })).toBe(4);
+  });
+});
+
+describe("a page outlives nobody (A3-S-5)", () => {
+  it("comes down when the office pauses the teacher, audited, and the teacher may still take theirs down with IQAC off", async () => {
+    const teacher = await ctxAs(ids.teacher, "FACULTY");
+    await setMyPublicProfile(teacher, true);
+    expect((await publicFaculty(SLUG)).profiles).toHaveLength(1);
+    // IQAC switched off: publishing is refused, taking the page down is not.
+    await owner.schoolModule.deleteMany({ where: { schoolId: ids.college, module: "IQAC" } });
+    try {
+      await expect(setMyPublicProfile(await ctxAs(ids.teacher, "FACULTY"), true)).rejects.toMatchObject({ code: "MODULE_OFF" });
+      expect((await setMyPublicProfile(await ctxAs(ids.teacher, "FACULTY"), false)).publishedAt).toBeNull();
+      expect((await publicFaculty(SLUG)).profiles).toEqual([]);
+    } finally {
+      await owner.schoolModule.create({ data: { schoolId: ids.college, module: "IQAC" } });
+    }
+    await setMyPublicProfile(await ctxAs(ids.teacher, "FACULTY"), true);
+    expect((await publicFaculty(SLUG)).profiles).toHaveLength(1);
+    expect(await suspendMembership(await ctxAs(ids.admin, "ADMIN"), ids.teacherM, "ZZ left the college")).toEqual({ ok: true });
+    expect((await publicFaculty(SLUG)).profiles).toEqual([]);
+    expect((await owner.facultyRecord.findUniqueOrThrow({ where: { id: ids.record }, select: { publicProfileAt: true } })).publicProfileAt).toBeNull();
+    const row = await owner.auditLog.findFirstOrThrow({ where: { schoolId: ids.college, action: "faculty.profile.takedown", targetId: ids.record }, orderBy: { createdAt: "desc" }, select: { meta: true } });
+    expect(JSON.parse(row.meta ?? "{}")).toEqual({ reason: "membership.suspend" });
   });
 });

@@ -67,7 +67,7 @@ export function DetailPicker({ palette, onPick, onBlank, label, intro, variant =
           title={label}
           onClick={() => (open ? close() : setOpen(true))}
           data-testid={testId}
-          className="grid size-11 shrink-0 place-items-center rounded-[--radius-md] text-fg-muted hover:bg-surface-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-40"
+          className="grid size-11 shrink-0 place-items-center rounded-[var(--radius-md)] text-fg-muted hover:bg-surface-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-40"
         >
           <PencilSimpleLineIcon weight="bold" className="size-4" aria-hidden="true" />
         </button>
@@ -78,22 +78,22 @@ export function DetailPicker({ palette, onPick, onBlank, label, intro, variant =
       )}
 
       {open && (
-        <div id={`${id}-panel`} role="group" aria-label={label} className="mt-2 space-y-3 rounded-[--radius-md] border border-border bg-surface-muted p-3" data-testid="detail-picker">
+        <div id={`${id}-panel`} role="group" aria-label={label} className="mt-2 space-y-3 rounded-[var(--radius-md)] border border-border bg-surface-muted p-3" data-testid="detail-picker">
           <div className="flex items-start justify-between gap-2">
             <p className="text-xs leading-relaxed text-fg-muted">{intro ?? t("certificates.detailsHint")}</p>
-            <button type="button" onClick={close} aria-label={t("common.cancel")} title={t("common.cancel")} className="grid size-11 shrink-0 place-items-center rounded-[--radius-md] text-fg-muted hover:bg-surface hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent">
+            <button type="button" onClick={close} aria-label={t("common.cancel")} title={t("common.cancel")} className="grid size-11 shrink-0 place-items-center rounded-[var(--radius-md)] text-fg-muted hover:bg-surface hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent">
               <XIcon weight="bold" className="size-4" aria-hidden="true" />
             </button>
           </div>
           <label className="relative block">
             <span className="sr-only">{t("certificates.pickSearch")}</span>
             <MagnifyingGlassIcon weight="bold" className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-fg-subtle" aria-hidden="true" />
-            <input type="search" autoFocus value={query} onChange={(e) => setQuery(e.target.value)} placeholder={t("certificates.pickSearch")} autoComplete="off" className="min-h-11 w-full rounded-[--radius-md] border border-border bg-surface py-2 pl-9 pr-3 text-sm text-fg outline-none focus:border-accent" data-testid="detail-search" />
+            <input type="search" autoFocus value={query} onChange={(e) => setQuery(e.target.value)} placeholder={t("certificates.pickSearch")} autoComplete="off" className="min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface py-2 pl-9 pr-3 text-sm text-fg outline-none focus:border-accent" data-testid="detail-search" />
           </label>
 
           <div className="max-h-80 space-y-3 overflow-y-auto pr-1" tabIndex={0} role="region" aria-label={label}>
             {onBlank && !query.trim() && (
-              <button type="button" onClick={() => (close(), onBlank())} className="flex min-h-11 w-full flex-col items-start rounded-[--radius-md] border border-dashed border-border-strong bg-surface px-3 py-2 text-left hover:bg-surface-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" data-testid="detail-blank">
+              <button type="button" onClick={() => (close(), onBlank())} className="flex min-h-11 w-full flex-col items-start rounded-[var(--radius-md)] border border-dashed border-border-strong bg-surface px-3 py-2 text-left hover:bg-surface-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" data-testid="detail-blank">
                 <span className="text-sm font-medium text-fg">{t("certificates.blankRow")}</span>
                 <span className="text-xs text-fg-muted">{t("certificates.blankRowHint")}</span>
               </button>
@@ -107,7 +107,7 @@ export function DetailPicker({ palette, onPick, onBlank, label, intro, variant =
                   <ul className="grid gap-1.5 sm:grid-cols-2">
                     {entries.map((entry) => (
                       <li key={entry.key}>
-                        <button type="button" onClick={() => choose(entry)} className="flex min-h-11 w-full flex-col items-start rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-left hover:border-accent hover:bg-accent-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" data-testid={`detail-${entry.key}`}>
+                        <button type="button" onClick={() => choose(entry)} className="flex min-h-11 w-full flex-col items-start rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-left hover:border-accent hover:bg-accent-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" data-testid={`detail-${entry.key}`}>
                           <span className="text-sm font-medium text-fg">{entry.labels[reader]}</span>
                           <span className="text-xs text-fg-muted">{t("certificates.sampleFor", { sample: entry.samples[reader] })}</span>
                         </button>

@@ -30,7 +30,7 @@ export default async function RecruitersPage() {
         {t("operatorCollege.title")}
       </Link>
       <PageHeader title={t("operatorCollege.recruitersTitle")} description={t("operatorCollege.recruitersIntro")} />
-      <p className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg-muted">
+      <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg-muted">
         {t("operatorCollege.expertsNote")}{" "}
         <Link href="/root/experts" className="font-medium text-fg hover:underline">
           {t("root.experts")}

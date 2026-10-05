@@ -56,7 +56,7 @@ function chip(doc: Document, key: string, word: string | null): HTMLElement {
   el.dataset.token = key;
   el.dataset.known = word === null ? "false" : "true";
   el.className = cn(
-    "mx-0.5 inline-block rounded-[--radius-sm] px-1.5 py-0.5 align-baseline text-[0.8125rem] font-medium leading-tight",
+    "mx-0.5 inline-block rounded-[var(--radius-sm)] px-1.5 py-0.5 align-baseline text-[0.8125rem] font-medium leading-tight",
     word === null ? "bg-danger-soft text-danger" : "bg-accent-soft text-accent-strong",
   );
   el.textContent = word ?? `[[${key}]]`;
@@ -261,9 +261,9 @@ export const TokenField = forwardRef<TokenFieldHandle, Props>(function TokenFiel
         data-typing={typing}
         style={style}
         className={cn(
-          "w-full whitespace-pre-wrap break-words rounded-[--radius-md] border bg-surface px-3.5 py-3 text-[0.9375rem] leading-relaxed text-fg",
+          "w-full whitespace-pre-wrap break-words rounded-[var(--radius-md)] border bg-surface px-3.5 py-3 text-[0.9375rem] leading-relaxed text-fg",
           multiline ? "min-h-28" : "min-h-12",
-          "transition-[border-color,box-shadow] duration-[--dur-fast] focus:outline-none",
+          "transition-[border-color,box-shadow] duration-[var(--dur-fast)] focus:outline-none",
           error ? "border-danger ring-2 ring-danger/25" : "border-border hover:border-border-strong focus:border-accent focus:ring-2 focus:ring-accent-ring/40",
           disabled && "cursor-not-allowed opacity-60",
         )}

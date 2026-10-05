@@ -82,7 +82,7 @@ export default async function MentoringPage({
       )}
 
       {ctx.role === "PARENT" && waiting.length > 0 && (
-        <p className="flex items-start gap-2 rounded-[--radius-md] border border-warn/40 bg-warn-soft/40 p-3 text-sm text-fg">
+        <p className="flex items-start gap-2 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft/40 p-3 text-sm text-fg">
           <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0 text-warn" />
           <span>{t("mentoring.needsYourAgreement", { count: waiting.length })}</span>
         </p>
@@ -146,7 +146,7 @@ export default async function MentoringPage({
                     </div>
                     <Link
                       href={`/mentoring/${thread.id}`}
-                      className="block text-[0.9375rem] text-fg-muted after:absolute after:inset-0 after:rounded-[--radius-lg] after:content-['']"
+                      className="block text-[0.9375rem] text-fg-muted after:absolute after:inset-0 after:rounded-[var(--radius-lg)] after:content-['']"
                     >
                       <span className="sr-only">{thread.studentName} &amp; {thread.expertName}: </span>
                       {thread.purpose}

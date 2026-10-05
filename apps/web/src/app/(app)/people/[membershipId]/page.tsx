@@ -214,7 +214,7 @@ export default async function PersonPage({
 
       {/* Stacked on a phone, a row on a desk: an avatar, a name and a button
           sharing one row at 360px squeezed the name into one word a line. */}
-      <header className="flex flex-col gap-4 rounded-[--radius-lg] border border-border bg-surface p-5 sm:flex-row sm:items-center">
+      <header className="flex flex-col gap-4 rounded-[var(--radius-lg)] border border-border bg-surface p-5 sm:flex-row sm:items-center">
         <Avatar avatarKey={member.user.avatarKey} name={name} size="lg" ring />
         <div className="min-w-0 flex-1">
           <h1 className="flex flex-wrap items-center gap-2 text-2xl font-bold tracking-tight text-fg">

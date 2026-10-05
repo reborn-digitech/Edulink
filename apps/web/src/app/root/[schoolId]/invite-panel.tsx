@@ -87,7 +87,7 @@ export function InvitePanel({ schoolId, invites }: { schoolId: string; invites: 
           <div
             role="radiogroup"
             aria-label={t("root.role")}
-            className="mt-2 flex gap-1 rounded-[--radius-md] bg-surface-muted p-1"
+            className="mt-2 flex gap-1 rounded-[var(--radius-md)] bg-surface-muted p-1"
           >
             {(["ADMIN", "PRINCIPAL"] as const).map((option) => (
               <button
@@ -97,7 +97,7 @@ export function InvitePanel({ schoolId, invites }: { schoolId: string; invites: 
                 aria-checked={role === option}
                 onClick={() => setRole(option)}
                 className={cn(
-                  "min-h-11 flex-1 rounded-[--radius-sm] px-3 text-sm font-medium transition-colors",
+                  "min-h-11 flex-1 rounded-[var(--radius-sm)] px-3 text-sm font-medium transition-colors",
                   role === option ? "bg-surface text-fg shadow-sm" : "text-fg-muted hover:text-fg",
                 )}
               >
@@ -140,7 +140,7 @@ export function InvitePanel({ schoolId, invites }: { schoolId: string; invites: 
           {invites.map((invite) => (
             <li
               key={invite.id}
-              className="flex flex-wrap items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
+              className="flex flex-wrap items-center gap-3 rounded-[var(--radius-sm)] bg-surface-muted p-3"
             >
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-sm font-medium text-fg">{invite.email}</span>

@@ -257,7 +257,7 @@ export default async function PrincipalLeavePage({
             {decided.map((request) => (
               <li
                 key={request.id}
-                className="flex flex-wrap items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
+                className="flex flex-wrap items-center gap-3 rounded-[var(--radius-sm)] bg-surface-muted p-3"
               >
                 <span className="min-w-0 flex-1">
                   <PersonLink membershipId={request.applicantMembershipId} name={request.applicantName} className="block truncate text-sm font-medium text-fg" />

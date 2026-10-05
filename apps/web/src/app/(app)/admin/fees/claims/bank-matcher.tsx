@@ -69,7 +69,7 @@ export function BankMatcher() {
     <div className="space-y-4">
       <form onSubmit={preview} noValidate className="space-y-3">
         {error && (
-          <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+          <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
             {error}
           </p>
         )}
@@ -89,7 +89,7 @@ export function BankMatcher() {
 
       {matches && (
         <div className="space-y-3">
-          <TableScroll className="rounded-[--radius-md] border border-border">
+          <TableScroll className="rounded-[var(--radius-md)] border border-border">
             <table className="w-full text-sm">
               <thead className="text-left text-xs uppercase tracking-wide text-fg-muted">
                 <tr>

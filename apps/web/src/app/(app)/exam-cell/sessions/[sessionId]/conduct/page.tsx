@@ -45,7 +45,7 @@ export default async function ConductPage({ params, searchParams }: { params: Pr
         <CardHeader title={t("examCell.papersTitle")} description={t("examCell.papersHint")} />
         <CardBody className="space-y-3">
           {c.papers.map((p) => (
-            <div key={p.id} className="space-y-2 rounded-[--radius-md] border border-border p-3 text-sm">
+            <div key={p.id} className="space-y-2 rounded-[var(--radius-md)] border border-border p-3 text-sm">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <p className="font-medium">
                   {p.courseCode} · {p.setterName}

@@ -95,7 +95,7 @@ export default async function ServerAuditPage({
             <select
               name="action"
               defaultValue={params.action ?? ""}
-              className="mt-1 min-h-10 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg"
+              className="mt-1 min-h-10 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg"
             >
               <option value="">{t("root.auditAll")}</option>
               {families.map((f) => (
@@ -120,33 +120,33 @@ export default async function ServerAuditPage({
               type="search"
               name="q"
               defaultValue={params.q ?? ""}
-              className="mt-1 min-h-10 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg"
+              className="mt-1 min-h-10 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg"
             />
           </label>
           <label className="block text-xs font-medium text-fg-muted">
             {t("root.auditFrom")}
-            <input type="date" name="from" defaultValue={params.from ?? ""} className="mt-1 min-h-10 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg" />
+            <input type="date" name="from" defaultValue={params.from ?? ""} className="mt-1 min-h-10 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg" />
           </label>
           <label className="block text-xs font-medium text-fg-muted">
             {t("root.auditTo")}
-            <input type="date" name="to" defaultValue={params.to ?? ""} className="mt-1 min-h-10 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg" />
+            <input type="date" name="to" defaultValue={params.to ?? ""} className="mt-1 min-h-10 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg" />
           </label>
           <div className="flex items-end gap-2">
             <button
               type="submit"
-              className="inline-flex min-h-10 items-center gap-1.5 rounded-[--radius-md] bg-accent px-4 text-sm font-semibold text-accent-fg hover:opacity-90"
+              className="inline-flex min-h-10 items-center gap-1.5 rounded-[var(--radius-md)] bg-accent px-4 text-sm font-semibold text-accent-fg hover:opacity-90"
             >
               <FunnelIcon weight="bold" className="size-4" />
               {t("root.auditApply")}
             </button>
             {filtered && (
-              <Link href="/root/audit" className="inline-flex min-h-10 items-center rounded-[--radius-md] px-3 text-sm font-medium text-fg-muted hover:text-fg">
+              <Link href="/root/audit" className="inline-flex min-h-10 items-center rounded-[var(--radius-md)] px-3 text-sm font-medium text-fg-muted hover:text-fg">
                 {t("root.auditClear")}
               </Link>
             )}
           </div>
           <label className="flex items-center gap-2 text-sm text-fg sm:col-span-2 lg:col-span-5">
-            <input type="checkbox" name="live" value="1" defaultChecked={live} className="size-4 accent-[--accent]" />
+            <input type="checkbox" name="live" value="1" defaultChecked={live} className="size-4 accent-[var(--accent)]" />
             {t("root.auditLiveOnly")}
           </label>
         </form>

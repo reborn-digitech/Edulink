@@ -186,6 +186,15 @@ describe("fee structures by category, and the ledger", () => {
     expect((await db.feeDemand.findFirstOrThrow({ where: { studentMembershipId: ids.s2 }, orderBy: { dueDate: "asc" } })).netPaise).toBe(1_450_000 - 625_000);
   });
 
+  it("never lets the person who granted a held concession approve it too (four eyes, A3-S-4)", async () => {
+    // A principal who also holds the office's role granted it: the row as such a person's grant writes it.
+    const own = await db.feeConcession.create({ data: { schoolId: ids.college, studentMembershipId: ids.s2, academicYearId: ids.year, headId: ids.tui, kind: "PERCENT", value: 100, reason: "ZZ own grant", grantedByUserId: ids.principal, approvalStatus: "PENDING" }, select: { id: true } });
+    await as(ids.principal, ids.college, "PRINCIPAL");
+    expect((await decidePost(json("/x", { approve: true }), params("concessionId", own.id))).status).toBe(403);
+    expect((await db.feeConcession.findUniqueOrThrow({ where: { id: own.id }, select: { approvalStatus: true } })).approvalStatus).toBe("PENDING");
+    await db.feeConcession.delete({ where: { id: own.id } });
+  });
+
   it("refuses the school's concession door at a college, for ACCOUNTS and ADMIN alike: it has no limit and no principal (campaign S-1)", async () => {
     const before = await db.feeConcession.count({ where: { schoolId: ids.college } });
     for (const [userId, role] of [[ids.accounts, "ACCOUNTS"], [ids.admin, "ADMIN"]] as const) {

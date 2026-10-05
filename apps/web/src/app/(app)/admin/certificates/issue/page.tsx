@@ -114,7 +114,7 @@ export default async function IssueCertificatePage({ searchParams }: { searchPar
                   defaultValue={q}
                   maxLength={80}
                   autoComplete="off"
-                  className="mt-1.5 min-h-12 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-[0.9375rem] text-fg outline-none focus:border-accent"
+                  className="mt-1.5 min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-[0.9375rem] text-fg outline-none focus:border-accent"
                 />
               </label>
               <Button type="submit" variant="secondary" icon={<MagnifyingGlassIcon weight="bold" />}>
@@ -123,14 +123,14 @@ export default async function IssueCertificatePage({ searchParams }: { searchPar
             </form>
 
             {request && (
-              <div className="flex flex-wrap items-start gap-2 rounded-[--radius-md] border border-accent/40 bg-accent-soft px-3 py-2 text-sm text-accent-strong" data-testid="from-request">
+              <div className="flex flex-wrap items-start gap-2 rounded-[var(--radius-md)] border border-accent/40 bg-accent-soft px-3 py-2 text-sm text-accent-strong" data-testid="from-request">
                 <EnvelopeOpenIcon weight="fill" className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
                 <span className="min-w-0 flex-1">{t("certificateRequests.fromRequest", { name: request.studentName, kind: t(CERTIFICATE_KIND_KEY[request.kind]), purpose: request.purpose })}</span>
               </div>
             )}
 
             {record && record.missing.length > 0 && (
-              <div className="flex flex-wrap items-start gap-2 rounded-[--radius-md] border border-warn/40 bg-warn-soft px-3 py-2 text-sm text-warn" data-testid="missing-warning">
+              <div className="flex flex-wrap items-start gap-2 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft px-3 py-2 text-sm text-warn" data-testid="missing-warning">
                 <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
                 <span className="min-w-0 flex-1">
                   {t("certificates.missingWarning", { fields: missingLabels.join(", ") })}{" "}

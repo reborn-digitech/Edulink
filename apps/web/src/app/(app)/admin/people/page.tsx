@@ -212,13 +212,13 @@ export default async function DirectoryPage({
       />
 
       {status === "SUSPENDED" && (
-        <p className="rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm leading-relaxed text-fg">
+        <p className="rounded-[var(--radius-md)] border border-warn/30 bg-warn-soft px-4 py-3 text-sm leading-relaxed text-fg">
           {t("people.suspendedNote")}
         </p>
       )}
 
       {status === "LEFT" && (
-        <p className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg">
+        <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg">
           {t("people.leftNote")}
         </p>
       )}

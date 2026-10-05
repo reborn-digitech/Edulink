@@ -14,7 +14,7 @@ export function ProjectList({ projects, t, back, myMembershipId }: { projects: P
       <CardBody className="space-y-4 text-sm">
         {projects.length === 0 ? <p className="text-fg-muted">{t("placement.noProjects")}</p> : null}
         {projects.map((p) => (
-          <div key={p.id} className="space-y-2 rounded-[--radius-md] border border-border p-3">
+          <div key={p.id} className="space-y-2 rounded-[var(--radius-md)] border border-border p-3">
             <div className="font-medium">{p.title}</div>
             <div className="text-xs text-fg-muted">
               {t("placement.guidedBy", { name: p.guideName })} · {p.students.map((s) => s.name).join(", ")}

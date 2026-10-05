@@ -58,15 +58,15 @@ export async function StreamHome({ schoolId, role, t }: { schoolId: string; role
               return (
                 <li key={tile} data-tile={tile}>
                   {href && off && role === "ADMIN" ? (
-                    <Link href="/admin/settings/modules" className="block min-h-11 rounded-[--radius-md] border border-dashed border-border px-3 py-2.5 transition-colors hover:bg-surface-muted">
+                    <Link href="/admin/settings/modules" className="block min-h-11 rounded-[var(--radius-md)] border border-dashed border-border px-3 py-2.5 transition-colors hover:bg-surface-muted">
                       {body}
                     </Link>
                   ) : href && !off ? (
-                    <Link href={href} className="block min-h-11 rounded-[--radius-md] border border-border bg-surface px-3 py-2.5 transition-colors hover:bg-surface-muted">
+                    <Link href={href} className="block min-h-11 rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2.5 transition-colors hover:bg-surface-muted">
                       {body}
                     </Link>
                   ) : (
-                    <div className={cn("rounded-[--radius-md] border border-dashed border-border px-3 py-2.5")}>{body}</div>
+                    <div className={cn("rounded-[var(--radius-md)] border border-dashed border-border px-3 py-2.5")}>{body}</div>
                   )}
                 </li>
               );
@@ -76,7 +76,7 @@ export async function StreamHome({ schoolId, role, t }: { schoolId: string; role
         </CardBody>
       </Card>
       {preset.notBuilt.length > 0 && (
-        <div role="note" className="flex gap-3 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm text-fg" data-testid="streams-coming">
+        <div role="note" className="flex gap-3 rounded-[var(--radius-md)] border border-warn/30 bg-warn-soft px-4 py-3 text-sm text-fg" data-testid="streams-coming">
           <HourglassMediumIcon weight="duotone" className="mt-0.5 size-5 shrink-0 text-warn" />
           <div className="space-y-1">
             <p className="font-semibold">{t("streams.comingTitle")}</p>

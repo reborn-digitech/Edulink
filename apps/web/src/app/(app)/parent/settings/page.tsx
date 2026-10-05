@@ -85,7 +85,7 @@ export default async function ParentSettingsPage() {
             {children.map((child) => (
               <li
                 key={child.guardianshipId}
-                className="flex flex-wrap items-center justify-between gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
+                className="flex flex-wrap items-center justify-between gap-3 rounded-[var(--radius-sm)] bg-surface-muted p-3"
               >
                 <span className="flex min-w-0 items-center gap-3">
                   <Avatar avatarKey={null} name={child.name} size="sm" />

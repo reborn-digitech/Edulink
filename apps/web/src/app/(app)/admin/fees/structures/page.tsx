@@ -51,7 +51,7 @@ export default async function FeeStructuresPage({ searchParams }: { searchParams
       />
 
       {office && heads === 0 && (
-        <p className="rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm text-warn">
+        <p className="rounded-[var(--radius-md)] border border-warn/30 bg-warn-soft px-4 py-3 text-sm text-warn">
           {t("fees.structureNoHeads")}{" "}
           <Link href="/admin/fees/heads" className="font-semibold underline underline-offset-4">
             {t("fees.linkHeads")}
@@ -73,7 +73,7 @@ export default async function FeeStructuresPage({ searchParams }: { searchParams
       {structures.length === 0 ? (
         <EmptyState icon={<StackIcon weight="duotone" className="size-8" />} title={t("fees.structuresEmpty")} description={office && heads > 0 ? t("fees.setUpStructuresHint") : undefined} />
       ) : (
-        <TableScroll className="rounded-[--radius-lg] border border-border bg-surface shadow-sm">
+        <TableScroll className="rounded-[var(--radius-lg)] border border-border bg-surface shadow-sm">
           <table className="w-full text-sm">
             <thead className="text-left text-xs uppercase tracking-wide text-fg-muted">
               <tr>

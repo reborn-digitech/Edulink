@@ -489,7 +489,7 @@ function BelongRow({
     return (
       <div
         aria-current="true"
-        className="flex items-center justify-between gap-3 rounded-[--radius-sm] border border-accent/40 bg-accent-soft/40 p-3"
+        className="flex items-center justify-between gap-3 rounded-[var(--radius-sm)] border border-accent/40 bg-accent-soft/40 p-3"
       >
         {body}
       </div>
@@ -502,7 +502,7 @@ function BelongRow({
       <button
         type="submit"
         aria-label={[roleLabel, title].join(" — ")}
-        className="flex w-full items-center justify-between gap-3 rounded-[--radius-sm] bg-surface-muted p-3 text-left transition-colors hover:bg-surface-muted/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+        className="flex w-full items-center justify-between gap-3 rounded-[var(--radius-sm)] bg-surface-muted p-3 text-left transition-colors hover:bg-surface-muted/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
       >
         {body}
       </button>

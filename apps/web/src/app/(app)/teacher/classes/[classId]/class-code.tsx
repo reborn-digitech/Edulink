@@ -31,7 +31,7 @@ export function ClassCode({ joinCode, className }: { joinCode: string; className
   }, []);
 
   return (
-    <div className="rounded-[--radius-lg] border border-border bg-surface p-4">
+    <div className="rounded-[var(--radius-lg)] border border-border bg-surface p-4">
       <div className="flex flex-wrap items-center gap-3">
         <div className="min-w-0 flex-1">
           <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
@@ -83,7 +83,7 @@ export function ClassCode({ joinCode, className }: { joinCode: string; className
         <div className="mt-4 border-t border-border pt-4">
           {/* Deliberately plain and high-contrast: this gets printed and stuck
               on a wall, and read across a classroom. */}
-          <div className="print-isolate mx-auto max-w-xs rounded-[--radius-lg] border-2 border-fg bg-white p-6 text-center text-black">
+          <div className="print-isolate mx-auto max-w-xs rounded-[var(--radius-lg)] border-2 border-fg bg-white p-6 text-center text-black">
             <p className="text-sm font-bold uppercase tracking-wide">{className}</p>
             <p className="mt-1 text-xs">{t("teacher.joinEduLink")}</p>
             <p className="mt-4 font-mono text-3xl font-black tracking-[0.15em]">{joinCode}</p>

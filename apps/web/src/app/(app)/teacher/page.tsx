@@ -348,7 +348,7 @@ export default async function TeacherHome() {
         />
         {/* A number with nowhere to go is a caption. The marking tile opens
             the assignments list already narrowed to what needs marking. */}
-        <Link href="/teacher/assignments?state=tomark" className="block rounded-[--radius-lg] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent">
+        <Link href="/teacher/assignments?state=tomark" className="block rounded-[var(--radius-lg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent">
           <StatTile
             label={t("teacher.toGrade")}
             value={ungraded}
@@ -381,7 +381,7 @@ export default async function TeacherHome() {
                 <li key={klass.id}>
                   <Link
                     href={`/teacher/attendance?classId=${klass.id}`}
-                    className="flex items-center gap-3 rounded-[--radius-md] border border-border p-3 transition-colors hover:bg-surface-muted"
+                    className="flex items-center gap-3 rounded-[var(--radius-md)] border border-border p-3 transition-colors hover:bg-surface-muted"
                   >
                     <span
                       aria-hidden="true"

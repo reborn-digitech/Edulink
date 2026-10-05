@@ -98,7 +98,7 @@ export function TermsPanel({
       ) : (
         <ul className="space-y-1.5">
           {terms.map((term) => (
-            <li key={term.id} className="flex flex-wrap items-center gap-2 rounded-[--radius-md] border border-border p-2.5 text-sm">
+            <li key={term.id} className="flex flex-wrap items-center gap-2 rounded-[var(--radius-md)] border border-border p-2.5 text-sm">
               <span className="flex-1 font-medium text-fg">{term.name}</span>
               <span className="text-fg-muted">
                 {formatDateKey(term.startDateKey, { day: "numeric", month: "short" })} – {formatDateKey(term.endDateKey, { day: "numeric", month: "short", year: "numeric" })}
@@ -126,7 +126,7 @@ export function TermsPanel({
         </ul>
       )}
 
-      <form onSubmit={add} className="grid gap-2 rounded-[--radius-md] border border-dashed border-border p-3 sm:grid-cols-[1fr_auto_auto_auto] sm:items-end" noValidate>
+      <form onSubmit={add} className="grid gap-2 rounded-[var(--radius-md)] border border-dashed border-border p-3 sm:grid-cols-[1fr_auto_auto_auto] sm:items-end" noValidate>
         {error && <p role="alert" className="text-sm font-medium text-danger sm:col-span-4">{error}</p>}
         <TextField label={t("terms.name")} value={name} required onChange={(e) => setName(e.target.value)} placeholder={t("terms.namePlaceholder")} data-testid="term-name" />
         <DateField label={t("terms.starts")} value={start} required onChange={(e) => setStart(e.target.value)} />

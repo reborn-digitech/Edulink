@@ -77,7 +77,7 @@ export default async function SchoolProfilePage({
           [t("explore.metricClasses"), school.metrics.classes],
           [t("explore.metricSince"), school.sinceYear],
         ].map(([label, value]) => (
-          <div key={String(label)} className="rounded-[--radius-md] border border-border bg-surface px-3 py-2">
+          <div key={String(label)} className="rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2">
             <dt className="text-xs uppercase tracking-wide text-fg-muted">{label}</dt>
             <dd className="text-lg font-bold tabular-nums text-fg">{value}</dd>
           </div>

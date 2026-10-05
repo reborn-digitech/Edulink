@@ -45,7 +45,7 @@ export function DutiesPanel({ membershipId, name, initial, offered, onClose }: {
   }
 
   return (
-    <div className="w-full rounded-[--radius-md] border border-border bg-surface-muted p-3">
+    <div className="w-full rounded-[var(--radius-md)] border border-border bg-surface-muted p-3">
       <p className="text-sm font-semibold text-fg">{t("duties.panelTitle", { name })}</p>
       <p className="mt-1 text-xs leading-relaxed text-fg-muted">{t("duties.panelHint")}</p>
       {offered.length === 0 ? (
@@ -54,8 +54,8 @@ export function DutiesPanel({ membershipId, name, initial, offered, onClose }: {
         <ul className="mt-2 space-y-1.5">
           {offered.map((duty) => (
             <li key={duty}>
-              <label className="flex cursor-pointer items-start gap-2.5 rounded-[--radius-sm] bg-surface px-2.5 py-2">
-                <input type="checkbox" className="mt-0.5 size-4 shrink-0 accent-[--accent]" checked={duties.includes(duty)} onChange={(e) => toggle(duty, e.target.checked)} data-duty={duty} />
+              <label className="flex cursor-pointer items-start gap-2.5 rounded-[var(--radius-sm)] bg-surface px-2.5 py-2">
+                <input type="checkbox" className="mt-0.5 size-4 shrink-0 accent-[var(--accent)]" checked={duties.includes(duty)} onChange={(e) => toggle(duty, e.target.checked)} data-duty={duty} />
                 <span className="min-w-0">
                   <span className="block text-sm font-medium text-fg">{t(`duties.${duty}.name`)}</span>
                   <span className="block text-xs leading-relaxed text-fg-muted">{t(`duties.${duty}.what`)}</span>

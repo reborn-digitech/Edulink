@@ -80,7 +80,7 @@ export function ResultsForm({ driveId, applications, rounds, back, t }: { driveI
               </option>
             ))}
           </SelectField>
-          <ul className="divide-y divide-border rounded-[--radius-md] border border-border">
+          <ul className="divide-y divide-border rounded-[var(--radius-md)] border border-border">
             {candidates.map((a) => (
               <li key={a.id} className="grid gap-2 p-3 sm:grid-cols-[1fr_12rem_1fr] sm:items-end">
                 <div className="text-sm">

@@ -51,7 +51,7 @@ export function ExpertThread({
           >
             <div
               className={cn(
-                "max-w-[85%] rounded-[--radius-md] px-3.5 py-2.5 text-[0.9375rem]",
+                "max-w-[85%] rounded-[var(--radius-md)] px-3.5 py-2.5 text-[0.9375rem]",
                 message.mine
                   ? "bg-accent text-accent-fg"
                   : "border border-border bg-surface-muted text-fg",
@@ -73,7 +73,7 @@ export function ExpertThread({
             value={body}
             onChange={(e) => setBody(e.target.value)}
             placeholder={t("expert.writeMessage")}
-            className="w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
+            className="w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2 text-sm text-fg"
           />
           {error && <p className="text-sm font-medium text-danger">{error}</p>}
           <Button

@@ -125,7 +125,7 @@ export default async function SurveyResultsPage({ params, searchParams }: { para
                   <legend className="text-sm font-medium">{q.label}</legend>
                   <div className="flex flex-wrap gap-2">
                     {SURVEY_SCALE.map((v) => (
-                      <label key={v} className="flex min-h-11 items-center gap-2 rounded-[--radius-md] border border-border px-3 text-sm">
+                      <label key={v} className="flex min-h-11 items-center gap-2 rounded-[var(--radius-md)] border border-border px-3 text-sm">
                         <input type="radio" name={`q_${q.code}`} value={v} required />
                         {tt("iqac.scale.s" + v)}
                       </label>

@@ -89,7 +89,7 @@ export default async function PupilRecordsPage({ searchParams }: { searchParams:
                 pattern="[0-9]{11}"
                 autoComplete="off"
                 aria-describedby="find-by-pen-hint"
-                className="mt-1.5 min-h-12 w-full rounded-[--radius-md] border border-border bg-surface px-3 font-mono text-[0.9375rem] text-fg outline-none focus:border-accent"
+                className="mt-1.5 min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 font-mono text-[0.9375rem] text-fg outline-none focus:border-accent"
               />
             </label>
             <Button type="submit" variant="secondary" icon={<MagnifyingGlassIcon weight="bold" />}>
@@ -100,12 +100,12 @@ export default async function PupilRecordsPage({ searchParams }: { searchParams:
             </p>
           </form>
           {lookupError && (
-            <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger" data-testid="pen-result">
+            <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger" data-testid="pen-result">
               {lookupError}
             </p>
           )}
           {lookup && (
-            <div className="flex flex-wrap items-center justify-between gap-2 rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2 text-sm text-fg" data-testid="pen-result" data-found={lookup.found}>
+            <div className="flex flex-wrap items-center justify-between gap-2 rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2 text-sm text-fg" data-testid="pen-result" data-found={lookup.found}>
               <p>
                 {lookup.found === "HERE"
                   ? lookup.pupil.className

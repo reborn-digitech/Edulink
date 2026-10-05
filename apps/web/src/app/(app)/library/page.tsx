@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: t("modules.libraryName"), robots: { index: false, follow: false } };
 }
 
-const input = "mt-1.5 block min-h-12 w-full rounded-[--radius-md] border border-border bg-surface px-3.5 text-[0.9375rem] text-fg";
+const input = "mt-1.5 block min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3.5 text-[0.9375rem] text-fg";
 
 /**
  * The library desk (module LIBRARY, 3 Oct 2026) — the LIBRARIAN's home, and
@@ -75,7 +75,7 @@ export default async function LibraryDeskPage({ searchParams }: { searchParams: 
             </p>
           ) : null}
           {found?.kind === "COPY" && found.copy ? (
-            <div className="space-y-3 rounded-[--radius-md] border border-border p-4">
+            <div className="space-y-3 rounded-[var(--radius-md)] border border-border p-4">
               <div>
                 <p className="text-sm font-semibold text-fg">
                   <Link href={`/library/titles/${found.copy.titleId}`} className="hover:underline">
@@ -115,7 +115,7 @@ export default async function LibraryDeskPage({ searchParams }: { searchParams: 
                     people.items.length === 0 ? (
                       <p className="text-sm text-fg-muted">{t("library.noPeople")}</p>
                     ) : (
-                      <ul className="divide-y divide-border rounded-[--radius-md] border border-border">
+                      <ul className="divide-y divide-border rounded-[var(--radius-md)] border border-border">
                         {people.items.map((p) => (
                           <li key={p.membershipId} className="flex flex-wrap items-center justify-between gap-3 px-4 py-2.5">
                             <div className="min-w-0">

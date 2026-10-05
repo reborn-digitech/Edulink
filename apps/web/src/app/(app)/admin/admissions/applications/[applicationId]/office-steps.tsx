@@ -43,7 +43,7 @@ type ClassOption = { id: string; name: string; gradeLevel: string | null };
  * the refresh.
  */
 const errorBox =
-  "rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger";
+  "rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger";
 
 export function VerifyButton({ applicationId }: { applicationId: string }) {
   const t = useT();
@@ -382,7 +382,7 @@ export function AdmitForm({
   if (done) {
     return (
       <div
-        className="space-y-3 rounded-[--radius-md] border border-ok/40 bg-ok-soft p-4"
+        className="space-y-3 rounded-[var(--radius-md)] border border-ok/40 bg-ok-soft p-4"
         data-testid="admitted-panel"
       >
         <p className="text-sm font-semibold text-ok">

@@ -178,7 +178,7 @@ function CollegeCard({ college, t, money }: { college: OperatorCollegeRow; t: Tr
           </h3>
           <ul className="grid grid-cols-2 gap-2 sm:grid-cols-4">
             {health.map((tile) => (
-              <li key={tile.label} className="rounded-[--radius-md] border border-border bg-surface px-3 py-2">
+              <li key={tile.label} className="rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2">
                 <p className="text-[0.6875rem] font-semibold uppercase tracking-wide text-fg-muted">{tile.label}</p>
                 <p className={`mt-0.5 text-sm font-bold tabular-nums ${tile.tone === "danger" ? "text-danger" : tile.tone === "warn" ? "text-warn" : "text-fg"}`}>{tile.value}</p>
               </li>

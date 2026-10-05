@@ -100,18 +100,18 @@ export function ListEditor({ gradeLevel, subject, units, readOnly = false }: { g
     });
   }
 
-  const iconButton = "grid size-10 shrink-0 place-items-center rounded-[--radius-md] text-fg-muted hover:bg-surface-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-40 disabled:hover:bg-transparent";
+  const iconButton = "grid size-10 shrink-0 place-items-center rounded-[var(--radius-md)] text-fg-muted hover:bg-surface-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-40 disabled:hover:bg-transparent";
 
   return (
     <form onSubmit={submit} noValidate className="space-y-5" data-testid="syllabus-list-editor">
       {readOnly && (
-        <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted" data-testid="office-sets-this">
+        <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted" data-testid="office-sets-this">
           {t("common.officeSetsThis")}
         </p>
       )}
       <fieldset disabled={readOnly} className="min-w-0 space-y-5">
       {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
           {error}
         </p>
       )}
@@ -124,7 +124,7 @@ export function ListEditor({ gradeLevel, subject, units, readOnly = false }: { g
           const moveUpLabel = [t("syllabus.moveUp"), name].join(": ");
           const moveDownLabel = [t("syllabus.moveDown"), name].join(": ");
           return (
-            <li key={row.key} className="flex flex-wrap items-end gap-2 rounded-[--radius-md] border border-border p-3 sm:flex-nowrap">
+            <li key={row.key} className="flex flex-wrap items-end gap-2 rounded-[var(--radius-md)] border border-border p-3 sm:flex-nowrap">
               <span className="w-6 shrink-0 pb-3 text-right text-sm tabular-nums text-fg-muted" aria-hidden="true">
                 {index + 1}.
               </span>
@@ -155,7 +155,7 @@ export function ListEditor({ gradeLevel, subject, units, readOnly = false }: { g
       )}
 
       {!readOnly && (
-        <div className="space-y-2 rounded-[--radius-md] border border-dashed border-border p-3">
+        <div className="space-y-2 rounded-[var(--radius-md)] border border-dashed border-border p-3">
           <TextAreaField label={t("syllabus.paste")} hint={t("syllabus.pasteHint")} rows={4} value={paste} onChange={(e) => setPaste(e.target.value)} />
           <Button type="button" variant="secondary" size="sm" disabled={paste.trim() === ""} onClick={appendPasted} icon={<PlusIcon weight="bold" />}>
             {t("common.add")}
@@ -164,7 +164,7 @@ export function ListEditor({ gradeLevel, subject, units, readOnly = false }: { g
       )}
 
       {(removedCount > 0 || units.length > 0) && (
-        <p className={`flex items-start gap-2 text-sm ${removedCount > 0 ? "rounded-[--radius-md] border border-warn/40 bg-warn-soft px-3 py-2 text-warn" : "text-fg-muted"}`}>
+        <p className={`flex items-start gap-2 text-sm ${removedCount > 0 ? "rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft px-3 py-2 text-warn" : "text-fg-muted"}`}>
           <WarningIcon weight={removedCount > 0 ? "fill" : "regular"} className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
           {t("syllabus.removedNote")}
         </p>

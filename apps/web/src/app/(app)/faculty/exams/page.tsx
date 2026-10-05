@@ -57,7 +57,7 @@ export default async function FacultyExamsPage({ searchParams }: { searchParams:
                     <Hidden fields={{ paperId: p.id, back }} />
                     <FileField label={t("examCell.paperFile")} name="file" accept="application/pdf" required />
                     <Labelled label={t("examCell.coMap")}>
-                      <textarea name="coMap" required rows={3} placeholder={t("examCell.coMapPlaceholder")} className="w-full rounded-[--radius-md] border border-border bg-surface p-2 text-sm" />
+                      <textarea name="coMap" required rows={3} placeholder={t("examCell.coMapPlaceholder")} className="w-full rounded-[var(--radius-md)] border border-border bg-surface p-2 text-sm" />
                     </Labelled>
                     <div>
                       <Button type="submit" size="sm">

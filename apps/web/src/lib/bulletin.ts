@@ -354,6 +354,26 @@ async function classIdsFor(session: ActiveContext): Promise<string[]> {
     });
     return rows.map((r) => r.classId);
   }
+  /**
+   * A GUARDIAN READS THEIR CHILDREN'S CLASSES' POSTS (A3-journeys-1, 5 Oct
+   * 2026). This answered [] for a parent, so a class circular — and a class
+   * permission slip, whose notification opens it — never reached the family
+   * it asked: the feed, the post page and the phone all said "not here". The
+   * classes of every child this guardian holds an ACTIVE link to, enrolled
+   * ACTIVE at this school (the session is already scoped to it), as
+   * gradesFor reads their grades.
+   */
+  if (role === "PARENT") {
+    const rows = await db.enrollment.findMany({
+      where: {
+        status: "ACTIVE",
+        class: { schoolId },
+        student: { status: "ACTIVE", leftAt: null, guardianships: { some: { parentUserId: session.user.id, status: "ACTIVE" } } },
+      },
+      select: { classId: true },
+    });
+    return [...new Set(rows.map((r) => r.classId))];
+  }
   return [];
 }
 
@@ -470,6 +490,22 @@ export async function pendingCount(session: ActiveContext): Promise<number> {
     });
   }
   return 0;
+}
+
+/**
+ * Whether this reader may open the post — the feed's own visibility, nothing
+ * else: a school-less guardian scoped to the post's school, their children's
+ * classes and grades. The permission slip asks it before it answers a
+ * question (A3-S-9, 5 Oct 2026), so a family with a child elsewhere in the
+ * school no longer reads another class's slip by its id.
+ */
+export async function canReadPost(session: ActiveContext, postId: string): Promise<boolean> {
+  session = asFeedReader(session);
+  session = await scoped(session, { postId });
+  if (!session.schoolId) return false;
+  const [classIds, grades] = await Promise.all([classIdsFor(session), gradesFor(session)]);
+  const post = await db.post.findFirst({ where: { AND: [{ id: postId }, visibilityWhere(session, classIds, grades)] }, select: { id: true } });
+  return post !== null;
 }
 
 export async function getPost(session: ActiveContext, postId: string) {
@@ -1617,6 +1653,8 @@ export async function ackReport(session: ActiveContext, postId: string): Promise
 /** Classes this person may post to. */
 export async function postableClasses(session: ActiveContext) {
   session = asFeedReader(session);
+  // A guardian READS their children's classes (classIdsFor) but posts to none.
+  if (session.role === "PARENT") return [];
   const ids = await classIdsFor(session);
   if (ids.length === 0) return [];
   return db.class.findMany({

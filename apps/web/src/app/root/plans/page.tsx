@@ -54,7 +54,7 @@ export default async function PlansPage() {
             {COLLEGE_TIERS.map((tier) => {
               const listed = plans.find((p) => p.code === tier.code);
               return (
-                <li key={tier.code} className="flex flex-wrap items-center justify-between gap-2 rounded-[--radius-md] border border-border px-3 py-2 text-sm">
+                <li key={tier.code} className="flex flex-wrap items-center justify-between gap-2 rounded-[var(--radius-md)] border border-border px-3 py-2 text-sm">
                   <span>
                     <span className="font-medium text-fg">{t(tier.code === "college-affiliated" ? "operatorCollege.tierAffiliated" : "operatorCollege.tierAutonomous")}</span>
                     <span className="block text-xs text-fg-muted">{t("operatorCollege.tierPrice", { amount: formatPaise(tier.perStudentYearPaise, locale) })}</span>

@@ -28,9 +28,9 @@ export function TemplatePreview({ palette, locale, title, intro, rows, outro, la
         <h3 className="text-sm font-semibold text-fg">{t("certificates.preview")}</h3>
         <p className="text-xs leading-relaxed text-fg-muted">{t("certificates.previewHint")}</p>
       </div>
-      <div lang={locale} style={{ fontFamily: fontStack(layout.font, locale) }} className="rounded-[--radius-lg] border border-border bg-surface p-5 text-fg shadow-sm" data-testid="preview-paper">
+      <div lang={locale} style={{ fontFamily: fontStack(layout.font, locale) }} className="rounded-[var(--radius-lg)] border border-border bg-surface p-5 text-fg shadow-sm" data-testid="preview-paper">
         <header className="flex items-start gap-3 border-b border-border pb-3">
-          {layout.showLogo && <div aria-hidden="true" className="size-10 shrink-0 rounded-[--radius-md] border border-dashed border-border-strong" />}
+          {layout.showLogo && <div aria-hidden="true" className="size-10 shrink-0 rounded-[var(--radius-md)] border border-dashed border-border-strong" />}
           <div className="min-w-0 flex-1">
             <p className={`text-base font-bold tracking-tight ${layout.useBrandColour ? "text-accent-strong" : "text-fg"}`}>{sample.get("school.name")}</p>
             {layout.showAddress && <p className={`text-[0.6875rem] ${muted}`}>{sample.get("school.address")}</p>}
@@ -79,7 +79,7 @@ export function TemplatePreview({ palette, locale, title, intro, rows, outro, la
               </div>
             ) : (
               <div key={slot}>
-                <div className="grid h-8 place-items-center">{layout[slot] !== "NONE" && <span className="rounded-[--radius-sm] border border-dashed border-border-strong px-2 py-0.5 italic">{t("signatures.sampleSignature")}</span>}</div>
+                <div className="grid h-8 place-items-center">{layout[slot] !== "NONE" && <span className="rounded-[var(--radius-sm)] border border-dashed border-border-strong px-2 py-0.5 italic">{t("signatures.sampleSignature")}</span>}</div>
                 <div className="min-h-6 border-t border-border pt-1.5">{who}</div>
               </div>
             ),

@@ -97,7 +97,7 @@ export function StructureEditor({ structureId, initial, heads, todayKey }: { str
   return (
     <form onSubmit={submit} noValidate className="space-y-6">
       {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
           {error}
         </p>
       )}
@@ -108,7 +108,7 @@ export function StructureEditor({ structureId, initial, heads, todayKey }: { str
 
       <ol className="space-y-4">
         {value.instalments.map((inst, index) => (
-          <li key={index} className="space-y-3 rounded-[--radius-md] border border-border bg-surface-muted p-4">
+          <li key={index} className="space-y-3 rounded-[var(--radius-md)] border border-border bg-surface-muted p-4">
             <div className="grid gap-3 sm:grid-cols-[1fr_1fr_auto] sm:items-end">
               <TextField label={t("fees.structureInstalmentLabel")} required maxLength={40} value={inst.label} onChange={(e) => patchInstalment(index, { label: e.target.value })} />
               <DateField label={t("fees.structureDueDate")} required value={inst.dueDateKey} onChange={(e) => patchInstalment(index, { dueDateKey: e.target.value })} />

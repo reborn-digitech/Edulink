@@ -56,7 +56,7 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
       <PageHeader title={t("examCell.analyticsTitle")} description={t("examCell.analyticsIntro")} back={{ href: "/exam-cell", label: t("examCell.title") }} />
       <nav aria-label={t("examCell.termPicker")} className="flex flex-wrap gap-2">
         {a.terms.map((x) => (
-          <Link key={x.id} href={`/exam-cell/analytics?term=${x.id}`} className={`rounded-[--radius-md] border px-3 py-1.5 text-sm ${x.id === a.termId ? "border-accent text-accent-strong" : "border-border"}`}>
+          <Link key={x.id} href={`/exam-cell/analytics?term=${x.id}`} className={`rounded-[var(--radius-md)] border px-3 py-1.5 text-sm ${x.id === a.termId ? "border-accent text-accent-strong" : "border-border"}`}>
             {x.name}
           </Link>
         ))}

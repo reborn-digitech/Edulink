@@ -72,7 +72,7 @@ export function Hidden({ fields }: { fields: Record<string, string | undefined> 
   );
 }
 
-export const inputClass = "min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent";
+export const inputClass = "min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent";
 export const labelClass = "block text-sm font-medium text-fg";
 
 /** A labelled field: the label above whatever control is given. */

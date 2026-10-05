@@ -81,7 +81,7 @@ export default async function InvitesPage({
       />
 
       <nav
-        className="flex gap-1 rounded-[--radius-md] bg-surface-muted p-1"
+        className="flex gap-1 rounded-[var(--radius-md)] bg-surface-muted p-1"
         aria-label={t("invites.filter")}
       >
         {TABS.map((tab) => (
@@ -89,7 +89,7 @@ export default async function InvitesPage({
             key={tab.id}
             href={`/admin/invites?status=${tab.id}${q ? `&q=${encodeURIComponent(q)}` : ""}${roleFilter ? `&role=${roleFilter}` : ""}`}
             aria-current={active === tab.id ? "page" : undefined}
-            className={`flex-1 rounded-[--radius-sm] px-3 py-2 text-center text-sm font-medium ${
+            className={`flex-1 rounded-[var(--radius-sm)] px-3 py-2 text-center text-sm font-medium ${
               active === tab.id ? "bg-surface text-fg shadow-sm" : "text-fg-muted"
             }`}
           >

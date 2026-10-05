@@ -47,7 +47,7 @@ export function BirthdatePanel({
   }
 
   return (
-    <div className="w-full rounded-[--radius-md] border border-border bg-surface-muted p-3">
+    <div className="w-full rounded-[var(--radius-md)] border border-border bg-surface-muted p-3">
       <p className="text-sm font-semibold text-fg">{t("people.birthdateTitle", { name })}</p>
       <p className="mt-1 text-xs leading-relaxed text-fg-muted">{t("people.birthdateBody", { name })}</p>
 

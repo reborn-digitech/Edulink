@@ -96,7 +96,7 @@ export default async function StructuresPage({ searchParams }: { searchParams: P
                 <TextField name="approvalRef" required minLength={3} label={t("collegeOffice.colApproval")} hint={t("collegeOffice.approvalHint")} />
                 <TextField name="name" required minLength={2} className="sm:col-span-2" label={t("collegeOffice.structureName")} />
                 {[1, 2].map((n) => (
-                  <fieldset key={n} className="grid gap-3 rounded-[--radius-md] border border-border p-3 sm:col-span-2 sm:grid-cols-3">
+                  <fieldset key={n} className="grid gap-3 rounded-[var(--radius-md)] border border-border p-3 sm:col-span-2 sm:grid-cols-3">
                     <legend className="px-1 text-sm font-medium">{t("collegeOffice.termN", { n })}</legend>
                     <TextField name={`term${n}Label`} required={n === 1} label={t("collegeOffice.termLabel")} defaultValue={n === 1 ? t("collegeOffice.termOdd") : t("collegeOffice.termEven")} />
                     <TextField name={`term${n}Due`} type="date" required={n === 1} label={t("collegeOffice.termDue")} />

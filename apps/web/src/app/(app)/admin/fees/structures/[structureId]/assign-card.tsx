@@ -46,7 +46,7 @@ export function AssignCard({ structureId, classes, selectedClassId }: { structur
   return (
     <form onSubmit={submit} noValidate className="space-y-4">
       {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
           {error}
         </p>
       )}
@@ -65,7 +65,7 @@ export function AssignCard({ structureId, classes, selectedClassId }: { structur
         </Button>
       </div>
       {result && (
-        <div className="space-y-1 rounded-[--radius-md] bg-surface-muted px-3 py-2 text-sm">
+        <div className="space-y-1 rounded-[var(--radius-md)] bg-surface-muted px-3 py-2 text-sm">
           <p className="text-fg">{t("fees.assignResult", { assigned: result.assigned, moved: result.moved, unchanged: result.unchanged })}</p>
           {result.refused.length > 0 && <p className="text-warn">{t("fees.assignRefused", { names: result.refused.map((r) => r.name).join(", ") })}</p>}
         </div>

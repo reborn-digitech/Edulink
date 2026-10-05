@@ -50,7 +50,7 @@ export function OfferForm({ workshops, maxSeats, gate = null }: { workshops: boo
       data-testid="slot-form"
     >
       {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger" data-testid="slot-error">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger" data-testid="slot-error">
           {error}
         </p>
       )}

@@ -94,7 +94,7 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
   return (
     <article
       className={cn(
-        "rounded-[--radius-lg] border bg-surface shadow-sm",
+        "rounded-[var(--radius-lg)] border bg-surface shadow-sm",
         isPending && "border-warn/50",
         isRejected && "border-danger/40",
         !isPending && !isRejected && "border-border",
@@ -104,7 +104,7 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
       {(isPending || isRejected || post.pinned) && (
         <div
           className={cn(
-            "flex flex-wrap items-center gap-2 rounded-t-[--radius-lg] px-4 py-2 text-xs font-semibold",
+            "flex flex-wrap items-center gap-2 rounded-t-[var(--radius-lg)] px-4 py-2 text-xs font-semibold",
             isPending && "bg-warn-soft text-warn",
             isRejected && "bg-danger-soft text-danger",
             !isPending && !isRejected && "bg-accent-soft text-accent-strong",
@@ -212,7 +212,7 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
 
         {/* ---- the author sees exactly why, and what to do ---- */}
         {isRejected && post.mine && post.rejectionReason && (
-          <div className="mt-3 rounded-[--radius-md] bg-danger-soft p-3.5">
+          <div className="mt-3 rounded-[var(--radius-md)] bg-danger-soft p-3.5">
             <p className="text-xs font-semibold uppercase tracking-wide text-danger">
               {t("bulletin.whatTeacherSaid")}
             </p>
@@ -237,7 +237,7 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
                 rows={2}
                 autoFocus
                 placeholder={t("bulletin.rejectPlaceholder")}
-                className="w-full resize-y rounded-[--radius-md] border border-border bg-surface p-3 text-sm outline-none focus:border-accent"
+                className="w-full resize-y rounded-[var(--radius-md)] border border-border bg-surface p-3 text-sm outline-none focus:border-accent"
               />
               <div className="flex gap-2">
                 <Button size="sm" variant="ghost" block onClick={() => setRejecting(false)}>
@@ -483,7 +483,7 @@ function ReportSheet({
         aria-modal="true"
         aria-labelledby={`report-title-${postId}`}
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-md rounded-t-[--radius-xl] border border-border bg-surface p-5 pb-[calc(env(safe-area-inset-bottom,0px)+1.25rem)] shadow-lg animate-sheet-up sm:rounded-[--radius-xl] sm:pb-5"
+        className="w-full max-w-md rounded-t-[var(--radius-xl)] border border-border bg-surface p-5 pb-[calc(env(safe-area-inset-bottom,0px)+1.25rem)] shadow-lg animate-sheet-up sm:rounded-[var(--radius-xl)] sm:pb-5"
       >
         <h2 id={`report-title-${postId}`} className="text-base font-bold text-fg">
           {t("bulletin.tellWhatWrong")}
@@ -501,7 +501,7 @@ function ReportSheet({
               aria-checked={reason === option.value}
               onClick={() => setReason(option.value)}
               className={cn(
-                "flex w-full items-center gap-2.5 rounded-[--radius-md] border p-3 text-left text-sm font-medium transition-colors",
+                "flex w-full items-center gap-2.5 rounded-[var(--radius-md)] border p-3 text-left text-sm font-medium transition-colors",
                 reason === option.value
                   ? "border-accent bg-accent-soft text-accent-strong"
                   : "border-border text-fg hover:bg-surface-muted",
@@ -518,7 +518,7 @@ function ReportSheet({
           rows={2}
           placeholder={t("bulletin.detailPlaceholder")}
           aria-label={t("bulletin.moreDetail")}
-          className="mt-3 w-full resize-y rounded-[--radius-md] border border-border bg-surface p-3 text-sm outline-none focus:border-accent"
+          className="mt-3 w-full resize-y rounded-[var(--radius-md)] border border-border bg-surface p-3 text-sm outline-none focus:border-accent"
         />
 
         <div className="mt-3 flex gap-2">

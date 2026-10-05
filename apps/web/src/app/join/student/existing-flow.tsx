@@ -81,7 +81,7 @@ export function ExistingAccountJoinFlow({ name }: { name: string }) {
       {errors._form && (
         <p
           role="alert"
-          className="mb-5 rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+          className="mb-5 rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
         >
           {errors._form}
         </p>
@@ -117,7 +117,7 @@ export function ExistingAccountJoinFlow({ name }: { name: string }) {
           placeholder={t("join.codePlaceholder")}
           aria-invalid={Boolean(errors.code) || undefined}
           className={cn(
-            "w-full rounded-[--radius-lg] border-2 bg-surface px-4 py-5 text-center",
+            "w-full rounded-[var(--radius-lg)] border-2 bg-surface px-4 py-5 text-center",
             "font-mono text-3xl font-bold tracking-[0.2em] uppercase text-fg",
             "outline-none placeholder:text-fg-subtle placeholder:tracking-[0.2em]",
             errors.code ? "border-danger" : found ? "border-ok" : "border-border focus:border-accent",
@@ -132,7 +132,7 @@ export function ExistingAccountJoinFlow({ name }: { name: string }) {
 
       {found ? (
         <>
-          <div className="mt-4 flex items-center gap-3 rounded-[--radius-lg] border-2 border-ok bg-ok-soft p-4 animate-pop">
+          <div className="mt-4 flex items-center gap-3 rounded-[var(--radius-lg)] border-2 border-ok bg-ok-soft p-4 animate-pop">
             <CheckCircleIcon weight="fill" className="size-7 shrink-0 text-ok" />
             <div className="min-w-0">
               <p className="font-bold text-fg">{found.schoolName}</p>

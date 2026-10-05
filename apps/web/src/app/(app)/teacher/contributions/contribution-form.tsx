@@ -76,7 +76,7 @@ export function ContributionForm({ topics, draftOn, contributionId, initial }: {
       data-testid="gig-form"
     >
       {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger" data-testid="gig-error">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger" data-testid="gig-error">
           {error}
         </p>
       )}

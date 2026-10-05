@@ -50,7 +50,7 @@ export default async function MentorThreadPage({
 
       {/* Said to EVERY reader, including the child, before they read a word.
           Nobody should discover afterwards that their messages were visible. */}
-      <p className="flex items-start gap-2 rounded-[--radius-md] border border-border bg-surface-muted p-3 text-xs text-fg-muted">
+      <p className="flex items-start gap-2 rounded-[var(--radius-md)] border border-border bg-surface-muted p-3 text-xs text-fg-muted">
         <EyeIcon weight="bold" className="mt-0.5 size-4 shrink-0" />
         <span>
           {t("mentoring.notPrivateNote", { name: thread.studentName, school: thread.schoolName })}

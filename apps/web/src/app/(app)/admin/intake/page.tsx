@@ -42,7 +42,7 @@ export default async function IntakePage() {
           row gets is uniform on purpose, so this is the only place the office
           learns why a code or a PEN brings nobody over. */}
       {!school.verifiedAt && (
-        <p className="mt-4 rounded-[--radius-md] border border-warn/40 bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg-muted">
+        <p className="mt-4 rounded-[var(--radius-md)] border border-warn/40 bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg-muted">
           {t("intake.awaitingCheck")}
         </p>
       )}

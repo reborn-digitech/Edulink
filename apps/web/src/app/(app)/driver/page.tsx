@@ -54,7 +54,7 @@ export default async function Page() {
           </CardBody>
         </Card>
       )}
-      <p className="flex items-start gap-2 rounded-[--radius-md] bg-surface-muted p-3 text-sm text-fg-muted">
+      <p className="flex items-start gap-2 rounded-[var(--radius-md)] bg-surface-muted p-3 text-sm text-fg-muted">
         <DeviceMobileIcon weight="duotone" className="mt-0.5 size-5 shrink-0" />
         {t("transport.webDriverNote")}
       </p>

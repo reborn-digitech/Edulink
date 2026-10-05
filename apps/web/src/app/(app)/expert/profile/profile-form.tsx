@@ -102,7 +102,7 @@ export function ProfileForm({
       {error && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
         >
           {error}
         </p>
@@ -117,7 +117,7 @@ export function ProfileForm({
           maxLength={120}
           onChange={(e) => setHead(e.target.value)}
           placeholder={t("expert.headlinePlaceholder")}
-          className="mt-1.5 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+          className="mt-1.5 min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
         />
       </label>
 
@@ -129,7 +129,7 @@ export function ProfileForm({
           value={about}
           maxLength={4000}
           onChange={(e) => setAbout(e.target.value)}
-          className="mt-1.5 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2.5 text-sm leading-relaxed text-fg outline-none focus:border-accent"
+          className="mt-1.5 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 py-2.5 text-sm leading-relaxed text-fg outline-none focus:border-accent"
         />
       </label>
 
@@ -141,7 +141,7 @@ export function ProfileForm({
           value={org}
           maxLength={160}
           onChange={(e) => setOrg(e.target.value)}
-          className="mt-1.5 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+          className="mt-1.5 min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
         />
       </label>
 
@@ -190,7 +190,7 @@ export function ProfileForm({
                 : t("expert.specialismPlaceholder")
             }
             aria-label={t("expert.addSpecialism")}
-            className="min-h-11 flex-1 rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent disabled:opacity-50"
+            className="min-h-11 flex-1 rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent disabled:opacity-50"
           />
           <Button
             variant="secondary"
@@ -210,7 +210,7 @@ export function ProfileForm({
         who only gives workshops — enforced in `experts.ts` and `mentoring.ts`,
         not merely filtered here.
       */}
-      <fieldset className="rounded-[--radius-md] border border-border p-4">
+      <fieldset className="rounded-[var(--radius-md)] border border-border p-4">
         <legend className="px-1 text-sm font-medium text-fg">
           {t("expert.offeringQuestion")}
         </legend>
@@ -222,7 +222,7 @@ export function ProfileForm({
                 name="offering"
                 checked={offer === value}
                 onChange={() => setOffer(value)}
-                className="mt-1 size-4 shrink-0 accent-[--accent]"
+                className="mt-1 size-4 shrink-0 accent-[var(--accent)]"
               />
               <span className="min-w-0">
                 <span className="block text-sm font-medium text-fg">
@@ -254,7 +254,7 @@ export function ProfileForm({
               value={capacity}
               onChange={(e) => setCapacity(e.target.value)}
               placeholder="3"
-              className="mt-1.5 min-h-11 w-28 rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+              className="mt-1.5 min-h-11 w-28 rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
             />
           </label>
         )}
@@ -269,7 +269,7 @@ export function ProfileForm({
           maxLength={64}
           onChange={(e) => setZone(e.target.value)}
           placeholder={t("expert.timezonePlaceholder")}
-          className="mt-1.5 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+          className="mt-1.5 min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
         />
       </label>
 

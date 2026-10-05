@@ -23,7 +23,7 @@ export function StudentWelcome({ name, handle }: { name: string; handle: string 
   if (dismissed) return null;
 
   return (
-    <div className="relative overflow-hidden rounded-[--radius-lg] border border-accent/30 bg-accent-soft p-5 animate-pop">
+    <div className="relative overflow-hidden rounded-[var(--radius-lg)] border border-accent/30 bg-accent-soft p-5 animate-pop">
       <button
         type="button"
         onClick={() => {
@@ -48,7 +48,7 @@ export function StudentWelcome({ name, handle }: { name: string; handle: string 
           </p>
 
           {handle && (
-            <div className="mt-3 rounded-[--radius-md] border border-border bg-surface p-3.5">
+            <div className="mt-3 rounded-[var(--radius-md)] border border-border bg-surface p-3.5">
               <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
                 {t("student.saveLogin")}
               </p>

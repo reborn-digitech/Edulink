@@ -65,7 +65,7 @@ export function SubmitPanel({
 
   if (done && !open) {
     return (
-      <div className="mt-2.5 flex flex-wrap items-center gap-2 rounded-[--radius-md] bg-ok-soft p-2.5">
+      <div className="mt-2.5 flex flex-wrap items-center gap-2 rounded-[var(--radius-md)] bg-ok-soft p-2.5">
         <CheckCircleIcon weight="fill" className="size-5 shrink-0 text-ok" />
         <p className="min-w-0 flex-1 text-sm font-medium text-ok">{t("student.handedIn")}</p>
         <Button
@@ -95,7 +95,7 @@ export function SubmitPanel({
   }
 
   return (
-    <div className="mt-2.5 space-y-2 rounded-[--radius-md] border border-accent bg-accent-soft/40 p-3">
+    <div className="mt-2.5 space-y-2 rounded-[var(--radius-md)] border border-accent bg-accent-soft/40 p-3">
       <label htmlFor={`submit-${assignmentId}`} className="block text-sm font-medium text-fg">
         {t("student.yourAnswer")}
       </label>
@@ -112,7 +112,7 @@ export function SubmitPanel({
         aria-invalid={Boolean(error) || undefined}
         aria-describedby={error ? `submit-error-${assignmentId}` : undefined}
         className={cn(
-          "w-full resize-y rounded-[--radius-sm] border bg-surface p-3 text-[0.9375rem] leading-relaxed outline-none",
+          "w-full resize-y rounded-[var(--radius-sm)] border bg-surface p-3 text-[0.9375rem] leading-relaxed outline-none",
           error ? "border-danger ring-2 ring-danger/25" : "border-border focus:border-accent",
         )}
       />

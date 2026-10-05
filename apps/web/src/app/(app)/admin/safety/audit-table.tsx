@@ -56,7 +56,7 @@ export function AuditTable({ rows }: { rows: AuditEntry[] }) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={t("safety.searchAuditPlaceholder")}
-            className="min-h-12 w-full rounded-[--radius-md] border border-border bg-surface pl-11 pr-4 text-[0.9375rem] outline-none focus:border-accent"
+            className="min-h-12 w-full rounded-[var(--radius-md)] border border-border bg-surface pl-11 pr-4 text-[0.9375rem] outline-none focus:border-accent"
           />
         </label>
         <button
@@ -64,7 +64,7 @@ export function AuditTable({ rows }: { rows: AuditEntry[] }) {
           aria-pressed={sensitiveOnly}
           onClick={() => setSensitiveOnly((s) => !s)}
           className={cn(
-            "inline-flex min-h-12 items-center justify-center gap-2 rounded-[--radius-md] px-4 text-sm font-medium",
+            "inline-flex min-h-12 items-center justify-center gap-2 rounded-[var(--radius-md)] px-4 text-sm font-medium",
             sensitiveOnly
               ? "bg-danger text-danger-fg"
               : "border border-border bg-surface text-fg-muted hover:text-fg",
@@ -81,11 +81,11 @@ export function AuditTable({ rows }: { rows: AuditEntry[] }) {
       </p>
 
       {filtered.length === 0 ? (
-        <p className="rounded-[--radius-md] bg-surface-muted p-6 text-center text-sm text-fg-muted">
+        <p className="rounded-[var(--radius-md)] bg-surface-muted p-6 text-center text-sm text-fg-muted">
           {t("safety.nothingMatches")}
         </p>
       ) : (
-        <ul className="divide-y divide-border overflow-hidden rounded-[--radius-lg] border border-border bg-surface">
+        <ul className="divide-y divide-border overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface">
           {filtered.map((row) => {
             const sensitive = isSensitiveAction(row.action);
             return (

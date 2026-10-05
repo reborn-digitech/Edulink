@@ -45,7 +45,7 @@ export function RulesPreview({ schoolName, locale, bands, areas, coScale, layout
         <h3 className="text-sm font-semibold text-fg">{t("reportCardConfig.previewTitle")}</h3>
         <p className="text-xs leading-relaxed text-fg-muted">{t("reportCardConfig.previewHint")}</p>
       </div>
-      <div style={{ fontFamily: fontStack(layout.font, locale) }} className="rounded-[--radius-lg] border border-border bg-surface p-5 text-fg shadow-sm" data-testid="preview-paper">
+      <div style={{ fontFamily: fontStack(layout.font, locale) }} className="rounded-[var(--radius-lg)] border border-border bg-surface p-5 text-fg shadow-sm" data-testid="preview-paper">
         <header className="border-b border-border pb-3">
           <p className={`text-base font-bold tracking-tight ${layout.useBrandColour ? "text-accent-strong" : "text-fg"}`} data-testid="preview-school">
             {schoolName}
@@ -136,7 +136,7 @@ export function RulesPreview({ schoolName, locale, bands, areas, coScale, layout
                 <div className="grid h-9 place-items-center">
                   {slot === "parent"
                     ? layout.showSeal && <span className="grid size-9 place-items-center rounded-full border border-dashed border-border-strong text-[0.5625rem] italic">{t("signatures.sampleSeal")}</span>
-                    : layout[slot] !== "NONE" && <span className="rounded-[--radius-sm] border border-dashed border-border-strong px-2 py-0.5 italic">{t("signatures.sampleSignature")}</span>}
+                    : layout[slot] !== "NONE" && <span className="rounded-[var(--radius-sm)] border border-dashed border-border-strong px-2 py-0.5 italic">{t("signatures.sampleSignature")}</span>}
                 </div>
                 <div className="min-h-6 border-t border-border pt-1.5">{who}</div>
               </div>

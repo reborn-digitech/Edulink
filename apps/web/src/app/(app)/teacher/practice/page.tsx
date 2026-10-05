@@ -330,7 +330,7 @@ export default async function TeacherPracticePage({
 
 function StatTile({ value, label }: { value: string; label: string }) {
   return (
-    <div className="rounded-[--radius-md] border border-border bg-surface p-3.5">
+    <div className="rounded-[var(--radius-md)] border border-border bg-surface p-3.5">
       <p className="text-xl font-bold tabular-nums text-fg">{value}</p>
       <p className="mt-0.5 text-xs text-fg-muted">{label}</p>
     </div>

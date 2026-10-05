@@ -20,7 +20,7 @@ export async function HealthCardReadsDisclosure({ reads, timezone }: { reads: He
   const t = await getT();
   const locale = await getLocale();
   return (
-    <details className="group rounded-[--radius-md] border border-border bg-surface-muted/50" data-testid="health-card-reads">
+    <details className="group rounded-[var(--radius-md)] border border-border bg-surface-muted/50" data-testid="health-card-reads">
       <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 px-4 py-2.5 text-sm font-semibold text-fg [&::-webkit-details-marker]:hidden">
         <EyeIcon weight="duotone" className="size-5 text-fg-muted" aria-hidden="true" />
         {t("familyCare.readsTitle")}

@@ -104,7 +104,7 @@ export function GridEditor({
       {unstaffed > 0 && (
         <p
           role="status"
-          className="flex items-start gap-2 rounded-[--radius-md] border border-warning/30 bg-warning-soft px-3 py-2 text-sm text-warning"
+          className="flex items-start gap-2 rounded-[var(--radius-md)] border border-warning/30 bg-warning-soft px-3 py-2 text-sm text-warning"
         >
           <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0" />
           <span>
@@ -188,7 +188,7 @@ export function GridEditor({
                   period.kind === "BREAK" ? (
                     <td
                       key={weekday}
-                      className="rounded-[--radius-sm] bg-surface-muted/60 p-2 align-top text-xs text-fg-muted"
+                      className="rounded-[var(--radius-sm)] bg-surface-muted/60 p-2 align-top text-xs text-fg-muted"
                     >
                       {periodLabel(period.name, t)}
                     </td>
@@ -213,7 +213,7 @@ export function GridEditor({
       </TableScroll>
 
       {/* ---------------- copy a day ---------------- */}
-      <div className="flex flex-wrap items-end gap-3 rounded-[--radius-sm] border border-border p-3">
+      <div className="flex flex-wrap items-end gap-3 rounded-[var(--radius-sm)] border border-border p-3">
         <SelectField
           label={t("timetable.copy")}
           className="w-40"
@@ -295,7 +295,7 @@ function CellButton({
           : t("timetable.addLessonAt", { where: label })
       }
       className={cn(
-        "flex w-full items-start gap-3 rounded-[--radius-sm] p-2.5 text-left transition-colors",
+        "flex w-full items-start gap-3 rounded-[var(--radius-sm)] p-2.5 text-left transition-colors",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
         slot ? "bg-surface-muted hover:bg-accent-soft" : "bg-surface-muted/40 hover:bg-surface-muted",
       )}
@@ -417,7 +417,7 @@ function LessonDialog({
         aria-modal="true"
         aria-labelledby="lesson-title"
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-md rounded-[--radius-lg] border border-border bg-surface p-5 shadow-lg animate-pop"
+        className="w-full max-w-md rounded-[var(--radius-lg)] border border-border bg-surface p-5 shadow-lg animate-pop"
       >
         <h2 id="lesson-title" className="text-lg font-bold text-fg">
           {weekdayName(cell.weekday, locale)}, {periodLabel(period.name, t)}
@@ -429,7 +429,7 @@ function LessonDialog({
         {error && (
           <p
             role="alert"
-            className="mt-4 rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
+            className="mt-4 rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
           >
             {error}
           </p>

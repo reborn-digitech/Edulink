@@ -121,7 +121,7 @@ export default async function CollegeCampusPage({ searchParams }: { searchParams
               <StatTile label={t("collegeOffice.htLate")} value={ht.lateReturns} />
             </div>
             {hostels.map((h) => (
-              <form key={h.id} action={hostelRulesAction} className="grid gap-3 rounded-[--radius-md] border border-border p-3 sm:grid-cols-4">
+              <form key={h.id} action={hostelRulesAction} className="grid gap-3 rounded-[var(--radius-md)] border border-border p-3 sm:grid-cols-4">
                 <Hidden fields={{ back, hostelId: h.id }} />
                 <p className="font-medium sm:col-span-4">{h.name}</p>
                 <fieldset disabled={!write} className="contents">
@@ -151,7 +151,7 @@ export default async function CollegeCampusPage({ searchParams }: { searchParams
           <CardHeader icon={<BusIcon weight="duotone" className="size-5" />} title={t("collegeOffice.transportTitle")} description={t("collegeOffice.transportIntro")} />
           <CardBody className="space-y-4">
             {routes.map((r) => (
-              <form key={r.id} action={routeCollegeAction} className="grid gap-3 rounded-[--radius-md] border border-border p-3 sm:grid-cols-4">
+              <form key={r.id} action={routeCollegeAction} className="grid gap-3 rounded-[var(--radius-md)] border border-border p-3 sm:grid-cols-4">
                 <Hidden fields={{ back, routeId: r.id }} />
                 <p className="font-medium sm:col-span-4">{r.name}</p>
                 <fieldset disabled={!write} className="contents">

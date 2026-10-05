@@ -218,7 +218,7 @@ export function Builder({
         {error && (
           <p
             role="alert"
-            className="mt-3 rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+            className="mt-3 rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
           >
             {error}
           </p>
@@ -251,7 +251,7 @@ export function Builder({
                 value={termId}
                 data-testid="card-term"
                 onChange={(e) => chooseTerm(e.target.value)}
-                className="mt-1 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+                className="mt-1 min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
               >
                 {terms.map((term) => (
                   <option key={term.id} value={term.id}>
@@ -267,13 +267,13 @@ export function Builder({
         )}
 
         {mode === "year" && (
-          <p className={cn("mt-3 rounded-[--radius-md] border border-dashed border-border p-3 text-sm", academicYear ? "text-fg" : "text-fg-muted")}>
+          <p className={cn("mt-3 rounded-[var(--radius-md)] border border-dashed border-border p-3 text-sm", academicYear ? "text-fg" : "text-fg-muted")}>
             {academicYear ? t("reportCards.yearCard", { year: academicYear.name }) : t("reportCards.noYear")}
           </p>
         )}
 
         {mode !== "papers" ? null : assessments.length === 0 ? (
-          <p className="mt-3 rounded-[--radius-md] border border-dashed border-border p-4 text-sm text-fg-muted">
+          <p className="mt-3 rounded-[var(--radius-md)] border border-dashed border-border p-4 text-sm text-fg-muted">
             {t("teacher.noPublishedWork")}
           </p>
         ) : (
@@ -283,13 +283,13 @@ export function Builder({
               const onCount = ids.filter((id) => picked.includes(id)).length;
               const allOn = onCount === ids.length;
               return (
-                <div key={seriesId} className="rounded-[--radius-md] border border-border">
+                <div key={seriesId} className="rounded-[var(--radius-md)] border border-border">
                   <button
                     type="button"
                     aria-pressed={allOn}
                     onClick={() => toggleSeries(seriesId)}
                     className={cn(
-                      "flex w-full items-center gap-3 rounded-t-[--radius-md] p-3 text-left transition-colors",
+                      "flex w-full items-center gap-3 rounded-t-[var(--radius-md)] p-3 text-left transition-colors",
                       allOn ? "bg-accent-soft text-accent-strong" : "hover:bg-surface-muted",
                     )}
                   >
@@ -373,7 +373,7 @@ export function Builder({
               list="report-titles"
               disabled={mode === "term"}
               onChange={(e) => setTitle(e.target.value)}
-              className="mt-1 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+              className="mt-1 min-h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
             />
             <datalist id="report-titles">
               {existingTitles.map((existing) => (
@@ -462,7 +462,7 @@ export function Builder({
 
           <ul className="mt-3 space-y-2">
             {cards.map((card) => (
-              <li key={card.id} className="rounded-[--radius-md] border border-border p-3">
+              <li key={card.id} className="rounded-[var(--radius-md)] border border-border p-3">
                 <div className="flex flex-wrap items-center gap-3">
                   <span className="min-w-0 flex-1">
                     <span className="block truncate text-sm font-semibold text-fg">
@@ -510,7 +510,7 @@ export function Builder({
                           }
                         });
                       }}
-                      className="w-full rounded-[--radius-sm] border border-border bg-surface px-2.5 py-2 text-sm text-fg outline-none focus:border-accent"
+                      className="w-full rounded-[var(--radius-sm)] border border-border bg-surface px-2.5 py-2 text-sm text-fg outline-none focus:border-accent"
                     />
                   </label>
                 )}
@@ -518,7 +518,7 @@ export function Builder({
                 {/* The class teacher's grades besides the papers: one per area
                     on the school's own scale, saved together. */}
                 {card.status === "DRAFT" && (
-                  <fieldset className="mt-3 rounded-[--radius-sm] border border-border/60 p-2.5">
+                  <fieldset className="mt-3 rounded-[var(--radius-sm)] border border-border/60 p-2.5">
                     <legend className="px-1 text-xs font-semibold text-fg">{t("reportCards.coScholasticTitle")}</legend>
                     {coScholastic.areas.length === 0 ? (
                       <p className="text-xs text-fg-muted">{t("reportCards.noAreas")}</p>
@@ -535,7 +535,7 @@ export function Builder({
                                   <select
                                     value={current.grade ?? ""}
                                     onChange={(e) => setCo(card.id, area, { grade: e.target.value || null }, current)}
-                                    className="mt-1 min-h-10 w-full rounded-[--radius-sm] border border-border bg-surface px-2 text-sm text-fg outline-none focus:border-accent"
+                                    className="mt-1 min-h-10 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-2 text-sm text-fg outline-none focus:border-accent"
                                   >
                                     <option value="">{t("reportCards.notGraded")}</option>
                                     {coScholastic.scale.map((g) => (
@@ -553,7 +553,7 @@ export function Builder({
                                     value={current.note}
                                     placeholder={t("common.optional")}
                                     onChange={(e) => setCo(card.id, area, { note: e.target.value }, current)}
-                                    className="mt-1 min-h-10 w-full rounded-[--radius-sm] border border-border bg-surface px-2 text-sm text-fg outline-none focus:border-accent"
+                                    className="mt-1 min-h-10 w-full rounded-[var(--radius-sm)] border border-border bg-surface px-2 text-sm text-fg outline-none focus:border-accent"
                                   />
                                 </label>
                               </div>

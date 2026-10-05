@@ -99,7 +99,7 @@ export function ConcessionsPanel({ studentMembershipId, concessions, heads, offi
 
       {office &&
         (adding ? (
-          <form onSubmit={submit} noValidate className="space-y-3 rounded-[--radius-md] border border-border bg-surface-muted p-3">
+          <form onSubmit={submit} noValidate className="space-y-3 rounded-[var(--radius-md)] border border-border bg-surface-muted p-3">
             {error && (
               <p role="alert" className="text-sm font-medium text-danger">
                 {error}

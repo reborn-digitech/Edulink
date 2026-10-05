@@ -74,7 +74,7 @@ export function SubscriptionPanel({ schoolId, subscription, partnerId, partners 
         {dueLine && <span className={`text-sm font-medium ${tone === "danger" ? "text-danger" : tone === "warn" ? "text-warn" : "text-fg-muted"}`}>{dueLine}</span>}
       </div>
       {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger">
           {error}
         </p>
       )}
@@ -142,7 +142,7 @@ export function ContactPanel({ schoolId, contact }: { schoolId: string; contact:
   return (
     <form onSubmit={save} className="space-y-4" noValidate>
       {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger">
+        <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger">
           {error}
         </p>
       )}

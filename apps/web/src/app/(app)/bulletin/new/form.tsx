@@ -261,7 +261,7 @@ export function ComposeForm({
       {errors._form && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
         >
           {errors._form}
         </p>
@@ -273,7 +273,7 @@ export function ComposeForm({
           <div
             role="radiogroup"
             aria-label={t("bulletin.whoSees")}
-            className="mt-2 flex gap-1 rounded-[--radius-md] bg-surface-muted p-1"
+            className="mt-2 flex gap-1 rounded-[var(--radius-md)] bg-surface-muted p-1"
           >
             {classes.length > 0 && (
               <button
@@ -282,7 +282,7 @@ export function ComposeForm({
                 aria-checked={scope === "CLASS"}
                 onClick={() => setScope("CLASS")}
                 className={cn(
-                  "min-h-11 flex-1 rounded-[--radius-sm] px-3 text-sm font-medium",
+                  "min-h-11 flex-1 rounded-[var(--radius-sm)] px-3 text-sm font-medium",
                   scope === "CLASS" ? "bg-surface text-fg shadow-sm" : "text-fg-muted",
                 )}
               >
@@ -296,7 +296,7 @@ export function ComposeForm({
                 aria-checked={scope === "SCHOOL"}
                 onClick={() => setScope("SCHOOL")}
                 className={cn(
-                  "min-h-11 flex-1 rounded-[--radius-sm] px-3 text-sm font-medium",
+                  "min-h-11 flex-1 rounded-[var(--radius-sm)] px-3 text-sm font-medium",
                   scope === "SCHOOL" ? "bg-surface text-fg shadow-sm" : "text-fg-muted",
                 )}
               >
@@ -395,12 +395,12 @@ export function ComposeForm({
       )}
 
       {role !== "STUDENT" && (
-        <label className="flex items-start gap-3 rounded-[--radius-md] border border-border bg-surface p-3.5">
+        <label className="flex items-start gap-3 rounded-[var(--radius-md)] border border-border bg-surface p-3.5">
           <input
             type="checkbox"
             checked={requiresAck}
             onChange={(e) => setRequiresAck(e.target.checked)}
-            className="mt-0.5 size-4 accent-[--color-accent]"
+            className="mt-0.5 size-4 accent-[var(--accent)]"
           />
           <span className="min-w-0">
             <span className="block text-sm font-medium text-fg">{t("bulletin.requireAckLabel")}</span>
@@ -412,9 +412,9 @@ export function ComposeForm({
       )}
 
       {role !== "STUDENT" && !(scope === "SCHOOL" && audience === "TEACHERS") && (
-        <div className="space-y-3 rounded-[--radius-md] border border-border bg-surface p-3.5">
+        <div className="space-y-3 rounded-[var(--radius-md)] border border-border bg-surface p-3.5">
           <label className="flex items-start gap-3">
-            <input type="checkbox" checked={slip} onChange={(e) => setSlip(e.target.checked)} className="mt-0.5 size-4 accent-[--color-accent]" />
+            <input type="checkbox" checked={slip} onChange={(e) => setSlip(e.target.checked)} className="mt-0.5 size-4 accent-[var(--accent)]" />
             <span className="min-w-0">
               <span className="block text-sm font-medium text-fg">{t("collegeDesks.slipLabel")}</span>
               <span className="mt-0.5 block text-xs leading-relaxed text-fg-muted">{t("collegeDesks.slipHint")}</span>
@@ -458,7 +458,7 @@ export function ComposeForm({
               ? t("bulletin.bodyPlaceholderStudent")
               : t("bulletin.bodyPlaceholderStaff")
           }
-          className="mt-1.5 w-full resize-y rounded-[--radius-md] border border-border bg-surface p-3.5 text-[0.9375rem] leading-relaxed outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
+          className="mt-1.5 w-full resize-y rounded-[var(--radius-md)] border border-border bg-surface p-3.5 text-[0.9375rem] leading-relaxed outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
         />
       </div>
 
@@ -470,7 +470,7 @@ export function ComposeForm({
             {pictures.map((picture, index) => (
               <li
                 key={picture.preview}
-                className="space-y-3 rounded-[--radius-md] border border-border bg-surface p-3"
+                className="space-y-3 rounded-[var(--radius-md)] border border-border bg-surface p-3"
               >
                 <div className="flex items-start gap-3">
                   {/* Local blob preview — nothing has been uploaded yet. */}
@@ -480,14 +480,14 @@ export function ComposeForm({
                       muted
                       playsInline
                       preload="metadata"
-                      className="size-20 shrink-0 rounded-[--radius-sm] bg-black object-cover"
+                      className="size-20 shrink-0 rounded-[var(--radius-sm)] bg-black object-cover"
                     />
                   ) : (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={picture.preview}
                       alt=""
-                      className="size-20 shrink-0 rounded-[--radius-sm] object-cover"
+                      className="size-20 shrink-0 rounded-[var(--radius-sm)] object-cover"
                     />
                   )}
                   <div className="min-w-0 flex-1">
@@ -529,7 +529,7 @@ export function ComposeForm({
           <>
             <label
               htmlFor="post-image"
-              className="mt-1.5 flex min-h-24 cursor-pointer items-center justify-center gap-2 rounded-[--radius-md] border border-dashed border-border bg-surface p-4 text-sm font-medium text-fg-muted hover:border-accent hover:text-accent-strong focus-within:border-accent"
+              className="mt-1.5 flex min-h-24 cursor-pointer items-center justify-center gap-2 rounded-[var(--radius-md)] border border-dashed border-border bg-surface p-4 text-sm font-medium text-fg-muted hover:border-accent hover:text-accent-strong focus-within:border-accent"
             >
               <ImageIcon weight="duotone" className="size-5" />
               {pictures.length === 0 ? t("bulletin.addPicture") : t("bulletin.addAnother")}
@@ -572,7 +572,7 @@ export function ComposeForm({
               }
             }}
             placeholder={t("bulletin.tagPlaceholder")}
-            className="min-h-12 flex-1 rounded-[--radius-md] border border-border bg-surface px-3.5 text-[0.9375rem] outline-none focus:border-accent"
+            className="min-h-12 flex-1 rounded-[var(--radius-md)] border border-border bg-surface px-3.5 text-[0.9375rem] outline-none focus:border-accent"
           />
           <Button type="button" variant="secondary" onClick={addTag}>
             {t("common.add")}
@@ -602,7 +602,7 @@ export function ComposeForm({
 
       {/* The rule, restated right where they press the button. */}
       {role === "STUDENT" && (
-        <p className="flex items-start gap-2 rounded-[--radius-md] bg-surface-muted p-3.5 text-xs leading-relaxed text-fg-muted">
+        <p className="flex items-start gap-2 rounded-[var(--radius-md)] bg-surface-muted p-3.5 text-xs leading-relaxed text-fg-muted">
           <ClockIcon weight="fill" className="mt-0.5 size-4 shrink-0 text-accent" />
           <span>{t("bulletin.studentRule")}</span>
         </p>

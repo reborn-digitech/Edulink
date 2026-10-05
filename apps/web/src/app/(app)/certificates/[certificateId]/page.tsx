@@ -76,7 +76,7 @@ export default async function CertificatePage({ params, searchParams }: { params
       </div>
 
       {staff && cert.missing.length > 0 && (
-        <p className="mb-4 flex items-start gap-2 rounded-[--radius-md] border border-warn/40 bg-warn-soft px-4 py-3 text-sm text-warn print:hidden" data-testid="missing-banner">
+        <p className="mb-4 flex items-start gap-2 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft px-4 py-3 text-sm text-warn print:hidden" data-testid="missing-banner">
           <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
           <span>{t("certificates.missingWarning", { fields: missingLabels.join(", ") })}</span>
         </p>
@@ -87,24 +87,24 @@ export default async function CertificatePage({ params, searchParams }: { params
         cert.signatures
           .filter((s) => s.can.decide)
           .map((s) => (
-            <div key={s.id} lang={readerLocale} className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-[--radius-md] border border-warn/40 bg-warn-soft px-4 py-3 text-sm text-fg print:hidden" data-testid="signature-waits">
+            <div key={s.id} lang={readerLocale} className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft px-4 py-3 text-sm text-fg print:hidden" data-testid="signature-waits">
               <span>{t("signatures.yourWord")}</span>
               <SignPaper signatureId={s.id} label={[cert.studentName, cert.title].join(", ")} />
             </div>
           ))}
 
       {cert.revokedAt && (
-        <p className="mb-4 rounded-[--radius-md] border border-danger/40 bg-danger-soft px-4 py-3 text-sm font-semibold text-danger print:border-black print:bg-transparent print:text-black" data-testid="revoked-banner">
+        <p className="mb-4 rounded-[var(--radius-md)] border border-danger/40 bg-danger-soft px-4 py-3 text-sm font-semibold text-danger print:border-black print:bg-transparent print:text-black" data-testid="revoked-banner">
           {t("certificates.revokedBanner", { date: formatDate(new Date(cert.revokedAt)), reason: cert.revokedReason ?? "—" })}
         </p>
       )}
 
-      <div style={{ fontFamily: fontStack(layout.font, cert.locale) }} className="rounded-[--radius-lg] border border-border bg-surface p-6 print:rounded-none print:border-0 print:bg-white print:p-0 print:text-black sm:p-8" data-testid="certificate-sheet">
+      <div style={{ fontFamily: fontStack(layout.font, cert.locale) }} className="rounded-[var(--radius-lg)] border border-border bg-surface p-6 print:rounded-none print:border-0 print:bg-white print:p-0 print:text-black sm:p-8" data-testid="certificate-sheet">
         {/* ---------------- letterhead ---------------- */}
         <header className="flex items-start gap-4 border-b border-border pb-5 print:border-black/20">
           {logoUrl && (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={logoUrl} alt="" className="size-16 shrink-0 rounded-[--radius-md] object-contain" />
+            <img src={logoUrl} alt="" className="size-16 shrink-0 rounded-[var(--radius-md)] object-contain" />
           )}
           <div className="min-w-0 flex-1">
             <h1 className="text-xl font-bold tracking-tight text-fg print:text-black sm:text-2xl" style={brand}>

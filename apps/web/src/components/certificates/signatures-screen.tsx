@@ -83,7 +83,7 @@ export async function SignaturesScreen({ roles, intro }: { roles: ("ADMIN" | "PR
             <div className="space-y-2">
               {view.seal.image ? (
                 // eslint-disable-next-line @next/next/no-img-element -- a picture kept in the row, handed over as a data URL
-                <img src={view.seal.image} alt={t("signatures.sealCurrent")} className="size-28 rounded-[--radius-md] border border-border bg-white object-contain p-2" />
+                <img src={view.seal.image} alt={t("signatures.sealCurrent")} className="size-28 rounded-[var(--radius-md)] border border-border bg-white object-contain p-2" />
               ) : (
                 <p className="text-sm text-fg-muted">{t("signatures.sealNone")}</p>
               )}

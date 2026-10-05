@@ -34,7 +34,7 @@ export default async function ContributionPage({ params }: { params: Promise<{ c
         meta={<Badge tone={TONE[c.status]}>{t(`gigs.status${c.status}`)}</Badge>}
       />
       {c.reviewNote && (
-        <div className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3" data-testid="gig-note">
+        <div className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-3" data-testid="gig-note">
           <p className="text-xs font-medium text-fg-muted">{t("gigs.reviewerSaid")}</p>
           <p className="mt-1 whitespace-pre-wrap break-words text-sm text-fg">{c.reviewNote}</p>
         </div>

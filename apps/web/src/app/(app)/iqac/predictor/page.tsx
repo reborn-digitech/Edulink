@@ -120,7 +120,7 @@ export default async function PredictorPage({ searchParams }: { searchParams: Pr
                   {k.code} {k.name} · {t("iqac.metricWeight", { weight: k.weight })} · {t("iqac.criterionScore", { score: k.score.toFixed(2) })}
                 </h3>
                 {k.metrics.map((m) => (
-                  <details key={m.code} id={`metric-${m.code.replace(/\./g, "-")}`} className="rounded-[--radius-md] border border-border p-3" data-testid={`metric-${m.code}`}>
+                  <details key={m.code} id={`metric-${m.code.replace(/\./g, "-")}`} className="rounded-[var(--radius-md)] border border-border p-3" data-testid={`metric-${m.code}`}>
                     <summary className="flex cursor-pointer flex-wrap items-baseline justify-between gap-2 text-sm">
                       <span>
                         <span className="font-mono text-fg-muted">{m.code}</span> {m.text}

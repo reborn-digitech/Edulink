@@ -77,7 +77,7 @@ function ProposeForm({ membershipId }: { membershipId: string }) {
     <Card data-testid="pen-propose">
       <details className="group">
         <summary className="flex cursor-pointer list-none items-start gap-3 p-5 pb-3 [&::-webkit-details-marker]:hidden">
-          <span className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-[--radius-sm] bg-accent-soft text-accent-strong">
+          <span className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-[var(--radius-sm)] bg-accent-soft text-accent-strong">
             <IdentificationCardIcon weight="duotone" className="size-5" />
           </span>
           <span className="min-w-0">
@@ -89,7 +89,7 @@ function ProposeForm({ membershipId }: { membershipId: string }) {
           <form onSubmit={submit} noValidate className="space-y-4">
             <p className="text-sm text-fg-muted">{t("pupilRecord.penProposeIntro")}</p>
             {error && (
-              <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+              <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
                 {error}
               </p>
             )}
@@ -172,7 +172,7 @@ function PenChangeCard({ request }: { request: PenChangeRequestView }) {
         </p>
         <dl className="grid gap-2 sm:grid-cols-2" data-testid="pen-change-decisions">
           {rows.map((row) => (
-            <div key={row.label} className="rounded-[--radius-md] border border-border px-3 py-2">
+            <div key={row.label} className="rounded-[var(--radius-md)] border border-border px-3 py-2">
               <dt className="text-xs font-semibold uppercase tracking-wide text-fg-subtle">{row.label}</dt>
               <dd className="mt-0.5">
                 <Badge tone={row.tone} size="sm">
@@ -185,7 +185,7 @@ function PenChangeCard({ request }: { request: PenChangeRequestView }) {
         {request.status === "APPLIED" && <p className="text-sm font-medium text-ok">{t("pupilRecord.penChangeAppliedNote")}</p>}
         {request.status === "REJECTED" && <p className="text-sm font-medium text-danger">{t("pupilRecord.penChangeRejectedNote", { reason: request.decisionReason ?? "—" })}</p>}
         {error && (
-          <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+          <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
             {error}
           </p>
         )}
@@ -200,7 +200,7 @@ function PenChangeCard({ request }: { request: PenChangeRequestView }) {
           </div>
         )}
         {request.can.decide && rejecting && (
-          <div className="space-y-3 rounded-[--radius-md] border border-danger/30 bg-danger-soft/40 p-3">
+          <div className="space-y-3 rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft/40 p-3">
             <TextAreaField label={t("pupilRecord.penChangeRejectReason")} value={reason} onChange={(e) => setReason(e.target.value)} maxLength={400} rows={2} data-testid="pen-change-reject-reason" />
             <div className="flex flex-wrap items-center gap-2">
               <Button size="sm" variant="danger" loading={pending} onClick={() => decide(false)} icon={<XIcon weight="bold" />} data-testid="pen-change-reject-send">

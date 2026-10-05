@@ -15,7 +15,7 @@ export function PublishBar({ assignmentId }: { assignmentId: string }) {
   const [pending, startTransition] = useTransition();
 
   return (
-    <div className="flex flex-wrap items-center gap-3 rounded-[--radius-md] border border-warn/40 bg-warn-soft p-4">
+    <div className="flex flex-wrap items-center gap-3 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft p-4">
       <WarningIcon weight="fill" className="size-5 shrink-0 text-warn" />
       <p className="min-w-0 flex-1 text-sm font-medium text-warn">
         {t("teacher.stillDraft")}

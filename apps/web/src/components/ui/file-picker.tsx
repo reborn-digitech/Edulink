@@ -84,7 +84,7 @@ export function FilePicker({
           {files.map((file, index) => (
             <li
               key={`${file.name}-${index}`}
-              className="flex items-center gap-3 rounded-[--radius-sm] border border-border bg-surface p-2.5"
+              className="flex items-center gap-3 rounded-[var(--radius-sm)] border border-border bg-surface p-2.5"
             >
               <PaperclipIcon weight="bold" className="size-4 shrink-0 text-fg-subtle" />
               <span className="min-w-0 flex-1">

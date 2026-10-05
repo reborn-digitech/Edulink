@@ -6,7 +6,7 @@ import { audit } from "./audit";
 import { forTenant } from "./tenant-context";
 import { AccessError } from "./tenancy";
 import { assertSuperuser } from "./superuser";
-import { todayKey, zonedStartOfDay } from "./dates";
+import { safeTimeZone, todayKey, zonedStartOfDay } from "./dates";
 import { readAttachments, readMedia } from "./files";
 import { blobStore } from "./blob-store";
 import type { ActiveContext } from "./session";
@@ -218,14 +218,16 @@ export type UsageCounts = { pupils: number; messages: number; storageMb: number;
 
 /** The YYYY-MM holding `now` in a school's own clock. */
 export function monthKeyFor(timezone: string, now: Date = new Date()): string {
-  return todayKey(timezone, now).slice(0, 7);
+  // A row's unknown zone (A3-journeys-2) reads as India's here rather than failing the operator's page and the nightly sample.
+  return todayKey(safeTimeZone(timezone), now).slice(0, 7);
 }
 
 /** The first instant of a YYYY-MM and of the month after it, in a zone. */
 export function monthBounds(month: string, timezone: string): { start: Date; end: Date } {
   const [y, m] = month.split("-").map(Number) as [number, number];
   const next = m === 12 ? `${y + 1}-01` : `${y}-${String(m + 1).padStart(2, "0")}`;
-  return { start: zonedStartOfDay(`${month}-01`, timezone), end: zonedStartOfDay(`${next}-01`, timezone) };
+  const tz = safeTimeZone(timezone);
+  return { start: zonedStartOfDay(`${month}-01`, tz), end: zonedStartOfDay(`${next}-01`, tz) };
 }
 
 /**

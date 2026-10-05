@@ -168,7 +168,7 @@ export function OnlineFlow({ studentMembershipId, demandIds, resumePaymentId = n
   const amount = checkout ? formatPaise(checkout.amountPaise, locale) : null;
 
   return (
-    <div className="space-y-3 rounded-[--radius-md] border border-border bg-surface-muted p-4" aria-live="polite" data-testid="fees-online-flow">
+    <div className="space-y-3 rounded-[var(--radius-md)] border border-border bg-surface-muted p-4" aria-live="polite" data-testid="fees-online-flow">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <p className="text-sm font-semibold text-fg">{t("fees.onlineTitle")}</p>
         {amount && <p className="text-sm font-semibold tabular-nums text-fg">{amount}</p>}

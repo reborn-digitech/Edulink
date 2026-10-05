@@ -74,7 +74,7 @@ export function ClaimChildForm({
 
   if (filed) {
     return (
-      <div className={cn("rounded-[--radius-lg] border border-border bg-surface p-6 text-center", className)}>
+      <div className={cn("rounded-[var(--radius-lg)] border border-border bg-surface p-6 text-center", className)}>
         <div className="mx-auto mb-4 grid size-16 place-items-center rounded-full bg-accent-soft text-accent-strong">
           <CheckCircleIcon weight="fill" className="size-10" />
         </div>
@@ -110,7 +110,7 @@ export function ClaimChildForm({
       {errors._form && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
         >
           {errors._form}
         </p>
@@ -162,7 +162,7 @@ export function ClaimChildForm({
       </Button>
 
       {!hasChildren && (
-        <p className="rounded-[--radius-md] bg-surface-muted p-4 text-xs leading-relaxed text-fg-muted">
+        <p className="rounded-[var(--radius-md)] bg-surface-muted p-4 text-xs leading-relaxed text-fg-muted">
           Cannot find the code? The school can link you directly — they will see your
           request as soon as you ask them. Nothing about your child is visible to you
           until a link exists.

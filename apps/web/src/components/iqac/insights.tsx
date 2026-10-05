@@ -22,7 +22,7 @@ type Who = string | null | undefined;
 
 export function InsightsNotAScore({ t }: { t: Translate }) {
   return (
-    <p className="flex items-start gap-2 rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted" data-testid="insights-not-a-score">
+    <p className="flex items-start gap-2 rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted" data-testid="insights-not-a-score">
       <InfoIcon weight="duotone" className="mt-0.5 size-4 shrink-0" aria-hidden />
       {t("insights.notAScore")}
     </p>

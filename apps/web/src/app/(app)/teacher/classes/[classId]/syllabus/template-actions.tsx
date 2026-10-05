@@ -112,7 +112,7 @@ export function ApplyTemplatePanel({ classId, templates, units, today }: { class
         <DateField label={t("syllabus.lessonDate")} value={dateKey} onChange={(e) => setDateKey(e.target.value)} />
       </div>
       {chosen && (
-        <div className="rounded-[--radius-md] bg-surface-muted p-3 text-sm">
+        <div className="rounded-[var(--radius-md)] bg-surface-muted p-3 text-sm">
           <p className="font-medium text-fg">{chosen.topic}</p>
           {chosen.notes && <p className="mt-1 whitespace-pre-line text-fg-muted">{chosen.notes}</p>}
           {chosen.homework && (

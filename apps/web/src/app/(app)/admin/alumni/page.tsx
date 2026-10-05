@@ -101,7 +101,7 @@ export default async function AdminAlumniPage({ searchParams }: { searchParams: 
             <label htmlFor="alumni-q" className="sr-only">
               {t("alumni.adminSearch")}
             </label>
-            <input id="alumni-q" name="q" defaultValue={q ?? ""} placeholder={t("alumni.adminSearch")} className="h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3.5 text-[0.9375rem] text-fg" />
+            <input id="alumni-q" name="q" defaultValue={q ?? ""} placeholder={t("alumni.adminSearch")} className="h-11 w-full rounded-[var(--radius-md)] border border-border bg-surface px-3.5 text-[0.9375rem] text-fg" />
           </form>
           {view.alumni.length === 0 ? (
             <EmptyState icon={<GraduationCapIcon weight="duotone" className="size-8" />} title={t("alumni.adminNoAlumni")} />

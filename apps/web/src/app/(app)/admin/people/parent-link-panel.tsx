@@ -57,10 +57,10 @@ export function ParentLinkPanel({
   }
 
   const inputClass =
-    "w-full rounded-[--radius-sm] border border-border bg-surface px-3 py-2 text-sm text-fg outline-none focus:border-accent";
+    "w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3 py-2 text-sm text-fg outline-none focus:border-accent";
 
   return (
-    <div className="w-full rounded-[--radius-md] border border-border bg-surface-muted p-3">
+    <div className="w-full rounded-[var(--radius-md)] border border-border bg-surface-muted p-3">
       <p className="text-sm font-semibold text-fg">{t("people.linkParentTitle", { name })}</p>
       <p className="mt-1 text-xs leading-relaxed text-fg-muted">{t("people.linkParentBody", { name })}</p>
 

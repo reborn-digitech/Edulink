@@ -96,7 +96,7 @@ export function EmailForm({
   if (step === "code") {
     return (
       <form onSubmit={confirm} className="space-y-3" noValidate>
-        <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2.5 text-sm leading-relaxed text-fg">
+        <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2.5 text-sm leading-relaxed text-fg">
           {/* One sentence with a placeholder, not fragments around a <strong> —
               Hindi and Marathi put the address elsewhere in the sentence. */}
           {t("account.emailCodeSent", { email: sentTo })}
@@ -110,7 +110,7 @@ export function EmailForm({
         {error && (
           <p
             role="alert"
-            className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
+            className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
           >
             {error}
           </p>
@@ -153,7 +153,7 @@ export function EmailForm({
   return (
     <form onSubmit={send} className="space-y-3" noValidate>
       {current && !isHandle && (
-        <p className="flex flex-wrap items-center gap-2 rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2.5 text-sm">
+        <p className="flex flex-wrap items-center gap-2 rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2.5 text-sm">
           {confirmed ? (
             <CheckCircleIcon weight="fill" className="size-4 shrink-0 text-ok" />
           ) : (
@@ -169,7 +169,7 @@ export function EmailForm({
       {isHandle && (
         // The one state where the account has no address at all. Saying what
         // they lose — the name they have been typing — before they change it.
-        <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2.5 text-sm leading-relaxed text-fg">
+        <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2.5 text-sm leading-relaxed text-fg">
           {/* Whole sentence with a placeholder; the <code> styling on the name
               went with the fragments, the way bold did on the invitation. */}
           {t("account.signInWithLoginName", { name: loginName })}
@@ -182,7 +182,7 @@ export function EmailForm({
       {error && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger"
         >
           {error}
         </p>

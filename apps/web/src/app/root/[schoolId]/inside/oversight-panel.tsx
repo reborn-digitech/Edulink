@@ -64,7 +64,7 @@ export function OversightPanel({
       {error && (
         <p
           role="alert"
-          className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
+          className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger"
         >
           {error}
         </p>
@@ -80,7 +80,7 @@ export function OversightPanel({
         ) : (
           <ul className="space-y-2">
             {posts.map((post) => (
-              <li key={post.id} className="rounded-[--radius-md] border border-border bg-surface p-4">
+              <li key={post.id} className="rounded-[var(--radius-md)] border border-border bg-surface p-4">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <p className="font-semibold text-fg">{post.title}</p>
                   <Badge tone={post.status === "REJECTED" ? "danger" : "neutral"} size="sm">
@@ -143,7 +143,7 @@ export function OversightPanel({
             {shown.map((person) => (
               <li
                 key={person.membershipId}
-                className="flex flex-wrap items-center justify-between gap-3 rounded-[--radius-md] border border-border bg-surface p-3"
+                className="flex flex-wrap items-center justify-between gap-3 rounded-[var(--radius-md)] border border-border bg-surface p-3"
               >
                 <span className="min-w-0">
                   <span className="block truncate text-sm font-medium text-fg">{person.name}</span>

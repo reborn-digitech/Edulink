@@ -40,11 +40,11 @@ export function StreamPicker({
             <label
               key={code}
               className={cn(
-                "flex cursor-pointer items-start gap-3 rounded-[--radius-md] border p-3 transition-colors hover:bg-surface-muted",
+                "flex cursor-pointer items-start gap-3 rounded-[var(--radius-md)] border p-3 transition-colors hover:bg-surface-muted",
                 on ? "border-accent bg-accent-soft/30" : error ? "border-danger" : "border-border",
               )}
             >
-              <input type="checkbox" className="mt-0.5 size-5 shrink-0 accent-[--accent]" checked={on} disabled={disabled} onChange={(e) => toggle(code, e.target.checked)} data-stream={code} />
+              <input type="checkbox" className="mt-0.5 size-5 shrink-0 accent-[var(--accent)]" checked={on} disabled={disabled} onChange={(e) => toggle(code, e.target.checked)} data-stream={code} />
               <span className="min-w-0">
                 <span className="block text-sm font-semibold text-fg">{t(`streams.${code}.name`)}</span>
                 <span className="block text-xs leading-relaxed text-fg-muted">{t(`streams.${code}.what`)}</span>
