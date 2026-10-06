@@ -337,6 +337,18 @@ describe("the filings", () => {
     }
   });
 
+  it("a year's QA options count only a NIRF filed for a year inside its window, so a later NIRF does not move a filed AQAR (DS-10)", async () => {
+    const { gatherFacts } = await import("@/lib/iqac-facts");
+    const qa = async () => (await gatherFacts(ids.quill, "2020-06-01", "2021-05-31", {})).facts.qaOptions ?? 0;
+    const before = await qa();
+    const filing = (year: number) => ({ schoolId: ids.quill, kind: "NIRF", year, format: "CSV", body: "", hash: `zz-ds10-${year}-${STAMP}` });
+    await db.collegeFiling.create({ data: filing(2026) });
+    expect(await qa()).toBe(before);
+    await db.collegeFiling.create({ data: filing(2020) });
+    expect(await qa()).toBe(before + 1);
+    await db.collegeFiling.deleteMany({ where: { schoolId: ids.quill, hash: { startsWith: "zz-ds10-" } } });
+  });
+
   it("publishes the disclosure for a signed-out reader, and takes it down", async () => {
     await as(ids.iqac, ids.quill, "IQAC");
     expect((await disclosurePost(json("/x", { publish: true }))).status).toBe(200);

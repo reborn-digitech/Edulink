@@ -108,7 +108,8 @@ export async function gatherFacts(schoolId: string, windowFrom: string, windowTo
     db.grievance.findMany({ where: { schoolId, filedAt: { gte: fromDate, lte: toDate } }, select: { id: true, status: true, dueOn: true, resolvedAt: true, filedAt: true } }),
     db.actionTakenReport.findMany({ where: { schoolId }, select: { id: true, surveyId: true, publishedAt: true } }),
     db.schoolModule.findMany({ where: { schoolId }, select: { module: true } }),
-    db.collegeFiling.findMany({ where: { schoolId }, select: { id: true, kind: true, year: true } }),
+    // The window's own years (DS-10, 6 Oct 2026): a NIRF filed for a later year never counts toward an earlier AQAR.
+    db.collegeFiling.findMany({ where: { schoolId, year: { gte: years[0]!, lte: years[years.length - 1]! } }, select: { id: true, kind: true, year: true } }),
   ]);
 
   /* --- students ---------------------------------------------------------- */

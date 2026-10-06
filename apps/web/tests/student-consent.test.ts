@@ -21,6 +21,7 @@ import { AccessError, assertGuardianAccess, assertRemarkAccess } from "@/lib/ten
 import { actionKey } from "@/lib/safety-labels";
 import type { ActiveContext } from "@/lib/session";
 import { GET as consentGet, POST as consentPost } from "@/app/api/v1/student/consent/route";
+import { parentAttendance } from "@/lib/api-reads/family";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -120,6 +121,16 @@ describe("the family's doors", () => {
     // A minor's guardian, and a school's, pass with or without a grant named.
     await expect(assertGuardianAccess(ids.parent, ids.minor)).resolves.toMatchObject({ studentMembershipId: ids.minor });
     await expect(assertGuardianAccess(ids.schoolParent, ids.pupil, "MONEY")).resolves.toMatchObject({ studentMembershipId: ids.pupil });
+  });
+
+  it("read an adult's month of attendance on the family's attendance door once ATTENDANCE is granted, as the web page does (DS-9)", async () => {
+    await db.studentConsent.deleteMany({ where: { studentMembershipId: ids.adult, grant: "ATTENDANCE" } });
+    await expect(parentAttendance(parentCtx(ids.parent), ids.adult, null)).rejects.toBeInstanceOf(AccessError);
+    await db.studentConsent.create({ data: { schoolId: ids.college, studentMembershipId: ids.adult, grant: "ATTENDANCE" } });
+    const view = await parentAttendance(parentCtx(ids.parent), ids.adult, null);
+    expect(view.child.studentMembershipId).toBe(ids.adult);
+    expect(view.summary.total).toBe(0);
+    await db.studentConsent.deleteMany({ where: { studentMembershipId: ids.adult, grant: "ATTENDANCE" } });
   });
 
   it("keep an adult's guardian out of the remark thread until MESSAGES is granted", async () => {

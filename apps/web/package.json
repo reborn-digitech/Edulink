@@ -56,6 +56,8 @@
     "demo:college": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/demo-college.ts",
     "demo:college-engineering": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/demo-college-engineering.ts",
     "demo:transfer": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/demo-transfer.ts",
+    "demo:college-stream": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/demo-college-stream.ts",
+    "demo:college-check": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/demo-college-check.ts",
     "zz:lifecycle": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/zz-lifecycle.ts",
     "zz:fleet": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/zz-load-fleet.ts",
     "db:grants": "node scripts/db-grants.mjs",

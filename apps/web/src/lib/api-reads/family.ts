@@ -2,6 +2,7 @@ import { welcomeFor } from "@/lib/student-welcome";
 import "server-only";
 import { db } from "@/lib/db";
 import { AccessError, assertAssignmentAccess, assertGuardianAccess } from "@/lib/tenancy";
+import type { StudentConsentGrant } from "@edulink/contracts";
 import { getSession, listContexts, DEFAULT_PREFS, type ActiveContext, type UserPrefs } from "@/lib/session";
 import { getAttendanceSummary, currentStreakFor } from "@/lib/attendance";
 import { examMarksFor, dateSheetsFor } from "@/lib/exams";
@@ -101,11 +102,12 @@ export type FamilyChildRow = Awaited<ReturnType<typeof listContexts>>["children"
  * child when the requested one is not theirs; an API says so instead — an id
  * that is not this parent's child is 404, never a hint that it exists.
  */
-export async function selectChild(ctx: ActiveContext, childId?: string | null) {
+export async function selectChild(ctx: ActiveContext, childId?: string | null, grant?: StudentConsentGrant) {
   const { children } = await listContexts(ctx.user.id);
   const selectedId = childId ?? children[0]?.studentMembershipId;
   if (!selectedId) throw new AccessError("access.notAllowed");
-  const link = await assertGuardianAccess(ctx.user.id, selectedId);
+  // The grant the read is covered by, for an adult at a college (DS-9, 6 Oct 2026): the web page passes it, so the door does too.
+  const link = await assertGuardianAccess(ctx.user.id, selectedId, grant);
   return { children, selectedId, link };
 }
 
@@ -628,7 +630,7 @@ export async function parentOverview(ctx: ActiveContext, childId?: string | null
 
 /** /parent/attendance — one month at a time, any month up to this one. */
 export async function parentAttendance(ctx: ActiveContext, childId?: string | null, requestedMonth?: string | null) {
-  const { children, selectedId, link } = await selectChild(ctx, childId);
+  const { children, selectedId, link } = await selectChild(ctx, childId, "ATTENDANCE");
   const student = link.student;
   const today = todayKey(student.school.timezone);
   const thisMonth = today.slice(0, 7);

@@ -149,7 +149,10 @@ Fixtures: `npm run zz:fixtures` builds ZZ Northgate and ZZ Southbank (every ZZ-p
 disposable); `npm run demo:schools` builds Sunrise and Saraswati (roster in
 [docs/demo-schools.md](docs/demo-schools.md)), and `npm run demo:transfer` after it plays a pupil's move from
 Sunrise to Saraswati through the real office functions and prints what holds and what is still a gap
-(R-66 to R-70 in the audit's risks file). Never run `db:seed` or `db:reset` against a database
+(R-66 to R-70 in the audit's risks file); `npm run demo:college-stream -- --all` builds a demo college for each of the
+eight other streams from the presets (specs in `scripts/demo-college-stream-specs.ts`) and
+`npm run demo:college-check -- --all` checks their facts and walks every role's pages (findings DS-1 to DS-14 in the
+risks file, section I). Never run `db:seed` or `db:reset` against a database
 with data you care about; the fixture scripts refuse any database that is not local. Every ZZ school
 and person carries `isTestFixture` (set by zz:fixtures and the migration of 2026-10-01), which keeps
 them out of the directories real schools read (`src/lib/fixtures.ts`) and off the operator's default

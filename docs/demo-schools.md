@@ -226,3 +226,273 @@ Ishaan Pawar sat grade 5 at Sunrise Public School in 2025–26 and is in grade 6
 
 What the walk found is in the script's report (`npm run demo:transfer` prints it) and in docs/audit-2026-10-05/08-remaining-risks.md under the transfer gaps.
 <!-- demo-transfer:end -->
+
+<!-- demo-college-stream:begin -->
+## The demo colleges for every stream (demo:college-stream)
+
+Built by `npm run demo:college-stream -- --all` (or `--stream=LAW`; from `apps/web`; `scripts/demo-college-stream.ts` with the spec table in `scripts/demo-college-stream-specs.ts`; idempotent, run it again to put things back) and checked by `npm run demo:college-check -- --slug=<slug>`. One generic script: the modules, filings and duties of each college are its stream's preset (STREAM_PRESETS, DUTY_BUILT). **The password for every account below is `Relay-Demo-2026`.** For a browser check mint a session: `npm run zz:token -- ROLE email@demo.relay.test` (then `--purge`).
+
+Dates (G4-29): dated from the day the script runs (`scripts/demo-calendar.ts`), as the other demo colleges. In each college: this odd term's offerings with registers for the four weeks before the run's week, internal marks locked on one offering and waiting on another, last term's sitting published with grade cards (imported at an affiliated college, double entry at the autonomous one), this term's sitting in CONDUCT, fee structures with one scholarship sanctioned, a NAAC cycle computed, the year's filings generated, a NAAC peer-team visit file, the library, a hostel with its boarders, Route 1 with three riders, September's payroll locked. The law college's BCI return is last year's: generating a year's return freezes that year's moots (R-53), so this year's moot desk stays open.
+
+### Saraswati Institute of Management (MANAGEMENT)
+
+Slug `saraswati-management`, join code `SARAS-XRNT-WCD4`, kind COLLEGE, stream MANAGEMENT, Pune, affiliated to Savitribai Phule Pune University (AISHE C-41917, made up). Modules: the MANAGEMENT preset's (ALUMNI, ACADEMICS, EXAMS, ADMISSIONS, SCHOLARSHIPS, IQAC, PLACEMENT) and LIBRARY, HOSTEL, TRANSPORT, PAYROLL. Bachelor of Business Administration (Department of Business Administration, head Dr Shubhangi Natu) and Master of Business Administration (Department of Management Studies, head Dr Ajit Paranjape), regulator UGC and AICTE. Duties offered and given: NSS_OFFICER, NCC_OFFICER, ANTI_RAGGING_SQUAD, RESEARCH_DEAN, EXAM_SQUAD. Filings generated: NIRF 2026–27, AICTE_DISCLOSURE 2026–27, and last year's AQAR filed. 
+
+| Account | Name | Role | Home | Where to look |
+|---|---|---|---|---|
+| sim.registrar@demo.relay.test | Sunil Bhagwat | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts |
+| sim.principal@demo.relay.test | Dr Rekha Vaidya | PRINCIPAL | /principal | /principal/college, /principal/accreditation, /iqac/documents |
+| sim.hod.dba@demo.relay.test | Dr Shubhangi Natu | HOD | /hod | /hod (Business Administration), the locked internal marks of BBA301, teaches BBA302 |
+| sim.hod.dms@demo.relay.test | Dr Ajit Paranjape | HOD | /hod | /hod (Management Studies), MBA301's unit test waiting for the countersign, teaches MBA302 |
+| sim.faculty1@demo.relay.test | Prof Amruta Joshi | FACULTY · NSS_OFFICER, EXAM_SQUAD | /faculty | teaches BBA301 in BBA year 2 · A; /duties/nss; /duties/exam-squad |
+| sim.faculty2@demo.relay.test | Prof Kunal Sabnis | FACULTY · NCC_OFFICER | /faculty | teaches BBA101 in BBA year 1 · A; /duties/ncc |
+| sim.faculty3@demo.relay.test | Prof Nandini Rao | FACULTY · ANTI_RAGGING_SQUAD | /faculty | teaches MBA301 in MBA year 2 · A; /duties/anti-ragging |
+| sim.faculty4@demo.relay.test | Prof Tejas Mahajan | FACULTY · RESEARCH_DEAN | /faculty | teaches BBA102 in BBA year 1 · A; /duties/research |
+| sim.exams@demo.relay.test | Dr Pradeep Kher | EXAM_CONTROLLER | /exam-cell | Winter 2026 in CONDUCT; Summer 2026 published (the university's file imported), grade cards, one ATKT |
+| sim.iqac@demo.relay.test | Dr Sarika Phatak | IQAC | /iqac | /iqac/predictor, /iqac/documents (NIRF, AICTE_DISCLOSURE), /iqac/visits (the NAAC visit file) |
+| sim.tpo@demo.relay.test | Ninad Kelkar | TPO | /placement | /placement/drives (the OPEN drive, two applicants), /placement/internships |
+| sim.accounts@demo.relay.test | Vaishali Jagtap | ACCOUNTS | /accounts | /accounts (collection, defaulters), /accounts/scholarships (one sanctioned), /admin/payroll (September locked) |
+| sim.librarian@demo.relay.test | Mangesh Sathe | LIBRARIAN | /library | the catalogue, one book out |
+| sim.warden@demo.relay.test | Bharati Chavan | WARDEN | /hostel | Savitribai Hostel: its boarders, the squad's night round |
+| sim.driver@demo.relay.test | Ramesh Shelar | DRIVER | /driver | Route 1 — Swargate to Kothrud, three riders |
+| sim.student01@demo.relay.test | Gauri Deshmukh | STUDENT (OPEN) | /student | BBA year 2 · A; granted ATTENDANCE and RESULTS to Vivek Deshmukh; boards at Savitribai Hostel; odd semester paid |
+| sim.student02@demo.relay.test | Harsh Agarwal | STUDENT (OPEN) | /student | BBA year 2 · A; applied to the open drive; a library book out; odd semester paid |
+| sim.student03@demo.relay.test | Prachi Salunkhe | STUDENT (OBC) | /student | BBA year 2 · A; OBC post-matric scholarship sanctioned; boards at Savitribai Hostel; rides Route 1 |
+| sim.student04@demo.relay.test | Aniket Bhonsle | STUDENT (OPEN) | /student | MBA year 2 · A; applied to the open drive; odd semester paid; an internship |
+| sim.student05@demo.relay.test | Ritu Malhotra | STUDENT (OPEN) | /student | MBA year 2 · A; under 75 % in one course; boards at Savitribai Hostel |
+| sim.student06@demo.relay.test | Sagar Kadam | STUDENT (OBC) | /student | MBA year 2 · A; ATKT with a backlog |
+| sim.student07@demo.relay.test | Riya Deshmukh | STUDENT (OPEN) | /student | BBA year 1 · A; a minor of seventeen; Vivek Deshmukh sees everything; boards at Savitribai Hostel; rides Route 1; odd semester paid |
+| sim.student08@demo.relay.test | Rohan Deshmukh | STUDENT (OPEN) | /student | BBA year 1 · A; a minor of seventeen; Vivek Deshmukh sees everything; rides Route 1 |
+| sim.parent@demo.relay.test | Vivek Deshmukh | PARENT of Gauri Deshmukh, Riya Deshmukh, Rohan Deshmukh | /parent?child=cmuwjop310021gq80v7sj7u45 | the twins' attendance, results and fees; the elder child's attendance and results by consent. Plain /parent opens on the elder (adult) child and answers 404 today (DS-1 of the demo-streams report), so open the twin's link |
+| sim.alumni01@demo.relay.test | Pooja Iyer | ALUMNUS (left May 2025) | /alumni | /alumni/college (placed through last season's drive) |
+| sim.recruiter@demo.relay.test | Shweta Menon | RECRUITER, Sahyadri Consulting Pvt Ltd (no membership) | /recruiter | the OPEN drive and its two consented applicants |
+
+### Saraswati Law College (LAW)
+
+Slug `saraswati-law`, join code `SARAS-CJHD-6F6G`, kind COLLEGE, stream LAW, Pune, affiliated to Savitribai Phule Pune University (AISHE C-41918, made up). Modules: the LAW preset's (ALUMNI, ACADEMICS, EXAMS, ADMISSIONS, SCHOLARSHIPS, IQAC, PLACEMENT) and LIBRARY, HOSTEL, TRANSPORT, PAYROLL. BA LLB (five-year integrated) (Department of Integrated Law, head Dr Medha Kulkarni) and LLB (three-year) (Department of Legal Studies, head Dr Rajendra Patwardhan), regulator BCI. Duties offered and given: NSS_OFFICER, NCC_OFFICER, ANTI_RAGGING_SQUAD, RESEARCH_DEAN, EXAM_SQUAD. Filings generated: BCI_RETURN 2025–26, NIRF 2026–27, and last year's AQAR filed. 
+
+| Account | Name | Role | Home | Where to look |
+|---|---|---|---|---|
+| slc.registrar@demo.relay.test | Anand Gadgil | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts |
+| slc.principal@demo.relay.test | Dr Jayashree Bapat | PRINCIPAL | /principal | /principal/college, /principal/accreditation, /iqac/documents |
+| slc.hod.lawi@demo.relay.test | Dr Medha Kulkarni | HOD | /hod | /hod (Integrated Law), the locked internal marks of LAW301, teaches LAW302 |
+| slc.hod.llb@demo.relay.test | Dr Rajendra Patwardhan | HOD | /hod | /hod (Legal Studies), LLB301's unit test waiting for the countersign, teaches LLB302 |
+| slc.faculty1@demo.relay.test | Prof Saurabh Limaye | FACULTY · NSS_OFFICER, EXAM_SQUAD | /faculty | teaches LAW301 in BALLB year 2 · A; /duties/nss; /duties/exam-squad |
+| slc.faculty2@demo.relay.test | Prof Ketaki Ghate | FACULTY · NCC_OFFICER | /faculty | teaches LAW101 in BALLB year 1 · A; /duties/ncc |
+| slc.faculty3@demo.relay.test | Prof Imran Shaikh | FACULTY · ANTI_RAGGING_SQUAD | /faculty | teaches LLB301 in LLB year 2 · A; /duties/anti-ragging |
+| slc.faculty4@demo.relay.test | Prof Leena D'Souza | FACULTY · RESEARCH_DEAN | /faculty | teaches LAW102 in BALLB year 1 · A; /duties/research |
+| slc.exams@demo.relay.test | Dr Mohan Karve | EXAM_CONTROLLER | /exam-cell | Winter 2026 in CONDUCT; Summer 2026 published (the university's file imported), grade cards, one ATKT |
+| slc.iqac@demo.relay.test | Dr Asmita Joglekar | IQAC | /iqac | /iqac/predictor, /iqac/documents (BCI_RETURN, NIRF), /iqac/visits (the NAAC visit file) |
+| slc.tpo@demo.relay.test | Rahul Sawant | TPO | /placement | /placement/drives (the OPEN drive, two applicants), /placement/internships |
+| slc.accounts@demo.relay.test | Deepa Kulkarni | ACCOUNTS | /accounts | /accounts (collection, defaulters), /accounts/scholarships (one sanctioned), /admin/payroll (September locked) |
+| slc.librarian@demo.relay.test | Shrikant Mule | LIBRARIAN | /library | the catalogue, one book out |
+| slc.warden@demo.relay.test | Suresh Gaikwad | WARDEN | /hostel | Ambedkar Hostel: its boarders, the squad's night round |
+| slc.driver@demo.relay.test | Babasaheb Jadhav | DRIVER | /driver | Route 1 — Swargate to Shivajinagar, three riders |
+| slc.student01@demo.relay.test | Aditi Ranade | STUDENT (OPEN) | /student | BALLB year 2 · A; granted ATTENDANCE and RESULTS to Milind Ranade; odd semester paid; in a moot; an internship |
+| slc.student02@demo.relay.test | Kabir Sethi | STUDENT (OPEN) | /student | BALLB year 2 · A; applied to the open drive; boards at Ambedkar Hostel; a library book out; odd semester paid; in a moot |
+| slc.student03@demo.relay.test | Mrunal Pawar | STUDENT (OBC) | /student | BALLB year 2 · A; OBC post-matric scholarship sanctioned; rides Route 1; in a moot |
+| slc.student04@demo.relay.test | Faisal Qureshi | STUDENT (OPEN) | /student | LLB year 2 · A; applied to the open drive; boards at Ambedkar Hostel; odd semester paid; in a moot; an internship |
+| slc.student05@demo.relay.test | Neha Bhosale | STUDENT (OPEN) | /student | LLB year 2 · A; under 75 % in one course; in a moot |
+| slc.student06@demo.relay.test | Vinayak More | STUDENT (OBC) | /student | LLB year 2 · A; ATKT with a backlog; boards at Ambedkar Hostel; in a moot |
+| slc.student07@demo.relay.test | Ishan Ranade | STUDENT (OPEN) | /student | BALLB year 1 · A; a minor of seventeen; Milind Ranade sees everything; boards at Ambedkar Hostel; rides Route 1; odd semester paid |
+| slc.student08@demo.relay.test | Isha Ranade | STUDENT (OPEN) | /student | BALLB year 1 · A; a minor of seventeen; Milind Ranade sees everything; rides Route 1 |
+| slc.parent@demo.relay.test | Milind Ranade | PARENT of Aditi Ranade, Ishan Ranade, Isha Ranade | /parent?child=cmuwjoiwu0021gq4lxah7dxou | the twins' attendance, results and fees; the elder child's attendance and results by consent. Plain /parent opens on the elder (adult) child and answers 404 today (DS-1 of the demo-streams report), so open the twin's link |
+| slc.alumni01@demo.relay.test | Akshay Kulkarni | ALUMNUS (left May 2025) | /alumni | /alumni/college (placed through last season's drive) |
+| slc.recruiter@demo.relay.test | Meenal Kale | RECRUITER, Kale and Associates, Advocates (no membership) | /recruiter | the OPEN drive and its two consented applicants |
+
+### Saraswati College of Education (EDUCATION)
+
+Slug `saraswati-education`, join code `SARAS-MK3C-QGTC`, kind COLLEGE, stream EDUCATION, Pune, affiliated to Savitribai Phule Pune University (AISHE C-41919, made up). Modules: the EDUCATION preset's (ALUMNI, ACADEMICS, EXAMS, ADMISSIONS, SCHOLARSHIPS, IQAC, PLACEMENT) and LIBRARY, HOSTEL, TRANSPORT, PAYROLL. B.A. B.Ed. (Integrated Teacher Education Programme) (Department of Integrated Teacher Education, head Dr Vandana Kher) and B.Ed. (two-year) (Department of Education, head Dr Prakash Shinde), regulator NCTE. Duties offered and given: PRACTICE_TEACHING_COORDINATOR, NSS_OFFICER, NCC_OFFICER, ANTI_RAGGING_SQUAD, RESEARCH_DEAN, EXAM_SQUAD. Filings generated: NCTE_RETURN 2026–27, NIRF 2026–27, and last year's AQAR filed. 
+
+| Account | Name | Role | Home | Where to look |
+|---|---|---|---|---|
+| sce.registrar@demo.relay.test | Shailaja Dixit | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts |
+| sce.principal@demo.relay.test | Dr Arvind Phadke | PRINCIPAL | /principal | /principal/college, /principal/accreditation, /iqac/documents |
+| sce.hod.ite@demo.relay.test | Dr Vandana Kher | HOD | /hod | /hod (Integrated Teacher Education), the locked internal marks of ITE301, teaches ITE302 |
+| sce.hod.edu@demo.relay.test | Dr Prakash Shinde | HOD | /hod | /hod (Education), BED301's unit test waiting for the countersign, teaches BED302 |
+| sce.faculty1@demo.relay.test | Prof Manisha Kale | FACULTY · PRACTICE_TEACHING_COORDINATOR, RESEARCH_DEAN | /faculty | teaches ITE301 in ITEP year 2 · A; /duties/teaching-practice; /duties/research |
+| sce.faculty2@demo.relay.test | Prof Sandeep Wagh | FACULTY · NSS_OFFICER, EXAM_SQUAD | /faculty | teaches ITE101 in ITEP year 1 · A; /duties/nss; /duties/exam-squad |
+| sce.faculty3@demo.relay.test | Prof Swapnali Ghorpade | FACULTY · NCC_OFFICER | /faculty | teaches BED301 in BED year 2 · A; /duties/ncc |
+| sce.faculty4@demo.relay.test | Prof Yogesh Patil | FACULTY · ANTI_RAGGING_SQUAD | /faculty | teaches ITE102 in ITEP year 1 · A; /duties/anti-ragging |
+| sce.exams@demo.relay.test | Dr Kalpana Mehta | EXAM_CONTROLLER | /exam-cell | Winter 2026 in CONDUCT; Summer 2026 published (the university's file imported), grade cards, one ATKT |
+| sce.iqac@demo.relay.test | Dr Nilesh Ambekar | IQAC | /iqac | /iqac/predictor, /iqac/documents (NCTE_RETURN, NIRF), /iqac/visits (the NAAC visit file) |
+| sce.tpo@demo.relay.test | Archana Bhave | TPO | /placement | /placement/drives (the OPEN drive, two applicants), /placement/internships |
+| sce.accounts@demo.relay.test | Santosh Kamble | ACCOUNTS | /accounts | /accounts (collection, defaulters), /accounts/scholarships (one sanctioned), /admin/payroll (September locked) |
+| sce.librarian@demo.relay.test | Usha Deshpande | LIBRARIAN | /library | the catalogue, one book out |
+| sce.warden@demo.relay.test | Sunita Pawar | WARDEN | /hostel | Tarabai Hostel: its boarders, the squad's night round |
+| sce.driver@demo.relay.test | Vitthal Shinde | DRIVER | /driver | Route 1 — Swargate to Karve Nagar, three riders |
+| sce.student01@demo.relay.test | Snehal Gokhale | STUDENT (OPEN) | /student | ITEP year 2 · A; granted ATTENDANCE and RESULTS to Sanjay Gokhale; odd semester paid |
+| sce.student02@demo.relay.test | Tushar Mane | STUDENT (OPEN) | /student | ITEP year 2 · A; applied to the open drive; a library book out; odd semester paid; an internship |
+| sce.student03@demo.relay.test | Komal Jadhav | STUDENT (OBC) | /student | ITEP year 2 · A; OBC post-matric scholarship sanctioned; boards at Tarabai Hostel; rides Route 1 |
+| sce.student04@demo.relay.test | Rupali Thakur | STUDENT (OPEN) | /student | BED year 2 · A; applied to the open drive; boards at Tarabai Hostel; odd semester paid; posted for teaching practice |
+| sce.student05@demo.relay.test | Mahesh Gavade | STUDENT (OPEN) | /student | BED year 2 · A; under 75 % in one course; posted for teaching practice |
+| sce.student06@demo.relay.test | Shital Waghmare | STUDENT (OBC) | /student | BED year 2 · A; ATKT with a backlog; boards at Tarabai Hostel; posted for teaching practice |
+| sce.student07@demo.relay.test | Sai Gokhale | STUDENT (OPEN) | /student | ITEP year 1 · A; a minor of seventeen; Sanjay Gokhale sees everything; rides Route 1; odd semester paid |
+| sce.student08@demo.relay.test | Sara Gokhale | STUDENT (OPEN) | /student | ITEP year 1 · A; a minor of seventeen; Sanjay Gokhale sees everything; boards at Tarabai Hostel; rides Route 1 |
+| sce.parent@demo.relay.test | Sanjay Gokhale | PARENT of Snehal Gokhale, Sai Gokhale, Sara Gokhale | /parent?child=cmuwjopp101wvgq80a631hxzf | the twins' attendance, results and fees; the elder child's attendance and results by consent. Plain /parent opens on the elder (adult) child and answers 404 today (DS-1 of the demo-streams report), so open the twin's link |
+| sce.alumni01@demo.relay.test | Prajakta Joshi | ALUMNUS (left May 2025) | /alumni | /alumni/college (placed through last season's drive) |
+| sce.recruiter@demo.relay.test | Anjali Sharma | RECRUITER, Jnanadeep Educational Trust (no membership) | /recruiter | the OPEN drive and its two consented applicants |
+
+### Saraswati College of Pharmacy (PHARMACY)
+
+Slug `saraswati-pharmacy`, join code `SARAS-CJPC-4YR6`, kind COLLEGE, stream PHARMACY, Pune, affiliated to Savitribai Phule Pune University (AISHE C-41920, made up). Modules: the PHARMACY preset's (ALUMNI, ACADEMICS, EXAMS, ADMISSIONS, SCHOLARSHIPS, IQAC, PLACEMENT, INVENTORY) and LIBRARY, HOSTEL, TRANSPORT, PAYROLL. B.Pharm (Department of Pharmaceutics, head Dr Shilpa Gadre) and D.Pharm (Department of Pharmaceutical Chemistry, head Dr Ravindra Ingle), regulator PCI. Duties offered and given: LAB_INCHARGE, NSS_OFFICER, NCC_OFFICER, ANTI_RAGGING_SQUAD, RESEARCH_DEAN, EXAM_SQUAD. Filings generated: PCI_INSPECTION 2026–27, NIRF 2026–27, AICTE_DISCLOSURE 2026–27, and last year's AQAR filed. **Not built here:** the clinical desk is not built (R-5, R-56): no CLINICAL_COORDINATOR duty is given; hospital and community pharmacy postings are not kept.
+
+| Account | Name | Role | Home | Where to look |
+|---|---|---|---|---|
+| scp.registrar@demo.relay.test | Prashant Oak | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts |
+| scp.principal@demo.relay.test | Dr Madhuri Kulkarni | PRINCIPAL | /principal | /principal/college, /principal/accreditation, /iqac/documents |
+| scp.hod.pceu@demo.relay.test | Dr Shilpa Gadre | HOD | /hod | /hod (Pharmaceutics), the locked internal marks of BP301, teaches BP302 |
+| scp.hod.pchem@demo.relay.test | Dr Ravindra Ingle | HOD | /hod | /hod (Pharmaceutical Chemistry), DP301's unit test waiting for the countersign, teaches DP302 |
+| scp.faculty1@demo.relay.test | Prof Sachin Bhalerao | FACULTY · LAB_INCHARGE, RESEARCH_DEAN | /faculty | teaches BP301 in BPHARM year 2 · A; /duties/lab; /duties/research |
+| scp.faculty2@demo.relay.test | Prof Aparna Ghaisas | FACULTY · NSS_OFFICER, EXAM_SQUAD | /faculty | teaches BP101 in BPHARM year 1 · A; /duties/nss; /duties/exam-squad |
+| scp.faculty3@demo.relay.test | Prof Mayur Dhole | FACULTY · NCC_OFFICER | /faculty | teaches DP301 in DPHARM year 2 · A; /duties/ncc |
+| scp.faculty4@demo.relay.test | Prof Priti Rane | FACULTY · ANTI_RAGGING_SQUAD | /faculty | teaches BP102 in BPHARM year 1 · A; /duties/anti-ragging |
+| scp.exams@demo.relay.test | Dr Vikram Bedekar | EXAM_CONTROLLER | /exam-cell | Winter 2026 in CONDUCT; Summer 2026 published (the university's file imported), grade cards, one ATKT |
+| scp.iqac@demo.relay.test | Dr Seema Apte | IQAC | /iqac | /iqac/predictor, /iqac/documents (PCI_INSPECTION, NIRF, AICTE_DISCLOSURE), /iqac/visits (the NAAC visit file) |
+| scp.tpo@demo.relay.test | Nitin Lokhande | TPO | /placement | /placement/drives (the OPEN drive, two applicants), /placement/internships |
+| scp.accounts@demo.relay.test | Jyoti Bhagat | ACCOUNTS | /accounts | /accounts (collection, defaulters), /accounts/scholarships (one sanctioned), /admin/payroll (September locked) |
+| scp.librarian@demo.relay.test | Anil Pethe | LIBRARIAN | /library | the catalogue, one book out |
+| scp.warden@demo.relay.test | Dnyaneshwar Kale | WARDEN | /hostel | Dhanvantari Hostel: its boarders, the squad's night round |
+| scp.driver@demo.relay.test | Shankar Pol | DRIVER | /driver | Route 1 — Swargate to Narhe, three riders |
+| scp.student01@demo.relay.test | Tanmay Chitale | STUDENT (OPEN) | /student | BPHARM year 2 · A; granted ATTENDANCE and RESULTS to Hemant Chitale; boards at Dhanvantari Hostel; odd semester paid |
+| scp.student02@demo.relay.test | Sakshi Nair | STUDENT (OPEN) | /student | BPHARM year 2 · A; applied to the open drive; a library book out; odd semester paid; an internship |
+| scp.student03@demo.relay.test | Pranav Ghodke | STUDENT (OBC) | /student | BPHARM year 2 · A; OBC post-matric scholarship sanctioned; boards at Dhanvantari Hostel; rides Route 1 |
+| scp.student04@demo.relay.test | Dhanashree Patil | STUDENT (OPEN) | /student | DPHARM year 2 · A; applied to the open drive; odd semester paid |
+| scp.student05@demo.relay.test | Yogita Sonawane | STUDENT (OPEN) | /student | DPHARM year 2 · A; under 75 % in one course |
+| scp.student06@demo.relay.test | Akash Mhaske | STUDENT (OBC) | /student | DPHARM year 2 · A; ATKT with a backlog; boards at Dhanvantari Hostel |
+| scp.student07@demo.relay.test | Om Chitale | STUDENT (OPEN) | /student | BPHARM year 1 · A; a minor of seventeen; Hemant Chitale sees everything; boards at Dhanvantari Hostel; rides Route 1; odd semester paid |
+| scp.student08@demo.relay.test | Ovi Chitale | STUDENT (OPEN) | /student | BPHARM year 1 · A; a minor of seventeen; Hemant Chitale sees everything; rides Route 1 |
+| scp.parent@demo.relay.test | Hemant Chitale | PARENT of Tanmay Chitale, Om Chitale, Ovi Chitale | /parent?child=cmuwjoq0z0304gq80hanl4khr | the twins' attendance, results and fees; the elder child's attendance and results by consent. Plain /parent opens on the elder (adult) child and answers 404 today (DS-1 of the demo-streams report), so open the twin's link |
+| scp.alumni01@demo.relay.test | Rucha Dandekar | ALUMNUS (left May 2025) | /alumni | /alumni/college (placed through last season's drive) |
+| scp.recruiter@demo.relay.test | Vikas Agashe | RECRUITER, Indrayani Pharmaceuticals Ltd (no membership) | /recruiter | the OPEN drive and its two consented applicants |
+
+### Saraswati School of Architecture (ARCHITECTURE)
+
+Slug `saraswati-architecture`, join code `SARAS-YM6P-P4XC`, kind AUTONOMOUS_COLLEGE, stream ARCHITECTURE, Pune, affiliated to Savitribai Phule Pune University (AISHE C-41921, made up). Modules: the ARCHITECTURE preset's (ALUMNI, ACADEMICS, EXAMS, ADMISSIONS, SCHOLARSHIPS, IQAC, PLACEMENT) and LIBRARY, HOSTEL, TRANSPORT, PAYROLL. B.Arch (Department of Architecture, head Dr Sunanda Mhatre) and M.Arch (Urban Design) (Department of Urban Design, head Dr Abhay Karandikar), regulator COA. Duties offered and given: NSS_OFFICER, NCC_OFFICER, ANTI_RAGGING_SQUAD, RESEARCH_DEAN, EXAM_SQUAD. Filings generated: NIRF 2026–27, and last year's AQAR filed. **Not built here:** the studio desk is not built (R-5, R-56): studios and juries are not kept, and no STUDIO_COORDINATOR duty is given; the Council of Architecture has no return kind in the app.
+
+| Account | Name | Role | Home | Where to look |
+|---|---|---|---|---|
+| ssa.registrar@demo.relay.test | Kishor Vaze | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts |
+| ssa.principal@demo.relay.test | Dr Anuradha Naik | PRINCIPAL | /principal | /principal/college, /principal/accreditation, /iqac/documents |
+| ssa.hod.arch@demo.relay.test | Dr Sunanda Mhatre | HOD | /hod | /hod (Architecture), the locked internal marks of AR301, teaches AR302 |
+| ssa.hod.ud@demo.relay.test | Dr Abhay Karandikar | HOD | /hod | /hod (Urban Design), MA301's unit test waiting for the countersign, teaches MA302 |
+| ssa.faculty1@demo.relay.test | Prof Rohit Paranjpe | FACULTY · NSS_OFFICER, EXAM_SQUAD | /faculty | teaches AR301 in BARCH year 2 · A; /duties/nss; /duties/exam-squad |
+| ssa.faculty2@demo.relay.test | Prof Gayatri Kanade | FACULTY · NCC_OFFICER | /faculty | teaches AR101 in BARCH year 1 · A; /duties/ncc |
+| ssa.faculty3@demo.relay.test | Prof Siddhesh Nene | FACULTY · ANTI_RAGGING_SQUAD | /faculty | teaches MA301 in MARCH year 2 · A; /duties/anti-ragging |
+| ssa.faculty4@demo.relay.test | Prof Mitali Sarnaik | FACULTY · RESEARCH_DEAN | /faculty | teaches AR102 in BARCH year 1 · A; /duties/research |
+| ssa.exams@demo.relay.test | Dr Harish Deo | EXAM_CONTROLLER | /exam-cell | Winter 2026 in CONDUCT (a paper sealed, one assigned); Summer 2026 published (double entry), grade cards, one ATKT |
+| ssa.iqac@demo.relay.test | Dr Vrushali Bendre | IQAC | /iqac | /iqac/predictor, /iqac/documents (NIRF), /iqac/visits (the NAAC visit file) |
+| ssa.tpo@demo.relay.test | Amol Khedekar | TPO | /placement | /placement/drives (the OPEN drive, two applicants), /placement/internships |
+| ssa.accounts@demo.relay.test | Sangeeta Ware | ACCOUNTS | /accounts | /accounts (collection, defaulters), /accounts/scholarships (one sanctioned), /admin/payroll (September locked) |
+| ssa.librarian@demo.relay.test | Rajani Bapat | LIBRARIAN | /library | the catalogue, one book out |
+| ssa.warden@demo.relay.test | Prakash Zende | WARDEN | /hostel | Laurie Baker Hostel: its boarders, the squad's night round |
+| ssa.driver@demo.relay.test | Maruti Kokate | DRIVER | /driver | Route 1 — Swargate to Aundh, three riders |
+| ssa.student01@demo.relay.test | Ananya Phadnis | STUDENT (OPEN) | /student | BARCH year 2 · A; granted ATTENDANCE and RESULTS to Abhijit Phadnis; odd semester paid |
+| ssa.student02@demo.relay.test | Devansh Kapoor | STUDENT (OPEN) | /student | BARCH year 2 · A; applied to the open drive; boards at Laurie Baker Hostel; a library book out; odd semester paid; an internship |
+| ssa.student03@demo.relay.test | Shravani Kumbhar | STUDENT (OBC) | /student | BARCH year 2 · A; OBC post-matric scholarship sanctioned; rides Route 1 |
+| ssa.student04@demo.relay.test | Nikhil Dabholkar | STUDENT (OPEN) | /student | MARCH year 2 · A; applied to the open drive; boards at Laurie Baker Hostel; odd semester paid |
+| ssa.student05@demo.relay.test | Tanvi Rege | STUDENT (OPEN) | /student | MARCH year 2 · A; under 75 % in one course |
+| ssa.student06@demo.relay.test | Omkar Hande | STUDENT (OBC) | /student | MARCH year 2 · A; ATKT with a backlog; boards at Laurie Baker Hostel |
+| ssa.student07@demo.relay.test | Arnav Phadnis | STUDENT (OPEN) | /student | BARCH year 1 · A; a minor of seventeen; Abhijit Phadnis sees everything; boards at Laurie Baker Hostel; rides Route 1; odd semester paid |
+| ssa.student08@demo.relay.test | Avani Phadnis | STUDENT (OPEN) | /student | BARCH year 1 · A; a minor of seventeen; Abhijit Phadnis sees everything; rides Route 1 |
+| ssa.parent@demo.relay.test | Abhijit Phadnis | PARENT of Ananya Phadnis, Arnav Phadnis, Avani Phadnis | /parent?child=cmuwjoqeh048sgq80czss8902 | the twins' attendance, results and fees; the elder child's attendance and results by consent. Plain /parent opens on the elder (adult) child and answers 404 today (DS-1 of the demo-streams report), so open the twin's link |
+| ssa.alumni01@demo.relay.test | Siddharth Vaidya | ALUMNUS (left May 2025) | /alumni | /alumni/college (placed through last season's drive) |
+| ssa.recruiter@demo.relay.test | Kavya Iyer | RECRUITER, Studio Vastu Architects LLP (no membership) | /recruiter | the OPEN drive and its two consented applicants |
+
+### Saraswati College of Agriculture (AGRICULTURE)
+
+Slug `saraswati-agriculture`, join code `SARAS-TVWM-NVGQ`, kind COLLEGE, stream AGRICULTURE, Shirur, affiliated to Mahatma Phule Krishi Vidyapeeth, Rahuri (AISHE C-41922, made up). Modules: the AGRICULTURE preset's (ALUMNI, ACADEMICS, EXAMS, ADMISSIONS, SCHOLARSHIPS, IQAC, PLACEMENT) and LIBRARY, HOSTEL, TRANSPORT, PAYROLL. B.Sc. (Hons) Agriculture (Department of Agronomy, head Dr Bhaskar Thorat) and B.Sc. (Hons) Horticulture (Department of Horticulture, head Dr Sunita Kharade), regulator ICAR. Duties offered and given: LAB_INCHARGE, NSS_OFFICER, NCC_OFFICER, ANTI_RAGGING_SQUAD, RESEARCH_DEAN, EXAM_SQUAD. Filings generated: NIRF 2026–27, and last year's AQAR filed. **Not built here:** the farm and field work are not kept (the registrar's home says so); ICAR has no return kind in the app.
+
+| Account | Name | Role | Home | Where to look |
+|---|---|---|---|---|
+| sca.registrar@demo.relay.test | Dattatray Jagtap | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts |
+| sca.principal@demo.relay.test | Dr Shivaji Pawar | PRINCIPAL | /principal | /principal/college, /principal/accreditation, /iqac/documents |
+| sca.hod.agro@demo.relay.test | Dr Bhaskar Thorat | HOD | /hod | /hod (Agronomy), the locked internal marks of AGR301, teaches AGR302 |
+| sca.hod.hort@demo.relay.test | Dr Sunita Kharade | HOD | /hod | /hod (Horticulture), HOR301's unit test waiting for the countersign, teaches HOR302 |
+| sca.faculty1@demo.relay.test | Prof Ganesh Bhosale | FACULTY · LAB_INCHARGE, RESEARCH_DEAN | /faculty | teaches AGR301 in BSCAG year 2 · A; /duties/lab; /duties/research |
+| sca.faculty2@demo.relay.test | Prof Rupali Kadam | FACULTY · NSS_OFFICER, EXAM_SQUAD | /faculty | teaches AGR101 in BSCAG year 1 · A; /duties/nss; /duties/exam-squad |
+| sca.faculty3@demo.relay.test | Prof Santosh Nalawade | FACULTY · NCC_OFFICER | /faculty | teaches HOR301 in BSCHORT year 2 · A; /duties/ncc |
+| sca.faculty4@demo.relay.test | Prof Priyanka Gaikwad | FACULTY · ANTI_RAGGING_SQUAD | /faculty | teaches AGR102 in BSCAG year 1 · A; /duties/anti-ragging |
+| sca.exams@demo.relay.test | Dr Ashok Kale | EXAM_CONTROLLER | /exam-cell | Winter 2026 in CONDUCT; Summer 2026 published (the university's file imported), grade cards, one ATKT |
+| sca.iqac@demo.relay.test | Dr Manjusha Raut | IQAC | /iqac | /iqac/predictor, /iqac/documents (NIRF), /iqac/visits (the NAAC visit file) |
+| sca.tpo@demo.relay.test | Vijay Shitole | TPO | /placement | /placement/drives (the OPEN drive, two applicants), /placement/internships |
+| sca.accounts@demo.relay.test | Sudhir Dhumal | ACCOUNTS | /accounts | /accounts (collection, defaulters), /accounts/scholarships (one sanctioned), /admin/payroll (September locked) |
+| sca.librarian@demo.relay.test | Kavita Wable | LIBRARIAN | /library | the catalogue, one book out |
+| sca.warden@demo.relay.test | Balasaheb Ghule | WARDEN | /hostel | Krishi Hostel: its boarders, the squad's night round |
+| sca.driver@demo.relay.test | Hanumant Khaire | DRIVER | /driver | Route 1 — Shirur bus stand to the college, three riders |
+| sca.student01@demo.relay.test | Pratiksha Shinde | STUDENT (OPEN) | /student | BSCAG year 2 · A; granted ATTENDANCE and RESULTS to Ramdas Shinde; odd semester paid |
+| sca.student02@demo.relay.test | Rohit Gade | STUDENT (OPEN) | /student | BSCAG year 2 · A; applied to the open drive; boards at Krishi Hostel; a library book out; odd semester paid; an internship |
+| sca.student03@demo.relay.test | Swati Lokhande | STUDENT (OBC) | /student | BSCAG year 2 · A; OBC post-matric scholarship sanctioned; rides Route 1 |
+| sca.student04@demo.relay.test | Akshay Daund | STUDENT (OPEN) | /student | BSCHORT year 2 · A; applied to the open drive; boards at Krishi Hostel; odd semester paid |
+| sca.student05@demo.relay.test | Pooja Jagdale | STUDENT (OPEN) | /student | BSCHORT year 2 · A; under 75 % in one course |
+| sca.student06@demo.relay.test | Sachin Kolekar | STUDENT (OBC) | /student | BSCHORT year 2 · A; ATKT with a backlog; boards at Krishi Hostel |
+| sca.student07@demo.relay.test | Yash Shinde | STUDENT (OPEN) | /student | BSCAG year 1 · A; a minor of seventeen; Ramdas Shinde sees everything; boards at Krishi Hostel; rides Route 1; odd semester paid |
+| sca.student08@demo.relay.test | Yashashri Shinde | STUDENT (OPEN) | /student | BSCAG year 1 · A; a minor of seventeen; Ramdas Shinde sees everything; rides Route 1 |
+| sca.parent@demo.relay.test | Ramdas Shinde | PARENT of Pratiksha Shinde, Yash Shinde, Yashashri Shinde | /parent?child=cmuwjoqpo05bmgq80dxdhu7l5 | the twins' attendance, results and fees; the elder child's attendance and results by consent. Plain /parent opens on the elder (adult) child and answers 404 today (DS-1 of the demo-streams report), so open the twin's link |
+| sca.alumni01@demo.relay.test | Ajinkya Pawar | ALUMNUS (left May 2025) | /alumni | /alumni/college (placed through last season's drive) |
+| sca.recruiter@demo.relay.test | Mahesh Kulkarni | RECRUITER, Godavari Agro Inputs Pvt Ltd (no membership) | /recruiter | the OPEN drive and its two consented applicants |
+
+### Saraswati Vocational College (VOCATIONAL)
+
+Slug `saraswati-vocational`, join code `SARAS-WFCD-MPKR`, kind COLLEGE, stream VOCATIONAL, Pimpri-Chinchwad, affiliated to Savitribai Phule Pune University (AISHE C-41923, made up). Modules: the VOCATIONAL preset's (ALUMNI, ACADEMICS, EXAMS, ADMISSIONS, SCHOLARSHIPS, IQAC) and LIBRARY, HOSTEL, TRANSPORT, PAYROLL. B.Voc. Software Development (Department of Software Development, head Dr Smita Bendre) and B.Voc. Food Processing (Department of Food Processing, head Dr Ajay Mahajan), regulator UGC. Duties offered and given: LAB_INCHARGE, NSS_OFFICER, NCC_OFFICER, ANTI_RAGGING_SQUAD, RESEARCH_DEAN, EXAM_SQUAD. Filings generated: NIRF 2026–27, and last year's AQAR filed. 
+
+| Account | Name | Role | Home | Where to look |
+|---|---|---|---|---|
+| svc.registrar@demo.relay.test | Ravindra Lad | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts |
+| svc.principal@demo.relay.test | Dr Shubhada Joshi | PRINCIPAL | /principal | /principal/college, /principal/accreditation, /iqac/documents |
+| svc.hod.vsd@demo.relay.test | Dr Smita Bendre | HOD | /hod | /hod (Software Development), the locked internal marks of VSD301, teaches VSD302 |
+| svc.hod.vfp@demo.relay.test | Dr Ajay Mahajan | HOD | /hod | /hod (Food Processing), VFP301's unit test waiting for the countersign, teaches VFP302 |
+| svc.faculty1@demo.relay.test | Prof Amit Kshirsagar | FACULTY · LAB_INCHARGE, RESEARCH_DEAN | /faculty | teaches VSD301 in BVSD year 2 · A; /duties/lab; /duties/research |
+| svc.faculty2@demo.relay.test | Prof Sneha Bhat | FACULTY · NSS_OFFICER, EXAM_SQUAD | /faculty | teaches VSD101 in BVSD year 1 · A; /duties/nss; /duties/exam-squad |
+| svc.faculty3@demo.relay.test | Prof Rahul Dhage | FACULTY · NCC_OFFICER | /faculty | teaches VFP301 in BVFP year 2 · A; /duties/ncc |
+| svc.faculty4@demo.relay.test | Prof Kirti Sontakke | FACULTY · ANTI_RAGGING_SQUAD | /faculty | teaches VSD102 in BVSD year 1 · A; /duties/anti-ragging |
+| svc.exams@demo.relay.test | Dr Anil Shinde | EXAM_CONTROLLER | /exam-cell | Winter 2026 in CONDUCT; Summer 2026 published (the university's file imported), grade cards, one ATKT |
+| svc.iqac@demo.relay.test | Dr Medha Pande | IQAC | /iqac | /iqac/predictor, /iqac/documents (NIRF), /iqac/visits (the NAAC visit file) |
+| svc.accounts@demo.relay.test | Sameer Borate | ACCOUNTS | /accounts | /accounts (collection, defaulters), /accounts/scholarships (one sanctioned), /admin/payroll (September locked) |
+| svc.librarian@demo.relay.test | Jayant Kulkarni | LIBRARIAN | /library | the catalogue, one book out |
+| svc.warden@demo.relay.test | Nanda Pawar | WARDEN | /hostel | Ahilya Hostel: its boarders, the squad's night round |
+| svc.driver@demo.relay.test | Ashok Gaikwad | DRIVER | /driver | Route 1 — Pimpri to Nigdi, three riders |
+| svc.student01@demo.relay.test | Kshitija Mohite | STUDENT (OPEN) | /student | BVSD year 2 · A; granted ATTENDANCE and RESULTS to Dilip Mohite; boards at Ahilya Hostel; odd semester paid |
+| svc.student02@demo.relay.test | Jay Solanki | STUDENT (OPEN) | /student | BVSD year 2 · A; a library book out; odd semester paid |
+| svc.student03@demo.relay.test | Nikita Sawant | STUDENT (OBC) | /student | BVSD year 2 · A; OBC post-matric scholarship sanctioned; boards at Ahilya Hostel; rides Route 1 |
+| svc.student04@demo.relay.test | Rahul Chavan | STUDENT (OPEN) | /student | BVFP year 2 · A; odd semester paid |
+| svc.student05@demo.relay.test | Sayali Raut | STUDENT (OPEN) | /student | BVFP year 2 · A; under 75 % in one course; boards at Ahilya Hostel |
+| svc.student06@demo.relay.test | Vishal Kamble | STUDENT (OBC) | /student | BVFP year 2 · A; ATKT with a backlog |
+| svc.student07@demo.relay.test | Parth Mohite | STUDENT (OPEN) | /student | BVSD year 1 · A; a minor of seventeen; Dilip Mohite sees everything; rides Route 1; odd semester paid |
+| svc.student08@demo.relay.test | Pari Mohite | STUDENT (OPEN) | /student | BVSD year 1 · A; a minor of seventeen; Dilip Mohite sees everything; boards at Ahilya Hostel; rides Route 1 |
+| svc.parent@demo.relay.test | Dilip Mohite | PARENT of Kshitija Mohite, Parth Mohite, Pari Mohite | /parent?child=cmuwjor2e06jsgq80r6pm7x8t | the twins' attendance, results and fees; the elder child's attendance and results by consent. Plain /parent opens on the elder (adult) child and answers 404 today (DS-1 of the demo-streams report), so open the twin's link |
+| svc.alumni01@demo.relay.test | Swapnil Desai | ALUMNUS (left May 2025) | /alumni | /alumni/college |
+
+### Saraswati Institute of Health Sciences (HEALTH_SCIENCES)
+
+Slug `saraswati-health`, join code `SARAS-WNHW-4R4J`, kind COLLEGE, stream HEALTH_SCIENCES, Nashik, affiliated to Maharashtra University of Health Sciences, Nashik (AISHE C-41924, made up). Modules: the HEALTH_SCIENCES preset's (ALUMNI, ACADEMICS, EXAMS, ADMISSIONS, SCHOLARSHIPS, IQAC, PLACEMENT) and LIBRARY, HOSTEL, TRANSPORT, PAYROLL. B.Sc. Nursing (Department of Medical-Surgical Nursing, head Dr Shobha Wagh) and Post Basic B.Sc. Nursing (Department of Community Health Nursing, head Dr Rekha Deore), regulator INC. Duties offered and given: LAB_INCHARGE, ANTI_RAGGING_SQUAD, RESEARCH_DEAN, EXAM_SQUAD. Filings generated: NIRF 2026–27, and last year's AQAR filed. **Not built here:** the clinical desk is not built (R-5, R-56): clinical postings, logbooks and the attached hospital are not kept, and no CLINICAL_COORDINATOR duty is given.
+
+| Account | Name | Role | Home | Where to look |
+|---|---|---|---|---|
+| sih.registrar@demo.relay.test | Mahendra Ahire | ADMIN (registrar) | /admin | /admin (the stream's home tiles), /admin/people (duties on the row menu), /admin/academics, /admin/stream-records, /accounts |
+| sih.principal@demo.relay.test | Dr Varsha Nikam | PRINCIPAL | /principal | /principal/college, /principal/accreditation, /iqac/documents |
+| sih.hod.msn@demo.relay.test | Dr Shobha Wagh | HOD | /hod | /hod (Medical-Surgical Nursing), the locked internal marks of NUR301, teaches NUR302 |
+| sih.hod.chn@demo.relay.test | Dr Rekha Deore | HOD | /hod | /hod (Community Health Nursing), PBN301's unit test waiting for the countersign, teaches PBN302 |
+| sih.faculty1@demo.relay.test | Prof Jayashri Sonar | FACULTY · LAB_INCHARGE | /faculty | teaches NUR301 in BSCN year 2 · A; /duties/lab |
+| sih.faculty2@demo.relay.test | Prof Rajesh Bagul | FACULTY · ANTI_RAGGING_SQUAD | /faculty | teaches NUR101 in BSCN year 1 · A; /duties/anti-ragging |
+| sih.faculty3@demo.relay.test | Prof Manasi Kulkarni | FACULTY · RESEARCH_DEAN | /faculty | teaches PBN301 in PBBSCN year 2 · A; /duties/research |
+| sih.faculty4@demo.relay.test | Prof Deepak Pagare | FACULTY · EXAM_SQUAD | /faculty | teaches NUR102 in BSCN year 1 · A; /duties/exam-squad |
+| sih.exams@demo.relay.test | Dr Sunil Gite | EXAM_CONTROLLER | /exam-cell | Winter 2026 in CONDUCT; Summer 2026 published (the university's file imported), grade cards, one ATKT |
+| sih.iqac@demo.relay.test | Dr Asha Thakare | IQAC | /iqac | /iqac/predictor, /iqac/documents (NIRF), /iqac/visits (the NAAC visit file) |
+| sih.tpo@demo.relay.test | Pankaj Borse | TPO | /placement | /placement/drives (the OPEN drive, two applicants), /placement/internships |
+| sih.accounts@demo.relay.test | Lata Shewale | ACCOUNTS | /accounts | /accounts (collection, defaulters), /accounts/scholarships (one sanctioned), /admin/payroll (September locked) |
+| sih.librarian@demo.relay.test | Vandana Pingle | LIBRARIAN | /library | the catalogue, one book out |
+| sih.warden@demo.relay.test | Shalini Gangurde | WARDEN | /hostel | Florence Hostel: its boarders, the squad's night round |
+| sih.driver@demo.relay.test | Kailas Sangle | DRIVER | /driver | Route 1 — CBS to Gangapur Road, three riders |
+| sih.student01@demo.relay.test | Priyanka Bachhav | STUDENT (OPEN) | /student | BSCN year 2 · A; granted ATTENDANCE and RESULTS to Nitin Bachhav; odd semester paid |
+| sih.student02@demo.relay.test | Ashwini Kale | STUDENT (OPEN) | /student | BSCN year 2 · A; applied to the open drive; a library book out; odd semester paid; an internship |
+| sih.student03@demo.relay.test | Bhagyashri Jadhav | STUDENT (OBC) | /student | BSCN year 2 · A; OBC post-matric scholarship sanctioned; boards at Florence Hostel; rides Route 1 |
+| sih.student04@demo.relay.test | Manoj Pawar | STUDENT (OPEN) | /student | PBBSCN year 2 · A; applied to the open drive; odd semester paid |
+| sih.student05@demo.relay.test | Sushma Patil | STUDENT (OPEN) | /student | PBBSCN year 2 · A; under 75 % in one course; boards at Florence Hostel |
+| sih.student06@demo.relay.test | Kiran Gaikwad | STUDENT (OBC) | /student | PBBSCN year 2 · A; ATKT with a backlog; boards at Florence Hostel |
+| sih.student07@demo.relay.test | Neel Bachhav | STUDENT (OPEN) | /student | BSCN year 1 · A; a minor of seventeen; Nitin Bachhav sees everything; rides Route 1; odd semester paid |
+| sih.student08@demo.relay.test | Nidhi Bachhav | STUDENT (OPEN) | /student | BSCN year 1 · A; a minor of seventeen; Nitin Bachhav sees everything; boards at Florence Hostel; rides Route 1 |
+| sih.parent@demo.relay.test | Nitin Bachhav | PARENT of Priyanka Bachhav, Neel Bachhav, Nidhi Bachhav | /parent?child=cmuwjorew07q9gq8009857kp9 | the twins' attendance, results and fees; the elder child's attendance and results by consent. Plain /parent opens on the elder (adult) child and answers 404 today (DS-1 of the demo-streams report), so open the twin's link |
+| sih.alumni01@demo.relay.test | Monali Deshmukh | ALUMNUS (left May 2025) | /alumni | /alumni/college (placed through last season's drive) |
+| sih.recruiter@demo.relay.test | Aditi Sathe | RECRUITER, Sanjeevani Multispeciality Hospital Pvt Ltd (no membership) | /recruiter | the OPEN drive and its two consented applicants |
+<!-- demo-college-stream:end -->
