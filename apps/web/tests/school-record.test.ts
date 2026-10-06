@@ -497,6 +497,19 @@ describe("reading it back", () => {
     const toSomebodyElse = (await recordsForStudentUser(otherSchoolAdmin, pupilUserId))[0]!;
     expect(toIssuer.issuedHere).toBe(true);
     expect(toSomebodyElse.issuedHere).toBe(false);
+    // …and the receiving school's office OPENS the certificate too, as the page does (it answered 404 before 6 Oct 2026):
+    // the same row, read the family's way, with issuedHere false; the issuer reads it as its own.
+    // Only once the child is on its roll: the other school admits the pupil, reads the page, and the row is gone again after.
+    expect(await certificateFor(otherSchoolAdmin, toSomebodyElse.id)).toBeNull();
+    const taken = await db.membership.create({ data: { userId: pupilUserId, schoolId: oakfieldId, role: "STUDENT", status: "ACTIVE" }, select: { id: true } });
+    try {
+      const page = await certificateFor(otherSchoolAdmin, toSomebodyElse.id);
+      expect(page).not.toBeNull();
+      expect(page!.issuedHere).toBe(false);
+      expect((await certificateFor(admin, toIssuer.id))!.issuedHere).toBe(true);
+    } finally {
+      await db.membership.delete({ where: { id: taken.id } });
+    }
   });
 
   it("resolves a membership at THIS school to the person, and refuses a stranger's", async () => {

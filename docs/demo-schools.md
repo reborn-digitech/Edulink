@@ -211,3 +211,18 @@ What is in it: Computer Engineering (head Dr Anagha Kelkar) and Mechanical Engin
 | sit.alumni01@demo.relay.test | Kedar Limaye | Alumnus (BE Computer, left May 2025) | /alumni | /alumni/college (placed through last season's drive, a mentor) |
 | sit.recruiter@demo.relay.test | Meera Iyer | Recruiter, Deccan Robotics Pvt Ltd (no membership) | /recruiter | the OPEN drive and its two consented applicants |
 <!-- demo-college-engineering:end -->
+
+<!-- demo-transfer:begin -->
+## The transferred pupil (demo:transfer)
+
+Ishaan Pawar sat grade 5 at Sunrise Public School in 2025–26 and is in grade 6 at Saraswati Vidya Mandir in 2026–27. Built by `npm run demo:transfer` after `npm run demo:schools` (idempotent), through the real office functions: Sunrise's `recordDeparture` on 30 April 2026 (TC/2025–26/0001, reason TRANSFERRED, the alumnus kept), Saraswati's admission cycle "Mid-year admissions 2026–27 (transfers)", the father's walk-in application with the boy's PEN and date of birth, offer, acceptance, `admit` into Grade 6 · A with admission number SVM/2026/0107, then the father's guardian claim approved by the office. The password is the demo's, `Relay-Demo-2026`.
+
+| Who | Email | Where to look |
+| --- | --- | --- |
+| Ishaan Pawar, the pupil (grade 6 at Saraswati; left grade 5 at Sunrise) | `ishaan.pawar@demo.relay.test` | /student (Saraswati), /student/record, /record (the Sunrise leaving certificate), /switch (the Sunrise alumnus side) |
+| Prakash Pawar, his father | `prakash.pawar@demo.relay.test` | /parent (both schools), /parent/record?child=…, /parent/fees |
+| Saraswati's office (Sunil Wagh) | `saraswati.admin@demo.relay.test` | /admin/college-admissions is the college's; here /admin/admissions → "Mid-year admissions 2026–27 (transfers)", /admin/records → Ishaan (previous school, PEN), /admin/people → Ishaan → the Sunrise certificate |
+| Sunrise's office (Meenal Joshi) | `sunrise.admin@demo.relay.test` | /admin/people → departures → Ishaan (TC/2025–26/0001), /admin/certificates/issued, /alumni |
+
+What the walk found is in the script's report (`npm run demo:transfer` prints it) and in docs/audit-2026-10-05/08-remaining-risks.md under the transfer gaps.
+<!-- demo-transfer:end -->

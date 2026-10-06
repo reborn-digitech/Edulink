@@ -1,10 +1,10 @@
 # Data-flow audit — reports, exports and filings (second pass)
 
-Run: 2026-10-05T18:29:19.462Z · schools: Saraswati Arts and Science College, Saraswati Institute of Technology, Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 283 WARN · 121 INFO
+Run: 2026-10-06T08:38:52.942Z · schools: Saraswati Arts and Science College, Saraswati Institute of Technology, Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 285 WARN · 132 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees with its own rows; WARN = a stale snapshot or a figure a blank input makes wrong; INFO = inputs the school still has to enter.
 
-## WARN (283)
+## WARN (285)
 
 | check | school | detail |
 |---|---|---|
@@ -58,6 +58,7 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | udise-students | Saraswati Institute of Technology | PRATIK BHOSALE goes out with blank MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4) |
 | udise-students | Saraswati Institute of Technology | ANUSHKA KALE goes out with blank SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4) |
 | udise-students | Saraswati Institute of Technology | YASH THORAT goes out with blank MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4) |
+| udise-students | Saraswati Vidya Mandir | ISHAAN PAWAR goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4) |
 | udise-students | Saraswati Vidya Mandir | AAROHI SONAWANE was here last year but has no published annual card — appeared/result/marks go out blank |
 | udise-students | Saraswati Vidya Mandir | BHUSHAN JADHAV was here last year but has no published annual card — appeared/result/marks go out blank |
 | udise-students | Saraswati Vidya Mandir | CHAITANYA KALE was here last year but has no published annual card — appeared/result/marks go out blank |
@@ -68,6 +69,7 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | udise-students | Saraswati Vidya Mandir | HRISHIKESH PAWAR was here last year but has no published annual card — appeared/result/marks go out blank |
 | udise-students | Saraswati Vidya Mandir | HRISHIKESH PAWAR goes out with blank MOBILE NUMBER |
 | udise-students | Saraswati Vidya Mandir | ISHWARI DESHMUKH goes out with blank GENDER, MOBILE NUMBER |
+| udise-students | Saraswati Vidya Mandir | class 6/A: roll number 1 appears twice |
 | udise-students | Saraswati Vidya Mandir | OMKAR BHOSALE goes out with blank MOBILE NUMBER |
 | udise-students | Saraswati Vidya Mandir | PRANALI AHIRE goes out with blank MOBILE NUMBER |
 | udise-students | Saraswati Vidya Mandir | RUTUJA NIKAM goes out with blank GENDER, MOBILE NUMBER |
@@ -155,7 +157,8 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | udise-students | ZZ Northgate School | ZZ YASH FERNANDES goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-enrolment | Saraswati Arts and Science College | 10 pupil(s) file under "Not on record" for category |
 | udise-enrolment | Saraswati Institute of Technology | 12 pupil(s) file under "Not on record" for category |
-| udise-enrolment | Saraswati Vidya Mandir | 7 pupil(s) have no gender on record and sit in the third column of every table |
+| udise-enrolment | Saraswati Vidya Mandir | 1 pupil(s) file under "Not on record" for category |
+| udise-enrolment | Saraswati Vidya Mandir | 8 pupil(s) have no gender on record and sit in the third column of every table |
 | udise-enrolment | Sunrise Public School | 7 pupil(s) have no gender on record and sit in the third column of every table |
 | udise-enrolment | ZZ Northgate School | 42 pupil(s) file under "Not on record" for category |
 | udise-enrolment | ZZ Northgate School | 43 pupil(s) have no gender on record and sit in the third column of every table |
@@ -273,12 +276,11 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | inputs-staff | Saraswati Institute of Technology | 2 of 2 staff lack a phone — feeds DCF 3.2.8(a), substitution and leave texts |
 | inputs-staff | Saraswati Institute of Technology | 2 of 2 staff lack leave entitlement — feeds the leave balance on the desk |
 | inputs-school | Saraswati Institute of Technology | the current year has no terms — no series gets a term, no term card can be built |
-| inputs-pupils | Saraswati Vidya Mandir | 36 of 48 pupils lack name in the school's script — feeds the MSBSHSE pre-list's Devanagari columns |
+| inputs-pupils | Saraswati Vidya Mandir | 37 of 49 pupils lack name in the school's script — feeds the MSBSHSE pre-list's Devanagari columns |
 | inputs-staff | Saraswati Vidya Mandir | 11 of 11 staff lack a phone — feeds DCF 3.2.8(a), substitution and leave texts |
 | inputs-pupils | Sunrise Public School | 36 of 48 pupils lack name in the school's script — feeds the MSBSHSE pre-list's Devanagari columns |
 | inputs-staff | Sunrise Public School | 11 of 11 staff lack a phone — feeds DCF 3.2.8(a), substitution and leave texts |
 | inputs-pupils | ZZ Northgate School | 43 of 48 pupils lack gender — feeds UDISE+ GENDER, the enrolment tables' boys/girls, the board sheets |
-| inputs-pupils | ZZ Northgate School | 42 of 48 pupils lack a pupil record — feeds every certificate field, every filing column |
 | inputs-pupils | ZZ Northgate School | 42 of 48 pupils lack father's and mother's names — feeds certificates ("child of"), UDISE+, the board sheets |
 | inputs-pupils | ZZ Northgate School | 42 of 48 pupils lack admission number — feeds UDISE+ Admission Number, CBSE Admission No., MSBSHSE GR no., the TC |
 | inputs-pupils | ZZ Northgate School | 43 of 48 pupils lack admission date — feeds UDISE+ ADMISSION DATE falls back to the day the account joined |
@@ -292,13 +294,13 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | inputs-pupils | ZZ Northgate School | 42 of 48 pupils lack household (occupations, income) — feeds RTE and EWS verification |
 | inputs-staff | ZZ Northgate School | 12 of 12 staff lack a phone — feeds DCF 3.2.8(a), substitution and leave texts |
 
-## INFO (121)
+## INFO (132)
 
 | check | school | detail |
 |---|---|---|
 | udise-students | Saraswati Arts and Science College | 10 pupils checked cell by cell across 18 coded columns |
 | udise-students | Saraswati Institute of Technology | 12 pupils checked cell by cell across 18 coded columns |
-| udise-students | Saraswati Vidya Mandir | 48 pupils checked cell by cell across 18 coded columns |
+| udise-students | Saraswati Vidya Mandir | 49 pupils checked cell by cell across 18 coded columns |
 | udise-students | Sunrise Public School | 48 pupils checked cell by cell across 18 coded columns |
 | udise-students | ZZ Northgate School | 48 pupils checked cell by cell across 18 coded columns |
 | register-csv | Saraswati Arts and Science College | no register to export |
@@ -325,11 +327,12 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | report-card-items | Sunrise Public School | 128 card papers checked against their grades |
 | report-card-items | ZZ Northgate School | 48 card papers checked against their grades |
 | certificates | Saraswati Vidya Mandir | CC/2026–27/0001 (CHARACTER) went out with "—" for record.conduct |
+| certificates | Sunrise Public School | TC/2025–26/0001 (TC) went out with "—" for pupil.motherName, pupil.nationality, pupil.religion, pupil.caste, pupil.category, pupil.motherTongue, pupil.placeOfBirth, pupil.previousSchool, issue.remark |
 | certificates | Sunrise Public School | CC/2026–27/0001 (CHARACTER) went out with "—" for record.conduct |
 | tc-register | Saraswati Arts and Science College | 0 leaving record(s) and 0 TC certificate(s) over 0 year(s) |
 | tc-register | Saraswati Institute of Technology | 0 leaving record(s) and 0 TC certificate(s) over 0 year(s) |
 | tc-register | Saraswati Vidya Mandir | 1 leaving record(s) and 0 TC certificate(s) over 1 year(s) |
-| tc-register | Sunrise Public School | 1 leaving record(s) and 0 TC certificate(s) over 1 year(s) |
+| tc-register | Sunrise Public School | 2 leaving record(s) and 1 TC certificate(s) over 2 year(s) |
 | tc-register | ZZ Northgate School | 1 leaving record(s) and 0 TC certificate(s) over 1 year(s) |
 | insights | Saraswati Arts and Science College | FY BCom A: 2 pupil(s) have no marks in the window and are outside the class average |
 | insights | Saraswati Arts and Science College | SY BCom A: 3 pupil(s) have no marks in the window and are outside the class average |
@@ -341,6 +344,7 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | insights | Saraswati Institute of Technology | SE Mechanical B: 2 pupil(s) have no marks in the window and are outside the class average |
 | insights | Saraswati Vidya Mandir | Grade 10 · A: 8 pupil(s) have no marks in the window and are outside the class average |
 | insights | Saraswati Vidya Mandir | Grade 5 · A: 8 pupil(s) have no marks in the window and are outside the class average |
+| insights | Saraswati Vidya Mandir | Grade 6 · A: 1 pupil(s) have no marks in the window and are outside the class average |
 | insights | Saraswati Vidya Mandir | Grade 7 · A: 8 pupil(s) have no marks in the window and are outside the class average |
 | insights | Saraswati Vidya Mandir | Grade 8 · A: 8 pupil(s) have no marks in the window and are outside the class average |
 | insights | Sunrise Public School | Grade 10 · A: 8 pupil(s) have no marks in the window and are outside the class average |
@@ -362,8 +366,9 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | year-archive | Saraswati Arts and Science College | 2025–26: 8 on roll, 0 leavers, 0 badges archived |
 | year-archive | Saraswati Institute of Technology | 2025–26: 10 on roll, 0 leavers, 0 badges archived |
 | year-archive | Saraswati Vidya Mandir | 2025–26: 41 on roll, 0 leavers, 0 badges archived |
-| year-archive | Sunrise Public School | 2025–26: 41 on roll, 0 leavers, 0 badges archived |
+| year-archive | Sunrise Public School | 2025–26: 42 on roll, 1 leavers, 0 badges archived |
 | year-archive | ZZ Northgate School | no closed year |
+| messaging | Saraswati Vidya Mandir | 1 guardian(s) have no phone — every text to them is SKIPPED |
 | retention | platform | tonight would take sessions 17, tokens 0, rateLimits 0, uploadTickets 0, outbox 0, jobRuns 0, auditRows 0, healthReads 0, tripPositions 0 |
 | inputs-school | Saraswati Arts and Science College | school has no UDISE code — every UDISE+ sheet's first column and file name |
 | inputs-school | Saraswati Arts and Science College | school has no board — which board sheet applies |
@@ -385,14 +390,22 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | inputs-school | Saraswati Institute of Technology | school has no report card rules — cards use the default bands and layout |
 | inputs-school | Saraswati Institute of Technology | 5 class(es) have no section — the UDISE+ sheet invents "A" |
 | inputs-school | Saraswati Institute of Technology | 12 pupil(s) have no health card |
-| inputs-pupils | Saraswati Vidya Mandir | 7 of 48 pupils lack gender — feeds UDISE+ GENDER, the enrolment tables' boys/girls, the board sheets |
-| inputs-pupils | Saraswati Vidya Mandir | 18 of 48 pupils lack a contact number, the guardian's or the record's — feeds UDISE+ MOBILE NUMBER |
-| inputs-pupils | Saraswati Vidya Mandir | 18 of 48 pupils lack a guardian with a number they proved — feeds texts and reminders |
-| inputs-pupils | Saraswati Vidya Mandir | 18 of 48 pupils lack a guardian at all — feeds circulars, fee reminders, the PEN change approval |
-| inputs-pupils | Saraswati Vidya Mandir | 7 of 48 pupils lack admission date — feeds UDISE+ ADMISSION DATE falls back to the day the account joined |
-| inputs-pupils | Saraswati Vidya Mandir | 7 of 48 pupils lack previous school's TC — feeds the admission register's TC column, for pupils who came from another school |
+| inputs-pupils | Saraswati Vidya Mandir | 8 of 49 pupils lack gender — feeds UDISE+ GENDER, the enrolment tables' boys/girls, the board sheets |
+| inputs-pupils | Saraswati Vidya Mandir | 19 of 49 pupils lack a contact number, the guardian's or the record's — feeds UDISE+ MOBILE NUMBER |
+| inputs-pupils | Saraswati Vidya Mandir | 19 of 49 pupils lack a guardian with a number they proved — feeds texts and reminders |
+| inputs-pupils | Saraswati Vidya Mandir | 18 of 49 pupils lack a guardian at all — feeds circulars, fee reminders, the PEN change approval |
+| inputs-pupils | Saraswati Vidya Mandir | 1 of 49 pupils lack father's and mother's names — feeds certificates ("child of"), UDISE+, the board sheets |
+| inputs-pupils | Saraswati Vidya Mandir | 7 of 49 pupils lack admission date — feeds UDISE+ ADMISSION DATE falls back to the day the account joined |
+| inputs-pupils | Saraswati Vidya Mandir | 1 of 49 pupils lack category (coded) — feeds UDISE+ SOCIAL CATEGORY, the enrolment tables, the board sheets |
+| inputs-pupils | Saraswati Vidya Mandir | 1 of 49 pupils lack religion (coded) — feeds UDISE+ MINORITY GROUP |
+| inputs-pupils | Saraswati Vidya Mandir | 1 of 49 pupils lack mother tongue, from the list — feeds UDISE+ MOTHER TONGUE, MSBSHSE |
+| inputs-pupils | Saraswati Vidya Mandir | 1 of 49 pupils lack address and PIN — feeds UDISE+ PRESENT ADDRESS and PINCODE, certificates |
+| inputs-pupils | Saraswati Vidya Mandir | 1 of 49 pupils lack BPL and EWS answered — feeds UDISE+ BPL, EWS and RTE columns |
+| inputs-pupils | Saraswati Vidya Mandir | 1 of 49 pupils lack roll number — feeds UDISE+ Roll no falls back to a counter |
+| inputs-pupils | Saraswati Vidya Mandir | 8 of 49 pupils lack previous school's TC — feeds the admission register's TC column, for pupils who came from another school |
+| inputs-pupils | Saraswati Vidya Mandir | 1 of 49 pupils lack household (occupations, income) — feeds RTE and EWS verification |
 | inputs-school | Saraswati Vidya Mandir | school has no logo — certificates, receipts and progress reports print no logo |
-| inputs-school | Saraswati Vidya Mandir | 44 pupil(s) have no health card |
+| inputs-school | Saraswati Vidya Mandir | 45 pupil(s) have no health card |
 | inputs-pupils | Sunrise Public School | 7 of 48 pupils lack gender — feeds UDISE+ GENDER, the enrolment tables' boys/girls, the board sheets |
 | inputs-pupils | Sunrise Public School | 18 of 48 pupils lack a contact number, the guardian's or the record's — feeds UDISE+ MOBILE NUMBER |
 | inputs-pupils | Sunrise Public School | 18 of 48 pupils lack a guardian with a number they proved — feeds texts and reminders |

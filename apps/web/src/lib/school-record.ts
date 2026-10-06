@@ -736,10 +736,21 @@ export type CertificateView = {
  * ordinary way. A guessed id is null in every case, never "not yours".
  */
 export async function certificateFor(ctx: ActiveContext, recordId: string): Promise<CertificateView | null> {
-  const asOffice = ctx.role === "ADMIN" && ctx.schoolId;
-  const row = asOffice
-    ? await db.schoolRecord.findFirst({ where: { id: recordId, schoolId: ctx.schoolId! } })
-    : await db.schoolRecord.findFirst({ where: { id: recordId } });
+  // The office of the ISSUING school reads its own row and may fill a legacy
+  // row's lines; the office of the school that has the child NOW reads the same
+  // document the way a family does (the policy's roll clause lets it through;
+  // the transfer walk of 6 Oct 2026 found the page answering 404 to it).
+  const office = ctx.role === "ADMIN" && ctx.schoolId ? ctx.schoolId : null;
+  const own = office ? await db.schoolRecord.findFirst({ where: { id: recordId, schoolId: office } }) : null;
+  const asOffice = Boolean(own);
+  const row =
+    own ??
+    (await db.schoolRecord.findFirst({
+      where: office
+        ? // Another school's office: only for a child on ITS roll now (the policy's clause, spelled out so the fence holds without it).
+          { id: recordId, student: { memberships: { some: { schoolId: office, role: "STUDENT", status: "ACTIVE", leftAt: null } } } }
+        : { id: recordId },
+    }));
   if (!row) return null;
 
   // A row from before the document existed gets its lines filled on first
