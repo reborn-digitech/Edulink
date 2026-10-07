@@ -1,7 +1,9 @@
 # The assistant and the quiz bank generator — plan of 8 October 2026
 
 Status: plan, not yet built. Decided so far by the owner: the quiz bank generator runs on the owner's own
-machine (no hosted model for generation); the assistant is hosted. Everything else below is the proposal.
+machine (no hosted model for generation); the assistant runs on the owner's machine first, against the
+local dev servers and the demo schools, and is hosted only after that local run has proved it. Everything
+else below is the proposal.
 
 ## 1. What is being built
 
@@ -91,6 +93,23 @@ inside a paid product; the assistant quotes at most a short passage with the cit
 - Decision 0005 records the model endpoint as a third-party destination (decision 0002's list), the
   consent, the retention and what is stripped.
 
+### Phase 2a — the assistant on the owner's machine first (part of Phase 2)
+
+- The service and the model both run locally before anything is deployed: the model through the same
+  vLLM or llama.cpp server as the generator, exposing an OpenAI-compatible endpoint on localhost; the
+  service reads `ASSISTANT_MODEL_URL` (and `ASSISTANT_MODEL`), so the hosted provider later is a change of
+  two environment variables, not of code. The retrieval layer uses the local Postgres, the same database
+  the dev servers on :3000 and :8081 use, so the demo schools and colleges are the pilot tenants.
+- Model for the local run: Qwen3-30B-A3B or gpt-oss-20b at full quality on the M5 Max (about 40 to 60
+  tokens a second, a few seconds an answer for one person at a time); the large model only for the
+  evaluation's hardest set.
+- What the local run proves: the answers, the citations, the refusals, the role-aware platform help, the
+  consent and stripping path for minors, the budget and the kill switch, en/hi/mr on web and phone. What
+  it cannot prove: concurrency and latency under many users, uptime, and the hosted model's own quality,
+  so the golden sets of Phase 4 are run once more against the hosted model before the switch.
+- The local run costs nothing beyond electricity; its transcripts are the owner's test data and are
+  purged with the demo data.
+
 ### Phase 3 — surfaces (one week)
 
 - Web: a panel reachable from every role's home when the module is on; phone: a tab under More, the
@@ -112,7 +131,7 @@ Retrieval first; no fine-tuning in the first version. Two roles for models:
 | Role | Where it runs | Candidates (open weights) |
 | --- | --- | --- |
 | Quiz generation and critique | the owner's machine | Qwen3-235B-A22B or gpt-oss-120b quantised for drafting; Qwen3-30B-A3B or gpt-oss-20b for the critique pass; Sarvam-M 24B evaluated for Hindi and Marathi items |
-| The assistant's answers | hosted open weights (Together, Fireworks, Groq or an Indian host such as Sarvam) | Qwen3-30B-A3B or gpt-oss-20b for chat; the large model only where retrieval returns nothing useful |
+| The assistant's answers | the owner's machine first (Phase 2a), then hosted open weights (Together, Fireworks, Groq or an Indian host such as Sarvam) through the same OpenAI-compatible endpoint | Qwen3-30B-A3B or gpt-oss-20b for chat; the large model only where retrieval returns nothing useful |
 | Embeddings and reranking | the owner's machine for the corpus, the service machine's CPU afterwards | BGE-M3, bge-reranker-v2-m3 |
 
 Licences to keep to: Apache 2.0 (Qwen3, gpt-oss, Sarvam-M, Mistral Small) or MIT (DeepSeek); Llama 4 and
@@ -148,6 +167,7 @@ The assistant, hosted, about 3,000 tokens a question with retrieval, at ₹84 pe
 ## 7. Order and effort
 
 Phase 0 and the generator (Phases 0 and 1) first, since they need no hosting and produce the bank the
-content team can start reviewing; the assistant service, surfaces and evaluation after. Six to eight weeks
+content team can start reviewing; then the assistant service and surfaces running entirely on the owner's
+machine against the demo tenants (Phase 2a and 3), the evaluation, and only then the hosted deployment. Six to eight weeks
 for a first version, as three or four builder waves; the corpus downloader and the manifest are the first
 day's work.
