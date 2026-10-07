@@ -2,8 +2,9 @@
 
 Status: plan, not yet built. Decided so far by the owner: the quiz bank generator runs on the owner's own
 machine (no hosted model for generation); the assistant runs on the owner's machine first, against the
-local dev servers and the demo schools, and is hosted only after that local run has proved it. Everything
-else below is the proposal.
+local dev servers and the demo schools, and is hosted only after that local run has proved it; the model
+family is Qwen (Qwen3); every generated question exists in English, Hindi and Marathi. Everything else
+below is the proposal; section 8 lists the recommendations still waiting on the owner's word.
 
 ## 1. What is being built
 
@@ -72,7 +73,22 @@ inside a paid product; the assistant quotes at most a short passage with the cit
   about ₹500 to ₹1,000 of electricity. The real cost is review: a minute an item is 1,000 hours, which is
   the content team's work over months, so generation is batched per grade and subject in the order the
   schools on the platform teach them.
-- Translations go through the existing path: machine drafts on save, a native speaker's stamp per language.
+- **Three languages for every item.** Each item exists in English, Hindi and Marathi before it is offered
+  for review, in the bank's existing shape (`QuizQuestionTranslation` rows beside the English row, with
+  `hiReviewedAt` and `mrReviewedAt` stamps). How the two Indian-language versions are made:
+  - where the board publishes the chapter in that medium (NCERT's Hindi books, Balbharati's Marathi and
+    Hindi media), the model drafts the item **from that medium's own book**, so the terms are the board's
+    (the Marathi word for "photosynthesis" is Balbharati's, not a translation of NCERT's English), and the
+    three versions are tied as one item by chapter and position;
+  - where no such book exists (most college material, CISCE syllabi), the model translates the English
+    item, with the board's published bilingual glossaries (NCERT's and Balbharati's) in the prompt so the
+    terms stay consistent across the bank;
+  - the critique pass runs on each language version, not only the English one (one answer, plausible
+    distractors, the solution consistent), and a cross-check that the three versions keep the same answer
+    index;
+  - a native speaker's stamp per language stays the gate for the quality flag, as it is today; an
+    unreviewed translation is still served once the English item is stamped, as the bank does now, because
+    a draft a child can read beats an English question a child cannot (decision 0002, gap 8).
 
 ### Phase 2 — the assistant service (two to three weeks)
 
@@ -128,15 +144,20 @@ inside a paid product; the assistant quotes at most a short passage with the cit
 
 Retrieval first; no fine-tuning in the first version. Two roles for models:
 
-| Role | Where it runs | Candidates (open weights) |
-| --- | --- | --- |
-| Quiz generation and critique | the owner's machine | Qwen3-235B-A22B or gpt-oss-120b quantised for drafting; Qwen3-30B-A3B or gpt-oss-20b for the critique pass; Sarvam-M 24B evaluated for Hindi and Marathi items |
-| The assistant's answers | the owner's machine first (Phase 2a), then hosted open weights (Together, Fireworks, Groq or an Indian host such as Sarvam) through the same OpenAI-compatible endpoint | Qwen3-30B-A3B or gpt-oss-20b for chat; the large model only where retrieval returns nothing useful |
-| Embeddings and reranking | the owner's machine for the corpus, the service machine's CPU afterwards | BGE-M3, bge-reranker-v2-m3 |
+The owner's choice is the Qwen family (Apache 2.0 throughout), one family for every role so the prompts,
+the serving stack and the evaluation stay the same from the laptop to the host:
 
-Licences to keep to: Apache 2.0 (Qwen3, gpt-oss, Sarvam-M, Mistral Small) or MIT (DeepSeek); Llama 4 and
-Gemma 3 carry community terms counsel would have to read. The field moves quickly: confirm the choice
-against the current leaderboards at the start of Phase 1.
+| Role | Where it runs | Model |
+| --- | --- | --- |
+| Quiz drafting, the critique pass, the Hindi and Marathi versions | the owner's machine | Qwen3-30B-A3B (full quality on the M5 Max, about 40 to 60 tokens a second); Qwen3-235B-A22B at 4-bit for the critique of the hardest items if the 128 GB holds it beside the embeddings |
+| The assistant's answers | the owner's machine first (Phase 2a), then hosted Qwen3 (Together, Fireworks, Alibaba's own endpoint, or an Indian host) through the same OpenAI-compatible endpoint | Qwen3-30B-A3B for chat; Qwen3-235B-A22B only where retrieval returns nothing useful |
+| Embeddings and reranking | the owner's machine for the corpus, the service machine's CPU afterwards | Qwen3-Embedding-8B (0.6B on the service machine) and Qwen3-Reranker; BGE-M3 kept as the comparison |
+
+Two checks before the choice is final, both one afternoon with a speaker: Qwen3's Marathi against
+Sarvam-M 24B on 200 drafted items (Qwen3 is strong in Hindi and weaker in Marathi in the published
+evaluations; if Sarvam-M reads better in Marathi, it drafts the Marathi versions only, still on the
+laptop), and the exact Qwen3 release against the current leaderboards (Qwen3-Next or a newer line may have
+replaced the models named here by the time Phase 1 starts).
 
 Self-hosting the assistant's model (one H100, ₹1.8 to ₹2.5 lakh a month) is worth it only past roughly one
 to two million questions a month or when data residency under the DPDP rules requires it; then on an
@@ -171,3 +192,39 @@ content team can start reviewing; then the assistant service and surfaces runnin
 machine against the demo tenants (Phase 2a and 3), the evaluation, and only then the hosted deployment. Six to eight weeks
 for a first version, as three or four builder waves; the corpus downloader and the manifest are the first
 day's work.
+
+## 8. Recommendations and open points (8 October 2026)
+
+Things the plan adds on its own judgement, each one the owner can strike, and the questions it cannot
+answer alone:
+
+1. **Draft Indian-language items from the medium's own book, translate only where no such book exists**
+   (section 3, Phase 1). Translating NCERT English into Marathi gives a child terms the Marathi textbook
+   never uses; Balbharati's own Marathi book gives the board's terms.
+2. **Feed the boards' bilingual glossaries to the model** so one term is used across the bank; NCERT and
+   Balbharati publish them.
+3. **Text-only items in the first version.** Many NCERT exercises depend on a figure; the bank has no
+   image field. The generator skips figure-dependent passages and tags the chapter so the gap is visible.
+   A decision later: add an image field, or stay text-only.
+4. **Mathematics notation.** The bank stores plain strings and the practice screens render plain text;
+   decide whether items may carry notation (and the phone's renderer with it) or stay in words and
+   numbers. Numeric answers keep `checkExpr` so the verifier can check them.
+5. **Map chapters to the existing topics.** Generated items land in the `QuizTopic` a chapter belongs to
+   (by board, grade, subject and chapter), new topics made per chapter where none exists, so the bank's
+   difficulty ladder per topic stays whole.
+6. **Record the edition.** NCERT's books changed in the 2023 rationalisation and change again; the
+   manifest carries the edition and year, and every item names the edition it was written against, so a
+   later edition does not silently orphan the bank.
+7. **Recalibrate difficulty from use.** `QuestionStat` already records how children answer; after a term
+   the stated difficulty is checked against it and items are moved up or down the ladder.
+8. **Order of generation:** grades 6 to 10, mathematics and science, Marathi medium first for MSBSHSE and
+   English for CBSE, because that is what the schools on the platform teach most; then languages and
+   social science; colleges after the schools.
+9. **Review capacity is the bottleneck, not generation.** Budget the content team's hours before the
+   first batch; a batch that cannot be reviewed within a term is not generated.
+10. **Open questions for the owner:** who the Hindi and Marathi reviewers are (R-14); whether the
+    assistant may answer a pupil in a language other than their account's; whether a school may switch
+    the assistant on for its minors by itself or only with the platform's consent flow complete; and the
+    counsel questions already listed (the NCERT and Balbharati terms, the third-party destination, the
+    retention days).
+
