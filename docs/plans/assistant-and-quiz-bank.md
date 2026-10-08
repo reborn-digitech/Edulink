@@ -291,3 +291,52 @@ earlier drafts.
     may ask the tutor in a language other than their account's; whether a teacher at a school may see
     the pupils' conversations (recommendation: no, counts only); and counsel's questions above (figures,
     the minors' default, the third-party destination, the retention days).
+
+## 9. Gaps still open after the fourth draft (8 October 2026)
+
+Found by reading the plan against the platform as it is; each with a recommendation. None is decided.
+
+1. **The tutor can answer the quiz.** The bank and the tutor share the corpus, so a child in a practice
+   sitting or a contest can paste the question and get the answer. Recommendation: the service matches
+   each question against the bank by embedding similarity and, on a match, answers with a hint and the
+   chapter rather than the answer; while a contest sitting or a timed practice assignment is open for
+   that pupil, the tutor answers nothing about that topic; teachers can see, per class, how often the
+   hint path fired (counts, never text).
+2. **Homework.** The same for hand-in work: the tutor's default for a student is to explain and to hint,
+   with the worked answer only when the student asks for it after a hint, and a teacher's switch per
+   assignment ("the tutor may give answers for this one"). The learning-mode rule is one table beside the
+   role policy.
+3. **Injection through what the model reads.** The plan covers a pasted homework text; it must also treat
+   the retrieved corpus, the platform docs and every door's answer as data, never as instructions, with
+   the tool list limited to an allow-list of cheap GET doors and the heavy-read budget applied to the
+   assistant's calls as to any other caller.
+4. **Figures from the English books carry English labels.** A Marathi-medium child gets a Marathi stem
+   over a diagram labelled in English. Recommendation: the alt text and the solution name the labels in
+   the item's language; the figure itself stays the book's; reviewers mark items where the labels matter
+   for a later Marathi figure.
+5. **Reviewer quality.** Teachers from many schools stamp items; two stamps catch a slip but not a shared
+   misreading. Recommendation: the app admins spot-check a sample of every reviewer's stamps, agreement
+   between reviewers is measured, and a reviewer whose stamps keep being overturned loses the queue;
+   reviewers are the platform's, not a school's, and their names on stamps stay internal.
+6. **The platform-help corpus drifts.** Docs and door summaries change with every release; an answer
+   that names a page that moved is worse than none. Recommendation: the help corpus is rebuilt from the
+   repository at each deploy and tagged with the commit, and the golden platform-help set runs in the
+   battery.
+7. **Per-person limits, not only per school.** A school's monthly token budget stops the bill, not one
+   pupil using it all. Recommendation: a daily cap per person as the SMS channel has, with a gentle
+   sentence when it is reached.
+8. **The hosted provider's terms.** The host must not train on or retain what it is sent, and the data
+   leaves India unless an Indian host is chosen. Recommendation: zero-retention terms in writing, an
+   Indian host preferred for the student tutor, and the provider named in decision 0005 beside the model.
+9. **Model pinning.** A host updating the model changes answers overnight. Recommendation: pin the model
+   version, run the golden sets before any change, and keep the local model as the fallback.
+10. **Connectivity and devices.** Chat needs a live connection; the phone's outbox does not replay
+    conversations. Recommendation: streamed answers over the existing event stream, short answers by
+    default on the phone, and a clear offline state; no offline tutor in the first version.
+11. **What the model remembers.** No memory across conversations in the first version; a conversation
+    is the unit, retained thirty days, and the plan says so to the person on the first screen.
+12. **Urdu medium is dropped** with the English-only corpus; the Urdu rows the bank's translation path
+    could carry are not made. Recommendation: record it; revisit when an Urdu-medium school joins.
+13. **Backups.** The generated bank and the corpus are in the bucket; the go-live checklist's replication
+    of the bucket covers them once set up, and `content/quiz/generated/` is in git once stamped.
+
