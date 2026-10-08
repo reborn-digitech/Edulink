@@ -10,9 +10,11 @@ the fee ledger") for every role, and topic questions with plain explanations ("e
 every stream; it speaks English, Hindi and Marathi; the model is open-weights, Qwen unless something
 better is proved, run on the owner's machine first and hosted only after that.
 
-Assumption carried from the earlier drafts, one line to change: topic questions are answered for
-students and teachers (STUDENT, TEACHER, FACULTY, HOD); every other role gets platform help, and a topic
-question from them is answered with one sentence saying whom the tutor is for. Section 8, decision 1.
+Decided on 8 October: topic questions are answered for students and teachers only (STUDENT, TEACHER,
+FACULTY, HOD); every other role gets platform help, and a topic question from them is answered with one
+sentence saying whom the tutor is for. The assessment rule stands: nothing on a topic while a contest or
+a timed practice sitting is open for that pupil, a hint first for a question matching a hand-in
+assignment and the worked answer only on a second ask, a teacher's per-assignment switch.
 
 ## 1. What it is
 
@@ -187,16 +189,16 @@ questions a month or for data residency under the DPDP rules.
 
 ## 8. Decisions and gaps
 
-1. **Who gets the tutor.** The plan keeps students and teachers; the owner's latest words were "any
-   topic related questions". If the tutor is for every role, the policy table changes one line and the
-   cost table's per-question line grows with the families; the minors' rules are unchanged either way.
+1. **Who gets the tutor: decided.** Students and teachers; the policy table says so and the tests hold
+   it (a parent's topic question gets the one sentence).
 2. **On by default for minors** stands (the owner's decision); counsel reads it under the DPDP rules
    before the first real school; the guardian's opt-out and the one-time notice are the fallback if
    explicit consent is required.
-3. **The tutor and assessment.** During an open contest or a timed practice sitting the tutor answers
-   nothing on that topic; a question matching a hand-in assignment gets a hint first and the worked
-   answer only on a second ask, with a teacher's per-assignment switch. The rule is a table beside the
-   role policy and needs the owner's yes.
+3. **The tutor and assessment: decided.** During an open contest or a timed practice sitting the tutor
+   answers nothing on that topic; a question matching a hand-in assignment gets a hint first and the
+   worked answer only on a second ask, with a teacher's per-assignment switch. The rule is a table beside
+   the role policy; the matching is by embedding similarity against the sitting's and the assignment's
+   text, with a threshold tuned on the demo tenants and a reviewer's sample in Phase D.
 4. **"Should I study this" needs the school's data.** The answer is only as good as the syllabus units
    and the exam scope the school recorded; where nothing is recorded the assistant says so and names the
    teacher. The demo schools carry both, so the pilot can show it.
@@ -212,3 +214,46 @@ questions a month or for data residency under the DPDP rules.
 10. **No memory across conversations** in the first version; the first screen says so.
 11. **Teachers' view.** A teacher sees counts per class (how many questions, which chapters), never a
     pupil's words, unless the owner decides otherwise.
+
+## 9. Gaps found on the fifth reading (8 October 2026)
+
+1. **A teacher is also a pupil's examiner.** The tutor answers a teacher's topic questions in full even
+   during a sitting, as it should, but the hint mode keys on the pupil's open sittings only; a teacher
+   sharing a device with a pupil in the hall is the school's problem, not the model's. Written down so
+   nobody adds a teacher check later by mistake.
+2. **College students taking a university exam** have no sitting on the platform unless the college is
+   autonomous; the assessment rule cannot see an affiliated college's exam. Recommendation: the exam
+   cell's session dates for the student's offerings count as "open" from the sitting's start to its end,
+   so the rule holds at affiliated colleges too, and the roster says so.
+3. **Hints need a definition.** "A hint first" is a prompt rule the golden set must score: a hint names
+   the concept and the chapter and asks a guiding question; it never contains the final value, the
+   option letter or the full working. Phase D's set has fifty hint cases per grade band.
+4. **The second ask.** "The worked answer on a second ask" must be the same conversation and the same
+   question, not a rephrase an hour later; the rule reads the conversation's last two turns, and the
+   teacher's per-assignment switch can turn the second ask off.
+5. **What "matching an assignment" reads.** The assignment's title and body are the school's data; the
+   service compares the pupil's question against them through the pupil's own assignments door, never
+   across tenants; a question matching nothing of the pupil's own is answered in full.
+6. **The explanation template must not drown the answer.** A class 11 student asking a one-line
+   definition should not get four paragraphs. Recommendation: the template scales with the question
+   (a definition gets the sentence and the citation; "explain" gets the full shape; "why" gets the
+   reasoning), scored in Phase D.
+7. **Languages inside one conversation.** A question in Marathi after two in English is answered in
+   Marathi; the citation's book stays the English NCERT with the glossary term beside the English one.
+   The policy is written in the language section and tested.
+8. **Teachers of other subjects.** A teacher's topic questions are not limited to their own subjects;
+   the tutor answers any curriculum topic for a teacher. Said so, since the reviewer limits of the parked
+   generator are a different rule.
+9. **Alumni and the global feed** are outside the tutor (they are not STUDENT at any school); an alumnus
+   gets platform help only, which section 1's policy already gives.
+10. **The counsellor route needs a person.** The self-harm path hands to "the school's counsellor"; most
+    schools have none recorded. Recommendation: the route goes to the principal's notification when no
+    counsellor is on the staff record, and the message to the pupil names a helpline the school sets in
+    settings (a per-school field, with a national default).
+11. **Accessibility of the panel.** The chat lives in the kit (44 px targets, the two tones, the axe
+    gate); streamed text must announce to a screen reader at the end of an answer, not per token; the
+    e2e axe gate covers the panel on each role home.
+12. **Cost of the hint matching.** Every tutor question is embedded and compared against the pupil's open
+    sittings and assignments; that is one embedding call on the service machine's CPU, about 50 ms, and
+    bounded by the person's daily cap; no model call is spent on it.
+
