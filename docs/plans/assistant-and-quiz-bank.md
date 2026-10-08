@@ -1,5 +1,9 @@
 # The assistant and the quiz bank generator — plan of 8 October 2026 (fourth draft)
 
+**Parked on 8 October 2026.** The assistant is being built first, from [assistant.md](assistant.md); this file is
+the quiz bank generator's plan, kept for when it resumes, and section 6 of the assistant's plan names the
+pieces it will reuse.
+
 Status: plan, not yet built. Decided by the owner so far:
 
 - the quiz bank generator runs on the owner's own machine, on the Qwen family; no hosted model for it;

@@ -173,7 +173,7 @@ notices it caused its actors, so a run leaves the fixtures as it found them.
 - **Shared passwords** remain on thirteen local test accounts and on every `@demo.relay.test`
   account. Scramble them when demos end.
 - **Untracked on purpose**: `pitch/`, `apps/web/.Rhistory`, `.claude/launch.json`.
-- **The assistant and the quiz bank generator** are planned, not built: [docs/plans/assistant-and-quiz-bank.md](docs/plans/assistant-and-quiz-bank.md) (8 October 2026; generation on the owner's own machine, the assistant hosted, nothing served without a reviewer's stamp).
+- **The assistant** is planned, not built: [docs/plans/assistant.md](docs/plans/assistant.md) (8 October 2026; platform help for every role, the tutor for students and teachers, en/hi/mr, Qwen on the owner's machine first then hosted). The quiz bank generator is parked: [docs/plans/assistant-and-quiz-bank.md](docs/plans/assistant-and-quiz-bank.md).
 - **The audit of 5 October 2026** is in [docs/audit-2026-10-05](docs/audit-2026-10-05): an inventory of every
   feature, role, screen and door with the parity table, then three layers run over it (security, the critical
   journeys clicked through in a browser and on the phone's web target, and states and accessibility) and one

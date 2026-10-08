@@ -1,0 +1,214 @@
+# The assistant — plan of 8 October 2026 (chatbot first)
+
+Status: plan, not yet built. The quiz bank generator is parked; its plan stays in
+[assistant-and-quiz-bank.md](assistant-and-quiz-bank.md) and section 6 below names the pieces built here
+that it will reuse.
+
+Decided by the owner: the assistant answers platform questions ("how do I record a departure", "where is
+the fee ledger") for every role, and topic questions with plain explanations ("explain Newton's third law",
+"should I study this for the exam"); it is on for every tenant, schools of every board and colleges of
+every stream; it speaks English, Hindi and Marathi; the model is open-weights, Qwen unless something
+better is proved, run on the owner's machine first and hosted only after that.
+
+Assumption carried from the earlier drafts, one line to change: topic questions are answered for
+students and teachers (STUDENT, TEACHER, FACULTY, HOD); every other role gets platform help, and a topic
+question from them is answered with one sentence saying whom the tutor is for. Section 8, decision 1.
+
+## 1. What it is
+
+One assistant with two jobs behind one chat surface on the web and the phone:
+
+- **Platform help, every role.** Answers that name the page and the steps, in the person's role and
+  language, from the platform's own documentation and the API catalog's 1,102 door summaries; when the
+  answer needs the person's own data ("which of my classes has a register due today"), the assistant calls
+  the person's own doors with the person's session and reads the answer back.
+- **The tutor, students and teachers.** Topic questions answered from the curriculum corpus with a
+  citation (board, book, chapter, page), in an explanation written for the person's grade: the idea in
+  one sentence, an everyday example, the textbook's own statement, a check question. "Should I study this
+  for the exam" is answered from what the platform knows: the student's board and grade, the school's
+  syllabus units and the teacher's recorded coverage (the syllabus feature), the exam series and its
+  dates (the exams feature), or at a college the offering's outcomes and the exam session. The answer
+  says which unit the topic is in and whether the coming exam covers it, and says "ask your teacher" when
+  the school has not recorded the exam's scope.
+
+What it is not: a general chatbot. Topics outside learning and the platform are declined in one
+sentence; a minor's unsafe question follows the school's counsellor route.
+
+## 2. The shape
+
+```
+web panel / phone tab ──► /api/v1/assistant/* (catalog doors, module ASSISTANT)
+                                   │
+                           the assistant service (its own process)
+                                   │
+        ┌──────────────┬───────────┼───────────────┬────────────────────┐
+   role policy    retrieval    tools (GET doors   the model          safety
+   (one table)    (content     as the person,    (OpenAI-compatible  (strip, caps,
+                  schema,      allow-list)       endpoint: local     refusals,
+                  pgvector)                       first, hosted later) retention)
+```
+
+- **The service** is a separate process beside the jobs machine (`apps/assistant`, or a process group in
+  `fly.toml`), reached only through catalogued doors. It holds no tenant data of its own; conversations
+  are rows with `schoolId` and RLS like everything else, on a retention dial.
+- **Role policy** is one table: which roles get the tutor, which get help only, which tools each role may
+  call, read by the tests.
+- **Retrieval**: a `content` schema in the same Postgres with pgvector, no `schoolId` on the corpus rows,
+  outside the tenant policy the way the quiz catalogue already sits; Qwen3-Embedding vectors, keyword
+  search beside them, Qwen3-Reranker on top; the pupil's board and grade scope the curriculum search first.
+- **Tools**: an allow-list of cheap GET doors from the catalog (my timetable, my exams and their dates,
+  my syllabus coverage, my assignments due, my attendance summary, the family's fee summary, the office's
+  due registers), each called with the person's own session so the tenant fence and the role gate stay
+  exactly as they are; every door's answer is data, never instructions; the heavy-read budget applies.
+- **The model** behind an OpenAI-compatible endpoint, `ASSISTANT_MODEL_URL` and `ASSISTANT_MODEL`: the
+  laptop first, a host later, two variables to switch.
+- **Language**: the answer is in the person's account language; a question typed in another of the
+  three is answered in that one; Devanagari throughout; the header's transliteration switch already
+  helps typing on the web. The model is prompted in the answer's language with the board's glossary
+  terms for the subject.
+
+## 3. The corpus
+
+| Part | Source | Use |
+| --- | --- | --- |
+| Platform help | `docs/*.md`, HANDOFF.md, `docs/college.md`, the catalog's door summaries, the dictionaries' sentences (en, hi, mr), the demo rosters' "where to look" columns | "how do I", "where is", role by role; rebuilt from the repository at every deploy and tagged with the commit |
+| Curriculum, schools | every English NCERT textbook, grades 1 to 12, and the exemplars; every Balbharati English-medium textbook; NIOS; the two boards' bilingual glossaries | the tutor's citations; the glossaries for Hindi and Marathi terms |
+| Curriculum, colleges | the syllabus PDFs of the affiliating universities and councils (SPPU, MUHS, MPKV, AICTE's model curriculum, BCI, PCI, NCTE, COA, ICAR), NPTEL and Swayam material, OpenStax and LibreTexts, NDLI's open holdings | the tutor at a college; the reference books the syllabi name are indexed by title and chapter only |
+| Other boards | CISCE, IB, other state boards: the syllabus documents | scope answers; the books are commercial and not collected |
+
+Folder `storage/corpus/<board or university>/<grade or programme>/<subject>/<file>` with a `manifest.json`
+beside each file (title, edition and year, source URL, licence as published, retrieval date, SHA-256).
+In the storage bucket, never in git; about 2 to 3 GB. Counsel confirms the NCERT and Balbharati terms
+for use inside a paid product before launch; the assistant quotes at most a short passage with its
+citation, never a chapter.
+
+## 4. The model
+
+Qwen3 (Apache 2.0) unless the two checks below say otherwise:
+
+| Role | Local (Phase A to D) | Hosted (Phase E) |
+| --- | --- | --- |
+| Answers | Qwen3-30B-A3B at full quality on the M5 Max (about 40 to 60 tokens a second); Qwen3-235B-A22B at 4-bit for the hardest evaluation set | the same model on a host with zero-retention terms, an Indian host preferred, the version pinned |
+| Embeddings and reranking | Qwen3-Embedding-8B, Qwen3-Reranker; BGE-M3 as the comparison | Qwen3-Embedding-0.6B on the service machine's CPU |
+| Figures in a cited passage | Qwen3-VL for describing a diagram the passage relies on | the same |
+
+The two checks, one afternoon each: Hindi and Marathi answer quality read by a speaker against Sarvam-M
+24B on 100 questions (Qwen3 is stronger in Hindi than in Marathi in the published evaluations; if Sarvam
+reads better in Marathi it answers the Marathi conversations, still open-weights, still local first);
+and the exact Qwen3 release against the current leaderboards when Phase A starts, since the line may have
+moved (gpt-oss-20b and 120b, Apache 2.0, are the fallback family if Qwen fails the checks; Llama 4 and
+Gemma 3 carry community terms counsel would have to read). No fine-tuning in the first version: retrieval,
+the glossaries and the explanation template carry the quality.
+
+## 5. Phases
+
+### Phase A — corpus, index, local model (week 1)
+
+- `scripts/corpus-fetch.ts`: the downloader with the manifest, idempotent, resumable.
+- PDF to text with figures kept (text PDFs, a Devanagari OCR fallback), chunking by chapter and section,
+  the `content` schema with pgvector, the corpus embedded once on the laptop.
+- `scripts/help-index.ts`: the platform-help corpus built from the repository, with the role each
+  sentence applies to and the page it names, tagged with the commit.
+- The local model up behind the OpenAI-compatible endpoint; `ASSISTANT_MODEL_URL` on the dev server.
+
+### Phase B — the service (weeks 2 and 3)
+
+- The process, the doors (`POST /assistant/conversations`, `POST …/{id}/messages` streaming over the
+  existing event stream, `GET …`, `DELETE …`, `POST …/{id}/feedback`), module `ASSISTANT` on by default
+  for every tenant and switchable off per school, the role policy table, the tool allow-list, the
+  retrieval and reranking, citations, the explanation template per grade band (classes 1 to 5, 6 to 8,
+  9 to 10, 11 to 12, college), the exam-scope answer from the syllabus, exams and offerings doors.
+- Safety: names, ids and codes stripped from what the model sees (a teacher's text too); the refusal set
+  (off-topic, unsafe, another pupil's data) with the counsellor route; prompt injection treated as data
+  wherever it arrives (the question, the corpus, the docs, a door's answer); the tutor's hint mode when
+  the question matches an open contest or timed practice item or a hand-in assignment (section 8,
+  decision 3); a daily cap per person and a monthly token budget per school like the SMS caps; a
+  kill-switch environment variable; calls audited by count, never by text; conversations on
+  `RETENTION_ASSISTANT_DAYS` (default 30), never in the audit log; a guardian's opt-out per child.
+- Decision 0005: the model endpoint as a third-party destination under decision 0002, the default-on
+  choice, the opt-out, the retention, what is stripped, the provider when hosted.
+
+### Phase C — surfaces (week 4)
+
+- Web: a panel reachable from every role's home on the kit, en/hi/mr, streamed answers, citations as
+  links to the chapter, "was this helpful" per answer, the conversation list for thirty days.
+- Phone: a tab under More reading the same doors, short answers by default, a clear offline state (no
+  offline tutor), screen capture allowed (nothing sensitive is on it once stripped).
+- The office's overview card: the school's monthly use against its budget, the switch, counts only.
+
+### Phase D — evaluation, locally (week 5)
+
+- Golden sets: platform help per role (200 questions, scored on naming the right page and steps); the
+  tutor per board and grade band (200 each, scored for correctness and citation); the exam-scope set
+  against the demo schools' syllabi and exam series; the refusal set; the injection set.
+- Hindi and Marathi answers read by a native speaker (R-14); the Sarvam-M comparison.
+- A red-team pass for a minor's questions (self-harm, adult content, another pupil's data, injection
+  through a pasted homework text).
+- The pilot on the demo tenants on the laptop: the two demo schools, the ten demo colleges, the
+  transferred pupil, every role, by hand.
+
+### Phase E — hosted (week 6)
+
+- The two variables switched to the host; the golden sets run once more against the hosted model; the
+  service deployed beside the jobs machine; the budget and the kill switch proved on the host; one real
+  school with the switch on, then the rest.
+
+Effort: six weeks for a first version as three builder waves (A and B, C and D, E), after the weekly
+meter resets on 10 October; the corpus downloader and the help index are the first day's work.
+
+## 6. What the parked quiz bank generator will reuse
+
+Built here, designed as modules with a stated interface so the generator picks them up unchanged:
+
+| Module | Built in | The generator uses it for |
+| --- | --- | --- |
+| `corpus-fetch` with the manifest, figures and editions | Phase A | the same corpus and figures |
+| chunking, the `content` schema, embeddings and reranking | Phase A | finding the chapter an item belongs to, near-duplicate checks |
+| the local model endpoint and its serving config | Phase A | drafting, critique and the blind solver on the laptop |
+| the glossary-guided translation prompt (en to hi and mr, the board's terms) | Phase B | the Hindi and Marathi item rows |
+| the evaluation harness (golden sets, scoring, speaker review sheets) | Phase D | the critique pass and the solver's five answers |
+| the refusal and injection filters | Phase B | cleaning the drafting prompts |
+| the "what is this exam's scope" reader over syllabus units and exam series | Phase B | ordering generation by the schools' timetables |
+
+## 7. Cost
+
+Local phases: electricity. Hosted, about 3,000 tokens a question with retrieval, at ₹84 per dollar:
+
+| Line | 1 school (8,000 questions a month) | 10 schools | 100 schools |
+| --- | --- | --- | --- |
+| Service machine | ₹1,800 | ₹1,800 | ₹3,600 |
+| Vector store on the existing Postgres and bucket | ₹200 | ₹600 | ₹3,000 |
+| Embeddings and reranking | CPU, ₹0 | ₹0 | a small GPU, ₹8,000 |
+| Inference, hosted Qwen3 (₹10 to ₹50 per million tokens) | ₹250 to ₹1,200 | ₹2,500 to ₹12,000 | ₹25,000 to ₹1.2 lakh |
+| **Per month** | **₹2,300 to ₹3,200** | **₹4,900 to ₹14,400** | **₹40,000 to ₹1.35 lakh** |
+
+Self-hosting the model (one H100, ₹1.8 to ₹2.5 lakh a month) only past roughly one to two million
+questions a month or for data residency under the DPDP rules.
+
+## 8. Decisions and gaps
+
+1. **Who gets the tutor.** The plan keeps students and teachers; the owner's latest words were "any
+   topic related questions". If the tutor is for every role, the policy table changes one line and the
+   cost table's per-question line grows with the families; the minors' rules are unchanged either way.
+2. **On by default for minors** stands (the owner's decision); counsel reads it under the DPDP rules
+   before the first real school; the guardian's opt-out and the one-time notice are the fallback if
+   explicit consent is required.
+3. **The tutor and assessment.** During an open contest or a timed practice sitting the tutor answers
+   nothing on that topic; a question matching a hand-in assignment gets a hint first and the worked
+   answer only on a second ask, with a teacher's per-assignment switch. The rule is a table beside the
+   role policy and needs the owner's yes.
+4. **"Should I study this" needs the school's data.** The answer is only as good as the syllabus units
+   and the exam scope the school recorded; where nothing is recorded the assistant says so and names the
+   teacher. The demo schools carry both, so the pilot can show it.
+5. **Exam advice for a college** reads the offering's outcomes and the exam session; the university's
+   own pattern (SPPU's) is not on the platform, so the answer scopes to the offering.
+6. **Figures.** A cited passage may rely on a diagram; the answer describes it (Qwen3-VL) and links the
+   page; no figure is reproduced in the chat (the figures' copyright question stays with the parked plan).
+7. **Other boards.** A CISCE or IB student gets the tutor over the NCERT corpus with the board named in
+   the answer ("in NCERT's class 9 book …"); their own books are not collected.
+8. **Urdu medium** is not served; English, Hindi and Marathi only.
+9. **The hosted provider**: zero retention in writing, an Indian host preferred, the version pinned, the
+   local model kept as the fallback.
+10. **No memory across conversations** in the first version; the first screen says so.
+11. **Teachers' view.** A teacher sees counts per class (how many questions, which chapters), never a
+    pupil's words, unless the owner decides otherwise.
