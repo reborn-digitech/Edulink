@@ -1,15 +1,17 @@
-# The assistant and the quiz bank generator — plan of 8 October 2026 (third draft)
+# The assistant and the quiz bank generator — plan of 8 October 2026 (fourth draft)
 
 Status: plan, not yet built. Decided by the owner so far:
 
 - the quiz bank generator runs on the owner's own machine, on the Qwen family; no hosted model for it;
 - questions carry an image where the chapter's exercise needs one;
 - the difficulty ladder must be honoured and every distractor must be a real distractor;
-- review is done by the app admins at `/appadmin`, as a mostly one-time pass over the generated bank;
-- no translation step: the Hindi and Marathi items are drafted from the Hindi and Marathi books;
+- every type and level of question is generated for the whole corpus in one go; review is done by the
+  app admins and by many teachers, as a one-time pass over the generated bank;
+- the corpus is the English books only; the Hindi and Marathi items are translations of the English
+  items, with the boards' glossaries, read by native speakers;
 - the assistant runs on the owner's machine first and is hosted only after that run has proved it;
-- the assistant is on by default for everyone; curriculum questions are answered for students and
-  teachers only, every other role gets platform help only.
+- the assistant is on by default for everyone, minors included, with no opt-in step; curriculum
+  questions are answered for students and teachers only, every other role gets platform help only.
 
 Everything else below is the proposal; section 8 lists the gaps and the recommendations still waiting on
 the owner's word.
@@ -36,16 +38,16 @@ gate; the monthly cap pattern the SMS channel uses.
 
 | Source | Collected | Not collected |
 | --- | --- | --- |
-| NCERT (CBSE) | every textbook, grades 1 to 12, in English, Hindi and Urdu, with the exemplars; PDFs from NCERT, figures included | — |
-| Balbharati (MSBSHSE) | every textbook, grades 1 to 12, Marathi, Hindi, English and Urdu media; PDFs from ebalbharati, figures included | — |
+| NCERT (CBSE) | every English textbook, grades 1 to 12, with the exemplars; PDFs from NCERT, figures included | the Hindi and Urdu editions (the items are translated instead) |
+| Balbharati (MSBSHSE) | every English-medium textbook, grades 1 to 12; PDFs from ebalbharati, figures included | the Marathi, Hindi and Urdu media (the items are translated instead); the boards' bilingual glossaries ARE collected, for the translation step |
 | NIOS | its open course books | — |
 | CISCE, IB, other state boards | the syllabus documents | the prescribed books (commercial publishers) |
 | College streams | the syllabus PDFs of the affiliating universities and councils (SPPU, MUHS, MPKV, AICTE's model curriculum, BCI, PCI, NCTE, COA, ICAR), NPTEL and Swayam material, OpenStax and LibreTexts, NDLI's open holdings | the reference books the syllabi name (copyrighted; indexed by title and chapter only) |
 
-Folder: `storage/corpus/<board or university>/<grade or programme>/<subject>/<language>/<file>` with a
+Folder: `storage/corpus/<board or university>/<grade or programme>/<subject>/<file>` with a
 `manifest.json` beside each file (title, edition and year, source URL, licence as published, retrieval
 date, SHA-256). Figures are extracted per page into `figures/` beside the text with their caption and the
-chapter and page they came from. Kept in the storage bucket, never in git; about 4 to 6 GB with figures.
+chapter and page they came from. Kept in the storage bucket, never in git; about 2 to 3 GB with figures.
 Before launch counsel confirms the NCERT and Balbharati terms for use inside a paid product, for the text
 and separately for the figures (section 8, gap 1).
 
@@ -53,8 +55,8 @@ and separately for the figures (section 8, gap 1).
 
 ### Phase 0 — corpus and licences (one week)
 
-- `scripts/corpus-fetch.ts`: the downloader with the manifest, idempotent by checksum, resumable, one
-  language medium at a time.
+- `scripts/corpus-fetch.ts`: the downloader with the manifest, idempotent by checksum, resumable; the
+  English books, the syllabi and the two boards' bilingual glossaries.
 - PDF to text with the figures kept: the NCERT and Balbharati PDFs carry text; a Devanagari OCR fallback
   for scanned pages; figures cut out per page with their captions.
 - Chunking by chapter and section with headings kept, about 500 tokens a chunk, each chunk tagged with
@@ -67,9 +69,10 @@ and separately for the figures (section 8, gap 1).
 ### Phase 1 — the quiz bank generator, on the owner's machine (two to three weeks)
 
 **Where it runs.** The owner's laptop (M5 Max, 128 GB) through vLLM or llama.cpp: Qwen3-30B-A3B at full
-quality for drafting and the Hindi and Marathi items; Qwen3-235B-A22B at 4-bit for the critique and the
-blind-solver passes if the memory holds it beside the embeddings, otherwise the 30B does both with a
-second seed. Nothing leaves the machine.
+quality for drafting and the translations; Qwen3-235B-A22B at 4-bit for the critique and the blind-solver
+passes if the memory holds it beside the embeddings, otherwise the 30B does both with a second seed.
+Nothing leaves the machine. Every type and level of question is generated for every chapter of the
+corpus in one run, in the order section 8 gives, so the whole bank exists before review starts.
 
 **The image field (schema change).** `QuizQuestion.imageKey` (a key in the uploads bucket, as avatars and
 documents are stored), `imageAlt` in the question's language, and the image shared by the Hindi and
@@ -78,18 +81,22 @@ practice page and the phone's practice screen draw it above the stem; the import
 `content/quiz/figures/`. A figure is taken from the book's own page (NCERT's or Balbharati's drawing) when
 the exercise depends on it; the generator never invents a figure.
 
-**Drafting, per chapter chunk and per language.** The model writes items in the bank's own shape: stem,
+**Drafting, per chapter chunk, in English.** The model writes items in the bank's own shape: stem,
 four options, `answerIndex`, `solution`, `checkExpr` where the answer is numeric, `difficulty`, the figure
 reference where the chapter's exercise needs one, and for every distractor a one-line
 `distractorReason` ("the child adds the denominators", "confuses mass with weight") kept in the JSON for
 the reviewer, not shown to children.
 
-**Three languages, no translation.** The English item is drafted from the English book; the Hindi item
-from the Hindi book and the Marathi item from the Marathi book, each with the English item as the anchor
-(same concept, same figure, same answer position and the same four distractor reasons), so the terms are
-the board's own in each language and the three rows are one item in the bank's shape
-(`QuizQuestionTranslation` beside the English row). Where a board has no book in a medium (CISCE,
-college material, see gap 2) the item is English-only and the topic says so.
+**Hindi and Marathi by translation.** Every English item that passes its checks is translated into
+Hindi and Marathi on the laptop, stem, options and solution, with the board's bilingual glossary for the
+subject in the prompt so the terms are the ones the Hindi and Marathi textbooks use (NCERT's and
+Balbharati's glossaries are collected in Phase 0), the figure and the answer position unchanged, and the
+translation critiqued once (same meaning, one answer, the distractors still wrong). The rows land as
+`QuizQuestionTranslation` beside the English row, the bank's existing shape, with `hiReviewedAt` and
+`mrReviewedAt` null until a native speaker among the reviewers stamps them; as the bank does today, an
+unreviewed translation is still served once the English item is stamped, because a draft a child can
+read beats an English question a child cannot (decision 0002, gap 8). College and CISCE items are
+translated the same way, so nothing is English-only.
 
 **The difficulty ladder.** Each level has a written rubric in the prompt (1 recall: the fact is stated in
 the chapter; 2 understand: the fact must be restated or an example recognised; 3 apply: a one-step use
@@ -116,18 +123,25 @@ embedding similarity against the bank and the batch, the chapter mapped to its `
 grade, subject and chapter; new topics made where none exists), the edition recorded on every item.
 
 **Output and review.** Items land in `content/quiz/generated/<board>-<grade>-<subject>.json` with `source`
-"generated against Balbharati Science, Std 8, chapter 4 (2024 edition)" and `reviewedAt` null. The app
-admins review at `/appadmin` with a generated queue (accept, edit, discard, and the per-language stamps);
-the reviewer sees the distractor reasons and the solver's success rate. **No generated item is served
-until stamped**; the importer refuses a generated file into a served topic without the stamp. The licence
-is set at review once the reviewer confirms the stem is original. A one-time pass: about 60,000 items
-(both boards, grades 5 to 12, core subjects, about 30 a chapter) is roughly 1,000 reviewer hours at a
-minute an item; the queue is ordered as section 8's generation order says, so the useful part is reviewed
-first.
+"generated against NCERT Science, Class 8, chapter 4 (2024 edition)" and `reviewedAt` null. Review is a
+one-time pass by many hands: the app admins at `/appadmin`, and **teachers as reviewers**, invited by the
+app admins from any school on the platform for the subjects and grades they teach, through a review
+queue on the teacher's side (the path the bank already has for teachers' own contributions,
+`QuestionContribution` and the gig-questions desk, extended with the generated queue). A reviewer sees
+the distractor reasons and the solver's five answers, and can accept, edit or discard; an item is served
+after **two stamps** (two teachers, or a teacher and an app admin), and a Hindi or Marathi row after a
+native speaker's stamp. The stamp names the reviewer and their school. Review can be paid as a gig under
+decision 0004 (the company collects and pays per stamped item), which is the owner's call. The importer
+refuses a generated file into a served topic without the stamps; the licence is set at review once a
+reviewer confirms the stem is original. The whole bank is about 200,000 items (both boards, grades 1 to
+12, every subject, every level, plus the colleges); at a minute an item and two stamps each that is
+about 6,500 reviewer hours, which is why the queue is ordered as section 8 says and spread over many
+teachers.
 
 **Throughput and cost.** About 15 to 25 seconds an item for the draft, the critique and the five solver
-runs, so 60,000 items in three languages is roughly four to six weeks of the laptop running, or two with
-a second machine; electricity about ₹500 to ₹1,000 a week.
+runs, and a few seconds more for the two translations, so the whole bank of about 200,000 items is
+roughly six to eight weeks of the laptop running, or three to four with a second machine; electricity
+about ₹500 to ₹1,000 a week. Generation runs ahead of review and never waits for it.
 
 ### Phase 2 — the assistant service, on the owner's machine first (two to three weeks)
 
@@ -152,10 +166,13 @@ a second machine; electricity about ₹500 to ₹1,000 a week.
   the pilot. The local run proves the answers, citations, refusals, the role policy, the minors' path,
   the budget and the kill switch, en/hi/mr on web and phone; it cannot prove concurrency, uptime or the
   hosted model's quality, so the golden sets are run once more against the hosted model before the switch.
-- Minors, with the assistant on by default: names, ids and codes stripped from what the model sees;
-  transcripts on a retention dial (`RETENTION_ASSISTANT_DAYS`, default 30) and never in the audit log;
-  a refusal set for off-topic and unsafe questions with the school's counsellor route for self-harm
-  signals; a guardian's opt-out per child on the family's settings; the consent question in gap 3.
+- Minors, with the assistant on by default and no opt-in step (the owner's decision): names, ids and
+  codes stripped from what the model sees; transcripts on a retention dial (`RETENTION_ASSISTANT_DAYS`,
+  default 30) and never in the audit log; a refusal set for off-topic and unsafe questions with the
+  school's counsellor route for self-harm signals; a guardian's opt-out per child on the family's
+  settings; the guardians told once, through the notice the notifications consent already sends, that
+  the tutor is on and how to switch it off for their child. Counsel reads this under the DPDP rules
+  before the first real school (gap 3 records the risk; the default does not change).
 - Controls: a monthly token budget per school like the SMS cap, shown on the overview; a kill-switch
   environment variable like the phone's; calls audited by count, never by text.
 - Decision 0005 records the model endpoint as a third-party destination (decision 0002's list), the
@@ -183,15 +200,15 @@ The Qwen family (Apache 2.0) for every role, one serving stack from the laptop t
 
 | Role | Where it runs | Model |
 | --- | --- | --- |
-| Drafting in three languages, the critique, the blind solver | the owner's machine | Qwen3-30B-A3B; Qwen3-235B-A22B at 4-bit for the critique and solver if the memory holds it |
+| Drafting in English, the Hindi and Marathi translations, the critique, the blind solver | the owner's machine | Qwen3-30B-A3B; Qwen3-235B-A22B at 4-bit for the critique and solver if the memory holds it |
 | The assistant's answers | the owner's machine first, then hosted Qwen3 through the same OpenAI-compatible endpoint | Qwen3-30B-A3B; Qwen3-235B-A22B only where retrieval returns nothing useful |
 | Figures in questions and answers (reading a diagram) | the owner's machine | Qwen3-VL (the vision line) for the critique of figure items and for the assistant's figure citations |
 | Embeddings and reranking | the owner's machine for the corpus, the service machine's CPU afterwards | Qwen3-Embedding-8B (0.6B on the service machine), Qwen3-Reranker; BGE-M3 as the comparison |
 
-Two checks before the choice is final, one afternoon each with a speaker: Qwen3's Marathi drafting
+Two checks before the choice is final, one afternoon each with a speaker: Qwen3's Marathi translation
 against Sarvam-M 24B on 200 items (Qwen3 is stronger in Hindi than in Marathi in the published
-evaluations; if Sarvam reads better in Marathi it drafts the Marathi items only, still on the laptop), and
-the exact Qwen3 release against the current leaderboards when Phase 1 starts.
+evaluations; if Sarvam reads better in Marathi it translates the Marathi rows only, still on the laptop),
+and the exact Qwen3 release against the current leaderboards when Phase 1 starts.
 
 Self-hosting the assistant's model (one H100, ₹1.8 to ₹2.5 lakh a month) is worth it only past roughly
 one to two million questions a month or when data residency under the DPDP rules requires it.
@@ -199,7 +216,8 @@ one to two million questions a month or when data residency under the DPDP rules
 ## 5. Cost
 
 Generation: ₹0 in fees; electricity about ₹500 to ₹1,000 a week of running; the one-time review pass by
-the app admins (about 1,000 hours for 60,000 items).
+the app admins and the teachers (about 6,500 hours for 200,000 items at two stamps each; paid as a gig
+or not, the owner's call).
 
 The assistant, hosted, about 3,000 tokens a question with retrieval, at ₹84 per dollar; with the tutor
 open to students and teachers only, the per-question line is bounded by the pupils' use:
@@ -218,7 +236,8 @@ open to students and teachers only, the per-question line is bounded by the pupi
 - Invent figures: a question's image is the book's own drawing or nothing.
 - Let the model query the database or read anything the signed-in person could not open.
 - Serve a generated question without an app admin's stamp.
-- Translate: an item in a language the board has no book in is not made (gap 2).
+- Draft from the Hindi and Marathi books: the Indian-language rows are translations of the English item,
+  read by native speakers.
 - Fine-tune a model before retrieval has been measured.
 
 ## 7. Order and effort
@@ -238,17 +257,15 @@ earlier drafts.
    Recommendation: counsel reads both boards' terms for figures before Phase 1 generates a single figure
    item; until then the generator writes figure items with the page reference and no image, and the
    importer attaches the images when the answer is yes.
-2. **"Books in all three languages" is true for the two school boards only.** NIOS, CISCE's syllabi and
-   nearly all college material exist in English (a few Marathi-medium arts and commerce texts aside).
-   With no translation step those items are English-only. Recommendation: accept English-only for
-   colleges and CISCE in the first version and say so on the topic; revisit translation for college
-   first-year subjects later if Marathi-medium colleges ask.
-3. **On by default for minors needs a consent answer.** Decision 0002 treats every new destination for a
-   minor's words as something the guardian consents to. Recommendation: on by default, with the guardian's
-   opt-out per child on the family's settings, the stripping and the 30-day retention as written, and
-   counsel's reading of whether the DPDP rules let that stand for a child under 18 before a real school
-   switches it on; if counsel says consent must be explicit, the switch becomes "on after the guardian's
-   first visit to the settings", which the notifications consent already does.
+2. **Translation needs the boards' terms, not a dictionary's.** The Marathi word a Balbharati science
+   book uses is often not the one a general translator picks. Recommendation (accepted): the boards'
+   bilingual glossaries in the prompt, the translation critiqued once, and a native speaker's stamp per
+   language before the quality flag; Sarvam-M compared for Marathi.
+3. **On by default for minors, decided.** The owner keeps the tutor on by default with no opt-in. What
+   stays: the guardian's opt-out per child, the stripping, the 30-day retention, the one-time notice to
+   guardians, and counsel's reading under the DPDP rules before the first real school. The risk recorded:
+   if counsel reads the rules as requiring explicit consent for a child under 18, the default has to
+   change for minors, and the notice path above is the cheapest way to turn it into consent.
 4. **Teachers asking about pupils.** A teacher's curriculum question may name a child ("explain fractions
    the way Aarav would get it"). Recommendation: the stripping applies to the teacher's text too; the
    assistant explains the concept and never writes about a named pupil.
@@ -265,9 +282,11 @@ earlier drafts.
    and year; a changed edition re-runs the chapter and the reviewer sees a diff, not a fresh batch.
 9. **Order of generation:** grades 6 to 10, mathematics and science, Marathi medium for MSBSHSE and
    English for CBSE first, then languages and social science, grades 11 and 12, then colleges.
-10. **Review capacity.** One-time or not, 1,000 hours is a term of one person's work. Recommendation: two
-    app admins reviewing in parallel, the queue ordered by the schools' timetables, and no batch generated
-    beyond what the next four weeks can review, so the generated folder never grows stale.
+10. **Review capacity, decided.** Everything is generated in one run and reviewed by many teachers and
+    the app admins. What the plan adds: two stamps before an item is served, reviewers limited to the
+    subjects and grades they teach, the stamp naming the reviewer and school, the queue ordered by the
+    schools' timetables so the term's chapters are stamped first, and the question whether review is a
+    paid gig (decision 0004) or volunteer work, which sets how many teachers will do it.
 11. **Open questions for the owner:** who the Hindi and Marathi reviewers are (R-14); whether a student
     may ask the tutor in a language other than their account's; whether a teacher at a school may see
     the pupils' conversations (recommendation: no, counts only); and counsel's questions above (figures,
