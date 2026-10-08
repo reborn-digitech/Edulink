@@ -121,19 +121,36 @@ the glossaries and the explanation template carry the quality.
   retrieval and reranking, citations, the explanation template per grade band (classes 1 to 5, 6 to 8,
   9 to 10, 11 to 12, college), the exam-scope answer from the syllabus, exams and offerings doors.
 - Safety: names, ids and codes stripped from what the model sees (a teacher's text too); the refusal set
-  (off-topic, unsafe, another pupil's data) with the counsellor route; prompt injection treated as data
-  wherever it arrives (the question, the corpus, the docs, a door's answer); the tutor's hint mode when
-  the question matches an open contest or timed practice item or a hand-in assignment (section 8,
-  decision 3); a daily cap per person and a monthly token budget per school like the SMS caps; a
-  kill-switch environment variable; calls audited by count, never by text; conversations on
-  `RETENTION_ASSISTANT_DAYS` (default 30), never in the audit log; a guardian's opt-out per child.
+  (off-topic, unsafe, another pupil's data); prompt injection treated as data wherever it arrives (the
+  question, the corpus, the docs, a door's answer); a daily cap per person and a monthly token budget per
+  school like the SMS caps; a kill-switch environment variable; calls audited by count, never by text;
+  conversations on `RETENTION_ASSISTANT_DAYS` (default 30), never in the audit log; a guardian's opt-out
+  per child.
+- The counsellor route: a self-harm signal hands the conversation to the school's counsellor on the staff
+  record, or to the principal's notification when no counsellor is recorded, and the message to the pupil
+  names a helpline from a new per-school setting (`School.helplineText`, a national default when blank).
+- The assessment rule, as one table beside the role policy: an open contest or timed practice sitting for
+  the pupil, and at an affiliated college the exam cell's session for the student's offerings from its
+  start to its end, closes the tutor on that topic; a question matching one of the pupil's own hand-in
+  assignments (compared by embedding against the assignment's title and body read through the pupil's
+  own door, one CPU embedding of about 50 ms, no model call, never across tenants) gets a hint first and
+  the worked answer only when the same question is asked again in the same conversation (the last two
+  turns), unless the teacher's per-assignment switch turns the second ask off. A hint names the concept
+  and the chapter and asks a guiding question; it never carries the final value, the option letter or the
+  full working. A teacher's topic questions are never limited by sittings or subjects.
+- The explanation scales with the question: a definition gets the sentence and the citation; "explain"
+  gets the full shape (idea, everyday example, the book's statement, a check question); "why" gets the
+  reasoning. A question typed in another of the three languages is answered in that language; the cited
+  book stays the English NCERT with the glossary term beside the English one.
 - Decision 0005: the model endpoint as a third-party destination under decision 0002, the default-on
   choice, the opt-out, the retention, what is stripped, the provider when hosted.
 
 ### Phase C — surfaces (week 4)
 
-- Web: a panel reachable from every role's home on the kit, en/hi/mr, streamed answers, citations as
-  links to the chapter, "was this helpful" per answer, the conversation list for thirty days.
+- Web: a panel reachable from every role's home on the kit (44 px targets, the two tones, under the e2e
+  axe gate on each role home), en/hi/mr, streamed answers announced to a screen reader once per answer,
+  citations as links to the chapter, "was this helpful" per answer, the conversation list for thirty days,
+  and the first screen saying that a conversation is the unit and that nothing is remembered across them.
 - Phone: a tab under More reading the same doors, short answers by default, a clear offline state (no
   offline tutor), screen capture allowed (nothing sensitive is on it once stripped).
 - The office's overview card: the school's monthly use against its budget, the switch, counts only.
@@ -141,8 +158,11 @@ the glossaries and the explanation template carry the quality.
 ### Phase D — evaluation, locally (week 5)
 
 - Golden sets: platform help per role (200 questions, scored on naming the right page and steps); the
-  tutor per board and grade band (200 each, scored for correctness and citation); the exam-scope set
-  against the demo schools' syllabi and exam series; the refusal set; the injection set.
+  tutor per board and grade band (200 each, scored for correctness, citation and the template's scale);
+  the exam-scope set against the demo schools' syllabi and exam series and the demo colleges' sessions;
+  fifty hint cases per grade band (no final value, option letter or working in a hint; the second ask
+  honoured; the teacher's switch honoured); the refusal and counsellor-route set; the injection set; the
+  language-switch set.
 - Hindi and Marathi answers read by a native speaker (R-14); the Sarvam-M comparison.
 - A red-team pass for a minor's questions (self-harm, adult content, another pupil's data, injection
   through a pasted homework text).
@@ -215,7 +235,9 @@ questions a month or for data residency under the DPDP rules.
 11. **Teachers' view.** A teacher sees counts per class (how many questions, which chapters), never a
     pupil's words, unless the owner decides otherwise.
 
-## 9. Gaps found on the fifth reading (8 October 2026)
+## 9. Gaps found on the fifth reading (8 October 2026) — all accepted and folded into sections 2, 5 and 8
+
+Kept as the record of why each rule exists.
 
 1. **A teacher is also a pupil's examiner.** The tutor answers a teacher's topic questions in full even
    during a sitting, as it should, but the hint mode keys on the pupil's open sittings only; a teacher
@@ -256,4 +278,23 @@ questions a month or for data residency under the DPDP rules.
 12. **Cost of the hint matching.** Every tutor question is embedded and compared against the pupil's open
     sittings and assignments; that is one embedding call on the service machine's CPU, about 50 ms, and
     bounded by the person's daily cap; no model call is spent on it.
+
+## 10. Budget on the weekly meter
+
+The builders run on Opus, the planner on Sonnet, the coordination on Fable, as the earlier batches did.
+Points are the Max plan's weekly meter (one hundred a week; the meter resets on 10 October 2026, 03:00
+UTC, and about twelve points remain in the current week). The laptop running the model costs no points.
+
+| Wave | What | Points |
+| --- | --- | --- |
+| 1 | Phase A (corpus fetcher and manifest, PDF to text with figures, chunking, the content schema, embeddings, the help index, the local model behind the endpoint) and Phase B (the service, the doors and catalog, the role and assessment tables, retrieval and tools, safety, the counsellor route and helpline setting, retention, decision 0005, tests) | 15 to 19 |
+| 2 | Phase C (the web panel, the phone tab, the office's card) and Phase D (the golden sets and harness, the hint and refusal sets, the red team, the demo-tenant pilot; the speaker's reading is human time) | 9 to 12 |
+| 3 | Phase E (the hosted switch, the golden sets rerun on the host, the deploy, one real school) | 3 to 4 |
+| | Coordination, reviews, commits, sweeps | 3 to 4 |
+| **Total** | | **30 to 39** |
+
+That is a third of a week's allowance per wave: wave 1 fits the week after the reset with room for the
+rest of the day's work, wave 2 the week after, wave 3 with it or the week after; or all three in one week
+if nothing else runs that week. The corpus fetcher and the help index alone (about two points) fit the
+points left before the reset.
 
