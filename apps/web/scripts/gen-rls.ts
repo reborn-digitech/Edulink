@@ -113,6 +113,16 @@ const NO_SCHOOL_POLICY = new Set([
   "Company",
   "CompanyRecruiter",
   "Requirement",
+  // The assistant's content (docs/plans/assistant.md, Phase A, 8 Oct 2026): the curriculum corpus
+  // (a chapter of a public textbook, its chunks and their vectors) and the platform-help corpus (a
+  // door's summary, a docs paragraph, a nav label). A shared catalogue exactly like QuizTopic: a
+  // passage of the NCERT class 8 science book belongs to no school, and scoping it to one would leave
+  // every other school's tutor with nothing to cite. Read by the app role, written by the owner only
+  // (scripts/db-grants.mjs revokes the app's INSERT, UPDATE and DELETE). What a person ASKS the
+  // assistant is school-scoped and will carry schoolId (Phase B).
+  "ContentDocument",
+  "ContentChunk",
+  "HelpEntry",
 ]);
 
 /**

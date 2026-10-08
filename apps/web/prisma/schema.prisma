@@ -28,11 +28,17 @@ generator client {
   // The container runs on Debian bookworm (OpenSSL 3). Pinned rather than detected: the
   // build stage once guessed 1.1.x and the served image could not find its query engine.
   binaryTargets = ["native", "debian-openssl-3.0.x"]
+  // The assistant's vectors need pgvector before a table can be created; declaring the extension
+  // lets `prisma db push` (db:reset, rls:verify's scratch database) create it too (8 Oct 2026).
+  previewFeatures = ["postgresqlExtensions"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  // pgvector for ContentChunk and HelpEntry (the assistant). pg_trgm stays optional and out of
+  // this list on purpose: its migration tolerates a Postgres without it (bank duplicates).
+  extensions = [vector]
 }
 
 // ---------------------------------------------------------------------------
@@ -3011,6 +3017,129 @@ model QuizQuestionTranslation {
   question QuizQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
 
   @@unique([questionId, language])
+  @@index([language])
+}
+
+// ---------------------------------------------------------------------------
+// The assistant's content (docs/plans/assistant.md §2 and §5, Phase A, 8 October 2026)
+//
+// The curriculum corpus and the platform-help corpus the assistant retrieves from. NO schoolId on
+// any of them, and all three sit in NO_SCHOOL_POLICY in scripts/gen-rls.ts beside QuizTopic: a
+// chapter of the NCERT class 8 science book, or the sentence saying where the office records a
+// departure, belongs to no school. Readable by the app role, written by the owner only (the ingest
+// and the help index run on the owner connection; scripts/db-grants.mjs takes INSERT, UPDATE and
+// DELETE back from the app role). What a PERSON asks the assistant is a different matter and will
+// carry schoolId and RLS like everything else (Phase B).
+//
+// Two indexes per table are written in the migration in SQL Prisma cannot say, and Prisma ignores
+// them (a partial index and an expression index), so no later `migrate dev` diff touches them:
+//   - an HNSW index on `embedding` (cosine distance, vector_cosine_ops) WHERE embedding IS NOT NULL;
+//   - a GIN index on the text's tsvector (English stemming for "en" rows, the simple configuration
+//     for Hindi and Marathi), the keyword half of the search. The expression is not a stored
+//     generated column because Prisma reads one as a default and every later diff would try to drop
+//     it; queries repeat the index's expression exactly (src/lib/assistant-retrieval.ts).
+// ---------------------------------------------------------------------------
+
+/// One file of the curriculum corpus, as the corpus fetcher saved it (storage/corpus/…), with the
+/// fields of its manifest.json. Re-ingesting a file whose checksum changed replaces its chunks.
+model ContentDocument {
+  id               String    @id @default(cuid())
+  /// Corpus-relative path, the document's identity: "ncert/8/science/hesc111.pdf".
+  path             String    @unique
+  /// ncert | balbharati | nios | syllabi | glossaries (scripts/corpus-lib.ts SourceKey); "fixture" for the test corpus.
+  source           String
+  /// textbook | exemplar | course | glossary | syllabus
+  kind             String
+  /// As the site names itself: "NCERT", "Balbharati (…)", "NIOS", "SPPU (…)".
+  board            String
+  /// "8" for a class; a programme or faculty for a syllabus.
+  gradeOrProgramme String
+  subject          String
+  /// The book's title as the site lists it.
+  title            String
+  /// "en"; "en+hi" for a bilingual glossary.
+  language         String
+  /// As the site or the book's own prelims state it; null when neither does.
+  edition          String?
+  year             String?
+  sourceUrl        String
+  licenceUrl       String
+  /// The site's own words, trimmed; never paraphrased.
+  licenceText      String?
+  retrievedAt      DateTime
+  sha256           String
+  bytes            Int
+  pageCount        Int
+  /// The chapter number, the site's book code, its Last-Modified: whatever the manifest carried.
+  extra            Json?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  chunks ContentChunk[]
+
+  @@index([board, gradeOrProgramme, subject])
+  @@index([source])
+}
+
+/// About 500 tokens of one document, cut at chapter and section boundaries, with where it came from.
+/// The citation the assistant gives is built from this row and its document.
+model ContentChunk {
+  id          String   @id @default(cuid())
+  documentId  String
+  /// Position within the document, from 0.
+  ordinal     Int
+  chapter     String?
+  section     String?
+  /// Chapter, section, subsection… as the headings read: ["Force and Pressure", "4.2 A Force — A Push or a Pull"].
+  headingPath String[]
+  pageStart   Int
+  pageEnd     Int
+  text        String
+  language    String
+  /// Estimated (characters / 4), enough to size a prompt.
+  tokens      Int
+  /// Figures cut from the pages this chunk covers: "figures/<file>-p<page>-<n>.png", corpus-relative.
+  figureKeys  String[]
+  /// The document's edition, repeated on the chunk so a citation never loses it.
+  edition     String?
+  /// Qwen3-Embedding-0.6B, 1024 dimensions; HNSW (cosine) index in the migration. Null until embedded.
+  embedding   Unsupported("vector(1024)")?
+  embeddedAt  DateTime?
+  createdAt   DateTime @default(now())
+
+  document ContentDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@unique([documentId, ordinal])
+  @@index([documentId])
+}
+
+/// One unit of platform help: a door's summary, a docs paragraph that tells somebody how to do
+/// something, or a dictionary sentence naming a page or an action, in one language, tagged with
+/// the commit it was read from. Rebuilt by `npm run help:index` at every deploy.
+model HelpEntry {
+  id         String   @id @default(cuid())
+  /// door | doc | nav | action | dictionary
+  kind       String
+  /// The roles the entry applies to (RoleCode values); empty means every role.
+  roles      String[]
+  /// The page it names, when it names one: "/admin/people/departures".
+  pagePath   String?
+  /// For a door: its method and path ("GET /api/v1/…") and module.
+  door       String?
+  module     String?
+  /// A short label: the door's summary, the docs heading path, the nav label.
+  title      String
+  text       String
+  /// Repository-relative: "docs/college.md", "src/lib/api-catalog/office.ts".
+  sourceFile String
+  /// `git rev-parse --short HEAD` at the build, "-dirty" when the tree had changes.
+  commit     String
+  /// en | hi | mr
+  language   String
+  embedding  Unsupported("vector(1024)")?
+  createdAt  DateTime @default(now())
+
+  @@index([commit])
   @@index([language])
 }
 

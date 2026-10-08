@@ -60,7 +60,8 @@ jobs:
     timeout-minutes: 45
     services:
       postgres:
-        image: postgres:16
+        # pgvector for the assistant's content tables (migration 20261008151729_assistant_content).
+        image: pgvector/pgvector:0.8.0-pg16
         env:
           POSTGRES_USER: postgres
           POSTGRES_HOST_AUTH_METHOD: trust
@@ -188,7 +189,8 @@ jobs:
     timeout-minutes: 20
     services:
       postgres:
-        image: postgres:16
+        # pgvector for the assistant's content tables (migration 20261008151729_assistant_content).
+        image: pgvector/pgvector:0.8.0-pg16
         env:
           POSTGRES_USER: postgres
           POSTGRES_HOST_AUTH_METHOD: trust
@@ -309,7 +311,8 @@ jobs:
     timeout-minutes: 45
     services:
       postgres:
-        image: postgres:16
+        # pgvector for the assistant's content tables (migration 20261008151729_assistant_content).
+        image: pgvector/pgvector:0.8.0-pg16
         env:
           POSTGRES_USER: postgres
           POSTGRES_HOST_AUTH_METHOD: trust
@@ -434,7 +437,8 @@ jobs:
     timeout-minutes: 65
     services:
       postgres:
-        image: postgres:16
+        # pgvector for the assistant's content tables (migration 20261008151729_assistant_content).
+        image: pgvector/pgvector:0.8.0-pg16
         env:
           POSTGRES_USER: postgres
           POSTGRES_HOST_AUTH_METHOD: trust
@@ -577,7 +581,8 @@ jobs:
       packages: write
     services:
       postgres:
-        image: postgres:16
+        # pgvector for the assistant's content tables (migration 20261008151729_assistant_content).
+        image: pgvector/pgvector:0.8.0-pg16
         env:
           POSTGRES_USER: postgres
           POSTGRES_HOST_AUTH_METHOD: trust

@@ -1,6 +1,6 @@
 # The assistant — plan of 8 October 2026 (chatbot first)
 
-Status: plan, not yet built. The quiz bank generator is parked; its plan stays in
+Status: Phase A built on 8 and 9 October 2026 (section 5; runbook [docs/runbooks/assistant-local.md](../runbooks/assistant-local.md)); Phases B to E not built. The quiz bank generator is parked; its plan stays in
 [assistant-and-quiz-bank.md](assistant-and-quiz-bank.md) and section 6 below names the pieces built here
 that it will reuse.
 
@@ -112,6 +112,21 @@ the glossaries and the explanation template carry the quality.
 - `scripts/help-index.ts`: the platform-help corpus built from the repository, with the role each
   sentence applies to and the page it names, tagged with the commit.
 - The local model up behind the OpenAI-compatible endpoint; `ASSISTANT_MODEL_URL` on the dev server.
+
+**Built, 8–9 October 2026.** `npm run corpus:fetch` (`scripts/corpus-fetch.ts`), `corpus:ingest`
+(`corpus-pdf.ts`, `corpus-chunk.ts`, `corpus-ingest.ts`), `help:index`, `assistant:ask`,
+`model:serve` (`scripts/model-serve.sh`); `src/lib/assistant-env.ts`, `assistant-model.ts`,
+`assistant-retrieval.ts`; migration `20261008152105_assistant_content` (ContentDocument,
+ContentChunk, HelpEntry in the public schema beside the quiz catalogue rather than a separate
+`content` schema; pgvector 0.8, HNSW cosine and full-text GIN indexes; owner-written). The first
+full run's counts are in the runbook's section 6 and the Phase A report. The models are
+Qwen3-30B-A3B at Q8_0 and Qwen3-Embedding-0.6B at Q8_0 (1024 dimensions) under llama.cpp, not the 8B
+embedding model of section 4: the 0.6B is what the hosted phase plans to run, so the vectors need not
+be rebuilt to move. For the owner, from the Phase A report: NCERT's published terms forbid "use of
+these online books as a part of digital content packages or software" (counsel reads it before any
+school sees an answer); the embeddings server runs one slot with flash attention off after three
+llama.cpp faults; a class's search widens to the classes either side when its own books carry
+nothing close (Newton's third law is in class 9's book, not class 8's).
 
 ### Phase B — the service (weeks 2 and 3)
 

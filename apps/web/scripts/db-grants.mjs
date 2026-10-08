@@ -117,6 +117,16 @@ if (singleRole) {
     // says the same thing for every role but the owner.
     "-c", `REVOKE UPDATE ON "OperatorAccess" FROM "${appRole}";`,
     "-c", `GRANT UPDATE ("endedAt") ON "OperatorAccess" TO "${appRole}";`,
+    // The assistant's content (the curriculum corpus and the platform help) is read by the app and
+    // written by the owner only: corpus:ingest and help:index run on the owner connection. Guarded
+    // so a database without the tables yet (an older checkout) still takes the rest.
+    "-c", `DO $$ DECLARE t text; BEGIN
+      FOREACH t IN ARRAY ARRAY['ContentDocument', 'ContentChunk', 'HelpEntry'] LOOP
+        IF to_regclass(format('public.%I', t)) IS NOT NULL THEN
+          EXECUTE format('REVOKE INSERT, UPDATE, DELETE ON %I FROM %I', t, '${appRole}');
+        END IF;
+      END LOOP;
+    END $$;`,
   ], { quiet: true });
 }
 

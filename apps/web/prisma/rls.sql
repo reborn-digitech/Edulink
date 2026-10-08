@@ -3343,6 +3343,8 @@ CREATE TRIGGER "OperatorAccess_close_only"
 --   Company
 --   CompanyRecruiter
 --   Competition
+--   ContentChunk
+--   ContentDocument
 --   ExpertPayout
 --   ExpertPayoutAccount
 --   ExpertProfile
@@ -3355,6 +3357,7 @@ CREATE TRIGGER "OperatorAccess_close_only"
 --   GigSettings
 --   GigSlot
 --   Guardianship
+--   HelpEntry
 --   JobRun
 --   OutboundEmail
 --   Plan

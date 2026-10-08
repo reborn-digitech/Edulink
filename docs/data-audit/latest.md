@@ -1,6 +1,6 @@
 # Data-flow audit — latest run
 
-Run: 2026-10-06T11:20:13.093Z · schools: Saraswati Arts and Science College, Saraswati College of Agriculture, Saraswati College of Education, Saraswati College of Pharmacy, Saraswati Institute of Health Sciences, Saraswati Institute of Management, Saraswati Institute of Technology, Saraswati Law College, Saraswati School of Architecture, Saraswati Vidya Mandir, Saraswati Vocational College, Sunrise Public School, ZZ Northgate School · 0 FAIL · 1 WARN · 189 INFO
+Run: 2026-10-08T15:58:52.204Z · schools: Saraswati Arts and Science College, Saraswati College of Agriculture, Saraswati College of Education, Saraswati College of Pharmacy, Saraswati Institute of Health Sciences, Saraswati Institute of Management, Saraswati Institute of Technology, Saraswati Law College, Saraswati School of Architecture, Saraswati Vidya Mandir, Saraswati Vocational College, Sunrise Public School, ZZ Northgate School · 0 FAIL · 1 WARN · 189 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the code should never produce; WARN = drift a later edit causes by design, or a population gap; INFO = a figure worth reading.
 
@@ -62,19 +62,19 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the c
 | cards-api | Saraswati Vocational College | the sampled child has no report card to read |
 | cards-api | Sunrise Public School | the sampled child has no report card to read |
 | cards-api | ZZ Northgate School | the sampled child has no report card to read |
-| board-api | Saraswati Arts and Science College | 2026-10-06: 0 away, 0 lessons, 0 covered |
-| board-api | Saraswati College of Agriculture | 2026-10-06: 0 away, 0 lessons, 0 covered |
-| board-api | Saraswati College of Education | 2026-10-06: 0 away, 0 lessons, 0 covered |
-| board-api | Saraswati College of Pharmacy | 2026-10-06: 0 away, 0 lessons, 0 covered |
-| board-api | Saraswati Institute of Health Sciences | 2026-10-06: 0 away, 0 lessons, 0 covered |
-| board-api | Saraswati Institute of Management | 2026-10-06: 0 away, 0 lessons, 0 covered |
-| board-api | Saraswati Institute of Technology | 2026-10-06: 0 away, 0 lessons, 0 covered |
-| board-api | Saraswati Law College | 2026-10-06: 0 away, 0 lessons, 0 covered |
-| board-api | Saraswati School of Architecture | 2026-10-06: 0 away, 0 lessons, 0 covered |
-| board-api | Saraswati Vidya Mandir | 2026-10-06: 0 away, 0 lessons, 0 covered |
-| board-api | Saraswati Vocational College | 2026-10-06: 0 away, 0 lessons, 0 covered |
-| board-api | Sunrise Public School | 2026-10-06: 0 away, 0 lessons, 0 covered |
-| board-api | ZZ Northgate School | 2026-10-06: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati Arts and Science College | 2026-10-08: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati College of Agriculture | 2026-10-08: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati College of Education | 2026-10-08: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati College of Pharmacy | 2026-10-08: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati Institute of Health Sciences | 2026-10-08: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati Institute of Management | 2026-10-08: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati Institute of Technology | 2026-10-08: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati Law College | 2026-10-08: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati School of Architecture | 2026-10-08: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati Vidya Mandir | 2026-10-08: 0 away, 0 lessons, 0 covered |
+| board-api | Saraswati Vocational College | 2026-10-08: 0 away, 0 lessons, 0 covered |
+| board-api | Sunrise Public School | 2026-10-08: 0 away, 0 lessons, 0 covered |
+| board-api | ZZ Northgate School | 2026-10-08: 0 away, 0 lessons, 0 covered |
 | overview-api | Saraswati Arts and Science College | principal: attendance null%, registers missing today 3 (holidays and empty classes are not excluded) |
 | overview-api | Saraswati College of Agriculture | principal: attendance null%, registers missing today 3 (holidays and empty classes are not excluded) |
 | overview-api | Saraswati College of Education | principal: attendance null%, registers missing today 3 (holidays and empty classes are not excluded) |
