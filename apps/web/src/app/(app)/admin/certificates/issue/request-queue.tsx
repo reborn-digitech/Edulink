@@ -120,7 +120,7 @@ export function RequestQueue({ items, pending }: { items: CertificateRequestView
                     {isPending && (
                       <span className="flex shrink-0 flex-wrap items-center gap-2">
                         <Button asChild size="sm" icon={<SealCheckIcon weight="bold" />}>
-                          <Link href={`/admin/certificates/issue?membershipId=${item.studentMembershipId}&requestId=${item.id}&kind=${item.kind}`} data-testid={`issue-from-${item.id}`}>
+                          <Link href={`/admin/certificates/issue?membershipId=${item.studentMembershipId}&requestId=${item.id}&kind=${item.kind}#issue`} data-testid={`issue-from-${item.id}`}>
                             {t("certificateRequests.issueFromRequest")}
                           </Link>
                         </Button>

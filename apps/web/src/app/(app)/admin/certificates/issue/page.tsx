@@ -84,13 +84,10 @@ export default async function IssueCertificatePage({ searchParams }: { searchPar
   }
   const missingLabels = record ? record.missing.map((f) => t(`pupilRecord.${f}` as TranslationKey)) : [];
 
-  return (
-    <div className="mx-auto max-w-3xl space-y-6">
-      <PageHeader title={t("certificates.issueTitle")} description={t("certificates.issueIntro")} back={{ href: "/admin/certificates", label: t("certificates.title") }} />
-
-      <RequestQueue items={queue.items} pending={queue.pending} />
-
-      {templates.length === 0 ? (
+  // The card is built once and placed by the page: first when a request was chosen from the queue (the
+  // handoff of 10 Oct 2026 looked dead while the card sat under a long queue), under the queue otherwise.
+  const formCard =
+    templates.length === 0 ? (
         <EmptyState
           title={t("certificates.noTemplates")}
           description={t("certificates.noTemplatesBody")}
@@ -101,7 +98,7 @@ export default async function IssueCertificatePage({ searchParams }: { searchPar
           }
         />
       ) : (
-        <Card>
+        <Card id="issue" className="scroll-mt-24" data-testid="issue-card">
           <CardBody className="space-y-4 pt-5">
             {/* The search is a plain GET so the list it narrows is the server's own. */}
             <form method="get" action="/admin/certificates/issue" className="flex flex-wrap items-end gap-2">
@@ -155,6 +152,21 @@ export default async function IssueCertificatePage({ searchParams }: { searchPar
             />
           </CardBody>
         </Card>
+      );
+
+  return (
+    <div className="mx-auto max-w-3xl space-y-6">
+      <PageHeader title={t("certificates.issueTitle")} description={t("certificates.issueIntro")} back={{ href: "/admin/certificates", label: t("certificates.title") }} />
+      {request ? (
+        <>
+          {formCard}
+          <RequestQueue items={queue.items} pending={queue.pending} />
+        </>
+      ) : (
+        <>
+          <RequestQueue items={queue.items} pending={queue.pending} />
+          {formCard}
+        </>
       )}
     </div>
   );
