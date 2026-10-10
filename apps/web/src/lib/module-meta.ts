@@ -16,6 +16,8 @@ export const MODULE_META: Record<SchoolModuleCode, { nameKey: TranslationKey; wh
   INVENTORY: { nameKey: "modules.inventoryName", whatKey: "modules.inventoryWhat", role: null },
   PAYROLL: { nameKey: "modules.payrollName", whatKey: "modules.payrollWhat", role: null },
   ALUMNI: { nameKey: "modules.alumniName", whatKey: "modules.alumniWhat", role: "ALUMNUS" },
+  // The assistant (Phase B, 9 Oct 2026): on for every school and college from the start, brings no role.
+  ASSISTANT: { nameKey: "modules.assistantName", whatKey: "modules.assistantWhat", role: null },
   // The college's six (4 Oct 2026), offered on a college's modules page only (modulesForKind).
   ACADEMICS: { nameKey: "modules.academicsName", whatKey: "modules.academicsWhat", role: "FACULTY" },
   EXAMS: { nameKey: "modules.examsName", whatKey: "modules.examsWhat", role: "EXAM_CONTROLLER" },

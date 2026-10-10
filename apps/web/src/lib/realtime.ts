@@ -40,7 +40,15 @@ export type RealtimeEvent =
    */
   | { type: "transport.position"; tripId: string; lat: number; lng: number; at: string }
   | { type: "transport.trip"; tripId: string; status: string }
-  | { type: "transport.near"; tripId: string; studentMembershipId: string };
+  | { type: "transport.near"; tripId: string; studentMembershipId: string }
+  /**
+   * The assistant (Phase B, 10 Oct 2026; assistantEventSchema in packages/contracts): on the asker's
+   * own user channel only. The stages, then the CHECKED answer in pieces, then done — nothing is
+   * streamed before the answer gate has passed it.
+   */
+  | { type: "assistant.stage"; conversationId: string; stage: "SEARCHING" | "WRITING" | "CHECKING" }
+  | { type: "assistant.delta"; conversationId: string; messageId: string; seq: number; text: string }
+  | { type: "assistant.done"; conversationId: string; messageId: string; verdict: string };
 
 type Subscriber = {
   channels: Set<string>;

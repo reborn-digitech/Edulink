@@ -833,6 +833,12 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "iqac.visit.item": "audit.iqacVisitItem",
   "iqac.visit.itemRemove": "audit.iqacVisitItemRemove",
   "iqac.visit.export": "audit.iqacVisitExport",
+  // The assistant (Phase B, 10 Oct 2026): settings, a guardian's opt-out, a teacher's switch, the counsellor route, the notice. Never a word anyone typed.
+  "assistant.settings": "audit.assistantSettings",
+  "assistant.optOut": "audit.assistantOptOut",
+  "assistant.assignmentSwitch": "audit.assistantAssignmentSwitch",
+  "assistant.counsellorRoute": "audit.assistantCounsellorRoute",
+  "assistant.notice": "audit.assistantNotice",
 };
 
 export function actionKey(action: string): TranslationKey | null {

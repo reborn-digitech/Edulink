@@ -73,9 +73,16 @@ export type RetentionConfig = {
    * not kept as a history of the driver's days.
    */
   tripPositionDays: number;
+  /**
+   * Days an assistant conversation is kept after its last message (Phase B, decision 0005): thirty
+   * by default, as the first screen and the guardians' notice say. Never in the audit log.
+   */
+  assistantDays: number;
+  /** Days the assistant's daily counts are kept (the office's card reads this month and last). */
+  assistantUsageDays: number;
 };
 
-export const RETENTION_DEFAULTS: RetentionConfig = { sessionDays: 7, tokenDays: 7, rateLimitDays: 1, uploadTicketDays: 30, outboxDays: 30, jobRunDays: 90, auditDays: 730, healthReadDays: 365, tripPositionDays: 30 };
+export const RETENTION_DEFAULTS: RetentionConfig = { sessionDays: 7, tokenDays: 7, rateLimitDays: 1, uploadTicketDays: 30, outboxDays: 30, jobRunDays: 90, auditDays: 730, healthReadDays: 365, tripPositionDays: 30, assistantDays: 30, assistantUsageDays: 62 };
 
 const RETENTION_VARS: Record<keyof RetentionConfig, { name: string; min: number; max: number }> = {
   sessionDays: { name: "RETENTION_SESSION_DAYS", min: 1, max: 365 },
@@ -88,6 +95,9 @@ const RETENTION_VARS: Record<keyof RetentionConfig, { name: string; min: number;
   // Never under the guardian's ninety-day list (HEALTH_READS_DAYS in src/lib/health.ts).
   healthReadDays: { name: "RETENTION_HEALTH_READS_DAYS", min: 90, max: 3650 },
   tripPositionDays: { name: "RETENTION_TRIP_POSITIONS_DAYS", min: 1, max: 3650 },
+  assistantDays: { name: "RETENTION_ASSISTANT_DAYS", min: 1, max: 365 },
+  // Never under a month and a day: the cap and the card read the month's rows.
+  assistantUsageDays: { name: "RETENTION_ASSISTANT_USAGE_DAYS", min: 32, max: 3650 },
 };
 
 /**

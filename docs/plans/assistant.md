@@ -1,6 +1,6 @@
 # The assistant — plan of 8 October 2026 (chatbot first)
 
-Status: Phase A built on 8 and 9 October 2026 (section 5; runbook [docs/runbooks/assistant-local.md](../runbooks/assistant-local.md)); Phases B to E not built. The quiz bank generator is parked; its plan stays in
+Status: Phase A built on 8 and 9 October 2026 (section 5; runbook [docs/runbooks/assistant-local.md](../runbooks/assistant-local.md)); Phase B built on 10 October 2026 (section 5, [decision 0005](../decisions/0005-assistant-model-endpoint.md)); Phases C to E not built. The quiz bank generator is parked; its plan stays in
 [assistant-and-quiz-bank.md](assistant-and-quiz-bank.md) and section 6 below names the pieces built here
 that it will reuse.
 
@@ -160,6 +160,22 @@ nothing close (Newton's third law is in class 9's book, not class 8's).
 - Decision 0005: the model endpoint as a third-party destination under decision 0002, the default-on
   choice, the opt-out, the retention, what is stripped, the provider when hosted.
 
+**Built, 10 October 2026.** A library in the web app, not yet its own process (`apps/web/src/lib/assistant/`:
+`config.ts` the thresholds, caps and switches; `policy.ts` the role table; `refusals.ts` the twelve
+categories and injection in en, hi and mr; `gate.ts` the gates before and after the model with the
+one-word classifier forced by a llama.cpp grammar; `strip.ts` and `lexicon.ts`; `assessment-rule.ts` and
+`assessment.ts`; `tools.ts`; `prompt.ts` the system prompt; `counsellor.ts`; `usage.ts`; `service.ts`),
+thirteen catalogued doors (`api-catalog/assistant.ts`, contracts `v1/assistant.ts`), migration
+`20261010041003_assistant_service` (AssistantConversation, AssistantMessage, AssistantUsage,
+AssistantChildSetting, `School.helplineText`, `Assignment.assistantAnswers`, the ASSISTANT module on for
+every tenant), retention through `retention:sweep`, and `scripts/assistant-ask.ts` re-pointed at the
+library (`previewAnswer`). What differs from the text above: the answer is streamed over the event
+stream only after the answer gate has passed it (nothing unchecked is shown), so the stream carries
+stages and the checked answer, not tokens; there is one switch (the module), not a `School.assistantOn`
+column; the counsellor on the staff record is a designation naming a counsellor; the reranker is still
+the fused order; the exam-scope answer from the syllabus and exams doors is the tools' (a pupil's exams
+and timetable, the office's coverage), not yet its own reader.
+
 ### Phase C — surfaces (week 4)
 
 - Web: a panel reachable from every role's home on the kit (44 px targets, the two tones, under the e2e
@@ -169,6 +185,21 @@ nothing close (Newton's third law is in class 9's book, not class 8's).
 - Phone: a tab under More reading the same doors, short answers by default, a clear offline state (no
   offline tutor), screen capture allowed (nothing sensitive is on it once stripped).
 - The office's overview card: the school's monthly use against its budget, the switch, counts only.
+
+**Built, 10 October 2026 (Phase C).** Web: `src/components/assistant/*` (the chat, the panel, the page's views, the
+office's card, the family's card, the teacher's switch, the doors' client and the stream hook), the route
+`app/(app)/assistant` (a new conversation and the thirty days' list; `/assistant/{id}` to re-read, go on and delete),
+an entry in every school role's menu behind the module (lib/nav.ts; not the expert's or the recruiter's), and the
+panel opened from the shell's rail and the phone-width top bar on every page; the answer streams from the event
+stream into a region that is not live and the whole answer is announced once; a citation opens the publisher's
+chapter at the page (https only) or the platform page a help entry names; a fixed sentence is the assistant's own
+line with nothing to retry. The office's card is on /admin (the school's office and the college's registrar), the
+opt-out per child on /parent/settings (#assistant, where a guardian's first screen links), the per-assignment switch
+on the teacher's assignment and the faculty's piece of work. Phone: `screens/shared/assistant.tsx` under More for
+the same roles, short answers with "Show the whole answer", an offline card and nothing queued, the guardian's
+switch on the phone's settings too. Tests: `tests/assistant-surfaces.test.ts`, `e2e/assistant-axe.spec.ts` (the
+panel on each role's home under the axe gate), `apps/mobile/test/screens/shared-assistant.test.tsx` (per role, and
+the x-access matrix for the doors the screen calls).
 
 ### Phase D — evaluation, locally (week 5)
 

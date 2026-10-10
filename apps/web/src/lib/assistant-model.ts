@@ -68,18 +68,44 @@ export type ChatResult = {
   /** llama-server's own timings, when the endpoint is llama.cpp: generation speed for the report. */
   tokensPerSecond: number | null;
   promptTokensPerSecond: number | null;
+  /** The first token's log-probability, when asked for and reported (the classifier's confidence). */
+  firstTokenLogprob: number | null;
 };
 
-export async function chatComplete(ep: AssistantEndpoint, messages: ChatMessage[], opts: { maxTokens?: number; temperature?: number; timeoutMs?: number } = {}): Promise<ChatResult> {
+export type ChatOptions = {
+  maxTokens?: number;
+  temperature?: number;
+  timeoutMs?: number;
+  /**
+   * A GBNF grammar the output must match (llama.cpp's `grammar`): the classifier's one word. A
+   * hosted endpoint without grammar support answers free text, which the caller refuses unless it is
+   * exactly one of the labels.
+   */
+  grammar?: string;
+  /** Ask for the first tokens' log-probabilities (the classifier's confidence). */
+  logprobs?: boolean;
+};
+
+export async function chatComplete(ep: AssistantEndpoint, messages: ChatMessage[], opts: ChatOptions = {}): Promise<ChatResult> {
   const res = await fetch(`${ep.url}/chat/completions`, {
     method: "POST",
     headers: headers(ep),
-    body: JSON.stringify({ model: ep.model, messages, max_tokens: opts.maxTokens ?? 900, temperature: opts.temperature ?? 0.3, stream: false }),
+    body: JSON.stringify({
+      model: ep.model,
+      messages,
+      max_tokens: opts.maxTokens ?? 900,
+      temperature: opts.temperature ?? 0.3,
+      stream: false,
+      // Qwen3's thinking block is never shown and costs seconds: switched off in the chat template (llama.cpp reads this; a host ignores it).
+      chat_template_kwargs: { enable_thinking: false },
+      ...(opts.grammar ? { grammar: opts.grammar } : {}),
+      ...(opts.logprobs ? { logprobs: true, top_logprobs: 1 } : {}),
+    }),
     signal: AbortSignal.timeout(opts.timeoutMs ?? 300_000),
   });
   if (!res.ok) throw new Error(`chat endpoint answered ${res.status}: ${(await res.text()).slice(0, 300)}`);
   const body = (await res.json()) as {
-    choices?: { message?: { content?: string } }[];
+    choices?: { message?: { content?: string }; logprobs?: { content?: { logprob?: number }[] } }[];
     usage?: { prompt_tokens?: number; completion_tokens?: number };
     timings?: { predicted_per_second?: number; prompt_per_second?: number };
   };
@@ -90,5 +116,6 @@ export async function chatComplete(ep: AssistantEndpoint, messages: ChatMessage[
     usage: body.usage ? { promptTokens: body.usage.prompt_tokens ?? 0, completionTokens: body.usage.completion_tokens ?? 0 } : null,
     tokensPerSecond: body.timings?.predicted_per_second ?? null,
     promptTokensPerSecond: body.timings?.prompt_per_second ?? null,
+    firstTokenLogprob: body.choices?.[0]?.logprobs?.content?.[0]?.logprob ?? null,
   };
 }

@@ -266,12 +266,15 @@ function scan(): Finding[] {
       // strings are joins of a framework code, a year, a filing status code
       // and a metric id ("SSR 2025 · FILED", "NBA 2026"): codes the page
       // shows beside its translated headings, like filing-codes.ts.
+      // …and the assistant's system prompt (Phase B, 10 Oct 2026): src/lib/assistant/prompt.ts is the model's only
+      // instruction channel, read by the model and never by a person; every sentence a person reads is a
+      // dictionary key (assistantService.*).
       // …and the assistant's three libraries (Phase A, 8 Oct 2026): assistant-env.ts is a boot check
       // like env.ts (every string a `message:` for the operator's console); assistant-model.ts holds
       // the embedding model's query instructions, which the model card wants in English whatever
       // the question's language, read by the model and never by a person; assistant-retrieval.ts's
       // one string is the SQL expression its full-text index is built on. None reaches a page.
-      (f) => !f.includes("i18n") && !f.endsWith("/places.ts") && !f.includes("/api-catalog/") && !f.endsWith("/lib/env.ts") && !f.endsWith("/lib/gig-gateway-env.ts") && !f.endsWith("/lib/message-templates.ts") && !f.endsWith("/lib/filing-codes.ts") && !f.endsWith("/lib/filings.ts") && !f.endsWith("/lib/module-file-headings.ts") && !f.endsWith("/lib/tally-export.ts") && !f.endsWith("/lib/peer-visits.ts") && !f.endsWith("/lib/assistant-env.ts") && !f.endsWith("/lib/assistant-model.ts") && !f.endsWith("/lib/assistant-retrieval.ts"),
+      (f) => !f.includes("i18n") && !f.endsWith("/places.ts") && !f.includes("/api-catalog/") && !f.endsWith("/lib/env.ts") && !f.endsWith("/lib/gig-gateway-env.ts") && !f.endsWith("/lib/message-templates.ts") && !f.endsWith("/lib/filing-codes.ts") && !f.endsWith("/lib/filings.ts") && !f.endsWith("/lib/module-file-headings.ts") && !f.endsWith("/lib/tally-export.ts") && !f.endsWith("/lib/peer-visits.ts") && !f.endsWith("/lib/assistant-env.ts") && !f.endsWith("/lib/assistant-model.ts") && !f.endsWith("/lib/assistant-retrieval.ts") && !f.endsWith("/lib/assistant/prompt.ts"),
     ),
     ...APP_TS_ROOTS.flatMap((root) => walk(root, ".ts")),
   ].sort();

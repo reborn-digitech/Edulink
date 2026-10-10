@@ -155,7 +155,7 @@ describe("a college is made with its streams", () => {
     expect(await streamsOf(ids.college)).toEqual(["ENGINEERING", "PHARMACY"]);
     expect(await hasStream(ids.college, "PHARMACY")).toBe(true);
     expect(await hasStream(ids.college, "LAW")).toBe(false);
-    expect(await enabledModules(ids.college)).toEqual(["INVENTORY", "ALUMNI", "ACADEMICS", "EXAMS", "IQAC", "PLACEMENT", "ADMISSIONS", "SCHOLARSHIPS"]);
+    expect(await enabledModules(ids.college)).toEqual(["INVENTORY", "ALUMNI", "ASSISTANT", "ACADEMICS", "EXAMS", "IQAC", "PLACEMENT", "ADMISSIONS", "SCHOLARSHIPS"]);
     const row = await db.auditLog.findFirst({ where: { action: "superuser.school.create", targetId: ids.college }, select: { meta: true } });
     expect(JSON.parse(String(row?.meta ?? "{}"))).toMatchObject({ streams: ["ENGINEERING", "PHARMACY"] });
     // The guided onboarding takes the same list.

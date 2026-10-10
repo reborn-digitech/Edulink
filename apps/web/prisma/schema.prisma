@@ -161,6 +161,12 @@ model School {
   /// Null means never: a nine-year-old's screen is a classroom screen.
   selfReadAge Int?
 
+  /// THE ASSISTANT'S HELPLINE SENTENCE (Phase B, 9 Oct 2026): named to a pupil whose question is
+  /// about hurting themselves, beside the counsellor route (src/lib/assistant/refusals.ts). Null or
+  /// blank names the national helpline (the dictionary's assistantService.helplineDefault). The
+  /// office sets it on its assistant card; the assistant itself is the ASSISTANT module, not a column.
+  helplineText String?
+
   /// TEXTS TO THE NUMBER THE OFFICE TYPED. Off, only a number its owner
   /// proved with a code (User.phone) is ever texted. On, an absence notice,
   /// a fee reminder or a circular may also go to the guardian phone on the
@@ -519,6 +525,11 @@ model School {
   attendancePunches     AttendancePunch[]
   peerTeamVisits        PeerTeamVisit[]
   peerVisitItems        PeerVisitItem[]
+  // The assistant (Phase B, 9 Oct 2026): conversations, their messages, the daily counts, a guardian's opt-out per child.
+  assistantConversations AssistantConversation[]
+  assistantMessages      AssistantMessage[]
+  assistantUsage         AssistantUsage[]
+  assistantChildSettings AssistantChildSetting[]
 
   @@index([code])
   @@index([admissionsContactMembershipId])
@@ -1604,6 +1615,10 @@ model Assignment {
   pointsMilli Int? // max score, thousandths
   attachments String  @default("[]") // JSON of {fileId,name,size,mime}[]
   rubric      String? // JSON
+  /// THE TEACHER'S SWITCH FOR THE ASSISTANT (Phase B, 9 Oct 2026): a pupil's question matching this
+  /// assignment gets a hint first; asked again in the same conversation it gets the worked answer
+  /// while this is true (the default), and stays a hint when the teacher turns it off.
+  assistantAnswers Boolean @default(true)
 
   dueAt       DateTime?
   publishedAt DateTime?
@@ -10041,5 +10056,116 @@ model PeerVisitItem {
   visit  PeerTeamVisit @relation(fields: [visitId], references: [id], onDelete: Cascade)
 
   @@index([visitId, kind, position])
+  @@index([schoolId])
+}
+
+// ---------------------------------------------------------------------------
+// The assistant (docs/plans/assistant.md Phase B, decision 0005, 9 Oct 2026)
+//
+// A conversation is the unit: nothing is remembered across them, and each is deleted
+// RETENTION_ASSISTANT_DAYS (30) after its last message by the retention sweep. Never in the
+// audit log: the use is counted in AssistantUsage, by number, never by word.
+// ---------------------------------------------------------------------------
+
+/// One conversation of one person at one school. A guardian has no membership: theirs is filed
+/// under the school of the child they chose (membershipId null, userId the guardian).
+model AssistantConversation {
+  id           String   @id @default(cuid())
+  schoolId     String
+  /// The asker's membership at this school; null for a guardian.
+  membershipId String?
+  userId       String
+  /// The role the conversation was opened in (the policy table reads it on every question).
+  role         String
+  /// en | hi | mr: the language it was opened in; a question typed in another of the three is answered in that one.
+  language     String   @default("en")
+  /// The first question, shortened, as the person typed it: the list's title.
+  title        String?
+  createdAt    DateTime @default(now())
+  lastAt       DateTime @default(now())
+  /// Prompt and completion tokens spent on this conversation (the school's month is AssistantUsage's).
+  tokens       Int      @default(0)
+
+  school   School             @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  messages AssistantMessage[]
+
+  @@index([schoolId, userId, lastAt])
+  @@index([lastAt])
+}
+
+/// One message. `text` is what the person typed (kept for them to re-read) or the answer as shown;
+/// `textForModel` is the question as the model saw it, names, ids, codes, e-mails and phone numbers
+/// replaced by placeholders (src/lib/assistant/strip.ts). `verdict` is the gate's coded reason
+/// (ASSISTANT_VERDICTS in packages/contracts); `matchedAssignmentId` the hand-in assignment a
+/// question matched, which the second-ask rule reads.
+model AssistantMessage {
+  id                  String   @id @default(cuid())
+  conversationId      String
+  schoolId            String
+  /// USER | ASSISTANT
+  role                String
+  text                String
+  textForModel        String?
+  /// JSON AssistantCitation[]: only passages the search returned.
+  citationsJson       String   @default("[]")
+  verdict             String?
+  /// HELP | TUTOR, or null for a fixed sentence.
+  mode                String?
+  hint                Boolean  @default(false)
+  matchedAssignmentId String?
+  helpful             Boolean?
+  promptTokens        Int      @default(0)
+  completionTokens    Int      @default(0)
+  createdAt           DateTime @default(now())
+
+  conversation AssistantConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  school       School                @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId, createdAt])
+  @@index([schoolId])
+}
+
+/// THE COUNT, NEVER THE TEXT: one row per person per school day. The daily cap reads a person's
+/// row, the school's monthly token budget and the office's card sum the month's rows. It outlives
+/// the conversations (a deleted conversation must not give back its tokens) and is swept after
+/// ASSISTANT_USAGE_KEEP_DAYS by the retention job.
+model AssistantUsage {
+  id               String   @id @default(cuid())
+  schoolId         String
+  userId           String
+  /// YYYY-MM-DD in the school's time zone.
+  dayKey           String
+  questions        Int      @default(0)
+  answered         Int      @default(0)
+  hints            Int      @default(0)
+  refused          Int      @default(0)
+  counsellorRoutes Int      @default(0)
+  modelCalls       Int      @default(0)
+  promptTokens     Int      @default(0)
+  completionTokens Int      @default(0)
+  helpful          Int      @default(0)
+  notHelpful       Int      @default(0)
+  updatedAt        DateTime @updatedAt
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@unique([schoolId, userId, dayKey])
+  @@index([schoolId, dayKey])
+}
+
+/// A pupil's assistant settings their guardian holds: the opt-out (any one active guardian may
+/// turn it off or back on), and when the one-time notice went to the guardians.
+model AssistantChildSetting {
+  id                  String    @id @default(cuid())
+  schoolId            String
+  studentMembershipId String    @unique
+  optedOut            Boolean   @default(false)
+  changedByUserId     String?
+  changedAt           DateTime?
+  noticeSentAt        DateTime?
+  createdAt           DateTime  @default(now())
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
   @@index([schoolId])
 }

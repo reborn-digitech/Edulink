@@ -191,6 +191,6 @@ about 1 GB each.
 | `scripts/help-index.ts` | the platform-help corpus |
 | `src/lib/assistant-env.ts`, `src/lib/assistant-model.ts` | the endpoints' configuration, embeddings and chat calls |
 | `src/lib/assistant-retrieval.ts` | `searchCurriculum`, `searchHelp`, the fusion, the reranker stub, the citation shape |
-| `scripts/assistant-ask.ts` | the smoke script |
+| `scripts/assistant-ask.ts` | the smoke script; since Phase B it runs the service's own path (`previewAnswer` in `src/lib/assistant/service.ts`): the same gates, prompt and answer gate as the doors |
 | `tests/assistant-retrieval.test.ts` | fusion, chunking, configuration, and the fixture-corpus search (skipped without the endpoint) |
 | `prisma/migrations/20261008152105_assistant_content` | the three tables, pgvector, the HNSW and full-text indexes |

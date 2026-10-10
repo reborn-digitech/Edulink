@@ -3280,6 +3280,42 @@ CREATE POLICY "PeerVisitItem_tenant_isolation" ON "PeerVisitItem"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- AssistantConversation
+ALTER TABLE "AssistantConversation" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "AssistantConversation" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "AssistantConversation_tenant_isolation" ON "AssistantConversation";
+DROP POLICY IF EXISTS "AssistantConversation_readable" ON "AssistantConversation";
+CREATE POLICY "AssistantConversation_tenant_isolation" ON "AssistantConversation"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- AssistantMessage
+ALTER TABLE "AssistantMessage" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "AssistantMessage" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "AssistantMessage_tenant_isolation" ON "AssistantMessage";
+DROP POLICY IF EXISTS "AssistantMessage_readable" ON "AssistantMessage";
+CREATE POLICY "AssistantMessage_tenant_isolation" ON "AssistantMessage"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- AssistantUsage
+ALTER TABLE "AssistantUsage" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "AssistantUsage" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "AssistantUsage_tenant_isolation" ON "AssistantUsage";
+DROP POLICY IF EXISTS "AssistantUsage_readable" ON "AssistantUsage";
+CREATE POLICY "AssistantUsage_tenant_isolation" ON "AssistantUsage"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- AssistantChildSetting
+ALTER TABLE "AssistantChildSetting" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "AssistantChildSetting" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "AssistantChildSetting_tenant_isolation" ON "AssistantChildSetting";
+DROP POLICY IF EXISTS "AssistantChildSetting_readable" ON "AssistantChildSetting";
+CREATE POLICY "AssistantChildSetting_tenant_isolation" ON "AssistantChildSetting"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- OperatorAccess
 --
 -- APPEND-ONLY, AND DELIBERATELY HAS NO DELETE POLICY. Postgres denies

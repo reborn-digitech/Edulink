@@ -15,7 +15,9 @@ import { readRetentionConfig, type RetentionConfig } from "./env";
  * spent, the dev mailbox, a job's run history, the record of which staff
  * opened a pupil's health card (a year by default, RETENTION_HEALTH_READS_DAYS;
  * the guardian is shown ninety days of it), a bus's positions from a driver's
- * phone (thirty days by default, RETENTION_TRIP_POSITIONS_DAYS), and — the one deliberate policy
+ * phone (thirty days by default, RETENTION_TRIP_POSITIONS_DAYS), the assistant's conversations
+ * thirty days after their last message (RETENTION_ASSISTANT_DAYS, decision 0005) and its daily
+ * counts after sixty-two (RETENTION_ASSISTANT_USAGE_DAYS), and — the one deliberate policy
  * change — audit rows past a horizon the operator sets, two years by default
  * and never when RETENTION_AUDIT_DAYS is 0.
  *
@@ -39,8 +41,8 @@ import { readRetentionConfig, type RetentionConfig } from "./env";
  */
 export type RetentionScope = { userIds?: string[]; buckets?: string[]; outboxTo?: string; jobs?: string[]; schoolIds?: string[] };
 
-export type RetentionKey = "sessions" | "tokens" | "rateLimits" | "uploadTickets" | "outbox" | "jobRuns" | "auditRows" | "healthReads" | "tripPositions";
-export const RETENTION_KEYS: RetentionKey[] = ["sessions", "tokens", "rateLimits", "uploadTickets", "outbox", "jobRuns", "auditRows", "healthReads", "tripPositions"];
+export type RetentionKey = "sessions" | "tokens" | "rateLimits" | "uploadTickets" | "outbox" | "jobRuns" | "auditRows" | "healthReads" | "tripPositions" | "assistantConversations" | "assistantUsage";
+export const RETENTION_KEYS: RetentionKey[] = ["sessions", "tokens", "rateLimits", "uploadTickets", "outbox", "jobRuns", "auditRows", "healthReads", "tripPositions", "assistantConversations", "assistantUsage"];
 export type RetentionCounts = Record<RetentionKey, number>;
 
 const DAY = 86_400_000;
@@ -58,6 +60,9 @@ export function cutoffs(now: Date, cfg: RetentionConfig) {
     auditRows: cfg.auditDays > 0 ? daysAgo(now, cfg.auditDays) : null,
     healthReads: daysAgo(now, cfg.healthReadDays),
     tripPositions: daysAgo(now, cfg.tripPositionDays),
+    /** The assistant (Phase B): a conversation by its last message (its messages go with it), a day's counts by the day. */
+    assistantConversations: daysAgo(now, cfg.assistantDays),
+    assistantUsage: daysAgo(now, cfg.assistantUsageDays).toISOString().slice(0, 10),
   };
 }
 
@@ -104,6 +109,9 @@ const where = (at: ReturnType<typeof cutoffs>, scope: RetentionScope) => {
     healthReads: narrowed(!!scope.schoolIds || !!scope.userIds, { ...(scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : {}), ...(scope.userIds ? { readerUserId: { in: scope.userIds } } : {}), readAt: { lt: at.healthReads } }),
     // A bus's positions (transport): a scoped test narrows them to its own school.
     tripPositions: narrowed(!!scope.schoolIds, { ...(scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : {}), at: { lt: at.tripPositions } }),
+    // The assistant's rows: a scoped test narrows them to its own school or its own people.
+    assistantConversations: narrowed(!!scope.schoolIds || !!scope.userIds, { ...(scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : {}), ...user, lastAt: { lt: at.assistantConversations } }),
+    assistantUsage: narrowed(!!scope.schoolIds || !!scope.userIds, { ...(scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : {}), ...user, dayKey: { lt: at.assistantUsage } }),
   };
 };
 
@@ -112,7 +120,7 @@ export async function retentionPreview(now: Date = new Date(), config: Retention
   const at = cutoffs(now, config);
   const w = where(at, scope);
   const none = Promise.resolve(0);
-  const [sessions, tokens, rateLimits, uploadTickets, outbox, jobRuns, auditRows, healthReads, tripPositions] = await Promise.all([
+  const [sessions, tokens, rateLimits, uploadTickets, outbox, jobRuns, auditRows, healthReads, tripPositions, assistantConversations, assistantUsage] = await Promise.all([
     w.sessions ? db.session.count({ where: w.sessions }) : none,
     w.tokens ? db.authToken.count({ where: w.tokens }) : none,
     w.rateLimits ? db.rateLimit.count({ where: w.rateLimits }) : none,
@@ -122,8 +130,10 @@ export async function retentionPreview(now: Date = new Date(), config: Retention
     w.auditRows ? db.auditLog.count({ where: w.auditRows }) : none,
     w.healthReads ? db.healthCardRead.count({ where: w.healthReads }) : none,
     w.tripPositions ? db.tripPosition.count({ where: w.tripPositions }) : none,
+    w.assistantConversations ? db.assistantConversation.count({ where: w.assistantConversations }) : none,
+    w.assistantUsage ? db.assistantUsage.count({ where: w.assistantUsage }) : none,
   ]);
-  return { config, pending: { sessions, tokens, rateLimits, uploadTickets, outbox, jobRuns, auditRows, healthReads, tripPositions } };
+  return { config, pending: { sessions, tokens, rateLimits, uploadTickets, outbox, jobRuns, auditRows, healthReads, tripPositions, assistantConversations, assistantUsage } };
 }
 
 /**
@@ -155,6 +165,10 @@ export async function sweepExpired(now: Date = new Date(), config: RetentionConf
     const positionsBySchool = await db.tripPosition.groupBy({ by: ["schoolId"], where: w.tripPositions, _count: { _all: true } });
     for (const row of positionsBySchool) if (row._count._all > 0) (perSchool[row.schoolId] ??= {}).tripPositions = row._count._all;
   }
+  if (w.assistantConversations) {
+    const conversationsBySchool = await db.assistantConversation.groupBy({ by: ["schoolId"], where: w.assistantConversations, _count: { _all: true } });
+    for (const row of conversationsBySchool) if (row._count._all > 0) (perSchool[row.schoolId] ??= {}).assistantConversations = row._count._all;
+  }
   const summary: RetentionCounts = {
     sessions: w.sessions ? (await db.session.deleteMany({ where: w.sessions })).count : 0,
     tokens: w.tokens ? (await db.authToken.deleteMany({ where: w.tokens })).count : 0,
@@ -165,10 +179,13 @@ export async function sweepExpired(now: Date = new Date(), config: RetentionConf
     auditRows: 0,
     healthReads: w.healthReads ? (await db.healthCardRead.deleteMany({ where: w.healthReads })).count : 0,
     tripPositions: w.tripPositions ? (await db.tripPosition.deleteMany({ where: w.tripPositions })).count : 0,
+    // A conversation's messages go with it (onDelete: Cascade); the count is the conversations'.
+    assistantConversations: w.assistantConversations ? (await db.assistantConversation.deleteMany({ where: w.assistantConversations })).count : 0,
+    assistantUsage: w.assistantUsage ? (await db.assistantUsage.deleteMany({ where: w.assistantUsage })).count : 0,
   };
   const stale = w.jobRuns ? await staleJobRunIds(at.jobRuns, scope) : [];
   if (stale.length > 0) summary.jobRuns = (await db.jobRun.deleteMany({ where: { id: { in: stale } } })).count;
   if (w.auditRows) summary.auditRows = (await db.auditLog.deleteMany({ where: w.auditRows })).count;
-  await audit({ schoolId: null, actorUserId: null, action: "retention.sweep", meta: { ...summary, auditDays: config.auditDays, healthReadDays: config.healthReadDays, tripPositionDays: config.tripPositionDays } });
+  await audit({ schoolId: null, actorUserId: null, action: "retention.sweep", meta: { ...summary, auditDays: config.auditDays, healthReadDays: config.healthReadDays, tripPositionDays: config.tripPositionDays, assistantDays: config.assistantDays } });
   return { summary, perSchool };
 }

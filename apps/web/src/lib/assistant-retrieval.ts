@@ -129,19 +129,19 @@ async function queryVector(ctx: RetrievalContext, kind: "curriculum" | "help", q
 }
 
 /**
- * A scoped vector search (one board, one class, one role) is EXACT: the scoped rows are taken
- * first (a materialised CTE the HNSW index cannot reach) and ordered by distance, because an
- * index scan filtered afterwards returns only the few of its ef_search candidates that pass the
- * filter. A class's books are a few thousand chunks; that is milliseconds. An unscoped search uses
- * the HNSW index. (pgvector 0.8's iterative scan would do the same with one setting, but SET LOCAL
- * needs a transaction and the app's extended client must not open a bare one: tenancy-shape.test.ts.)
+ * EVERY vector search is EXACT: the rows in scope are taken first (a materialised CTE the HNSW index
+ * cannot reach) and ordered by distance. A scoped search (one board, one class, one role) must be,
+ * because an index scan filtered afterwards returns only the few of its ef_search candidates that
+ * pass the filter. An unscoped one (a teacher, a college, the topic check for the other roles) used
+ * the HNSW index until Phase D measured it (10 October 2026): at pgvector's default ef_search of 40
+ * an instruction-prefixed question vector found "Newton's third law" at 0.43 (a home-science book)
+ * where the exact nearest is 0.78 (NCERT class 9); ef_search 100 found it, and the exact scan of all
+ * 119,365 chunks takes about 0.2–0.7 s, under the answer's own time. (Raising ef_search needs SET
+ * LOCAL inside a transaction, and the app's extended client must not open a bare one:
+ * tenancy-shape.test.ts.) The index stays for a later hosted corpus too big to scan.
  */
 function nearest(scoped: Prisma.Sql | null, from: Prisma.Sql, columns: Prisma.Sql, embedding: Prisma.Sql, vector: string, pool: number): Prisma.Sql {
-  if (!scoped) {
-    return Prisma.sql`SELECT ${columns}, 1 - (${embedding} <=> ${vector}::vector) AS "similarity" ${from}
-                      WHERE ${embedding} IS NOT NULL ORDER BY ${embedding} <=> ${vector}::vector LIMIT ${pool}`;
-  }
-  return Prisma.sql`WITH scoped AS MATERIALIZED (SELECT ${columns}, (${embedding} <=> ${vector}::vector) AS "distance" ${from} WHERE ${embedding} IS NOT NULL ${scoped})
+  return Prisma.sql`WITH scoped AS MATERIALIZED (SELECT ${columns}, (${embedding} <=> ${vector}::vector) AS "distance" ${from} WHERE ${embedding} IS NOT NULL ${scoped ?? Prisma.empty})
                     SELECT s.*, 1 - s."distance" AS "similarity" FROM scoped s ORDER BY s."distance" LIMIT ${pool}`;
 }
 

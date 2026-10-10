@@ -5,11 +5,13 @@ import { z } from "zod";
  * owner's decision of 3 October 2026): transport, the library, a hostel,
  * inventory and assets, HR and payroll, and alumni. Each is OFF until the
  * school's admin switches it on, except ALUMNI, which every school starts
- * with. A coded list, so the web, the phone and the database agree on the
+ * with, and ASSISTANT (the help and tutor chat, docs/plans/assistant.md and
+ * decision 0005), which every school and college starts with and the office
+ * may switch off (9 Oct 2026; migration 20261010… backfilled every tenant). A coded list, so the web, the phone and the database agree on the
  * words; what each one says to a person is a dictionary key
  * (`modules.<code>.name` / `.what`), never this string.
  */
-export const SCHOOL_VERSION_MODULES = ["TRANSPORT", "LIBRARY", "HOSTEL", "INVENTORY", "PAYROLL", "ALUMNI"] as const;
+export const SCHOOL_VERSION_MODULES = ["TRANSPORT", "LIBRARY", "HOSTEL", "INVENTORY", "PAYROLL", "ALUMNI", "ASSISTANT"] as const;
 
 /**
  * THE COLLEGE'S OWN SIX (the owner's decision of 4 October 2026), switched on
@@ -30,9 +32,9 @@ export const schoolModuleSchema = z.enum(SCHOOL_MODULES);
 export type SchoolModuleCode = z.infer<typeof schoolModuleSchema>;
 
 /** The modules a new school is given without asking. */
-export const DEFAULT_SCHOOL_MODULES: readonly SchoolModuleCode[] = ["ALUMNI"];
+export const DEFAULT_SCHOOL_MODULES: readonly SchoolModuleCode[] = ["ALUMNI", "ASSISTANT"];
 /** …and a new college: alumni, and academics, which a college cannot run without. */
-export const DEFAULT_COLLEGE_MODULES: readonly SchoolModuleCode[] = ["ALUMNI", "ACADEMICS"];
+export const DEFAULT_COLLEGE_MODULES: readonly SchoolModuleCode[] = ["ALUMNI", "ACADEMICS", "ASSISTANT"];
 
 /**
  * WHAT KIND OF INSTITUTION A TENANT IS (4 October 2026): a school (every row

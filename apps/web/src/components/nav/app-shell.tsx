@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { CommandIcon, DotsThreeOutlineIcon, MagnifyingGlassIcon, SignOutIcon } from "@phosphor-icons/react";
+import { useCallback, useEffect, useState } from "react";
+import { ChatsCircleIcon, CommandIcon, DotsThreeOutlineIcon, MagnifyingGlassIcon, SignOutIcon } from "@phosphor-icons/react";
 import { OutboxBadge } from "./outbox-badge";
-import { NAV, NAV_GROUP_KEY, PRIMARY_ACTION, isActive, type NavGroup, type NavItem } from "@/lib/nav";
+import { ASSISTANT_HREF, NAV, NAV_GROUP_KEY, PRIMARY_ACTION, isActive, type NavGroup, type NavItem } from "@/lib/nav";
 import { NavIcon } from "./icons";
 import { CommandPalette } from "./command-palette";
+import { AssistantPanel } from "@/components/assistant/panel";
 import { TypingSwitch } from "@/components/typing-switch";
 import { Avatar } from "@/components/ui/avatar";
 import { Logo } from "@/components/brand";
@@ -65,6 +66,15 @@ export function AppShell({
   const t = useT();
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
+  /**
+   * The assistant's panel (Phase C, 10 Oct 2026): opened from the rail and the phone's top bar on every page, the
+   * role homes included, while the role's menu carries the assistant's entry (the module on: signed-in-shell hides
+   * the entry, and so the launcher, when the school has ASSISTANT off). Not on the assistant's own page.
+   */
+  // Open on the page it was opened on: a link followed from inside it (a help citation, a guardian's way to the
+  // opt-out) lands on a page with the panel shut.
+  const [assistantOpenOn, setAssistantOpenOn] = useState<string | null>(null);
+  const closeAssistant = useCallback(() => setAssistantOpenOn(null), []);
   const items = NAV[user.role].filter((item) => !hiddenHrefs.includes(item.href));
   const primaryItems = items.filter((i) => i.primary).slice(0, 5);
   /* The rest, as three short lists. FIVE PRIMARIES carry the day; the rail
@@ -78,6 +88,7 @@ export function AppShell({
   // Only on the pages it belongs to (QuickAction.on), and never on the page it opens.
   const primary = PRIMARY_ACTION[user.role];
   const action = primary && primary.on?.includes(pathname) && primary.href !== pathname ? primary : null;
+  const assistant = items.some((item) => item.href === ASSISTANT_HREF) && !pathname.startsWith(ASSISTANT_HREF);
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -176,6 +187,18 @@ export function AppShell({
               </span>
             )}
           </Link>
+          {assistant && (
+            <button
+              type="button"
+              onClick={() => setAssistantOpenOn(pathname)}
+              aria-haspopup="dialog"
+              data-testid="assistant-launcher-rail"
+              className="mb-2 flex min-h-11 w-full items-center gap-2 rounded-[var(--radius-md)] border border-border px-3 py-2.5 text-sm font-medium text-fg-muted transition-colors hover:bg-surface-muted hover:text-fg"
+            >
+              <ChatsCircleIcon className="size-5" aria-hidden="true" />
+              <span className="flex-1 text-left">{t("assistantUi.open")}</span>
+            </button>
+          )}
           <button
             type="button"
             onClick={() => setPaletteOpen(true)}
@@ -222,6 +245,18 @@ export function AppShell({
               className="tap grid place-items-center rounded-full text-fg-muted hover:bg-surface-muted"
             >
               <DotsThreeOutlineIcon className="size-5" aria-hidden="true" />
+            </button>
+          )}
+          {assistant && (
+            <button
+              type="button"
+              onClick={() => setAssistantOpenOn(pathname)}
+              aria-label={t("assistantUi.open")}
+              aria-haspopup="dialog"
+              data-testid="assistant-launcher"
+              className="tap grid place-items-center rounded-full text-fg-muted hover:bg-surface-muted"
+            >
+              <ChatsCircleIcon className="size-5" aria-hidden="true" />
             </button>
           )}
           <button
@@ -367,6 +402,8 @@ export function AppShell({
           </div>
         </div>
       )}
+
+      {assistant && <AssistantPanel open={assistantOpenOn === pathname} onClose={closeAssistant} role={user.role} />}
 
       <CommandPalette
         open={paletteOpen}
