@@ -119,21 +119,139 @@ const CAPTION = /^(fig(?:ure)?\.?|table)\s*[0-9]+(?:[.\-–][0-9]+)*\s*[:.)-]?/i
  * chapter (NCERT serves one PDF per chapter): its own big title lines on the first page are then
  * the chapter, not a section.
  */
+/**
+ * A heading as the PDF printed it, made readable (10 Oct 2026; Phase D found one citation heading in twenty
+ * garbled): letters drawn twice over for a shadow ("TheThe dd-- andand f-f- Block", "COMPOUNDSCOMPOUNDS")
+ * collapsed, a Devanagari matra split from its letter by a space rejoined, a leading punctuation mark dropped.
+ * Pure. A lost drop capital ("ROBABILITY") is not repaired here but by the running head, below.
+ */
+export function cleanHeading(text: string): string {
+  let t = text.replace(/\s+/g, " ").trim();
+  t = t.replace(/\S+/g, (w) => {
+    // Every glyph doubled ("dd--": "d" twice then "-" twice).
+    if (w.length >= 4 && /^(?:(.)\1)+$/u.test(w)) return w.replace(/(.)\1/gu, "$1");
+    // The whole word twice ("TheThe", "andand", "f-f-"); a word of three letters or more, so "papa" and "Tata" stand.
+    const half = w.length / 2;
+    if (Number.isInteger(half) && half >= 2 && w.slice(0, half) === w.slice(half) && (half >= 3 || /[^\p{L}]/u.test(w.slice(0, half)))) return w.slice(0, half);
+    return w;
+  });
+  // A run of five or more characters repeated at once ("COORDINACOORDINATION"), until none is left; shorter
+  // repeats are a word's own ("Mississippi"), except a word's own tail printed twice ("COORDINATIONTION").
+  for (let i = 0; i < 8; i++) {
+    const next = t.replace(/(\S{5,}?)\1/gu, "$1").replace(/(\S{3,})\1(?=\s|$)/gu, "$1");
+    if (next === t) break;
+    t = next;
+  }
+  t = t.replace(/\s+(?=[\u093e-\u094d\u0902\u0903\u0962\u0963])/g, "");
+  // "Chapter 5 Chapter 5", "UNIT UNIT": a label printed twice is one label, and a label alone names nothing.
+  for (let i = 0; i < 4; i++) {
+    const next = t.replace(/\b((?:chapter|unit|lesson)\s*[0-9ivx]*)\s+\1\b/gi, "$1");
+    if (next === t) break;
+    t = next;
+  }
+  t = t.replace(/^[\s:;,.\-–—]+/, "").replace(/\s+/g, " ").trim();
+  return /^(?:chapter|unit|lesson)\s*[0-9ivx]*$/i.test(t) ? "" : t;
+}
+
+/**
+ * The chapter's name from its running head when the title page's own letters are short of it: NCERT draws
+ * the first capital as an outline the extractor never sees ("ROBABILITY"; "ATURAL AZARDS AND ISASTERS" in
+ * small capitals), while the running head on every other page carries the plain words. The head wins when
+ * the found title's letters are a subsequence of it covering at least three fifths; an all-capitals head is
+ * given title case. Pure.
+ */
+const squash = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "");
+const subsequence = (small: string, big: string) => {
+  let i = 0;
+  for (const ch of big) if (ch === small[i]) i++;
+  return i === small.length;
+};
+
+const LABEL = /^(?:chapter|unit|lesson)\s*\d+\s*[:.\-–•]?\s*/i;
+
+/** The longest common subsequence of two short strings, by length. */
+function lcsLength(a: string, b: string): number {
+  let prev = new Array<number>(b.length + 1).fill(0);
+  for (let i = 1; i <= a.length; i++) {
+    const cur = new Array<number>(b.length + 1).fill(0);
+    for (let j = 1; j <= b.length; j++) cur[j] = a[i - 1] === b[j - 1] ? prev[j - 1]! + 1 : Math.max(prev[j]!, cur[j - 1]!);
+    prev = cur;
+  }
+  return prev[b.length]!;
+}
+
+/**
+ * Are these letters mostly the chapter title's, in order: a title page's own line short of its drop capitals,
+ * or the same words printed over themselves? Seven in ten of the shorter string's letters must run through
+ * the longer in order. Pure.
+ */
+export function lettersOfTitle(text: string, title: string | null): boolean {
+  const t = squash(text);
+  const c = squash((title ?? "").replace(LABEL, ""));
+  if (!t || !c || t.length < 3) return false;
+  return lcsLength(t, c) >= Math.min(t.length, c.length) * 0.7 && Math.max(t.length, c.length) <= Math.min(t.length, c.length) * 3;
+}
+
+/**
+ * The chapter's name the manifest carries, when the fetcher read it off the publisher's listing: NCERT's
+ * exemplars are titled "… — Unit 2(Is Matter Around Us Pure)". Pure.
+ */
+export function chapterNameFromTitle(title: string | null | undefined): string | null {
+  const m = / — (?:Chapter|Unit|Lesson) \d+\s*\((.+)\)\s*$/.exec(title ?? "");
+  return m ? m[1]!.trim() : null;
+}
+
+export function recoverChapterTitle(found: string | null, runningHeads: readonly string[], lines: readonly string[] = found ? [found] : []): string | null {
+  if (!found) return null;
+  let best: string | null = null;
+  // The whole title first, then each of its lines: a unit's heading or a subtitle set with it is not the running head's.
+  for (const candidate of [found, ...lines]) {
+    const f = squash(candidate);
+    if (!f) continue;
+    for (const printed of runningHeads) {
+      // "Chapter 1 • Variations in Psychological Attributes": the running head without its label.
+      const head = printed.replace(LABEL, "").trim();
+      const h = squash(head);
+      if (h.length < 4) continue;
+      // The found title short of letters (a drop capital drawn as an outline), or the head's letters running
+      // through a found title printed over itself ("VARIATIONS IN PSYVARIATIONS IN PSY…").
+      const short = f.length <= h.length && f.length >= h.length * 0.6 && subsequence(f, h);
+      const overprinted = h.length >= 10 && f.length > h.length && f.length <= h.length * 3 && subsequence(h, f);
+      if (!short && !overprinted) continue;
+      if (!best || head.length > best.length) best = head;
+    }
+    if (best) break;
+  }
+  if (!best) return found;
+  const head = best.replace(/\s+/g, " ").trim();
+  if (head !== head.toUpperCase() || !/[A-Z]/.test(head)) return head;
+  const small = new Set(["a", "an", "and", "as", "at", "by", "for", "in", "of", "on", "or", "the", "to", "with"]);
+  return head
+    .toLowerCase()
+    .split(" ")
+    .map((w, i) => (i > 0 && small.has(w) ? w : w.charAt(0).toUpperCase() + w.slice(1)))
+    .join(" ");
+}
+
 export function elementsOf(pages: PageContent[], opts: { perChapterFile: boolean }): { elements: Element[]; edition: string | null; bodySize: number; chapter: string | null } {
   const body = bodySizeOf(pages);
   const edition = editionIn(pages.flatMap((p) => p.runs.map((r) => r.text)));
 
   // Running heads and feet: the same line (digits ignored) on a quarter of the pages or more.
   const seenOn = new Map<string, Set<number>>();
+  const asPrinted = new Map<string, string>();
   for (const p of pages) for (const r of p.runs) {
     const k = normalise(r.text);
     if (k.length < 3) continue;
     const set = seenOn.get(k) ?? new Set<number>();
     set.add(p.page);
     seenOn.set(k, set);
+    if (!asPrinted.has(k)) asPrinted.set(k, r.text);
   }
   const repeatFloor = Math.max(3, Math.ceil(pages.length * 0.25));
   const boilerplate = new Set([...seenOn].filter(([, s]) => pages.length >= 6 && s.size >= repeatFloor).map(([k]) => k));
+  // The running heads as printed: one of them is the chapter's own name (recoverChapterTitle).
+  const runningHeads = [...boilerplate].map((k) => asPrinted.get(k) ?? "").filter(Boolean);
   const keep = (r: Run) =>
     r.size >= body * 0.62 && !/^[\s\d.,|\-–—()ivx]+$/i.test(r.text) && !boilerplate.has(normalise(r.text)) && !/^reprint\s*\d{4}/i.test(r.text);
 
@@ -150,10 +268,23 @@ export function elementsOf(pages: PageContent[], opts: { perChapterFile: boolean
   // The chapter title of a one-chapter file: the first page's largest lines that are words.
   let chapter: string | null = null;
   if (opts.perChapterFile && pages[0]) {
-    const big = pages[0].runs.filter((r) => keep(r) && r.size >= body * 1.5 && /\p{L}{3}/u.test(r.text) && !/^chapter$/i.test(r.text.trim()));
+    // The title page's own lines, boilerplate or not: the chapter's name IS the running head of every page
+    // (10 Oct 2026: "A Question of Trust" was dropped as boilerplate and the chapter left untitled).
+    const keepForTitle = (r: Run) => r.size >= body * 0.62 && !/^[\s\d.,|\-–—()ivx]+$/i.test(r.text) && !/^reprint\s*\d{4}/i.test(r.text);
+    const big = pages[0].runs.filter((r) => keepForTitle(r) && r.size >= body * 1.5 && /\p{L}{3}/u.test(r.text) && !/^chapter$/i.test(r.text.trim()));
     if (big.length) {
       const top = Math.max(...big.map((r) => r.size));
-      chapter = big.filter((r) => r.size >= top * 0.8).sort((a, b) => b.y - a.y).map((r) => r.text).join(" ").replace(/\s+/g, " ").trim().slice(0, 160) || null;
+      const titleRuns = big.filter((r) => r.size >= top * 0.8).sort((a, b) => b.y - a.y || a.x - b.x);
+      const found = cleanHeading(titleRuns.map((r) => r.text).join(" ")).slice(0, 160) || null;
+      // Its lines, by their baseline, for the running-head match.
+      const lines: string[] = [];
+      let lastY: number | null = null;
+      for (const r of titleRuns) {
+        if (lastY !== null && Math.abs(lastY - r.y) < r.size * 0.6) lines[lines.length - 1] = `${lines[lines.length - 1]} ${r.text}`;
+        else lines.push(r.text);
+        lastY = r.y;
+      }
+      chapter = recoverChapterTitle(found, runningHeads, lines.map(cleanHeading));
     }
   }
 
@@ -172,9 +303,11 @@ export function elementsOf(pages: PageContent[], opts: { perChapterFile: boolean
         asides.push(r);
         continue;
       }
-      if (isHeadingRun(r)) {
+      // A web address is never a heading, nor a lone letter (a drop capital drawn apart from its word).
+      if (isHeadingRun(r) && !/www\.|https?:\/\//i.test(r.text) && (/\p{L}.*\p{L}/su.test(r.text) || NUMBERED.test(r.text))) {
         flush();
-        if (opts.perChapterFile && p.page === 1 && (/^chapter\s*[0-9ivx]*$/i.test(r.text.trim()) || (chapter && chapter.includes(r.text)))) continue;
+        // The chapter's own name on its opening pages (a unit's cover may come first) is the title, not a section.
+        if (opts.perChapterFile && p.page <= 3 && (/^chapter\s*[0-9ivx]*$/i.test(r.text.trim()) || (chapter && chapter.includes(r.text)) || lettersOfTitle(r.text, chapter))) continue;
         const numbered = NUMBERED.exec(r.text);
         let level: number;
         if (CHAPTER_LINE.test(r.text) && !opts.perChapterFile) level = 0;
@@ -183,9 +316,9 @@ export function elementsOf(pages: PageContent[], opts: { perChapterFile: boolean
         else level = opts.perChapterFile ? Math.min(3, tier(r.size) + 1) : Math.min(3, tier(r.size));
         const prev = elements[elements.length - 1];
         if (prev?.type === "heading" && lastHeading && lastHeading.level === level && Math.abs(lastHeading.size - r.size) < 0.6 && lastHeading.y - r.y < r.size * 2.2 && prev.page === p.page) {
-          prev.text = `${prev.text} ${r.text}`.replace(/\s+/g, " ");
+          prev.text = cleanHeading(`${prev.text} ${r.text}`);
         } else {
-          elements.push({ type: "heading", level, text: r.text, page: p.page });
+          elements.push({ type: "heading", level, text: cleanHeading(r.text), page: p.page });
         }
         lastHeading = { level, y: r.y, size: r.size };
         continue;
@@ -218,6 +351,20 @@ export function elementsOf(pages: PageContent[], opts: { perChapterFile: boolean
       }
     }
     flushAside();
+  }
+  // No title on the opening page, or only a label: the chapter's name is then the first big heading on the
+  // opening pages whose letters a running head carries ("NVIRONMENT AND OCIETY" under the head "ENVIRONMENT AND SOCIETY").
+  if (opts.perChapterFile && !chapter) {
+    for (const el of elements) {
+      if (el.type !== "heading" || el.page > 3) continue;
+      const head = recoverChapterTitle(el.text, runningHeads);
+      if (head && head !== el.text) {
+        chapter = head;
+        el.text = "";
+        break;
+      }
+    }
+    if (chapter) for (const el of elements) if (el.type === "heading" && el.page <= 3 && lettersOfTitle(el.text, chapter)) el.text = "";
   }
   return { elements, edition, bodySize: body, chapter };
 }
@@ -305,6 +452,10 @@ export function chunk(pages: PageContent[], opts: { perChapterFile: boolean; cha
 
   for (const el of elements) {
     if (el.type === "heading") {
+      if (!el.text) continue;
+      // "12.6 F": a numbered section whose words the extractor lost keeps its number alone, never a stray letter.
+      const cut = /^(\d{1,2}(?:\.\d{1,2}){1,3})\.?\s+\p{L}{1,2}$/u.exec(el.text);
+      if (cut) el.text = cut[1]!;
       // A chapter or section boundary ends the chunk unless it holds almost nothing yet.
       if (el.level <= 2 && size() >= MIN_CHARS) flush();
       if (el.level === 0) levels.splice(0, 4, el.text, null, null, null);

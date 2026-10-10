@@ -236,8 +236,7 @@ Phase B's library is listed in that commit. Scores on the final code: refusal 18
 injection 28/28; language 26/26; help 145/200 naming the right page and 0/200 naming another role's page or a
 door; tutor 167/200 (answered 92 %, correct by keywords 85 %, cited 91.5 %); hint 170/250 with one leak in 208
 hints (the book's own worked example carrying the case's number) and the teacher's switch held 208/208. Left
-open (section 7 of the Phase D report, for the owner): the chunker's garbled or untitled headings
-(NCERT 10.8 % garbled, 30.1 % untitled by the heuristic) show in citations; the class 3 pupil's widening picks the
+open (section 7 of the Phase D report, for the owner): the class 3 pupil's widening picks the
 closest passage (class 11) rather than the lowest class above the threshold; the Sarvam-M comparison and the
 speaker's reading (R-14; the sheets are written per run) are not done.
 
@@ -269,6 +268,26 @@ on a how-to question. On the 200-question help set: answered 155 → 181 of 200,
 (72.5 % → 85 %; en 107 → 123 of 141, hi 15 → 21 of 30, mr 23 → 26 of 29), steps 16 → 39, another role's page or a
 door named 0 → 0. Steps stay low because most help questions ask where something is, which one sentence answers;
 Hindi answers carry no steps at all, for a speaker to read.
+
+**Built, 10 October 2026 (citation headings, the owner's item 3; NCERT re-chunked).** Phase D read forty random
+NCERT headings and found fifteen garbled: the first capital lost ("ROBABILITY", "hapter"), letters printed over
+themselves for a shadow ("TheThe dd-- andand"), a section cut to its number and a letter ("12.6 F"), split
+matras, and a web address from the glossary. The causes, in `scripts/corpus-chunk.ts`: NCERT prints the chapter's
+name as the running head of every page, so the boilerplate filter removed it from the title page too and the
+chapter went untitled ("A Question of Trust"); the drop capital is drawn as an outline the extractor never sees.
+Now the title page's own lines are read boilerplate or not, and `recoverChapterTitle` takes the running head
+whose letters the found title is a subsequence of (short of its capitals) or whose letters run through an
+overprinted title, line by line when a unit heading or subtitle was set with it, the head given title case;
+`cleanHeading` collapses a word or a run printed twice, rejoins a matra split from its letter, drops a leading
+mark, and makes a repeated label one and a lone label nothing; the title's own words on the opening pages are
+never a section (by common subsequence, `lettersOfTitle`); a cut numbered section keeps its number alone; a web
+address and a lone letter are never headings; and an exemplar's chapter name is read off the manifest title
+(`chapterNameFromTitle`) when the page's letters fall short. NCERT was re-extracted (6 shards) and re-embedded;
+by Phase D's own heuristic its headings went from 10.8 % garbled and 30.1 % untitled to 3.1 % and 12.4 %
+(`tests/corpus-chunk.test.ts`). What remains, for later: a running head split into word runs ("Government Budget
+and the Economy") that no rule can join, titles only the book's contents page knows, small capitals whose
+initials are outlines when no running head carries them, and glyph-encoded fonts ("KHG 2TQEGUUGU"); the other
+boards keep their old chunks (Balbharati 5.5 %, SPPU 9.9 % garbled) until they are re-chunked the same way.
 
 ### Phase E — hosted (week 6)
 

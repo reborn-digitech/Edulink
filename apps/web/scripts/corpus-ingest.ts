@@ -30,7 +30,7 @@ import { basename, join, relative } from "node:path";
 import { config } from "dotenv";
 import { CORPUS_ROOT, SOURCES, walkManifests, type ManifestEntry, type SourceKey } from "./corpus-lib";
 import { closeOcr, extractPdf, toPng } from "./corpus-pdf";
-import { chunk, editionIn } from "./corpus-chunk";
+import { chunk, editionIn, chapterNameFromTitle, lettersOfTitle } from "./corpus-chunk";
 import { refuseUnlessLocalDatabase } from "./local-db-guard.mjs";
 import { requireEmbedConfig } from "../src/lib/assistant-env";
 import { EmbeddingBroken, embedTexts, vectorLiteral } from "../src/lib/assistant-model";
@@ -84,9 +84,12 @@ function perChapterFile(e: ManifestEntry): boolean {
 
 function chapterLabel(e: ManifestEntry, found: string | null): string | null {
   const n = e.extra?.chapter;
-  if (typeof n === "number" && found) return `Chapter ${n}: ${found}`;
+  // The publisher's own name for the chapter beats a title page short of its letters or printed over itself (10 Oct 2026).
+  const listed = chapterNameFromTitle(e.title);
+  const name = listed && (!found || lettersOfTitle(found, listed)) ? listed : found;
+  if (typeof n === "number" && name) return `Chapter ${n}: ${name}`;
   if (typeof n === "number") return `Chapter ${n}`;
-  return found;
+  return name;
 }
 
 /** NCERT prints the edition in a book's prelims, not its chapters: read once per book. */
