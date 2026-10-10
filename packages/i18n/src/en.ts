@@ -17089,6 +17089,7 @@ export const en = {
     deleteYes: "Delete it",
   },
   assistantService: {
+    examScopeTeacher: "What the exam will cover, your teacher can tell you; here is the topic.",
     verdict: {
       OUT_OF_SCOPE: "I can help only with using Shalaghar and, for pupils and teachers, with school and college subjects. I can't help with that one.",
       TUTOR_NOT_FOR_ROLE: "The tutor answers questions about lessons for pupils and teachers; I can help you find your way around Shalaghar.",

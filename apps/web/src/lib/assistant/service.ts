@@ -46,11 +46,12 @@ import { corpusBoardFor, gradeBandOf, policyFor } from "./policy";
 import { citedNumbers, gateAnswer, gateQuestion, tableVerdict } from "./gate";
 import { stripIdentifiers, restoreSelf, type NameEntry } from "./strip";
 import { withoutInjectedLines } from "./refusals";
-import { NCERT_NOTE, helpMessages, questionShape, tutorMessages } from "./prompt";
+import { NCERT_NOTE, helpMessages, questionShape, tutorMessages, asksExamScope } from "./prompt";
 import { detectLanguage } from "./language";
 import { nameLexicon } from "./lexicon";
-import { foreignPaths, pageIsRoles } from "./pages";
-import { runTools as runToolsReal, TOOLS, toolsFor, type ToolRun } from "./tools";
+import { foreignPaths, pageIsRoles, ownPathsWithoutHost } from "./pages";
+import { asksAboutExams, runTools as runToolsReal, TOOLS, toolsFor, type ToolRun } from "./tools";
+import { EXAMS_SUMMARY_NAME, examSummary } from "./exams";
 import { pupilAssessmentItems } from "./assessment";
 import { cosine, decideAssessment, type AssessmentDecision, type AssessmentItem } from "./assessment-rule";
 import { routeToCounsellor } from "./counsellor";
@@ -562,18 +563,30 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   let messages: ChatMessage[];
   let citationsByNumber: AssistantCitation[];
   let allowedText: string;
+  let exams: string | null = null;
   if (gate.mode === "TUTOR") {
     const passages = curriculum.slice(0, CURRICULUM_PASSAGES).map((h, i) => ({ n: i + 1, heading: `${h.board}, "${h.book}" (class ${h.grade}), ${h.headingPath.join(" › ") || h.chapter || ""}, page ${h.pageStart}`, text: withoutInjectedLines(stripIdentifiers(h.text.slice(0, 1800), a.lexicon).text) }));
     citationsByNumber = curriculum.slice(0, CURRICULUM_PASSAGES).map((h, i) => ({ kind: "CURRICULUM", n: i + 1, board: h.board, book: h.book, grade: h.grade, chapter: h.chapter, section: h.section, page: h.pageStart, sourceUrl: h.sourceUrl || null, chunkId: h.chunkId }));
     allowedText = passages.map((p) => `${p.heading}\n${p.text}`).join("\n");
     const band = gradeBandOf(grade, { college, teacher: !policy.assessed });
-    messages = tutorMessages({ question: a.stripped, language, band, shape: questionShape(a.original), passages, hint, boardNote, laterClass });
+    // The exam-scope reader (10 Oct 2026): a pupil asking when an exam is or whether a subject is in it gets
+    // their own exams door read, as the person, and its lines beside the passages. Nothing else in tutor mode reads a door.
+    if (policy.assessed && (asksExamScope(a.original) || asksAboutExams(a.original))) {
+      const runs = await deps.runTools({ role: asker.role, schoolId: asker.schoolId, userId: asker.userId, question: a.original, lexicon: a.lexicon });
+      const summary = examSummary(runs);
+      exams = summary ? withoutInjectedLines(stripIdentifiers(summary, a.lexicon).text) : null;
+      if (exams) allowedText += `\n${exams}`;
+    }
+    messages = tutorMessages({ question: a.stripped, language, band, shape: questionShape(a.original), passages, hint, boardNote, laterClass, exams });
   } else {
     const passages = help.slice(0, HELP_PASSAGES).map((h, i) => ({ n: i + 1, heading: `${h.title}${h.pagePath ? ` — page ${h.pagePath}` : ""}`, text: withoutInjectedLines(stripIdentifiers(h.text.slice(0, 1200), a.lexicon).text) }));
     citationsByNumber = help.slice(0, HELP_PASSAGES).map((h, i) => ({ kind: "HELP", n: i + 1, title: h.title, pagePath: h.pagePath, entryId: h.entryId }));
     allowedText = passages.map((p) => `${p.heading}\n${p.text}`).join("\n");
     const runs = await deps.runTools({ role: asker.role, schoolId: asker.schoolId, userId: asker.userId, question: a.original, lexicon: a.lexicon });
-    const data = runs.filter((r) => r.ok && r.data).map((r) => ({ name: r.name, json: r.data!, page: TOOLS[r.name]?.page ?? null }));
+    const data: { name: string; json: string; page: string | null }[] = runs.filter((r) => r.ok && r.data).map((r) => ({ name: r.name, json: r.data!, page: TOOLS[r.name]?.page ?? null }));
+    // The exam-scope reader's lines first, so "when is my next exam" is answered from the sittings ahead, not guessed from the marks.
+    const summary = examSummary(runs);
+    if (summary) data.unshift({ name: EXAMS_SUMMARY_NAME, json: withoutInjectedLines(stripIdentifiers(summary, a.lexicon).text), page: TOOLS[runs.find((r) => r.ok && r.raw !== undefined && /Exams$/.test(r.name))?.name ?? "myExams"]?.page ?? null });
     allowedText += `\n${data.map((d) => d.json).join("\n")}`;
     // Nothing a person can act on and none of their own data: the sentence, and no answer is written.
     if (!passages.length && !data.length) return fixed("OUT_OF_SCOPE", { promptTokens: tokens.prompt, modelCalls });
@@ -591,8 +604,10 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   // With no passage numbered there is nothing a "[1]" could point at, and the model writes one anyway in Hindi and
   // Marathi whatever the prompt says (Phase D's pilot, 10 Oct 2026: a guardian's fees answers discarded 24 of 24 as
   // an invented citation; in Hindi and Marathi it then wrote a literal "[data]"). The bare marks are removed before the check; the answer itself is still checked in full.
-  const content = citationsByNumber.length ? result.content : result.content.replace(/\s?\[(?:\d{1,2}|data)\]/g, "");
-  const checked = await gateAnswer({ answer: content, label: gate.label, passageCount: citationsByNumber.length, allowedText, lexicon: a.lexicon, hint }, { chat: deps.chat });
+  let content = citationsByNumber.length ? result.content : result.content.replace(/\s?\[(?:\d{1,2}|data)\]/g, "");
+  // A page of the person's own under an invented host becomes the bare path (pages.ts); any other link is still discarded.
+  if (gate.mode === "HELP") content = ownPathsWithoutHost(content, asker.role);
+  const checked = await gateAnswer({ answer: content, label: gate.label, passageCount: citationsByNumber.length, allowedText, lexicon: a.lexicon, hint, alsoLabel: exams ? "PLATFORM" : undefined }, { chat: deps.chat });
   if (checked.tokens) modelCalls += 1;
   tokens.prompt += checked.tokens;
   // The reason codes only, never a word of the question or the answer (Phase D: discards were otherwise invisible to the operator).
@@ -600,15 +615,27 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     discardLog(gate.mode, checked.reasons);
     return fixed("ANSWER_DISCARDED", { mode: gate.mode, promptTokens: tokens.prompt, completionTokens: tokens.completion, modelCalls });
   }
-  const cited = new Set(citedNumbers(content));
+  // "Should I study this for the exam" (the exam-scope reader, 10 Oct 2026): the platform owns the sentence that the
+  // teacher knows what the paper covers; an answer that still opens with yes or no is discarded, in any of the three languages.
+  const examScope = gate.mode === "TUTOR" && !hint && asksExamScope(a.original);
+  let body = content;
+  if (examScope && /^\s*(?:yes|no|nope|हाँ|हां|नहीं|हो|होय|नाही)\b/i.test(body)) {
+    // The opening yes-or-no sentence goes (the model wrote one in spite of the rule); the explanation after it stays, already checked.
+    body = body.replace(/^\s*[^.!?।\n]*[.!?।]?\s*/, "");
+    if (!body.trim()) {
+      discardLog(gate.mode, ["EXAM_YES_NO"]);
+      return fixed("ANSWER_DISCARDED", { mode: gate.mode, promptTokens: tokens.prompt, completionTokens: tokens.completion, modelCalls });
+    }
+  }
+  const cited = new Set(citedNumbers(body));
   // A help answer names only pages the person's role opens, never a program's /api/ door (the prompt asks; this holds it).
-  if (gate.mode === "HELP" && foreignPaths(content, asker.role).length) {
+  if (gate.mode === "HELP" && foreignPaths(body, asker.role).length) {
     discardLog(gate.mode, ["FOREIGN_PAGE"]);
     return fixed("ANSWER_DISCARDED", { mode: gate.mode, promptTokens: tokens.prompt, completionTokens: tokens.completion, modelCalls });
   }
   return {
     verdict: hint ? "HINT" : "ANSWERED",
-    text: restoreSelf(content.trim(), stripIdentifiers(a.original, a.lexicon).replacements, ""),
+    text: `${examScope ? `${translator(language)("assistantService.examScopeTeacher")} ` : ""}${restoreSelf(body.trim(), stripIdentifiers(a.original, a.lexicon).replacements, "")}`,
     mode: gate.mode,
     hint,
     citations: citationsByNumber.filter((c) => cited.has(c.n)),

@@ -34,7 +34,7 @@ import { join } from "node:path";
 import { classCode, studentCode } from "../src/lib/codes";
 import { bandFor, combineTerms, DEFAULT_REPORT_CARD_CONFIG, meanPercent, meanPoints, shownPercent } from "../src/lib/report-card-rules";
 import {
-  attachTeacher, buildAdmissions, buildCertificates, buildCircular, buildSignatures, buildCompetitionEntry, buildDepartures, buildExams, buildFeeAdjustments, buildFees, buildHealth, buildHolidays, buildIncidents,
+  attachTeacher, buildAdmissions, buildCertificates, buildCircular, buildSignatures, buildCompetitionEntry, buildDepartures, buildExams, buildUpcomingExam, buildFeeAdjustments, buildFees, buildHealth, buildHolidays, buildIncidents,
   buildInvite, buildMessaging, buildPracticeAssignment, buildRemarkThread, buildReport, buildRollNumbers, buildStaffAttendance, buildStaffRecords, buildSubstitutions, buildSyllabus, buildTimetable,
   CALENDAR_2025_26, CALENDAR_2026_27, CLASS_COLOURS, closedDays, db, enrol, link, setTag, staffDates, teachingDaysBetween, THIS_YEAR, upsertClass, upsertMembership, upsertSchool, upsertUser, type Ctx, fakePen, refuseUnlessLocal, switchModulesOn } from "./zz-fixtures";
 import { SCHOOL_MODULES } from "@edulink/contracts";
@@ -1114,6 +1114,9 @@ async function main() {
     const subs = await buildSubstitutions(b.school, admin, b.subjectTeachers[0]);
     const exams6 = await buildExams(b.school, admin, { grade: "6", subjects: ["Mathematics", spec.language] });
     const exams9 = await buildExams(b.school, admin, { grade: "9", subjects: ["Mathematics", "Science"] });
+    // A sitting still ahead for each grade, so the assistant's exam-scope reader has a date to answer with (10 Oct 2026).
+    await buildUpcomingExam(b.school, admin, { grade: "6", subjects: ["Mathematics", spec.language] });
+    await buildUpcomingExam(b.school, admin, { grade: "9", subjects: ["Mathematics", "Science"] });
     const certs = await buildCertificates(b.school, admin, spec.locale === "en"
       ? { grade: "6", recordGrades: GRADES, keepRecords: [b.deshmukh.membershipId], codePrefix: spec.codePrefix, city: spec.city, previousSchool: spec.previousSchool,
           templates: [{ kind: "BONAFIDE", locale: "en" }, { kind: "CHARACTER", locale: "en" }, { kind: "STUDY", locale: "en" }, { kind: "TC", locale: "en" }],

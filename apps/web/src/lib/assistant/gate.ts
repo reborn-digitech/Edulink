@@ -115,7 +115,19 @@ export function citedNumbers(answer: string): number[] {
  * the passages' own text (a name the book prints is the book's); `label` the question's scope.
  */
 export async function gateAnswer(
-  input: { answer: string; label: "PLATFORM" | "CURRICULUM"; passageCount: number; allowedText: string; lexicon: NameEntry[]; hint: boolean },
+  input: {
+    answer: string;
+    label: "PLATFORM" | "CURRICULUM";
+    passageCount: number;
+    allowedText: string;
+    lexicon: NameEntry[];
+    hint: boolean;
+    /**
+     * A second label the answer may carry (the exam-scope reader, 10 Oct 2026): a tutor answer that names the
+     * pupil's own sitting and its date beside the topic reads as PLATFORM to the classifier, and was discarded.
+     */
+    alsoLabel?: "PLATFORM" | "CURRICULUM";
+  },
   model: ClassifyPort,
 ): Promise<AnswerGate> {
   const reasons: Exclude<AnswerGate, { pass: true }>["reasons"] = [];
@@ -130,6 +142,6 @@ export async function gateAnswer(
   // The model is asked only when the code found nothing: a discarded answer costs no second call.
   if (reasons.length) return { pass: false, reasons, tokens: 0 };
   const c = await classify(model, "answer", answer);
-  if (c.label !== input.label) return { pass: false, reasons: ["SCOPE"], tokens: c.tokens };
+  if (c.label !== input.label && c.label !== input.alsoLabel) return { pass: false, reasons: ["SCOPE"], tokens: c.tokens };
   return { pass: true, tokens: c.tokens };
 }

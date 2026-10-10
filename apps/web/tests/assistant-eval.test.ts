@@ -8,6 +8,7 @@
 import { readFileSync } from "node:fs";
 import { helpMessages } from "@/lib/assistant/prompt";
 import { toolsFor } from "@/lib/assistant/tools";
+import { ownPathsWithoutHost } from "@/lib/assistant/pages";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { ASSISTANT_REFUSAL_CATEGORIES } from "@edulink/contracts";
@@ -348,6 +349,56 @@ describe("a door summary still marks a platform question; the answer comes from 
   });
 });
 
+describe("the exam-scope reader through the service (10 October 2026)", () => {
+  const raw = { data: { marks: [], upcoming: [{ id: "s", name: "Half-yearly", kind: "MID_TERM", gradeLevel: "6", schoolName: "S", slots: [{ id: "a", subject: "Science", dateKey: "2026-11-24", startMinute: 540, endMinute: 690, maxMarks: 80 }] }], cards: [], termIsRunning: true, awaitingTermName: null } };
+  it("a pupil's exam question in tutor mode reads the exams door and the prompt carries its lines", async () => {
+    const { deps, prompts } = fakeDeps();
+    const search = deps.searchCurriculum;
+    deps.searchCurriculum = async (q) => search({ ...q, query: "area" });
+    const out = await previewAnswer({ role: "STUDENT", grade: 6, question: "should I study the area of a rectangle for my coming exam", toolRuns: [{ name: "myExams", ok: true, status: 200, data: "{}", raw }] }, deps);
+    expect(out.verdict).toBe("ANSWERED");
+    expect(prompts[0]![0]!.content).toContain("The <exams> block is the student's own exam record");
+    expect(prompts[0]![1]!.content).toContain("Sitting ahead: Half-yearly (mid-term): Science on 24 November 2026 at 09:00–11:30.");
+  });
+  it("the platform owns the sentence that the teacher knows what the paper covers; a yes or no from the model is dropped, an answer of nothing else discarded", async () => {
+    const { deps } = fakeDeps();
+    const search = deps.searchCurriculum;
+    deps.searchCurriculum = async (q) => search({ ...q, query: "area" });
+    const ok = await previewAnswer({ role: "STUDENT", grade: 6, question: "should I study the area of a rectangle for my coming exam", toolRuns: [{ name: "myExams", ok: true, status: 200, data: "{}", raw }] }, deps);
+    expect(ok.verdict).toBe("ANSWERED");
+    expect(ok.text.startsWith("What the exam will cover, your teacher can tell you; here is the topic. Area = 19 × 9")).toBe(true);
+    const chat = deps.chat;
+    deps.chat = async (m, o) => (m[0]!.content.startsWith("You classify") ? chat(m, o) : { content: "Yes, you should study it. Area = 19 × 9 = 171 cm² [1].", usage: { promptTokens: 1, completionTokens: 1 }, tokensPerSecond: null, promptTokensPerSecond: null, firstTokenLogprob: null });
+    const yes = await previewAnswer({ role: "STUDENT", grade: 6, question: "should I study the area of a rectangle for my coming exam", toolRuns: [{ name: "myExams", ok: true, status: 200, data: "{}", raw }] }, deps);
+    expect(yes.verdict).toBe("ANSWERED");
+    expect(yes.text).toBe("What the exam will cover, your teacher can tell you; here is the topic. Area = 19 × 9 = 171 cm² [1].");
+    deps.chat = async (m, o) => (m[0]!.content.startsWith("You classify") ? chat(m, o) : { content: "Yes, study it.", usage: { promptTokens: 1, completionTokens: 1 }, tokensPerSecond: null, promptTokensPerSecond: null, firstTokenLogprob: null });
+    const only = await previewAnswer({ role: "STUDENT", grade: 6, question: "should I study the area of a rectangle for my coming exam", toolRuns: [{ name: "myExams", ok: true, status: 200, data: "{}", raw }] }, deps);
+    expect(only.verdict).toBe("ANSWER_DISCARDED");
+    // The same model answer to a plain topic question is not an exam-scope answer and stands.
+    const plain = await previewAnswer({ role: "STUDENT", grade: 6, question: "what is the area of a rectangle 19 by 9" }, deps);
+    expect(plain.verdict).toBe("ANSWERED");
+    expect(plain.text.startsWith("Yes")).toBe(true);
+  });
+  it("a teacher's exam question reads no door in tutor mode", async () => {
+    const { deps, prompts } = fakeDeps();
+    const search = deps.searchCurriculum;
+    deps.searchCurriculum = async (q) => search({ ...q, query: "area" });
+    await previewAnswer({ role: "TEACHER", question: "which area questions come in the exam", toolRuns: [{ name: "myExams", ok: true, status: 200, data: "{}", raw }] }, deps);
+    expect(prompts[0]![1]!.content).not.toContain("<exams>");
+  });
+  it("in help mode the lines come first in the data, named for the page", async () => {
+    const { deps, prompts } = fakeDeps();
+    const own = (await deps.searchHelp({ query: "fee", language: "en", role: "STUDENT" }))[0]!;
+    deps.searchHelp = async () => [{ ...own, entryId: "door-only", kind: "door", pagePath: null, door: "GET /api/v1/family/exams", text: "GET /api/v1/family/exams: the sittings ahead." }];
+    const chat = deps.chat;
+    deps.chat = async (m, o) => (m[0]!.content.startsWith("You classify") ? { ...(await chat(m, o)), content: "PLATFORM" } : (prompts.push(m), { content: "Your next exam is Half-yearly: Science on 2026-11-24.", usage: { promptTokens: 1, completionTokens: 1 }, tokensPerSecond: null, promptTokensPerSecond: null, firstTokenLogprob: null }));
+    const out = await previewAnswer({ role: "STUDENT", grade: 6, question: "when is my next exam", toolRuns: [{ name: "myExams", ok: true, status: 200, data: '{"upcoming": []}', raw }] }, deps);
+    expect(out.verdict).toBe("ANSWERED");
+    expect(prompts[0]![1]!.content).toContain('<data name="examsSummary" page="/student/exams">\nSitting ahead: Half-yearly');
+  });
+});
+
 describe("a help answer written from the person's own data alone (the pilot of 10 October 2026)", () => {
   // Through the doors a guardian's "how much fee is due for my child" had no help passage and one door's data; the
   // prompt still asked for "[1]" and the gate discarded the answer as an invented citation, 24 of 24 times.
@@ -378,6 +429,23 @@ describe("a help answer written from the person's own data alone (the pilot of 1
   it("still asks for citations when a passage is numbered", () => {
     const system = helpMessages({ question: "how much fee is due", language: "en", role: "PARENT", passages: [{ n: 1, heading: "Fees — page /parent/fees", text: "The fees page lists demands." }], data })[0]!.content;
     expect(system).toMatch(/each with its citation like \[1\]/);
+  });
+});
+
+describe("an invented host on the person's own page (10 October 2026)", () => {
+  it("becomes the bare path for a page of the role's own, and stays a link to be discarded otherwise", () => {
+    expect(ownPathsWithoutHost("माझ्या परीक्षा पृष्ठावर (https://shalaghar.in/student/exams) तारीख दिसत नाही.", "STUDENT")).toBe("माझ्या परीक्षा पृष्ठावर (/student/exams) तारीख दिसत नाही.");
+    expect(ownPathsWithoutHost("see http://app.example.com/student/exams/ today", "STUDENT")).toBe("see /student/exams today");
+    expect(ownPathsWithoutHost("see https://shalaghar.in/admin/people", "STUDENT")).toBe("see https://shalaghar.in/admin/people");
+    expect(ownPathsWithoutHost("read https://ncert.nic.in/textbook.php", "STUDENT")).toBe("read https://ncert.nic.in/textbook.php");
+  });
+  it("through the service a help answer with the invented host is answered with the path", async () => {
+    const { deps } = fakeDeps();
+    const chat = deps.chat;
+    deps.chat = async (m, o) => (m[0]!.content.startsWith("You classify") ? chat(m, o) : { content: "Open https://shalaghar.in/parent/fees: Tuition is due [1].", usage: { promptTokens: 1, completionTokens: 1 }, tokensPerSecond: null, promptTokensPerSecond: null, firstTokenLogprob: null });
+    const out = await previewAnswer({ role: "PARENT", question: "how much fee is due for my child" }, deps);
+    expect(out.verdict).toBe("ANSWERED");
+    expect(out.text).toBe("Open /parent/fees: Tuition is due [1].");
   });
 });
 

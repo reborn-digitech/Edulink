@@ -49,6 +49,8 @@ const LECTURES = /\b(?:lectures?|my classes today|classes today)\b|व्या�
 export const TOOLS: Record<ToolName, ToolSpec> = {
   myTimetable: { path: "/api/v1/family/timetable", intent: TIMETABLE, load: () => import("@/app/api/v1/family/timetable/route") },
   myExams: { path: "/api/v1/family/exams", page: "/student/exams", intent: EXAMS, load: () => import("@/app/api/v1/family/exams/route") },
+  // A college pupil's sessions, forms, seating and results (the exam-scope reader, 10 Oct 2026); a school's EXAMS module answers 403 or nothing.
+  collegeExams: { path: "/api/v1/exam-cell/mine", page: "/student/exams", intent: EXAMS, load: () => import("@/app/api/v1/exam-cell/mine/route") },
   myAssignments: { path: "/api/v1/family/student/assignments", page: "/student/assignments", intent: WORK, load: () => import("@/app/api/v1/family/student/assignments/route") },
   childTimetable: { path: "/api/v1/family/timetable", page: "/parent/timetable", intent: TIMETABLE, load: () => import("@/app/api/v1/family/timetable/route") },
   childExams: { path: "/api/v1/family/exams", intent: EXAMS, load: () => import("@/app/api/v1/family/exams/route") },
@@ -61,6 +63,11 @@ export const TOOLS: Record<ToolName, ToolSpec> = {
   officeSyllabusCoverage: { path: "/api/v1/office/syllabus/coverage", page: "/admin/syllabus", intent: SYLLABUS, load: () => import("@/app/api/v1/office/syllabus/coverage/route") },
   myLectures: { path: "/api/v1/academics/lectures", intent: LECTURES, load: () => import("@/app/api/v1/academics/lectures/route") },
 };
+
+/** Does the question ask about exams, tests or papers (the exam-scope reader runs the exams door in tutor mode too)? Pure. */
+export function asksAboutExams(question: string): boolean {
+  return EXAMS.test(question.toLowerCase());
+}
 
 /** The tools a question asks for, among the role's own, at most MAX_TOOLS_PER_QUESTION. Pure. */
 export function toolsFor(role: Role, question: string): ToolName[] {
@@ -110,7 +117,14 @@ export function toolDataForModel(json: unknown, lexicon: NameEntry[]): string {
     .slice(0, TOOL_ANSWER_MAX_CHARS);
 }
 
-export type ToolRun = { name: ToolName; ok: boolean; data: string | null; status: number | null };
+export type ToolRun = {
+  name: ToolName;
+  ok: boolean;
+  data: string | null;
+  status: number | null;
+  /** The door's own JSON, for the code that reads a door by shape (the exam-scope reader, exams.ts); never the model's. */
+  raw?: unknown;
+};
 
 /**
  * Call the question's tools as the person. A door the catalog says the role may not pass, behind a
@@ -142,7 +156,8 @@ export async function runTools(input: { role: Role; schoolId: string | null; use
         runs.push({ name, ok: false, data: null, status: res.status });
         continue;
       }
-      runs.push({ name, ok: true, data: toolDataForModel(await res.json(), input.lexicon), status: 200 });
+      const raw: unknown = await res.json();
+      runs.push({ name, ok: true, data: toolDataForModel(raw, input.lexicon), status: 200, raw });
     } catch {
       runs.push({ name, ok: false, data: null, status: null });
     }

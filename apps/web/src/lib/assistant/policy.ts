@@ -15,6 +15,7 @@ import type { Role } from "../constants";
 export type ToolName =
   | "myTimetable"
   | "myExams"
+  | "collegeExams"
   | "myAssignments"
   | "childTimetable"
   | "childExams"
@@ -42,7 +43,7 @@ export type RolePolicy = {
 const HELP_ONLY: RolePolicy = { help: true, tutor: false, assessed: false, gradeScoped: false, tools: [] };
 
 export const ROLE_POLICY: Record<Role, RolePolicy> = {
-  STUDENT: { help: true, tutor: true, assessed: true, gradeScoped: true, tools: ["myTimetable", "myExams", "myAssignments"] },
+  STUDENT: { help: true, tutor: true, assessed: true, gradeScoped: true, tools: ["myTimetable", "myExams", "collegeExams", "myAssignments"] },
   TEACHER: { help: true, tutor: true, assessed: false, gradeScoped: false, tools: ["teacherTimetable", "registersDue", "teacherAssignments"] },
   FACULTY: { help: true, tutor: true, assessed: false, gradeScoped: false, tools: ["myLectures"] },
   HOD: { help: true, tutor: true, assessed: false, gradeScoped: false, tools: ["myLectures"] },

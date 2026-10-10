@@ -1224,6 +1224,37 @@ export async function buildStaffAttendance(school: { id: string }, adminUserId: 
  * co-scholastic write. The school's rules are written out explicitly so the
  * sweep can send them back. Re-run safe.
  */
+/**
+ * One sitting still ahead (the exam-scope reader, 10 Oct 2026): a published "Half-yearly" series for the grade with
+ * two papers about six weeks from today, so a demo pupil's "when is my next exam" has a date to be answered with.
+ * Idempotent; the dates move forward with each run so the sitting stays ahead. No marks: nothing has been sat.
+ */
+export async function buildUpcomingExam(school: { id: string }, adminUserId: string, opts: { grade: string; subjects: [string, string]; daysAhead?: number }) {
+  const admin = await db.membership.findFirstOrThrow({ where: { schoolId: school.id, userId: adminUserId }, select: { id: true } });
+  const klass = await db.class.findFirst({ where: { schoolId: school.id, gradeLevel: opts.grade, archivedAt: null }, select: { id: true } });
+  if (!klass) return { series: 0, papers: 0 };
+  const ahead = opts.daysAhead ?? 45;
+  const day = (offset: number) => new Date(Date.now() + offset * 86_400_000).toISOString().slice(0, 10);
+  const first = new Date(`${day(ahead)}T00:00:00.000Z`);
+  const term = await db.term.findFirst({ where: { schoolId: school.id, startDate: { lte: first }, endDate: { gte: first } }, select: { id: true } });
+  const series = await db.examSeries.upsert({
+    where: { schoolId_gradeLevel_name: { schoolId: school.id, gradeLevel: opts.grade, name: "Half-yearly" } },
+    create: { schoolId: school.id, name: "Half-yearly", gradeLevel: opts.grade, kind: "MID_TERM", termId: term?.id ?? null, publishedAt: new Date(), createdByMembershipId: admin.id },
+    update: { kind: "MID_TERM", termId: term?.id ?? null, publishedAt: new Date(), archivedAt: null },
+    select: { id: true },
+  });
+  let papers = 0;
+  for (const [i, subject] of opts.subjects.entries()) {
+    await db.examSlot.upsert({
+      where: { seriesId_subject: { seriesId: series.id, subject } },
+      create: { schoolId: school.id, seriesId: series.id, subject, dateKey: day(ahead + i), startMinute: 9 * 60, endMinute: 11 * 60 + 30, pointsMilli: 80_000, position: i + 1 },
+      update: { dateKey: day(ahead + i), startMinute: 9 * 60, endMinute: 11 * 60 + 30, pointsMilli: 80_000, position: i + 1 },
+    });
+    papers++;
+  }
+  return { series: 1, papers };
+}
+
 export async function buildExams(school: { id: string }, adminUserId: string, opts: { grade?: string; subjects?: [string, string] } = {}) {
   const grade = opts.grade ?? "3";
   const [subjectA, subjectB] = opts.subjects ?? ["Mathematics", "English"];

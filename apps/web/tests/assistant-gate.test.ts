@@ -31,6 +31,15 @@ const above = { help: HELP_THRESHOLD.en + 0.05, curriculum: CURRICULUM_THRESHOLD
 const below = { help: HELP_THRESHOLD.en - 0.05, curriculum: CURRICULUM_THRESHOLD.en - 0.05 };
 const q = (text: string, scores: { help: number; curriculum: number }, policy = student, language: "en" | "hi" | "mr" = "en") => ({ original: text, stripped: text, language, policy, helpTop: scores.help, curriculumTop: scores.curriculum });
 
+describe("the gate after the model accepts a second label when told to (the exam-scope reader)", () => {
+  it("a tutor answer naming the pupil's sitting may read as PLATFORM without being discarded", async () => {
+    const base = { answer: "Your Half-yearly sits Science on 24 November 2026; photosynthesis is how plants make food [1].", label: "CURRICULUM" as const, passageCount: 1, allowedText: "Half-yearly Science 24 November 2026 photosynthesis plants", lexicon: [], hint: false };
+    expect(await gateAnswer(base, fakeModel("PLATFORM"))).toMatchObject({ pass: false, reasons: ["SCOPE"] });
+    expect(await gateAnswer({ ...base, alsoLabel: "PLATFORM" }, fakeModel("PLATFORM"))).toMatchObject({ pass: true });
+    expect(await gateAnswer({ ...base, alsoLabel: "PLATFORM" }, fakeModel("REFUSE"))).toMatchObject({ pass: false, reasons: ["SCOPE"] });
+  });
+});
+
 describe("the gate before the model", () => {
   it("a question for one of the role's own doors is in the platform scope below the help threshold, if the classifier says PLATFORM", async () => {
     const parent = ROLE_POLICY.PARENT;

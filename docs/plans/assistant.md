@@ -233,12 +233,28 @@ Phase B's library is listed in that commit. Scores on the final code: refusal 18
 injection 28/28; language 26/26; help 145/200 naming the right page and 0/200 naming another role's page or a
 door; tutor 167/200 (answered 92 %, correct by keywords 85 %, cited 91.5 %); hint 170/250 with one leak in 208
 hints (the book's own worked example carrying the case's number) and the teacher's switch held 208/208. Left
-open (section 7 of the Phase D report, for the owner): a reader of the pupil's own exams (6/55 on the exam-scope
-set: the tutor never reads them and help reads them badly); help answers are one sentence rather than steps
+open (section 7 of the Phase D report, for the owner): help answers are one sentence rather than steps
 (16/200) because the nav entries in the help index carry only a label; the chunker's garbled or untitled headings
 (NCERT 10.8 % garbled, 30.1 % untitled by the heuristic) show in citations; the class 3 pupil's widening picks the
 closest passage (class 11) rather than the lowest class above the threshold; the Sarvam-M comparison and the
 speaker's reading (R-14; the sheets are written per run) are not done.
+
+**Built, 10 October 2026 (the exam-scope reader, after Phase D).** `src/lib/assistant/exams.ts` turns the pupil's own
+exams door into a few plain lines (the sittings ahead with date, time and subject, or that none is scheduled, and the
+last series held; for a college the sessions newest first, sat or with the form's window, the papers seated ahead
+and the results out), read as the person through the tools (`myExams` and `childExams` over `/api/v1/family/exams`,
+the new `collegeExams` over `/api/v1/exam-cell/mine`, each `ToolRun` now carrying the door's own JSON for code that
+reads by shape). A pupil's exam question in tutor mode reads the door too (`asksExamScope` or the exams intent) and
+the prompt carries the lines under `EXAM_DATA_RULE`; which topics a paper covers the platform still does not record,
+so the platform itself opens such an answer with `assistantService.examScopeTeacher` in the person's language and
+drops a yes-or-no sentence the model writes anyway (an answer of nothing else is discarded); the answer check
+accepts the platform label beside the curriculum one when the lines were given. In help mode the lines come first
+in the data, named for the page. The demo schools' fixture gives every grade a "Half-yearly" sitting about six weeks
+ahead (`buildUpcomingExam`). Through the live doors on the demo tenants the nine exam-scope questions went from
+6/55 to 9/9 answered, in en, hi and mr, for a school pupil and a college pupil. Also found and fixed on the way: a
+page of the person's own under an invented host ("https://shalaghar.in/student/exams", half the Marathi answers)
+becomes the bare path rather than a discarded link; a list of the person's own subjects or papers is PLATFORM to
+the answer classifier.
 
 ### Phase E — hosted (week 6)
 

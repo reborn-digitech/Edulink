@@ -36,3 +36,12 @@ export function foreignPaths(answer: string, role: Role): string[] {
   const paths = answer.match(/(?<![\w.:/-])\/[a-z][\w-]*(?:\/[\w\-[\]{}<>:]+)*/g) ?? [];
   return [...new Set(paths)].filter((p) => !pageIsRoles(p, role));
 }
+
+/**
+ * A page of the person's own named under an invented host ("https://shalaghar.in/student/exams": the model wrote
+ * one in half its Marathi answers, 10 Oct 2026) becomes the bare path the platform itself links; a link to
+ * anything else is left for the answer check to discard. Pure.
+ */
+export function ownPathsWithoutHost(answer: string, role: Role): string {
+  return answer.replace(/https?:\/\/[^\s/)\]]+(\/[a-z][\w-]*(?:\/[\w\-[\]{}<>:]+)*)\/?/gi, (whole, path: string) => (pageIsRoles(path, role) ? path : whole));
+}
