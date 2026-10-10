@@ -1,0 +1,550 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-10T19:52:44.466Z",
+  "finishedAt": "2026-10-10T20:09:37.875Z",
+  "seconds": 1013,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 3 — Force and Pressure",
+    "edition": "First Edition 2018",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Science: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 275362,
+      "in": 28,
+      "out": 26,
+      "rejects": 3,
+      "promptTokens": 27365,
+      "completionTokens": 6938
+    },
+    "critique": {
+      "calls": 32,
+      "ms": 388659,
+      "in": 26,
+      "out": 15,
+      "rejects": 11,
+      "promptTokens": 14190,
+      "completionTokens": 5375
+    },
+    "solver": {
+      "calls": 112,
+      "ms": 103180,
+      "in": 15,
+      "out": 13,
+      "rejects": 2,
+      "promptTokens": 18339,
+      "completionTokens": 1123
+    },
+    "form": {
+      "calls": 9,
+      "ms": 77784,
+      "in": 13,
+      "out": 6,
+      "rejects": 7,
+      "promptTokens": 4305,
+      "completionTokens": 1009
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 13,
+      "ms": 2987,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 229044,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 13857,
+      "completionTokens": 7061
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "According to the passage, which law describes the motion of an object when no force acts on it?",
+      "ms": {
+        "draft": 54986,
+        "critique": 17684,
+        "solver": 2367,
+        "form": 6
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment described in the passage, when two bottles with magnets are placed near each other with opposite poles, what happens?",
+      "ms": {
+        "draft": 54986,
+        "critique": 15393,
+        "solver": 3941,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of pressure?",
+      "ms": {
+        "draft": 16743,
+        "critique": 15280
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a non-contact force?",
+      "ms": {
+        "draft": 54986,
+        "critique": 17726,
+        "solver": 24987,
+        "form": 6724
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A sharp knife cuts better than a blunt knife because:",
+      "ms": {
+        "draft": 16743,
+        "critique": 14135
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the upward force acting on an object in a fluid or gas called?",
+      "ms": {
+        "draft": 12346,
+        "critique": 17621
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A plastic bottle filled with water floats inside water. What can be concluded about the buoyant force acting on it?",
+      "ms": {
+        "draft": 12346,
+        "critique": 20921
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the reason an object floats on the surface of water?",
+      "ms": {
+        "draft": 12346,
+        "critique": 18941,
+        "solver": 34083
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to Archimedes' Principle, what is the magnitude of the buoyant force acting on an object immersed in a fluid?",
+      "ms": {
+        "draft": 12346,
+        "critique": 17078
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why do the water jets from holes at the same depth in a bottle travel the same distance?",
+      "ms": {
+        "draft": 16743,
+        "critique": 14831,
+        "solver": 31832,
+        "form": 13307
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "For a given object, the buoyant force in liquids of different ........ is .............",
+      "ms": {
+        "draft": 7570,
+        "critique": 12029
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the weight of an object when it is immersed in water, according to the passage?",
+      "ms": {
+        "draft": 10859,
+        "critique": 8538,
+        "solver": 2427,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What will happen to a plastic bottle filled with water when it is placed in water?",
+      "ms": {
+        "draft": 10859,
+        "critique": 9616,
+        "solver": 2369
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of pressure?",
+      "ms": {
+        "draft": 6171,
+        "critique": 7542
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why is it easier to cut vegetables with a sharp knife than with a blunt knife?",
+      "ms": {
+        "draft": 6171,
+        "critique": 6373
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment described in the passage, water jets from holes at different levels in a bottle fall at different distances. What does this show about liquid pressure?",
+      "ms": {
+        "draft": 6171,
+        "critique": 6719
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a non-contact force?",
+      "ms": {
+        "draft": 21878,
+        "critique": 7522
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to an object in motion when no force acts on it?",
+      "ms": {
+        "draft": 21878,
+        "critique": 7356
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student applies a force of 10 N on a surface of area 2 m². What is the pressure exerted?",
+      "ms": {
+        "draft": 6171,
+        "critique": 6390,
+        "solver": 15376,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two forces of 10 N and 5 N act on an object in opposite directions, what is the net force?",
+      "ms": {
+        "draft": 21878,
+        "critique": 7537,
+        "solver": 9686,
+        "form": 1326
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the upward force acting on an object immersed in a fluid called?",
+      "ms": {
+        "draft": 10859,
+        "critique": 8107,
+        "solver": 2032,
+        "form": 5519,
+        "translation": 41351
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of force?",
+      "ms": {
+        "draft": 7570,
+        "critique": 9709,
+        "solver": 5692,
+        "form": 0,
+        "translation": 18435
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of the inertia of motion?",
+      "ms": {
+        "draft": 16743,
+        "critique": 13310,
+        "solver": 31026,
+        "form": 9984,
+        "translation": 57661
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two forces of 10 N and 5 N are applied in opposite directions on an object, what is the net force acting on the object?",
+      "ms": {
+        "draft": 54986,
+        "critique": 18184,
+        "solver": 5567,
+        "form": 4102,
+        "translation": 35357
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an experiment, two bottles with magnets are placed in water and observed to move towards each other. What does this show?",
+      "ms": {
+        "draft": 21878,
+        "critique": 6967,
+        "solver": 1164,
+        "form": 2880,
+        "translation": 33078
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "According to Archimedes’ Principle, what is the magnitude of the buoyant force equal to?",
+      "ms": {
+        "draft": 10859,
+        "critique": 7458,
+        "solver": 1615,
+        "form": 3375,
+        "translation": 38625
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the air pressure on our body equal to?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the SI unit of pressure?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, which law describes the motion of an object when no force acts on it?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the experiment described in the passage, when two bottles with magnets are placed near each other with opposite poles, what happens?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the SI unit of pressure?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a non-contact force?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A sharp knife cuts better than a blunt knife because:",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the upward force acting on an object in a fluid or gas called?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A plastic bottle filled with water floats inside water. What can be concluded about the buoyant force acting on it?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the reason an object floats on the surface of water?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to Archimedes' Principle, what is the magnitude of the buoyant force acting on an object immersed in a fluid?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why do the water jets from holes at the same depth in a bottle travel the same distance?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'hole'"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "For a given object, the buoyant force in liquids of different ........ is .............",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What is the SI unit of force?\",\n      \"options\": [\"Dyne\", \"Ne"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens to the weight of an object when it is immersed in water, according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What will happen to a plastic bottle filled with water when it is placed in water?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the SI unit of pressure?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why is it easier to cut vegetables with a sharp knife than with a blunt knife?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the experiment described in the passage, water jets from holes at different levels in a bottle fall at different distances. What does this show about liquid pressure?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of a non-contact force?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What happens to an object in motion when no force acts on it?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student applies a force of 10 N on a surface of area 2 m². What is the pressure exerted?",
+      "reason": "options 0 and 3 are the same (\"20 Pa\"); options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If two forces of 10 N and 5 N act on an object in opposite directions, what is the net force?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Science: levels 5 and 6 skipped",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}
