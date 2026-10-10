@@ -154,7 +154,7 @@ export function helpMessages(input: HelpPromptInput): ChatMessage[] {
     // Phase D's pilot (10 Oct 2026): with no help passage and only the person's own door data (a guardian's fees),
     // the model still wrote "[1]" and the gate discarded every such answer as an invented citation (24 of 24).
     input.passages.length
-      ? "Name the page a person opens by its path and give the steps as a short numbered list, each with its citation like [1]. Mention only what this role can do."
+      ? "Name the page a person opens by its path and give the steps as a short numbered list, each with its citation like [1]. Mention only what this role can do. When the question asks how to do something, write two to four numbered steps (1., 2., …) on separate lines, the page's path in the first and the heading or button to use in each, as the passages name them; one sentence is not an answer to a how-to question."
       : "There is no numbered passage for this question, so write no citation mark like [1]: answer from <data> alone, in a sentence or two, and name the page the person opens only by the page= given on <data>, never another. Mention only what this role can do.",
     "Never name an address that starts with /api/: those are for programs, not people; name the page instead.",
     "When <data> is given, it is the person's own record read from the platform for this question: use it to answer (for example which registers are still to be marked), without copying it whole.",

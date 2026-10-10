@@ -284,11 +284,59 @@ function dictionaryRows(): HelpRow[] {
     }
     return null;
   };
+  // A page card per nav entry (10 Oct 2026; Phase D's help set found the right page 72.5 % of the time and gave
+  // steps in 16 of 200 answers, because a nav entry carried only its label): the label, the page, whom it is
+  // for, the headings the page itself draws (every `title={t("…")}` in its own files, the page header first) with
+  // their descriptions, and the actions that start there, so a question in a guardian's words finds the page and
+  // the answer can say what to do on it. Read from the page's source, so a card never names what the page lacks.
+  const pageKeys = new Map<string, { headings: string[]; intros: string[] }>();
+  const keysOf = (href: string): { headings: string[]; intros: string[] } => {
+    const got = pageKeys.get(href);
+    if (got) return got;
+    const dir = join(process.cwd(), "src", "app", "(app)", ...href.replace(/[?#].*$/, "").split("/").filter(Boolean));
+    const out = { headings: [] as string[], intros: [] as string[] };
+    if (existsSync(dir)) {
+      // The page's own files, then its component folders (a folder with its own page.tsx is another page).
+      const files = readdirSync(dir).filter((f) => f.endsWith(".tsx")).sort((a, b) => (a === "page.tsx" ? -1 : b === "page.tsx" ? 1 : a.localeCompare(b))).map((f) => join(dir, f));
+      for (const sub of readdirSync(dir, { withFileTypes: true }).filter((d) => d.isDirectory() && !existsSync(join(dir, d.name, "page.tsx")))) {
+        for (const f of readdirSync(join(dir, sub.name)).filter((f) => f.endsWith(".tsx")).sort()) files.push(join(dir, sub.name, f));
+      }
+      for (const file of files) {
+        // An empty state's title says what is missing, not what the page is for.
+        const src = readFileSync(file, "utf8").replace(/<EmptyState\b[^>]*>/g, "");
+        for (const m of src.matchAll(/\btitle=\{t\("([a-zA-Z0-9_.]+)"\)\}/g)) if (!out.headings.includes(m[1]!)) out.headings.push(m[1]!);
+        for (const m of src.matchAll(/\b(?:description|intro|lede|subtitle)=\{t\("([a-zA-Z0-9_.]+)"\)\}/g)) if (!out.intros.includes(m[1]!)) out.intros.push(m[1]!);
+      }
+    }
+    pageKeys.set(href, out);
+    return out;
+  };
+  const describePage = (dict: Dict, href: string): { intro: string[]; headings: string[] } => {
+    const keys = keysOf(href);
+    const value = (k: string) => {
+      const v = lookup(dict, k);
+      return v && !v.includes("{") && v.length <= 120 ? v : null;
+    };
+    // A heading is a name, not a sentence: a title that ends like a sentence is a message, left out.
+    const headings = [...new Set(keys.headings.map(value).filter((v): v is string => !!v && !/[.।!?]$/.test(v)))].slice(0, 10);
+    const intro = [...new Set(keys.intros.map(value).filter((v): v is string => !!v))].slice(0, 3);
+    return { intro, headings };
+  };
   for (const { language, dict, file } of DICTS) {
     for (const n of navBy.values()) {
       const label = lookup(dict, n.labelKey);
       if (!label) continue;
-      rows.push({ kind: "nav", roles: [...n.roles].sort(), pagePath: n.href, door: null, module: null, title: label, text: `${label} — ${n.href}`, sourceFile: `src/lib/nav.ts, ${file}`, language });
+      const roles = [...n.roles].sort();
+      const page = describePage(dict, n.href);
+      const own = actions.filter((a) => a.href === n.href || a.href.startsWith(`${n.href}/`)).map((a) => ({ label: lookup(dict, a.labelKey), hint: lookup(dict, a.descriptionKey) })).filter((a): a is { label: string; hint: string | null } => !!a.label);
+      const actionText = [...new Map(own.map((a) => [a.label, a])).values()].slice(0, 8).map((a) => (a.hint ? `${a.label}: ${a.hint}` : a.label)).join("; ");
+      const text = [
+        `${label} — page ${n.href} (${roles.join(", ")}).`,
+        page.headings.length ? `On this page: ${page.headings.join("; ")}.` : "",
+        page.intro.join(" "),
+        actionText ? `Actions from here: ${actionText}.` : "",
+      ].filter(Boolean).join(" ").slice(0, 1500);
+      rows.push({ kind: "nav", roles, pagePath: n.href, door: null, module: null, title: label, text, sourceFile: `src/lib/nav.ts, ${file}`, language });
     }
     for (const a of actions) {
       const label = lookup(dict, a.labelKey);
@@ -368,7 +416,8 @@ async function main() {
   console.log(`  embedded ${done} entries in ${minutes.toFixed(1)} min (${(done / Math.max(minutes, 1e-6)).toFixed(0)} a minute); removed ${stale.count} rows of older commits; ${total} entries in HelpEntry.`);
 }
 
-main()
+// Run only as a script: a test or a sample harness that imports buildHelpRows must not rewrite the index.
+if (process.argv[1] && /help-index\.ts$/.test(process.argv[1])) main()
   .catch((e) => {
     console.error(e);
     process.exitCode = 1;

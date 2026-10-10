@@ -236,8 +236,7 @@ Phase B's library is listed in that commit. Scores on the final code: refusal 18
 injection 28/28; language 26/26; help 145/200 naming the right page and 0/200 naming another role's page or a
 door; tutor 167/200 (answered 92 %, correct by keywords 85 %, cited 91.5 %); hint 170/250 with one leak in 208
 hints (the book's own worked example carrying the case's number) and the teacher's switch held 208/208. Left
-open (section 7 of the Phase D report, for the owner): help answers are one sentence rather than steps
-(16/200) because the nav entries in the help index carry only a label; the chunker's garbled or untitled headings
+open (section 7 of the Phase D report, for the owner): the chunker's garbled or untitled headings
 (NCERT 10.8 % garbled, 30.1 % untitled by the heuristic) show in citations; the class 3 pupil's widening picks the
 closest passage (class 11) rather than the lowest class above the threshold; the Sarvam-M comparison and the
 speaker's reading (R-14; the sheets are written per run) are not done.
@@ -258,6 +257,18 @@ ahead (`buildUpcomingExam`). Through the live doors on the demo tenants the nine
 page of the person's own under an invented host ("https://shalaghar.in/student/exams", half the Marathi answers)
 becomes the bare path rather than a discarded link; a list of the person's own subjects or papers is PLATFORM to
 the answer classifier.
+
+**Built, 10 October 2026 (the help index's page cards, the owner's item 2).** A nav entry in the help index carried
+only its label ("Fees — /parent/fees"), so a question in a guardian's words often found nothing close and the
+answer could name no step. `scripts/help-index.ts` now writes a page card per nav entry and language: the label,
+the page, whom it is for, the headings the page itself draws (every `title={t("…")}` in the page's own files and
+its component folders, the page header first, empty states and sentences left out), their descriptions, and the
+quick actions that start there; read from the page's source, so a card never names what the page lacks (609 cards,
+531 with headings, 75 with actions; the index 2,585 entries). The help prompt asks for two to four numbered steps
+on a how-to question. On the 200-question help set: answered 155 → 181 of 200, the right page named 145 → 170
+(72.5 % → 85 %; en 107 → 123 of 141, hi 15 → 21 of 30, mr 23 → 26 of 29), steps 16 → 39, another role's page or a
+door named 0 → 0. Steps stay low because most help questions ask where something is, which one sentence answers;
+Hindi answers carry no steps at all, for a speaker to read.
 
 ### Phase E — hosted (week 6)
 
