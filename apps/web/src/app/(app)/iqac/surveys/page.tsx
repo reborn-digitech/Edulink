@@ -58,7 +58,7 @@ export default async function SurveysPage({ searchParams }: { searchParams: Prom
           <CardBody>
             <ActionForm action={createSurveyAction} className="grid gap-3 sm:grid-cols-2">
               <input type="hidden" name="back" value={back} />
-              <SelectField name="kind" label={t("iqac.kindField")} defaultValue="SSS">
+              <SelectField name="kind" label={t("iqac.surveyKindField")} defaultValue="SSS">
                 {SURVEY_KINDS.map((k) => (
                   <option key={k} value={k}>
                     {tt("iqac.surveyKind." + k)}

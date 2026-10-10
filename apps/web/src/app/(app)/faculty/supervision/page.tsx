@@ -37,7 +37,9 @@ export default async function SupervisionPage({ searchParams }: { searchParams: 
     <div className="space-y-5">
       <PageHeader title={t("placement.supervisionTitle")} description={t("placement.supervisionIntro")} />
       <Flash ok={ok} error={error} />
-      <InternshipStaffList internships={mine} t={t} back="/faculty/supervision" canDecide={false} supervisors={[]} rule={internshipRule} aicte={await hasStream(ctx.schoolId, "ENGINEERING")} />
+      {/* canDecide is the library's (TPO and HOD): an HOD who supervises sets the credits here too. A supervisor is named by the
+          approval, so a faculty member's own list never holds a proposal and the approve/refuse forms (which need the supervisors list) never draw. */}
+      <InternshipStaffList internships={mine} t={t} back="/faculty/supervision" canDecide={internships.canDecide} supervisors={[]} rule={internshipRule} aicte={await hasStream(ctx.schoolId, "ENGINEERING")} />
       <ProjectList projects={projects.projects.filter((p) => p.guideMembershipId === ctx.membershipId)} t={t} back="/faculty/supervision" myMembershipId={ctx.membershipId} />
     </div>
   );

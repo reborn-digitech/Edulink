@@ -5,6 +5,7 @@ import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { sessionView } from "@/lib/exam-cell";
+import { db } from "@/lib/db";
 import { termsOf } from "@/lib/exam-cell-academics";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -31,6 +32,8 @@ export default async function SessionFormsPage({ params, searchParams }: { param
   const { sessionId } = await params;
   const { ok, error } = await searchParams;
   const [s, terms] = await Promise.all([sessionView(ctx, sessionId), termsOf(ctx.schoolId)]);
+  // The fee head may change while the session is a draft (no form exists yet); once forms exist each form's demand was raised under it, so it is fixed.
+  const feeHeads = s.canWrite && s.status === "DRAFT" ? await db.feeHead.findMany({ where: { schoolId: ctx.schoolId, retiredAt: null }, orderBy: [{ sortOrder: "asc" }, { name: "asc" }], select: { id: true, name: true } }) : [];
   const back = `/exam-cell/sessions/${s.id}`;
   const next = NEXT[s.status];
   const slab = s.lateFeeSlabs[0];
@@ -143,7 +146,23 @@ export default async function SessionFormsPage({ params, searchParams }: { param
                   <option value="SUPPLEMENTARY">{t("examCell.kindSUPPLEMENTARY")}</option>
                 </select>
               </Labelled>
-              <input type="hidden" name="feeHeadId" value={s.feeHeadId ?? ""} />
+              {s.status === "DRAFT" ? (
+                <Labelled label={t("examCell.fieldFeeHead")}>
+                  <select name="feeHeadId" defaultValue={s.feeHeadId ?? ""} className={fieldClass()}>
+                    <option value="">{t("examCell.noFeeHead")}</option>
+                    {feeHeads.map((h) => (
+                      <option key={h.id} value={h.id}>
+                        {h.name}
+                      </option>
+                    ))}
+                  </select>
+                </Labelled>
+              ) : (
+                <div className="space-y-1.5">
+                  <input type="hidden" name="feeHeadId" value={s.feeHeadId ?? ""} />
+                  <p className="text-sm text-fg-muted">{t("examCell.feeHeadFixed")}</p>
+                </div>
+              )}
               <DateTimeField label={t("examCell.fieldOpens")} name="formOpensAt" defaultValue={localInput(s.formOpensAt)} defaultTime="00:00" />
               <DateTimeField label={t("examCell.fieldCloses")} name="formClosesAt" defaultValue={localInput(s.formClosesAt)} defaultTime="23:59" />
               <Labelled label={t("examCell.fieldFeePerCourse")}>

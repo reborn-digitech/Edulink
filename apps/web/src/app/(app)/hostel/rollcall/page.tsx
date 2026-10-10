@@ -56,7 +56,7 @@ export default async function HostelRollCallPage({ searchParams }: { searchParam
           </select>
         </label>
         <Button type="submit" variant="secondary">
-          {t("hostel.open")}
+          {t("hostel.showSheet")}
         </Button>
       </form>
       {sheet ? (

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { CalendarCheckIcon, ChalkboardTeacherIcon, GiftIcon, HandshakeIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { getT } from "@/lib/i18n/server";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
 import { alumniCollege, mentorBookings } from "@/lib/placement-alumni";
@@ -24,6 +25,20 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const BACK = "/alumni/college";
+
+/** A mentoring booking's status in words (the gigs module's own, which the booking is). */
+const BOOKING_STATUS_KEY: Record<string, TranslationKey> = {
+  PENDING_CONSENT: "gigs.bookingStatusPENDING_CONSENT",
+  CONFIRMED: "gigs.bookingStatusCONFIRMED",
+  CANCELLED: "gigs.bookingStatusCANCELLED",
+  DELIVERED: "gigs.bookingStatusDELIVERED",
+  MISSED: "gigs.bookingStatusMISSED",
+  UNHELD: "gigs.bookingStatusUNHELD",
+};
+const bookingStatusLabel = (t: (key: TranslationKey) => string, status: string) => {
+  const key = BOOKING_STATUS_KEY[status];
+  return key ? t(key) : status;
+};
 
 /**
  * What a college asks of its alumni (the placement module's part of the
@@ -88,7 +103,7 @@ export default async function AlumniCollegePage({ searchParams }: { searchParams
                     </ActionForm>
                   </div>
                 ) : (
-                  <Badge>{b.status}</Badge>
+                  <Badge>{bookingStatusLabel(t, b.status)}</Badge>
                 )}
               </div>
             ))}

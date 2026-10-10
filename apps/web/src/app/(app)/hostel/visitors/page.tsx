@@ -65,7 +65,7 @@ export default async function HostelVisitorsPage({ searchParams }: { searchParam
           <input type="date" name="date" defaultValue={book.dateKey} className={fieldClass("mt-1.5 block")} />
         </label>
         <Button type="submit" variant="secondary">
-          {t("hostel.open")}
+          {t("hostel.showDay")}
         </Button>
       </form>
       <Card>

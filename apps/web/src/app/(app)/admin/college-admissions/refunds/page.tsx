@@ -49,9 +49,12 @@ export default async function RefundExceptionsPage({ searchParams }: { searchPar
               title={t("collegeDesks.refundsNone")}
               description={t("collegeDesks.refundsNoneBody")}
               action={
-                <Button asChild size="sm" variant="secondary">
-                  <Link href="/admin/college-admissions">{t("collegeDesks.refundsOpen")}</Link>
-                </Button>
+                // The applications page sends the accounts desk straight back here (its way in is this page), so the button would loop.
+                ctx.role === "ACCOUNTS" ? undefined : (
+                  <Button asChild size="sm" variant="secondary">
+                    <Link href="/admin/college-admissions">{t("collegeDesks.refundsOpen")}</Link>
+                  </Button>
+                )
               }
             />
           ) : (

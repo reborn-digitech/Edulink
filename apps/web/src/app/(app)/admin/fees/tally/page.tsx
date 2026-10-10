@@ -80,7 +80,7 @@ export default async function TallyPage() {
             ))}
             <li className="font-mono">{`${TALLY_LEDGERS.feesPrefix}…`}</li>
           </ul>
-          <p className="text-fg-muted">{t("tally.untested")}</p>
+          <p className="text-fg-muted">{t("tally.importHint")}</p>
         </CardBody>
       </Card>
     </div>
