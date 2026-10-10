@@ -64,7 +64,9 @@ export function IssueForm({
     if (tpl) params.set("templateId", tpl);
     if (query) params.set("q", query);
     if (requestId) params.set("requestId", requestId);
-    router.replace(`/admin/certificates/issue?${params.toString()}`);
+    // The choice lives in the URL so the server can read the record, but the page must not jump to the top on
+    // every change (10 Oct 2026: the office scrolled back down after each field); the position is kept.
+    router.replace(`/admin/certificates/issue?${params.toString()}#issue`, { scroll: false });
   }
 
   function submit(event: React.FormEvent) {

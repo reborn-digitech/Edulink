@@ -111,7 +111,7 @@ export default async function IssueCertificatePage({ searchParams }: { searchPar
         <Card id="issue" className="scroll-mt-24" data-testid="issue-card">
           <CardBody className="space-y-4 pt-5">
             {/* The search is a plain GET so the list it narrows is the server's own. */}
-            <form method="get" action="/admin/certificates/issue" className="flex flex-wrap items-end gap-2">
+            <form method="get" action="/admin/certificates/issue#issue" className="flex flex-wrap items-end gap-2">
               {templateId && <input type="hidden" name="templateId" value={templateId} />}
               {selectedId && <input type="hidden" name="membershipId" value={selectedId} />}
               {request && <input type="hidden" name="requestId" value={request.id} />}

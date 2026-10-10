@@ -48,6 +48,11 @@ describe("the issue page's handoff from a request", () => {
     expect(queue).toMatch(/<details/);
   });
 
+  it("choosing a pupil or a template keeps the scroll position, and the search lands on the form (10 October 2026)", () => {
+    expect(form).toMatch(/router\.replace\(`\/admin\/certificates\/issue\?\$\{params\.toString\(\)\}#issue`, \{ scroll: false \}\)/);
+    expect(page).toMatch(/action="\/admin\/certificates\/issue#issue"/);
+  });
+
   it("a refusal is an alert, scrolled into view, not a line the person has to find", () => {
     expect(form).toMatch(/role="alert"/);
     expect(form).toMatch(/scrollIntoView/);
