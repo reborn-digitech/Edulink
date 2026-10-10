@@ -123,6 +123,11 @@ const NO_SCHOOL_POLICY = new Set([
   "ContentDocument",
   "ContentChunk",
   "HelpEntry",
+  // ---- review-queue (10 Oct 2026) ----
+  // One act of review on a bank question by the content team or the operator (src/lib/quiz-review.ts):
+  // the bank belongs to no school and neither do its reviewers, exactly like QuizQuestion.
+  "QuizReviewStamp",
+  // ---- end review-queue ----
 ]);
 
 /**
@@ -661,7 +666,46 @@ const MEMBER_READABLE: Record<string, string> = {
               AND m."status" = 'ACTIVE'
               AND m."leftAt" IS NULL
          )`,
+  /**
+   * THE PREVIOUS SCHOOL'S PUBLISHED REPORT CARDS (R-70, the owner's decision of
+   * 10 October 2026): the second and last table the receiving school reads
+   * across tenants, and it is reached THROUGH the first. A card is opened to
+   * the school the child attends now only when the issuing school has
+   * recorded the child's departure — a live SchoolRecord, the leaving
+   * certificate the family already holds — and only a PUBLISHED card: a draft
+   * is the old school's working surface and stays its own. The anchor is the
+   * same as SchoolRecord's and is spelled out again here (the membership in
+   * the STUDENT role, ACTIVE, not left, at a school of this binding), so the
+   * clause fails closed even if SchoolRecord's own policy changed: Postgres
+   * narrows the subquery by SchoolRecord's policy first, and this predicate
+   * asks for the same thing explicitly. Read-only, FOR SELECT, like every
+   * widening here; the card is listed from the frozen subjects snapshot, never
+   * the marks behind it, which stay out of reach (Grade carries no clause).
+   */
+  ReportCard: `(${receivingSchoolCard(`"ReportCard"."studentMembershipId"`, `"ReportCard"."schoolId"`)} AND "ReportCard"."status" = 'PUBLISHED')`,
+  // The items ARE the card: the same rule through their parent, so a card that is readable never renders empty.
+  ReportCardItem: `EXISTS (
+            SELECT 1 FROM "ReportCard" rc
+             WHERE rc."id" = "ReportCardItem"."reportCardId"
+               AND rc."status" = 'PUBLISHED'
+               AND ${receivingSchoolCard(`rc."studentMembershipId"`, `rc."schoolId"`)}
+          )`,
 };
+
+/** "…a live leaving certificate names this membership, and the child it is about is on the roll of a school of this binding now." */
+function receivingSchoolCard(membershipRef: string, schoolRef: string): string {
+  return `EXISTS (
+           SELECT 1 FROM "SchoolRecord" r
+             JOIN "Membership" m ON m."userId" = r."studentUserId"
+            WHERE r."studentMembershipId" = ${membershipRef}
+              AND r."schoolId" = ${schoolRef}
+              AND r."supersededAt" IS NULL
+              AND m."schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+              AND m."role" = 'STUDENT'
+              AND m."status" = 'ACTIVE'
+              AND m."leftAt" IS NULL
+         )`;
+}
 
 /**
  * WHAT AN EXPERT MAY REACH, KEYED ON THE ENGAGEMENT AND NOT ON THE SCHOOL.
@@ -1177,12 +1221,22 @@ function generate(): string {
     }
     if (memberClause) {
       usingNote.push(
-        `  -- …and the leaving certificate of a child who is one of YOUR pupils`,
-        `  -- now, whichever school issued it. The one clause in this file that`,
-        `  -- crosses schools, on one table that holds a summary rather than a`,
-        `  -- record — see MEMBER_READABLE. Anchored on a live ACTIVE membership`,
-        `  -- in the STUDENT role, so it cannot be used to browse and a member of`,
-        `  -- staff's own school days stay out of their employer's reach.`,
+        ...(table.startsWith("ReportCard")
+          ? [
+              `  -- …and the PUBLISHED report cards of a child who is one of YOUR pupils`,
+              `  -- now, from a school that has recorded the child's departure (a live`,
+              `  -- leaving certificate, R-70). Reached through SchoolRecord's own clause`,
+              `  -- and anchored again on a live ACTIVE membership in the STUDENT role,`,
+              `  -- so it cannot be used to browse — see MEMBER_READABLE.`,
+            ]
+          : [
+              `  -- …and the leaving certificate of a child who is one of YOUR pupils`,
+              `  -- now, whichever school issued it. The one clause in this file that`,
+              `  -- crosses schools, on one table that holds a summary rather than a`,
+              `  -- record — see MEMBER_READABLE. Anchored on a live ACTIVE membership`,
+              `  -- in the STUDENT role, so it cannot be used to browse and a member of`,
+              `  -- staff's own school days stay out of their employer's reach.`,
+            ]),
       );
     }
     if (recordClause) {

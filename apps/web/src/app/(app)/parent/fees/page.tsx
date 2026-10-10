@@ -15,6 +15,9 @@ import { ChildSwitcher } from "../child-switcher";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { PayChooser } from "./pay-chooser";
 import { PlanChooser } from "./plan-chooser";
+// R-61 Q2 (10 Oct 2026): the outcome of the office's settlement on leaving.
+import { LeavingOutcomeCard } from "./leaving-outcome";
+import { familyLeavingOutcome } from "@/lib/leaving-settlement";
 import { FEE_CALENDAR_KIND_KEY, FEE_CALENDAR_STATUS_KEY, FEE_DEMAND_STATUS_KEY, FEE_METHOD_KEY, FEE_PAYMENT_STATUS_KEY, calendarTone, demandTone, paymentTone } from "./labels";
 import { TableScroll } from "@/components/ui/table-scroll";
 
@@ -60,6 +63,8 @@ export default async function ParentFeesPage({ searchParams }: { searchParams: P
   if (child) {
     [plans, calendar] = await Promise.all([familyPlans(session, child.studentMembershipId).catch(() => null), paymentCalendar(session, child.studentMembershipId).catch(() => null)]);
   }
+  const leftChild = child ? children.find((c) => c.studentMembershipId === child.studentMembershipId)?.leftAt ?? null : null;
+  const leaving = child && leftChild ? await familyLeavingOutcome(session, child.studentMembershipId).catch(() => null) : null;
 
   const dueDate = (key: string) => formatDateKey(key, { day: "numeric", month: "short", year: "numeric" }, locale);
   const money = (paise: number) => formatPaise(paise, locale);
@@ -103,6 +108,8 @@ export default async function ParentFeesPage({ searchParams }: { searchParams: P
             <StatTile label={t("fees.parentOverdue")} value={money(child.totals.overduePaise)} tone={child.totals.overduePaise > 0 ? "danger" : "neutral"} />
             <StatTile label={t("fees.parentPaidSoFar")} value={money(child.totals.paidPaise)} tone="neutral" />
           </div>
+
+          {leaving && <LeavingOutcomeCard outcome={leaving} />}
 
           {plans && child.year && !plans.current && (
             <Card>

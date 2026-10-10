@@ -775,6 +775,76 @@ async function main() {
       "a leaver rewrote their own report card — the record is theirs to READ",
     );
 
+    /* ---------------------------------------------------------------- *
+     * THE PREVIOUS SCHOOL'S PUBLISHED REPORT CARDS (R-70, 10 Oct 2026).
+     *
+     * verify-pupil left school A (verify-rec-a is A's live leaving record)
+     * and is on B's roll now. B reads A's PUBLISHED card about the pupil and
+     * its items, and nothing else: not A's draft about the same child, not
+     * A's card about a child B never taught, and nothing once the pupil has
+     * left B too. The clause is anchored on the certificate, so it opens no
+     * card where no departure was recorded (verify-m-other has a card at A
+     * and no certificate B can read).
+     * ---------------------------------------------------------------- */
+    psql(
+      DB,
+      `INSERT INTO "ReportCard"
+         (id,"schoolId","classId","studentMembershipId",title,status,"fromDateKey","toDateKey","attendancePresent","attendanceTotal","updatedAt") VALUES
+         ('verify-card-draft','verify-a','verify-class-a','verify-m-pupil-a','Term 2','DRAFT','2026-01-05','2026-04-01',9,10,now());`,
+    );
+    const cardCount = (school: string, id: string) =>
+      withTenantOn(client, school, (tx) =>
+        (tx as unknown as { reportCard: { count: (a: unknown) => Promise<number> } }).reportCard.count({ where: { id } }),
+      );
+    const itemCount = (school: string, id: string) =>
+      withTenantOn(client, school, (tx) =>
+        (tx as unknown as { reportCardItem: { count: (a: unknown) => Promise<number> } }).reportCardItem.count({ where: { id } }),
+      );
+    check(
+      "⚠ R-70: the school the child attends NOW reads the previous school's PUBLISHED report card",
+      (await cardCount("verify-b", "verify-card-pupil")) === 1,
+      "the receiving school cannot read the card — the previous-schools panel is empty",
+    );
+    check(
+      "⚠ …and its items",
+      (await itemCount("verify-b", "verify-item-pupil")) === 1,
+      "the card opens but its items do not — it renders empty",
+    );
+    const draftSeen = await cardCount("verify-b", "verify-card-draft");
+    check(
+      "⚠ …but NOT the previous school's DRAFT about the same child",
+      draftSeen === 0,
+      `school B read ${draftSeen} draft card(s) — a working surface crossed the fence`,
+    );
+    const otherCardSeen = await cardCount("verify-b", "verify-card-other");
+    check(
+      "⚠ …nor a card about a child that was never their pupil",
+      otherCardSeen === 0,
+      `school B read ${otherCardSeen} card(s) about a stranger — the clause is a browse, not a handover`,
+    );
+    psql(DB, `UPDATE "Membership" SET "leftAt" = now() WHERE id = 'verify-m-pupil-b'`);
+    const leftBSeen = await cardCount("verify-b", "verify-card-pupil");
+    psql(DB, `UPDATE "Membership" SET "leftAt" = NULL WHERE id = 'verify-m-pupil-b'`);
+    check(
+      "⚠ …and nothing once the child has left the receiving school too",
+      leftBSeen === 0,
+      `school B still read ${leftBSeen} card(s) after the pupil left it — leftAt is not in the predicate`,
+    );
+    let receiverEditedCard = 0;
+    try {
+      await withTenantOn(client, "verify-b", (tx) =>
+        (tx as unknown as { reportCard: { updateMany: (a: unknown) => Promise<{ count: number }> } }).reportCard.updateMany({ where: { id: "verify-card-pupil" }, data: { title: "Rewritten" } }),
+      );
+      receiverEditedCard = psqlCount(`SELECT count(*) FROM "ReportCard" WHERE id = 'verify-card-pupil' AND title = 'Term 1'`);
+    } catch {
+      receiverEditedCard = 1;
+    }
+    check(
+      "⚠ …and the receiving school cannot edit a card it did not write",
+      receiverEditedCard === 1,
+      "the receiving school rewrote another school's report card — a read clause authorised an UPDATE",
+    );
+
     // The journey: a guardian listing every school their child has attended,
     // including the one they left, with no school bound.
     const parentSeesMemberships = await asPersonOnly("verify-parent", (tx) =>

@@ -14,6 +14,11 @@ import { PupilRecordForm } from "@/components/pupil-record-form";
 import { RecordChangePanel } from "@/components/record-change-panel";
 import { PupilRecordPenChange } from "@/components/pupil-record-pen-change";
 import { IdCardPanel } from "./id-card-panel";
+// R-70 and R-69 (10 Oct 2026): the previous schools' papers and the copy from the previous school's record.
+import { PreviousSchoolsPanel } from "@/components/previous-schools-panel";
+import { RecordCopyPanel } from "@/components/record-copy-panel";
+import { previousSchoolsFor } from "@/lib/previous-schools";
+import { recordCopyPreview } from "@/lib/record-copy";
 import { getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 
@@ -33,6 +38,8 @@ export default async function OfficePupilRecordPage({ params }: { params: Promis
     notFound();
   }
   const fieldLabel = (f: string) => t(`pupilRecord.${f}` as TranslationKey);
+  // R-70, R-69: read under the roll clause; empty and null for a pupil with no leaving certificate elsewhere.
+  const [previous, copyPreview] = await Promise.all([previousSchoolsFor(ctx, membershipId).catch(() => null), recordCopyPreview(ctx, membershipId).catch(() => null)]);
 
   return (
     <div className="mx-auto max-w-3xl space-y-6">
@@ -87,6 +94,10 @@ export default async function OfficePupilRecordPage({ params }: { params: Promis
       </Card>
       {/* The PEN correction: the admin's door to proposing one, or the pending one the head decides here. */}
       <PupilRecordPenChange view={view} role={ctx.role === "ADMIN" ? "ADMIN" : "PRINCIPAL"} />
+      {/* R-69 (10 Oct 2026): the coded lines the previous school's record would carry over, and the one click; nothing for a pupil with no leaving certificate elsewhere. */}
+      <RecordCopyPanel preview={copyPreview} office={ctx.role === "ADMIN"} />
+      {/* R-70 (10 Oct 2026): the previous schools' leaving certificates and published report cards, read-only. */}
+      {previous && previous.schools.length > 0 && <PreviousSchoolsPanel view={previous} />}
     </div>
   );
 }

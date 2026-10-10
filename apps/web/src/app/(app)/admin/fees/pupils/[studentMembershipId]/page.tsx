@@ -15,6 +15,9 @@ import { PaymentsTable } from "./payments-table";
 import { ConcessionsPanel } from "./concessions-panel";
 import { AssignPlanForm } from "./assign-plan-form";
 import { TableScroll } from "@/components/ui/table-scroll";
+// R-61 Q2 (10 Oct 2026): the settlement on leaving, on the leaver's ledger.
+import { LeavingSettlementCard } from "./leaving-settlement";
+import { leavingSettlementFor } from "@/lib/leaving-settlement";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -48,6 +51,7 @@ export default async function PupilFeesPage({ params }: { params: Promise<{ stud
   const dateOf = (key: string) => formatDateKey(key, { day: "numeric", month: "short", year: "numeric" }, locale);
   const openDemands = ledger.demands.filter((d) => d.outstandingPaise > 0).map((d) => ({ id: d.id, label: d.label, dueDateKey: dateOf(d.dueDateKey), outstandingPaise: d.outstandingPaise }));
   const p = ledger.pupil;
+  const settlement = p.leftAt ? await leavingSettlementFor(ctx, studentMembershipId).catch(() => null) : null;
 
   return (
     <div className="space-y-6">
@@ -158,6 +162,9 @@ export default async function PupilFeesPage({ params }: { params: Promise<{ stud
               />
             </CardBody>
           </Card>
+
+          {/* ---------------- settle on leaving (R-61 Q2) ---------------- */}
+          {settlement && <LeavingSettlementCard view={settlement} office={ctx.role === "ADMIN"} locale={locale} />}
 
           {/* ---------------- concessions ---------------- */}
           <Card>

@@ -14,6 +14,9 @@ import { PupilRecordForm } from "@/components/pupil-record-form";
 import { RecordChangePanel } from "@/components/record-change-panel";
 import { PupilRecordPenChange } from "@/components/pupil-record-pen-change";
 import { ChildSwitcher } from "../child-switcher";
+// R-70 (10 Oct 2026): the child's previous schools' papers, under the guardian clause.
+import { PreviousSchoolsPanel } from "@/components/previous-schools-panel";
+import { previousSchoolsFor } from "@/lib/previous-schools";
 import { getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 
@@ -35,7 +38,7 @@ export default async function ParentRecordPage({ searchParams }: { searchParams:
 
   const { children } = await listContexts(session.user.id);
   const selectedId = requested && children.some((c) => c.studentMembershipId === requested) ? requested : children[0]!.studentMembershipId;
-  const [view, changes] = await Promise.all([pupilRecordFor(session, selectedId), familyRecordChanges(session, selectedId)]);
+  const [view, changes, previous] = await Promise.all([pupilRecordFor(session, selectedId), familyRecordChanges(session, selectedId), previousSchoolsFor(session, selectedId).catch(() => null)]);
   const fieldLabel = (f: string) => t(`pupilRecord.${f}` as TranslationKey);
 
   return (
@@ -88,6 +91,8 @@ export default async function ParentRecordPage({ searchParams }: { searchParams:
       </Card>
       {/* A correction to the child's PEN the office has proposed: the guardian's word is one of the two it needs. */}
       <PupilRecordPenChange key={`pen-${selectedId}-${view.penChange?.id ?? "none"}`} view={view} role="PARENT" />
+      {/* R-70 (10 Oct 2026): the schools the child has left, their leaving certificates and published report cards. */}
+      {previous && previous.schools.length > 0 && <PreviousSchoolsPanel view={previous} />}
     </div>
   );
 }

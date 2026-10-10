@@ -481,6 +481,35 @@ async function apiOf(schoolId: string, studentIds: string[], window: { from: str
  * Before, S was every ACTIVE seat today — next year's entrants and every
  * graduate (nothing sets a seat COMPLETED; leaving sets the membership's leftAt)
  * — so a past SAR's students and SFR grew every year after it was filed.
+ *
+ * THE SUCCESS INDICES, 4.2.1 AND 4.2.2 (R-20, the owner's decision of 10 October
+ * 2026: no new writer; the SAR reads the leaving the office already records).
+ * NBA's SAR for UG engineering (Tier-II, criterion 4.2) asks for the success rate
+ * of the three latest batches that have graduated, named LYG, LYGm1 and LYGm2
+ * — the "last year graduate" batch and the two before it — where a batch is the
+ * students admitted in one year and "last year" is the year before the current
+ * assessment year (CAY). So the SAR of year Y counts batches whose stipulated
+ * period ended in Y−1, Y−2 and Y−3; a batch still in its final year during Y is
+ * not yet a graduating batch and waits for next year's SAR.
+ *
+ * The arithmetic, per batch (entry year e, programme duration d, final year
+ * f = e + d − 1, counted when f < Y):
+ *   admitted   = the seats with entryYear e in the department's programmes;
+ *   graduated  = of those, the seats whose ProgrammeEnrolment is COMPLETED
+ *                (written by `leaveCollege` with reason GRADUATED, the one
+ *                writer of that status) AND whose leaving date (the
+ *                membership's leftAt, written by the same departure) falls in
+ *                the final year's window [1 June f, 31 May f+1] — NBA's
+ *                "graduated in the stipulated period"; a graduate who finished
+ *                a year late is admitted but not graduated for 4.2;
+ *   no backlog = of the graduated, those with no published term result other
+ *                than PASS, ever;
+ *   4.2.2 index = graduated ÷ admitted, 4.2.1 index = no backlog ÷ admitted,
+ *   each capped at 1 (`successIndex`); the item's marks are 15 × (and 25 ×)
+ *   the mean of the batches' indices (`successMarks`), 0 with no batch.
+ * The seat's own `status` (StudentProgramme.status, set by hand in older
+ * fixtures) is no longer read for 4.2: the enrolment and the leaving date
+ * are the record the office keeps.
  */
 export async function nbaFacts(schoolId: string, departmentId: string, year: number, snap: Snap = liveSnap()) {
   const w = windowOf(year);
@@ -502,13 +531,27 @@ export async function nbaFacts(schoolId: string, departmentId: string, year: num
   const admitted = seats.filter((s) => s.entryYear === year).length;
   const er = enrolmentMarks(admitted, intake);
 
-  // 4.2 — the latest three batches whose stipulated period ended by this year.
-  const ended = seats.filter((s) => s.entryYear + (duration.get(s.programmeId) ?? 0) - 1 <= year);
+  // 4.2 — the latest three batches whose stipulated period ended BEFORE this year (LYG, LYGm1, LYGm2; the docblock
+  // has the clause and the arithmetic). A seat graduated when its enrolment is COMPLETED and its leaving date fell in
+  // the batch's final year.
+  const finalYearOf = (s: { entryYear: number; programmeId: string }) => s.entryYear + (duration.get(s.programmeId) ?? 0) - 1;
+  const ended = seats.filter((s) => finalYearOf(s) < year);
   const batchYears = [...new Set(ended.map((s) => s.entryYear))].sort((a, b) => b - a).slice(0, 3);
-  const everRows = await termRows(schoolId, ended.filter((s) => batchYears.includes(s.entryYear)).map((s) => s.studentMembershipId), { from: "1970-01-01", to: w.to });
+  const counted = ended.filter((s) => batchYears.includes(s.entryYear));
+  const everRows = await termRows(schoolId, counted.map((s) => s.studentMembershipId), { from: "1970-01-01", to: w.to });
+  const completed = new Set(
+    counted.length
+      ? (await db.programmeEnrolment.findMany({ where: { schoolId, status: "COMPLETED", OR: counted.map((s) => ({ studentMembershipId: s.studentMembershipId, programmeId: s.programmeId })) }, select: { studentMembershipId: true } })).map((e) => e.studentMembershipId)
+      : [],
+  );
+  const graduatedInTime = (s: (typeof seats)[number]) => {
+    if (!completed.has(s.studentMembershipId) || !s.student.leftAt) return false;
+    const fw = windowOf(finalYearOf(s));
+    return s.student.leftAt >= new Date(`${fw.from}T00:00:00.000Z`) && s.student.leftAt <= new Date(`${fw.to}T23:59:59.999Z`);
+  };
   const batches = batchYears.map((e) => {
     const cohort = ended.filter((s) => s.entryYear === e);
-    const graduated = cohort.filter((s) => s.status === "COMPLETED");
+    const graduated = cohort.filter(graduatedInTime);
     const clean = graduated.filter((s) => (everRows.get(s.studentMembershipId) ?? []).every((r) => r.status === "PASS"));
     return { entryYear: e, admitted: cohort.length, graduated: graduated.length, withoutBacklog: clean.length };
   });

@@ -35,6 +35,9 @@ import { recordDeparture, departuresFrom, myRecords, recordsForStudentMembership
 import { issueCertificate } from "../src/lib/certificates";
 import { admit, applicationView, createCycle, officeApply, offer, respond, setCycleStatus } from "../src/lib/admissions";
 import { decideClaim, fileClaim, waitingClaimsForOffice } from "../src/lib/guardian-claims";
+// R-69 and R-70 (the owner's decisions of 10 Oct 2026): the copy from the previous school's record and the previous-schools panel.
+import { copyPreviousRecord, recordCopyPreview } from "../src/lib/record-copy";
+import { previousSchoolsFor } from "../src/lib/previous-schools";
 import { db, fakePen, refuseUnlessLocal, upsertUser, type Ctx } from "./zz-fixtures";
 
 const DOMAIN = "demo.relay.test";
@@ -139,7 +142,8 @@ async function lastYearAtSunrise(ctx: Ctx) {
   // The pupil record and the government PEN (fakePen: the demo's own eleven digits, never a real one).
   const pen = (await db.user.findUniqueOrThrow({ where: { id: pupil.id }, select: { penNumber: true } })).penNumber ?? fakePen(membership.id);
   await assignPen(pupil.id, pen);
-  const recordData = { admissionNumber: OLD.admissionNumber, admissionDate: OLD.joinedOn, admittedToGrade: "5", penNumber: pen, addressLine: "7 Sahakar Nagar", city: "Pune", fatherName: PARENT.name, updatedByUserId: sunrise.admin.userId };
+  // The coded lines R-69 carries over (10 Oct 2026): category, religion, mother tongue, place of birth, nationality, the parents' names.
+  const recordData = { admissionNumber: OLD.admissionNumber, admissionDate: OLD.joinedOn, admittedToGrade: "5", penNumber: pen, addressLine: "7 Sahakar Nagar", city: "Pune", fatherName: PARENT.name, motherName: "Sulochana Pawar", category: "OBC", religion: "HINDU", caste: "Kunbi", motherTongue: "MARATHI", placeOfBirth: "Pune", nationality: "INDIAN", updatedByUserId: sunrise.admin.userId };
   await db.pupilRecord.upsert({ where: { studentMembershipId: membership.id }, create: { schoolId: sunrise.id, studentMembershipId: membership.id, ...recordData }, update: recordData });
 
   // The departure, through the office's own function: one transaction, the certificate numbered in the TC register.
@@ -194,8 +198,16 @@ async function thisYearAtSaraswati(old: Awaited<ReturnType<typeof lastYearAtSunr
     app.status = "ACCEPTED";
   }
   if (app.status === "ACCEPTED") {
-    await admit(admin, app.id, { classId: g6.id, feeStructureId: structure?.id ?? null, admissionNumber: NEW.admissionNumber });
-    app.status = "ADMITTED";
+    try {
+      await admit(admin, app.id, { classId: g6.id, feeStructureId: structure?.id ?? null, admissionNumber: NEW.admissionNumber });
+      app.status = "ADMITTED";
+    } catch (error) {
+      // A run that stopped between the membership and the application's ADMITTED (10 Oct 2026) leaves the boy on the
+      // roll with the application still ACCEPTED; the rest of the demo reads the membership that exists, and the
+      // "ADMITTED and linked" check below says so rather than the whole walk stopping here.
+      if (!(error instanceof Error && error.message === "admissions.refuseAlreadyOnRoll")) throw error;
+      console.warn("  (admit refused: the pupil is already on Saraswati's roll from an earlier run; the application stays ACCEPTED)");
+    }
   }
   const view = await applicationView(admin, app.id);
 
@@ -210,7 +222,11 @@ async function thisYearAtSaraswati(old: Awaited<ReturnType<typeof lastYearAtSunr
     linked = await db.guardianship.findFirst({ where: { parentUserId: old.parent.id, studentMembershipId: membership.id, status: "ACTIVE" }, select: { id: true } });
     claimedHere = true;
   }
-  return { saraswati, admin, g6, structure, cycle, app, view, membership, linked, claimedHere };
+  // R-69 (10 Oct 2026): the office's one click, "Copy from the previous school's record", once there is a blank line to fill.
+  const preview = await recordCopyPreview(admin, membership.id);
+  let copied: string[] = [];
+  if (preview?.canCopy) copied = (await copyPreviousRecord(admin, membership.id)).copied;
+  return { saraswati, admin, g6, structure, cycle, app, view, membership, linked, claimedHere, copyPreview: preview, copied };
 }
 
 /* -------------------------------------------------------------------------- */
@@ -243,7 +259,10 @@ async function verify(old: Awaited<ReturnType<typeof lastYearAtSunrise>>, now: A
   check("Saraswati: enrolled in the grade-6 class", newEnrol?.class.gradeLevel === "6", newEnrol ? newEnrol.class.name : "no active enrolment");
   const newRecord = await db.pupilRecord.findUnique({ where: { studentMembershipId: now.membership.id }, select: { previousSchool: true, penNumber: true, admissionNumber: true, admissionDate: true, admittedToGrade: true, fatherName: true, category: true, religion: true } });
   check("Saraswati: the pupil record names the previous school, the PEN and the admission number", newRecord?.previousSchool?.startsWith("Sunrise") === true && newRecord.penNumber === old.pen && newRecord.admissionNumber === NEW.admissionNumber, newRecord ? `${newRecord.previousSchool} · PEN ${newRecord.penNumber} · GR ${newRecord.admissionNumber} · admitted ${newRecord.admissionDate?.toISOString().slice(0, 10)} to grade ${newRecord.admittedToGrade}` : "no record");
-  check("Saraswati: the record's other lines (father's name, category, religion) came over from Sunrise", Boolean(newRecord?.fatherName) && Boolean(newRecord?.category), newRecord ? `father ${newRecord.fatherName ?? "blank"}, category ${newRecord.category ?? "blank"}, religion ${newRecord.religion ?? "blank"}` : "no record");
+  // R-69 (10 Oct 2026): the coded lines come over by the office's one click on the admit panel, audited at both schools, the father told.
+  check("Saraswati: the record's other lines (father's name, category, religion) came over from Sunrise by the office's copy (R-69)", Boolean(newRecord?.fatherName) && Boolean(newRecord?.category) && Boolean(newRecord?.religion), newRecord ? `father ${newRecord.fatherName ?? "blank"}, category ${newRecord.category ?? "blank"}, religion ${newRecord.religion ?? "blank"}; ${now.copied.length ? `copied this run: ${now.copied.join(", ")}` : "copied on an earlier run"}` : "no record");
+  const copyAudits = await Promise.all([db.auditLog.count({ where: { schoolId: now.saraswati.id, action: "pupilRecord.copiedFrom", targetId: now.membership.id } }), db.auditLog.count({ where: { schoolId: old.sunrise.id, action: "pupilRecord.copiedTo", targetId: old.membership.id } })]);
+  check("the copy is audited at both schools (pupilRecord.copiedFrom at Saraswati, pupilRecord.copiedTo at Sunrise)", copyAudits[0] >= 1 && copyAudits[1] >= 1, `Saraswati ${copyAudits[0]}, Sunrise ${copyAudits[1]}`);
   const joined = (await db.membership.findUniqueOrThrow({ where: { id: now.membership.id }, select: { joinedAt: true } })).joinedAt;
   check("GAP: the admission step takes no admission date, so a transfer recorded late carries today's date on the membership, the record and the fee plan's re-dated instalments", false, `joinedAt ${joined.toISOString().slice(0, 10)}, admissionDate ${newRecord?.admissionDate?.toISOString().slice(0, 10) ?? "none"}; the boy joined on 15 June`);
   const plan = await db.studentFeePlan.findFirst({ where: { studentMembershipId: now.membership.id }, select: { id: true, structureId: true, structure: { select: { name: true } } } });
@@ -261,8 +280,13 @@ async function verify(old: Awaited<ReturnType<typeof lastYearAtSunrise>>, now: A
   const pupilCtx = await actor(old.pupil.id, now.saraswati.id, "STUDENT", now.membership.id);
   const mine = await myRecords(pupilCtx);
   check("the pupil sees his own leaving certificate from Sunrise", mine.some((r) => r.schoolName.startsWith("Sunrise")), mine.map((r) => `${r.schoolName} (${r.reason}, left ${r.leftAt.toISOString().slice(0, 10)})`).join("; ") || "nothing");
-  const oldCardsFromNew = await db.reportCard.count({ where: { studentMembershipId: { in: memberships.filter((m) => m.role === "STUDENT").map((m) => m.id) }, status: "PUBLISHED" } });
-  check("GAP: last year's report card stays at Sunrise; the new school and the family's new-school pages read nothing of it (only the TC's counts)", false, `${oldCardsFromNew} published card(s) exist on the account, all under the Sunrise membership`);
+  // R-70 (10 Oct 2026): the previous-schools panel on Saraswati's record page and on the father's record page reads Sunrise's TC and its published card.
+  const panel = await previousSchoolsFor(newAdmin, now.membership.id);
+  const sunriseOnPanel = panel.schools.find((s) => s.schoolName.startsWith("Sunrise"));
+  check("Saraswati's record page lists Sunrise under \"Previous schools\": the leaving certificate and last year's published report card (R-70)", Boolean(sunriseOnPanel) && (sunriseOnPanel?.cards.length ?? 0) >= 1, sunriseOnPanel ? `${sunriseOnPanel.serial} · ${sunriseOnPanel.cards.map((c) => `${c.title} (${c.overallLetter ?? c.overallPercent ?? "—"})`).join("; ")}` : "nothing listed");
+  const fatherCtx = await actor(old.parent.id, null, "PARENT", null);
+  const fatherPanel = await previousSchoolsFor(fatherCtx, now.membership.id).catch(() => null);
+  check("the father reads the same on /parent/record (he is the guardian at Sunrise too, which is the clause the TC uses)", Boolean(fatherPanel?.schools.some((s) => s.schoolName.startsWith("Sunrise") && s.cards.length >= 1)), fatherPanel ? `${fatherPanel.schools.length} school(s), ${fatherPanel.schools.reduce((a, s) => a + s.cards.length, 0)} card(s)` : "refused");
   const sunriseTeacherSees = await db.enrollment.count({ where: { studentMembershipId: old.membership.id, status: "ACTIVE" } });
   check("Sunrise: no live roll still lists him", sunriseTeacherSees === 0, `${sunriseTeacherSees} active enrolment(s)`);
 }
@@ -284,8 +308,8 @@ Ishaan Pawar sat grade 5 at Sunrise Public School in 2025–26 and is in grade 6
 | Who | Email | Where to look |
 | --- | --- | --- |
 | Ishaan Pawar, the pupil (grade 6 at Saraswati; left grade 5 at Sunrise) | \`${PUPIL.email}\` | /student (Saraswati), /student/record, /record (the Sunrise leaving certificate), /switch (the Sunrise alumnus side) |
-| Prakash Pawar, his father | \`${PARENT.email}\` | /parent (both schools), /parent/record?child=…, /parent/fees |
-| Saraswati's office (Sunil Wagh) | \`saraswati.admin@${DOMAIN}\` | /admin/college-admissions is the college's; here /admin/admissions → "${NEW.cycleName}", /admin/records → Ishaan (previous school, PEN), /admin/people → Ishaan → the Sunrise certificate |
+| Prakash Pawar, his father | \`${PARENT.email}\` | /parent (both schools), /parent/record?child=… ("Previous schools": Sunrise's TC and the annual report, as the guardian at Sunrise), /parent/fees |
+| Saraswati's office (Sunil Wagh) | \`saraswati.admin@${DOMAIN}\` | /admin/college-admissions is the college's; here /admin/admissions → "${NEW.cycleName}" → the application (the admit panel's "Copy from the previous school's record", already copied), /admin/records → Ishaan (previous school, PEN, the copied category, religion, caste, mother tongue, place of birth, nationality and parents' names; "Previous schools": Sunrise's TC and last year's report card), /admin/people → Ishaan → the Sunrise certificate |
 | Sunrise's office (Meenal Joshi) | \`sunrise.admin@${DOMAIN}\` | /admin/people → departures → Ishaan (${rec?.serial ?? "—"}), /admin/certificates/issued, /alumni |
 
 What the walk found is in the script's report (\`npm run demo:transfer\` prints it) and in docs/audit-2026-10-05/08-remaining-risks.md under the transfer gaps.

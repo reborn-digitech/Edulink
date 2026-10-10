@@ -317,6 +317,12 @@ export type IntakeRow = {
   studentCode: string | null;
   /** The UDISE+ PEN, eleven digits; with the date of birth it links a pupil known on Shalaghar, else it goes on the new account. `false` = a wrong shape. */
   pen: string | null | false;
+  /**
+   * YYYY-MM-DD, already validated; null when the list carries no such column or the cell was empty (R-61 Q1, the
+   * owner's decision of 10 Oct 2026): a row with none writes NO admission date — not today's — and the office fills
+   * it on the record; the intake's summary says how many rows carried none.
+   */
+  admissionDateKey?: string | null;
 };
 
 export type IntakeCsvResult = {
@@ -331,6 +337,8 @@ const INTAKE_HEADERS = {
   pen: ["pen", "pen number", "pen no", "pen no.", "udise pen", "udise+ pen", "permanent education number", "student pen"],
   name: ["name", "pupil", "student", "full name", "pupil name", "student name", "child"],
   birthdate: ["dob", "date of birth", "birthdate", "birth date", "born", "d.o.b.", "d.o.b"],
+  /** The day the pupil joined the school (R-61 Q1, 10 Oct 2026): optional; a row without one leaves the record's admission date blank. */
+  admissionDate: ["admission date", "date of admission", "admitted on", "doa", "d.o.a.", "d.o.a", "joined on", "date of joining", "joining date"],
   className: ["class", "grade", "section", "form", "class name"],
   pupilEmail: ["pupil email", "student email", "email", "email address", "e-mail"],
   guardianEmail: ["guardian email", "parent email", "guardian", "parent", "parent/guardian email", "guardian e-mail", "parent e-mail"],
@@ -396,6 +404,7 @@ export function parseIntakeCsv(input: string, today: string): IntakeCsvResult {
     relation: key(INTAKE_HEADERS.relation),
     studentCode: key(INTAKE_HEADERS.studentCode),
     pen: key(INTAKE_HEADERS.pen),
+    admissionDate: key(INTAKE_HEADERS.admissionDate),
   };
   if (col.pupilEmail && ["email", "email address", "e-mail"].includes(col.pupilEmail) && !col.guardianEmail) {
     col.guardianEmail = col.pupilEmail;
@@ -436,6 +445,18 @@ export function parseIntakeCsv(input: string, today: string): IntakeCsvResult {
     }
     if (birthdateKey && birthdateKey > today) {
       problems.push({ line, value: `${name} · ${dobRaw}`, reasonKey: "intake.dateInFuture" });
+      return;
+    }
+
+    // The admission date (R-61 Q1): read like the date of birth, refused when unreadable or ahead of today; absent is allowed.
+    const doaRaw = cell(col.admissionDate);
+    const admissionDateKey = parseIntakeDate(doaRaw);
+    if (doaRaw && !admissionDateKey) {
+      problems.push({ line, value: `${name} · ${doaRaw}`, reasonKey: "intake.badDate" });
+      return;
+    }
+    if (admissionDateKey && admissionDateKey > today) {
+      problems.push({ line, value: `${name} · ${doaRaw}`, reasonKey: "intake.dateInFuture" });
       return;
     }
 
@@ -490,6 +511,7 @@ export function parseIntakeCsv(input: string, today: string): IntakeCsvResult {
       relation,
       studentCode: cell(col.studentCode).toUpperCase().slice(0, 40) || null,
       pen: penOrNull(cell(col.pen)),
+      admissionDateKey,
     });
   });
 

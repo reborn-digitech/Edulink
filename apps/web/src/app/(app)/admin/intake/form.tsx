@@ -148,6 +148,12 @@ export function IntakeForm({
           {result.guardiansInvited > 0 && (
             <p className="mt-1 text-sm font-medium text-fg">{result.guardiansInvited === 1 ? t("intake.guardiansInvitedOne") : t("intake.guardiansInvited", { count: result.guardiansInvited })}</p>
           )}
+          {/* R-61 Q1 (10 Oct 2026): a row with no admission date wrote none; the office fills it on the record. */}
+          {(result.withoutAdmissionDate ?? 0) > 0 && (
+            <p className="mt-1 text-sm text-fg-muted" data-testid="intake-no-admission-date">
+              {result.withoutAdmissionDate === 1 ? t("ownerDecisions.intakeNoDateOne") : t("ownerDecisions.intakeNoDateMany", { count: result.withoutAdmissionDate })}
+            </p>
+          )}
           <p className="mx-auto mt-2 max-w-md text-sm text-fg-muted">{t("intake.doneBody")}</p>
           {admitted.some((o) => o.firstSignInCode) && (
             <p className="mx-auto mt-1 max-w-md text-sm font-medium text-warn">{t("firstSignin.intakeNote", { days: FIRST_SIGNIN_TTL_DAYS })}</p>

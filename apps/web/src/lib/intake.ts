@@ -83,6 +83,13 @@ export type IntakeResult = {
   outcomes: IntakeOutcome[];
   admitted: number;
   guardiansInvited: number;
+  /**
+   * The admitted rows that carried no admission date (R-61 Q1, the owner's decision of 10 Oct 2026). Such a row writes
+   * NO admission date — not today's, which would turn on the mid-year instalment rule (fees.ts regenerateDemands moves
+   * an instalment due before the admission date onto it) for a pupil who may have been here for years — and the office
+   * fills it on the record. The summary says the count so the office knows what is left to fill.
+   */
+  withoutAdmissionDate: number;
 };
 
 export const INTAKE_MAX_ROWS = 500;
@@ -156,6 +163,9 @@ export async function admitPupils(
   const outcomes: IntakeOutcome[] = [];
   let admitted = 0;
   let guardiansInvited = 0;
+  let withoutAdmissionDate = 0;
+  // R-61 Q1: the record's admission date is the row's own or nothing; never today's.
+  const admissionDateOf = (row: IntakeRow) => (row.admissionDateKey ? new Date(`${row.admissionDateKey}T00:00:00Z`) : null);
 
   for (const row of rows) {
     const klass = row.className ? classByName.get(row.className.toLowerCase()) : null;
@@ -349,10 +359,14 @@ export async function admitPupils(
               });
               await syncGradeLevel(tx, [membership.id]);
             }
+            // R-61 Q1: a dated row puts the day on the record a pupil brought back or over; an undated one writes nothing.
+            const admittedOn = admissionDateOf(row);
+            if (admittedOn) await tx.pupilRecord.upsert({ where: { studentMembershipId: membership.id }, create: { schoolId, studentMembershipId: membership.id, admissionDate: admittedOn, updatedByUserId: ctx.user.id }, update: { admissionDate: admittedOn, updatedByUserId: ctx.user.id } });
             return { membershipId: membership.id };
           }),
         );
         linkedMembershipId = created.membershipId;
+        if (!row.admissionDateKey) withoutAdmissionDate++;
       } catch (error) {
         console.error("[admitPupils] transfer link failed for line", row.line, error);
         outcomes.push({ line: row.line, name: row.name, status: "failed", reasonKey: "intake.couldNotAdmit" });
@@ -435,8 +449,10 @@ export async function admitPupils(
             data: { userId: user.id, schoolId, role: "STUDENT", status: "ACTIVE", studentCode: code },
             select: { id: true },
           });
-          // The record mirrors the PEN the account now carries.
-          if (row.pen) await tx.pupilRecord.create({ data: { schoolId, studentMembershipId: membership.id, penNumber: row.pen, updatedByUserId: ctx.user.id } });
+          // The record mirrors the PEN the account now carries, and the admission date the row carried (R-61 Q1: a row
+          // with none writes no date, and no record at all unless it has a PEN).
+          const admittedOn = admissionDateOf(row);
+          if (row.pen || admittedOn) await tx.pupilRecord.create({ data: { schoolId, studentMembershipId: membership.id, penNumber: row.pen || null, admissionDate: admittedOn, updatedByUserId: ctx.user.id } });
           if (klass) {
             await tx.enrollment.create({
               data: { classId: klass.id, schoolId, studentMembershipId: membership.id, status: "ACTIVE" },
@@ -454,6 +470,7 @@ export async function admitPupils(
     }
 
     admitted++;
+    if (!row.admissionDateKey) withoutAdmissionDate++;
     await audit({
       schoolId,
       actorUserId: ctx.user.id,
@@ -523,8 +540,8 @@ export async function admitPupils(
     schoolId,
     actorUserId: ctx.user.id,
     action: "intake.run",
-    meta: { rows: rows.length, admitted, guardiansInvited, skipped: outcomes.length - admitted },
+    meta: { rows: rows.length, admitted, guardiansInvited, skipped: outcomes.length - admitted, withoutAdmissionDate },
   });
 
-  return { outcomes, admitted, guardiansInvited };
+  return { outcomes, admitted, guardiansInvited, withoutAdmissionDate };
 }

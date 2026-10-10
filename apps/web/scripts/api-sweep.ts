@@ -332,6 +332,8 @@ async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
     schoolId: s,
     classId: klass?.id ?? null,
     studentMembershipId: student?.studentMembershipId ?? null,
+    // R-61 Q2 (10 Oct 2026): the departed pupil of zz-fixtures.ts `buildDepartures`, for the settle-on-leaving doors.
+    departedMembershipId: await first(db.membership.findFirst({ where: { schoolId: s, role: "STUDENT", leftAt: { not: null } }, orderBy: { leftAt: "desc" }, select: { id: true } })),
     teacherMembershipId: lead?.teacherMembershipId ?? null,
     adminMembershipId: await first(db.membership.findFirst({ where: { schoolId: s, role: "ADMIN", status: "ACTIVE" }, select: { id: true } })),
     examSeriesId: await first(db.examSeries.findFirst({ where: { schoolId: s, archivedAt: null }, select: { id: true } })),
