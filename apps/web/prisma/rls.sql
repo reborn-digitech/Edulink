@@ -242,16 +242,32 @@ CREATE POLICY "ReportCard_tenant_isolation" ON "ReportCard"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+  -- …and the PUBLISHED report cards of a child who is one of YOUR pupils
+  -- now, from a school that has recorded the child's departure (a live
+  -- leaving certificate, R-70). Reached through SchoolRecord's own clause
+  -- and anchored again on a live ACTIVE membership in the STUDENT role,
+  -- so it cannot be used to browse — see MEMBER_READABLE.
   -- …and the row to the CHILD IT IS ABOUT, and to their guardians, with
   -- no school bound at all. A school's operational rows end with the
   -- membership; a document describing a child does not. See
   -- OWN_RECORD_READABLE — this is what lets a leaver, an alumnus, or a
   -- family who moved to a school not on this platform still open their
   -- own report cards, attendance figures and badges.
-  -- It is in a SELECT-ONLY policy: readable, never writable.
+  -- All are in a SELECT-ONLY policy: readable, never writable.
 CREATE POLICY "ReportCard_readable" ON "ReportCard"
   FOR SELECT
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR ((EXISTS (
+           SELECT 1 FROM "SchoolRecord" r
+             JOIN "Membership" m ON m."userId" = r."studentUserId"
+            WHERE r."studentMembershipId" = "ReportCard"."studentMembershipId"
+              AND r."schoolId" = "ReportCard"."schoolId"
+              AND r."supersededAt" IS NULL
+              AND m."schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+              AND m."role" = 'STUDENT'
+              AND m."status" = 'ACTIVE'
+              AND m."leftAt" IS NULL
+         ) AND "ReportCard"."status" = 'PUBLISHED'))
          OR (EXISTS (
             SELECT 1 FROM "Guardianship" g
              WHERE g."studentMembershipId" = "ReportCard"."studentMembershipId"
@@ -275,16 +291,37 @@ CREATE POLICY "ReportCardItem_tenant_isolation" ON "ReportCardItem"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+  -- …and the PUBLISHED report cards of a child who is one of YOUR pupils
+  -- now, from a school that has recorded the child's departure (a live
+  -- leaving certificate, R-70). Reached through SchoolRecord's own clause
+  -- and anchored again on a live ACTIVE membership in the STUDENT role,
+  -- so it cannot be used to browse — see MEMBER_READABLE.
   -- …and the row to the CHILD IT IS ABOUT, and to their guardians, with
   -- no school bound at all. A school's operational rows end with the
   -- membership; a document describing a child does not. See
   -- OWN_RECORD_READABLE — this is what lets a leaver, an alumnus, or a
   -- family who moved to a school not on this platform still open their
   -- own report cards, attendance figures and badges.
-  -- It is in a SELECT-ONLY policy: readable, never writable.
+  -- All are in a SELECT-ONLY policy: readable, never writable.
 CREATE POLICY "ReportCardItem_readable" ON "ReportCardItem"
   FOR SELECT
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR (EXISTS (
+            SELECT 1 FROM "ReportCard" rc
+             WHERE rc."id" = "ReportCardItem"."reportCardId"
+               AND rc."status" = 'PUBLISHED'
+               AND EXISTS (
+           SELECT 1 FROM "SchoolRecord" r
+             JOIN "Membership" m ON m."userId" = r."studentUserId"
+            WHERE r."studentMembershipId" = rc."studentMembershipId"
+              AND r."schoolId" = rc."schoolId"
+              AND r."supersededAt" IS NULL
+              AND m."schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+              AND m."role" = 'STUDENT'
+              AND m."status" = 'ACTIVE'
+              AND m."leftAt" IS NULL
+         )
+          ))
          OR (EXISTS (
             SELECT 1 FROM "ReportCard" rc
              WHERE rc."id" = "ReportCardItem"."reportCardId"
@@ -3316,6 +3353,87 @@ CREATE POLICY "AssistantChildSetting_tenant_isolation" ON "AssistantChildSetting
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- ClinicalSite
+ALTER TABLE "ClinicalSite" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "ClinicalSite" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "ClinicalSite_tenant_isolation" ON "ClinicalSite";
+DROP POLICY IF EXISTS "ClinicalSite_readable" ON "ClinicalSite";
+CREATE POLICY "ClinicalSite_tenant_isolation" ON "ClinicalSite"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- ClinicalDepartment
+ALTER TABLE "ClinicalDepartment" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "ClinicalDepartment" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "ClinicalDepartment_tenant_isolation" ON "ClinicalDepartment";
+DROP POLICY IF EXISTS "ClinicalDepartment_readable" ON "ClinicalDepartment";
+CREATE POLICY "ClinicalDepartment_tenant_isolation" ON "ClinicalDepartment"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- ClinicalPosting
+ALTER TABLE "ClinicalPosting" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "ClinicalPosting" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "ClinicalPosting_tenant_isolation" ON "ClinicalPosting";
+DROP POLICY IF EXISTS "ClinicalPosting_readable" ON "ClinicalPosting";
+CREATE POLICY "ClinicalPosting_tenant_isolation" ON "ClinicalPosting"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- LogbookEntry
+ALTER TABLE "LogbookEntry" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "LogbookEntry" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "LogbookEntry_tenant_isolation" ON "LogbookEntry";
+DROP POLICY IF EXISTS "LogbookEntry_readable" ON "LogbookEntry";
+CREATE POLICY "LogbookEntry_tenant_isolation" ON "LogbookEntry"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- Studio
+ALTER TABLE "Studio" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "Studio" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Studio_tenant_isolation" ON "Studio";
+DROP POLICY IF EXISTS "Studio_readable" ON "Studio";
+CREATE POLICY "Studio_tenant_isolation" ON "Studio"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- StudioSubmission
+ALTER TABLE "StudioSubmission" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "StudioSubmission" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "StudioSubmission_tenant_isolation" ON "StudioSubmission";
+DROP POLICY IF EXISTS "StudioSubmission_readable" ON "StudioSubmission";
+CREATE POLICY "StudioSubmission_tenant_isolation" ON "StudioSubmission"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- StudioJury
+ALTER TABLE "StudioJury" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "StudioJury" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "StudioJury_tenant_isolation" ON "StudioJury";
+DROP POLICY IF EXISTS "StudioJury_readable" ON "StudioJury";
+CREATE POLICY "StudioJury_tenant_isolation" ON "StudioJury"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- StudioJuryMark
+ALTER TABLE "StudioJuryMark" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "StudioJuryMark" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "StudioJuryMark_tenant_isolation" ON "StudioJuryMark";
+DROP POLICY IF EXISTS "StudioJuryMark_readable" ON "StudioJuryMark";
+CREATE POLICY "StudioJuryMark_tenant_isolation" ON "StudioJuryMark"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- LeavingSettlement
+ALTER TABLE "LeavingSettlement" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "LeavingSettlement" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "LeavingSettlement_tenant_isolation" ON "LeavingSettlement";
+DROP POLICY IF EXISTS "LeavingSettlement_readable" ON "LeavingSettlement";
+CREATE POLICY "LeavingSettlement_tenant_isolation" ON "LeavingSettlement"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- OperatorAccess
 --
 -- APPEND-ONLY, AND DELIBERATELY HAS NO DELETE POLICY. Postgres denies
@@ -3401,6 +3519,7 @@ CREATE TRIGGER "OperatorAccess_close_only"
 --   QuestionContribution
 --   QuizQuestion
 --   QuizQuestionTranslation
+--   QuizReviewStamp
 --   QuizTopic
 --   QuizTopicTranslation
 --   RateLimit

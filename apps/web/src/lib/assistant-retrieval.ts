@@ -180,8 +180,15 @@ type ChunkRow = {
 const CHUNK_COLUMNS = Prisma.sql`c."id", c."documentId", d."board", d."gradeOrProgramme" AS "grade", d."subject", d."title" AS "book",
   c."edition", c."chapter", c."section", c."headingPath", c."pageStart", c."pageEnd", c."text", c."language", c."figureKeys", d."sourceUrl"`;
 
+/**
+ * The past entrance, olympiad and board sample papers (source "papers", 10 Oct 2026) are a STYLE corpus
+ * for the quiz generator (src/lib/quiz-style.ts): the tutor never retrieves, quotes or cites them. Every
+ * curriculum search carries this clause, scoped or not (tests/papers-corpus.test.ts holds it).
+ */
+export const STYLE_CORPUS_EXCLUDED = Prisma.sql`AND d."styleOnly" = false AND d."source" <> 'papers'`;
+
 function curriculumFilter(q: CurriculumQuery): Prisma.Sql {
-  const parts: Prisma.Sql[] = [];
+  const parts: Prisma.Sql[] = [STYLE_CORPUS_EXCLUDED];
   if (q.board) parts.push(Prisma.sql`AND d."board" ILIKE ${q.board.replace(/[%_]/g, "") + "%"}`);
   if (q.subject) parts.push(Prisma.sql`AND d."subject" ILIKE ${q.subject.replace(/[%_]/g, "")}`);
   if (q.grade !== undefined && q.grade !== null && `${q.grade}` !== "") {
@@ -190,7 +197,7 @@ function curriculumFilter(q: CurriculumQuery): Prisma.Sql {
     const grades = Number.isInteger(n) ? Array.from({ length: 2 * w + 1 }, (_, i) => String(n - w + i)).filter((g) => Number(g) >= 1 && Number(g) <= 12) : [String(q.grade)];
     parts.push(Prisma.sql`AND d."gradeOrProgramme" IN (${Prisma.join(grades)})`);
   }
-  return parts.length ? Prisma.join(parts, " ") : Prisma.empty;
+  return Prisma.join(parts, " ");
 }
 
 export async function searchCurriculum(q: CurriculumQuery, ctx: RetrievalContext): Promise<CurriculumHit[]> {
@@ -247,6 +254,11 @@ export type HelpQuery = {
   /** A RoleCode ("ADMIN", "TEACHER"…), or "OPERATOR" / "APP_ADMIN"; entries for every role always match. */
   role: string;
   limit?: number;
+  /**
+   * THE DATA QUESTIONS' ROUTER (11 Oct 2026, src/lib/assistant/router.ts): only entries of these kinds ("door" for
+   * the catalog's doors), so the router ranks the role's own doors by their summaries alone. Absent: every kind.
+   */
+  kinds?: string[];
 };
 
 type HelpRow = {
@@ -271,7 +283,9 @@ export async function searchHelp(q: HelpQuery, ctx: RetrievalContext): Promise<H
   const pool = Math.max(limit * 5, 40);
   // The person's role (or every role's entries), in the person's language or English, the
   // language every doc and door is written in.
-  const filter = Prisma.sql`AND (cardinality(h."roles") = 0 OR ${q.role} = ANY(h."roles")) AND h."language" IN (${Prisma.join([...new Set([q.language, "en"])])})`;
+  // The data questions' router (11 Oct 2026): `kinds` narrows the entries to the catalog's doors.
+  const kinds = q.kinds?.length ? Prisma.sql`AND h."kind" IN (${Prisma.join(q.kinds)})` : Prisma.empty;
+  const filter = Prisma.sql`AND (cardinality(h."roles") = 0 OR ${q.role} = ANY(h."roles")) AND h."language" IN (${Prisma.join([...new Set([q.language, "en"])])}) ${kinds}`;
   const vector = await queryVector(ctx, "help", q.query);
   const vectorRows = await ctx.db.$queryRaw<HelpRow[]>(nearest(filter, Prisma.sql`FROM "HelpEntry" h`, HELP_COLUMNS, Prisma.sql`h."embedding"`, vector, pool));
   const words = keywordQuery(q.query);

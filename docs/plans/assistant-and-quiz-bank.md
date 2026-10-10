@@ -10,7 +10,8 @@ Status: plan, not yet built. Decided by the owner so far:
 - questions carry an image where the chapter's exercise needs one;
 - the difficulty ladder must be honoured and every distractor must be a real distractor;
 - every type and level of question is generated for the whole corpus in one go; review is done by the
-  app admins and by many teachers, as a one-time pass over the generated bank;
+  app admins and the operator only, never by teachers, and one stamp from either serves an item
+  (amended by the owner on 10 October 2026; the teachers' question gig is switched off);
 - the corpus is the English books only; the Hindi and Marathi items are translations of the English
   items, with the boards' glossaries, read by native speakers;
 - the assistant runs on the owner's machine first and is hosted only after that run has proved it;
@@ -112,6 +113,19 @@ solution; an item at levels 1 to 2 the solver misses, or at levels 4 to 6 the so
 without the figure or the working, is sent back with its level flagged; after release `QuestionStat`
 recalibrates the level from how children actually answer, once a term.
 
+**The style corpus for levels 5 and 6 (built 10 October 2026).** Levels 5 and 6 are written from the
+chapter's own text in the style of real papers, read through `papersStyleFor({ subject, grade, level,
+topic })` (`src/lib/quiz-style.ts`): the questions nearest the chapter's topic from the entrance and board
+sample papers (level 5: JEE (Advanced), JEE (Main), NEET (UG), CBSE's Class X and XII sample papers) or
+the olympiads (level 6: INMO, RMO, PRMO, IOQM, INPhO, INChO, INBO, INAO, INJSO and IAPT's NSEP, NSEC,
+NSEB, NSEA, NSEJS), each with its test, year and class band, the papers in the class's band first.
+The corpus is the `papers` source of the fetcher (runbook docs/runbooks/assistant-local.md §8), cut
+by question with the options kept and the bodies' keys and solutions as their own chunks, and marked
+`styleOnly`: the tutor's search never returns it. The first run (10–11 October 2026): 642 papers, keys and marking schemes, 7,478 pages, 10,326 questions (JEE (Advanced) 1,951, JEE (Main) 675, NEET (UG) 180, CBSE 3,396, HBCSE 2,898, IAPT 1,226) and 4,944 key or solution chunks, all embedded. Not collected, with the
+reason recorded: MHT-CET (no paper on the CET Cell's public pages), NTSE (NCERT links keys and blank
+OMR sheets only), CUET (UG) (no sample paper linked), MSBSHSE (its site is rendered by script). The
+generator's prompts that use the excerpts are the quiz-gen step's, not this one's.
+
 **Distractors that distract.** Three checks on every item, all failing items rejected before review:
 1. the critique pass (a second model run) confirms exactly one defensible answer, that each distractor is
    wrong, and that each distractor's reason is a real misconception or error a pupil makes, not a random
@@ -126,26 +140,77 @@ recalibrates the level from how children actually answer, once a term.
 embedding similarity against the bank and the batch, the chapter mapped to its `QuizTopic` (by board,
 grade, subject and chapter; new topics made where none exists), the edition recorded on every item.
 
-**Output and review.** Items land in `content/quiz/generated/<board>-<grade>-<subject>.json` with `source`
-"generated against NCERT Science, Class 8, chapter 4 (2024 edition)" and `reviewedAt` null. Review is a
-one-time pass by many hands: the app admins at `/appadmin`, and **teachers as reviewers**, invited by the
-app admins from any school on the platform for the subjects and grades they teach, through a review
-queue on the teacher's side (the path the bank already has for teachers' own contributions,
-`QuestionContribution` and the gig-questions desk, extended with the generated queue). A reviewer sees
-the distractor reasons and the solver's five answers, and can accept, edit or discard; an item is served
-after **two stamps** (two teachers, or a teacher and an app admin), and a Hindi or Marathi row after a
-native speaker's stamp. The stamp names the reviewer and their school. Review can be paid as a gig under
-decision 0004 (the company collects and pays per stamped item), which is the owner's call. The importer
-refuses a generated file into a served topic without the stamps; the licence is set at review once a
-reviewer confirms the stem is original. The whole bank is about 200,000 items (both boards, grades 1 to
-12, every subject, every level, plus the colleges); at a minute an item and two stamps each that is
-about 6,500 reviewer hours, which is why the queue is ordered as section 8 says and spread over many
-teachers.
+**Output and review** (amended by the owner on 10 October 2026; built the same day). Items land in
+`content/quiz/generated/<board>-<grade>-<subject>-<chapter>.json` with `source` "generated against NCERT
+Science, Class 8, chapter 4 (2024 edition)" and `stamps: []`. `npm run quiz:queue` loads every batch into
+the database as unserved rows (`QuizQuestion.generated` true, `reviewedAt` null, the reviewer's material
+— the distractor reasons, the solver's five answers, the level flag, the critique, the figure spec, the
+edition — in `generation`); a batch may extend a served chapter, because serving is gated by the stamp,
+not by the file, and a new chapter does not list for a pupil until its first item is stamped. **Review is
+done by the app admins and the operator only, never by teachers**, on one queue at `/appadmin/quiz-review`
+and `/root/quiz-review`: one item at a time with the key marked, the solution, the check expression, the
+distractor reasons beside the options, the solver's answers, the figure (the figure builder's drawing, or
+its description and "figure pending" until it is drawn), and the Hindi and Marathi rows side by side; the
+presses are Accept, Edit then accept (the earlier words kept on the stamp and in the audit log, the
+solver's answers kept with an "edited after solving" mark, the language stamps taken off), Discard with a
+reason from a coded list, Stamp the Hindi, Stamp the Marathi and Skip, each on a key. **One stamp from
+either serves the English item**; an item that needs a figure cannot be accepted until the figure is drawn
+and stored. **A Hindi or Marathi row is served only once a reviewer stamps that language as well**; until
+then the pupil reads the English item alone, as the bank does for an untranslated question. Every act is
+one `QuizReviewStamp` row (question, reviewer, role APP_ADMIN or OPERATOR, language, action, coded reason,
+time) written by one writer (`src/lib/quiz-review.ts`) in the same transaction as the column serving
+reads — `reviewedAt`, `hiReviewedAt`, `mrReviewedAt`, `discardedAt` — and `src/lib/quiz-served.ts` is the
+one serving filter every pupil-facing read (practice on the web and the phone, revision, worksheets) uses.
+The authored bank is served as before. The queue is ordered as section 8 item 9 says (classes 6 to 10
+mathematics and science first, then the rest) and filtered by board, class, subject, chapter and level;
+the page shows the queue's remaining count and each reviewer's count. The teachers' question gig
+(`QuestionContribution`, `/teacher/contributions` and its doors) is switched off behind
+`QUESTION_GIG_FOR_TEACHERS` in packages/contracts, nothing deleted; the owner removes it altogether once
+review by the app admins has proved itself. At about 200,000 items and a minute an item with one stamp,
+the whole bank is about 3,300 reviewer hours, which is why the queue's order matters.
 
 **Throughput and cost.** About 15 to 25 seconds an item for the draft, the critique and the five solver
 runs, and a few seconds more for the two translations, so the whole bank of about 200,000 items is
 roughly six to eight weeks of the laptop running, or three to four with a second machine; electricity
 about ₹500 to ₹1,000 a week. Generation runs ahead of review and never waits for it.
+
+**Step 1 built — the pipeline on the owner's machine (10–11 October 2026).** `npm run quiz:gen -- --board=NCERT|Balbharati
+--grade=8 --subject=Science --chapter=4` (`--all-chapters`, `--limit=N`, `--per-level=4`, `--book=<code>`, `--list`,
+`--dry`) in `apps/web/scripts/quiz-gen/` (select, prompts, model, checks, pipeline, cli; the figure builder's renderer
+beside it in `figures/`), on the two local llama.cpp servers through JSON-schema-constrained output with a seed per
+call. The passes, in the brief's order: drafting per chunk group (one item per level per group, the rubrics above in
+the prompt, the book's captions shown so the model knows what the chapter drew, its own `figure` spec in the figure
+builder's contract where the exercise needs one); the critique (another seed: one defensible answer, each distractor
+wrong, each reason a real misconception); the blind solver (five seeds, no solution; levels 1–2 missed twice or more
+and levels 4–6 right five of five are flagged, not dropped; a distractor nobody picked whose reason the critique found
+hollow is redrafted once, then the item goes; a distractor picked more than the key rejects the item); the form checks
+(catch-alls, the stem's wording in an option, two distractors alike, lengths, one unit and precision, the checkExpr
+evaluated with the bank's own evaluator, a reason per distractor, the figure against `quizFigureSpecSchema` with one
+repair, "the passage" wording rewritten once in a solution and refused in a stem), the verifier's own per-question
+rules (`questionErrors`, exported from scripts/verify-quiz.ts), near-duplicates by cosine ≥ 0.9 against the served
+bank's stems of the class and subject and within the batch; then every item that reaches the file translated into
+Hindi and Marathi with one bilingual critique each and one mend (the glossary lines in the prompt where the corpus has
+a glossary for the subject: NCERT economics, geography and sociology only; science has none). The plan's ladder is the
+bank's QUIZ_LEVELS level for level (the identity, held by a test). Levels 5 and 6 take a `style` block of excerpts from
+ContentDocument source "papers" and are skipped, with the run log saying so, while that corpus is absent (it was, on
+both runs). Output: `content/quiz/generated/<board>-<grade>-<subject>-<chapter>.json` in the bank's shape plus the
+optional fields (`imageAlt`, `figure`, `needsFigure`, `distractorReason`, `solverAnswers`, `levelFlag`, `critique`,
+`sources`, `edition`, `generatedAt`, `model`, `stamps: []`; `imageKey` always null, no drawing is cropped from a book)
+and a run log under `generated/runs/`. Schema: `QuizQuestion.imageKey` and `imageAlt` (migration `quiz_images`).
+The two runs (`--limit=24`, four per level at levels 1–4, under the shared server's load that hour): NCERT Curiosity
+class 8 chapter 4 "Electricity: Magnetic and Heating Effects" — 23 drafted, 8 kept (L1:2 L2:3 L3:2 L4:1), 1 flagged,
+1 figure item, rejects critique 8, form 7, draft 1; 1,967 s, 246 s per kept item, the translations 1,699 s of summed
+call time (about 220 s wall per item at three in flight); Balbharati class 8 chapter 3 "Force and Pressure" — 26
+drafted, 6 kept (L1:2 L2:1 L3:1 L4:2), 2 flagged, 1 figure item, rejects critique 11, form 7, draft 3, solver 2;
+1,013 s, 169 s per kept item. `npm run quiz:verify` passes both batches with only the two missing rungs as warnings.
+What the runs showed: the critique rejects half the drafts, most for a second defensible option (the pascal/N·m⁻²
+pair is a true catch; others may be over-strict and are worth a reviewer's calibration); the model writes "according
+to the passage" into stems despite the rule; the translation critique passed a wrong Hindi term ("बिजली के स्टीमर"
+for an electric iron), so the native speaker's stamp stays the real check; one reason slot carried the key's
+justification (refused since); the server ran at 10–30 tokens/s under the other builders' load against 100 alone,
+so the plan's 15–25 s an item is the unloaded figure, not this hour's. Not built here: the `--book=hesc1` (2024
+"Science") chapter names (its chunks carry only "Chapter N"); the review queue, the practice surfaces drawing the
+figure, the papers corpus — the queue and the figure builder are the other builders' of the same day (above).
 
 ### Phase 2 — the assistant service, on the owner's machine first (two to three weeks)
 
@@ -278,7 +343,12 @@ earlier drafts.
    other Qwen size, and the item must survive both; the reviewer sees the solver's five answers.
 6. **Difficulty 5 and 6 need the papers.** The competitive and olympiad levels are styles, not chapters.
    Recommendation: collect the public past papers of the state and national entrance tests (freely
-   published) as a style corpus for those two levels only, and generate them last.
+   published) as a style corpus for those two levels only, and generate them last. Built 10 October
+   2026 (Phase 1, "The style corpus for levels 5 and 6"): the papers of JEE (Advanced), JEE (Main),
+   NEET (UG), CBSE's sample papers, HBCSE's olympiads and IAPT's NSEs, from the bodies' own sites;
+   MHT-CET, NTSE, CUET (UG) and MSBSHSE publish none a plain fetch can read. Whether reading the papers
+   for style needs the bodies' permission (NTA's terms ask for permission to reproduce) goes to counsel
+   with gap 1.
 7. **Mathematics notation.** Figures do not solve notation in stems and options. Recommendation: plain
    text with the existing `checkExpr` for numbers in the first version; a notation renderer on web and
    phone as a separate, later change.
@@ -286,7 +356,8 @@ earlier drafts.
    and year; a changed edition re-runs the chapter and the reviewer sees a diff, not a fresh batch.
 9. **Order of generation:** grades 6 to 10, mathematics and science, Marathi medium for MSBSHSE and
    English for CBSE first, then languages and social science, grades 11 and 12, then colleges.
-10. **Review capacity, decided.** Everything is generated in one run and reviewed by many teachers and
+10. **Review capacity, decided** (superseded on 10 October 2026: the app admins and the operator review, one stamp
+    serves; see Phase 1 "Output and review"; kept as it was written:) Everything is generated in one run and reviewed by many teachers and
     the app admins. What the plan adds: two stamps before an item is served, reviewers limited to the
     subjects and grades they teach, the stamp naming the reviewer and school, the queue ordered by the
     schools' timetables so the term's chapters are stamped first, and the question whether review is a
@@ -344,3 +415,13 @@ Found by reading the plan against the platform as it is; each with a recommendat
 13. **Backups.** The generated bank and the corpus are in the bucket; the go-live checklist's replication
     of the bucket covers them once set up, and `content/quiz/generated/` is in git once stamped.
 
+**Boards and the queue's figures (11 October 2026, the owner's decisions).** The practice bank has a board:
+`QuizTopic.board` NCERT or BALBHARATI (migration `quiz_topic_board`, which backfilled the authored bank's 386
+chapters and the generated NCERT chapter as NCERT's and the Balbharati chapter as Balbharati's; `quiz:import`
+writes NCERT on every authored topic from now on, and `quiz:queue` writes a batch's own `board`, which the verifier
+requires on a generated file). A pupil's practice page, a guardian's and the phone's open on the school's board
+(CBSE → NCERT, MSBSHSE → Balbharati, any other → both) with a switch to the other and to both; the topic card names
+its board; the review queue's board filter is the same code. A generated item enters the bank through `quiz:queue`
+only; `quiz:queue` now draws and stores an item's figure on load (English, Hindi, Marathi), so an item that needs one
+can be accepted, and loads one whose figure cannot be drawn with the reason ("Figure failed" on the desk). Rerun on
+the two batches: both figure items drawn, the stamped item left alone, nothing duplicated.

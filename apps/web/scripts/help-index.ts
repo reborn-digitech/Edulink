@@ -33,6 +33,9 @@ import { mr } from "../src/lib/i18n/mr";
 import { refuseUnlessLocalDatabase } from "./local-db-guard.mjs";
 import { requireEmbedConfig } from "../src/lib/assistant-env";
 import { embedTexts, vectorLiteral } from "../src/lib/assistant-model";
+// The data questions (11 Oct 2026): a door's entry also names what it answers, read from its response schema.
+import { responseWords } from "../src/lib/assistant/doors";
+import { QUESTION_GIG_FOR_TEACHERS } from "@edulink/contracts";
 
 config();
 
@@ -135,6 +138,9 @@ function doorRows(): HelpRow[] {
   for (const e of ENDPOINTS as Endpoint[]) {
     const door = `${e.method} ${e.path}`;
     if (seen.has(door)) continue;
+    // The teachers' question gig is off (QUESTION_GIG_FOR_TEACHERS): its doors answer 404, so the help never
+    // points a teacher at them (integration, 11 Oct 2026). The payee door stays: a teacher still owed uses it.
+    if (!QUESTION_GIG_FOR_TEACHERS && e.path.startsWith("/api/v1/gigs/questions")) continue;
     seen.add(door);
     const access = e.access;
     const roles = Array.isArray(access) ? [...access, ...(e.limitedRoles ?? [])] : access === "operator" ? ["OPERATOR"] : access === "app-admin" ? ["APP_ADMIN"] : [];
@@ -147,7 +153,9 @@ function doorRows(): HelpRow[] {
       door,
       module: e.module ?? null,
       title: e.summary,
-      text: [`${e.summary}.`.replace(/\.\.$/, "."), `Door: ${door}.`, e.module ? `Module: ${e.module}.` : "", description ?? ""].filter(Boolean).join(" "),
+      // The data questions (11 Oct 2026): the response's field names as words ("unread", "last message at"), so the
+      // router (src/lib/assistant/router.ts) meets a question in a person's words with the door that holds it.
+      text: [`${e.summary}.`.replace(/\.\.$/, "."), `Door: ${door}.`, e.module ? `Module: ${e.module}.` : "", description ?? "", e.method === "GET" ? answersLine(e) : ""].filter(Boolean).join(" "),
       sourceFile: "src/lib/api-catalog",
       language: "en",
     });
@@ -155,16 +163,37 @@ function doorRows(): HelpRow[] {
   return rows;
 }
 
+/** "Answers: unread total, preview, last message at." for a GET door: its response schema's fields as words (doors.ts). */
+function answersLine(e: Endpoint): string {
+  const words = responseWords(e.response);
+  return words.length ? `Answers: ${words.join(", ")}.` : "";
+}
+
 /* ---- 2. the docs ---------------------------------------------------------- */
 
 const HOW_TO = /\b(open|opens|go to|click|tap|press|choose|select|record|records|mark|upload|download|sign in|signs in|find|add|issue|print|approve|switch|set|fill|enter|invite|assign|publish|send|book|apply|request|cut|generate|export|import)\b/i;
 
-function docFiles(): string[] {
+/**
+ * ⚠ A ROSTER IS NOT HELP (integration, 11 Oct 2026). docs/demo-schools.md lists the demo people with their
+ * addresses, classes and marks, and docs/college.md names the fixtures' people; indexed, a college pupil's
+ * "What was my SGPA last term?" was answered with another student's 8.33 out of the roster. A file whose
+ * first line is the marker `<!-- helpIndex: false -->` (or a bare `helpIndex: false`) is left out whole;
+ * the demo scripts keep the marker when they rewrite their sections. tests/help-index-rosters.test.ts holds
+ * it: no entry from a marked file, and no entry carrying a demo or ZZ address.
+ */
+export const HELP_INDEX_OFF = /^\s*(?:<!--\s*)?helpIndex:\s*false\b/;
+
+export function indexedByHelp(file: string): boolean {
+  const first = readFileSync(file, "utf8").split("\n", 1)[0] ?? "";
+  return !HELP_INDEX_OFF.test(first);
+}
+
+export function docFiles(): string[] {
   const docs = readdirSync(join(REPO, "docs")).filter((f) => f.endsWith(".md")).map((f) => join(REPO, "docs", f));
   // The user guide (docs/guide, 10 Oct 2026): one file per role, its first line `Roles: ADMIN, PRINCIPAL`.
   const guideDir = join(REPO, "docs", "guide");
   const guide = existsSync(guideDir) ? readdirSync(guideDir).filter((f) => f.endsWith(".md")).sort().map((f) => join(guideDir, f)) : [];
-  return [...guide, ...docs, join(REPO, "HANDOFF.md")].filter((f) => existsSync(f));
+  return [...guide, ...docs, join(REPO, "HANDOFF.md")].filter((f) => existsSync(f) && indexedByHelp(f));
 }
 
 /** A guide file's roles: the codes on its `Roles:` first line, or null for any other file. */

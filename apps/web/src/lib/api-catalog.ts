@@ -48,6 +48,8 @@ import { ACCOUNTS_DESK } from "./api-catalog/accounts";
 import { COLLEGE_CAMPUS } from "./api-catalog/college-campus";
 import { OPERATOR_COLLEGE } from "./api-catalog/operator-college";
 import { DUTY_DOORS } from "./api-catalog/duties";
+// The studio desk (R-56, the studio half, 10 Oct 2026).
+import { STUDIO_DOORS } from "./api-catalog/studio";
 import { STREAM_RECORDS } from "./api-catalog/stream-records";
 import { UNVERSIONED } from "./api-catalog/unversioned";
 import { OFFICE_YEAR } from "./api-catalog/office-year";
@@ -56,6 +58,10 @@ import { COLLEGE_HOMEWORK } from "./api-catalog/college-homework";
 import { PLAN_ITEMS } from "./api-catalog/plan-items";
 import { COLLEGE_EXTRAS } from "./api-catalog/college-extras";
 import { ASSISTANT } from "./api-catalog/assistant";
+// The owner's decisions of 10 Oct 2026 (decisions builder): settle on leaving, the previous schools, the record copy.
+import { OWNER_DECISIONS } from "./api-catalog/owner-decisions";
+// The generated bank's review queue (review-queue builder, 10 Oct 2026).
+import { QUIZ_REVIEW } from "./api-catalog/quiz-review";
 import type { Endpoint } from "./api-catalog/types";
 
-export const ENDPOINTS: Endpoint[] = [...CORE, ...ADMIN, ...STAFF, ...FAMILY, ...SHARED, ...OPERATOR, ...PRACTICE, ...COMMUNITY, ...TEACHING, ...OFFICE, ...ACCOUNT, ...CONTEST, ...JOIN, ...FEES, ...MESSAGING, ...HEALTH, ...INCIDENTS, ...CIRCULARS, ...STAFF_ATTENDANCE, ...SYLLABUS, ...SUBSTITUTIONS, ...REPORT_CARDS, ...CERTIFICATES, ...ADMISSIONS, ...FILINGS, ...GIGS, ...TRANSPORT, ...ALUMNI, ...INVENTORY, ...PAYROLL, ...LIBRARY, ...HOSTEL, ...COLLEGE, ...ACADEMICS, ...PLACEMENT, ...EXAMS, ...IQAC, ...COLLEGE_ADMISSIONS, ...SCHOLARSHIPS, ...ACCOUNTS_DESK, ...COLLEGE_CAMPUS, ...OPERATOR_COLLEGE, ...DUTY_DOORS, ...STREAM_RECORDS, ...OFFICE_YEAR, ...OFFICE_WRITES, ...COLLEGE_EXTRAS, ...UNVERSIONED, ...COLLEGE_HOMEWORK, ...PLAN_ITEMS, ...ASSISTANT];
+export const ENDPOINTS: Endpoint[] = [...CORE, ...ADMIN, ...STAFF, ...FAMILY, ...SHARED, ...OPERATOR, ...PRACTICE, ...COMMUNITY, ...TEACHING, ...OFFICE, ...ACCOUNT, ...CONTEST, ...JOIN, ...FEES, ...MESSAGING, ...HEALTH, ...INCIDENTS, ...CIRCULARS, ...STAFF_ATTENDANCE, ...SYLLABUS, ...SUBSTITUTIONS, ...REPORT_CARDS, ...CERTIFICATES, ...ADMISSIONS, ...FILINGS, ...GIGS, ...TRANSPORT, ...ALUMNI, ...INVENTORY, ...PAYROLL, ...LIBRARY, ...HOSTEL, ...COLLEGE, ...ACADEMICS, ...PLACEMENT, ...EXAMS, ...IQAC, ...COLLEGE_ADMISSIONS, ...SCHOLARSHIPS, ...ACCOUNTS_DESK, ...COLLEGE_CAMPUS, ...OPERATOR_COLLEGE, ...DUTY_DOORS, ...STUDIO_DOORS, ...STREAM_RECORDS, ...OFFICE_YEAR, ...OFFICE_WRITES, ...COLLEGE_EXTRAS, ...UNVERSIONED, ...COLLEGE_HOMEWORK, ...PLAN_ITEMS, ...ASSISTANT, ...OWNER_DECISIONS, ...QUIZ_REVIEW];

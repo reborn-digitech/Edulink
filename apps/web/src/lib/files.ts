@@ -35,6 +35,8 @@ import { parentMaySee } from "./student-consent";
 
 export type FileAccess =
   | { allowed: true; kind: "logo"; public: true }
+  // figures (10 Oct 2026): a practice question's figure; shared, nothing personal, cached privately.
+  | { allowed: true; kind: "quiz"; public: false }
   | { allowed: true; kind: "assignment" | "submission" | "post" | "application" | "kyc" | "purchase" | "academics" | "scholarship" | "placement" | "iqac"; public: false }
   | { allowed: false; reason: "not-found" | "unauthenticated" | "forbidden" };
 
@@ -79,6 +81,17 @@ export async function authorizeFileRead(
   // Everything else needs a session before we look anything up at all, so an
   // anonymous request cannot use this endpoint to probe which ids exist.
   if (!session) return { allowed: false, reason: "unauthenticated" };
+
+  // ---- figures (the quiz bank's figure builder, 10 Oct 2026): a practice question's figure, the
+  // question's drawing or a translation's. The bank is the platform's, not a school's (NO_SCHOOL_POLICY),
+  // and a figure carries nothing personal, so any signed-in person may read one the bank references.
+  // Both columns are indexed (the figures' migration), so this costs one indexed lookup.
+  const quizFigure = await db.quizQuestion.findFirst({
+    where: { OR: [{ imageKey: fileId }, { translations: { some: { imageKey: fileId } } }] },
+    select: { id: true },
+  });
+  if (quizFigure) return { allowed: true, kind: "quiz", public: false };
+  // ---- end figures ----
 
   const { schoolId, membershipId, role, user } = session;
   const ref = jsonRef(fileId);
@@ -204,6 +217,24 @@ export async function authorizeFileRead(
     if (role === "STUDENT" && !["QUESTION_PAPER", "MODEL_ANSWER"].includes(courseItem.kind)) {
       const registered = await db.courseRegistration.findFirst({ where: { offeringId: courseItem.courseFile.offeringId, studentMembershipId: membershipId, status: "REGISTERED" }, select: { id: true } });
       if (registered) return { allowed: true, kind: "academics", public: false };
+    }
+    return DENY;
+  }
+
+  // ---- 2e-studio. A studio submission's file (R-56, the studio half, 10 Oct
+  // 2026): the student who sent it, the studio's coordinator, the offering's
+  // teacher, a juror on any of the studio's juries, and the office and the head
+  // of the college it belongs to; nobody else, and never a guardian (the work is
+  // an adult student's own).
+  const studioWork = await db.studioSubmission.findFirst({ where: { fileId }, select: { schoolId: true, student: { select: { userId: true } }, studio: { select: { coordinatorMembershipId: true, offering: { select: { facultyMembershipId: true } }, juries: { select: { panelJson: true } } } } } });
+  if (studioWork) {
+    if (studioWork.student.userId === user.id) return { allowed: true, kind: "academics", public: false };
+    if (schoolId !== studioWork.schoolId || !membershipId) return DENY;
+    if (role === "ADMIN" || role === "PRINCIPAL") return { allowed: true, kind: "academics", public: false };
+    if (role === "FACULTY" || role === "HOD") {
+      const s = studioWork.studio;
+      const onPanel = s.juries.some((j) => j.panelJson.includes(`"${membershipId}"`));
+      if (s.coordinatorMembershipId === membershipId || s.offering.facultyMembershipId === membershipId || onPanel) return { allowed: true, kind: "academics", public: false };
     }
     return DENY;
   }

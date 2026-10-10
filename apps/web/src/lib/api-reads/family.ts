@@ -4,6 +4,9 @@ import { db } from "@/lib/db";
 import { AccessError, assertAssignmentAccess, assertGuardianAccess } from "@/lib/tenancy";
 import type { StudentConsentGrant } from "@edulink/contracts";
 import { getSession, listContexts, DEFAULT_PREFS, type ActiveContext, type UserPrefs } from "@/lib/session";
+import { familyChildren, pickChild } from "@/lib/family-child";
+import { familyLectureAttendance } from "@/lib/family-college";
+import { isCollegeKind } from "@edulink/contracts";
 import { getAttendanceSummary, currentStreakFor } from "@/lib/attendance";
 import { examMarksFor, dateSheetsFor } from "@/lib/exams";
 import { studentWeek, childWeek, weekStartKey, type WeekGrid } from "@/lib/timetable";
@@ -21,7 +24,7 @@ import type { Attachment } from "@/lib/json";
 import { discard, MAX_ATTACHMENTS } from "@/lib/uploads";
 import { spendTickets } from "@/lib/api-reads/teaching";
 import { mayEditOwnBirthdate, setOwnBirthdate } from "@/lib/birthdate";
-import { listTopics, normaliseLanguage } from "@/lib/quiz";
+import { listTopics, normaliseLanguage, schoolQuizBoard } from "@/lib/quiz";
 import {
   enrolledGradeLevel,
   continueCard,
@@ -103,8 +106,10 @@ export type FamilyChildRow = Awaited<ReturnType<typeof listContexts>>["children"
  * that is not this parent's child is 404, never a hint that it exists.
  */
 export async function selectChild(ctx: ActiveContext, childId?: string | null, grant?: StudentConsentGrant) {
-  const { children } = await listContexts(ctx.user.id);
-  const selectedId = childId ?? children[0]?.studentMembershipId;
+  // With no child asked for, the first the guardian may read (DS-1, 10 Oct 2026; lib/family-child.ts): an adult at a
+  // college who has granted nothing is skipped, as the web pages skip them. An id asked for is checked as it stands.
+  const children = await familyChildren(ctx.user.id);
+  const selectedId = childId ?? pickChild(children)?.studentMembershipId;
   if (!selectedId) throw new AccessError("access.notAllowed");
   // The grant the read is covered by, for an adult at a college (DS-9, 6 Oct 2026): the web page passes it, so the door does too.
   const link = await assertGuardianAccess(ctx.user.id, selectedId, grant);
@@ -466,13 +471,16 @@ export async function saveStudentProfile(
 /** /student/practice — every topic with this child's progress, and the cards above the list. */
 export async function studentPractice(ctx: StudentCtx) {
   const language = normaliseLanguage(ctx.user.prefs.locale);
-  const [topics, enrolledGrade, resume, weekly, revision, assigned] = await Promise.all([
+  // quiz-board (11 Oct 2026): every board's chapters, each with its board, and the school's board to open on;
+  // the phone filters (an older phone ignores both fields and lists everything, as before).
+  const [topics, enrolledGrade, resume, weekly, revision, assigned, schoolBoard] = await Promise.all([
     listTopics(ctx, { language }),
     enrolledGradeLevel(ctx),
     continueCard(ctx, language),
     weeklyPracticeCount(ctx),
     revisionQueue(ctx, { language }),
     assignmentsForStudent(ctx, language),
+    schoolQuizBoard(ctx.schoolId),
   ]);
   const grades = [...new Set(topics.map((t) => t.classLevel))];
   return {
@@ -491,7 +499,9 @@ export async function studentPractice(ctx: StudentCtx) {
       completed: t.completed,
       badgeEarned: t.badgeEarned,
       tierCount: t.tierCount,
+      board: t.board,
     })),
+    schoolBoard,
     enrolledGrade,
     // No explicit choice lands on the child's OWN grade, when the bank has it.
     defaultGrade: enrolledGrade && grades.includes(enrolledGrade) ? enrolledGrade : null,
@@ -638,7 +648,10 @@ export async function parentAttendance(ctx: ActiveContext, childId?: string | nu
   const summary = await getAttendanceSummary(student.schoolId, selectedId, `${month}-01`, `${month}-31`);
   const week = parseTeachingDays((await db.school.findUnique({ where: { id: student.schoolId }, select: { teachingDays: true } }))?.teachingDays);
   const next = shiftMonth(month, 1);
+  // A college keeps no day register (DS-2, 10 Oct 2026): the lecture attendance rides along, as the web page draws it.
+  const lectures = isCollegeKind(student.school.kind) ? await familyLectureAttendance(ctx, selectedId) : undefined;
   return {
+    ...(lectures ? { lectures } : {}),
     children: childRows(children),
     child: childHeader(selectedId, link),
     month,
@@ -675,10 +688,11 @@ export async function parentAssignments(ctx: ActiveContext, childId?: string | n
 
 /** /parent/practice — every chapter the child has touched, for their guardian. */
 export async function parentPractice(ctx: ActiveContext, childId?: string | null) {
-  const { children, selectedId } = await selectChild(ctx, childId);
+  const { children, selectedId } = await selectChild(ctx, childId, "RESULTS");
   const language = normaliseLanguage(ctx.user.prefs.locale);
-  const { childName, topics, weeklyCount } = await childPracticeProgress(ctx.user.id, selectedId, language);
-  return { children: childRows(children), childName, weeklyCount, topics };
+  const { childName, topics, weeklyCount, schoolBoard } = await childPracticeProgress(ctx.user.id, selectedId, language);
+  // quiz-board (11 Oct 2026): every chapter with its board, and the child's school's board for the phone's switch.
+  return { children: childRows(children), childName, weeklyCount, topics, schoolBoard };
 }
 
 /** /parent/meetings — the open windows of the children's teachers, and the family's own bookings. */
@@ -738,7 +752,7 @@ export async function familyTimetable(ctx: ActiveContext & { role: "STUDENT" | "
   let grid: WeekGrid;
   let today: string;
   if (ctx.role === "PARENT") {
-    const selected = await selectChild(ctx, childId);
+    const selected = await selectChild(ctx, childId, "ATTENDANCE");
     children = selected.children;
     child = childHeader(selected.selectedId, selected.link);
     timezone = selected.link.student.school.timezone;

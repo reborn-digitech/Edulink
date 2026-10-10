@@ -791,6 +791,21 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "duties.corps.enrol": "audit.dutiesCorpsEnrol",
   "duties.corps.leave": "audit.dutiesCorpsLeave",
   "duties.corps.activity": "audit.dutiesCorpsActivity",
+  // The studio desk (R-56, the studio half, 10 Oct 2026).
+  "studio.save": "audit.studioSave",
+  "studio.jury": "audit.studioJury",
+  "studio.marks": "audit.studioMarks",
+  "studio.sign": "audit.studioSign",
+  "studio.postInternal": "audit.studioPostInternal",
+  "studio.submit": "audit.studioSubmit",
+  // The clinical desk (R-56, the clinical half; 10 Oct 2026).
+  "duties.clinical.site": "audit.dutiesClinicalSite",
+  "duties.clinical.department": "audit.dutiesClinicalDepartment",
+  "duties.clinical.posting": "audit.dutiesClinicalPosting",
+  "duties.clinical.sign": "audit.dutiesClinicalSign",
+  "duties.clinical.return": "audit.dutiesClinicalReturn",
+  "clinical.logbook.save": "audit.clinicalLogbookSave",
+  "clinical.logbook.submit": "audit.clinicalLogbookSubmit",
   // The principal's last two approvals (S3, 5 Oct 2026): a refund outside the slab, a hostel expulsion.
   "college.admissions.refundException.ask": "audit.collegeAdmissionsRefundExceptionAsk",
   "college.admissions.refundException.approve": "audit.collegeAdmissionsRefundExceptionApprove",

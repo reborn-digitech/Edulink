@@ -252,6 +252,8 @@ export type SweepFixture = {
   goneExpertSlotId: string | null;
   /** Pupil 01's published report card, which the pupil and their parent may read. */
   familyReportCardId: string | null;
+  /** ZZ Northgate's departed pupil (zz-fixtures.ts `buildDepartures`), for the settle-on-leaving doors (R-61 Q2, 10 Oct 2026). */
+  departedMembershipId: string | null;
   /** The sweep's expert's calendar feed token, read before the run rotates it. */
   expertCalendarToken: string | null;
   /** A period of the school day, and its name, times and kind as a body to send back unchanged. */

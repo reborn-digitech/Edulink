@@ -50,8 +50,9 @@
  *     modules' rows, and a NAAC peer-team visit file for the IQAC
  *     (lib/peer-visits.ts).
  *
- * WHAT IS NOT BUILT, SAID IN THE ROSTER: a health-sciences college's clinical
- * postings, logbooks and hospital, a pharmacy college's clinical coordinator,
+ * WHAT IS NOT BUILT, SAID IN THE ROSTER (the clinical desk is built since
+ * 10 Oct 2026, R-56: a health-sciences or pharmacy college gets a hospital,
+ * a rotation and logbook entries below): a pharmacy college's clinical coordinator,
  * an architecture college's studios and juries (R-5, R-56: DUTY_BUILT is false
  * for CLINICAL_COORDINATOR and STUDIO_COORDINATOR, so no clinical or studio
  * duty is given), an agriculture college's farm and field work (NOT_BUILT).
@@ -874,6 +875,72 @@ async function buildStreamRecords(spec: StreamSpec, college: College, people: Pe
       }
     }
   }
+  if (spec.stream === "HEALTH_SCIENCES" || spec.stream === "PHARMACY") {
+    // The clinical desk (R-56, the clinical half; 10 Oct 2026): one hospital with two departments, a rotation of two postings
+    // of the first programme's second-year division (students 1–3) under the coordinator and another teacher, and an entry
+    // in each state — SIGNED and RETURNED (student 1), SUBMITTED (2), DRAFT (3). No patient is named in any note.
+    const coordinatorKey = dutyHolder(spec, "CLINICAL_COORDINATOR") ?? "f1";
+    const coordinator = people.staff[coordinatorKey];
+    const other = people.staff[coordinatorKey === "f2" ? "f1" : "f2"];
+    const pharmacy = spec.stream === "PHARMACY";
+    const siteName = pharmacy ? "District Civil Hospital, Pune — Pharmacy" : "District Civil Hospital, Nashik";
+    const site = await db.clinicalSite.upsert({ where: { schoolId_name: { schoolId: s, name: siteName } }, create: { schoolId: s, name: siteName, kind: pharmacy ? "PHARMACY" : "HOSPITAL", address: pharmacy ? "Sassoon Road, Pune" : "Trimbak Road, Nashik", agreementFromKey: K("2026-06-01"), agreementToKey: K("2027-05-31"), contactRole: pharmacy ? "CHIEF_PHARMACIST" : "MEDICAL_SUPERINTENDENT" }, update: { archivedAt: null }, select: { id: true } });
+    const wards: [string, number | null][] = pharmacy ? [["Outpatient dispensary", null], ["Inpatient pharmacy", null]] : [["Medical ward", 40], ["Surgical ward", 30]];
+    const wardIds: string[] = [];
+    for (const [name, beds] of wards) wardIds.push((await db.clinicalDepartment.upsert({ where: { siteId_name: { siteId: site.id, name } }, create: { schoolId: s, siteId: site.id, name, beds }, update: { beds }, select: { id: true } })).id);
+    const division = await db.division.findFirst({ where: { schoolId: s, class: { name: divisionNames(spec).A2 } }, select: { id: true } });
+    if (division) {
+      const rotation: [number, string, string, string, Member][] = [[1, wardIds[0]!, K("2026-09-21"), K("2026-10-18"), other], [2, wardIds[1]!, K("2026-10-19"), K("2026-11-15"), coordinator]];
+      const postingIds: string[] = [];
+      for (const [order, departmentId, from, to, by] of rotation) {
+        const data = { siteId: site.id, departmentId, divisionId: division.id, labBatchId: null, supervisorMembershipId: by.id, fromKey: from, toKey: to, rotationOrder: order };
+        const found = await db.clinicalPosting.findFirst({ where: { schoolId: s, divisionId: division.id, rotationOrder: order, departmentId }, select: { id: true } });
+        postingIds.push(found ? (await db.clinicalPosting.update({ where: { id: found.id }, data, select: { id: true } })).id : (await db.clinicalPosting.create({ data: { schoolId: s, createdByUserId: coordinator.userId, ...data }, select: { id: true } })).id);
+      }
+      const kindA = pharmacy ? "DISPENSING" : "CASE";
+      const kindB = pharmacy ? "SKILL" : "PROCEDURE";
+      const entries: [number, number, string, string, number, string, string, Record<string, unknown>][] = [
+        [1, 1, K("2026-09-24"), kindA, 2, pharmacy ? "Two prescriptions dispensed under the pharmacist's check; labels verified." : "Two admissions with fever; vitals charted four-hourly.", "SIGNED", { submittedAt: T("2026-09-25T04:30:00Z"), signedAt: T("2026-09-26T05:30:00Z"), signedByMembershipId: other.id, remark: "Clear and complete." }],
+        [2, 1, K("2026-09-30"), kindB, 1, pharmacy ? "Counselled a patient on an inhaler's use." : "Assisted an intravenous cannulation.", "RETURNED", { submittedAt: T("2026-10-01T03:30:00Z"), signedAt: null, signedByMembershipId: other.id, remark: "Say what you checked first and what the outcome was." }],
+        [3, 2, K("2026-10-03"), "SKILL", 3, pharmacy ? "Three stock entries reconciled against the ward's indent." : "Three bed baths given under supervision.", "SUBMITTED", { submittedAt: T("2026-10-04T03:30:00Z"), signedAt: null, signedByMembershipId: null, remark: "" }],
+        [4, 3, K("2026-10-06"), kindA, 1, pharmacy ? "Observed the morning dispensing round." : "Observed a ward round on the male medical side.", "DRAFT", { submittedAt: null, signedAt: null, signedByMembershipId: null, remark: "" }],
+      ];
+      for (const [n, who, on, kind, count, note, state, rest] of entries) {
+        const student = st(who);
+        const clientId = `demo-${spec.prefix}-entry-${n}`;
+        const data = { postingId: postingIds[0]!, onKey: on, kind, count, note, state, ...rest };
+        await db.logbookEntry.upsert({ where: { studentMembershipId_clientId: { studentMembershipId: student.id, clientId } }, create: { schoolId: s, studentMembershipId: student.id, clientId, ...data }, update: data });
+      }
+    }
+  }
+  if (spec.stream === "ARCHITECTURE") {
+    // The studio desk (R-56, the studio half, 10 Oct 2026): one studio on the second years' design course with its four
+    // stages, the interim jury held and signed with marks for students 1–3 (f2 chairs, f3 and an external juror sit),
+    // the final jury ahead with its panel, and the three students' pin-up submissions (one late, one draft for the final).
+    const offering = await db.courseOffering.findFirst({ where: { schoolId: s, termId: { not: undefined }, course: { code: "AR301" } }, select: { id: true, termId: true } });
+    const coordinator = people.staff[dutyHolder(spec, "STUDIO_COORDINATOR") ?? "f1"];
+    if (offering) {
+      const title = "Architectural Design III: a primary school for Aundh";
+      const studio =
+        (await db.studio.findFirst({ where: { schoolId: s, offeringId: offering.id, title }, select: { id: true } })) ??
+        (await db.studio.create({ data: { schoolId: s, offeringId: offering.id, termId: offering.termId, title, brief: "A twelve-classroom primary school on a 4,000 m² plot off Baner Road: site and user study, two schemes at the interim pin-up, one developed scheme with sections, services and a 1:200 model at the final.", maxMarks: 100, coordinatorMembershipId: coordinator.id, briefIssuedOn: K("2026-08-03"), interimOn: K("2026-09-14"), finalOn: K("2026-10-26"), juryOn: K("2026-11-02"), createdByUserId: coordinator.userId }, select: { id: true } }));
+      const { f2, f3, f1 } = people.staff;
+      const interim =
+        (await db.studioJury.findFirst({ where: { studioId: studio.id, on: K("2026-09-16") }, select: { id: true } })) ??
+        (await db.studioJury.create({ data: { schoolId: s, studioId: studio.id, on: K("2026-09-16"), title: "Interim jury", panelJson: JSON.stringify([f2.id, f3.id]), chairMembershipId: f2.id, externalJson: JSON.stringify([{ role: "PRACTISING_ARCHITECT", institution: spec.recruiter?.company ?? "Studio Vastu Architects LLP" }]), signedByMembershipId: f2.id, signedAt: new Date(`${K("2026-09-16")}T12:30:00Z`), createdByUserId: coordinator.userId }, select: { id: true } }));
+      const sheet: [number, number, string][] = [[1, 740, "A confident parti; the sections need daylight studies."], [2, 620, "Two schemes, the second under-resolved at the entrance."], [3, 815, "Strong site reading; carry the model's scale into the plans."]];
+      for (const [n, marksTenths, remark] of sheet) {
+        await db.studioJuryMark.upsert({ where: { juryId_studentMembershipId: { juryId: interim.id, studentMembershipId: st(n).id } }, create: { schoolId: s, juryId: interim.id, studentMembershipId: st(n).id, marksTenths, remark, markedByMembershipId: f3.id, markedAt: new Date(`${K("2026-09-16")}T11:00:00Z`) }, update: {} });
+      }
+      if (!(await db.studioJury.findFirst({ where: { studioId: studio.id, on: K("2026-11-02") }, select: { id: true } }))) {
+        await db.studioJury.create({ data: { schoolId: s, studioId: studio.id, on: K("2026-11-02"), title: "Final jury", panelJson: JSON.stringify([f1.id, f2.id, f3.id]), chairMembershipId: f1.id, externalJson: JSON.stringify([{ role: "ACADEMIC", institution: "School of Planning and Architecture" }, { role: "STRUCTURAL_ENGINEER", institution: "Vastu Shilpa Consultants" }]), createdByUserId: coordinator.userId } });
+      }
+      const subs: [number, string, string, string, Date | null][] = [[1, "INTERIM_PINUP", "SUBMITTED", "Site study and two schemes, pinned up.", new Date(`${K("2026-09-13")}T09:00:00Z`)], [2, "INTERIM_PINUP", "LATE", "Two schemes; the sections follow.", new Date(`${K("2026-09-15")}T16:00:00Z`)], [3, "INTERIM_PINUP", "SUBMITTED", "Site study, two schemes and a massing model.", new Date(`${K("2026-09-14")}T08:30:00Z`)], [3, "FINAL_SUBMISSION", "DRAFT", "Developed scheme in progress.", null]];
+      for (const [n, stage, state, note, submittedAt] of subs) {
+        await db.studioSubmission.upsert({ where: { studioId_studentMembershipId_stage: { studioId: studio.id, studentMembershipId: st(n).id, stage } }, create: { schoolId: s, studioId: studio.id, studentMembershipId: st(n).id, stage, state, note, submittedAt }, update: {} });
+      }
+    }
+  }
   // NSS and NCC where the stream offers them: the officer enrols, and one activity with its hours.
   for (const [corps, duty, ids, title, at, hours] of [["NSS", "NSS_OFFICER", NSS_STUDENTS, "Cleanliness drive and a blood-donation camp", K("2026-09-19"), 6], ["NCC", "NCC_OFFICER", NCC_STUDENTS, "Drill and a map-reading exercise", K("2026-09-12"), 4]] as const) {
     const officer = dutyHolder(spec, duty);
@@ -1246,6 +1313,9 @@ export async function countBlock(spec: StreamSpec, schoolId: string) {
     practiceSchools: await db.practiceSchool.count({ where: s }),
     practicePostings: await db.teachingPracticePosting.count({ where: s }),
     lessonObservations: await db.lessonObservation.count({ where: s }),
+    clinicalSites: await db.clinicalSite.count({ where: s }),
+    clinicalPostings: await db.clinicalPosting.count({ where: s }),
+    logbookEntries: await db.logbookEntry.count({ where: s }),
     corpsEnrolments: await db.corpsEnrolment.count({ where: s }),
     corpsActivities: await db.activity.count({ where: { ...s, kind: { in: ["NSS", "NCC"] } } }),
     researchItems: await db.researchItem.count({ where: s }),
@@ -1278,15 +1348,15 @@ export async function countBlock(spec: StreamSpec, schoolId: string) {
 
 const HOME: Record<string, string> = { ADMIN: "/admin", PRINCIPAL: "/principal", HOD: "/hod", FACULTY: "/faculty", EXAM_CONTROLLER: "/exam-cell", IQAC: "/iqac", TPO: "/placement", ACCOUNTS: "/accounts", LIBRARIAN: "/library", WARDEN: "/hostel", DRIVER: "/driver", STUDENT: "/student", PARENT: "/parent", ALUMNUS: "/alumni", RECRUITER: "/recruiter" };
 export const homeOf = (role: string) => HOME[role] ?? "/";
-const DUTY_PAGE: Partial<Record<DutyCode, string>> = { LAB_INCHARGE: "/duties/lab", PRACTICE_TEACHING_COORDINATOR: "/duties/teaching-practice", NSS_OFFICER: "/duties/nss", NCC_OFFICER: "/duties/ncc", ANTI_RAGGING_SQUAD: "/duties/anti-ragging", RESEARCH_DEAN: "/duties/research", EXAM_SQUAD: "/duties/exam-squad" };
+const DUTY_PAGE: Partial<Record<DutyCode, string>> = { LAB_INCHARGE: "/duties/lab", PRACTICE_TEACHING_COORDINATOR: "/duties/teaching-practice", NSS_OFFICER: "/duties/nss", NCC_OFFICER: "/duties/ncc", ANTI_RAGGING_SQUAD: "/duties/anti-ragging", RESEARCH_DEAN: "/duties/research", EXAM_SQUAD: "/duties/exam-squad", CLINICAL_COORDINATOR: "/duties/clinical", STUDIO_COORDINATOR: "/duties/studio" };
 export const dutyPage = (d: DutyCode) => DUTY_PAGE[d] ?? `/duties/${d.toLowerCase()}`;
 
 function notBuiltLine(spec: StreamSpec): string {
   const nb = STREAM_PRESETS[spec.stream].notBuilt;
   const parts: string[] = [];
-  if (spec.stream === "HEALTH_SCIENCES") parts.push("the clinical desk is not built (R-5, R-56): clinical postings, logbooks and the attached hospital are not kept, and no CLINICAL_COORDINATOR duty is given");
-  if (spec.stream === "PHARMACY") parts.push("the clinical desk is not built (R-5, R-56): no CLINICAL_COORDINATOR duty is given; hospital and community pharmacy postings are not kept");
-  if (spec.stream === "ARCHITECTURE") parts.push("the studio desk is not built (R-5, R-56): studios and juries are not kept, and no STUDIO_COORDINATOR duty is given; the Council of Architecture has no return kind in the app");
+  // The clinical desk is built since 10 Oct 2026 (R-56, the clinical half): the councils' returns are what remains.
+  if (spec.stream === "HEALTH_SCIENCES") parts.push("the councils' returns (NMC, DCI, INC) are not built; the clinical desk is (/duties/clinical: the hospital with two wards, a rotation of two postings, a logbook entry in each state)");
+  if (spec.stream === "ARCHITECTURE") parts.push("the Council of Architecture has no return kind in the app (DS-12); studios and juries are kept since 10 Oct 2026 (R-56, the studio half)");
   if (spec.stream === "AGRICULTURE") parts.push("the farm and field work are not kept (the registrar's home says so); ICAR has no return kind in the app");
   if (!parts.length && nb.length) parts.push(`not kept: ${nb.join(", ")}`);
   return parts.length ? `**Not built here:** ${parts.join("; ")}.` : "";
@@ -1344,7 +1414,7 @@ Slug \`${spec.slug}\`, join code \`${college.code}\`, kind ${spec.kind}, stream 
 |---|---|---|---|---|
 ${staffRows.join("\n")}
 ${studentRows.join("\n")}
-| ${parentEmail(spec)} | ${spec.parent} | PARENT of ${CHILDREN.map((n) => spec.students[n - 1]!.name).join(", ")} | /parent?child=${college.twinId ?? ""} | the twins' attendance, results and fees; the elder child's attendance and results by consent. Plain /parent opens on the elder (adult) child and answers 404 today (DS-1 of the demo-streams report), so open the twin's link |
+| ${parentEmail(spec)} | ${spec.parent} | PARENT of ${CHILDREN.map((n) => spec.students[n - 1]!.name).join(", ")} | /parent?child=${college.twinId ?? ""} | the twins' attendance, results and fees; the elder child's attendance and results by consent. Plain /parent opens on the elder (adult) child's home, which says what they share (DS-1 fixed 10 Oct 2026); the twins are on the switcher |
 | ${alumnusEmail(spec)} | ${spec.alumnus.name} | ALUMNUS (left May ${Y(2025)}) | /alumni | /alumni/college${placementOn(spec) && spec.recruiter ? " (placed through last season's drive)" : ""} |
 ${spec.recruiter && placementOn(spec) ? `| ${recruiterEmail(spec)} | ${spec.recruiter.name} | RECRUITER, ${spec.recruiter.company} (no membership) | /recruiter | the OPEN drive and its two consented applicants |\n` : ""}`;
 }

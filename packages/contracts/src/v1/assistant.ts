@@ -73,7 +73,8 @@ export type AssistantMode = z.infer<typeof assistantModeSchema>;
 /**
  * A citation points at a passage the search actually returned (the answer gate refuses any other).
  * CURRICULUM: the board's book, chapter, section and page, with the publisher's own PDF (`sourceUrl`,
- * open with `#page=<page>`). HELP: the platform page the help entry names.
+ * open with `#page=<page>`). HELP: the platform page the help entry names. LINK: one of the person's own
+ * rows (a post, a circular, a thread) a data answer cites, with its page on the platform.
  */
 export const assistantCitationSchema = z.discriminatedUnion("kind", [
   z.object({
@@ -95,6 +96,20 @@ export const assistantCitationSchema = z.discriminatedUnion("kind", [
     /** A path on this platform ("/admin/people"), or null for a door or a docs paragraph. */
     pagePath: z.string().nullable(),
     entryId: z.string(),
+  }),
+  /**
+   * THE DATA QUESTIONS (11 Oct 2026): one of the person's own rows a data answer cites — a post, a circular, a
+   * thread of their own, or the page to write to a member of staff the messaging rule lets them write to. Built
+   * by the server from the row (src/lib/assistant/links.ts), never written by the model: `title` is the role
+   * word and the day, never a name; `pagePath` a page on this platform the person's role opens; `rowId` the
+   * row's id (null for the compose page). The surfaces render it as they render a HELP citation.
+   */
+  z.object({
+    kind: z.literal("LINK"),
+    n: z.number().int().positive(),
+    title: z.string(),
+    pagePath: z.string(),
+    rowId: z.string().nullable(),
   }),
 ]);
 export type AssistantCitation = z.infer<typeof assistantCitationSchema>;

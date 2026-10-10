@@ -154,6 +154,12 @@ beforeAll(async () => {
     await record(s, f3.membershipId, "ASSOCIATE_PROFESSOR", "PG", "VISITING");
     for (let i = 0; i < 8; i++) await seat(s, be.id, beScheme.id, 2025);
     const grads = [await seat(s, be.id, beScheme.id, 2021, "COMPLETED", 4), await seat(s, be.id, beScheme.id, 2021, "COMPLETED", 4)];
+    // R-20 (10 Oct 2026): 4.2 reads the enrolment's COMPLETED with the leaving date, as leaveCollege writes them;
+    // the 2021 batch's final year is 2024-25, so both left on 20 May 2025, inside it.
+    for (const g of grads) {
+      await db.programmeEnrolment.create({ data: { schoolId: s, studentMembershipId: g, programmeId: be.id, yearOfEntry: 2021, category: "OPEN", quota: "GENERAL", status: "COMPLETED" } });
+      await db.membership.update({ where: { id: g }, data: { leftAt: new Date("2025-05-20T12:00:00Z") } });
+    }
     await db.placementProfile.create({ data: { schoolId: s, studentMembershipId: grads[0]!, higherStudies: true } });
     const me101 = await db.course.create({ data: { schoolId: s, schemeId: beScheme.id, code: "ME101", name: "ZZ Engineering Mechanics", semester: 1 }, select: { id: true } });
     await db.courseOffering.create({ data: { schoolId: s, termId: t.id, courseId: me101.id, facultyMembershipId: f2.membershipId } });

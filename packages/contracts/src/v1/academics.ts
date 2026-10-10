@@ -449,6 +449,8 @@ export const hodHomeSchema = z.object({
   resultsAvailable: z.boolean(),
   /** Students' projects and internships are the placement module's; listed when it has them. */
   projects: z.array(z.object({ title: z.string(), studentName: z.string() })),
+  /** Whether PLACEMENT is on at this college (DS-7, 10 Oct 2026): the projects card is drawn only then. Absent in older readers' fixtures. */
+  placementOn: z.boolean().optional(),
   /**
    * The department's results for the latest term the exam cell published (the exams module's
    * `resultsForDepartment`, wired by the integration builder, 4 Oct 2026); null before any publication.

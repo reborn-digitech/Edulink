@@ -202,7 +202,13 @@ export const entranceSlotsListSchema = z.object({ slots: z.array(entranceSlotSch
 export const testResultSchema = z.object({ score: z.string().trim().max(40).nullable(), note: z.string().trim().max(400).optional() });
 export const offerSchema = z.object({ expiresOn: dateKey.nullable(), note: z.string().trim().max(400).optional(), feeStructureId: cuid.nullable().optional() });
 export const decisionSchema = z.object({ status: z.enum(["DECLINED", "WAITLISTED", "SUBMITTED"]), note: z.string().trim().max(400).optional() });
-export const admitSchema = z.object({ classId: cuid.nullable().optional(), feeStructureId: cuid.nullable().optional(), admissionNumber: z.string().trim().max(40).optional() });
+export const admitSchema = z.object({
+  classId: cuid.nullable().optional(),
+  feeStructureId: cuid.nullable().optional(),
+  admissionNumber: z.string().trim().max(40).optional(),
+  /** The day the pupil joined (R-68, 10 Oct 2026): today when absent; not before the cycle's year began, not after today. Dates the membership, the record and the fee instalments already due. */
+  admittedOn: dateKey.optional(),
+});
 export const admittedSchema = z.object({ studentMembershipId: z.string(), studentCode: z.string(), className: z.string().nullable(), feePlan: z.boolean(), guardianLinked: z.boolean(), firstSignInCode: z.string().nullable(), /** Set when the applicant had an account but was not linked: the seat went to an existing pupil. */ noteKey: z.string().optional() });
 
 /** GET /api/v1/shared/schools/{schoolId}/admissions — what a family sees on the school's page: the open cycle, its grades, documents and notice. */

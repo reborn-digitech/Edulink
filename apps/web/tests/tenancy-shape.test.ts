@@ -76,6 +76,13 @@ const DIRECT = [
   "SyllabusUnit",
   "SyllabusProgress",
   "LessonPlan",
+  /** The clinical desk (R-56, the clinical half; 10 Oct 2026): sites, their departments, postings and logbook entries, the college's rows. */
+  "ClinicalSite",
+  "ClinicalDepartment",
+  "ClinicalPosting",
+  "LogbookEntry",
+  // R-61 Q2 (decisions builder, 10 Oct 2026): the office's settlement on leaving, one row per leaver.
+  "LeavingSettlement",
   /** A lesson covered on a day: the school's row on its own timetable slot. */
   "Substitution",
   /** The pupil record, the certificate templates and the certificates issued from them. */
@@ -377,6 +384,11 @@ const DIRECT = [
   "AssistantMessage",
   "AssistantUsage",
   "AssistantChildSetting",
+  /** The studio desk (R-56, the studio half, 10 Oct 2026): a studio, a student's submission, a jury and its marks. */
+  "Studio",
+  "StudioSubmission",
+  "StudioJury",
+  "StudioJuryMark",
 ];
 
 /**
@@ -437,6 +449,9 @@ const NOT_TENANT_SCOPED: Record<string, string> = {
   Company: "a company that recruits is the same row for every college on the platform, like ExpertProfile; what a college does with it — its drives — is the college's row (placement, 4 Oct 2026)",
   CompanyRecruiter: "a recruiter's binding to a company — the person's, not a college's; the fence is src/lib/placement-recruiter.ts and PLACEMENT_READABLE in gen-rls",
   Requirement: "a company's ask addressed to colleges by id; the cell reads those naming its own school, the recruiter its own company's",
+  // ---- review-queue (10 Oct 2026) ----
+  QuizReviewStamp: "one act of review on a QuizQuestion by the content team or the operator — the bank belongs to no school and neither do its reviewers",
+  // ---- end review-queue ----
 };
 
 function modelBodies(): Map<string, string> {
@@ -460,7 +475,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(311); // + AssistantConversation, AssistantMessage, AssistantUsage, AssistantChildSetting (the assistant service, Phase B, 10 Oct 2026; 307 before); + ContentDocument, ContentChunk, HelpEntry (the assistant's content, Phase A, 8 Oct 2026; 304 before); + ReadingRoomVisit (the reading-room register, risks batch 5A, 5 Oct 2026; 304 counts LibraryVolume of package 1B too); + 11 college builds of the risks batch (PlacementTalk, PlacementTalkRsvp, SoftSkillsTraining, SoftSkillsSession, SoftSkillsEnrolment, SoftSkillsAttendance, AttendanceDevice, AttendanceBadge, AttendancePunch, PeerTeamVisit, PeerVisitItem; package 5B, 5 Oct 2026); + IqacScenario (actionable insights and the simulator, 5 Oct 2026); + PostConsent, HostelExpulsion, FacultyPublicProfile (the S3 fixes, 5 Oct 2026); + FilingWorksheet (the councils' returns, 5 Oct 2026); + 9 stream-record models (LabBatch, LabBatchMember, PracticalRecord, MootCourt, PracticeSchool, TeachingPracticePosting, LessonObservation, CorpsEnrolment, ExamSquadVisit; 5 Oct 2026); + 28 academics models (AcademicsSettings, Department, DepartmentFaculty, Programme, ProgrammeOutcome, Scheme, Course, CourseOutcomeMap, AcademicTerm, Room, Division, StudentProgramme, CourseOffering, OfferingSlot, CourseRegistration, LateRegistration, Lecture, LectureAttendance, AttendanceCondonation, DefaulterNotice, InternalComponent, InternalMark, InternalLock, CourseFile, CourseFileItem, MentoringGroup, MentoringMember, MentoringNote; 4 Oct 2026), already counted in 277; + 14 IQAC models (AccreditationCycle, MetricScore, ResearchItem, Activity, Committee, CommitteeMeeting, Survey, SurveyResponse, ActionTakenReport, Grievance, FacultyRecord, CollegeFiling, IqacFile, DisclosurePage; 4 Oct 2026), already in the schema when the office builder counted 277; + 9 college office models (ProgrammeEnrolment, AdmissionRound, CapAllotment, CollegeApplication, ScholarshipClaim, NoDuesClearance, CollegeOfficeSettings, LibraryEResource, HostelSquadRound; 4 Oct 2026), counted with every model then in the schema; + 17 placement models (Company, CompanyRecruiter, Requirement not tenant-scoped; 14 tenant-scoped; 4 Oct 2026), counted with the academics and office models then in the schema; + 23 college exam cell models (4 Oct 2026); 184 + StudentConsent, RecruiterProfile (college foundation, 4 Oct 2026); 139 + AlumniProfile, AlumniNote (alumni module, 3 Oct 2026) + 16 library and hostel models (LibrarySettings, LibraryTitle, LibraryCopy, LibraryMember, LibraryIssue, LibraryReservation, LibraryFine, Hostel, HostelRoom, HostelAllotment, HostelLeave, HostelRollCall, HostelRollCallEntry, MessMenu, MessAttendance, HostelVisitor) + 10 transport models (TransportRoute, TransportStop, Bus, BusAssignment, TransportAllotment, Trip, TripPosition, TripBoarding, TransportAlertPref, TransportConsent) + 17 inventory and payroll models (InventoryCategory, Vendor, InventoryItem, InventoryStock, StockMovement, Asset, AssetEvent, PurchaseRecord, InventoryRequest, PayrollSettings, SalaryStructure, SalaryComponent, StaffSalary, PayrollRun, Payslip, PayrollExport, StaffAdvance)
+    ).toBe(321); // + QuizReviewStamp (the generated bank's review queue, 10 Oct 2026; 320 before); + LeavingSettlement (settle on leaving, R-61 Q2, 10 Oct 2026; 319 before); + ClinicalSite, ClinicalDepartment, ClinicalPosting, LogbookEntry (the clinical desk, R-56, 10 Oct 2026; 315 before); + Studio, StudioSubmission, StudioJury, StudioJuryMark (the studio desk, R-56, 10 Oct 2026; 311 before); + AssistantConversation, AssistantMessage, AssistantUsage, AssistantChildSetting (the assistant service, Phase B, 10 Oct 2026; 307 before); + ContentDocument, ContentChunk, HelpEntry (the assistant's content, Phase A, 8 Oct 2026; 304 before); + ReadingRoomVisit (the reading-room register, risks batch 5A, 5 Oct 2026; 304 counts LibraryVolume of package 1B too); + 11 college builds of the risks batch (PlacementTalk, PlacementTalkRsvp, SoftSkillsTraining, SoftSkillsSession, SoftSkillsEnrolment, SoftSkillsAttendance, AttendanceDevice, AttendanceBadge, AttendancePunch, PeerTeamVisit, PeerVisitItem; package 5B, 5 Oct 2026); + IqacScenario (actionable insights and the simulator, 5 Oct 2026); + PostConsent, HostelExpulsion, FacultyPublicProfile (the S3 fixes, 5 Oct 2026); + FilingWorksheet (the councils' returns, 5 Oct 2026); + 9 stream-record models (LabBatch, LabBatchMember, PracticalRecord, MootCourt, PracticeSchool, TeachingPracticePosting, LessonObservation, CorpsEnrolment, ExamSquadVisit; 5 Oct 2026); + 28 academics models (AcademicsSettings, Department, DepartmentFaculty, Programme, ProgrammeOutcome, Scheme, Course, CourseOutcomeMap, AcademicTerm, Room, Division, StudentProgramme, CourseOffering, OfferingSlot, CourseRegistration, LateRegistration, Lecture, LectureAttendance, AttendanceCondonation, DefaulterNotice, InternalComponent, InternalMark, InternalLock, CourseFile, CourseFileItem, MentoringGroup, MentoringMember, MentoringNote; 4 Oct 2026), already counted in 277; + 14 IQAC models (AccreditationCycle, MetricScore, ResearchItem, Activity, Committee, CommitteeMeeting, Survey, SurveyResponse, ActionTakenReport, Grievance, FacultyRecord, CollegeFiling, IqacFile, DisclosurePage; 4 Oct 2026), already in the schema when the office builder counted 277; + 9 college office models (ProgrammeEnrolment, AdmissionRound, CapAllotment, CollegeApplication, ScholarshipClaim, NoDuesClearance, CollegeOfficeSettings, LibraryEResource, HostelSquadRound; 4 Oct 2026), counted with every model then in the schema; + 17 placement models (Company, CompanyRecruiter, Requirement not tenant-scoped; 14 tenant-scoped; 4 Oct 2026), counted with the academics and office models then in the schema; + 23 college exam cell models (4 Oct 2026); 184 + StudentConsent, RecruiterProfile (college foundation, 4 Oct 2026); 139 + AlumniProfile, AlumniNote (alumni module, 3 Oct 2026) + 16 library and hostel models (LibrarySettings, LibraryTitle, LibraryCopy, LibraryMember, LibraryIssue, LibraryReservation, LibraryFine, Hostel, HostelRoom, HostelAllotment, HostelLeave, HostelRollCall, HostelRollCallEntry, MessMenu, MessAttendance, HostelVisitor) + 10 transport models (TransportRoute, TransportStop, Bus, BusAssignment, TransportAllotment, Trip, TripPosition, TripBoarding, TransportAlertPref, TransportConsent) + 17 inventory and payroll models (InventoryCategory, Vendor, InventoryItem, InventoryStock, StockMovement, Asset, AssetEvent, PurchaseRecord, InventoryRequest, PayrollSettings, SalaryStructure, SalaryComponent, StaffSalary, PayrollRun, Payslip, PayrollExport, StaffAdvance)
   });
 });
 

@@ -1,5 +1,7 @@
 import { z } from "zod";
 import { cardExtrasSchema } from "./report-cards";
+import { courseAttendanceSchema } from "./academics";
+import { quizBoardSchema } from "./quiz-board"; // quiz-board (11 Oct 2026)
 
 /**
  * family: the pupil's and the guardian's pages as JSON — what each page
@@ -274,11 +276,15 @@ const practiceTopicSchema = z.object({
   completed: z.boolean(),
   badgeEarned: z.boolean(),
   tierCount: z.number().int(),
+  // quiz-board (11 Oct 2026): the board the chapter is written against; null for a bank that follows no book (placement). Optional, so the phone reads an older server.
+  board: quizBoardSchema.nullable().optional(),
 });
 
 /** GET /api/v1/family/student/practice — the topic list and the cards above it. */
 export const familyStudentPracticeSchema = z.object({
   topics: z.array(practiceTopicSchema),
+  // quiz-board (11 Oct 2026): the school's own practice board, shown first; null when the school's board is neither (both are shown).
+  schoolBoard: quizBoardSchema.nullable().optional(),
   enrolledGrade: z.number().int().nullable(),
   /** The grade the page opens on: the pupil's own when the bank has it. */
   defaultGrade: z.number().int().nullable(),
@@ -388,6 +394,8 @@ export const familyParentAttendanceSchema = z.object({
   summary: attendanceSummarySchema,
   /** Only days with a record, newest first. */
   days: z.array(z.object({ dateKey, status: attendanceStatusSchema, note: z.string().nullable(), teachingDay: z.boolean() })),
+  /** At a college (DS-2, 10 Oct 2026): the child's lecture attendance per course against the threshold, since a college keeps no day register; absent at a school. */
+  lectures: z.array(courseAttendanceSchema).optional(),
 });
 
 const childWorkItemSchema = z.object({
@@ -429,8 +437,12 @@ export const familyParentPracticeSchema = z.object({
       correctCount: z.number().int(),
       tierCount: z.number().int(),
       cleanCompletion: z.boolean(),
+      // quiz-board (11 Oct 2026): the chapter's board, as on the pupil's list.
+      board: quizBoardSchema.nullable().optional(),
     }),
   ),
+  // quiz-board (11 Oct 2026): the child's school's practice board, shown first.
+  schoolBoard: quizBoardSchema.nullable().optional(),
 });
 
 /** GET /api/v1/family/meetings — open windows of the children's teachers, and the family's bookings. */

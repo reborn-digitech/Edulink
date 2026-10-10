@@ -231,13 +231,7 @@ Open `/teacher/guidance` ("Guidance"). Only when the office has switched on teac
 
 ## How do I write practice questions for the bank?
 
-Open `/teacher/contributions` ("Write questions"). The page states the rule: your first questions added to the bank are unpaid, after that each one added earns the stated amount up to a monthly cap, paid by the company by UPI after each month ends. The tiles show "In the bank", "Unpaid ones left", "Paid this month", "Earned, not yet paid" and "Paid so far".
-
-1. Press "Write a question" (`/teacher/contributions/new`).
-2. Choose the "Chapter" and write the question, its options and its worked solution in English, Hindi and Marathi. Where drafting is on, "Draft the Hindi and Marathi from the English" fills the two from the English for you to read and correct.
-3. Tick the declaration that the question is your own work and press "Send to the content team".
-
-"Your questions" lists each with "Waiting to be read", "Returned to you", "In the bank", "Not taken" or "Taken back"; open one to change it and "Send again", or "Take it back". Under "Where you are paid", enter your "UPI id" and "Name on the account" and press "Save".
+Writing questions for the practice bank is not offered to teachers at present: the bank's new questions are read and accepted by the platform's content team, and the "Write questions" page is not in the menu. If the company still owes you for questions it took earlier, your home page says how much under "Money owed for your questions"; open `/teacher/payee` ("Where you are paid") to check the "UPI id" and "Name on the account" it will pay, and press "Save" if they have changed. The company pays by UPI after each month ends.
 
 ## How do I let in a pupil who typed my class code?
 
@@ -278,7 +272,7 @@ Open `/teacher/library` ("Library"; only when the school has the Library module 
 
 ## How do I ask the assistant?
 
-Press "Ask the assistant" on any page to open the panel, or open `/assistant` ("Assistant"; only while the school has the Assistant module on). For a teacher it answers two kinds of question: how to use Shalaghar (which page to open and the steps to take there), and topics from the textbooks, naming the book, the chapter and the page it read. A teacher's topic questions are not limited to their own subjects or classes.
+Press "Ask the assistant" on any page to open the panel, or open `/assistant` ("Assistant"; only while the school has the Assistant module on). For a teacher it answers two kinds of question: how to use Shalaghar (which page to open and the steps to take there), and topics from the textbooks, naming the book, the chapter and the page it read. A teacher's topic questions are not limited to their own subjects or classes. It also answers questions about your own records from the pages you already see (which registers are still to be marked, your leave balance, comments waiting for review, unread messages), counting from the platform's own figures, and under "Sources" it links the post, the circular or the message thread it read; it gives counts and class names, never a list of pupils.
 
 1. Type in "Your question" and press "Ask" (Enter sends; Shift+Enter is a new line). Do not type names, phone numbers or anyone's details.
 2. Read the answer and its "Sources"; a book citation opens the publisher's copy in a new tab.

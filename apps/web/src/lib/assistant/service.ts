@@ -32,6 +32,7 @@ import {
   CLOSE_TO_BEST,
   CURRICULUM_THRESHOLD,
   CURRICULUM_PASSAGES,
+  DOOR_SCOPE_THRESHOLD,
   EMBED_TIMEOUT_MS,
   GRADE_WIDEN_FLOOR,
   HELP_PASSAGES,
@@ -50,8 +51,14 @@ import { NCERT_NOTE, helpMessages, questionShape, tutorMessages, asksExamScope }
 import { detectLanguage } from "./language";
 import { nameLexicon } from "./lexicon";
 import { foreignPaths, pageIsRoles, ownPathsWithoutHost } from "./pages";
-import { asksAboutExams, runTools as runToolsReal, TOOLS, toolsFor, type ToolRun } from "./tools";
-import { EXAMS_SUMMARY_NAME, examSummary } from "./exams";
+import { asksAboutExams, type ToolRun } from "./tools";
+import { COLLEGE_EXAMS_DOOR, EXAMS_SUMMARY_NAME, FAMILY_EXAMS_DOOR, examSummary } from "./exams";
+// The data questions (11 Oct 2026): the person's own doors, routed over the catalog and summed up by code.
+import { chooseDoors, followUpCache, isFollowUp, runDoors as runDoorsReal, searchDoors, type DataRun, type RunInput } from "./router";
+import { doorTitle, hintsOf, type DataContext, type DoorPath } from "./doors";
+import { dataContextFor, pageForDoor } from "./data";
+import { asksAnotherPersonsRecord, ownChildrenAsWords } from "./data-privacy";
+import { linkCitations } from "./links";
 import { pupilAssessmentItems } from "./assessment";
 import { cosine, decideAssessment, type AssessmentDecision, type AssessmentItem } from "./assessment-rule";
 import { routeToCounsellor } from "./counsellor";
@@ -67,7 +74,8 @@ import { addUsage, counsellorRoutedToday, dayKeyFor, monthTotals, questionsToday
  *   gate.ts        the gate before the model (tables, thresholds, the one-word classifier) and after it
  *   strip.ts       names, ids, codes, e-mails, phone numbers and links out of everything the model reads
  *   assessment*.ts the open-sitting and hand-in rule, matched against the pupil's own items only
- *   tools.ts       the person's own GET doors, called as the person
+ *   router.ts      the person's own GET doors, chosen over the catalog and called as the person (doors.ts,
+ *                  summary.ts, links.ts, data.ts: the data questions of 11 Oct 2026)
  *   prompt.ts      the system prompt, the one instruction channel
  *   counsellor.ts  the self-harm route
  *   usage.ts       the counts, the caps
@@ -81,7 +89,8 @@ export type AssistantDeps = {
   chat: (messages: ChatMessage[], opts: ChatOptions) => Promise<ChatResult>;
   searchHelp: (q: HelpQuery) => Promise<HelpHit[]>;
   searchCurriculum: (q: CurriculumQuery) => Promise<CurriculumHit[]>;
-  runTools: (input: Parameters<typeof runToolsReal>[0]) => Promise<ToolRun[]>;
+  /** The data questions' runner (router.ts): the chosen doors read as the person, summed up and stripped. */
+  runDoors: (input: RunInput) => Promise<DataRun[]>;
   publish: (userId: string, event: RealtimeEvent) => void;
   now: () => Date;
 };
@@ -101,7 +110,7 @@ export function realDeps(): AssistantDeps {
     chat: (messages, opts) => chatComplete(need().chat, messages, opts),
     searchHelp: (q) => searchHelp(q, { db, embed: need().embed }),
     searchCurriculum: (q) => searchCurriculum(q, { db, embed: need().embed }),
-    runTools: runToolsReal,
+    runDoors: runDoorsReal,
     publish: (userId, event) => publish([channel.user(userId)], event),
     now: () => new Date(),
   };
@@ -478,15 +487,32 @@ type AnswerInput = {
   gradeOverride?: number | null;
   /** The evaluation harness's hand-in items and sittings (Phase D), in place of the pupil's own read from the database. */
   assessmentItems?: AssessmentItem[];
+  /** The preview's person (no membership, no children), in place of the context read from the database. */
+  dataContext?: DataContext & { childNames: string[] };
+  /** The harness's door answers (previewAnswer), in place of reading the chosen doors. */
+  toolRuns?: ToolRun[];
 };
+
+/** A door answer the harness handed in, as the runner's run. */
+function harnessRun(r: ToolRun): DataRun {
+  return { door: r.name as DoorPath, url: r.name, ok: r.ok, status: r.status, data: r.data, raw: r.raw, child: null, links: r.links ?? [], fromCache: false };
+}
 
 async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   const { asker, policy, school, language, deps } = a;
   const fixed = (verdict: AssistantVerdict, extra: Partial<Outcome> = {}): Outcome => ({ verdict, text: fixedSentence(verdict, language, school.helplineText), mode: null, hint: false, citations: [], matchedAssignmentId: null, promptTokens: 0, completionTokens: 0, modelCalls: 0, ...extra });
 
   // 1. The tables, on the person's own words: nothing searched, nothing sent anywhere.
-  const table = tableVerdict(a.original);
+  const table = tableVerdict(a.original, asker.role);
   if (table) return fixed(table);
+
+  // 1b. The person's own data (the data questions, 11 Oct 2026): their context, and another person's record asked
+  // for by name refused before anything is searched (the owner's decision 3: privacy unchanged).
+  const now = deps.now();
+  const dataCtx = policy.data ? (a.dataContext ?? (await dataContextFor({ role: asker.role, userId: asker.userId, membershipId: asker.membershipId, schoolId: asker.schoolId, question: a.original, now }))) : null;
+  if (asksAnotherPersonsRecord(a.original, a.lexicon, dataCtx?.childNames ?? [])) return fixed("PERSONAL_DATA");
+  if (dataCtx?.childNames.length) a.stripped = stripIdentifiers(ownChildrenAsWords(a.original, dataCtx.childNames), a.lexicon).text;
+  const hints = hintsOf(a.original, now);
 
   // 2. Retrieval in the scopes the role may use.
   const college = isCollegeKind(school.kind);
@@ -543,8 +569,18 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   }
   curriculum = keepClose(curriculum);
 
+  // 2b. The person's own doors: ranked over the catalog by their summaries (router.ts); a follow-up reads the
+  // conversation's last doors again first.
+  const doorHits = dataCtx ? await searchDoors(deps.searchHelp, { query: a.stripped, language, role: asker.role }) : [];
+  const previousDoors = dataCtx && isFollowUp(a.original) ? (followUpCache.get(a.conversationId)?.doors ?? []) : [];
+  // A follow-up is read beside the question before it ("and how many of those are paid" alone is about nothing):
+  // the classifier and the help prompt see both, the person's earlier words as stripped as these.
+  const before = a.previous.find((m) => m.role === "USER");
+  const previousQuestion = previousDoors.length && before ? (before.textForModel ?? stripIdentifiers(before.text, a.lexicon).text) : null;
+  const chosen = dataCtx ? chooseDoors({ hits: doorHits, language, ctx: dataCtx, hints, previous: previousDoors }) : [];
+
   // 3. The gate before the model.
-  const gate = await gateQuestion({ original: a.original, stripped: a.stripped, language, policy, helpTop: best(helpScope), curriculumTop: best(curriculum), ownDoor: toolsFor(asker.role, a.original).length > 0 }, { chat: deps.chat });
+  const gate = await gateQuestion({ original: a.original, stripped: previousQuestion ? `${previousQuestion}\n${a.stripped}` : a.stripped, language, policy, helpTop: best(helpScope), curriculumTop: best(curriculum), ownDoor: chosen.some((c) => c.similarity >= DOOR_SCOPE_THRESHOLD) || (a.toolRuns?.length ?? 0) > 0, role: asker.role }, { chat: deps.chat });
   if (!gate.pass) return fixed(gate.verdict, { promptTokens: gate.tokens, modelCalls: gate.modelCalled ? 1 : 0 });
   let tokens = { prompt: gate.tokens, completion: 0 };
   let modelCalls = 1;
@@ -564,6 +600,10 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   let citationsByNumber: AssistantCitation[];
   let allowedText: string;
   let exams: string | null = null;
+  /** The numbered rows of the person's own doors a help answer may cite (LINK citations). */
+  let rowLinks: DataRun["links"] = [];
+  /** The <data> blocks' own numbers: citable, never shown as a source. */
+  let blockNumbers: number[] = [];
   if (gate.mode === "TUTOR") {
     const passages = curriculum.slice(0, CURRICULUM_PASSAGES).map((h, i) => ({ n: i + 1, heading: `${h.board}, "${h.book}" (class ${h.grade}), ${h.headingPath.join(" › ") || h.chapter || ""}, page ${h.pageStart}`, text: withoutInjectedLines(stripIdentifiers(h.text.slice(0, 1800), a.lexicon).text) }));
     citationsByNumber = curriculum.slice(0, CURRICULUM_PASSAGES).map((h, i) => ({ kind: "CURRICULUM", n: i + 1, board: h.board, book: h.book, grade: h.grade, chapter: h.chapter, section: h.section, page: h.pageStart, sourceUrl: h.sourceUrl || null, chunkId: h.chunkId }));
@@ -571,8 +611,9 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     const band = gradeBandOf(grade, { college, teacher: !policy.assessed });
     // The exam-scope reader (10 Oct 2026): a pupil asking when an exam is or whether a subject is in it gets
     // their own exams door read, as the person, and its lines beside the passages. Nothing else in tutor mode reads a door.
-    if (policy.assessed && (asksExamScope(a.original) || asksAboutExams(a.original))) {
-      const runs = await deps.runTools({ role: asker.role, schoolId: asker.schoolId, userId: asker.userId, question: a.original, lexicon: a.lexicon });
+    if (policy.assessed && dataCtx && (asksExamScope(a.original) || asksAboutExams(a.original))) {
+      const examDoors = chooseDoors({ hits: [FAMILY_EXAMS_DOOR, COLLEGE_EXAMS_DOOR].map((d) => ({ door: `GET ${d}`, similarity: 1 })), language, ctx: dataCtx, hints });
+      const runs = a.toolRuns ? a.toolRuns.map(harnessRun) : await deps.runDoors({ chosen: examDoors, ctx: dataCtx, schoolId: asker.schoolId, userId: asker.userId, question: a.original, hints, lexicon: a.lexicon, firstNumber: 1000, conversationId: null, now });
       const summary = examSummary(runs);
       exams = summary ? withoutInjectedLines(stripIdentifiers(summary, a.lexicon).text) : null;
       if (exams) allowedText += `\n${exams}`;
@@ -582,15 +623,27 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     const passages = help.slice(0, HELP_PASSAGES).map((h, i) => ({ n: i + 1, heading: `${h.title}${h.pagePath ? ` — page ${h.pagePath}` : ""}`, text: withoutInjectedLines(stripIdentifiers(h.text.slice(0, 1200), a.lexicon).text) }));
     citationsByNumber = help.slice(0, HELP_PASSAGES).map((h, i) => ({ kind: "HELP", n: i + 1, title: h.title, pagePath: h.pagePath, entryId: h.entryId }));
     allowedText = passages.map((p) => `${p.heading}\n${p.text}`).join("\n");
-    const runs = await deps.runTools({ role: asker.role, schoolId: asker.schoolId, userId: asker.userId, question: a.original, lexicon: a.lexicon });
-    const data: { name: string; json: string; page: string | null }[] = runs.filter((r) => r.ok && r.data).map((r) => ({ name: r.name, json: r.data!, page: TOOLS[r.name]?.page ?? null }));
+    // The person's own doors, read as the person (router.ts); their rows numbered after the passages.
+    const runs = a.toolRuns
+      ? a.toolRuns.map(harnessRun)
+      : chosen.length && dataCtx
+        ? await deps.runDoors({ chosen, ctx: dataCtx, schoolId: asker.schoolId, userId: asker.userId, question: a.original, hints, lexicon: a.lexicon, firstNumber: passages.length + 1, conversationId: a.conversationId, now })
+        : [];
+    const childLabel = (r: DataRun) => (r.child ? `child ${r.child.n}${r.child.className ? ` (${r.child.className})` : ""}` : null);
+    const data: { name: string; json: string; page: string | null; child?: string | null; n?: number }[] = runs.filter((r) => r.ok && r.data).map((r) => ({ name: doorTitle(r.door), json: withoutInjectedLines(r.data!), page: pageForDoor(r.door, asker.role), child: childLabel(r) }));
     // The exam-scope reader's lines first, so "when is my next exam" is answered from the sittings ahead, not guessed from the marks.
     const summary = examSummary(runs);
-    if (summary) data.unshift({ name: EXAMS_SUMMARY_NAME, json: withoutInjectedLines(stripIdentifiers(summary, a.lexicon).text), page: TOOLS[runs.find((r) => r.ok && r.raw !== undefined && /Exams$/.test(r.name))?.name ?? "myExams"]?.page ?? null });
+    if (summary) data.unshift({ name: EXAMS_SUMMARY_NAME, json: withoutInjectedLines(stripIdentifiers(summary, a.lexicon).text), page: pageForDoor(runs.find((r) => r.ok && r.raw !== undefined && (r.door === FAMILY_EXAMS_DOOR || r.door === COLLEGE_EXAMS_DOOR))?.door ?? FAMILY_EXAMS_DOOR, asker.role) });
     allowedText += `\n${data.map((d) => d.json).join("\n")}`;
+    rowLinks = runs.flatMap((r) => r.links);
+    // Each <data> block is numbered too, after the rows: the model cites what it read, and a block's number is a
+    // real thing retrieved (the gate's rule), shown as no source of its own (the mark is taken out of the text).
+    let free = Math.max(passages.length, ...rowLinks.map((l) => l.n)) + 1;
+    for (const d of data) d.n = free++;
+    blockNumbers = data.map((d) => d.n!);
     // Nothing a person can act on and none of their own data: the sentence, and no answer is written.
     if (!passages.length && !data.length) return fixed("OUT_OF_SCOPE", { promptTokens: tokens.prompt, modelCalls });
-    messages = helpMessages({ question: a.stripped, language, role: asker.role, passages, data });
+    messages = helpMessages({ question: a.stripped, language, role: asker.role, passages, data, numberedRows: rowLinks.length > 0, previousQuestion });
   }
 
   // 6. The model.
@@ -604,10 +657,12 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   // With no passage numbered there is nothing a "[1]" could point at, and the model writes one anyway in Hindi and
   // Marathi whatever the prompt says (Phase D's pilot, 10 Oct 2026: a guardian's fees answers discarded 24 of 24 as
   // an invented citation; in Hindi and Marathi it then wrote a literal "[data]"). The bare marks are removed before the check; the answer itself is still checked in full.
-  let content = citationsByNumber.length ? result.content : result.content.replace(/\s?\[(?:\d{1,2}|data)\]/g, "");
+  let content = (citationsByNumber.length || rowLinks.length || blockNumbers.length ? result.content : result.content.replace(/\s?\[\d{1,2}\]/g, "")).replace(/\s?\[data(?::[^\]]*)?\]/gi, "");
   // A page of the person's own under an invented host becomes the bare path (pages.ts); any other link is still discarded.
   if (gate.mode === "HELP") content = ownPathsWithoutHost(content, asker.role);
-  const checked = await gateAnswer({ answer: content, label: gate.label, passageCount: citationsByNumber.length, allowedText, lexicon: a.lexicon, hint, alsoLabel: exams ? "PLATFORM" : undefined }, { chat: deps.chat });
+  // Every number a passage or a numbered row of the person's own data carries may be cited, and nothing else.
+  const citable = new Set([...citationsByNumber.map((c) => c.n), ...rowLinks.map((l) => l.n), ...blockNumbers]);
+  const checked = await gateAnswer({ answer: content, label: gate.label, passageCount: Math.max(0, ...citable), allowedText, lexicon: a.lexicon, hint, alsoLabel: exams ? "PLATFORM" : undefined, role: asker.role }, { chat: deps.chat });
   if (checked.tokens) modelCalls += 1;
   tokens.prompt += checked.tokens;
   // The reason codes only, never a word of the question or the answer (Phase D: discards were otherwise invisible to the operator).
@@ -628,17 +683,24 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     }
   }
   const cited = new Set(citedNumbers(body));
+  // A number between the passages' and the rows' that names nothing (a row cut as an instruction) is an invented citation.
+  if ([...cited].some((n) => !citable.has(n))) {
+    discardLog(gate.mode, ["CITATION"]);
+    return fixed("ANSWER_DISCARDED", { mode: gate.mode, promptTokens: tokens.prompt, completionTokens: tokens.completion, modelCalls });
+  }
   // A help answer names only pages the person's role opens, never a program's /api/ door (the prompt asks; this holds it).
   if (gate.mode === "HELP" && foreignPaths(body, asker.role).length) {
     discardLog(gate.mode, ["FOREIGN_PAGE"]);
     return fixed("ANSWER_DISCARDED", { mode: gate.mode, promptTokens: tokens.prompt, completionTokens: tokens.completion, modelCalls });
   }
+  // A <data> block cited by its number has no source to show: its mark goes, the rows' and the passages' stay.
+  if (blockNumbers.length) body = body.replace(/\s?\[(\d{1,3})\]/g, (mark, n: string) => (blockNumbers.includes(Number(n)) ? "" : mark));
   return {
     verdict: hint ? "HINT" : "ANSWERED",
     text: `${examScope ? `${translator(language)("assistantService.examScopeTeacher")} ` : ""}${restoreSelf(body.trim(), stripIdentifiers(a.original, a.lexicon).replacements, "")}`,
     mode: gate.mode,
     hint,
-    citations: citationsByNumber.filter((c) => cited.has(c.n)),
+    citations: [...citationsByNumber.filter((c) => cited.has(c.n)), ...(gate.mode === "HELP" ? linkCitations(rowLinks, cited, asker.role, language) : [])],
     matchedAssignmentId,
     promptTokens: tokens.prompt,
     completionTokens: tokens.completion,
@@ -682,7 +744,9 @@ export async function previewAnswer(
   const school = { id: "preview", timezone: "Asia/Kolkata", board: input.board ?? "CBSE", kind: input.college ? "COLLEGE" : "SCHOOL", helplineText: null };
   const asker: Asker = { userId: "preview", role: input.role, membershipId: null, schoolId: "preview", locale: language };
   try {
-    const outcome = await answerQuestion({ asker, policy: policyFor(input.role), school, language, original, stripped: stripIdentifiers(original, input.lexicon ?? []).text, lexicon: input.lexicon ?? [], previous: input.assessment?.previous ?? [], deps: { ...deps, runTools: async () => input.toolRuns ?? [] }, emit: () => {}, conversationId: "preview", gradeOverride: input.grade ?? null, assessmentItems: input.assessment?.items });
+    const now = deps.now();
+    const dataContext = { role: input.role, membershipId: null, children: [], childId: null, duties: [], now, childNames: [] };
+    const outcome = await answerQuestion({ asker, policy: policyFor(input.role), school, language, original, stripped: stripIdentifiers(original, input.lexicon ?? []).text, lexicon: input.lexicon ?? [], previous: input.assessment?.previous ?? [], deps: { ...deps, runDoors: async () => [] }, emit: () => {}, conversationId: "preview", gradeOverride: input.grade ?? null, assessmentItems: input.assessment?.items, dataContext, toolRuns: input.toolRuns });
     return { ...outcome, language };
   } catch (error) {
     if (!(error instanceof ModelUnavailable) && !isModelFailure(error)) throw error;

@@ -1,8 +1,10 @@
-import { DUTY_STREAMS, type DutyCode, type RoleCode, type SchoolModuleCode, type StreamCode } from "@edulink/contracts";
+import { DUTY_STREAMS, QUESTION_GIG_FOR_TEACHERS, type DutyCode, type RoleCode, type SchoolModuleCode, type StreamCode } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
 
 /** The streams that keep labs and a practical record (those that offer a lab in-charge, 5 Oct 2026). */
 const LAB_STREAMS: readonly StreamCode[] = DUTY_STREAMS.LAB_INCHARGE === "ALL" ? [] : DUTY_STREAMS.LAB_INCHARGE;
+/** The streams that post students to a hospital (R-56, the clinical half; 10 Oct 2026). */
+const CLINICAL_STREAMS: readonly StreamCode[] = DUTY_STREAMS.CLINICAL_COORDINATOR === "ALL" ? [] : DUTY_STREAMS.CLINICAL_COORDINATOR;
 
 /**
  * The bottom tab bar per role: the web NAV's primaries, at most four plus
@@ -175,12 +177,15 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
     { labelKey: "nav.guidance", icon: "calendar", group: "school", screen: "/(app)/sessions" },
-    { labelKey: "nav.contributions", icon: "clipboard", group: "running", screen: "/(app)/contributions" },
+    // review-queue (10 Oct 2026): the question gig, only while QUESTION_GIG_FOR_TEACHERS is on (the web's src/lib/question-gig.ts).
+    ...(QUESTION_GIG_FOR_TEACHERS ? [{ labelKey: "nav.contributions", icon: "clipboard", group: "running", screen: "/(app)/contributions" } satisfies MenuItem] : []),
     { labelKey: "nav.signatures", icon: "pencil", group: "running", screen: "/(app)/signatures" },
     // My own payslips while the school runs payroll in the app (3 Oct 2026).
     { labelKey: "payroll.myTitle", icon: "receipt", group: "running", screen: "/(app)/payslips", module: "PAYROLL" },
     // My loans and the catalogue (the library module, 3 Oct 2026).
     { labelKey: "modules.libraryName", icon: "bookOpen", group: "school", screen: "/(app)/library", module: "LIBRARY" },
+    // Things issued to me (the parity batch, 10 Oct 2026, R-4): the web's /account/items.
+    { labelKey: "inventory.myTitle", icon: "archive", group: "running", screen: "/(app)/my-items", module: "INVENTORY" },
   ],
   STUDENT: [
     { labelKey: "nav.exams", icon: "chartLine", group: "daily", screen: "/(app)/exams" },
@@ -207,6 +212,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     // My courses, lectures, attendance, internal marks and registration (the college's academics, 4 Oct 2026).
     { labelKey: "academics.studentTitle", icon: "graduationCap", group: "daily", screen: "/(app)/academics", module: "ACADEMICS" },
     { labelKey: "academics.registrationTitle", icon: "clipboard", group: "daily", screen: "/(app)/registration", module: "ACADEMICS" },
+    // An architecture student's studios: stages, a submission note and the signed jury results (R-56, the studio half, 10 Oct 2026).
+    { labelKey: "duties.studio.studentTitle", icon: "palette", group: "daily", screen: "/(app)/student-studios", module: "ACADEMICS", streams: ["ARCHITECTURE"] },
     // A college student's money net of scholarships, the scholarships and their own account (the college office, 4 Oct 2026; ACADEMICS stands for "a college").
     { labelKey: "collegeOffice.moneyTitle", icon: "receipt", group: "daily", screen: "/(app)/money", module: "ACADEMICS" },
     { labelKey: "collegeOffice.navScholarships", icon: "receipt", group: "daily", screen: "/(app)/scholarships", module: "SCHOLARSHIPS" },
@@ -220,6 +227,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     // Pre-placement talks and soft-skills training (R-2, 5 Oct 2026): answer a talk, enrol in a training.
     { labelKey: "talks.studentTitle", icon: "megaphone", group: "school", screen: "/(app)/placement-talks", module: "PLACEMENT" },
     { labelKey: "softSkills.studentTitle", icon: "graduationCap", group: "school", screen: "/(app)/soft-skills", module: "PLACEMENT" },
+    // A health-sciences or pharmacy student's clinical logbook (R-56, the clinical half; 10 Oct 2026); no guardian screen.
+    { labelKey: "duties.clinical.myTitle", icon: "firstAid", group: "daily", screen: "/(app)/clinical-logbook", module: "ACADEMICS", streams: CLINICAL_STREAMS },
   ],
   PARENT: [
     { labelKey: "nav.exams", icon: "chartLine", group: "daily", screen: "/(app)/exams" },
@@ -282,7 +291,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.admissions", icon: "users", group: "running", screen: "/(app)/admissions" },
     { labelKey: "nav.filings", icon: "fileText", group: "running", screen: "/(app)/filings" },
     // Transport (3 Oct 2026): the office's routes, buses, seats and the day's trips on a map, on the web.
-    { labelKey: "transport.title", icon: "bus", group: "running", web: "/admin/transport", module: "TRANSPORT" },
+    { labelKey: "transport.title", icon: "bus", group: "running", screen: "/(app)/office-transport", module: "TRANSPORT" },
     { labelKey: "nav.settings", icon: "gear", group: "running", screen: "/(app)/settings" },
     { labelKey: "nav.invites", icon: "plus", group: "running", screen: "/(app)/invites" },
     { labelKey: "nav.directory", icon: "buildings", group: "running", screen: "/(app)/directory-profile" },
@@ -299,27 +308,32 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.reportCards", icon: "clipboard", group: "running", screen: "/(app)/report-card-rules" },
     { labelKey: "nav.signatures", icon: "pencil", group: "running", screen: "/(app)/signatures" },
     // The alumni module (3 Oct 2026): the office's page on the web, and the directory here.
-    { labelKey: "modules.alumniName", icon: "graduationCap", group: "running", web: "/admin/alumni", module: "ALUMNI" },
+    { labelKey: "modules.alumniName", icon: "graduationCap", group: "running", screen: "/(app)/office-alumni", module: "ALUMNI" },
     { labelKey: "alumni.directoryTitle", icon: "users", group: "school", screen: "/(app)/alumni-directory", module: "ALUMNI" },
     // Inventory and payroll (3 Oct 2026): the office's summaries, read-only here, and its own payslips.
     { labelKey: "inventory.title", icon: "archive", group: "running", screen: "/(app)/inventory", module: "INVENTORY" },
     { labelKey: "payroll.title", icon: "receipt", group: "running", screen: "/(app)/payroll", module: "PAYROLL" },
     { labelKey: "payroll.myTitle", icon: "receipt", group: "running", screen: "/(app)/payslips", module: "PAYROLL" },
-    // The library desk and the hostel at a glance (3 Oct 2026), on the web.
+    // Things issued to me (the parity batch, 10 Oct 2026, R-4): the web's /account/items.
+    { labelKey: "inventory.myTitle", icon: "archive", group: "running", screen: "/(app)/my-items", module: "INVENTORY" },
+    // The library desk on the web; the hostel at a glance native since the parity batch (10 Oct 2026).
     { labelKey: "modules.libraryName", icon: "bookOpen", group: "running", web: "/library", module: "LIBRARY" },
-    { labelKey: "modules.hostelName", icon: "bed", group: "running", web: "/admin/hostel", module: "HOSTEL" },
-    // The college's office on the web (campaign 2026-10-04, G-4): the registrar's entries the web's NAV lists, each under its module;
-    // ACADEMICS stands for "is a college". The college at a glance is a screen here.
+    { labelKey: "modules.hostelName", icon: "bed", group: "running", screen: "/(app)/office-hostel", module: "HOSTEL" },
+    // The college's office (campaign 2026-10-04, G-4; native reads since the parity batch, 10 Oct 2026, R-4): the registrar's
+    // entries the web's NAV lists, each under its module; ACADEMICS stands for "is a college". The structure, the admission
+    // rounds, the accounts, exam cell, placement and IQAC homes, the faculty records and the stream records are screens;
+    // the campus settings and the committees stay on the web.
     { labelKey: "collegeHub.title", icon: "chartLine", group: "running", screen: "/(app)/college", module: "ACADEMICS" },
-    { labelKey: "academics.title", icon: "graduationCap", group: "running", web: "/admin/academics", module: "ACADEMICS" },
-    { labelKey: "collegeOffice.admissionsTitle", icon: "userPlus", group: "running", web: "/admin/college-admissions", module: "ADMISSIONS" },
-    { labelKey: "role.accounts", icon: "receipt", group: "running", web: "/accounts", module: "ACADEMICS" },
+    { labelKey: "academics.title", icon: "graduationCap", group: "running", screen: "/(app)/office-academics", module: "ACADEMICS" },
+    { labelKey: "collegeOffice.admissionsTitle", icon: "userPlus", group: "running", screen: "/(app)/office-admissions", module: "ADMISSIONS" },
+    { labelKey: "role.accounts", icon: "receipt", group: "running", screen: "/(app)/accounts", module: "ACADEMICS" },
     { labelKey: "collegeOffice.campusTitle", icon: "buildings", group: "running", web: "/admin/college-campus", module: "ACADEMICS" },
-    { labelKey: "examCell.title", icon: "clipboard", group: "running", web: "/exam-cell", module: "EXAMS" },
-    { labelKey: "placement.navCell", icon: "briefcase", group: "running", web: "/placement", module: "PLACEMENT" },
-    { labelKey: "iqac.navHome", icon: "medal", group: "running", web: "/iqac", module: "IQAC" },
+    { labelKey: "examCell.title", icon: "clipboard", group: "running", screen: "/(app)/exam-cell", module: "EXAMS" },
+    { labelKey: "placement.navCell", icon: "briefcase", group: "running", screen: "/(app)/placement-cell", module: "PLACEMENT" },
+    { labelKey: "iqac.navHome", icon: "medal", group: "running", screen: "/(app)/iqac-desk", module: "IQAC" },
     { labelKey: "iqac.navCommittees", icon: "users", group: "running", web: "/admin/committees", module: "IQAC" },
-    { labelKey: "iqac.navFacultyRecords", icon: "clipboard", group: "running", web: "/admin/faculty-records", module: "IQAC" },
+    { labelKey: "iqac.navFacultyRecords", icon: "clipboard", group: "running", screen: "/(app)/faculty-records", module: "IQAC" },
+    { labelKey: "streamRecords.title", icon: "clipboard", group: "running", screen: "/(app)/stream-records", module: "ACADEMICS" },
   ],
   PRINCIPAL: [
     { labelKey: "nav.reviews", icon: "star", group: "daily", screen: "/(app)/reviews" },
@@ -344,7 +358,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.admissions", icon: "users", group: "running", screen: "/(app)/admissions" },
     { labelKey: "nav.filings", icon: "fileText", group: "running", screen: "/(app)/filings" },
     // Transport (3 Oct 2026): the head reads the day's trips on the web.
-    { labelKey: "transport.title", icon: "bus", group: "running", web: "/admin/transport", module: "TRANSPORT" },
+    { labelKey: "transport.title", icon: "bus", group: "running", screen: "/(app)/office-transport", module: "TRANSPORT" },
     { labelKey: "joinRequests.navLabel", icon: "userPlus", group: "running", screen: "/(app)/joins" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
     { labelKey: "nav.vacancies", icon: "briefcase", group: "school", screen: "/(app)/vacancies" },
@@ -359,21 +373,26 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "payroll.title", icon: "receipt", group: "running", screen: "/(app)/payroll", module: "PAYROLL" },
     { labelKey: "inventory.title", icon: "archive", group: "running", screen: "/(app)/inventory", module: "INVENTORY" },
     { labelKey: "payroll.myTitle", icon: "receipt", group: "running", screen: "/(app)/payslips", module: "PAYROLL" },
-    // The library's reports and the hostel at a glance (3 Oct 2026), on the web.
+    // Things issued to me (the parity batch, 10 Oct 2026, R-4): the web's /account/items.
+    { labelKey: "inventory.myTitle", icon: "archive", group: "running", screen: "/(app)/my-items", module: "INVENTORY" },
+    // The library's reports on the web; the hostel at a glance native since the parity batch (10 Oct 2026).
     { labelKey: "modules.libraryName", icon: "bookOpen", group: "running", web: "/library/reports", module: "LIBRARY" },
-    { labelKey: "modules.hostelName", icon: "bed", group: "running", web: "/admin/hostel", module: "HOSTEL" },
-    // The college on the web (campaign 2026-10-04, G-4): the head's entries the web's NAV lists, each under its module; the
-    // college at a glance is the card on the home and a screen here.
+    { labelKey: "modules.hostelName", icon: "bed", group: "running", screen: "/(app)/office-hostel", module: "HOSTEL" },
+    // The college (campaign 2026-10-04, G-4; native reads since the parity batch, 10 Oct 2026, R-4): the head's entries the web's
+    // NAV lists, each under its module; the accreditation file and the committees stay on the web, the filings' sign-off is
+    // on the filings screen.
     { labelKey: "collegeHub.title", icon: "chartLine", group: "running", screen: "/(app)/college", module: "ACADEMICS" },
-    { labelKey: "academics.title", icon: "graduationCap", group: "running", web: "/admin/academics", module: "ACADEMICS" },
-    { labelKey: "role.accounts", icon: "receipt", group: "running", web: "/accounts", module: "ACADEMICS" },
-    { labelKey: "collegeOffice.admissionsTitle", icon: "userPlus", group: "running", web: "/admin/college-admissions", module: "ADMISSIONS" },
-    { labelKey: "examCell.title", icon: "clipboard", group: "running", web: "/exam-cell", module: "EXAMS" },
-    { labelKey: "placement.navCell", icon: "briefcase", group: "running", web: "/placement", module: "PLACEMENT" },
+    { labelKey: "academics.title", icon: "graduationCap", group: "running", screen: "/(app)/office-academics", module: "ACADEMICS" },
+    { labelKey: "role.accounts", icon: "receipt", group: "running", screen: "/(app)/accounts", module: "ACADEMICS" },
+    { labelKey: "collegeOffice.admissionsTitle", icon: "userPlus", group: "running", screen: "/(app)/office-admissions", module: "ADMISSIONS" },
+    { labelKey: "examCell.title", icon: "clipboard", group: "running", screen: "/(app)/exam-cell", module: "EXAMS" },
+    { labelKey: "placement.navCell", icon: "briefcase", group: "running", screen: "/(app)/placement-cell", module: "PLACEMENT" },
     { labelKey: "iqac.navAccreditation", icon: "medal", group: "running", web: "/principal/accreditation", module: "IQAC" },
+    { labelKey: "iqac.navDocuments", icon: "clipboard", group: "running", screen: "/(app)/iqac-filings", module: "IQAC" },
     { labelKey: "insightsPhone.title", icon: "lightbulb", group: "running", screen: "/(app)/iqac-insights", module: "IQAC" },
     { labelKey: "iqac.navCommittees", icon: "users", group: "running", web: "/admin/committees", module: "IQAC" },
-    { labelKey: "iqac.navFacultyRecords", icon: "clipboard", group: "running", web: "/admin/faculty-records", module: "IQAC" },
+    { labelKey: "iqac.navFacultyRecords", icon: "clipboard", group: "running", screen: "/(app)/faculty-records", module: "IQAC" },
+    { labelKey: "streamRecords.title", icon: "clipboard", group: "running", screen: "/(app)/stream-records", module: "ACADEMICS" },
   ],
   EXPERT: [
     { labelKey: "nav.profile", icon: "user", group: "running", screen: "/(app)/profile" },
@@ -393,6 +412,9 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "library.tabCatalogue", icon: "bookOpen", group: "daily", web: "/library/catalogue", module: "LIBRARY" },
     { labelKey: "library.tabFines", icon: "receipt", group: "daily", web: "/library/fines", module: "LIBRARY" },
     { labelKey: "library.tabReports", icon: "chartLine", group: "running", web: "/library/reports", module: "LIBRARY" },
+    // The parity batch (10 Oct 2026, R-4): at a college, the e-resources with their open counts and the borrowing terms, and the library's line of the no-dues.
+    { labelKey: "collegeOffice.libraryTitle", icon: "books", group: "running", screen: "/(app)/e-resources", module: "ACADEMICS" },
+    { labelKey: "collegeOffice.navNoDues", icon: "checks", group: "daily", screen: "/(app)/no-dues", module: "ACADEMICS" },
   ],
   WARDEN: [
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
@@ -402,6 +424,10 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "hostel.tabRooms", icon: "bed", group: "daily", web: "/hostel/rooms", module: "HOSTEL" },
     { labelKey: "hostel.tabMenu", icon: "clipboard", group: "running", web: "/hostel/menu", module: "HOSTEL" },
     { labelKey: "hostel.tabIncidents", icon: "firstAid", group: "running", web: "/hostel/incidents", module: "HOSTEL" },
+    // The parity batch (10 Oct 2026, R-4): a proposal to end a boarder's place, the anti-ragging squad's rounds, the hostel's line of the no-dues.
+    { labelKey: "collegeDesks.expulsionsTab", icon: "shield", group: "running", screen: "/(app)/hostel-expulsions", module: "HOSTEL" },
+    { labelKey: "collegeOffice.squadRoundsTitle", icon: "shield", group: "running", screen: "/(app)/hostel-squad", module: "ACADEMICS" },
+    { labelKey: "collegeOffice.navNoDues", icon: "checks", group: "daily", screen: "/(app)/no-dues", module: "ACADEMICS" },
   ],
   ALUMNUS: [
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin", module: "ALUMNI" },
@@ -438,11 +464,20 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "duties.corps.nccTitle", icon: "flag", group: "running", screen: "/(app)/ncc", module: "IQAC", duty: "NCC_OFFICER" },
     { labelKey: "duties.research.title", icon: "medal", group: "running", screen: "/(app)/research-desk", module: "IQAC", duty: "RESEARCH_DEAN" },
     { labelKey: "duties.examSquad.title", icon: "eye", group: "running", screen: "/(app)/exam-squad", module: "EXAMS", duty: "EXAM_SQUAD" },
+    // The clinical desk (R-56, the clinical half; 10 Oct 2026): the coordinator's whole desk with the duty; any teacher's own postings and signing queue at a clinical stream.
+    { labelKey: "duties.clinical.title", icon: "firstAid", group: "running", screen: "/(app)/clinical-desk", module: "ACADEMICS", duty: "CLINICAL_COORDINATOR" },
+    { labelKey: "duties.clinical.supervisingTitle", icon: "firstAid", group: "daily", screen: "/(app)/clinical-desk", module: "ACADEMICS", streams: CLINICAL_STREAMS },
     { labelKey: "streamRecords.practicals.title", icon: "clipboard", group: "daily", screen: "/(app)/practicals", module: "ACADEMICS", streams: LAB_STREAMS },
     // A law college's moot courts (A3-inventory-4, audit of 5 Oct 2026): the doors name FACULTY and HOD; hidden where the recorded streams have no LAW.
     { labelKey: "streamRecords.moots.title", icon: "trophy", group: "daily", screen: "/(app)/moot-courts", module: "ACADEMICS", streams: ["LAW"] },
     // Homework for the offerings I teach (and an HOD's department's), set, marked and posted into internal marks (R-48, risks batch 5 Oct 2026).
     { labelKey: "collegeWork.title", icon: "clipboard", group: "daily", screen: "/(app)/college-work", module: "ACADEMICS" },
+    // An architecture college's studios and juries: marks for a jury I sit on, the chair's signature (R-56, the studio half, 10 Oct 2026).
+    { labelKey: "duties.studio.facultyTitle", icon: "palette", group: "daily", screen: "/(app)/studios", module: "ACADEMICS", streams: ["ARCHITECTURE"] },
+    // The parity batch (10 Oct 2026, R-4): the web's /faculty/supervision, /faculty/research and /faculty/profile.
+    { labelKey: "placement.supervisionTitle", icon: "briefcase", group: "daily", screen: "/(app)/supervision", module: "PLACEMENT" },
+    { labelKey: "iqac.navResearch", icon: "books", group: "running", screen: "/(app)/research", module: "IQAC" },
+    { labelKey: "collegeDesks.profileNav", icon: "user", group: "running", screen: "/(app)/faculty-profile", module: "IQAC" },
   ],
   HOD: [
     ...COLLEGE_STAFF_MENU,
@@ -465,11 +500,21 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "duties.corps.nccTitle", icon: "flag", group: "running", screen: "/(app)/ncc", module: "IQAC", duty: "NCC_OFFICER" },
     { labelKey: "duties.research.title", icon: "medal", group: "running", screen: "/(app)/research-desk", module: "IQAC", duty: "RESEARCH_DEAN" },
     { labelKey: "duties.examSquad.title", icon: "eye", group: "running", screen: "/(app)/exam-squad", module: "EXAMS", duty: "EXAM_SQUAD" },
+    // The clinical desk (R-56, the clinical half; 10 Oct 2026): the coordinator's whole desk with the duty; any teacher's own postings and signing queue at a clinical stream.
+    { labelKey: "duties.clinical.title", icon: "firstAid", group: "running", screen: "/(app)/clinical-desk", module: "ACADEMICS", duty: "CLINICAL_COORDINATOR" },
+    { labelKey: "duties.clinical.supervisingTitle", icon: "firstAid", group: "daily", screen: "/(app)/clinical-desk", module: "ACADEMICS", streams: CLINICAL_STREAMS },
     { labelKey: "streamRecords.practicals.title", icon: "clipboard", group: "daily", screen: "/(app)/practicals", module: "ACADEMICS", streams: LAB_STREAMS },
     // A law college's moot courts (A3-inventory-4, audit of 5 Oct 2026): the doors name FACULTY and HOD; hidden where the recorded streams have no LAW.
     { labelKey: "streamRecords.moots.title", icon: "trophy", group: "daily", screen: "/(app)/moot-courts", module: "ACADEMICS", streams: ["LAW"] },
     // Homework for the offerings I teach (and an HOD's department's), set, marked and posted into internal marks (R-48, risks batch 5 Oct 2026).
     { labelKey: "collegeWork.title", icon: "clipboard", group: "daily", screen: "/(app)/college-work", module: "ACADEMICS" },
+    // An architecture college's studios and juries: marks for a jury I sit on, the chair's signature (R-56, the studio half, 10 Oct 2026).
+    { labelKey: "duties.studio.facultyTitle", icon: "palette", group: "daily", screen: "/(app)/studios", module: "ACADEMICS", streams: ["ARCHITECTURE"] },
+    // The parity batch (10 Oct 2026, R-4): the web's /hod/projects, /hod/research, /accounts/no-dues (the lab's line) and /faculty/profile.
+    { labelKey: "placement.hodProjectsTitle", icon: "briefcase", group: "daily", screen: "/(app)/supervision", module: "PLACEMENT" },
+    { labelKey: "iqac.navDeptResearch", icon: "books", group: "running", screen: "/(app)/research", module: "IQAC" },
+    { labelKey: "collegeOffice.navNoDues", icon: "checks", group: "running", screen: "/(app)/no-dues", module: "ACADEMICS" },
+    { labelKey: "collegeDesks.profileNav", icon: "user", group: "running", screen: "/(app)/faculty-profile", module: "IQAC" },
   ],
   EXAM_CONTROLLER: [
     ...COLLEGE_STAFF_MENU,
@@ -481,39 +526,42 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
   // as the registrar's college entries do; what the phone does itself (the IQAC's filings, the TPO's rounds) is on the home.
   IQAC: [
     ...COLLEGE_STAFF_MENU,
-    { labelKey: "iqac.navPredictor", icon: "chartLine", group: "daily", web: "/iqac/predictor", module: "IQAC" },
+    // Native since the parity batch (10 Oct 2026, R-4): the predictor, filings, surveys, registers, grievances, records and the table.
+    { labelKey: "iqac.navPredictor", icon: "chartLine", group: "daily", screen: "/(app)/iqac-predictor", module: "IQAC" },
     // Actionable insights and the simulator's saved scenarios (5 Oct 2026): the phone reads them, the web changes the figures.
     { labelKey: "insightsPhone.title", icon: "lightbulb", group: "daily", screen: "/(app)/iqac-insights", module: "IQAC" },
     { labelKey: "insightsPhone.scenariosTitle", icon: "chartLine", group: "daily", screen: "/(app)/iqac-scenarios", module: "IQAC" },
-    { labelKey: "iqac.navDocuments", icon: "clipboard", group: "daily", web: "/iqac/documents", module: "IQAC" },
-    { labelKey: "iqac.navSurveys", icon: "star", group: "daily", web: "/iqac/surveys", module: "IQAC" },
-    { labelKey: "iqac.navRegisters", icon: "books", group: "running", web: "/iqac/registers", module: "IQAC" },
-    { labelKey: "iqac.navGrievances", icon: "shield", group: "running", web: "/iqac/grievances", module: "IQAC" },
-    { labelKey: "iqac.navFacultyRecords", icon: "users", group: "running", web: "/admin/faculty-records", module: "IQAC" },
-    { labelKey: "placement.tabAnalytics", icon: "chartLine", group: "running", web: "/placement/analytics", module: "PLACEMENT" },
+    { labelKey: "iqac.navDocuments", icon: "clipboard", group: "daily", screen: "/(app)/iqac-filings", module: "IQAC" },
+    { labelKey: "iqac.navSurveys", icon: "star", group: "daily", screen: "/(app)/iqac-surveys", module: "IQAC" },
+    { labelKey: "iqac.navRegisters", icon: "books", group: "running", screen: "/(app)/research", module: "IQAC" },
+    { labelKey: "iqac.navGrievances", icon: "shield", group: "running", screen: "/(app)/iqac-grievances", module: "IQAC" },
+    { labelKey: "iqac.navFacultyRecords", icon: "users", group: "running", screen: "/(app)/faculty-records", module: "IQAC" },
+    { labelKey: "placement.tabAnalytics", icon: "chartLine", group: "running", screen: "/(app)/placement-table", module: "PLACEMENT" },
   ],
   TPO: [
     ...COLLEGE_STAFF_MENU,
-    { labelKey: "placement.tabDrives", icon: "briefcase", group: "daily", web: "/placement/drives", module: "PLACEMENT" },
-    { labelKey: "placement.tabStudents", icon: "users", group: "daily", web: "/placement/students", module: "PLACEMENT" },
-    { labelKey: "placement.tabCompanies", icon: "handshake", group: "daily", web: "/placement/companies", module: "PLACEMENT" },
-    { labelKey: "placement.tabInternships", icon: "clipboard", group: "daily", web: "/placement/internships", module: "PLACEMENT" },
+    // Native since the parity batch (10 Oct 2026, R-4): drives, the roll, the companies, the internships and the table.
+    { labelKey: "placement.tabDrives", icon: "briefcase", group: "daily", screen: "/(app)/placement-drives", module: "PLACEMENT" },
+    { labelKey: "placement.tabStudents", icon: "users", group: "daily", screen: "/(app)/placement-students", module: "PLACEMENT" },
+    { labelKey: "placement.tabCompanies", icon: "handshake", group: "daily", screen: "/(app)/placement-companies", module: "PLACEMENT" },
+    { labelKey: "placement.tabInternships", icon: "clipboard", group: "daily", screen: "/(app)/supervision", module: "PLACEMENT" },
     // A talk's attendance and a training session's marks at the door (R-2, 5 Oct 2026); setting them up stays on the web.
     { labelKey: "talks.title", icon: "megaphone", group: "daily", screen: "/(app)/placement-talks", module: "PLACEMENT" },
     { labelKey: "softSkills.title", icon: "graduationCap", group: "daily", screen: "/(app)/soft-skills", module: "PLACEMENT" },
-    { labelKey: "placement.tabAnalytics", icon: "chartLine", group: "running", web: "/placement/analytics", module: "PLACEMENT" },
+    { labelKey: "placement.tabAnalytics", icon: "chartLine", group: "running", screen: "/(app)/placement-table", module: "PLACEMENT" },
   ],
   ACCOUNTS: [
     ...COLLEGE_STAFF_MENU,
+    // Native since the parity batch (10 Oct 2026, R-4): the look-up stands for the web's "A student's account" (/accounts/students);
+    // the structures, claims, no-dues, concessions, the fee ledger, payroll and the stores are the phone's own screens.
     { labelKey: "collegeDesks.lookupTitle", icon: "users", group: "daily", screen: "/(app)/accounts-lookup" },
-    { labelKey: "collegeOffice.navStructures", icon: "receipt", group: "daily", web: "/accounts/structures" },
-    { labelKey: "collegeOffice.navScholarships", icon: "receipt", group: "daily", web: "/accounts/scholarships", module: "SCHOLARSHIPS" },
-    { labelKey: "collegeOffice.navNoDues", icon: "checks", group: "daily", web: "/accounts/no-dues" },
-    { labelKey: "collegeOffice.navConcessions", icon: "clipboard", group: "daily", web: "/accounts/concessions" },
-    { labelKey: "collegeOffice.navStudents", icon: "users", group: "daily", web: "/accounts/students" },
-    { labelKey: "collegeOffice.navFeeLedger", icon: "receipt", group: "running", web: "/admin/fees" },
-    { labelKey: "payroll.title", icon: "receipt", group: "running", web: "/admin/payroll", module: "PAYROLL" },
-    { labelKey: "inventory.title", icon: "archive", group: "running", web: "/admin/inventory", module: "INVENTORY" },
+    { labelKey: "collegeOffice.navStructures", icon: "receipt", group: "daily", screen: "/(app)/fee-structures" },
+    { labelKey: "collegeOffice.navScholarships", icon: "receipt", group: "daily", screen: "/(app)/scholarship-claims", module: "SCHOLARSHIPS" },
+    { labelKey: "collegeOffice.navNoDues", icon: "checks", group: "daily", screen: "/(app)/no-dues" },
+    { labelKey: "collegeOffice.navConcessions", icon: "clipboard", group: "daily", screen: "/(app)/concessions" },
+    { labelKey: "collegeOffice.navFeeLedger", icon: "receipt", group: "running", screen: "/(app)/fees" },
+    { labelKey: "payroll.title", icon: "receipt", group: "running", screen: "/(app)/payroll", module: "PAYROLL" },
+    { labelKey: "inventory.title", icon: "archive", group: "running", screen: "/(app)/inventory", module: "INVENTORY" },
   ],
   RECRUITER: [{ labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" }],
 };
@@ -688,6 +736,9 @@ export const HIDDEN_SCREENS = [
   "ncc",
   "research-desk",
   "exam-squad",
+  // The clinical desk and a student's logbook (R-56, the clinical half; 10 Oct 2026), from More, the duty card and the registrar's tile.
+  "clinical-desk",
+  "clinical-logbook",
   // The S3 fixes (5 Oct 2026): the TPO's drive with its rounds, from the TPO's home; an HOD's lecture substitutions.
   "placement-drive",
   "lecture-substitutions",
@@ -706,6 +757,42 @@ export const HIDDEN_SCREENS = [
   // Birthdays and anniversaries from a home's card, and the pupil's own practice journey (A3-inventory-14, risks batch 5 Oct 2026).
   "celebrations",
   "practice-journey",
+  // The college desks' parity batch (10 Oct 2026, R-4): the link-outs and the web-only pages as the phone's own screens.
+  "placement-drives",
+  "placement-students",
+  "placement-companies",
+  "placement-table",
+  "supervision",
+  "fee-structures",
+  "scholarship-claims",
+  "no-dues",
+  "concessions",
+  "exam-session",
+  "exam-after",
+  "iqac-grievances",
+  "iqac-surveys",
+  "iqac-filings",
+  "research",
+  "iqac-predictor",
+  "faculty-records",
+  "faculty-profile",
+  "hostel-expulsions",
+  "hostel-squad",
+  "my-items",
+  "stream-records",
+  "office-transport",
+  "office-alumni",
+  "office-hostel",
+  "office-academics",
+  "office-admissions",
+  // The desks' homes for the office and the head (the parity batch): the accounts, exam cell, placement and IQAC homes.
+  "accounts",
+  "exam-cell",
+  "placement-cell",
+  "iqac-desk",
+  // The studio desk (R-56, the studio half, 10 Oct 2026): a teacher's studios and juries, a student's studios.
+  "studios",
+  "student-studios",
 ] as const;
 
 /** The More sheet's entries for a role, grouped in the web's order; an entry whose module the school has off, or whose duty the person does not hold (5 Oct 2026), is left out. */

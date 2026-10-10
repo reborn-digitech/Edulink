@@ -77,41 +77,86 @@ export type OrphanReport = {
 };
 
 /**
- * Every file id any record currently points at.
+ * EVERY COLUMN A STORED FILE IS REFERENCED FROM, named `model.column` — exactly the lookups
+ * `authorizeFileRead` (files.ts) makes by a file's id. THEY MUST STAY IN STEP: a kind of file served there
+ * and not claimed here is a live file this sweep deletes. It drifted once already: by 11 October 2026 the
+ * route served admission documents, expert KYC, scholarship claims, studio work, offer letters, internship
+ * files and IQAC files that no line here claimed, so a non-dry sweep would have deleted every one of them
+ * (integration, 11 Oct 2026). `tests/orphans-kinds.test.ts` reads the lookups out of authorizeFileRead's
+ * source and fails when the two lists differ; the `Record` below fails to compile when a name has no reader.
+ */
+export const FILE_REFERENCES = [
+  "school.logoPath",
+  "quizQuestion.imageKey",
+  "quizQuestion.translations.imageKey",
+  "submission.attachments",
+  "application.documentsJson",
+  "expertProfile.kycDocumentIds",
+  "collegeApplication.documentsJson",
+  "scholarshipClaim.documentsJson",
+  "purchaseRecord.billFileId",
+  "attendanceCondonation.documentFileId",
+  "courseFileItem.fileId",
+  "studioSubmission.fileId",
+  "offer.letterFileId",
+  "internship.reportFileId",
+  "internship.parentDeclarationFileId",
+  "iqacFile.fileId",
+  "assignment.attachments",
+  "post.media",
+] as const;
+
+export type FileReference = (typeof FILE_REFERENCES)[number];
+
+/** The file ids a JSON column names, whatever its shape (`[{"fileId":…}]` or `{"marksheet":{"fileId":…}}`). */
+function fileIdsInJson(raw: string | null | undefined): string[] {
+  return [...(raw ?? "").matchAll(/"fileId"\s*:\s*"([^"]+)"/g)].map((m) => m[1]!);
+}
+
+type Claimed = { fileId: string | null | undefined; schoolId: string | null }[];
+
+/** One reader per column: the claimed file ids with the school whose record claims them (null: nobody's, e.g. the shared quiz bank). */
+const READERS: Record<FileReference, () => Promise<Claimed>> = {
+  "school.logoPath": async () => (await db.school.findMany({ where: { logoPath: { not: null } }, select: { id: true, logoPath: true } })).map((r) => ({ fileId: r.logoPath, schoolId: r.id })),
+  // figures (10 Oct 2026): the quiz bank's drawn figures, the question's and each translation's (no school: the bank is shared).
+  "quizQuestion.imageKey": async () => (await db.quizQuestion.findMany({ where: { imageKey: { not: null } }, select: { imageKey: true } })).map((r) => ({ fileId: r.imageKey, schoolId: null })),
+  "quizQuestion.translations.imageKey": async () => (await db.quizQuestionTranslation.findMany({ where: { imageKey: { not: null } }, select: { imageKey: true } })).map((r) => ({ fileId: r.imageKey, schoolId: null })),
+  "submission.attachments": async () => (await db.submission.findMany({ select: { schoolId: true, attachments: true } })).flatMap((r) => readAttachments(r.attachments).map((a) => ({ fileId: a.fileId, schoolId: r.schoolId }))),
+  "application.documentsJson": async () => (await db.application.findMany({ where: { documentsJson: { contains: '"fileId"' } }, select: { schoolId: true, documentsJson: true } })).flatMap((r) => fileIdsInJson(r.documentsJson).map((fileId) => ({ fileId, schoolId: r.schoolId }))),
+  // An expert's KYC papers: the person's, no school's.
+  "expertProfile.kycDocumentIds": async () => (await db.expertProfile.findMany({ where: { kycDocumentIds: { isEmpty: false } }, select: { kycDocumentIds: true } })).flatMap((r) => r.kycDocumentIds.map((fileId) => ({ fileId, schoolId: null }))),
+  "collegeApplication.documentsJson": async () => (await db.collegeApplication.findMany({ where: { documentsJson: { contains: '"fileId"' } }, select: { schoolId: true, documentsJson: true } })).flatMap((r) => fileIdsInJson(r.documentsJson).map((fileId) => ({ fileId, schoolId: r.schoolId }))),
+  "scholarshipClaim.documentsJson": async () => (await db.scholarshipClaim.findMany({ where: { documentsJson: { contains: '"fileId"' } }, select: { schoolId: true, documentsJson: true } })).flatMap((r) => fileIdsInJson(r.documentsJson).map((fileId) => ({ fileId, schoolId: r.schoolId }))),
+  // A purchase record's scanned bill (the INVENTORY module).
+  "purchaseRecord.billFileId": async () => (await db.purchaseRecord.findMany({ where: { billFileId: { not: null } }, select: { schoolId: true, billFileId: true } })).map((r) => ({ fileId: r.billFileId, schoolId: r.schoolId })),
+  // A condonation's document and a course file's resources (the college's academics, 4 Oct 2026).
+  "attendanceCondonation.documentFileId": async () => (await db.attendanceCondonation.findMany({ where: { documentFileId: { not: null } }, select: { schoolId: true, documentFileId: true } })).map((r) => ({ fileId: r.documentFileId, schoolId: r.schoolId })),
+  "courseFileItem.fileId": async () => (await db.courseFileItem.findMany({ where: { fileId: { not: null } }, select: { schoolId: true, fileId: true } })).map((r) => ({ fileId: r.fileId, schoolId: r.schoolId })),
+  // A studio submission's work (R-56, the studio half, 10 Oct 2026).
+  "studioSubmission.fileId": async () => (await db.studioSubmission.findMany({ where: { fileId: { not: null } }, select: { schoolId: true, fileId: true } })).map((r) => ({ fileId: r.fileId, schoolId: r.schoolId })),
+  // The placement cell's offer letters and internship papers.
+  "offer.letterFileId": async () => (await db.offer.findMany({ where: { letterFileId: { not: null } }, select: { schoolId: true, letterFileId: true } })).map((r) => ({ fileId: r.letterFileId, schoolId: r.schoolId })),
+  "internship.reportFileId": async () => (await db.internship.findMany({ where: { reportFileId: { not: null } }, select: { schoolId: true, reportFileId: true } })).map((r) => ({ fileId: r.reportFileId, schoolId: r.schoolId })),
+  "internship.parentDeclarationFileId": async () => (await db.internship.findMany({ where: { parentDeclarationFileId: { not: null } }, select: { schoolId: true, parentDeclarationFileId: true } })).map((r) => ({ fileId: r.parentDeclarationFileId, schoolId: r.schoolId })),
+  "iqacFile.fileId": async () => (await db.iqacFile.findMany({ select: { schoolId: true, fileId: true } })).map((r) => ({ fileId: r.fileId, schoolId: r.schoolId })),
+  "assignment.attachments": async () => (await db.assignment.findMany({ select: { schoolId: true, attachments: true } })).flatMap((r) => readAttachments(r.attachments).map((a) => ({ fileId: a.fileId, schoolId: r.schoolId }))),
+  "post.media": async () => (await db.post.findMany({ select: { schoolId: true, media: true } })).flatMap((r) => readMedia(r.media).map((m) => ({ fileId: m.fileId, schoolId: r.schoolId }))),
+};
+
+/**
+ * Every file id any record currently points at, with the school to tell when its bytes are gone.
  *
- * These four are exactly the four branches in `authorizeFileRead`. THEY MUST
- * STAY IN STEP: a new kind of attachment that is added there but not here makes
- * this sweep delete live files. `tests/orphans.test.ts` pins one of each kind so
- * that dropping one of these queries fails loudly.
+ * First claimer wins the label; every claimer keeps the file alive either way. The empty string labels a
+ * reference with no school to tell (a null-school post, the quiz bank, an expert's KYC) — still referenced,
+ * still counted missing when gone, just nobody's card to land on.
  */
 async function referencedFileIds(): Promise<Map<string, string>> {
-  // fileId → the school whose record claims it, so a reference whose bytes
-  // are gone can be told to its owner. First claimer wins the label; every
-  // claimer keeps the file alive either way. The empty string labels a
-  // reference with no school to tell (a null-school post) — still referenced,
-  // still counted missing when gone, just nobody's card to land on.
   const ids = new Map<string, string>();
-  const claim = (fileId: string, schoolId: string | null) => {
-    if (!ids.has(fileId)) ids.set(fileId, schoolId ?? "");
-  };
-
-  const [schools, assignments, submissions, posts] = await Promise.all([
-    db.school.findMany({ where: { logoPath: { not: null } }, select: { id: true, logoPath: true } }),
-    db.assignment.findMany({ select: { schoolId: true, attachments: true } }),
-    db.submission.findMany({ select: { schoolId: true, attachments: true } }),
-    db.post.findMany({ select: { schoolId: true, media: true } }),
-  ]);
-
-  for (const school of schools) if (school.logoPath) claim(school.logoPath, school.id);
-  for (const row of assignments) for (const a of readAttachments(row.attachments)) claim(a.fileId, row.schoolId);
-  for (const row of submissions) for (const a of readAttachments(row.attachments)) claim(a.fileId, row.schoolId);
-  for (const row of posts) for (const m of readMedia(row.media)) claim(m.fileId, row.schoolId);
-  // A purchase record's scanned bill (the INVENTORY module).
-  for (const row of await db.purchaseRecord.findMany({ where: { billFileId: { not: null } }, select: { schoolId: true, billFileId: true } })) if (row.billFileId) claim(row.billFileId, row.schoolId);
-  // A condonation's document and a course file's resources (the college's academics, 4 Oct 2026).
-  for (const row of await db.attendanceCondonation.findMany({ where: { documentFileId: { not: null } }, select: { schoolId: true, documentFileId: true } })) if (row.documentFileId) claim(row.documentFileId, row.schoolId);
-  for (const row of await db.courseFileItem.findMany({ where: { fileId: { not: null } }, select: { schoolId: true, fileId: true } })) if (row.fileId) claim(row.fileId, row.schoolId);
-
+  for (const reference of FILE_REFERENCES) {
+    for (const { fileId, schoolId } of await READERS[reference]()) {
+      if (fileId && !ids.has(fileId)) ids.set(fileId, schoolId ?? "");
+    }
+  }
   return ids;
 }
 

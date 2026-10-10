@@ -1,6 +1,7 @@
 import type { Role } from "./constants";
 import type { TranslationKey } from "./i18n/dictionary";
-import { DUTY_STREAMS, type DutyCode, type SchoolModuleCode, type StreamCode } from "@edulink/contracts";
+import { DUTY_STREAMS, type DutyCode, type InstitutionKind, type SchoolModuleCode, type StreamCode } from "@edulink/contracts";
+import { QUESTION_GIG_FOR_TEACHERS } from "@edulink/contracts";
 
 /**
  * Navigation model.
@@ -58,10 +59,34 @@ export type NavItem = {
    * and a school keep it, as before; the page itself still opens.
    */
   streams?: readonly StreamCode[];
+  /**
+   * The institution kinds this entry is for (DS-4, 10 Oct 2026): the shell hides
+   * it elsewhere — the school's exams, syllabus, substitutions and admissions at a
+   * college, where their pages were always empty beside the college's own. A
+   * guardian's menu follows the children's institutions: the entry stays while any
+   * child is at one of these kinds (hiddenByKind). The page itself still opens.
+   */
+  kinds?: readonly InstitutionKind[];
 };
+
+/** The kinds that run the school version's day: classes, the day register, exam series, the syllabus (DS-4). */
+export const SCHOOL_KINDS: readonly InstitutionKind[] = ["SCHOOL", "JUNIOR_COLLEGE"];
+
+/**
+ * The hrefs of a role's entries to hide for these institution kinds (DS-4): an
+ * entry naming `kinds` goes when none of the kinds in scope is among them. No
+ * kind in scope (a guardian with no child yet) keeps everything, as the
+ * streams rule does with none recorded.
+ */
+export function hiddenByKind(items: readonly NavItem[], kinds: readonly string[]): string[] {
+  if (kinds.length === 0) return [];
+  return items.filter((item) => item.kinds && !item.kinds.some((k) => kinds.includes(k))).map((item) => item.href);
+}
 
 /** The streams that keep labs and a practical record (those that offer a lab in-charge). */
 const LAB_STREAMS: readonly StreamCode[] = DUTY_STREAMS.LAB_INCHARGE === "ALL" ? [] : DUTY_STREAMS.LAB_INCHARGE;
+/** The streams that post students to a hospital (those that offer a clinical coordinator; R-56, 10 Oct 2026). */
+const CLINICAL_STREAMS: readonly StreamCode[] = DUTY_STREAMS.CLINICAL_COORDINATOR === "ALL" ? [] : DUTY_STREAMS.CLINICAL_COORDINATOR;
 
 export const NAV_GROUP_KEY: Record<NavGroup, TranslationKey> = {
   daily: "nav.groupDaily",
@@ -108,7 +133,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/people", labelKey: "nav.people", icon: "users", primary: true, prefix: true, also: ["/admin/invites", "/admin/intake"] },
     { href: "/admin/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true, also: ["/admin/promotion"] },
     { href: "/admin/timetable", labelKey: "nav.timetable", icon: "clock", primary: true, prefix: true },
-    { href: "/admin/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true },
+    { href: "/admin/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true, kinds: SCHOOL_KINDS },
     // How a report card is worked out and printed: the office's rules, read by every card generated.
     { href: "/admin/report-cards", labelKey: "nav.reportCards", icon: "clipboard", prefix: true, group: "running" },
     { href: "/admin/certificates", labelKey: "nav.certificates", icon: "clipboard", prefix: true, group: "running", also: ["/certificates"] },
@@ -117,8 +142,9 @@ export const NAV: Record<Role, NavItem[]> = {
     // The UDISE+ and board sheets cut from the records: the office cuts, the head reads.
     { href: "/admin/filings", labelKey: "nav.filings", icon: "clipboard", prefix: true, group: "running" },
     // The door for next year: the cycle, its sittings and the pipeline from form to seat.
-    { href: "/admin/admissions", labelKey: "nav.admissions", icon: "users", prefix: true, group: "running" },
-    { href: "/admin/syllabus", labelKey: "nav.syllabus", icon: "books", prefix: true, group: "running" },
+    // School-only entries (DS-4, 10 Oct 2026): a college has its own admissions, no syllabus units and no day register to cover.
+    { href: "/admin/admissions", labelKey: "nav.admissions", icon: "users", prefix: true, group: "running", kinds: SCHOOL_KINDS },
+    { href: "/admin/syllabus", labelKey: "nav.syllabus", icon: "books", prefix: true, group: "running", kinds: SCHOOL_KINDS },
     { href: "/admin/attendance", labelKey: "nav.attendance", icon: "checks", prefix: true, group: "running", also: ["/attendance/history"] },
     { href: "/admin/staff-attendance", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },
     // The attendance devices (R-2, 5 Oct 2026): biometric and RFID readers, their keys, the badges, the punches.
@@ -126,7 +152,7 @@ export const NAV: Record<Role, NavItem[]> = {
     // The Tally export of receipts and payroll (R-2, 5 Oct 2026): export only, money stays outside (decision 0003).
     { href: "/admin/fees/tally", labelKey: "tally.navTitle", icon: "receipt", group: "running" },
     // Who covers the lessons of staff who are away: the board the staff register feeds.
-    { href: "/admin/substitutions", labelKey: "nav.substitutions", icon: "users", prefix: true, group: "running" },
+    { href: "/admin/substitutions", labelKey: "nav.substitutions", icon: "users", prefix: true, group: "running", kinds: SCHOOL_KINDS },
     { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true, group: "running" },
     // Fees: what the school asked its families for and what arrived. The
     // office writes; the principal reads the same pages (see fees.ts officeOrHead).
@@ -201,7 +227,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/principal/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true },
     { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", primary: true, prefix: true, also: ["/principal/staff"] },
     { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", primary: true, prefix: true },
-    { href: "/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true },
+    { href: "/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true, kinds: SCHOOL_KINDS },
     { href: "/admin/report-cards", labelKey: "nav.reportCards", icon: "clipboard", prefix: true, group: "running" },
     { href: "/admin/certificates", labelKey: "nav.certificates", icon: "clipboard", prefix: true, group: "running", also: ["/certificates"] },
     { href: "/admin/signatures", labelKey: "nav.signatures", icon: "clipboard", group: "running" },
@@ -209,8 +235,9 @@ export const NAV: Record<Role, NavItem[]> = {
     // The UDISE+ and board sheets cut from the records: the office cuts, the head reads.
     { href: "/admin/filings", labelKey: "nav.filings", icon: "clipboard", prefix: true, group: "running" },
     // The door for next year: the cycle, its sittings and the pipeline from form to seat.
-    { href: "/admin/admissions", labelKey: "nav.admissions", icon: "users", prefix: true, group: "running" },
-    { href: "/admin/syllabus", labelKey: "nav.syllabus", icon: "books", prefix: true, group: "running" },
+    // School-only entries (DS-4, 10 Oct 2026), as in the office's menu.
+    { href: "/admin/admissions", labelKey: "nav.admissions", icon: "users", prefix: true, group: "running", kinds: SCHOOL_KINDS },
+    { href: "/admin/syllabus", labelKey: "nav.syllabus", icon: "books", prefix: true, group: "running", kinds: SCHOOL_KINDS },
     { href: "/principal/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "running" },
     // The head's own decisions, as sentences, read from the audit log (lib/decision-log.ts).
     { href: "/principal/decisions", labelKey: "decisions.title", icon: "clipboard", prefix: true, group: "running" },
@@ -220,7 +247,7 @@ export const NAV: Record<Role, NavItem[]> = {
     // The attendance devices (R-2, 5 Oct 2026): biometric and RFID readers, their keys, the badges, the punches.
     { href: "/admin/attendance-devices", labelKey: "punch.navTitle", icon: "checks", prefix: true, group: "running" },
     // Who covers the lessons of staff who are away: the board the staff register feeds.
-    { href: "/admin/substitutions", labelKey: "nav.substitutions", icon: "users", prefix: true, group: "running" },
+    { href: "/admin/substitutions", labelKey: "nav.substitutions", icon: "users", prefix: true, group: "running", kinds: SCHOOL_KINDS },
     { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true, group: "running" },
     // Read-only for the head: the overview, the dues and the structures.
     { href: "/admin/fees", labelKey: "nav.fees", icon: "receipt", prefix: true, group: "running" },
@@ -283,7 +310,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/teacher/attendance/me", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },
     { href: "/teacher/incidents", labelKey: "nav.incidents", icon: "firstAidKit", prefix: true, group: "running", also: ["/incidents"] },
     { href: "/teacher/signatures", labelKey: "nav.signatures", icon: "clipboard", group: "running" },
-    { href: "/teacher/contributions", labelKey: "nav.contributions", icon: "books", prefix: true, group: "running" },
+    // review-queue (10 Oct 2026): the question gig, while QUESTION_GIG_FOR_TEACHERS is on (src/lib/question-gig.ts).
+    ...(QUESTION_GIG_FOR_TEACHERS ? [{ href: "/teacher/contributions", labelKey: "nav.contributions", icon: "books", prefix: true, group: "running" } satisfies NavItem] : []),
     { href: "/teacher/profile", labelKey: "nav.me", icon: "user", prefix: true, group: "running" },
     // What the head has shown me of my observations, targets and appraisals (lib/appraisal.ts).
     { href: "/teacher/appraisals", labelKey: "appraisal.myTitle", icon: "clipboard", prefix: true, group: "running" },
@@ -311,7 +339,8 @@ export const NAV: Record<Role, NavItem[]> = {
     // "My work" and "Grades" folded together.
     { href: "/student/assignments", labelKey: "nav.assignments", icon: "clipboard", primary: true, prefix: true, also: ["/student/work", "/student/grades"] },
     // ONE place for "how did I do": exam marks, the exams ahead, report cards.
-    { href: "/exams", labelKey: "nav.exams", icon: "chartLine", primary: true, prefix: true, also: ["/report-cards"] },
+    // The school's exams and report cards (DS-4, 10 Oct 2026): a college student's are under /student/exams.
+    { href: "/exams", labelKey: "nav.exams", icon: "chartLine", primary: true, prefix: true, also: ["/report-cards"], kinds: SCHOOL_KINDS },
     { href: "/student/certificates", labelKey: "nav.certificates", icon: "clipboard", prefix: true, group: "school", also: ["/certificates", "/student/record"] },
     { href: "/student/practice", labelKey: "nav.practice", icon: "brain", primary: true, prefix: true },
     { href: "/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "daily" },
@@ -338,6 +367,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/student/hostel", labelKey: "modules.hostelName", icon: "bed", prefix: true, group: "school", module: "HOSTEL" },
     // My courses, lectures, attendance, internal marks and registration (the college's academics, 4 Oct 2026).
     { href: "/student/academics", labelKey: "academics.studentTitle", icon: "graduationCap", prefix: true, group: "daily", module: "ACADEMICS", also: ["/student/registration"] },
+    // An architecture student's studios: the brief, the stages, their submissions and the signed jury results (R-56, the studio half, 10 Oct 2026).
+    { href: "/student/studios", labelKey: "duties.studio.studentTitle", icon: "palette", prefix: true, group: "daily", module: "ACADEMICS", streams: ["ARCHITECTURE"] },
     // A college student's money net of scholarships, the scholarships, and their own account (4 Oct 2026; ACADEMICS stands for "a college").
     { href: "/student/money", labelKey: "collegeOffice.moneyTitle", icon: "wallet", prefix: true, group: "school", module: "ACADEMICS" },
     { href: "/student/scholarships", labelKey: "collegeOffice.navScholarships", icon: "receipt", prefix: true, group: "school", module: "SCHOLARSHIPS" },
@@ -348,13 +379,16 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/student/placement", labelKey: "placement.navStudent", icon: "briefcase", prefix: true, group: "school", module: "PLACEMENT" },
     // IQAC (4 Oct 2026): course feedback, the satisfaction survey, a grievance to the committee.
     { href: "/student/voice", labelKey: "iqac.navVoice", icon: "chat", prefix: true, group: "school", module: "IQAC" },
+    // A health-sciences or pharmacy student's clinical postings and logbook (R-56, the clinical half; 10 Oct 2026); no guardian page.
+    { href: "/student/clinical", labelKey: "duties.clinical.myTitle", icon: "firstAidKit", prefix: true, group: "daily", module: "ACADEMICS", streams: CLINICAL_STREAMS },
   ],
   PARENT: [
     { href: "/parent", labelKey: "nav.overview", icon: "house", primary: true },
     { href: "/parent/attendance", labelKey: "nav.attendance", icon: "checks", primary: true, prefix: true },
     // The homework diary and the grades page, folded into one Assignments.
     { href: "/parent/assignments", labelKey: "nav.assignments", icon: "clipboard", primary: true, prefix: true, also: ["/parent/homework", "/parent/grades"] },
-    { href: "/exams", labelKey: "nav.exams", icon: "chartLine", primary: true, prefix: true, also: ["/report-cards"] },
+    // The school's exams and report cards (DS-4, 10 Oct 2026): kept while any child is at a school; a college child's results are /parent/results.
+    { href: "/exams", labelKey: "nav.exams", icon: "chartLine", primary: true, prefix: true, also: ["/report-cards"], kinds: SCHOOL_KINDS },
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", primary: true, prefix: true },
     { href: "/parent/certificates", labelKey: "nav.certificates", icon: "clipboard", prefix: true, group: "daily", also: ["/certificates", "/parent/record"] },
     { href: "/parent/practice", labelKey: "nav.practice", icon: "brain", prefix: true, group: "daily" },
@@ -508,7 +542,9 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/faculty/practicals", labelKey: "streamRecords.practicals.title", icon: "flask", prefix: true, group: "daily", module: "ACADEMICS", streams: LAB_STREAMS },
     // A law college's moot courts, recorded and read by its teachers (A3-inventory-4, audit of 5 Oct 2026).
     { href: "/faculty/moot-courts", labelKey: "streamRecords.moots.title", icon: "gavel", prefix: true, group: "daily", module: "ACADEMICS", streams: ["LAW"] },
-    // The duties' desks (S2, 5 Oct 2026), each for a member who holds the duty; the clinical and studio coordinators' pages say their records are coming.
+    // An architecture college's studios and juries, for the teachers who teach, coordinate or sit on them (R-56, the studio half, 10 Oct 2026).
+    { href: "/faculty/studios", labelKey: "duties.studio.facultyTitle", icon: "palette", prefix: true, group: "daily", module: "ACADEMICS", streams: ["ARCHITECTURE"] },
+    // The duties' desks (S2, 5 Oct 2026), each for a member who holds the duty; every one is built since the clinical and studio desks (R-56, 10 Oct 2026).
     { href: "/duties/lab", labelKey: "duties.lab.title", icon: "flask", prefix: true, group: "running", module: "ACADEMICS", duty: "LAB_INCHARGE" },
     { href: "/duties/teaching-practice", labelKey: "duties.teachingPractice.title", icon: "chalkboard", prefix: true, group: "running", module: "ACADEMICS", duty: "PRACTICE_TEACHING_COORDINATOR" },
     { href: "/duties/nss", labelKey: "duties.corps.nssTitle", icon: "handHeart", prefix: true, group: "running", module: "IQAC", duty: "NSS_OFFICER" },
@@ -516,6 +552,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/duties/research", labelKey: "duties.research.title", icon: "books", prefix: true, group: "running", module: "IQAC", duty: "RESEARCH_DEAN" },
     { href: "/duties/exam-squad", labelKey: "duties.examSquad.title", icon: "siren", prefix: true, group: "running", module: "EXAMS", duty: "EXAM_SQUAD" },
     { href: "/duties/clinical", labelKey: "duties.CLINICAL_COORDINATOR.name", icon: "firstAidKit", prefix: true, group: "running", module: "ACADEMICS", duty: "CLINICAL_COORDINATOR" },
+    // The clinical postings I supervise and the entries waiting for my signature (R-56, the clinical half; 10 Oct 2026): any teacher at a clinical stream, no duty.
+    { href: "/faculty/clinical", labelKey: "duties.clinical.supervisingTitle", icon: "firstAidKit", prefix: true, group: "daily", module: "ACADEMICS", streams: CLINICAL_STREAMS },
     { href: "/duties/studio", labelKey: "duties.STUDIO_COORDINATOR.name", icon: "palette", prefix: true, group: "running", module: "ACADEMICS", duty: "STUDIO_COORDINATOR" },
   ],
   HOD: [
@@ -532,7 +570,8 @@ export const NAV: Record<Role, NavItem[]> = {
     // Placement (4 Oct 2026): projects and internships of the department.
     { href: "/hod/projects", labelKey: "placement.hodProjectsTitle", icon: "briefcase", prefix: true, group: "daily", module: "PLACEMENT" },
     // The department's NBA visit file (R-2, 5 Oct 2026).
-    { href: "/hod/visits", labelKey: "peerVisit.nav", icon: "clipboard", prefix: true, group: "running", module: "IQAC" },
+    // NBA visits only for an HOD (peer-visits.ts listVisits), so the entry is an engineering college's (DS-6, 10 Oct 2026).
+    { href: "/hod/visits", labelKey: "peerVisit.nav", icon: "clipboard", prefix: true, group: "running", module: "IQAC", streams: ["ENGINEERING"] },
     // IQAC (4 Oct 2026): the department's research, activities and course feedback.
     { href: "/hod/research", labelKey: "iqac.navDeptResearch", icon: "books", prefix: true, group: "running", module: "IQAC" },
     // My public page for the college's website, my own opt-in (5 Oct 2026); under /faculty, which an HOD's teaching opens.
@@ -549,7 +588,9 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/hod/practicals", labelKey: "streamRecords.practicals.title", icon: "flask", prefix: true, group: "daily", module: "ACADEMICS", streams: LAB_STREAMS },
     // A law college's moot courts, recorded and read by its teachers (A3-inventory-4, audit of 5 Oct 2026).
     { href: "/faculty/moot-courts", labelKey: "streamRecords.moots.title", icon: "gavel", prefix: true, group: "daily", module: "ACADEMICS", streams: ["LAW"] },
-    // The duties' desks (S2, 5 Oct 2026), each for a member who holds the duty; the clinical and studio coordinators' pages say their records are coming.
+    // An architecture college's studios and juries, for the teachers who teach, coordinate or sit on them (R-56, the studio half, 10 Oct 2026).
+    { href: "/faculty/studios", labelKey: "duties.studio.facultyTitle", icon: "palette", prefix: true, group: "daily", module: "ACADEMICS", streams: ["ARCHITECTURE"] },
+    // The duties' desks (S2, 5 Oct 2026), each for a member who holds the duty; every one is built since the clinical and studio desks (R-56, 10 Oct 2026).
     { href: "/duties/lab", labelKey: "duties.lab.title", icon: "flask", prefix: true, group: "running", module: "ACADEMICS", duty: "LAB_INCHARGE" },
     { href: "/duties/teaching-practice", labelKey: "duties.teachingPractice.title", icon: "chalkboard", prefix: true, group: "running", module: "ACADEMICS", duty: "PRACTICE_TEACHING_COORDINATOR" },
     { href: "/duties/nss", labelKey: "duties.corps.nssTitle", icon: "handHeart", prefix: true, group: "running", module: "IQAC", duty: "NSS_OFFICER" },
@@ -557,6 +598,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/duties/research", labelKey: "duties.research.title", icon: "books", prefix: true, group: "running", module: "IQAC", duty: "RESEARCH_DEAN" },
     { href: "/duties/exam-squad", labelKey: "duties.examSquad.title", icon: "siren", prefix: true, group: "running", module: "EXAMS", duty: "EXAM_SQUAD" },
     { href: "/duties/clinical", labelKey: "duties.CLINICAL_COORDINATOR.name", icon: "firstAidKit", prefix: true, group: "running", module: "ACADEMICS", duty: "CLINICAL_COORDINATOR" },
+    // The clinical postings I supervise and the entries waiting for my signature (R-56, the clinical half; 10 Oct 2026): any teacher at a clinical stream, no duty.
+    { href: "/faculty/clinical", labelKey: "duties.clinical.supervisingTitle", icon: "firstAidKit", prefix: true, group: "daily", module: "ACADEMICS", streams: CLINICAL_STREAMS },
     { href: "/duties/studio", labelKey: "duties.STUDIO_COORDINATOR.name", icon: "palette", prefix: true, group: "running", module: "ACADEMICS", duty: "STUDIO_COORDINATOR" },
   ],
   EXAM_CONTROLLER: [

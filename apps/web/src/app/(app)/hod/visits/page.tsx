@@ -10,7 +10,6 @@ import { PageHeader } from "@/components/ui/page-header";
 import { ModuleOff } from "@/components/module-off";
 import { VisitListView } from "@/components/peer-visits/visit-pages";
 
-
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
   return { title: t("peerVisit.title"), robots: { index: false, follow: false } };
@@ -35,7 +34,6 @@ export default async function VisitsPage() {
   return (
     <div className="space-y-5">
       <PageHeader title={t("peerVisit.title")} description={t("peerVisit.intro")} back={{ href: "/hod", label: t("peerVisit.backHod") }} />
-      
       <VisitListView list={list} base="/hod/visits" t={t} locale={locale} thisYear={thisYear} />
     </div>
   );

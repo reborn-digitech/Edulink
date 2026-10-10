@@ -79,12 +79,18 @@ export const FILING_BODY: Record<CollegeFilingKind, string> = {
 };
 
 /**
- * The councils whose returns are not built: the streams whose preset names
- * records the app does not keep (health sciences: NMC, DCI, INC;
- * architecture: COA; agriculture: ICAR). The documents page shows each as
- * "not yet built" with the preset's own sentences, never as an empty card.
+ * The councils whose returns are not built: the streams with a regulator (other than the UGC, whose returns are
+ * the base filings) that no filing of the preset goes to — health sciences: NMC, DCI, INC; architecture: COA;
+ * agriculture: ICAR. The documents page shows each as "not yet built" with the preset's own sentences, never as
+ * an empty card.
+ *
+ * ⚠ READ FROM THE REGULATORS, NOT FROM `notBuilt` (integration, 11 Oct 2026). It was the streams with a
+ * non-empty `notBuilt`, so when the clinical and studio desks emptied health sciences' and architecture's lists
+ * the councils' page stopped saying their returns are not built, though no NMC, DCI, INC or COA return exists.
  */
-export const UNBUILT_COUNCIL_STREAMS: readonly StreamCode[] = STREAMS.filter((s) => STREAM_PRESETS[s].notBuilt.length > 0);
+export const UNBUILT_COUNCIL_STREAMS: readonly StreamCode[] = STREAMS.filter((s) =>
+  STREAM_PRESETS[s].regulators.some((r) => r !== "UGC" && !STREAM_PRESETS[s].filings.some((f) => FILING_BODY[f] === r)),
+);
 
 /* -------------------------------------------------------------------------- */
 /* The worksheets                                                              */

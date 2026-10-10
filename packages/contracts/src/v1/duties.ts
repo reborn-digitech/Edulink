@@ -73,9 +73,11 @@ export const DUTY_STREAMS: Record<DutyCode, readonly StreamCode[] | "ALL"> = {
  */
 export const DUTY_BUILT: Record<DutyCode, boolean> = {
   LAB_INCHARGE: true,
-  CLINICAL_COORDINATOR: false,
+  // Built 10 Oct 2026 (R-56, the clinical half): lib/clinical.ts, /duties/clinical, the phone's clinical-desk.
+  CLINICAL_COORDINATOR: true,
   PRACTICE_TEACHING_COORDINATOR: true,
-  STUDIO_COORDINATOR: false,
+  // Built 10 Oct 2026 (R-56, the studio half): studios, submissions, juries and signed marks (v1/studio.ts).
+  STUDIO_COORDINATOR: true,
   NSS_OFFICER: true,
   NCC_OFFICER: true,
   ANTI_RAGGING_SQUAD: true,

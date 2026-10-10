@@ -35,8 +35,10 @@ export const HOME_TILE_META: Record<HomeTileCode, HomeTile> = {
   nba: { labelKey: "streams.tile.nba", href: "/iqac/documents/nba", module: "IQAC" },
   mootCourt: { labelKey: "streams.tile.mootCourt", href: "/admin/stream-records/moot-courts", module: "ACADEMICS" },
   teachingPractice: { labelKey: "streams.tile.teachingPractice", href: "/duties/teaching-practice", module: "ACADEMICS" },
-  clinicalPostings: { labelKey: "streams.tile.clinicalPostings", href: null },
-  studios: { labelKey: "streams.tile.studios", href: null },
+  // The clinical coordinator's desk, which the office and the head read (R-56, the clinical half; 10 Oct 2026).
+  clinicalPostings: { labelKey: "streams.tile.clinicalPostings", href: "/duties/clinical", module: "ACADEMICS" },
+  // The studio desk (R-56, the studio half, 10 Oct 2026), which the office and the head read as they read the labs'.
+  studios: { labelKey: "streams.tile.studios", href: "/duties/studio", module: "ACADEMICS" },
   fieldWork: { labelKey: "streams.tile.fieldWork", href: null },
 };
 

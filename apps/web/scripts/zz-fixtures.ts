@@ -59,7 +59,13 @@ import { buildCollegeOffice } from "./zz-college-office";
 import { buildPlacement } from "./zz-placement";
 import { buildStreamFixtures } from "./zz-streams";
 import { buildStreamRecords } from "./zz-stream-records";
+// The studio desk (R-56, the studio half, 10 Oct 2026).
+import { buildStudioFixtures } from "./zz-studio";
+// The clinical desk (R-56, the clinical half; 10 Oct 2026): its own ZZ health-sciences college.
+import { buildClinical } from "./zz-clinical";
 import { buildCouncilFilings } from "./zz-council-filings";
+// R-20 (decisions builder, 10 Oct 2026): ZZ Shastri's graduating batches for the SAR's success indices.
+import { buildNbaBatches } from "./zz-nba-batches";
 import { buildCollegeExtras } from "./zz-college-extras";
 import { buildCollegeHomework } from "./zz-college-homework";
 import { buildPlanItems } from "./zz-plan-items";
@@ -2619,10 +2625,24 @@ async function main() {
   // Stream records and the duties' desks (S2, 5 Oct 2026): Vidya's lab batch, practical record, NSS unit and a squad visit, zz.faculty01's duties widened; Shastri's BTech division in two lab batches with a practical record each (zz-stream-records.ts).
   const streamRecords = await buildStreamRecords(db);
   console.log(streamRecords ? `  Stream records: ZZ Vidya College ${streamRecords.vidyaRecords} practical rows, ${streamRecords.nssEnrolled} NSS volunteers, zz.faculty01 now LAB_INCHARGE + NSS_OFFICER + NCC_OFFICER + ANTI_RAGGING_SQUAD + RESEARCH_DEAN + EXAM_SQUAD; ZZ Shastri ${streamRecords.shastriBatches} lab batches, ${streamRecords.shastriRecords} practical rows — /duties/lab, /admin/stream-records` : "  Stream records: NOT built (the colleges or their academics are missing)");
+  // The clinical desk (R-56, the clinical half; 10 Oct 2026): ZZ Dhanvantari Nursing College (HEALTH_SCIENCES) with its people,
+  // a B.Sc. Nursing division of three, the civil hospital with two wards, a rotation of two postings and an entry in each
+  // state (zz-clinical.ts). Its own college, so no other fixture's streams change.
+  const clinical = await buildClinical(db, ctx.passwordHash);
+  console.log(clinical ? `  Clinical desk at ZZ Dhanvantari Nursing College: ${clinical.students} students posted, ${clinical.postings} postings, ${clinical.entries} logbook entries (SIGNED, RETURNED, SUBMITTED, DRAFT); zz.faculty.d1 CLINICAL_COORDINATOR, zz.faculty.d2 supervises — /duties/clinical, /faculty/clinical, /student/clinical` : "  Clinical desk: NOT built");
+  // R-20 (decisions builder, 10 Oct 2026): ZZ Shastri's graduating batches for the NBA SAR's success indices — a batch that
+  // completed last year (one in time, one late, one exited) and one still running (zz-nba-batches.ts). KEEP IT AFTER the
+  // stream records' builder (the programme) and BEFORE the council filings (the SAR reads them).
+  const nbaBatches = await buildNbaBatches(db);
+  console.log(nbaBatches ? `  NBA batches at ZZ Shastri: ${nbaBatches.students} students in ${nbaBatches.batches} earlier batches (2022: one graduated in time, one late, one exited; 2023 running) — /iqac/documents/nba` : "  NBA batches: NOT built (ZZ Shastri's engineering programme is missing: run the stream records first)");
   // The councils' returns (5 Oct 2026, the filings builder): ZZ Shastri's mechanical department's NBA SAR, drafted with three
   // criteria written (zz-council-filings.ts). KEEP IT AFTER the stream records' builder, which makes that department.
   const councilFx = await buildCouncilFilings(db);
   console.log(councilFx ? `  Council filings: ZZ Shastri's NBA SAR drafted (${councilFx.computed} marks from the records + ${councilFx.self} self-assessed) — /iqac/documents/nba` : "  Council filings: NOT built (ZZ Shastri's engineering department is missing: run the stream records first)");
+  // The studio desk (R-56, the studio half, 10 Oct 2026): ZZ Vidya College gains ARCHITECTURE, a BArch programme with AR101 offered this term to zz.cstudent01–03,
+  // one studio with four stages, the interim jury signed and the final jury ahead; zz.faculty01 adds STUDIO_COORDINATOR (zz-studio.ts). KEEP IT AFTER the stream records' builder, which sets zz.faculty01's duties.
+  const studioFx = await buildStudioFixtures(db);
+  console.log(studioFx ? `  Studio desk: ZZ Vidya College + ARCHITECTURE, ${studioFx.studios} studio on AR101, ${studioFx.juries} juries (${studioFx.signed} signed), ${studioFx.submissions} submissions; zz.faculty01 also STUDIO_COORDINATOR — /duties/studio, /faculty/studios, /student/studios` : "  Studio desk: NOT built (ZZ Vidya College, its people or its term are missing)");
   // The risks batch's college builds (package 5B, 5 Oct 2026): a pre-placement talk for the open drive and one held, a soft-skills
   // training with sessions and marks, the gate reader with its badges, the NAAC peer-team visit file (zz-college-extras.ts).
   // KEEP IT AFTER the placement and IQAC builders, whose drive, cycle and AQAR it names.

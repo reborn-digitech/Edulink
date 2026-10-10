@@ -128,6 +128,8 @@ export * from "./v1/transport";
 export * from "./v1/transport-map";
 export * from "./v1/office-year";
 export * from "./v1/office-writes";
+// The clinical coordinator's desk (R-56, the clinical half; 10 Oct 2026).
+export * from "./v1/clinical";
 
 /* -------------------------------------------------------------------------- */
 /* Global search — GET /api/v1/search                                          */
@@ -239,6 +241,8 @@ export * from "./v1/duties";
 export * from "./v1/council-filings";
 export * from "./v1/iqac-insights";
 export * from "./v1/stream-records";
+// The studio coordinator's desk (R-56, the studio half, 10 Oct 2026).
+export * from "./v1/studio";
 // The risks batch's college builds (package 5B, 5 Oct 2026): talks and soft-skills training, attendance devices, the Tally export, the peer-team visit file.
 export * from "./v1/placement-events";
 export * from "./v1/attendance-devices";
@@ -250,3 +254,13 @@ export * from "./v1/reading-room";
 export * from "./v1/council-notices";
 // The assistant, Phase B (9-10 Oct 2026): conversations, the verdicts, the office's usage and the family's opt-out (docs/plans/assistant.md, decision 0005).
 export * from "./v1/assistant";
+// The owner's decisions of 10 Oct 2026 (decisions builder): settle on leaving (R-61 Q2), the previous schools' papers (R-70), the record copy (R-69).
+export * from "./v1/owner-decisions";
+// The generated bank's review queue and the teachers' question gig switched off (review-queue builder, 10 Oct 2026).
+export * from "./v1/quiz-review";
+// ---- figures (the quiz bank's figure builder, 10 Oct 2026): the figure spec the generator writes and the renderer draws.
+export * from "./v1/quiz-figure";
+// ---- end figures ----
+// ---- quiz-board (the practice bank's board, 11 Oct 2026): NCERT or Balbharati, the school's first.
+export * from "./v1/quiz-board";
+// ---- end quiz-board ----

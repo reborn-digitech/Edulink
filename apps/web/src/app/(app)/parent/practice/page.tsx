@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { ChildLeftBanner } from "../child-left";
 import { BrainIcon, MedalIcon, CheckCircleIcon } from "@phosphor-icons/react/ssr";
 import { requireParent } from "@/lib/tenancy";
-import { listContexts } from "@/lib/session";
+import { familyChildren, pickChild, childAccess } from "@/lib/family-child";
+import { NotSharedState } from "@/components/family/not-shared";
 import { normaliseLanguage, QUIZ_LEVELS, SUBJECT_KEY, type QuizSubject } from "@/lib/quiz";
 import { childPracticeProgress } from "@/lib/practice-insights";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
@@ -11,6 +12,9 @@ import { EmptyState } from "@/components/ui/states";
 import { ChildSwitcher } from "../child-switcher";
 import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
+import { quizBoardChoice, topicOnBoard, type QuizBoardChoice } from "@edulink/contracts";
+import { classLevelLabel, QUIZ_BOARD_KEY, quizBoardKey, quizBoardOptions } from "@/lib/quiz-board";
+import { PracticeBoardSwitch } from "@/components/practice-board-switch";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -29,7 +33,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ParentPracticePage({
   searchParams,
 }: {
-  searchParams: Promise<{ child?: string }>;
+  searchParams: Promise<{ child?: string; board?: string }>;
 }) {
   const session = await requireParent();
   const t = await getT();
@@ -37,20 +41,39 @@ export default async function ParentPracticePage({
     const key = SUBJECT_KEY[code as QuizSubject];
     return key ? t(key) : code;
   };
-  const { child: requested } = await searchParams;
+  const { child: requested, board: boardParam } = await searchParams;
 
-  const { children } = await listContexts(session.user.id);
-  const selectedId =
-    requested && children.some((c) => c.studentMembershipId === requested)
-      ? requested
-      : children[0]!.studentMembershipId;
+  // The children with what each lets the guardian see, opening on one the guardian may read (DS-1, 10 Oct 2026).
+  const children = await familyChildren(session.user.id);
+  const chosen = pickChild(children, requested) ?? children[0]!;
+  const selectedId = chosen.studentMembershipId;
+
+  // Quiz progress is learning results: an adult at a college shares it under RESULTS (practice-insights.ts asks the same).
+  const access = await childAccess(session.user.id, selectedId, "RESULTS");
+  if (access.refused) {
+    return (
+      <div className="space-y-5">
+        {children.length > 1 && <ChildSwitcher pupils={children} selectedId={selectedId} basePath="/parent/practice" />}
+        <PageHeader title={t("practice.parentPracticeTitle", { name: chosen.name })} />
+        <NotSharedState name={chosen.name} />
+      </div>
+    );
+  }
 
   const language = normaliseLanguage(session.user.prefs.locale);
-  const { childName, topics, weeklyCount } = await childPracticeProgress(
+  const { childName, topics: everyTopic, weeklyCount, schoolBoard } = await childPracticeProgress(
     session.user.id,
     selectedId,
     language,
   );
+  // quiz-board (11 Oct 2026): the child's school's board first, a switch to the other and to both, as on the child's own page.
+  const board = quizBoardChoice(boardParam, schoolBoard);
+  const boardHref = (value: QuizBoardChoice) => {
+    const q = new URLSearchParams({ child: selectedId });
+    if (value !== (schoolBoard ?? "ALL")) q.set("board", value);
+    return `/parent/practice?${q.toString()}`;
+  };
+  const topics = everyTopic.filter((row) => topicOnBoard(row.board, board));
 
   const subjects = [...new Set(topics.map((row) => row.subject))];
 
@@ -68,11 +91,20 @@ export default async function ParentPracticePage({
 
       <PageHeader title={t("practice.parentPracticeTitle", { name: childName })} description={t("practice.parentPracticeIntro", { name: childName })} />
 
+      {everyTopic.length > 0 && (
+        <PracticeBoardSwitch
+          label={t("quizBoard.switchLabel")}
+          options={quizBoardOptions(schoolBoard).map((value) => ({ value, label: t(QUIZ_BOARD_KEY[value]) }))}
+          current={board}
+          hrefFor={boardHref}
+        />
+      )}
+
       {topics.length === 0 ? (
         <EmptyState
           icon={<BrainIcon weight="duotone" className="size-8" />}
           title={t("feature.practice")}
-          description={t("practice.parentPracticeEmpty", { name: childName })}
+          description={everyTopic.length > 0 ? t("quizBoard.nothingOnBoard", { name: childName, board: t(QUIZ_BOARD_KEY[board]) }) : t("practice.parentPracticeEmpty", { name: childName })}
         />
       ) : (
         <>
@@ -109,7 +141,8 @@ export default async function ParentPracticePage({
                           <td className="px-4 py-2.5">
                             <span className="font-medium text-fg">{row.name}</span>
                             <span className="ml-2 text-xs text-fg-muted">
-                              {t("practice.classN", { n: row.classLevel })}
+                              {classLevelLabel(t, row.classLevel)}
+                              {quizBoardKey(row.board) ? ` · ${t(quizBoardKey(row.board)!)}` : null}
                             </span>
                             {row.cleanCompletion && (
                               <CheckCircleIcon

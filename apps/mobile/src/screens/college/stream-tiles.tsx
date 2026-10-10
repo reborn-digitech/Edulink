@@ -41,8 +41,10 @@ const TILE: Record<HomeTileCode, { key: TranslationKey; module?: SchoolModuleCod
   nba: { key: "streams.tile.nba", module: "IQAC", built: true },
   mootCourt: { key: "streams.tile.mootCourt", module: "ACADEMICS", built: true },
   teachingPractice: { key: "streams.tile.teachingPractice", module: "ACADEMICS", built: true },
-  clinicalPostings: { key: "streams.tile.clinicalPostings", built: false },
-  studios: { key: "streams.tile.studios", built: false },
+  // The clinical desk, which the office and the head read (R-56, the clinical half; 10 Oct 2026).
+  clinicalPostings: { key: "streams.tile.clinicalPostings", module: "ACADEMICS", built: true },
+  // The studio desk (R-56, the studio half, 10 Oct 2026): the office reads it on the web; the teachers' and students' screens are in More.
+  studios: { key: "streams.tile.studios", module: "ACADEMICS", built: true },
   fieldWork: { key: "streams.tile.fieldWork", built: false },
 };
 
@@ -61,6 +63,7 @@ const OPENS: Partial<Record<HomeTileCode, Partial<Record<"ADMIN" | "PRINCIPAL", 
   people: { ADMIN: "/(app)/people", PRINCIPAL: "/(app)/staff" },
   labs: { ADMIN: "/(app)/lab-desk", PRINCIPAL: "/(app)/lab-desk" },
   teachingPractice: { ADMIN: "/(app)/teaching-practice", PRINCIPAL: "/(app)/teaching-practice" },
+  clinicalPostings: { ADMIN: "/(app)/clinical-desk", PRINCIPAL: "/(app)/clinical-desk" },
 };
 
 /** The figures the stream-records summary gives a tile, as the web's home words them. */

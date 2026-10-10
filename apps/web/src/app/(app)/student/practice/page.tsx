@@ -12,6 +12,7 @@ import { requireRole } from "@/lib/tenancy";
 import {
   listTopics,
   normaliseLanguage,
+  schoolQuizBoard,
   QUIZ_LEVELS,
   SUBJECT_KEY,
   type QuizSubject,
@@ -34,6 +35,9 @@ import { Button } from "@/components/ui/button";
 import { isCollegeKind } from "@edulink/contracts";
 import { institutionKindOf } from "@/lib/modules";
 import { practiceListing } from "@/lib/practice-list";
+import { quizBoardChoice, type QuizBoardChoice } from "@edulink/contracts";
+import { classLevelLabel, QUIZ_BOARD_KEY, quizBoardKey, quizBoardOptions } from "@/lib/quiz-board";
+import { PracticeBoardSwitch } from "@/components/practice-board-switch";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -51,10 +55,15 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function PracticePage({
   searchParams,
 }: {
-  searchParams: Promise<{ subject?: string; grade?: string; page?: string }>;
+  searchParams: Promise<{ subject?: string; grade?: string; page?: string; board?: string }>;
 }) {
   const ctx = await requireRole("STUDENT");
-  const { subject, grade, page: pageParam } = await searchParams;
+  const { subject, grade, page: pageParam, board: boardParam } = await searchParams;
+  // quiz-board (11 Oct 2026): the school's board first (School.board → NCERT or Balbharati), a switch to
+  // the other and to both; a school with neither opens on both. The choice lives in the URL.
+  const schoolBoard = await schoolQuizBoard(ctx.schoolId);
+  const board = quizBoardChoice(boardParam, schoolBoard);
+  const boardQuery = board === (schoolBoard ?? "ALL") ? "" : `board=${board}&`;
   const t = await getT();
   const subjectName = (code: string) => {
     const key = SUBJECT_KEY[code as QuizSubject];
@@ -68,7 +77,7 @@ export default async function PracticePage({
   // subject — one entry, which the `length > 1` guard below then hid, so
   // choosing a subject deleted the only way back out of it.
   const [topics, enrolledGrade, resume, weekly, revision, assigned, kind] = await Promise.all([
-    listTopics(ctx, { language }),
+    listTopics(ctx, { language, board }),
     enrolledGradeLevel(ctx),
     continueCard(ctx, language),
     weeklyPracticeCount(ctx),
@@ -85,7 +94,14 @@ export default async function PracticePage({
   const listing = practiceListing(topics, { college, subject, grade, enrolledGrade, page: pageParam });
   const { grades, gradeNum, shown } = listing;
   const subjectsShown = listing.subjects;
-  const pageHref = (n: number) => `/student/practice?${subject ? `subject=${subject}&` : ""}grade=${gradeNum ?? "all"}&page=${n}`;
+  const pageHref = (n: number) => `/student/practice?${boardQuery}${subject ? `subject=${subject}&` : ""}grade=${gradeNum ?? "all"}&page=${n}`;
+  // A board's chapters list its own classes and subjects: switching keeps the class, drops the subject.
+  const boardHref = (value: QuizBoardChoice) => {
+    const q = new URLSearchParams();
+    if (value !== (schoolBoard ?? "ALL")) q.set("board", value);
+    if (gradeNum || grade === "all") q.set("grade", gradeNum ? String(gradeNum) : "all");
+    return `/student/practice${q.size ? `?${q.toString()}` : ""}`;
+  };
 
   return (
     <div className="space-y-6">
@@ -102,6 +118,14 @@ export default async function PracticePage({
           <LanguageSwitch showLabel />
         </div>
       </div>
+
+      {/* quiz-board: the school's board first; a college (no board of the two) opens on both, its placement banks (no board) in every position. */}
+      <PracticeBoardSwitch
+        label={t("quizBoard.switchLabel")}
+        options={quizBoardOptions(schoolBoard).map((value) => ({ value, label: t(QUIZ_BOARD_KEY[value]) }))}
+        current={board}
+        hrefFor={boardHref}
+      />
 
       {topics.length === 0 ? (
         <EmptyState
@@ -228,7 +252,7 @@ export default async function PracticePage({
           {grades.length > 1 && (
             <nav aria-label={t("practice.allClasses")} className="flex flex-wrap gap-2">
               <Link
-                href={`/student/practice?${subject ? `subject=${subject}&` : ""}grade=all`}
+                href={`/student/practice?${boardQuery}${subject ? `subject=${subject}&` : ""}grade=all`}
                 className={`inline-flex min-h-11 items-center rounded-full px-3 text-sm font-medium ${
                   !gradeNum ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
                 }`}
@@ -238,12 +262,12 @@ export default async function PracticePage({
               {grades.map((g) => (
                 <Link
                   key={g}
-                  href={`/student/practice?${subject ? `subject=${subject}&` : ""}grade=${g}`}
+                  href={`/student/practice?${boardQuery}${subject ? `subject=${subject}&` : ""}grade=${g}`}
                   className={`inline-flex min-h-11 items-center rounded-full px-3 text-sm font-medium ${
                     gradeNum === g ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
                   }`}
                 >
-                  {t("practice.classN", { n: g })}
+                  {classLevelLabel(t, g)}
                 </Link>
               ))}
             </nav>
@@ -252,7 +276,7 @@ export default async function PracticePage({
           {subjectsShown.length > 1 && (
             <nav aria-label={t("student.subjects")} className="flex flex-wrap gap-2">
               <Link
-                href={`/student/practice?grade=${gradeNum ?? "all"}`}
+                href={`/student/practice?${boardQuery}grade=${gradeNum ?? "all"}`}
                 className={`inline-flex min-h-11 items-center rounded-full px-3 text-sm font-medium ${
                   !subject ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
                 }`}
@@ -262,7 +286,7 @@ export default async function PracticePage({
               {subjectsShown.map((s) => (
                 <Link
                   key={s}
-                  href={`/student/practice?subject=${s}&grade=${gradeNum ?? "all"}`}
+                  href={`/student/practice?${boardQuery}subject=${s}&grade=${gradeNum ?? "all"}`}
                   className={`inline-flex min-h-11 items-center rounded-full px-3 text-sm font-medium ${
                     subject === s ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
                   }`}
@@ -282,7 +306,9 @@ export default async function PracticePage({
                       <div className="min-w-0">
                         <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
                           {subjectName(topic.subject)}
-                          {college ? null : <> · {t("practice.classN", { n: topic.classLevel })}</>}
+                          {college ? null : <> · {classLevelLabel(t, topic.classLevel)}</>}
+                          {/* quiz-board: the card says its board. */}
+                          {quizBoardKey(topic.board) ? <> · {t(quizBoardKey(topic.board)!)}</> : null}
                         </p>
                         <p className="mt-0.5 font-semibold text-fg">{topic.name}</p>
                       </div>

@@ -56,20 +56,26 @@ afterAll(async () => {
 });
 
 describe("a duty whose desk is not built", () => {
-  it("is offered by no stream", () => {
-    expect(DUTIES.filter((d) => !DUTY_BUILT[d])).toEqual(["CLINICAL_COORDINATOR", "STUDIO_COORDINATOR"]);
-    for (const s of STREAMS) for (const d of ["CLINICAL_COORDINATOR", "STUDIO_COORDINATOR"] as const) expect(STREAM_PRESETS[s].duties).not.toContain(d);
-    expect(streamPreset(["PHARMACY", "HEALTH_SCIENCES", "ARCHITECTURE"]).duties).toEqual(expect.arrayContaining(["LAB_INCHARGE", "ANTI_RAGGING_SQUAD"]));
+  it("is offered by no stream, and a built one by the streams DUTY_STREAMS names", () => {
+    // The studio desk is built since 10 Oct 2026 (R-56, the studio half), so the rule is read from DUTY_BUILT rather than a fixed list.
+    const unbuilt = DUTIES.filter((d) => !DUTY_BUILT[d]);
+    expect(unbuilt).not.toContain("STUDIO_COORDINATOR");
+    for (const s of STREAMS) for (const d of unbuilt) expect(STREAM_PRESETS[s].duties).not.toContain(d);
+    expect(STREAM_PRESETS.ARCHITECTURE.duties).toContain("STUDIO_COORDINATOR");
+    expect(streamPreset(["PHARMACY", "HEALTH_SCIENCES", "ARCHITECTURE"]).duties).toEqual(expect.arrayContaining(["LAB_INCHARGE", "ANTI_RAGGING_SQUAD", "STUDIO_COORDINATOR"]));
   });
 
-  it("is not listed at a pharmacy college, is refused when given, and is dropped from a teacher who holds it", async () => {
-    expect(await offeredDuties(ids.college)).not.toContain("CLINICAL_COORDINATOR");
+  // The clinical desk is built since 10 Oct 2026 (R-56, the clinical half), so a pharmacy college now offers it; the refusal
+  // and the drop are shown on a duty no stream of the college offers, which is the same rule (setDuties, A3-S-2's prune).
+  it("is offered at a pharmacy college once built; a duty the college's streams do not offer is refused when given, and is dropped from a teacher who holds it", async () => {
+    expect(await offeredDuties(ids.college)).toContain("CLINICAL_COORDINATOR");
+    expect(await offeredDuties(ids.college)).not.toContain("PRACTICE_TEACHING_COORDINATOR");
     const admin = await asAdmin();
-    await expect(setDuties(admin, ids.facultyM, ["CLINICAL_COORDINATOR"])).rejects.toMatchObject({ key: "duties.refuseNotOffered" });
-    // A teacher given it before this fix: the panel re-sends what it was drawn with, and the save takes it off.
-    await db.membership.update({ where: { id: ids.facultyM }, data: { dutiesJson: JSON.stringify(["LAB_INCHARGE", "CLINICAL_COORDINATOR"]) } });
-    const saved = await setDuties(admin, ids.facultyM, ["LAB_INCHARGE", "CLINICAL_COORDINATOR"]);
+    await expect(setDuties(admin, ids.facultyM, ["PRACTICE_TEACHING_COORDINATOR"])).rejects.toMatchObject({ key: "duties.refuseNotOffered" });
+    // A teacher given it before: the panel re-sends what it was drawn with, and the save takes it off.
+    await db.membership.update({ where: { id: ids.facultyM }, data: { dutiesJson: JSON.stringify(["LAB_INCHARGE", "PRACTICE_TEACHING_COORDINATOR"]) } });
+    const saved = await setDuties(admin, ids.facultyM, ["LAB_INCHARGE", "PRACTICE_TEACHING_COORDINATOR"]);
     expect(saved.duties).toEqual(["LAB_INCHARGE"]);
-    expect(saved.offered).not.toContain("CLINICAL_COORDINATOR");
+    expect(saved.offered).not.toContain("PRACTICE_TEACHING_COORDINATOR");
   });
 });

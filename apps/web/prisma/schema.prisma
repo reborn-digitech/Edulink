@@ -509,6 +509,11 @@ model School {
   lessonObservations    LessonObservation[]
   corpsEnrolments       CorpsEnrolment[]
   examSquadVisits       ExamSquadVisit[]
+  // The studio desk (R-56, the studio half, 10 Oct 2026): studios, submissions, juries and jury marks.
+  studios                Studio[]
+  studioSubmissions      StudioSubmission[]
+  studioJuries           StudioJury[]
+  studioJuryMarks        StudioJuryMark[]
   // The S3 fixes (5 Oct 2026): a faculty member's public page; a hostel expulsion for the principal.
   facultyPublicProfiles FacultyPublicProfile[]
   hostelExpulsions      HostelExpulsion[]
@@ -530,6 +535,13 @@ model School {
   assistantMessages      AssistantMessage[]
   assistantUsage         AssistantUsage[]
   assistantChildSettings AssistantChildSetting[]
+  // The clinical coordinator's desk (R-56, the clinical half; 10 Oct 2026): sites, departments, postings, logbook entries.
+  clinicalSites          ClinicalSite[]
+  clinicalDepartments    ClinicalDepartment[]
+  clinicalPostings       ClinicalPosting[]
+  logbookEntries         LogbookEntry[]
+  // R-61 Q2 (decisions builder, 10 Oct 2026): the office's settlements on leaving.
+  leavingSettlements     LeavingSettlement[]
 
   @@index([code])
   @@index([admissionsContactMembershipId])
@@ -905,8 +917,17 @@ model Membership {
   practicalRecords PracticalRecord[]         @relation("PracticalRecordOf")
   practicePostings TeachingPracticePosting[] @relation("PracticePostingOf")
   corpsEnrolments  CorpsEnrolment[]          @relation("CorpsEnrolmentOf")
+  // The studio desk (R-56, the studio half, 10 Oct 2026): the studios a teacher coordinates, a student's submissions, a student's jury marks.
+  studiosCoordinated   Studio[]                  @relation("StudioCoordinatorOf")
+  studioSubmissions    StudioSubmission[]        @relation("StudioSubmissionOf")
+  studioJuryMarks      StudioJuryMark[]          @relation("StudioJuryMarkOf")
   /// The library's reading-room register (risks batch 5A, 5 Oct 2026).
   readingRoomVisits ReadingRoomVisit[]       @relation("ReadingRoomVisitOf")
+  // The clinical desk (R-56, the clinical half; 10 Oct 2026): the postings a teacher supervises, a student's logbook.
+  clinicalSupervisions ClinicalPosting[]         @relation("ClinicalSupervisorOf")
+  logbookEntries       LogbookEntry[]            @relation("LogbookEntryOf")
+  // R-61 Q2 (decisions builder, 10 Oct 2026): a leaver's settlement, one per membership.
+  leavingSettlement    LeavingSettlement?        @relation("LeavingSettlementOf")
 
   @@unique([userId, schoolId, role])
   @@index([schoolId, role, status])
@@ -2967,6 +2988,16 @@ model QuizTopic {
   /// never pays for tidiness with somebody's streak.
   retiredAt DateTime?
 
+  // ---- quiz-board (the practice bank's board, 11 October 2026) ----
+  /// The board whose books the chapter is written against: "NCERT" | "BALBHARATI" (QUIZ_BOARDS in
+  /// packages/contracts v1/quiz-board.ts). The authored bank is NCERT's (scripts/import-quiz.ts writes it
+  /// on every run; the migration quiz_topic_board backfilled the rows already there); a generated batch's
+  /// topic takes its file's `board` (scripts/quiz-queue.ts). Null for a bank that follows no school book
+  /// (the placement banks): such a topic lists under either board. The practice list shows the school's
+  /// board first (School.board through quizBoardForSchool) with a switch to the other.
+  board String?
+  // ---- end quiz-board ----
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -3026,6 +3057,16 @@ model QuizQuestionTranslation {
   choices    String
   solution   String
 
+  // ---- figures (the quiz bank's figure builder, 10 October 2026) ----
+  /// This language's drawing of the item's figure (the same spec, the labels in this language): a
+  /// fileId in the uploads store, written by the importer's image step. Null: the question's imageKey.
+  imageKey String?
+  /// The figure in words in this language. Null: the question's imageAlt.
+  imageAlt String?
+
+  @@index([imageKey])
+  // ---- end figures ----
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -3061,9 +3102,9 @@ model ContentDocument {
   id               String    @id @default(cuid())
   /// Corpus-relative path, the document's identity: "ncert/8/science/hesc111.pdf".
   path             String    @unique
-  /// ncert | balbharati | nios | syllabi | glossaries (scripts/corpus-lib.ts SourceKey); "fixture" for the test corpus.
+  /// ncert | balbharati | nios | syllabi | glossaries | papers (scripts/corpus-lib.ts SourceKey); "fixture" for the test corpus.
   source           String
-  /// textbook | exemplar | course | glossary | syllabus
+  /// textbook | exemplar | course | glossary | syllabus | entrance-paper | olympiad-paper | board-sample-paper
   kind             String
   /// As the site names itself: "NCERT", "Balbharati (…)", "NIOS", "SPPU (…)".
   board            String
@@ -3087,6 +3128,12 @@ model ContentDocument {
   pageCount        Int
   /// The chapter number, the site's book code, its Last-Modified: whatever the manifest carried.
   extra            Json?
+  // ---- papers (the entrance and olympiad papers as a style corpus, 10 October 2026) ----
+  /// A STYLE document (source "papers": past entrance, olympiad and board sample papers): the quiz
+  /// generator reads it through papersStyleFor (src/lib/quiz-style.ts) for difficulty levels 5 and 6;
+  /// the tutor's searchCurriculum never returns it, so it is never cited to a pupil.
+  styleOnly        Boolean  @default(false)
+  // ---- end papers ----
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt
 
@@ -3117,6 +3164,12 @@ model ContentChunk {
   figureKeys  String[]
   /// The document's edition, repeated on the chunk so a citation never loses it.
   edition     String?
+  // ---- papers (10 October 2026) ----
+  /// What a paper's chunk is (scripts/corpus-papers-chunk.ts): "question" (one numbered question with
+  /// its options), "questions" (a block whose numbering could not be read), "answer-key" (the body's
+  /// key, model solution or marking scheme), "instructions" (the paper's front matter). Null for a book.
+  kind        String?
+  // ---- end papers ----
   /// Qwen3-Embedding-0.6B, 1024 dimensions; HNSW (cosine) index in the migration. Null until embedded.
   embedding   Unsupported("vector(1024)")?
   embeddedAt  DateTime?
@@ -3204,6 +3257,53 @@ model QuizQuestion {
   mrReviewedAt DateTime?
   hiReviewedBy String?
   mrReviewedBy String?
+
+  // ---- quiz-gen (the quiz bank generator, Phase 1 step 1, 10 October 2026) ----
+  /// The figure drawn above the stem: a fileId in the uploads store (the way a document's bytes are
+  /// kept, src/lib/storage.ts), never a URL, written by scripts/import-quiz.ts from the corpus figure
+  /// a generated file names. One image per item, shared by its Hindi and Marathi rows. Null for an
+  /// item without a figure. Plan §8 gap 1: counsel's reading of the boards' figure terms is pending.
+  imageKey String?
+  /// The figure described in words, in the question's language; required whenever imageKey is set
+  /// (scripts/verify-quiz.ts refuses an image without one).
+  imageAlt String?
+  // ---- end quiz-gen ----
+
+  // ---- figures (the quiz bank's figure builder, 10 October 2026) ----
+  /// The figure spec and the renderer's version the stored images were drawn from, as JSON
+  /// ({"v":1,"figure":{kind,spec,labels}}), written only by the importer's image step
+  /// (scripts/quiz-gen/figures/attach.ts) together with imageKey and the translations' imageKey. Null
+  /// for an item whose image is not drawn from a spec. Compared on re-import, so an unchanged figure
+  /// keeps its stored files and a changed spec or renderer draws new ones.
+  imageSpec String?
+
+  /// The file route finds the question a figure belongs to by its fileId (src/lib/files.ts).
+  @@index([imageKey])
+  // ---- end figures ----
+
+  // ---- review-queue (the generated bank's review queue, 10 October 2026) ----
+  /// Written by scripts/quiz-queue.ts from content/quiz/generated/*.json, never by the authored
+  /// bank's importer. A generated item is NOT SERVED until `reviewedAt` is set, which only the review
+  /// queue's stamp writer does (src/lib/quiz-review.ts); its Hindi or Marathi row is served only once
+  /// `hiReviewedAt` / `mrReviewedAt` is set the same way. The authored bank (false) is served as before.
+  /// The one serving filter is src/lib/quiz-served.ts.
+  generated            Boolean   @default(false)
+  /// "NCERT", "Balbharati": the board of the book the item was generated against, for the queue's filter.
+  generatedBoard       String?
+  /// JSON (String, as the bank stores JSON): the reviewer's material the generator kept — the
+  /// distractor reasons, the solver's five answers, the level flag, the critique, the figure spec and
+  /// needsFigure, the edition, the model, the time, the translations' critiques. Never shown to a pupil.
+  generation           String?
+  /// Thrown away from the queue with a coded reason (QUIZ_DISCARD_REASONS); never served, kept so the
+  /// generator's next run can count it and a duplicate is not imported again.
+  discardedAt          DateTime?
+  discardReason        String?
+  /// A reviewer edited the English before accepting it: the solver's answers were given to the old words.
+  editedAfterSolvingAt DateTime?
+  reviewStamps         QuizReviewStamp[]
+
+  @@index([generated, reviewedAt, discardedAt])
+  // ---- end review-queue ----
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -5798,6 +5898,37 @@ model LessonPlanTemplate {
 /// `npm run data:audit` recomputes every row from the responses and fails on
 /// a contradiction. `grade` 0 is "no grade recorded" (an answer by a pupil
 /// with no form group, or one that predates QuizResponse.gradeLevel).
+// ---- review-queue (the generated bank's review queue, 10 October 2026) ----
+/// One act of review on one bank question: the ONE record of who accepted, edited, discarded or
+/// stamped a language, written only by src/lib/quiz-review.ts's writer, which sets the question's
+/// reviewedAt / hiReviewedAt / mrReviewedAt / discardedAt in the same transaction. Reviewers are the
+/// app admins and the operator (the owner, 10 October 2026); neither has a school, and the bank has
+/// none, so no schoolId (NO_SCHOOL_POLICY in scripts/gen-rls.ts). The reviewer's id is kept without a
+/// foreign key, as QuizQuestion.reviewedBy is: a stamp outlives an account taken off the content team.
+model QuizReviewStamp {
+  id             String   @id @default(cuid())
+  questionId     String
+  reviewerUserId String
+  /// APP_ADMIN | OPERATOR, as the reviewer stood when they stamped.
+  role           String
+  /// null for the English item; "hi" or "mr" for a language stamp.
+  language       String?
+  /// ACCEPT | EDIT_ACCEPT | DISCARD | STAMP_TRANSLATION | UNSTAMP_TRANSLATION (packages/contracts QUIZ_REVIEW_ACTIONS)
+  action         String
+  /// A DISCARD's coded reason (QUIZ_DISCARD_REASONS).
+  reason         String?
+  /// An EDIT_ACCEPT's English as it stood before the edit, JSON: the edit's audit.
+  before         String?
+  at             DateTime @default(now())
+
+  question QuizQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@index([questionId, at])
+  @@index([reviewerUserId, at])
+}
+
+// ---- end review-queue ----
+
 model QuestionStat {
   id         String   @id @default(cuid())
   questionId String
@@ -7631,6 +7762,8 @@ model AcademicTerm {
   lateRegistration LateRegistration[]
   condonations     AttendanceCondonation[]
   mentoringGroups  MentoringGroup[]
+  /// The studio desk (R-56, the studio half, 10 Oct 2026).
+  studios          Studio[]
 
   @@unique([schoolId, name])
   @@index([schoolId, startsOn])
@@ -7664,6 +7797,8 @@ model Division {
   programme  Programme  @relation(fields: [programmeId], references: [id], onDelete: Cascade)
   /// Stream records (5 Oct 2026): the division's lab batches.
   labBatches LabBatch[]
+  /// The clinical desk (10 Oct 2026): the division's clinical postings.
+  clinicalPostings ClinicalPosting[]
 
   @@index([schoolId, programmeId])
 }
@@ -7720,6 +7855,8 @@ model CourseOffering {
   practicalRecords PracticalRecord[]
   /// Homework set to the offering (R-48, 5 Oct 2026).
   assignments      Assignment[]
+  /// The studio desk (R-56, the studio half, 10 Oct 2026): the design studios kept on the offering.
+  studios          Studio[]
 
   @@unique([termId, courseId, divisionId])
   @@index([schoolId, termId])
@@ -9563,6 +9700,8 @@ model LabBatch {
   members  LabBatchMember[]
   slots    OfferingSlot[]
   lectures Lecture[]
+  /// The clinical desk (10 Oct 2026): a batch posted on its own.
+  clinicalPostings ClinicalPosting[]
 
   @@unique([divisionId, name])
   @@index([schoolId])
@@ -10166,6 +10305,257 @@ model AssistantChildSetting {
   createdAt           DateTime  @default(now())
 
   school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId])
+}
+
+/// THE CLINICAL COORDINATOR'S DESK (R-56, the clinical half; 10 Oct 2026; lib/clinical.ts).
+/// A site students are posted to: the teaching hospital or an attached one, a PHC, a clinic, a hospital pharmacy
+/// (CLINICAL_SITE_KINDS); the agreement's dates; the contact as a role word (CLINICAL_CONTACT_ROLES), never a person.
+model ClinicalSite {
+  id               String    @id @default(cuid())
+  schoolId         String
+  name             String
+  /// HOSPITAL | PRIMARY_HEALTH_CENTRE | CLINIC | PHARMACY
+  kind             String
+  address          String    @default("")
+  agreementFromKey String?
+  agreementToKey   String?
+  contactRole      String
+  archivedAt       DateTime?
+  createdAt        DateTime  @default(now())
+
+  school      School               @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  departments ClinicalDepartment[]
+  postings    ClinicalPosting[]
+
+  @@unique([schoolId, name])
+}
+
+/// A ward or department of a clinical site, with its beds (or a pharmacy's counters) when counted.
+model ClinicalDepartment {
+  id        String   @id @default(cuid())
+  schoolId  String
+  siteId    String
+  name      String
+  beds      Int?
+  createdAt DateTime @default(now())
+
+  school   School            @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  site     ClinicalSite      @relation(fields: [siteId], references: [id], onDelete: Cascade)
+  postings ClinicalPosting[]
+
+  @@unique([siteId, name])
+  @@index([schoolId])
+}
+
+/// A division (or one of its lab batches) posted to a site's department for a span of days under a supervising
+/// faculty member, in a rotation's order. The students are the division's enrolment (the batch's members) on read.
+model ClinicalPosting {
+  id                     String   @id @default(cuid())
+  schoolId               String
+  siteId                 String
+  departmentId           String
+  divisionId             String
+  labBatchId             String?
+  supervisorMembershipId String
+  fromKey                String
+  toKey                  String
+  rotationOrder          Int      @default(1)
+  createdByUserId        String?
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  school     School             @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  site       ClinicalSite       @relation(fields: [siteId], references: [id], onDelete: Cascade)
+  department ClinicalDepartment @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  division   Division           @relation(fields: [divisionId], references: [id], onDelete: Cascade)
+  labBatch   LabBatch?          @relation(fields: [labBatchId], references: [id], onDelete: Cascade)
+  supervisor Membership         @relation("ClinicalSupervisorOf", fields: [supervisorMembershipId], references: [id], onDelete: Cascade)
+  entries    LogbookEntry[]
+
+  @@index([schoolId, fromKey])
+  @@index([divisionId])
+  @@index([supervisorMembershipId])
+}
+
+/// One student's logbook entry of a posting: a case, a procedure, a skill or dispensing (LOGBOOK_KINDS) on a day,
+/// a count, a short note THAT CARRIES NO PATIENT NAME OR NUMBER (refused on save), the supervisor's sign-off with
+/// the time and a remark, and the state DRAFT | SUBMITTED | SIGNED | RETURNED. `clientId` makes a phone's replay
+/// write one row (unique per student).
+model LogbookEntry {
+  id                   String    @id @default(cuid())
+  schoolId             String
+  postingId            String
+  studentMembershipId  String
+  clientId             String
+  onKey                String
+  /// CASE | PROCEDURE | SKILL | DISPENSING
+  kind                 String
+  count                Int       @default(1)
+  note                 String    @default("")
+  /// DRAFT | SUBMITTED | SIGNED | RETURNED
+  state                String    @default("DRAFT")
+  submittedAt          DateTime?
+  signedAt             DateTime?
+  signedByMembershipId String?
+  remark               String    @default("")
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+  school  School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  posting ClinicalPosting @relation(fields: [postingId], references: [id], onDelete: Cascade)
+  student Membership      @relation("LogbookEntryOf", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+
+  @@unique([studentMembershipId, clientId])
+  @@index([schoolId, state])
+  @@index([postingId])
+}
+
+/// A DESIGN STUDIO (the studio desk, R-56's studio half, ARCHITECTURE, 10 Oct
+/// 2026; lib/studio.ts): a course offering's studio for its term — the brief,
+/// the coordinator (a FACULTY or HOD holding STUDIO_COORDINATOR), the marks a
+/// jury gives out of, and the four stage dates (date keys; the brief's day is
+/// always set, the rest once the coordinator fixes them).
+model Studio {
+  id                      String   @id @default(cuid())
+  schoolId                String
+  offeringId              String
+  termId                  String
+  title                   String
+  brief                   String   @default("")
+  maxMarks                Int      @default(100)
+  coordinatorMembershipId String
+  briefIssuedOn           String
+  interimOn               String?
+  finalOn                 String?
+  juryOn                  String?
+  createdByUserId         String?
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+
+  school      School             @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  offering    CourseOffering     @relation(fields: [offeringId], references: [id], onDelete: Cascade)
+  term        AcademicTerm       @relation(fields: [termId], references: [id], onDelete: Cascade)
+  coordinator Membership         @relation("StudioCoordinatorOf", fields: [coordinatorMembershipId], references: [id], onDelete: Cascade)
+  submissions StudioSubmission[]
+  juries      StudioJury[]
+
+  @@index([schoolId, termId])
+  @@index([offeringId])
+  @@index([coordinatorMembershipId])
+}
+
+/// One student's work for a studio stage (INTERIM_PINUP or FINAL_SUBMISSION): a
+/// note and, where they have one, a file stored through an upload ticket of
+/// theirs (files.ts lets the student, the studio's teachers and the office read
+/// it); state DRAFT until sent, SUBMITTED by the stage's day, LATE after it.
+model StudioSubmission {
+  id                  String    @id @default(cuid())
+  schoolId            String
+  studioId            String
+  studentMembershipId String
+  /// STUDIO_SUBMISSION_STAGES
+  stage               String
+  /// STUDIO_SUBMISSION_STATES
+  state               String    @default("DRAFT")
+  note                String    @default("")
+  fileId              String?
+  fileName            String?
+  fileMime            String?
+  fileSize            Int?
+  submittedAt         DateTime?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  school  School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  studio  Studio     @relation(fields: [studioId], references: [id], onDelete: Cascade)
+  student Membership @relation("StudioSubmissionOf", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+
+  @@unique([studioId, studentMembershipId, stage])
+  @@index([schoolId])
+  @@index([studentMembershipId])
+}
+
+/// A JURY: a sitting on a day for a studio, with its panel — the college's own
+/// FACULTY and HOD members (panelJson: a JSON list of membership ids), one of
+/// them the chair, and up to two external jurors kept as a role word and an
+/// institution only (externalJson: [{ role, institution }], EXTERNAL_JUROR_ROLES;
+/// never a name or a contact). The chair's signature closes the sheet: no mark
+/// changes after it, and only then do the marks reach the students.
+model StudioJury {
+  id                   String    @id @default(cuid())
+  schoolId             String
+  studioId             String
+  /// The day of the sitting (YYYY-MM-DD).
+  on                   String
+  title                String    @default("")
+  panelJson            String    @default("[]")
+  chairMembershipId    String
+  externalJson         String    @default("[]")
+  signedByMembershipId String?
+  signedAt             DateTime?
+  createdByUserId      String?
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+  school School           @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  studio Studio           @relation(fields: [studioId], references: [id], onDelete: Cascade)
+  marks  StudioJuryMark[]
+
+  @@index([schoolId, on])
+  @@index([studioId])
+}
+
+/// One student's mark from one jury, in tenths of a mark out of the studio's
+/// maximum (null marks is absent), with the panel's remark; written by a juror
+/// on the panel through lib/studio.ts `saveJuryMarks` alone (one writer,
+/// audited studio.marks). The grade band is read from the marks, never stored.
+model StudioJuryMark {
+  id                   String   @id @default(cuid())
+  schoolId             String
+  juryId               String
+  studentMembershipId  String
+  marksTenths          Int?
+  remark               String   @default("")
+  markedByMembershipId String
+  markedAt             DateTime @default(now())
+
+  school  School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  jury    StudioJury @relation(fields: [juryId], references: [id], onDelete: Cascade)
+  student Membership @relation("StudioJuryMarkOf", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+
+  @@unique([juryId, studentMembershipId])
+  @@index([schoolId])
+  @@index([studentMembershipId])
+}
+
+/// THE OFFICE'S SETTLEMENT ON LEAVING (R-61 Q2, the owner's decision of 10 Oct
+/// 2026). When a pupil (or a college student) is recorded as leaving, the
+/// departure itself CANCELS the later instalments nothing was paid against
+/// (school-record.ts). What is left — a part-paid later instalment, an unpaid
+/// earlier one, library books and lab issues still out — is listed to the
+/// office in one step, and the office decides each money line once: cancel the
+/// balance (the demand goes WAIVED, the paid amount kept) or keep it owed (the
+/// demand stays as it is). One row per leaver, written once by lib
+/// leaving-settlement.ts `settleOnLeaving` (one writer, audited
+/// fees.leavingSettled); the family's fees page reads it. The lines are kept
+/// as decided (labels and balances at the moment), items out read-only.
+model LeavingSettlement {
+  id                  String   @id @default(cuid())
+  schoolId            String
+  studentMembershipId String   @unique
+  decidedByUserId     String
+  decidedAt           DateTime @default(now())
+  /// JSON: [{ demandId, label, dueDateKey, balancePaise, choice: "CANCEL" | "KEEP" }]
+  linesJson           String   @default("[]")
+  /// JSON: [{ desk, itemsOut }] — what was still out when the office settled, for the record; nothing here returns a book.
+  itemsJson           String   @default("[]")
+  /// JSON: the ids of the demands the departure itself cancelled, as the step listed them.
+  cancelledJson       String   @default("[]")
+
+  school  School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student Membership @relation("LeavingSettlementOf", fields: [studentMembershipId], references: [id], onDelete: Cascade)
 
   @@index([schoolId])
 }

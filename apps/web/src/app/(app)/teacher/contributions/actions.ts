@@ -3,6 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { getT } from "@/lib/i18n/server";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
+// review-queue (10 Oct 2026): every action refused (not found) while the teachers' question gig is off.
+import { assertPayeeDoorOpen, assertQuestionGigOpen } from "@/lib/question-gig";
 import { draftTranslations, reviseContribution, savePayee, submitContribution, withdrawContribution, type ContributionInput, type GigResult } from "@/lib/gig-questions";
 import type { QuestionText } from "@/lib/translate";
 
@@ -22,6 +24,7 @@ async function refusal(result: Extract<GigResult, { ok: false }>): Promise<{ ok:
 export async function saveContributionAction(contributionId: string | null, input: ContributionInput): Promise<Result<{ id: string }>> {
   try {
     const ctx = await requireApiRole("TEACHER");
+    assertQuestionGigOpen();
     const result = contributionId ? await reviseContribution(ctx, contributionId, input) : await submitContribution(ctx, input);
     if (!result.ok) return refusal(result);
     revalidatePath("/teacher/contributions");
@@ -34,6 +37,7 @@ export async function saveContributionAction(contributionId: string | null, inpu
 export async function withdrawContributionAction(contributionId: string): Promise<Result> {
   try {
     const ctx = await requireApiRole("TEACHER");
+    assertQuestionGigOpen();
     const result = await withdrawContribution(ctx, contributionId);
     if (!result.ok) return refusal(result);
     revalidatePath("/teacher/contributions");
@@ -46,6 +50,7 @@ export async function withdrawContributionAction(contributionId: string): Promis
 export async function draftTranslationsAction(english: QuestionText): Promise<Result<{ hi: QuestionText; mr: QuestionText }>> {
   try {
     const ctx = await requireApiRole("TEACHER");
+    assertQuestionGigOpen();
     const result = await draftTranslations(ctx, english);
     if (!result.ok) return refusal(result);
     return { ok: true, hi: result.hi, mr: result.mr };
@@ -57,9 +62,12 @@ export async function draftTranslationsAction(english: QuestionText): Promise<Re
 export async function savePayeeAction(input: { upiId: string; payeeName: string }): Promise<Result> {
   try {
     const ctx = await requireApiRole("TEACHER");
+    // quiz-board (11 Oct 2026): the payee stays changeable while the teacher is owed money for earlier questions.
+    await assertPayeeDoorOpen(ctx.user.id);
     const result = await savePayee(ctx, input);
     if (!result.ok) return refusal(result);
     revalidatePath("/teacher/contributions");
+    revalidatePath("/teacher/payee");
     return { ok: true };
   } catch (error) {
     return failure(error);

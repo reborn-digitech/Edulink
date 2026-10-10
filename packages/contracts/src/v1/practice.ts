@@ -32,6 +32,11 @@ export const practiceLanguageQuerySchema = z.object({ language: localeSchema.opt
 /* ------------------------------------------------------------------------- */
 
 /** One question as served: the stem, the options, the rung, and how far into the chapter this sitting is. */
+// ---- figures (the quiz bank's figure builder, 10 Oct 2026) ----
+/** A served question's figure: a stored image's fileId (read through /api/files) and the figure in words. */
+export const practiceFigureSchema = z.object({ fileId: z.string().regex(/^[0-9a-f-]{36}\.(?:png|jpg|webp)$/i, "fileId"), alt: z.string().min(1).max(2000) });
+// ---- end figures ----
+
 export const practiceQuestionSchema = z.object({
   questionId: z.string(),
   stem: z.string(),
@@ -41,6 +46,14 @@ export const practiceQuestionSchema = z.object({
   /** Questions this sitting has already seen — "question askedCount + 1 of totalCount". */
   askedCount: z.number().int(),
   totalCount: z.number().int(),
+  // ---- figures (the quiz bank's figure builder, 10 Oct 2026) ----
+  /**
+   * The figure drawn above the stem, in the language the stem is served in: a PNG read through
+   * GET /api/files/{fileId} with the session (the phone sends its bearer header), and the figure in
+   * words for a screen reader and for a pupil whose picture did not load. Absent or null: no figure.
+   */
+  image: practiceFigureSchema.nullable().optional(),
+  // ---- end figures ----
 });
 export type PracticeQuestion = z.infer<typeof practiceQuestionSchema>;
 
@@ -154,6 +167,8 @@ export const practiceRevisionQuestionSchema = z.object({
   stem: z.string(),
   choices: z.array(z.string()),
   difficulty: z.number().int(),
+  // figures (10 Oct 2026): the re-served question's figure, as practiceQuestionSchema carries it.
+  image: practiceFigureSchema.nullable().optional(),
 });
 
 /** POST /api/v1/practice/revision/answer — marked through the chapter's own sitting, so revision moves the same ladder. */

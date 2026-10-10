@@ -1,9 +1,11 @@
 import "server-only";
+import { fixtureTopicsWhere, schoolSeesFixtureTopics } from "./quiz-fixtures";
 import { createHash } from "node:crypto";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { clampLevel, normaliseLanguage, TIER_NAMES, type QuizSubject } from "./quiz";
 import type { ActiveContext } from "./session";
+import { SERVED_QUESTION, servedTranslationWhere } from "./quiz-served";
 
 /**
  * Worksheets off the question bank: a teacher picks a chapter, a rung and a
@@ -65,7 +67,8 @@ export async function buildWorksheet(
   // Ids only for the whole pool, then rows for the chosen few — the same
   // shape the serving path uses to stay flat as the bank grows.
   const pool = await db.quizQuestion.findMany({
-    where: { topicId: topic.id, difficulty: level },
+    // Served questions only: a generated item waiting in the review queue never reaches a sheet (quiz-served.ts).
+    where: { topicId: topic.id, difficulty: level, ...SERVED_QUESTION },
     select: { id: true },
   });
   if (pool.length === 0) throw new AccessError("access.noQuestionsAtThatLevel", "NOT_FOUND");
@@ -85,7 +88,7 @@ export async function buildWorksheet(
     language === "en"
       ? Promise.resolve([])
       : db.quizQuestionTranslation.findMany({
-          where: { questionId: { in: chosenIds }, language },
+          where: { questionId: { in: chosenIds }, language, question: servedTranslationWhere(language) },
           select: { questionId: true, stem: true, choices: true, solution: true },
         }),
   ]);
@@ -121,6 +124,7 @@ export async function worksheetTopics(ctx: ActiveContext) {
     throw new AccessError("access.onlyStaffPrintWorksheets");
   }
   return db.quizTopic.findMany({
+    where: fixtureTopicsWhere(await schoolSeesFixtureTopics(ctx.schoolId)),
     orderBy: [{ classLevel: "asc" }, { subject: "asc" }, { position: "asc" }],
     select: { slug: true, name: true, subject: true, classLevel: true },
   });

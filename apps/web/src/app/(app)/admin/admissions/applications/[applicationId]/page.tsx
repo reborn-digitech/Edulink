@@ -13,7 +13,7 @@ import {
 import { AccessError, requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { applicationView } from "@/lib/admissions";
-import { formatDate, formatDateKey, formatInZone } from "@/lib/dates";
+import { formatDate, formatDateKey, formatInZone, todayKey } from "@/lib/dates";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
@@ -25,6 +25,9 @@ import {
   relationKey,
 } from "@/components/admissions/labels";
 import { DocumentList } from "@/components/admissions/document-upload";
+// R-69 (decisions builder, 10 Oct 2026): the copy offer after an admission matched by PEN.
+import { RecordCopyPanel } from "@/components/record-copy-panel";
+import { recordCopyPreview } from "@/lib/record-copy";
 import {
   AdmitForm,
   DecideButtons,
@@ -61,6 +64,8 @@ export default async function OfficeApplicationPage({
     if (error instanceof AccessError && error.code === "NOT_FOUND") notFound();
     throw error;
   }
+  // R-69: once admitted on a PEN the previous school's record is readable under the roll clause; null for a new account.
+  const copyPreview = view.status === "ADMITTED" && view.admittedMembershipId ? await recordCopyPreview(ctx, view.admittedMembershipId).catch(() => null) : null;
   const [school, classes, structures] = await Promise.all([
     db.school.findUniqueOrThrow({
       where: { id: ctx.schoolId },
@@ -332,6 +337,8 @@ export default async function OfficeApplicationPage({
                     {t("admissions.openRoll")}
                   </Link>
                 </Button>
+                {/* R-69 (decisions builder, 10 Oct 2026): "Copy from the previous school's record", only for an admission matched by PEN to a pupil with a leaving certificate elsewhere. */}
+                <RecordCopyPanel preview={copyPreview} office={ctx.role === "ADMIN"} />
               </div>
             )}
             {/* Mounted while ADMITTED too, so the one-time codes the action returned survive the refresh that hides the form. */}
@@ -342,6 +349,7 @@ export default async function OfficeApplicationPage({
                 classes={classes}
                 structures={structures}
                 canAdmit={view.can.admit}
+                today={todayKey(timezone)}
               />
             )}
           </CardBody>

@@ -2,8 +2,11 @@ import "server-only";
 import { db } from "./db";
 import { AccessError, assertClassAccess, assertGuardianAccess } from "./tenancy";
 import type { ActiveContext } from "./session";
-import { clampLevel, MAX_LEVEL, MIN_LEVEL, PROMOTE_AFTER, startAttempt, TIER_NAMES, type QuizLanguage } from "./quiz";
+import { clampLevel, MAX_LEVEL, MIN_LEVEL, PROMOTE_AFTER, schoolQuizBoard, startAttempt, TIER_NAMES, type QuizLanguage } from "./quiz";
+import { asQuizBoard, type QuizBoard } from "@edulink/contracts"; // quiz-board (11 Oct 2026)
 import { normaliseLocale } from "./i18n/locales";
+import { servedTranslationWhere } from "./quiz-served";
+import { servedFigure, type ServedFigure } from "./quiz-figure";
 import { audit } from "./audit";
 
 /**
@@ -47,6 +50,7 @@ const topicWithTranslation = (language: QuizLanguage) => ({
     name: true,
     subject: true,
     classLevel: true,
+    board: true, // quiz-board (11 Oct 2026)
     translations:
       language === "en"
         ? undefined
@@ -224,7 +228,7 @@ export async function reviseQuestion(
   ctx: ActiveContext,
   questionId: string,
   language: QuizLanguage = "en",
-): Promise<{ questionId: string; topicSlug: string; stem: string; choices: string[]; difficulty: number }> {
+): Promise<{ questionId: string; topicSlug: string; stem: string; choices: string[]; difficulty: number; image: ServedFigure | null }> {
   if (!ctx.membershipId || !ctx.schoolId) throw new AccessError("access.onlyAPupilCanPractise");
   const prior = await db.quizResponse.findFirst({
     where: { questionId, attempt: { studentMembershipId: ctx.membershipId, schoolId: ctx.schoolId } },
@@ -234,15 +238,17 @@ export async function reviseQuestion(
 
   const question = await db.quizQuestion.findUniqueOrThrow({
     where: { id: questionId },
-    select: { id: true, stem: true, choices: true, difficulty: true, topic: { select: { slug: true } } },
+    // figures (10 Oct 2026): a re-served question keeps its figure, or a figure question could not be answered.
+    select: { id: true, stem: true, choices: true, difficulty: true, imageKey: true, imageAlt: true, topic: { select: { slug: true } } },
   });
   const lang = normaliseLocale(language);
   const tr =
     lang === "en"
       ? null
-      : await db.quizQuestionTranslation.findUnique({
-          where: { questionId_language: { questionId, language: lang } },
-          select: { stem: true, choices: true },
+      : await db.quizQuestionTranslation.findFirst({
+          // A generated item's language row only once a reviewer stamped it (quiz-served.ts).
+          where: { questionId, language: lang, question: servedTranslationWhere(lang) },
+          select: { stem: true, choices: true, imageKey: true, imageAlt: true },
         });
   const original = JSON.parse(question.choices) as string[];
   const translated = tr?.choices ? (JSON.parse(tr.choices) as string[]) : null;
@@ -256,6 +262,7 @@ export async function reviseQuestion(
     stem: pick(tr?.stem, question.stem),
     choices,
     difficulty: question.difficulty,
+    image: servedFigure(question, tr),
   };
 }
 
@@ -292,6 +299,8 @@ export type ChildTopicProgress = {
   correctCount: number;
   tierCount: number;
   cleanCompletion: boolean;
+  /** quiz-board (11 Oct 2026): the chapter's board; null for a bank that follows no book. */
+  board: QuizBoard | null;
 };
 
 /**
@@ -302,8 +311,9 @@ export async function childPracticeProgress(
   parentUserId: string,
   studentMembershipId: string,
   language: QuizLanguage = "en",
-): Promise<{ childName: string; topics: ChildTopicProgress[]; weeklyCount: number }> {
-  const link = await assertGuardianAccess(parentUserId, studentMembershipId);
+): Promise<{ childName: string; topics: ChildTopicProgress[]; weeklyCount: number; /** quiz-board: the child's school's practice board, shown first. */ schoolBoard: QuizBoard | null }> {
+  // An adult at a college shares it under RESULTS (DS-1, 10 Oct 2026): quiz progress is learning results.
+  const link = await assertGuardianAccess(parentUserId, studentMembershipId, "RESULTS");
 
   const masteries = await db.quizMastery.findMany({
     where: { studentMembershipId, seenCount: { gt: 0 } },
@@ -328,6 +338,7 @@ export async function childPracticeProgress(
   return {
     childName: link.student.user.preferredName ?? link.student.user.name,
     weeklyCount,
+    schoolBoard: await schoolQuizBoard(link.student.school.id),
     topics: masteries.map((m) => ({
       slug: m.topic.slug,
       name: topicName(m.topic),
@@ -338,6 +349,7 @@ export async function childPracticeProgress(
       correctCount: m.correctCount,
       tierCount: tierCount.get(m.topic.slug) ?? 0,
       cleanCompletion: m.cleanCompletionAt != null,
+      board: asQuizBoard(m.topic.board),
     })),
   };
 }

@@ -114,7 +114,9 @@ export async function hodHome(ctx: ActiveContext): Promise<HodHome> {
   const c = await academicsCaller(ctx, ["HOD"]);
   const today = todayKey(c.timeZone);
   const [dept, term, settings] = await Promise.all([hodDepartment(c), currentTerm(c.schoolId, today), academicsSettings(c.schoolId)]);
-  if (!dept) return { department: null, term: term ? termView(term, today) : null, load: [], ratio: [], offerings: [], defaulters: 0, condonationsWaiting: 0, mentoringGroups: 0, mentees: 0, resultsAvailable: false, projects: [] };
+  // Whether the projects card is drawn at all (DS-7, 10 Oct 2026): the card's page says "Placement is not switched on" otherwise.
+  const placementOn = await isModuleOn(c.schoolId, "PLACEMENT");
+  if (!dept) return { department: null, term: term ? termView(term, today) : null, load: [], ratio: [], offerings: [], defaulters: 0, condonationsWaiting: 0, mentoringGroups: 0, mentees: 0, resultsAvailable: false, projects: [], placementOn };
   const deptWhere = { course: { scheme: { programme: { departmentId: dept.id } } } };
   const [{ load, ratios }, offerings, condonations, staff] = await Promise.all([
     loadAndRatios(c.schoolId, term?.id ?? null, settings, dept.id),
@@ -143,6 +145,7 @@ export async function hodHome(ctx: ActiveContext): Promise<HodHome> {
     results,
     // Students' projects with their guides (the placement module's listProjects), while PLACEMENT is on.
     projects,
+    placementOn,
   };
 }
 
@@ -181,8 +184,15 @@ export async function familyAcademics(ctx: ActiveContext, childId?: string): Pro
   const links = await db.guardianship.findMany({ where: { parentUserId: ctx.user.id, status: "ACTIVE", student: { status: "ACTIVE", leftAt: null, academicSeat: { isNot: null } } }, select: { studentMembershipId: true, student: { select: { schoolId: true, user: { select: { name: true, preferredName: true } } } } } });
   const children = links.map((l) => ({ studentMembershipId: l.studentMembershipId, name: nameOf(l.student.user), schoolId: l.student.schoolId }));
   const chosen = childId ? children.find((ch) => ch.studentMembershipId === childId) : children[0];
-  if (childId && !chosen) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   const list = children.map(({ studentMembershipId, name }) => ({ studentMembershipId, name }));
+  if (childId && !chosen) {
+    // The guardian's own child with no academic seat yet (a college child not seated, a school child) has no
+    // lectures, which is the empty state, not "not found"; anybody else's id is still not found (integration,
+    // 11 Oct 2026; the family-gaps report: /parent/academics?child= answered 404 for an unseated child).
+    const own = await db.guardianship.findFirst({ where: { parentUserId: ctx.user.id, studentMembershipId: childId, status: "ACTIVE" }, select: { id: true } });
+    if (!own) throw new AccessError("access.entryNotFound", "NOT_FOUND");
+    return { children: list, childId: null, allowed: false, attendance: [] };
+  }
   if (!chosen) return { children: list, childId: null, allowed: false, attendance: [] };
   await assertModuleOn(chosen.schoolId, "ACADEMICS");
   if (!(await parentMaySee(chosen.studentMembershipId, "ATTENDANCE"))) return { children: list, childId: chosen.studentMembershipId, allowed: false, attendance: [] };

@@ -1,4 +1,5 @@
 import * as c from "@edulink/contracts";
+import { QUESTION_GIG_FOR_TEACHERS } from "@edulink/contracts";
 import type { Endpoint } from "./types";
 
 /**
@@ -26,17 +27,23 @@ import type { Endpoint } from "./types";
 const mine = (f: { gigContributionId: string | null }, tail = "") => (f.gigContributionId ? `/api/v1/gigs/questions/${f.gigContributionId}${tail}` : null);
 const seat = (f: { gigBookingId: string | null }, tail: string) => (f.gigBookingId ? `/api/v1/gigs/sessions/${f.gigBookingId}${tail}` : null);
 const review = (f: { gigContributionId: string | null }, tail = "") => (f.gigContributionId ? `/api/v1/appadmin/contributions/${f.gigContributionId}${tail}` : null);
+// ---- review-queue (10 Oct 2026): the teachers' question gig switched off ----
+// While QUESTION_GIG_FOR_TEACHERS (packages/contracts v1/quiz-review.ts) is false, the teacher's eight
+// question-gig doors answer 404 before reading a body (src/lib/question-gig.ts); the sweep expects that
+// of TEACHER, and every other role is refused 403 as before. The doors stay catalogued: nothing is deleted.
+const QUESTION_GIG_DOOR: Pick<Endpoint, "statusByRole"> = QUESTION_GIG_FOR_TEACHERS ? {} : { statusByRole: { TEACHER: 404 } };
+// ---- end review-queue ----
 
 export const GIGS: Endpoint[] = [
   // ---- a teacher ---------------------------------------------------------------------
-  { method: "GET", path: "/api/v1/gigs/questions", summary: "A teacher's own questions for the bank, what they stand to earn, and where they are paid", access: ["TEACHER"], response: c.gigMyContributionsSchema, sample: "/api/v1/gigs/questions" },
-  { method: "POST", path: "/api/v1/gigs/questions", summary: "Send a question in English, Hindi and Marathi; refused past the day's or the waiting limit, or when the same words are already in the bank", access: ["TEACHER"], request: c.gigContributionSaveSchema, response: c.gigContributionSavedSchema, emptyBodyStatus: 422, sample: "/api/v1/gigs/questions" },
-  { method: "GET", path: "/api/v1/gigs/questions/topics", summary: "The chapters a question can be written for", access: ["TEACHER"], response: c.gigTopicsSchema, sample: "/api/v1/gigs/questions/topics" },
-  { method: "POST", path: "/api/v1/gigs/questions/draft", summary: "A machine draft of the Hindi and the Marathi from the English, for the teacher to correct; saved nowhere", access: ["TEACHER"], request: c.gigDraftBodySchema, response: c.gigDraftSchema, emptyBodyStatus: 422, sample: "/api/v1/gigs/questions/draft" },
-  { method: "GET", path: "/api/v1/gigs/questions/{contributionId}", summary: "One of the teacher's own questions; somebody else's is not found", access: ["TEACHER"], response: c.gigContributionSchema, sample: (f) => mine(f) },
-  { method: "POST", path: "/api/v1/gigs/questions/{contributionId}", summary: "Change a question that still waits or was returned; it goes back to the content team", access: ["TEACHER"], request: c.gigContributionSaveSchema, response: c.gigContributionSavedSchema, emptyBodyStatus: 422, sample: (f) => mine(f) },
-  { method: "POST", path: "/api/v1/gigs/questions/{contributionId}/withdraw", summary: "Take back a question that is not settled; taken back twice is taken back", access: ["TEACHER"], response: c.gigContributionSavedSchema, sample: (f) => (f.gigWithdrawnContributionId ? `/api/v1/gigs/questions/${f.gigWithdrawnContributionId}/withdraw` : null) },
-  { method: "POST", path: "/api/v1/gigs/payee", summary: "The contributor's own UPI id, where the company pays them", access: ["TEACHER"], request: c.gigPayeeBodySchema, response: c.gigPayeeSchema, emptyBodyStatus: 422, sample: "/api/v1/gigs/payee" },
+  { ...QUESTION_GIG_DOOR, method: "GET", path: "/api/v1/gigs/questions", summary: "A teacher's own questions for the bank, what they stand to earn, and where they are paid", access: ["TEACHER"], response: c.gigMyContributionsSchema, sample: "/api/v1/gigs/questions" },
+  { ...QUESTION_GIG_DOOR, method: "POST", path: "/api/v1/gigs/questions", summary: "Send a question in English, Hindi and Marathi; refused past the day's or the waiting limit, or when the same words are already in the bank", access: ["TEACHER"], request: c.gigContributionSaveSchema, response: c.gigContributionSavedSchema, emptyBodyStatus: 422, sample: "/api/v1/gigs/questions" },
+  { ...QUESTION_GIG_DOOR, method: "GET", path: "/api/v1/gigs/questions/topics", summary: "The chapters a question can be written for", access: ["TEACHER"], response: c.gigTopicsSchema, sample: "/api/v1/gigs/questions/topics" },
+  { ...QUESTION_GIG_DOOR, method: "POST", path: "/api/v1/gigs/questions/draft", summary: "A machine draft of the Hindi and the Marathi from the English, for the teacher to correct; saved nowhere", access: ["TEACHER"], request: c.gigDraftBodySchema, response: c.gigDraftSchema, emptyBodyStatus: 422, sample: "/api/v1/gigs/questions/draft" },
+  { ...QUESTION_GIG_DOOR, method: "GET", path: "/api/v1/gigs/questions/{contributionId}", summary: "One of the teacher's own questions; somebody else's is not found", access: ["TEACHER"], response: c.gigContributionSchema, sample: (f) => mine(f) },
+  { ...QUESTION_GIG_DOOR, method: "POST", path: "/api/v1/gigs/questions/{contributionId}", summary: "Change a question that still waits or was returned; it goes back to the content team", access: ["TEACHER"], request: c.gigContributionSaveSchema, response: c.gigContributionSavedSchema, emptyBodyStatus: 422, sample: (f) => mine(f) },
+  { ...QUESTION_GIG_DOOR, method: "POST", path: "/api/v1/gigs/questions/{contributionId}/withdraw", summary: "Take back a question that is not settled; taken back twice is taken back", access: ["TEACHER"], response: c.gigContributionSavedSchema, sample: (f) => (f.gigWithdrawnContributionId ? `/api/v1/gigs/questions/${f.gigWithdrawnContributionId}/withdraw` : null) },
+  { ...QUESTION_GIG_DOOR, method: "POST", path: "/api/v1/gigs/payee", summary: "The contributor's own UPI id, where the company pays them; while the gig is off, open only to a teacher still owed for earlier questions (quiz-board, 11 Oct 2026), 404 for any other", access: ["TEACHER"], request: c.gigPayeeBodySchema, response: c.gigPayeeSchema, emptyBodyStatus: 422, sample: "/api/v1/gigs/payee" },
   // ---- sessions and workshops: a pupil and a guardian ---------------------------------------
   { method: "GET", path: "/api/v1/gigs/sessions", summary: "For a pupil, or each of a guardian's children: the free allowance of the school year, their seats (the meeting link only while one is confirmed), and the times open to book", access: ["STUDENT", "PARENT"], response: c.gigFamilySessionsSchema, sample: "/api/v1/gigs/sessions" },
   { method: "POST", path: "/api/v1/gigs/sessions/book", summary: "A pupil asks for a seat, which waits for a guardian, or a guardian takes one for their child; refused past the free allowance or when the last seat has gone", access: ["STUDENT", "PARENT"], request: c.gigBookBodySchema, response: c.gigBookedSchema, emptyBodyStatus: 422, sample: "/api/v1/gigs/sessions/book" },

@@ -1,8 +1,11 @@
 import "server-only";
+import { fixtureTopicsWhere, schoolSeesFixtureTopics } from "./quiz-fixtures";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
 import { awardPermanentBadge } from "./academic-year";
+import { SERVED_QUESTION, servedTranslationWhere } from "./quiz-served";
+import { servedFigure, type ServedFigure } from "./quiz-figure";
 import type { ActiveContext } from "./session";
 
 /**
@@ -97,6 +100,7 @@ const DEMOTE_AFTER = 2;
 // in, and `language` reads better there than `locale`.
 import { normaliseLocale, type Locale } from "./i18n/locales";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
+import { asQuizBoard, quizBoardForSchool, QUIZ_BOARD_BOTH, type QuizBoard, type QuizBoardChoice } from "@edulink/contracts";
 
 export {
   LOCALES as QUIZ_LANGUAGES,
@@ -307,12 +311,25 @@ export type TopicSummary = {
   badgeEarned: boolean;
   /** Ladder-tier badges earned in this chapter, 0–6 (Beginner … Master). */
   tierCount: number;
+  /** quiz-board (11 Oct 2026): the board the chapter is written against; null for a bank that follows no book. */
+  board: QuizBoard | null;
 };
+
+/**
+ * quiz-board (11 Oct 2026): a school's practice board, from its recorded board (School.board through
+ * quizBoardForSchool): NCERT for a CBSE school, Balbharati for a Maharashtra State Board school, null
+ * for any other or none, whose pupils see both boards.
+ */
+export async function schoolQuizBoard(schoolId: string | null | undefined): Promise<QuizBoard | null> {
+  if (!schoolId) return null;
+  const school = await db.school.findUnique({ where: { id: schoolId }, select: { board: true } });
+  return quizBoardForSchool(school?.board);
+}
 
 /** Topics for a class, with this child's progress against each. */
 export async function listTopics(
   session: ActiveContext,
-  opts: { subject?: string; classLevel?: number; language?: Locale } = {},
+  opts: { subject?: string; classLevel?: number; language?: Locale; /** quiz-board (11 Oct 2026): one board's chapters (and those with none), or both ("ALL" or absent). */ board?: QuizBoardChoice } = {},
 ): Promise<TopicSummary[]> {
   const membershipId = session.membershipId;
   const schoolId = session.schoolId;
@@ -325,6 +342,10 @@ export async function listTopics(
       retiredAt: null,
       ...(opts.subject ? { subject: opts.subject } : {}),
       ...(opts.classLevel ? { classLevel: opts.classLevel } : {}),
+      // quiz-board: a chapter of the chosen board, or one that follows no book (the placement banks).
+      ...(opts.board && opts.board !== QUIZ_BOARD_BOTH ? { OR: [{ board: opts.board }, { board: null }] } : {}),
+      // The fixtures' zz- chapters, for a fixture school's readers only (quiz-fixtures.ts).
+      ...fixtureTopicsWhere(await schoolSeesFixtureTopics(schoolId)),
     },
     include: {
       // Nothing is fetched for English, so the default path costs exactly what
@@ -342,7 +363,8 @@ export async function listTopics(
   // questions, and a million-row page load the day the generated bank landed.
   const grouped = await db.quizQuestion.groupBy({
     by: ["topicId", "difficulty"],
-    where: { topicId: { in: topics.map((t) => t.id) } },
+    // Served questions only: a generated item waiting in the review queue is not counted (quiz-served.ts).
+    where: { topicId: { in: topics.map((t) => t.id) }, ...SERVED_QUESTION },
     _count: { _all: true },
   });
   const spreadByTopic = new Map<string, number[]>();
@@ -393,7 +415,10 @@ export async function listTopics(
     tiersBySlug.set(match[1]!, (tiersBySlug.get(match[1]!) ?? 0) + 1);
   }
 
-  return topics.map((topic) => {
+  // A chapter with nothing to serve does not list (10 October 2026): a topic the generated bank made
+  // holds only items waiting in the review queue until the first is stamped, and a child who opened
+  // it would finish an empty sitting. No authored topic was empty on the day this was written.
+  return topics.filter((topic) => spreadByTopic.has(topic.id)).map((topic) => {
     const mine = byTopic.get(topic.id);
     const spread = spreadByTopic.get(topic.id) ?? (new Array(MAX_LEVEL).fill(0) as number[]);
     const questionCount = spread.reduce((a, b) => a + b, 0);
@@ -416,6 +441,7 @@ export async function listTopics(
       completed: finished.has(topic.id),
       badgeEarned: mine?.cleanCompletionAt != null,
       tierCount: tiersBySlug.get(topic.slug) ?? 0,
+      board: asQuizBoard(topic.board),
     };
   });
 }
@@ -466,6 +492,10 @@ export type ServedQuestion = {
   levelLabelKey: TranslationKey;
   askedCount: number;
   totalCount: number;
+  // ---- figures (the quiz bank's figure builder, 10 Oct 2026): the figure drawn above the stem, in the
+  // language the stem is served in (a translation's own drawing, else the question's), with its words.
+  image: ServedFigure | null;
+  // ---- end figures ----
 };
 
 /**
@@ -494,7 +524,7 @@ export async function nextQuestion(
       where: { studentMembershipId_topicId: { studentMembershipId: membershipId, topicId: attempt.topicId } },
       select: { level: true },
     }),
-    db.quizQuestion.count({ where: { topicId: attempt.topicId } }),
+    db.quizQuestion.count({ where: { topicId: attempt.topicId, ...SERVED_QUESTION } }),
   ]);
   const seenIds = new Set(seen.map((s) => s.questionId));
 
@@ -517,7 +547,7 @@ export async function nextQuestion(
   // exhausted topic answers in one.
   const byLevel = await db.quizQuestion.groupBy({
     by: ["difficulty"],
-    where: { topicId: attempt.topicId, id: { notIn: seenList } },
+    where: { topicId: attempt.topicId, id: { notIn: seenList }, ...SERVED_QUESTION },
     _min: { id: true },
   });
   let bestId: string | null = null;
@@ -536,7 +566,8 @@ export async function nextQuestion(
   if (bestId === null) return null;
   const full = await db.quizQuestion.findUniqueOrThrow({
     where: { id: bestId },
-    select: { id: true, difficulty: true, stem: true, choices: true },
+    // figures: imageKey and imageAlt, the figure above the stem.
+    select: { id: true, difficulty: true, stem: true, choices: true, imageKey: true, imageAlt: true },
   });
 
   // Fetched for the ONE question being served, not for the whole pool — the
@@ -550,9 +581,11 @@ export async function nextQuestion(
   const tr =
     lang === "en"
       ? null
-      : await db.quizQuestionTranslation.findUnique({
-          where: { questionId_language: { questionId: full.id, language: lang } },
-          select: { stem: true, choices: true },
+      : await db.quizQuestionTranslation.findFirst({
+          // A generated item's language row only once a reviewer stamped it (quiz-served.ts).
+          where: { questionId: full.id, language: lang, question: servedTranslationWhere(lang) },
+          // figures: a translation's own drawing (its labels in its language) and words.
+          select: { stem: true, choices: true, imageKey: true, imageAlt: true },
         });
 
   const original = parseChoices(full.choices);
@@ -564,6 +597,8 @@ export async function nextQuestion(
     levelLabelKey: QUIZ_LEVELS[clampLevel(full.difficulty) - 1]!.labelKey,
     askedCount: seenIds.size,
     totalCount,
+    // figures: the language's drawing when it has one, else the question's; no picture without words.
+    image: servedFigure(full, tr),
   };
 }
 
@@ -602,7 +637,7 @@ export async function submitAnswer(
   if (!attempt) throw new AccessError("access.attemptNotFound", "NOT_FOUND");
 
   const question = await db.quizQuestion.findFirst({
-    where: { id: questionId, topicId: attempt.topicId },
+    where: { id: questionId, topicId: attempt.topicId, ...SERVED_QUESTION },
     select: { id: true, answerIndex: true, solution: true, difficulty: true, choices: true },
   });
   if (!question) throw new AccessError("access.questionNotFound", "NOT_FOUND");
@@ -712,8 +747,9 @@ export async function submitAnswer(
   const tr =
     lang === "en"
       ? null
-      : await db.quizQuestionTranslation.findUnique({
-          where: { questionId_language: { questionId: question.id, language: lang } },
+      : await db.quizQuestionTranslation.findFirst({
+          // A generated item's language row only once a reviewer stamped it (quiz-served.ts).
+          where: { questionId: question.id, language: lang, question: servedTranslationWhere(lang) },
           select: { solution: true },
         });
 
@@ -750,7 +786,7 @@ export async function revealSolution(
   if (!attempt) throw new AccessError("access.attemptNotFound", "NOT_FOUND");
 
   const question = await db.quizQuestion.findFirst({
-    where: { id: questionId, topicId: attempt.topicId },
+    where: { id: questionId, topicId: attempt.topicId, ...SERVED_QUESTION },
     select: { id: true, solution: true, answerIndex: true, difficulty: true },
   });
   if (!question) throw new AccessError("access.questionNotFound", "NOT_FOUND");
@@ -775,8 +811,9 @@ export async function revealSolution(
   const tr =
     lang === "en"
       ? null
-      : await db.quizQuestionTranslation.findUnique({
-          where: { questionId_language: { questionId: question.id, language: lang } },
+      : await db.quizQuestionTranslation.findFirst({
+          // A generated item's language row only once a reviewer stamped it (quiz-served.ts).
+          where: { questionId: question.id, language: lang, question: servedTranslationWhere(lang) },
           select: { solution: true },
         });
 
@@ -854,7 +891,7 @@ async function finishIfComplete(
   topicId: string,
 ): Promise<{ finished: boolean; badgeAwarded: boolean }> {
   const [total, answered, attempt, topic] = await Promise.all([
-    db.quizQuestion.count({ where: { topicId } }),
+    db.quizQuestion.count({ where: { topicId, ...SERVED_QUESTION } }),
     db.quizResponse.count({ where: { attemptId } }),
     db.quizAttempt.findUniqueOrThrow({
       where: { id: attemptId },
@@ -961,8 +998,9 @@ export async function submitAnswerIdempotent(
     const translation =
       lang === "en"
         ? null
-        : await db.quizQuestionTranslation.findUnique({
-            where: { questionId_language: { questionId: existing.question.id, language: lang } },
+        : await db.quizQuestionTranslation.findFirst({
+            // A generated item's language row only once a reviewer stamped it (quiz-served.ts).
+            where: { questionId: existing.question.id, language: lang, question: servedTranslationWhere(lang) },
             select: { solution: true },
           });
     return {

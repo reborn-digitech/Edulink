@@ -108,7 +108,8 @@ describe("the presets", () => {
     // The anti-ragging squad and the research dean are every stream's; studio coordination would be architecture's alone,
     // and is no stream's while its desk is not built (A3-inventory-12, tests/duties-unbuilt.test.ts).
     for (const s of STREAMS) expect(STREAM_PRESETS[s].duties).toEqual(expect.arrayContaining(["ANTI_RAGGING_SQUAD", "RESEARCH_DEAN"]));
-    expect(STREAMS.filter((s) => STREAM_PRESETS[s].duties.includes("STUDIO_COORDINATOR"))).toEqual([]);
+    // The studio desk is built since 10 Oct 2026 (R-56, the studio half): architecture offers the duty.
+    expect(STREAMS.filter((s) => STREAM_PRESETS[s].duties.includes("STUDIO_COORDINATOR"))).toEqual(["ARCHITECTURE"]);
 
     const vidya = streamPreset(["COMMERCE", "ARTS", "SCIENCE"]);
     expect(vidya.regulators).toEqual(["UGC"]);
@@ -123,7 +124,8 @@ describe("the presets", () => {
     // Words change only where every stream agrees: a pharmacy college's lab is a practical, an engineering-and-pharmacy college's stays a lab.
     expect(presetUnion(["PHARMACY"]).vocabulary).toEqual({ lab: "practical" });
     expect(both.vocabulary).toEqual({});
-    expect(presetUnion(["HEALTH_SCIENCES", "AGRICULTURE"]).notBuilt).toEqual(["CLINICAL_POSTINGS", "LOGBOOKS", "HOSPITAL", "FARM", "FIELD_WORK"]);
+    // Health sciences keeps its clinical postings and logbooks since the clinical desk (R-56, 10 Oct 2026): agriculture's alone remain.
+    expect(presetUnion(["HEALTH_SCIENCES", "AGRICULTURE"]).notBuilt).toEqual(["FARM", "FIELD_WORK"]);
     expect(professional(["ARTS"])).toBe(false);
     expect(professional(["ARTS", "LAW"])).toBe(true);
   });
@@ -191,8 +193,9 @@ describe("a programme's stream", () => {
 describe("duties", () => {
   it("are set by the registrar within what the streams offer, once in the audit log, and refused elsewhere", async () => {
     const admin = await as(ids.admin, "ADMIN", ids.college, null);
-    // The clinical coordinator is not offered while its desk is not built (A3-inventory-12).
-    expect(await offeredDuties(ids.college)).toEqual(["LAB_INCHARGE", "NSS_OFFICER", "NCC_OFFICER", "ANTI_RAGGING_SQUAD", "RESEARCH_DEAN", "EXAM_SQUAD"]);
+    // A pharmacy college offers the clinical coordinator since its desk is built (R-56, 10 Oct 2026); the studio
+    // coordinator stays unoffered here (architecture's alone), which the refusals below rely on.
+    expect(await offeredDuties(ids.college)).toEqual(["LAB_INCHARGE", "CLINICAL_COORDINATOR", "NSS_OFFICER", "NCC_OFFICER", "ANTI_RAGGING_SQUAD", "RESEARCH_DEAN", "EXAM_SQUAD"]);
     const set = await setDuties(admin, ids.facultyM, ["ANTI_RAGGING_SQUAD", "LAB_INCHARGE"]);
     expect(set).toMatchObject({ role: "FACULTY", duties: ["LAB_INCHARGE", "ANTI_RAGGING_SQUAD"] });
     await setDuties(admin, ids.facultyM, ["LAB_INCHARGE", "ANTI_RAGGING_SQUAD"]);

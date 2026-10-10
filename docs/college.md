@@ -1,3 +1,4 @@
+<!-- helpIndex: false -->
 # Shalaghar for colleges
 
 Built 3–4 October 2026 by a foundation builder (C0), five module builders (academics, exams, the office,
@@ -60,8 +61,8 @@ scholarships, iqac):
 | PHARMACY | PCI, AICTE | PLACEMENT, INVENTORY | AICTE disclosure, PCI inspection | LAB_INCHARGE, CLINICAL_COORDINATOR, NSS, NCC | labs, placement | lab → practical | — |
 | LAW | BCI, UGC | PLACEMENT | BCI return | NSS, NCC | mootCourt, internships | department → faculty | — |
 | EDUCATION | NCTE | PLACEMENT | NCTE return | PRACTICE_TEACHING_COORDINATOR, NSS, NCC | teachingPractice | — | — |
-| HEALTH_SCIENCES | NMC, DCI, INC | PLACEMENT | — | LAB_INCHARGE, CLINICAL_COORDINATOR (no NSS/NCC) | clinicalPostings, labs | — | clinical postings, logbooks, the hospital |
-| ARCHITECTURE | COA | PLACEMENT | — | STUDIO_COORDINATOR, NSS, NCC | studios | lecture → studio | studios, juries |
+| HEALTH_SCIENCES | NMC, DCI, INC | PLACEMENT | — | LAB_INCHARGE, CLINICAL_COORDINATOR (no NSS/NCC) | clinicalPostings, labs | — | — (the clinical desk since 10 Oct 2026) |
+| ARCHITECTURE | COA | PLACEMENT | — | STUDIO_COORDINATOR, NSS, NCC | studios | lecture → studio | — (studios and juries built 10 Oct 2026; the COA return is not a filing kind) |
 | AGRICULTURE | ICAR | PLACEMENT | — | LAB_INCHARGE, NSS, NCC | fieldWork, labs | — | the farm, field work |
 | VOCATIONAL | UGC | — | — | LAB_INCHARGE, NSS, NCC | labs, internships | — | — |
 
@@ -85,7 +86,8 @@ handler (403 `duties.refuseNoDuty`), and the same rule runs in `permits()`, both
 | RESEARCH_DEAN | /duties/research | the research register, read-only (the office writes the faculty record); no teacher's API score inputs since 5 Oct (A3-S-11), so the list is sorted by publications plus projects (R-55) |
 | EXAM_SQUAD | /duties/exam-squad | papers two days back to sixty ahead; a visit that found something tells the exam controllers; a case's state, never its note |
 | PRACTICE_TEACHING_COORDINATOR | /duties/teaching-practice | practice schools, postings, lesson observations |
-| CLINICAL_COORDINATOR, STUDIO_COORDINATOR | /duties/clinical, /duties/studio | a page with the preset's not-built sentence |
+| CLINICAL_COORDINATOR | /duties/clinical | clinical sites (the teaching hospital, a PHC, a clinic, a hospital pharmacy) with their departments and the agreement's dates, a contact as a role word; postings of a division or a lab batch to a department under a supervising faculty member in rotation order; each student's logbook (a case, a procedure, a skill, dispensing; DRAFT → SUBMITTED → SIGNED or RETURNED) signed or returned by the posting's supervisor (no duty needed; `/faculty/clinical`, `GET /duties/clinical/supervising`) or the coordinator; the student writes and hands in at `/student/clinical` (`/family/clinical`, no guardian door); no patient identifier is stored (a note carrying one is refused); the councils' minimum counts are an empty coded list (`CLINICAL_REQUIREMENTS`) until one can be cited (built 10 Oct 2026, R-56) |
+| STUDIO_COORDINATOR | /duties/studio | an architecture college's design studios: a studio per course offering and term with its brief, its maximum marks and four stage days (brief issued, interim pin-up, final submission, jury), kept by a holder of the duty or the office; the students' submissions per stage (DRAFT → SUBMITTED by the day, LATE after it; a note and a file by upload ticket, `files.ts` 2e-studio); juries convened by a holder with a panel of the college's teachers, one the chair, and up to two external jurors by a coded role and institution only; the sheet marked by a juror on the panel (`/faculty/studios`, no duty needed; the one writer `saveJuryMarks`) and signed by the chair, after which it changes no more, reaches the student (`/student/studios`, `/family/studios`) with the band read from the marks (`gradeBandFor`, never stored) and may be posted into an internal component through `saveInternalMarks`; the HOD reads the department's on `/faculty/studios`, the office the desk (the `studios` tile). Built 10 Oct 2026, R-56 |
 
 **Records per stream** (migration `20261004222809_stream_records`, `src/lib/stream-records.ts`,
 `stream-summaries.ts`, pages under `/admin/stream-records`): lab batches (the office splits a division by roll
@@ -109,8 +111,10 @@ filings. The regulators' calendar filters by streams too (the AICTE extension fo
 and pharmacy; the CET CAP for the eight professional streams). Pages: `/iqac/documents` (a card per filing,
 the others greyed "Filed by a college teaching …"), `/iqac/documents/[pci|bci|ncte|nba]`, `/hod/nba`.
 
-**Not built, per stream.** HEALTH_SCIENCES (NMC, DCI, INC): clinical postings, logbooks, the teaching
-hospital, and every council return. ARCHITECTURE (COA): studios and juries, the COA return. AGRICULTURE
+**Not built, per stream.** HEALTH_SCIENCES (NMC, DCI, INC): every council return (the clinical desk — postings,
+logbooks, the teaching hospital — is built since 10 Oct 2026, R-56: tables `ClinicalSite`, `ClinicalDepartment`,
+`ClinicalPosting`, `LogbookEntry`, migration `20261010181454_clinical_desk`, `src/lib/clinical.ts`; fixtures ZZ
+Dhanvantari Nursing College, `scripts/zz-clinical.ts`, and the demo health and pharmacy colleges). ARCHITECTURE (COA): the COA return only (studios, submissions and juries are built since 10 Oct 2026, R-56: tables `Studio`, `StudioSubmission`, `StudioJury`, `StudioJuryMark`, migration `20261010181751_studio_desk`, `src/lib/studio.ts`; fixtures at ZZ Vidya College, which gains the ARCHITECTURE stream, `scripts/zz-studio.ts`, and the demo architecture college). AGRICULTURE
 (ICAR): the farm and field work, the ICAR return. The registrar's and principal's homes show the preset's
 sentence as a banner; `/iqac/documents` lists the councils as "not built yet". No yearly calendar window was
 added for PCI, BCI, NCTE or NBA (none has a fixed one to cite).
@@ -282,9 +286,12 @@ regulators' calendar with reminders from `accounts:tidy`, and recruiter accounts
   Autonomous College (`scripts/zz-college.ts`, `zz-academics.ts`, `zz-exams.ts`, `zz-college-office.ts`,
   `zz-placement.ts`, `zz-iqac.ts`, and for the streams `zz-streams.ts`, `zz-stream-records.ts`,
   `zz-council-filings.ts`); `npm run zz:token -- FACULTY` and so on mint sessions.
-  - ZZ Vidya: streams ARTS, SCIENCE and COMMERCE (BSCPHY and BSCCHE given SCIENCE); its AICTE disclosure is
+  - ZZ Vidya: streams ARTS, SCIENCE and COMMERCE (BSCPHY and BSCCHE given SCIENCE), and ARCHITECTURE since
+    10 Oct 2026 (the studio desk's fixture, `zz-studio.ts`: a department "ZZ Architecture", ZZ BArch with AR101
+    offered this term to zz.cstudent01–03, one studio with four stages, the interim jury signed with marks, the
+    final jury ahead, three submissions); its AICTE disclosure is
     taken down (its streams do not bring it). `zz.faculty01` holds every duty Vidya offers (LAB_INCHARGE,
-    NSS_OFFICER, NCC_OFFICER, ANTI_RAGGING_SQUAD, RESEARCH_DEAN, EXAM_SQUAD) so the sweep's FACULTY opens the
+    NSS_OFFICER, NCC_OFFICER, ANTI_RAGGING_SQUAD, RESEARCH_DEAN, EXAM_SQUAD, STUDIO_COORDINATOR) so the sweep's FACULTY opens the
     desks; every other college member is reset to no duty each run, so `zz.hod01` is refused a desk (403).
     Lab batch A on "ZZ FY BSc Physics A" with three practical records (the first signed), an NSS unit of
     three with one activity, beaker stock in "ZZ Physics Lab", one flying-squad visit.

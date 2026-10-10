@@ -164,8 +164,10 @@ const SPEC: Record<StreamCode, PresetSpec> = {
   PHARMACY: { modulesOn: [...PROFESSIONAL_MODULES, "INVENTORY"], regulators: ["PCI", "AICTE"], filings: [...AICTE_FILINGS, "PCI_INSPECTION"], homeTiles: ["labs", "placement"], vocabulary: { lab: "practical" }, notBuilt: [] },
   LAW: { modulesOn: PROFESSIONAL_MODULES, regulators: ["BCI", "UGC"], filings: [...BASE_FILINGS, "BCI_RETURN"], homeTiles: ["mootCourt", "internships"], vocabulary: { department: "faculty" }, notBuilt: [] },
   EDUCATION: { modulesOn: PROFESSIONAL_MODULES, regulators: ["NCTE"], filings: [...BASE_FILINGS, "NCTE_RETURN"], homeTiles: ["teachingPractice"], vocabulary: {}, notBuilt: [] },
-  HEALTH_SCIENCES: { modulesOn: PROFESSIONAL_MODULES, regulators: ["NMC", "DCI", "INC"], filings: BASE_FILINGS, homeTiles: ["clinicalPostings", "labs"], vocabulary: {}, notBuilt: ["CLINICAL_POSTINGS", "LOGBOOKS", "HOSPITAL"] },
-  ARCHITECTURE: { modulesOn: PROFESSIONAL_MODULES, regulators: ["COA"], filings: BASE_FILINGS, homeTiles: ["studios"], vocabulary: { lecture: "studio" }, notBuilt: ["STUDIOS", "JURIES"] },
+  // The clinical desk is built since 10 Oct 2026 (R-56, the clinical half): postings, logbooks and the sites are kept; the councils' returns (NMC, DCI, INC) still are not, said on /iqac/documents.
+  HEALTH_SCIENCES: { modulesOn: PROFESSIONAL_MODULES, regulators: ["NMC", "DCI", "INC"], filings: BASE_FILINGS, homeTiles: ["clinicalPostings", "labs"], vocabulary: {}, notBuilt: [] },
+  // Studios and juries are built since 10 Oct 2026 (R-56, the studio half; v1/studio.ts); the COA return is still not (DS-12).
+  ARCHITECTURE: { modulesOn: PROFESSIONAL_MODULES, regulators: ["COA"], filings: BASE_FILINGS, homeTiles: ["studios"], vocabulary: { lecture: "studio" }, notBuilt: [] },
   AGRICULTURE: { modulesOn: PROFESSIONAL_MODULES, regulators: ["ICAR"], filings: BASE_FILINGS, homeTiles: ["fieldWork", "labs"], vocabulary: {}, notBuilt: ["FARM", "FIELD_WORK"] },
   VOCATIONAL: { modulesOn: BASE_MODULES, regulators: ["UGC"], filings: BASE_FILINGS, homeTiles: ["labs", "internships"], vocabulary: {}, notBuilt: [] },
 };

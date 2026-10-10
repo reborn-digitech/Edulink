@@ -192,6 +192,8 @@ export const intakeBodySchema = z.object({ csv: z.string().min(1).max(500_000) }
 export const intakeResultSchema = z.object({
   admitted: z.number().int(),
   guardiansInvited: z.number().int(),
+  /** R-61 Q1 (10 Oct 2026): the admitted rows that carried no admission date; the record's date stays blank for the office to fill. */
+  withoutAdmissionDate: z.number().int().default(0),
   outcomes: z.array(
     z.object({
       line: z.number().int(),

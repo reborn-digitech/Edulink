@@ -359,14 +359,20 @@ describe("the desks in More and on the duty card", () => {
     expect(labels("EXAM_CONTROLLER", [], ["ACADEMICS"])).not.toContain("duties.examSquad.title");
   });
 
-  it("opens each desk from the duty card; the clinical and studio duties still wait for theirs", async () => {
-    expect(DUTY_SCREENS.CLINICAL_COORDINATOR).toBeUndefined();
-    expect(DUTY_SCREENS.STUDIO_COORDINATOR).toBeUndefined();
+  it("opens each desk from the duty card, the clinical and studio desks among them", async () => {
+    // The clinical desk is built since 10 Oct 2026 (R-56, the clinical half): screens/college/clinical.tsx, test/screens/clinical.test.tsx.
+    expect(DUTY_SCREENS.CLINICAL_COORDINATOR).toEqual({ screen: "/(app)/clinical-desk", module: "ACADEMICS" });
+    // The studio desk is built since 10 Oct 2026 (R-56, the studio half): screens/college/studios.tsx, test/screens/studios.test.tsx.
+    expect(DUTY_SCREENS.STUDIO_COORDINATOR).toEqual({ screen: "/(app)/studios", module: "ACADEMICS" });
     await mountStaff(<DutyCard />, "FACULTY", {}, { me: meAs("FACULTY", { duties: ["LAB_INCHARGE"] }) });
     expect(await screen.findByText("Looks after a laboratory, its equipment and its stock.")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Open" }));
     expect(mockPush).toHaveBeenCalledWith("/(app)/lab-desk");
+    // An HOD holding the studio duty opens the studios and juries screen from the card (R-56, the studio half, 10 Oct 2026).
+    mockPush.mockClear();
     await mountStaff(<DutyCard />, "HOD", {}, { me: meAs("HOD", { duties: ["STUDIO_COORDINATOR"] }) });
-    expect(await screen.findByText("Its page is on its way.")).toBeTruthy();
+    expect(await screen.findByText("Runs the design studios and their juries.")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Open" }));
+    expect(mockPush).toHaveBeenCalledWith("/(app)/studios");
   });
 });
