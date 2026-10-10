@@ -50,7 +50,7 @@ import { NCERT_NOTE, helpMessages, questionShape, tutorMessages } from "./prompt
 import { detectLanguage } from "./language";
 import { nameLexicon } from "./lexicon";
 import { foreignPaths, pageIsRoles } from "./pages";
-import { runTools as runToolsReal, type ToolRun } from "./tools";
+import { runTools as runToolsReal, TOOLS, toolsFor, type ToolRun } from "./tools";
 import { pupilAssessmentItems } from "./assessment";
 import { cosine, decideAssessment, type AssessmentDecision, type AssessmentItem } from "./assessment-rule";
 import { routeToCounsellor } from "./counsellor";
@@ -543,7 +543,7 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   curriculum = keepClose(curriculum);
 
   // 3. The gate before the model.
-  const gate = await gateQuestion({ original: a.original, stripped: a.stripped, language, policy, helpTop: best(helpScope), curriculumTop: best(curriculum) }, { chat: deps.chat });
+  const gate = await gateQuestion({ original: a.original, stripped: a.stripped, language, policy, helpTop: best(helpScope), curriculumTop: best(curriculum), ownDoor: toolsFor(asker.role, a.original).length > 0 }, { chat: deps.chat });
   if (!gate.pass) return fixed(gate.verdict, { promptTokens: gate.tokens, modelCalls: gate.modelCalled ? 1 : 0 });
   let tokens = { prompt: gate.tokens, completion: 0 };
   let modelCalls = 1;
@@ -573,7 +573,7 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     citationsByNumber = help.slice(0, HELP_PASSAGES).map((h, i) => ({ kind: "HELP", n: i + 1, title: h.title, pagePath: h.pagePath, entryId: h.entryId }));
     allowedText = passages.map((p) => `${p.heading}\n${p.text}`).join("\n");
     const runs = await deps.runTools({ role: asker.role, schoolId: asker.schoolId, userId: asker.userId, question: a.original, lexicon: a.lexicon });
-    const data = runs.filter((r) => r.ok && r.data).map((r) => ({ name: r.name, json: r.data! }));
+    const data = runs.filter((r) => r.ok && r.data).map((r) => ({ name: r.name, json: r.data!, page: TOOLS[r.name]?.page ?? null }));
     allowedText += `\n${data.map((d) => d.json).join("\n")}`;
     // Nothing a person can act on and none of their own data: the sentence, and no answer is written.
     if (!passages.length && !data.length) return fixed("OUT_OF_SCOPE", { promptTokens: tokens.prompt, modelCalls });
@@ -588,7 +588,11 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
 
   // 7. The gate after the model.
   a.emit({ type: "assistant.stage", conversationId: a.conversationId, stage: "CHECKING" });
-  const checked = await gateAnswer({ answer: result.content, label: gate.label, passageCount: citationsByNumber.length, allowedText, lexicon: a.lexicon, hint }, { chat: deps.chat });
+  // With no passage numbered there is nothing a "[1]" could point at, and the model writes one anyway in Hindi and
+  // Marathi whatever the prompt says (Phase D's pilot, 10 Oct 2026: a guardian's fees answers discarded 24 of 24 as
+  // an invented citation; in Hindi and Marathi it then wrote a literal "[data]"). The bare marks are removed before the check; the answer itself is still checked in full.
+  const content = citationsByNumber.length ? result.content : result.content.replace(/\s?\[(?:\d{1,2}|data)\]/g, "");
+  const checked = await gateAnswer({ answer: content, label: gate.label, passageCount: citationsByNumber.length, allowedText, lexicon: a.lexicon, hint }, { chat: deps.chat });
   if (checked.tokens) modelCalls += 1;
   tokens.prompt += checked.tokens;
   // The reason codes only, never a word of the question or the answer (Phase D: discards were otherwise invisible to the operator).
@@ -596,15 +600,15 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     discardLog(gate.mode, checked.reasons);
     return fixed("ANSWER_DISCARDED", { mode: gate.mode, promptTokens: tokens.prompt, completionTokens: tokens.completion, modelCalls });
   }
-  const cited = new Set(citedNumbers(result.content));
+  const cited = new Set(citedNumbers(content));
   // A help answer names only pages the person's role opens, never a program's /api/ door (the prompt asks; this holds it).
-  if (gate.mode === "HELP" && foreignPaths(result.content, asker.role).length) {
+  if (gate.mode === "HELP" && foreignPaths(content, asker.role).length) {
     discardLog(gate.mode, ["FOREIGN_PAGE"]);
     return fixed("ANSWER_DISCARDED", { mode: gate.mode, promptTokens: tokens.prompt, completionTokens: tokens.completion, modelCalls });
   }
   return {
     verdict: hint ? "HINT" : "ANSWERED",
-    text: restoreSelf(result.content.trim(), stripIdentifiers(a.original, a.lexicon).replacements, ""),
+    text: restoreSelf(content.trim(), stripIdentifiers(a.original, a.lexicon).replacements, ""),
     mode: gate.mode,
     hint,
     citations: citationsByNumber.filter((c) => cited.has(c.n)),

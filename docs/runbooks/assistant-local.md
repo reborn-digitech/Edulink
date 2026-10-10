@@ -193,4 +193,5 @@ about 1 GB each.
 | `src/lib/assistant-retrieval.ts` | `searchCurriculum`, `searchHelp`, the fusion, the reranker stub, the citation shape |
 | `scripts/assistant-ask.ts` | the smoke script; since Phase B it runs the service's own path (`previewAnswer` in `src/lib/assistant/service.ts`): the same gates, prompt and answer gate as the doors |
 | `tests/assistant-retrieval.test.ts` | fusion, chunking, configuration, and the fixture-corpus search (skipped without the endpoint) |
+| `scripts/assistant-eval.ts`, `scripts/assistant-eval-score.ts`, `content/assistant-eval/` | the evaluation harness (`npm run assistant:eval`, `-- --pilot` through the doors on the demo tenants, about 50 minutes; the refusal set must be 180/180 or it exits 1), its pure scoring rules and the nine sets; output under `storage/assistant-eval/<stamp>` |
 | `prisma/migrations/20261008152105_assistant_content` | the three tables, pgvector, the HNSW and full-text indexes |

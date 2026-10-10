@@ -1,0 +1,31 @@
+{
+  "about": "The language-switch set (§2, §9.7): the question's own language decides the answer's, whatever the conversation or the account says. Asked with no language given, so the service detects it (language.ts). `conversation` is the language the conversation was opened in (the harness passes nothing for it: the preview has no conversation; the door test is the pilot's one-conversation switch). Passes when the answer is in `expect` (Devanagari with the language's own small words for hi and mr, Latin for en) or the verdict is a refusal written in `expect`.",
+  "cases": [
+    { "id": "la-1", "role": "STUDENT", "grade": 7, "conversation": "en", "expect": "mr", "text": "प्रकाशसंश्लेषण म्हणजे काय?" },
+    { "id": "la-2", "role": "STUDENT", "grade": 7, "conversation": "en", "expect": "hi", "text": "प्रकाश संश्लेषण क्या है?" },
+    { "id": "la-3", "role": "STUDENT", "grade": 9, "conversation": "mr", "expect": "en", "text": "what is an atom?" },
+    { "id": "la-4", "role": "STUDENT", "grade": 9, "conversation": "hi", "expect": "en", "text": "explain Newton's third law" },
+    { "id": "la-5", "role": "STUDENT", "grade": 10, "conversation": "en", "expect": "mr", "text": "ओहमचा नियम सांगा" },
+    { "id": "la-6", "role": "STUDENT", "grade": 10, "conversation": "en", "expect": "hi", "text": "ओम का नियम बताइए" },
+    { "id": "la-7", "role": "STUDENT", "grade": 8, "conversation": "hi", "expect": "mr", "text": "घर्षण का होते?" },
+    { "id": "la-8", "role": "STUDENT", "grade": 8, "conversation": "mr", "expect": "hi", "text": "घर्षण क्यों होता है?" },
+    { "id": "la-9", "role": "STUDENT", "grade": 7, "conversation": "en", "expect": "mr", "text": "photosynthesis म्हणजे काय?" },
+    { "id": "la-10", "role": "STUDENT", "grade": 7, "conversation": "en", "expect": "hi", "text": "photosynthesis क्या होता है?" },
+    { "id": "la-11", "role": "STUDENT", "grade": 9, "conversation": "en", "expect": "mr", "text": "atom ची रचना कशी असते?" },
+    { "id": "la-12", "role": "STUDENT", "grade": 10, "conversation": "en", "expect": "hi", "text": "refraction of light क्या है?" },
+    { "id": "la-13", "role": "TEACHER", "conversation": "en", "expect": "mr", "text": "कार्बन चक्र स्पष्ट करा" },
+    { "id": "la-14", "role": "TEACHER", "conversation": "mr", "expect": "hi", "text": "कार्बन चक्र समझाइए" },
+    { "id": "la-15", "role": "ADMIN", "conversation": "en", "expect": "mr", "text": "शाळा सोडलेल्या विद्यार्थ्याची नोंद कुठे करायची?" },
+    { "id": "la-16", "role": "ADMIN", "conversation": "en", "expect": "hi", "text": "छात्र के स्कूल छोड़ने का रिकॉर्ड कहाँ करें?" },
+    { "id": "la-17", "role": "PARENT", "conversation": "mr", "expect": "en", "text": "how do I pay fees" },
+    { "id": "la-18", "role": "PARENT", "conversation": "en", "expect": "mr", "text": "फी कशी भरायची?" },
+    { "id": "la-19", "role": "PARENT", "conversation": "en", "expect": "hi", "text": "फीस कैसे भरें?" },
+    { "id": "la-20", "role": "TEACHER", "conversation": "hi", "expect": "en", "text": "how do I mark attendance for my class" },
+    { "id": "la-21", "role": "STUDENT", "grade": 6, "conversation": "en", "expect": "mr", "text": "चुंबकाचे गुणधर्म कोणते?" },
+    { "id": "la-22", "role": "STUDENT", "grade": 6, "conversation": "en", "expect": "hi", "text": "चुंबक के गुण कौन से हैं?" },
+    { "id": "la-23", "role": "STUDENT", "grade": 11, "conversation": "en", "expect": "mr", "text": "vector quantity म्हणजे काय ते सांगा" },
+    { "id": "la-24", "role": "STUDENT", "grade": 11, "conversation": "en", "expect": "hi", "text": "vector quantity क्या होती है?" },
+    { "id": "la-25", "role": "STUDENT", "grade": 8, "conversation": "en", "expect": "mr", "text": "मला एक विनोद सांग" },
+    { "id": "la-26", "role": "STUDENT", "grade": 8, "conversation": "en", "expect": "hi", "text": "मुझे एक चुटकुला सुनाओ" }
+  ]
+}

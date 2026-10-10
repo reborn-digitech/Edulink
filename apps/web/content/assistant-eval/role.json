@@ -1,0 +1,11 @@
+{
+  "about": "The role policy set (§8.1): the same topic questions asked by every role. The tutor's four roles (STUDENT, TEACHER, FACULTY, HOD) are answered; every other school role gets the one sentence saying whom the tutor is for (TUTOR_NOT_FOR_ROLE), never a topic answer. EXPERT and RECRUITER have no assistant at all (the doors' NO_SCHOOL, checked in the pilot).",
+  "questions": [
+    { "language": "en", "text": "explain photosynthesis", "grade": 7 },
+    { "language": "en", "text": "what is Newton's third law of motion", "grade": 9 },
+    { "language": "hi", "text": "ओम का नियम क्या है", "grade": 10 },
+    { "language": "mr", "text": "घर्षण म्हणजे काय", "grade": 8 }
+  ],
+  "tutorRoles": ["STUDENT", "TEACHER", "FACULTY", "HOD"],
+  "otherRoles": ["PARENT", "ADMIN", "PRINCIPAL", "DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"]
+}

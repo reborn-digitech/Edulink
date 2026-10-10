@@ -1,0 +1,2005 @@
+{
+ "about": "The platform-help set (docs/plans/assistant.md Phase D): two hundred questions across the fifteen school and college roles, task questions written by hand and page questions from each role's own menu (lib/nav.ts, en, hi and mr labels). Scored on naming the right page (the answer's text names the expected path) and on giving steps (a numbered list or at least two sentences); a help citation of the page is counted beside it.",
+ "cases": [
+  {
+   "id": "he-001",
+   "role": "ADMIN",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I record a pupil's departure",
+   "expect": [
+    "/admin/people"
+   ]
+  },
+  {
+   "id": "he-002",
+   "role": "ADMIN",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I issue a transfer certificate",
+   "expect": [
+    "/admin/certificates"
+   ]
+  },
+  {
+   "id": "he-003",
+   "role": "ADMIN",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I publish report cards",
+   "expect": [
+    "/admin/report-cards"
+   ]
+  },
+  {
+   "id": "he-004",
+   "role": "ADMIN",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I set up an exam series",
+   "expect": [
+    "/admin/exams"
+   ]
+  },
+  {
+   "id": "he-005",
+   "role": "ADMIN",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I send a circular to parents",
+   "expect": [
+    "/admin/circulars"
+   ]
+  },
+  {
+   "id": "he-006",
+   "role": "ADMIN",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I see which families owe fees",
+   "expect": [
+    "/admin/fees"
+   ]
+  },
+  {
+   "id": "he-007",
+   "role": "ADMIN",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I approve someone waiting to join the school",
+   "expect": [
+    "/joins"
+   ]
+  },
+  {
+   "id": "he-008",
+   "role": "ADMIN",
+   "language": "en",
+   "kind": "task",
+   "question": "where can I export the fee ledger to Tally",
+   "expect": [
+    "/admin/fees/tally"
+   ]
+  },
+  {
+   "id": "he-009",
+   "role": "ADMIN",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I arrange a substitute for an absent teacher",
+   "expect": [
+    "/admin/substitutions"
+   ]
+  },
+  {
+   "id": "he-010",
+   "role": "ADMIN",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I prepare the UDISE+ filing",
+   "expect": [
+    "/admin/filings"
+   ]
+  },
+  {
+   "id": "he-011",
+   "role": "ADMIN",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I add a holiday to the school calendar",
+   "expect": [
+    "/admin/calendar"
+   ]
+  },
+  {
+   "id": "he-012",
+   "role": "ADMIN",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I switch a module on or off",
+   "expect": [
+    "/admin/settings"
+   ]
+  },
+  {
+   "id": "he-013",
+   "role": "ADMIN",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I upload the principal's signature for certificates",
+   "expect": [
+    "/admin/signatures"
+   ]
+  },
+  {
+   "id": "he-014",
+   "role": "ADMIN",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I record an incident in school",
+   "expect": [
+    "/admin/incidents"
+   ]
+  },
+  {
+   "id": "he-015",
+   "role": "ADMIN",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I handle admission applications",
+   "expect": [
+    "/admin/admissions"
+   ]
+  },
+  {
+   "id": "he-016",
+   "role": "ADMIN",
+   "language": "en",
+   "kind": "nav",
+   "question": "where do I find the Classes page",
+   "expect": [
+    "/admin/classes"
+   ]
+  },
+  {
+   "id": "he-017",
+   "role": "ADMIN",
+   "language": "en",
+   "kind": "nav",
+   "question": "which page has the Pupil records page",
+   "expect": [
+    "/admin/records"
+   ]
+  },
+  {
+   "id": "he-018",
+   "role": "ADMIN",
+   "language": "en",
+   "kind": "nav",
+   "question": "how do I open the Attendance page",
+   "expect": [
+    "/admin/attendance"
+   ]
+  },
+  {
+   "id": "he-019",
+   "role": "ADMIN",
+   "language": "en",
+   "kind": "nav",
+   "question": "where can I see the Attendance devices page",
+   "expect": [
+    "/admin/attendance-devices"
+   ]
+  },
+  {
+   "id": "he-020",
+   "role": "ADMIN",
+   "language": "en",
+   "kind": "nav",
+   "question": "where do I find the Transport page",
+   "expect": [
+    "/admin/transport"
+   ]
+  },
+  {
+   "id": "he-021",
+   "role": "ADMIN",
+   "language": "en",
+   "kind": "nav",
+   "question": "which page has the Trends page",
+   "expect": [
+    "/principal/trends"
+   ]
+  },
+  {
+   "id": "he-022",
+   "role": "ADMIN",
+   "language": "hi",
+   "kind": "nav",
+   "question": "समय-सारणी कहाँ मिलेगा?",
+   "expect": [
+    "/admin/timetable"
+   ]
+  },
+  {
+   "id": "he-023",
+   "role": "ADMIN",
+   "language": "mr",
+   "kind": "nav",
+   "question": "अभ्यासक्रम कुठे पाहायचे?",
+   "expect": [
+    "/admin/syllabus"
+   ]
+  },
+  {
+   "id": "he-024",
+   "role": "ADMIN",
+   "language": "hi",
+   "kind": "nav",
+   "question": "स्टाफ़ उपस्थिति वाला पेज कहाँ है?",
+   "expect": [
+    "/admin/staff-attendance"
+   ]
+  },
+  {
+   "id": "he-025",
+   "role": "ADMIN",
+   "language": "mr",
+   "kind": "nav",
+   "question": "SMS आणि WhatsApp हे पान कुठे आहे?",
+   "expect": [
+    "/admin/messaging"
+   ]
+  },
+  {
+   "id": "he-026",
+   "role": "ADMIN",
+   "language": "hi",
+   "kind": "nav",
+   "question": "अवकाश कहाँ मिलेगा?",
+   "expect": [
+    "/principal/leave"
+   ]
+  },
+  {
+   "id": "he-027",
+   "role": "ADMIN",
+   "language": "mr",
+   "kind": "nav",
+   "question": "समीक्षा कुठे पाहायचे?",
+   "expect": [
+    "/admin/reviews"
+   ]
+  },
+  {
+   "id": "he-028",
+   "role": "PRINCIPAL",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I approve teachers' leave requests",
+   "expect": [
+    "/principal/leave"
+   ]
+  },
+  {
+   "id": "he-029",
+   "role": "PRINCIPAL",
+   "language": "en",
+   "kind": "task",
+   "question": "where can I see attendance trends over the term",
+   "expect": [
+    "/principal/trends"
+   ]
+  },
+  {
+   "id": "he-030",
+   "role": "PRINCIPAL",
+   "language": "en",
+   "kind": "task",
+   "question": "where are the decisions waiting for me",
+   "expect": [
+    "/principal/decisions"
+   ]
+  },
+  {
+   "id": "he-031",
+   "role": "PRINCIPAL",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I see which staff are present today",
+   "expect": [
+    "/admin/staff-attendance"
+   ]
+  },
+  {
+   "id": "he-032",
+   "role": "PRINCIPAL",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I check the syllabus coverage of classes",
+   "expect": [
+    "/admin/syllabus"
+   ]
+  },
+  {
+   "id": "he-033",
+   "role": "PRINCIPAL",
+   "language": "en",
+   "kind": "nav",
+   "question": "where do I find the Classes page",
+   "expect": [
+    "/principal/classes"
+   ]
+  },
+  {
+   "id": "he-034",
+   "role": "PRINCIPAL",
+   "language": "en",
+   "kind": "nav",
+   "question": "which page has the Exams page",
+   "expect": [
+    "/exams"
+   ]
+  },
+  {
+   "id": "he-035",
+   "role": "PRINCIPAL",
+   "language": "en",
+   "kind": "nav",
+   "question": "how do I open the Certificates page",
+   "expect": [
+    "/admin/certificates"
+   ]
+  },
+  {
+   "id": "he-036",
+   "role": "PRINCIPAL",
+   "language": "en",
+   "kind": "nav",
+   "question": "where can I see the Pupil records page",
+   "expect": [
+    "/admin/records"
+   ]
+  },
+  {
+   "id": "he-037",
+   "role": "PRINCIPAL",
+   "language": "en",
+   "kind": "nav",
+   "question": "where do I find the Admissions page",
+   "expect": [
+    "/admin/admissions"
+   ]
+  },
+  {
+   "id": "he-038",
+   "role": "PRINCIPAL",
+   "language": "hi",
+   "kind": "nav",
+   "question": "समीक्षाएँ कहाँ मिलेगा?",
+   "expect": [
+    "/admin/reviews"
+   ]
+  },
+  {
+   "id": "he-039",
+   "role": "PRINCIPAL",
+   "language": "mr",
+   "kind": "nav",
+   "question": "प्रगतिपुस्तक कुठे पाहायचे?",
+   "expect": [
+    "/admin/report-cards"
+   ]
+  },
+  {
+   "id": "he-040",
+   "role": "PRINCIPAL",
+   "language": "hi",
+   "kind": "nav",
+   "question": "हस्ताक्षर वाला पेज कहाँ है?",
+   "expect": [
+    "/admin/signatures"
+   ]
+  },
+  {
+   "id": "he-041",
+   "role": "PRINCIPAL",
+   "language": "mr",
+   "kind": "nav",
+   "question": "विवरणपत्रे हे पान कुठे आहे?",
+   "expect": [
+    "/admin/filings"
+   ]
+  },
+  {
+   "id": "he-042",
+   "role": "TEACHER",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I mark attendance for my class",
+   "expect": [
+    "/teacher/attendance"
+   ]
+  },
+  {
+   "id": "he-043",
+   "role": "TEACHER",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I set homework for my class",
+   "expect": [
+    "/teacher/assignments"
+   ]
+  },
+  {
+   "id": "he-044",
+   "role": "TEACHER",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I enter exam marks",
+   "expect": [
+    "/teacher/exams"
+   ]
+  },
+  {
+   "id": "he-045",
+   "role": "TEACHER",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I apply for leave",
+   "expect": [
+    "/teacher/leave"
+   ]
+  },
+  {
+   "id": "he-046",
+   "role": "TEACHER",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I check myself in as present",
+   "expect": [
+    "/teacher/attendance/me"
+   ]
+  },
+  {
+   "id": "he-047",
+   "role": "TEACHER",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I book a meeting with parents",
+   "expect": [
+    "/teacher/meetings"
+   ]
+  },
+  {
+   "id": "he-048",
+   "role": "TEACHER",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I write quiz questions for the question bank",
+   "expect": [
+    "/teacher/contributions"
+   ]
+  },
+  {
+   "id": "he-049",
+   "role": "TEACHER",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I record a behaviour incident",
+   "expect": [
+    "/teacher/incidents"
+   ]
+  },
+  {
+   "id": "he-050",
+   "role": "TEACHER",
+   "language": "en",
+   "kind": "nav",
+   "question": "where do I find the Classes page",
+   "expect": [
+    "/teacher/classes"
+   ]
+  },
+  {
+   "id": "he-051",
+   "role": "TEACHER",
+   "language": "en",
+   "kind": "nav",
+   "question": "which page has the Messages page",
+   "expect": [
+    "/remarks"
+   ]
+  },
+  {
+   "id": "he-052",
+   "role": "TEACHER",
+   "language": "en",
+   "kind": "nav",
+   "question": "how do I open the Signatures page",
+   "expect": [
+    "/teacher/signatures"
+   ]
+  },
+  {
+   "id": "he-053",
+   "role": "TEACHER",
+   "language": "en",
+   "kind": "nav",
+   "question": "where can I see the My appraisal page",
+   "expect": [
+    "/teacher/appraisals"
+   ]
+  },
+  {
+   "id": "he-054",
+   "role": "TEACHER",
+   "language": "en",
+   "kind": "nav",
+   "question": "where do I find the Social Media page",
+   "expect": [
+    "/bulletin"
+   ]
+  },
+  {
+   "id": "he-055",
+   "role": "TEACHER",
+   "language": "hi",
+   "kind": "nav",
+   "question": "समय-सारणी कहाँ मिलेगा?",
+   "expect": [
+    "/timetable"
+   ]
+  },
+  {
+   "id": "he-056",
+   "role": "TEACHER",
+   "language": "mr",
+   "kind": "nav",
+   "question": "सराव कुठे पाहायचे?",
+   "expect": [
+    "/teacher/practice"
+   ]
+  },
+  {
+   "id": "he-057",
+   "role": "TEACHER",
+   "language": "hi",
+   "kind": "nav",
+   "question": "मैं वाला पेज कहाँ है?",
+   "expect": [
+    "/teacher/profile"
+   ]
+  },
+  {
+   "id": "he-058",
+   "role": "TEACHER",
+   "language": "mr",
+   "kind": "nav",
+   "question": "सामील होण्याची प्रतीक्षा हे पान कुठे आहे?",
+   "expect": [
+    "/joins"
+   ]
+  },
+  {
+   "id": "he-059",
+   "role": "TEACHER",
+   "language": "hi",
+   "kind": "nav",
+   "question": "विशेषज्ञ कहाँ मिलेगा?",
+   "expect": [
+    "/experts"
+   ]
+  },
+  {
+   "id": "he-060",
+   "role": "TEACHER",
+   "language": "mr",
+   "kind": "nav",
+   "question": "चौकशी कुठे पाहायचे?",
+   "expect": [
+    "/enquiries"
+   ]
+  },
+  {
+   "id": "he-061",
+   "role": "STUDENT",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I see my homework",
+   "expect": [
+    "/student/assignments"
+   ]
+  },
+  {
+   "id": "he-062",
+   "role": "STUDENT",
+   "language": "en",
+   "kind": "task",
+   "question": "where is my timetable",
+   "expect": [
+    "/timetable"
+   ]
+  },
+  {
+   "id": "he-063",
+   "role": "STUDENT",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I practise for a test",
+   "expect": [
+    "/student/practice"
+   ]
+  },
+  {
+   "id": "he-064",
+   "role": "STUDENT",
+   "language": "en",
+   "kind": "task",
+   "question": "where can I see my exam dates",
+   "expect": [
+    "/exams"
+   ]
+  },
+  {
+   "id": "he-065",
+   "role": "STUDENT",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I download my certificate",
+   "expect": [
+    "/student/certificates"
+   ]
+  },
+  {
+   "id": "he-066",
+   "role": "STUDENT",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I see what my family can see about me",
+   "expect": [
+    "/student/consent"
+   ]
+  },
+  {
+   "id": "he-067",
+   "role": "STUDENT",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I see my health card",
+   "expect": [
+    "/student/health"
+   ]
+  },
+  {
+   "id": "he-068",
+   "role": "STUDENT",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I find library books I borrowed",
+   "expect": [
+    "/student/library"
+   ]
+  },
+  {
+   "id": "he-069",
+   "role": "STUDENT",
+   "language": "en",
+   "kind": "nav",
+   "question": "where do I find the Messages page",
+   "expect": [
+    "/remarks"
+   ]
+  },
+  {
+   "id": "he-070",
+   "role": "STUDENT",
+   "language": "en",
+   "kind": "nav",
+   "question": "which page has the Incidents page",
+   "expect": [
+    "/student/incidents"
+   ]
+  },
+  {
+   "id": "he-071",
+   "role": "STUDENT",
+   "language": "en",
+   "kind": "nav",
+   "question": "how do I open the Student council page",
+   "expect": [
+    "/bulletin/council"
+   ]
+  },
+  {
+   "id": "he-072",
+   "role": "STUDENT",
+   "language": "en",
+   "kind": "nav",
+   "question": "where can I see the Sessions page",
+   "expect": [
+    "/sessions"
+   ]
+  },
+  {
+   "id": "he-073",
+   "role": "STUDENT",
+   "language": "en",
+   "kind": "nav",
+   "question": "where do I find the Past years page",
+   "expect": [
+    "/archive"
+   ]
+  },
+  {
+   "id": "he-074",
+   "role": "STUDENT",
+   "language": "en",
+   "kind": "nav",
+   "question": "which page has the Hostel page",
+   "expect": [
+    "/student/hostel"
+   ]
+  },
+  {
+   "id": "he-075",
+   "role": "STUDENT",
+   "language": "hi",
+   "kind": "nav",
+   "question": "फ़ीडबैक कहाँ मिलेगा?",
+   "expect": [
+    "/reviews"
+   ]
+  },
+  {
+   "id": "he-076",
+   "role": "STUDENT",
+   "language": "mr",
+   "kind": "nav",
+   "question": "सोशल मीडिया कुठे पाहायचे?",
+   "expect": [
+    "/bulletin"
+   ]
+  },
+  {
+   "id": "he-077",
+   "role": "STUDENT",
+   "language": "hi",
+   "kind": "nav",
+   "question": "मार्गदर्शन वाला पेज कहाँ है?",
+   "expect": [
+    "/mentoring"
+   ]
+  },
+  {
+   "id": "he-078",
+   "role": "STUDENT",
+   "language": "mr",
+   "kind": "nav",
+   "question": "स्पर्धा हे पान कुठे आहे?",
+   "expect": [
+    "/competitions"
+   ]
+  },
+  {
+   "id": "he-079",
+   "role": "STUDENT",
+   "language": "hi",
+   "kind": "nav",
+   "question": "मैं कहाँ मिलेगा?",
+   "expect": [
+    "/student/profile"
+   ]
+  },
+  {
+   "id": "he-080",
+   "role": "STUDENT",
+   "language": "mr",
+   "kind": "nav",
+   "question": "माझे शैक्षणिक कुठे पाहायचे?",
+   "expect": [
+    "/student/academics"
+   ]
+  },
+  {
+   "id": "he-081",
+   "role": "PARENT",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I pay my child's fees",
+   "expect": [
+    "/parent/fees"
+   ]
+  },
+  {
+   "id": "he-082",
+   "role": "PARENT",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I see my child's attendance",
+   "expect": [
+    "/parent/attendance"
+   ]
+  },
+  {
+   "id": "he-083",
+   "role": "PARENT",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I turn off the assistant for my child",
+   "expect": [
+    "/parent/settings"
+   ]
+  },
+  {
+   "id": "he-084",
+   "role": "PARENT",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I see my child's school bus",
+   "expect": [
+    "/parent/transport"
+   ]
+  },
+  {
+   "id": "he-085",
+   "role": "PARENT",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I request a certificate for my child",
+   "expect": [
+    "/parent/certificates"
+   ]
+  },
+  {
+   "id": "he-086",
+   "role": "PARENT",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I link my second child to my account",
+   "expect": [
+    "/parent/claims"
+   ]
+  },
+  {
+   "id": "he-087",
+   "role": "PARENT",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I see my child's homework",
+   "expect": [
+    "/parent/assignments"
+   ]
+  },
+  {
+   "id": "he-088",
+   "role": "PARENT",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I book a meeting with the teacher",
+   "expect": [
+    "/parent/meetings"
+   ]
+  },
+  {
+   "id": "he-089",
+   "role": "PARENT",
+   "language": "en",
+   "kind": "nav",
+   "question": "where do I find the Exams page",
+   "expect": [
+    "/exams"
+   ]
+  },
+  {
+   "id": "he-090",
+   "role": "PARENT",
+   "language": "en",
+   "kind": "nav",
+   "question": "which page has the Practice page",
+   "expect": [
+    "/parent/practice"
+   ]
+  },
+  {
+   "id": "he-091",
+   "role": "PARENT",
+   "language": "en",
+   "kind": "nav",
+   "question": "how do I open the Health card page",
+   "expect": [
+    "/parent/health"
+   ]
+  },
+  {
+   "id": "he-092",
+   "role": "PARENT",
+   "language": "en",
+   "kind": "nav",
+   "question": "where can I see the Feedback page",
+   "expect": [
+    "/reviews"
+   ]
+  },
+  {
+   "id": "he-093",
+   "role": "PARENT",
+   "language": "en",
+   "kind": "nav",
+   "question": "where do I find the Explore schools page",
+   "expect": [
+    "/explore"
+   ]
+  },
+  {
+   "id": "he-094",
+   "role": "PARENT",
+   "language": "en",
+   "kind": "nav",
+   "question": "which page has the Enquiries page",
+   "expect": [
+    "/enquiries"
+   ]
+  },
+  {
+   "id": "he-095",
+   "role": "PARENT",
+   "language": "hi",
+   "kind": "nav",
+   "question": "संदेश कहाँ मिलेगा?",
+   "expect": [
+    "/remarks"
+   ]
+  },
+  {
+   "id": "he-096",
+   "role": "PARENT",
+   "language": "mr",
+   "kind": "nav",
+   "question": "वेळापत्रक कुठे पाहायचे?",
+   "expect": [
+    "/parent/timetable"
+   ]
+  },
+  {
+   "id": "he-097",
+   "role": "PARENT",
+   "language": "hi",
+   "kind": "nav",
+   "question": "घटनाएँ वाला पेज कहाँ है?",
+   "expect": [
+    "/parent/incidents"
+   ]
+  },
+  {
+   "id": "he-098",
+   "role": "PARENT",
+   "language": "mr",
+   "kind": "nav",
+   "question": "सोशल मीडिया हे पान कुठे आहे?",
+   "expect": [
+    "/bulletin"
+   ]
+  },
+  {
+   "id": "he-099",
+   "role": "PARENT",
+   "language": "hi",
+   "kind": "nav",
+   "question": "आवेदन कहाँ मिलेगा?",
+   "expect": [
+    "/parent/applications"
+   ]
+  },
+  {
+   "id": "he-100",
+   "role": "PARENT",
+   "language": "mr",
+   "kind": "nav",
+   "question": "स्पर्धा कुठे पाहायचे?",
+   "expect": [
+    "/competitions"
+   ]
+  },
+  {
+   "id": "he-101",
+   "role": "PARENT",
+   "language": "hi",
+   "kind": "nav",
+   "question": "सत्र वाला पेज कहाँ है?",
+   "expect": [
+    "/sessions"
+   ]
+  },
+  {
+   "id": "he-102",
+   "role": "PARENT",
+   "language": "mr",
+   "kind": "nav",
+   "question": "ग्रंथालय हे पान कुठे आहे?",
+   "expect": [
+    "/parent/library"
+   ]
+  },
+  {
+   "id": "he-103",
+   "role": "DRIVER",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I see my bus route for today",
+   "expect": [
+    "/driver"
+   ]
+  },
+  {
+   "id": "he-104",
+   "role": "DRIVER",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I apply for leave",
+   "expect": [
+    "/account/leave"
+   ]
+  },
+  {
+   "id": "he-105",
+   "role": "DRIVER",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I mark my own attendance",
+   "expect": [
+    "/account/attendance"
+   ]
+  },
+  {
+   "id": "he-106",
+   "role": "DRIVER",
+   "language": "en",
+   "kind": "nav",
+   "question": "where do I find the Account page",
+   "expect": [
+    "/account"
+   ]
+  },
+  {
+   "id": "he-107",
+   "role": "DRIVER",
+   "language": "hi",
+   "kind": "nav",
+   "question": "ग्लोबल फ़ीड कहाँ मिलेगा?",
+   "expect": [
+    "/bulletin/global"
+   ]
+  },
+  {
+   "id": "he-108",
+   "role": "LIBRARIAN",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I issue a book to a pupil",
+   "expect": [
+    "/library"
+   ]
+  },
+  {
+   "id": "he-109",
+   "role": "LIBRARIAN",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I see overdue books",
+   "expect": [
+    "/library/overdue"
+   ]
+  },
+  {
+   "id": "he-110",
+   "role": "LIBRARIAN",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I add new books to the catalogue",
+   "expect": [
+    "/library/catalogue"
+   ]
+  },
+  {
+   "id": "he-111",
+   "role": "LIBRARIAN",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I collect library fines",
+   "expect": [
+    "/library/fines"
+   ]
+  },
+  {
+   "id": "he-112",
+   "role": "LIBRARIAN",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I run a stock-take of the library",
+   "expect": [
+    "/library/stocktake"
+   ]
+  },
+  {
+   "id": "he-113",
+   "role": "LIBRARIAN",
+   "language": "en",
+   "kind": "nav",
+   "question": "where do I find the Account page",
+   "expect": [
+    "/account"
+   ]
+  },
+  {
+   "id": "he-114",
+   "role": "LIBRARIAN",
+   "language": "en",
+   "kind": "nav",
+   "question": "which page has the Staff attendance page",
+   "expect": [
+    "/account/attendance"
+   ]
+  },
+  {
+   "id": "he-115",
+   "role": "LIBRARIAN",
+   "language": "en",
+   "kind": "nav",
+   "question": "how do I open the Reservations page",
+   "expect": [
+    "/library/reservations"
+   ]
+  },
+  {
+   "id": "he-116",
+   "role": "LIBRARIAN",
+   "language": "en",
+   "kind": "nav",
+   "question": "where can I see the Reading room page",
+   "expect": [
+    "/library/reading-room"
+   ]
+  },
+  {
+   "id": "he-117",
+   "role": "LIBRARIAN",
+   "language": "hi",
+   "kind": "nav",
+   "question": "अवकाश कहाँ मिलेगा?",
+   "expect": [
+    "/account/leave"
+   ]
+  },
+  {
+   "id": "he-118",
+   "role": "LIBRARIAN",
+   "language": "mr",
+   "kind": "nav",
+   "question": "ग्लोबल फीड कुठे पाहायचे?",
+   "expect": [
+    "/bulletin/global"
+   ]
+  },
+  {
+   "id": "he-119",
+   "role": "LIBRARIAN",
+   "language": "hi",
+   "kind": "nav",
+   "question": "रिपोर्ट वाला पेज कहाँ है?",
+   "expect": [
+    "/library/reports"
+   ]
+  },
+  {
+   "id": "he-120",
+   "role": "LIBRARIAN",
+   "language": "mr",
+   "kind": "nav",
+   "question": "महाविद्यालय ग्रंथालय हे पान कुठे आहे?",
+   "expect": [
+    "/library/college"
+   ]
+  },
+  {
+   "id": "he-121",
+   "role": "WARDEN",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I take the hostel roll call",
+   "expect": [
+    "/hostel/rollcall"
+   ]
+  },
+  {
+   "id": "he-122",
+   "role": "WARDEN",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I record a visitor to the hostel",
+   "expect": [
+    "/hostel/visitors"
+   ]
+  },
+  {
+   "id": "he-123",
+   "role": "WARDEN",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I set the mess menu",
+   "expect": [
+    "/hostel/menu"
+   ]
+  },
+  {
+   "id": "he-124",
+   "role": "WARDEN",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I allot rooms to students",
+   "expect": [
+    "/hostel/rooms"
+   ]
+  },
+  {
+   "id": "he-125",
+   "role": "WARDEN",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I approve a hostel leave request",
+   "expect": [
+    "/hostel/leave"
+   ]
+  },
+  {
+   "id": "he-126",
+   "role": "WARDEN",
+   "language": "en",
+   "kind": "nav",
+   "question": "where do I find the Account page",
+   "expect": [
+    "/account"
+   ]
+  },
+  {
+   "id": "he-127",
+   "role": "WARDEN",
+   "language": "en",
+   "kind": "nav",
+   "question": "which page has the Staff attendance page",
+   "expect": [
+    "/account/attendance"
+   ]
+  },
+  {
+   "id": "he-128",
+   "role": "WARDEN",
+   "language": "en",
+   "kind": "nav",
+   "question": "how do I open the Tonight page",
+   "expect": [
+    "/hostel/night"
+   ]
+  },
+  {
+   "id": "he-129",
+   "role": "WARDEN",
+   "language": "en",
+   "kind": "nav",
+   "question": "where can I see the Incidents page",
+   "expect": [
+    "/hostel/incidents"
+   ]
+  },
+  {
+   "id": "he-130",
+   "role": "WARDEN",
+   "language": "hi",
+   "kind": "nav",
+   "question": "अवकाश कहाँ मिलेगा?",
+   "expect": [
+    "/account/leave"
+   ]
+  },
+  {
+   "id": "he-131",
+   "role": "WARDEN",
+   "language": "mr",
+   "kind": "nav",
+   "question": "ग्लोबल फीड कुठे पाहायचे?",
+   "expect": [
+    "/bulletin/global"
+   ]
+  },
+  {
+   "id": "he-132",
+   "role": "WARDEN",
+   "language": "hi",
+   "kind": "nav",
+   "question": "निष्कासन वाला पेज कहाँ है?",
+   "expect": [
+    "/hostel/expulsions"
+   ]
+  },
+  {
+   "id": "he-133",
+   "role": "WARDEN",
+   "language": "mr",
+   "kind": "nav",
+   "question": "पथक, खोल्या आणि आकडे हे पान कुठे आहे?",
+   "expect": [
+    "/hostel/squad"
+   ]
+  },
+  {
+   "id": "he-134",
+   "role": "ALUMNUS",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I find my old classmates",
+   "expect": [
+    "/alumni/directory"
+   ]
+  },
+  {
+   "id": "he-135",
+   "role": "ALUMNUS",
+   "language": "en",
+   "kind": "task",
+   "question": "where can I fill the alumni survey",
+   "expect": [
+    "/alumni/survey"
+   ]
+  },
+  {
+   "id": "he-136",
+   "role": "ALUMNUS",
+   "language": "en",
+   "kind": "task",
+   "question": "where are my papers from the school",
+   "expect": [
+    "/alumni/papers"
+   ]
+  },
+  {
+   "id": "he-137",
+   "role": "ALUMNUS",
+   "language": "en",
+   "kind": "nav",
+   "question": "where do I find the Social Media page",
+   "expect": [
+    "/bulletin"
+   ]
+  },
+  {
+   "id": "he-138",
+   "role": "ALUMNUS",
+   "language": "en",
+   "kind": "nav",
+   "question": "which page has the Account page",
+   "expect": [
+    "/account"
+   ]
+  },
+  {
+   "id": "he-139",
+   "role": "ALUMNUS",
+   "language": "hi",
+   "kind": "nav",
+   "question": "संदेश कहाँ मिलेगा?",
+   "expect": [
+    "/remarks"
+   ]
+  },
+  {
+   "id": "he-140",
+   "role": "ALUMNUS",
+   "language": "mr",
+   "kind": "nav",
+   "question": "तुमचे महाविद्यालय कुठे पाहायचे?",
+   "expect": [
+    "/alumni/college"
+   ]
+  },
+  {
+   "id": "he-141",
+   "role": "FACULTY",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I see my exam duties",
+   "expect": [
+    "/faculty/exams"
+   ]
+  },
+  {
+   "id": "he-142",
+   "role": "FACULTY",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I set homework for my students",
+   "expect": [
+    "/faculty/work"
+   ]
+  },
+  {
+   "id": "he-143",
+   "role": "FACULTY",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I record my research papers",
+   "expect": [
+    "/faculty/research"
+   ]
+  },
+  {
+   "id": "he-144",
+   "role": "FACULTY",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I edit my public page",
+   "expect": [
+    "/faculty/profile"
+   ]
+  },
+  {
+   "id": "he-145",
+   "role": "FACULTY",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I review my students' project work",
+   "expect": [
+    "/faculty/supervision"
+   ]
+  },
+  {
+   "id": "he-146",
+   "role": "FACULTY",
+   "language": "en",
+   "kind": "nav",
+   "question": "where do I find the Messages page",
+   "expect": [
+    "/remarks"
+   ]
+  },
+  {
+   "id": "he-147",
+   "role": "FACULTY",
+   "language": "en",
+   "kind": "nav",
+   "question": "which page has the Account page",
+   "expect": [
+    "/account"
+   ]
+  },
+  {
+   "id": "he-148",
+   "role": "FACULTY",
+   "language": "en",
+   "kind": "nav",
+   "question": "how do I open the Staff attendance page",
+   "expect": [
+    "/account/attendance"
+   ]
+  },
+  {
+   "id": "he-149",
+   "role": "FACULTY",
+   "language": "en",
+   "kind": "nav",
+   "question": "where can I see the My appraisal page",
+   "expect": [
+    "/teacher/appraisals"
+   ]
+  },
+  {
+   "id": "he-150",
+   "role": "FACULTY",
+   "language": "hi",
+   "kind": "nav",
+   "question": "सोशल मीडिया कहाँ मिलेगा?",
+   "expect": [
+    "/bulletin"
+   ]
+  },
+  {
+   "id": "he-151",
+   "role": "FACULTY",
+   "language": "mr",
+   "kind": "nav",
+   "question": "रजा कुठे पाहायचे?",
+   "expect": [
+    "/account/leave"
+   ]
+  },
+  {
+   "id": "he-152",
+   "role": "FACULTY",
+   "language": "hi",
+   "kind": "nav",
+   "question": "मेरे पत्र वाला पेज कहाँ है?",
+   "expect": [
+    "/account/letters"
+   ]
+  },
+  {
+   "id": "he-153",
+   "role": "FACULTY",
+   "language": "mr",
+   "kind": "nav",
+   "question": "ई-संसाधने हे पान कुठे आहे?",
+   "expect": [
+    "/library/e-resources"
+   ]
+  },
+  {
+   "id": "he-154",
+   "role": "HOD",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I see my department's overview",
+   "expect": [
+    "/hod"
+   ]
+  },
+  {
+   "id": "he-155",
+   "role": "HOD",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I manage projects and internships",
+   "expect": [
+    "/hod/projects"
+   ]
+  },
+  {
+   "id": "he-156",
+   "role": "HOD",
+   "language": "en",
+   "kind": "task",
+   "question": "where is the department's research record",
+   "expect": [
+    "/hod/research"
+   ]
+  },
+  {
+   "id": "he-157",
+   "role": "HOD",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I prepare for a peer-team visit",
+   "expect": [
+    "/hod/visits"
+   ]
+  },
+  {
+   "id": "he-158",
+   "role": "HOD",
+   "language": "en",
+   "kind": "nav",
+   "question": "where do I find the Messages page",
+   "expect": [
+    "/remarks"
+   ]
+  },
+  {
+   "id": "he-159",
+   "role": "HOD",
+   "language": "en",
+   "kind": "nav",
+   "question": "which page has the Account page",
+   "expect": [
+    "/account"
+   ]
+  },
+  {
+   "id": "he-160",
+   "role": "HOD",
+   "language": "en",
+   "kind": "nav",
+   "question": "how do I open the Staff attendance page",
+   "expect": [
+    "/account/attendance"
+   ]
+  },
+  {
+   "id": "he-161",
+   "role": "HOD",
+   "language": "hi",
+   "kind": "nav",
+   "question": "सोशल मीडिया कहाँ मिलेगा?",
+   "expect": [
+    "/bulletin"
+   ]
+  },
+  {
+   "id": "he-162",
+   "role": "HOD",
+   "language": "mr",
+   "kind": "nav",
+   "question": "रजा कुठे पाहायचे?",
+   "expect": [
+    "/account/leave"
+   ]
+  },
+  {
+   "id": "he-163",
+   "role": "HOD",
+   "language": "hi",
+   "kind": "nav",
+   "question": "मेरे पत्र वाला पेज कहाँ है?",
+   "expect": [
+    "/account/letters"
+   ]
+  },
+  {
+   "id": "he-164",
+   "role": "HOD",
+   "language": "mr",
+   "kind": "nav",
+   "question": "परीक्षा जबाबदाऱ्या हे पान कुठे आहे?",
+   "expect": [
+    "/faculty/exams"
+   ]
+  },
+  {
+   "id": "he-165",
+   "role": "EXAM_CONTROLLER",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I schedule the exam session",
+   "expect": [
+    "/exam-cell"
+   ]
+  },
+  {
+   "id": "he-166",
+   "role": "EXAM_CONTROLLER",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I organise the exam flying squad",
+   "expect": [
+    "/duties/exam-squad"
+   ]
+  },
+  {
+   "id": "he-167",
+   "role": "EXAM_CONTROLLER",
+   "language": "en",
+   "kind": "nav",
+   "question": "where do I find the Messages page",
+   "expect": [
+    "/remarks"
+   ]
+  },
+  {
+   "id": "he-168",
+   "role": "EXAM_CONTROLLER",
+   "language": "en",
+   "kind": "nav",
+   "question": "which page has the Account page",
+   "expect": [
+    "/account"
+   ]
+  },
+  {
+   "id": "he-169",
+   "role": "EXAM_CONTROLLER",
+   "language": "hi",
+   "kind": "nav",
+   "question": "सोशल मीडिया कहाँ मिलेगा?",
+   "expect": [
+    "/bulletin"
+   ]
+  },
+  {
+   "id": "he-170",
+   "role": "EXAM_CONTROLLER",
+   "language": "mr",
+   "kind": "nav",
+   "question": "रजा कुठे पाहायचे?",
+   "expect": [
+    "/account/leave"
+   ]
+  },
+  {
+   "id": "he-171",
+   "role": "IQAC",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I see the NAAC predictor",
+   "expect": [
+    "/iqac/predictor"
+   ]
+  },
+  {
+   "id": "he-172",
+   "role": "IQAC",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I run a student feedback survey",
+   "expect": [
+    "/iqac/surveys"
+   ]
+  },
+  {
+   "id": "he-173",
+   "role": "IQAC",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I see grievances",
+   "expect": [
+    "/iqac/grievances"
+   ]
+  },
+  {
+   "id": "he-174",
+   "role": "IQAC",
+   "language": "en",
+   "kind": "nav",
+   "question": "where do I find the Messages page",
+   "expect": [
+    "/remarks"
+   ]
+  },
+  {
+   "id": "he-175",
+   "role": "IQAC",
+   "language": "en",
+   "kind": "nav",
+   "question": "which page has the Account page",
+   "expect": [
+    "/account"
+   ]
+  },
+  {
+   "id": "he-176",
+   "role": "IQAC",
+   "language": "en",
+   "kind": "nav",
+   "question": "how do I open the Staff attendance page",
+   "expect": [
+    "/account/attendance"
+   ]
+  },
+  {
+   "id": "he-177",
+   "role": "IQAC",
+   "language": "en",
+   "kind": "nav",
+   "question": "where can I see the Placement table page",
+   "expect": [
+    "/placement/analytics"
+   ]
+  },
+  {
+   "id": "he-178",
+   "role": "IQAC",
+   "language": "hi",
+   "kind": "nav",
+   "question": "सोशल मीडिया कहाँ मिलेगा?",
+   "expect": [
+    "/bulletin"
+   ]
+  },
+  {
+   "id": "he-179",
+   "role": "IQAC",
+   "language": "mr",
+   "kind": "nav",
+   "question": "रजा कुठे पाहायचे?",
+   "expect": [
+    "/account/leave"
+   ]
+  },
+  {
+   "id": "he-180",
+   "role": "TPO",
+   "language": "en",
+   "kind": "task",
+   "question": "how do I add a placement drive",
+   "expect": [
+    "/placement/drives"
+   ]
+  },
+  {
+   "id": "he-181",
+   "role": "TPO",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I add a company that is recruiting",
+   "expect": [
+    "/placement/companies"
+   ]
+  },
+  {
+   "id": "he-182",
+   "role": "TPO",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I see the placement table",
+   "expect": [
+    "/placement/analytics"
+   ]
+  },
+  {
+   "id": "he-183",
+   "role": "TPO",
+   "language": "en",
+   "kind": "nav",
+   "question": "where do I find the Messages page",
+   "expect": [
+    "/remarks"
+   ]
+  },
+  {
+   "id": "he-184",
+   "role": "TPO",
+   "language": "en",
+   "kind": "nav",
+   "question": "which page has the Account page",
+   "expect": [
+    "/account"
+   ]
+  },
+  {
+   "id": "he-185",
+   "role": "TPO",
+   "language": "en",
+   "kind": "nav",
+   "question": "how do I open the Staff attendance page",
+   "expect": [
+    "/account/attendance"
+   ]
+  },
+  {
+   "id": "he-186",
+   "role": "TPO",
+   "language": "en",
+   "kind": "nav",
+   "question": "where can I see the Students page",
+   "expect": [
+    "/placement/students"
+   ]
+  },
+  {
+   "id": "he-187",
+   "role": "TPO",
+   "language": "hi",
+   "kind": "nav",
+   "question": "सोशल मीडिया कहाँ मिलेगा?",
+   "expect": [
+    "/bulletin"
+   ]
+  },
+  {
+   "id": "he-188",
+   "role": "TPO",
+   "language": "mr",
+   "kind": "nav",
+   "question": "रजा कुठे पाहायचे?",
+   "expect": [
+    "/account/leave"
+   ]
+  },
+  {
+   "id": "he-189",
+   "role": "ACCOUNTS",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I set the fee structures",
+   "expect": [
+    "/accounts/structures"
+   ]
+  },
+  {
+   "id": "he-190",
+   "role": "ACCOUNTS",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I give a fee concession",
+   "expect": [
+    "/accounts/concessions"
+   ]
+  },
+  {
+   "id": "he-191",
+   "role": "ACCOUNTS",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I issue a no-dues certificate",
+   "expect": [
+    "/accounts/no-dues"
+   ]
+  },
+  {
+   "id": "he-192",
+   "role": "ACCOUNTS",
+   "language": "en",
+   "kind": "task",
+   "question": "where do I manage scholarships",
+   "expect": [
+    "/accounts/scholarships"
+   ]
+  },
+  {
+   "id": "he-193",
+   "role": "ACCOUNTS",
+   "language": "en",
+   "kind": "nav",
+   "question": "where do I find the Messages page",
+   "expect": [
+    "/remarks"
+   ]
+  },
+  {
+   "id": "he-194",
+   "role": "ACCOUNTS",
+   "language": "en",
+   "kind": "nav",
+   "question": "which page has the Account page",
+   "expect": [
+    "/account"
+   ]
+  },
+  {
+   "id": "he-195",
+   "role": "ACCOUNTS",
+   "language": "en",
+   "kind": "nav",
+   "question": "how do I open the Staff attendance page",
+   "expect": [
+    "/account/attendance"
+   ]
+  },
+  {
+   "id": "he-196",
+   "role": "ACCOUNTS",
+   "language": "en",
+   "kind": "nav",
+   "question": "where can I see the A student's account page",
+   "expect": [
+    "/accounts/students"
+   ]
+  },
+  {
+   "id": "he-197",
+   "role": "ACCOUNTS",
+   "language": "hi",
+   "kind": "nav",
+   "question": "सोशल मीडिया कहाँ मिलेगा?",
+   "expect": [
+    "/bulletin"
+   ]
+  },
+  {
+   "id": "he-198",
+   "role": "ACCOUNTS",
+   "language": "mr",
+   "kind": "nav",
+   "question": "रजा कुठे पाहायचे?",
+   "expect": [
+    "/account/leave"
+   ]
+  },
+  {
+   "id": "he-199",
+   "role": "ACCOUNTS",
+   "language": "hi",
+   "kind": "nav",
+   "question": "मेरे पत्र वाला पेज कहाँ है?",
+   "expect": [
+    "/account/letters"
+   ]
+  },
+  {
+   "id": "he-200",
+   "role": "ACCOUNTS",
+   "language": "mr",
+   "kind": "nav",
+   "question": "शुल्क खातेवही हे पान कुठे आहे?",
+   "expect": [
+    "/admin/fees"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,3197 @@
+{
+ "about": "The tutor set (docs/plans/assistant.md Phase D): two hundred topic questions across the boards (NCERT for CBSE, Balbharati for MSBSHSE, NIOS), the grade bands (1–5, 6–8, 9–10, 11–12), the colleges and teachers, in en, hi and mr. Scored for correctness (keywords: at least half of `keywords` in an English answer; for hi and mr at least one of `keywords` or `localKeywords`), the citation (at least one, every cited chunk exists, a pupil's citations within two classes of the pupil's own) and the template's scale (questionShape: a definition short, an explanation with its check question, a why with reasons, all within their word limits). Correctness by keyword is a proxy; the Hindi and Marathi answers go to a speaker (R-14).",
+ "cases": [
+  {
+   "id": "tu-001",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 3,
+   "language": "en",
+   "question": "what do plants need to grow",
+   "keywords": [
+    "sunlight",
+    "water",
+    "air",
+    "soil"
+   ]
+  },
+  {
+   "id": "tu-002",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 3,
+   "language": "en",
+   "question": "why do birds build nests",
+   "keywords": [
+    "eggs",
+    "young",
+    "safe",
+    "protect"
+   ]
+  },
+  {
+   "id": "tu-003",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 4,
+   "language": "en",
+   "question": "what is a food chain",
+   "keywords": [
+    "plants",
+    "eat",
+    "animals",
+    "energy"
+   ]
+  },
+  {
+   "id": "tu-004",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 4,
+   "language": "en",
+   "question": "explain how water is cleaned before we drink it",
+   "keywords": [
+    "boil",
+    "filter",
+    "clean",
+    "germs"
+   ]
+  },
+  {
+   "id": "tu-005",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 4,
+   "language": "en",
+   "question": "what is the meaning of migration of birds",
+   "keywords": [
+    "birds",
+    "travel",
+    "winter",
+    "places"
+   ]
+  },
+  {
+   "id": "tu-006",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 5,
+   "language": "en",
+   "question": "why do we see lightning before we hear thunder",
+   "keywords": [
+    "light",
+    "sound",
+    "faster",
+    "travel"
+   ]
+  },
+  {
+   "id": "tu-007",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 5,
+   "language": "en",
+   "question": "explain how seeds are dispersed",
+   "keywords": [
+    "wind",
+    "water",
+    "animals",
+    "seeds"
+   ]
+  },
+  {
+   "id": "tu-008",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 5,
+   "language": "en",
+   "question": "what is evaporation",
+   "keywords": [
+    "water",
+    "vapour",
+    "heat",
+    "sun"
+   ]
+  },
+  {
+   "id": "tu-009",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 5,
+   "language": "en",
+   "question": "what is a lever",
+   "keywords": [
+    "fulcrum",
+    "load",
+    "effort"
+   ]
+  },
+  {
+   "id": "tu-010",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 3,
+   "language": "en",
+   "question": "what are the parts of a plant",
+   "keywords": [
+    "root",
+    "stem",
+    "leaf",
+    "flower"
+   ]
+  },
+  {
+   "id": "tu-011",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 4,
+   "language": "en",
+   "question": "why should we not waste water",
+   "keywords": [
+    "water",
+    "save",
+    "scarce",
+    "use"
+   ]
+  },
+  {
+   "id": "tu-012",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 5,
+   "language": "en",
+   "question": "explain why some things float and some sink",
+   "keywords": [
+    "float",
+    "sink",
+    "water",
+    "heavy"
+   ]
+  },
+  {
+   "id": "tu-013",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 5,
+   "language": "hi",
+   "question": "वाष्पीकरण क्या है",
+   "keywords": [
+    "evaporation",
+    "water",
+    "vapour"
+   ],
+   "localKeywords": [
+    "पानी",
+    "भाप",
+    "वाष्प"
+   ]
+  },
+  {
+   "id": "tu-014",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 4,
+   "language": "hi",
+   "question": "खाद्य श्रृंखला क्या होती है",
+   "keywords": [
+    "food chain",
+    "plant"
+   ],
+   "localKeywords": [
+    "पौधे",
+    "जानवर",
+    "भोजन"
+   ]
+  },
+  {
+   "id": "tu-015",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 5,
+   "language": "hi",
+   "question": "पौधों को बढ़ने के लिए क्या चाहिए",
+   "keywords": [
+    "sunlight",
+    "water"
+   ],
+   "localKeywords": [
+    "धूप",
+    "पानी",
+    "हवा",
+    "मिट्टी"
+   ]
+  },
+  {
+   "id": "tu-016",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 3,
+   "language": "hi",
+   "question": "पक्षी घोंसला क्यों बनाते हैं",
+   "keywords": [
+    "nest",
+    "eggs"
+   ],
+   "localKeywords": [
+    "अंडे",
+    "घोंसला",
+    "सुरक्षित"
+   ]
+  },
+  {
+   "id": "tu-017",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 5,
+   "language": "mr",
+   "question": "बाष्पीभवन म्हणजे काय",
+   "keywords": [
+    "evaporation",
+    "water",
+    "vapour"
+   ],
+   "localKeywords": [
+    "पाणी",
+    "वाफ",
+    "बाष्प"
+   ]
+  },
+  {
+   "id": "tu-018",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 4,
+   "language": "mr",
+   "question": "अन्नसाखळी म्हणजे काय",
+   "keywords": [
+    "food chain",
+    "plants"
+   ],
+   "localKeywords": [
+    "वनस्पती",
+    "प्राणी",
+    "अन्न"
+   ]
+  },
+  {
+   "id": "tu-019",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 5,
+   "language": "mr",
+   "question": "बिया कशा पसरतात ते समजावून सांगा",
+   "keywords": [
+    "seed",
+    "wind",
+    "water"
+   ],
+   "localKeywords": [
+    "वारा",
+    "पाणी",
+    "प्राणी",
+    "बिया"
+   ]
+  },
+  {
+   "id": "tu-020",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 3,
+   "language": "mr",
+   "question": "वनस्पतीचे भाग कोणते",
+   "keywords": [
+    "root",
+    "stem",
+    "leaf"
+   ],
+   "localKeywords": [
+    "मूळ",
+    "खोड",
+    "पान",
+    "फूल"
+   ]
+  },
+  {
+   "id": "tu-021",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 6,
+   "language": "en",
+   "question": "what is a magnet",
+   "keywords": [
+    "iron",
+    "attract",
+    "poles",
+    "north"
+   ]
+  },
+  {
+   "id": "tu-022",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 6,
+   "language": "en",
+   "question": "explain the difference between conductors and insulators",
+   "keywords": [
+    "electricity",
+    "conductor",
+    "insulator",
+    "current"
+   ]
+  },
+  {
+   "id": "tu-023",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 6,
+   "language": "en",
+   "question": "what are the components of food",
+   "keywords": [
+    "carbohydrates",
+    "proteins",
+    "fats",
+    "vitamins"
+   ]
+  },
+  {
+   "id": "tu-024",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 7,
+   "language": "en",
+   "question": "explain photosynthesis",
+   "keywords": [
+    "chlorophyll",
+    "sunlight",
+    "carbon dioxide",
+    "glucose"
+   ]
+  },
+  {
+   "id": "tu-025",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 7,
+   "language": "en",
+   "question": "what is the difference between acids and bases",
+   "keywords": [
+    "acid",
+    "base",
+    "litmus",
+    "sour"
+   ]
+  },
+  {
+   "id": "tu-026",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 7,
+   "language": "en",
+   "question": "why do we sweat",
+   "keywords": [
+    "sweat",
+    "cool",
+    "body",
+    "evaporat"
+   ]
+  },
+  {
+   "id": "tu-027",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 7,
+   "language": "en",
+   "question": "define speed",
+   "keywords": [
+    "distance",
+    "time",
+    "speed"
+   ]
+  },
+  {
+   "id": "tu-028",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 7,
+   "language": "en",
+   "question": "what is respiration in plants",
+   "keywords": [
+    "oxygen",
+    "glucose",
+    "energy",
+    "carbon dioxide"
+   ]
+  },
+  {
+   "id": "tu-029",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 8,
+   "language": "en",
+   "question": "explain friction",
+   "keywords": [
+    "friction",
+    "surface",
+    "motion",
+    "oppos"
+   ]
+  },
+  {
+   "id": "tu-030",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 8,
+   "language": "en",
+   "question": "what is a microorganism",
+   "keywords": [
+    "microscope",
+    "bacteria",
+    "fungi",
+    "virus"
+   ]
+  },
+  {
+   "id": "tu-031",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 8,
+   "language": "en",
+   "question": "why is the sky blue",
+   "keywords": [
+    "scatter",
+    "light",
+    "blue",
+    "atmosphere"
+   ]
+  },
+  {
+   "id": "tu-032",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 8,
+   "language": "en",
+   "question": "define pressure",
+   "keywords": [
+    "force",
+    "area",
+    "pressure"
+   ]
+  },
+  {
+   "id": "tu-033",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 8,
+   "language": "en",
+   "question": "explain how sound travels",
+   "keywords": [
+    "vibrat",
+    "medium",
+    "air",
+    "sound"
+   ]
+  },
+  {
+   "id": "tu-034",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 6,
+   "language": "en",
+   "question": "what is the water cycle",
+   "keywords": [
+    "evaporation",
+    "condensation",
+    "rain",
+    "clouds"
+   ]
+  },
+  {
+   "id": "tu-035",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 7,
+   "language": "en",
+   "question": "what is the Mughal empire",
+   "keywords": [
+    "Akbar",
+    "Babur",
+    "Mughal",
+    "emperor"
+   ]
+  },
+  {
+   "id": "tu-036",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 8,
+   "language": "en",
+   "question": "what is the Constitution of India",
+   "keywords": [
+    "constitution",
+    "rights",
+    "laws",
+    "government"
+   ]
+  },
+  {
+   "id": "tu-037",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 6,
+   "language": "en",
+   "question": "what is latitude",
+   "keywords": [
+    "equator",
+    "degree",
+    "north",
+    "south"
+   ]
+  },
+  {
+   "id": "tu-038",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 7,
+   "language": "en",
+   "question": "explain the parts of the human digestive system",
+   "keywords": [
+    "stomach",
+    "intestine",
+    "mouth",
+    "liver"
+   ]
+  },
+  {
+   "id": "tu-039",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 8,
+   "language": "en",
+   "question": "what is a cell",
+   "keywords": [
+    "cell",
+    "nucleus",
+    "membrane",
+    "cytoplasm"
+   ]
+  },
+  {
+   "id": "tu-040",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 6,
+   "language": "en",
+   "question": "explain fractions",
+   "keywords": [
+    "numerator",
+    "denominator",
+    "part",
+    "whole"
+   ]
+  },
+  {
+   "id": "tu-041",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 7,
+   "language": "hi",
+   "question": "प्रकाश संश्लेषण समझाइए",
+   "keywords": [
+    "photosynthesis",
+    "chlorophyll"
+   ],
+   "localKeywords": [
+    "क्लोरोफिल",
+    "सूर्य",
+    "प्रकाश",
+    "भोजन"
+   ]
+  },
+  {
+   "id": "tu-042",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 8,
+   "language": "hi",
+   "question": "घर्षण क्या है",
+   "keywords": [
+    "friction"
+   ],
+   "localKeywords": [
+    "घर्षण",
+    "सतह",
+    "गति"
+   ]
+  },
+  {
+   "id": "tu-043",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 6,
+   "language": "hi",
+   "question": "चुंबक क्या होता है",
+   "keywords": [
+    "magnet",
+    "iron"
+   ],
+   "localKeywords": [
+    "चुंबक",
+    "लोहा",
+    "ध्रुव"
+   ]
+  },
+  {
+   "id": "tu-044",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 8,
+   "language": "hi",
+   "question": "आकाश नीला क्यों दिखता है",
+   "keywords": [
+    "scatter",
+    "light"
+   ],
+   "localKeywords": [
+    "प्रकाश",
+    "प्रकीर्णन",
+    "नीला"
+   ]
+  },
+  {
+   "id": "tu-045",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 7,
+   "language": "hi",
+   "question": "अम्ल और क्षार में क्या अंतर है",
+   "keywords": [
+    "acid",
+    "base"
+   ],
+   "localKeywords": [
+    "अम्ल",
+    "क्षार",
+    "लिटमस"
+   ]
+  },
+  {
+   "id": "tu-046",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 8,
+   "language": "mr",
+   "question": "घर्षण म्हणजे काय",
+   "keywords": [
+    "friction"
+   ],
+   "localKeywords": [
+    "घर्षण",
+    "पृष्ठभाग",
+    "गती"
+   ]
+  },
+  {
+   "id": "tu-047",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 7,
+   "language": "mr",
+   "question": "प्रकाशसंश्लेषण समजावून सांगा",
+   "keywords": [
+    "photosynthesis",
+    "chlorophyll"
+   ],
+   "localKeywords": [
+    "हरितद्रव्य",
+    "सूर्यप्रकाश",
+    "अन्न"
+   ]
+  },
+  {
+   "id": "tu-048",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 6,
+   "language": "mr",
+   "question": "चुंबक म्हणजे काय",
+   "keywords": [
+    "magnet",
+    "iron"
+   ],
+   "localKeywords": [
+    "चुंबक",
+    "लोखंड",
+    "ध्रुव"
+   ]
+  },
+  {
+   "id": "tu-049",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 8,
+   "language": "mr",
+   "question": "आवाज कसा प्रवास करतो ते स्पष्ट करा",
+   "keywords": [
+    "sound",
+    "vibration"
+   ],
+   "localKeywords": [
+    "कंपन",
+    "ध्वनी",
+    "हवा"
+   ]
+  },
+  {
+   "id": "tu-050",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 7,
+   "language": "mr",
+   "question": "आम्ल आणि आम्लारी यांत फरक काय",
+   "keywords": [
+    "acid",
+    "base"
+   ],
+   "localKeywords": [
+    "आम्ल",
+    "आम्लारी",
+    "लिटमस"
+   ]
+  },
+  {
+   "id": "tu-051",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 9,
+   "language": "en",
+   "question": "explain Newton's third law of motion",
+   "keywords": [
+    "action",
+    "reaction",
+    "equal",
+    "opposite"
+   ]
+  },
+  {
+   "id": "tu-052",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 9,
+   "language": "en",
+   "question": "what is an atom",
+   "keywords": [
+    "atom",
+    "electron",
+    "proton",
+    "nucleus"
+   ]
+  },
+  {
+   "id": "tu-053",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 9,
+   "language": "en",
+   "question": "define work in physics",
+   "keywords": [
+    "force",
+    "displacement",
+    "work"
+   ]
+  },
+  {
+   "id": "tu-054",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 9,
+   "language": "en",
+   "question": "why do objects fall towards the earth",
+   "keywords": [
+    "gravit",
+    "force",
+    "earth",
+    "mass"
+   ]
+  },
+  {
+   "id": "tu-055",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 9,
+   "language": "en",
+   "question": "what is the difference between mass and weight",
+   "keywords": [
+    "mass",
+    "weight",
+    "gravity",
+    "kilogram"
+   ]
+  },
+  {
+   "id": "tu-056",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 9,
+   "language": "en",
+   "question": "explain the structure of a cell membrane",
+   "keywords": [
+    "membrane",
+    "cell",
+    "permeable"
+   ]
+  },
+  {
+   "id": "tu-057",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 10,
+   "language": "en",
+   "question": "explain Ohm's law",
+   "keywords": [
+    "current",
+    "voltage",
+    "resistance",
+    "proportional"
+   ]
+  },
+  {
+   "id": "tu-058",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 10,
+   "language": "en",
+   "question": "what is refraction of light",
+   "keywords": [
+    "light",
+    "bend",
+    "medium",
+    "refract"
+   ]
+  },
+  {
+   "id": "tu-059",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 10,
+   "language": "en",
+   "question": "why does a pencil look bent in water",
+   "keywords": [
+    "refraction",
+    "light",
+    "bend",
+    "water"
+   ]
+  },
+  {
+   "id": "tu-060",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 10,
+   "language": "en",
+   "question": "what is a chemical reaction",
+   "keywords": [
+    "reactant",
+    "product",
+    "chemical",
+    "change"
+   ]
+  },
+  {
+   "id": "tu-061",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 10,
+   "language": "en",
+   "question": "explain the human heart",
+   "keywords": [
+    "heart",
+    "blood",
+    "ventricle",
+    "atrium"
+   ]
+  },
+  {
+   "id": "tu-062",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 10,
+   "language": "en",
+   "question": "define a quadratic equation",
+   "keywords": [
+    "quadratic",
+    "degree",
+    "equation",
+    "ax"
+   ]
+  },
+  {
+   "id": "tu-063",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 10,
+   "language": "en",
+   "question": "what is the Pythagoras theorem",
+   "keywords": [
+    "hypotenuse",
+    "square",
+    "right",
+    "triangle"
+   ]
+  },
+  {
+   "id": "tu-064",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 10,
+   "language": "en",
+   "question": "explain heredity",
+   "keywords": [
+    "gene",
+    "trait",
+    "parent",
+    "inherit"
+   ]
+  },
+  {
+   "id": "tu-065",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 9,
+   "language": "en",
+   "question": "what was the French Revolution",
+   "keywords": [
+    "France",
+    "revolution",
+    "1789",
+    "monarchy"
+   ]
+  },
+  {
+   "id": "tu-066",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 10,
+   "language": "en",
+   "question": "explain nationalism in India",
+   "keywords": [
+    "nationalism",
+    "Gandhi",
+    "movement",
+    "India"
+   ]
+  },
+  {
+   "id": "tu-067",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 9,
+   "language": "en",
+   "question": "what is democracy",
+   "keywords": [
+    "democracy",
+    "elect",
+    "people",
+    "government"
+   ]
+  },
+  {
+   "id": "tu-068",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 10,
+   "language": "en",
+   "question": "why are resources important",
+   "keywords": [
+    "resources",
+    "use",
+    "development",
+    "sustainable"
+   ]
+  },
+  {
+   "id": "tu-069",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 9,
+   "language": "en",
+   "question": "define velocity",
+   "keywords": [
+    "displacement",
+    "time",
+    "velocity",
+    "direction"
+   ]
+  },
+  {
+   "id": "tu-070",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 10,
+   "language": "en",
+   "question": "what is a balanced chemical equation",
+   "keywords": [
+    "atoms",
+    "equal",
+    "reactants",
+    "products"
+   ]
+  },
+  {
+   "id": "tu-071",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 9,
+   "language": "hi",
+   "question": "न्यूटन का गति का तीसरा नियम समझाइए",
+   "keywords": [
+    "action",
+    "reaction"
+   ],
+   "localKeywords": [
+    "क्रिया",
+    "प्रतिक्रिया",
+    "बराबर"
+   ]
+  },
+  {
+   "id": "tu-072",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 10,
+   "language": "hi",
+   "question": "ओम का नियम क्या है",
+   "keywords": [
+    "Ohm",
+    "current",
+    "resistance"
+   ],
+   "localKeywords": [
+    "धारा",
+    "प्रतिरोध",
+    "विभवांतर"
+   ]
+  },
+  {
+   "id": "tu-073",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 10,
+   "language": "hi",
+   "question": "प्रकाश का अपवर्तन क्या है",
+   "keywords": [
+    "refraction",
+    "light"
+   ],
+   "localKeywords": [
+    "अपवर्तन",
+    "प्रकाश",
+    "माध्यम"
+   ]
+  },
+  {
+   "id": "tu-074",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 9,
+   "language": "hi",
+   "question": "परमाणु क्या है",
+   "keywords": [
+    "atom",
+    "electron"
+   ],
+   "localKeywords": [
+    "परमाणु",
+    "इलेक्ट्रॉन",
+    "नाभिक"
+   ]
+  },
+  {
+   "id": "tu-075",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 10,
+   "language": "hi",
+   "question": "पाइथागोरस प्रमेय क्या है",
+   "keywords": [
+    "hypotenuse",
+    "triangle"
+   ],
+   "localKeywords": [
+    "कर्ण",
+    "त्रिभुज",
+    "वर्ग"
+   ]
+  },
+  {
+   "id": "tu-076",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 9,
+   "language": "mr",
+   "question": "न्यूटनचा गतीविषयक तिसरा नियम स्पष्ट करा",
+   "keywords": [
+    "action",
+    "reaction"
+   ],
+   "localKeywords": [
+    "क्रिया",
+    "प्रतिक्रिया",
+    "समान"
+   ]
+  },
+  {
+   "id": "tu-077",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 10,
+   "language": "mr",
+   "question": "ओहमचा नियम काय आहे",
+   "keywords": [
+    "Ohm",
+    "current",
+    "resistance"
+   ],
+   "localKeywords": [
+    "विद्युतधारा",
+    "रोध",
+    "विभवांतर"
+   ]
+  },
+  {
+   "id": "tu-078",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 10,
+   "language": "mr",
+   "question": "प्रकाशाचे अपवर्तन म्हणजे काय",
+   "keywords": [
+    "refraction",
+    "light"
+   ],
+   "localKeywords": [
+    "अपवर्तन",
+    "प्रकाश",
+    "माध्यम"
+   ]
+  },
+  {
+   "id": "tu-079",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 9,
+   "language": "mr",
+   "question": "अणू म्हणजे काय",
+   "keywords": [
+    "atom",
+    "electron"
+   ],
+   "localKeywords": [
+    "अणू",
+    "इलेक्ट्रॉन",
+    "केंद्रक"
+   ]
+  },
+  {
+   "id": "tu-080",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 10,
+   "language": "mr",
+   "question": "आनुवंशिकता म्हणजे काय",
+   "keywords": [
+    "heredity",
+    "gene"
+   ],
+   "localKeywords": [
+    "आनुवंशिकता",
+    "गुणधर्म",
+    "पालक"
+   ]
+  },
+  {
+   "id": "tu-081",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 11,
+   "language": "en",
+   "question": "explain the first law of thermodynamics",
+   "keywords": [
+    "energy",
+    "heat",
+    "work",
+    "internal"
+   ]
+  },
+  {
+   "id": "tu-082",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 11,
+   "language": "en",
+   "question": "what is a vector quantity",
+   "keywords": [
+    "magnitude",
+    "direction",
+    "vector"
+   ]
+  },
+  {
+   "id": "tu-083",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 11,
+   "language": "en",
+   "question": "define a set in mathematics",
+   "keywords": [
+    "collection",
+    "elements",
+    "well-defined",
+    "set"
+   ]
+  },
+  {
+   "id": "tu-084",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 11,
+   "language": "en",
+   "question": "explain the structure of DNA",
+   "keywords": [
+    "double helix",
+    "nucleotide",
+    "base",
+    "strand"
+   ]
+  },
+  {
+   "id": "tu-085",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 11,
+   "language": "en",
+   "question": "what is hybridisation in chemistry",
+   "keywords": [
+    "orbital",
+    "hybrid",
+    "sp",
+    "bond"
+   ]
+  },
+  {
+   "id": "tu-086",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 11,
+   "language": "en",
+   "question": "explain the law of demand",
+   "keywords": [
+    "price",
+    "quantity",
+    "demand",
+    "inverse"
+   ]
+  },
+  {
+   "id": "tu-087",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 11,
+   "language": "en",
+   "question": "why is the cell called the unit of life",
+   "keywords": [
+    "cell",
+    "unit",
+    "life",
+    "structural"
+   ]
+  },
+  {
+   "id": "tu-088",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 11,
+   "language": "en",
+   "question": "what is projectile motion",
+   "keywords": [
+    "projectile",
+    "horizontal",
+    "vertical",
+    "trajectory"
+   ]
+  },
+  {
+   "id": "tu-089",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 12,
+   "language": "en",
+   "question": "explain electromagnetic induction",
+   "keywords": [
+    "flux",
+    "induced",
+    "emf",
+    "Faraday"
+   ]
+  },
+  {
+   "id": "tu-090",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 12,
+   "language": "en",
+   "question": "what is a derivative",
+   "keywords": [
+    "rate",
+    "change",
+    "limit",
+    "derivative"
+   ]
+  },
+  {
+   "id": "tu-091",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 12,
+   "language": "en",
+   "question": "define electric potential",
+   "keywords": [
+    "work",
+    "charge",
+    "potential",
+    "volt"
+   ]
+  },
+  {
+   "id": "tu-092",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 12,
+   "language": "en",
+   "question": "explain the process of transcription",
+   "keywords": [
+    "RNA",
+    "DNA",
+    "polymerase",
+    "transcription"
+   ]
+  },
+  {
+   "id": "tu-093",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 12,
+   "language": "en",
+   "question": "what is a p-n junction diode",
+   "keywords": [
+    "semiconductor",
+    "junction",
+    "forward",
+    "bias"
+   ]
+  },
+  {
+   "id": "tu-094",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 12,
+   "language": "en",
+   "question": "explain Mendel's law of segregation",
+   "keywords": [
+    "allele",
+    "gamete",
+    "segregat",
+    "Mendel"
+   ]
+  },
+  {
+   "id": "tu-095",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 12,
+   "language": "en",
+   "question": "what is national income",
+   "keywords": [
+    "income",
+    "GDP",
+    "national",
+    "goods"
+   ]
+  },
+  {
+   "id": "tu-096",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 12,
+   "language": "en",
+   "question": "why do coordination compounds show colour",
+   "keywords": [
+    "d-orbital",
+    "ligand",
+    "colour",
+    "splitting"
+   ]
+  },
+  {
+   "id": "tu-097",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 12,
+   "language": "en",
+   "question": "define a matrix",
+   "keywords": [
+    "rows",
+    "columns",
+    "array",
+    "matrix"
+   ]
+  },
+  {
+   "id": "tu-098",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 11,
+   "language": "en",
+   "question": "what is the Harappan civilisation",
+   "keywords": [
+    "Harappa",
+    "Indus",
+    "cities",
+    "Mohenjodaro"
+   ]
+  },
+  {
+   "id": "tu-099",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 12,
+   "language": "en",
+   "question": "explain the principle of a transformer",
+   "keywords": [
+    "coil",
+    "induction",
+    "voltage",
+    "primary"
+   ]
+  },
+  {
+   "id": "tu-100",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 11,
+   "language": "en",
+   "question": "what is accounting",
+   "keywords": [
+    "record",
+    "transactions",
+    "financial",
+    "business"
+   ]
+  },
+  {
+   "id": "tu-101",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 11,
+   "language": "hi",
+   "question": "ऊष्मागतिकी का पहला नियम समझाइए",
+   "keywords": [
+    "thermodynamics",
+    "energy"
+   ],
+   "localKeywords": [
+    "ऊर्जा",
+    "ऊष्मा",
+    "कार्य"
+   ]
+  },
+  {
+   "id": "tu-102",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 12,
+   "language": "hi",
+   "question": "विद्युत चुंबकीय प्रेरण क्या है",
+   "keywords": [
+    "induction",
+    "flux"
+   ],
+   "localKeywords": [
+    "प्रेरण",
+    "फ्लक्स",
+    "धारा"
+   ]
+  },
+  {
+   "id": "tu-103",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 11,
+   "language": "hi",
+   "question": "सदिश राशि क्या है",
+   "keywords": [
+    "vector",
+    "direction"
+   ],
+   "localKeywords": [
+    "सदिश",
+    "दिशा",
+    "परिमाण"
+   ]
+  },
+  {
+   "id": "tu-104",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 12,
+   "language": "hi",
+   "question": "अवकलज क्या है",
+   "keywords": [
+    "derivative",
+    "rate"
+   ],
+   "localKeywords": [
+    "अवकलज",
+    "परिवर्तन",
+    "दर"
+   ]
+  },
+  {
+   "id": "tu-105",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 11,
+   "language": "hi",
+   "question": "मांग का नियम क्या है",
+   "keywords": [
+    "demand",
+    "price"
+   ],
+   "localKeywords": [
+    "मांग",
+    "कीमत",
+    "मात्रा"
+   ]
+  },
+  {
+   "id": "tu-106",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 11,
+   "language": "mr",
+   "question": "ऊष्मागतिकीचा पहिला नियम स्पष्ट करा",
+   "keywords": [
+    "thermodynamics",
+    "energy"
+   ],
+   "localKeywords": [
+    "ऊर्जा",
+    "उष्णता",
+    "कार्य"
+   ]
+  },
+  {
+   "id": "tu-107",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 12,
+   "language": "mr",
+   "question": "विद्युतचुंबकीय प्रवर्तन म्हणजे काय",
+   "keywords": [
+    "induction",
+    "flux"
+   ],
+   "localKeywords": [
+    "प्रवर्तन",
+    "धारा",
+    "चुंबकीय"
+   ]
+  },
+  {
+   "id": "tu-108",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 11,
+   "language": "mr",
+   "question": "सदिश राशी म्हणजे काय",
+   "keywords": [
+    "vector",
+    "direction"
+   ],
+   "localKeywords": [
+    "सदिश",
+    "दिशा",
+    "परिमाण"
+   ]
+  },
+  {
+   "id": "tu-109",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 12,
+   "language": "mr",
+   "question": "DNA ची रचना समजावून सांगा",
+   "keywords": [
+    "DNA",
+    "helix"
+   ],
+   "localKeywords": [
+    "डीएनए",
+    "सर्पिल",
+    "न्यूक्लिओटाइड"
+   ]
+  },
+  {
+   "id": "tu-110",
+   "role": "STUDENT",
+   "board": "CBSE",
+   "college": false,
+   "grade": 11,
+   "language": "mr",
+   "question": "मागणीचा नियम काय आहे",
+   "keywords": [
+    "demand",
+    "price"
+   ],
+   "localKeywords": [
+    "मागणी",
+    "किंमत",
+    "प्रमाण"
+   ]
+  },
+  {
+   "id": "tu-111",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 3,
+   "language": "en",
+   "question": "what are the seasons",
+   "keywords": [
+    "summer",
+    "winter",
+    "rain",
+    "monsoon"
+   ]
+  },
+  {
+   "id": "tu-112",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 4,
+   "language": "en",
+   "question": "explain why we need a balanced diet",
+   "keywords": [
+    "nutrients",
+    "food",
+    "health",
+    "balanced"
+   ]
+  },
+  {
+   "id": "tu-113",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 4,
+   "language": "en",
+   "question": "what is the meaning of community helpers",
+   "keywords": [
+    "help",
+    "people",
+    "community",
+    "work"
+   ]
+  },
+  {
+   "id": "tu-114",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 5,
+   "language": "en",
+   "question": "what is the solar system",
+   "keywords": [
+    "sun",
+    "planets",
+    "orbit",
+    "earth"
+   ]
+  },
+  {
+   "id": "tu-115",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 5,
+   "language": "en",
+   "question": "why do we celebrate festivals together",
+   "keywords": [
+    "festival",
+    "together",
+    "community",
+    "celebrat"
+   ]
+  },
+  {
+   "id": "tu-116",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 3,
+   "language": "en",
+   "question": "what is a map",
+   "keywords": [
+    "map",
+    "direction",
+    "place",
+    "symbol"
+   ]
+  },
+  {
+   "id": "tu-117",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 5,
+   "language": "en",
+   "question": "explain the parts of a flower",
+   "keywords": [
+    "petal",
+    "sepal",
+    "stamen",
+    "pistil"
+   ]
+  },
+  {
+   "id": "tu-118",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 4,
+   "language": "en",
+   "question": "what is soil erosion",
+   "keywords": [
+    "soil",
+    "water",
+    "wind",
+    "erosion"
+   ]
+  },
+  {
+   "id": "tu-119",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 5,
+   "language": "mr",
+   "question": "सूर्यमाला म्हणजे काय",
+   "keywords": [
+    "solar system",
+    "planets"
+   ],
+   "localKeywords": [
+    "सूर्य",
+    "ग्रह",
+    "पृथ्वी"
+   ]
+  },
+  {
+   "id": "tu-120",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 4,
+   "language": "mr",
+   "question": "समतोल आहार का आवश्यक आहे",
+   "keywords": [
+    "balanced diet",
+    "nutrients"
+   ],
+   "localKeywords": [
+    "आहार",
+    "पोषक",
+    "आरोग्य"
+   ]
+  },
+  {
+   "id": "tu-121",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 6,
+   "language": "en",
+   "question": "what is the Earth's rotation",
+   "keywords": [
+    "rotation",
+    "axis",
+    "day",
+    "night"
+   ]
+  },
+  {
+   "id": "tu-122",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 6,
+   "language": "en",
+   "question": "explain the Indus valley civilisation",
+   "keywords": [
+    "Harappa",
+    "Indus",
+    "cities"
+   ]
+  },
+  {
+   "id": "tu-123",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 7,
+   "language": "en",
+   "question": "what is Shivaji Maharaj known for",
+   "keywords": [
+    "Shivaji",
+    "Swarajya",
+    "forts",
+    "Maratha"
+   ]
+  },
+  {
+   "id": "tu-124",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 7,
+   "language": "en",
+   "question": "define an angle",
+   "keywords": [
+    "rays",
+    "vertex",
+    "angle",
+    "degree"
+   ]
+  },
+  {
+   "id": "tu-125",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 7,
+   "language": "en",
+   "question": "what are the local self-government bodies",
+   "keywords": [
+    "gram panchayat",
+    "municipal",
+    "local",
+    "self-government"
+   ]
+  },
+  {
+   "id": "tu-126",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 8,
+   "language": "en",
+   "question": "explain the structure of the atom",
+   "keywords": [
+    "proton",
+    "electron",
+    "neutron",
+    "nucleus"
+   ]
+  },
+  {
+   "id": "tu-127",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 8,
+   "language": "en",
+   "question": "what is the Parliament",
+   "keywords": [
+    "Lok Sabha",
+    "Rajya Sabha",
+    "Parliament",
+    "laws"
+   ]
+  },
+  {
+   "id": "tu-128",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 8,
+   "language": "en",
+   "question": "why do earthquakes happen",
+   "keywords": [
+    "plates",
+    "crust",
+    "earthquake",
+    "energy"
+   ]
+  },
+  {
+   "id": "tu-129",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 6,
+   "language": "en",
+   "question": "what is a ratio",
+   "keywords": [
+    "ratio",
+    "compare",
+    "quantities"
+   ]
+  },
+  {
+   "id": "tu-130",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 8,
+   "language": "en",
+   "question": "explain the water cycle",
+   "keywords": [
+    "evaporation",
+    "condensation",
+    "precipitation"
+   ]
+  },
+  {
+   "id": "tu-131",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 7,
+   "language": "mr",
+   "question": "शिवाजी महाराज कशासाठी ओळखले जातात",
+   "keywords": [
+    "Shivaji",
+    "Swarajya"
+   ],
+   "localKeywords": [
+    "स्वराज्य",
+    "किल्ले",
+    "मराठा"
+   ]
+  },
+  {
+   "id": "tu-132",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 8,
+   "language": "mr",
+   "question": "भूकंप का होतात",
+   "keywords": [
+    "earthquake",
+    "plates"
+   ],
+   "localKeywords": [
+    "भूकंप",
+    "भूपट्ट",
+    "ऊर्जा"
+   ]
+  },
+  {
+   "id": "tu-133",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 6,
+   "language": "mr",
+   "question": "पृथ्वीचे परिवलन म्हणजे काय",
+   "keywords": [
+    "rotation",
+    "axis"
+   ],
+   "localKeywords": [
+    "परिवलन",
+    "अक्ष",
+    "दिवस",
+    "रात्र"
+   ]
+  },
+  {
+   "id": "tu-134",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 7,
+   "language": "mr",
+   "question": "कोन म्हणजे काय",
+   "keywords": [
+    "angle",
+    "vertex"
+   ],
+   "localKeywords": [
+    "कोन",
+    "किरण",
+    "शिरोबिंदू"
+   ]
+  },
+  {
+   "id": "tu-135",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 8,
+   "language": "hi",
+   "question": "संसद क्या है",
+   "keywords": [
+    "Parliament",
+    "Lok Sabha"
+   ],
+   "localKeywords": [
+    "संसद",
+    "लोकसभा",
+    "राज्यसभा",
+    "कानून"
+   ]
+  },
+  {
+   "id": "tu-136",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 9,
+   "language": "en",
+   "question": "what is the gravitational force",
+   "keywords": [
+    "gravit",
+    "mass",
+    "force",
+    "distance"
+   ]
+  },
+  {
+   "id": "tu-137",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 9,
+   "language": "en",
+   "question": "explain the classification of plants",
+   "keywords": [
+    "plants",
+    "kingdom",
+    "classification",
+    "flowering"
+   ]
+  },
+  {
+   "id": "tu-138",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 10,
+   "language": "en",
+   "question": "what is a carbon compound",
+   "keywords": [
+    "carbon",
+    "covalent",
+    "bond",
+    "compound"
+   ]
+  },
+  {
+   "id": "tu-139",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 10,
+   "language": "en",
+   "question": "explain heat and its effects",
+   "keywords": [
+    "heat",
+    "temperature",
+    "expansion",
+    "transfer"
+   ]
+  },
+  {
+   "id": "tu-140",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 10,
+   "language": "en",
+   "question": "why is biodiversity important",
+   "keywords": [
+    "biodiversity",
+    "species",
+    "ecosystem"
+   ]
+  },
+  {
+   "id": "tu-141",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 9,
+   "language": "en",
+   "question": "what is environmental management",
+   "keywords": [
+    "environment",
+    "management",
+    "conservation"
+   ]
+  },
+  {
+   "id": "tu-142",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 10,
+   "language": "mr",
+   "question": "जैवविविधता का महत्त्वाची आहे",
+   "keywords": [
+    "biodiversity",
+    "species"
+   ],
+   "localKeywords": [
+    "जैवविविधता",
+    "प्रजाती",
+    "परिसंस्था"
+   ]
+  },
+  {
+   "id": "tu-143",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 9,
+   "language": "mr",
+   "question": "गुरुत्वाकर्षण बल म्हणजे काय",
+   "keywords": [
+    "gravitation",
+    "force"
+   ],
+   "localKeywords": [
+    "गुरुत्वाकर्षण",
+    "वस्तुमान",
+    "बल"
+   ]
+  },
+  {
+   "id": "tu-144",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 10,
+   "language": "hi",
+   "question": "कार्बन यौगिक क्या हैं",
+   "keywords": [
+    "carbon",
+    "compound"
+   ],
+   "localKeywords": [
+    "कार्बन",
+    "यौगिक",
+    "बंध"
+   ]
+  },
+  {
+   "id": "tu-145",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 9,
+   "language": "hi",
+   "question": "गुरुत्वाकर्षण बल क्या है",
+   "keywords": [
+    "gravitation",
+    "force"
+   ],
+   "localKeywords": [
+    "गुरुत्वाकर्षण",
+    "द्रव्यमान",
+    "बल"
+   ]
+  },
+  {
+   "id": "tu-146",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 11,
+   "language": "en",
+   "question": "explain the laws of chemical combination",
+   "keywords": [
+    "mass",
+    "proportion",
+    "conservation",
+    "law"
+   ]
+  },
+  {
+   "id": "tu-147",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 12,
+   "language": "en",
+   "question": "what is a cooperative society",
+   "keywords": [
+    "cooperative",
+    "members",
+    "society",
+    "service"
+   ]
+  },
+  {
+   "id": "tu-148",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 11,
+   "language": "en",
+   "question": "what is psychology",
+   "keywords": [
+    "behaviour",
+    "mind",
+    "psychology",
+    "study"
+   ]
+  },
+  {
+   "id": "tu-149",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 12,
+   "language": "en",
+   "question": "explain the concept of partnership in accounts",
+   "keywords": [
+    "partner",
+    "profit",
+    "firm",
+    "deed"
+   ]
+  },
+  {
+   "id": "tu-150",
+   "role": "STUDENT",
+   "board": "MSBSHSE",
+   "college": false,
+   "grade": 11,
+   "language": "mr",
+   "question": "मानसशास्त्र म्हणजे काय",
+   "keywords": [
+    "psychology",
+    "behaviour"
+   ],
+   "localKeywords": [
+    "मानसशास्त्र",
+    "वर्तन",
+    "मन"
+   ]
+  },
+  {
+   "id": "tu-151",
+   "role": "STUDENT",
+   "board": "NIOS",
+   "college": false,
+   "grade": 10,
+   "language": "en",
+   "question": "what is pollution",
+   "keywords": [
+    "pollution",
+    "air",
+    "water",
+    "harmful"
+   ]
+  },
+  {
+   "id": "tu-152",
+   "role": "STUDENT",
+   "board": "NIOS",
+   "college": false,
+   "grade": 10,
+   "language": "en",
+   "question": "explain the structure of the earth",
+   "keywords": [
+    "crust",
+    "mantle",
+    "core"
+   ]
+  },
+  {
+   "id": "tu-153",
+   "role": "STUDENT",
+   "board": "NIOS",
+   "college": false,
+   "grade": 10,
+   "language": "en",
+   "question": "what is a linear equation",
+   "keywords": [
+    "linear",
+    "variable",
+    "equation",
+    "degree"
+   ]
+  },
+  {
+   "id": "tu-154",
+   "role": "STUDENT",
+   "board": "NIOS",
+   "college": false,
+   "grade": 10,
+   "language": "en",
+   "question": "why do we need a government",
+   "keywords": [
+    "government",
+    "law",
+    "order",
+    "people"
+   ]
+  },
+  {
+   "id": "tu-155",
+   "role": "STUDENT",
+   "board": "NIOS",
+   "college": false,
+   "grade": 9,
+   "language": "en",
+   "question": "define nutrition",
+   "keywords": [
+    "food",
+    "nutrients",
+    "body",
+    "nutrition"
+   ]
+  },
+  {
+   "id": "tu-156",
+   "role": "STUDENT",
+   "board": "NIOS",
+   "college": false,
+   "grade": 10,
+   "language": "hi",
+   "question": "प्रदूषण क्या है",
+   "keywords": [
+    "pollution",
+    "air"
+   ],
+   "localKeywords": [
+    "प्रदूषण",
+    "हवा",
+    "पानी"
+   ]
+  },
+  {
+   "id": "tu-157",
+   "role": "STUDENT",
+   "board": "NIOS",
+   "college": false,
+   "grade": 10,
+   "language": "hi",
+   "question": "पृथ्वी की आंतरिक संरचना समझाइए",
+   "keywords": [
+    "crust",
+    "mantle",
+    "core"
+   ],
+   "localKeywords": [
+    "भूपर्पटी",
+    "मेंटल",
+    "क्रोड"
+   ]
+  },
+  {
+   "id": "tu-158",
+   "role": "STUDENT",
+   "board": "NIOS",
+   "college": false,
+   "grade": 10,
+   "language": "mr",
+   "question": "प्रदूषण म्हणजे काय",
+   "keywords": [
+    "pollution",
+    "air"
+   ],
+   "localKeywords": [
+    "प्रदूषण",
+    "हवा",
+    "पाणी"
+   ]
+  },
+  {
+   "id": "tu-159",
+   "role": "STUDENT",
+   "board": "NIOS",
+   "college": false,
+   "grade": 9,
+   "language": "mr",
+   "question": "पोषण म्हणजे काय",
+   "keywords": [
+    "nutrition",
+    "food"
+   ],
+   "localKeywords": [
+    "पोषण",
+    "अन्न",
+    "शरीर"
+   ]
+  },
+  {
+   "id": "tu-160",
+   "role": "STUDENT",
+   "board": "NIOS",
+   "college": false,
+   "grade": 10,
+   "language": "en",
+   "question": "what is a democracy",
+   "keywords": [
+    "democracy",
+    "people",
+    "elect"
+   ]
+  },
+  {
+   "id": "tu-161",
+   "role": "STUDENT",
+   "board": "NIOS",
+   "college": false,
+   "grade": 12,
+   "language": "en",
+   "question": "explain the principle of double entry",
+   "keywords": [
+    "debit",
+    "credit",
+    "account",
+    "double"
+   ]
+  },
+  {
+   "id": "tu-162",
+   "role": "STUDENT",
+   "board": "NIOS",
+   "college": false,
+   "grade": 12,
+   "language": "en",
+   "question": "what is sociology",
+   "keywords": [
+    "society",
+    "social",
+    "study",
+    "sociology"
+   ]
+  },
+  {
+   "id": "tu-163",
+   "role": "STUDENT",
+   "board": "NIOS",
+   "college": false,
+   "grade": 12,
+   "language": "en",
+   "question": "define elasticity of demand",
+   "keywords": [
+    "elasticity",
+    "price",
+    "demand",
+    "change"
+   ]
+  },
+  {
+   "id": "tu-164",
+   "role": "STUDENT",
+   "board": "NIOS",
+   "college": false,
+   "grade": 11,
+   "language": "en",
+   "question": "what is home science",
+   "keywords": [
+    "home",
+    "family",
+    "nutrition",
+    "science"
+   ]
+  },
+  {
+   "id": "tu-165",
+   "role": "STUDENT",
+   "board": "NIOS",
+   "college": false,
+   "grade": 12,
+   "language": "en",
+   "question": "explain mass communication",
+   "keywords": [
+    "media",
+    "communication",
+    "audience",
+    "mass"
+   ]
+  },
+  {
+   "id": "tu-166",
+   "role": "STUDENT",
+   "board": "NIOS",
+   "college": false,
+   "grade": 11,
+   "language": "en",
+   "question": "what is an electrolyte",
+   "keywords": [
+    "ion",
+    "solution",
+    "conduct",
+    "electrolyte"
+   ]
+  },
+  {
+   "id": "tu-167",
+   "role": "STUDENT",
+   "board": "NIOS",
+   "college": false,
+   "grade": 12,
+   "language": "en",
+   "question": "why do we study psychology",
+   "keywords": [
+    "behaviour",
+    "mind",
+    "psychology"
+   ]
+  },
+  {
+   "id": "tu-168",
+   "role": "STUDENT",
+   "board": "NIOS",
+   "college": false,
+   "grade": 12,
+   "language": "hi",
+   "question": "समाजशास्त्र क्या है",
+   "keywords": [
+    "sociology",
+    "society"
+   ],
+   "localKeywords": [
+    "समाज",
+    "समाजशास्त्र",
+    "अध्ययन"
+   ]
+  },
+  {
+   "id": "tu-169",
+   "role": "STUDENT",
+   "board": "NIOS",
+   "college": false,
+   "grade": 11,
+   "language": "mr",
+   "question": "विद्युत अपघटनी म्हणजे काय",
+   "keywords": [
+    "electrolyte",
+    "ion"
+   ],
+   "localKeywords": [
+    "आयन",
+    "द्रावण",
+    "विद्युत"
+   ]
+  },
+  {
+   "id": "tu-170",
+   "role": "STUDENT",
+   "board": "NIOS",
+   "college": false,
+   "grade": 12,
+   "language": "hi",
+   "question": "दोहरी प्रविष्टि का सिद्धांत समझाइए",
+   "keywords": [
+    "double entry",
+    "debit",
+    "credit"
+   ],
+   "localKeywords": [
+    "नाम",
+    "जमा",
+    "खाता"
+   ]
+  },
+  {
+   "id": "tu-171",
+   "role": "STUDENT",
+   "board": null,
+   "college": true,
+   "grade": null,
+   "language": "en",
+   "question": "explain the time value of money",
+   "keywords": [
+    "interest",
+    "present value",
+    "future",
+    "money"
+   ]
+  },
+  {
+   "id": "tu-172",
+   "role": "STUDENT",
+   "board": null,
+   "college": true,
+   "grade": null,
+   "language": "en",
+   "question": "what is a stack data structure",
+   "keywords": [
+    "LIFO",
+    "push",
+    "pop",
+    "stack"
+   ]
+  },
+  {
+   "id": "tu-173",
+   "role": "STUDENT",
+   "board": null,
+   "college": true,
+   "grade": null,
+   "language": "en",
+   "question": "explain the bioavailability of a drug",
+   "keywords": [
+    "absorption",
+    "drug",
+    "systemic",
+    "bioavailability"
+   ]
+  },
+  {
+   "id": "tu-174",
+   "role": "STUDENT",
+   "board": null,
+   "college": true,
+   "grade": null,
+   "language": "en",
+   "question": "what is a tort in law",
+   "keywords": [
+    "civil",
+    "wrong",
+    "damages",
+    "tort"
+   ]
+  },
+  {
+   "id": "tu-175",
+   "role": "STUDENT",
+   "board": null,
+   "college": true,
+   "grade": null,
+   "language": "en",
+   "question": "define soil fertility",
+   "keywords": [
+    "nutrients",
+    "soil",
+    "plants",
+    "fertility"
+   ]
+  },
+  {
+   "id": "tu-176",
+   "role": "STUDENT",
+   "board": null,
+   "college": true,
+   "grade": null,
+   "language": "en",
+   "question": "explain the marketing mix",
+   "keywords": [
+    "product",
+    "price",
+    "place",
+    "promotion"
+   ]
+  },
+  {
+   "id": "tu-177",
+   "role": "STUDENT",
+   "board": null,
+   "college": true,
+   "grade": null,
+   "language": "en",
+   "question": "what is an operating system",
+   "keywords": [
+    "process",
+    "memory",
+    "hardware",
+    "operating system"
+   ]
+  },
+  {
+   "id": "tu-178",
+   "role": "STUDENT",
+   "board": null,
+   "college": true,
+   "grade": null,
+   "language": "en",
+   "question": "explain Bloom's taxonomy",
+   "keywords": [
+    "cognitive",
+    "knowledge",
+    "evaluation",
+    "taxonomy"
+   ]
+  },
+  {
+   "id": "tu-179",
+   "role": "STUDENT",
+   "board": null,
+   "college": true,
+   "grade": null,
+   "language": "en",
+   "question": "what is the bending moment of a beam",
+   "keywords": [
+    "beam",
+    "moment",
+    "load",
+    "bending"
+   ]
+  },
+  {
+   "id": "tu-180",
+   "role": "STUDENT",
+   "board": null,
+   "college": true,
+   "grade": null,
+   "language": "en",
+   "question": "explain photosynthesis in C4 plants",
+   "keywords": [
+    "C4",
+    "carbon",
+    "mesophyll",
+    "bundle sheath"
+   ]
+  },
+  {
+   "id": "tu-181",
+   "role": "STUDENT",
+   "board": null,
+   "college": true,
+   "grade": null,
+   "language": "en",
+   "question": "what is the GST",
+   "keywords": [
+    "goods",
+    "services",
+    "tax",
+    "GST"
+   ]
+  },
+  {
+   "id": "tu-182",
+   "role": "STUDENT",
+   "board": null,
+   "college": true,
+   "grade": null,
+   "language": "en",
+   "question": "define pharmacology",
+   "keywords": [
+    "drug",
+    "body",
+    "pharmacology",
+    "action"
+   ]
+  },
+  {
+   "id": "tu-183",
+   "role": "STUDENT",
+   "board": null,
+   "college": true,
+   "grade": null,
+   "language": "en",
+   "question": "explain the fundamental rights under the Indian Constitution",
+   "keywords": [
+    "equality",
+    "freedom",
+    "rights",
+    "constitution"
+   ]
+  },
+  {
+   "id": "tu-184",
+   "role": "STUDENT",
+   "board": null,
+   "college": true,
+   "grade": null,
+   "language": "en",
+   "question": "what is a balance sheet",
+   "keywords": [
+    "assets",
+    "liabilities",
+    "capital",
+    "balance sheet"
+   ]
+  },
+  {
+   "id": "tu-185",
+   "role": "STUDENT",
+   "board": null,
+   "college": true,
+   "grade": null,
+   "language": "en",
+   "question": "explain the principles of design in architecture",
+   "keywords": [
+    "balance",
+    "proportion",
+    "rhythm",
+    "design"
+   ]
+  },
+  {
+   "id": "tu-186",
+   "role": "STUDENT",
+   "board": null,
+   "college": true,
+   "grade": null,
+   "language": "hi",
+   "question": "मुद्रा का समय मूल्य समझाइए",
+   "keywords": [
+    "time value",
+    "interest"
+   ],
+   "localKeywords": [
+    "ब्याज",
+    "मूल्य",
+    "धन"
+   ]
+  },
+  {
+   "id": "tu-187",
+   "role": "STUDENT",
+   "board": null,
+   "college": true,
+   "grade": null,
+   "language": "hi",
+   "question": "मौलिक अधिकार क्या हैं",
+   "keywords": [
+    "fundamental rights",
+    "equality"
+   ],
+   "localKeywords": [
+    "समानता",
+    "स्वतंत्रता",
+    "अधिकार"
+   ]
+  },
+  {
+   "id": "tu-188",
+   "role": "STUDENT",
+   "board": null,
+   "college": true,
+   "grade": null,
+   "language": "mr",
+   "question": "मृदा सुपीकता म्हणजे काय",
+   "keywords": [
+    "soil fertility",
+    "nutrients"
+   ],
+   "localKeywords": [
+    "माती",
+    "पोषक",
+    "सुपीकता"
+   ]
+  },
+  {
+   "id": "tu-189",
+   "role": "STUDENT",
+   "board": null,
+   "college": true,
+   "grade": null,
+   "language": "mr",
+   "question": "ताळेबंद म्हणजे काय",
+   "keywords": [
+    "balance sheet",
+    "assets"
+   ],
+   "localKeywords": [
+    "मालमत्ता",
+    "देणी",
+    "भांडवल"
+   ]
+  },
+  {
+   "id": "tu-190",
+   "role": "STUDENT",
+   "board": null,
+   "college": true,
+   "grade": null,
+   "language": "mr",
+   "question": "विपणन मिश्रण स्पष्ट करा",
+   "keywords": [
+    "marketing mix",
+    "product"
+   ],
+   "localKeywords": [
+    "उत्पादन",
+    "किंमत",
+    "जाहिरात"
+   ]
+  },
+  {
+   "id": "tu-191",
+   "role": "TEACHER",
+   "board": null,
+   "college": false,
+   "grade": null,
+   "language": "en",
+   "question": "how is the concept of fractions usually taught to class 4",
+   "keywords": [
+    "fraction",
+    "part",
+    "whole",
+    "equal"
+   ]
+  },
+  {
+   "id": "tu-192",
+   "role": "TEACHER",
+   "board": null,
+   "college": false,
+   "grade": null,
+   "language": "en",
+   "question": "explain the carbon cycle for my class 9 lesson",
+   "keywords": [
+    "carbon",
+    "photosynthesis",
+    "respiration",
+    "cycle"
+   ]
+  },
+  {
+   "id": "tu-193",
+   "role": "TEACHER",
+   "board": null,
+   "college": false,
+   "grade": null,
+   "language": "en",
+   "question": "what is the difference between speed and velocity",
+   "keywords": [
+    "speed",
+    "velocity",
+    "direction",
+    "displacement"
+   ]
+  },
+  {
+   "id": "tu-194",
+   "role": "TEACHER",
+   "board": null,
+   "college": false,
+   "grade": null,
+   "language": "en",
+   "question": "explain the causes of the First World War",
+   "keywords": [
+    "war",
+    "alliance",
+    "nationalism",
+    "1914"
+   ]
+  },
+  {
+   "id": "tu-195",
+   "role": "TEACHER",
+   "board": null,
+   "college": false,
+   "grade": null,
+   "language": "en",
+   "question": "define an isotope",
+   "keywords": [
+    "isotope",
+    "neutrons",
+    "same",
+    "atomic number"
+   ]
+  },
+  {
+   "id": "tu-196",
+   "role": "TEACHER",
+   "board": null,
+   "college": false,
+   "grade": null,
+   "language": "en",
+   "question": "explain the structure of the leaf",
+   "keywords": [
+    "stomata",
+    "epidermis",
+    "chloroplast",
+    "leaf"
+   ]
+  },
+  {
+   "id": "tu-197",
+   "role": "TEACHER",
+   "board": null,
+   "college": false,
+   "grade": null,
+   "language": "en",
+   "question": "what is the federal structure of India",
+   "keywords": [
+    "federal",
+    "centre",
+    "state",
+    "constitution"
+   ]
+  },
+  {
+   "id": "tu-198",
+   "role": "TEACHER",
+   "board": null,
+   "college": false,
+   "grade": null,
+   "language": "hi",
+   "question": "कार्बन चक्र समझाइए",
+   "keywords": [
+    "carbon cycle"
+   ],
+   "localKeywords": [
+    "कार्बन",
+    "प्रकाश संश्लेषण",
+    "श्वसन"
+   ]
+  },
+  {
+   "id": "tu-199",
+   "role": "TEACHER",
+   "board": null,
+   "college": false,
+   "grade": null,
+   "language": "mr",
+   "question": "समस्थानिक म्हणजे काय",
+   "keywords": [
+    "isotope",
+    "neutron"
+   ],
+   "localKeywords": [
+    "समस्थानिक",
+    "न्यूट्रॉन",
+    "अणुक्रमांक"
+   ]
+  },
+  {
+   "id": "tu-200",
+   "role": "TEACHER",
+   "board": null,
+   "college": false,
+   "grade": null,
+   "language": "mr",
+   "question": "पानाची रचना स्पष्ट करा",
+   "keywords": [
+    "leaf",
+    "stomata"
+   ],
+   "localKeywords": [
+    "पान",
+    "पर्णरंध्र",
+    "हरितलवक"
+   ]
+  }
+ ]
+}

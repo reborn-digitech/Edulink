@@ -66,13 +66,28 @@ export function scopesFromRetrieval(input: { language: AssistantLanguage; helpTo
  * for a role without the tutor, the whole corpus, only to tell a topic question from a platform one).
  */
 export async function gateQuestion(
-  input: { original: string; stripped: string; language: AssistantLanguage; policy: RolePolicy; helpTop: number; curriculumTop: number },
+  input: {
+    original: string;
+    stripped: string;
+    language: AssistantLanguage;
+    policy: RolePolicy;
+    helpTop: number;
+    curriculumTop: number;
+    /**
+     * The question asks for one of this role's own doors by its intent (tools.ts `toolsFor`): a guardian's
+     * fees, a pupil's timetable. The door's data is then the answer whatever the help index holds, so it
+     * marks the platform scope beside the retrieval threshold (Phase D's pilot, 10 Oct 2026: "माझ्या
+     * मुलाची किती फी बाकी आहे" found no Marathi help passage and fell out of scope with the fees door
+     * waiting). The classifier still has to call it PLATFORM, and the tables still come first.
+     */
+    ownDoor?: boolean;
+  },
   model: ClassifyPort,
 ): Promise<QuestionGate> {
   const table = tableVerdict(input.original);
   if (table) return { pass: false, verdict: table, modelCalled: false, tokens: 0 };
   const scopes = scopesFromRetrieval(input);
-  const help = input.policy.help && scopes.help;
+  const help = input.policy.help && (scopes.help || input.ownDoor === true);
   const curriculum = scopes.curriculum;
   // Below both thresholds: the sentence saying what the assistant is for, and nothing sent to the model.
   if (!help && !curriculum) return { pass: false, verdict: "OUT_OF_SCOPE", modelCalled: false, tokens: 0 };

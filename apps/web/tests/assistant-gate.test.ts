@@ -32,6 +32,21 @@ const below = { help: HELP_THRESHOLD.en - 0.05, curriculum: CURRICULUM_THRESHOLD
 const q = (text: string, scores: { help: number; curriculum: number }, policy = student, language: "en" | "hi" | "mr" = "en") => ({ original: text, stripped: text, language, policy, helpTop: scores.help, curriculumTop: scores.curriculum });
 
 describe("the gate before the model", () => {
+  it("a question for one of the role's own doors is in the platform scope below the help threshold, if the classifier says PLATFORM", async () => {
+    const parent = ROLE_POLICY.PARENT;
+    const nothing = { help: 0, curriculum: 0 };
+    const own = { ...q("माझ्या मुलाची किती फी बाकी आहे", nothing, parent, "mr"), ownDoor: true };
+    expect(await gateQuestion(own, fakeModel("PLATFORM"))).toMatchObject({ pass: true, mode: "HELP", label: "PLATFORM" });
+    // The classifier still decides; the mark opens no other scope.
+    expect(await gateQuestion(own, fakeModel("REFUSE"))).toMatchObject({ pass: false, verdict: "OUT_OF_SCOPE", modelCalled: true });
+    expect(await gateQuestion(own, fakeModel("CURRICULUM"))).toMatchObject({ pass: false, verdict: "OUT_OF_SCOPE" });
+    // Without the mark the same question below the threshold stays out of scope with no model call.
+    expect(await gateQuestion(q("माझ्या मुलाची किती फी बाकी आहे", nothing, parent, "mr"), fakeModel("PLATFORM"))).toMatchObject({ pass: false, verdict: "OUT_OF_SCOPE", modelCalled: false });
+    // A role without the help desk gets nothing from the mark.
+    expect(await gateQuestion({ ...q("how much fee is due", below, ROLE_POLICY.EXPERT), ownDoor: true }, fakeModel("PLATFORM"))).toMatchObject({ pass: false, verdict: "OUT_OF_SCOPE", modelCalled: false });
+    // The tables still come first.
+    expect(await gateQuestion({ ...q("I want to die, how much fee is due", below, parent), ownDoor: true }, fakeModel("PLATFORM"))).toMatchObject({ pass: false, verdict: "SELF_HARM", modelCalled: false });
+  });
   it("answers an off-scope question below both thresholds with the fixed sentence and sends NOTHING to the model", async () => {
     const model = fakeModel("CURRICULUM");
     const gate = await gateQuestion(q("who won the cricket match yesterday", below), model);

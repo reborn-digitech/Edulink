@@ -27,30 +27,38 @@ export type ToolSpec = {
   /** What in a question asks for this door, in en, hi and mr. */
   intent: RegExp;
   load: () => Promise<{ GET: Handler | (() => Promise<Response>) }>;
+  /**
+   * The page where this role sees what the door returns, named to the model beside the data (Phase D's pilot,
+   * 10 Oct 2026: with no help passage the model sent a guardian to a "Payments" page that does not exist).
+   * Absent where the page depends on the role or a card on the home carries it.
+   */
+  page?: `/${string}`;
 };
 
 const TIMETABLE = /\b(?:timetable|time table|schedule|periods?|lessons? (?:today|tomorrow)|what do i have)\b|समय ?सारणी|टाइम ?टेबल|वेळापत्रक|तासिका/;
 const EXAMS = /\b(?:exams?|tests?|papers?|date ?sheet|marks)\b|परीक्षा|पेपर|गुण/;
 const WORK = /\b(?:homework|assignments?|due|hand(?:ed)? in|submit)\b|गृहकार्य|होमवर्क|असाइनमेंट|स्वाध्याय/;
 const ATTENDANCE = /\b(?:attendance|absent|present|absences?)\b|हाज़िरी|हाजिरी|उपस्थिति|उपस्थिती|गैरहाजर|अनुपस्थित/;
-const FEES = /\b(?:fees?|dues|paid|payment|instal?ments?)\b|शुल्क|फीस|फी\b|हप्ता/;
+// `\b` is an ASCII word boundary: "फी बाकी" never matched `फी\b` (Phase D's pilot, 10 Oct 2026: a guardian's Marathi
+// fees question reached no door and fell out of scope), so the Devanagari word ends where the script ends.
+const FEES = /\b(?:fees?|dues|paid|payment|instal?ments?)\b|शुल्क|फीस|फी(?![\u0900-\u097F])|हप्ता/;
 const REGISTERS = /\b(?:registers?|roll ?call|attendance|mark(?:ed|ing)? (?:the )?(?:register|attendance))\b|हाज़िरी|हाजिरी|हजेरी|उपस्थिती/;
 const SYLLABUS = /\b(?:syllabus|coverage|behind|chapters? (?:done|covered))\b|पाठ्यक्रम|अभ्यासक्रम/;
 const LECTURES = /\b(?:lectures?|my classes today|classes today)\b|व्याख्यान/;
 
 export const TOOLS: Record<ToolName, ToolSpec> = {
   myTimetable: { path: "/api/v1/family/timetable", intent: TIMETABLE, load: () => import("@/app/api/v1/family/timetable/route") },
-  myExams: { path: "/api/v1/family/exams", intent: EXAMS, load: () => import("@/app/api/v1/family/exams/route") },
-  myAssignments: { path: "/api/v1/family/student/assignments", intent: WORK, load: () => import("@/app/api/v1/family/student/assignments/route") },
-  childTimetable: { path: "/api/v1/family/timetable", intent: TIMETABLE, load: () => import("@/app/api/v1/family/timetable/route") },
+  myExams: { path: "/api/v1/family/exams", page: "/student/exams", intent: EXAMS, load: () => import("@/app/api/v1/family/exams/route") },
+  myAssignments: { path: "/api/v1/family/student/assignments", page: "/student/assignments", intent: WORK, load: () => import("@/app/api/v1/family/student/assignments/route") },
+  childTimetable: { path: "/api/v1/family/timetable", page: "/parent/timetable", intent: TIMETABLE, load: () => import("@/app/api/v1/family/timetable/route") },
   childExams: { path: "/api/v1/family/exams", intent: EXAMS, load: () => import("@/app/api/v1/family/exams/route") },
-  childAssignments: { path: "/api/v1/family/assignments", intent: WORK, load: () => import("@/app/api/v1/family/assignments/route") },
-  childAttendance: { path: "/api/v1/family/attendance", intent: ATTENDANCE, load: () => import("@/app/api/v1/family/attendance/route") },
-  childFees: { path: "/api/v1/fees/family", intent: FEES, load: () => import("@/app/api/v1/fees/family/route") },
+  childAssignments: { path: "/api/v1/family/assignments", page: "/parent/assignments", intent: WORK, load: () => import("@/app/api/v1/family/assignments/route") },
+  childAttendance: { path: "/api/v1/family/attendance", page: "/parent/attendance", intent: ATTENDANCE, load: () => import("@/app/api/v1/family/attendance/route") },
+  childFees: { path: "/api/v1/fees/family", page: "/parent/fees", intent: FEES, load: () => import("@/app/api/v1/fees/family/route") },
   teacherTimetable: { path: "/api/v1/staff/timetable", intent: TIMETABLE, load: () => import("@/app/api/v1/staff/timetable/route") },
   registersDue: { path: "/api/v1/staff/attendance/classes", intent: REGISTERS, load: () => import("@/app/api/v1/staff/attendance/classes/route") },
-  teacherAssignments: { path: "/api/v1/staff/assignments", intent: WORK, load: () => import("@/app/api/v1/staff/assignments/route") },
-  officeSyllabusCoverage: { path: "/api/v1/office/syllabus/coverage", intent: SYLLABUS, load: () => import("@/app/api/v1/office/syllabus/coverage/route") },
+  teacherAssignments: { path: "/api/v1/staff/assignments", page: "/teacher/assignments", intent: WORK, load: () => import("@/app/api/v1/staff/assignments/route") },
+  officeSyllabusCoverage: { path: "/api/v1/office/syllabus/coverage", page: "/admin/syllabus", intent: SYLLABUS, load: () => import("@/app/api/v1/office/syllabus/coverage/route") },
   myLectures: { path: "/api/v1/academics/lectures", intent: LECTURES, load: () => import("@/app/api/v1/academics/lectures/route") },
 };
 
