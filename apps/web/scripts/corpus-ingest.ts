@@ -11,6 +11,9 @@
  *   with the nearest caption, its text chunked by chapter and section (scripts/corpus-chunk.ts),
  *   and written as one ContentDocument and its ContentChunks. A document whose checksum is already
  *   in the table is skipped; a changed file replaces its chunks.
+ *   A past paper (source "papers", 10 Oct 2026) is read with its short runs kept and no figures, cut by
+ *   question (scripts/corpus-papers-chunk.ts), its chunks given a kind and its document `styleOnly`, so
+ *   the tutor's search never returns it (docs/runbooks/assistant-local.md §8).
  *   Embed: every chunk without a vector is embedded through ASSISTANT_EMBED_URL's /embeddings in
  *   batches, and the rate is printed in chunks per minute. --reembed clears the vectors first
  *   (of --source or --prefix only, when given).
@@ -30,7 +33,8 @@ import { basename, join, relative } from "node:path";
 import { config } from "dotenv";
 import { CORPUS_ROOT, SOURCES, walkManifests, type ManifestEntry, type SourceKey } from "./corpus-lib";
 import { closeOcr, extractPdf, toPng } from "./corpus-pdf";
-import { chunk, editionIn, chapterNameFromTitle, lettersOfTitle } from "./corpus-chunk";
+import { chunk, editionIn, chapterNameFromTitle, lettersOfTitle, type Structured } from "./corpus-chunk";
+import { chunkPaper, type PaperChunk } from "./corpus-papers-chunk";
 import { refuseUnlessLocalDatabase } from "./local-db-guard.mjs";
 import { requireEmbedConfig } from "../src/lib/assistant-env";
 import { EmbeddingBroken, embedTexts, vectorLiteral } from "../src/lib/assistant-model";
@@ -125,15 +129,37 @@ async function ingestOne(dir: string, e: ManifestEntry): Promise<void> {
     return;
   }
   const bytes = new Uint8Array(readFileSync(file));
-  const { pages } = await extractPdf(bytes, { figures: FIGURES, ocrLangs: OCR ? ocrLangsFor(e.language) : null });
+  // A past paper (source "papers", 10 Oct 2026): a STYLE document, cut by question, no figures kept
+  // (the generator never takes a paper's drawing); its numbers and option letters are short runs kept,
+  // its pictures read by OCR where the questions are pictures (JEE (Main)), a two-column scan read
+  // half by half (NEET (UG) 2020).
+  const isPaper = e.source === "papers";
+  // A scanned or garbled page of a paper is rendered and read (a landscape sheet half by half); a paper
+  // whose questions turn out to be pictures beside a text layer of labels (JEE (Advanced) 2007–2010) is
+  // read again with its pictures read too.
+  const paperOptions = (pictures: boolean) => ({ figures: false, ocrLangs: OCR ? ocrLangsFor(e.language) : null, keepShortRuns: true, ocrPictures: pictures, ocrHalves: !!e.paper?.twoColumns, ocrRenderAll: true, ocrGarbled: true });
+  const paperChunks = (pages: Awaited<ReturnType<typeof extractPdf>>["pages"]) => chunkPaper(pages, { title: e.title, part: e.paper?.part ?? "paper", subjects: e.subject.split(/\s*,\s*/).filter(Boolean) });
+  // pdfjs takes the bytes' buffer for itself: each read gets its own copy, so the retry has bytes to read.
+  let { pages } = await extractPdf(bytes.slice(), isPaper ? paperOptions(!!e.paper?.textInPictures) : { figures: FIGURES, ocrLangs: OCR ? ocrLangsFor(e.language) : null });
+  let paper = isPaper ? paperChunks(pages) : null;
+  if (paper && OCR && !e.paper?.textInPictures && e.paper?.part !== "answer-key" && paper.chunks.filter((c) => c.kind === "question").length < 3) {
+    const again = await extractPdf(bytes.slice(), paperOptions(true));
+    const retry = paperChunks(again.pages);
+    if (retry.chunks.filter((c) => c.kind === "question").length > paper.chunks.filter((c) => c.kind === "question").length) {
+      pages = again.pages;
+      paper = retry;
+    }
+  }
   const base = basename(e.file).replace(/\.pdf$/i, "");
   const figureDir = join(dir, "figures");
-  const structured = chunk(pages, {
-    perChapterFile: perChapterFile(e),
-    chapterLabel: (found) => chapterLabel(e, found),
-    figureKey: (page, n) => relative(CORPUS_ROOT, join(figureDir, `${base}-p${page}-${n}.png`)).split("\\").join("/"),
-  });
-  const edition = e.edition ?? structured.edition ?? (await bookEdition(dir, e));
+  const structured: Omit<Structured, "chunks"> & { chunks: (Structured["chunks"][number] & { kind?: PaperChunk["kind"] })[] } = paper
+    ? { ...paper, figures: [], edition: null, bodySize: 0, chapter: e.title }
+    : chunk(pages, {
+        perChapterFile: perChapterFile(e),
+        chapterLabel: (found) => chapterLabel(e, found),
+        figureKey: (page, n) => relative(CORPUS_ROOT, join(figureDir, `${base}-p${page}-${n}.png`)).split("\\").join("/"),
+      });
+  const edition = isPaper ? null : (e.edition ?? structured.edition ?? (await bookEdition(dir, e)));
 
   if (FIGURES && structured.figures.length) {
     mkdirSync(figureDir, { recursive: true });
@@ -165,7 +191,9 @@ async function ingestOne(dir: string, e: ManifestEntry): Promise<void> {
     sha256: e.sha256 ?? "",
     bytes: e.bytes ?? bytes.length,
     pageCount: pages.length,
-    extra: (e.extra ?? {}) as Prisma.InputJsonValue,
+    extra: (e.paper ? { ...(e.extra ?? {}), paper: e.paper } : (e.extra ?? {})) as Prisma.InputJsonValue,
+    // The tutor never cites a paper (searchCurriculum excludes styleOnly); the quiz generator reads it for style.
+    styleOnly: isPaper,
   };
   await db.$transaction(async (tx) => {
     const doc = await tx.contentDocument.upsert({ where: { path }, create: { path, ...data }, update: data, select: { id: true } });
@@ -185,6 +213,7 @@ async function ingestOne(dir: string, e: ManifestEntry): Promise<void> {
           tokens: c.tokens,
           figureKeys: c.figureKeys,
           edition,
+          kind: c.kind ?? null,
         })),
       });
     }

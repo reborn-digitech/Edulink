@@ -40,7 +40,7 @@ function multiply(m: Matrix, n: Matrix): Matrix {
 }
 
 /** Items on one baseline joined while the gap between them is under about one character's width: a column gutter is wider. */
-function runsFromItems(items: TextItemLike[], styles: Record<string, { fontFamily?: string }>): Run[] {
+function runsFromItems(items: TextItemLike[], styles: Record<string, { fontFamily?: string }>, keepShort = false): Run[] {
   const lines = new Map<number, TextItemLike[]>();
   for (const it of items) {
     if (!it.str || !it.str.trim()) continue;
@@ -79,8 +79,9 @@ function runsFromItems(items: TextItemLike[], styles: Record<string, { fontFamil
   }
   // NUL and the other control characters some fonts map glyphs to: Postgres refuses NUL in text.
   for (const r of runs) r.text = r.text.replace(/[\u0000-\u001F\u007F\uFFFD]/g, " ").replace(/\s+/g, " ").trim();
-  // One or two characters alone are icon glyphs, bullets and stray sub- and superscripts.
-  return runs.filter((r) => r.text.length > 2).sort((a, b) => b.y - a.y || a.x - b.x);
+  // One or two characters alone are icon glyphs, bullets and stray sub- and superscripts; a past
+  // paper keeps them (`keepShortRuns`), since its question numbers ("7", "Q7") are exactly that.
+  return runs.filter((r) => r.text.length > (keepShort ? 0 : 2)).sort((a, b) => b.y - a.y || a.x - b.x);
 }
 
 type ImageObject = { width: number; height: number; kind: number; data?: Uint8Array | Uint8ClampedArray };
@@ -215,7 +216,39 @@ export type ExtractOptions = {
   /** Tesseract languages for a page without a text layer ("eng", "eng+hin", "mar+eng"); null skips OCR. */
   ocrLangs: string | null;
   ocr?: OcrReader;
+  /** Keep one- and two-character runs (a past paper's question numbers and option letters). Off for the books. */
+  keepShortRuns?: boolean;
+  /**
+   * Read every picture on a page by OCR as well as its text layer, the words placed where the picture
+   * sits (with `ocrLangs`). For a paper whose questions are pictures beside a text layer of labels
+   * (JEE (Main) as NTA publishes it, 10 Oct 2026). Off for the books.
+   */
+  ocrPictures?: boolean;
+  /** A scanned page set in two columns (NEET (UG) 2020 as NTA publishes it): its left half is read, then its right. */
+  ocrHalves?: boolean;
+  /**
+   * A page with no text layer and no page-sized picture is rendered and read whatever it draws, and a
+   * landscape page (two pages side by side, JEE (Advanced) 2015) half by half. Off for the books.
+   */
+  ocrRenderAll?: boolean;
+  /**
+   * A page whose text layer is garbled (a font with no Unicode map: old HBCSE papers print
+   * "! #"%$!& ')(+*-," for words) is read as if it had none (`garbledShare`). Off for the books.
+   */
+  ocrGarbled?: boolean;
 };
+
+/**
+ * The share of a page's characters that are Latin-1 accents and symbols or ASCII punctuation a sentence
+ * rarely uses: about 0.02 on a clean English page, above 0.3 on a page set in a font with no Unicode map.
+ * A mathematical italic letter (U+1D400 on) is not counted. Pure.
+ */
+export function garbledShare(texts: string[]): number {
+  const all = texts.join("").replace(/\s+/g, "");
+  if (!all.length) return 0;
+  const odd = (all.match(/[\u00A0-\u00FF!#$%&*<>@[\\\]^_`{|}~]/g) ?? []).length;
+  return odd / all.length;
+}
 
 export async function extractPdf(bytes: Uint8Array, opts: ExtractOptions): Promise<{ pages: PageContent[]; title: string | null }> {
   const doc = await getDocument({
@@ -242,9 +275,10 @@ export async function extractPdf(bytes: Uint8Array, opts: ExtractOptions): Promi
       const width = x1 - x0;
       const height = y1 - y0;
       const content = await page.getTextContent();
-      let runs = runsFromItems(content.items.filter((i) => "str" in i) as unknown as TextItemLike[], content.styles as Record<string, { fontFamily?: string }>);
+      let runs = runsFromItems(content.items.filter((i) => "str" in i) as unknown as TextItemLike[], content.styles as Record<string, { fontFamily?: string }>, opts.keepShortRuns);
       const textChars = runs.reduce((n, r) => n + r.text.length, 0);
-      const scanned = textChars < 25;
+      const garbled = !!opts.ocrGarbled && textChars >= 25 && garbledShare(runs.map((r) => r.text)) > 0.15;
+      const scanned = textChars < 25 || garbled;
       let images: PageImage[] = [];
       if (opts.figures || (scanned && opts.ocrLangs)) {
         images = await imagesOf(page as unknown as Parameters<typeof imagesOf>[0], false).catch(() => []);
@@ -258,16 +292,55 @@ export async function extractPdf(bytes: Uint8Array, opts: ExtractOptions): Promi
       const scan = biggest && biggest.w * biggest.h >= width * height * 0.5 ? biggest : null;
       if (scanned && opts.ocrLangs) {
         const read = (png: Buffer | null) => (png ? (opts.ocr ?? tesseractOcr)(png, opts.ocrLangs!).catch(() => "") : Promise.resolve(""));
-        let text = scan ? await read(await toPng(scan, 3000)) : "";
+        let text = "";
+        if (scan && opts.ocrHalves) {
+          // Two columns read as one would interleave their lines: each half is read on its own.
+          const png = await toPng(scan, 3000);
+          const meta = await sharp(png).metadata();
+          const w = meta.width ?? 0;
+          const h = meta.height ?? 0;
+          if (w > 2 && h > 0) {
+            const half = Math.floor(w / 2);
+            const left = await sharp(png).extract({ left: 0, top: 0, width: half, height: h }).png().toBuffer();
+            const right = await sharp(png).extract({ left: half, top: 0, width: w - half, height: h }).png().toBuffer();
+            text = `${await read(left)}\n${await read(right)}`;
+          }
+        } else if (scan) text = await read(await toPng(scan, 3000));
         // A full-page picture that reads as nothing is a background or a watermark, not a scan: the
         // words, if the page draws hundreds of paths, are outlines, and the rendered page is read.
-        if (text.trim().length <= 25 && (await pathCount(page).catch(() => 0)) >= 150) text = await read(await renderPage(doc, page).catch(() => null));
+        if (text.trim().length <= 25 && (opts.ocrRenderAll || garbled || (await pathCount(page).catch(() => 0)) >= 150)) {
+          const png = await renderPage(doc, page).catch(() => null);
+          // Two pages side by side on one landscape sheet, or a two-column scan: each half on its own.
+          if (png && (opts.ocrHalves || (opts.ocrRenderAll && width > height * 1.2))) {
+            const meta = await sharp(png).metadata();
+            const w = meta.width ?? 0;
+            const h = meta.height ?? 0;
+            const half = Math.floor(w / 2);
+            text = w > 2 ? `${await read(await sharp(png).extract({ left: 0, top: 0, width: half, height: h }).png().toBuffer())}\n${await read(await sharp(png).extract({ left: half, top: 0, width: w - half, height: h }).png().toBuffer())}` : "";
+          } else text = await read(png);
+        }
         if (text.trim().length > 25) {
           ocr = true;
           // OCR text has no font sizes: one run per line, body size, top to bottom.
           runs = text.split("\n").map((t) => t.trim()).filter(Boolean).map((t, i) => ({ text: t, x: 0, y: height - i * 12, width: width, size: 10, bold: false }));
           images = images.filter((im) => im !== scan);
         }
+      }
+      if (opts.ocrPictures && opts.ocrLangs && !ocr) {
+        const pictures = await imagesOf(page as unknown as Parameters<typeof imagesOf>[0], true).catch(() => []);
+        const read = opts.ocr ?? tesseractOcr;
+        for (const im of pictures) {
+          // A rule, a bullet or a tick box is not a picture of words.
+          if (im.w < 24 || im.h < 8 || im.width < 24 || im.height < 8) continue;
+          const text = await read(await toPng(im, 2400), opts.ocrLangs).catch(() => "");
+          const lines = text.split("\n").map((t) => t.trim()).filter((t) => /\p{L}|\d/u.test(t));
+          if (!lines.length) continue;
+          ocr = true;
+          // The picture's lines from its top edge down, spread over its height, at its left edge.
+          const step = Math.min(14, im.h / lines.length);
+          lines.forEach((t, i) => runs.push({ text: t, x: im.x, y: im.y + im.h - (i + 0.8) * step, width: im.w, size: 10, bold: false }));
+        }
+        runs.sort((a, b) => b.y - a.y || a.x - b.x);
       }
       pages.push({ page: p, width, height, runs, images: opts.figures ? images : [], ocr });
       page.cleanup();

@@ -17,10 +17,42 @@ import { join, resolve } from "node:path";
 
 export const CORPUS_ROOT = resolve(process.env.CORPUS_DIR?.trim() || join("storage", "corpus"));
 
-export type SourceKey = "ncert" | "balbharati" | "nios" | "syllabi" | "glossaries";
-export const SOURCES: SourceKey[] = ["ncert", "balbharati", "nios", "syllabi", "glossaries"];
+/** "papers" (10 Oct 2026): past entrance, olympiad and board sample papers, a STYLE corpus for quiz levels 5 and 6 (scripts/corpus-papers.ts). */
+export type SourceKey = "ncert" | "balbharati" | "nios" | "syllabi" | "glossaries" | "papers";
+export const SOURCES: SourceKey[] = ["ncert", "balbharati", "nios", "syllabi", "glossaries", "papers"];
 
-export type ContentKind = "textbook" | "exemplar" | "course" | "glossary" | "syllabus";
+export type ContentKind = "textbook" | "exemplar" | "course" | "glossary" | "syllabus" | PaperKind;
+
+/** What a past paper is: a national or state entrance test's, an olympiad's (or its first stage's), a board's sample paper. */
+export type PaperKind = "entrance-paper" | "olympiad-paper" | "board-sample-paper";
+export const PAPER_KINDS: PaperKind[] = ["entrance-paper", "olympiad-paper", "board-sample-paper"];
+
+/**
+ * A past paper's own facts, on the manifest entry of every file the "papers" source fetches. The
+ * entry's `board` is the publishing body as it names itself, `gradeOrProgramme` the test's class
+ * band ("11-12", "9-10", "10"), `subject` the paper's subject ("Physics", or "Physics, Chemistry,
+ * Mathematics" for a paper of several, whose questions the chunker tags by section).
+ */
+export type PaperMeta = {
+  /** "NTA", "JEE (Advanced), the organising IIT", "HBCSE", "IAPT", "CBSE". */
+  body: string;
+  /** The test as the body names it: "JEE (Advanced)", "NEET (UG)", "INPhO", "NSEP", "CBSE Class X". */
+  test: string;
+  /** Which sitting or paper: "Paper 1", "Shift 1, 2 April", "Set E1", "Mathematics (Standard)"; null when there is one. */
+  sitting: string | null;
+  /** "paper" (the questions), "answer-key" (the key, model solutions or marking scheme), "paper+answers" (both in one file). */
+  part: "paper" | "answer-key" | "paper+answers";
+  /** The quiz level the paper is a style for: 5 (state and national entrance, board sample papers) or 6 (olympiads). */
+  level: 5 | 6;
+  /** The page the link was read from. */
+  listedOn: string;
+  /** The words of the link and the cell around it, as the page printed them. */
+  linkText: string;
+  /** The questions are pictures (JEE (Main) as NTA publishes it): the ingest reads the pictures by OCR. */
+  textInPictures?: boolean;
+  /** A scan set in two columns (NEET (UG) 2020): the ingest reads each half of a page on its own. */
+  twoColumns?: boolean;
+};
 
 export type Licence = {
   /** The site's own words, when it publishes terms in a place a script can read; trimmed, never paraphrased. */
@@ -53,6 +85,8 @@ export type ManifestEntry = {
   error?: string;
   source: SourceKey;
   kind: ContentKind;
+  /** Source "papers" only: the body, the test, the sitting, the part and the level. */
+  paper?: PaperMeta;
   /** Chapter number within a book, the site's book code, the HTTP Last-Modified, anything else the site said. */
   extra?: Record<string, string | number | null>;
 };

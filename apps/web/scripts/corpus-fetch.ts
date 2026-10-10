@@ -1,14 +1,16 @@
 /**
  * The curriculum corpus downloader (docs/plans/assistant.md §3, Phase A; runbook docs/runbooks/assistant-local.md).
  *
- *   npm run corpus:fetch -- --source=ncert|balbharati|nios|syllabi|glossaries|all [--grade=8[,9]] [--first=9,8] [--dry [--list]]
+ *   npm run corpus:fetch -- --source=ncert|balbharati|nios|syllabi|glossaries|papers|all [--grade=8[,9]] [--first=9,8] [--dry [--list]]
  *
  * WHAT IT COLLECTS. The English NCERT textbooks, classes 1 to 12, chapter by chapter, and the
  * exemplar problems, from ncert.nic.in; the Balbharati English-medium textbooks, standards 1 to 12,
  * from books.ebalbharati.in; the NIOS secondary and senior secondary course books in English; the
  * boards' bilingual glossaries (NCERT's trilingual dictionaries, Balbharati's word lists where its
  * library carries any); and the syllabus PDFs the affiliating universities and councils publish
- * (SPPU, MUHS, MPKV, AICTE's model curriculum, BCI, PCI, NCTE, COA, ICAR). No Hindi or Marathi
+ * (SPPU, MUHS, MPKV, AICTE's model curriculum, BCI, PCI, NCTE, COA, ICAR); and, as a STYLE corpus
+ * for the quiz bank's levels 5 and 6, the past entrance, olympiad and board sample papers their own
+ * bodies publish (source "papers", scripts/corpus-papers.ts, 10 Oct 2026). No Hindi or Marathi
  * book, no commercial book, no login, no CAPTCHA: a site that will not answer a plain request is
  * written down with `fetched: false` and the run moves on.
  *
@@ -38,6 +40,7 @@ import { dirname, join, posix } from "node:path";
 import { pipeline } from "node:stream/promises";
 import { config } from "dotenv";
 import { CORPUS_ROOT, SOURCES, readFolderManifest, removeManifestEntries, slug, writeManifestEntry, type ContentKind, type Licence, type ManifestEntry, type SourceKey } from "./corpus-lib";
+import { PAPER_BODIES, type PapersNet } from "./corpus-papers";
 
 config();
 
@@ -1052,6 +1055,20 @@ async function runSource(source: SourceKey): Promise<void> {
         await fetchAll("syllabi", items);
       }),
     ]);
+  } else if (source === "papers") {
+    // Each body is its own host (NTA's three sites share one file host, which politely() keeps serial).
+    const net: PapersNet = {
+      getPage: (url, init) => getPage(url, init),
+      refuse: (board, folder, url, error, licence, kind) => refuse("papers", board, folder, url, error, licence, kind),
+      log: (line) => console.log(line),
+    };
+    await Promise.all(
+      PAPER_BODIES.map(async (body) => {
+        const items = await body.discover(net);
+        console.log(`[papers] ${body.name}: ${items.length} files listed`);
+        await fetchAll("papers", items);
+      }),
+    );
   } else {
     const items = source === "ncert" ? await discoverNcert() : source === "balbharati" ? await discoverBalbharati() : source === "nios" ? await discoverNios() : await discoverGlossaries();
     console.log(`[${source}] ${items.length} files listed`);
