@@ -299,8 +299,13 @@ address and a lone letter are never headings; and an exemplar's chapter name is 
 by Phase D's own heuristic its headings went from 10.8 % garbled and 30.1 % untitled to 3.1 % and 12.4 %
 (`tests/corpus-chunk.test.ts`). What remains, for later: a running head split into word runs ("Government Budget
 and the Economy") that no rule can join, titles only the book's contents page knows, small capitals whose
-initials are outlines when no running head carries them, and glyph-encoded fonts ("KHG 2TQEGUUGU"); the other
-boards keep their old chunks (Balbharati 5.5 %, SPPU 9.9 % garbled) until they are re-chunked the same way.
+initials are outlines when no running head carries them, and glyph-encoded fonts ("KHG 2TQEGUUGU"). Balbharati
+and the syllabi were re-chunked the same way later the same day (973 documents, 53,578 chunks, 10 minutes of
+extraction on six shards and 71 of embedding): by the same heuristic Balbharati went from 5.5 % garbled and
+0.8 % untitled to 4.6 % and 0 %, SPPU from 9.9 % to 7.3 %, AICTE 9.0 % to 8.9 %, PCI 9.4 % to 9.5 % (noise on
+347 chunks), MPKV 0 %; the gain is smaller than NCERT's because the running-head recovery applies only to
+one-chapter files, and whole-book PDFs get the overprint, cut-section and lone-letter rules alone. Every one
+of the 119,166 chunks in the tables has a vector.
 
 ### Phase E — hosted (week 6)
 
