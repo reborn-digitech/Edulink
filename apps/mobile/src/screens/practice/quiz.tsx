@@ -30,6 +30,7 @@ import { haptics } from "@/lib/haptics";
 import { newClientId, onQueueEvent } from "@/lib/outbox";
 import { formatInstant, levelName, Note, param, Pill, subjectName } from "../family/shared";
 import { OutboxBadge, useOutboxRunner, writeOrQueue } from "../teacher/support";
+import { QuestionFigure } from "./figure";
 
 /**
  * The practice player, the web's /student/practice/{slug} and
@@ -337,6 +338,8 @@ function Player({ began, refreshing, onRefresh, onFreshRun }: { began: PracticeB
       <Bar now={question.askedCount} max={Math.max(1, total)} label={t("practice.questionsAnswered")} />
 
       <Card>
+        {/* figures (10 Oct 2026): the question's figure above the stem, in the stem's language. */}
+        {question.image ? <QuestionFigure fileId={question.image.fileId} alt={question.image.alt} /> : null}
         <Text variant="lg" bold>
           {question.stem}
         </Text>
@@ -620,6 +623,8 @@ function RevisionQuestion({ item, position, total, onNext }: { item: PracticeRev
       {served.isError ? <Failed message={failText(served.error, t)} onRetry={() => void served.refetch()} /> : null}
       {served.data ? (
         <>
+          {/* figures (10 Oct 2026): a re-served question keeps its figure. */}
+          {served.data.image ? <QuestionFigure fileId={served.data.image.fileId} alt={served.data.image.alt} /> : null}
           <Text variant="lg" bold>
             {served.data.stem}
           </Text>

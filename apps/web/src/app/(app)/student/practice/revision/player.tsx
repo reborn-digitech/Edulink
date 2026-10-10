@@ -10,6 +10,8 @@ import { cn } from "@/lib/cn";
 import { useT } from "@/lib/i18n";
 import { reviseServe, reviseAnswer } from "../actions";
 import type { RevisionItem } from "@/lib/practice-insights";
+import type { ServedFigure } from "@/lib/quiz-figure";
+import { QuizFigure } from "@/components/quiz-figure";
 
 /**
  * The revision player: the queued questions one at a time, answered through
@@ -72,6 +74,8 @@ function RevisionQuestion({
 
   const [stem, setStem] = useState<string | null>(null);
   const [choices, setChoices] = useState<string[]>([]);
+  // figures (10 Oct 2026): the question's figure, drawn above the stem.
+  const [image, setImage] = useState<ServedFigure | null>(null);
   const [chosen, setChosen] = useState<number | null>(null);
   const [outcome, setOutcome] = useState<{ correct: boolean; answerIndex: number; solution: string } | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -86,6 +90,7 @@ function RevisionQuestion({
       }
       setStem(served.stem);
       setChoices(served.choices);
+      setImage(served.image);
     });
     return () => {
       cancelled = true;
@@ -116,6 +121,7 @@ function RevisionQuestion({
           </div>
         ) : (
           <>
+            {image ? <QuizFigure fileId={image.fileId} alt={image.alt} /> : null}
             <p className="font-medium text-fg">{stem}</p>
             <div className="grid gap-2">
               {choices.map((choice, i) => {

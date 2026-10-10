@@ -20,6 +20,7 @@ import { useT } from "@/lib/i18n";
 import { begin, answer, advance, reveal } from "../actions";
 import { enqueue, onQueueEvent } from "@/lib/offline-queue";
 import type { ServedQuestion } from "@/lib/quiz";
+import { QuizFigure } from "@/components/quiz-figure";
 
 /**
  * The practice player.
@@ -321,6 +322,8 @@ export function Player({
 
       <Card>
         <CardBody className="space-y-4 pt-5">
+          {/* figures (10 Oct 2026): the question's figure above the stem, in the stem's language. */}
+          {question.image ? <QuizFigure fileId={question.image.fileId} alt={question.image.alt} /> : null}
           <p className="text-lg font-medium leading-relaxed text-fg">{question.stem}</p>
 
           <ul className="space-y-2">

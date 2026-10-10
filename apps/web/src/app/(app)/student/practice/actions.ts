@@ -14,6 +14,7 @@ import {
 } from "@/lib/quiz";
 import type { ActiveContext } from "@/lib/session";
 import { reviseQuestion, revisionAttempt } from "@/lib/practice-insights";
+import type { ServedFigure } from "@/lib/quiz-figure";
 
 /**
  * Practice, from the child's side.
@@ -107,11 +108,12 @@ export async function reveal(
  */
 export async function reviseServe(
   questionId: string,
-): Promise<Ok<{ stem: string; choices: string[]; topicSlug: string }> | Failure> {
+): Promise<Ok<{ stem: string; choices: string[]; topicSlug: string; image: ServedFigure | null }> | Failure> {
   try {
     const ctx = await requireApiRole("STUDENT");
     const q = await reviseQuestion(ctx, questionId, languageOf(ctx));
-    return { ok: true, stem: q.stem, choices: q.choices, topicSlug: q.topicSlug };
+    // figures (10 Oct 2026): the re-served question's figure with it.
+    return { ok: true, stem: q.stem, choices: q.choices, topicSlug: q.topicSlug, image: q.image };
   } catch (error) {
     return failure(error);
   }

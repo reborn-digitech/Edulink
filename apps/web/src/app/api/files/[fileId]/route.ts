@@ -47,14 +47,14 @@ export async function GET(
   if (request.headers.get("if-none-match") === etag) {
     return new Response(null, {
       status: 304,
-      headers: { ETag: etag, "Cache-Control": cacheControl(access.public) },
+      headers: { ETag: etag, "Cache-Control": cacheControl(access.public, access.kind) },
     });
   }
 
   const baseHeaders = {
     "Content-Type": stored.mime,
     ETag: etag,
-    "Cache-Control": cacheControl(access.public),
+    "Cache-Control": cacheControl(access.public, access.kind),
     // Never let a stored file be interpreted as something executable.
     "X-Content-Type-Options": "nosniff",
     "Content-Disposition": "inline",
@@ -113,7 +113,10 @@ export async function GET(
  *
  * Re-authorising on every read costs a request. That is the correct trade.
  */
-function cacheControl(isPublic: boolean): string {
+function cacheControl(isPublic: boolean, kind?: string): string {
+  // figures (10 Oct 2026): a quiz figure is the same for every reader and a changed figure is a new
+  // fileId, so the phone and the browser may keep it for a day instead of fetching it per question.
+  if (kind === "quiz") return "private, max-age=86400, immutable";
   return isPublic
     ? "public, max-age=31536000, immutable"
     : "private, no-store, max-age=0, must-revalidate";

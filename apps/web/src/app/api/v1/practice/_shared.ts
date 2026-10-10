@@ -6,5 +6,5 @@ import type { ServedQuestion } from "@/lib/quiz";
  * dictionary key; the phone names the rung from `difficulty` itself.
  */
 export function servedQuestion(q: ServedQuestion): PracticeQuestion {
-  return { questionId: q.questionId, stem: q.stem, choices: q.choices, difficulty: q.difficulty, askedCount: q.askedCount, totalCount: q.totalCount };
+  return { questionId: q.questionId, stem: q.stem, choices: q.choices, difficulty: q.difficulty, askedCount: q.askedCount, totalCount: q.totalCount, image: q.image };
 }
