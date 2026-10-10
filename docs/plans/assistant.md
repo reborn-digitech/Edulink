@@ -269,6 +269,19 @@ on a how-to question. On the 200-question help set: answered 155 → 181 of 200,
 door named 0 → 0. Steps stay low because most help questions ask where something is, which one sentence answers;
 Hindi answers carry no steps at all, for a speaker to read.
 
+**Built, 10 October 2026 (the user guide, the owner's ask).** `docs/guide/` holds seventeen guides, one per role
+and per kind where the pages differ (the school office and the college registrar, the principal, the teacher,
+the pupil with "At a college", the guardian, the alumnus, the driver, the librarian, the warden, the accounts
+desk at a school and at a college, the faculty, the HOD, the exam cell, the IQAC, placements), about 55,000
+words, every path checked against the menu and every quoted label against the dictionary; each file's first
+line `Roles: …` names the roles its paragraphs are for, and the help index reads the folder (`help-index.ts`:
+the roles from that line whatever a heading says, every paragraph kept, a step without a path belonging to
+its section's page). The page cards also gained a second entry per page with the form's fields and coded
+choices (read by following the page's own component imports one level), which is what answers "how do I ask
+for a bonafide certificate": the main card alone had never said "Bonafide". On the help set with the guides
+in: answered 181/200, the right page named 170/200 (85 %), steps 49/200 (from 39), another role's page 0/200,
+a guide paragraph cited in 171 of the 200 answers; Hindi and Marathi answers still carry no numbered steps.
+
 **Built, 10 October 2026 (citation headings, the owner's item 3; NCERT re-chunked).** Phase D read forty random
 NCERT headings and found fifteen garbled: the first capital lost ("ROBABILITY", "hapter"), letters printed over
 themselves for a shadow ("TheThe dd-- andand"), a section cut to its number and a letter ("12.6 F"), split

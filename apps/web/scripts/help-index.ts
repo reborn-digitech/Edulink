@@ -22,7 +22,7 @@
 import { PrismaClient } from "@prisma/client";
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
-import { join, relative, resolve } from "node:path";
+import { dirname, join, relative, resolve } from "node:path";
 import { config } from "dotenv";
 import { ENDPOINTS, type Endpoint } from "../src/lib/api-catalog";
 import { NAV, PRIMARY_ACTION, QUICK_ACTIONS } from "../src/lib/nav";
@@ -161,26 +161,43 @@ const HOW_TO = /\b(open|opens|go to|click|tap|press|choose|select|record|records
 
 function docFiles(): string[] {
   const docs = readdirSync(join(REPO, "docs")).filter((f) => f.endsWith(".md")).map((f) => join(REPO, "docs", f));
-  return [...docs, join(REPO, "HANDOFF.md")].filter((f) => existsSync(f));
+  // The user guide (docs/guide, 10 Oct 2026): one file per role, its first line `Roles: ADMIN, PRINCIPAL`.
+  const guideDir = join(REPO, "docs", "guide");
+  const guide = existsSync(guideDir) ? readdirSync(guideDir).filter((f) => f.endsWith(".md")).sort().map((f) => join(guideDir, f)) : [];
+  return [...guide, ...docs, join(REPO, "HANDOFF.md")].filter((f) => existsSync(f));
+}
+
+/** A guide file's roles: the codes on its `Roles:` first line, or null for any other file. */
+function guideRoles(lines: readonly string[]): string[] | null {
+  const m = /^Roles?:\s*(.+)$/.exec(lines[0] ?? "");
+  if (!m) return null;
+  const codes = m[1]!.split(/[,\s]+/).map((c) => c.trim()).filter((c) => (ROLES as readonly string[]).includes(c));
+  return codes.length ? codes.sort() : null;
 }
 
 function docRows(): HelpRow[] {
   const rows: HelpRow[] = [];
   for (const file of docFiles()) {
     const source = relative(REPO, file).split("\\").join("/");
-    const lines = readFileSync(file, "utf8").split("\n");
+    const allLines = readFileSync(file, "utf8").split("\n");
+    // A guide file: its roles are the first line's, whatever a heading says ("How do I enrol a pupil?" in the
+    // office's guide is the office's); every paragraph is kept; a step without a path belongs to its section's page.
+    const guide = guideRoles(allLines);
+    const lines = guide ? allLines.slice(1) : allLines;
     const headings: string[] = [];
     let block: string[] = [];
     let inCode = false;
     let table: { header: string[]; rows: string[][] } | null = null;
+    let sectionPath: string | null = null;
     const headingPath = () => headings.filter(Boolean).join(" › ");
     const flushBlock = () => {
       const text = block.join(" ").replace(/\s+/g, " ").trim();
       block = [];
-      if (text.length < 40 || text.length > 1800) return;
+      if (text.length < (guide ? 20 : 40) || text.length > 1800) return;
       const paths = pathsIn(text);
-      if (!paths.length && !HOW_TO.test(text)) return;
-      rows.push({ kind: "doc", roles: rolesFrom(headingPath(), text), pagePath: paths[0] ?? null, door: null, module: null, title: headingPath() || source, text, sourceFile: source, language: "en" });
+      if (!guide && !paths.length && !HOW_TO.test(text)) return;
+      if (guide && paths[0] && !sectionPath) sectionPath = paths[0];
+      rows.push({ kind: "doc", roles: guide ?? rolesFrom(headingPath(), text), pagePath: paths[0] ?? (guide ? sectionPath : null), door: null, module: null, title: headingPath() || source, text, sourceFile: source, language: "en" });
     };
     const flushTable = () => {
       if (!table) return;
@@ -195,7 +212,7 @@ function docRows(): HelpRow[] {
         const paths = pathsIn(where);
         if (!paths.length) continue;
         const role = roleAt >= 0 ? (cells[roleAt] ?? "").replace(/[`*]/g, "").trim() : "";
-        const roles = role && (ROLES as readonly string[]).includes(role) ? [role] : rolesFrom(headingPath(), `${where} ${homeAt >= 0 ? (cells[homeAt] ?? "") : ""}`);
+        const roles = guide ?? (role && (ROLES as readonly string[]).includes(role) ? [role] : rolesFrom(headingPath(), `${where} ${homeAt >= 0 ? (cells[homeAt] ?? "") : ""}`));
         rows.push({ kind: "doc", roles, pagePath: paths[0] ?? null, door: null, module: null, title: headingPath() || source, text: joined.replace(/\s+/g, " ").slice(0, 1800), sourceFile: source, language: "en" });
       }
     };
@@ -213,6 +230,7 @@ function docRows(): HelpRow[] {
         flushTable();
         const level = (h[1] ?? "#").length;
         headings.splice(level - 1, headings.length, (h[2] ?? "").replace(/[`*]/g, "").trim());
+        if (level <= 2) sectionPath = null;
         continue;
       }
       if (/^\s*\|/.test(line)) {
@@ -289,38 +307,71 @@ function dictionaryRows(): HelpRow[] {
   // for, the headings the page itself draws (every `title={t("…")}` in its own files, the page header first) with
   // their descriptions, and the actions that start there, so a question in a guardian's words finds the page and
   // the answer can say what to do on it. Read from the page's source, so a card never names what the page lacks.
-  const pageKeys = new Map<string, { headings: string[]; intros: string[] }>();
-  const keysOf = (href: string): { headings: string[]; intros: string[] } => {
+  type PageKeys = { headings: string[]; intros: string[]; fields: string[]; choices: string[] };
+  const pageKeys = new Map<string, PageKeys>();
+  const SRC = join(process.cwd(), "src");
+  /** The files a page draws with: its own, its component folders, and the components it imports from src/components (one level), with the files beside those it imports in turn. */
+  const filesOf = (dir: string): string[] => {
+    const files = readdirSync(dir).filter((f) => f.endsWith(".tsx")).sort((a, b) => (a === "page.tsx" ? -1 : b === "page.tsx" ? 1 : a.localeCompare(b))).map((f) => join(dir, f));
+    for (const sub of readdirSync(dir, { withFileTypes: true }).filter((d) => d.isDirectory() && !existsSync(join(dir, d.name, "page.tsx")))) {
+      for (const f of readdirSync(join(dir, sub.name)).filter((f) => f.endsWith(".tsx")).sort()) files.push(join(dir, sub.name, f));
+    }
+    const seen = new Set(files);
+    // From the page's own files: the components they import from src/components. From a component so reached:
+    // only its own folder's files ("./labels"), never another folder's (a shared parts file once pulled the
+    // library desk's choices into the office's cards, 10 Oct 2026).
+    const follow = (file: string, fromPage: boolean) => {
+      const src = readFileSync(file, "utf8");
+      for (const m of src.matchAll(/from "(?:@\/components\/([\w\-/]+)|\.\/([\w-]+))"/g)) {
+        if (m[1] && !fromPage) continue;
+        const target = m[1] ? join(SRC, "components", m[1]) : join(dirname(file), m[2]!);
+        for (const candidate of [`${target}.tsx`, `${target}.ts`]) {
+          if (!existsSync(candidate) || seen.has(candidate) || /\/components\/ui\//.test(candidate)) continue;
+          seen.add(candidate);
+          files.push(candidate);
+          if (fromPage) follow(candidate, false);
+        }
+      }
+    };
+    for (const f of [...files]) follow(f, true);
+    return files;
+  };
+  const keysOf = (href: string): PageKeys => {
     const got = pageKeys.get(href);
     if (got) return got;
     const dir = join(process.cwd(), "src", "app", "(app)", ...href.replace(/[?#].*$/, "").split("/").filter(Boolean));
-    const out = { headings: [] as string[], intros: [] as string[] };
+    const out: PageKeys = { headings: [], intros: [], fields: [], choices: [] };
     if (existsSync(dir)) {
-      // The page's own files, then its component folders (a folder with its own page.tsx is another page).
-      const files = readdirSync(dir).filter((f) => f.endsWith(".tsx")).sort((a, b) => (a === "page.tsx" ? -1 : b === "page.tsx" ? 1 : a.localeCompare(b))).map((f) => join(dir, f));
-      for (const sub of readdirSync(dir, { withFileTypes: true }).filter((d) => d.isDirectory() && !existsSync(join(dir, d.name, "page.tsx")))) {
-        for (const f of readdirSync(join(dir, sub.name)).filter((f) => f.endsWith(".tsx")).sort()) files.push(join(dir, sub.name, f));
-      }
-      for (const file of files) {
+      for (const file of filesOf(dir)) {
         // An empty state's title says what is missing, not what the page is for.
         const src = readFileSync(file, "utf8").replace(/<EmptyState\b[^>]*>/g, "");
         for (const m of src.matchAll(/\btitle=\{t\("([a-zA-Z0-9_.]+)"\)\}/g)) if (!out.headings.includes(m[1]!)) out.headings.push(m[1]!);
         for (const m of src.matchAll(/\b(?:description|intro|lede|subtitle)=\{t\("([a-zA-Z0-9_.]+)"\)\}/g)) if (!out.intros.includes(m[1]!)) out.intros.push(m[1]!);
+        // A form's fields, and the coded lists a form offers (a Record<…, TranslationKey> of kinds, 10 Oct 2026: the
+        // certificates page's card never said "Bonafide", so a pupil asking for one found nothing).
+        for (const m of src.matchAll(/\blabel=\{t\("([a-zA-Z0-9_.]+)"\)\}/g)) if (!out.fields.includes(m[1]!)) out.fields.push(m[1]!);
+        for (const block of src.matchAll(/Record<[^=]*TranslationKey>\s*=\s*\{([^}]*)\}/g)) {
+          for (const m of block[1]!.matchAll(/:\s*"([a-zA-Z0-9_.]+)"/g)) if (!out.choices.includes(m[1]!)) out.choices.push(m[1]!);
+        }
       }
     }
     pageKeys.set(href, out);
     return out;
   };
-  const describePage = (dict: Dict, href: string): { intro: string[]; headings: string[] } => {
+  const describePage = (dict: Dict, href: string): { intro: string[]; headings: string[]; fields: string[]; choices: string[] } => {
     const keys = keysOf(href);
     const value = (k: string) => {
       const v = lookup(dict, k);
       return v && !v.includes("{") && v.length <= 120 ? v : null;
     };
-    // A heading is a name, not a sentence: a title that ends like a sentence is a message, left out.
-    const headings = [...new Set(keys.headings.map(value).filter((v): v is string => !!v && !/[.।!?]$/.test(v)))].slice(0, 10);
+    // A heading is a name, not a sentence: a title that ends like a sentence, or an empty state's ("No requests
+    // yet", "अभी कोई अनुरोध नहीं", "अद्याप … नाही"), is a message, left out.
+    const name = (v: string | null): v is string => !!v && !/[.।!?]$/.test(v) && !/^(?:no|nothing|none)\b|^(?:अभी|अद्याप|अजून)\b|नहीं$|नाही$/iu.test(v.trim());
+    const headings = [...new Set(keys.headings.map(value).filter(name))].slice(0, 10);
     const intro = [...new Set(keys.intros.map(value).filter((v): v is string => !!v))].slice(0, 3);
-    return { intro, headings };
+    const fields = [...new Set(keys.fields.map(value).filter(name))].slice(0, 8);
+    const choices = [...new Set(keys.choices.map(value).filter(name))].slice(0, 12);
+    return { intro, headings, fields, choices };
   };
   for (const { language, dict, file } of DICTS) {
     for (const n of navBy.values()) {
@@ -337,6 +388,13 @@ function dictionaryRows(): HelpRow[] {
         actionText ? `Actions from here: ${actionText}.` : "",
       ].filter(Boolean).join(" ").slice(0, 1500);
       rows.push({ kind: "nav", roles, pagePath: n.href, door: null, module: null, title: label, text, sourceFile: `src/lib/nav.ts, ${file}`, language });
+      // The page's form fields and coded choices as a second entry of their own (10 Oct 2026): inside the card
+      // they diluted it (the right page named fell from 170 to 163 of 200), apart they answer "how do I ask for a
+      // bonafide certificate" by the word the person uses.
+      if (page.fields.length || page.choices.length) {
+        const options = [`${label} — page ${n.href} (${roles.join(", ")}): what the form on this page asks and offers.`, page.fields.length ? `Fields: ${page.fields.join("; ")}.` : "", page.choices.length ? `Choices: ${page.choices.join("; ")}.` : ""].filter(Boolean).join(" ").slice(0, 1200);
+        rows.push({ kind: "nav", roles, pagePath: n.href, door: null, module: null, title: label, text: options, sourceFile: `src/lib/nav.ts, ${file}`, language });
+      }
     }
     for (const a of actions) {
       const label = lookup(dict, a.labelKey);
