@@ -60,10 +60,15 @@ describe("the duty card", () => {
   it("lists the faculty member's duties on their home and opens the anti-ragging register", async () => {
     await mountStaff(<FacultyHomeScreen />, "FACULTY", { "GET /api/v1/academics/faculty-home": () => json(home) }, { me: meAs("FACULTY", { duties: ["CLINICAL_COORDINATOR", "ANTI_RAGGING_SQUAD"] }) });
     expect(await screen.findByText("My duties")).toBeTruthy();
+    // The clinical desk is built since 10 Oct 2026 (R-56, the clinical half): its row opens its screen, as the squad's does.
     expect(screen.getByText("Clinical coordinator")).toBeTruthy();
-    expect(screen.getByText("Its page is on its way.")).toBeTruthy();
+    expect(screen.getByText("Arranges students' clinical postings and their rotations.")).toBeTruthy();
     expect(screen.getByText("Anti-ragging squad")).toBeTruthy();
-    await userEvent.setup().press(screen.getByRole("button", { name: "Open" }));
+    const opens = screen.getAllByRole("button", { name: "Open" });
+    expect(opens).toHaveLength(2);
+    await userEvent.setup().press(opens[0]!);
+    expect(mockPush).toHaveBeenCalledWith("/(app)/clinical-desk");
+    await userEvent.setup().press(opens[1]!);
     expect(mockPush).toHaveBeenCalledWith("/(app)/anti-ragging");
   });
 

@@ -463,7 +463,8 @@ describe("the desks' doors", () => {
       await expect(gateRequest(`${method} ${path}`, { role: "FACULTY", schoolId: ids.A!, duties: [duty] })).resolves.toBe("pass");
     }
     // Every stream-records and duty door is in the catalog with a response schema.
-    const mine = ENDPOINTS.filter((e) => e.path.startsWith("/api/v1/stream-records/") || (e.path.startsWith("/api/v1/duties/") && !e.path.includes("anti-ragging")));
+    // The clinical and studio desks (10 Oct 2026) count their doors in their own suites (tests/clinical.test.ts), so S2's 27 stand.
+    const mine = ENDPOINTS.filter((e) => e.path.startsWith("/api/v1/stream-records/") || (e.path.startsWith("/api/v1/duties/") && !e.path.includes("anti-ragging") && !e.path.startsWith("/api/v1/duties/clinical") && !e.path.startsWith("/api/v1/duties/studio")));
     expect(mine.length).toBe(27);
     const on = await enabledModules(ids.A);
     expect(modulePagePermitted("FACULTY", "/duties/lab", on, ["LAB_INCHARGE"])).toBe(true);

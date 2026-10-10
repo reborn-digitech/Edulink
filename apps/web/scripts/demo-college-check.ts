@@ -37,7 +37,7 @@ import { execFileSync } from "node:child_process";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { PrismaClient } from "@prisma/client";
-import { STREAM_PRESETS } from "@edulink/contracts";
+import { DUTY_BUILT, STREAM_PRESETS, type DutyCode } from "@edulink/contracts";
 import { en } from "@edulink/i18n/en";
 import { mr } from "@edulink/i18n/mr";
 import { NAV } from "../src/lib/nav";
@@ -100,7 +100,8 @@ async function facts(spec: StreamSpec): Promise<Line[]> {
   const all = (await db.membership.findMany({ where: { schoolId: s, role: { in: ["FACULTY", "HOD"] } }, select: { dutiesJson: true } })).flatMap((m) => JSON.parse(m.dutiesJson) as string[]);
   const offered = dutiesOffered(spec);
   check("every offered duty held", offered.every((d) => all.includes(d)), `offered ${offered.join(",")}`);
-  check("no clinical or studio duty", !all.some((d) => d === "CLINICAL_COORDINATOR" || d === "STUDIO_COORDINATOR"), all.join(","));
+  // A duty whose desk is not built is given to nobody (DUTY_BUILT; the clinical desk is built since 10 Oct 2026, R-56).
+  check("no unbuilt duty", !all.some((d) => !DUTY_BUILT[d as DutyCode]), all.join(","));
 
   // The modules: the preset's, and the campus four.
   const on = (await db.schoolModule.findMany({ where: { schoolId: s }, select: { module: true } })).map((m) => m.module);
@@ -122,6 +123,14 @@ async function facts(spec: StreamSpec): Promise<Line[]> {
     check("law internships (court, legal aid)", (await db.internship.count({ where: { schoolId: s, kind: { in: ["COURT", "FIRM", "LEGAL_AID"] } } })) >= 2);
   }
   if (spec.stream === "MANAGEMENT") check("a summer internship", (await db.internship.count({ where: { schoolId: s, kind: "SUMMER" } })) >= 1);
+  if (spec.stream === "HEALTH_SCIENCES" || spec.stream === "PHARMACY") {
+    // The clinical desk (R-56, the clinical half; 10 Oct 2026).
+    check("a clinical site with two departments", (await db.clinicalSite.count({ where: { schoolId: s } })) >= 1 && (await db.clinicalDepartment.count({ where: { schoolId: s } })) >= 2);
+    check("a rotation of two postings", (await db.clinicalPosting.count({ where: { schoolId: s } })) >= 2);
+    const states = (await db.logbookEntry.groupBy({ by: ["state"], where: { schoolId: s } })).map((g) => g.state).sort();
+    check("a logbook entry in each state", ["DRAFT", "RETURNED", "SIGNED", "SUBMITTED"].every((x) => states.includes(x)), states.join(","));
+    check("no identifier in any logbook note", !(await db.logbookEntry.findMany({ where: { schoolId: s }, select: { note: true } })).some((e) => /\d{6,}|@/.test(e.note)));
+  }
   if (spec.stream === "EDUCATION") {
     check("practice schools", (await db.practiceSchool.count({ where: { schoolId: s } })) >= 2);
     check("practice postings", (await db.teachingPracticePosting.count({ where: { schoolId: s } })) >= 3);
