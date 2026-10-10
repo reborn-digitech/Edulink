@@ -34,6 +34,20 @@ describe("the issue page's handoff from a request", () => {
     expect(queue).toMatch(/href=\{`\/admin\/certificates\/issue\?membershipId=\$\{item\.studentMembershipId\}&requestId=\$\{item\.id\}&kind=\$\{item\.kind\}#issue`\}/);
   });
 
+  it("the request being issued is left out of the queue, and the banner leads back to it (10 October 2026)", () => {
+    expect(page).toMatch(/<RequestQueue items=\{queue\.items\} pending=\{queue\.pending\} excludeId=\{request\.id\} \/>/);
+    expect(page).toMatch(/data-testid="back-to-queue"/);
+    expect(queue).toMatch(/items\.filter\(\(item\) => item\.id !== excludeId\)/);
+  });
+
+  it("a fee is set on a waiting request only; answered requests fold away with no controls", () => {
+    // The fee form is inside `isPending &&`, never under an issued or a withdrawn row (the server refuses it there).
+    expect(queue).toMatch(/\{isPending && !item\.feePaid && \(\s*<form/);
+    expect(queue).not.toMatch(/item\.status === "ISSUED"\) && !item\.feePaid/);
+    expect(queue).toMatch(/data-testid="request-answered"/);
+    expect(queue).toMatch(/<details/);
+  });
+
   it("a refusal is an alert, scrolled into view, not a line the person has to find", () => {
     expect(form).toMatch(/role="alert"/);
     expect(form).toMatch(/scrollIntoView/);

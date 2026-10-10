@@ -134,7 +134,12 @@ export default async function IssueCertificatePage({ searchParams }: { searchPar
             {request && (
               <div className="flex flex-wrap items-start gap-2 rounded-[var(--radius-md)] border border-accent/40 bg-accent-soft px-3 py-2 text-sm text-accent-strong" data-testid="from-request">
                 <EnvelopeOpenIcon weight="fill" className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-                <span className="min-w-0 flex-1">{t("certificateRequests.fromRequest", { name: request.studentName, kind: t(CERTIFICATE_KIND_KEY[request.kind]), purpose: request.purpose })}</span>
+                <span className="min-w-0 flex-1">
+                  {t("certificateRequests.fromRequest", { name: request.studentName, kind: t(CERTIFICATE_KIND_KEY[request.kind]), purpose: request.purpose })}{" "}
+                  <Link href="/admin/certificates/issue" className="font-semibold underline underline-offset-2" data-testid="back-to-queue">
+                    {t("certificateRequests.backToQueue")}
+                  </Link>
+                </span>
               </div>
             )}
 
@@ -182,7 +187,7 @@ export default async function IssueCertificatePage({ searchParams }: { searchPar
       {request ? (
         <>
           {formCard}
-          <RequestQueue items={queue.items} pending={queue.pending} />
+          <RequestQueue items={queue.items} pending={queue.pending} excludeId={request.id} />
         </>
       ) : (
         <>
