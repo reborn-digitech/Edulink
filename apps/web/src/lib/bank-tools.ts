@@ -6,6 +6,7 @@ import { assertAppAdmin } from "./app-admin";
 import { bankToCsv, normaliseStem, parseBankCsv, type BankCsvResult, type BankExportRow, type BankRow, type BankTranslationRow } from "./bank-csv";
 import { parseChoices, clampLevel } from "./quiz";
 import { CONTENT_TEAM_SOURCE } from "./bank-source";
+import { SERVED_QUESTION } from "./quiz-served";
 import type { ActiveContext } from "./session";
 
 /**
@@ -170,6 +171,8 @@ export async function exportBank(session: ActiveContext, filter: BankExportFilte
   assertAppAdmin(session);
   const questions = await db.quizQuestion.findMany({
     where: {
+      // The bank as served; the review queue's waiting items are not in the sheet (quiz-served.ts).
+      ...SERVED_QUESTION,
       topic: {
         retiredAt: null,
         ...(filter.subject ? { subject: filter.subject } : {}),

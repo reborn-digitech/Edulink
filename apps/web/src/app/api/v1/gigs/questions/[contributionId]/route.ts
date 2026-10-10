@@ -1,5 +1,6 @@
 import { gigContributionSaveSchema, gigContributionSavedSchema, gigContributionSchema } from "@edulink/contracts";
 import { requireApiRole } from "@/lib/tenancy";
+import { assertQuestionGigOpen } from "@/lib/question-gig";
 import { getMyContribution, reviseContribution } from "@/lib/gig-questions";
 import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
 import { refused } from "@/app/api/v1/shared/helpers";
@@ -8,6 +9,7 @@ import { refused } from "@/app/api/v1/shared/helpers";
 export async function GET(_request: Request, { params }: { params: Promise<{ contributionId: string }> }) {
   try {
     const ctx = await requireApiRole("TEACHER");
+    assertQuestionGigOpen(); // review-queue (10 Oct 2026): 404 while the teachers' question gig is off.
     const { contributionId } = await params;
     return ok(gigContributionSchema.parse(await getMyContribution(ctx, contributionId)));
   } catch (error) {
@@ -19,6 +21,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ con
 export async function POST(request: Request, { params }: { params: Promise<{ contributionId: string }> }) {
   try {
     const ctx = await requireApiRole("TEACHER");
+    assertQuestionGigOpen(); // review-queue (10 Oct 2026): 404 while the teachers' question gig is off.
     const { contributionId } = await params;
     const parsed = gigContributionSaveSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);

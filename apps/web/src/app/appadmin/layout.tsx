@@ -44,6 +44,10 @@ export default async function AppAdminLayout({ children }: { children: React.Rea
             <Button asChild variant="ghost" size="sm">
               <Link href="/appadmin/contributions">{t("gigs.queueNav")}</Link>
             </Button>
+            {/* review-queue (10 Oct 2026): the generated bank's items wait here for a stamp. */}
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/appadmin/quiz-review">{t("quizReview.nav")}</Link>
+            </Button>
             <Button asChild variant="ghost" size="sm">
               <Link href="/appadmin/translations">{t("translationReview.nav")}</Link>
             </Button>

@@ -1,3 +1,4 @@
+import { QUESTION_GIG_FOR_TEACHERS } from "@edulink/contracts";
 import { BackTo } from "@/components/back-to";
 import { useRole } from "@/lib/session";
 import { useT } from "@/lib/i18n";
@@ -8,7 +9,8 @@ import { TeacherContributions } from "@/screens/teacher/contributions";
 function RouteInner() {
   const role = useRole();
   const t = useT();
-  if (role === "TEACHER") return <TeacherContributions />;
+  // review-queue (10 Oct 2026): the generic screen while the teachers' question gig is off.
+  if (role === "TEACHER" && QUESTION_GIG_FOR_TEACHERS) return <TeacherContributions />;
   return <GenericScreen title={t("nav.contributions")} />;
 }
 

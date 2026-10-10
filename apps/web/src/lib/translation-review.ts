@@ -4,6 +4,7 @@ import { db } from "./db";
 import { audit } from "./audit";
 import { assertAppAdmin, type BankResult } from "./app-admin";
 import { parseChoices } from "./quiz";
+import { reviewerRole, writeLanguageStamp } from "./quiz-review";
 import type { ActiveContext } from "./session";
 
 /**
@@ -21,7 +22,9 @@ import type { ActiveContext } from "./session";
  * The stamp is on the QUESTION (hiReviewedAt, mrReviewedAt), not on the
  * translation row, so that re-translating the question (an English edit)
  * clears it in the same write that replaces the words. Reviewed is a
- * content-quality flag, never a gate.
+ * content-quality flag, never a gate, for the authored bank; for a GENERATED
+ * item (the review queue, 10 Oct 2026) it is the gate on serving that
+ * language's row (quiz-served.ts).
  */
 
 export type ReviewLanguage = "hi" | "mr";
@@ -161,12 +164,13 @@ export async function reviewTranslation(session: ActiveContext, questionId: stri
     return { ok: false, errorKey: "translationReview.nothingToReview" };
   }
 
-  const at = input.reviewed ? new Date() : null;
-  const by = input.reviewed ? session.user.id : null;
-  await db.quizQuestion.update({
-    where: { id: questionId },
-    data: input.language === "hi" ? { hiReviewedAt: at, hiReviewedBy: by } : { mrReviewedAt: at, mrReviewedBy: by },
-  });
+  // review-queue (10 Oct 2026): the language stamp's one writer (quiz-review.ts) sets the column the
+  // serving filter reads and records a QuizReviewStamp row in the same transaction; a stamp that already
+  // stands as asked is left as it is.
+  const role = reviewerRole(session);
+  await db.$tenantTransaction(async (raw) =>
+    writeLanguageStamp(raw as typeof db, { questionId, language: input.language, stamped: input.reviewed, reviewerUserId: session.user.id, role, at: new Date() }),
+  );
 
   await audit({
     schoolId: null,

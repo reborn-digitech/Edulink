@@ -63,6 +63,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <Button asChild variant="ghost" size="sm">
               <Link href="/root/gigs">{t("gigs.operatorNav")}</Link>
             </Button>
+            {/* review-queue (10 Oct 2026): the operator stamps the generated bank too. */}
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/root/quiz-review">{t("quizReview.nav")}</Link>
+            </Button>
             {/* The global feed's take-down (4 Oct 2026): the operator is the actor above a school, and its desk is the moderation page. */}
             <Button asChild variant="ghost" size="sm">
               <Link href="/appadmin/moderation">{t("root.globalFeedModeration")}</Link>

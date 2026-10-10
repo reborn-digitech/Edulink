@@ -7,6 +7,7 @@ import { clampLevel, parseChoices, QUIZ_SUBJECTS } from "./quiz";
 import { translateQuestion } from "./translate";
 import { statsFor, type QuestionStatSummary } from "./bank-tools";
 import { CONTENT_TEAM_SOURCE } from "./bank-source";
+import { SERVED_QUESTION } from "./quiz-served";
 import type { ActiveContext } from "./session";
 
 /**
@@ -247,7 +248,8 @@ export async function listBankTopics(session: ActiveContext) {
       orderBy: [{ subject: "asc" }, { classLevel: "asc" }, { position: "asc" }],
       select: { id: true, subject: true, classLevel: true, chapter: true, name: true, slug: true },
     }),
-    db.quizQuestion.groupBy({ by: ["topicId"], _count: { _all: true } }),
+    // The bank as served: a generated item waiting in the review queue is the queue's, not the bank's (quiz-served.ts).
+    db.quizQuestion.groupBy({ by: ["topicId"], where: SERVED_QUESTION, _count: { _all: true } }),
   ]);
   const byTopic = new Map(counts.map((c) => [c.topicId, c._count._all]));
 
@@ -284,7 +286,7 @@ export async function listBankQuestions(
   assertAppAdmin(session);
 
   const questions = await db.quizQuestion.findMany({
-    where: { topicId },
+    where: { topicId, ...SERVED_QUESTION },
     orderBy: [{ difficulty: "asc" }, { createdAt: "asc" }],
     select: {
       id: true,
@@ -474,7 +476,7 @@ export async function updateBankQuestion(
 
   const existing = await db.quizQuestion.findUnique({
     where: { id: questionId },
-    select: { id: true },
+    select: { id: true, generated: true, reviewedAt: true },
   });
   if (!existing) return { ok: false, errorKey: "appadmin.noSuchQuestion" };
 
@@ -489,8 +491,9 @@ export async function updateBankQuestion(
       choices: JSON.stringify(input.choices.map((c) => c.trim())),
       answerIndex: input.answerIndex,
       solution: input.solution.trim(),
-      reviewedAt: new Date(),
-      reviewedBy: session.user.id,
+      // A generated item still waiting is served only by the review queue's stamp (quiz-review.ts, the
+      // one writer of its reviewedAt); an edit here leaves it waiting.
+      ...(existing.generated && existing.reviewedAt === null ? {} : { reviewedAt: new Date(), reviewedBy: session.user.id }),
     },
   });
 

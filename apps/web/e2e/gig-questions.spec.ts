@@ -3,6 +3,7 @@ import { PrismaClient } from "@prisma/client";
 import { config } from "dotenv";
 import { contextFor, sessions, VIEWPORTS } from "./actors";
 import { overflow, seriousViolations, smallTargets } from "./checks";
+import { QUESTION_GIG_FOR_TEACHERS } from "@edulink/contracts";
 
 /**
  * Gigs: a teacher writes a question for the bank in three languages, the
@@ -14,6 +15,9 @@ import { overflow, seriousViolations, smallTargets } from "./checks";
 config({ path: ".env" });
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
 const all = sessions();
+// review-queue (10 Oct 2026): the teachers' question gig is switched off (packages/contracts QUESTION_GIG_FOR_TEACHERS);
+// its pages answer 404 while it is, so the walk below waits for it to be switched back on.
+test.skip(!QUESTION_GIG_FOR_TEACHERS, "the teachers' question gig is switched off");
 const teacher = all.TEACHER!;
 const appAdmin = all.APPADMIN!;
 const operator = all.OPERATOR!;
