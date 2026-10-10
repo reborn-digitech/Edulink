@@ -81,7 +81,7 @@ function teacherHandlers() {
 
 beforeAll(async () => {
   const school = await db.school.create({
-    data: { name: `ZZ V1P School ${STAMP}`, slug: `zz-v1p-${STAMP}`, code: `ZP${String(STAMP).slice(-6)}`, contactEmail: `zz-v1p-${STAMP}@test.invalid`, timezone: "Asia/Kolkata" },
+    data: { name: `ZZ V1P School ${STAMP}`, slug: `zz-v1p-${STAMP}`, code: `ZP${String(STAMP).slice(-6)}`, contactEmail: `zz-v1p-${STAMP}@test.invalid`, timezone: "Asia/Kolkata", /* a test fixture: the zz- chapters list for it (quiz-fixtures.ts, 11 Oct 2026) */ isTestFixture: true },
     select: { id: true },
   });
   schoolId = school.id;
@@ -134,13 +134,16 @@ beforeAll(async () => {
 
 afterAll(async () => {
   __resetCookies();
+  // The chapters first, by their slugs (integration, 11 Oct 2026): two zz-v1p-* chapters were left in the bank by a
+  // run whose clean-up timed out on the school's cascade before it reached them, and every real school's practice
+  // list showed them. Their questions, sittings and rungs cascade with them.
+  await db.quizTopic.deleteMany({ where: { slug: { in: [SLUG, REV_SLUG] } } });
   await db.session.deleteMany({ where: { userId: { in: [pupilUserId, teacherUserId].filter(Boolean) } } });
   // The school's rows (sittings, answers, rungs, badges, the chapter set, the audit) go with it.
   if (schoolId) await db.school.deleteMany({ where: { id: schoolId } });
-  await db.quizTopic.deleteMany({ where: { id: { in: [topicId, revTopicId].filter(Boolean) } } });
   await db.user.deleteMany({ where: { id: { in: [pupilUserId, teacherUserId].filter(Boolean) } } });
   await db.$disconnect();
-});
+}, 120_000);
 
 describe("the gates", () => {
   it("every handler answers 401 signed out, in the contract's envelope", async () => {

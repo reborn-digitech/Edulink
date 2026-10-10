@@ -129,7 +129,9 @@ export function CommandPalette({
     const actions = t("palette.groupActions");
     const goTo = t("palette.groupGoTo");
     const list: Entry[] = [
-      ...QUICK_ACTIONS[role].map((a) => ({
+      // An action whose page's own entry is hidden here (a module off, a school's exams at a college; DS-4) is not
+      // offered either (integration, 11 Oct 2026: a college pupil's palette still said "My exam marks").
+      ...QUICK_ACTIONS[role].filter((a) => !hiddenHrefs.includes(a.href)).map((a) => ({
         href: a.href,
         label: t(a.labelKey),
         icon: a.icon,

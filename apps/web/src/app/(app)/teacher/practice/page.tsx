@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { fixtureTopicsWhere, schoolSeesFixtureTopics } from "@/lib/quiz-fixtures";
+import { classLevelLabel } from "@/lib/quiz-board";
 import { DateField } from "@/components/ui/field";
 import Link from "next/link";
 import { BrainIcon, FlagIcon, CheckCircleIcon, WarningIcon } from "@phosphor-icons/react/ssr";
@@ -84,7 +86,7 @@ export default async function TeacherPracticePage({
   // Class 12 integrals to set fractions homework.
   const grade = Number.parseInt(selected.gradeLevel ?? "", 10);
   const topicOptions = await db.quizTopic.findMany({
-    where: Number.isInteger(grade) ? { classLevel: grade } : {},
+    where: { ...(Number.isInteger(grade) ? { classLevel: grade } : {}), ...fixtureTopicsWhere(await schoolSeesFixtureTopics(ctx.schoolId)) },
     orderBy: [{ classLevel: "asc" }, { subject: "asc" }, { position: "asc" }],
     select: { slug: true, name: true, subject: true, classLevel: true },
   });
@@ -228,7 +230,7 @@ export default async function TeacherPracticePage({
               >
                 {topicOptions.map((topic) => (
                   <option key={topic.slug} value={topic.slug}>
-                    {Number.isInteger(grade) ? "" : `${t("practice.classN", { n: topic.classLevel })} · `}
+                    {Number.isInteger(grade) ? "" : `${classLevelLabel(t, topic.classLevel)} · `}
                     {subjectName(topic.subject)} ·{" "}
                     {topic.name}
                   </option>

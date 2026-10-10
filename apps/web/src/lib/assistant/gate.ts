@@ -47,11 +47,11 @@ export type QuestionGate =
   | { pass: true; mode: "HELP" | "TUTOR"; label: "PLATFORM" | "CURRICULUM"; confidence: number | null; tokens: number };
 
 /** The table checks alone: the counsellor routes (SELF_HARM, ABUSE_DISCLOSURE) first, then injection, then the other categories. No retrieval, no model. */
-export function tableVerdict(original: string): AssistantVerdict | null {
-  const first = detectRefusal(original);
+export function tableVerdict(original: string, role: string | null = null): AssistantVerdict | null {
+  const first = detectRefusal(original, role);
   if (first === "SELF_HARM" || first === "ABUSE_DISCLOSURE") return first;
   if (detectInjection(original)) return "INJECTION";
-  return detectRefusal(original);
+  return first;
 }
 
 /** Which scopes the retrieval allows, by the thresholds of the question's language. */
@@ -81,10 +81,12 @@ export async function gateQuestion(
      * waiting). The classifier still has to call it PLATFORM, and the tables still come first.
      */
     ownDoor?: boolean;
+    /** The asker's role: the money row reads "loan" by it (refusals.ts STAFF_ROLES_FOR_LOANS). */
+    role?: string | null;
   },
   model: ClassifyPort,
 ): Promise<QuestionGate> {
-  const table = tableVerdict(input.original);
+  const table = tableVerdict(input.original, input.role ?? null);
   if (table) return { pass: false, verdict: table, modelCalled: false, tokens: 0 };
   const scopes = scopesFromRetrieval(input);
   const help = input.policy.help && (scopes.help || input.ownDoor === true);
@@ -127,13 +129,15 @@ export async function gateAnswer(
      * pupil's own sitting and its date beside the topic reads as PLATFORM to the classifier, and was discarded.
      */
     alsoLabel?: "PLATFORM" | "CURRICULUM";
+    /** The asker's role, as for the question (a librarian's answer about books on loan is not money). */
+    role?: string | null;
   },
   model: ClassifyPort,
 ): Promise<AnswerGate> {
   const reasons: Exclude<AnswerGate, { pass: true }>["reasons"] = [];
   const answer = input.answer.trim();
   if (!answer) return { pass: false, reasons: ["EMPTY"], tokens: 0 };
-  if (detectRefusal(answer)) reasons.push("CATEGORY");
+  if (detectRefusal(answer, input.role ?? null)) reasons.push("CATEGORY");
   if (detectInjection(answer)) reasons.push("INJECTION");
   reasons.push(...answerProblems(answer, input.lexicon, input.allowedText));
   const cited = citedNumbers(answer);

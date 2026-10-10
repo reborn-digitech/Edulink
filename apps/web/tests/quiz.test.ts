@@ -237,21 +237,23 @@ const SLUG = "test-topic-abhyaas";
 
 beforeAll(async () => {
   const stamp = Date.now();
+  // ZZ schools and @demo.relay.test people only (CLAUDE.md; integration, 11 Oct 2026: these were "Quiz Test School"
+  // and @example.test addresses, outside the prefix every test and script may create and destroy).
   const school = await db.school.create({
     data: {
-      name: "Quiz Test School",
-      slug: `quiz-a-${stamp}`,
+      name: "ZZ Quiz Test School",
+      slug: `zz-quiz-a-${stamp}`,
       code: `QUIZA${stamp % 100000}`,
-      contactEmail: "quiz-a@example.test",
+      contactEmail: "zz-quiz-a@demo.relay.test",
       timezone: "Asia/Kolkata",
     },
   });
   const other = await db.school.create({
     data: {
-      name: "Quiz Other School",
-      slug: `quiz-b-${stamp}`,
+      name: "ZZ Quiz Other School",
+      slug: `zz-quiz-b-${stamp}`,
       code: `QUIZB${stamp % 100000}`,
-      contactEmail: "quiz-b@example.test",
+      contactEmail: "zz-quiz-b@demo.relay.test",
       timezone: "Asia/Kolkata",
     },
   });
@@ -272,9 +274,9 @@ beforeAll(async () => {
     return ctx({ userId: user.id, schoolId: sid, role, membershipId: membership.id });
   };
 
-  student = await mk(`quiz-student-${stamp}@example.test`, schoolId, "STUDENT");
-  otherStudent = await mk(`quiz-other-${stamp}@example.test`, otherSchoolId, "STUDENT");
-  teacher = await mk(`quiz-teacher-${stamp}@example.test`, schoolId, "TEACHER");
+  student = await mk(`zz-quiz-student-${stamp}@demo.relay.test`, schoolId, "STUDENT");
+  otherStudent = await mk(`zz-quiz-other-${stamp}@demo.relay.test`, otherSchoolId, "STUDENT");
+  teacher = await mk(`zz-quiz-teacher-${stamp}@demo.relay.test`, schoolId, "TEACHER");
 
   const topic = await db.quizTopic.create({
     data: {

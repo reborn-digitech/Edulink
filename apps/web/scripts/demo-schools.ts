@@ -944,7 +944,9 @@ function rosterMarkdown(input: { sunrise: Built; saraswati: Built; sunita: { id:
       return `| Grade ${c.grade} · A | ${roll.map((p) => `${p.name} (${p.email})`).join(", ")} | ${withParent} of ${roll.length} have a parent: \`${b.spec.key}.parentNN@${DOMAIN}\` for pupil NN${c.grade === b.spec.deshmukh.grade ? `; ${b.spec.deshmukh.first}'s parent is Sunita` : ""} |`;
     }).join("\n");
   const cls = (b: Built, grade: string) => b.classes.find((c) => c.grade === grade)!;
-  return `# Demo schools
+  // A roster is not help: the marker keeps this file out of the assistant's help index (scripts/help-index.ts).
+  return `<!-- helpIndex: false -->
+# Demo schools
 
 Two complete demo schools built by \`npm run demo:schools\` (apps/web). Every account below signs in with the same password:
 
@@ -1179,9 +1181,13 @@ async function main() {
   const doc = rosterMarkdown({ sunrise, saraswati, sunita, expert: { threadId: experts.threadId, bookings: experts.bookings, mentee: { name: experts.mentee.name, grade: experts.mentee.grade }, anjali: experts.anjali }, vacancies, admissionEnquiries, circulars: { sunrise: String(sunrise.counts.circular), saraswati: String(saraswati.counts.circular) }, globalPostId: globalPost.postId });
   const docPath = join(process.cwd(), "..", "..", "docs", "demo-schools.md");
   await mkdir(join(process.cwd(), "..", "..", "docs"), { recursive: true });
-  // The college's section is written by `npm run demo:college` between its markers; a rewrite of the schools' roster keeps it.
-  const college = (await readFile(docPath, "utf8").catch(() => "")).match(/<!-- demo-college:begin -->[\s\S]*?<!-- demo-college:end -->\n?/)?.[0];
-  await writeFile(docPath, college ? `${doc.trimEnd()}\n\n${college}` : doc);
+  // The other generators' sections (demo:college, demo:college-stream, demo:college-engineering, demo:transfer) are
+  // written between their own markers; a rewrite of the schools' roster keeps every one of them, in order
+  // (integration, 11 Oct 2026: it kept the first college's alone, so a demo:schools run dropped the stream
+  // colleges' and the transfer's rosters until those scripts ran again).
+  const before = await readFile(docPath, "utf8").catch(() => "");
+  const kept = [...before.matchAll(/<!-- ([a-z-]+):begin -->[\s\S]*?<!-- \1:end -->\n?/g)].map((m) => m[0].trimEnd());
+  await writeFile(docPath, kept.length ? `${doc.trimEnd()}\n\n${kept.join("\n\n")}\n` : doc);
 
   const line = (b: Built) => `
   ── ${b.school.name} ──────────────────────────────────────────

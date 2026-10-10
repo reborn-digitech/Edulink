@@ -1,4 +1,5 @@
 import "server-only";
+import { fixtureTopicsWhere, schoolSeesFixtureTopics } from "../quiz-fixtures";
 import type {
   AttendanceClasses,
   MarksGridBody,
@@ -541,7 +542,7 @@ export async function staffPractice(ctx: Staff, classId?: string): Promise<Staff
   ]);
   const grade = Number.parseInt(selected.gradeLevel ?? "", 10);
   const topicOptions = await db.quizTopic.findMany({
-    where: Number.isInteger(grade) ? { classLevel: grade } : {},
+    where: { ...(Number.isInteger(grade) ? { classLevel: grade } : {}), ...fixtureTopicsWhere(await schoolSeesFixtureTopics(ctx.schoolId)) },
     orderBy: [{ classLevel: "asc" }, { subject: "asc" }, { position: "asc" }],
     select: { slug: true, name: true, subject: true, classLevel: true },
   });

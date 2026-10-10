@@ -28,7 +28,12 @@ describe("file response caching", () => {
     // caused the leak.
     expect(routeSource).toMatch(/no-store/);
     const nonPublicBranch = routeSource.slice(routeSource.indexOf("function cacheControl"));
-    expect(nonPublicBranch).not.toMatch(/private,\s*max-age=[1-9]/);
+    // One exception, kept narrow (the quiz figures, 10 Oct 2026; held at the integration, 11 Oct 2026): a practice
+    // question's drawing is the same for every reader, holds nothing personal and changes only as a new fileId, so it
+    // alone may be kept a day. Every other non-public kind stays no-store.
+    const withoutQuiz = nonPublicBranch.replace(/if \(kind === "quiz"\) return "private, max-age=86400, immutable";/, "");
+    expect(withoutQuiz).not.toMatch(/private,\s*max-age=[1-9]/);
+    expect(nonPublicBranch.match(/max-age=[1-9]\d*/g)).toEqual(["max-age=86400", "max-age=31536000"]);
   });
 
   it("still caches the public school logo hard", () => {
@@ -38,7 +43,7 @@ describe("file response caching", () => {
   it("applies the cache header on the 304 path too", () => {
     // A 304 that omits Cache-Control lets the previous (leaky) directive stand.
     const notModified = routeSource.slice(routeSource.indexOf("if-none-match"));
-    expect(notModified).toMatch(/cacheControl\(access\.public\)/);
+    expect(notModified).toMatch(/cacheControl\(access\.public(, access\.kind)?\)/);
   });
 });
 

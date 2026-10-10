@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { classLevelLabel } from "@/lib/quiz-board";
 import { PrinterIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { worksheetTopics } from "@/lib/worksheets";
@@ -51,7 +52,7 @@ export default async function WorksheetsPage() {
               >
                 {topics.map((topic) => (
                   <option key={topic.slug} value={topic.slug}>
-                    {t("practice.classN", { n: topic.classLevel })} ·{" "}
+                    {classLevelLabel(t, topic.classLevel)} ·{" "}
                     {subjectName(topic.subject)} ·{" "}
                     {topic.name}
                   </option>
