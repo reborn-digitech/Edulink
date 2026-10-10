@@ -129,6 +129,42 @@ const FLAT: Record<string, string> = {
   "/student/exams": "/(app)/college-exams",
   "/parent/results": "/(app)/college-exams",
   "/faculty/exams": "/(app)/exam-duties",
+  // The college desks' parity batch (10 Oct 2026, R-4): the desks' pages, native.
+  "/placement/drives": "/(app)/placement-drives",
+  "/placement/students": "/(app)/placement-students",
+  "/placement/companies": "/(app)/placement-companies",
+  "/placement/internships": "/(app)/supervision",
+  "/placement/analytics": "/(app)/placement-table",
+  "/faculty/supervision": "/(app)/supervision",
+  "/hod/projects": "/(app)/supervision",
+  "/accounts/structures": "/(app)/fee-structures",
+  "/accounts/scholarships": "/(app)/scholarship-claims",
+  "/accounts/no-dues": "/(app)/no-dues",
+  "/accounts/concessions": "/(app)/concessions",
+  "/accounts/students": "/(app)/accounts-lookup",
+  "/exam-cell/after": "/(app)/exam-after",
+  "/iqac/grievances": "/(app)/iqac-grievances",
+  "/iqac/surveys": "/(app)/iqac-surveys",
+  "/iqac/documents": "/(app)/iqac-filings",
+  "/iqac/registers": "/(app)/research",
+  "/faculty/research": "/(app)/research",
+  "/hod/research": "/(app)/research",
+  "/iqac/predictor": "/(app)/iqac-predictor",
+  "/admin/faculty-records": "/(app)/faculty-records",
+  "/faculty/profile": "/(app)/faculty-profile",
+  "/hostel/expulsions": "/(app)/hostel-expulsions",
+  "/hostel/squad": "/(app)/hostel-squad",
+  "/account/items": "/(app)/my-items",
+  "/admin/stream-records": "/(app)/stream-records",
+  "/admin/transport": "/(app)/office-transport",
+  "/admin/alumni": "/(app)/office-alumni",
+  "/admin/hostel": "/(app)/office-hostel",
+  "/admin/academics": "/(app)/office-academics",
+  "/admin/college-admissions": "/(app)/office-admissions",
+  "/accounts": "/(app)/accounts",
+  "/exam-cell": "/(app)/exam-cell",
+  "/placement": "/(app)/placement-cell",
+  "/iqac": "/(app)/iqac-desk",
 };
 
 /** Paths under these prefixes whose second segment is an id, and the screen and param that id becomes. */
@@ -144,6 +180,9 @@ const BY_ID: { prefix: string; pathname: string; param: string; not?: string[] }
   { prefix: "/admin/admissions/applications/", pathname: "/(app)/application", param: "id", not: ["new"] },
   { prefix: "/parent/applications/", pathname: "/(app)/my-application", param: "id" },
   { prefix: "/teacher/contributions/", pathname: "/(app)/contribution", param: "id", not: ["new"] },
+  // The parity batch (10 Oct 2026): a session and a drive by id.
+  { prefix: "/exam-cell/sessions/", pathname: "/(app)/exam-session", param: "sessionId" },
+  { prefix: "/placement/drives/", pathname: "/(app)/placement-drive", param: "driveId" },
 ];
 
 export function screenFor(url: string): ScreenTarget | null {

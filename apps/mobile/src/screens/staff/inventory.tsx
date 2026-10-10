@@ -7,6 +7,7 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
+import { StoresAsksCard } from "./office-asks";
 
 export const INVENTORY_PATH = "/api/v1/admin/inventory";
 export const INVENTORY_KEY = ["admin", "inventory"] as const;
@@ -22,7 +23,8 @@ export function StaffInventory() {
   const { locale } = useLocale();
   const role = useRole();
   const router = useRouter();
-  const office = role === null || role === "ADMIN" || role === "PRINCIPAL";
+  // The accounts desk keeps the stores with the office (the parity batch, 10 Oct 2026): the doors name ACCOUNTS.
+  const office = role === null || role === "ADMIN" || role === "PRINCIPAL" || role === "ACCOUNTS";
   const query = useQuery({ queryKey: INVENTORY_KEY, enabled: office, queryFn: async () => inventorySummarySchema.parse(unwrap(await api().get(INVENTORY_PATH))) });
   const d = query.data;
   const home = <Button label={t("nav.overview")} variant="secondary" onPress={() => router.push("/(app)" as never)} />;
@@ -58,13 +60,18 @@ export function StaffInventory() {
               d.lowStock.map((i) => <Row key={i.id} title={i.name} caption={t("inventory.onHandOf", { onHand: i.onHand, unit: i.unit, level: i.reorderLevel })} />)
             )}
           </Card>
-          <Card title={t("inventory.asksTitle")}>
-            {d.openRequests.length === 0 ? (
-              <Empty icon="tray" title={t("inventory.asksNone")} body={t("inventory.asksNoneBody")} action={home} />
-            ) : (
-              d.openRequests.map((r) => <Row key={r.id} title={r.requesterName} caption={t("inventory.askLine", { quantity: r.quantity, item: r.itemName })} />)
-            )}
-          </Card>
+          {/* The asks, answered here by the office and the accounts desk (the parity batch, 10 Oct 2026, R-4); the head reads them. */}
+          {d.canEdit ? (
+            <StoresAsksCard requests={d.openRequests} />
+          ) : (
+            <Card title={t("inventory.asksTitle")}>
+              {d.openRequests.length === 0 ? (
+                <Empty icon="tray" title={t("inventory.asksNone")} body={t("inventory.asksNoneBody")} action={home} />
+              ) : (
+                d.openRequests.map((r) => <Row key={r.id} title={r.requesterName} caption={t("inventory.askLine", { quantity: r.quantity, item: r.itemName })} />)
+              )}
+            </Card>
+          )}
           <Card title={t("inventory.recentTitle")}>
             {d.recentMovements.length === 0 ? (
               <Empty icon="tray" title={t("inventory.movementsNone")} body={t("inventory.movementsNoneBody")} action={home} />

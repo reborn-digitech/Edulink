@@ -36,7 +36,7 @@ export function FeePupil() {
   const { locale } = useLocale();
   const role = useRole();
   const router = useRouter();
-  const office = role === "ADMIN";
+  const office = role === "ADMIN" || role === "ACCOUNTS";
   const query = useQuery({
     queryKey: ["fees", "pupil", studentMembershipId],
     queryFn: async () => feePupilLedgerSchema.parse(unwrap(await api().get(`/api/v1/fees/pupils/${studentMembershipId}`))),

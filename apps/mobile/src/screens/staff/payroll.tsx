@@ -8,6 +8,7 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
 import { formatMonth } from "@/lib/dates";
+import { AdvanceAsksCard } from "./office-asks";
 
 export const PAYROLL_PATH = "/api/v1/admin/payroll";
 export const PAYROLL_KEY = ["admin", "payroll"] as const;
@@ -29,7 +30,8 @@ export function StaffPayroll() {
   const { locale } = useLocale();
   const role = useRole();
   const router = useRouter();
-  const office = role === null || role === "ADMIN" || role === "PRINCIPAL";
+  // The accounts desk keeps payroll with the office (the parity batch, 10 Oct 2026): the doors name ACCOUNTS.
+  const office = role === null || role === "ADMIN" || role === "PRINCIPAL" || role === "ACCOUNTS";
   const query = useQuery({ queryKey: PAYROLL_KEY, enabled: office, queryFn: async () => payrollSummarySchema.parse(unwrap(await api().get(PAYROLL_PATH))) });
   const d = query.data;
   const home = <Button label={t("nav.overview")} variant="secondary" onPress={() => router.push("/(app)" as never)} />;
@@ -61,6 +63,8 @@ export function StaffPayroll() {
               </Text>
             ) : null}
           </Card>
+          {/* The advance asks, answered here by the office and the accounts desk (the parity batch, 10 Oct 2026, R-4). */}
+          {d.canEdit ? <AdvanceAsksCard /> : null}
           <Card title={t("payroll.runsTitle")}>
             {d.runs.length === 0 ? (
               <Empty icon="receipt" title={t("payroll.runsNone")} body={d.canEdit ? t("payroll.runsNoneBody") : t("payroll.runsNoneHead")} action={home} />

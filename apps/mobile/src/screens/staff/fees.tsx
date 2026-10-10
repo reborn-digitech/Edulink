@@ -30,7 +30,8 @@ export function StaffFees() {
   const { locale } = useLocale();
   const role = useRole();
   const router = useRouter();
-  const office = role === "ADMIN";
+  // The accounts desk collects as the office does (the parity batch, 10 Oct 2026): every fee door names ACCOUNTS beside ADMIN.
+  const office = role === "ADMIN" || role === "ACCOUNTS";
   const query = useQuery({
     queryKey: ["fees", "overview"],
     queryFn: async () => feeOverviewSchema.parse(unwrap(await api().get("/api/v1/fees/overview"))),

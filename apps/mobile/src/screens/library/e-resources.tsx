@@ -2,13 +2,13 @@ import { useState } from "react";
 import { Linking } from "react-native";
 import { useRouter } from "expo-router";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { eResourceOpenSchema, eResourcesSchema } from "@edulink/contracts";
+import { collegeLibrarySettingsSchema, eResourceOpenSchema, eResourcesSchema } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
 import { Button, Card, Empty, Failed, Loading, Row, Screen } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
-import { useSession } from "@/lib/session";
+import { useRole, useSession } from "@/lib/session";
 import { Notice } from "../staff/shared";
 
 /**
@@ -23,6 +23,10 @@ export function EResourcesScreen() {
   const t = useT();
   const router = useRouter();
   const session = useSession();
+  const role = useRole();
+  // The desk, the office, the head and the IQAC read the borrowing terms too (the parity batch, 10 Oct 2026: the web's /library/college).
+  const desk = role === "LIBRARIAN" || role === "ADMIN" || role === "PRINCIPAL" || role === "IQAC";
+  const terms = useQuery({ queryKey: ["library", "college-settings"], enabled: desk && session.status === "signed-in" && (session.me.modules ?? []).includes("LIBRARY"), queryFn: async () => collegeLibrarySettingsSchema.parse(unwrap(await api().get("/api/v1/library/college-settings"))) });
   const [error, setError] = useState<string | null>(null);
   const list = useQuery({ queryKey: ["library", "eresources"], queryFn: async () => eResourcesSchema.parse(unwrap(await api().get("/api/v1/library/eresources"))) });
   const open = useMutation({
@@ -56,10 +60,17 @@ export function EResourcesScreen() {
               key={e.id}
               icon="globe"
               title={e.name}
-              caption={t(`collegeOffice.ekind${e.kind}` as TranslationKey)}
+              caption={desk ? `${t(`collegeOffice.ekind${e.kind}` as TranslationKey)} · ${t("deskParity.eResourceOpens", { count: e.clicks })}` : t(`collegeOffice.ekind${e.kind}` as TranslationKey)}
               right={<Button label={t("collegeOffice.eResourceOpen")} accessibilityLabel={t("collegeOffice.eResourceOpenLabel", { name: e.name })} variant="secondary" disabled={open.isPending} onPress={() => open.mutate(e.id)} />}
             />
           ))}
+        </Card>
+      ) : null}
+      {terms.data ? (
+        <Card title={t("deskParity.libraryTermsTitle")}>
+          <Row title={t("deskParity.libraryTermsFaculty")} caption={t("deskParity.libraryTermsLine", { books: terms.data.facultyLimit, days: terms.data.facultyLoanDays })} />
+          <Row title={t("deskParity.libraryTermsStudents")} caption={t("deskParity.libraryTermsLine", { books: terms.data.collegeStudentLimit, days: terms.data.collegeStudentLoanDays })} />
+          <Row title={t("deskParity.libraryBookBank")} caption={t("deskParity.libraryBookBankLine", { books: terms.data.bookBankExtra })} />
         </Card>
       ) : null}
     </Screen>

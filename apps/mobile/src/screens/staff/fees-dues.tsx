@@ -37,7 +37,7 @@ export function FeesDues() {
   const role = useRole();
   const router = useRouter();
   const qc = useQueryClient();
-  const office = role === "ADMIN";
+  const office = role === "ADMIN" || role === "ACCOUNTS";
   const [status, setStatus] = useState<DuesStatus>("all");
   const [typed, setTyped] = useState("");
   const [q, setQ] = useState("");

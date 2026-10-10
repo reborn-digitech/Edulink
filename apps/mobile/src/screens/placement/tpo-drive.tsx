@@ -2,13 +2,15 @@ import { useState } from "react";
 import { View } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { driveViewSchema, offerViewSchema, roundResultsResultSchema, type DriveApplicationView, type RoundOutcome } from "@edulink/contracts";
+import { DRIVE_STATUSES, driveViewSchema, offerViewSchema, roundResultsResultSchema, type DriveApplicationView, type DriveView, type RoundOutcome } from "@edulink/contracts";
 import { Button, Card, Failed, Field, Loading, Row, Screen, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { Notice } from "../staff/shared";
+import { Confirm } from "../family/shared";
+import { OfflineDecisionNote } from "../shared/desk";
 import { DRIVE_STATUS_KEY, OUTCOME_KEY, applicationLabel, offerLine, packageRange } from "./words";
 
 /**
@@ -66,6 +68,8 @@ export function TpoDriveScreen() {
               {t("placement.resultsIntro")}
             </Text>
           </Card>
+          {/* Moving the drive on (the parity batch, 10 Oct 2026): the web's status step, for the host's cell alone. */}
+          {d.hosted && d.canEdit && d.status !== "CLOSED" ? <MoveOnCard drive={d} onMoved={(text) => setNotice({ tone: "ok", text })} /> : null}
           <Card title={t("placement.applicantsTitle", { count: d.applications.length })}>
             {d.applications.length === 0 ? <Text tone="muted">{t("placement.noApplicants")}</Text> : null}
             {d.applications.map((a) => {
@@ -101,6 +105,51 @@ export function TpoDriveScreen() {
         </>
       ) : null}
     </Screen>
+  );
+}
+
+/**
+ * The next step of a hosted drive (the parity batch, 10 Oct 2026, R-4): the
+ * web's status step through POST /api/v1/placement/drives/{id} with the next
+ * status alone. A status never goes back, so the step asks once before it is
+ * sent; it is a decision, sent live and never queued (the note says so
+ * offline). The rule is fixed once shortlisting starts and a closed drive
+ * changes no more: both are the server's to refuse, in its own sentence.
+ */
+function MoveOnCard({ drive, onMoved }: { drive: DriveView; onMoved: (text: string) => void }) {
+  const t = useT();
+  const qc = useQueryClient();
+  const [asked, setAsked] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const next = DRIVE_STATUSES[DRIVE_STATUSES.indexOf(drive.status) + 1];
+  const move = useMutation({
+    mutationFn: async () => driveViewSchema.parse(unwrap(await api().post(`/api/v1/placement/drives/${drive.id}`, { status: next }))),
+    onSuccess: (d) => {
+      setAsked(false);
+      setError(null);
+      onMoved(t("deskParity.driveMoved", { status: t(DRIVE_STATUS_KEY[d.status]!) }));
+      void qc.invalidateQueries({ queryKey: ["placement"] });
+    },
+    onError: (e: Error) => {
+      setAsked(false);
+      setError(e.message);
+    },
+  });
+  if (!next) return null;
+  const label = t("deskParity.driveMoveTo", { status: t(DRIVE_STATUS_KEY[next]!) });
+  return (
+    <Card title={t("deskParity.driveMoveTitle")}>
+      <Text variant="sm" tone="muted">
+        {t("deskParity.driveMoveBody")}
+      </Text>
+      {error ? (
+        <Text variant="sm" tone="danger" accessibilityLiveRegion="polite">
+          {error}
+        </Text>
+      ) : null}
+      {asked ? <Confirm question={t("deskParity.driveMoveConfirm", { status: t(DRIVE_STATUS_KEY[next]!) })} confirmLabel={label} busy={move.isPending} onConfirm={() => move.mutate()} onCancel={() => setAsked(false)} /> : <Button label={label} variant="secondary" onPress={() => setAsked(true)} />}
+      <OfflineDecisionNote />
+    </Card>
   );
 }
 

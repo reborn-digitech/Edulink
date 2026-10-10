@@ -76,6 +76,18 @@ describe("notification URLs map to screens", () => {
     expect(screenFor("/bulletin/celebrations")).toEqual({ pathname: "/(app)/celebrations" });
     expect(screenFor("/student/practice/journey")).toEqual({ pathname: "/(app)/practice-journey" });
   });
+  it("the college desks' pages open their native screens (the parity batch, 10 Oct 2026)", () => {
+    expect(screenFor("/placement/drives")).toEqual({ pathname: "/(app)/placement-drives" });
+    expect(screenFor("/placement/drives/d1")).toEqual({ pathname: "/(app)/placement-drive", params: { driveId: "d1" } });
+    expect(screenFor("/exam-cell/sessions/x1")).toEqual({ pathname: "/(app)/exam-session", params: { sessionId: "x1" } });
+    expect(screenFor("/exam-cell/after")).toEqual({ pathname: "/(app)/exam-after" });
+    expect(screenFor("/accounts/no-dues")).toEqual({ pathname: "/(app)/no-dues" });
+    expect(screenFor("/iqac/grievances")).toEqual({ pathname: "/(app)/iqac-grievances" });
+    expect(screenFor("/faculty/profile")).toEqual({ pathname: "/(app)/faculty-profile" });
+    expect(screenFor("/hostel/expulsions")).toEqual({ pathname: "/(app)/hostel-expulsions" });
+    expect(screenFor("/account/items")).toEqual({ pathname: "/(app)/my-items" });
+    expect(screenFor("/admin/transport")).toEqual({ pathname: "/(app)/office-transport" });
+  });
   it("anything else opens the web", () => {
     expect(screenFor("/certificate/r1")).toBeNull();
     expect(screenFor("/teacher/worksheets/print")).toBeNull();

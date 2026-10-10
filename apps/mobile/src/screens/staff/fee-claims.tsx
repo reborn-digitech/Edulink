@@ -31,7 +31,7 @@ export function FeeClaims() {
   const router = useRouter();
   const qc = useQueryClient();
   const [notice, setNotice] = useState<{ text: string; tone: "ok" | "danger" } | null>(null);
-  const office = role === "ADMIN";
+  const office = role === "ADMIN" || role === "ACCOUNTS";
   const query = useQuery({
     queryKey: ["fees", "claims"],
     queryFn: async () => feeClaimsSchema.parse(unwrap(await api().get("/api/v1/fees/claims"))),

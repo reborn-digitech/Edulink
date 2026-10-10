@@ -10,7 +10,8 @@ function RouteInner() {
   const role = useRole();
   const t = useT();
   if (role === "PARENT" || role === "STUDENT") return <FamilyFees />;
-  if (role === "ADMIN" || role === "PRINCIPAL") return <StaffFees />;
+  // The accounts desk keeps the ledger with the office (the parity batch, 10 Oct 2026): the doors name ACCOUNTS.
+  if (role === "ADMIN" || role === "PRINCIPAL" || role === "ACCOUNTS") return <StaffFees />;
   return <GenericScreen title={t("nav.fees")} />;
 }
 

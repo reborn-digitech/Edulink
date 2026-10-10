@@ -52,12 +52,15 @@ export function ExamCellHome() {
           {d.sessions.length === 0 ? <Empty icon="clipboard" title={t("examCell.noSessions")} body={t("examCell.noSessionsBody")} action={web} /> : null}
           {d.sessions.map((s) => (
             <View key={s.id}>
-              <Row title={s.name} caption={`${t(SESSION_STATUS_KEY[s.status]!)} · ${t("examCell.formsCount", { forms: s.forms, submitted: s.submitted, approved: s.approved })}`} />
+              {/* The session itself (the parity batch, 10 Oct 2026, R-4): the forms waiting, the runs to publish, the step on. */}
+              <Row title={s.name} caption={`${t(SESSION_STATUS_KEY[s.status]!)} · ${t("examCell.formsCount", { forms: s.forms, submitted: s.submitted, approved: s.approved })}`} onPress={() => router.push({ pathname: "/(app)/exam-session", params: { sessionId: s.id } } as never)} />
               {s.status === "ASSESSMENT" || s.status === "PUBLISHED" ? <LatestRun session={s} /> : null}
             </View>
           ))}
         </Card>
       ) : null}
+      {/* After results (the parity batch, 10 Oct 2026): the photocopies and revaluations waiting, decided here. */}
+      {d ? <Button label={t("examCell.afterTitle")} variant="secondary" onPress={() => router.push("/(app)/exam-after" as never)} /> : null}
       <View style={{ gap: th.space[2] }}>
         {web}
         <Button label={t("nav.bulletin")} variant="secondary" onPress={() => router.push("/(app)/bulletin" as never)} />

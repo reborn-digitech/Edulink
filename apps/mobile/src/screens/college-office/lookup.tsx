@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import { accountsLookupSchema, noDuesSchema, studentLedgerSchema } from "@edulink/contracts";
 import { formatPaise } from "@edulink/i18n";
@@ -8,6 +9,7 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { usePrivateScreen } from "@/lib/private-screen";
+import { useRole } from "@/lib/session";
 import { Pill } from "../family/shared";
 
 /**
@@ -26,6 +28,8 @@ export function AccountsLookupScreen() {
   usePrivateScreen();
   const t = useT();
   const { locale } = useLocale();
+  const router = useRouter();
+  const role = useRole();
   const [typed, setTyped] = useState("");
   const [q, setQ] = useState("");
   const [chosen, setChosen] = useState<string | null>(null);
@@ -69,6 +73,11 @@ export function AccountsLookupScreen() {
           {l.terms.map((x) => (
             <Row key={x.demandId} title={x.label} caption={`${t("collegeOffice.colDemand")} ${money(x.demandPaise)} · ${t("collegeOffice.colPaid")} ${money(x.paidPaise)}${x.lateFeePaise > 0 ? ` · ${t("collegeOffice.colLateFee")} ${money(x.lateFeePaise)}` : ""}`} right={<Text bold>{money(x.netDuePaise)}</Text>} />
           ))}
+          {/* The claims on the ledger, and the way to a concession for this student (the parity batch, 10 Oct 2026, R-4). */}
+          {l.claims.map((c) => (
+            <Row key={c.id} title={t(`collegeOffice.scheme${c.scheme}`)} caption={[`${t("collegeOffice.colReceivable")} ${money(c.receivablePaise)}`, c.sanctionedPaise === null ? null : `${t("collegeOffice.colSanctioned")} ${money(c.sanctionedPaise)}`, c.disbursedPaise === null ? null : `${t("collegeOffice.colDisbursed")} ${money(c.disbursedPaise)}`].filter(Boolean).join(" · ")} right={<Pill label={t(`collegeOffice.claim${c.status}`)} tone={c.status === "DISBURSED" ? "ok" : c.status === "LAPSED" || c.status === "REJECTED" ? "danger" : "warn"} />} />
+          ))}
+          {role === "ACCOUNTS" || role === "ADMIN" ? <Button label={t("collegeOffice.concessionNew")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/concessions", params: { studentMembershipId: l.student.studentMembershipId, name: l.student.name } } as never)} /> : null}
         </Card>
       ) : null}
       {noDues.isError ? <Failed message={noDues.error.message} onRetry={() => void noDues.refetch()} /> : null}
