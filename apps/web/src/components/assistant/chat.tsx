@@ -82,11 +82,15 @@ export function AssistantChat({
       setAnnounce("");
       stream.reset();
       setAsking(q);
+      // The question moves into the thread the moment it is sent (10 Oct 2026: it sat in the box until the
+      // answer came, so a person read it twice); a failure puts it back so it can be sent again.
+      setQuestion("");
       let id = conversationId;
       if (!id) {
         const opened = await openConversation(locale);
         if (!opened.ok) {
           setAsking(null);
+          setQuestion(q);
           setFailure({ question: q, failure: opened });
           return;
         }
@@ -97,10 +101,10 @@ export function AssistantChat({
       const answered = await askQuestion(id, q);
       setAsking(null);
       if (!answered.ok) {
+        setQuestion(q);
         setFailure({ question: q, failure: answered });
         return;
       }
-      setQuestion("");
       setMessages((list) => [...list, answered.data.question, answered.data.answer]);
       setAnnounce(announcement(answered.data.answer, t));
       box.current?.focus();

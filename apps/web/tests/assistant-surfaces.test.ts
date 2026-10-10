@@ -52,6 +52,19 @@ const msg = (over: Partial<AssistantMessage>): AssistantMessage => ({ id: "zz-m"
 const BOOK = { kind: "CURRICULUM" as const, n: 1, board: "NCERT", book: "Science: Exploration", grade: "9", chapter: "6", section: "6.6", page: 87, sourceUrl: "https://ncert.nic.in/textbook/pdf/iesc106.pdf", chunkId: "zz-chunk" };
 const HELP = { kind: "HELP" as const, n: 2, title: "People", pagePath: "/admin/people", entryId: "zz-help" };
 
+describe("the question box clears as the question is sent (10 October 2026)", () => {
+  const web = readFileSync(join(process.cwd(), "src", "components", "assistant", "chat.tsx"), "utf8");
+  const phone = readFileSync(join(process.cwd(), "..", "mobile", "src", "screens", "shared", "assistant.tsx"), "utf8");
+  it("on the web the box is emptied before the door is called and refilled on a failure", () => {
+    expect(web.indexOf('setQuestion("")')).toBeLessThan(web.indexOf("openConversation(locale)"));
+    expect(web.match(/setQuestion\(q\);/g)?.length).toBe(2);
+  });
+  it("on the phone the same", () => {
+    expect(phone.indexOf('setQuestion("")')).toBeLessThan(phone.indexOf('api().post("/api/v1/assistant/conversations"'));
+    expect(phone.match(/setQuestion\(q\);/g)?.length).toBe(2);
+  });
+});
+
 describe("the first screen says what the assistant is for, the conversation as the unit, and a family's opt-out", () => {
   it("names the tutor for a student, platform help only for the office and a guardian, and the opt-out for a guardian only", () => {
     expect(firstScreenKeys(STUDENT)).toEqual(["assistantUi.firstHelp", "assistantUi.firstTutor", "assistantUi.firstNotGeneral", "assistantUi.firstConversation", "assistantUi.firstKept"]);

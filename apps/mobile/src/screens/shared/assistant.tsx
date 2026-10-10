@@ -195,11 +195,14 @@ function Conversation({ status, conversationId, initial, onDeleted }: { status: 
     if (!q || asking) return;
     setProblem(null);
     setAsking(q);
+    // The question moves into the thread as it is sent; a failure puts it back in the box (10 Oct 2026).
+    setQuestion("");
     let cid = id;
     if (!cid) {
       const opened = await api().post("/api/v1/assistant/conversations", { language: locale });
       if (!opened.ok) {
         setAsking(null);
+        setQuestion(q);
         setProblem({ offline: opened.status === 0, text: opened.error, question: q });
         return;
       }
@@ -209,11 +212,11 @@ function Conversation({ status, conversationId, initial, onDeleted }: { status: 
     const answered = await api().post(`/api/v1/assistant/conversations/${encodeURIComponent(cid)}/messages`, { text: q });
     setAsking(null);
     if (!answered.ok) {
+      setQuestion(q);
       setProblem({ offline: answered.status === 0, text: answered.error, question: q });
       return;
     }
     const data = assistantAnswerSchema.parse(answered.data);
-    setQuestion("");
     setMessages((list) => [...list, data.question, data.answer]);
     // Once per answer, the whole of it: the phone's live region.
     AccessibilityInfo.announceForAccessibility(t("assistantUi.announce", { answer: data.answer.text }));
