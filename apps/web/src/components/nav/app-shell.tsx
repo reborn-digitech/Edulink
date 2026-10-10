@@ -228,10 +228,11 @@ export function AppShell({
 
       {/* ---------- mobile top bar ---------- */}
       <header data-chrome className="sticky top-0 z-30 flex h-14 items-center justify-between gap-3 border-b border-border bg-surface/90 px-4 pt-safe backdrop-blur-md lg:hidden print:hidden">
-        <Link href={items[0]!.href} className="flex min-w-0 items-center gap-2">
+        <Link href={items[0]!.href} className="flex min-h-11 min-w-11 items-center gap-2">
           <Logo size={26} />
           <span className="flex min-w-0 flex-col">
-            <span className="truncate text-sm font-bold text-fg">{user.schoolName}</span>
+            {/* Below 400 px the three round buttons leave the name one letter (10 Oct 2026); the rail and the home card carry it, so here it is for the screen reader only. */}
+            <span className="truncate text-sm font-bold text-fg max-[399px]:sr-only">{user.schoolName}</span>
             {user.streams?.length ? <StreamChip streams={user.streams} t={t} /> : null}
           </span>
         </Link>

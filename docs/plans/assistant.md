@@ -199,7 +199,10 @@ on the teacher's assignment and the faculty's piece of work. Phone: `screens/sha
 the same roles, short answers with "Show the whole answer", an offline card and nothing queued, the guardian's
 switch on the phone's settings too. Tests: `tests/assistant-surfaces.test.ts`, `e2e/assistant-axe.spec.ts` (the
 panel on each role's home under the axe gate), `apps/mobile/test/screens/shared-assistant.test.tsx` (per role, and
-the x-access matrix for the doors the screen calls).
+the x-access matrix for the doors the screen calls). At 360 px the top bar's three round buttons had left the
+school name one letter wide; since 10 October the name is for the screen reader only below 400 px (the rail and the
+home card carry it), the home link keeps a 44 px target, and `e2e/assistant-axe.spec.ts` walks every actor's home at
+360 px as well (the launcher visible and 44 px, no sideways scroll, no serious axe finding).
 
 ### Phase D — evaluation, locally (week 5)
 

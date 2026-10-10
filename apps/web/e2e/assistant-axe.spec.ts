@@ -54,6 +54,34 @@ for (const key of keys) {
       await context.close();
     });
   }
+  // 360 px (10 Oct 2026): the three round buttons of the top bar left the school name one letter wide, so below
+  // 400 px the name is for the screen reader only and the launcher keeps its 44 px; nothing scrolls sideways.
+  test(`${key} · light · the launcher on ${home} at 360 px`, async ({ browser, baseURL }) => {
+    const context = await contextFor(browser, actor.cookie, { viewport: VIEWPORTS["android-small"], theme: "light", locale: "en" }, baseURL!);
+    const page = await context.newPage();
+    const response = await page.goto(home, { waitUntil: "networkidle" });
+    expect(response?.status()).toBeLessThan(400);
+    const launcher = page.getByTestId("assistant-launcher");
+    await expect(launcher).toBeVisible();
+    const box = (await launcher.boundingBox())!;
+    expect(Math.min(box.width, box.height)).toBeGreaterThanOrEqual(44);
+    // The name is in the top bar's link for assistive technology, clipped to a pixel for everyone else.
+    const nameWidth = await page.evaluate(() => {
+      const header = document.querySelector("header[data-chrome]");
+      const spans = header ? [...header.querySelectorAll("a span span")] : [];
+      const name = spans.find((s) => s.classList.contains("font-bold"));
+      return name ? (name as HTMLElement).getBoundingClientRect().width : -1;
+    });
+    expect(nameWidth).toBeGreaterThanOrEqual(0);
+    expect(nameWidth).toBeLessThanOrEqual(1);
+    expect(await overflow(page)).toBeLessThanOrEqual(0);
+    expect(await smallTargets(page)).toEqual([]);
+    expect(await serious(page)).toEqual([]);
+    await launcher.click();
+    await expect(page.getByRole("dialog", { name: "Assistant" })).toBeVisible();
+    await context.close();
+  });
+
   test(`${key} · light · the assistant's panel on ${home} at 1280 px`, async ({ browser, baseURL }) => {
     const context = await contextFor(browser, actor.cookie, { viewport: { width: 1280, height: 900 }, theme: "light", locale: "en" }, baseURL!);
     const page = await context.newPage();
