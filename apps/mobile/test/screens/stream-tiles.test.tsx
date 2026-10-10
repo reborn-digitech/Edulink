@@ -61,13 +61,14 @@ describe("the college's streams on the phone (5 Oct 2026)", () => {
   });
 
   it("says a switched-off tile is off and a not-built stream's records are coming", async () => {
-    await mountStaff(ui("ADMIN"), "ADMIN", {}, { me: atCollege("ADMIN", ["ARCHITECTURE"], ["ALUMNI"]) });
+    // Agriculture's farm and field work are the not-built example since the studio desk was built (10 Oct 2026, R-56).
+    await mountStaff(ui("ADMIN"), "ADMIN", {}, { me: atCollege("ADMIN", ["AGRICULTURE"], ["ALUMNI"]) });
     const card = await screen.findByTestId("stream-tiles");
-    expect(within(card).getByText("Studios and juries")).toBeTruthy();
+    expect(within(card).getByText("Farm and field work")).toBeTruthy();
     expect(within(card).getAllByText("Coming").length).toBe(1);
     expect(within(card).getAllByText("Switched off").length).toBeGreaterThan(0);
     const coming = screen.getByTestId("streams-coming");
-    expect(within(coming).getByText("Design studios and their submissions are not kept in the app yet; keep them as you do now.")).toBeTruthy();
+    expect(within(coming).getByText("The college farm's records are not kept in the app yet; keep them as you do now.")).toBeTruthy();
   });
 
   it("draws nothing at a school: no tiles and no chip", async () => {

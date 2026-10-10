@@ -19,5 +19,7 @@ import { ACCOUNTS_DESK } from "../src/lib/api-catalog/accounts";
 import { COLLEGE_CAMPUS } from "../src/lib/api-catalog/college-campus";
 import { DUTY_DOORS } from "../src/lib/api-catalog/duties";
 import { STREAM_RECORDS } from "../src/lib/api-catalog/stream-records";
+// The studio desk (R-56, the studio half, 10 Oct 2026).
+import { STUDIO_DOORS } from "../src/lib/api-catalog/studio";
 
-export const COLLEGE_DOORS: ReadonlySet<Endpoint> = new Set<Endpoint>([...ACADEMICS, ...EXAMS, ...IQAC, ...PLACEMENT, ...COLLEGE_ADMISSIONS, ...SCHOLARSHIPS, ...ACCOUNTS_DESK, ...COLLEGE_CAMPUS, ...DUTY_DOORS, ...STREAM_RECORDS]);
+export const COLLEGE_DOORS: ReadonlySet<Endpoint> = new Set<Endpoint>([...ACADEMICS, ...EXAMS, ...IQAC, ...PLACEMENT, ...COLLEGE_ADMISSIONS, ...SCHOLARSHIPS, ...ACCOUNTS_DESK, ...COLLEGE_CAMPUS, ...DUTY_DOORS, ...STREAM_RECORDS, ...STUDIO_DOORS]);

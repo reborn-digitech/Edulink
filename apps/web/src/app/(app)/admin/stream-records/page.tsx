@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { notFound } from "next/navigation";
-import { ChalkboardTeacherIcon, FlaskIcon, GavelIcon, HandHeartIcon } from "@phosphor-icons/react/ssr";
+import { ChalkboardTeacherIcon, FlaskIcon, GavelIcon, HandHeartIcon, PaletteIcon } from "@phosphor-icons/react/ssr";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
 import { ModuleOff } from "@/components/module-off";
@@ -11,6 +11,7 @@ import { requireRole } from "@/lib/tenancy";
 import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
 import { streamRecordsSummary } from "@/lib/stream-records";
+import { hasStream } from "@/lib/streams";
 import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -33,6 +34,8 @@ export default async function StreamRecordsPage() {
   const s = await streamRecordsSummary(ctx);
   const yearLabel = `${s.year}–${String((s.year + 1) % 100).padStart(2, "0")}`;
   const corpsOn = s.streams.some((x) => x !== "HEALTH_SCIENCES");
+  // The studio desk (R-56, the studio half, 10 Oct 2026): a card for an architecture college, opening the desk the office reads.
+  const studiosOn = await hasStream(ctx.schoolId, "ARCHITECTURE");
   return (
     <div className="space-y-6">
       <PageHeader title={t("streamRecords.title")} description={t("streamRecords.intro", { year: yearLabel })} />
@@ -90,6 +93,15 @@ export default async function StreamRecordsPage() {
         </Card>
       ) : null}
 
+      {studiosOn ? (
+        <Card data-record="studios">
+          <CardHeader icon={<PaletteIcon weight="duotone" className="size-5" />} title={t("duties.studio.hubTitle")} description={t("duties.studio.hubBody")} />
+          <CardBody>
+            <Button asChild size="sm" variant="secondary"><Link href="/duties/studio">{t("duties.studio.openDesk")}</Link></Button>
+          </CardBody>
+        </Card>
+      ) : null}
+
       {corpsOn ? (
         <Card data-record="corps">
           <CardHeader icon={<HandHeartIcon weight="duotone" className="size-5" />} title={t("streamRecords.corpsTitle")} description={t("streamRecords.corpsBody", { hours: s.corps.hoursPerYear })} />
@@ -108,7 +120,7 @@ export default async function StreamRecordsPage() {
         </Card>
       ) : null}
 
-      {!s.labs && !s.law && !s.education && !corpsOn ? (
+      {!s.labs && !s.law && !s.education && !corpsOn && !studiosOn ? (
         <EmptyState
           title={t("streamRecords.title")}
           description={t("streamRecords.noneForStreams")}
