@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { examSummary, examSummaryFromCollege, examSummaryFromFamily } from "@/lib/assistant/exams";
-import { asksAboutExams, toolsFor } from "@/lib/assistant/tools";
+import { asksAboutExams } from "@/lib/assistant/tools";
 import { EXAM_DATA_RULE, EXAM_SCOPE_RULE, tutorMessages } from "@/lib/assistant/prompt";
 
 /**
@@ -77,9 +77,11 @@ describe("the reader over the tools that ran", () => {
     expect(examSummary([{ name: "childExams", ok: true, raw: family }])).toContain("Sitting ahead");
     expect(examSummary([{ name: "myExams", ok: true }])).toBeNull();
   });
-  it("a college pupil's question asks for both exams doors, a school's module answering the college door with nothing", () => {
-    expect(toolsFor("STUDENT", "when is my next exam")).toEqual(["myExams", "collegeExams"]);
-    expect(toolsFor("STUDENT", "माझी पुढची परीक्षा कधी आहे")).toEqual(["myExams", "collegeExams"]);
+  it("reads the exams doors by their catalog path too (the data questions' router, 11 Oct 2026)", () => {
+    expect(examSummary([{ door: "/api/v1/family/exams", ok: true, raw: family }])).toContain("Sitting ahead");
+    expect(examSummary([{ door: "/api/v1/family/timetable", ok: true, raw: family }])).toBeNull();
+  });
+  it("knows an exams question (the reader runs the exams doors in tutor mode too; which doors answer a data question is the router's, tests/assistant-data.test.ts)", () => {
     expect(asksAboutExams("Which papers do I have in the exams?")).toBe(true);
     expect(asksAboutExams("explain photosynthesis")).toBe(false);
   });

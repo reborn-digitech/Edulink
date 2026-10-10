@@ -1,13 +1,13 @@
 /**
  * The assistant's role policy table (src/lib/assistant/policy.ts), role by role, and the catalog's
  * doors agreeing with it: help for every role that belongs to a school, the tutor for STUDENT, TEACHER,
- * FACULTY and HOD only, the assessment rule for a pupil only, the tools each role may have read for it,
+ * FACULTY and HOD only, the assessment rule for a pupil only, the person's own doors read for every role with help,
  * and EXPERT and RECRUITER outside. Pure.
  */
 import { describe, expect, it } from "vitest";
 import { ROLES } from "@/lib/constants";
 import { ROLE_POLICY, TUTOR_ROLES, corpusBoardFor, gradeBandOf, policyFor } from "@/lib/assistant/policy";
-import { TOOLS, toolsFor } from "@/lib/assistant/tools";
+import { readableDoorsFor } from "@/lib/assistant/doors";
 import { ASSISTANT } from "@/lib/api-catalog/assistant";
 import { ENDPOINTS } from "@/lib/api-catalog";
 import { permits } from "@/lib/api-catalog/types";
@@ -32,24 +32,14 @@ describe("the role policy", () => {
     for (const role of ROLES) expect(ROLE_POLICY[role].gradeScoped, role).toBe(role === "STUDENT");
   });
 
-  it("lets each role's tools read only doors the catalog lets that role pass", () => {
+  it("reads the person's own doors for every role with platform help, and only doors the catalog lets that role pass (the data questions, 11 Oct 2026)", () => {
     for (const role of ROLES) {
-      for (const name of ROLE_POLICY[role].tools) {
-        const entry = ENDPOINTS.find((e) => e.method === "GET" && e.path === TOOLS[name].path);
-        expect(entry, `${role} ${name}`).toBeDefined();
-        expect(permits(entry!, role), `${role} may pass ${TOOLS[name].path}`).toBe(true);
-      }
+      expect(ROLE_POLICY[role].data, role).toBe(ROLE_POLICY[role].help);
+      for (const e of readableDoorsFor(role)) expect(permits(e, role), `${role} may pass ${e.path}`).toBe(true);
     }
-  });
-
-  it("chooses a tool from the question in code, never more than two, and only the role's own", () => {
-    expect(toolsFor("TEACHER", "which registers are still to be marked today?")).toEqual(["registersDue"]);
-    expect(toolsFor("PARENT", "how much of my child's fees is still to pay?")).toEqual(["childFees"]);
-    expect(toolsFor("PARENT", "मेरे बच्चे की फीस कितनी बाकी है")).toEqual(["childFees"]);
-    expect(toolsFor("STUDENT", "what is my timetable tomorrow")).toEqual(["myTimetable"]);
-    expect(toolsFor("STUDENT", "what are my child's fees")).toEqual([]);
-    expect(toolsFor("ALUMNUS", "my timetable")).toEqual([]);
-    expect(toolsFor("PARENT", "timetable exams homework attendance fees").length).toBe(2);
+    // Every school role has doors of its own to read; the expert and the recruiter are outside.
+    for (const role of ROLES.filter((r) => ROLE_POLICY[r].data)) expect(readableDoorsFor(role).length, role).toBeGreaterThan(3);
+    expect(ENDPOINTS.length).toBeGreaterThan(0);
   });
 
   it("names the class bands of the explanation and the books a board's pupil is searched in first", () => {

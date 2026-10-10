@@ -7,26 +7,12 @@
  *   - The tutor: STUDENT, TEACHER, FACULTY, HOD. A teacher's topic questions are not limited to their
  *     own subjects (§9.8) and never by a pupil's sittings (§9.1).
  *   - EXPERT and RECRUITER belong to no school: no conversation is filed for them (NO_SCHOOL).
- *   - Tools: cheap GET doors the person may already open, called with their own session
- *     (tools.ts). A door's answer is data for the prompt, never an instruction.
+ *   - The person's own data (the data questions, 11 Oct 2026): every role with platform help has the GET
+ *     doors the catalog lets it pass read for it, called with its own session; which ones answer a question
+ *     is decided by the router over the catalog (router.ts, doors.ts), never by a list here. A door's answer
+ *     is data for the prompt, never an instruction.
  */
 import type { Role } from "../constants";
-
-export type ToolName =
-  | "myTimetable"
-  | "myExams"
-  | "collegeExams"
-  | "myAssignments"
-  | "childTimetable"
-  | "childExams"
-  | "childAssignments"
-  | "childAttendance"
-  | "childFees"
-  | "teacherTimetable"
-  | "registersDue"
-  | "teacherAssignments"
-  | "officeSyllabusCoverage"
-  | "myLectures";
 
 export type RolePolicy = {
   /** Platform help from the help index. */
@@ -37,19 +23,20 @@ export type RolePolicy = {
   assessed: boolean;
   /** The curriculum is scoped to the person's board and class band (a pupil); a teacher searches every class. */
   gradeScoped: boolean;
-  tools: ToolName[];
+  /** The person's own GET doors may be read for a question (router.ts): every role with platform help. */
+  data: boolean;
 };
 
-const HELP_ONLY: RolePolicy = { help: true, tutor: false, assessed: false, gradeScoped: false, tools: [] };
+const HELP_ONLY: RolePolicy = { help: true, tutor: false, assessed: false, gradeScoped: false, data: true };
 
 export const ROLE_POLICY: Record<Role, RolePolicy> = {
-  STUDENT: { help: true, tutor: true, assessed: true, gradeScoped: true, tools: ["myTimetable", "myExams", "collegeExams", "myAssignments"] },
-  TEACHER: { help: true, tutor: true, assessed: false, gradeScoped: false, tools: ["teacherTimetable", "registersDue", "teacherAssignments"] },
-  FACULTY: { help: true, tutor: true, assessed: false, gradeScoped: false, tools: ["myLectures"] },
-  HOD: { help: true, tutor: true, assessed: false, gradeScoped: false, tools: ["myLectures"] },
-  PARENT: { ...HELP_ONLY, tools: ["childTimetable", "childExams", "childAssignments", "childAttendance", "childFees"] },
-  ADMIN: { ...HELP_ONLY, tools: ["registersDue", "officeSyllabusCoverage"] },
-  PRINCIPAL: { ...HELP_ONLY, tools: ["officeSyllabusCoverage"] },
+  STUDENT: { help: true, tutor: true, assessed: true, gradeScoped: true, data: true },
+  TEACHER: { help: true, tutor: true, assessed: false, gradeScoped: false, data: true },
+  FACULTY: { help: true, tutor: true, assessed: false, gradeScoped: false, data: true },
+  HOD: { help: true, tutor: true, assessed: false, gradeScoped: false, data: true },
+  PARENT: HELP_ONLY,
+  ADMIN: HELP_ONLY,
+  PRINCIPAL: HELP_ONLY,
   DRIVER: HELP_ONLY,
   LIBRARIAN: HELP_ONLY,
   WARDEN: HELP_ONLY,
@@ -58,12 +45,12 @@ export const ROLE_POLICY: Record<Role, RolePolicy> = {
   IQAC: HELP_ONLY,
   TPO: HELP_ONLY,
   ACCOUNTS: HELP_ONLY,
-  EXPERT: { help: false, tutor: false, assessed: false, gradeScoped: false, tools: [] },
-  RECRUITER: { help: false, tutor: false, assessed: false, gradeScoped: false, tools: [] },
+  EXPERT: { help: false, tutor: false, assessed: false, gradeScoped: false, data: false },
+  RECRUITER: { help: false, tutor: false, assessed: false, gradeScoped: false, data: false },
 };
 
 export function policyFor(role: Role | null | undefined): RolePolicy {
-  return role ? ROLE_POLICY[role] : { help: false, tutor: false, assessed: false, gradeScoped: false, tools: [] };
+  return role ? ROLE_POLICY[role] : { help: false, tutor: false, assessed: false, gradeScoped: false, data: false };
 }
 
 /** The four roles the tutor answers (the plan's TUTOR_ROLES), derived from the table so the two cannot disagree. */

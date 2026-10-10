@@ -472,7 +472,7 @@ The "Assistant" card on `/admin` shows this month's use against the school's bud
 2. Fill the "Helpline sentence" shown to a pupil whose question is about hurting themselves; left blank, the national helpline is named.
 3. Press "Save".
 
-The office's own assistant at `/assistant` answers questions about using the platform, naming the page and the steps; the tutor for school subjects is for pupils and teachers only. A conversation is deleted thirty days after it was last used. When a pupil's question suggests they may be struggling, the school's counsellor (a staff record whose designation names a counsellor), else the head, else the office is told who, never their words.
+The office's own assistant at `/assistant` answers questions about using the platform, naming the page and the steps; the tutor for school subjects is for pupils and teachers only. A conversation is deleted thirty days after it was last used. When a pupil's question suggests they may be struggling, the school's counsellor (a staff record whose designation names a counsellor), else the head, else the office is told who, never their words. The office's assistant also answers counts from the pages the office already sees (pupils enrolled, certificate requests waiting, fees overdue, applications in), from the platform's own figures, with class names and never a list of children, and under "Sources" it links the circular or the message thread it read.
 
 ## How do I deal with reports and the audit log?
 

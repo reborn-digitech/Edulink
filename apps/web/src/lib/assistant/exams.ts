@@ -111,12 +111,19 @@ export function examSummaryFromCollege(raw: unknown): string | null {
   return lines.length ? lines.join("\n") : null;
 }
 
-/** The lines from whichever exams doors answered, in the order the tools ran; null when none did. */
-export function examSummary(runs: readonly { name: string; ok: boolean; raw?: unknown }[]): string | null {
+/** The exams doors the reader reads, by their catalog path (the data questions' router, 11 Oct 2026) or the names the harness gives them. */
+export const COLLEGE_EXAMS_DOOR = "/api/v1/exam-cell/mine";
+export const FAMILY_EXAMS_DOOR = "/api/v1/family/exams";
+const COLLEGE_NAMES = new Set(["collegeExams", COLLEGE_EXAMS_DOOR]);
+const FAMILY_NAMES = new Set(["myExams", "childExams", FAMILY_EXAMS_DOOR]);
+
+/** The lines from whichever exams doors answered, in the order they ran; null when none did. */
+export function examSummary(runs: readonly { name?: string; door?: string; ok: boolean; raw?: unknown }[]): string | null {
   const parts: string[] = [];
   for (const run of runs) {
     if (!run.ok || run.raw === undefined) continue;
-    const text = run.name === "collegeExams" ? examSummaryFromCollege(run.raw) : run.name === "myExams" || run.name === "childExams" ? examSummaryFromFamily(run.raw) : null;
+    const name = run.door ?? run.name ?? "";
+    const text = COLLEGE_NAMES.has(name) ? examSummaryFromCollege(run.raw) : FAMILY_NAMES.has(name) ? examSummaryFromFamily(run.raw) : null;
     if (text) parts.push(text);
   }
   return parts.length ? parts.join("\n") : null;

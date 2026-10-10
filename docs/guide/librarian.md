@@ -76,7 +76,7 @@ Open `/account/attendance` ("Staff attendance"), the "My attendance" page, and p
 
 ## Where are my account, the feed and the assistant?
 
-`/account` ("Account") has "Sign-in and schools", "Preferences" ("Notifications", "Language", "Appearance and reading") and "Devices", with "Sign out" at the foot; its "Leave" card opens `/account/leave`, and "My payslips" appears when the school has the Payroll module on. `/bulletin/global` ("Global feed") shows the posts every school has chosen to share. Press "Ask the assistant" on any page or open `/assistant` ("Assistant"): it answers how to use Shalaghar, which page to open and the steps to take there, and nothing else; type in "Your question" and press "Ask", and do not type names or phone numbers.
+`/account` ("Account") has "Sign-in and schools", "Preferences" ("Notifications", "Language", "Appearance and reading") and "Devices", with "Sign out" at the foot; its "Leave" card opens `/account/leave`, and "My payslips" appears when the school has the Payroll module on. `/bulletin/global` ("Global feed") shows the posts every school has chosen to share. Press "Ask the assistant" on any page or open `/assistant` ("Assistant"): it answers how to use Shalaghar, which page to open and the steps to take there; type in "Your question" and press "Ask", and do not type names or phone numbers. It also answers counts from the desk's own pages (books overdue, reservations waiting, fines due, copies on loan), from the platform's own figures and never a list of borrowers, and under "Sources" it links the post it read.
 
 ## At a college
 

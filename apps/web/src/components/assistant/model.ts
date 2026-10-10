@@ -44,7 +44,7 @@ export function firstScreenKeys(status: Pick<AssistantStatus, "tutor" | "optOutP
 
 /** The citation as the reader sees it: a book with its chapter, section and page, or the platform page a help entry names. */
 export function citationLabel(c: AssistantCitation, t: Translate): string {
-  if (c.kind === "HELP") return c.title;
+  if (c.kind === "HELP" || c.kind === "LINK") return c.title;
   // The board by its short name: "Balbharati (Maharashtra State Bureau of …)" is "Balbharati" (the live walk of 10 Oct).
   const board = c.board.split(" (")[0]!.trim();
   const book = board && !c.book.toLowerCase().includes(board.toLowerCase()) ? `${board} · ${c.book}` : c.book;
@@ -66,7 +66,8 @@ export const BOOK_LINK_ROLES: readonly string[] = ["TEACHER", "FACULTY", "HOD", 
  * platform, and only a path on it.
  */
 export function citationHref(c: AssistantCitation, role: string | null): { href: string; external: boolean } | null {
-  if (c.kind === "HELP") {
+  // A help entry's page, and (the data questions, 11 Oct 2026) one of the person's own rows: only a path on this platform.
+  if (c.kind === "HELP" || c.kind === "LINK") {
     if (!c.pagePath || !c.pagePath.startsWith("/") || c.pagePath.startsWith("//")) return null;
     return { href: c.pagePath, external: false };
   }

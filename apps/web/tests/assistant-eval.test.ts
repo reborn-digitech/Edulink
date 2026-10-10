@@ -7,7 +7,6 @@
  */
 import { readFileSync } from "node:fs";
 import { helpMessages } from "@/lib/assistant/prompt";
-import { toolsFor } from "@/lib/assistant/tools";
 import { ownPathsWithoutHost } from "@/lib/assistant/pages";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -201,8 +200,8 @@ function fakeDeps() {
     },
     searchHelp: async (q) => (/fee/i.test(q.query) ? [helpHit] : [{ ...helpHit, similarity: 0.1 }]),
     searchCurriculum: async (q) => (/area|rectangle/i.test(q.query) ? [hit] : [{ ...hit, similarity: 0.1 }]),
-    runTools: async () => {
-      throw new Error("the preview never calls the real tools");
+    runDoors: async () => {
+      throw new Error("the preview never calls the real doors");
     },
     publish: () => {},
     now: () => new Date("2026-10-10T06:00:00Z"),
@@ -239,9 +238,10 @@ describe("previewAnswer runs the harness's hand-in items and door answers throug
 
   it("hands door answers to the help prompt as data", async () => {
     const { deps, prompts } = fakeDeps();
-    const out = await previewAnswer({ role: "PARENT", question: "how much fee is due for my child", toolRuns: [{ name: "childFees", ok: true, status: 200, data: '{"due": 1200}' }] }, deps);
+    const out = await previewAnswer({ role: "PARENT", question: "how much fee is due for my child", toolRuns: [{ name: "/api/v1/fees/family", ok: true, status: 200, data: '{"due": 1200}' }] }, deps);
     expect(out.verdict).toBe("ANSWERED");
-    expect(prompts[0]![1]!.content).toContain('<data name="childFees" page="/parent/fees">');
+    // The block is named by the door's summary (never its /api/ path) with the page where the role sees it.
+    expect(prompts[0]![1]!.content).toContain(`<data n="2" name="A guardian's child: dues, what has been paid, and the ways this school takes payment" page="/parent/fees">`);
     expect(prompts[0]![1]!.content).toContain('"due": 1200');
   });
 });
@@ -395,7 +395,7 @@ describe("the exam-scope reader through the service (10 October 2026)", () => {
     deps.chat = async (m, o) => (m[0]!.content.startsWith("You classify") ? { ...(await chat(m, o)), content: "PLATFORM" } : (prompts.push(m), { content: "Your next exam is Half-yearly: Science on 2026-11-24.", usage: { promptTokens: 1, completionTokens: 1 }, tokensPerSecond: null, promptTokensPerSecond: null, firstTokenLogprob: null }));
     const out = await previewAnswer({ role: "STUDENT", grade: 6, question: "when is my next exam", toolRuns: [{ name: "myExams", ok: true, status: 200, data: '{"upcoming": []}', raw }] }, deps);
     expect(out.verdict).toBe("ANSWERED");
-    expect(prompts[0]![1]!.content).toContain('<data name="examsSummary" page="/student/exams">\nSitting ahead: Half-yearly');
+    expect(prompts[0]![1]!.content).toContain('<data n="1" name="examsSummary" page="/student/exams">\nSitting ahead: Half-yearly');
   });
 });
 
@@ -420,12 +420,6 @@ describe("a help answer written from the person's own data alone (the pilot of 1
     expect(out.text).toBe("The fee due for your child is ₹12,500. Pay it on /parent/fees.");
     expect(out.citations).toEqual([]);
   });
-  it("a guardian's Marathi and Hindi fees questions reach the fees door (the ASCII word boundary never matched फी)", () => {
-    expect(toolsFor("PARENT", "माझ्या मुलाची किती फी बाकी आहे")).toContain("childFees");
-    expect(toolsFor("PARENT", "मेरे बच्चे की कितनी फीस बाकी है")).toContain("childFees");
-    expect(toolsFor("PARENT", "how much fee is due for my child")).toContain("childFees");
-    expect(toolsFor("PARENT", "फीत वर्गात कोण आहे")).not.toContain("childFees");
-  });
   it("still asks for citations when a passage is numbered", () => {
     const system = helpMessages({ question: "how much fee is due", language: "en", role: "PARENT", passages: [{ n: 1, heading: "Fees — page /parent/fees", text: "The fees page lists demands." }], data })[0]!.content;
     expect(system).toMatch(/each with its citation like \[1\]/);
@@ -449,3 +443,30 @@ describe("an invented host on the person's own page (10 October 2026)", () => {
   });
 });
 
+
+/* ---- the data questions' set (metrics.json, 11 Oct 2026): its scoring, pure ----------------------------------- */
+
+describe("the metrics set's scoring", () => {
+  it("reads a door's value by path, list filter, count, rupees and thousandths", async () => {
+    const { truthValue, valuesAt } = await import("../scripts/assistant-eval-score");
+    const json = { totals: { outstandingPaise: 1600000 }, items: [{ status: "PENDING" }, { status: "ISSUED" }, { status: "PENDING" }], drives: [{ status: "OPEN", applicants: 2 }, { status: "CLOSED", applicants: 5 }], groups: [{ rows: [{ title: "Term 1", overallPercentMilli: 75400 }] }] };
+    expect(valuesAt(json, "drives[?status=OPEN].applicants")).toEqual([2]);
+    expect(truthValue(json, { door: "x", count: "items", where: { status: "PENDING" } })).toEqual({ kind: "number", value: 2 });
+    expect(truthValue(json, { door: "x", rupees: "totals.outstandingPaise" })).toEqual({ kind: "number", value: 16000 });
+    expect(truthValue(json, { door: "x", milli: "groups[].rows[?title=Term 1].overallPercentMilli" })).toEqual({ kind: "number", value: 75.4 });
+    expect(truthValue(json, { door: "x", path: "no.such" })).toBeNull();
+  });
+
+  it("finds the value in an answer in any of the three languages, a rounding, a word, or none for zero", async () => {
+    const { answerCarries, numbersIn } = await import("../scripts/assistant-eval-score");
+    expect(numbersIn("₹1,76,000 is due; one filing; दो")).toEqual([176000, 1, 2]);
+    expect(answerCarries("आपकी उपस्थिति ८८ प्रतिशत है", { kind: "number", value: 88 })).toBe(true);
+    expect(answerCarries("Your overall percentage was 75.4", { kind: "number", value: 75.4 })).toBe(true);
+    expect(answerCarries("about 93 percent", { kind: "number", value: 92.5 })).toBe(true);
+    expect(answerCarries("There are no reservations waiting.", { kind: "number", value: 0 })).toBe(true);
+    expect(answerCarries("There are 3 reservations waiting.", { kind: "number", value: 2 })).toBe(false);
+    expect(answerCarries("You are not listed in the directory.", { kind: "bool", value: false })).toBe(true);
+    expect(answerCarries("Your next exam is on 24 November 2026.", { kind: "date", value: "2026-11-24" })).toBe(true);
+    expect(answerCarries("Your last class was Grade 8 · A.", { kind: "text", value: "Grade 8 · A" })).toBe(true);
+  });
+});

@@ -1,6 +1,6 @@
 # The assistant — plan of 8 October 2026 (chatbot first)
 
-Status: Phase A built on 8 and 9 October 2026 (section 5; runbook [docs/runbooks/assistant-local.md](../runbooks/assistant-local.md)); Phases B, C and D built on 10 October 2026 (section 5, [decision 0005](../decisions/0005-assistant-model-endpoint.md); the harness is `npm run assistant:eval`); Phase E not built. The quiz bank generator is parked; its plan stays in
+Status: Phase A built on 8 and 9 October 2026 (section 5; runbook [docs/runbooks/assistant-local.md](../runbooks/assistant-local.md)); Phases B, C and D built on 10 October 2026 (section 5, [decision 0005](../decisions/0005-assistant-model-endpoint.md); the harness is `npm run assistant:eval`); the data questions on 11 October 2026 (section 5); Phase E not built. The quiz bank generator is parked; its plan stays in
 [assistant-and-quiz-bank.md](assistant-and-quiz-bank.md) and section 6 below names the pieces built here
 that it will reuse.
 
@@ -58,10 +58,23 @@ web panel / phone tab ──► /api/v1/assistant/* (catalog doors, module ASSIS
 - **Retrieval**: a `content` schema in the same Postgres with pgvector, no `schoolId` on the corpus rows,
   outside the tenant policy the way the quiz catalogue already sits; Qwen3-Embedding vectors, keyword
   search beside them, Qwen3-Reranker on top; the pupil's board and grade scope the curriculum search first.
-- **Tools**: an allow-list of cheap GET doors from the catalog (my timetable, my exams and their dates,
-  my syllabus coverage, my assignments due, my attendance summary, the family's fee summary, the office's
-  due registers), each called with the person's own session so the tenant fence and the role gate stay
-  exactly as they are; every door's answer is data, never instructions; the heavy-read budget applies.
+- **Tools (the person's own data, as built on 11 October 2026)**: no allow-list. For the asker's role the
+  candidates are the catalog's GET doors the role passes (`permits` with the person's duties, the school's module
+  on) that answer JSON and change nothing on a read (never a PDF, a CSV, a stream, a door that marks a thread
+  read, records a circular as seen, tells students or is audited; never the operator's, the assistant's own or a
+  list of people to write to; `doors.ts` `NEVER_DOORS` names each with its reason) and whose parameters the
+  person's context fills (their own membership, a guardian's children at the conversation's school one by one, a
+  month, a year, a class or a term the question names; a report card read row by row from the person's own cards
+  door). They are ranked by embedding similarity between the question and the door's entry in the help index
+  (its summary and its response's field names as words), and the top three above `DOOR_THRESHOLD` are read; a
+  door at `DOOR_SCOPE_THRESHOLD` or closer puts a question in the platform scope by itself (the classifier still
+  decides). Each is read as the person (the door's own handler inside the request that asked,
+  `door-loaders.ts` generated from the catalog), counted against the heavy-read budget, summed up by code
+  (`summary.ts`: counts by status, kind, class and the like, amounts in rupees, the day range, the first rows the
+  question picks, no person's name, no id, no address), stripped and cleared of instruction-shaped lines, and
+  handed to the model as numbered <data>; a post, a circular or one of the person's threads is a numbered row the
+  answer may cite, which the service turns into a LINK citation built from the row (`links.ts`). A follow-up reads
+  the conversation's last doors again from memory. Every door's answer is data, never instructions.
 - **The model** behind an OpenAI-compatible endpoint, `ASSISTANT_MODEL_URL` and `ASSISTANT_MODEL`: the
   laptop first, a host later, two variables to switch.
 - **Language**: the answer is in the person's account language; a question typed in another of the
@@ -306,6 +319,29 @@ extraction on six shards and 71 of embedding): by the same heuristic Balbharati 
 347 chunks), MPKV 0 %; the gain is smaller than NCERT's because the running-head recovery applies only to
 one-chapter files, and whole-book PDFs get the overprint, cut-section and lone-letter rules alone. Every one
 of the 119,166 chunks in the tables has a vector.
+
+**Built, 11 October 2026 (the data questions, the owner's decisions of 10 October).** The assistant answers questions
+about the person's own data for every school role: counts, statuses, totals and their own history, read from the GET
+doors they may already open, as them. The hand-written tool table is gone; `router.ts` ranks the role's own doors
+over the catalog (`doors.ts`: the role passes the door with its duties, the school's module is on, the door answers
+JSON and changes nothing on a read, its parameters are the person's to fill) by embedding similarity against the help
+index's door entries, which now also carry the response's field names as words (`help-index.ts`), and reads the top
+three that hold something (the first always; an empty one below it gives its place to the next, three spares at
+most), each through its own handler (`door-loaders.ts`, generated by `scripts/assistant-doors.ts`) under the
+heavy-read budget, a guardian's door once per child at the conversation's school, a pupil's report cards row by row
+when the question names a class, a year or a term. `summary.ts` sums each answer up by shape (counts by status, kind,
+class and the like, rupees, the day range, the first rows the question picks, newest first; never a person's name, an
+id, an address or a contact; within one 7,500-character share for the question) and the model is told to copy its
+figures (`DATA_RULES`). A post, a circular or one of the person's threads is a numbered row; a cited row becomes a
+LINK citation built by code (`links.ts`: the role word and the day, the person's own page only, the compose page only
+where `mayConverse` lets the pair write), rendered on the web panel and the phone like a help citation; a <data>
+block's own number may be cited and is taken out of the text. A follow-up reads the conversation's last doors again
+from memory (15 minutes). Another person's record asked for by name is refused with PERSONAL_DATA before anything is
+searched (`data-privacy.ts`); a guardian's own child is read as "your child". New: `content/assistant-eval/metrics.json`
+(167 questions: about ten per school role, a college pupil and a college guardian, scored against the door's own
+figures read with the same minted session; `npm run assistant:eval -- --metrics`). Its run of 11 October: 141/167, and
+the refusal set 180/180, counsellor 32/32, role 60/60, injection 28/28, red team 56/57; the per-role scores, the gaps
+(questions no door answers today) and what is left open are in the data-questions report.
 
 ### Phase E — hosted (week 6)
 

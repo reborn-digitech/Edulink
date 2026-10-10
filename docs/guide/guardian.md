@@ -114,7 +114,7 @@ Open `/parent/settings` ("Settings", or the quick action "Notification settings"
 
 ## What does the assistant answer for me?
 
-Press "Ask the assistant" on any page or open `/assistant` ("Assistant"). For a guardian it answers questions about using Shalaghar: which page to open and the steps to take there, and it can read your child's timetable, exams, assignments, attendance and fees to answer "how much fee is due" or "when is the next exam". Questions about topics are for students and teachers; it is not a general chatbot. Type in "Your question" and press "Ask"; do not type names or phone numbers. Each conversation is deleted thirty days after it was last used.
+Press "Ask the assistant" on any page or open `/assistant` ("Assistant"). For a guardian it answers questions about using Shalaghar: which page to open and the steps to take there, and it can read your child's timetable, exams, assignments, attendance and fees to answer "how much fee is due" or "when is the next exam". Questions about topics are for students and teachers; it is not a general chatbot. Type in "Your question" and press "Ask"; do not type names or phone numbers. Each conversation is deleted thirty days after it was last used. It answers from your children's records as you already see them (fees due for each child, attendance this month, assignments pending, the next exam), counting from the platform's own figures, and under "Sources" it links the post, the circular or the message thread it read, so "did the class teacher reply" opens your thread; it never tells you about another family's child.
 
 ## At a college
 

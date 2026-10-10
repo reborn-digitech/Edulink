@@ -89,7 +89,7 @@ Ticked, a student who asks the same question again in the same conversation gets
 
 ## How do I use the assistant?
 
-Press the assistant's launcher in the top bar, or open `/assistant`. As a faculty member you have both halves: questions about using the platform (which page, which steps) and questions about topics in the books, answered with the book, chapter and page cited.
+Press the assistant's launcher in the top bar, or open `/assistant`. As a faculty member you have both halves: questions about using the platform (which page, which steps) and questions about topics in the books, answered with the book, chapter and page cited. It also answers questions about your own records from the pages you already see (today's lectures, students below the attendance threshold, components to moderate, your leave), counting from the platform's own figures, and under "Sources" it links the post or the message thread it read.
 
 1. Press "New conversation", type in "Your question" and press "Ask". Do not type names, phone numbers or anyone's details.
 2. "Your conversations" lists the last thirty days; a conversation is deleted thirty days after it was last used, or sooner with "Delete this conversation".

@@ -46,7 +46,8 @@ import type { CurriculumHit, HelpHit } from "@/lib/assistant-retrieval";
 import type { ChatMessage, ChatOptions } from "@/lib/assistant-model";
 import type { RealtimeEvent } from "@/lib/realtime";
 import { GET as statusGet } from "@/app/api/v1/assistant/route";
-import { runTools } from "@/lib/assistant/tools";
+import { chooseDoors, runDoors } from "@/lib/assistant/router";
+import { hintsOf, type DataContext } from "@/lib/assistant/doors";
 import { nameLexicon } from "@/lib/assistant/lexicon";
 
 const db = new PrismaClient();
@@ -123,7 +124,7 @@ function fake(opts: { help?: number; curriculum?: number; label?: string; answer
       calls.curriculum += 1;
       return [hit(opts.curriculum ?? 0.2)];
     },
-    runTools: async () => [],
+    runDoors: async () => [],
     publish: (_userId, event) => calls.events.push(event),
     now: () => new Date(),
   };
@@ -344,17 +345,23 @@ describe("asking", () => {
 });
 
 describe("the person's own doors", () => {
-  it("are read through the door's own handler with the person's session, stripped, and only the role's own", async () => {
+  it("are read through the door's own handler with the person's session, summed up and stripped, and only the role's own", async () => {
     await as(ids.teacher, "TEACHER", ids.lark, "POST /api/v1/assistant/conversations/x/messages");
     const lexicon = await nameLexicon({ userId: ids.teacher, schoolId: ids.lark });
-    const runs = await runTools({ role: "TEACHER", schoolId: ids.lark, userId: ids.teacher, question: "which registers are still to be marked today?", lexicon });
+    const now = new Date();
+    const question = "which registers are still to be marked today?";
+    const ctx = (role: DataContext["role"], membershipId: string): DataContext => ({ role, membershipId, children: [], childId: null, duties: [], now });
+    const hits = [{ door: "GET /api/v1/staff/attendance/classes", similarity: 0.8 }];
+    const chosen = chooseDoors({ hits, language: "en", ctx: ctx("TEACHER", ids.teacherM), hints: hintsOf(question, now) });
+    expect(chosen.map((c) => c.door)).toEqual(["/api/v1/staff/attendance/classes"]);
+    const runs = await runDoors({ chosen, ctx: ctx("TEACHER", ids.teacherM), schoolId: ids.lark, userId: ids.teacher, question, hints: hintsOf(question, now), lexicon, firstNumber: 1, conversationId: null, now });
     expect(runs).toHaveLength(1);
-    expect(runs[0]).toMatchObject({ name: "registersDue", ok: true, status: 200 });
-    expect(runs[0]!.data).toContain(`"dateKey"`);
+    expect(runs[0]).toMatchObject({ door: "/api/v1/staff/attendance/classes", ok: true, status: 200 });
+    expect(runs[0]!.data).toMatch(/^classes: \d+ rows?/m);
     expect(runs[0]!.data).not.toContain("ZZ Teacher Kale");
-    // A pupil asking about registers has no such tool: nothing is read.
+    // A pupil has no such door: nothing is chosen, so nothing is read.
     await as(ids.pupil, "STUDENT", ids.lark);
-    expect(await runTools({ role: "STUDENT", schoolId: ids.lark, userId: ids.pupil, question: "which registers are still to be marked today?", lexicon })).toEqual([]);
+    expect(chooseDoors({ hits, language: "en", ctx: ctx("STUDENT", ids.pupilM), hints: hintsOf(question, now) })).toEqual([]);
   });
 });
 

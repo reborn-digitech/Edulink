@@ -45,6 +45,35 @@ export const HELP_PASSAGES = 5;
 export const TOOL_ANSWER_MAX_CHARS = 2_500;
 /** At most this many tools run for one question. */
 export const MAX_TOOLS_PER_QUESTION = 2;
+
+/* ---- the data questions (11 Oct 2026): router.ts, doors.ts, summary.ts ---- */
+/**
+ * A door of the role's own is read for a question ALREADY in the platform scope (a help passage above its threshold
+ * and the classifier's PLATFORM) when its entry is at least this close (the help index's door entries with their
+ * response fields, cosine). Set on 11 October 2026: the metrics set's data questions met their door at 0.57–0.87
+ * in all three languages ("is there a circular I have to acknowledge" met the feed at 0.57); a door below
+ * DOOR_SCOPE_THRESHOLD never puts a question in scope by itself, so a low reading threshold costs a read, never
+ * an answer to an off-topic question (the refusal set's off-topic questions met some door at up to 0.62).
+ */
+export const DOOR_THRESHOLD: Record<AssistantLanguage, number> = { en: 0.55, hi: 0.58, mr: 0.58 };
+/**
+ * A door this close puts a question in the platform scope by itself (gate.ts `ownDoor`), with no help passage above
+ * its threshold; the classifier still has to call it PLATFORM, and the answer gate is unchanged. Above the refusal
+ * set's off-topic questions (at most 0.62 in Hindi and Marathi, 0.61 in English) but for one, "do my homework and
+ * write an essay" (0.71), which the classifier refuses; below the metrics set's data questions whose help passages
+ * fall short ("what is the overall syllabus coverage", 0.64 on the coverage door).
+ */
+export const DOOR_SCOPE_THRESHOLD = 0.64;
+/** At most this many doors are read for one question (a guardian's door taken once per child counts once). */
+export const MAX_DOORS_PER_QUESTION = 3;
+/**
+ * All the <data> of one question together stays under this many characters (each door's share, at most
+ * TOOL_ANSWER_MAX_CHARS): the chat server runs four slots of 8,192 tokens each (scripts/model-serve.sh), and the
+ * passages, the rules and the answer share a slot with the data.
+ */
+export const DATA_MAX_CHARS = 7_500;
+/** A follow-up within this long reads the conversation's last doors again from memory, without a new call. */
+export const FOLLOW_UP_TTL_MS = 15 * 60_000;
 /** Items of the pupil's own the assessment rule compares a question against, at most. */
 export const MAX_ASSESSMENT_ITEMS = 40;
 /** An unfinished practice attempt started within this many minutes is a timed sitting in progress. */

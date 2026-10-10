@@ -150,7 +150,7 @@ When a pupil asks the assistant something that reads as self-harm, the pupil is 
 2. Check in with the pupil that day. Nobody is told twice for the same pupil in a school day, and the pupil's words are never shown to anyone.
 3. The office sets the "Helpline sentence" on the "Assistant" card of `/admin`; left blank, the national helpline is named.
 
-Your own "Assistant" at `/assistant` answers questions about using the platform, naming the page and the steps; the tutor for school subjects is for pupils and teachers. A conversation is deleted thirty days after it was last used.
+Your own "Assistant" at `/assistant` answers questions about using the platform, naming the page and the steps; the tutor for school subjects is for pupils and teachers. A conversation is deleted thirty days after it was last used. Your assistant also answers counts from the pages you already see (leave requests waiting, classes behind on the syllabus, fees overdue, open incidents), from the platform's own figures, with class names and never a list of children, and under "Sources" it links the circular or the message thread it read.
 
 ## How do I read my decisions and the school's trends?
 

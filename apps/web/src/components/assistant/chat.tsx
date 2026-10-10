@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useId, useRef, useState, type FormEvent, type KeyboardEvent, type ReactNode } from "react";
-import { ArrowSquareOutIcon, BookOpenTextIcon, ChatsCircleIcon, CompassIcon, LightbulbIcon, PaperPlaneRightIcon, ThumbsDownIcon, ThumbsUpIcon, WarningCircleIcon, WifiSlashIcon } from "@phosphor-icons/react";
+import { ArrowSquareOutIcon, BookOpenTextIcon, ChatsCircleIcon, CompassIcon, LightbulbIcon, LinkSimpleIcon, PaperPlaneRightIcon, ThumbsDownIcon, ThumbsUpIcon, WarningCircleIcon, WifiSlashIcon } from "@phosphor-icons/react";
 import type { AssistantMessage, AssistantStatus } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";
 import { fieldClass } from "@/components/ui/field-class";
@@ -271,7 +271,8 @@ export function MessageBubble({ message: m, conversationId, role, t }: { message
             {m.citations.map((c) => {
               const link = citationHref(c, role);
               const label = `[${c.n}] ${citationLabel(c, t)}`;
-              const Icon = c.kind === "HELP" ? CompassIcon : BookOpenTextIcon;
+              // A LINK (the data questions, 11 Oct 2026) is one of the person's own rows — a post, a circular, a thread — on the platform, as a HELP page is.
+              const Icon = c.kind === "HELP" ? CompassIcon : c.kind === "LINK" ? LinkSimpleIcon : BookOpenTextIcon;
               return (
                 <li key={`${c.kind}-${c.n}`} className="text-sm">
                   {link?.external ? (

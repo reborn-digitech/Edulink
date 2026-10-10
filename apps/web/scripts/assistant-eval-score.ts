@@ -164,3 +164,104 @@ export function headingGarbled(chapter: string | null, section: string | null): 
 export function headingUntitled(chapter: string | null): boolean {
   return /^Chapter \d+$/.test((chapter ?? "").trim());
 }
+
+/* ---- the data questions' set (metrics.json, 11 Oct 2026) ---------------------------------------------------- */
+
+/**
+ * The values at a path of a door's JSON: "a.b" a field, "a[]" every row of a list, "a[?k=v]" the rows whose field
+ * k reads v; a list's rows are flattened into the values. Pure.
+ */
+export function valuesAt(json: unknown, path: string): unknown[] {
+  let cur: unknown[] = [json];
+  for (const part of path.split(".")) {
+    const m = /^([^[\]]+)(?:\[(?:\?([^=\]]+)=([^\]]*))?\])?$/.exec(part);
+    if (!m) return [];
+    const [, key, fk, fv] = m;
+    const next: unknown[] = [];
+    for (const v of cur) {
+      if (!v || typeof v !== "object" || Array.isArray(v)) continue;
+      const got = (v as Record<string, unknown>)[key!];
+      if (part.endsWith("]")) {
+        if (!Array.isArray(got)) continue;
+        for (const row of got) if (fk === undefined || String((row as Record<string, unknown>)?.[fk]) === fv) next.push(row);
+      } else next.push(got);
+    }
+    cur = next;
+  }
+  return cur;
+}
+
+export type MetricTruth = { door: string; path?: string; count?: string; where?: Record<string, unknown>; rupees?: string; milli?: string; date?: string; text?: string; first?: boolean };
+export type MetricValue = { kind: "number" | "date" | "text" | "bool"; value: number | string | boolean };
+
+/** What a door's JSON says the answer is, by the case's truth spec; null when the door holds no such value. Pure. */
+export function truthValue(json: unknown, t: MetricTruth): MetricValue | null {
+  if (t.count !== undefined) {
+    const lists = valuesAt(json, t.count);
+    const list = lists.length === 1 && Array.isArray(lists[0]) ? (lists[0] as unknown[]) : null;
+    if (!list) return null;
+    const rows = t.where ? list.filter((r) => Object.entries(t.where!).every(([k, v]) => (r as Record<string, unknown>)?.[k] === v)) : list;
+    return { kind: "number", value: rows.length };
+  }
+  const at = (p: string) => valuesAt(json, p).filter((v) => v !== undefined && v !== null);
+  if (t.rupees) {
+    const v = at(t.rupees)[0];
+    return typeof v === "number" ? { kind: "number", value: v / 100 } : null;
+  }
+  if (t.milli) {
+    const v = at(t.milli)[0];
+    return typeof v === "number" ? { kind: "number", value: v / 1000 } : null;
+  }
+  if (t.date) {
+    const v = at(t.date).filter((x): x is string => typeof x === "string").sort()[0];
+    return v ? { kind: "date", value: v.slice(0, 10) } : null;
+  }
+  if (t.text) {
+    const v = at(t.text)[0];
+    return typeof v === "string" ? { kind: "text", value: v } : null;
+  }
+  if (t.path) {
+    const v = at(t.path)[0];
+    if (typeof v === "number") return { kind: "number", value: v };
+    if (typeof v === "boolean") return { kind: "bool", value: v };
+    if (typeof v === "string") return { kind: "text", value: v };
+  }
+  return null;
+}
+
+const DEVANAGARI_DIGITS = "०१२३४५६७८९";
+const NONE_WORDS = /\b(?:no|none|not|nothing|zero|haven't|hasn't|don't|doesn't|isn't|aren't|nil)\b|कोई नहीं|कोई भी नहीं|नहीं|शून्य|नाही|कोणतेही|कोणताही|एकही/i;
+/** Numbers written as words, up to twelve, in the three languages ("one filing has been generated"). */
+const NUMBER_WORDS: [RegExp, number][] = [
+  ["one", 1], ["two", 2], ["three", 3], ["four", 4], ["five", 5], ["six", 6], ["seven", 7], ["eight", 8], ["nine", 9], ["ten", 10], ["eleven", 11], ["twelve", 12],
+].map(([w, n]) => [new RegExp(`\\b${w}\\b`, "i"), n as number] as [RegExp, number]).concat(
+  ([["एक", 1], ["दो", 2], ["तीन", 3], ["चार", 4], ["पांच", 5], ["पाँच", 5], ["दोन", 2], ["पाच", 5], ["छह", 6], ["सहा", 6], ["सात", 7], ["आठ", 8], ["नौ", 9], ["नऊ", 9], ["दस", 10], ["दहा", 10]] as [string, number][]).map(([w, n]) => [new RegExp(`(?<![\\p{L}\\p{M}])${w}(?![\\p{L}\\p{M}])`, "u"), n]),
+);
+const MONTHS_EN = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+const MONTHS_HI = ["जनवरी", "फ़रवरी", "मार्च", "अप्रैल", "मई", "जून", "जुलाई", "अगस्त", "सितंबर", "अक्टूबर", "नवंबर", "दिसंबर"];
+const MONTHS_MR = ["जानेवारी", "फेब्रुवारी", "मार्च", "एप्रिल", "मे", "जून", "जुलै", "ऑगस्ट", "सप्टेंबर", "ऑक्टोबर", "नोव्हेंबर", "डिसेंबर"];
+
+/** The numbers an answer writes, in Latin or Devanagari digits, with Indian or Western grouping. Pure. */
+export function numbersIn(text: string): number[] {
+  const t = text.replace(/[०-९]/g, (d) => String(DEVANAGARI_DIGITS.indexOf(d))).replace(/(?<=\d),(?=\d)/g, "");
+  return [...[...t.matchAll(/(?<![\d.])\d+(?:\.\d+)?/g)].map((m) => Number(m[0])), ...NUMBER_WORDS.filter(([re]) => re.test(text)).map(([, n]) => n)];
+}
+
+/** Does the answer carry the truth's value? Numbers to their rounding (75.4 may be written 75), zero as "none" too. Pure. */
+export function answerCarries(text: string, truth: MetricValue): boolean {
+  if (truth.kind === "number") {
+    const n = truth.value as number;
+    const got = numbersIn(text);
+    if (got.some((g) => Math.abs(g - n) < 0.051 || Math.round(n) === g || Math.round(g) === n)) return true;
+    return n === 0 && NONE_WORDS.test(text);
+  }
+  if (truth.kind === "bool") return truth.value ? /\b(?:yes|you are|it is)\b|हाँ|हां|होय/i.test(text) : NONE_WORDS.test(text);
+  if (truth.kind === "date") {
+    const [y, m, d] = String(truth.value).split("-").map(Number);
+    const day = String(d);
+    const months = [MONTHS_EN[m! - 1]!, MONTHS_EN[m! - 1]!.slice(0, 3), MONTHS_HI[m! - 1]!, MONTHS_MR[m! - 1]!];
+    const t = text.toLowerCase().replace(/[०-९]/g, (x) => String(DEVANAGARI_DIGITS.indexOf(x)));
+    return t.includes(String(truth.value)) || months.some((mo) => new RegExp(`(?<!\\d)${day}(?:st|nd|rd|th)?\\s+${mo}|${mo}\\s+${day}(?!\\d)`, "iu").test(t)) || t.includes(`${day}/${m}/${y}`);
+  }
+  return text.toLowerCase().includes(String(truth.value).toLowerCase());
+}

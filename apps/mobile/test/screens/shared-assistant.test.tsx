@@ -208,6 +208,15 @@ describe("the pieces", () => {
     expect(citationTarget({ ...HELP, pagePath: "//evil.example" }, "TEACHER")).toBeNull();
   });
 
+  it("opens a LINK citation (the data questions: one of the person's own posts, circulars or threads) on the platform as a help entry is, never off it", () => {
+    const LINK = { kind: "LINK", n: 4, title: "Circular from your school, 22 Sept 2026", pagePath: "/bulletin/zz-post", rowId: "zz-post" } as const;
+    expect(citationTarget(LINK, "PARENT")).toEqual({ kind: "screen", target: { pathname: "/(app)/post", params: { postId: "zz-post" } } });
+    expect(citationTarget({ ...LINK, pagePath: "/remarks/c/zz-room" }, "STUDENT")).toEqual({ kind: "screen", target: { pathname: "/(app)/messages/room", params: { conversationId: "zz-room" } } });
+    expect(citationTarget({ ...LINK, pagePath: "/remarks/people?role=staff", rowId: null }, "PARENT")).toEqual({ kind: "screen", target: { pathname: "/(app)/people", params: { role: "staff" } } });
+    expect(citationTarget({ ...LINK, pagePath: "https://evil.example/x" }, "PARENT")).toBeNull();
+    expect(citationTarget({ ...LINK, pagePath: "//evil.example" }, "PARENT")).toBeNull();
+  });
+
   it("is in More for every role that belongs to a school, behind the module, and not for an expert or a recruiter", () => {
     for (const [role, items] of Object.entries(MENU)) {
       const has = items.some((i) => i.screen === "/(app)/assistant");

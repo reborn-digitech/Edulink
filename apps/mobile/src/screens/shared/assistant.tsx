@@ -70,7 +70,8 @@ export const BOOK_LINK_ROLES: readonly string[] = ["TEACHER", "FACULTY", "HOD", 
 
 /** What a citation opens: a book's publisher copy at the page (https, BOOK_LINK_ROLES only), or a help entry's page in the app or on the web. */
 export function citationTarget(c: AssistantCitation, role: string | null): { kind: "url"; url: string } | { kind: "screen"; target: NonNullable<ReturnType<typeof screenFor>> } | { kind: "web"; path: string } | null {
-  if (c.kind === "HELP") {
+  // A help entry's page, and (the data questions, 11 Oct 2026) one of the person's own rows — a post, a circular, a thread: the platform's own page.
+  if (c.kind === "HELP" || c.kind === "LINK") {
     if (!c.pagePath || !/^\/(?!\/)/.test(c.pagePath)) return null;
     const target = screenFor(c.pagePath);
     return target ? { kind: "screen", target } : { kind: "web", path: c.pagePath };
@@ -337,7 +338,7 @@ function Bubble({ message: m, conversationId }: { message: AssistantMessage; con
             {t("assistantUi.sources")}
           </Text>
           {m.citations.map((c) => (
-            <Row key={`${c.kind}-${c.n}`} icon={c.kind === "HELP" ? "globe" : "bookOpen"} title={`[${c.n}] ${citationText(c, t)}`} onPress={citationTarget(c, role) ? () => open(c) : undefined} />
+            <Row key={`${c.kind}-${c.n}`} icon={c.kind === "CURRICULUM" ? "bookOpen" : "globe"} title={`[${c.n}] ${citationText(c, t)}`} onPress={citationTarget(c, role) ? () => open(c) : undefined} />
           ))}
         </View>
       ) : null}
@@ -361,7 +362,7 @@ function Bubble({ message: m, conversationId }: { message: AssistantMessage; con
 }
 
 export function citationText(c: AssistantCitation, t: (key: TranslationKey, vars?: Record<string, string | number>) => string): string {
-  if (c.kind === "HELP") return c.title;
+  if (c.kind === "HELP" || c.kind === "LINK") return c.title;
   // The board by its short name: "Balbharati (Maharashtra State Bureau of …)" is "Balbharati" (the live walk of 10 Oct).
   const board = c.board.split(" (")[0]!.trim();
   const book = board && !c.book.toLowerCase().includes(board.toLowerCase()) ? `${board} · ${c.book}` : c.book;
