@@ -62,7 +62,8 @@ describe("a guardian's settings", () => {
   });
 
   it("a refused save is an alert", async () => {
-    await renderFamily(<ParentSettings />, ME_PARENT, { [PATH]: (init) => (init?.method === "POST" ? refused(422, "ZZ not saved")(init, new URL("http://api.test/")) : SETTINGS) });
+    // The assistant's card (Phase C) reads its own door; answered here so the one alert on the screen is the save's.
+    await renderFamily(<ParentSettings />, ME_PARENT, { [PATH]: (init) => (init?.method === "POST" ? refused(422, "ZZ not saved")(init, new URL("http://api.test/")) : SETTINGS), "/api/v1/family/assistant": () => ({ children: [] }) });
     await press(await screen.findByRole("button", { name: "Save notification settings" }));
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ not saved");
   });

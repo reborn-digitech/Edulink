@@ -7,6 +7,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
 import { SelectField } from "@/components/ui/field";
 import { AttachmentList } from "@/components/attachment-list";
+import { AssignmentAssistantSwitch } from "@/components/assistant/assignment-switch";
 import { ModuleOff } from "@/components/module-off";
 import { ModuleFlash } from "@/components/module-flash";
 import { requireRole } from "@/lib/tenancy";
@@ -65,6 +66,8 @@ export default async function FacultyWorkItemPage({ params, searchParams }: { pa
       ) : null}
       {a.body ? <div className="whitespace-pre-wrap rounded-[var(--radius-md)] border border-border bg-surface p-4 text-sm leading-relaxed text-fg-muted">{a.body}</div> : null}
       {a.attachments.length ? <AttachmentList target="assignment" assignmentId={a.id} recordId={a.id} attachments={book.assignment.attachments} canEdit={false} /> : null}
+      {/* The assistant's hint rule for this piece of work (Phase C, 10 Oct 2026): the door names FACULTY and HOD. */}
+      <AssignmentAssistantSwitch assignmentId={a.id} />
       <Card>
         <CardHeader icon={<ArrowSquareInIcon weight="duotone" className="size-5" />} title={t("collegeWork.postTitle")} description={view.locked ? t("collegeWork.postLocked") : t("collegeWork.postBody")} />
         {!view.locked && view.components.length > 0 && a.pointsMilli ? (

@@ -622,6 +622,19 @@ export const NAV: Record<Role, NavItem[]> = {
   ],
 };
 
+/**
+ * The assistant (Phase C, 10 Oct 2026; docs/plans/assistant.md): one entry for every role that belongs to a school, after the role's own, under
+ * "Day to day", behind the ASSISTANT module (on by default; the office may switch it off, and the shell then hides
+ * the entry and the panel's launcher with it). Appended here rather than written into each role's list, so a role added
+ * later has it too; the page is /assistant (the conversations of the last thirty days and a new one), the panel opens
+ * over any page from the shell. A module role reaches the page through this entry (role-gate.ts).
+ */
+export const ASSISTANT_HREF = "/assistant";
+const ASSISTANT_ENTRY: NavItem = { href: ASSISTANT_HREF, labelKey: "assistantUi.navLabel", icon: "chatsCircle", prefix: true, group: "daily", module: "ASSISTANT" };
+/** Not for the outside accounts: an expert and a recruiter belong to no school, and the assistant's doors refuse them (Phase B). */
+export const ASSISTANT_NOT_FOR: readonly Role[] = ["EXPERT", "RECRUITER"];
+for (const [role, list] of Object.entries(NAV) as [Role, NavItem[]][]) if (!ASSISTANT_NOT_FOR.includes(role) && !list.some((item) => item.href === ASSISTANT_HREF)) list.push(ASSISTANT_ENTRY);
+
 /** The one action each role does most. Becomes the floating action button. */
 export const PRIMARY_ACTION: Record<Role, QuickAction | null> = {
   // The overview's header has its own "Invite people", so the button floats on the people pages instead.

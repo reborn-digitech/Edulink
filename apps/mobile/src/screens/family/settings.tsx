@@ -13,6 +13,7 @@ import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
 import { Note, Pill } from "./shared";
 import { must, Refusal } from "../staff/shared";
+import { FamilyAssistantCard } from "../shared/assistant";
 
 type Settings = z.infer<typeof familySettingsSchema>;
 const HHMM = /^\d{1,2}:\d{2}$/;
@@ -61,6 +62,8 @@ export function ParentSettings() {
                 {t("parent.settingsApplyAll")}
               </Text>
             </Card>
+            {/* The assistant, per child (Phase C, 10 Oct 2026): the web's card on /parent/settings. */}
+            <FamilyAssistantCard />
             <MyDataCard body={t("exports.childDataBody")} items={d.children.map((child) => ({ id: child.studentMembershipId, label: t("exports.downloadFor", { name: child.name }), path: `/api/v1/family/export?student=${encodeURIComponent(child.studentMembershipId)}`, fileName: `relay-export-${child.name}.json` }))} />
             <Card title={t("parent.yourAccount")} action={<Button label={t("parent.open")} variant="secondary" onPress={() => router.push("/(app)/more" as never)} />}>
               <Text variant="xs" tone="muted">

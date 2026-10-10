@@ -519,12 +519,24 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
 };
 
 /**
+ * The assistant (Phase C, 10 Oct 2026; docs/plans/assistant.md): an entry in the More of every role that belongs to a school, under "Day to day",
+ * while the active school has the ASSISTANT module on (on by default), as the web's NAV has it for every role. Appended
+ * rather than written into each list, so a role added later has it too. The screen reads the web's doors.
+ */
+export const ASSISTANT_ENTRY: MenuItem = { labelKey: "assistantUi.navLabel", icon: "chats", group: "daily", screen: "/(app)/assistant", module: "ASSISTANT" };
+/** Not for the outside accounts (an expert, a recruiter): they belong to no school, and the doors refuse them. */
+export const ASSISTANT_NOT_FOR: readonly RoleCode[] = ["EXPERT", "RECRUITER"];
+for (const [role, list] of Object.entries(MENU) as [RoleCode, MenuItem[]][]) if (!ASSISTANT_NOT_FOR.includes(role) && !list.some((item) => item.screen === ASSISTANT_ENTRY.screen)) list.push(ASSISTANT_ENTRY);
+
+/**
  * Every route under (app) that is not a tab: the Tabs navigator lists every
  * file it finds and, on the web target, shows an unnamed one in the bar with
  * a default icon, so each is declared with href: null. A test checks this
  * list against the files on disk.
  */
 export const HIDDEN_SCREENS = [
+  // The assistant (Phase C, 10 Oct 2026): from More, for every role while the module is on.
+  "assistant",
   // The college at a glance for the head and the registrar (campaign 2026-10-04, G-4).
   "college",
   // The exam cell (4 Oct 2026): a student's (or a guardian's child's) exams, a faculty member's duties.

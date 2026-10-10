@@ -29,6 +29,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { Badge } from "@/components/ui/badge";
 import { WelcomeBanner } from "./welcome-banner";
+import { AssistantUsageCard } from "@/components/assistant/usage-card";
 import { cn } from "@/lib/cn";
 import { getT, getRelativeTime, getLocale } from "@/lib/i18n/server";
 import { schoolJobStory, JOB_COUNT_LABELS, JOB_ATTENTION_KEYS } from "@/lib/job-health";
@@ -438,6 +439,11 @@ export default async function AdminDashboard({
           </CardBody>
         </Card>
       )}
+
+      {/* ---------------- the assistant ----------------
+          The school's month against its budget, the switch and the helpline sentence (Phase C, 10 Oct 2026): counts
+          only, read by the card from the office's door so the page waits for nothing. A college's office too. */}
+      <AssistantUsageCard canEdit />
 
       {/* ---------------- next steps ---------------- */}
       {!college && teacherCount === 0 && (

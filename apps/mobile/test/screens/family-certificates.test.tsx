@@ -211,7 +211,7 @@ describe("a former pupil's papers (ALUMNUS, campaign 2026-10-04, G-6)", () => {
     const { fetch } = await renderFamily(compose(), ME_ALUMNUS, { [PATH]: refused(403, "ZZ not yours"), [REQUESTS]: () => ALUMNI_VIEW });
     expect(await screen.findByText("Papers from the school")).toBeTruthy();
     expect(screen.getByText(/^Ask for a paper again/)).toBeTruthy();
-    expect(await screen.findByText("Fee ₹50, to be paid at the office")).toBeTruthy();
+    expect(await screen.findByText("Fee ₹50: pay it on the Fees page, or at the office.")).toBeTruthy();
     expect(screen.getByText("Fee ₹25 paid")).toBeTruthy();
     expect(calls(fetch, PATH)).toHaveLength(0);
     expect(screen.queryByRole("alert")).toBeNull();

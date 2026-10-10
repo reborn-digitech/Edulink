@@ -88,7 +88,7 @@ export function endpointFor(method: string, path: string, catalog: readonly Endp
  * a pupil's record, sign-in — are the person's own and are not gated here.
  */
 export const APP_SEGMENTS = [
-  "accounts", "admin", "alumni", "archive", "attachments", "attendance", "bulletin", "certificates", "competitions", "driver", "duties",
+  "accounts", "admin", "alumni", "archive", "assistant", "attachments", "attendance", "bulletin", "certificates", "competitions", "driver", "duties",
   "enquiries", "exam-cell", "exams", "expert", "experts", "explore", "faculty", "hod", "hostel", "incidents", "iqac", "joins",
   "library", "mentoring", "notifications", "parent", "people", "placement", "principal", "recruiter", "remarks",
   "report-cards", "reports", "reviews", "sessions", "student", "teacher", "timetable", "vacancies",

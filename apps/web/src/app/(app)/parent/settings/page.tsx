@@ -15,6 +15,7 @@ import { AppearanceForm } from "@/app/account/appearance-form";
 import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 import { UnlinkChild } from "./unlink-child";
+import { FamilyAssistantCard } from "@/components/assistant/family-card";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -111,6 +112,11 @@ export default async function ParentSettingsPage() {
           </p>
         </CardBody>
       </Card>
+
+      {/* ---------- the assistant, per child (Phase C, 10 Oct 2026) ----------
+          On by default for every pupil (decision 0005); the guardian turns it off for a child here, and the
+          assistant's first screen sends a guardian to this card (#assistant). */}
+      <FamilyAssistantCard />
 
       {/* ---------- the family's own data (DPDP s.11) ---------- */}
       <Card>
