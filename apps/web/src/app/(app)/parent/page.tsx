@@ -17,7 +17,6 @@ import { examMarksFor } from "@/lib/exams";
 import { childWeek } from "@/lib/timetable";
 import { formatTimeRange } from "@/lib/school-day";
 import { ExamMarksCards } from "@/components/exams/exam-marks";
-import { listContexts } from "@/lib/session";
 import { db } from "@/lib/db";
 import { getAttendanceSummary, currentStreakFor, todayAttendanceFor } from "@/lib/attendance";
 import { addDaysToKey, formatDateKey, isWithin, relativeTime, todayKey, weekdayOfKey } from "@/lib/dates";
@@ -33,6 +32,8 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { ChildSwitcher } from "./child-switcher";
 import { ChildLeftPanel } from "./child-left";
+import { AdultChildHome } from "./adult-child";
+import { familyChildren, pickChild } from "@/lib/family-child";
 import { WelcomeTour } from "./welcome-tour";
 import { InstallCard } from "@/components/install-card";
 import { cookies } from "next/headers";
@@ -62,14 +63,18 @@ export default async function ParentDashboard({
   const locale = await getLocale();
   const { child: requestedChild } = await searchParams;
 
-  const { children } = await listContexts(session.user.id);
+  // The children with what each lets the guardian see (DS-1, 10 Oct 2026; lib/family-child.ts).
+  const children = await familyChildren(session.user.id);
 
   // The child id comes from the query string, so it is re-checked against the
-  // caller's own guardianships rather than trusted. (§6 IDOR)
-  const selectedId =
-    requestedChild && children.some((c) => c.studentMembershipId === requestedChild)
-      ? requestedChild
-      : children[0]!.studentMembershipId;
+  // caller's own guardianships rather than trusted. (§6 IDOR) With none asked
+  // for, the first child the guardian may read: a guardian whose first-claimed
+  // child is an adult at a college used to land on a 404.
+  const chosen = pickChild(children, requestedChild) ?? children[0]!;
+  const selectedId = chosen.studentMembershipId;
+
+  // An adult at a college: the home says what they share, and nothing of a school day (adult-child.tsx).
+  if (chosen.guarded) return <AdultChildHome session={session} child={chosen} pupils={children} />;
 
   const link = await assertGuardianAccess(session.user.id, selectedId);
   const student = link.student;

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeftIcon, FirstAidKitIcon, PrinterIcon, StethoscopeIcon } from "@phosphor-icons/react/ssr";
-import { requireParent, assertGuardianAccess } from "@/lib/tenancy";
-import { listContexts } from "@/lib/session";
+import { requireParent } from "@/lib/tenancy";
+import { familyChildren, pickChild, childAccess } from "@/lib/family-child";
+import { NotSharedState } from "@/components/family/not-shared";
 import { healthCardFor, healthCardReadsFor } from "@/lib/health";
 import { HealthCardReadsDisclosure } from "@/components/health-card-reads";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
@@ -28,10 +29,27 @@ export default async function ParentHealthPage({ searchParams }: { searchParams:
   const t = await getT();
   const { child: requested } = await searchParams;
 
-  const { children } = await listContexts(session.user.id);
-  const selectedId = requested && children.some((c) => c.studentMembershipId === requested) ? requested : children[0]!.studentMembershipId;
+  // The children with what each lets the guardian see, opening on one the guardian may read (DS-1, 10 Oct 2026).
+  const children = await familyChildren(session.user.id);
+  const chosen = pickChild(children, requested) ?? children[0]!;
+  const selectedId = chosen.studentMembershipId;
 
-  const link = await assertGuardianAccess(session.user.id, selectedId);
+  // An adult's health card is their own (no grant covers it; they read it on /student/health): the page says so.
+  const access = await childAccess(session.user.id, selectedId);
+  if (access.refused) {
+    return (
+      <div className="space-y-5">
+        <Link href="/parent" className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg">
+          <ArrowLeftIcon weight="bold" className="size-4" />
+          {t("parent.overview")}
+        </Link>
+        {children.length > 1 && <ChildSwitcher pupils={children} selectedId={selectedId} basePath="/parent/health" />}
+        <PageHeader title={t("health.forChild", { name: chosen.name })} description={chosen.schoolName} />
+        <NotSharedState name={chosen.name} own />
+      </div>
+    );
+  }
+  const link = access.link;
   const student = link.student;
   const childName = student.user.preferredName ?? student.user.name;
   const [view, reads] = await Promise.all([healthCardFor(session, selectedId), healthCardReadsFor(session, selectedId)]);

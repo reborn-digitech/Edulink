@@ -427,7 +427,8 @@ async function readerOf(ctx: ActiveContext, childId?: string | null): Promise<Re
   if (ctx.role === "PARENT") {
     const child = childId ?? (await db.guardianship.findFirst({ where: { parentUserId: ctx.user.id, status: "ACTIVE" }, orderBy: { createdAt: "asc" }, select: { studentMembershipId: true } }))?.studentMembershipId;
     if (!child) throw new AccessError("access.notYourChild", "NOT_FOUND");
-    const link = await assertGuardianAccess(ctx.user.id, child);
+    // An adult at a college shares their loans and dues under MONEY (DS-1, 10 Oct 2026).
+    const link = await assertGuardianAccess(ctx.user.id, child, "MONEY");
     await assertModuleOn(link.student.schoolId, "LIBRARY");
     const person = await db.membership.findFirst({ where: { id: child }, select: PERSON_SELECT });
     if (!person) throw new AccessError("access.notYourChild", "NOT_FOUND");

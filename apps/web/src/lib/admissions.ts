@@ -880,7 +880,7 @@ export type Admitted = {
  * stand-in guardian when nobody accepted from an account. Seats are counted
  * against the grade's number. Already admitted: answered as it stands.
  */
-export async function admit(ctx: ActiveContext, applicationId: string, input: { classId?: string | null; feeStructureId?: string | null; admissionNumber?: string }): Promise<Admitted> {
+export async function admit(ctx: ActiveContext, applicationId: string, input: { classId?: string | null; feeStructureId?: string | null; admissionNumber?: string; admittedOn?: string }): Promise<Admitted> {
   const { caller, a } = await officeApplication(ctx, applicationId);
   if (a.status === "ADMITTED" && a.admittedMembershipId) {
     const m = await db.membership.findUniqueOrThrow({ where: { id: a.admittedMembershipId }, select: { id: true, studentCode: true, enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { name: true } } }, take: 1 }, feePlans: { select: { id: true }, take: 1 }, guardianships: { where: { status: "ACTIVE" }, select: { id: true }, take: 1 } } });
@@ -908,7 +908,13 @@ export async function admit(ctx: ActiveContext, applicationId: string, input: { 
   const age = birthdate ? ageInYears(birthdate) : null;
   const code = studentCode();
   const handle = handleFor(a.childName, code);
-  const todayIso = new Date(`${todayKey(timezone)}T00:00:00Z`);
+  // THE ADMISSION DATE (R-68, the transfer walk of 6 October): a transfer recorded late carried today's date on the
+  // membership, the record and the re-dated instalments (the boy joined on 15 June; the record said 6 October). The
+  // office may now say the day: not before the cycle's year began, not after today on the school's clock; today otherwise.
+  const today = todayKey(timezone);
+  const admittedOn = input.admittedOn ?? today;
+  if (!isDateKey(admittedOn) || admittedOn > today || admittedOn < a.cycle.academicYear.startDate.toISOString().slice(0, 10)) throw new AccessError("familyGaps.refuseAdmittedOn");
+  const todayIso = new Date(`${admittedOn}T00:00:00Z`);
 
   // A PEN with the date of birth names an account already on Shalaghar: the seat
   // goes to that pupil, as a transfer by student code would give it, and
@@ -935,7 +941,12 @@ export async function admit(ctx: ActiveContext, applicationId: string, input: { 
     if (here) throw new AccessError("admissions.refuseAlreadyOnRoll");
     if (!(await mayBringOver(caller.schoolId, existingUserId))) throw new AccessError("intake.identityRefused");
   }
-  const guardianLinked = Boolean(applicantUser) && !existingUserId;
+  // A KNOWN PUPIL'S OWN GUARDIAN (R-67, the transfer walk): when the PEN names an account the platform knows, the
+  // applicant is linked at the new school only if they already hold an ACTIVE guardianship on that child somewhere —
+  // the father who filed the walk-in had to claim his son again, and a stand-in guardian sat there meanwhile. The
+  // link carries the consents a claim's approval would set; a stranger applicant still claims.
+  const priorGuardian = applicantUser && existingUserId ? await db.guardianship.findFirst({ where: { parentUserId: applicantUser.id, status: "ACTIVE", student: { userId: existingUserId, role: "STUDENT" } }, select: { id: true } }) : null;
+  const guardianLinked = Boolean(applicantUser) && (!existingUserId || priorGuardian !== null);
   const minted = await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;
     const user = existingUserId
@@ -951,12 +962,18 @@ export async function admit(ctx: ActiveContext, applicationId: string, input: { 
       if (existingUserId) await closeAlumnus(tx as unknown as Parameters<typeof closeAlumnus>[0], existingUserId, caller.schoolId);
     }
     const membership = prior
-      ? await tx.membership.update({ where: { id: prior.id }, data: { status: "ACTIVE", leftAt: null, suspendedAt: null, suspendedReason: null, studentCode: code, joinedAt: new Date() }, select: { id: true } })
-      : await tx.membership.create({ data: { userId: user.id, schoolId: caller.schoolId, role: "STUDENT", status: "ACTIVE", studentCode: code }, select: { id: true } });
+      ? await tx.membership.update({ where: { id: prior.id }, data: { status: "ACTIVE", leftAt: null, suspendedAt: null, suspendedReason: null, studentCode: code, joinedAt: todayIso }, select: { id: true } })
+      : await tx.membership.create({ data: { userId: user.id, schoolId: caller.schoolId, role: "STUDENT", status: "ACTIVE", studentCode: code, joinedAt: todayIso }, select: { id: true } });
     if (klass) await tx.enrollment.upsert({ where: { classId_studentMembershipId: { classId: klass.id, studentMembershipId: membership.id } }, create: { classId: klass.id, schoolId: caller.schoolId, studentMembershipId: membership.id, status: "ACTIVE" }, update: { status: "ACTIVE", removedAt: null } });
     await syncGradeLevel(tx, [membership.id]);
     if (applicantUser && guardianLinked) {
-      await tx.guardianship.create({ data: { parentUserId: applicantUser.id, studentMembershipId: membership.id, studentSchoolId: caller.schoolId, relation: a.relation, status: "ACTIVE", consentSharingAt: new Date(), consentNotificationsAt: new Date() } });
+      // Upserted: a pupil who once left this school and comes back keeps their old membership, and may keep its guardianship row too.
+      const now = new Date();
+      await tx.guardianship.upsert({
+        where: { parentUserId_studentMembershipId: { parentUserId: applicantUser.id, studentMembershipId: membership.id } },
+        create: { parentUserId: applicantUser.id, studentMembershipId: membership.id, studentSchoolId: caller.schoolId, relation: a.relation, status: "ACTIVE", consentSharingAt: now, consentNotificationsAt: now },
+        update: { status: "ACTIVE", relation: a.relation, consentSharingAt: now, consentNotificationsAt: now },
+      });
     }
     const recordData = { addressLine: a.addressLine, city: a.city, admissionNumber: input.admissionNumber?.trim() || a.serial, admissionDate: todayIso, admittedToGrade: a.gradeApplied, previousSchool: a.previousSchool, penNumber: a.penNumber, updatedByUserId: caller.user.id };
     await tx.pupilRecord.upsert({ where: { studentMembershipId: membership.id }, create: { schoolId: caller.schoolId, studentMembershipId: membership.id, ...recordData }, update: recordData });
@@ -982,7 +999,7 @@ export async function admit(ctx: ActiveContext, applicationId: string, input: { 
     await Promise.all(recipients.map((userId) => notify({ userId, schoolId: caller.schoolId, kind: "ADMISSION", titleKey: "admissions.notifLinkedByPen", titleVars: { name: a.childName, school: schoolName }, bodyKey: "admissions.notifLinkedByPenBody", bodyVars: { school: schoolName }, urgent: true }).catch((error) => console.error("[admissions] existing guardian not told", error))));
     guardiansTold = recipients.length;
   }
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "admissions.admit", targetType: "Application", targetId: applicationId, meta: { membershipId: minted.membershipId, classId: klass?.id ?? null, feePlan: minted.feePlan, guardianLinked, guardianNotLinked: Boolean(applicantUser) && !guardianLinked, existingGuardiansTold: guardiansTold, hasBirthdate: birthdate !== null, needsConsent: age !== null && age < CONSENT_AGE, linkedByPen: Boolean(existingUserId) } });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "admissions.admit", targetType: "Application", targetId: applicationId, meta: { membershipId: minted.membershipId, classId: klass?.id ?? null, feePlan: minted.feePlan, guardianLinked, guardianNotLinked: Boolean(applicantUser) && !guardianLinked, guardianCarried: priorGuardian !== null, existingGuardiansTold: guardiansTold, hasBirthdate: birthdate !== null, needsConsent: age !== null && age < CONSENT_AGE, linkedByPen: Boolean(existingUserId), admittedOn } });
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "student.admit", targetType: "Membership", targetId: minted.membershipId, meta: { classId: klass?.id ?? null, hasBirthdate: birthdate !== null, ownAddress: false, fromApplication: true } });
   if (!guardianLinked) {
     await syncStandinGuardian({ schoolId: caller.schoolId, studentMembershipId: minted.membershipId, actorUserId: caller.user.id }).catch((error) => console.error("[admissions] standin sync failed", error));

@@ -1,6 +1,7 @@
 "use server";
 
 import { writeDefaultModules } from "@/lib/modules";
+import { selfReadAgeDefault } from "@/lib/self-read";
 import { checkStreams, streamsToStore } from "@/lib/streams";
 import { randomUUID } from "node:crypto";
 import { db } from "@/lib/db";
@@ -145,6 +146,8 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
           onboardingState: writeJson({ createdSchool: true }),
           kind,
           streamsJson: streamsToStore(kind, streams),
+          // A college's adults read their own health card and incidents from 18 (DS-5, self-read.ts); a school starts at never.
+          selfReadAge: selfReadAgeDefault(kind),
         },
       });
 

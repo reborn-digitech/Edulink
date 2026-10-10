@@ -10,6 +10,10 @@ import { EmptyState } from "@/components/ui/states";
 import { WeekGridView } from "@/components/timetable/week-grid";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
+import { isCollegeKind } from "@edulink/contracts";
+import { myCollegeWeek } from "@/lib/family-college";
+import { streamsOf } from "@/lib/streams";
+import { WeekList } from "@/components/academics/parts";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -42,9 +46,34 @@ export default async function MyTimetablePage({
 
   const school = await db.school.findUniqueOrThrow({
     where: { id: ctx.schoolId },
-    select: { timezone: true },
+    select: { timezone: true, kind: true },
   });
   const today = todayKey(school.timezone);
+
+  /**
+   * A COLLEGE STUDENT'S WEEK (DS-3 of the stream demos' walk, 10 Oct 2026): the
+   * lectures of the offerings they are registered on this term (lib/family-college.ts),
+   * drawn the way /student/academics draws its week — the school grid below is one a
+   * college never fills, so this page said "Nothing timetabled yet" at every college.
+   * The term's grid is a template, not a dated week, so there are no week arrows here.
+   */
+  if (ctx.role === "STUDENT" && isCollegeKind(school.kind)) {
+    const [week, streams] = await Promise.all([myCollegeWeek(ctx), streamsOf(ctx.schoolId)]);
+    return (
+      <div className="space-y-6">
+        <PageHeader title={t("timetable.myTitle")} description={[t("familyGaps.myCollegeWeekBody"), week.termName ? t("familyGaps.termLabel", { term: week.termName }) : null].filter(Boolean).join(" ")} />
+        {week.termId === null ? (
+          <EmptyState icon={<CalendarBlankIcon weight="duotone" className="size-8" />} title={t("timetable.nothingYet")} description={t("familyGaps.noTermYet")} />
+        ) : (
+          <Card data-testid="my-college-week">
+            <CardBody>
+              <WeekList t={t} locale={locale} weekdays={week.weekdays} cells={week.cells} streams={streams} linkFor={(c) => `/student/academics/${c.offeringId}`} />
+            </CardBody>
+          </Card>
+        )}
+      </div>
+    );
+  }
 
   // A `week` that is not a date falls back to this week rather than throwing.
   // The parameter is a convenience for the two arrows below; a mangled one

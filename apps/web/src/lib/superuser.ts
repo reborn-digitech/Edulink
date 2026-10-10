@@ -1,5 +1,6 @@
 import "server-only";
 import { writeDefaultModules } from "./modules";
+import { selfReadAgeDefault } from "./self-read";
 import { checkStreams, streamsToStore } from "./streams";
 import { INSTITUTION_KINDS, type InstitutionKind } from "@edulink/contracts";
 import { cache } from "react";
@@ -255,6 +256,8 @@ export async function createSchool(
           verifiedAt: new Date(),
           kind: details.kind ?? "SCHOOL",
           streamsJson: streamsToStore(details.kind ?? "SCHOOL", details.streams),
+          // A college's adults read their own health card and incidents from 18 (DS-5, self-read.ts); a school starts at never.
+          selfReadAge: selfReadAgeDefault(details.kind ?? "SCHOOL"),
         },
       });
       // Every school starts with ALUMNI on (3 Oct 2026), a college with ACADEMICS too (4 Oct) and its streams' preset (5 Oct); the operator may write it for a school with no tenant yet (SUPERUSER_TABLES).

@@ -1,5 +1,7 @@
 import "server-only";
+import { isCollegeKind } from "@edulink/contracts";
 import { db } from "./db";
+import { isMinorOn } from "./adulthood";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
 import { ageInYears } from "./dates";
@@ -22,6 +24,18 @@ import type { ActiveContext } from "./session";
  */
 
 export const SELF_READ_AGE_RANGE = { min: 5, max: 25 } as const;
+
+/**
+ * THE AGE A NEW COLLEGE STARTS WITH (DS-5 of the stream demos' walk, 10 Oct
+ * 2026): a college's students are mostly adults, and an adult asked to "ask a
+ * grown-up" for their own health card is wrong, so a college is made with the
+ * dial at 18 (`createSchool` and self-registration spread this in); a school
+ * still starts at never. And whatever the dial says, an adult at a college
+ * reads their own (assertSelfRead below), since the dial exists for minors.
+ */
+export function selfReadAgeDefault(kind: string | null | undefined): number | null {
+  return isCollegeKind(kind) ? 18 : null;
+}
 
 type Office = ActiveContext & { schoolId: string; role: "ADMIN" | "PRINCIPAL" };
 
@@ -63,12 +77,16 @@ export async function assertSelfRead(ctx: ActiveContext, studentMembershipId: st
   if (ctx.role !== "STUDENT" || !ctx.schoolId || !ctx.membershipId || ctx.membershipId !== studentMembershipId) throw new AccessError("access.notAllowed");
   const membership = await db.membership.findFirst({
     where: { id: studentMembershipId, schoolId: ctx.schoolId, role: "STUDENT", status: "ACTIVE" },
-    select: { user: { select: { name: true, preferredName: true, birthdate: true } }, school: { select: { selfReadAge: true } } },
+    select: { user: { select: { name: true, preferredName: true, birthdate: true } }, school: { select: { selfReadAge: true, kind: true, timezone: true } } },
   });
   if (!membership) throw new AccessError("access.notAllowed");
   const age = membership.school.selfReadAge;
-  if (age === null || !membership.user.birthdate) throw new AccessError("access.notAllowed");
-  if (ageInYears(membership.user.birthdate, now) < age) throw new AccessError("access.notAllowed");
+  // An adult at a college reads their own, dial or no dial (DS-5): the date of birth decides, on the college's calendar day.
+  const adultAtCollege = isCollegeKind(membership.school.kind) && membership.user.birthdate !== null && !isMinorOn(membership.user.birthdate, now, membership.school.timezone);
+  if (!adultAtCollege) {
+    if (age === null || !membership.user.birthdate) throw new AccessError("access.notAllowed");
+    if (ageInYears(membership.user.birthdate, now) < age) throw new AccessError("access.notAllowed");
+  }
   return { schoolId: ctx.schoolId, membershipId: studentMembershipId, studentName: membership.user.preferredName ?? membership.user.name };
 }
 

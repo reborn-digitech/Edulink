@@ -15,6 +15,8 @@ import { NAV } from "@/lib/nav";
 import { enabledModules, enabledModulesForFamily } from "@/lib/modules";
 import { myDuties } from "@/lib/duties";
 import { streamsOf } from "@/lib/streams";
+import { hiddenByKind } from "@/lib/nav";
+import { institutionKindsForFamily } from "@/lib/family-child";
 import { isCollegeKind, streamLabel } from "@/lib/institution";
 
 /**
@@ -50,6 +52,7 @@ export async function SignedInShell({
   const contextCount = contexts.memberships.length + (contexts.children.length > 0 ? 1 : 0);
 
   let college = false;
+  let kind: string | null = null;
   const [schoolName, unreadCount, streams] = await Promise.all([
     session.schoolId
       ? db.school
@@ -58,6 +61,7 @@ export async function SignedInShell({
           // शाळाघर), so it comes from the dictionary like everything else.
           .then((s) => {
             college = isCollegeKind(s?.kind);
+            kind = s?.kind ?? null;
             return s?.name ?? t("brand.name");
           })
       : // No school on the session: a parent's slot describes where they are,
@@ -114,6 +118,12 @@ export async function SignedInShell({
   // A stream's entries (5 Oct 2026) at a college whose recorded streams include none of the entry's (none recorded: kept).
   if (streams.length > 0) {
     for (const item of NAV[role]) if (item.streams && !item.streams.some((s) => streams.includes(s)) && !hiddenHrefs.includes(item.href)) hiddenHrefs.push(item.href);
+  }
+  // An institution kind's entries (DS-4, 10 Oct 2026): the school's exams, syllabus, substitutions and admissions go at
+  // a college; a guardian's menu follows the children's institutions and keeps an entry while any child is at a school.
+  {
+    const kinds = role === "PARENT" ? await institutionKindsForFamily(session.user.id) : kind ? [kind] : [];
+    for (const href of hiddenByKind(NAV[role], kinds)) if (!hiddenHrefs.includes(href)) hiddenHrefs.push(href);
   }
   if (role === "STUDENT" || role === "PARENT") {
     if (!(await anyOpenReviews(session))) hiddenHrefs.push("/reviews");

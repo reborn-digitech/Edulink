@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeftIcon, FirstAidKitIcon } from "@phosphor-icons/react/ssr";
 import { requireParent } from "@/lib/tenancy";
-import { listContexts } from "@/lib/session";
+import { familyChildren, pickChild, childAccess } from "@/lib/family-child";
+import { NotSharedState } from "@/components/family/not-shared";
 import { familyIncidents } from "@/lib/incidents";
 import { db } from "@/lib/db";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
@@ -31,9 +32,27 @@ export default async function ParentIncidentsPage({ searchParams }: { searchPara
   const t = await getT();
   const { child: requested, incident: highlighted } = await searchParams;
 
-  const { children } = await listContexts(session.user.id);
-  const selectedId = requested && children.some((c) => c.studentMembershipId === requested) ? requested : children[0]!.studentMembershipId;
-  const selected = children.find((c) => c.studentMembershipId === selectedId);
+  // The children with what each lets the guardian see, opening on one the guardian may read (DS-1, 10 Oct 2026).
+  const children = await familyChildren(session.user.id);
+  const chosen = pickChild(children, requested) ?? children[0]!;
+  const selectedId = chosen.studentMembershipId;
+  const selected = chosen;
+
+  // An adult's incident log is their own (no grant covers it; they read it on /student/incidents): the page says so.
+  const access = await childAccess(session.user.id, selectedId);
+  if (access.refused) {
+    return (
+      <div className="space-y-5">
+        <Link href="/parent" className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg">
+          <ArrowLeftIcon weight="bold" className="size-4" />
+          {t("parent.overview")}
+        </Link>
+        {children.length > 1 && <ChildSwitcher pupils={children} selectedId={selectedId} basePath="/parent/incidents" />}
+        <PageHeader title={t("incidents.forChild", { name: chosen.name })} description={chosen.schoolName} />
+        <NotSharedState name={chosen.name} own />
+      </div>
+    );
+  }
 
   const { childName, incidents } = await familyIncidents(session, selectedId);
   const school = await db.membership.findUniqueOrThrow({ where: { id: selectedId }, select: { school: { select: { name: true, timezone: true } } } });

@@ -164,7 +164,9 @@ export default async function HodHomePage({ searchParams }: { searchParams: Prom
             <p className="text-fg-muted">{mentoringSummaryText(t, home.mentoringGroups, home.mentees)}</p>
           </CardBody>
         </Card>
-        <Card>
+        {/* The projects card only while PLACEMENT is on (DS-7, 10 Oct 2026): its page said "Placement is not switched on" at a vocational college. */}
+        {home.placementOn ? (
+        <Card data-testid="hod-projects-card">
           <CardHeader icon={<BriefcaseIcon weight="duotone" className="size-5" />} title={t("academics.projectsTitle")} description={t("collegeHub.projectsBody")} action={<Button asChild size="sm" variant="secondary"><Link href="/hod/projects">{t("collegeHub.projectsOpen")}</Link></Button>} />
           <CardBody>
             {home.projects.length === 0 ? (
@@ -180,6 +182,7 @@ export default async function HodHomePage({ searchParams }: { searchParams: Prom
             )}
           </CardBody>
         </Card>
+        ) : null}
       </div>
       <Card>
         <CardBody className="flex flex-wrap gap-3">

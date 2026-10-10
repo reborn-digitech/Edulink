@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import { ChildLeftBanner } from "../child-left";
 import Link from "next/link";
 import { ArrowLeftIcon, CalendarBlankIcon } from "@phosphor-icons/react/ssr";
-import { requireParent, assertGuardianAccess } from "@/lib/tenancy";
-import { listContexts } from "@/lib/session";
+import { requireParent } from "@/lib/tenancy";
+import { familyChildren, pickChild, childAccess } from "@/lib/family-child";
+import { familyCollegeWeek } from "@/lib/family-college";
+import { streamsOf } from "@/lib/streams";
+import { WeekList } from "@/components/academics/parts";
+import { NotSharedState } from "@/components/family/not-shared";
 import { childWeek, weekStartKey } from "@/lib/timetable";
 import { todayKey, addDaysToKey, formatDateKey, isDateKey } from "@/lib/dates";
 import { Card, CardHeader, CardBody } from "@/components/ui/card";
@@ -41,15 +45,55 @@ export default async function ParentTimetablePage({
   const t = await getT();
   const params = await searchParams;
 
-  const { children } = await listContexts(session.user.id);
-  const selectedId =
-    params.child && children.some((c) => c.studentMembershipId === params.child)
-      ? params.child
-      : children[0]!.studentMembershipId;
+  // The children with what each lets the guardian see, opening on one the guardian may read (DS-1, 10 Oct 2026).
+  const children = await familyChildren(session.user.id);
+  const chosen = pickChild(children, params.child) ?? children[0]!;
+  const selectedId = chosen.studentMembershipId;
 
-  const link = await assertGuardianAccess(session.user.id, selectedId);
+  // The week is what the register is taken against: an adult at a college shares it under ATTENDANCE.
+  const access = await childAccess(session.user.id, selectedId, "ATTENDANCE");
+  if (access.refused) {
+    return (
+      <div className="space-y-5">
+        <Link href="/parent" className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg">
+          <ArrowLeftIcon weight="bold" className="size-4" />
+          {t("parent.overview")}
+        </Link>
+        {children.length > 1 && <ChildSwitcher pupils={children} selectedId={selectedId} basePath="/parent/timetable" />}
+        <PageHeader title={t("parent.childsTimetable", { name: chosen.name })} description={chosen.schoolName} />
+        <NotSharedState name={chosen.name} />
+      </div>
+    );
+  }
+  const link = access.link;
   const student = link.student;
   const childName = student.user.preferredName ?? student.user.name;
+
+  // A COLLEGE CHILD (DS-3, 10 Oct 2026): the week is the lectures of the offerings the child is registered on this
+  // term (lib/family-college.ts), not the school grid, which a college never fills. The term's grid has no dates.
+  if (chosen.college) {
+    const [week, streams] = await Promise.all([familyCollegeWeek(session, selectedId), streamsOf(student.schoolId)]);
+    return (
+      <div className="space-y-5">
+        <Link href="/parent" className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg">
+          <ArrowLeftIcon weight="bold" className="size-4" />
+          {t("parent.overview")}
+        </Link>
+        {children.length > 1 && <ChildSwitcher pupils={children} selectedId={selectedId} basePath="/parent/timetable" />}
+        <PageHeader title={t("familyGaps.collegeWeekTitle", { name: childName })} description={[student.school.name, week.termName ? t("familyGaps.termLabel", { term: week.termName }) : null].filter(Boolean).join(" · ")} />
+        {week.termId === null ? (
+          <EmptyState icon={<CalendarBlankIcon weight="duotone" className="size-8" />} title={t("parent.nothingTimetabled")} description={t("familyGaps.noTermYet")} />
+        ) : (
+          <Card data-testid="family-college-week">
+            <CardHeader title={t("familyGaps.collegeWeekTitle", { name: childName })} description={t("familyGaps.collegeWeekBody", { name: childName })} />
+            <CardBody>
+              <WeekList t={t} locale={locale} weekdays={week.weekdays} cells={week.cells} streams={streams} />
+            </CardBody>
+          </Card>
+        )}
+      </div>
+    );
+  }
 
   const today = todayKey(student.school.timezone);
   const anchor = params.week && isDateKey(params.week) ? params.week : today;

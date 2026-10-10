@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { ChildLeftBanner } from "../child-left";
 import Link from "next/link";
 import { ArrowLeftIcon, CalendarCheckIcon, CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react/ssr";
-import { requireParent, assertGuardianAccess } from "@/lib/tenancy";
-import { listContexts } from "@/lib/session";
+import { requireParent } from "@/lib/tenancy";
+import { familyChildren, pickChild, childAccess } from "@/lib/family-child";
+import { familyLectureAttendance } from "@/lib/family-college";
+import { AttendanceTable } from "@/components/academics/parts";
+import { NotSharedState } from "@/components/family/not-shared";
 import { getAttendanceSummary } from "@/lib/attendance";
 import { listAbsenceNotes } from "@/lib/absence-notes";
 import { AbsenceNotesCard } from "./absence-notes";
@@ -34,15 +37,59 @@ export default async function ParentAttendancePage({
   const locale = await getLocale();
   const { child: requested, month: requestedMonth } = await searchParams;
 
-  const { children } = await listContexts(session.user.id);
-  const selectedId =
-    requested && children.some((c) => c.studentMembershipId === requested)
-      ? requested
-      : children[0]!.studentMembershipId;
+  // The children with what each lets the guardian see, opening on one the guardian may read (DS-1, 10 Oct 2026).
+  const children = await familyChildren(session.user.id);
+  const chosen = pickChild(children, requested) ?? children[0]!;
+  const selectedId = chosen.studentMembershipId;
 
-  const link = await assertGuardianAccess(session.user.id, selectedId, "ATTENDANCE");
+  const access = await childAccess(session.user.id, selectedId, "ATTENDANCE");
+  if (access.refused) {
+    return (
+      <div className="space-y-5">
+        <Link href="/parent" className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg">
+          <ArrowLeftIcon weight="bold" className="size-4" />
+          {t("parent.overview")}
+        </Link>
+        {children.length > 1 && <ChildSwitcher pupils={children} selectedId={selectedId} basePath="/parent/attendance" />}
+        <PageHeader title={t("parent.childsAttendance", { name: chosen.name })} description={chosen.schoolName} />
+        <NotSharedState name={chosen.name} />
+      </div>
+    );
+  }
+  const link = access.link;
   const student = link.student;
   const childName = student.user.preferredName ?? student.user.name;
+
+  /**
+   * A COLLEGE CHILD (DS-2 of the stream demos' walk, 10 Oct 2026): a college keeps no
+   * day register, so this page read nothing and said "No attendance recorded yet" at
+   * every demo college. The entry is a primary one on the family's bar and a family
+   * may have a child at a school and one at a college, so rather than hide it the
+   * page draws here what /parent/academics draws: lecture attendance per course
+   * against the college's threshold (the 75 % view), under the same ATTENDANCE grant.
+   */
+  if (chosen.college) {
+    const rows = await familyLectureAttendance(session, selectedId);
+    return (
+      <div className="space-y-5">
+        <Link href="/parent" className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg">
+          <ArrowLeftIcon weight="bold" className="size-4" />
+          {t("parent.overview")}
+        </Link>
+        {children.length > 1 && <ChildSwitcher pupils={children} selectedId={selectedId} basePath="/parent/attendance" />}
+        <PageHeader title={t("familyGaps.lectureAttendanceTitle", { name: childName })} description={[student.school.name, t("familyGaps.lectureAttendanceBody")].join(" · ")} />
+        <Card data-testid="family-lecture-attendance">
+          <CardHeader icon={<CalendarCheckIcon weight="duotone" className="size-5" />} title={t("academics.childAttendance", { name: childName })} />
+          <CardBody>
+            <AttendanceTable t={t} rows={rows} />
+          </CardBody>
+        </Card>
+        <p className="text-sm text-fg-muted">
+          <Link href={`/parent/academics?child=${selectedId}`} className="font-medium text-accent hover:underline">{t("academics.familyTitle")}</Link>
+        </p>
+      </div>
+    );
+  }
   const teachingDays = parseTeachingDays((await db.school.findUnique({ where: { id: student.schoolId }, select: { teachingDays: true } }))?.teachingDays);
 
   // ONE MONTH AT A TIME, any month. A rolling "last 60 days" answered "how

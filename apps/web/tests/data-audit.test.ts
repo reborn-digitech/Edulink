@@ -21,7 +21,7 @@ import { PrismaClient } from "@prisma/client";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { createSession } from "@/lib/session";
-import { __resetCookies } from "../tests/stubs/next-headers";
+import { __resetCookies, __setHeaders } from "../tests/stubs/next-headers";
 import { bandFor, meanPercent, meanPoints, shownPercent } from "@/lib/report-card-rules";
 import { REQUIRED_RECORD_FIELDS } from "@/lib/certificate-rules";
 import { FILING_RECORD_FIELDS } from "@/lib/pupil-records";
@@ -78,8 +78,11 @@ const actors = new Map<string, { admin: string | null; principal: string | null;
 
 const get = (path: string) => new Request(`http://localhost${path}`);
 const params = <T extends object>(p: T) => ({ params: Promise.resolve(p) });
+/** The audit's own sign-ins carry this user agent (DS-14, 10 Oct 2026), so the run can delete exactly the sessions it made and no one else's. */
+const AUDIT_USER_AGENT = "data-audit";
 async function as(userId: string, schoolId: string | null, role: "ADMIN" | "PRINCIPAL" | "PARENT") {
   __resetCookies();
+  __setHeaders({ "user-agent": AUDIT_USER_AGENT });
   await createSession(userId, { schoolId, role });
 }
 async function json<T = Record<string, unknown>>(res: Response): Promise<T> {
@@ -110,7 +113,10 @@ beforeAll(async () => {
 
 afterAll(async () => {
   if (RUN) {
-    for (const a of actors.values()) await db.session.deleteMany({ where: { userId: { in: [a.admin, a.principal, a.parent?.userId].filter((x): x is string => !!x) }, userAgent: { in: ["", "vitest"] } } });
+    // Every session this run minted (DS-14): the actors' rows under the audit's own user agent. Before, the sessions were
+    // minted with no user agent and the clean-up looked for "vitest", so each run left about 96 rows on the demo accounts.
+    __setHeaders({});
+    for (const a of actors.values()) await db.session.deleteMany({ where: { userId: { in: [a.admin, a.principal, a.parent?.userId].filter((x): x is string => !!x) }, userAgent: { in: ["", "vitest", AUDIT_USER_AGENT] } } });
     const dir = resolve(__dirname, "../../../docs/data-audit");
     mkdirSync(dir, { recursive: true });
     const by = (level: Finding["level"]) => findings.filter((f) => f.level === level);

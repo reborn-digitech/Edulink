@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeftIcon, BusIcon, ClockIcon, MapPinIcon } from "@phosphor-icons/react/ssr";
 import { requireParent } from "@/lib/tenancy";
-import { listContexts } from "@/lib/session";
+import { familyChildren, pickChild, childAccess } from "@/lib/family-child";
+import { NotSharedState } from "@/components/family/not-shared";
 import { familyTransport } from "@/lib/transport";
 import { minuteLabel } from "@/lib/transport-geo";
 import { db } from "@/lib/db";
@@ -37,8 +38,25 @@ export default async function ParentTransportPage({ searchParams }: { searchPara
   const t = await getT();
   const locale = await getLocale();
   const { child: requested } = await searchParams;
-  const { children } = await listContexts(session.user.id);
-  const selectedId = requested && children.some((c) => c.studentMembershipId === requested) ? requested : children[0]!.studentMembershipId;
+  // The children with what each lets the guardian see, opening on one the guardian may read (DS-1, 10 Oct 2026).
+  const children = await familyChildren(session.user.id);
+  const chosen = pickChild(children, requested) ?? children[0]!;
+  const selectedId = chosen.studentMembershipId;
+  // The bus is shared under HOSTEL_TRANSPORT (transport.ts asks the same): a refusal is a state here, not a 404.
+  const access = await childAccess(session.user.id, selectedId, "HOSTEL_TRANSPORT");
+  if (access.refused) {
+    return (
+      <div className="space-y-5">
+        <Link href="/parent" className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg">
+          <ArrowLeftIcon weight="bold" className="size-4" />
+          {t("parent.overview")}
+        </Link>
+        {children.length > 1 && <ChildSwitcher pupils={children} selectedId={selectedId} basePath="/parent/transport" />}
+        <PageHeader title={t("transport.forChild", { name: chosen.name })} description={chosen.schoolName} />
+        <NotSharedState name={chosen.name} />
+      </div>
+    );
+  }
   const view = await familyTransport(session, selectedId);
   const school = await db.membership.findUniqueOrThrow({ where: { id: selectedId }, select: { school: { select: { timezone: true } } } });
   const time = (iso: string | null) => (iso ? formatInZone(new Date(iso), school.school.timezone, { hour: "2-digit", minute: "2-digit" }, locale) : "");

@@ -335,6 +335,7 @@ export function AdmitForm({
   classes,
   structures,
   canAdmit,
+  today,
 }: {
   applicationId: string;
   childName: string;
@@ -342,6 +343,8 @@ export function AdmitForm({
   canAdmit: boolean;
   classes: ClassOption[];
   structures: Structure[];
+  /** Today on the school's clock (R-68, 10 Oct 2026): the admission date's default and its latest day. */
+  today: string;
 }) {
   const t = useT();
   const router = useRouter();
@@ -350,6 +353,8 @@ export function AdmitForm({
   const [classId, setClassId] = useState("");
   const [structure, setStructure] = useState("");
   const [admissionNumber, setAdmissionNumber] = useState("");
+  // The day the pupil joined (R-68): today unless the office says earlier; the server holds it within the cycle's year.
+  const [admittedOn, setAdmittedOn] = useState(today);
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState<Admitted | null>(null);
 
@@ -365,6 +370,7 @@ export function AdmitForm({
         ...(admissionNumber.trim()
           ? { admissionNumber: admissionNumber.trim().slice(0, 40) }
           : {}),
+        ...(admittedOn && admittedOn !== today ? { admittedOn } : {}),
       });
       if (!result.ok || !result.admitted) {
         setError(actionError(t, result, "common.tryAgain"));
@@ -498,6 +504,15 @@ export function AdmitForm({
         autoComplete="off"
         onChange={(e) => setAdmissionNumber(e.target.value)}
         className="max-w-xs"
+      />
+      <DateField
+        label={t("familyGaps.admittedOn")}
+        hint={t("familyGaps.admittedOnHint")}
+        value={admittedOn}
+        max={today}
+        onChange={(e) => setAdmittedOn(e.target.value)}
+        className="max-w-xs"
+        data-testid="admit-admitted-on"
       />
       <Button
         type="submit"
