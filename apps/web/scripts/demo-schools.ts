@@ -34,7 +34,7 @@ import { join } from "node:path";
 import { classCode, studentCode } from "../src/lib/codes";
 import { bandFor, combineTerms, DEFAULT_REPORT_CARD_CONFIG, meanPercent, meanPoints, shownPercent } from "../src/lib/report-card-rules";
 import {
-  attachTeacher, buildAdmissions, buildCertificates, buildCircular, buildCompetitionEntry, buildDepartures, buildExams, buildFeeAdjustments, buildFees, buildHealth, buildHolidays, buildIncidents,
+  attachTeacher, buildAdmissions, buildCertificates, buildCircular, buildSignatures, buildCompetitionEntry, buildDepartures, buildExams, buildFeeAdjustments, buildFees, buildHealth, buildHolidays, buildIncidents,
   buildInvite, buildMessaging, buildPracticeAssignment, buildRemarkThread, buildReport, buildRollNumbers, buildStaffAttendance, buildStaffRecords, buildSubstitutions, buildSyllabus, buildTimetable,
   CALENDAR_2025_26, CALENDAR_2026_27, CLASS_COLOURS, closedDays, db, enrol, link, setTag, staffDates, teachingDaysBetween, THIS_YEAR, upsertClass, upsertMembership, upsertSchool, upsertUser, type Ctx, fakePen, refuseUnlessLocal, switchModulesOn } from "./zz-fixtures";
 import { SCHOOL_MODULES } from "@edulink/contracts";
@@ -1123,6 +1123,8 @@ async function main() {
           templates: [{ kind: "BONAFIDE", locale: "mr" }, { kind: "CHARACTER", locale: "mr" }, { kind: "STUDY", locale: "mr" }, { kind: "TC", locale: "mr" }, { kind: "NIRGAM", locale: "mr" }],
           issues: [{ key: "BONAFIDE-mr", pupil: 1, number: 1, purpose: "बस पास" }, { key: "STUDY-mr", pupil: 2, number: 1, purpose: "शिष्यवृत्ती", fromRequest: true }, { key: "CHARACTER-mr", pupil: 3, number: 1, purpose: "क्रीडा शिबिर" }],
           requests: [{ pupil: 0, kind: "BONAFIDE", purpose: "पासपोर्ट अर्ज" }, { pupil: 4, kind: "CHARACTER", purpose: "क्रीडा चाचणी" }, { pupil: 5, kind: "STUDY", purpose: "बँक खाते", status: "DECLINED", reason: "पहिल्या सत्राचे शुल्क थकीत आहे." }] });
+    // The office's and the head's signatures and the school's seal (10 Oct 2026), so a paper issued in the demo prints signed.
+    await buildSignatures(b.school, { adminUserId: admin, principalUserId: b.principal.user.id });
     const leave = await buildLeave(b);
     const meetings = await buildMeetings(b, sunita);
     const feed = await buildFeed(b, sunita);

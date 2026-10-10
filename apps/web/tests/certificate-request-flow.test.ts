@@ -2,6 +2,8 @@ import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { certificateIssueSchema } from "@edulink/contracts";
+import { defaultLayoutFor } from "@/lib/certificate-rules";
+import { readinessFrom } from "@/lib/signatures";
 
 /**
  * The office's handoff from a family's certificate request to the paper, as
@@ -43,3 +45,40 @@ describe("the issue page's handoff from a request", () => {
     expect(certificateIssueSchema.safeParse({ ...body, remark: "x".repeat(401) }).success).toBe(false);
   });
 });
+
+describe("the paper prints signed (10 October 2026: both lines came out bare)", () => {
+  it("a preset asks the office and the principal to sign, under the seal", () => {
+    const layout = defaultLayoutFor();
+    expect([layout.signerLeft, layout.signerRight, layout.showSeal]).toEqual(["ADMIN", "PRINCIPAL", true]);
+  });
+
+  it("the issuer is warned before issuing about every line that would print bare, and the seal", () => {
+    const layout = { signerLeft: "ADMIN", signerRight: "PRINCIPAL", showSeal: true } as const;
+    const bare = readinessFrom(layout, { myRole: "ADMIN", mineOnFile: false, onFileByRole: {}, sealOnFile: false });
+    expect(bare.lines).toEqual([
+      { slot: "LEFT", role: "ADMIN", mine: true, onFile: false },
+      { slot: "RIGHT", role: "PRINCIPAL", mine: false, onFile: false },
+    ]);
+    expect(bare.sealMissing).toBe(true);
+    const ready = readinessFrom(layout, { myRole: "ADMIN", mineOnFile: true, onFileByRole: { PRINCIPAL: true }, sealOnFile: true });
+    expect(ready.lines.every((l) => l.onFile)).toBe(true);
+    expect(ready.sealMissing).toBe(false);
+    // A template that asks for nobody warns about nobody.
+    expect(readinessFrom({ signerLeft: "NONE", signerRight: "NONE", showSeal: false }, { myRole: "ADMIN", mineOnFile: false, onFileByRole: {}, sealOnFile: false })).toEqual({ lines: [], sealMissing: false });
+  });
+
+  it("the issue page draws the warning with the way to Signatures", () => {
+    expect(page).toMatch(/data-testid="signature-warning"/);
+    expect(page).toMatch(/href="\/admin\/signatures"/);
+  });
+});
+
+describe("a fee on a request reaches the family", () => {
+  const list = readFileSync(join(process.cwd(), "src", "components", "certificates", "request-list.tsx"), "utf8");
+  it("the family's list says the fee, whether it is paid, and where to pay", () => {
+    expect(list).toMatch(/certificateRequests\.feeDue/);
+    expect(list).toMatch(/certificateRequests\.feePaidLine/);
+    expect(list).toMatch(/data-testid=\{`fee-\$\{item\.id\}`\}/);
+  });
+});
+

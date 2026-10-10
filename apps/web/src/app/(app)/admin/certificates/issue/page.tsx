@@ -6,6 +6,7 @@ import { db } from "@/lib/db";
 import { templatesView } from "@/lib/certificates";
 import { officeRequest, officeRequests } from "@/lib/certificate-requests";
 import { pupilRecordFor } from "@/lib/pupil-records";
+import { signerReadiness } from "@/lib/signatures";
 import { Button } from "@/components/ui/button";
 import { Card, CardBody } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
@@ -83,6 +84,15 @@ export default async function IssueCertificatePage({ searchParams }: { searchPar
     options.unshift({ id: record.studentMembershipId, name: record.studentName, code: record.studentCode, className: record.className });
   }
   const missingLabels = record ? record.missing.map((f) => t(`pupilRecord.${f}` as TranslationKey)) : [];
+  // Will the chosen template's lines print? A signer with no picture on file prints a bare line (10 Oct 2026).
+  const chosenTemplate = view.templates.find((x) => x.id === templateId) ?? null;
+  const readiness = chosenTemplate ? await signerReadiness(ctx, chosenTemplate.layout) : { lines: [], sealMissing: false };
+  const side = (slot: "LEFT" | "RIGHT") => t(slot === "LEFT" ? "certificates.sideLeft" : "certificates.sideRight");
+  const roleWord = (role: string) => t(role === "ADMIN" ? "role.admin" : "role.principal");
+  const signatureWarnings = [
+    ...readiness.lines.filter((l) => !l.onFile).map((l) => (l.mine ? t("certificates.signatureMine", { side: side(l.slot) }) : t("certificates.signatureOther", { side: side(l.slot), role: roleWord(l.role) }))),
+    ...(readiness.sealMissing ? [t("certificates.sealMissing")] : []),
+  ];
 
   // The card is built once and placed by the page: first when a request was chosen from the queue (the
   // handoff of 10 Oct 2026 looked dead while the card sat under a long queue), under the queue otherwise.
@@ -125,6 +135,18 @@ export default async function IssueCertificatePage({ searchParams }: { searchPar
               <div className="flex flex-wrap items-start gap-2 rounded-[var(--radius-md)] border border-accent/40 bg-accent-soft px-3 py-2 text-sm text-accent-strong" data-testid="from-request">
                 <EnvelopeOpenIcon weight="fill" className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
                 <span className="min-w-0 flex-1">{t("certificateRequests.fromRequest", { name: request.studentName, kind: t(CERTIFICATE_KIND_KEY[request.kind]), purpose: request.purpose })}</span>
+              </div>
+            )}
+
+            {signatureWarnings.length > 0 && (
+              <div className="flex flex-wrap items-start gap-2 rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft px-3 py-2 text-sm text-warn" data-testid="signature-warning">
+                <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+                <span className="min-w-0 flex-1">
+                  {signatureWarnings.join(" ")}{" "}
+                  <Link href="/admin/signatures" className="font-semibold underline underline-offset-2">
+                    {t("certificates.signaturesLink")}
+                  </Link>
+                </span>
               </div>
             )}
 

@@ -59,6 +59,8 @@ export function CertificateRequestList({ items, from, pdfOnly = false }: { items
   }
 
   const link = "inline-flex min-h-10 items-center gap-1.5 text-sm font-medium text-accent-strong underline underline-offset-2 hover:text-accent";
+  // Where this reader pays: the family's or the pupil's fees page; a former pupil has none, and reads the sentence alone.
+  const feesHref = from.startsWith("/parent") ? "/parent/fees" : from.startsWith("/student") ? "/student/fees" : null;
   return (
     <ul className="divide-y divide-border" data-testid="certificate-requests">
       {items.map((item) => {
@@ -73,6 +75,22 @@ export function CertificateRequestList({ items, from, pdfOnly = false }: { items
                 </Badge>
               </p>
               <p className="mt-0.5 text-sm text-fg">{item.purpose}</p>
+              {typeof item.feePaise === "number" && item.feePaise > 0 && (
+                <p className="mt-0.5 text-sm text-fg" data-testid={`fee-${item.id}`}>
+                  {item.feePaid ? (
+                    t("certificateRequests.feePaidLine", { amount: formatPaise(item.feePaise) })
+                  ) : (
+                    <>
+                      {t("certificateRequests.feeDue", { amount: formatPaise(item.feePaise) })}{" "}
+                      {feesHref && (
+                        <Link href={feesHref} className="font-semibold underline underline-offset-2">
+                          {t("certificateRequests.feesLink")}
+                        </Link>
+                      )}
+                    </>
+                  )}
+                </p>
+              )}
               <p className="mt-0.5 text-xs text-fg-muted">
                 {[t("certificateRequests.askedOn", { date: formatDate(new Date(item.createdAt)) }), item.status === "ISSUED" && item.serial ? t("certificateRequests.issuedAs", { serial: item.serial }) : null, item.revokedAt ? t("certificateRequests.revokedOn", { date: formatDate(new Date(item.revokedAt)) }) : null, item.status === "DECLINED" && item.declineReason ? t("certificateRequests.declinedBecause", { reason: item.declineReason }) : null, item.feePaise ? t(item.feePaid ? "certificateRequests.feePaidLine" : "certificateRequests.feeDue", { amount: formatPaise(item.feePaise) }) : null]
                   .filter(Boolean)

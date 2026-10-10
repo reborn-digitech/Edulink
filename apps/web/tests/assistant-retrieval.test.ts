@@ -103,8 +103,15 @@ describe("chunking by chapter and section", () => {
 /* ---- the hybrid search, against the local embedding endpoint ------------ */
 
 const embed = readEmbedConfig();
-const reason = embed.ok ? "" : `ASSISTANT_EMBED_URL / ASSISTANT_EMBED_MODEL are not set (${embed.problems.map((p) => p.key).join(", ")}): no embedding endpoint to build the fixture corpus with`;
-if (!embed.ok) console.log(`  skipped: the assistant's retrieval against a fixture corpus — ${reason}`);
+// Set is not the same as up (10 Oct 2026: the variables stayed in .env after the servers were stopped and the
+// whole suite failed on ECONNREFUSED): the endpoint is probed once, and a silent server skips the suite too.
+const up = embed.ok ? await fetch(new URL("models", embed.config.url.endsWith("/") ? embed.config.url : `${embed.config.url}/`), { signal: AbortSignal.timeout(2_000) }).then((r) => r.ok, () => false) : false;
+const reason = !embed.ok
+  ? `ASSISTANT_EMBED_URL / ASSISTANT_EMBED_MODEL are not set (${embed.problems.map((p) => p.key).join(", ")}): no embedding endpoint to build the fixture corpus with`
+  : !up
+    ? `the embedding server at ${embed.config.url} does not answer (start it with npm run model:serve)`
+    : "";
+if (reason) console.log(`  skipped: the assistant's retrieval against a fixture corpus — ${reason}`);
 
 const BOARD = "ZZ Fixture Board";
 const COMMIT = "zz-fixture";
@@ -172,7 +179,7 @@ const HELP_WRITTEN: FixtureHelp[] = [
 const HELP = HELP_WRITTEN.map((h) => ({ ...h, language: h.language ?? ("en" as const) }));
 
 // Generous timeouts: the local embedding server may be busy with an ingest when the suite runs.
-describe.skipIf(!embed.ok)("hybrid search over a fixture corpus (three chapters, twenty help entries)", { timeout: 60_000 }, () => {
+describe.skipIf(!embed.ok || !up)("hybrid search over a fixture corpus (three chapters, twenty help entries)", { timeout: 60_000 }, () => {
   const owner = new PrismaClient();
   const appUrl = process.env.DATABASE_APP_URL;
   const app = appUrl && appUrl !== process.env.DATABASE_URL ? new PrismaClient({ datasourceUrl: appUrl }) : null;

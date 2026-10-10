@@ -906,6 +906,8 @@ export async function buildFees(
     { code: "TUI", name: "Tuition", kind: "TUITION", sortOrder: 0 },
     { code: "TRN", name: "Transport", kind: "TRANSPORT", sortOrder: 1 },
     { code: "EXM", name: "Examination", kind: "EXAM", sortOrder: 2 },
+    // A head of the kind Other: the fee on a certificate request lands on it (10 Oct 2026, the demo office could set none).
+    { code: "OTH", name: "Certificates and other charges", kind: "OTHER", sortOrder: 3 },
   ];
   const heads: Record<string, string> = {};
   for (const spec of headSpecs) {

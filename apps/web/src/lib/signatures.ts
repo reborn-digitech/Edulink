@@ -349,3 +349,54 @@ export async function waitingSignatureCount(ctx: ActiveContext): Promise<number>
   for (const row of await db.paperSignature.findMany({ where, select: { schoolId: true, role: true, paperKind: true, paperId: true } })) if (await mine(me, row)) n += 1;
   return n;
 }
+
+/* -------------------------------------------------------------------------- */
+/* Before issuing: will the lines print?                                       */
+/* -------------------------------------------------------------------------- */
+
+export type SignerReadiness = {
+  /** The lines the template asks for, each with whether a picture is on file to fill it. */
+  lines: { slot: "LEFT" | "RIGHT"; role: SignerRole; mine: boolean; onFile: boolean }[];
+  /** The template asks for the seal and the school has none. */
+  sealMissing: boolean;
+};
+
+/**
+ * What the issuer should know before pressing Issue (10 Oct 2026): a line
+ * whose signer has no picture on file prints bare, the issuer's own at once and
+ * somebody else's after a wait that can never end. Pure over the facts, so the
+ * rule is testable without a database; `signerReadiness` gathers the facts.
+ */
+export function readinessFrom(
+  layout: Pick<CertificateLayout, "signerLeft" | "signerRight" | "showSeal">,
+  facts: { myRole: string | null; mineOnFile: boolean; onFileByRole: Partial<Record<SignerRole, boolean>>; sealOnFile: boolean },
+): SignerReadiness {
+  const lines: SignerReadiness["lines"] = [];
+  for (const [slot, who] of [["LEFT", layout.signerLeft], ["RIGHT", layout.signerRight]] as const) {
+    if (who !== "ADMIN" && who !== "PRINCIPAL") continue;
+    const role: SignerRole = who;
+    const mine = facts.myRole === role;
+    lines.push({ slot, role, mine, onFile: mine ? facts.mineOnFile : Boolean(facts.onFileByRole[role]) });
+  }
+  return { lines, sealMissing: layout.showSeal && !facts.sealOnFile };
+}
+
+/** The facts for `readinessFrom`, read for the issuer's school. */
+export async function signerReadiness(ctx: ActiveContext, layout: Pick<CertificateLayout, "signerLeft" | "signerRight" | "showSeal">): Promise<SignerReadiness> {
+  if (!ctx.schoolId) return { lines: [], sealMissing: false };
+  const schoolId = ctx.schoolId;
+  const signers = await db.membership.findMany({ where: { schoolId, role: { in: ["ADMIN", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null }, select: { id: true, role: true } });
+  const [mine, withImage, seal] = await Promise.all([
+    ctx.membershipId ? db.signatureImage.findFirst({ where: { schoolId, kind: "PERSON", membershipId: ctx.membershipId }, select: { id: true } }) : null,
+    db.signatureImage.findMany({ where: { schoolId, kind: "PERSON", membershipId: { in: signers.map((m) => m.id) } }, select: { membershipId: true } }),
+    db.signatureImage.findFirst({ where: { schoolId, kind: "SEAL" }, select: { id: true } }),
+  ]);
+  const roleOf = new Map(signers.map((m) => [m.id, m.role]));
+  const onFileByRole: Partial<Record<SignerRole, boolean>> = {};
+  for (const row of withImage) {
+    const role = row.membershipId ? roleOf.get(row.membershipId) : undefined;
+    if (role === "ADMIN" || role === "PRINCIPAL") onFileByRole[role] = true;
+  }
+  return readinessFrom(layout, { myRole: ctx.role, mineOnFile: Boolean(mine), onFileByRole, sealOnFile: Boolean(seal) });
+}
+

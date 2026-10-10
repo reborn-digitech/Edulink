@@ -93,9 +93,12 @@ export function defaultLayoutFor(words: Words = englishWords): CertificateLayout
     font: "default",
     introFont: "default",
     outroFont: "default",
-    signerLeft: "NONE",
-    signerRight: "NONE",
-    showSeal: false,
+    // The office signs the left line, the principal the right, under the seal (10 Oct 2026): a preset that
+    // asked for nobody printed every new school's papers with two bare lines, and the office could not see
+    // why until it opened the template editor. The editor still lets a school choose otherwise.
+    signerLeft: "ADMIN",
+    signerRight: "PRINCIPAL",
+    showSeal: true,
     showLogo: true,
     showAddress: true,
     useBrandColour: true,
