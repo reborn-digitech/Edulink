@@ -6,8 +6,12 @@ import {
   ChecksIcon,
   ClipboardTextIcon,
   UserSwitchIcon,
+  WalletIcon,
   WarningCircleIcon,
 } from "@phosphor-icons/react/ssr";
+import { QUESTION_GIG_FOR_TEACHERS } from "@edulink/contracts";
+import { formatPaise } from "@edulink/i18n";
+import { owedForQuestionsPaise } from "@/lib/question-gig";
 import { requireRole, teacherClassIds } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { formatDateKey, relativeTime, todayKey, weekdayOfKey } from "@/lib/dates";
@@ -91,6 +95,24 @@ export default async function TeacherHome() {
      to cover" every morning is noise, and the timetable above already
      flags a borrowed lesson. */
   const covers = (await myCovers(ctx, dateKey)).items;
+  // quiz-board (11 Oct 2026): the question gig is closed, but a teacher still owed for earlier questions
+  // is pointed at the one page it keeps, to check where the company will pay them.
+  const owedPaise = ctx.role === "TEACHER" && !QUESTION_GIG_FOR_TEACHERS ? await owedForQuestionsPaise(ctx.user.id) : 0;
+  const payeeCard = owedPaise > 0 && (
+    <Card data-testid="teacher-payee-card">
+      <CardHeader
+        icon={<WalletIcon weight="duotone" className="size-5" />}
+        title={t("gigPayee.homeTitle")}
+        description={t("gigPayee.homeBody", { amount: formatPaise(owedPaise, locale) })}
+        action={
+          <Link href="/teacher/payee" className="inline-flex min-h-11 items-center text-sm font-medium text-accent hover:underline">
+            {t("gigPayee.homeLink")}
+          </Link>
+        }
+      />
+    </Card>
+  );
+
   const coversCard = covers.length > 0 && (
     <Card>
       <CardHeader
@@ -236,6 +258,7 @@ export default async function TeacherHome() {
           <PageHeader title={t("teacher.today")} description={<>{formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" }, locale)} ·{" "}
               {school.name}</>} />
           {coversCard}
+          {payeeCard}
           <EmptyState
             icon={<ClipboardTextIcon weight="duotone" className="size-8" />}
             title={t("teacher.noClassesYet")}
@@ -256,6 +279,8 @@ export default async function TeacherHome() {
         {marksCard}
 
         {coversCard}
+
+        {payeeCard}
 
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           <StatTile
@@ -334,6 +359,8 @@ export default async function TeacherHome() {
       {marksCard}
 
       {coversCard}
+
+      {payeeCard}
 
       {lessonsCard}
 

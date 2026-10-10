@@ -84,6 +84,73 @@ describe("practice", () => {
     expect(screen.queryByRole("button", { name: "Open on the web" })).toBeNull();
   });
 
+  // quiz-board (11 Oct 2026): the school's board first, a switch to the other and to both; a chapter says its board.
+  it("opens on the school's board with a switch to the other and to both, and a chapter says its board", async () => {
+    const boards = {
+      ...PRACTICE,
+      schoolBoard: "BALBHARATI",
+      topics: [
+        { ...TOPIC, id: "b1", slug: "zz-force", name: "ZZ Force", subject: "SCIENCE", board: "BALBHARATI" },
+        { ...TOPIC, id: "n1", slug: "zz-magnets", name: "ZZ Magnets", subject: "SCIENCE", board: "NCERT" },
+        { ...TOPIC, id: "x1", slug: "zz-aptitude", name: "ZZ Aptitude", subject: "MATHS", board: null },
+      ],
+    };
+    await renderFamily(<FamilyPractice />, ME_STUDENT, { [PATH]: () => boards });
+    expect(await screen.findByText("ZZ Force")).toBeTruthy();
+    expect(screen.getByText("ZZ Aptitude")).toBeTruthy();
+    expect(screen.queryByText("ZZ Magnets")).toBeNull();
+    expect(screen.getByRole("button", { name: "ZZ Force, Science · Class 5 · Balbharati" })).toBeTruthy();
+    const names = screen.getAllByRole("button").map((b) => b.props.accessibilityLabel).filter((n) => ["Balbharati", "NCERT", "Both boards"].includes(n));
+    expect(names).toEqual(["Balbharati", "NCERT", "Both boards"]);
+    await press(screen.getByRole("button", { name: "NCERT" }));
+    expect(screen.getByText("ZZ Magnets")).toBeTruthy();
+    expect(screen.queryByText("ZZ Force")).toBeNull();
+    await press(screen.getByRole("button", { name: "Both boards" }));
+    expect(screen.getByText("ZZ Force")).toBeTruthy();
+    expect(screen.getByText("ZZ Magnets")).toBeTruthy();
+  });
+
+  it("a school with neither board opens on both", async () => {
+    await renderFamily(<FamilyPractice />, ME_STUDENT, { [PATH]: () => ({ ...PRACTICE, schoolBoard: null, topics: [{ ...TOPIC, board: "NCERT" }, { ...TOPIC, id: "b2", slug: "zz-b", name: "ZZ Balbharati Fractions", board: "BALBHARATI" }] }) });
+    expect(await screen.findByText("ZZ Balbharati Fractions")).toBeTruthy();
+    const names = screen.getAllByRole("button").map((b) => b.props.accessibilityLabel).filter((n) => ["Balbharati", "NCERT", "Both boards"].includes(n));
+    expect(names).toEqual(["Both boards", "NCERT", "Balbharati"]);
+  });
+
+  it("an older server, which sends no boards, gets no switch and every chapter", async () => {
+    await renderFamily(<FamilyPractice />, ME_STUDENT, { [PATH]: () => PRACTICE });
+    expect(await screen.findByText("Continue where you left off")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Both boards" })).toBeNull();
+  });
+
+  it("a guardian sees the child's school's board first and can switch", async () => {
+    const progress = {
+      children: [child(ID.child, "ZZ Asha")],
+      childName: "ZZ Asha",
+      weeklyCount: 7,
+      schoolBoard: "NCERT",
+      topics: [
+        { slug: "zz-fractions", name: "ZZ Fractions", subject: "MATHS", classLevel: 5, level: 2, seenCount: 5, correctCount: 4, tierCount: 1, cleanCompletion: false, board: "NCERT" },
+        { slug: "zz-force", name: "ZZ Force", subject: "SCIENCE", classLevel: 8, level: 1, seenCount: 2, correctCount: 1, tierCount: 0, cleanCompletion: false, board: "BALBHARATI" },
+      ],
+    };
+    await renderFamily(<FamilyPractice />, ME_PARENT, { "/api/v1/family/practice": () => progress });
+    expect(await screen.findByText("ZZ Fractions · Class 5 · NCERT")).toBeTruthy();
+    expect(screen.queryByText("ZZ Force · Class 8 · Balbharati")).toBeNull();
+    await press(screen.getByRole("button", { name: "Balbharati" }));
+    expect(screen.getByText("ZZ Force · Class 8 · Balbharati")).toBeTruthy();
+    expect(screen.queryByText("ZZ Fractions · Class 5 · NCERT")).toBeNull();
+  });
+
+  it("a guardian whose child practised only the other board's chapters is told so on the school's board", async () => {
+    const progress = { children: [child(ID.child, "ZZ Asha")], childName: "ZZ Asha", weeklyCount: 2, schoolBoard: "NCERT", topics: [{ slug: "zz-force", name: "ZZ Force", subject: "SCIENCE", classLevel: 8, level: 1, seenCount: 2, correctCount: 1, tierCount: 0, cleanCompletion: false, board: "BALBHARATI" }] };
+    await renderFamily(<FamilyPractice />, ME_PARENT, { "/api/v1/family/practice": () => progress });
+    expect(await screen.findByText("ZZ Asha has not practised any NCERT chapter yet. Choose the other board to see the rest.")).toBeTruthy();
+    const both = screen.getAllByRole("button", { name: "Both boards" });
+    await press(both[both.length - 1]!);
+    expect(screen.getByText("ZZ Force · Class 8 · Balbharati")).toBeTruthy();
+  });
+
   it("a guardian whose child has not practised yet is told so", async () => {
     await renderFamily(<FamilyPractice />, ME_PARENT, { "/api/v1/family/practice": () => ({ children: [child(ID.child, "ZZ Asha")], childName: "ZZ Asha", weeklyCount: 0, topics: [] }) });
     expect(await screen.findByText(/Nothing tried yet/)).toBeTruthy();
