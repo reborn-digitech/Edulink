@@ -56,32 +56,32 @@ For everything else — a date, a discoverer, a definition — there is nothing 
 evaluate, and `quiz:verify` says so in its output rather than implying it checked.
 That number is the honest measure of how much of the bank is machine-verified.
 
-## Review of the generated bank (10 October 2026)
+## The generated bank: published without review, taken down afterwards (11 October 2026)
 
-The generator's batches live in `content/quiz/generated/`. They are **not served
-from the files**: `npm run quiz:queue` loads every item into the database as an
-unserved row (`generated` true, `reviewedAt` null), and the review queue at
-`/appadmin/quiz-review` (the content team) and `/root/quiz-review` (the operator)
-is where a person reads each one. Teachers do not review (the owner's decision).
+The generator's batches live in `content/quiz/generated/`. `npm run quiz:queue` (and the generation job
+started from the bank desk, which loads each chapter as it finishes) writes every item into the database
+as a `generated` row, and **it is served at once**, with its Hindi and Marathi rows: an item in a batch
+has already passed the generator's own checks (the critique, the blind solver, the form checks, the
+verifier). The owner decided this on 11 October 2026; on 10 October items waited for a stamp in a review
+queue. Teachers take no part (the owner's decision).
 
-- **Accept** — one stamp, from an app admin or the operator, serves the item.
-- **Edit, then accept** — the corrected English is stamped in the same press; the
-  earlier words are kept on the stamp and named in the audit log, and the
-  solver's answers stay with an "edited after solving" mark.
-- **Discard** — with a reason from a coded list (`QUIZ_DISCARD_REASONS` in
-  packages/contracts); never served, out of the queue.
-- **Stamp the Hindi / the Marathi** — a generated item's language row is served
-  only once that language is stamped as well; until then a pupil reading in Hindi
-  or Marathi sees the English item, as for any untranslated question.
-- An item that needs a figure cannot be accepted until the figure is drawn and
-  stored.
+The bank desk at `/appadmin/quiz-review` (the content team) and `/root/quiz-review` (the operator):
 
-Every act is a `QuizReviewStamp` row with the reviewer, their role, the language,
-the reason and the time; `src/lib/quiz-review.ts` is its only writer, and
-`src/lib/quiz-served.ts` is the one filter every pupil-facing read uses. The
-authored files in this folder are served as before, and `quiz:import` never
-touches a queue row. Re-running `quiz:queue` refreshes an item still waiting and
-leaves a stamped or discarded one alone.
+- **Edit** — the English, the Hindi and the Marathi in one press; the earlier words are kept on the record
+  and named in the audit log, and an English change keeps the solver's answers with an "edited after
+  solving" mark. Served as edited at once.
+- **Take down** — with a reason from a coded list (`QUIZ_TAKEDOWN_REASONS` in packages/contracts): not
+  served from that moment, anywhere (practice, revision, worksheets, the phone); the answers pupils gave
+  stay attached.
+- **Put back** — a taken-down item is served again.
+- An item whose figure failed to draw is loaded but held until its figure is stored.
+
+Every act is a `QuizReviewStamp` row with the person, their role, the action, the reason and the words
+before; `src/lib/quiz-review.ts` is its only writer, and `src/lib/quiz-served.ts` is the one filter every
+pupil-facing read uses. The bank editor and the translations page refuse a generated item: the desk is its
+words' one writer. The authored files in this folder are served as before, and `quiz:import` never touches
+a generated row. Re-running `quiz:queue` refreshes an item in place and leaves one a person edited or took
+down (or the review queue stamped, before 11 October) alone.
 
 ## Boards, figures and the one way in (11 October 2026)
 
@@ -100,7 +100,7 @@ leaves a stamped or discarded one alone.
   `quiz:import` loads the authored files only.
 - **Figures are drawn on load.** `quiz:queue` draws an item's `figure` spec in
   English, Hindi and Marathi and stores the three PNGs (the figure builder's
-  `prepareFigure`/`finishFigure`), so the item can be accepted. A figure that
-  cannot be drawn does not stop the load: the item comes in with the reason and
-  the review desk shows "Figure failed"; the verifier reports it as a warning on
+  `prepareFigure`/`finishFigure`), so the item is served with its figure. A figure
+  that cannot be drawn does not stop the load: the item comes in held, with the
+  reason, and the bank desk shows "Figure failed"; the verifier reports it as a warning on
   a generated batch (an error on an authored file).

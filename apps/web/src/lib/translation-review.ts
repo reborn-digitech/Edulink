@@ -63,7 +63,9 @@ export async function listTranslationReview(
   const language = opts.language;
   const status = opts.status ?? "unreviewed";
   const stampAt = language === "hi" ? "hiReviewedAt" : "mrReviewedAt";
-  const base = { topic: { retiredAt: null }, ...(opts.topicId ? { topicId: opts.topicId } : {}) };
+  // quiz-publish-jobs (11 Oct 2026): the authored bank only. A generated item's Hindi and Marathi are
+  // published with it and corrected on the bank desk, their one writer (quiz-review.ts editItem).
+  const base = { generated: false, topic: { retiredAt: null }, ...(opts.topicId ? { topicId: opts.topicId } : {}) };
   const hasRow = { translations: { some: { language } } };
   const whereFor: Record<ReviewStatus, object> = {
     unreviewed: { ...base, ...hasRow, [stampAt]: null },
@@ -146,9 +148,11 @@ export async function reviewTranslation(session: ActiveContext, questionId: stri
   assertAppAdmin(session);
   const question = await db.quizQuestion.findUnique({
     where: { id: questionId },
-    select: { id: true, choices: true, translations: { where: { language: input.language }, select: { id: true }, take: 1 } },
+    select: { id: true, generated: true, choices: true, translations: { where: { language: input.language }, select: { id: true }, take: 1 } },
   });
   if (!question) return { ok: false, errorKey: "appadmin.noSuchQuestion" };
+  // quiz-publish-jobs (11 Oct 2026): a generated item's words, every language, are the bank desk's to change.
+  if (question.generated) return { ok: false, errorKey: "quizReview.editOnDesk" };
 
   if (input.text) {
     const problem = checkText(input.text, parseChoices(question.choices).length);
@@ -164,9 +168,9 @@ export async function reviewTranslation(session: ActiveContext, questionId: stri
     return { ok: false, errorKey: "translationReview.nothingToReview" };
   }
 
-  // review-queue (10 Oct 2026): the language stamp's one writer (quiz-review.ts) sets the column the
-  // serving filter reads and records a QuizReviewStamp row in the same transaction; a stamp that already
-  // stands as asked is left as it is.
+  // review-queue (10 Oct 2026): the language stamp's one writer (quiz-review.ts) sets the native-review
+  // column and records a QuizReviewStamp row in the same transaction; a stamp that already stands as asked
+  // is left as it is. (Since 11 Oct 2026 it gates nothing: an authored draft was always served.)
   const role = reviewerRole(session);
   await db.$tenantTransaction(async (raw) =>
     writeLanguageStamp(raw as typeof db, { questionId, language: input.language, stamped: input.reviewed, reviewerUserId: session.user.id, role, at: new Date() }),

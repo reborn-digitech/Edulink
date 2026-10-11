@@ -3517,6 +3517,7 @@ CREATE TRIGGER "OperatorAccess_close_only"
 --   Plan
 --   PushSubscription
 --   QuestionContribution
+--   QuizGenJob
 --   QuizQuestion
 --   QuizQuestionTranslation
 --   QuizReviewStamp

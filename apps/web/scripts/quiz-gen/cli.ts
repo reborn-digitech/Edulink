@@ -2,8 +2,8 @@
  * The quiz bank generator, Phase 1 step 1 (docs/plans/assistant-and-quiz-bank.md): drafts
  * multiple-choice items for one textbook chapter on the owner's machine, through the two local
  * llama.cpp servers (docs/runbooks/assistant-local.md), and writes them in the bank's own file shape
- * under content/quiz/generated/ for the app admins' and the operator's review. Nothing is imported
- * here; scripts/import-quiz.ts takes a generated item only once it carries a stamp.
+ * under content/quiz/generated/. Nothing is loaded here (scripts/quiz-queue.ts loads the files; the
+ * generation job, --job, loads each chapter as it finishes).
  *
  *   npm run quiz:gen -- --board=NCERT --grade=8 --subject=Science --chapter=4 [--limit=24] [--book=hecu1]
  *   npm run quiz:gen -- --board=Balbharati --grade=8 --subject=Science --all-chapters --limit=18
@@ -11,8 +11,12 @@
  *   … --per-level=4   items asked for per level per chapter (24 a chapter; --limit caps the total)
  *   … --dry           select and group the chapter, call no model
  *
+ *   npm run quiz:gen -- --job=<QuizGenJob id>   the bank desk's generation job (scripts/quiz-gen/job.ts); the desk spawns it
+ *
  * Output: content/quiz/generated/<board>-<grade>-<subject>-<chapter>.json (the file) and
  * content/quiz/generated/runs/<same>.<time>.json (the run log: timings, tokens, rejects per stage).
+ * `npm run quiz:queue` loads the files into the bank (published at once since 11 October 2026); the job
+ * loads each chapter itself as it finishes.
  *
  * Reads the corpus and the bank as the app role (DATABASE_URL); writes files only.
  */
@@ -23,7 +27,7 @@ import { join } from "node:path";
 import { requireAssistantConfig } from "../../src/lib/assistant-env";
 import { chapterNumberOf, groupChunks, matchTopic, newTopicSlug } from "./checks";
 import { chatClient } from "./model";
-import { runChapter, type RunLog } from "./pipeline";
+import { runChapter, type PipelineOptions, type RunLog } from "./pipeline";
 import { bankStems, bankTopics, glossaryFor, listChapters, selectChapter, styleExcerpts, type SelectedChapter } from "./select";
 import type { GeneratedTopicFile } from "./shape";
 
@@ -48,16 +52,32 @@ export function fileNameFor(chapter: Pick<SelectedChapter, "board" | "classLevel
   return `${chapter.board.toLowerCase()}-${chapter.classLevel}-${chapter.subjectCode.toLowerCase()}-${chapter.chapterNumber}`;
 }
 
-async function one(db: PrismaClient, chapterNumber: number, args: { board: string; grade: number; subject: string; book?: string; limit: number; perLevel: number; dry: boolean }) {
-  const log = (line: string) => console.log(line);
-  console.log(`\n${args.board} class ${args.grade} ${args.subject}, chapter ${chapterNumber}`);
+export type GenerateArgs = { board: string; grade: number; subject: string; book?: string; limit: number; perLevel: number };
+
+/** quiz-publish-jobs (11 Oct 2026): the generation job's hooks into one chapter (scripts/quiz-gen/job.ts). */
+export type ChapterHooks = {
+  log?: (line: string) => void;
+  onProgress?: PipelineOptions["onProgress"];
+  shouldStop?: PipelineOptions["shouldStop"];
+};
+
+export type GeneratedChapter = {
+  chapter: SelectedChapter;
+  runLog: RunLog;
+  /** Halted by a stop: nothing was written. */
+  stopped: boolean;
+  file: GeneratedTopicFile | null;
+  fileName: string | null;
+  outPath: string | null;
+  logPath: string | null;
+};
+
+/** One chapter through the pipeline, its file and run log written (unless a stop halted it): the CLI's and the job's one path. */
+export async function generateChapter(db: PrismaClient, chapterNumber: number, args: GenerateArgs, hooks: ChapterHooks = {}): Promise<GeneratedChapter> {
+  const log = hooks.log ?? ((line: string) => console.log(line));
   const chapter = await selectChapter(db, { board: args.board, grade: args.grade, subject: args.subject, chapter: chapterNumber, book: args.book }, log);
-  console.log(`  "${chapter.book}"${chapter.bookCode ? ` (${chapter.bookCode})` : ""}, ${chapter.documentPath}, ${chapter.edition ?? "no edition stated"}: ${chapter.chapterLabel}`);
-  console.log(`  ${chapter.chunks.length} chunks, pp. ${chapter.chunks[0]!.pageStart}–${chapter.chunks[chapter.chunks.length - 1]!.pageEnd}, ${chapter.figures.size} figures (${[...chapter.figures.values()].filter((f) => f.caption).length} captioned)`);
-  if (args.dry) {
-    for (const [i, g] of groupChunks(chapter.chunks).entries()) console.log(`    group ${i}: chunks ${g[0]!.ordinal}–${g[g.length - 1]!.ordinal}, ${g.reduce((n, c) => n + c.tokens, 0)} tokens, pp. ${g[0]!.pageStart}–${g[g.length - 1]!.pageEnd}`);
-    return;
-  }
+  log(`  "${chapter.book}"${chapter.bookCode ? ` (${chapter.bookCode})` : ""}, ${chapter.documentPath}, ${chapter.edition ?? "no edition stated"}: ${chapter.chapterLabel}`);
+  log(`  ${chapter.chunks.length} chunks, pp. ${chapter.chunks[0]!.pageStart}–${chapter.chunks[chapter.chunks.length - 1]!.pageEnd}, ${chapter.figures.size} figures (${[...chapter.figures.values()].filter((f) => f.caption).length} captioned)`);
 
   const endpoints = requireAssistantConfig("quiz:gen");
   const client = chatClient(endpoints.chat, endpoints.embed);
@@ -69,9 +89,13 @@ async function one(db: PrismaClient, chapterNumber: number, args: { board: strin
   ]);
   const existing = matchTopic(topics, chapter.chapterNumber, chapter.chapterName);
   const slug = existing?.slug ?? newTopicSlug(chapter.board, chapter.subjectCode, chapter.classLevel, chapter.chapterName);
-  console.log(`  topic: ${existing ? `the bank's "${existing.slug}" (${existing.chapter})` : `new, "${slug}"`}; ${stems.length} served questions in class ${chapter.classLevel} ${chapter.subjectCode} for the duplicate check`);
+  log(`  topic: ${existing ? `the bank's "${existing.slug}" (${existing.chapter})` : `new, "${slug}"`}; ${stems.length} served questions in class ${chapter.classLevel} ${chapter.subjectCode} for the duplicate check`);
 
-  const { questions, log: runLog, topicWords } = await runChapter(client, chapter, { limit: args.limit, perLevel: args.perLevel, bankStems: stems, glossary, style, log });
+  const { questions, log: runLog, topicWords, stopped } = await runChapter(client, chapter, { limit: args.limit, perLevel: args.perLevel, bankStems: stems, glossary, style, log, onProgress: hooks.onProgress, shouldStop: hooks.shouldStop });
+  if (stopped) {
+    log(`  stopped: the chapter was halted after the items in hand; nothing was written`);
+    return { chapter, runLog, stopped: true, file: null, fileName: null, outPath: null, logPath: null };
+  }
 
   const file: GeneratedTopicFile = {
     subject: chapter.subjectCode,
@@ -101,7 +125,20 @@ async function one(db: PrismaClient, chapterNumber: number, args: { board: strin
   writeFileSync(outPath, JSON.stringify(file, null, 2) + "\n");
   const logPath = join(OUT_DIR, "runs", `${name}.${runLog.startedAt.replace(/[:.]/g, "-")}.json`);
   writeFileSync(logPath, JSON.stringify(runLog, null, 2) + "\n");
-  printSummary(runLog, outPath, logPath);
+  return { chapter, runLog, stopped: false, file, fileName: `${name}.json`, outPath, logPath };
+}
+
+async function one(db: PrismaClient, chapterNumber: number, args: GenerateArgs & { dry: boolean }) {
+  console.log(`\n${args.board} class ${args.grade} ${args.subject}, chapter ${chapterNumber}`);
+  if (args.dry) {
+    const chapter = await selectChapter(db, { board: args.board, grade: args.grade, subject: args.subject, chapter: chapterNumber, book: args.book }, (line) => console.log(line));
+    console.log(`  "${chapter.book}"${chapter.bookCode ? ` (${chapter.bookCode})` : ""}, ${chapter.documentPath}, ${chapter.edition ?? "no edition stated"}: ${chapter.chapterLabel}`);
+    console.log(`  ${chapter.chunks.length} chunks, pp. ${chapter.chunks[0]!.pageStart}–${chapter.chunks[chapter.chunks.length - 1]!.pageEnd}, ${chapter.figures.size} figures (${[...chapter.figures.values()].filter((f) => f.caption).length} captioned)`);
+    for (const [i, g] of groupChunks(chapter.chunks).entries()) console.log(`    group ${i}: chunks ${g[0]!.ordinal}–${g[g.length - 1]!.ordinal}, ${g.reduce((n, c) => n + c.tokens, 0)} tokens, pp. ${g[0]!.pageStart}–${g[g.length - 1]!.pageEnd}`);
+    return;
+  }
+  const r = await generateChapter(db, chapterNumber, args);
+  if (r.outPath && r.logPath) printSummary(r.runLog, r.outPath, r.logPath);
 }
 
 function printSummary(r: RunLog, outPath: string, logPath: string) {
@@ -116,6 +153,14 @@ function printSummary(r: RunLog, outPath: string, logPath: string) {
 }
 
 async function main() {
+  // quiz-publish-jobs (11 Oct 2026): run as the bank desk's generation job (src/lib/quiz-jobs.ts spawns this, detached).
+  const job = arg("job");
+  if (job && job !== "true") {
+    const { runJob } = await import("./job");
+    await runJob(job);
+    // The runner is a process of its own: done is done (a keep-alive socket must not hold it open).
+    process.exit(0);
+  }
   const board = arg("board");
   const grade = Number(arg("grade"));
   const subject = arg("subject");

@@ -6,6 +6,12 @@
 #   scripts/model-serve.sh both    # both, in the background, logs under storage/models/
 #   scripts/model-serve.sh stop    # stops the servers this script started (by pid file)
 #   scripts/model-serve.sh restart-embed   # the embeddings server alone
+#   scripts/model-serve.sh start-chat | start-embed   # one server, in the background (the bank desk's Start)
+#   scripts/model-serve.sh stop-chat | stop-embed     # one server this script started (the bank desk's Stop)
+#
+# The bank desk (/root/quiz-review, /appadmin/quiz-review) starts and stops the servers through this
+# script and nothing else (src/lib/quiz-jobs.ts): a generation run brings up only the servers that were
+# down, and takes down only those when it ends.
 #
 # Both are llama.cpp's llama-server (OpenAI-compatible: /v1/chat/completions, /v1/embeddings). The weights
 # come from the official Qwen repositories on Hugging Face with -hf on first start and are cached in
@@ -54,13 +60,20 @@ start_bg() {
   echo "$which started (pid $!, log $RUN_DIR/$which.log)"
 }
 
+stop_one() {
+  local which="$1"
+  local pidfile="$RUN_DIR/$which.pid"
+  if [[ -f "$pidfile" ]]; then
+    kill "$(cat "$pidfile")" 2>/dev/null && echo "$which stopped" || echo "$which was not running"
+    rm -f "$pidfile"
+  else
+    echo "$which was not started by this script (no pid file)"
+  fi
+}
+
 stop() {
   for which in chat embed; do
-    local pidfile="$RUN_DIR/$which.pid"
-    if [[ -f "$pidfile" ]]; then
-      kill "$(cat "$pidfile")" 2>/dev/null && echo "$which stopped" || echo "$which was not running"
-      rm -f "$pidfile"
-    fi
+    if [[ -f "$RUN_DIR/$which.pid" ]]; then stop_one "$which"; fi
   done
 }
 
@@ -70,5 +83,9 @@ case "${1:-}" in
   both) start_bg embed; start_bg chat ;;
   stop) stop ;;
   restart-embed) kill "$(cat "$RUN_DIR/embed.pid" 2>/dev/null)" 2>/dev/null || true; rm -f "$RUN_DIR/embed.pid"; sleep 2; start_bg embed ;;
-  *) echo "usage: $0 embed|chat|both|stop|restart-embed" >&2; exit 2 ;;
+  start-chat) start_bg chat ;;
+  start-embed) start_bg embed ;;
+  stop-chat) stop_one chat ;;
+  stop-embed) stop_one embed ;;
+  *) echo "usage: $0 embed|chat|both|stop|restart-embed|start-chat|start-embed|stop-chat|stop-embed" >&2; exit 2 ;;
 esac

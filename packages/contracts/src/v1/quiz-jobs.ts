@@ -1,0 +1,153 @@
+import { z } from "zod";
+import { quizBoardSchema } from "./quiz-board";
+
+/**
+ * GENERATION STARTED AND STOPPED FROM THE BANK DESK (the owner, 11 October 2026). The operator and the
+ * content team start the quiz bank generator from /root/quiz-review or /appadmin/quiz-review: a run is a
+ * background job on the machine the model runs on (QuizGenJob, src/lib/quiz-jobs.ts), one at a time,
+ * whose runner writes a live line after every item and loads each finished chapter into the bank as it
+ * goes. Start brings the two local model servers up when they are down (scripts/model-serve.sh) and Stop
+ * takes down only what that Start brought up. Every door is app-admin; none names a school.
+ */
+
+const id = z.string().min(1).max(64);
+const iso = z.string().datetime();
+const count = z.number().int().nonnegative();
+
+/** A run's life: QUEUED (the model starting, or about to) → RUNNING → STOPPING → STOPPED, or FINISHED, or FAILED. */
+export const QUIZ_GEN_JOB_STATES = ["QUEUED", "RUNNING", "STOPPING", "STOPPED", "FINISHED", "FAILED"] as const;
+export type QuizGenJobState = (typeof QUIZ_GEN_JOB_STATES)[number];
+/** The states in which a run holds the one slot: a second Start is refused while one of these stands. */
+export const QUIZ_GEN_ACTIVE_STATES = ["QUEUED", "RUNNING", "STOPPING"] as const satisfies readonly QuizGenJobState[];
+
+/**
+ * The subjects the generator can draft for: the bank's subject codes (scripts/verify-quiz.ts SUBJECTS)
+ * that a textbook in the corpus maps to (scripts/quiz-gen/select.ts subjectCodeOf).
+ */
+export const QUIZ_GEN_SUBJECTS = ["MATHS", "SCIENCE", "PHYSICS", "CHEMISTRY", "BIOLOGY", "EVS", "HISTORY", "GEOGRAPHY", "CIVICS", "ECONOMICS"] as const;
+export type QuizGenSubject = (typeof QUIZ_GEN_SUBJECTS)[number];
+
+/** What to generate: one board's class, subject and chapter range, or everything not yet generated in the plan's order. */
+export const QUIZ_GEN_SCOPES = ["CHAPTERS", "EVERYTHING"] as const;
+
+export const quizGenRequestSchema = z
+  .object({
+    scope: z.enum(QUIZ_GEN_SCOPES),
+    board: quizBoardSchema.optional(),
+    grade: z.number().int().min(1).max(12).optional(),
+    subject: z.enum(QUIZ_GEN_SUBJECTS).optional(),
+    chapterFrom: z.number().int().min(1).max(40).optional(),
+    chapterTo: z.number().int().min(1).max(40).optional(),
+    /** Items asked for per chapter (the generator's --limit); absent is its own default, four a level. */
+    limit: z.number().int().min(1).max(60).optional(),
+  })
+  .strict()
+  .superRefine((r, ctx) => {
+    if (r.scope === "CHAPTERS") {
+      if (!r.board) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["board"], message: "board" });
+      if (!r.grade) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["grade"], message: "grade" });
+      if (!r.subject) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["subject"], message: "subject" });
+    }
+    if (r.chapterFrom && r.chapterTo && r.chapterFrom > r.chapterTo) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["chapterTo"], message: "range" });
+  });
+export type QuizGenRequest = z.infer<typeof quizGenRequestSchema>;
+
+/** The generator's stages, as its run log counts them (scripts/quiz-gen/shape.ts Stage). */
+export const QUIZ_GEN_STAGES = ["draft", "critique", "solver", "form", "verify", "dedupe", "translation"] as const;
+export type QuizGenStage = (typeof QUIZ_GEN_STAGES)[number];
+
+/** What the runner is doing now. */
+export const QUIZ_GEN_PHASES = ["STARTING_MODEL", "PLANNING", "GENERATING", "LOADING", "HALTING", "DONE"] as const;
+export type QuizGenPhase = (typeof QUIZ_GEN_PHASES)[number];
+
+const rejectsSchema = z.record(z.enum(QUIZ_GEN_STAGES), count);
+
+const chapterRefSchema = z.object({
+  board: quizBoardSchema,
+  grade: z.number().int(),
+  subject: z.string(),
+  number: z.number().int(),
+  name: z.string(),
+});
+
+/** One chapter's numbers: drafted, kept, rejects per stage, seconds, and how many items reached the bank. */
+const chapterNumbersSchema = chapterRefSchema.extend({
+  drafted: count,
+  kept: count,
+  rejects: rejectsSchema,
+  seconds: count,
+  loaded: count,
+  keepRate: z.number().min(0).max(1).nullable(),
+  secondsPerKept: z.number().nonnegative().nullable(),
+});
+
+/** The live line, rewritten by the runner after every item. */
+export const quizGenProgressSchema = z.object({
+  phase: z.enum(QUIZ_GEN_PHASES),
+  /** The chapter running now, and its numbers so far. */
+  chapter: chapterNumbersSchema.nullable(),
+  /** Chapters finished and loaded this run, chapters left out because a batch already exists, chapters that could not be generated. */
+  chaptersDone: count,
+  chaptersSkipped: count,
+  chaptersFailed: z.array(z.object({ label: z.string(), reason: z.string() })),
+  /** Across the run. */
+  drafted: count,
+  kept: count,
+  loaded: count,
+  keepRate: z.number().min(0).max(1).nullable(),
+  secondsPerKept: z.number().nonnegative().nullable(),
+  /** The last chapter finished. */
+  last: chapterNumbersSchema.nullable(),
+});
+export type QuizGenProgress = z.infer<typeof quizGenProgressSchema>;
+
+/** The two local model servers (docs/runbooks/assistant-local.md). */
+export const MODEL_SERVERS = ["chat", "embed"] as const;
+export type ModelServer = (typeof MODEL_SERVERS)[number];
+export const modelServerNameSchema = z.enum(MODEL_SERVERS);
+
+/** RUNNING (the health endpoint answers ok), STARTING (started, still loading), STOPPED (nothing answers). */
+export const MODEL_SERVER_STATES = ["RUNNING", "STARTING", "STOPPED"] as const;
+export type ModelServerState = (typeof MODEL_SERVER_STATES)[number];
+
+export const modelServerSchema = z.object({
+  server: modelServerNameSchema,
+  state: z.enum(MODEL_SERVER_STATES),
+  /** The name the server answers to (llama-server's --alias). */
+  model: z.string(),
+  port: z.number().int().nullable(),
+  checkedAt: iso,
+});
+export type ModelServerStatus = z.infer<typeof modelServerSchema>;
+
+export const quizGenJobSchema = z.object({
+  id,
+  state: z.enum(QUIZ_GEN_JOB_STATES),
+  request: quizGenRequestSchema,
+  progress: quizGenProgressSchema.nullable(),
+  startedBy: z.string(),
+  startedByRole: z.enum(["APP_ADMIN", "OPERATOR"]),
+  /** The model servers this run brought up, and so takes down when it ends. */
+  startedServers: z.array(modelServerNameSchema),
+  error: z.string().nullable(),
+  createdAt: iso,
+  startedAt: iso.nullable(),
+  finishedAt: iso.nullable(),
+  heartbeatAt: iso.nullable(),
+});
+export type QuizGenJob = z.infer<typeof quizGenJobSchema>;
+
+/** GET /api/v1/appadmin/quiz-jobs — the run in hand (or the last one), the latest runs and the model servers. */
+export const quizJobsStateSchema = z.object({
+  current: quizGenJobSchema.nullable(),
+  recent: z.array(quizGenJobSchema),
+  servers: z.array(modelServerSchema),
+});
+export type QuizJobsState = z.infer<typeof quizJobsStateSchema>;
+
+/** GET /api/v1/appadmin/quiz-jobs/{jobId} */
+export const quizGenJobReadSchema = z.object({ job: quizGenJobSchema });
+
+/** GET /api/v1/appadmin/quiz-jobs/servers, and what a server's start or stop answers. */
+export const modelServersSchema = z.object({ servers: z.array(modelServerSchema) });
+export type ModelServers = z.infer<typeof modelServersSchema>;

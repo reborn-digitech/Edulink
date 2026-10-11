@@ -266,6 +266,10 @@ function scan(): Finding[] {
       // strings are joins of a framework code, a year, a filing status code
       // and a metric id ("SSR 2025 · FILED", "NBA 2026"): codes the page
       // shows beside its translated headings, like filing-codes.ts.
+      // …the generation job's library (quiz-publish-jobs, 11 Oct 2026): src/lib/quiz-jobs.ts's three strings are a
+      // failed run's diagnostics recorded on its row like a log line (a dead runner's pid, an exception's own text,
+      // the model script's exit), in English as the runner's log and the exceptions they carry are; the page
+      // prints them after its translated label (quizJobs.errorLine) and every sentence around them is a key.
       // …the papers' style reader (11 Oct 2026): src/lib/quiz-style.ts holds the corpus's subject VALUES the
       // ContentDocument rows carry ("Political Science"), matched against stored rows, and the SQL expression its
       // scan orders by; it returns excerpts to the quiz generator's prompt and nothing of it reaches a page.
@@ -282,7 +286,7 @@ function scan(): Finding[] {
       // the embedding model's query instructions, which the model card wants in English whatever
       // the question's language, read by the model and never by a person; assistant-retrieval.ts's
       // one string is the SQL expression its full-text index is built on. None reaches a page.
-      (f) => !f.includes("i18n") && !f.endsWith("/places.ts") && !f.includes("/api-catalog/") && !f.endsWith("/lib/env.ts") && !f.endsWith("/lib/gig-gateway-env.ts") && !f.endsWith("/lib/message-templates.ts") && !f.endsWith("/lib/filing-codes.ts") && !f.endsWith("/lib/filings.ts") && !f.endsWith("/lib/module-file-headings.ts") && !f.endsWith("/lib/tally-export.ts") && !f.endsWith("/lib/peer-visits.ts") && !f.endsWith("/lib/assistant-env.ts") && !f.endsWith("/lib/assistant-model.ts") && !f.endsWith("/lib/assistant-retrieval.ts") && !f.endsWith("/lib/assistant/prompt.ts") && !f.endsWith("/lib/assistant/exams.ts") && !f.endsWith("/lib/assistant/summary.ts") && !f.endsWith("/lib/assistant/router.ts") && !f.endsWith("/lib/quiz-style.ts"),
+      (f) => !f.includes("i18n") && !f.endsWith("/places.ts") && !f.includes("/api-catalog/") && !f.endsWith("/lib/env.ts") && !f.endsWith("/lib/gig-gateway-env.ts") && !f.endsWith("/lib/message-templates.ts") && !f.endsWith("/lib/filing-codes.ts") && !f.endsWith("/lib/filings.ts") && !f.endsWith("/lib/module-file-headings.ts") && !f.endsWith("/lib/tally-export.ts") && !f.endsWith("/lib/peer-visits.ts") && !f.endsWith("/lib/assistant-env.ts") && !f.endsWith("/lib/assistant-model.ts") && !f.endsWith("/lib/assistant-retrieval.ts") && !f.endsWith("/lib/assistant/prompt.ts") && !f.endsWith("/lib/assistant/exams.ts") && !f.endsWith("/lib/assistant/summary.ts") && !f.endsWith("/lib/assistant/router.ts") && !f.endsWith("/lib/quiz-style.ts") && !f.endsWith("/lib/quiz-jobs.ts"),
     ),
     ...APP_TS_ROOTS.flatMap((root) => walk(root, ".ts")),
   ].sort();

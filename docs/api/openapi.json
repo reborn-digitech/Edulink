@@ -221473,7 +221473,7 @@
     },
     "/api/v1/appadmin/quiz-review": {
       "get": {
-        "summary": "The generated questions waiting for review, by board, class, subject, chapter and level (filters ?board=&grade=&subject=&topic=&level=), with the queue's remaining count, the languages waiting, and each reviewer's count",
+        "summary": "The generated questions, served, taken down or held for a figure, by board, class, subject, chapter and level (filters ?board=&grade=&subject=&topic=&level=&state=), with the bank's counts and each person's edits and take-downs",
         "description": "The content team.",
         "security": [
           {
@@ -221489,28 +221489,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "remaining": {
+                    "total": {
                       "type": "integer",
                       "minimum": 0
                     },
-                    "filtered": {
-                      "$ref": "#/properties/remaining"
+                    "served": {
+                      "$ref": "#/properties/total"
                     },
-                    "languagesWaiting": {
-                      "type": "object",
-                      "properties": {
-                        "hi": {
-                          "$ref": "#/properties/remaining"
-                        },
-                        "mr": {
-                          "$ref": "#/properties/remaining"
-                        }
-                      },
-                      "required": [
-                        "hi",
-                        "mr"
-                      ],
-                      "additionalProperties": false
+                    "takenDown": {
+                      "$ref": "#/properties/total"
+                    },
+                    "held": {
+                      "$ref": "#/properties/total"
+                    },
+                    "filtered": {
+                      "$ref": "#/properties/total"
                     },
                     "boards": {
                       "type": "array",
@@ -221553,13 +221546,19 @@
                           "levels": {
                             "type": "array",
                             "items": {
-                              "$ref": "#/properties/remaining"
+                              "$ref": "#/properties/total"
                             },
                             "minItems": 6,
                             "maxItems": 6
                           },
                           "total": {
-                            "$ref": "#/properties/remaining"
+                            "$ref": "#/properties/total"
+                          },
+                          "down": {
+                            "$ref": "#/properties/total"
+                          },
+                          "held": {
+                            "$ref": "#/properties/total"
                           },
                           "first": {
                             "type": "boolean"
@@ -221574,6 +221573,8 @@
                           "name",
                           "levels",
                           "total",
+                          "down",
+                          "held",
                           "first"
                         ],
                         "additionalProperties": false
@@ -221583,10 +221584,10 @@
                       "type": "object",
                       "properties": {
                         "today": {
-                          "$ref": "#/properties/remaining"
+                          "$ref": "#/properties/total"
                         },
                         "total": {
-                          "$ref": "#/properties/remaining"
+                          "$ref": "#/properties/total"
                         }
                       },
                       "required": [
@@ -221610,31 +221611,33 @@
                               "OPERATOR"
                             ]
                           },
-                          "accepted": {
-                            "$ref": "#/properties/remaining"
+                          "edits": {
+                            "$ref": "#/properties/total"
                           },
-                          "discarded": {
-                            "$ref": "#/properties/remaining"
+                          "takenDown": {
+                            "$ref": "#/properties/total"
                           },
-                          "languages": {
-                            "$ref": "#/properties/remaining"
+                          "putBack": {
+                            "$ref": "#/properties/total"
                           }
                         },
                         "required": [
                           "name",
                           "role",
-                          "accepted",
-                          "discarded",
-                          "languages"
+                          "edits",
+                          "takenDown",
+                          "putBack"
                         ],
                         "additionalProperties": false
                       }
                     }
                   },
                   "required": [
-                    "remaining",
+                    "total",
+                    "served",
+                    "takenDown",
+                    "held",
                     "filtered",
-                    "languagesWaiting",
                     "boards",
                     "subjects",
                     "groups",
@@ -221721,6 +221724,14 @@
                     "minimum": 1,
                     "maximum": 6
                   },
+                  "state": {
+                    "type": "string",
+                    "enum": [
+                      "SERVED",
+                      "DOWN",
+                      "HELD"
+                    ]
+                  },
                   "skip": {
                     "type": "string",
                     "maxLength": 4000
@@ -221735,7 +221746,7 @@
     },
     "/api/v1/appadmin/quiz-review/next": {
       "get": {
-        "summary": "The next waiting item in the queue's order (classes 6 to 10 mathematics and science first) under the filters, skipping the ids in ?skip=; null when none is left",
+        "summary": "The next generated item in the desk's order (classes 6 to 10 mathematics and science first) under the filters, skipping the ids in ?skip=; null when none is left",
         "description": "The content team.",
         "security": [
           {
@@ -221889,7 +221900,15 @@
                           "format": "date-time",
                           "nullable": true
                         },
-                        "reviewedAt": {
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "SERVED",
+                            "DOWN",
+                            "HELD"
+                          ]
+                        },
+                        "takenDownAt": {
                           "allOf": [
                             {
                               "$ref": "#/properties/item/properties/editedAfterSolvingAt"
@@ -221897,15 +221916,7 @@
                           ],
                           "nullable": true
                         },
-                        "discardedAt": {
-                          "allOf": [
-                            {
-                              "$ref": "#/properties/item/properties/editedAfterSolvingAt"
-                            }
-                          ],
-                          "nullable": true
-                        },
-                        "discardReason": {
+                        "takenDownReason": {
                           "type": "string",
                           "enum": [
                             "WRONG_KEY",
@@ -221916,9 +221927,31 @@
                             "FACTUAL_ERROR",
                             "DUPLICATE",
                             "FIGURE_PROBLEM",
-                            "POOR_WORDING"
+                            "POOR_WORDING",
+                            "BAD_TRANSLATION"
                           ],
                           "nullable": true
+                        },
+                        "takenDownBy": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "answers": {
+                          "type": "object",
+                          "properties": {
+                            "asked": {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            "correct": {
+                              "$ref": "#/properties/item/properties/answers/properties/asked"
+                            }
+                          },
+                          "required": [
+                            "asked",
+                            "correct"
+                          ],
+                          "additionalProperties": false
                         },
                         "translations": {
                           "type": "object",
@@ -221950,18 +221983,6 @@
                                   "type": "string",
                                   "nullable": true
                                 },
-                                "stampedAt": {
-                                  "allOf": [
-                                    {
-                                      "$ref": "#/properties/item/properties/editedAfterSolvingAt"
-                                    }
-                                  ],
-                                  "nullable": true
-                                },
-                                "stampedBy": {
-                                  "type": "string",
-                                  "nullable": true
-                                },
                                 "stale": {
                                   "type": "boolean"
                                 }
@@ -221973,8 +221994,6 @@
                                 "imageAlt",
                                 "critique",
                                 "flag",
-                                "stampedAt",
-                                "stampedBy",
                                 "stale"
                               ],
                               "additionalProperties": false,
@@ -222003,6 +222022,9 @@
                               "action": {
                                 "type": "string",
                                 "enum": [
+                                  "EDIT",
+                                  "TAKE_DOWN",
+                                  "PUT_BACK",
                                   "ACCEPT",
                                   "EDIT_ACCEPT",
                                   "DISCARD",
@@ -222029,7 +222051,8 @@
                                   "FACTUAL_ERROR",
                                   "DUPLICATE",
                                   "FIGURE_PROBLEM",
-                                  "POOR_WORDING"
+                                  "POOR_WORDING",
+                                  "BAD_TRANSLATION"
                                 ],
                                 "nullable": true
                               },
@@ -222082,9 +222105,11 @@
                         "imageKey",
                         "imageAlt",
                         "editedAfterSolvingAt",
-                        "reviewedAt",
-                        "discardedAt",
-                        "discardReason",
+                        "state",
+                        "takenDownAt",
+                        "takenDownReason",
+                        "takenDownBy",
+                        "answers",
                         "translations",
                         "stamps"
                       ],
@@ -222092,8 +222117,7 @@
                       "nullable": true
                     },
                     "remaining": {
-                      "type": "integer",
-                      "minimum": 0
+                      "$ref": "#/properties/item/properties/answers/properties/asked"
                     }
                   },
                   "required": [
@@ -222180,6 +222204,14 @@
                     "minimum": 1,
                     "maximum": 6
                   },
+                  "state": {
+                    "type": "string",
+                    "enum": [
+                      "SERVED",
+                      "DOWN",
+                      "HELD"
+                    ]
+                  },
                   "skip": {
                     "type": "string",
                     "maxLength": 4000
@@ -222194,7 +222226,7 @@
     },
     "/api/v1/appadmin/quiz-review/{questionId}": {
       "get": {
-        "summary": "One generated item, waiting or not: the key, the solution, the check, the distractor reasons, the solver's answers, the figure, the Hindi and Marathi rows and every stamp",
+        "summary": "One generated item in any state: the key, the solution, the check, the distractor reasons, the solver's answers, the figure, the Hindi and Marathi rows, pupils' answers so far and everything done to it",
         "description": "The content team.",
         "security": [
           {
@@ -222348,7 +222380,15 @@
                           "format": "date-time",
                           "nullable": true
                         },
-                        "reviewedAt": {
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "SERVED",
+                            "DOWN",
+                            "HELD"
+                          ]
+                        },
+                        "takenDownAt": {
                           "allOf": [
                             {
                               "$ref": "#/properties/item/properties/editedAfterSolvingAt"
@@ -222356,15 +222396,7 @@
                           ],
                           "nullable": true
                         },
-                        "discardedAt": {
-                          "allOf": [
-                            {
-                              "$ref": "#/properties/item/properties/editedAfterSolvingAt"
-                            }
-                          ],
-                          "nullable": true
-                        },
-                        "discardReason": {
+                        "takenDownReason": {
                           "type": "string",
                           "enum": [
                             "WRONG_KEY",
@@ -222375,9 +222407,31 @@
                             "FACTUAL_ERROR",
                             "DUPLICATE",
                             "FIGURE_PROBLEM",
-                            "POOR_WORDING"
+                            "POOR_WORDING",
+                            "BAD_TRANSLATION"
                           ],
                           "nullable": true
+                        },
+                        "takenDownBy": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "answers": {
+                          "type": "object",
+                          "properties": {
+                            "asked": {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            "correct": {
+                              "$ref": "#/properties/item/properties/answers/properties/asked"
+                            }
+                          },
+                          "required": [
+                            "asked",
+                            "correct"
+                          ],
+                          "additionalProperties": false
                         },
                         "translations": {
                           "type": "object",
@@ -222409,18 +222463,6 @@
                                   "type": "string",
                                   "nullable": true
                                 },
-                                "stampedAt": {
-                                  "allOf": [
-                                    {
-                                      "$ref": "#/properties/item/properties/editedAfterSolvingAt"
-                                    }
-                                  ],
-                                  "nullable": true
-                                },
-                                "stampedBy": {
-                                  "type": "string",
-                                  "nullable": true
-                                },
                                 "stale": {
                                   "type": "boolean"
                                 }
@@ -222432,8 +222474,6 @@
                                 "imageAlt",
                                 "critique",
                                 "flag",
-                                "stampedAt",
-                                "stampedBy",
                                 "stale"
                               ],
                               "additionalProperties": false,
@@ -222462,6 +222502,9 @@
                               "action": {
                                 "type": "string",
                                 "enum": [
+                                  "EDIT",
+                                  "TAKE_DOWN",
+                                  "PUT_BACK",
                                   "ACCEPT",
                                   "EDIT_ACCEPT",
                                   "DISCARD",
@@ -222488,7 +222531,8 @@
                                   "FACTUAL_ERROR",
                                   "DUPLICATE",
                                   "FIGURE_PROBLEM",
-                                  "POOR_WORDING"
+                                  "POOR_WORDING",
+                                  "BAD_TRANSLATION"
                                 ],
                                 "nullable": true
                               },
@@ -222541,9 +222585,11 @@
                         "imageKey",
                         "imageAlt",
                         "editedAfterSolvingAt",
-                        "reviewedAt",
-                        "discardedAt",
-                        "discardReason",
+                        "state",
+                        "takenDownAt",
+                        "takenDownReason",
+                        "takenDownBy",
+                        "answers",
                         "translations",
                         "stamps"
                       ],
@@ -222551,8 +222597,7 @@
                       "nullable": true
                     },
                     "remaining": {
-                      "type": "integer",
-                      "minimum": 0
+                      "$ref": "#/properties/item/properties/answers/properties/asked"
                     }
                   },
                   "required": [
@@ -222617,128 +222662,9 @@
         ]
       }
     },
-    "/api/v1/appadmin/quiz-review/{questionId}/stamp": {
-      "post": {
-        "summary": "Accept the item: the first stamp serves it to pupils; accepting it again changes nothing; refused while a figure it needs is not drawn",
-        "description": "The content team.",
-        "security": [
-          {
-            "bearer": []
-          }
-        ],
-        "x-access": "app-admin",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "reviewedAt": {
-                      "type": "string",
-                      "format": "date-time",
-                      "nullable": true
-                    },
-                    "discardedAt": {
-                      "allOf": [
-                        {
-                          "$ref": "#/properties/reviewedAt"
-                        }
-                      ],
-                      "nullable": true
-                    },
-                    "hiStampedAt": {
-                      "allOf": [
-                        {
-                          "$ref": "#/properties/reviewedAt"
-                        }
-                      ],
-                      "nullable": true
-                    },
-                    "mrStampedAt": {
-                      "allOf": [
-                        {
-                          "$ref": "#/properties/reviewedAt"
-                        }
-                      ],
-                      "nullable": true
-                    }
-                  },
-                  "required": [
-                    "ok",
-                    "reviewedAt",
-                    "discardedAt",
-                    "hiStampedAt",
-                    "mrStampedAt"
-                  ],
-                  "additionalProperties": false
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "No or invalid session",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "This role may not",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiError"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found, or not yours",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiError"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Invalid body",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiError"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "questionId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      }
-    },
     "/api/v1/appadmin/quiz-review/{questionId}/edit": {
       "post": {
-        "summary": "Correct the English and accept it in one press: the earlier words kept on the stamp and named in the audit log, the solver's answers kept with an edited-after-solving mark, any language stamp taken off",
+        "summary": "Correct the item in English and, when sent, in Hindi and Marathi: served as edited at once; the earlier words kept on the record and named in the audit log, the solver's answers kept with an edited-after-solving mark",
         "description": "The content team.",
         "security": [
           {
@@ -222760,31 +222686,39 @@
                         true
                       ]
                     },
-                    "reviewedAt": {
+                    "state": {
+                      "type": "string",
+                      "enum": [
+                        "SERVED",
+                        "DOWN",
+                        "HELD"
+                      ]
+                    },
+                    "takenDownAt": {
                       "type": "string",
                       "format": "date-time",
                       "nullable": true
                     },
-                    "discardedAt": {
-                      "allOf": [
-                        {
-                          "$ref": "#/properties/reviewedAt"
-                        }
+                    "takenDownReason": {
+                      "type": "string",
+                      "enum": [
+                        "WRONG_KEY",
+                        "AMBIGUOUS",
+                        "WEAK_DISTRACTORS",
+                        "WRONG_LEVEL",
+                        "OFF_SYLLABUS",
+                        "FACTUAL_ERROR",
+                        "DUPLICATE",
+                        "FIGURE_PROBLEM",
+                        "POOR_WORDING",
+                        "BAD_TRANSLATION"
                       ],
                       "nullable": true
                     },
-                    "hiStampedAt": {
+                    "editedAfterSolvingAt": {
                       "allOf": [
                         {
-                          "$ref": "#/properties/reviewedAt"
-                        }
-                      ],
-                      "nullable": true
-                    },
-                    "mrStampedAt": {
-                      "allOf": [
-                        {
-                          "$ref": "#/properties/reviewedAt"
+                          "$ref": "#/properties/takenDownAt"
                         }
                       ],
                       "nullable": true
@@ -222792,10 +222726,10 @@
                   },
                   "required": [
                     "ok",
-                    "reviewedAt",
-                    "discardedAt",
-                    "hiStampedAt",
-                    "mrStampedAt"
+                    "state",
+                    "takenDownAt",
+                    "takenDownReason",
+                    "editedAfterSolvingAt"
                   ],
                   "additionalProperties": false
                 }
@@ -222884,6 +222818,46 @@
                     "type": "integer",
                     "minimum": 1,
                     "maximum": 6
+                  },
+                  "translations": {
+                    "type": "object",
+                    "properties": {
+                      "hi": {
+                        "type": "object",
+                        "properties": {
+                          "stem": {
+                            "type": "string",
+                            "minLength": 2,
+                            "maxLength": 1200
+                          },
+                          "choices": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 400
+                            },
+                            "minItems": 2,
+                            "maxItems": 6
+                          },
+                          "solution": {
+                            "type": "string",
+                            "minLength": 2,
+                            "maxLength": 3000
+                          }
+                        },
+                        "required": [
+                          "stem",
+                          "choices",
+                          "solution"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "mr": {
+                        "$ref": "#/properties/translations/properties/hi"
+                      }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "required": [
@@ -222910,9 +222884,9 @@
         ]
       }
     },
-    "/api/v1/appadmin/quiz-review/{questionId}/discard": {
+    "/api/v1/appadmin/quiz-review/{questionId}/take-down": {
       "post": {
-        "summary": "Discard the item with a reason from the coded list: never served, out of the queue; discarding it again changes nothing",
+        "summary": "Take the item down with a reason from the coded list: not served from this moment, the answers pupils gave kept; taking it down again changes nothing",
         "description": "The content team.",
         "security": [
           {
@@ -222934,31 +222908,39 @@
                         true
                       ]
                     },
-                    "reviewedAt": {
+                    "state": {
+                      "type": "string",
+                      "enum": [
+                        "SERVED",
+                        "DOWN",
+                        "HELD"
+                      ]
+                    },
+                    "takenDownAt": {
                       "type": "string",
                       "format": "date-time",
                       "nullable": true
                     },
-                    "discardedAt": {
-                      "allOf": [
-                        {
-                          "$ref": "#/properties/reviewedAt"
-                        }
+                    "takenDownReason": {
+                      "type": "string",
+                      "enum": [
+                        "WRONG_KEY",
+                        "AMBIGUOUS",
+                        "WEAK_DISTRACTORS",
+                        "WRONG_LEVEL",
+                        "OFF_SYLLABUS",
+                        "FACTUAL_ERROR",
+                        "DUPLICATE",
+                        "FIGURE_PROBLEM",
+                        "POOR_WORDING",
+                        "BAD_TRANSLATION"
                       ],
                       "nullable": true
                     },
-                    "hiStampedAt": {
+                    "editedAfterSolvingAt": {
                       "allOf": [
                         {
-                          "$ref": "#/properties/reviewedAt"
-                        }
-                      ],
-                      "nullable": true
-                    },
-                    "mrStampedAt": {
-                      "allOf": [
-                        {
-                          "$ref": "#/properties/reviewedAt"
+                          "$ref": "#/properties/takenDownAt"
                         }
                       ],
                       "nullable": true
@@ -222966,10 +222948,10 @@
                   },
                   "required": [
                     "ok",
-                    "reviewedAt",
-                    "discardedAt",
-                    "hiStampedAt",
-                    "mrStampedAt"
+                    "state",
+                    "takenDownAt",
+                    "takenDownReason",
+                    "editedAfterSolvingAt"
                   ],
                   "additionalProperties": false
                 }
@@ -223035,7 +223017,8 @@
                       "FACTUAL_ERROR",
                       "DUPLICATE",
                       "FIGURE_PROBLEM",
-                      "POOR_WORDING"
+                      "POOR_WORDING",
+                      "BAD_TRANSLATION"
                     ]
                   }
                 },
@@ -223059,9 +223042,9 @@
         ]
       }
     },
-    "/api/v1/appadmin/quiz-review/{questionId}/stamp-translation": {
+    "/api/v1/appadmin/quiz-review/{questionId}/put-back": {
       "post": {
-        "summary": "Stamp the item's Hindi or Marathi row read (served from then on, once the English is), or take the stamp off",
+        "summary": "Put a taken-down item back: served again at once (unless its figure is still to be drawn); putting it back again changes nothing",
         "description": "The content team.",
         "security": [
           {
@@ -223083,31 +223066,39 @@
                         true
                       ]
                     },
-                    "reviewedAt": {
+                    "state": {
+                      "type": "string",
+                      "enum": [
+                        "SERVED",
+                        "DOWN",
+                        "HELD"
+                      ]
+                    },
+                    "takenDownAt": {
                       "type": "string",
                       "format": "date-time",
                       "nullable": true
                     },
-                    "discardedAt": {
-                      "allOf": [
-                        {
-                          "$ref": "#/properties/reviewedAt"
-                        }
+                    "takenDownReason": {
+                      "type": "string",
+                      "enum": [
+                        "WRONG_KEY",
+                        "AMBIGUOUS",
+                        "WEAK_DISTRACTORS",
+                        "WRONG_LEVEL",
+                        "OFF_SYLLABUS",
+                        "FACTUAL_ERROR",
+                        "DUPLICATE",
+                        "FIGURE_PROBLEM",
+                        "POOR_WORDING",
+                        "BAD_TRANSLATION"
                       ],
                       "nullable": true
                     },
-                    "hiStampedAt": {
+                    "editedAfterSolvingAt": {
                       "allOf": [
                         {
-                          "$ref": "#/properties/reviewedAt"
-                        }
-                      ],
-                      "nullable": true
-                    },
-                    "mrStampedAt": {
-                      "allOf": [
-                        {
-                          "$ref": "#/properties/reviewedAt"
+                          "$ref": "#/properties/takenDownAt"
                         }
                       ],
                       "nullable": true
@@ -223115,10 +223106,856 @@
                   },
                   "required": [
                     "ok",
-                    "reviewedAt",
-                    "discardedAt",
-                    "hiStampedAt",
-                    "mrStampedAt"
+                    "state",
+                    "takenDownAt",
+                    "takenDownReason",
+                    "editedAfterSolvingAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "questionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/appadmin/quiz-jobs": {
+      "get": {
+        "summary": "The generation run in hand, or the last one, with its live line (the chapter running, items drafted and kept, the keep rate, seconds per kept item, rejects per stage, the last chapter's numbers); the latest five runs; the two model servers' state",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "current": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "QUEUED",
+                            "RUNNING",
+                            "STOPPING",
+                            "STOPPED",
+                            "FINISHED",
+                            "FAILED"
+                          ]
+                        },
+                        "request": {
+                          "type": "object",
+                          "properties": {
+                            "scope": {
+                              "type": "string",
+                              "enum": [
+                                "CHAPTERS",
+                                "EVERYTHING"
+                              ]
+                            },
+                            "board": {
+                              "type": "string",
+                              "enum": [
+                                "NCERT",
+                                "BALBHARATI"
+                              ]
+                            },
+                            "grade": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 12
+                            },
+                            "subject": {
+                              "type": "string",
+                              "enum": [
+                                "MATHS",
+                                "SCIENCE",
+                                "PHYSICS",
+                                "CHEMISTRY",
+                                "BIOLOGY",
+                                "EVS",
+                                "HISTORY",
+                                "GEOGRAPHY",
+                                "CIVICS",
+                                "ECONOMICS"
+                              ]
+                            },
+                            "chapterFrom": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 40
+                            },
+                            "chapterTo": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 40
+                            },
+                            "limit": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 60
+                            }
+                          },
+                          "required": [
+                            "scope"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "progress": {
+                          "type": "object",
+                          "properties": {
+                            "phase": {
+                              "type": "string",
+                              "enum": [
+                                "STARTING_MODEL",
+                                "PLANNING",
+                                "GENERATING",
+                                "LOADING",
+                                "HALTING",
+                                "DONE"
+                              ]
+                            },
+                            "chapter": {
+                              "type": "object",
+                              "properties": {
+                                "board": {
+                                  "$ref": "#/properties/current/properties/request/properties/board"
+                                },
+                                "grade": {
+                                  "type": "integer"
+                                },
+                                "subject": {
+                                  "type": "string"
+                                },
+                                "number": {
+                                  "type": "integer"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "drafted": {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                "kept": {
+                                  "$ref": "#/properties/current/properties/progress/properties/chapter/properties/drafted"
+                                },
+                                "rejects": {
+                                  "type": "object",
+                                  "required": [
+                                    "draft",
+                                    "critique",
+                                    "solver",
+                                    "form",
+                                    "verify",
+                                    "dedupe",
+                                    "translation"
+                                  ],
+                                  "properties": {
+                                    "draft": {
+                                      "$ref": "#/properties/current/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "critique": {
+                                      "$ref": "#/properties/current/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "solver": {
+                                      "$ref": "#/properties/current/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "form": {
+                                      "$ref": "#/properties/current/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "verify": {
+                                      "$ref": "#/properties/current/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "dedupe": {
+                                      "$ref": "#/properties/current/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "translation": {
+                                      "$ref": "#/properties/current/properties/progress/properties/chapter/properties/drafted"
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                },
+                                "seconds": {
+                                  "$ref": "#/properties/current/properties/progress/properties/chapter/properties/drafted"
+                                },
+                                "loaded": {
+                                  "$ref": "#/properties/current/properties/progress/properties/chapter/properties/drafted"
+                                },
+                                "keepRate": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1,
+                                  "nullable": true
+                                },
+                                "secondsPerKept": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "nullable": true
+                                }
+                              },
+                              "required": [
+                                "board",
+                                "grade",
+                                "subject",
+                                "number",
+                                "name",
+                                "drafted",
+                                "kept",
+                                "rejects",
+                                "seconds",
+                                "loaded",
+                                "keepRate",
+                                "secondsPerKept"
+                              ],
+                              "additionalProperties": false,
+                              "nullable": true
+                            },
+                            "chaptersDone": {
+                              "$ref": "#/properties/current/properties/progress/properties/chapter/properties/drafted"
+                            },
+                            "chaptersSkipped": {
+                              "$ref": "#/properties/current/properties/progress/properties/chapter/properties/drafted"
+                            },
+                            "chaptersFailed": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "reason": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "label",
+                                  "reason"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            "drafted": {
+                              "$ref": "#/properties/current/properties/progress/properties/chapter/properties/drafted"
+                            },
+                            "kept": {
+                              "$ref": "#/properties/current/properties/progress/properties/chapter/properties/drafted"
+                            },
+                            "loaded": {
+                              "$ref": "#/properties/current/properties/progress/properties/chapter/properties/drafted"
+                            },
+                            "keepRate": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1,
+                              "nullable": true
+                            },
+                            "secondsPerKept": {
+                              "type": "number",
+                              "minimum": 0,
+                              "nullable": true
+                            },
+                            "last": {
+                              "allOf": [
+                                {
+                                  "$ref": "#/properties/current/properties/progress/properties/chapter"
+                                }
+                              ],
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "phase",
+                            "chapter",
+                            "chaptersDone",
+                            "chaptersSkipped",
+                            "chaptersFailed",
+                            "drafted",
+                            "kept",
+                            "loaded",
+                            "keepRate",
+                            "secondsPerKept",
+                            "last"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "startedBy": {
+                          "type": "string"
+                        },
+                        "startedByRole": {
+                          "type": "string",
+                          "enum": [
+                            "APP_ADMIN",
+                            "OPERATOR"
+                          ]
+                        },
+                        "startedServers": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "chat",
+                              "embed"
+                            ]
+                          }
+                        },
+                        "error": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "startedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/current/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "finishedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/current/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "heartbeatAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/current/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "state",
+                        "request",
+                        "progress",
+                        "startedBy",
+                        "startedByRole",
+                        "startedServers",
+                        "error",
+                        "createdAt",
+                        "startedAt",
+                        "finishedAt",
+                        "heartbeatAt"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "recent": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/current"
+                      }
+                    },
+                    "servers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "server": {
+                            "$ref": "#/properties/current/properties/startedServers/items"
+                          },
+                          "state": {
+                            "type": "string",
+                            "enum": [
+                              "RUNNING",
+                              "STARTING",
+                              "STOPPED"
+                            ]
+                          },
+                          "model": {
+                            "type": "string"
+                          },
+                          "port": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "checkedAt": {
+                            "$ref": "#/properties/current/properties/createdAt"
+                          }
+                        },
+                        "required": [
+                          "server",
+                          "state",
+                          "model",
+                          "port",
+                          "checkedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "current",
+                    "recent",
+                    "servers"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Start a generation run on this machine: a board's class, subject and chapter range, or everything not yet generated in the plan's order; brings up the model servers that are down; 201 with the run, 409 while another run is active",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "job": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "QUEUED",
+                            "RUNNING",
+                            "STOPPING",
+                            "STOPPED",
+                            "FINISHED",
+                            "FAILED"
+                          ]
+                        },
+                        "request": {
+                          "type": "object",
+                          "properties": {
+                            "scope": {
+                              "type": "string",
+                              "enum": [
+                                "CHAPTERS",
+                                "EVERYTHING"
+                              ]
+                            },
+                            "board": {
+                              "type": "string",
+                              "enum": [
+                                "NCERT",
+                                "BALBHARATI"
+                              ]
+                            },
+                            "grade": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 12
+                            },
+                            "subject": {
+                              "type": "string",
+                              "enum": [
+                                "MATHS",
+                                "SCIENCE",
+                                "PHYSICS",
+                                "CHEMISTRY",
+                                "BIOLOGY",
+                                "EVS",
+                                "HISTORY",
+                                "GEOGRAPHY",
+                                "CIVICS",
+                                "ECONOMICS"
+                              ]
+                            },
+                            "chapterFrom": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 40
+                            },
+                            "chapterTo": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 40
+                            },
+                            "limit": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 60
+                            }
+                          },
+                          "required": [
+                            "scope"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "progress": {
+                          "type": "object",
+                          "properties": {
+                            "phase": {
+                              "type": "string",
+                              "enum": [
+                                "STARTING_MODEL",
+                                "PLANNING",
+                                "GENERATING",
+                                "LOADING",
+                                "HALTING",
+                                "DONE"
+                              ]
+                            },
+                            "chapter": {
+                              "type": "object",
+                              "properties": {
+                                "board": {
+                                  "$ref": "#/properties/job/properties/request/properties/board"
+                                },
+                                "grade": {
+                                  "type": "integer"
+                                },
+                                "subject": {
+                                  "type": "string"
+                                },
+                                "number": {
+                                  "type": "integer"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "drafted": {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                "kept": {
+                                  "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                },
+                                "rejects": {
+                                  "type": "object",
+                                  "required": [
+                                    "draft",
+                                    "critique",
+                                    "solver",
+                                    "form",
+                                    "verify",
+                                    "dedupe",
+                                    "translation"
+                                  ],
+                                  "properties": {
+                                    "draft": {
+                                      "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "critique": {
+                                      "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "solver": {
+                                      "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "form": {
+                                      "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "verify": {
+                                      "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "dedupe": {
+                                      "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "translation": {
+                                      "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                },
+                                "seconds": {
+                                  "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                },
+                                "loaded": {
+                                  "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                },
+                                "keepRate": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1,
+                                  "nullable": true
+                                },
+                                "secondsPerKept": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "nullable": true
+                                }
+                              },
+                              "required": [
+                                "board",
+                                "grade",
+                                "subject",
+                                "number",
+                                "name",
+                                "drafted",
+                                "kept",
+                                "rejects",
+                                "seconds",
+                                "loaded",
+                                "keepRate",
+                                "secondsPerKept"
+                              ],
+                              "additionalProperties": false,
+                              "nullable": true
+                            },
+                            "chaptersDone": {
+                              "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                            },
+                            "chaptersSkipped": {
+                              "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                            },
+                            "chaptersFailed": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "reason": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "label",
+                                  "reason"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            "drafted": {
+                              "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                            },
+                            "kept": {
+                              "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                            },
+                            "loaded": {
+                              "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                            },
+                            "keepRate": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1,
+                              "nullable": true
+                            },
+                            "secondsPerKept": {
+                              "type": "number",
+                              "minimum": 0,
+                              "nullable": true
+                            },
+                            "last": {
+                              "allOf": [
+                                {
+                                  "$ref": "#/properties/job/properties/progress/properties/chapter"
+                                }
+                              ],
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "phase",
+                            "chapter",
+                            "chaptersDone",
+                            "chaptersSkipped",
+                            "chaptersFailed",
+                            "drafted",
+                            "kept",
+                            "loaded",
+                            "keepRate",
+                            "secondsPerKept",
+                            "last"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "startedBy": {
+                          "type": "string"
+                        },
+                        "startedByRole": {
+                          "type": "string",
+                          "enum": [
+                            "APP_ADMIN",
+                            "OPERATOR"
+                          ]
+                        },
+                        "startedServers": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "chat",
+                              "embed"
+                            ]
+                          }
+                        },
+                        "error": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "startedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/job/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "finishedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/job/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "heartbeatAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/job/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "state",
+                        "request",
+                        "progress",
+                        "startedBy",
+                        "startedByRole",
+                        "startedServers",
+                        "error",
+                        "createdAt",
+                        "startedAt",
+                        "finishedAt",
+                        "heartbeatAt"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "job"
                   ],
                   "additionalProperties": false
                 }
@@ -223173,28 +224010,1225 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "language": {
+                  "scope": {
                     "type": "string",
                     "enum": [
-                      "hi",
-                      "mr"
+                      "CHAPTERS",
+                      "EVERYTHING"
                     ]
                   },
-                  "stamped": {
-                    "type": "boolean"
+                  "board": {
+                    "type": "string",
+                    "enum": [
+                      "NCERT",
+                      "BALBHARATI"
+                    ]
+                  },
+                  "grade": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 12
+                  },
+                  "subject": {
+                    "type": "string",
+                    "enum": [
+                      "MATHS",
+                      "SCIENCE",
+                      "PHYSICS",
+                      "CHEMISTRY",
+                      "BIOLOGY",
+                      "EVS",
+                      "HISTORY",
+                      "GEOGRAPHY",
+                      "CIVICS",
+                      "ECONOMICS"
+                    ]
+                  },
+                  "chapterFrom": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 40
+                  },
+                  "chapterTo": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 40
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 60
                   }
                 },
                 "required": [
-                  "language"
+                  "scope"
                 ],
                 "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/appadmin/quiz-jobs/servers": {
+      "get": {
+        "summary": "The two model servers, Running, Starting or Stopped, with the model's name and the port, read from their health endpoints (cached ten seconds)",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "servers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "server": {
+                            "type": "string",
+                            "enum": [
+                              "chat",
+                              "embed"
+                            ]
+                          },
+                          "state": {
+                            "type": "string",
+                            "enum": [
+                              "RUNNING",
+                              "STARTING",
+                              "STOPPED"
+                            ]
+                          },
+                          "model": {
+                            "type": "string"
+                          },
+                          "port": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "checkedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        },
+                        "required": [
+                          "server",
+                          "state",
+                          "model",
+                          "port",
+                          "checkedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "servers"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/appadmin/quiz-jobs/servers/{server}/start": {
+      "post": {
+        "summary": "Start one model server (chat or embed) through scripts/model-serve.sh; nothing when it already answers",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "servers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "server": {
+                            "type": "string",
+                            "enum": [
+                              "chat",
+                              "embed"
+                            ]
+                          },
+                          "state": {
+                            "type": "string",
+                            "enum": [
+                              "RUNNING",
+                              "STARTING",
+                              "STOPPED"
+                            ]
+                          },
+                          "model": {
+                            "type": "string"
+                          },
+                          "port": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "checkedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        },
+                        "required": [
+                          "server",
+                          "state",
+                          "model",
+                          "port",
+                          "checkedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "servers"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
               }
             }
           }
         },
         "parameters": [
           {
-            "name": "questionId",
+            "name": "server",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/appadmin/quiz-jobs/servers/{server}/stop": {
+      "post": {
+        "summary": "Stop one model server the script started; 409 while a generation run is active (stop the run first)",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "servers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "server": {
+                            "type": "string",
+                            "enum": [
+                              "chat",
+                              "embed"
+                            ]
+                          },
+                          "state": {
+                            "type": "string",
+                            "enum": [
+                              "RUNNING",
+                              "STARTING",
+                              "STOPPED"
+                            ]
+                          },
+                          "model": {
+                            "type": "string"
+                          },
+                          "port": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "checkedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        },
+                        "required": [
+                          "server",
+                          "state",
+                          "model",
+                          "port",
+                          "checkedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "servers"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "server",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/appadmin/quiz-jobs/{jobId}": {
+      "get": {
+        "summary": "One generation run: its state, its request, its live line, who started it and which model servers it brought up",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "job": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "QUEUED",
+                            "RUNNING",
+                            "STOPPING",
+                            "STOPPED",
+                            "FINISHED",
+                            "FAILED"
+                          ]
+                        },
+                        "request": {
+                          "type": "object",
+                          "properties": {
+                            "scope": {
+                              "type": "string",
+                              "enum": [
+                                "CHAPTERS",
+                                "EVERYTHING"
+                              ]
+                            },
+                            "board": {
+                              "type": "string",
+                              "enum": [
+                                "NCERT",
+                                "BALBHARATI"
+                              ]
+                            },
+                            "grade": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 12
+                            },
+                            "subject": {
+                              "type": "string",
+                              "enum": [
+                                "MATHS",
+                                "SCIENCE",
+                                "PHYSICS",
+                                "CHEMISTRY",
+                                "BIOLOGY",
+                                "EVS",
+                                "HISTORY",
+                                "GEOGRAPHY",
+                                "CIVICS",
+                                "ECONOMICS"
+                              ]
+                            },
+                            "chapterFrom": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 40
+                            },
+                            "chapterTo": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 40
+                            },
+                            "limit": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 60
+                            }
+                          },
+                          "required": [
+                            "scope"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "progress": {
+                          "type": "object",
+                          "properties": {
+                            "phase": {
+                              "type": "string",
+                              "enum": [
+                                "STARTING_MODEL",
+                                "PLANNING",
+                                "GENERATING",
+                                "LOADING",
+                                "HALTING",
+                                "DONE"
+                              ]
+                            },
+                            "chapter": {
+                              "type": "object",
+                              "properties": {
+                                "board": {
+                                  "$ref": "#/properties/job/properties/request/properties/board"
+                                },
+                                "grade": {
+                                  "type": "integer"
+                                },
+                                "subject": {
+                                  "type": "string"
+                                },
+                                "number": {
+                                  "type": "integer"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "drafted": {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                "kept": {
+                                  "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                },
+                                "rejects": {
+                                  "type": "object",
+                                  "required": [
+                                    "draft",
+                                    "critique",
+                                    "solver",
+                                    "form",
+                                    "verify",
+                                    "dedupe",
+                                    "translation"
+                                  ],
+                                  "properties": {
+                                    "draft": {
+                                      "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "critique": {
+                                      "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "solver": {
+                                      "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "form": {
+                                      "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "verify": {
+                                      "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "dedupe": {
+                                      "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "translation": {
+                                      "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                },
+                                "seconds": {
+                                  "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                },
+                                "loaded": {
+                                  "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                },
+                                "keepRate": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1,
+                                  "nullable": true
+                                },
+                                "secondsPerKept": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "nullable": true
+                                }
+                              },
+                              "required": [
+                                "board",
+                                "grade",
+                                "subject",
+                                "number",
+                                "name",
+                                "drafted",
+                                "kept",
+                                "rejects",
+                                "seconds",
+                                "loaded",
+                                "keepRate",
+                                "secondsPerKept"
+                              ],
+                              "additionalProperties": false,
+                              "nullable": true
+                            },
+                            "chaptersDone": {
+                              "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                            },
+                            "chaptersSkipped": {
+                              "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                            },
+                            "chaptersFailed": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "reason": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "label",
+                                  "reason"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            "drafted": {
+                              "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                            },
+                            "kept": {
+                              "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                            },
+                            "loaded": {
+                              "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                            },
+                            "keepRate": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1,
+                              "nullable": true
+                            },
+                            "secondsPerKept": {
+                              "type": "number",
+                              "minimum": 0,
+                              "nullable": true
+                            },
+                            "last": {
+                              "allOf": [
+                                {
+                                  "$ref": "#/properties/job/properties/progress/properties/chapter"
+                                }
+                              ],
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "phase",
+                            "chapter",
+                            "chaptersDone",
+                            "chaptersSkipped",
+                            "chaptersFailed",
+                            "drafted",
+                            "kept",
+                            "loaded",
+                            "keepRate",
+                            "secondsPerKept",
+                            "last"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "startedBy": {
+                          "type": "string"
+                        },
+                        "startedByRole": {
+                          "type": "string",
+                          "enum": [
+                            "APP_ADMIN",
+                            "OPERATOR"
+                          ]
+                        },
+                        "startedServers": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "chat",
+                              "embed"
+                            ]
+                          }
+                        },
+                        "error": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "startedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/job/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "finishedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/job/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "heartbeatAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/job/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "state",
+                        "request",
+                        "progress",
+                        "startedBy",
+                        "startedByRole",
+                        "startedServers",
+                        "error",
+                        "createdAt",
+                        "startedAt",
+                        "finishedAt",
+                        "heartbeatAt"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "job"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/appadmin/quiz-jobs/{jobId}/stop": {
+      "post": {
+        "summary": "Stop a run: the runner finishes the item in hand and halts, nothing half-written lands, and the model servers this run brought up go down with it; an ended run is left as it is",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "job": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "QUEUED",
+                            "RUNNING",
+                            "STOPPING",
+                            "STOPPED",
+                            "FINISHED",
+                            "FAILED"
+                          ]
+                        },
+                        "request": {
+                          "type": "object",
+                          "properties": {
+                            "scope": {
+                              "type": "string",
+                              "enum": [
+                                "CHAPTERS",
+                                "EVERYTHING"
+                              ]
+                            },
+                            "board": {
+                              "type": "string",
+                              "enum": [
+                                "NCERT",
+                                "BALBHARATI"
+                              ]
+                            },
+                            "grade": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 12
+                            },
+                            "subject": {
+                              "type": "string",
+                              "enum": [
+                                "MATHS",
+                                "SCIENCE",
+                                "PHYSICS",
+                                "CHEMISTRY",
+                                "BIOLOGY",
+                                "EVS",
+                                "HISTORY",
+                                "GEOGRAPHY",
+                                "CIVICS",
+                                "ECONOMICS"
+                              ]
+                            },
+                            "chapterFrom": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 40
+                            },
+                            "chapterTo": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 40
+                            },
+                            "limit": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 60
+                            }
+                          },
+                          "required": [
+                            "scope"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "progress": {
+                          "type": "object",
+                          "properties": {
+                            "phase": {
+                              "type": "string",
+                              "enum": [
+                                "STARTING_MODEL",
+                                "PLANNING",
+                                "GENERATING",
+                                "LOADING",
+                                "HALTING",
+                                "DONE"
+                              ]
+                            },
+                            "chapter": {
+                              "type": "object",
+                              "properties": {
+                                "board": {
+                                  "$ref": "#/properties/job/properties/request/properties/board"
+                                },
+                                "grade": {
+                                  "type": "integer"
+                                },
+                                "subject": {
+                                  "type": "string"
+                                },
+                                "number": {
+                                  "type": "integer"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "drafted": {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                "kept": {
+                                  "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                },
+                                "rejects": {
+                                  "type": "object",
+                                  "required": [
+                                    "draft",
+                                    "critique",
+                                    "solver",
+                                    "form",
+                                    "verify",
+                                    "dedupe",
+                                    "translation"
+                                  ],
+                                  "properties": {
+                                    "draft": {
+                                      "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "critique": {
+                                      "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "solver": {
+                                      "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "form": {
+                                      "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "verify": {
+                                      "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "dedupe": {
+                                      "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                    },
+                                    "translation": {
+                                      "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                },
+                                "seconds": {
+                                  "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                },
+                                "loaded": {
+                                  "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                                },
+                                "keepRate": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1,
+                                  "nullable": true
+                                },
+                                "secondsPerKept": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "nullable": true
+                                }
+                              },
+                              "required": [
+                                "board",
+                                "grade",
+                                "subject",
+                                "number",
+                                "name",
+                                "drafted",
+                                "kept",
+                                "rejects",
+                                "seconds",
+                                "loaded",
+                                "keepRate",
+                                "secondsPerKept"
+                              ],
+                              "additionalProperties": false,
+                              "nullable": true
+                            },
+                            "chaptersDone": {
+                              "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                            },
+                            "chaptersSkipped": {
+                              "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                            },
+                            "chaptersFailed": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "reason": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "label",
+                                  "reason"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            "drafted": {
+                              "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                            },
+                            "kept": {
+                              "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                            },
+                            "loaded": {
+                              "$ref": "#/properties/job/properties/progress/properties/chapter/properties/drafted"
+                            },
+                            "keepRate": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1,
+                              "nullable": true
+                            },
+                            "secondsPerKept": {
+                              "type": "number",
+                              "minimum": 0,
+                              "nullable": true
+                            },
+                            "last": {
+                              "allOf": [
+                                {
+                                  "$ref": "#/properties/job/properties/progress/properties/chapter"
+                                }
+                              ],
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "phase",
+                            "chapter",
+                            "chaptersDone",
+                            "chaptersSkipped",
+                            "chaptersFailed",
+                            "drafted",
+                            "kept",
+                            "loaded",
+                            "keepRate",
+                            "secondsPerKept",
+                            "last"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "startedBy": {
+                          "type": "string"
+                        },
+                        "startedByRole": {
+                          "type": "string",
+                          "enum": [
+                            "APP_ADMIN",
+                            "OPERATOR"
+                          ]
+                        },
+                        "startedServers": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "chat",
+                              "embed"
+                            ]
+                          }
+                        },
+                        "error": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "startedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/job/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "finishedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/job/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "heartbeatAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/job/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "state",
+                        "request",
+                        "progress",
+                        "startedBy",
+                        "startedByRole",
+                        "startedServers",
+                        "error",
+                        "createdAt",
+                        "startedAt",
+                        "finishedAt",
+                        "heartbeatAt"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "job"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "jobId",
             "in": "path",
             "required": true,
             "schema": {

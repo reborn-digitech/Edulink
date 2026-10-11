@@ -6,11 +6,10 @@ import { QuizFigure } from "@/components/quiz-figure";
 import { useT } from "@/lib/i18n";
 
 /**
- * Where the item's figure sits on the review desk. scripts/quiz-queue.ts draws and stores a generated
- * item's figure when it loads the batch (quiz-board, 11 October 2026), so the reviewer sees the English
- * drawing here, as a pupil would, with its words; a figure the loader could not draw shows "Figure
- * failed" and the reason, and an item that needs a figure cannot be accepted until one is stored
- * (quiz-review.ts). Before the loader drew figures this box only said "Figure pending".
+ * Where the item's figure sits on the bank desk. scripts/quiz-queue-load.ts draws and stores a generated
+ * item's figure when it loads the batch (quiz-board, 11 October 2026), so the desk shows the English
+ * drawing here, as a pupil sees it, with its words; a figure the loader could not draw shows "Figure
+ * failed" and the reason, and the item is held from pupils until one is stored (quiz-served.ts).
  */
 export function FigureSlot({
   figure,

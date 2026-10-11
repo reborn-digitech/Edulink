@@ -17,6 +17,7 @@ import { BulkSelectProvider, SelectSchool } from "./bulk-select";
 import { CopyChip } from "./copy-chip";
 import { UsageSummary } from "./usage-summary";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { ModelServersCard } from "@/components/quiz-review/model-servers-card";
 
 export async function generateMetadata() {
   const t = await getT();
@@ -87,6 +88,9 @@ export default async function RootPage({
         </ul>
         <p className="mt-1.5 text-xs text-fg-subtle">{t("root.tilesNote")}</p>
       </section>
+
+      {/* quiz-publish-jobs (11 Oct 2026): the two model servers' state and the way to the generated bank. */}
+      <ModelServersCard deskHref="/root/quiz-review" />
 
       {/* What each partner is owed this month, recorded only; the partners page has the detail. */}
       {d.partners.length > 0 && (

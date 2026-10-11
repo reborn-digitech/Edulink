@@ -38,6 +38,7 @@ import { ENDPOINTS } from "@/lib/api-catalog";
 import { POST as gigPayeePost } from "@/app/api/v1/gigs/payee/route";
 import TeacherPayeePage from "@/app/(app)/teacher/payee/page";
 import { loadGeneratedBatches, type QueueBatch } from "../scripts/quiz-queue-load";
+import { isServed } from "@/lib/quiz-served"; // quiz-publish-jobs (11 Oct 2026)
 import { createVerifier, type TopicFile } from "../scripts/verify-quiz";
 import { KIND_SAMPLES } from "../scripts/quiz-gen/figures/samples";
 
@@ -262,7 +263,7 @@ describe("quiz:queue draws a generated item's figure and is the one way in", () 
     expect(r.figuresFailed).toHaveLength(1);
     const topic = await db.quizTopic.findUniqueOrThrow({ where: { slug: SLUG.queue }, select: { id: true, board: true } });
     expect(topic.board).toBe("BALBHARATI");
-    const rows = await db.quizQuestion.findMany({ where: { topicId: topic.id }, select: { stem: true, generated: true, generatedBoard: true, reviewedAt: true, imageKey: true, imageAlt: true, imageSpec: true, generation: true, translations: { select: { language: true, imageKey: true, imageAlt: true }, orderBy: { language: "asc" } } } });
+    const rows = await db.quizQuestion.findMany({ where: { topicId: topic.id }, select: { stem: true, generated: true, generatedBoard: true, reviewedAt: true, imageKey: true, imageAlt: true, imageSpec: true, generation: true, needsFigure: true, takenDownAt: true, translations: { select: { language: true, imageKey: true, imageAlt: true }, orderBy: { language: "asc" } } } });
     const drawn = rows.find((q) => q.stem.includes("hypotenuse"))!;
     expect(drawn).toMatchObject({ generated: true, generatedBoard: "BALBHARATI", reviewedAt: null, imageAlt: "ZZ A right triangle ABC with the right angle at A." });
     const keys = [drawn.imageKey, ...drawn.translations.map((t) => t.imageKey)];
@@ -275,6 +276,11 @@ describe("quiz:queue draws a generated item's figure and is the one way in", () 
     const failed = rows.find((q) => q.stem.includes("nobody can draw"))!;
     expect(failed.imageKey).toBeNull();
     expect(readGeneration(failed.generation).figureError).toBeTruthy();
+    // quiz-publish-jobs (11 Oct 2026): published on load — the drawn item is served with no stamp; the failed one is held.
+    expect(drawn.needsFigure).toBe(true);
+    expect(isServed(drawn)).toBe(true);
+    expect(failed.needsFigure).toBe(true);
+    expect(isServed(failed)).toBe(false);
   });
 
   it("the review queue filters by the coded board, and the desk's item carries its board and why its figure failed", async () => {

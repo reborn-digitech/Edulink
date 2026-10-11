@@ -9,9 +9,14 @@ Status: plan, not yet built. Decided by the owner so far:
 - the quiz bank generator runs on the owner's own machine, on the Qwen family; no hosted model for it;
 - questions carry an image where the chapter's exercise needs one;
 - the difficulty ladder must be honoured and every distractor must be a real distractor;
-- every type and level of question is generated for the whole corpus in one go; review is done by the
-  app admins and the operator only, never by teachers, and one stamp from either serves an item
-  (amended by the owner on 10 October 2026; the teachers' question gig is switched off);
+- every type and level of question is generated for the whole corpus in one go; a generated item that
+  passes the pipeline's own checks is PUBLISHED WITHOUT REVIEW, with its Hindi and Marathi, the moment it
+  is loaded, and the app admins and the operator (never teachers) edit or take an item down afterwards
+  (the owner, 11 October 2026; on 10 October it was "one stamp from either serves an item"; the teachers'
+  question gig is switched off);
+- generation is started and stopped from the bank desk (`/root/quiz-review`, `/appadmin/quiz-review`) as a
+  background job on the machine the model runs on, which brings the model servers up when they are down
+  and takes down only what it brought up (the owner, 11 October 2026);
 - the corpus is the English books only; the Hindi and Marathi items are translations of the English
   items, with the boards' glossaries, read by native speakers;
 - the assistant runs on the owner's machine first and is hosted only after that run has proved it;
@@ -97,10 +102,11 @@ Hindi and Marathi on the laptop, stem, options and solution, with the board's bi
 subject in the prompt so the terms are the ones the Hindi and Marathi textbooks use (NCERT's and
 Balbharati's glossaries are collected in Phase 0), the figure and the answer position unchanged, and the
 translation critiqued once (same meaning, one answer, the distractors still wrong). The rows land as
-`QuizQuestionTranslation` beside the English row, the bank's existing shape, with `hiReviewedAt` and
-`mrReviewedAt` null until a native speaker among the reviewers stamps them; as the bank does today, an
-unreviewed translation is still served once the English item is stamped, because a draft a child can
-read beats an English question a child cannot (decision 0002, gap 8). College and CISCE items are
+`QuizQuestionTranslation` beside the English row, the bank's existing shape, and are served with the
+English item the moment it is loaded (the owner, 11 October 2026), because a draft a child can read beats
+an English question a child cannot (decision 0002, gap 8); a wrong translation is corrected on the bank
+desk (all three languages in one edit) or the item taken down with the reason "The Hindi or the Marathi
+is wrong". College and CISCE items are
 translated the same way, so nothing is English-only.
 
 **The difficulty ladder.** Each level has a written rubric in the prompt (1 recall: the fact is stated in
@@ -140,39 +146,63 @@ generator's prompts that use the excerpts are the quiz-gen step's, not this one'
 embedding similarity against the bank and the batch, the chapter mapped to its `QuizTopic` (by board,
 grade, subject and chapter; new topics made where none exists), the edition recorded on every item.
 
-**Output and review** (amended by the owner on 10 October 2026; built the same day). Items land in
+**Output and review** (decided by the owner on 11 October 2026 and built the same day; on 10 October it was a
+review queue, one stamp serving an item, a language served once stamped). Items land in
 `content/quiz/generated/<board>-<grade>-<subject>-<chapter>.json` with `source` "generated against NCERT
-Science, Class 8, chapter 4 (2024 edition)" and `stamps: []`. `npm run quiz:queue` loads every batch into
-the database as unserved rows (`QuizQuestion.generated` true, `reviewedAt` null, the reviewer's material
-— the distractor reasons, the solver's five answers, the level flag, the critique, the figure spec, the
-edition — in `generation`); a batch may extend a served chapter, because serving is gated by the stamp,
-not by the file, and a new chapter does not list for a pupil until its first item is stamped. **Review is
-done by the app admins and the operator only, never by teachers**, on one queue at `/appadmin/quiz-review`
-and `/root/quiz-review`: one item at a time with the key marked, the solution, the check expression, the
-distractor reasons beside the options, the solver's answers, the figure (the figure builder's drawing, or
-its description and "figure pending" until it is drawn), and the Hindi and Marathi rows side by side; the
-presses are Accept, Edit then accept (the earlier words kept on the stamp and in the audit log, the
-solver's answers kept with an "edited after solving" mark, the language stamps taken off), Discard with a
-reason from a coded list, Stamp the Hindi, Stamp the Marathi and Skip, each on a key. **One stamp from
-either serves the English item**; an item that needs a figure cannot be accepted until the figure is drawn
-and stored. **A Hindi or Marathi row is served only once a reviewer stamps that language as well**; until
-then the pupil reads the English item alone, as the bank does for an untranslated question. Every act is
-one `QuizReviewStamp` row (question, reviewer, role APP_ADMIN or OPERATOR, language, action, coded reason,
-time) written by one writer (`src/lib/quiz-review.ts`) in the same transaction as the column serving
-reads — `reviewedAt`, `hiReviewedAt`, `mrReviewedAt`, `discardedAt` — and `src/lib/quiz-served.ts` is the
-one serving filter every pupil-facing read (practice on the web and the phone, revision, worksheets) uses.
-The authored bank is served as before. The queue is ordered as section 8 item 9 says (classes 6 to 10
-mathematics and science first, then the rest) and filtered by board, class, subject, chapter and level;
-the page shows the queue's remaining count and each reviewer's count. The teachers' question gig
-(`QuestionContribution`, `/teacher/contributions` and its doors) is switched off behind
-`QUESTION_GIG_FOR_TEACHERS` in packages/contracts, nothing deleted; the owner removes it altogether once
-review by the app admins has proved itself. At about 200,000 items and a minute an item with one stamp,
-the whole bank is about 3,300 reviewer hours, which is why the queue's order matters.
+Science, Class 8, chapter 4 (2024 edition)". **An item that passes the pipeline's own checks — the critique,
+the blind solver, the form checks, the verifier — is published without review**: `scripts/quiz-queue-load.ts`
+(run by `npm run quiz:queue`, and by the generation job for each chapter as it finishes) writes it as a
+`QuizQuestion` with `generated` true and the material the generator kept in `generation` (the distractor
+reasons, the solver's five answers, the level flag, the critique, the figure spec, the edition), and it is
+served at once with its Hindi and Marathi rows; no stamp. Rejected items never reach the file. **An item whose
+figure failed to draw is loaded but held** (`needsFigure` with no `imageKey`) until its figure is stored. One
+serving filter, `src/lib/quiz-served.ts`, reads `takenDownAt` and that hold, and every pupil-facing read uses it:
+practice on the web and the phone, the revision queue and player, worksheets, the bank list and the export.
+**The operator and the app admins edit or take an item down afterwards** — never teachers — on the bank desk at
+`/root/quiz-review` and `/appadmin/quiz-review` (the review queue's two paths): every generated item, served or
+not, filtered by board, class ("College" for 13 and above), subject, chapter, level and standing (served, taken
+down, held), walked one at a time in section 8 item 9's order (classes 6 to 10 mathematics and science first,
+then the rest) with the key marked, the solution, the check expression, the distractor reasons, the solver's
+answers, the figure, the Hindi and Marathi side by side and pupils' answers so far. The presses: **Edit**
+(English, Hindi and Marathi in one press; the earlier words kept on the record and the changed fields named in
+the audit log; an English change keeps the solver's answers with an "edited after solving" mark), **Take down**
+(not served from that moment, anywhere, with a reason from a coded list; the answers pupils gave stay attached;
+reversible with **Put back**) and **Skip**, each on a key. Every act is one `QuizReviewStamp` row (question,
+person, role APP_ADMIN or OPERATOR, action EDIT, TAKE_DOWN or PUT_BACK, coded reason, the words before, time)
+written by one writer (`src/lib/quiz-review.ts`) in the same transaction as the change; the review queue's
+stamps of 10–11 October stay as the history of the items it accepted, which stay served. The bank editor
+(`/appadmin/bank`) and the translations page refuse a generated item: the desk is its words' one writer. The
+authored bank is served as before. The teachers' question gig (`QuestionContribution`, `/teacher/contributions`
+and its doors) is switched off behind `QUESTION_GIG_FOR_TEACHERS` in packages/contracts, nothing deleted.
+
+**Generation started and stopped from the desk** (the owner, 11 October 2026; built the same day). A card on
+both desks asks what to generate — a board, a class, a subject and a chapter range, or "everything not yet
+generated" in section 8 item 9's order (classes 6 to 10 mathematics and science first, both boards, then the
+rest) — with Start and Stop and a live line: the chapter running, items drafted and kept so far, the keep rate,
+seconds per kept item, rejects per stage, the last chapter's numbers. Start writes a `QuizGenJob` row (one
+running at a time, held by a unique index; who started it, the request, the state QUEUED, RUNNING, STOPPING,
+STOPPED, FINISHED or FAILED, the progress, the times), checks the two model servers' health endpoints and
+brings up through `scripts/model-serve.sh` the ones that are down ("starting the model", about a minute), and
+spawns the runner — the generator's CLI with `--job=<id>`, a detached process on this machine whose pid is on
+the row — which writes the live line after every item, leaves out every chapter whose batch already exists (so
+a stopped run picks up where it was) and loads each chapter it finishes through `quiz-queue-load.ts`, so new
+items reach pupils while it runs. Stop asks the runner to finish the item in hand and halt; the chapter in
+progress is not written (nothing half-written lands) and is generated again, from the start, by the next run.
+The run's end takes down the model servers that run brought up and no others (servers already up for the
+assistant stay up); each server also has its own Start and Stop on the card, and stopping one under an active
+run is refused. A run whose runner died is marked FAILED with the reason on the next read. The doors are
+`/api/v1/appadmin/quiz-jobs` (read, start), `…/{jobId}` and `…/{jobId}/stop`, `…/servers` and
+`…/servers/{server}/start|stop`, for the operator and the app admins, every press audited; `src/lib/quiz-jobs.ts`
+is the one writer of the row and the one caller of the script. Both dashboards (`/root`, `/appadmin`) show the
+two servers Running or Stopped with the model's name and port, read live from the health endpoints with a
+ten-second cache, and link to the desk. **On a hosted deployment the job runs where the model runs**: the
+runner and the script are this machine's; a host's model gets a runner on its own host, started by the same
+row and doors.
 
 **Throughput and cost.** About 15 to 25 seconds an item for the draft, the critique and the five solver
 runs, and a few seconds more for the two translations, so the whole bank of about 200,000 items is
 roughly six to eight weeks of the laptop running, or three to four with a second machine; electricity
-about ₹500 to ₹1,000 a week. Generation runs ahead of review and never waits for it.
+about ₹500 to ₹1,000 a week. Nothing waits for a reviewer: items are served as each chapter loads.
 
 **Step 1 built — the pipeline on the owner's machine (10–11 October 2026).** `npm run quiz:gen -- --board=NCERT|Balbharati
 --grade=8 --subject=Science --chapter=4` (`--all-chapters`, `--limit=N`, `--per-level=4`, `--book=<code>`, `--list`,
@@ -251,8 +281,9 @@ figure, the papers corpus — the queue and the figure builder are the other bui
 
 - Web: a panel reachable from every role's home; phone: a tab under More reading the same doors; both on
   the kit, en/hi/mr, the answer in the person's account language.
-- The practice page and screen draw the image field; the app admins' review queue with the distractor
-  reasons, the solver rate and the per-language stamps.
+- The practice page and screen draw the image field; the bank desk for the app admins and the operator with
+  the distractor reasons, the solver's answers, Edit, Take down and Put back, and the generation card
+  (built 11 October 2026; the per-language stamps of the 10 October review queue are gone).
 
 ### Phase 4 — evaluation and rollout (two weeks)
 
@@ -284,9 +315,9 @@ one to two million questions a month or when data residency under the DPDP rules
 
 ## 5. Cost
 
-Generation: ₹0 in fees; electricity about ₹500 to ₹1,000 a week of running; the one-time review pass by
-the app admins and the teachers (about 6,500 hours for 200,000 items at two stamps each; paid as a gig
-or not, the owner's call).
+Generation: ₹0 in fees; electricity about ₹500 to ₹1,000 a week of running. No review pass is owed before
+an item is served (the owner, 11 October 2026: published without review, taken down afterwards); the app
+admins' and the operator's time on the bank desk is whatever reading they choose to do.
 
 The assistant, hosted, about 3,000 tokens a question with retrieval, at ₹84 per dollar; with the tutor
 open to students and teachers only, the per-question line is bounded by the pupils' use:
@@ -304,7 +335,8 @@ open to students and teachers only, the per-question line is bounded by the pupi
 - Bulk-download commercial reference books or ICSE, IB and private-publisher textbooks.
 - Invent figures: a question's image is the book's own drawing or nothing.
 - Let the model query the database or read anything the signed-in person could not open.
-- Serve a generated question without an app admin's stamp.
+- Serve a generated question that failed the pipeline's own checks, or one whose figure is not drawn
+  (since 11 October 2026 a generated question that passes them is served without a stamp).
 - Draft from the Hindi and Marathi books: the Indian-language rows are translations of the English item,
   read by native speakers.
 - Fine-tune a model before retrieval has been measured.
@@ -425,3 +457,12 @@ its board; the review queue's board filter is the same code. A generated item en
 only; `quiz:queue` now draws and stores an item's figure on load (English, Hindi, Marathi), so an item that needs one
 can be accepted, and loads one whose figure cannot be drawn with the reason ("Figure failed" on the desk). Rerun on
 the two batches: both figure items drawn, the stamped item left alone, nothing duplicated.
+
+**Published without review, and generation from the desk (11 October 2026).** The owner's decisions of the day
+replaced the review queue with the bank desk and moved generation onto it; Phase 1 "Output and review" and
+"Generation started and stopped from the desk" above say what was built. Migration `quiz_publish_jobs`:
+`QuizQuestion.discardedAt` and `discardReason` renamed to `takenDownAt` and `takenDownReason` (no item had been
+discarded), `takenDownBy` and `needsFigure` added (the latter backfilled from the generation JSON), and the
+`QuizGenJob` table. The 14 generated items the review queue had accepted stay served; the generator's batches
+written before the last three generator rules (a Hindi "स्टीमर" for an iron among them) are served too and are
+the desk's to edit or take down.

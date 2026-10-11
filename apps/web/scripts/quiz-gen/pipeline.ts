@@ -113,7 +113,21 @@ export type PipelineOptions = {
   log: (line: string) => void;
   /** Pinned for the tests; the run's clock otherwise. */
   now?: () => Date;
+  /**
+   * quiz-publish-jobs (11 Oct 2026): told after every draft group, every item checked and every item
+   * translated — the generation job's live line (scripts/quiz-gen/job.ts).
+   */
+  onProgress?: (p: ChapterProgress) => void;
+  /**
+   * quiz-publish-jobs: asked before the next group, item or translation is taken up. True halts the
+   * chapter once the items in hand are done: the chapter returns `stopped` with no questions, so nothing
+   * half-written is written, and a later run generates it again from the start (the seeds repeat).
+   */
+  shouldStop?: () => boolean;
 };
+
+/** The chapter so far: items drafted, items through every check, rejects per stage. */
+export type ChapterProgress = { drafted: number; kept: number; rejects: Record<Stage, number> };
 
 function emptyStage(): StageCount {
   return { calls: 0, ms: 0, in: 0, out: 0, rejects: 0, promptTokens: 0, completionTokens: 0 };
@@ -171,7 +185,7 @@ export function critiqueOutcome(item: { answerIndex: number }, v: CritiqueVerdic
   return { reject: problems.length ? problems.join("; ") : null, weak };
 }
 
-export async function runChapter(client: ChatClient, chapter: SelectedChapter, opts: PipelineOptions): Promise<{ questions: GeneratedQuestion[]; log: RunLog; topicWords: TopicWords | null }> {
+export async function runChapter(client: ChatClient, chapter: SelectedChapter, opts: PipelineOptions): Promise<{ questions: GeneratedQuestion[]; log: RunLog; topicWords: TopicWords | null; stopped: boolean }> {
   const now = opts.now ?? (() => new Date());
   const started = now();
   const stages: Record<Stage, StageCount> = { draft: emptyStage(), critique: emptyStage(), solver: emptyStage(), form: emptyStage(), verify: emptyStage(), dedupe: emptyStage(), translation: emptyStage() };
@@ -196,6 +210,36 @@ export async function runChapter(client: ChatClient, chapter: SelectedChapter, o
   const generatedAt = started.toISOString();
   const kept: Working[] = [];
   const remaining: Record<Level, number> = { ...targets };
+  const glossaryNote = opts.glossary.length ? `glossary lines from the corpus for ${chapter.subject} in the prompt` : `no glossary in the corpus for ${chapter.subject} (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms`;
+
+  function summary(questions: GeneratedQuestion[]): RunLog {
+    const finished = now();
+    const keptByLevel = {} as Record<Level, number>;
+    for (const l of LEVELS) keptByLevel[l] = questions.filter((q) => q.difficulty === l).length;
+    return {
+      task: "quiz-gen",
+      startedAt: generatedAt,
+      finishedAt: finished.toISOString(),
+      seconds: Math.round((finished.getTime() - started.getTime()) / 1000),
+      model: client.model,
+      chapter: { board: chapter.board, book: chapter.book, bookCode: chapter.bookCode, document: chapter.documentPath, classLevel: chapter.classLevel, subject: chapter.subject, chapter: chapter.chapterLabel, edition: chapter.edition, chunks: chapter.chunks.length, groups: groups.length },
+      targets,
+      style: opts.style,
+      glossary: glossaryNote,
+      stages,
+      kept: questions.length,
+      keptByLevel,
+      flagged: questions.filter((q) => q.levelFlag).length,
+      needsFigure: questions.filter((q) => q.needsFigure).length,
+      duplicateThreshold: DUPLICATE_THRESHOLD,
+      items: timings,
+      rejects,
+      notes,
+    };
+  }
+  const halted = () => opts.shouldStop?.() === true;
+  const progress = () =>
+    opts.onProgress?.({ drafted: stages.draft.out, kept: kept.length, rejects: Object.fromEntries(Object.entries(stages).map(([k, v]) => [k, v.rejects])) as Record<Stage, number> });
 
   async function callJson<T>(stage: Stage, call: Parameters<ChatClient["json"]>[0]): Promise<T> {
     const r = await client.json<T>(call);
@@ -218,6 +262,7 @@ export async function runChapter(client: ChatClient, chapter: SelectedChapter, o
     const drafts: Working[] = [];
     const order = round === 1 ? groups : [...groups].reverse();
     for (let g = 0; g < order.length; g++) {
+      if (halted()) break;
       const counts: Partial<Record<Level, number>> = {};
       let total = 0;
       // One item per level per group: a call of at most six items stays well inside the answer's
@@ -284,6 +329,7 @@ export async function runChapter(client: ChatClient, chapter: SelectedChapter, o
         stages.draft.out++;
       }
       log(`    draft round ${round}, group ${g} (pp. ${group[0]!.pageStart}–${group[group.length - 1]!.pageEnd}): ${items.length} items in ${(ms / 1000).toFixed(1)} s`);
+      progress();
     }
     return drafts;
   }
@@ -463,11 +509,13 @@ export async function runChapter(client: ChatClient, chapter: SelectedChapter, o
     const queue = [...drafts];
     const workers = Array.from({ length: 3 }, async () => {
       for (;;) {
+        if (halted()) return;
         const w = queue.shift();
         if (!w) return;
         const ok = await process(w);
         if (ok) kept.push(w);
         else remaining[w.level]++;
+        progress();
       }
     });
     await Promise.all(workers);
@@ -476,11 +524,15 @@ export async function runChapter(client: ChatClient, chapter: SelectedChapter, o
   const round1 = await draftRound(1);
   await processAll(round1);
   const short = LEVELS.filter((l) => remaining[l] > 0 && targets[l] > 0);
-  if (short.length) {
+  if (short.length && !halted()) {
     log(`  second drafting round for the shortfall: ${short.map((l) => `L${l}:${remaining[l]}`).join(" ")}`);
     const round2 = await draftRound(2);
     await processAll(round2);
   }
+
+  // Halted: the items in hand are done; the chapter is written by nobody (see shouldStop).
+  const stoppedHere = () => ({ questions: [] as GeneratedQuestion[], log: summary([]), topicWords: null, stopped: true });
+  if (halted()) return stoppedHere();
 
   /* ---- 5. near-duplicates ---------------------------------------------------------------------- */
   const t0 = Date.now();
@@ -503,7 +555,6 @@ export async function runChapter(client: ChatClient, chapter: SelectedChapter, o
   stages.dedupe.out = kept.length;
 
   /* ---- 6. translations, every item that reaches the file ---------------------------------------- */
-  const glossaryNote = opts.glossary.length ? `glossary lines from the corpus for ${chapter.subject} in the prompt` : `no glossary in the corpus for ${chapter.subject} (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms`;
   notes.push(glossaryNote);
   log(`  translations: ${glossaryNote}`);
 
@@ -564,6 +615,7 @@ export async function runChapter(client: ChatClient, chapter: SelectedChapter, o
     stages.translation.in = kept.length * 2;
     const workers = Array.from({ length: 3 }, async () => {
       for (;;) {
+        if (halted()) return;
         const w = queue.shift();
         if (!w) return;
         const t0 = Date.now();
@@ -593,10 +645,12 @@ export async function runChapter(client: ChatClient, chapter: SelectedChapter, o
         w.ms.translation = Date.now() - t0;
         translations.set(w.key, out);
         log(`    translated L${w.level} "${w.stem.slice(0, 50)}…" in ${((Date.now() - t0) / 1000).toFixed(1)} s${out.hi?.flag || out.mr?.flag ? " (flagged)" : ""}`);
+        progress();
       }
     });
     await Promise.all(workers);
   }
+  if (halted()) return stoppedHere();
 
   /* ---- the topic's words ------------------------------------------------------------------------ */
   let topicWords: TopicWords | null = null;
@@ -645,28 +699,5 @@ export async function runChapter(client: ChatClient, chapter: SelectedChapter, o
       };
     });
 
-  const finished = now();
-  const keptByLevel = {} as Record<Level, number>;
-  for (const l of LEVELS) keptByLevel[l] = questions.filter((q) => q.difficulty === l).length;
-  const logOut: RunLog = {
-    task: "quiz-gen",
-    startedAt: generatedAt,
-    finishedAt: finished.toISOString(),
-    seconds: Math.round((finished.getTime() - started.getTime()) / 1000),
-    model: client.model,
-    chapter: { board: chapter.board, book: chapter.book, bookCode: chapter.bookCode, document: chapter.documentPath, classLevel: chapter.classLevel, subject: chapter.subject, chapter: chapter.chapterLabel, edition: chapter.edition, chunks: chapter.chunks.length, groups: groups.length },
-    targets,
-    style: opts.style,
-    glossary: glossaryNote,
-    stages,
-    kept: questions.length,
-    keptByLevel,
-    flagged: questions.filter((q) => q.levelFlag).length,
-    needsFigure: questions.filter((q) => q.needsFigure).length,
-    duplicateThreshold: DUPLICATE_THRESHOLD,
-    items: timings,
-    rejects,
-    notes,
-  };
-  return { questions, log: logOut, topicWords };
+  return { questions, log: summary(questions), topicWords, stopped: false };
 }

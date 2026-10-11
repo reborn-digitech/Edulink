@@ -4,7 +4,7 @@ import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
 import { awardPermanentBadge } from "./academic-year";
-import { SERVED_QUESTION, servedTranslationWhere } from "./quiz-served";
+import { SERVED_QUESTION } from "./quiz-served";
 import { servedFigure, type ServedFigure } from "./quiz-figure";
 import type { ActiveContext } from "./session";
 
@@ -363,7 +363,7 @@ export async function listTopics(
   // questions, and a million-row page load the day the generated bank landed.
   const grouped = await db.quizQuestion.groupBy({
     by: ["topicId", "difficulty"],
-    // Served questions only: a generated item waiting in the review queue is not counted (quiz-served.ts).
+    // Served questions only: a generated item taken down on the bank desk, or held for its figure, is not counted (quiz-served.ts).
     where: { topicId: { in: topics.map((t) => t.id) }, ...SERVED_QUESTION },
     _count: { _all: true },
   });
@@ -416,7 +416,7 @@ export async function listTopics(
   }
 
   // A chapter with nothing to serve does not list (10 October 2026): a topic the generated bank made
-  // holds only items waiting in the review queue until the first is stamped, and a child who opened
+  // may hold only items taken down or held for their figure (quiz-served.ts), and a child who opened
   // it would finish an empty sitting. No authored topic was empty on the day this was written.
   return topics.filter((topic) => spreadByTopic.has(topic.id)).map((topic) => {
     const mine = byTopic.get(topic.id);
@@ -582,8 +582,7 @@ export async function nextQuestion(
     lang === "en"
       ? null
       : await db.quizQuestionTranslation.findFirst({
-          // A generated item's language row only once a reviewer stamped it (quiz-served.ts).
-          where: { questionId: full.id, language: lang, question: servedTranslationWhere(lang) },
+          where: { questionId: full.id, language: lang },
           // figures: a translation's own drawing (its labels in its language) and words.
           select: { stem: true, choices: true, imageKey: true, imageAlt: true },
         });
@@ -748,8 +747,7 @@ export async function submitAnswer(
     lang === "en"
       ? null
       : await db.quizQuestionTranslation.findFirst({
-          // A generated item's language row only once a reviewer stamped it (quiz-served.ts).
-          where: { questionId: question.id, language: lang, question: servedTranslationWhere(lang) },
+          where: { questionId: question.id, language: lang },
           select: { solution: true },
         });
 
@@ -812,8 +810,7 @@ export async function revealSolution(
     lang === "en"
       ? null
       : await db.quizQuestionTranslation.findFirst({
-          // A generated item's language row only once a reviewer stamped it (quiz-served.ts).
-          where: { questionId: question.id, language: lang, question: servedTranslationWhere(lang) },
+          where: { questionId: question.id, language: lang },
           select: { solution: true },
         });
 
@@ -999,8 +996,7 @@ export async function submitAnswerIdempotent(
       lang === "en"
         ? null
         : await db.quizQuestionTranslation.findFirst({
-            // A generated item's language row only once a reviewer stamped it (quiz-served.ts).
-            where: { questionId: existing.question.id, language: lang, question: servedTranslationWhere(lang) },
+              where: { questionId: existing.question.id, language: lang },
             select: { solution: true },
           });
     return {

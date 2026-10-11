@@ -10,6 +10,7 @@ import { CompetitionControls } from "./competition-controls";
 import { getT } from "@/lib/i18n/server";
 import { DataToolbar } from "@/components/ui/data-toolbar";
 import { PageHeader } from "@/components/ui/page-header";
+import { ModelServersCard } from "@/components/quiz-review/model-servers-card";
 
 export async function generateMetadata() {
   const t = await getT();
@@ -42,6 +43,9 @@ export default async function AppAdminHome({
           <Link href="/appadmin/new">{t("appadmin.postCompetition")}</Link>
         </Button>
       </div>
+
+      {/* quiz-publish-jobs (11 Oct 2026): the two model servers' state and the way to the generated bank. */}
+      <ModelServersCard deskHref="/appadmin/quiz-review" />
 
       {statuses.length > 1 && (
         <DataToolbar

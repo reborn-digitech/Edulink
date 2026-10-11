@@ -3,7 +3,7 @@ import { requireApiAppAdmin } from "@/lib/tenancy";
 import { getItem } from "@/lib/quiz-review";
 import { apiFailure, ok } from "@/lib/api-v1";
 
-/** GET /api/v1/appadmin/quiz-review/{questionId} — one generated item, waiting or not, with what was done to it. */
+/** GET /api/v1/appadmin/quiz-review/{questionId} — one generated item, served, taken down or held, with what was done to it. */
 export async function GET(_request: Request, { params }: { params: Promise<{ questionId: string }> }) {
   try {
     const ctx = await requireApiAppAdmin();

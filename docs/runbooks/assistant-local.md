@@ -27,7 +27,12 @@ npm run model:serve -- both     # both in the background; logs and pid files in 
 npm run model:serve -- stop     # stops the two it started
 npm run model:serve -- restart-embed   # the embeddings server alone
 npm run model:serve -- chat     # one in the foreground (or embed)
+npm run model:serve -- start-chat      # one in the background (or start-embed); the bank desk's Start
+npm run model:serve -- stop-chat       # one the script started (or stop-embed); the bank desk's Stop
 ```
+
+The bank desk (`/root/quiz-review`, `/appadmin/quiz-review`) starts and stops these servers through the
+same script and nothing else; section 9 says how.
 
 The first start downloads the weights from the official Qwen repositories on Hugging Face into
 `~/.cache/llama.cpp` (`LLAMA_CACHE`); later starts load from there in under a minute. Override the
@@ -200,6 +205,9 @@ about 1 GB each.
 | `tests/papers-corpus.test.ts` | the pages' parsers, the question chunker, the ranking, the tutor never citing a paper, and the style read against the ingested papers |
 | `scripts/assistant-eval.ts`, `scripts/assistant-eval-score.ts`, `content/assistant-eval/` | the evaluation harness (`npm run assistant:eval`, `-- --pilot` through the doors on the demo tenants, about 50 minutes; the refusal set must be 180/180 or it exits 1), its pure scoring rules and the nine sets; output under `storage/assistant-eval/<stamp>` |
 | `prisma/migrations/20261008152105_assistant_content` | the three tables, pgvector, the HNSW and full-text indexes |
+| `src/lib/quiz-jobs.ts`, `src/lib/quiz-jobs-desk.ts` | the generation job and the model servers' control (section 9): the one writer of a run's row, the one caller of `model-serve.sh`, and the desk's gate and audit |
+| `scripts/quiz-gen/job.ts`, `scripts/quiz-gen/plan.ts` | the job's runner (`quiz-gen/cli.ts --job=<id>`) and the order it takes the chapters in |
+| `storage/quiz-jobs/<id>.log` | a run's own log (the generator's lines) |
 
 ## 8. The past papers: a style corpus for quiz levels 5 and 6 (10 October 2026)
 
@@ -295,3 +303,58 @@ reproduced free of charge after taking proper permission from National Testing A
 copyright lines of the JEE (Advanced) archive, HBCSE and IAPT, and the CBSE academic site's address
 (it prints no terms). The papers are read for style and never reproduced or shown; whether that use
 needs the bodies' permission is a question for counsel with the figures question (plan §8 gap 1).
+
+## 9. Generation started and stopped from the bank desk (11 October 2026)
+
+The owner's decisions of 11 October 2026: the generated bank is published without review (an item that passes the
+generator's own checks is served the moment it is loaded, with its Hindi and Marathi), the operator and the app admins
+edit or take an item down afterwards on the bank desk, and **generation is started and stopped from that desk**. The
+desk is `/root/quiz-review` for the operator and `/appadmin/quiz-review` for the content team; the card is "Generate
+questions".
+
+**Start.** Choose a board, a class, a subject and a chapter range (both chapter fields empty: every chapter of the book),
+or "Everything not yet generated" (classes 6 to 10 mathematics and science first, both boards, then the rest), and,
+if you want, the questions per chapter (empty: four a level). Start:
+
+1. reads the two servers' health endpoints (`127.0.0.1:8180/health`, `127.0.0.1:8181/health`; 200 is up, 503 is
+   loading, nothing answering is down);
+2. claims the one slot (a second Start while a run is waiting, running or stopping is refused: "A run is already
+   going");
+3. starts through `scripts/model-serve.sh start-chat` / `start-embed` exactly the servers that were down, and records
+   them on the run (the card says "Starting the model", about a minute);
+4. spawns the runner, `scripts/quiz-gen/cli.ts --job=<id>`, detached, with its log in `storage/quiz-jobs/<id>.log`.
+
+The runner waits for both servers (ten minutes at most), then works chapter by chapter, leaving out every chapter whose
+batch already exists in `content/quiz/generated/` — so a run picks up where the last one stopped. The live line on the
+card is rewritten after every item: the chapter running, drafted and kept so far, the keep rate, seconds per kept
+item, rejects per stage, and the last chapter's numbers. Each chapter it finishes is written, verified
+(`scripts/verify-quiz.ts`) and loaded into the bank (`scripts/quiz-queue-load.ts`), so its items reach pupils while
+the run goes on; a bank that does not verify leaves the file written and the chapter named under "Could not be
+generated" (`npm run quiz:queue` loads it later).
+
+**Stop.** The run turns "Stopping"; the runner reads its row every three seconds, finishes the item in hand and halts.
+The chapter it was on is not written — nothing half-written lands — and the next run generates it again from the
+start (the seeds repeat, so it asks the same questions). When a run ends (stopped, finished or failed) it takes down
+through `model-serve.sh stop-chat` / `stop-embed` the servers **it** brought up, and no others: servers that were
+already up for the assistant stay up.
+
+**The model servers line.** The card lists both servers, Running, Starting or Stopped, with the model and the port,
+each with its own Start and Stop. Stop is refused while a run is active ("Stop the generation run first"), and for a
+server the script did not start (no pid file in `storage/models/`: it was started by hand, and is stopped there). The
+operator's dashboard (`/root`) and the content team's home (`/appadmin`) show the same two lines, read live with a
+ten-second cache, and a link to the desk.
+
+**A run that died.** If the runner's process is gone (the machine slept, the process was killed) or has not written for
+ten minutes, the next read of the card marks the run Failed with the reason ("the runner's process (pid N) is no
+longer running") and frees the slot; its servers go down by the same rule. Press Start again: it picks up at the first
+chapter with no batch.
+
+**From a shell.** The same library is what the doors call: `GET /api/v1/appadmin/quiz-jobs` (the run and the servers),
+`POST /api/v1/appadmin/quiz-jobs` (start; 201, 409 while one runs), `POST …/{jobId}/stop`,
+`POST …/servers/{chat|embed}/start|stop`, for the operator and the app admins with a bearer token. `npm run quiz:gen`
+from a shell still runs one chapter in the foreground and loads nothing; it does not take the desk's slot, so do not
+run both at once on one machine (they would share the chat server's four slots).
+
+**Hosted.** The runner runs where the model runs. On the owner's machine that is this machine; on a hosted deployment
+the job belongs on the model's host, started from the same row and doors.
+

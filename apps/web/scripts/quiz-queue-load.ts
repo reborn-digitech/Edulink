@@ -1,6 +1,13 @@
 /**
- * The review queue's loader, as a function (quiz-board, 11 October 2026): scripts/quiz-queue.ts reads
- * the files, verifies them and hands them here; tests/quiz-board.test.ts calls it on a ZZ batch. No main.
+ * The generated bank's loader, as a function (quiz-board, 11 October 2026): scripts/quiz-queue.ts reads
+ * the files, verifies them and hands them here; the generation job's runner (scripts/quiz-gen/job.ts)
+ * hands it each chapter as it finishes; tests/quiz-board.test.ts calls it on a ZZ batch. No main.
+ *
+ *   PUBLISHED ON LOAD (the owner, 11 October 2026): an item the generator kept passed its own checks, and
+ *   is served the moment it is written here, its Hindi and Marathi with it (src/lib/quiz-served.ts) —
+ *   unless its figure failed to draw (`needsFigure` with no imageKey: held until the figure is drawn).
+ *   The bank desk takes an item down or edits it afterwards; a re-run leaves an item a person edited or
+ *   took down (or that the review queue stamped, before this) exactly as it is.
  *
  * What it writes, per batch (see quiz-queue.ts's header for the rules it keeps):
  *
@@ -12,10 +19,9 @@
  *   THE FIGURE — an item with a `figure` spec is drawn and stored here, in English and each language it is
  *   translated into, with the figure builder's own pair (scripts/quiz-gen/figures/attach.ts:
  *   `prepareFigure` before the row write, `finishFigure` after the translation rows), so the question's
- *   imageKey/imageAlt and each translation's are set and the review desk's accept rule ("an item that
- *   needs a figure is accepted only once it is drawn") can be met. A figure that cannot be drawn does not
- *   stop the batch: the item is loaded with the reason in its `generation.figureError`, and the desk shows
- *   "Figure failed" with it. An unchanged spec keeps its stored files on a re-run.
+ *   imageKey/imageAlt and each translation's are set and the item is served. A figure that cannot be
+ *   drawn does not stop the batch: the item is loaded with the reason in its `generation.figureError`,
+ *   HELD from pupils (needsFigure with no imageKey), and the desk shows "Figure failed" with it. An unchanged spec keeps its stored files on a re-run.
  *
  *   ONE WAY IN — this is the only writer of a `generated` row; scripts/import-quiz.ts loads the authored
  *   files only.
@@ -63,6 +69,7 @@ export type QueueBatch = {
 export type QueueLoadResult = {
   created: number;
   updated: number;
+  /** Items a person edited or took down on the desk (or the review queue stamped before 11 Oct 2026), left alone. */
   settled: number;
   duplicates: number;
   topicsMade: number;
@@ -135,7 +142,7 @@ export async function loadGeneratedBatches(db: PrismaClient, batches: { file: st
       if (!dry) await db.quizTopic.update({ where: { id: topic.id }, data: { board } });
     }
 
-    const existing = await db.quizQuestion.findMany({ where: { topicId: topic.id }, select: { id: true, stem: true, generated: true, reviewedAt: true, discardedAt: true, imageKey: true, imageSpec: true } });
+    const existing = await db.quizQuestion.findMany({ where: { topicId: topic.id }, select: { id: true, stem: true, generated: true, reviewedAt: true, takenDownAt: true, editedAfterSolvingAt: true, imageKey: true, imageSpec: true } });
     const byStem = new Map(existing.map((q) => [q.stem.trim(), q]));
 
     for (const item of batch.questions) {
@@ -145,7 +152,7 @@ export async function loadGeneratedBatches(db: PrismaClient, batches: { file: st
         result.duplicates++;
         continue;
       }
-      if (found && (found.reviewedAt || found.discardedAt)) {
+      if (found && (found.reviewedAt || found.takenDownAt || found.editedAfterSolvingAt)) {
         result.settled++;
         continue;
       }
@@ -183,8 +190,8 @@ export async function loadGeneratedBatches(db: PrismaClient, batches: { file: st
         generated: true,
         generatedBoard: board,
         generation: generationOf(item, board, figureError),
-        reviewedAt: null,
-        reviewedBy: null,
+        // The serving filter's hold: a figure the item needs and nobody drew keeps it from pupils (quiz-served.ts).
+        needsFigure: item.needsFigure === true,
       };
       if (dry) {
         if (found) result.updated++;

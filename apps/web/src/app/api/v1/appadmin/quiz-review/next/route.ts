@@ -3,7 +3,7 @@ import { requireApiAppAdmin } from "@/lib/tenancy";
 import { nextItem } from "@/lib/quiz-review";
 import { apiFailure, apiInvalid, ok } from "@/lib/api-v1";
 
-/** GET /api/v1/appadmin/quiz-review/next?…&skip=id,id — the first waiting item in the queue's order, or none. */
+/** GET /api/v1/appadmin/quiz-review/next?…&skip=id,id — the next item under the filters in the desk's order, or none. */
 export async function GET(request: Request) {
   try {
     const ctx = await requireApiAppAdmin();

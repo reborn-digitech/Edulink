@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { COLLEGE_CLASS_LEVEL, isCollegeClassLevel, quizReviewQuerySchema, type QuizReviewQuery } from "@edulink/contracts";
+import { COLLEGE_CLASS_LEVEL, isCollegeClassLevel, QUIZ_BANK_STATES, QUIZ_GEN_SUBJECTS, quizReviewQuerySchema, type QuizReviewQuery } from "@edulink/contracts";
 import { requireAppAdmin } from "@/lib/tenancy";
 import { listQueue, nextItem } from "@/lib/quiz-review";
 import { SUBJECT_KEY, type QuizSubject } from "@/lib/quiz";
@@ -10,6 +10,8 @@ import { DataToolbar } from "@/components/ui/data-toolbar";
 import { PageHeader } from "@/components/ui/page-header";
 import { TableScroll } from "@/components/ui/table-scroll";
 import { ReviewDesk } from "./desk";
+import { GenerationCard } from "./generation-card";
+import { deskJobs } from "@/lib/quiz-jobs-desk";
 import { quizBoardKey } from "@/lib/quiz-board";
 
 type Params = Record<string, string | string[] | undefined>;
@@ -22,19 +24,22 @@ function filtersOf(sp: Params): Omit<QuizReviewQuery, "skip"> {
 }
 
 /**
- * The review queue, one page for the content team (/appadmin/quiz-review) and the operator
- * (/root/quiz-review): the counts a reviewer works against (the queue's remaining, under the filter,
- * their own today and in all, the languages still waiting), the filters, the desk with one item, the
- * waiting items by chapter and level in the queue's order, and every reviewer's count.
+ * The generated bank's desk, one page for the content team (/appadmin/quiz-review) and the operator
+ * (/root/quiz-review), as the owner decided on 11 October 2026 (it was the review queue): the bank's
+ * counts (generated, served, taken down, held for a figure, under the filter, the reader's own changes),
+ * the filters, the desk with one item (Edit, Take down, Put back, Skip), the generation card (Start,
+ * Stop, the live line, the model servers), the items by chapter and level in the plan's order, and who
+ * changed what.
  */
 export async function QuizReviewQueuePage({ base, searchParams }: { base: string; searchParams: Promise<Params> }) {
   const session = await requireAppAdmin();
   const t = await getT();
   const query = filtersOf(await searchParams);
-  const [list, first] = await Promise.all([listQueue(session, query), nextItem(session, query)]);
+  const [list, first, jobs] = await Promise.all([listQueue(session, query), nextItem(session, query), deskJobs(session)]);
   const subjectLabel = (s: string) => (s in SUBJECT_KEY ? t(SUBJECT_KEY[s as QuizSubject]) : s);
   const subjectLabels = Object.fromEntries([...new Set([...list.subjects, ...list.groups.map((g) => g.subject), ...(first.item ? [first.item.topic.subject] : [])])].map((s) => [s, subjectLabel(s)]));
   const all = { value: "", label: t("quizReview.all") };
+  const genSubjects = Object.fromEntries(QUIZ_GEN_SUBJECTS.map((s) => [s, subjectLabel(s)]));
   // quiz-board (11 Oct 2026): the board is a code (QUIZ_BOARDS); its name in the reader's language.
   const boardLabel = (b: string) => (quizBoardKey(b) ? t(quizBoardKey(b)!) : b);
   const chapterHref = (topicId: string, board: string | null) => {
@@ -47,12 +52,14 @@ export async function QuizReviewQueuePage({ base, searchParams }: { base: string
       <PageHeader title={t("quizReview.title")} description={t("quizReview.intro")} />
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <StatTile label={t("quizReview.remaining")} value={list.remaining} tone="accent" />
-        <StatTile label={t("quizReview.filteredLabel")} value={list.filtered} />
-        <StatTile label={t("quizReview.mineToday")} value={list.mine.today} tone="ok" />
-        <StatTile label={t("quizReview.mineTotal")} value={list.mine.total} />
+        <StatTile label={t("quizReview.total")} value={list.total} tone="accent" />
+        <StatTile label={t("quizReview.served")} value={list.served} tone="ok" />
+        <StatTile label={t("quizReview.takenDown")} value={list.takenDown} tone={list.takenDown > 0 ? "danger" : "neutral"} />
+        <StatTile label={t("quizReview.held")} value={list.held} tone={list.held > 0 ? "warn" : "neutral"} />
       </div>
-      <p className="text-sm text-fg-muted">{t("quizReview.languagesWaiting", { hi: list.languagesWaiting.hi, mr: list.languagesWaiting.mr })}</p>
+      <p className="text-sm text-fg-muted">
+        {t("quizReview.filtered", { count: list.filtered })} · {t("quizReview.mineToday")}: {list.mine.today} · {t("quizReview.mineTotal")}: {list.mine.total}
+      </p>
 
       <DataToolbar
         facets={[
@@ -67,13 +74,16 @@ export async function QuizReviewQueuePage({ base, searchParams }: { base: string
           },
           { key: "subject", label: t("quizReview.subjectFacet"), value: query.subject ?? "", as: "select", options: [all, ...list.subjects.map((s) => ({ value: s, label: subjectLabel(s) }))], clears: ["topic"] },
           { key: "level", label: t("quizReview.levelFacet"), value: query.level ? String(query.level) : "", as: "select", options: [all, ...[1, 2, 3, 4, 5, 6].map((l) => ({ value: String(l), label: t("quizReview.levelOption", { level: l }) }))] },
+          { key: "state", label: t("quizReview.stateFacet"), value: query.state ?? "", options: [all, ...QUIZ_BANK_STATES.map((st) => ({ value: st, label: t(`quizReview.state${st}`) }))] },
         ]}
         extra={query.topic ? { topic: query.topic } : {}}
         labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
       />
 
       {/* Keyed by the filters: a new filter is a fresh desk on the new queue's first item. */}
-      <ReviewDesk key={JSON.stringify(query)} initial={first} query={query} subjectLabels={subjectLabels} translationsHref="/appadmin/translations" />
+      <ReviewDesk key={JSON.stringify(query)} initial={first} query={query} subjectLabels={subjectLabels} />
+
+      <GenerationCard initial={jobs} subjectLabels={genSubjects} />
 
       {list.groups.length > 0 && (
         <Card>
@@ -89,7 +99,7 @@ export async function QuizReviewQueuePage({ base, searchParams }: { base: string
                         {t("quizReview.levelOption", { level: l })}
                       </th>
                     ))}
-                    <th className="py-2 pl-3 text-right font-medium">{t("quizReview.waitingCol")}</th>
+                    <th className="py-2 pl-3 text-right font-medium">{t("quizReview.itemsCol")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -107,6 +117,7 @@ export async function QuizReviewQueuePage({ base, searchParams }: { base: string
                             {t("quizReview.firstBand")}
                           </Badge>
                         )}
+                        {(g.down > 0 || g.held > 0) && <span className="block text-xs text-warn">{t("quizReview.chapterNote", { down: g.down, held: g.held })}</span>}
                       </td>
                       {g.levels.map((n, i) => (
                         <td key={i} className="px-1 py-2 text-right tabular-nums">
@@ -133,7 +144,7 @@ export async function QuizReviewQueuePage({ base, searchParams }: { base: string
                   <span className="font-medium">
                     {r.name} <Badge tone="outline" size="sm">{t(r.role === "OPERATOR" ? "quizReview.roleOPERATOR" : "quizReview.roleAPP_ADMIN")}</Badge>
                   </span>
-                  <span className="text-fg-muted">{t("quizReview.reviewerCounts", { accepted: r.accepted, discarded: r.discarded, languages: r.languages })}</span>
+                  <span className="text-fg-muted">{t("quizReview.reviewerCounts", { edits: r.edits, takenDown: r.takenDown, putBack: r.putBack })}</span>
                 </li>
               ))}
             </ul>

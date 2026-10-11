@@ -1,48 +1,40 @@
 import type { Prisma } from "@prisma/client";
 
 /**
- * WHAT THE BANK SERVES, in one place (the review queue, 10 October 2026).
+ * WHAT THE BANK SERVES, in one place (the review queue, 10 October 2026; published without review, the
+ * owner's decision of 11 October 2026).
  *
  * The authored bank (`generated` false — the files under content/quiz/, the content team's own
- * questions, the teachers' accepted contributions) is served as it always was: reviewedAt has never
- * gated it, and 6,963 rows carried none on the day this was written.
+ * questions, the teachers' accepted contributions) is served as it always was.
  *
- * A GENERATED item (scripts/quiz-queue.ts loads content/quiz/generated/*.json) is served only once a
- * reviewer has stamped it — reviewedAt, written by src/lib/quiz-review.ts's stamp writer alone. A
- * discarded one keeps reviewedAt null, so it is never served either.
+ * A GENERATED item (scripts/quiz-queue-load.ts loads content/quiz/generated/*.json, from quiz:queue or
+ * the generation job) passed the generator's own checks — the critique, the blind solver, the form
+ * checks, the verifier — and is served the moment it is loaded, its Hindi and Marathi rows with it; no
+ * stamp. Two things keep one from a pupil:
  *
- * Its Hindi or Marathi row is served only once that language is stamped as well (hiReviewedAt /
- * mrReviewedAt); until then the reader falls back to the English, field by field, exactly as an
- * untranslated question does today. The authored bank's drafts stay served unstamped (decision 0002,
- * gap 8): the owner's amendment is about the machine's generated bank, not about a translation a
- * person on the content team saved.
+ *   TAKEN DOWN — `takenDownAt`, written by the bank desk (src/lib/quiz-review.ts) with a coded reason;
+ *   from that moment it is not served anywhere, and Put back clears it. The answers pupils gave stay.
+ *
+ *   HELD FOR ITS FIGURE — the generator asked for a figure (`needsFigure`) and none is stored
+ *   (`imageKey` null): the figure failed to draw on load. Served once the figure is drawn.
  *
  * Every read that hands a question to a pupil — the practice engine (quiz.ts, and through it the
  * phone's /api/v1/practice doors), revision (practice-insights.ts), worksheets (worksheets.ts) — and
- * the content team's bank list and sheet export, spreads SERVED_QUESTION into its where, and reads a
- * translation through servedTranslationWhere.
+ * the content team's bank list and sheet export, spreads SERVED_QUESTION into its where. A
+ * translation is served whenever its question is.
  */
-export const SERVED_QUESTION = { NOT: { generated: true, reviewedAt: null } } satisfies Prisma.QuizQuestionWhereInput;
+export const SERVED_QUESTION = {
+  takenDownAt: null,
+  NOT: { generated: true, needsFigure: true, imageKey: null },
+} satisfies Prisma.QuizQuestionWhereInput;
 
-/** The condition on the translation's question for a row in `language` to be read out to a pupil. */
-export function servedTranslationWhere(language: string): Prisma.QuizQuestionWhereInput {
-  if (language === "hi") return { OR: [{ generated: false }, { hiReviewedAt: { not: null } }] };
-  if (language === "mr") return { OR: [{ generated: false }, { mrReviewedAt: { not: null } }] };
-  // A language the queue has no stamp for: a generated item's row in it is never served.
-  return { generated: false };
+/** The same rule on a row already read, for code that holds the question in hand. */
+export function isServed(q: { generated: boolean; takenDownAt: Date | string | null; needsFigure: boolean; imageKey: string | null }): boolean {
+  if (q.takenDownAt !== null) return false;
+  return !(q.generated && q.needsFigure && !q.imageKey);
 }
 
-/** The same two rules on a row already read, for code that holds the question in hand. */
-export function isServed(q: { generated: boolean; reviewedAt: Date | string | null }): boolean {
-  return !q.generated || q.reviewedAt !== null;
-}
-
-export function isTranslationServed(
-  q: { generated: boolean; hiReviewedAt: Date | string | null; mrReviewedAt: Date | string | null },
-  language: string,
-): boolean {
-  if (!q.generated) return true;
-  if (language === "hi") return q.hiReviewedAt !== null;
-  if (language === "mr") return q.mrReviewedAt !== null;
-  return false;
+/** Held: a generated item that needs a figure nobody has drawn yet. */
+export function isHeldForFigure(q: { generated: boolean; needsFigure: boolean; imageKey: string | null }): boolean {
+  return q.generated && q.needsFigure && !q.imageKey;
 }

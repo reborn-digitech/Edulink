@@ -24,7 +24,9 @@ describe("the desks batch's loose ends", () => {
       const body = dict.quizReview.figurePendingBody;
       expect(body).not.toMatch(/figure builder|चित्र-निर्माता|आकृती-निर्माता/);
     }
-    expect(en.quizReview.figurePendingBody).toMatch(/review queue again/);
+    // quiz-publish-jobs (11 Oct 2026): the review queue is the bank desk now; the sentence says the batch is loaded again and the item is held meanwhile.
+    expect(en.quizReview.figurePendingBody).toMatch(/loaded again/);
+    expect(en.quizReview.figurePendingBody).toMatch(/pupils do not see the item/);
     expect(hi.quizReview.figurePendingBody.trim().endsWith("।")).toBe(true);
     expect(mr.quizReview.figurePendingBody.trim().endsWith(".")).toBe(true);
   });

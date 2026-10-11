@@ -128,6 +128,11 @@ const NO_SCHOOL_POLICY = new Set([
   // the bank belongs to no school and neither do its reviewers, exactly like QuizQuestion.
   "QuizReviewStamp",
   // ---- end review-queue ----
+  // ---- quiz-publish-jobs (11 Oct 2026) ----
+  // One run of the quiz bank generator started from the bank desk by the content team or the operator
+  // (src/lib/quiz-jobs.ts): the bank it fills belongs to no school, and neither do the people who start it.
+  "QuizGenJob",
+  // ---- end quiz-publish-jobs ----
 ]);
 
 /**

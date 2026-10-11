@@ -248,7 +248,7 @@ export async function listBankTopics(session: ActiveContext) {
       orderBy: [{ subject: "asc" }, { classLevel: "asc" }, { position: "asc" }],
       select: { id: true, subject: true, classLevel: true, chapter: true, name: true, slug: true },
     }),
-    // The bank as served: a generated item waiting in the review queue is the queue's, not the bank's (quiz-served.ts).
+    // The bank as served: a generated item taken down on the bank desk, or held for its figure, is not counted (quiz-served.ts).
     db.quizQuestion.groupBy({ by: ["topicId"], where: SERVED_QUESTION, _count: { _all: true } }),
   ]);
   const byTopic = new Map(counts.map((c) => [c.topicId, c._count._all]));
@@ -479,6 +479,9 @@ export async function updateBankQuestion(
     select: { id: true, generated: true, reviewedAt: true },
   });
   if (!existing) return { ok: false, errorKey: "appadmin.noSuchQuestion" };
+  // quiz-publish-jobs (11 Oct 2026): a generated item has ONE writer of its words, the bank desk
+  // (src/lib/quiz-review.ts editItem: audited, all three languages, the edit-after-solving mark).
+  if (existing.generated) return { ok: false, errorKey: "quizReview.editOnDesk" };
 
   const problem = checkQuestionInput(input);
   if (problem) return { ok: false, errorKey: problem };
@@ -491,9 +494,8 @@ export async function updateBankQuestion(
       choices: JSON.stringify(input.choices.map((c) => c.trim())),
       answerIndex: input.answerIndex,
       solution: input.solution.trim(),
-      // A generated item still waiting is served only by the review queue's stamp (quiz-review.ts, the
-      // one writer of its reviewedAt); an edit here leaves it waiting.
-      ...(existing.generated && existing.reviewedAt === null ? {} : { reviewedAt: new Date(), reviewedBy: session.user.id }),
+      reviewedAt: new Date(),
+      reviewedBy: session.user.id,
     },
   });
 
@@ -528,9 +530,12 @@ export async function deleteBankQuestion(
 
   const existing = await db.quizQuestion.findUnique({
     where: { id: questionId },
-    select: { id: true, topic: { select: { slug: true } } },
+    select: { id: true, generated: true, topic: { select: { slug: true } } },
   });
   if (!existing) return { ok: false, errorKey: "appadmin.noSuchQuestion" };
+  // quiz-publish-jobs (11 Oct 2026): a generated item is taken down on the bank desk, never deleted, so
+  // the answers pupils gave stay attached to it and Put back can restore it.
+  if (existing.generated) return { ok: false, errorKey: "quizReview.editOnDesk" };
 
   await db.quizQuestion.delete({ where: { id: questionId } });
 

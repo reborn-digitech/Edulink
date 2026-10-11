@@ -5,7 +5,7 @@ import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { clampLevel, normaliseLanguage, TIER_NAMES, type QuizSubject } from "./quiz";
 import type { ActiveContext } from "./session";
-import { SERVED_QUESTION, servedTranslationWhere } from "./quiz-served";
+import { SERVED_QUESTION } from "./quiz-served";
 
 /**
  * Worksheets off the question bank: a teacher picks a chapter, a rung and a
@@ -67,7 +67,7 @@ export async function buildWorksheet(
   // Ids only for the whole pool, then rows for the chosen few — the same
   // shape the serving path uses to stay flat as the bank grows.
   const pool = await db.quizQuestion.findMany({
-    // Served questions only: a generated item waiting in the review queue never reaches a sheet (quiz-served.ts).
+    // Served questions only: a generated item taken down on the bank desk, or held for its figure, never reaches a sheet (quiz-served.ts).
     where: { topicId: topic.id, difficulty: level, ...SERVED_QUESTION },
     select: { id: true },
   });
@@ -88,7 +88,7 @@ export async function buildWorksheet(
     language === "en"
       ? Promise.resolve([])
       : db.quizQuestionTranslation.findMany({
-          where: { questionId: { in: chosenIds }, language, question: servedTranslationWhere(language) },
+          where: { questionId: { in: chosenIds }, language },
           select: { questionId: true, stem: true, choices: true, solution: true },
         }),
   ]);

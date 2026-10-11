@@ -7,9 +7,9 @@ export async function generateMetadata() {
 }
 
 /**
- * The generated bank's review queue for the operator, inside the operator's own frame (the layout
- * asks for the superuser). The same queue, the same stamps and the same counts as the content team's
- * /appadmin/quiz-review; a stamp made here records the role OPERATOR.
+ * The generated bank's desk for the operator, inside the operator's own frame (the layout asks for the
+ * superuser). The same bank, the same acts and the same generation card as the content team's
+ * /appadmin/quiz-review; an edit or a take-down made here records the role OPERATOR.
  */
 export default function RootQuizReviewPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   return <QuizReviewQueuePage base="/root/quiz-review" searchParams={searchParams} />;

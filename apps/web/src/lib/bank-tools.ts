@@ -171,7 +171,7 @@ export async function exportBank(session: ActiveContext, filter: BankExportFilte
   assertAppAdmin(session);
   const questions = await db.quizQuestion.findMany({
     where: {
-      // The bank as served; the review queue's waiting items are not in the sheet (quiz-served.ts).
+      // The bank as served; an item taken down or held for its figure is not in the sheet (quiz-served.ts).
       ...SERVED_QUESTION,
       topic: {
         retiredAt: null,

@@ -3,7 +3,7 @@ import { requireApiAppAdmin } from "@/lib/tenancy";
 import { listQueue } from "@/lib/quiz-review";
 import { apiFailure, apiInvalid, ok } from "@/lib/api-v1";
 
-/** GET /api/v1/appadmin/quiz-review?board=&grade=&subject=&topic=&level= — the queue by chapter and level, and the counts. */
+/** GET /api/v1/appadmin/quiz-review?board=&grade=&subject=&topic=&level=&state= — the generated bank by chapter and level, and the counts. */
 export async function GET(request: Request) {
   try {
     const ctx = await requireApiAppAdmin();

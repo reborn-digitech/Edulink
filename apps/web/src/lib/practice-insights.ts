@@ -3,9 +3,9 @@ import { db } from "./db";
 import { AccessError, assertClassAccess, assertGuardianAccess } from "./tenancy";
 import type { ActiveContext } from "./session";
 import { clampLevel, MAX_LEVEL, MIN_LEVEL, PROMOTE_AFTER, schoolQuizBoard, startAttempt, TIER_NAMES, type QuizLanguage } from "./quiz";
+import { SERVED_QUESTION } from "./quiz-served";
 import { asQuizBoard, type QuizBoard } from "@edulink/contracts"; // quiz-board (11 Oct 2026)
 import { normaliseLocale } from "./i18n/locales";
-import { servedTranslationWhere } from "./quiz-served";
 import { servedFigure, type ServedFigure } from "./quiz-figure";
 import { audit } from "./audit";
 
@@ -204,7 +204,8 @@ export async function revisionQueue(
   if (due.length === 0) return [];
 
   const questions = await db.quizQuestion.findMany({
-    where: { id: { in: due } },
+    // quiz-publish-jobs (11 Oct 2026): an item taken down on the bank desk leaves the revision queue at once (quiz-served.ts).
+    where: { id: { in: due }, ...SERVED_QUESTION },
     select: { id: true, topic: topicWithTranslation(language) },
   });
   const byId = new Map(questions.map((q) => [q.id, q]));
@@ -236,18 +237,19 @@ export async function reviseQuestion(
   });
   if (!prior) throw new AccessError("access.questionNotFound", "NOT_FOUND");
 
-  const question = await db.quizQuestion.findUniqueOrThrow({
-    where: { id: questionId },
+  // quiz-publish-jobs (11 Oct 2026): a question taken down (or held for its figure) is not re-served either.
+  const question = await db.quizQuestion.findFirst({
+    where: { id: questionId, ...SERVED_QUESTION },
     // figures (10 Oct 2026): a re-served question keeps its figure, or a figure question could not be answered.
     select: { id: true, stem: true, choices: true, difficulty: true, imageKey: true, imageAlt: true, topic: { select: { slug: true } } },
   });
+  if (!question) throw new AccessError("access.questionNotFound", "NOT_FOUND");
   const lang = normaliseLocale(language);
   const tr =
     lang === "en"
       ? null
       : await db.quizQuestionTranslation.findFirst({
-          // A generated item's language row only once a reviewer stamped it (quiz-served.ts).
-          where: { questionId, language: lang, question: servedTranslationWhere(lang) },
+          where: { questionId, language: lang },
           select: { stem: true, choices: true, imageKey: true, imageAlt: true },
         });
   const original = JSON.parse(question.choices) as string[];

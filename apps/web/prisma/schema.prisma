@@ -3281,28 +3281,37 @@ model QuizQuestion {
   @@index([imageKey])
   // ---- end figures ----
 
-  // ---- review-queue (the generated bank's review queue, 10 October 2026) ----
-  /// Written by scripts/quiz-queue.ts from content/quiz/generated/*.json, never by the authored
-  /// bank's importer. A generated item is NOT SERVED until `reviewedAt` is set, which only the review
-  /// queue's stamp writer does (src/lib/quiz-review.ts); its Hindi or Marathi row is served only once
-  /// `hiReviewedAt` / `mrReviewedAt` is set the same way. The authored bank (false) is served as before.
-  /// The one serving filter is src/lib/quiz-served.ts.
+  // ---- review-queue (the generated bank's review queue, 10 October 2026), as the owner changed it on
+  // 11 October 2026 (quiz-publish-jobs): PUBLISHED WITHOUT REVIEW, taken down afterwards ----
+  /// Written by scripts/quiz-queue-load.ts (quiz:queue and the generation job) from
+  /// content/quiz/generated/*.json, never by the authored bank's importer. A generated item that passed
+  /// the generator's own checks is SERVED the moment it is loaded, with its Hindi and Marathi rows; the
+  /// operator or the content team may take it down afterwards (takenDownAt) or edit it. The one serving
+  /// filter is src/lib/quiz-served.ts.
   generated            Boolean   @default(false)
-  /// "NCERT", "Balbharati": the board of the book the item was generated against, for the queue's filter.
+  /// "NCERT", "BALBHARATI": the board of the book the item was generated against, for the desk's filter.
   generatedBoard       String?
-  /// JSON (String, as the bank stores JSON): the reviewer's material the generator kept — the
-  /// distractor reasons, the solver's five answers, the level flag, the critique, the figure spec and
-  /// needsFigure, the edition, the model, the time, the translations' critiques. Never shown to a pupil.
+  /// JSON (String, as the bank stores JSON): the material the generator kept — the distractor reasons,
+  /// the solver's five answers, the level flag, the critique, the figure spec and needsFigure, the
+  /// edition, the model, the time, the translations' critiques. Never shown to a pupil.
   generation           String?
-  /// Thrown away from the queue with a coded reason (QUIZ_DISCARD_REASONS); never served, kept so the
-  /// generator's next run can count it and a duplicate is not imported again.
-  discardedAt          DateTime?
-  discardReason        String?
-  /// A reviewer edited the English before accepting it: the solver's answers were given to the old words.
+  /// TAKEN DOWN by the operator or the content team with a coded reason (QUIZ_TAKEDOWN_REASONS): not
+  /// served from that moment, the answers pupils gave kept; put back by clearing it. Written only by
+  /// src/lib/quiz-review.ts (the bank desk), with a QuizReviewStamp row in the same transaction.
+  /// (Renamed from discardedAt / discardReason, the review queue's discard, on 11 October 2026.)
+  takenDownAt          DateTime?
+  takenDownReason      String?
+  takenDownBy          String?
+  /// The item's figure must be drawn before a pupil sees it (the generator asked for one): an item
+  /// whose figure failed to draw is loaded but held until imageKey is set. A stored copy of the
+  /// `generation` JSON's needsFigure, written only by the loader (scripts/quiz-queue-load.ts).
+  needsFigure          Boolean   @default(false)
+  /// Edited on the desk after the generator's blind solver answered it: the solver's answers were
+  /// given to the old words.
   editedAfterSolvingAt DateTime?
   reviewStamps         QuizReviewStamp[]
 
-  @@index([generated, reviewedAt, discardedAt])
+  @@index([generated, takenDownAt])
   // ---- end review-queue ----
 
   createdAt DateTime @default(now())
@@ -5899,9 +5908,10 @@ model LessonPlanTemplate {
 /// a contradiction. `grade` 0 is "no grade recorded" (an answer by a pupil
 /// with no form group, or one that predates QuizResponse.gradeLevel).
 // ---- review-queue (the generated bank's review queue, 10 October 2026) ----
-/// One act of review on one bank question: the ONE record of who accepted, edited, discarded or
-/// stamped a language, written only by src/lib/quiz-review.ts's writer, which sets the question's
-/// reviewedAt / hiReviewedAt / mrReviewedAt / discardedAt in the same transaction. Reviewers are the
+/// One act on one generated bank question: the ONE record of who edited it, took it down or put it back
+/// (and, before 11 October 2026, who accepted, discarded or stamped a language, kept as history),
+/// written only by src/lib/quiz-review.ts's writer, which changes the question in the same transaction.
+/// The native-review page's language stamp (translation-review.ts) is recorded here too. Reviewers are the
 /// app admins and the operator (the owner, 10 October 2026); neither has a school, and the bank has
 /// none, so no schoolId (NO_SCHOOL_POLICY in scripts/gen-rls.ts). The reviewer's id is kept without a
 /// foreign key, as QuizQuestion.reviewedBy is: a stamp outlives an account taken off the content team.
@@ -5913,11 +5923,12 @@ model QuizReviewStamp {
   role           String
   /// null for the English item; "hi" or "mr" for a language stamp.
   language       String?
-  /// ACCEPT | EDIT_ACCEPT | DISCARD | STAMP_TRANSLATION | UNSTAMP_TRANSLATION (packages/contracts QUIZ_REVIEW_ACTIONS)
+  /// EDIT | TAKE_DOWN | PUT_BACK, and the history's ACCEPT | EDIT_ACCEPT | DISCARD | STAMP_TRANSLATION |
+  /// UNSTAMP_TRANSLATION (packages/contracts QUIZ_REVIEW_ACTIONS)
   action         String
-  /// A DISCARD's coded reason (QUIZ_DISCARD_REASONS).
+  /// A TAKE_DOWN's (or an old DISCARD's) coded reason (QUIZ_TAKEDOWN_REASONS).
   reason         String?
-  /// An EDIT_ACCEPT's English as it stood before the edit, JSON: the edit's audit.
+  /// An EDIT's (or an old EDIT_ACCEPT's) words as they stood before, JSON: the edit's audit.
   before         String?
   at             DateTime @default(now())
 
@@ -5928,6 +5939,43 @@ model QuizReviewStamp {
 }
 
 // ---- end review-queue ----
+
+// ---- quiz-publish-jobs (generation started and stopped from the bank desk, 11 October 2026) ----
+/// ONE RUN of the quiz bank generator started from /appadmin/quiz-review or /root/quiz-review: who
+/// started it, what was asked, where it stands, and the pid of the detached runner (the generator's CLI
+/// with --job, scripts/quiz-gen/job.ts) that writes its progress here after every item. One running at a
+/// time: `active` is true while QUEUED, RUNNING or STOPPING and null after, and the unique index makes a
+/// second active row impossible. Written only by src/lib/quiz-jobs.ts. Neither the bank nor its operators
+/// have a school, so no schoolId (NO_SCHOOL_POLICY in scripts/gen-rls.ts).
+model QuizGenJob {
+  id              String    @id @default(cuid())
+  /// QUEUED | RUNNING | STOPPING | STOPPED | FINISHED | FAILED (packages/contracts QUIZ_GEN_JOB_STATES)
+  state           String    @default("QUEUED")
+  /// true while the run is QUEUED, RUNNING or STOPPING; null once it ends. Unique: one at a time.
+  active          Boolean?  @unique
+  /// The request as the desk sent it (quizGenRequestSchema), JSON.
+  request         Json
+  /// The live line (quizGenProgressSchema), JSON, rewritten after every item.
+  progress        Json?
+  /// The detached runner's process id on this machine, while it runs.
+  pid             Int?
+  /// The model servers this run brought up ("chat", "embed"): the run takes exactly these down with it.
+  startedServers  String[]  @default([])
+  startedByUserId String
+  /// APP_ADMIN | OPERATOR, as the person stood when they pressed Start.
+  startedByRole   String
+  stopRequestedBy String?
+  /// Why a run FAILED (a dead runner, a model that never came up, an error), in words.
+  error           String?
+  createdAt       DateTime  @default(now())
+  startedAt       DateTime?
+  finishedAt      DateTime?
+  /// The runner's heartbeat: written every half minute and with every progress line.
+  heartbeatAt     DateTime?
+
+  @@index([createdAt])
+}
+// ---- end quiz-publish-jobs ----
 
 model QuestionStat {
   id         String   @id @default(cuid())

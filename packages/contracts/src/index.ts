@@ -264,3 +264,6 @@ export * from "./v1/quiz-figure";
 // ---- quiz-board (the practice bank's board, 11 Oct 2026): NCERT or Balbharati, the school's first.
 export * from "./v1/quiz-board";
 // ---- end quiz-board ----
+// ---- quiz-publish-jobs (generation started and stopped from the bank desk, the model servers' state, 11 Oct 2026).
+export * from "./v1/quiz-jobs";
+// ---- end quiz-publish-jobs ----

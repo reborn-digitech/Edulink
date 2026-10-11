@@ -2,8 +2,9 @@ import "server-only";
 import { fixtureTopicsWhere, reviewerSeesFixtureTopics } from "./quiz-fixtures";
 import type { Prisma } from "@prisma/client";
 import {
-  QUIZ_DISCARD_REASONS,
-  type QuizDiscardReason,
+  QUIZ_TAKEDOWN_REASONS,
+  type QuizBankStanding,
+  type QuizBankState,
   type QuizReviewAction,
   type QuizReviewEditBody,
   type QuizReviewItem,
@@ -11,7 +12,7 @@ import {
   type QuizReviewNext,
   type QuizReviewQuery,
   type QuizReviewRole,
-  type QuizReviewStamped,
+  type QuizTakeDownReason,
 } from "@edulink/contracts";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
@@ -23,32 +24,49 @@ import { evaluate, numberIn } from "../../scripts/quiz-arith";
 import type { ActiveContext } from "./session";
 
 /**
- * THE GENERATED BANK'S REVIEW QUEUE (docs/plans/assistant-and-quiz-bank.md, Phase 1 "Output and
- * review", as the owner amended it on 10 October 2026).
+ * THE GENERATED BANK'S DESK (docs/plans/assistant-and-quiz-bank.md, Phase 1 "Output and review"), as
+ * the owner decided on 11 October 2026: the generator's items are PUBLISHED WITHOUT REVIEW — loaded by
+ * scripts/quiz-queue-load.ts and served at once with their Hindi and Marathi (src/lib/quiz-served.ts) —
+ * and the app admins and the operator, never teachers, walk the bank afterwards at /appadmin/quiz-review
+ * and /root/quiz-review (it was the review queue, 10–11 October). This module is THE ONE WRITER of what
+ * the desk does to an item, each act a QuizReviewStamp row (who, as which role, what, why, the words
+ * before) written in the same transaction as the change the serving filter reads:
  *
- * scripts/quiz-queue.ts loads the generator's files (content/quiz/generated/*.json) into QuizQuestion
- * as `generated` rows with reviewedAt null; src/lib/quiz-served.ts keeps every such row away from a
- * pupil until it is stamped. This module is the queue the app admins and the operator work through —
- * never teachers — and THE ONE WRITER of a review: each act is a QuizReviewStamp row (who, as which
- * role, which language, what, why, when) written in the same transaction as the column the serving
- * filter reads:
+ *   EDIT       → the English and, when sent, the Hindi and Marathi rows (all three languages, one
+ *                writer: the bank editor and the translations page refuse a generated item); the solver's
+ *                answers kept with editedAfterSolvingAt when the English changed
+ *   TAKE_DOWN  → takenDownAt / takenDownReason / takenDownBy: not served from that moment
+ *   PUT_BACK   → those three cleared: served again
  *
- *   ACCEPT, EDIT_ACCEPT   → reviewedAt / reviewedBy (one stamp serves the English item)
- *   DISCARD               → discardedAt / discardReason (never served, never queued again)
- *   STAMP_TRANSLATION     → hiReviewedAt / mrReviewedAt (the language row is served from then on)
- *   UNSTAMP_TRANSLATION   → the language column back to null
+ * The answers pupils gave (QuestionStat, QuizResponse) stay attached to a taken-down item. The review
+ * queue's stamps (ACCEPT, EDIT_ACCEPT, DISCARD and the language stamps) stay as the items' history.
  *
- * The native-review page (/appadmin/translations, translation-review.ts) stamps a language through
- * `writeLanguageStamp` below, so a Hindi stamp made there is the same row as one made here.
+ * The native-review page (/appadmin/translations, translation-review.ts) stamps an AUTHORED question's
+ * language through `writeLanguageStamp` below.
  *
- * The queue's order is the plan's (section 8 item 9): grades 6 to 10 mathematics and science first,
- * then the rest; within each band by grade, subject, the chapter's position, the level and the id.
+ * The walk's order is the plan's (section 8 item 9): grades 6 to 10 mathematics and science first, then
+ * the rest; within each band by grade, subject, the chapter's position, the level and the id.
  */
 
 export const FIRST_BAND = { classLevel: { gte: 6, lte: 10 }, subject: { in: ["MATHS", "SCIENCE"] } } satisfies Prisma.QuizTopicWhereInput;
 
-/** Waiting: generated, neither stamped nor discarded, in a chapter that still lists. */
-export const WAITING = { generated: true, reviewedAt: null, discardedAt: null, topic: { retiredAt: null } } satisfies Prisma.QuizQuestionWhereInput;
+/** The desk's bank: every generated item in a chapter that still lists, served or not. */
+export const BANK = { generated: true, topic: { retiredAt: null } } satisfies Prisma.QuizQuestionWhereInput;
+
+/** Held: the figure the item needs is not drawn (src/lib/quiz-served.ts). */
+const HELD = { takenDownAt: null, needsFigure: true, imageKey: null } satisfies Prisma.QuizQuestionWhereInput;
+
+export function stateWhere(state: QuizBankState): Prisma.QuizQuestionWhereInput {
+  if (state === "DOWN") return { takenDownAt: { not: null } };
+  if (state === "HELD") return HELD;
+  return { takenDownAt: null, NOT: { needsFigure: true, imageKey: null } };
+}
+
+export function stateOfRow(row: { takenDownAt: Date | null; needsFigure: boolean; imageKey: string | null }): QuizBankState {
+  if (row.takenDownAt) return "DOWN";
+  if (row.needsFigure && !row.imageKey) return "HELD";
+  return "SERVED";
+}
 
 const ORDER: Prisma.QuizQuestionOrderByWithRelationInput[] = [
   { topic: { classLevel: "asc" } },
@@ -60,6 +78,8 @@ const ORDER: Prisma.QuizQuestionOrderByWithRelationInput[] = [
 
 const MAX_SKIP = 200;
 const MAX_GROUPS = 300;
+/** The acts the desk writes, counted per person. */
+const DESK_ACTIONS = ["EDIT", "TAKE_DOWN", "PUT_BACK"] as const;
 
 class Refusal extends Error {
   constructor(readonly errorKey: TranslationKey) {
@@ -67,7 +87,7 @@ class Refusal extends Error {
   }
 }
 
-/** The reviewer's standing: the content team, or the operator (who passes the content team's gate too). */
+/** The person's standing at the desk: the content team, or the operator (who passes the content team's gate too). */
 export function reviewerRole(session: ActiveContext): QuizReviewRole {
   assertAppAdmin(session);
   return session.user.isSuperuser ? "OPERATOR" : "APP_ADMIN";
@@ -90,10 +110,11 @@ function filterWhere(q: Omit<QuizReviewQuery, "skip">): Prisma.QuizQuestionWhere
   if (q.topic) and.push({ topicId: q.topic });
   if (q.level) and.push({ difficulty: q.level });
   if (q.grade || q.subject) and.push({ topic: { ...(q.grade ? { classLevel: q.grade } : {}), ...(q.subject ? { subject: q.subject } : {}) } });
+  if (q.state) and.push(stateWhere(q.state));
   return and;
 }
 
-/** Midnight in India, as an instant: "today" for a reviewer's count. */
+/** Midnight in India, as an instant: "today" for a person's count. */
 export function startOfIndianDay(now = new Date()): Date {
   const offset = 330 * 60_000;
   const local = new Date(now.getTime() + offset);
@@ -185,17 +206,15 @@ const ITEM_SELECT = {
   generation: true,
   imageKey: true,
   imageAlt: true,
+  needsFigure: true,
   editedAfterSolvingAt: true,
-  reviewedAt: true,
-  discardedAt: true,
-  discardReason: true,
-  hiReviewedAt: true,
-  hiReviewedBy: true,
-  mrReviewedAt: true,
-  mrReviewedBy: true,
+  takenDownAt: true,
+  takenDownReason: true,
+  takenDownBy: true,
   topic: { select: { id: true, name: true, chapter: true, subject: true, classLevel: true } },
   translations: { where: { language: { in: ["hi", "mr"] } }, select: { language: true, stem: true, choices: true, solution: true, updatedAt: true } },
   reviewStamps: { orderBy: { at: "asc" }, take: 50, select: { action: true, language: true, reason: true, reviewerUserId: true, role: true, at: true } },
+  stats: { select: { asked: true, correct: true } },
 } satisfies Prisma.QuizQuestionSelect;
 
 type ItemRow = Prisma.QuizQuestionGetPayload<{ select: typeof ITEM_SELECT }>;
@@ -207,16 +226,14 @@ async function namesOf(ids: (string | null)[]): Promise<Map<string, string>> {
   return new Map(users.map((u) => [u.id, u.preferredName ?? u.name]));
 }
 
-const asReason = (r: string | null): QuizDiscardReason | null => ((QUIZ_DISCARD_REASONS as readonly string[]).includes(r ?? "") ? (r as QuizDiscardReason) : null);
+const asReason = (r: string | null): QuizTakeDownReason | null => ((QUIZ_TAKEDOWN_REASONS as readonly string[]).includes(r ?? "") ? (r as QuizTakeDownReason) : null);
 
 async function toItem(row: ItemRow): Promise<QuizReviewItem> {
   const g = readGeneration(row.generation);
-  const names = await namesOf([...row.reviewStamps.map((s) => s.reviewerUserId), row.hiReviewedBy, row.mrReviewedBy]);
+  const names = await namesOf([...row.reviewStamps.map((s) => s.reviewerUserId), row.takenDownBy]);
   const translation = (language: "hi" | "mr") => {
     const t = row.translations.find((x) => x.language === language);
     if (!t) return null;
-    const at = language === "hi" ? row.hiReviewedAt : row.mrReviewedAt;
-    const by = language === "hi" ? row.hiReviewedBy : row.mrReviewedBy;
     const extra = g.translations?.[language];
     return {
       stem: t.stem,
@@ -225,8 +242,6 @@ async function toItem(row: ItemRow): Promise<QuizReviewItem> {
       imageAlt: extra?.imageAlt ?? null,
       critique: extra?.critique ?? null,
       flag: extra?.flag ?? null,
-      stampedAt: at?.toISOString() ?? null,
-      stampedBy: by ? (names.get(by) ?? null) : null,
       stale: row.editedAfterSolvingAt !== null && t.updatedAt < row.editedAfterSolvingAt,
     };
   };
@@ -249,14 +264,16 @@ async function toItem(row: ItemRow): Promise<QuizReviewItem> {
     model: g.model ?? null,
     generatedAt: g.generatedAt ?? null,
     figure: g.figure ?? null,
-    needsFigure: g.needsFigure === true,
+    needsFigure: row.needsFigure || g.needsFigure === true,
     imageKey: row.imageKey,
     imageAlt: row.imageAlt,
     figureError: g.figureError ?? null,
     editedAfterSolvingAt: row.editedAfterSolvingAt?.toISOString() ?? null,
-    reviewedAt: row.reviewedAt?.toISOString() ?? null,
-    discardedAt: row.discardedAt?.toISOString() ?? null,
-    discardReason: asReason(row.discardReason),
+    state: stateOfRow(row),
+    takenDownAt: row.takenDownAt?.toISOString() ?? null,
+    takenDownReason: asReason(row.takenDownReason),
+    takenDownBy: row.takenDownBy ? (names.get(row.takenDownBy) ?? null) : null,
+    answers: { asked: row.stats.reduce((n, s) => n + s.asked, 0), correct: row.stats.reduce((n, s) => n + s.correct, 0) },
     translations: { hi: translation("hi"), mr: translation("mr") },
     stamps: row.reviewStamps.map((s) => ({
       action: s.action as QuizReviewAction,
@@ -269,25 +286,29 @@ async function toItem(row: ItemRow): Promise<QuizReviewItem> {
   };
 }
 
-/** The queue by chapter and level, with the counts a reviewer works against. */
+/** The generated bank by chapter and level under the filter, with the counts the desk works against. */
 export async function listQueue(session: ActiveContext, query: Omit<QuizReviewQuery, "skip"> = {}): Promise<QuizReviewList> {
   reviewerRole(session);
   const scope = await fixtureScope(session);
-  const waiting: Prisma.QuizQuestionWhereInput = { AND: [WAITING, ...scope] };
-  const filtered: Prisma.QuizQuestionWhereInput = { AND: [WAITING, ...scope, ...filterWhere(query)] };
+  const bank: Prisma.QuizQuestionWhereInput = { AND: [BANK, ...scope] };
+  const filtered: Prisma.QuizQuestionWhereInput = { AND: [BANK, ...scope, ...filterWhere(query)] };
   const dayStart = startOfIndianDay();
+  const mineWhere = { reviewerUserId: session.user.id, action: { in: [...DESK_ACTIONS] } };
 
-  const [remaining, filteredCount, hiWaiting, mrWaiting, byGroup, everyTopic, boardRows, myToday, myTotal, perReviewer] = await Promise.all([
-    db.quizQuestion.count({ where: waiting }),
+  const [total, served, takenDown, held, filteredCount, byGroup, downByTopic, heldByTopic, everyTopic, boardRows, myToday, myTotal, perReviewer] = await Promise.all([
+    db.quizQuestion.count({ where: bank }),
+    db.quizQuestion.count({ where: { AND: [bank, stateWhere("SERVED")] } }),
+    db.quizQuestion.count({ where: { AND: [bank, stateWhere("DOWN")] } }),
+    db.quizQuestion.count({ where: { AND: [bank, stateWhere("HELD")] } }),
     db.quizQuestion.count({ where: filtered }),
-    db.quizQuestion.count({ where: { AND: [{ generated: true, reviewedAt: { not: null }, discardedAt: null, hiReviewedAt: null, translations: { some: { language: "hi" } } }, ...scope] } }),
-    db.quizQuestion.count({ where: { AND: [{ generated: true, reviewedAt: { not: null }, discardedAt: null, mrReviewedAt: null, translations: { some: { language: "mr" } } }, ...scope] } }),
     db.quizQuestion.groupBy({ by: ["topicId", "generatedBoard", "difficulty"], where: filtered, _count: { _all: true } }),
-    db.quizQuestion.groupBy({ by: ["topicId"], where: waiting, _count: { _all: true } }),
+    db.quizQuestion.groupBy({ by: ["topicId", "generatedBoard"], where: { AND: [filtered, stateWhere("DOWN")] }, _count: { _all: true } }),
+    db.quizQuestion.groupBy({ by: ["topicId", "generatedBoard"], where: { AND: [filtered, stateWhere("HELD")] }, _count: { _all: true } }),
+    db.quizQuestion.groupBy({ by: ["topicId"], where: bank, _count: { _all: true } }),
     db.quizQuestion.groupBy({ by: ["generatedBoard"], where: { generated: true } }),
-    db.quizReviewStamp.count({ where: { reviewerUserId: session.user.id, action: { not: "UNSTAMP_TRANSLATION" }, at: { gte: dayStart } } }),
-    db.quizReviewStamp.count({ where: { reviewerUserId: session.user.id, action: { not: "UNSTAMP_TRANSLATION" } } }),
-    db.quizReviewStamp.groupBy({ by: ["reviewerUserId", "role", "action"], _count: { _all: true } }),
+    db.quizReviewStamp.count({ where: { ...mineWhere, at: { gte: dayStart } } }),
+    db.quizReviewStamp.count({ where: mineWhere }),
+    db.quizReviewStamp.groupBy({ by: ["reviewerUserId", "role", "action"], where: { action: { in: [...DESK_ACTIONS] } }, _count: { _all: true } }),
   ]);
 
   const topicIds = [...new Set([...byGroup.map((g) => g.topicId), ...everyTopic.map((g) => g.topicId)])];
@@ -295,12 +316,15 @@ export async function listQueue(session: ActiveContext, query: Omit<QuizReviewQu
     ? await db.quizTopic.findMany({ where: { id: { in: topicIds } }, select: { id: true, name: true, chapter: true, subject: true, classLevel: true, position: true } })
     : [];
   const topicById = new Map(topics.map((t) => [t.id, t]));
+  const keyOf = (topicId: string, board: string | null) => `${topicId}|${board ?? ""}`;
+  const downOf = new Map(downByTopic.map((g) => [keyOf(g.topicId, g.generatedBoard), g._count._all]));
+  const heldOf = new Map(heldByTopic.map((g) => [keyOf(g.topicId, g.generatedBoard), g._count._all]));
 
   const groups = new Map<string, QuizReviewList["groups"][number] & { position: number }>();
   for (const g of byGroup) {
     const topic = topicById.get(g.topicId);
     if (!topic) continue;
-    const key = `${g.topicId}|${g.generatedBoard ?? ""}`;
+    const key = keyOf(g.topicId, g.generatedBoard);
     const row = groups.get(key) ?? {
       board: g.generatedBoard,
       topicId: topic.id,
@@ -310,6 +334,8 @@ export async function listQueue(session: ActiveContext, query: Omit<QuizReviewQu
       name: topic.name,
       levels: [0, 0, 0, 0, 0, 0],
       total: 0,
+      down: downOf.get(key) ?? 0,
+      held: heldOf.get(key) ?? 0,
       first: inFirstBand(topic),
       position: topic.position,
     };
@@ -320,47 +346,49 @@ export async function listQueue(session: ActiveContext, query: Omit<QuizReviewQu
   const ordered = [...groups.values()]
     .sort((a, b) => Number(b.first) - Number(a.first) || a.grade - b.grade || a.subject.localeCompare(b.subject) || a.position - b.position || (a.board ?? "").localeCompare(b.board ?? ""))
     .slice(0, MAX_GROUPS)
-    .map((g) => ({ board: g.board, topicId: g.topicId, subject: g.subject, grade: g.grade, chapter: g.chapter, name: g.name, levels: g.levels, total: g.total, first: g.first }));
+    .map((g) => ({ board: g.board, topicId: g.topicId, subject: g.subject, grade: g.grade, chapter: g.chapter, name: g.name, levels: g.levels, total: g.total, down: g.down, held: g.held, first: g.first }));
 
-  const reviewers = new Map<string, { role: QuizReviewRole; accepted: number; discarded: number; languages: number }>();
+  const reviewers = new Map<string, { role: QuizReviewRole; edits: number; takenDown: number; putBack: number }>();
   for (const r of perReviewer) {
-    const row = reviewers.get(r.reviewerUserId) ?? { role: r.role === "OPERATOR" ? "OPERATOR" : "APP_ADMIN", accepted: 0, discarded: 0, languages: 0 };
-    if (r.action === "ACCEPT" || r.action === "EDIT_ACCEPT") row.accepted += r._count._all;
-    else if (r.action === "DISCARD") row.discarded += r._count._all;
-    else if (r.action === "STAMP_TRANSLATION") row.languages += r._count._all;
+    const row = reviewers.get(r.reviewerUserId) ?? { role: r.role === "OPERATOR" ? "OPERATOR" : "APP_ADMIN", edits: 0, takenDown: 0, putBack: 0 };
+    if (r.action === "EDIT") row.edits += r._count._all;
+    else if (r.action === "TAKE_DOWN") row.takenDown += r._count._all;
+    else if (r.action === "PUT_BACK") row.putBack += r._count._all;
     reviewers.set(r.reviewerUserId, row);
   }
   const names = await namesOf([...reviewers.keys()]);
 
   return {
-    remaining,
+    total,
+    served,
+    takenDown,
+    held,
     filtered: filteredCount,
-    languagesWaiting: { hi: hiWaiting, mr: mrWaiting },
     boards: boardRows.map((b) => b.generatedBoard).filter((b): b is string => !!b).sort(),
     subjects: [...new Set(everyTopic.map((g) => topicById.get(g.topicId)?.subject).filter((s): s is string => !!s))].sort(),
     groups: ordered,
     mine: { today: myToday, total: myTotal },
     reviewers: [...reviewers.entries()]
       .map(([id, r]) => ({ name: names.get(id) ?? "—", ...r }))
-      .sort((a, b) => b.accepted + b.discarded + b.languages - (a.accepted + a.discarded + a.languages))
+      .sort((a, b) => b.edits + b.takenDown + b.putBack - (a.edits + a.takenDown + a.putBack))
       .slice(0, 50),
   };
 }
 
-/** The first waiting item under the filter, skipping those skipped this sitting: the first band, then the rest. */
+/** The next item under the filter, skipping those skipped this sitting: the first band, then the rest. */
 export async function nextItem(session: ActiveContext, query: QuizReviewQuery = {}): Promise<QuizReviewNext> {
   reviewerRole(session);
   const skip = parseSkip(query.skip);
   const scope = await fixtureScope(session);
-  const base: Prisma.QuizQuestionWhereInput[] = [WAITING, ...scope, ...filterWhere(query), ...(skip.length ? [{ id: { notIn: skip } }] : [])];
+  const base: Prisma.QuizQuestionWhereInput[] = [BANK, ...scope, ...filterWhere(query), ...(skip.length ? [{ id: { notIn: skip } }] : [])];
   const pick = async (band: Prisma.QuizQuestionWhereInput) =>
     db.quizQuestion.findFirst({ where: { AND: [...base, band] }, orderBy: ORDER, select: ITEM_SELECT });
   const row = (await pick({ topic: FIRST_BAND })) ?? (await pick({ NOT: { topic: FIRST_BAND } }));
-  const remaining = await db.quizQuestion.count({ where: { AND: [WAITING, ...scope, ...filterWhere(query)] } });
+  const remaining = await db.quizQuestion.count({ where: { AND: base } });
   return { item: row ? await toItem(row) : null, remaining };
 }
 
-/** One generated item, waiting or not; anything else is not found. */
+/** One generated item, in any state; anything else is not found. */
 export async function getItem(session: ActiveContext, questionId: string): Promise<QuizReviewItem> {
   reviewerRole(session);
   const row = await db.quizQuestion.findFirst({ where: { id: questionId, generated: true }, select: ITEM_SELECT });
@@ -374,16 +402,14 @@ export async function getItem(session: ActiveContext, questionId: string): Promi
 
 type Tx = typeof db;
 
-const STATE_SELECT = { reviewedAt: true, discardedAt: true, hiReviewedAt: true, mrReviewedAt: true } satisfies Prisma.QuizQuestionSelect;
-
-async function stateOf(questionId: string): Promise<QuizReviewStamped> {
-  const s = await db.quizQuestion.findUniqueOrThrow({ where: { id: questionId }, select: STATE_SELECT });
+async function standingOf(questionId: string): Promise<QuizBankStanding> {
+  const s = await db.quizQuestion.findUniqueOrThrow({ where: { id: questionId }, select: { takenDownAt: true, takenDownReason: true, needsFigure: true, imageKey: true, editedAfterSolvingAt: true } });
   return {
     ok: true,
-    reviewedAt: s.reviewedAt?.toISOString() ?? null,
-    discardedAt: s.discardedAt?.toISOString() ?? null,
-    hiStampedAt: s.hiReviewedAt?.toISOString() ?? null,
-    mrStampedAt: s.mrReviewedAt?.toISOString() ?? null,
+    state: stateOfRow(s),
+    takenDownAt: s.takenDownAt?.toISOString() ?? null,
+    takenDownReason: asReason(s.takenDownReason),
+    editedAfterSolvingAt: s.editedAfterSolvingAt?.toISOString() ?? null,
   };
 }
 
@@ -397,41 +423,8 @@ async function inTransaction<T>(work: (tx: Tx) => Promise<T>): Promise<BankResul
   }
 }
 
-const WAITING_ROW = { id: true, generated: true, reviewedAt: true, discardedAt: true, generation: true, imageKey: true, choices: true, stem: true, solution: true, answerIndex: true, checkExpr: true, difficulty: true } satisfies Prisma.QuizQuestionSelect;
-
-async function waitingRow(tx: Tx, questionId: string) {
-  const row = await tx.quizQuestion.findUnique({ where: { id: questionId }, select: WAITING_ROW });
-  if (!row || !row.generated) throw new Refusal("quizReview.noSuchItem");
-  if (row.discardedAt) throw new Refusal("quizReview.alreadyDiscarded");
-  return row;
-}
-
-/** A figure the item needs must be drawn and stored before a pupil sees the item. */
-function figureMissing(row: { generation: string | null; imageKey: string | null }): boolean {
-  return readGeneration(row.generation).needsFigure === true && !row.imageKey;
-}
-
-/** Accept: the first stamp serves the item. Accepting an accepted item changes nothing. */
-export async function acceptItem(session: ActiveContext, questionId: string): Promise<BankResult<QuizReviewStamped>> {
-  const role = reviewerRole(session);
-  const now = new Date();
-  const result = await inTransaction(async (tx) => {
-    const row = await waitingRow(tx, questionId);
-    if (row.reviewedAt) return false;
-    if (figureMissing(row)) throw new Refusal("quizReview.figureNotDrawn");
-    // Conditional on reviewedAt still null, so two reviewers pressing together make one stamp.
-    const { count } = await tx.quizQuestion.updateMany({ where: { id: questionId, reviewedAt: null, discardedAt: null }, data: { reviewedAt: now, reviewedBy: session.user.id } });
-    if (count === 0) return false;
-    await tx.quizReviewStamp.create({ data: { questionId, reviewerUserId: session.user.id, role, action: "ACCEPT", at: now } });
-    return true;
-  });
-  if (!result.ok) return result;
-  if (result.value) await audit({ schoolId: null, actorUserId: session.user.id, action: "appadmin.quizReview.accept", targetType: "QuizQuestion", targetId: questionId, meta: { role } });
-  return stateOf(questionId);
-}
-
 /** The checks an edited English must pass before it is served; the verifier's arithmetic rule, the same evaluator. */
-export function checkEdit(input: QuizReviewEditBody, optionCount: number): TranslationKey | null {
+export function checkEdit(input: Pick<QuizReviewEditBody, "choices" | "answerIndex" | "checkExpr">, optionCount: number): TranslationKey | null {
   const choices = input.choices.map((c) => c.trim());
   if (choices.length !== optionCount) return "quizReview.choicesMustStay";
   if (choices.some((c) => c.length === 0)) return "quizReview.choicesMustStay";
@@ -447,20 +440,31 @@ export function checkEdit(input: QuizReviewEditBody, optionCount: number): Trans
   return null;
 }
 
+/** A language row's corrected words: as many options as the English, none empty, none repeated. */
+export function checkTranslationEdit(t: { choices: string[] }, optionCount: number): TranslationKey | null {
+  const choices = t.choices.map((c) => c.trim());
+  if (choices.length !== optionCount || choices.some((c) => c.length === 0)) return "quizReview.choicesMustStay";
+  if (new Set(choices.map((c) => c.toLowerCase())).size !== choices.length) return "quizReview.choicesRepeat";
+  return null;
+}
+
 /**
- * Edit then accept: the English as corrected, stamped in the same transaction. The stamp row keeps the
- * English as it stood (`before`), the audit log names the fields changed, and the solver's answers are
- * kept with `editedAfterSolvingAt` set — they were given to the old words. A changed stem, option or
- * solution takes any language stamp off: the Hindi and the Marathi were read against the old English.
+ * EDIT, in all three languages at once, in any state (served, taken down, held). The English as corrected;
+ * the Hindi and the Marathi rows as corrected when sent. The stamp keeps every field as it stood (`before`),
+ * the audit log names the fields changed ("stem", "hi.choices", …); an English change keeps the solver's
+ * answers and sets editedAfterSolvingAt (they were given to the old words), and a language row not
+ * corrected with it reads "stale" on the desk. A press that changes nothing writes nothing.
  */
-export async function editAndAccept(session: ActiveContext, questionId: string, input: QuizReviewEditBody): Promise<BankResult<QuizReviewStamped>> {
+export async function editItem(session: ActiveContext, questionId: string, input: QuizReviewEditBody): Promise<BankResult<QuizBankStanding>> {
   const role = reviewerRole(session);
   const now = new Date();
   let changed: string[] = [];
   const result = await inTransaction(async (tx) => {
-    const row = await waitingRow(tx, questionId);
-    if (row.reviewedAt) throw new Refusal("quizReview.alreadyAccepted");
-    if (figureMissing(row)) throw new Refusal("quizReview.figureNotDrawn");
+    const row = await tx.quizQuestion.findUnique({
+      where: { id: questionId },
+      select: { generated: true, difficulty: true, stem: true, choices: true, answerIndex: true, solution: true, checkExpr: true, translations: { where: { language: { in: ["hi", "mr"] } }, select: { language: true, stem: true, choices: true, solution: true } } },
+    });
+    if (!row || !row.generated) throw new Refusal("quizReview.noSuchItem");
     const before = { difficulty: row.difficulty, stem: row.stem, choices: parseChoices(row.choices), answerIndex: row.answerIndex, solution: row.solution, checkExpr: row.checkExpr };
     const problem = checkEdit(input, before.choices.length);
     if (problem) throw new Refusal(problem);
@@ -472,58 +476,94 @@ export async function editAndAccept(session: ActiveContext, questionId: string, 
       solution: input.solution.trim(),
       checkExpr: input.checkExpr?.trim() || null,
     };
-    changed = (Object.keys(after) as (keyof typeof after)[]).filter((k) => JSON.stringify(after[k]) !== JSON.stringify(before[k]));
-    const wordsChanged = changed.some((k) => k === "stem" || k === "choices" || k === "solution");
-    const { count } = await tx.quizQuestion.updateMany({
-      where: { id: questionId, reviewedAt: null, discardedAt: null },
-      data: {
-        difficulty: after.difficulty,
-        stem: after.stem,
-        choices: JSON.stringify(after.choices),
-        answerIndex: after.answerIndex,
-        solution: after.solution,
-        checkExpr: after.checkExpr,
-        reviewedAt: now,
-        reviewedBy: session.user.id,
-        ...(changed.length ? { editedAfterSolvingAt: now } : {}),
-        ...(wordsChanged ? { hiReviewedAt: null, hiReviewedBy: null, mrReviewedAt: null, mrReviewedBy: null } : {}),
-      },
-    });
-    if (count === 0) throw new Refusal("quizReview.alreadyAccepted");
+    const englishChanged = (Object.keys(after) as (keyof typeof after)[]).filter((k) => JSON.stringify(after[k]) !== JSON.stringify(before[k]));
+
+    const beforeTr: Record<string, { stem: string; choices: string[]; solution: string } | null> = {};
+    const languageChanges: { language: "hi" | "mr"; words: { stem: string; choices: string[]; solution: string }; fields: string[] }[] = [];
+    for (const language of ["hi", "mr"] as const) {
+      const current = row.translations.find((t) => t.language === language);
+      const was = current ? { stem: current.stem, choices: current.choices ? parseChoices(current.choices) : [], solution: current.solution } : null;
+      beforeTr[language] = was;
+      const sent = input.translations?.[language];
+      if (!sent) continue;
+      const trProblem = checkTranslationEdit(sent, after.choices.length);
+      if (trProblem) throw new Refusal(trProblem);
+      const words = { stem: sent.stem.trim(), choices: sent.choices.map((c) => c.trim()), solution: sent.solution.trim() };
+      const fields = (["stem", "choices", "solution"] as const).filter((k) => JSON.stringify(words[k]) !== JSON.stringify(was?.[k] ?? null)).map((k) => `${language}.${k}`);
+      if (fields.length) languageChanges.push({ language, words, fields });
+    }
+    changed = [...englishChanged, ...languageChanges.flatMap((c) => c.fields)];
+    if (changed.length === 0) return false;
+
+    if (englishChanged.length) {
+      await tx.quizQuestion.update({
+        where: { id: questionId },
+        data: {
+          difficulty: after.difficulty,
+          stem: after.stem,
+          choices: JSON.stringify(after.choices),
+          answerIndex: after.answerIndex,
+          solution: after.solution,
+          checkExpr: after.checkExpr,
+          editedAfterSolvingAt: now,
+        },
+      });
+    }
+    for (const c of languageChanges) {
+      const payload = { stem: c.words.stem, choices: JSON.stringify(c.words.choices), solution: c.words.solution };
+      await tx.quizQuestionTranslation.upsert({ where: { questionId_language: { questionId, language: c.language } }, create: { questionId, language: c.language, ...payload }, update: payload });
+    }
     await tx.quizReviewStamp.create({
-      data: { questionId, reviewerUserId: session.user.id, role, action: changed.length ? "EDIT_ACCEPT" : "ACCEPT", before: changed.length ? JSON.stringify(before) : null, at: now },
+      data: { questionId, reviewerUserId: session.user.id, role, action: "EDIT", before: JSON.stringify({ ...before, translations: beforeTr }), at: now },
     });
     return true;
   });
   if (!result.ok) return result;
-  await audit({ schoolId: null, actorUserId: session.user.id, action: changed.length ? "appadmin.quizReview.edit" : "appadmin.quizReview.accept", targetType: "QuizQuestion", targetId: questionId, meta: { role, changed } });
-  return stateOf(questionId);
+  if (result.value) await audit({ schoolId: null, actorUserId: session.user.id, action: "appadmin.quizBank.edit", targetType: "QuizQuestion", targetId: questionId, meta: { role, changed } });
+  return standingOf(questionId);
 }
 
-/** Discard with a coded reason: never served, out of the queue. Discarding a discarded item changes nothing. */
-export async function discardItem(session: ActiveContext, questionId: string, reason: QuizDiscardReason): Promise<BankResult<QuizReviewStamped>> {
+/** TAKE DOWN with a coded reason: not served from this moment, anywhere; the answers given stay. Again changes nothing. */
+export async function takeDownItem(session: ActiveContext, questionId: string, reason: QuizTakeDownReason): Promise<BankResult<QuizBankStanding>> {
   const role = reviewerRole(session);
-  if (!(QUIZ_DISCARD_REASONS as readonly string[]).includes(reason)) return { ok: false, errorKey: "quizReview.reasonNeeded" };
+  if (!(QUIZ_TAKEDOWN_REASONS as readonly string[]).includes(reason)) return { ok: false, errorKey: "quizReview.reasonNeeded" };
   const now = new Date();
   const result = await inTransaction(async (tx) => {
-    const row = await tx.quizQuestion.findUnique({ where: { id: questionId }, select: { generated: true, reviewedAt: true, discardedAt: true } });
+    const row = await tx.quizQuestion.findUnique({ where: { id: questionId }, select: { generated: true } });
     if (!row || !row.generated) throw new Refusal("quizReview.noSuchItem");
-    if (row.discardedAt) return false;
-    if (row.reviewedAt) throw new Refusal("quizReview.alreadyAccepted");
-    const { count } = await tx.quizQuestion.updateMany({ where: { id: questionId, reviewedAt: null, discardedAt: null }, data: { discardedAt: now, discardReason: reason } });
+    // Conditional on still being up, so two people pressing together make one stamp.
+    const { count } = await tx.quizQuestion.updateMany({ where: { id: questionId, takenDownAt: null }, data: { takenDownAt: now, takenDownReason: reason, takenDownBy: session.user.id } });
     if (count === 0) return false;
-    await tx.quizReviewStamp.create({ data: { questionId, reviewerUserId: session.user.id, role, action: "DISCARD", reason, at: now } });
+    await tx.quizReviewStamp.create({ data: { questionId, reviewerUserId: session.user.id, role, action: "TAKE_DOWN", reason, at: now } });
     return true;
   });
   if (!result.ok) return result;
-  if (result.value) await audit({ schoolId: null, actorUserId: session.user.id, action: "appadmin.quizReview.discard", targetType: "QuizQuestion", targetId: questionId, meta: { role, reason } });
-  return stateOf(questionId);
+  if (result.value) await audit({ schoolId: null, actorUserId: session.user.id, action: "appadmin.quizBank.takeDown", targetType: "QuizQuestion", targetId: questionId, meta: { role, reason } });
+  return standingOf(questionId);
+}
+
+/** PUT BACK a taken-down item: served again at once (unless its figure is still to be drawn). Again changes nothing. */
+export async function putBackItem(session: ActiveContext, questionId: string): Promise<BankResult<QuizBankStanding>> {
+  const role = reviewerRole(session);
+  const now = new Date();
+  const result = await inTransaction(async (tx) => {
+    const row = await tx.quizQuestion.findUnique({ where: { id: questionId }, select: { generated: true } });
+    if (!row || !row.generated) throw new Refusal("quizReview.noSuchItem");
+    const { count } = await tx.quizQuestion.updateMany({ where: { id: questionId, takenDownAt: { not: null } }, data: { takenDownAt: null, takenDownReason: null, takenDownBy: null } });
+    if (count === 0) return false;
+    await tx.quizReviewStamp.create({ data: { questionId, reviewerUserId: session.user.id, role, action: "PUT_BACK", at: now } });
+    return true;
+  });
+  if (!result.ok) return result;
+  if (result.value) await audit({ schoolId: null, actorUserId: session.user.id, action: "appadmin.quizBank.putBack", targetType: "QuizQuestion", targetId: questionId, meta: { role } });
+  return standingOf(questionId);
 }
 
 /**
- * THE LANGUAGE STAMP'S ONE WRITER, inside a caller's transaction: the column the serving filter reads
- * and the stamp row, together; nothing when the stamp already stands as asked. The caller has asserted
- * the content team's gate. Used by this queue and by the native-review page (translation-review.ts).
+ * THE LANGUAGE STAMP'S ONE WRITER, inside a caller's transaction: the native-review column and the stamp
+ * row, together; nothing when the stamp already stands as asked. The caller has asserted the content
+ * team's gate. Used by the native-review page for the authored bank (translation-review.ts); since 11
+ * October 2026 it gates no serving (an authored draft was always served, a generated row is published).
  */
 export async function writeLanguageStamp(
   tx: Tx,
@@ -541,23 +581,4 @@ export async function writeLanguageStamp(
     data: { questionId: input.questionId, reviewerUserId: input.reviewerUserId, role: input.role, language: input.language, action: input.stamped ? "STAMP_TRANSLATION" : "UNSTAMP_TRANSLATION", at: input.at },
   });
   return true;
-}
-
-/** Stamp the Hindi or the Marathi row read (or take the stamp off): the row is served once the English is too. */
-export async function stampTranslation(session: ActiveContext, questionId: string, language: "hi" | "mr", stamped = true): Promise<BankResult<QuizReviewStamped>> {
-  const role = reviewerRole(session);
-  const now = new Date();
-  const result = await inTransaction(async (tx) => {
-    const row = await tx.quizQuestion.findUnique({
-      where: { id: questionId },
-      select: { generated: true, discardedAt: true, translations: { where: { language }, select: { id: true }, take: 1 } },
-    });
-    if (!row || !row.generated) throw new Refusal("quizReview.noSuchItem");
-    if (row.discardedAt) throw new Refusal("quizReview.alreadyDiscarded");
-    if (stamped && row.translations.length === 0) throw new Refusal("translationReview.nothingToReview");
-    return writeLanguageStamp(tx, { questionId, language, stamped, reviewerUserId: session.user.id, role, at: now });
-  });
-  if (!result.ok) return result;
-  if (result.value) await audit({ schoolId: null, actorUserId: session.user.id, action: "appadmin.quizReview.language", targetType: "QuizQuestion", targetId: questionId, meta: { role, language, stamped } });
-  return stateOf(questionId);
 }
