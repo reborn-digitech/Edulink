@@ -283,3 +283,17 @@ describe("where the surfaces hang", () => {
     expect(read("src/app/(app)/faculty/work/[assignmentId]/page.tsx")).toContain("<AssignmentAssistantSwitch assignmentId={a.id} />");
   });
 });
+
+describe("the only limit is the daily cap (12 October 2026)", () => {
+  it("the monthly budget is off by default and the card says so without a bar", () => {
+    const card = readFileSync(join(process.cwd(), "src", "components", "assistant", "usage-card.tsx"), "utf8");
+    expect(card).toMatch(/usage\.tokenBudget > 0 \? t\("assistantUi\.cardUsed"/);
+    expect(card).toMatch(/assistantUi\.cardUsedNoBudget/);
+    const config = readFileSync(join(process.cwd(), "src", "lib", "assistant", "config.ts"), "utf8");
+    expect(config).toMatch(/MONTHLY_TOKEN_BUDGET_DEFAULT = 0;/);
+    expect(config).toMatch(/DAILY_QUESTION_CAP_DEFAULT = 20;/);
+    const service = readFileSync(join(process.cwd(), "src", "lib", "assistant", "service.ts"), "utf8");
+    expect(service).toMatch(/budget > 0 && totals\.tokens >= budget/);
+  });
+});
+

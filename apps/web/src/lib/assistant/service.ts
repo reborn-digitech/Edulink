@@ -184,7 +184,8 @@ async function unavailableReason(asker: Asker, now: Date, opts: { countToday: bo
   const school = await schoolOf(asker.schoolId);
   const dayKey = dayKeyFor(school.timezone, now);
   const totals = await monthTotals(asker.schoolId, dayKey.slice(0, 7));
-  if (totals.tokens >= monthlyTokenBudget()) return { reason: "SCHOOL_BUDGET", usedToday: 0 };
+  const budget = monthlyTokenBudget();
+  if (budget > 0 && totals.tokens >= budget) return { reason: "SCHOOL_BUDGET", usedToday: 0 };
   const usedToday = opts.countToday ? await questionsToday({ schoolId: asker.schoolId, userId: asker.userId, dayKey }) : 0;
   if (opts.countToday && usedToday >= dailyQuestionCap()) return { reason: "DAILY_CAP", usedToday };
   return { reason: null, usedToday };

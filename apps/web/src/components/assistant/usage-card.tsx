@@ -85,10 +85,12 @@ export function UsageBody({ usage, canEdit, t, onSaved }: { usage: AssistantUsag
         </p>
       ) : null}
       <div>
-        <p className="text-sm font-medium text-fg">{t("assistantUi.cardUsed", { used: number(usage.tokens), budget: number(usage.tokenBudget), percent })}</p>
-        <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-surface-muted" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={percent} aria-label={t("assistantUi.cardTitle")}>
-          <div className={percent >= 90 ? "h-full rounded-full bg-danger" : percent >= 70 ? "h-full rounded-full bg-warn" : "h-full rounded-full bg-accent"} style={{ width: `${percent}%` }} />
-        </div>
+        <p className="text-sm font-medium text-fg">{usage.tokenBudget > 0 ? t("assistantUi.cardUsed", { used: number(usage.tokens), budget: number(usage.tokenBudget), percent }) : t("assistantUi.cardUsedNoBudget", { used: number(usage.tokens) })}</p>
+        {usage.tokenBudget > 0 && (
+          <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-surface-muted" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={percent} aria-label={t("assistantUi.cardTitle")}>
+            <div className={percent >= 90 ? "h-full rounded-full bg-danger" : percent >= 70 ? "h-full rounded-full bg-warn" : "h-full rounded-full bg-accent"} style={{ width: `${percent}%` }} />
+          </div>
+        )}
       </div>
       <dl className="grid grid-cols-2 gap-3 sm:grid-cols-3" data-testid="assistant-usage-counts">
         {USAGE_COUNTS.map(([field, key]) => (

@@ -81,9 +81,13 @@ export const PRACTICE_SITTING_MINUTES = 90;
 /** A hand-in assignment due within this many days past is still "open" for the hint rule. */
 export const HAND_IN_GRACE_DAYS = 7;
 
-/** THE CAPS, like the SMS caps (messaging.ts): a person's questions in a school day, and the school's tokens in a calendar month. */
+/**
+ * THE CAPS, like the SMS caps (messaging.ts): a person's questions in a school day, and the school's tokens in a
+ * calendar month. The owner's rule of 12 October 2026: twenty questions a person a day is the only limit, so the
+ * monthly budget is off (0) unless a deployment sets ASSISTANT_MONTHLY_TOKENS.
+ */
 export const DAILY_QUESTION_CAP_DEFAULT = 20;
-export const MONTHLY_TOKEN_BUDGET_DEFAULT = 3_000_000;
+export const MONTHLY_TOKEN_BUDGET_DEFAULT = 0;
 /** A conversation's list title: the first question, shortened to this many characters. */
 export const TITLE_CHARS = 80;
 
@@ -99,7 +103,7 @@ export function dailyQuestionCap(env: Env = process.env): number {
   return positiveInt(env.ASSISTANT_DAILY_CAP, DAILY_QUESTION_CAP_DEFAULT, 10_000);
 }
 
-/** ASSISTANT_MONTHLY_TOKENS overrides the school's monthly token budget. */
+/** ASSISTANT_MONTHLY_TOKENS sets a school's monthly token budget; 0 (the default) means no budget. */
 export function monthlyTokenBudget(env: Env = process.env): number {
   return positiveInt(env.ASSISTANT_MONTHLY_TOKENS, MONTHLY_TOKEN_BUDGET_DEFAULT, 10_000_000_000);
 }
