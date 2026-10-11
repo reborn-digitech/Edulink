@@ -82,7 +82,7 @@ export const PRACTICE_SITTING_MINUTES = 90;
 export const HAND_IN_GRACE_DAYS = 7;
 
 /** THE CAPS, like the SMS caps (messaging.ts): a person's questions in a school day, and the school's tokens in a calendar month. */
-export const DAILY_QUESTION_CAP_DEFAULT = 40;
+export const DAILY_QUESTION_CAP_DEFAULT = 20;
 export const MONTHLY_TOKEN_BUDGET_DEFAULT = 3_000_000;
 /** A conversation's list title: the first question, shortened to this many characters. */
 export const TITLE_CHARS = 80;
