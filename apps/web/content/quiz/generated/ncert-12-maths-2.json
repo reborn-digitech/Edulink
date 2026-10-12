@@ -1,0 +1,210 @@
+{
+  "subject": "MATHS",
+  "classLevel": 12,
+  "chapter": "Chapter 2 — Application of Integrals",
+  "name": "Application of Integrals",
+  "slug": "maths-12-application-of-integrals",
+  "summary": "This chapter explains how to use integrals to find areas under curves and between curves.",
+  "position": 2,
+  "source": "generated against NCERT Mathematics, Class 12, chapter 2 (Reprint 2026-27)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 2 - समाकलों के अनुप्रयोग",
+      "summary": "इस अध्याय में समाकलों का उपयोग वक्रों के नीचे और वक्रों के बीच के क्षेत्रफल ज्ञात करने के लिए किया जाता है।"
+    },
+    "mr": {
+      "name": "अध्याय 2 - समाकलांचे अनुप्रयोग",
+      "summary": "हा अध्याय समाकलांचा वापर वक्रांच्या खालील आणि वक्रांमधील क्षेत्रफळ शोधण्यासाठी करतो."
+    }
+  },
+  "board": "NCERT",
+  "book": "Mathematics Part-II",
+  "edition": "Reprint 2026-27",
+  "generatedAt": "2026-10-11T02:09:38.266Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the formula for the area of a region bounded by a curve x = g(y), the y-axis, and the lines y = c and y = d?",
+      "choices": [
+        "∫ g(x) dy from c to d",
+        "∫ g(y) dx from c to d",
+        "∫ g(y) dy from c to d",
+        "∫ g(x) dx from c to d"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct formula is ∫ g(y) dy from c to d, as the area is calculated by integrating the function x = g(y) with respect to y. The other options incorrectly use x instead of y in the integral or mix up the variables of integration.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक वक्र x = g(y) द्वारा घिरे क्षेत्र के क्षेत्रफल का सूत्र क्या है, जो y-अक्ष तथा रेखाओं y = c एवं y = d द्वारा घिरा हुआ है?",
+          "choices": [
+            "∫ g(x) dy सी से डी तक",
+            "∫ g(y) dx सी से डी तक",
+            "∫ g(y) dy सी से डी तक",
+            "∫ g(x) dx सी से डी तक"
+          ],
+          "solution": "सही सूत्र ∫ g(y) dy सी से डी तक है, क्योंकि क्षेत्रफल की गणना चर y के सापेक्ष फलन x = g(y) के समाकलन द्वारा की जाती है। अन्य विकल्प गलती से समाकलन के चर में x का उपयोग करते हैं या चरों के समाकलन के लिए गलत चर लेते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वक्र x = g(y), y-अक्ष आणि y = c आणि y = d रेषा यांमुळे घेरलेल्या प्रदेशाच्या क्षेत्रफळाचे सूत्र काय आहे?",
+          "choices": [
+            "∫ g(x) dy c ते d",
+            "∫ g(y) dx c ते d",
+            "∫ g(y) dy c ते d",
+            "∫ g(x) dx c ते d"
+          ],
+          "solution": "सही सूत्र ∫ g(y) dy c ते d आहे, कारण क्षेत्रफळ फलन x = g(y) चे y नुसार समाकल करून गणित केले जाते. इतर विकल्पांमध्ये समाकलनाच्या चलाचे अपूर्ण वापर केले आहे किंवा चलांचे मिश्रण केले आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the variable of integration with x instead of y",
+        "Confuses the variable of integration with x instead of y",
+        null,
+        "Confuses the variable of integration with the function's input"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is ∫ g(y) dy from c to d. The other options incorrectly use x instead of y in the integrand or the differential, which reflects common misconceptions about variable of integration.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh202.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Application of Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh202.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 2: Application of Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh202.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 2: Application of Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh202.pdf",
+          "ordinal": 3,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 2: Application of Integrals"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T02:09:38.266Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the area under a curve is represented by the integral of a function, which of the following is used to compute the definite integral?",
+      "choices": [
+        "Antiderivative",
+        "Derivative",
+        "Function",
+        "Limit"
+      ],
+      "answerIndex": 0,
+      "solution": "The antiderivative is used to compute the definite integral because it reverses the process of differentiation, allowing the area under a curve to be calculated. The derivative is the inverse operation of the antiderivative and does not compute the integral. A function alone does not provide the value of the integral without further calculation. A limit is part of the definition of the integral but not the method used to compute it directly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक वक्र के नीचे क्षेत्रफल के द्वारा एक फलन के समाकल के द्वारा निरूपित किया जाता है, तो निम्नलिखित में से कौन-सा निश्चित समाकल की गणना करने के लिए प्रयोग किया जाता है?",
+          "choices": [
+            "अवकलज",
+            "अवकलन",
+            "फलन",
+            "सीमा"
+          ],
+          "solution": "अवकलज का उपयोग निश्चित समाकल की गणना करने के लिए किया जाता है क्योंकि यह अवकलन की प्रक्रिया के विपरीत होता है, जिससे वक्र के नीचे क्षेत्रफल की गणना संभव हो जाती है। अवकलन अवकलज के विपरीत क्रिया है और समाकल की गणना नहीं करता है। फलन के अकेले होने से समाकल का मान नहीं मिलता है। सीमा समाकल की परिभाषा का हिस्सा है लेकिन सीधे रूप से इसकी गणना करने के लिए उपयोग नहीं किया जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, with appropriate technical terms used in a Hindi-medium context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर वक्राच्या क्षेत्रफळाचे निरूपण एका फलनाच्या समाकलनाद्वारे केले जाते, तर खालीलपैकी कोणते निश्चित समाकलन काढण्यासाठी वापरले जाते?",
+          "choices": [
+            "अवकलन निरसन",
+            "अवकलज",
+            "फलन",
+            "मर्यादा"
+          ],
+          "solution": "अवकलन निरसन निश्चित समाकलन काढण्यासाठी वापरले जाते कारण ते अवकलनाच्या प्रक्रियेचे उलटे करते, ज्यामुळे वक्राच्या क्षेत्रफळाची गणना करता येते. अवकलज हे अवकलन निरसनाच्या विलोम क्रिया आहे आणि समाकलन काढत नाही. फलन एकटे समाकलनाचे मूल्य देत नाही. मर्यादा हे समाकलनाच्या व्याख्येचा भाग आहे परंतु ती सीधा समाकलन काढण्यासाठी वापरली जात नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses antiderivative with derivative",
+        "Misunderstands the role of the function in integration",
+        "Does not recognize the role of the limit in integration"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Antiderivative), as the Fundamental Theorem of Calculus connects the definite integral to the antiderivative. The author's reasoning is sound, and the misconceptions listed for the distractors are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh202.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 2: Application of Integrals"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T02:09:38.266Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

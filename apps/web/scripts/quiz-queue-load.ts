@@ -27,7 +27,7 @@
  *   files only.
  */
 import type { PrismaClient } from "@prisma/client";
-import { asQuizBoard, type QuizBoard } from "@edulink/contracts";
+import { asCollegeTerm, asQuizBoard, cleanTopicStreams, collegeSyllabusBoardOf, type QuizBoard } from "@edulink/contracts";
 import { finishFigure, figureProblems, prepareFigure, type PreparedFigure } from "./quiz-gen/figures/attach";
 
 export type QueueTr = { stem?: string; choices?: string[]; solution?: string; imageAlt?: string | null; critique?: string | null; flag?: string | null };
@@ -64,7 +64,25 @@ export type QueueBatch = {
   board?: string;
   translations?: Record<string, { name?: string; summary?: string }>;
   questions: QueueItem[];
+  // ---- college-content (12 Oct 2026): a college unit's batch (scripts/quiz-gen/college.ts): no school board ----
+  audience?: string;
+  streams?: string[];
+  programme?: string | null;
+  yearOrSemester?: string | null;
+  syllabusBoard?: string;
+  document?: string;
+  // ---- end college-content ----
 };
+
+/** college-content (12 Oct 2026): whether a batch is a college unit's (audience COLLEGE), which carries no school board. */
+export function isCollegeBatch(batch: Pick<QueueBatch, "audience">): boolean {
+  return batch.audience === "COLLEGE";
+}
+
+/** The topic fields a college batch sets: its stream, programme and year or semester, the one writer for a generated college topic. */
+function collegeTopicData(batch: QueueBatch) {
+  return { audience: "COLLEGE", streams: cleanTopicStreams(batch.streams), programme: batch.programme?.trim() || null, yearOrSemester: asCollegeTerm(batch.yearOrSemester) };
+}
 
 export type QueueLoadResult = {
   created: number;
@@ -83,7 +101,7 @@ export type QueueLoadResult = {
 };
 
 /** The reviewer's material kept on the row (src/lib/quiz-review.ts readGeneration reads it back). */
-export function generationOf(item: QueueItem, board: QuizBoard, figureError: string | null): string {
+export function generationOf(item: QueueItem, board: QuizBoard | string, figureError: string | null): string {
   const translations: Record<string, { imageAlt: string | null; critique: string | null; flag: string | null }> = {};
   for (const language of ["hi", "mr"] as const) {
     const t = item.translations?.[language];
@@ -114,6 +132,14 @@ export async function loadGeneratedBatches(db: PrismaClient, batches: { file: st
   // The boards first, for every batch, before anything is written: a missing board or a clash refuses the run.
   const boards = new Map<string, QuizBoard>();
   for (const { file, batch } of batches) {
+    // college-content (12 Oct 2026): a college unit names its stream and its syllabus's board instead, and may not extend a school chapter.
+    if (isCollegeBatch(batch)) {
+      if (!cleanTopicStreams(batch.streams).length) throw new Error(`${file}: a college batch names no stream; nothing was written`);
+      if (!collegeSyllabusBoardOf(batch.syllabusBoard)) throw new Error(`${file}: syllabusBoard "${batch.syllabusBoard ?? ""}" is not one of the syllabus boards; nothing was written`);
+      const topic = await db.quizTopic.findUnique({ where: { slug: batch.slug }, select: { audience: true } });
+      if (topic && topic.audience !== "COLLEGE") throw new Error(`${file}: the chapter "${batch.slug}" is the school bank's and this batch is a college unit; nothing was written`);
+      continue;
+    }
     const board = asQuizBoard(batch.board);
     if (!board) throw new Error(`${file}: board "${batch.board ?? ""}" is not one of the practice boards; nothing was written`);
     const topic = await db.quizTopic.findUnique({ where: { slug: batch.slug }, select: { board: true } });
@@ -122,7 +148,10 @@ export async function loadGeneratedBatches(db: PrismaClient, batches: { file: st
   }
 
   for (const { file, batch } of batches) {
-    const board = boards.get(file)!;
+    const college = isCollegeBatch(batch);
+    // A college unit's items carry no school board (generatedBoard null); its syllabus's board is kept in the generation record.
+    const board = college ? null : boards.get(file)!;
+    const recordBoard = board ?? collegeSyllabusBoardOf(batch.syllabusBoard) ?? "";
     let topic = await db.quizTopic.findUnique({ where: { slug: batch.slug }, select: { id: true, board: true } });
     if (!topic) {
       result.topicsMade++;
@@ -131,12 +160,15 @@ export async function loadGeneratedBatches(db: PrismaClient, batches: { file: st
         continue;
       }
       topic = await db.quizTopic.create({
-        data: { subject: batch.subject, classLevel: batch.classLevel, chapter: batch.chapter, name: batch.name, slug: batch.slug, summary: batch.summary ?? "", position: batch.position ?? 0, board },
+        data: { subject: batch.subject, classLevel: batch.classLevel, chapter: batch.chapter, name: batch.name, slug: batch.slug, summary: batch.summary ?? "", position: batch.position ?? 0, board, ...(college ? collegeTopicData(batch) : {}) },
         select: { id: true, board: true },
       });
       for (const [language, tr] of Object.entries(batch.translations ?? {})) {
         await db.quizTopicTranslation.create({ data: { topicId: topic.id, language, name: tr.name ?? batch.name, summary: tr.summary ?? "" } });
       }
+    } else if (college) {
+      // college-content: the stream, programme and term follow the batch (the loader is their one writer for a generated college topic).
+      if (!dry) await db.quizTopic.update({ where: { id: topic.id }, data: collegeTopicData(batch) });
     } else if (!topic.board) {
       result.boardsSet++;
       if (!dry) await db.quizTopic.update({ where: { id: topic.id }, data: { board } });
@@ -189,7 +221,7 @@ export async function loadGeneratedBatches(db: PrismaClient, batches: { file: st
         imageAlt: prepared ? (item.imageAlt ?? null) : null,
         generated: true,
         generatedBoard: board,
-        generation: generationOf(item, board, figureError),
+        generation: generationOf(item, recordBoard, figureError),
         // The serving filter's hold: a figure the item needs and nobody drew keeps it from pupils (quiz-served.ts).
         needsFigure: item.needsFigure === true,
       };

@@ -1,0 +1,581 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-12T00:25:51.499Z",
+  "finishedAt": "2026-10-12T00:33:47.992Z",
+  "seconds": 476,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "SPPU",
+    "book": "CB Board Updated Syllabus 2024",
+    "bookCode": null,
+    "document": "sppu/faculty-of-science-and-technology/iii-technology/CB_Board_Updated_Syllabus_2024_24042024.pdf",
+    "classLevel": 13,
+    "subject": "Engineering (Technology)",
+    "chapter": "Unit 1 — Notes:",
+    "edition": "Second edition 1996",
+    "chunks": 41,
+    "groups": 14
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for engineering: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Engineering (Technology) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 123977,
+      "in": 28,
+      "out": 28,
+      "rejects": 0,
+      "promptTokens": 30887,
+      "completionTokens": 5609
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 224973,
+      "in": 28,
+      "out": 23,
+      "rejects": 5,
+      "promptTokens": 12977,
+      "completionTokens": 5378
+    },
+    "solver": {
+      "calls": 136,
+      "ms": 75924,
+      "in": 23,
+      "out": 21,
+      "rejects": 2,
+      "promptTokens": 20419,
+      "completionTokens": 1243
+    },
+    "form": {
+      "calls": 4,
+      "ms": 10757,
+      "in": 21,
+      "out": 6,
+      "rejects": 15,
+      "promptTokens": 953,
+      "completionTokens": 247
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 2,
+      "ms": 294,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 24,
+      "ms": 298322,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 13829,
+      "completionTokens": 6992
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an elective course in the M.Tech Chemical and Biotechnology program?",
+      "ms": {
+        "draft": 4681,
+        "critique": 8179,
+        "solver": 1887
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student completes 44 credits in the first year, what can they do according to the guidelines?",
+      "ms": {
+        "draft": 4681,
+        "critique": 8179,
+        "solver": 2560
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total number of credits required for the M.Tech Chemical and Biotechnology program?",
+      "ms": {
+        "draft": 4681,
+        "critique": 7940,
+        "solver": 1373,
+        "form": 4228
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of model discussed in the passage?",
+      "ms": {
+        "draft": 3962,
+        "critique": 6818,
+        "solver": 1695,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a requirement for completing an On-Job-Training (OJT) or Internship?",
+      "ms": {
+        "draft": 4681,
+        "critique": 8161,
+        "solver": 2153,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a mathematical method used in modeling according to the passage?",
+      "ms": {
+        "draft": 3962,
+        "critique": 7428,
+        "solver": 2095,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a method used to validate a model according to the passage?",
+      "ms": {
+        "draft": 3962,
+        "critique": 6508,
+        "solver": 1486,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is modeling the growth of a cell culture, which of the following would be relevant according to the passage?",
+      "ms": {
+        "draft": 3962,
+        "critique": 7823,
+        "solver": 2390,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a method of microbial metabolism that uses light as an energy source?",
+      "ms": {
+        "draft": 20459,
+        "critique": 6731,
+        "solver": 1605,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a product of microbial fermentation as mentioned in the passage?",
+      "ms": {
+        "draft": 4314,
+        "critique": 7945,
+        "solver": 1469,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of using kinetic models in fermentation processes according to the passage?",
+      "ms": {
+        "draft": 4314,
+        "critique": 7380,
+        "solver": 2136,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key factor in the design of a bioreactor for producing structured biomaterials?",
+      "ms": {
+        "draft": 4314,
+        "critique": 5588,
+        "solver": 923,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the role of bioeconomy in sustainability?",
+      "ms": {
+        "draft": 18316,
+        "critique": 8105,
+        "solver": 1617,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the relationship between bioeconomy and digitization?",
+      "ms": {
+        "draft": 18316,
+        "critique": 10098,
+        "solver": 2102,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a researcher wants to evaluate the environmental impact of a new bio-based product, which approach from the passage would be most relevant?",
+      "ms": {
+        "draft": 18316,
+        "critique": 8961,
+        "solver": 15143,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a key focus of the bioeconomy as described in the passage?",
+      "ms": {
+        "draft": 18316,
+        "critique": 8963,
+        "solver": 16354,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the context of strain improvement, what does 'stability checking' refer to?",
+      "ms": {
+        "draft": 3284,
+        "critique": 7490
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a method of strain improvement?",
+      "ms": {
+        "draft": 3284,
+        "critique": 7141,
+        "solver": 2129,
+        "form": 3473
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a method of separation techniques mentioned in the passage?",
+      "ms": {
+        "draft": 3284,
+        "critique": 9449
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of control system uses feedback to adjust its output?",
+      "ms": {
+        "draft": 7179,
+        "critique": 9098
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which type of control valve has a spherical closure element that can be rotated to control flow?",
+      "ms": {
+        "draft": 7179,
+        "critique": 6240
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a method used for stability analysis of a closed loop control system?",
+      "ms": {
+        "draft": 7179,
+        "critique": 8153
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which concept classifies organisms into three domains?",
+      "ms": {
+        "draft": 20459,
+        "critique": 6830,
+        "solver": 2051,
+        "form": 0,
+        "translation": 47588
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of the cell wall in archaebacteria?",
+      "ms": {
+        "draft": 20459,
+        "critique": 7747,
+        "solver": 1506,
+        "form": 0,
+        "translation": 39256
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of a growth curve in strain improvement?",
+      "ms": {
+        "draft": 3284,
+        "critique": 8083,
+        "solver": 16303,
+        "form": 2605,
+        "translation": 50384
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bacterium undergoes Gram staining and appears purple, what does this indicate?",
+      "ms": {
+        "draft": 20459,
+        "critique": 7022,
+        "solver": 2220,
+        "form": 0,
+        "translation": 51617
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bioreactor is used for producing lactic acid, which of the following would be most important to monitor?",
+      "ms": {
+        "draft": 4314,
+        "critique": 6721,
+        "solver": 2129,
+        "form": 1632,
+        "translation": 55402
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A biotechnology researcher is evaluating the ethical implications of a new genetically modified crop. Which of the following best describes the primary concern they should address according to the ICMR guidelines?",
+      "ms": {
+        "draft": 5085,
+        "critique": 3683,
+        "solver": 654,
+        "form": 0,
+        "translation": 54075
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of an elective course in the M.Tech Chemical and Biotechnology program?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student completes 44 credits in the first year, what can they do according to the guidelines?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the total number of credits required for the M.Tech Chemical and Biotechnology program?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"confuses the number of credits with another part of the pass…\"); distractor 3's reason is not a one-line misconception (\"incorrectly adds the credits from different semesters and se…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a type of model discussed in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's mention of models…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the classification of models in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a requirement for completing an On-Job-Training (OJT) or Internship?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a mathematical method used in modeling according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's mention of models…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the classification of analysis in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a method used to validate a model according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student is modeling the growth of a cell culture, which of the following would be relevant according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misunderstands the focus of the passage on cell growth…\"); distractor 3's reason is not a one-line misconception (\"Misinterprets the application of matrix methods in the passa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a method of microbial metabolism that uses light as an energy source?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a product of microbial fermentation as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of using kinetic models in fermentation processes according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key factor in the design of a bioreactor for producing structured biomaterials?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (51 vs 25 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the role of bioeconomy in sustainability?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (74 vs 43 characters); distractor 1's reason is not a one-line misconception (\"misinterprets the passage's emphasis…\"); distractor 3's reason is not a one-line misconception (\"overlooks the passage's main idea…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the relationship between bioeconomy and digitization?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a researcher wants to evaluate the environmental impact of a new bio-based product, which approach from the passage would be most relevant?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a key focus of the bioeconomy as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In the context of strain improvement, what does 'stability checking' refer to?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a method of strain improvement?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is NOT a method of separation techniques mentioned in the passage?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which type of control system uses feedback to adjust its output?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which type of control valve has a spherical closure element that can be rotated to control flow?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a method used for stability analysis of a closed loop control system?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for engineering: levels 5 and 6 skipped",
+    "no glossary in the corpus for Engineering (Technology) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+    "topic words not written: the model's answer was not JSON (finish: length): {\n  \"summary\": \"This chapter covers advanced modeling, separation processes, statistical data analysis, and bioeconomy f"
+  ]
+}

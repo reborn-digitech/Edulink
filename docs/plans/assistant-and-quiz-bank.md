@@ -466,3 +466,33 @@ discarded), `takenDownBy` and `needsFigure` added (the latter backfilled from th
 `QuizGenJob` table. The 14 generated items the review queue had accepted stay served; the generator's batches
 written before the last three generator rules (a Hindi "स्टीमर" for an iron among them) are served too and are
 the desk's to edit or take down.
+
+**College practice by stream, and the generator's college scope (12 October 2026, the owner's decisions).** A
+practice chapter has an audience: `QuizTopic.audience` SCHOOL (the school bank: authored, NCERT and Balbharati) or
+COLLEGE, with `streams` (stream codes; none for a college-wide bank), `programme` and `yearOrSemester` (Y1–Y5 or
+S1–S10, coded in `packages/contracts` v1/college-practice.ts); migration `college_practice` backfilled the bank
+SCHOOL and the placement banks (aptitude, reasoning, coding at class 13) COLLEGE with no stream. A school's practice
+page is as it was (the board switch, classes, subjects) and lists the school bank only. A college's page has two
+sections: **My stream** — the COLLEGE chapters whose streams include one of the college's, or that name none,
+grouped by programme and subject with a programme and a year-or-semester filter — and **Competitive Exams Prep** —
+the school bank's NCERT chapters by class and subject; nothing else from the school bank reaches a college. The rule
+is one where clause (`src/lib/practice-audience.ts`, the pure twin `practiceSectionOf` in the contracts) used by
+`listTopics`, the sitting's start (a chapter a tenant does not list is not found by its slug either), the continue
+card, revision, a teacher's topic picker, practice assignments and worksheets. The guardian's page and the phone's
+practice screens follow it through the doors: the family practice reads carry optional `practiceKind`,
+`collegeStreams` and, per chapter, `section`, `programme` and `yearOrSemester` (an older phone keeps working: the
+server sends a college only what it lists). The generator's job gains a **College** scope: a stream and a programme
+from the syllabus corpus (ContentDocument source "syllabi": SPPU, AICTE's model curricula, the PCI's, MPKV's), one
+syllabus document or every one of the programme, and a unit range. A document's stream is read from its board, the
+section the site filed it under and its title (`src/lib/college-syllabi.ts`); its units are the runs of chunks under
+one level-one heading, the contents, rules, schemes of examination and the university's running head left out, a
+headless document one unit; a unit's reading lists are not sent to the model. The drafting prompt says the passage
+is a university syllabus (ask about what it lists, never about credits, codes or the reading list). A unit's batch
+(`content/quiz/generated/college-<stream>-<programme>-<doc>-u<n>.json`) carries `audience: "COLLEGE"`, the stream,
+the programme, the term and the syllabus's board and no school board; `quiz:verify` and the loader
+(`scripts/quiz-queue-load.ts`) take it, and it lands as a COLLEGE topic (subject the stream code, class 13). The card
+lists the streams with a corpus (all but health sciences on 12 October: 11 streams, 684 documents with units) and
+says which have none. One unit can also be run from a shell: `npm run quiz:gen -- --document=<path> --unit=N`. The first live unit (SPPU's BA LL.B. course "Introduction to Civil and Criminal Manual", 12 October) showed the model
+asking about the syllabus itself (which book, which module, the course's aim) and a Marathi translation echoing the
+prompt's header; the form stage now refuses a college item about the syllabus (`aboutTheSyllabus`), a run-in reading
+list is left out of the unit, and a translation's echoed header is cut off for every chapter.

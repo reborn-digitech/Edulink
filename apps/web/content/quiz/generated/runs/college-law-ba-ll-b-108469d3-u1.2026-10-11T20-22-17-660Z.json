@@ -1,0 +1,223 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-11T20:22:17.660Z",
+  "finishedAt": "2026-10-11T20:33:00.298Z",
+  "seconds": 643,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "SPPU",
+    "book": "BA LL. B., BBA LL.B., and LL. B.",
+    "bookCode": null,
+    "document": "sppu/faculty-of-humanities/iii-law/BA_LL._B._BBA_LL.B._and_LL._B._15072025.pdf",
+    "classLevel": 13,
+    "subject": "Law (BA LL.B.)",
+    "chapter": "Unit 1 — BA LL. B., BBA LL.B., and LL. B.",
+    "edition": "2025",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for law: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Law (BA LL.B.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 129360,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 6850,
+      "completionTokens": 1759
+    },
+    "critique": {
+      "calls": 7,
+      "ms": 134135,
+      "in": 7,
+      "out": 4,
+      "rejects": 3,
+      "promptTokens": 3285,
+      "completionTokens": 1231
+    },
+    "solver": {
+      "calls": 20,
+      "ms": 144735,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 2950,
+      "completionTokens": 160
+    },
+    "form": {
+      "calls": 2,
+      "ms": 19847,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 558,
+      "completionTokens": 136
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 1,
+      "ms": 312,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 551389,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 8211,
+      "completionTokens": 4498
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a student is required to understand the hierarchy of courts, which part of the course would they most likely study?",
+      "ms": {
+        "draft": 17361,
+        "critique": 12705
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a procedural aspect of civil litigation as described in the course?",
+      "ms": {
+        "draft": 17361,
+        "critique": 16376
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of the course 'Introduction to Civil and Criminal Manual'?",
+      "ms": {
+        "draft": 17361,
+        "critique": 19771
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the 'Civil Procedure Code' as mentioned in the passage?",
+      "ms": {
+        "draft": 80771,
+        "critique": 14715,
+        "solver": 37922,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which book is mentioned as a source for understanding the Code of Civil Procedure?",
+      "ms": {
+        "draft": 80771,
+        "critique": 28150,
+        "solver": 32906,
+        "form": 10102,
+        "translation": 175401
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a law student needs to understand the rules of video conferencing in courts, which document should they refer to?",
+      "ms": {
+        "draft": 80771,
+        "critique": 29837,
+        "solver": 36158,
+        "form": 12069,
+        "translation": 156907
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student wants to understand the difference between physical and virtual court hearings. Which part of the course would provide this information?",
+      "ms": {
+        "draft": 17361,
+        "critique": 12584,
+        "solver": 8123,
+        "form": 2,
+        "translation": 186340
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a student is required to understand the hierarchy of courts, which part of the course would they most likely study?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a procedural aspect of civil litigation as described in the course?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main purpose of the course 'Introduction to Civil and Criminal Manual'?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of the 'Civil Procedure Code' as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for law: levels 5 and 6 skipped",
+    "no glossary in the corpus for Law (BA LL.B.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,586 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-12T00:04:54.107Z",
+  "finishedAt": "2026-10-12T00:11:39.451Z",
+  "seconds": 405,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "SPPU",
+    "book": "LL. M. (2 Year) Syllabus For Affiliated law Colleges Academic Year 2025-2026",
+    "bookCode": null,
+    "document": "sppu/faculty-of-humanities/iii-law/LL._M._2_Year_Syllabus_For_Affiliated_law_Colleges_Academic_Year_2025-2026_27062025.pdf",
+    "classLevel": 13,
+    "subject": "Law (LL.M.)",
+    "chapter": "Unit 5 — International Law",
+    "edition": "First Edition 2020",
+    "chunks": 27,
+    "groups": 9
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for law: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Law (LL.M.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 117069,
+      "in": 28,
+      "out": 28,
+      "rejects": 0,
+      "promptTokens": 31016,
+      "completionTokens": 6238
+    },
+    "critique": {
+      "calls": 32,
+      "ms": 212035,
+      "in": 28,
+      "out": 21,
+      "rejects": 7,
+      "promptTokens": 14302,
+      "completionTokens": 5457
+    },
+    "solver": {
+      "calls": 131,
+      "ms": 62464,
+      "in": 21,
+      "out": 19,
+      "rejects": 2,
+      "promptTokens": 20811,
+      "completionTokens": 1239
+    },
+    "form": {
+      "calls": 2,
+      "ms": 4944,
+      "in": 19,
+      "out": 4,
+      "rejects": 15,
+      "promptTokens": 467,
+      "completionTokens": 129
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 4,
+      "ms": 850,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 198561,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9630,
+      "completionTokens": 5381
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the primary purpose of the LL.M. specialization in International Law according to the passage?",
+      "ms": {
+        "draft": 3591,
+        "critique": 7343,
+        "solver": 1451,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a key element of international responsibility according to the passage?",
+      "ms": {
+        "draft": 17796,
+        "critique": 5847,
+        "solver": 1184,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the role of the International Court of Justice (ICJ) according to the passage?",
+      "ms": {
+        "draft": 17796,
+        "critique": 5924,
+        "solver": 1502,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A dispute arises between two countries over the enforcement of a foreign judgment. According to the passage, which factor would most likely influence the recognition of the judgment?",
+      "ms": {
+        "draft": 17796,
+        "critique": 6959,
+        "solver": 1425
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following best describes the role of treaties in international law?",
+      "ms": {
+        "draft": 3591,
+        "critique": 8169,
+        "solver": 14334,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a source of International Economic Law according to the passage?",
+      "ms": {
+        "draft": 16749,
+        "critique": 6816,
+        "solver": 1835,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary purpose of the WTO according to the passage?",
+      "ms": {
+        "draft": 16749,
+        "critique": 7444,
+        "solver": 1138,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a country wants to resolve a trade dispute with another country, which mechanism would it most likely use according to the passage?",
+      "ms": {
+        "draft": 16749,
+        "critique": 7214,
+        "solver": 1661,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a challenge posed by the digital economy in the context of International Economic Law?",
+      "ms": {
+        "draft": 16749,
+        "critique": 6193,
+        "solver": 1868,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which module of the syllabus discusses the protection of wounded and sick soldiers?",
+      "ms": {
+        "draft": 3641,
+        "critique": 6243
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A private military company is accused of committing war crimes during a conflict. Which of the following would most likely be held accountable under international law?",
+      "ms": {
+        "draft": 3641,
+        "critique": 7153
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a country is accused of using a prohibited method of warfare, which international body would most likely investigate the claim?",
+      "ms": {
+        "draft": 3641,
+        "critique": 7534
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the role of treaties in international relations as per the passage?",
+      "ms": {
+        "draft": 3434,
+        "critique": 4799,
+        "solver": 1312,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A country is part of a treaty that guarantees human rights. If the country fails to meet its obligations under the treaty, what might happen according to the passage?",
+      "ms": {
+        "draft": 3434,
+        "critique": 5154,
+        "solver": 1713,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a key concept in treaty law according to the passage?",
+      "ms": {
+        "draft": 3434,
+        "critique": 5393,
+        "solver": 2433,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which international legal instrument is primarily concerned with the protection of refugees and their rights?",
+      "ms": {
+        "draft": 3843,
+        "critique": 6075
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a challenge in the enforcement of treaties in the modern era?",
+      "ms": {
+        "draft": 3434,
+        "critique": 6594,
+        "solver": 1281,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is denied asylum in a country and faces persecution in their home country, which international principle could be invoked to protect them?",
+      "ms": {
+        "draft": 3843,
+        "critique": 8412
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A country's legal framework for managing immigration and border control can be influenced by which of the following factors?",
+      "ms": {
+        "draft": 3843,
+        "critique": 7854
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the principle of 'non-refoulement' mean in the context of international refugee law?",
+      "ms": {
+        "draft": 3843,
+        "critique": 6494,
+        "solver": 11724,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a core international human rights instrument mentioned in the passage?",
+      "ms": {
+        "draft": 8625,
+        "critique": 7228,
+        "solver": 1692,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains the relationship between IP protection and public interest as discussed in the passage?",
+      "ms": {
+        "draft": 8625,
+        "critique": 9890
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following international legal frameworks is most closely associated with the principle of 'sustainable development' in environmental law?",
+      "ms": {
+        "draft": 4874,
+        "critique": 7908,
+        "solver": 1023
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary purpose of the TRIPS Agreement as described in the passage?",
+      "ms": {
+        "draft": 8625,
+        "critique": 7940,
+        "solver": 11147,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a core subject included in the LL.M. specialization in International Law?",
+      "ms": {
+        "draft": 3591,
+        "critique": 7846,
+        "solver": 1814,
+        "form": 3198,
+        "translation": 56540
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main focus of the Martens Clause in the context of international humanitarian law?",
+      "ms": {
+        "draft": 3641,
+        "critique": 6527,
+        "solver": 8067,
+        "form": 0,
+        "translation": 23085
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is studying International Human Rights Law as part of the LL.M. specialization, which of the following would they most likely be analyzing?",
+      "ms": {
+        "draft": 3591,
+        "critique": 8014,
+        "solver": 2650,
+        "form": 0,
+        "translation": 53664
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A state is accused of violating international law by committing a crime against humanity. Which of the following would most likely affect its state immunity?",
+      "ms": {
+        "draft": 17796,
+        "critique": 8202,
+        "solver": 1831,
+        "form": 3176,
+        "translation": 60183
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary purpose of the LL.M. specialization in International Law according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a key element of international responsibility according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Mentions human rights, which are part of a different section…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the role of the International Court of Justice (ICJ) according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A dispute arises between two countries over the enforcement of a foreign judgment. According to the passage, which factor would most likely influence the recognition of the judgment?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following best describes the role of treaties in international law?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is NOT a source of International Economic Law according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary purpose of the WTO according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a country wants to resolve a trade dispute with another country, which mechanism would it most likely use according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (53 vs 31 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a challenge posed by the digital economy in the context of International Economic Law?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which module of the syllabus discusses the protection of wounded and sick soldiers?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A private military company is accused of committing war crimes during a conflict. Which of the following would most likely be held accountable under international law?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a country is accused of using a prohibited method of warfare, which international body would most likely investigate the claim?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the role of treaties in international relations as per the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A country is part of a treaty that guarantees human rights. If the country fails to meet its obligations under the treaty, what might happen according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a key concept in treaty law according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which international legal instrument is primarily concerned with the protection of refugees and their rights?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a challenge in the enforcement of treaties in the modern era?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Overlooks the specific mention of non-state actors and techn…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person is denied asylum in a country and faces persecution in their home country, which international principle could be invoked to protect them?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A country's legal framework for managing immigration and border control can be influenced by which of the following factors?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the principle of 'non-refoulement' mean in the context of international refugee law?",
+      "reason": "the key is far longer than every distractor (79 vs 48 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a core international human rights instrument mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (41 vs 20 characters); distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here, but the question is a…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following best explains the relationship between IP protection and public interest as discussed in the passage?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following international legal frameworks is most closely associated with the principle of 'sustainable development' in environmental law?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary purpose of the TRIPS Agreement as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for law: levels 5 and 6 skipped",
+    "no glossary in the corpus for Law (LL.M.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

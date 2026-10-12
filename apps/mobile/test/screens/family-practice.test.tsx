@@ -155,4 +155,77 @@ describe("practice", () => {
     await renderFamily(<FamilyPractice />, ME_PARENT, { "/api/v1/family/practice": () => ({ children: [child(ID.child, "ZZ Asha")], childName: "ZZ Asha", weeklyCount: 0, topics: [] }) });
     expect(await screen.findByText(/Nothing tried yet/)).toBeTruthy();
   });
+
+  // college-content (12 Oct 2026): a college's two sections, "My stream" by programme and term, "Competitive Exams Prep" by class and subject.
+  const COLLEGE = {
+    ...PRACTICE,
+    practiceKind: "COLLEGE",
+    collegeStreams: ["LAW"],
+    schoolBoard: null,
+    enrolledGrade: null,
+    defaultGrade: null,
+    resume: null,
+    topics: [
+      { ...TOPIC, id: "c1", slug: "zz-intl-law", name: "ZZ International Law", subject: "LAW", classLevel: 13, board: null, audience: "COLLEGE", streams: ["LAW"], programme: "LL.M.", yearOrSemester: "S2", section: "STREAM" },
+      { ...TOPIC, id: "c2", slug: "zz-torts", name: "ZZ Torts", subject: "LAW", classLevel: 13, board: null, audience: "COLLEGE", streams: ["LAW"], programme: "LL.B.", yearOrSemester: "Y1", section: "STREAM" },
+      { ...TOPIC, id: "c3", slug: "zz-aptitude", name: "ZZ Aptitude", subject: "APTITUDE", classLevel: 13, board: null, audience: "COLLEGE", streams: [], programme: null, yearOrSemester: null, section: "STREAM" },
+      { ...TOPIC, id: "p1", slug: "zz-magnets", name: "ZZ Magnets", subject: "SCIENCE", classLevel: 8, board: "NCERT", audience: "SCHOOL", streams: [], programme: null, yearOrSemester: null, section: "PREP" },
+      { ...TOPIC, id: "p2", slug: "zz-algebra", name: "ZZ Algebra", subject: "MATHS", classLevel: 9, board: "NCERT", audience: "SCHOOL", streams: [], programme: null, yearOrSemester: null, section: "PREP" },
+    ],
+  };
+
+  it("a college opens on its stream's banks with programme and term chips, no board switch, and the prep section lists NCERT's chapters by class", async () => {
+    await renderFamily(<FamilyPractice />, ME_STUDENT, { [PATH]: () => COLLEGE });
+    expect(await screen.findByText("ZZ International Law")).toBeTruthy();
+    expect(screen.getByText("ZZ Torts")).toBeTruthy();
+    expect(screen.getByText("ZZ Aptitude")).toBeTruthy();
+    expect(screen.queryByText("ZZ Magnets")).toBeNull();
+    expect(screen.queryByRole("button", { name: "Both boards" })).toBeNull();
+    expect(screen.getByRole("button", { name: "ZZ International Law, LL.M. · Law · Semester 2" })).toBeTruthy();
+    await press(screen.getByRole("button", { name: "LL.M." }));
+    expect(screen.getByText("ZZ International Law")).toBeTruthy();
+    expect(screen.queryByText("ZZ Torts")).toBeNull();
+    await press(screen.getByRole("button", { name: "All programmes" }));
+    await press(screen.getByRole("button", { name: "Year 1" }));
+    expect(screen.getByText("ZZ Torts")).toBeTruthy();
+    expect(screen.getByText("ZZ Aptitude")).toBeTruthy();
+    expect(screen.queryByText("ZZ International Law")).toBeNull();
+    await press(screen.getByRole("button", { name: "Competitive Exams Prep" }));
+    expect(screen.getByText("ZZ Magnets")).toBeTruthy();
+    expect(screen.getByText("ZZ Algebra")).toBeTruthy();
+    expect(screen.queryByText("ZZ Torts")).toBeNull();
+    await press(screen.getByRole("button", { name: "Class 8" }));
+    expect(screen.getByText("ZZ Magnets")).toBeTruthy();
+    expect(screen.queryByText("ZZ Algebra")).toBeNull();
+    await press(screen.getByRole("button", { name: "ZZ Magnets, Science · Class 8 · NCERT" }));
+    expect(mockRouter.push).toHaveBeenLastCalledWith({ pathname: "/(app)/quiz", params: { mode: "topic", slug: "zz-magnets" } });
+  });
+
+  it("a college with nothing for its stream yet says so and opens the prep section", async () => {
+    await renderFamily(<FamilyPractice />, ME_STUDENT, { [PATH]: () => ({ ...COLLEGE, topics: COLLEGE.topics.filter((x) => x.section === "PREP") }) });
+    expect(await screen.findByText("Nothing for your stream yet")).toBeTruthy();
+    expect(screen.getByText("Questions for Law are still being written. Competitive Exams Prep has NCERT's chapters meanwhile.")).toBeTruthy();
+    await press(screen.getByRole("button", { name: "Open Competitive Exams Prep" }));
+    expect(screen.getByText("ZZ Magnets")).toBeTruthy();
+  });
+
+  it("a guardian of a college student sees the chapters by section, with no board switch", async () => {
+    const progress = {
+      children: [child(ID.child, "ZZ Asha")],
+      childName: "ZZ Asha",
+      weeklyCount: 3,
+      schoolBoard: null,
+      practiceKind: "COLLEGE",
+      topics: [
+        { slug: "zz-intl-law", name: "ZZ International Law", subject: "LAW", classLevel: 13, level: 2, seenCount: 3, correctCount: 2, tierCount: 0, cleanCompletion: false, board: null, section: "STREAM", programme: "LL.M.", yearOrSemester: "S2" },
+        { slug: "zz-magnets", name: "ZZ Magnets", subject: "SCIENCE", classLevel: 8, level: 1, seenCount: 1, correctCount: 1, tierCount: 0, cleanCompletion: false, board: "NCERT", section: "PREP", programme: null, yearOrSemester: null },
+      ],
+    };
+    await renderFamily(<FamilyPractice />, ME_PARENT, { "/api/v1/family/practice": () => progress });
+    expect(await screen.findByText("ZZ International Law · Semester 2")).toBeTruthy();
+    expect(screen.getByText("ZZ Magnets · Class 8 · NCERT")).toBeTruthy();
+    expect(screen.getByText("LL.M. · Law")).toBeTruthy();
+    expect(screen.getByText("Competitive Exams Prep · Science")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Both boards" })).toBeNull();
+  });
 });

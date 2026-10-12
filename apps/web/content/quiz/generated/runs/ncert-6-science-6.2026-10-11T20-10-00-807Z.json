@@ -1,0 +1,779 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-11T20:10:00.807Z",
+  "finishedAt": "2026-10-11T20:33:30.881Z",
+  "seconds": 1410,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "fecu1",
+    "document": "ncert/6/science/fecu106.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 6 — Materials Around Us",
+    "edition": "Reprint 2026-27",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2025-26]\n7. C. Use of plastic as packaging material. 1",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n6. C. X is a non-metal and Y is a metal.",
+      "[CBSE Class X Science, sample question paper, 2026-27]\n25. Carbon forms millions of compounds whereas silicon, which is just below it in 2\nthe Periodic Table, forms a few compounds. Explain the reason for the\ndifference in their ability to form compounds.",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n20. Assertion: Biodegradable substances result in the formation of compost and natural 1\nreplenishment.\nReason: It is due to breakdown of complex inorganic substances into simple organic\nsubstances."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 425449,
+      "in": 41,
+      "out": 40,
+      "rejects": 1,
+      "promptTokens": 33671,
+      "completionTokens": 10262
+    },
+    "critique": {
+      "calls": 55,
+      "ms": 612438,
+      "in": 40,
+      "out": 37,
+      "rejects": 3,
+      "promptTokens": 23420,
+      "completionTokens": 9367
+    },
+    "solver": {
+      "calls": 288,
+      "ms": 354898,
+      "in": 37,
+      "out": 33,
+      "rejects": 4,
+      "promptTokens": 52366,
+      "completionTokens": 3068
+    },
+    "form": {
+      "calls": 28,
+      "ms": 217398,
+      "in": 33,
+      "out": 13,
+      "rejects": 20,
+      "promptTokens": 16016,
+      "completionTokens": 2936
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 14,
+      "ms": 5779,
+      "in": 13,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 1294954,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 24935,
+      "completionTokens": 11931
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 3,
+    "4": 1,
+    "5": 1,
+    "6": 3
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a material that can be used to make a tumbler?",
+      "ms": {
+        "draft": 12495,
+        "critique": 11947
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name given to any substance that is used to create an object?",
+      "ms": {
+        "draft": 12495,
+        "critique": 9547,
+        "solver": 2338,
+        "form": 6515
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the classification of objects in Activity 6.2, which property was used to group the objects?",
+      "ms": {
+        "draft": 12495,
+        "critique": 11204,
+        "solver": 2650,
+        "form": 4474
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a reason for using different materials for making balls for various sports?",
+      "ms": {
+        "draft": 12495,
+        "critique": 10097,
+        "solver": 2937,
+        "form": 6473
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following materials is considered lustrous?",
+      "ms": {
+        "draft": 14826,
+        "critique": 11913,
+        "solver": 17964,
+        "form": 4901
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of a material that dissolves in water?",
+      "ms": {
+        "draft": 14826,
+        "critique": 10806,
+        "solver": 1845,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a material is scratched easily, what can be said about its hardness?",
+      "ms": {
+        "draft": 14826,
+        "critique": 10705,
+        "solver": 17805,
+        "form": 4578
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following materials is transparent?",
+      "ms": {
+        "draft": 14826,
+        "critique": 13907,
+        "solver": 2603,
+        "form": 6880
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student finds that a material does not dissolve in water but is transparent. What can be said about the material?",
+      "ms": {
+        "draft": 14826,
+        "critique": 10277,
+        "solver": 20784
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a material is hard and non-lustrous, what is the most likely identity of the material?",
+      "ms": {
+        "draft": 14826,
+        "critique": 9961,
+        "solver": 19901
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what does the term 'matter' refer to?",
+      "ms": {
+        "draft": 25634,
+        "critique": 11241,
+        "solver": 2668,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two glass tumblers have the same capacity but different amounts of water, which of the following is true?",
+      "ms": {
+        "draft": 25634,
+        "critique": 12275,
+        "solver": 2567,
+        "form": 5511
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a material that does not dissolve in water?",
+      "ms": {
+        "draft": 25634,
+        "critique": 11605,
+        "solver": 25056,
+        "form": 3382
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student fills two identical cups with different materials and measures their mass, which of the following will be true?",
+      "ms": {
+        "draft": 25634,
+        "critique": 13554,
+        "solver": 24458,
+        "form": 6583
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what property determines how much we can see through an object?",
+      "ms": {
+        "draft": 7437,
+        "critique": 10975,
+        "solver": 2581,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements is true about materials X and Y as described in the passage?",
+      "ms": {
+        "draft": 7437,
+        "critique": 9005,
+        "solver": 2336
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given two materials, X and Y. Material X dissolves completely in water, while material Y does not. Which of the following could be X and Y?",
+      "ms": {
+        "draft": 9238,
+        "critique": 13224,
+        "solver": 36101
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following materials is lustrous?",
+      "ms": {
+        "draft": 9238,
+        "critique": 13530,
+        "solver": 42581,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which property of materials helps us determine if an object is heavier or lighter than another?",
+      "ms": {
+        "draft": 8913,
+        "critique": 12528,
+        "solver": 35727,
+        "form": 5572
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two glass tumblers have the same capacity, but one is half-filled with water and the other is fully filled, what can be said about the volume of water in each tumbler?",
+      "ms": {
+        "draft": 8913,
+        "critique": 13161,
+        "solver": 29408,
+        "form": 7396
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, what can be concluded about the relationship between mass and volume?",
+      "ms": {
+        "draft": 8913,
+        "critique": 11230,
+        "solver": 29286,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student pours water from a jug into a water bottle and is unable to fill it completely, what could be the reason based on the passage?",
+      "ms": {
+        "draft": 8913,
+        "critique": 14477,
+        "solver": 23710,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student measures the mass of a cup of water and then the mass of the same cup after the water evaporates, what can be concluded about the mass of the cup?",
+      "ms": {
+        "draft": 8913,
+        "critique": 17022,
+        "solver": 32441,
+        "form": 9223
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which property of materials is described as 'shiny' or 'lustrous'?",
+      "ms": {
+        "draft": 13245,
+        "critique": 11911,
+        "solver": 4405,
+        "form": 7150
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which type of material allows light to pass through it clearly?",
+      "ms": {
+        "draft": 13245,
+        "critique": 9729,
+        "solver": 2852,
+        "form": 5543
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is not a material mentioned in the passage?",
+      "ms": {
+        "draft": 12403,
+        "critique": 12497
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which material would be most suitable for making a tumbler that can hold water?",
+      "ms": {
+        "draft": 12403,
+        "critique": 11104
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following materials is most likely to be soluble in water?",
+      "ms": {
+        "draft": 13245,
+        "critique": 13532,
+        "solver": 10193,
+        "form": 6022
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of mass in the International System of Units (SI)?",
+      "ms": {
+        "draft": 25634,
+        "critique": 14082,
+        "solver": 3280,
+        "form": 3440,
+        "translation": 65762
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of matter?",
+      "ms": {
+        "draft": 7437,
+        "critique": 11071,
+        "solver": 2436,
+        "form": 4206,
+        "translation": 73671
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements is true about materials?",
+      "ms": {
+        "draft": 25634,
+        "critique": 11941,
+        "solver": 2565,
+        "form": 2403,
+        "translation": 89920
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following properties is used to classify materials as transparent, translucent, or opaque?",
+      "ms": {
+        "draft": 9238,
+        "critique": 8190,
+        "solver": 3942,
+        "form": 0,
+        "translation": 119939
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why is a tumbler made of cloth not suitable for storing water?",
+      "ms": {
+        "draft": 12495,
+        "critique": 10510,
+        "solver": 3137,
+        "form": 2977,
+        "translation": 67904
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following materials is soluble in water?",
+      "ms": {
+        "draft": 7437,
+        "critique": 9473,
+        "solver": 2836,
+        "form": 3289,
+        "translation": 77159
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which material is most suitable for a container that needs to be transparent and strong?",
+      "ms": {
+        "draft": 9238,
+        "critique": 10542,
+        "solver": 3078,
+        "form": 0,
+        "translation": 158642
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given information, which material would be classified as hard and soluble in water?",
+      "ms": {
+        "draft": 9238,
+        "critique": 10892,
+        "solver": 43138,
+        "form": 0,
+        "translation": 117320
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following materials is most suitable for making a container that is easy to clean and maintain?",
+      "ms": {
+        "draft": 7437,
+        "critique": 9810,
+        "solver": 14019,
+        "form": 1405,
+        "translation": 139871
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following can be concluded about the classification of materials?",
+      "ms": {
+        "draft": 12495,
+        "critique": 10401,
+        "solver": 2360,
+        "form": 8084,
+        "translation": 119065
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why might a metal object appear non-lustrous even though it is a metal?",
+      "ms": {
+        "draft": 13245,
+        "critique": 17045,
+        "solver": 4137,
+        "form": 7726,
+        "translation": 88845
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student claims that a material is matter because it has mass and occupies space. Is this statement correct?",
+      "ms": {
+        "draft": 9238,
+        "critique": 10911,
+        "solver": 3184,
+        "form": 0,
+        "translation": 163340
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a material that can be used to make a tumbler?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name given to any substance that is used to create an object?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Uses a general term not defined in the passage.…\"); distractor 3's reason is not a one-line misconception (\"Uses a very general term not defined in the passage.…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the classification of objects in Activity 6.2, which property was used to group the objects?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'woodenChair'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a reason for using different materials for making balls for various sports?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.cell: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following materials is considered lustrous?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of a material that dissolves in water?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a material is scratched easily, what can be said about its hardness?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following materials is transparent?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'glass'"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student finds that a material does not dissolve in water but is transparent. What can be said about the material?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a material is hard and non-lustrous, what is the most likely identity of the material?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what does the term 'matter' refer to?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If two glass tumblers have the same capacity but different amounts of water, which of the following is true?",
+      "reason": "options 0 and 2 say the same thing (\"The one with more water has less mass\" / \"The one with more water has more mass\"); options 1 and 3 say the same thing (\"The one with less water has more volume\" / \"The one with more water has less volume\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of a material that does not dissolve in water?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a student fills two identical cups with different materials and measures their mass, which of the following will be true?",
+      "reason": "options 0 and 1 say the same thing (\"The cup with more material has less mass\" / \"1: The cup with less material has more mass\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what property determines how much we can see through an object?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following statements is true about materials X and Y as described in the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the unit used to measure mass in the International System of Units (SI)?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student is given two materials, X and Y. Material X dissolves completely in water, while material Y does not. Which of the following could be X and Y?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following materials is lustrous?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which property of materials helps us determine if an object is heavier or lighter than another?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If two glass tumblers have the same capacity, but one is half-filled with water and the other is fully filled, what can be said about the volume of water in each tumbler?",
+      "reason": "options 1 and 2 say the same thing (\"The volume of water is less in the half-filled tumbler\" / \"The volume of water is more in the half-filled tumbler\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, what can be concluded about the relationship between mass and volume?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 say the same thing (\"Mass depends on volume, but not vice versa\" / \"Volume depends on mass, but not vice versa\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student pours water from a jug into a water bottle and is unable to fill it completely, what could be the reason based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a student measures the mass of a cup of water and then the mass of the same cup after the water evaporates, what can be concluded about the mass of the cup?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which property of materials is described as 'shiny' or 'lustrous'?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.south: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which type of material allows light to pass through it clearly?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'glass'"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is not a material mentioned in the passage?",
+      "reason": "option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which material would be most suitable for making a tumbler that can hold water?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Which of the following materials is most likely to be soluble in water?",
+      "reason": "near-duplicate of batch item \"Which of the following materials is soluble in wat…\" (cosine 0.951 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,827 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-11T10:28:42.325Z",
+  "finishedAt": "2026-10-11T10:48:44.775Z",
+  "seconds": 1202,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp109.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 9 — Symmetry",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n10. B) isosceles and similar",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2026-27]\n3. (B) 64\n5 5\n5+4 = 9\n= 5 ∶ 2\nA 3 × 3 symmetric matrix will be of the form\n𝑎 𝑏 𝑐\n[𝑏 𝑑 𝑒]\n𝑐 𝑒 𝑓\nThere are 6 unique entries in this matrix: 𝑎, 𝑏, 𝑐, 𝑑, 𝑒, 𝑓. Each of these entries\ncan be either 1 or -1.\n∴ Number of symmetric matrices will be 2 = 64 6",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class XII Mathematics, sample question paper, 2026-27]\n4. 2 1 −2\n𝜋\n(B) [0, 𝜋] − { } 2\n𝜋 3𝜋\n(D) [ , 2 2 ] − {𝜋}\n(B) (− , ) 1 1 2 2\n(D) (−∞, − ] ∪ [ , ∞) 1 2 1 2\n(C) π 3 (D) 𝜋 2\nIf 𝐴 = [3𝑎 0 4 ] is a symmetric matrix, then value of √6𝑎 + 2𝑏 + 3𝑐 is:\n𝑏 2𝑐 1\n(A) −2 (B) 2 (C) ±2 (D) 4"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 400838,
+      "in": 49,
+      "out": 41,
+      "rejects": 8,
+      "promptTokens": 42395,
+      "completionTokens": 11889
+    },
+    "critique": {
+      "calls": 49,
+      "ms": 643667,
+      "in": 41,
+      "out": 29,
+      "rejects": 12,
+      "promptTokens": 21988,
+      "completionTokens": 8796
+    },
+    "solver": {
+      "calls": 199,
+      "ms": 185373,
+      "in": 29,
+      "out": 21,
+      "rejects": 8,
+      "promptTokens": 35371,
+      "completionTokens": 2074
+    },
+    "form": {
+      "calls": 8,
+      "ms": 130189,
+      "in": 21,
+      "out": 10,
+      "rejects": 11,
+      "promptTokens": 7263,
+      "completionTokens": 1664
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 4369,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 745051,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 23443,
+      "completionTokens": 11280
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 1,
+    "4": 2,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is defined as a part or parts of a figure that are repeated in some definite pattern?",
+      "ms": {
+        "draft": 6785,
+        "critique": 13608
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a square is folded along both its vertical and horizontal lines of symmetry, how many times will the paper be folded?",
+      "ms": {
+        "draft": 6785,
+        "critique": 14378
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A figure is said to have symmetry if it has a line along which it can be folded so that one half exactly covers the other. Which of the following is an example of such a figure?",
+      "ms": {
+        "draft": 6785,
+        "critique": 15732
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the result of reflecting a square along its diagonal?",
+      "ms": {
+        "draft": 6785,
+        "critique": 14313,
+        "solver": 3387
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What type of symmetry is shown when a figure can be folded along a line so that one half exactly covers the other half?",
+      "ms": {
+        "draft": 6785,
+        "critique": 13667,
+        "solver": 22733,
+        "form": 4728
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a square is folded along its diagonal, which of the following best describes the relationship between the parts of the square?",
+      "ms": {
+        "draft": 6785,
+        "critique": 13308,
+        "solver": 2818
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a line of symmetry for a square?",
+      "ms": {
+        "draft": 7507,
+        "critique": 13313,
+        "solver": 3444,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many lines of symmetry does an equilateral triangle have?",
+      "ms": {
+        "draft": 7507,
+        "critique": 13639
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of rotational symmetry?",
+      "ms": {
+        "draft": 6716,
+        "critique": 12855,
+        "solver": 3584
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A figure has rotational symmetry of order 4. What is the angle of rotation?",
+      "ms": {
+        "draft": 7507,
+        "critique": 15614,
+        "solver": 3289,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A figure has rotational symmetry of order 3. What is the minimum angle of rotation required to make it look the same?",
+      "ms": {
+        "draft": 7507,
+        "critique": 17926,
+        "solver": 3032,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A figure has 3 angles of symmetry. The smallest angle of symmetry is 120°. What is the total number of angles of symmetry?",
+      "ms": {
+        "draft": 6716,
+        "critique": 12898
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a figure has rotational symmetry and the smallest angle of symmetry is 60°, what are the other angles of symmetry?",
+      "ms": {
+        "draft": 6716,
+        "critique": 21565,
+        "solver": 23391,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a line of symmetry for a square?",
+      "ms": {
+        "draft": 6716,
+        "critique": 12260,
+        "solver": 3077,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A figure has rotational symmetry with the smallest angle of 60°. What are the other angles of symmetry of the figure?",
+      "ms": {
+        "draft": 11590,
+        "critique": 20347,
+        "solver": 3557
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of rotational symmetry?",
+      "ms": {
+        "draft": 33539,
+        "critique": 15493
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the number of lines of symmetry in a regular hexagon?",
+      "ms": {
+        "draft": 33539,
+        "critique": 12516
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A shape has 3 lines of symmetry. Which of the following could it be?",
+      "ms": {
+        "draft": 33539,
+        "critique": 14008
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following shapes has 24 lines of symmetry?",
+      "ms": {
+        "draft": 12497,
+        "critique": 13816
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a line of symmetry of the given shape?",
+      "ms": {
+        "draft": 12497,
+        "critique": 14269
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a shape has 6 lines of symmetry and 6 angles of rotational symmetry, what could it be?",
+      "ms": {
+        "draft": 12497,
+        "critique": 13557,
+        "solver": 2248,
+        "form": 8605
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the number of lines of symmetry of a regular polygon with 6 sides?",
+      "ms": {
+        "draft": 12497,
+        "critique": 12792,
+        "solver": 21276,
+        "form": 4641
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements is true about the rotational symmetry of a regular polygon?",
+      "ms": {
+        "draft": 12497,
+        "critique": 14361,
+        "solver": 3672,
+        "form": 8906
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a shape has the same number of lines of symmetry as angles of rotational symmetry, what could it be?",
+      "ms": {
+        "draft": 12497,
+        "critique": 10248,
+        "solver": 2414
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a figure has rotational symmetry with the smallest angle of 60°, what are the other angles of symmetry?",
+      "ms": {
+        "draft": 23383,
+        "critique": 10980,
+        "solver": 3729
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A figure is symmetric about the point marked. It has angles of symmetry at 90°, 180°, 270°, and 360°. What is the order of rotational symmetry for this figure?",
+      "ms": {
+        "draft": 23383,
+        "critique": 12079
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A figure has rotational symmetry, and its smallest angle of symmetry is 45°. Can this figure also have reflection symmetry?",
+      "ms": {
+        "draft": 23383,
+        "critique": 11336,
+        "solver": 30587
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a figure with reflection symmetry?",
+      "ms": {
+        "draft": 23383,
+        "critique": 18873,
+        "solver": 25224
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is true about rotational symmetry?",
+      "ms": {
+        "draft": 8001,
+        "critique": 13570,
+        "solver": 3079,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a figure has rotational symmetry with its smallest angle of symmetry as 45°, which of the following is not an angle of symmetry for this figure?",
+      "ms": {
+        "draft": 8001,
+        "critique": 11996
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of reflection symmetry?",
+      "ms": {
+        "draft": 7195,
+        "critique": 9018,
+        "solver": 10046,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a figure with exactly one line of symmetry?",
+      "ms": {
+        "draft": 5393,
+        "critique": 11514,
+        "solver": 1956,
+        "form": 0,
+        "translation": 64462
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the definition of a line of symmetry?",
+      "ms": {
+        "draft": 8001,
+        "critique": 12530,
+        "solver": 1881,
+        "form": 0,
+        "translation": 82629
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a figure with rotational symmetry?",
+      "ms": {
+        "draft": 23383,
+        "critique": 11239,
+        "solver": 3471,
+        "form": 0,
+        "translation": 69035
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a figure has rotational symmetry and its smallest angle of symmetry is 60°, which of the following angles is also an angle of symmetry?",
+      "ms": {
+        "draft": 8001,
+        "critique": 12500,
+        "solver": 3216,
+        "form": 1,
+        "translation": 61153
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following shapes has exactly two lines of symmetry?",
+      "ms": {
+        "draft": 7507,
+        "critique": 15265,
+        "solver": 2007,
+        "form": 0,
+        "translation": 98087
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A figure has radial arms and exactly 5 angles of symmetry. What is the angle between two adjacent radial arms?",
+      "ms": {
+        "draft": 23383,
+        "critique": 12951,
+        "solver": 28740,
+        "form": 0,
+        "translation": 60913
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "The given figure has a vertical line of symmetry. Which of the following shapes will it form when folded along this line?",
+      "ms": {
+        "draft": 7507,
+        "critique": 14223,
+        "solver": 4578,
+        "form": 0,
+        "translation": 105439
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A shape has 24 lines of symmetry and 24 angles of rotational symmetry. Which of the following is most likely to be the shape?",
+      "ms": {
+        "draft": 33539,
+        "critique": 8022,
+        "solver": 963,
+        "form": 2499,
+        "translation": 75181
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following figures can have rotational symmetry of 60°?",
+      "ms": {
+        "draft": 6716,
+        "critique": 12074,
+        "solver": 3325,
+        "form": 1,
+        "translation": 65557
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a figure has rotational symmetry and the sum of all its angles of symmetry is 1080°, what is the smallest angle of symmetry?",
+      "ms": {
+        "draft": 6716,
+        "critique": 14539,
+        "solver": 35144,
+        "form": 0,
+        "translation": 56659
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "A figure has rotational symmetry with an angle of 60°. The figure has two angles of symmetry less than 60°. What is the smallest angle of symmetry of the figure?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "A figure has rotational symmetry with the smallest angle of 45°. Is it possible to have such a figure?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "A figure has rotational symmetry. Its smallest angle of symmetry is 20°. How many angles of symmetry does the figure have?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "A figure has rotational symmetry. Its smallest angle of symmetry is 17°. Is it possible to have such a figure?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is defined as a part or parts of a figure that are repeated in some definite pattern?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a square is folded along both its vertical and horizontal lines of symmetry, how many times will the paper be folded?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A figure is said to have symmetry if it has a line along which it can be folded so that one half exactly covers the other. Which of the following is an example of such a figure?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following best describes the result of reflecting a square along its diagonal?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What type of symmetry is shown when a figure can be folded along a line so that one half exactly covers the other half?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a square is folded along its diagonal, which of the following best describes the relationship between the parts of the square?",
+      "reason": "the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a line of symmetry for a square?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "How many lines of symmetry does an equilateral triangle have?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of rotational symmetry?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A figure has rotational symmetry of order 4. What is the angle of rotation?",
+      "reason": "figure: figure spec refused: spec.angles.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A figure has rotational symmetry of order 3. What is the minimum angle of rotation required to make it look the same?",
+      "reason": "figure: figure spec refused: spec.arcs: arcs names point O, which is not defined"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A figure has 3 angles of symmetry. The smallest angle of symmetry is 120°. What is the total number of angles of symmetry?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a figure has rotational symmetry and the smallest angle of symmetry is 60°, what are the other angles of symmetry?",
+      "reason": "options 1 and 2 say the same thing (\"120°, 180°, 240°, 300°, 360°\" / \"60°, 120°, 180°, 240°, 300°, 360°\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a line of symmetry for a square?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A figure has rotational symmetry with the smallest angle of 60°. What are the other angles of symmetry of the figure?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of rotational symmetry?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the number of lines of symmetry in a regular hexagon?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A shape has 3 lines of symmetry. Which of the following could it be?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is true about the angles of symmetry of a square?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "How many lines of symmetry does a square have?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following shapes has no line of symmetry?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which figure has more than one line of symmetry?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following shapes has 24 lines of symmetry?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a line of symmetry of the given shape?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a shape has 6 lines of symmetry and 6 angles of rotational symmetry, what could it be?",
+      "reason": "figure is set without imageAlt"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the number of lines of symmetry of a regular polygon with 6 sides?",
+      "reason": "figure is set without imageAlt"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following statements is true about the rotational symmetry of a regular polygon?",
+      "reason": "the key is far longer than every distractor (65 vs 38 characters); figure is set without imageAlt"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a shape has the same number of lines of symmetry as angles of rotational symmetry, what could it be?",
+      "reason": "the solver picked option 0 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a figure has rotational symmetry with the smallest angle of 60°, what are the other angles of symmetry?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A figure is symmetric about the point marked. It has angles of symmetry at 90°, 180°, 270°, and 360°. What is the order of rotational symmetry for this figure?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A figure has rotational symmetry, and its smallest angle of symmetry is 45°. Can this figure also have reflection symmetry?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a figure with reflection symmetry?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is true about rotational symmetry?",
+      "reason": "options 1 and 2 say the same thing (\"A figure with rotational symmetry looks the same when rotated by 360°\" / \"A figure with rotational symmetry looks the same when rotated by 180°\"); options 1 and 3 say the same thing (\"A figure with rotational symmetry looks the same when rotated by 360°\" / \"A figure with rotational symmetry looks the same when rotated by 90°\"); options 2 and 3 say the same thing (\"A figure with rotational symmetry looks the same when rotated by 180°\" / \"A figure with rotational symmetry looks the same when rotated by 90°\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a figure has rotational symmetry with its smallest angle of symmetry as 45°, which of the following is not an angle of symmetry for this figure?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of reflection symmetry?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -50,6 +50,7 @@
     "model:serve": "bash scripts/model-serve.sh",
     "quiz:generate": "tsx --tsconfig scripts/tsconfig.json scripts/quiz2/gen-quiz2.ts",
     "quiz:gen": "tsx --tsconfig scripts/tsconfig.json scripts/quiz-gen/cli.ts",
+    "competitions:crawl": "tsx --tsconfig scripts/tsconfig.json scripts/competitions-crawl/cli.ts",
     "expert:invite": "tsx --tsconfig scripts/tsconfig.json scripts/invite-expert.ts",
     "job": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/run-job.ts",
     "digest:weekly": "npm run --silent job -- digest:weekly",

@@ -50,6 +50,7 @@ import {
   type TranslationDraft,
 } from "./shape";
 import { questionErrors } from "../verify-quiz";
+import { aboutTheSyllabus } from "../../src/lib/college-syllabi"; // college-content (12 Oct 2026)
 
 export const SOLVER_RUNS = 5;
 
@@ -294,6 +295,7 @@ export async function runChapter(client: ChatClient, chapter: SelectedChapter, o
             captions: [...new Set(captionsHere.length ? captionsHere : captions.slice(0, 6))],
             counts,
             style: Object.keys(counts).some((l) => STYLE_LEVELS.includes(Number(l) as Level)) ? opts.style.excerpts : [],
+            note: chapter.draftNote, // college-content (12 Oct 2026)
           }),
           schema: draftSchemaFor(total),
           seed: seedFor(`${chapter.documentPath}#${group[0]!.ordinal}`, round),
@@ -461,6 +463,11 @@ export async function runChapter(client: ChatClient, chapter: SelectedChapter, o
       }
     }
     const form = formChecks({ stem: w.stem, choices: w.choices, answerIndex: w.answerIndex, solution: w.solution, checkExpr: w.checkExpr, distractorReason: w.distractorReason, figure: w.figure, imageAlt: w.imageAlt });
+    // college-content (12 Oct 2026): a college unit's passage is a syllabus; a question about the syllabus itself is no question.
+    if (chapter.source === "syllabi") {
+      const about = aboutTheSyllabus(w);
+      if (about) form.push(`about the syllabus, not its subject: ${about}`);
+    }
     w.ms.form = Date.now() - t0;
     if (form.length) {
       reject(w, "form", form.join("; "));
@@ -558,6 +565,14 @@ export async function runChapter(client: ChatClient, chapter: SelectedChapter, o
   notes.push(glossaryNote);
   log(`  translations: ${glossaryNote}`);
 
+  /** The prompt's header echoed before the translation (up to and through "Target language: …" and a "STEM:"/"प्रश्न:" label), cut off. */
+  function stripPromptEcho(text: string): string {
+    let out = text;
+    const header = /^[\s\S]*?(?:Target language|लक्ष्य भाषा)[^\n]*\n+/i.exec(out);
+    if (header) out = out.slice(header[0].length);
+    return out.replace(/^\s*(?:STEM|प्रश्न)\s*[:：]\s*/i, "").trim();
+  }
+
   async function translate(w: Working, language: "hi" | "mr"): Promise<GeneratedTranslation & { figureLabels: Record<string, string> }> {
     const glossary = glossaryLinesFor(opts.glossary, { stem: w.stem, choices: w.choices });
     // The figure's label texts to translate: every key that is not a literal (a point's name, a number).
@@ -605,7 +620,9 @@ export async function runChapter(client: ChatClient, chapter: SelectedChapter, o
       figureLabels[k] = text || w.figure!.labels[k]!.en;
       if (!text) flag = flag ? `${flag}; figure label "${k}" untranslated` : `figure label "${k}" untranslated`;
     });
-    const fix = (t: string) => devanagariPunctuation(stripListMarker(t), language);
+    // college-content (12 Oct 2026): a model that echoed the prompt's header ("… Target language: Marathi.\n\nप्रश्न: …", seen live on a
+    // college unit) has the echo cut off, so only the translated text is kept.
+    const fix = (t: string) => devanagariPunctuation(stripListMarker(stripPromptEcho(t)), language);
     return { stem: fix(draft.stem), choices: draft.options.map(fix), solution: fix(draft.solution), imageAlt: w.imageAlt ? fix(draft.figureAlt ?? "") || w.imageAlt : null, critique: verdict.note, flag, figureLabels };
   }
 

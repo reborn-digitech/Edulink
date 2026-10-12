@@ -75,8 +75,9 @@ async function buildBank(db: PrismaClient): Promise<number> {
   for (const [position, t] of BANK.entries()) {
     const topic = await db.quizTopic.upsert({
       where: { slug: t.slug },
-      create: { slug: t.slug, subject: t.subject, classLevel: 13, chapter: t.name, name: t.name, summary: "", position },
-      update: { subject: t.subject, classLevel: 13, chapter: t.name, name: t.name, position, retiredAt: null },
+      // college-content (12 Oct 2026): a college's bank for every stream (audience COLLEGE, no stream named).
+      create: { slug: t.slug, subject: t.subject, classLevel: 13, chapter: t.name, name: t.name, summary: "", position, audience: "COLLEGE", streams: [] },
+      update: { subject: t.subject, classLevel: 13, chapter: t.name, name: t.name, position, retiredAt: null, audience: "COLLEGE", streams: [] },
       select: { id: true },
     });
     const existing = new Set((await db.quizQuestion.findMany({ where: { topicId: topic.id }, select: { stem: true } })).map((q) => q.stem));

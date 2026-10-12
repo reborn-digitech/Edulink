@@ -28,8 +28,9 @@ import type { QuizGenProgress, QuizGenStage } from "@edulink/contracts";
 import { readAssistantConfig } from "../../src/lib/assistant-env";
 import { MACHINE, emptyProgress, finishJob, heartbeat, markRunning, modelReady, runnerRow, writeProgress, type JobDb } from "../../src/lib/quiz-jobs";
 import { loadGeneratedBatches, type QueueBatch } from "../quiz-queue-load";
-import { fileNameFor, generateChapter, OUT_DIR } from "./cli";
-import { chaptersWanted, planCombos, type Combo } from "./plan";
+import { fileNameFor, generateChapter, OUT_DIR, type ChapterHooks, type GeneratedChapter } from "./cli";
+import { chaptersWanted, planCombos } from "./plan";
+import { collegePlan, generateCollegeUnit } from "./college"; // college-content (12 Oct 2026)
 import { listChapters } from "./select";
 import type { RunLog } from "./pipeline";
 import type { GeneratedTopicFile } from "./shape";
@@ -43,12 +44,21 @@ const zeroRejects = (): Record<QuizGenStage, number> => Object.fromEntries(STAGE
 const ratio = (kept: number, drafted: number) => (drafted > 0 ? Math.min(1, kept / drafted) : null);
 const perKept = (seconds: number, kept: number) => (kept > 0 ? Math.round((seconds / kept) * 10) / 10 : null);
 
+/** What the live line names a chapter (or a college unit) by. */
+type ChapterRef = Pick<NonNullable<QuizGenProgress["chapter"]>, "board" | "grade" | "subject" | "number" | "name" | "stream" | "programme">;
+
+/**
+ * One chapter (or college unit) the run will take: what the live line names it, its batch file (a chapter
+ * whose file exists is left out: that is how a stopped run resumes), and how it is generated.
+ */
+type Work = { ref: ChapterRef; label: string; fileName: string; generate: (hooks: ChapterHooks) => Promise<GeneratedChapter> };
+
 /** The run's numbers out of the pipeline's log, for the "last chapter" line. */
-function chapterNumbers(combo: Combo, number: number, name: string, log: RunLog, loaded: number): NonNullable<QuizGenProgress["last"]> {
+function chapterNumbers(ref: ChapterRef, log: RunLog, loaded: number): NonNullable<QuizGenProgress["last"]> {
   const rejects = zeroRejects();
   for (const s of STAGES) rejects[s] = log.stages[s]?.rejects ?? 0;
   const drafted = log.stages.draft?.out ?? 0;
-  return { board: combo.boardCode, grade: combo.grade, subject: combo.subjectCode, number, name, drafted, kept: log.kept, rejects, seconds: log.seconds, loaded, keepRate: ratio(log.kept, drafted), secondsPerKept: perKept(log.seconds, log.kept) };
+  return { ...ref, drafted, kept: log.kept, rejects, seconds: log.seconds, loaded, keepRate: ratio(log.kept, drafted), secondsPerKept: perKept(log.seconds, log.kept) };
 }
 
 function verifyBank(): string | null {
@@ -139,77 +149,101 @@ export async function runJob(jobId: string): Promise<void> {
     // 2. the plan
     progress.phase = "PLANNING";
     await write();
-    const inventory = await appDb.contentDocument.groupBy({
-      by: ["source", "gradeOrProgramme", "subject"],
-      where: { kind: "textbook", source: { in: ["ncert", "balbharati"] } },
-    });
-    const combos = planCombos(
-      request,
-      inventory.map((r) => ({ source: r.source, grade: r.gradeOrProgramme, subject: r.subject })),
-    );
-    log(`${combos.length} book(s) to work through`);
+    const limit = request.limit ?? 0;
+    // The work, in order, one chapter (or college unit) at a time: a book's chapters are listed when the run reaches the book.
+    async function* plan(): AsyncGenerator<Work> {
+      // college-content (12 Oct 2026): a stream's programme from the syllabus corpus, unit by unit.
+      if (request.scope === "COLLEGE") {
+        const units = await collegePlan(appDb, request);
+        log(`${units.length} unit(s) of ${request.stream} ${request.programme} to work through`);
+        for (const u of units) {
+          yield {
+            ref: { board: u.board, grade: 13, subject: u.stream, number: u.unit, name: u.unitName, stream: u.stream, programme: u.programme },
+            label: `${u.board} ${u.stream} ${u.programme}, "${u.title}", unit ${u.unit} (${u.unitName})`,
+            fileName: u.fileName,
+            generate: (hooks) => generateCollegeUnit(appDb, { path: u.path, unit: u.unit, limit, perLevel: 4 }, hooks),
+          };
+        }
+        return;
+      }
+      const inventory = await appDb.contentDocument.groupBy({
+        by: ["source", "gradeOrProgramme", "subject"],
+        where: { kind: "textbook", source: { in: ["ncert", "balbharati"] } },
+      });
+      const combos = planCombos(
+        request,
+        inventory.map((r) => ({ source: r.source, grade: r.gradeOrProgramme, subject: r.subject })),
+      );
+      log(`${combos.length} book(s) to work through`);
+      for (const combo of combos) {
+        const chapters = await listChapters(appDb, { board: combo.board, grade: combo.grade, subject: combo.subject });
+        // Two books may carry one number (NCERT class 8 science: "Curiosity" and the 2024 "Science"); the first name given wins.
+        const names = new Map<number, string>();
+        for (const c of chapters) if (c.name && !names.get(c.number)) names.set(c.number, c.name);
+        for (const number of chaptersWanted(chapters.map((c) => c.number), request)) {
+          const name = names.get(number) ?? "";
+          yield {
+            ref: { board: combo.boardCode, grade: combo.grade, subject: combo.subjectCode, number, name },
+            label: `${combo.board} class ${combo.grade} ${combo.subject}, chapter ${number}${name ? ` (${name})` : ""}`,
+            fileName: `${fileNameFor({ board: combo.board, classLevel: combo.grade, subjectCode: combo.subjectCode, chapterNumber: number })}.json`,
+            generate: (hooks) => generateChapter(appDb, number, { board: combo.board, grade: combo.grade, subject: combo.subject, limit, perLevel: 4 }, hooks),
+          };
+        }
+      }
+    }
 
     // 3. the chapters
-    outer: for (const combo of combos) {
+    for await (const work of plan()) {
       if (stop) break;
-      const chapters = await listChapters(appDb, { board: combo.board, grade: combo.grade, subject: combo.subject });
-      // Two books may carry one number (NCERT class 8 science: "Curiosity" and the 2024 "Science"); the first name given wins.
-      const names = new Map<number, string>();
-      for (const c of chapters) if (c.name && !names.get(c.number)) names.set(c.number, c.name);
-      for (const number of chaptersWanted(chapters.map((c) => c.number), request)) {
-        if (stop) break outer;
-        const fileName = `${fileNameFor({ board: combo.board, classLevel: combo.grade, subjectCode: combo.subjectCode, chapterNumber: number })}.json`;
-        if (existsSync(join(OUT_DIR, fileName))) {
-          progress.chaptersSkipped++;
-          await write();
-          continue;
-        }
-        const name = names.get(number) ?? "";
-        const label = `${combo.board} class ${combo.grade} ${combo.subject}, chapter ${number}${name ? ` (${name})` : ""}`;
-        const chapterStarted = Date.now();
-        progress.phase = "GENERATING";
-        progress.chapter = { board: combo.boardCode, grade: combo.grade, subject: combo.subjectCode, number, name, drafted: 0, kept: 0, rejects: zeroRejects(), seconds: 0, loaded: 0, keepRate: null, secondsPerKept: null };
+      const { ref, label, fileName } = work;
+      if (existsSync(join(OUT_DIR, fileName))) {
+        progress.chaptersSkipped++;
         await write();
-        log(label);
-        try {
-          const r = await generateChapter(appDb, number, { board: combo.board, grade: combo.grade, subject: combo.subject, limit: request.limit ?? 0, perLevel: 4 }, {
-            log,
-            shouldStop: () => stop,
-            onProgress: (p) => {
-              if (!progress.chapter) return;
-              const seconds = Math.round((Date.now() - chapterStarted) / 1000);
-              Object.assign(progress.chapter, { drafted: p.drafted, kept: p.kept, rejects: { ...zeroRejects(), ...p.rejects }, seconds, keepRate: ratio(p.kept, p.drafted), secondsPerKept: perKept(seconds, p.kept) });
-              void write();
-            },
-          });
-          if (r.stopped || !r.file || !r.fileName) break outer;
+        continue;
+      }
+      const chapterStarted = Date.now();
+      progress.phase = "GENERATING";
+      progress.chapter = { ...ref, drafted: 0, kept: 0, rejects: zeroRejects(), seconds: 0, loaded: 0, keepRate: null, secondsPerKept: null };
+      await write();
+      log(label);
+      try {
+        const r = await work.generate({
+          log,
+          shouldStop: () => stop,
+          onProgress: (p) => {
+            if (!progress.chapter) return;
+            const seconds = Math.round((Date.now() - chapterStarted) / 1000);
+            Object.assign(progress.chapter, { drafted: p.drafted, kept: p.kept, rejects: { ...zeroRejects(), ...p.rejects }, seconds, keepRate: ratio(p.kept, p.drafted), secondsPerKept: perKept(seconds, p.kept) });
+            void write();
+          },
+        });
+        if (r.stopped || !r.file || !r.fileName) break;
 
-          // The chapter's file is written: verified and loaded into the bank now, served while the run goes on.
-          progress.phase = "LOADING";
-          await write();
-          const landed = await landChapter(ownerDb, r.fileName, r.file);
-          const loaded = landed.loaded;
-          if (landed.problem) progress.chaptersFailed.push({ label, reason: `written but not loaded (npm run quiz:queue loads it once the bank verifies): ${landed.problem}` });
-          else log(`loaded ${loaded} item(s) into the bank (${landed.figuresHeld} figure(s) failed and held)`);
-          const last = chapterNumbers(combo, number, name, r.runLog, loaded);
-          progress.last = last;
-          progress.chaptersDone++;
-          progress.drafted += last.drafted;
-          progress.kept += last.kept;
-          progress.loaded += loaded;
-          const elapsed = Math.round((Date.now() - runStarted) / 1000);
-          progress.keepRate = ratio(progress.kept, progress.drafted);
-          progress.secondsPerKept = perKept(elapsed, progress.kept);
-          progress.chapter = null;
-          progress.phase = "GENERATING";
-          await write();
-        } catch (error) {
-          const reason = (error as Error).message.split("\n")[0]!.slice(0, 300);
-          log(`${label}: ${reason}`);
-          progress.chaptersFailed.push({ label, reason });
-          progress.chapter = null;
-          await write();
-        }
+        // The chapter's file is written: verified and loaded into the bank now, served while the run goes on.
+        progress.phase = "LOADING";
+        await write();
+        const landed = await landChapter(ownerDb, r.fileName, r.file);
+        const loaded = landed.loaded;
+        if (landed.problem) progress.chaptersFailed.push({ label, reason: `written but not loaded (npm run quiz:queue loads it once the bank verifies): ${landed.problem}` });
+        else log(`loaded ${loaded} item(s) into the bank (${landed.figuresHeld} figure(s) failed and held)`);
+        const last = chapterNumbers(ref, r.runLog, loaded);
+        progress.last = last;
+        progress.chaptersDone++;
+        progress.drafted += last.drafted;
+        progress.kept += last.kept;
+        progress.loaded += loaded;
+        const elapsed = Math.round((Date.now() - runStarted) / 1000);
+        progress.keepRate = ratio(progress.kept, progress.drafted);
+        progress.secondsPerKept = perKept(elapsed, progress.kept);
+        progress.chapter = null;
+        progress.phase = "GENERATING";
+        await write();
+      } catch (error) {
+        const reason = (error as Error).message.split("\n")[0]!.slice(0, 300);
+        log(`${label}: ${reason}`);
+        progress.chaptersFailed.push({ label, reason });
+        progress.chapter = null;
+        await write();
       }
     }
     await end(stop ? "STOPPED" : "FINISHED");

@@ -347,13 +347,15 @@ export async function markAllNotificationsRead(ctx: ActiveContext): Promise<numb
 /* Competitions                                                                */
 /* -------------------------------------------------------------------------- */
 
-function summaryOut<T extends { registrationClosesAt: Date | null; startsAt: Date | null; endsAt: Date | null; entry: { consentedAt: Date | null } | null }>(c: T) {
+function summaryOut<T extends { registrationClosesAt: Date | null; startsAt: Date | null; endsAt: Date | null; entry: { consentedAt: Date | null } | null; source?: { organiser: string; lastCheckedAt: Date } | null }>(c: T) {
   return {
     ...c,
     registrationClosesAt: isoOrNull(c.registrationClosesAt),
     startsAt: isoOrNull(c.startsAt),
     endsAt: isoOrNull(c.endsAt),
     entry: c.entry ? { ...c.entry, consentedAt: isoOrNull(c.entry.consentedAt) } : null,
+    // competitions-crawler (12 Oct 2026): where a suggested-from-the-web competition was read and when it was last checked.
+    source: c.source ? { organiser: c.source.organiser, lastCheckedAt: c.source.lastCheckedAt.toISOString() } : null,
   };
 }
 

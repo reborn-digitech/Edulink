@@ -494,3 +494,30 @@ writer, under a per-person lock; signing in someone inside answers the open visi
 day), readers by kind, the average stay of the visits that ended and the busiest hour; nothing closes a visit behind
 the desk's back. Doors `GET`/`POST /api/v1/library/reading-room` (module LIBRARY); page `/library/reading-room`, a tab
 of the desk. Fixture: three visits today at Vidya, one still inside. No phone screen for these three plan items.
+
+## Practice by stream and competitions by audience (college-content, 12 October 2026)
+
+**Practice.** A college's practice page is not the school's. `QuizTopic.audience` is SCHOOL (the school bank, every
+authored, NCERT and Balbharati chapter) or COLLEGE, with `streams`, `programme` and `yearOrSemester` (migration
+`college_practice`; the placement banks are COLLEGE with no stream, so every college lists them). A college student's
+`/student/practice` has two sections: **My stream** — the COLLEGE chapters of one of the college's streams (and the
+college-wide ones), grouped by programme and subject, with programme and year-or-semester chips — and **Competitive
+Exams Prep** — NCERT's chapters by class and subject. A Balbharati chapter, another stream's bank, or any other school
+chapter does not list at a college and is not found by its slug either (`src/lib/practice-audience.ts`, used by the
+list, the sitting's start, the continue card, revision, a teacher's topic picker, practice assignments and
+worksheets); a school lists no college chapter. The guardian's `/parent/practice` and the phone's practice screens
+follow the same sections (the family practice doors carry `practiceKind`, `collegeStreams` and each chapter's
+`section`, `programme` and `yearOrSemester`, all optional). A stream's bank is generated from its syllabus units on
+the bank desk ("College: a stream's syllabus units"; docs/plans/assistant-and-quiz-bank.md); on 12 October every
+stream but health sciences has syllabus documents in the corpus (SPPU, AICTE, PCI, MPKV), so a health-sciences
+college's My stream section stays empty and says so, pointing at the prep section.
+
+**Competitions.** `Competition.audience` is SCHOOL or COLLEGE, with `streams` for a college one (migration
+`college_competitions`); a competition with none set lists for both, as before, until edited. A college's
+`/competitions` (and the phone's list) shows the platform competitions for colleges of its streams (or of every
+stream) and the unset ones, never a school's; a school's shows the reverse. The content team and the operator set
+the audience on the competitions desk (`/appadmin`, `/root/competitions`) for any platform competition, and the
+crawler gives a crawled one its audience from the page and its source: seven college organisers are seeded (the Bar
+Council of India, NLSIU and NALSAR for moot courts, Smart India Hackathon, AICTE, the Pharmacy Council of India and
+ICAR), with the source kinds MOOT_COURT, HACKATHON and COLLEGE_EVENT and their streams. docs/plans/competitions-crawler.md,
+"The audience rule", has the detail.

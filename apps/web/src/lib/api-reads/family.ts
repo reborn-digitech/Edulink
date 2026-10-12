@@ -25,6 +25,7 @@ import { discard, MAX_ATTACHMENTS } from "@/lib/uploads";
 import { spendTickets } from "@/lib/api-reads/teaching";
 import { mayEditOwnBirthdate, setOwnBirthdate } from "@/lib/birthdate";
 import { listTopics, normaliseLanguage, schoolQuizBoard } from "@/lib/quiz";
+import { practiceTenantOf } from "@/lib/practice-audience"; // college-content (12 Oct 2026)
 import {
   enrolledGradeLevel,
   continueCard,
@@ -473,8 +474,11 @@ export async function studentPractice(ctx: StudentCtx) {
   const language = normaliseLanguage(ctx.user.prefs.locale);
   // quiz-board (11 Oct 2026): every board's chapters, each with its board, and the school's board to open on;
   // the phone filters (an older phone ignores both fields and lists everything, as before).
+  // college-content (12 Oct 2026): a college is sent only what it lists (its streams' banks and the NCERT prep
+  // chapters), each with its section, programme and year or semester; the phone draws the two sections.
+  const tenant = await practiceTenantOf(ctx.schoolId);
   const [topics, enrolledGrade, resume, weekly, revision, assigned, schoolBoard] = await Promise.all([
-    listTopics(ctx, { language }),
+    listTopics(ctx, { language, tenant }),
     enrolledGradeLevel(ctx),
     continueCard(ctx, language),
     weeklyPracticeCount(ctx),
@@ -500,8 +504,16 @@ export async function studentPractice(ctx: StudentCtx) {
       badgeEarned: t.badgeEarned,
       tierCount: t.tierCount,
       board: t.board,
+      // college-content (12 Oct 2026)
+      audience: t.audience,
+      streams: t.streams,
+      programme: t.programme,
+      yearOrSemester: t.yearOrSemester,
+      section: t.section,
     })),
     schoolBoard,
+    practiceKind: tenant.college ? ("COLLEGE" as const) : ("SCHOOL" as const),
+    collegeStreams: [...tenant.streams],
     enrolledGrade,
     // No explicit choice lands on the child's OWN grade, when the bank has it.
     defaultGrade: enrolledGrade && grades.includes(enrolledGrade) ? enrolledGrade : null,
@@ -690,9 +702,10 @@ export async function parentAssignments(ctx: ActiveContext, childId?: string | n
 export async function parentPractice(ctx: ActiveContext, childId?: string | null) {
   const { children, selectedId } = await selectChild(ctx, childId, "RESULTS");
   const language = normaliseLanguage(ctx.user.prefs.locale);
-  const { childName, topics, weeklyCount, schoolBoard } = await childPracticeProgress(ctx.user.id, selectedId, language);
+  const { childName, topics, weeklyCount, schoolBoard, practiceKind } = await childPracticeProgress(ctx.user.id, selectedId, language);
   // quiz-board (11 Oct 2026): every chapter with its board, and the child's school's board for the phone's switch.
-  return { children: childRows(children), childName, weeklyCount, topics, schoolBoard };
+  // college-content (12 Oct 2026): and the child's school's kind of page, each chapter's section at a college.
+  return { children: childRows(children), childName, weeklyCount, topics, schoolBoard, practiceKind };
 }
 
 /** /parent/meetings — the open windows of the children's teachers, and the family's own bookings. */

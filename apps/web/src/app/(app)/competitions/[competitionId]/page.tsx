@@ -85,6 +85,10 @@ export default async function CompetitionPage({
         />
         <p className="text-fg-muted">{competition.summary}</p>
         <p className="text-sm text-fg-muted">{t("competitions.runBy", { name: competition.organizerName })}</p>
+        {/* competitions-crawler (12 Oct 2026): read from the organiser's own site, and when the page was last checked. */}
+        {competition.source && (
+          <p className="text-xs text-fg-subtle">{t("competitionCrawl.publicSource", { organiser: competition.source.organiser, date: formatDate(competition.source.lastCheckedAt) })}</p>
+        )}
       </div>
 
 

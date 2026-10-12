@@ -38,6 +38,9 @@ import { practiceListing } from "@/lib/practice-list";
 import { quizBoardChoice, type QuizBoardChoice } from "@edulink/contracts";
 import { classLevelLabel, QUIZ_BOARD_KEY, quizBoardKey, quizBoardOptions } from "@/lib/quiz-board";
 import { PracticeBoardSwitch } from "@/components/practice-board-switch";
+// college-content (12 Oct 2026): a college's page is its own (its streams' banks and the prep section).
+import { practiceTenantOf } from "@/lib/practice-audience";
+import { CollegeStudentPractice } from "@/components/college-practice/student-practice";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -55,10 +58,30 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function PracticePage({
   searchParams,
 }: {
-  searchParams: Promise<{ subject?: string; grade?: string; page?: string; board?: string }>;
+  searchParams: Promise<{ subject?: string; grade?: string; page?: string; board?: string; section?: string; programme?: string; term?: string }>;
 }) {
   const ctx = await requireRole("STUDENT");
-  const { subject, grade, page: pageParam, board: boardParam } = await searchParams;
+  const { subject, grade, page: pageParam, board: boardParam, section, programme, term } = await searchParams;
+  // college-content (12 Oct 2026): a college draws its two sections below the same header; a school's page goes on exactly as before.
+  const tenant = await practiceTenantOf(ctx.schoolId);
+  if (tenant.college) {
+    const t = await getT();
+    return (
+      <div className="space-y-6">
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <PageHeader title={t("feature.practice")} description={t("practice.intro")} />
+          <div className="flex items-center gap-3">
+            <Link href="/student/practice/journey" className="inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-accent-strong underline-offset-2 hover:underline">
+              <MedalIcon weight="fill" className="size-4" />
+              {t("journey.title")}
+            </Link>
+            <LanguageSwitch showLabel />
+          </div>
+        </div>
+        <CollegeStudentPractice ctx={ctx} tenant={tenant} query={{ section, programme, term, grade, subject, page: pageParam }} />
+      </div>
+    );
+  }
   // quiz-board (11 Oct 2026): the school's board first (School.board → NCERT or Balbharati), a switch to
   // the other and to both; a school with neither opens on both. The choice lives in the URL.
   const schoolBoard = await schoolQuizBoard(ctx.schoolId);

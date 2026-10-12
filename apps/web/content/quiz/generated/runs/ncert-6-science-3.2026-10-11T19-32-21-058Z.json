@@ -1,0 +1,726 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-11T19:32:21.058Z",
+  "finishedAt": "2026-10-11T19:43:51.207Z",
+  "seconds": 690,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "fecu1",
+    "document": "ncert/6/science/fecu103.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 3 — Mindful Eating: A Pathto a Healthy Body",
+    "edition": "Reprint 2026-27",
+    "chunks": 17,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n29. We are advised to take iodised salt in our diet by doctors. Justify it's importance in our 3\nbody.",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n23. Patients whose gallbladder are removed are recommended to eat less oily food. 2\nWhy?",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n7. B. Cooking of food",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 200569,
+      "in": 40,
+      "out": 36,
+      "rejects": 4,
+      "promptTokens": 36933,
+      "completionTokens": 7626
+    },
+    "critique": {
+      "calls": 46,
+      "ms": 433203,
+      "in": 36,
+      "out": 27,
+      "rejects": 9,
+      "promptTokens": 19442,
+      "completionTokens": 7888
+    },
+    "solver": {
+      "calls": 208,
+      "ms": 163585,
+      "in": 27,
+      "out": 21,
+      "rejects": 6,
+      "promptTokens": 38125,
+      "completionTokens": 2319
+    },
+    "form": {
+      "calls": 7,
+      "ms": 26822,
+      "in": 21,
+      "out": 9,
+      "rejects": 12,
+      "promptTokens": 3426,
+      "completionTokens": 600
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 13,
+      "ms": 2656,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 39,
+      "ms": 532393,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 20014,
+      "completionTokens": 9949
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 3,
+    "4": 1,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on Table 3.2, which of the following food items is common in both Punjab and Manipur?",
+      "ms": {
+        "draft": 18132,
+        "critique": 9119,
+        "solver": 1629
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person from Punjab visits Karnataka, which of the following food items is he most likely to find in the local diet?",
+      "ms": {
+        "draft": 18132,
+        "critique": 10023,
+        "solver": 1902
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the Sanskrit saying 'annena jātāni jivanti' mean?",
+      "ms": {
+        "draft": 18132,
+        "critique": 10104,
+        "solver": 21449
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, why might a person from a region with limited access to fruits and vegetables choose a diet high in carbohydrates and fats?",
+      "ms": {
+        "draft": 18132,
+        "critique": 11352,
+        "solver": 20168
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is a source of carbohydrates?",
+      "ms": {
+        "draft": 18132,
+        "critique": 10758,
+        "solver": 2146,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of Vitamin C according to the passage?",
+      "ms": {
+        "draft": 4169,
+        "critique": 9527,
+        "solver": 3131,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a good source of roughage?",
+      "ms": {
+        "draft": 4522,
+        "critique": 9313,
+        "solver": 2915,
+        "form": 3041
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, why is it important to eat locally grown and plant-based foods?",
+      "ms": {
+        "draft": 4522,
+        "critique": 11395,
+        "solver": 2255,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is an essential part of our diet?",
+      "ms": {
+        "draft": 4522,
+        "critique": 10022,
+        "solver": 26024,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, which of the following is a reason for preferring local food?",
+      "ms": {
+        "draft": 5938,
+        "critique": 9185,
+        "solver": 2727,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is iodized salt recommended in the diet according to the passage?",
+      "ms": {
+        "draft": 5938,
+        "critique": 8834,
+        "solver": 1751,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a nutrient found in high amounts in millets according to the passage?",
+      "ms": {
+        "draft": 5938,
+        "critique": 10340,
+        "solver": 21632,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a primary source of energy?",
+      "ms": {
+        "draft": 4180,
+        "critique": 7066
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a deficiency disease?",
+      "ms": {
+        "draft": 4180,
+        "critique": 6390,
+        "solver": 17076,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person consumes a diet that lacks vitamins, what is the most likely outcome?",
+      "ms": {
+        "draft": 4180,
+        "critique": 6806,
+        "solver": 22282
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a doctor recommends a patient to eat less oily food, what could be the reason?",
+      "ms": {
+        "draft": 4180,
+        "critique": 12096
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why might a person who does not eat vegetables experience constipation?",
+      "ms": {
+        "draft": 4180,
+        "critique": 7472,
+        "solver": 2535,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for eating locally grown and plant-based food?",
+      "ms": {
+        "draft": 4180,
+        "critique": 12609,
+        "solver": 20822,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of a balanced diet?",
+      "ms": {
+        "draft": 4706,
+        "critique": 10146
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main reason for eating a balanced diet?",
+      "ms": {
+        "draft": 4706,
+        "critique": 10595
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains why iodized salt is recommended in the diet?",
+      "ms": {
+        "draft": 4706,
+        "critique": 10577
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to eat local foods according to the passage?",
+      "ms": {
+        "draft": 4706,
+        "critique": 10694
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a source of roughage?",
+      "ms": {
+        "draft": 7964,
+        "critique": 8749
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following tests would indicate the presence of protein in a food item?",
+      "ms": {
+        "draft": 7964,
+        "critique": 8049
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the nutritional information provided, which food item is considered a junk food?",
+      "ms": {
+        "draft": 4706,
+        "critique": 9702,
+        "solver": 21314
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a source of Vitamin C?",
+      "ms": {
+        "draft": 8958,
+        "critique": 9245
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a food item shows both a blue-black colour change and an oily patch, which nutrients does it contain?",
+      "ms": {
+        "draft": 7964,
+        "critique": 8258,
+        "solver": 10966,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a primary energy source in our food?",
+      "ms": {
+        "draft": 4564,
+        "critique": 10047,
+        "solver": 1086,
+        "form": 0,
+        "translation": 46445
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a body-building nutrient?",
+      "ms": {
+        "draft": 4564,
+        "critique": 8759,
+        "solver": 1543,
+        "form": 0,
+        "translation": 40398
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a source of Vitamin C?",
+      "ms": {
+        "draft": 4169,
+        "critique": 10013,
+        "solver": 1661,
+        "form": 4834,
+        "translation": 43034
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following food items should be included in the diet to prevent weakness and shortness of breath?",
+      "ms": {
+        "draft": 4169,
+        "critique": 9934,
+        "solver": 2387,
+        "form": 3945,
+        "translation": 60917
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a protective nutrient that helps the body fight diseases?",
+      "ms": {
+        "draft": 4169,
+        "critique": 8523,
+        "solver": 2556,
+        "form": 3683,
+        "translation": 63785
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following foods would turn blue-black when iodine is added to it?",
+      "ms": {
+        "draft": 4522,
+        "critique": 9573,
+        "solver": 2125,
+        "form": 3395,
+        "translation": 65435
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which food item from Activity 3.9 would be considered junk food based on the nutritional information provided?",
+      "ms": {
+        "draft": 5938,
+        "critique": 9256,
+        "solver": 2197,
+        "form": 0,
+        "translation": 66033
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Dr Poshita says 'Health is the Ultimate Wealth.' Which of the following best explains this statement?",
+      "ms": {
+        "draft": 18132,
+        "critique": 12834,
+        "solver": 24852,
+        "form": 0,
+        "translation": 59139
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following food items is likely to contain both proteins and fats?",
+      "ms": {
+        "draft": 4522,
+        "critique": 9125,
+        "solver": 2263,
+        "form": 3334,
+        "translation": 76871
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of these is a source of protein?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the deficiency disease caused by a lack of iodine?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which nutrient strengthens the body and protects it from infections?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is a balanced diet?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on Table 3.2, which of the following food items is common in both Punjab and Manipur?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a person from Punjab visits Karnataka, which of the following food items is he most likely to find in the local diet?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the Sanskrit saying 'annena jātāni jivanti' mean?",
+      "reason": "distractors 0, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Based on the passage, why might a person from a region with limited access to fruits and vegetables choose a diet high in carbohydrates and fats?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which of the following is a source of carbohydrates?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main function of Vitamin C according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a good source of roughage?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option is not the longest or has a unique feature in…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, why is it important to eat locally grown and plant-based foods?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (49 vs 23 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is an essential part of our diet?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Student thinks all nutrients from the passage are essential,…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, which of the following is a reason for preferring local food?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"selects a common belief but not supported by the passage…\"); distractor 2's reason is not a one-line misconception (\"selects a general preference but not a specific reason from …\"); distractor 3's reason is not a one-line misconception (\"selects a subjective opinion not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is iodized salt recommended in the diet according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"selects a general health benefit but not the specific one me…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a nutrient found in high amounts in millets according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a primary source of energy?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a deficiency disease?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a person consumes a diet that lacks vitamins, what is the most likely outcome?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a doctor recommends a patient to eat less oily food, what could be the reason?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why might a person who does not eat vegetables experience constipation?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed (but in the format, it's in…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for eating locally grown and plant-based food?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of a balanced diet?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, what is the main reason for eating a balanced diet?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following best explains why iodized salt is recommended in the diet?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is it important to eat local foods according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is not a source of roughage?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following tests would indicate the presence of protein in a food item?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the nutritional information provided, which food item is considered a junk food?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following is a source of Vitamin C?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a food item shows both a blue-black colour change and an oily patch, which nutrients does it contain?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.starch: label key: letters, digits, _ and ', or a number"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

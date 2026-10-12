@@ -1,0 +1,549 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-11T22:53:49.928Z",
+  "finishedAt": "2026-10-11T23:16:41.997Z",
+  "seconds": 1372,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "SPPU",
+    "book": "LL. M. (2 Year) Syllabus Ac 2025-26 (Department)",
+    "bookCode": null,
+    "document": "sppu/faculty-of-humanities/ii-department-syllabus/LL._M._2_Year_Syllabus_Ac_2025-26_Department_08072025.pdf",
+    "classLevel": 13,
+    "subject": "Law (LL.M.)",
+    "chapter": "Unit 3 — Criminal Law",
+    "edition": "First Edition 2020",
+    "chunks": 51,
+    "groups": 17
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for law: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Law (LL.M.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 538478,
+      "in": 26,
+      "out": 26,
+      "rejects": 1,
+      "promptTokens": 31318,
+      "completionTokens": 5142
+    },
+    "critique": {
+      "calls": 29,
+      "ms": 650881,
+      "in": 26,
+      "out": 20,
+      "rejects": 6,
+      "promptTokens": 12435,
+      "completionTokens": 5011
+    },
+    "solver": {
+      "calls": 120,
+      "ms": 182021,
+      "in": 20,
+      "out": 19,
+      "rejects": 1,
+      "promptTokens": 18847,
+      "completionTokens": 1110
+    },
+    "form": {
+      "calls": 3,
+      "ms": 30161,
+      "in": 19,
+      "out": 6,
+      "rejects": 13,
+      "promptTokens": 704,
+      "completionTokens": 247
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 2,
+      "ms": 1163,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 716919,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14151,
+      "completionTokens": 7296
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Which of the following is an excuse defence that may be used in criminal law?",
+      "ms": {
+        "draft": 14949,
+        "critique": 29467,
+        "solver": 5427,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a key focus of the course ML 212 - Comparative Criminal Law?",
+      "ms": {
+        "draft": 26257,
+        "critique": 26781
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains the role of the High Court in the appellate process?",
+      "ms": {
+        "draft": 21270,
+        "critique": 26389,
+        "solver": 5642,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a comparative approach in criminal law?",
+      "ms": {
+        "draft": 26257,
+        "critique": 29809,
+        "solver": 7079,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student is analyzing the role of victims in sentencing across different legal systems. Which of the following best explains the impact of cultural and institutional contexts on this practice?",
+      "ms": {
+        "draft": 26257,
+        "critique": 34279
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which constitutional article in India emphasizes the right to life and personal liberty, which is crucial for victim rights?",
+      "ms": {
+        "draft": 22230,
+        "critique": 26908
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student studying comparative criminal law is asked to analyze how different legal systems handle the defense of necessity. Which system is most likely to recognize this defense in a broad range of circumstances?",
+      "ms": {
+        "draft": 26257,
+        "critique": 27121,
+        "solver": 56989,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a victim of a cybercrime in India seeks compensation, which section of the Bharatiya Nagarik Suraksha Sanhita (BNSS) 2023 would they refer to?",
+      "ms": {
+        "draft": 22230,
+        "critique": 24896
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of victim impact statements in the criminal justice process?",
+      "ms": {
+        "draft": 22230,
+        "critique": 29864,
+        "solver": 42985
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A victim of domestic violence in India is seeking legal remedies. Which of the following is a legal remedy provided under Indian law?",
+      "ms": {
+        "draft": 22230,
+        "critique": 25608,
+        "solver": 28160,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the Vienna Convention on the Law of Treaties as mentioned in the passage?",
+      "ms": {
+        "draft": 17675,
+        "critique": 15045,
+        "solver": 3452,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a country wishes to join a treaty after it has been signed by other countries, which of the following actions would it take according to the passage?",
+      "ms": {
+        "draft": 17675,
+        "critique": 16352,
+        "solver": 4632,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a key concept in the law of treaties as described in the passage?",
+      "ms": {
+        "draft": 17675,
+        "critique": 17436,
+        "solver": 5179,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the relationship between treaties and domestic law in a dualist system?",
+      "ms": {
+        "draft": 17675,
+        "critique": 19496,
+        "solver": 2531,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a key concept in international immigration law as described in the passage?",
+      "ms": {
+        "draft": 17144,
+        "critique": 17010,
+        "solver": 4923,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a legal instrument related to the rights of migrants, as mentioned in the passage?",
+      "ms": {
+        "draft": 17144,
+        "critique": 16088,
+        "solver": 6259,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student is analyzing the legal frameworks governing environmental protection and climate change. Which of the following is a key principle emphasized in international environmental law?",
+      "ms": {
+        "draft": 39168,
+        "critique": 16891
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following would be the most appropriate approach for a country to take regarding the rights of refugees?",
+      "ms": {
+        "draft": 17144,
+        "critique": 17680,
+        "solver": 3930,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a country is considering a new policy on border control, which aspect should it consider based on the passage?",
+      "ms": {
+        "draft": 17144,
+        "critique": 22070,
+        "solver": 4198,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following conventions is primarily concerned with the liability of air carriers for damage to passengers and cargo?",
+      "ms": {
+        "draft": 21210,
+        "critique": 12583
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a key concept studied in the Principles of Criminal Law course?",
+      "ms": {
+        "draft": 14949,
+        "critique": 24989,
+        "solver": 7035,
+        "form": 1,
+        "translation": 117038
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of offense classified under the Bharatiya Nagarik Suraksha Sanhita?",
+      "ms": {
+        "draft": 21270,
+        "critique": 27618,
+        "solver": 6797,
+        "form": 10806,
+        "translation": 125592
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the 'harm principle' relate to in criminal law?",
+      "ms": {
+        "draft": 14949,
+        "critique": 22171,
+        "solver": 4220,
+        "form": 0,
+        "translation": 95807
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of a pre-sentence report in the sentencing process?",
+      "ms": {
+        "draft": 21270,
+        "critique": 23333,
+        "solver": 3785,
+        "form": 12020,
+        "translation": 105929
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is caught preparing to commit a crime but does not complete it, which of the following legal concepts would apply?",
+      "ms": {
+        "draft": 14949,
+        "critique": 23490,
+        "solver": 6299,
+        "form": 0,
+        "translation": 112707
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a corporation is found guilty of a white-collar crime, which of the following could be a legal defense strategy?",
+      "ms": {
+        "draft": 21270,
+        "critique": 28815,
+        "solver": 5977,
+        "form": 11158,
+        "translation": 139372
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an excuse defence that may be used in criminal law?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a key focus of the course ML 212 - Comparative Criminal Law?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains the role of the High Court in the appellate process?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a comparative approach in criminal law?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer', 'describes a non-comparative approach…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A student is analyzing the role of victims in sentencing across different legal systems. Which of the following best explains the impact of cultural and institutional contexts on this practice?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which constitutional article in India emphasizes the right to life and personal liberty, which is crucial for victim rights?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student studying comparative criminal law is asked to analyze how different legal systems handle the defense of necessity. Which system is most likely to recognize this defense in a broad range of circumstances?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a victim of a cybercrime in India seeks compensation, which section of the Bharatiya Nagarik Suraksha Sanhita (BNSS) 2023 would they refer to?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the purpose of victim impact statements in the criminal justice process?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A victim of domestic violence in India is seeking legal remedies. Which of the following is a legal remedy provided under Indian law?",
+      "reason": "options 2 and 3 are the same (\"Filing a case in a foreign court\"); the key is far longer than every distractor (94 vs 56 characters)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 2)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of the Vienna Convention on the Law of Treaties as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a country wishes to join a treaty after it has been signed by other countries, which of the following actions would it take according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a key concept in the law of treaties as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the relationship between treaties and domestic law in a dualist system?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a key concept in international immigration law as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misunderstands the focus of the passage on rights and govern…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a legal instrument related to the rights of migrants, as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A student is analyzing the legal frameworks governing environmental protection and climate change. Which of the following is a key principle emphasized in international environmental law?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following would be the most appropriate approach for a country to take regarding the rights of refugees?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Contradicts the passage's emphasis on international human ri…\"); distractor 3's reason is not a one-line misconception (\"Neglects the principles of refugee protection outlined in th…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a country is considering a new policy on border control, which aspect should it consider based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Overlooks the legal and policy framework discussed in the pa…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following conventions is primarily concerned with the liability of air carriers for damage to passengers and cargo?",
+      "reason": "option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for law: levels 5 and 6 skipped",
+    "no glossary in the corpus for Law (LL.M.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

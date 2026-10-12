@@ -59,7 +59,8 @@ export type BankResult<T = unknown> =
 export async function listPlatformCompetitions(session: ActiveContext) {
   assertAppAdmin(session);
   return db.competition.findMany({
-    where: { organizerSchoolId: null },
+    // competitions-crawler (12 Oct 2026): a draft suggested from the web waits on the "Suggested from the web" tab, not here.
+    where: { organizerSchoolId: null, NOT: { AND: [{ status: "DRAFT" }, { crawl: { is: { matchedExisting: false } } }] } },
     orderBy: { createdAt: "desc" },
     select: {
       id: true,
@@ -69,6 +70,9 @@ export async function listPlatformCompetitions(session: ActiveContext) {
       organizerName: true,
       registrationClosesAt: true,
       createdAt: true,
+      // college-content (12 Oct 2026): who it is for, shown and edited on the desk.
+      audience: true,
+      streams: true,
     },
     take: 200,
   });
@@ -219,11 +223,18 @@ export async function setPlatformCompetitionStatus(
 ): Promise<void> {
   assertAppAdmin(session);
 
+  // competitions-crawler (12 Oct 2026): publishing a competition suggested from the web marks it verified
+  // only when its source is an official organiser still listed; publishing one that was dismissed lifts
+  // the dismissal. A hand-posted competition keeps the `verified` it was posted with.
+  const crawl = status === "PUBLISHED" ? await db.competitionCrawl.findFirst({ where: { competitionId, matchedExisting: false, competition: { organizerSchoolId: null } }, include: { source: { select: { official: true, removedAt: true } } } }) : null;
+  const verified = crawl ? crawl.source.official && !crawl.source.removedAt : undefined;
+
   const updated = await db.competition.updateMany({
     where: { id: competitionId, organizerSchoolId: null },
-    data: { status },
+    data: { status, ...(verified !== undefined ? { verified } : {}) },
   });
   if (updated.count === 0) throw new AccessError("access.competitionNotFound", "NOT_FOUND");
+  if (crawl?.dismissedAt) await db.competitionCrawl.update({ where: { id: crawl.id }, data: { dismissedAt: null, dismissedReason: null, dismissedByUserId: null, dismissedPageHash: null } });
 
   await audit({
     schoolId: null,
@@ -231,6 +242,7 @@ export async function setPlatformCompetitionStatus(
     action: `appadmin.competition.${status.toLowerCase()}`,
     targetType: "Competition",
     targetId: competitionId,
+    ...(crawl ? { meta: { crawled: true, verified, sourceId: crawl.sourceId } } : {}),
   });
 }
 

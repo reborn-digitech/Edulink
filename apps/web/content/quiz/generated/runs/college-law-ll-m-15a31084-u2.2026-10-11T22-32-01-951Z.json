@@ -1,0 +1,512 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-11T22:32:01.951Z",
+  "finishedAt": "2026-10-11T22:53:48.388Z",
+  "seconds": 1306,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "SPPU",
+    "book": "LL. M. (2 Year) Syllabus Ac 2025-26 (Department)",
+    "bookCode": null,
+    "document": "sppu/faculty-of-humanities/ii-department-syllabus/LL._M._2_Year_Syllabus_Ac_2025-26_Department_08072025.pdf",
+    "classLevel": 13,
+    "subject": "Law (LL.M.)",
+    "chapter": "Unit 2 — Science and Technology Law",
+    "edition": "First Edition 2020",
+    "chunks": 90,
+    "groups": 30
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for law: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Law (LL.M.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 419822,
+      "in": 25,
+      "out": 25,
+      "rejects": 0,
+      "promptTokens": 32510,
+      "completionTokens": 5617
+    },
+    "critique": {
+      "calls": 29,
+      "ms": 581359,
+      "in": 25,
+      "out": 21,
+      "rejects": 4,
+      "promptTokens": 13546,
+      "completionTokens": 5157
+    },
+    "solver": {
+      "calls": 137,
+      "ms": 196482,
+      "in": 21,
+      "out": 18,
+      "rejects": 3,
+      "promptTokens": 28725,
+      "completionTokens": 1461
+    },
+    "form": {
+      "calls": 5,
+      "ms": 35239,
+      "in": 18,
+      "out": 9,
+      "rejects": 9,
+      "promptTokens": 1318,
+      "completionTokens": 375
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 2,
+      "ms": 1127,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 1598491,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 24670,
+      "completionTokens": 13574
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 2,
+    "4": 2,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a judge in India is handling a case involving a new form of artificial intelligence, which of the following would be the most appropriate action based on the information in the passage?",
+      "ms": {
+        "draft": 12558,
+        "critique": 21197,
+        "solver": 3724,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the course 'Emerging Technologies & Law - I' according to the passage?",
+      "ms": {
+        "draft": 12558,
+        "critique": 22682,
+        "solver": 5917,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains the relationship between Science and Law as described in the syllabus?",
+      "ms": {
+        "draft": 12558,
+        "critique": 20484,
+        "solver": 3890,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a subject included in the LL.M. syllabus under Science and Technology Law?",
+      "ms": {
+        "draft": 12558,
+        "critique": 22272,
+        "solver": 41768,
+        "form": 6961
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A new legal technology is being introduced in a law firm to manage client contracts. Which module in the syllabus would this be most closely related to?",
+      "ms": {
+        "draft": 16167,
+        "critique": 21331,
+        "solver": 4436,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a key component of medical ethics as discussed in the syllabus?",
+      "ms": {
+        "draft": 12563,
+        "critique": 21667,
+        "solver": 4510,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A doctor is asked to perform a procedure without the patient's consent. According to the syllabus, what would be the legal consequence in such a scenario?",
+      "ms": {
+        "draft": 12563,
+        "critique": 19081,
+        "solver": 4556
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the syllabus, which of the following is most likely to be considered a medical legal issue related to reproductive medicine?",
+      "ms": {
+        "draft": 12563,
+        "critique": 20963,
+        "solver": 4351,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A hospital is facing a challenge in managing data security for patient records. Which law provides guidelines for data protection and privacy in healthcare?",
+      "ms": {
+        "draft": 16664,
+        "critique": 21242,
+        "solver": 2362
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the role of transparency in good governance as mentioned in the passage?",
+      "ms": {
+        "draft": 22095,
+        "critique": 20383
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a public authority fails to provide information requested under the Right to Information Act, what is the likely consequence according to the passage?",
+      "ms": {
+        "draft": 22095,
+        "critique": 21351
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main objective of the Right to Information Act, 2005 according to the passage?",
+      "ms": {
+        "draft": 22095,
+        "critique": 23442
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a learning outcome of the course on Tribal Development – Law, Policy and Practice?",
+      "ms": {
+        "draft": 18689,
+        "critique": 19249
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the relationship between transparency and human rights?",
+      "ms": {
+        "draft": 22095,
+        "critique": 17980,
+        "solver": 5019,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is asked to examine how traditional areas of law are handled in tribal communities, which of the following topics would they most likely study?",
+      "ms": {
+        "draft": 18689,
+        "critique": 18968,
+        "solver": 3727
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student studying Media Law is analyzing the role of the media in a democracy. Based on the course objectives, which of the following best describes one of the key goals of the course?",
+      "ms": {
+        "draft": 12993,
+        "critique": 16338,
+        "solver": 4703,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a law that deals with nuclear damage liability in India?",
+      "ms": {
+        "draft": 16167,
+        "critique": 18743,
+        "solver": 3826,
+        "form": 7846,
+        "translation": 138995
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a law related to the regulation of assisted reproductive technologies in India?",
+      "ms": {
+        "draft": 16664,
+        "critique": 29120,
+        "solver": 35252,
+        "form": 0,
+        "translation": 186492
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the 'Civil Liability for Nuclear Damage Act, 2010'?",
+      "ms": {
+        "draft": 16167,
+        "critique": 18366,
+        "solver": 4864,
+        "form": 7956,
+        "translation": 180203
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the relevance of bioethics in medical decision-making as outlined in the syllabus?",
+      "ms": {
+        "draft": 12563,
+        "critique": 17437,
+        "solver": 4442,
+        "form": 0,
+        "translation": 181011
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a key focus area of the Mental Health Act, 2017?",
+      "ms": {
+        "draft": 16664,
+        "critique": 25601,
+        "solver": 3158,
+        "form": 0,
+        "translation": 154282
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a hospital in India faces a legal challenge regarding its medical practices, which law would most likely be relevant?",
+      "ms": {
+        "draft": 16167,
+        "critique": 17459,
+        "solver": 44898,
+        "form": 6612,
+        "translation": 152681
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A patient wishes to refuse treatment and has expressed this in writing. Which legal concept supports the patient's right to refuse treatment?",
+      "ms": {
+        "draft": 16664,
+        "critique": 27673,
+        "solver": 5401,
+        "form": 0,
+        "translation": 145894
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following legal frameworks is directly related to the regulation of broadcasting and television in India?",
+      "ms": {
+        "draft": 30573,
+        "critique": 21515,
+        "solver": 6499,
+        "form": 0,
+        "translation": 206405
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A law student is asked to analyze the relevance of customary laws in the context of modernization. Which of the following aspects would they most likely consider?",
+      "ms": {
+        "draft": 18689,
+        "critique": 21787,
+        "solver": 37839,
+        "form": 5867,
+        "translation": 216850
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a judge in India is handling a case involving a new form of artificial intelligence, which of the following would be the most appropriate action based on the information in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of the course 'Emerging Technologies & Law - I' according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (110 vs 53 characters); about the syllabus, not its subject: asks what the course aims at"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains the relationship between Science and Law as described in the syllabus?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a subject included in the LL.M. syllabus under Science and Technology Law?",
+      "reason": "option 3 is a catch-all (\"All of the above\"); options 0 and 1 are the same (\"Health Law\"); options 0 and 2 are the same (\"Health Law\"); options 1 and 2 are the same (\"Health Law\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A new legal technology is being introduced in a law firm to manage client contracts. Which module in the syllabus would this be most closely related to?",
+      "reason": "about the syllabus, not its subject: asks which book, module or part of the course"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a key component of medical ethics as discussed in the syllabus?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A doctor is asked to perform a procedure without the patient's consent. According to the syllabus, what would be the legal consequence in such a scenario?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the syllabus, which of the following is most likely to be considered a medical legal issue related to reproductive medicine?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A hospital is facing a challenge in managing data security for patient records. Which law provides guidelines for data protection and privacy in healthcare?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the role of transparency in good governance as mentioned in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a public authority fails to provide information requested under the Right to Information Act, what is the likely consequence according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main objective of the Right to Information Act, 2005 according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is NOT a learning outcome of the course on Tribal Development – Law, Policy and Practice?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the relationship between transparency and human rights?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets transparency as a privilege rather than a righ…\"); distractor 2's reason is not a one-line misconception (\"Confuses the relationship between transparency and human rig…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the priority of transparency in relation to h…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student is asked to examine how traditional areas of law are handled in tribal communities, which of the following topics would they most likely study?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A student studying Media Law is analyzing the role of the media in a democracy. Based on the course objectives, which of the following best describes one of the key goals of the course?",
+      "reason": "the key is far longer than every distractor (85 vs 53 characters); distractor 2's reason is not a one-line misconception (\"Focuses on technical aspects not covered in the passage…\"); about the syllabus, not its subject: asks what the course aims at"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for law: levels 5 and 6 skipped",
+    "no glossary in the corpus for Law (LL.M.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

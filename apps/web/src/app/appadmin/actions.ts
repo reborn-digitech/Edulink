@@ -63,6 +63,7 @@ export async function setCompetitionStatusAction(
     const session = await requireApiUser();
     await setPlatformCompetitionStatus(session, competitionId, status);
     revalidatePath("/appadmin");
+    revalidatePath("/root/competitions"); // competitions-crawler (12 Oct 2026): the operator's desk
     revalidatePath("/competitions");
     return { ok: true };
   } catch (error) {

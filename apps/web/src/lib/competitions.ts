@@ -4,6 +4,7 @@ import { AccessError, assertGuardianAccess } from "./tenancy";
 import { notify, notifyGuardians } from "./notify";
 import { audit } from "./audit";
 import type { ActiveContext } from "./session";
+import { fitsAnyTenant, readerTenants } from "./competition-audience"; // college-content (12 Oct 2026)
 
 /**
  * The competitions marketplace.
@@ -47,7 +48,24 @@ export type CompetitionSummary = {
   endsAt: Date | null;
   /** Null when this caller has no entry. Students and guardians only. */
   entry: EntryState | null;
+  /**
+   * competitions-crawler (12 Oct 2026): where a competition suggested from the web was read, and when the
+   * crawler last checked its page; null for one posted by hand. It is shown, never a reason to treat the
+   * competition differently: the same consent rule and the same link rule hold.
+   */
+  source: CrawlSource | null;
+  /** college-content (12 Oct 2026): SCHOOL | COLLEGE, or null (not set: everyone); a COLLEGE one's streams. */
+  audience: string | null;
+  streams: string[];
 };
+
+export type CrawlSource = { organiser: string; lastCheckedAt: Date };
+
+const CRAWL_SOURCE = { select: { matchedExisting: true, lastCheckedAt: true, source: { select: { organiser: true } } } } as const;
+
+function crawlSourceOf(crawl: { matchedExisting: boolean; lastCheckedAt: Date; source: { organiser: string } } | null | undefined): CrawlSource | null {
+  return crawl && !crawl.matchedExisting ? { organiser: crawl.source.organiser, lastCheckedAt: crawl.lastCheckedAt } : null;
+}
 
 export type EntryState = {
   id: string;
@@ -127,12 +145,17 @@ export async function listCompetitions(
     },
     orderBy: [{ registrationClosesAt: "asc" }, { createdAt: "desc" }],
     take: 200,
+    include: { crawl: CRAWL_SOURCE },
   });
 
   const now = new Date();
+  // college-content (12 Oct 2026): a platform competition lists only where its audience fits (a school's SCHOOL ones, a
+  // college's COLLEGE ones of its streams; a guardian's, any child's school's); one with no audience set lists everywhere.
+  const tenants = await readerTenants(schoolIds);
+  const fitting = competitions.filter((c) => c.organizerSchoolId !== null || fitsAnyTenant(c, tenants));
   const visible = opts.openOnly
-    ? competitions.filter((c) => registrationOpen(c, now))
-    : competitions;
+    ? fitting.filter((c) => registrationOpen(c, now))
+    : fitting;
 
   const entries = await entriesFor(session, visible.map((c) => c.id));
 
@@ -151,6 +174,10 @@ export async function listCompetitions(
     startsAt: c.startsAt,
     endsAt: c.endsAt,
     entry: entries.get(c.id) ?? null,
+    source: crawlSourceOf(c.crawl),
+    // college-content (12 Oct 2026)
+    audience: c.audience,
+    streams: c.streams,
   }));
 
   return {
@@ -168,8 +195,9 @@ export async function listCompetitions(
  * see their draft to publish it.
  */
 export async function getCompetition(session: ActiveContext, competitionId: string) {
-  const competition = await db.competition.findUnique({ where: { id: competitionId } });
-  if (!competition) throw new AccessError("access.competitionNotFound", "NOT_FOUND");
+  const found = await db.competition.findUnique({ where: { id: competitionId }, include: { crawl: CRAWL_SOURCE } });
+  if (!found) throw new AccessError("access.competitionNotFound", "NOT_FOUND");
+  const { crawl, ...competition } = found;
 
   const isOrganiser =
     session.role === "ADMIN" &&
@@ -177,6 +205,11 @@ export async function getCompetition(session: ActiveContext, competitionId: stri
     competition.organizerSchoolId === session.schoolId;
 
   if (competition.status !== "PUBLISHED" && !isOrganiser) {
+    throw new AccessError("access.competitionNotFound", "NOT_FOUND");
+  }
+
+  // college-content (12 Oct 2026): a platform competition for another audience is not found either, as the list does not show it.
+  if (competition.organizerSchoolId === null && !fitsAnyTenant(competition, await readerTenants(await visibleSchoolIds(session)))) {
     throw new AccessError("access.competitionNotFound", "NOT_FOUND");
   }
 
@@ -193,6 +226,7 @@ export async function getCompetition(session: ActiveContext, competitionId: stri
 
   return {
     ...competition,
+    source: crawlSourceOf(crawl),
     isOrganiser,
     open: registrationOpen(competition),
     acceptingWork: submissionOpen(competition),

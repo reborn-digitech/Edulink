@@ -1,5 +1,6 @@
 import "server-only";
 import { fixtureTopicsWhere, schoolSeesFixtureTopics } from "../quiz-fixtures";
+import { practiceTopicsWhereFor } from "../practice-audience"; // college-content (12 Oct 2026)
 import type {
   AttendanceClasses,
   MarksGridBody,
@@ -542,7 +543,8 @@ export async function staffPractice(ctx: Staff, classId?: string): Promise<Staff
   ]);
   const grade = Number.parseInt(selected.gradeLevel ?? "", 10);
   const topicOptions = await db.quizTopic.findMany({
-    where: { ...(Number.isInteger(grade) ? { classLevel: grade } : {}), ...fixtureTopicsWhere(await schoolSeesFixtureTopics(ctx.schoolId)) },
+    // college-content (12 Oct 2026): only the chapters the school or college lists (practice-audience.ts).
+    where: { ...(Number.isInteger(grade) ? { classLevel: grade } : {}), AND: [fixtureTopicsWhere(await schoolSeesFixtureTopics(ctx.schoolId)), await practiceTopicsWhereFor(ctx.schoolId)] },
     orderBy: [{ classLevel: "asc" }, { subject: "asc" }, { position: "asc" }],
     select: { slug: true, name: true, subject: true, classLevel: true },
   });

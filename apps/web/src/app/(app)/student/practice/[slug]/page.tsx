@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
+import { practiceTopicsWhereFor } from "@/lib/practice-audience"; // college-content (12 Oct 2026)
 import { listTopics, normaliseLanguage } from "@/lib/quiz";
 import { LanguageSwitch } from "@/components/language-switch";
 import { Player } from "./player";
@@ -20,8 +21,9 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const ctx = await requireRole("STUDENT");
   const { slug } = await params;
 
-  const topic = await db.quizTopic.findUnique({
-    where: { slug },
+  // college-content (12 Oct 2026): a chapter this school or college does not list is not found here either.
+  const topic = await db.quizTopic.findFirst({
+    where: { slug, ...(await practiceTopicsWhereFor(ctx.schoolId)) },
     select: { id: true, name: true, chapter: true, slug: true },
   });
   if (!topic) notFound();

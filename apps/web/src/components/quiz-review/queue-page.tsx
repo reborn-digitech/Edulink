@@ -12,6 +12,7 @@ import { TableScroll } from "@/components/ui/table-scroll";
 import { ReviewDesk } from "./desk";
 import { GenerationCard } from "./generation-card";
 import { deskJobs } from "@/lib/quiz-jobs-desk";
+import { deskCollegeSyllabi } from "@/lib/quiz-college"; // college-content (12 Oct 2026)
 import { quizBoardKey } from "@/lib/quiz-board";
 
 type Params = Record<string, string | string[] | undefined>;
@@ -35,7 +36,7 @@ export async function QuizReviewQueuePage({ base, searchParams }: { base: string
   const session = await requireAppAdmin();
   const t = await getT();
   const query = filtersOf(await searchParams);
-  const [list, first, jobs] = await Promise.all([listQueue(session, query), nextItem(session, query), deskJobs(session)]);
+  const [list, first, jobs, college] = await Promise.all([listQueue(session, query), nextItem(session, query), deskJobs(session), deskCollegeSyllabi(session)]);
   const subjectLabel = (s: string) => (s in SUBJECT_KEY ? t(SUBJECT_KEY[s as QuizSubject]) : s);
   const subjectLabels = Object.fromEntries([...new Set([...list.subjects, ...list.groups.map((g) => g.subject), ...(first.item ? [first.item.topic.subject] : [])])].map((s) => [s, subjectLabel(s)]));
   const all = { value: "", label: t("quizReview.all") };
@@ -83,7 +84,7 @@ export async function QuizReviewQueuePage({ base, searchParams }: { base: string
       {/* Keyed by the filters: a new filter is a fresh desk on the new queue's first item. */}
       <ReviewDesk key={JSON.stringify(query)} initial={first} query={query} subjectLabels={subjectLabels} />
 
-      <GenerationCard initial={jobs} subjectLabels={genSubjects} />
+      <GenerationCard initial={jobs} subjectLabels={genSubjects} college={college} />
 
       {list.groups.length > 0 && (
         <Card>

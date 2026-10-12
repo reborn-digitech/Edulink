@@ -8,6 +8,9 @@ import { asQuizBoard, type QuizBoard } from "@edulink/contracts"; // quiz-board 
 import { normaliseLocale } from "./i18n/locales";
 import { servedFigure, type ServedFigure } from "./quiz-figure";
 import { audit } from "./audit";
+// college-content (12 Oct 2026): what a tenant lists, on every practice read here too.
+import { practiceTenantOf, practiceTopicsWhere } from "./practice-audience";
+import { asCollegeTerm, practiceSectionOf, type CollegeTerm, type PracticeKind, type PracticeSection } from "@edulink/contracts";
 
 /**
  * Practice insights — the read side of the drill bank, for everyone AROUND the
@@ -51,6 +54,11 @@ const topicWithTranslation = (language: QuizLanguage) => ({
     subject: true,
     classLevel: true,
     board: true, // quiz-board (11 Oct 2026)
+    // college-content (12 Oct 2026)
+    audience: true,
+    streams: true,
+    programme: true,
+    yearOrSemester: true,
     translations:
       language === "en"
         ? undefined
@@ -112,7 +120,8 @@ export async function continueCard(
 ): Promise<ContinueCard | null> {
   if (!ctx.membershipId || !ctx.schoolId) return null;
   const mastery = await db.quizMastery.findFirst({
-    where: { studentMembershipId: ctx.membershipId, schoolId: ctx.schoolId, seenCount: { gt: 0 } },
+    // college-content (12 Oct 2026): only a chapter this tenant still lists.
+    where: { studentMembershipId: ctx.membershipId, schoolId: ctx.schoolId, seenCount: { gt: 0 }, topic: practiceTopicsWhere(await practiceTenantOf(ctx.schoolId)) },
     orderBy: { updatedAt: "desc" },
     include: { topic: topicWithTranslation(language) },
   });
@@ -205,7 +214,8 @@ export async function revisionQueue(
 
   const questions = await db.quizQuestion.findMany({
     // quiz-publish-jobs (11 Oct 2026): an item taken down on the bank desk leaves the revision queue at once (quiz-served.ts).
-    where: { id: { in: due }, ...SERVED_QUESTION },
+    // college-content (12 Oct 2026): and only from a chapter this tenant lists.
+    where: { id: { in: due }, ...SERVED_QUESTION, topic: practiceTopicsWhere(await practiceTenantOf(ctx.schoolId)) },
     select: { id: true, topic: topicWithTranslation(language) },
   });
   const byId = new Map(questions.map((q) => [q.id, q]));
@@ -239,7 +249,7 @@ export async function reviseQuestion(
 
   // quiz-publish-jobs (11 Oct 2026): a question taken down (or held for its figure) is not re-served either.
   const question = await db.quizQuestion.findFirst({
-    where: { id: questionId, ...SERVED_QUESTION },
+    where: { id: questionId, ...SERVED_QUESTION, topic: practiceTopicsWhere(await practiceTenantOf(ctx.schoolId)) }, // college-content (12 Oct 2026)
     // figures (10 Oct 2026): a re-served question keeps its figure, or a figure question could not be answered.
     select: { id: true, stem: true, choices: true, difficulty: true, imageKey: true, imageAlt: true, topic: { select: { slug: true } } },
   });
@@ -303,6 +313,10 @@ export type ChildTopicProgress = {
   cleanCompletion: boolean;
   /** quiz-board (11 Oct 2026): the chapter's board; null for a bank that follows no book. */
   board: QuizBoard | null;
+  // ---- college-content (12 Oct 2026): at a college, the section, the programme and the year or semester ----
+  section: PracticeSection | null;
+  programme: string | null;
+  yearOrSemester: CollegeTerm | null;
 };
 
 /**
@@ -313,12 +327,14 @@ export async function childPracticeProgress(
   parentUserId: string,
   studentMembershipId: string,
   language: QuizLanguage = "en",
-): Promise<{ childName: string; topics: ChildTopicProgress[]; weeklyCount: number; /** quiz-board: the child's school's practice board, shown first. */ schoolBoard: QuizBoard | null }> {
+): Promise<{ childName: string; topics: ChildTopicProgress[]; weeklyCount: number; /** quiz-board: the child's school's practice board, shown first. */ schoolBoard: QuizBoard | null; /** college-content: the school's page or the college's two sections. */ practiceKind: PracticeKind }> {
   // An adult at a college shares it under RESULTS (DS-1, 10 Oct 2026): quiz progress is learning results.
   const link = await assertGuardianAccess(parentUserId, studentMembershipId, "RESULTS");
+  // college-content (12 Oct 2026): the chapters the child's school lists, as on the child's own page.
+  const tenant = await practiceTenantOf(link.student.school.id);
 
   const masteries = await db.quizMastery.findMany({
-    where: { studentMembershipId, seenCount: { gt: 0 } },
+    where: { studentMembershipId, seenCount: { gt: 0 }, topic: practiceTopicsWhere(tenant) },
     orderBy: { updatedAt: "desc" },
     include: { topic: topicWithTranslation(language) },
   });
@@ -341,6 +357,7 @@ export async function childPracticeProgress(
     childName: link.student.user.preferredName ?? link.student.user.name,
     weeklyCount,
     schoolBoard: await schoolQuizBoard(link.student.school.id),
+    practiceKind: tenant.college ? "COLLEGE" : "SCHOOL",
     topics: masteries.map((m) => ({
       slug: m.topic.slug,
       name: topicName(m.topic),
@@ -352,8 +369,17 @@ export async function childPracticeProgress(
       tierCount: tierCount.get(m.topic.slug) ?? 0,
       cleanCompletion: m.cleanCompletionAt != null,
       board: asQuizBoard(m.topic.board),
+      section: collegeSection(m.topic, tenant),
+      programme: m.topic.programme,
+      yearOrSemester: asCollegeTerm(m.topic.yearOrSemester),
     })),
   };
+}
+
+/** college-content (12 Oct 2026): STREAM or PREP at a college; null at a school. */
+function collegeSection(topic: { audience: string; streams: string[]; board: string | null }, tenant: Awaited<ReturnType<typeof practiceTenantOf>>): PracticeSection | null {
+  const section = practiceSectionOf(topic, tenant);
+  return section === "STREAM" || section === "PREP" ? section : null;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -434,8 +460,9 @@ export async function createPracticeAssignment(
     throw new AccessError("access.onlyTeachersSetPractice");
   }
   await assertClassAccess(requireScope(ctx), input.classId, { write: true });
-  const topic = await db.quizTopic.findUnique({
-    where: { slug: input.topicSlug },
+  // college-content (12 Oct 2026): a teacher sets only a chapter the school lists.
+  const topic = await db.quizTopic.findFirst({
+    where: { slug: input.topicSlug, ...practiceTopicsWhere(await practiceTenantOf(ctx.schoolId)) },
     select: { id: true },
   });
   if (!topic) throw new AccessError("access.noSuchTopic", "NOT_FOUND");

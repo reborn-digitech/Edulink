@@ -45,6 +45,9 @@ export default async function CompetitionsPage({
   const platform = subject ? allPlatform.filter((c) => c.subject === subject) : allPlatform;
   const nothing = school.length === 0 && platform.length === 0;
 
+  // competitions-crawler (12 Oct 2026): class 13 is how a competition open to college students is stored.
+  const grade = (g: string) => (g === "13" ? t("practice.collegeLevel") : g);
+
   // One card, two sections — the JSX is identical either side of the divide,
   // because what differs is who ELSE can see the row, not how it looks.
   const renderCard = (competition: (typeof school)[number]) => (
@@ -66,12 +69,17 @@ export default async function CompetitionsPage({
               {competition.organizerName}
               {competition.subject ? ` · ${competition.subject}` : ""}
               {competition.gradeLow
-                ? ` · ${competition.gradeLow}${competition.gradeHigh && competition.gradeHigh !== competition.gradeLow ? `–${competition.gradeHigh}` : ""}`
+                ? ` · ${grade(competition.gradeLow)}${competition.gradeHigh && competition.gradeHigh !== competition.gradeLow ? `–${grade(competition.gradeHigh)}` : ""}`
                 : ""}
               {competition.registrationClosesAt
                 ? ` · ${t("competitions.closesShort", { date: formatDate(competition.registrationClosesAt) })}`
                 : ""}
             </p>
+            {competition.source && (
+              <p className="text-xs text-fg-subtle">
+                {t("competitionCrawl.publicSource", { organiser: competition.source.organiser, date: formatDate(competition.source.lastCheckedAt) })}
+              </p>
+            )}
           </Link>
 
           {competition.entry && (

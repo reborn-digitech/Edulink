@@ -15,6 +15,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { quizBoardChoice, topicOnBoard, type QuizBoardChoice } from "@edulink/contracts";
 import { classLevelLabel, QUIZ_BOARD_KEY, quizBoardKey, quizBoardOptions } from "@/lib/quiz-board";
 import { PracticeBoardSwitch } from "@/components/practice-board-switch";
+import { collegeSubjectLabel, collegeTermLabel } from "@/lib/college-practice"; // college-content (12 Oct 2026)
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -61,7 +62,7 @@ export default async function ParentPracticePage({
   }
 
   const language = normaliseLanguage(session.user.prefs.locale);
-  const { childName, topics: everyTopic, weeklyCount, schoolBoard } = await childPracticeProgress(
+  const { childName, topics: everyTopic, weeklyCount, schoolBoard, practiceKind } = await childPracticeProgress(
     session.user.id,
     selectedId,
     language,
@@ -73,9 +74,26 @@ export default async function ParentPracticePage({
     if (value !== (schoolBoard ?? "ALL")) q.set("board", value);
     return `/parent/practice?${q.toString()}`;
   };
-  const topics = everyTopic.filter((row) => topicOnBoard(row.board, board));
+  // college-content (12 Oct 2026): at a college there is no board switch; the chapters sit in its two sections.
+  const college = practiceKind === "COLLEGE";
+  const topics = college ? everyTopic : everyTopic.filter((row) => topicOnBoard(row.board, board));
 
   const subjects = [...new Set(topics.map((row) => row.subject))];
+  // One card per subject at a school, as before; at a college one per programme and subject of the stream banks, then one per subject of the prep section.
+  const cards = college
+    ? [
+        ...[...new Set(topics.filter((r) => r.section === "STREAM").map((r) => `${r.programme ?? ""}\u0000${r.subject}`))].map((key) => {
+            const [programme, subject] = key.split("\u0000") as [string, string];
+            const title = [programme || t("collegePractice.collegeWide"), collegeSubjectLabel(t, subject, SUBJECT_KEY)].join(" · ");
+            return { key: `stream-${key}`, title, rows: topics.filter((r) => r.section === "STREAM" && (r.programme ?? "") === programme && r.subject === subject) };
+          }),
+        ...[...new Set(topics.filter((r) => r.section === "PREP").map((r) => r.subject))].map((subject) => ({
+          key: `prep-${subject}`,
+          title: [t("collegePractice.sectionPREP"), subjectName(subject)].join(" · "),
+          rows: topics.filter((r) => r.section === "PREP" && r.subject === subject),
+        })),
+      ]
+    : subjects.map((subjectKey) => ({ key: subjectKey, title: subjectName(subjectKey), rows: topics.filter((row) => row.subject === subjectKey) }));
 
   return (
     <div className="space-y-5">
@@ -91,7 +109,7 @@ export default async function ParentPracticePage({
 
       <PageHeader title={t("practice.parentPracticeTitle", { name: childName })} description={t("practice.parentPracticeIntro", { name: childName })} />
 
-      {everyTopic.length > 0 && (
+      {everyTopic.length > 0 && !college && (
         <PracticeBoardSwitch
           label={t("quizBoard.switchLabel")}
           options={quizBoardOptions(schoolBoard).map((value) => ({ value, label: t(QUIZ_BOARD_KEY[value]) }))}
@@ -117,13 +135,12 @@ export default async function ParentPracticePage({
             </CardBody>
           </Card>
 
-          {subjects.map((subjectKey) => {
-            const rows = topics.filter((row) => row.subject === subjectKey);
+          {cards.map(({ key, title, rows }) => {
             return (
-              <Card key={subjectKey}>
+              <Card key={key}>
                 <CardHeader
                   icon={<BrainIcon weight="duotone" className="size-5" />}
-                  title={subjectName(subjectKey)}
+                  title={title}
                 />
                 <CardBody className="relative overflow-x-auto p-0" tabIndex={0} role="group">
                   <table className="w-full text-sm">
@@ -141,7 +158,8 @@ export default async function ParentPracticePage({
                           <td className="px-4 py-2.5">
                             <span className="font-medium text-fg">{row.name}</span>
                             <span className="ml-2 text-xs text-fg-muted">
-                              {classLevelLabel(t, row.classLevel)}
+                              {/* college-content: a stream bank's year or semester instead of a class. */}
+                              {row.section === "STREAM" ? (row.yearOrSemester ? collegeTermLabel(t, row.yearOrSemester) : null) : classLevelLabel(t, row.classLevel)}
                               {quizBoardKey(row.board) ? ` · ${t(quizBoardKey(row.board)!)}` : null}
                             </span>
                             {row.cleanCompletion && (

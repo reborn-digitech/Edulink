@@ -39,6 +39,7 @@
  */
 import { QUIZ_FIGURE_KINDS } from "@edulink/contracts";
 import { asQuizBoard, QUIZ_BOARDS } from "@edulink/contracts"; // quiz-board (11 Oct 2026)
+import { asCollegeTerm, collegeSyllabusBoardOf, COLLEGE_CLASS_LEVEL, STREAMS } from "@edulink/contracts"; // college-content (12 Oct 2026)
 import { figureProblems } from "./quiz-gen/figures/check";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -103,6 +104,13 @@ export type TopicFile = {
   board?: string;
   translations?: Record<string, { name?: string; summary?: string }>;
   questions: Question[];
+  // ---- college-content (12 Oct 2026): a college unit's batch (scripts/quiz-gen/college.ts) ----
+  audience?: string;
+  streams?: string[];
+  programme?: string | null;
+  yearOrSemester?: string | null;
+  syllabusBoard?: string;
+  // ---- end college-content ----
 };
 
 /** The languages a translation block may name. Anything else is a typo. */
@@ -376,10 +384,22 @@ export function createVerifier(): Verifier {
     if (generated) generatedFiles++;
     else files++;
 
-    if (!SUBJECTS.includes(topic.subject)) {
+    // college-content (12 Oct 2026): a generated college unit is the stream's subject at the college level, with no school board.
+    const college = generated && topic.audience === "COLLEGE";
+    if (topic.audience !== undefined && topic.audience !== "SCHOOL" && !college) fail(where, `audience "${topic.audience}" is SCHOOL, or COLLEGE on a generated batch`);
+    if (college) {
+      if (!(STREAMS as readonly string[]).includes(topic.subject)) fail(where, `a college batch's subject "${topic.subject}" must be a stream code (${STREAMS.join(", ")})`);
+      if (topic.classLevel !== COLLEGE_CLASS_LEVEL) fail(where, `a college batch's classLevel is ${COLLEGE_CLASS_LEVEL}, not ${topic.classLevel}`);
+      const streams = topic.streams ?? [];
+      if (!streams.length || streams.some((x) => !(STREAMS as readonly string[]).includes(x))) fail(where, `a college batch names its streams, each one of ${STREAMS.join(", ")}`);
+      if (!topic.programme?.trim()) fail(where, "a college batch names its programme");
+      if (topic.yearOrSemester != null && !asCollegeTerm(topic.yearOrSemester)) fail(where, `yearOrSemester "${topic.yearOrSemester}" is not Y1–Y5 or S1–S10`);
+      if (!collegeSyllabusBoardOf(topic.syllabusBoard)) fail(where, `syllabusBoard "${topic.syllabusBoard ?? ""}" is not one of SPPU, AICTE, PCI, MPKV`);
+      if (topic.board !== undefined && topic.board !== null) fail(where, "a college batch has no school board");
+    } else if (!SUBJECTS.includes(topic.subject)) {
       fail(where, `subject "${topic.subject}" is not one of ${SUBJECTS.join(", ")}`);
     }
-    if (!Number.isInteger(topic.classLevel) || topic.classLevel < 1 || topic.classLevel > 12) {
+    if (!college && (!Number.isInteger(topic.classLevel) || topic.classLevel < 1 || topic.classLevel > 12)) {
       fail(where, `classLevel ${topic.classLevel} is not a class between 1 and 12`);
     }
     if (!SLUG_RE.test(topic.slug ?? "")) {
@@ -402,7 +422,7 @@ export function createVerifier(): Verifier {
     }
 
     // ---- quiz-board (11 Oct 2026): a generated batch names its board, one of the codes; it becomes its topic's board. ----
-    if (generated && !asQuizBoard(topic.board)) fail(where, `board "${topic.board ?? ""}" must be one of ${QUIZ_BOARDS.join(", ")} on a generated batch`);
+    if (generated && !college && !asQuizBoard(topic.board)) fail(where, `board "${topic.board ?? ""}" must be one of ${QUIZ_BOARDS.join(", ")} on a generated batch`);
     if (!generated && topic.board !== undefined && !asQuizBoard(topic.board)) fail(where, `board "${topic.board}" is not one of ${QUIZ_BOARDS.join(", ")}`);
     // ---- end quiz-board ----
     if (!topic.source?.trim()) fail(where, "source is required");

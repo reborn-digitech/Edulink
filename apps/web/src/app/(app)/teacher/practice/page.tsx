@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { fixtureTopicsWhere, schoolSeesFixtureTopics } from "@/lib/quiz-fixtures";
+import { practiceTopicsWhereFor } from "@/lib/practice-audience"; // college-content (12 Oct 2026)
 import { classLevelLabel } from "@/lib/quiz-board";
 import { DateField } from "@/components/ui/field";
 import Link from "next/link";
@@ -86,7 +87,8 @@ export default async function TeacherPracticePage({
   // Class 12 integrals to set fractions homework.
   const grade = Number.parseInt(selected.gradeLevel ?? "", 10);
   const topicOptions = await db.quizTopic.findMany({
-    where: { ...(Number.isInteger(grade) ? { classLevel: grade } : {}), ...fixtureTopicsWhere(await schoolSeesFixtureTopics(ctx.schoolId)) },
+    // college-content (12 Oct 2026): only the chapters the school or college lists (practice-audience.ts).
+    where: { ...(Number.isInteger(grade) ? { classLevel: grade } : {}), AND: [fixtureTopicsWhere(await schoolSeesFixtureTopics(ctx.schoolId)), await practiceTopicsWhereFor(ctx.schoolId)] },
     orderBy: [{ classLevel: "asc" }, { subject: "asc" }, { position: "asc" }],
     select: { slug: true, name: true, subject: true, classLevel: true },
   });

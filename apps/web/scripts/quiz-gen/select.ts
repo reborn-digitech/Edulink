@@ -33,7 +33,8 @@ export type Figure = { key: string; caption: string | null; page: number; exists
 
 export type SelectedChapter = {
   board: string;
-  source: "ncert" | "balbharati";
+  /** college-content (12 Oct 2026): "syllabi" for a college unit (scripts/quiz-gen/college.ts). */
+  source: "ncert" | "balbharati" | "syllabi";
   book: string;
   bookCode: string | null;
   documentPath: string;
@@ -50,6 +51,11 @@ export type SelectedChapter = {
   chunks: SelectedChunk[];
   figures: Map<string, Figure>;
   headings: string[];
+  /**
+   * college-content (12 Oct 2026): a line the drafting prompt carries for a college unit (the passage is a
+   * university syllabus, not a textbook: ask about what it lists, never about the syllabus itself).
+   */
+  draftNote?: string;
 };
 
 export type Board = "NCERT" | "Balbharati";

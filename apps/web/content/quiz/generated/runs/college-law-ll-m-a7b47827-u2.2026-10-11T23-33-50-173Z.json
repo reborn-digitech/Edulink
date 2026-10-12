@@ -1,0 +1,648 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-11T23:33:50.173Z",
+  "finishedAt": "2026-10-11T23:42:44.102Z",
+  "seconds": 534,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "SPPU",
+    "book": "LL. M. (2 Year) Syllabus For Affiliated law Colleges Academic Year 2025-2026",
+    "bookCode": null,
+    "document": "sppu/faculty-of-humanities/iii-law/LL._M._2_Year_Syllabus_For_Affiliated_law_Colleges_Academic_Year_2025-2026_27062025.pdf",
+    "classLevel": 13,
+    "subject": "Law (LL.M.)",
+    "chapter": "Unit 2 — Science and Technology Law",
+    "edition": "First Edition 2020",
+    "chunks": 28,
+    "groups": 9
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for law: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Law (LL.M.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 206728,
+      "in": 31,
+      "out": 31,
+      "rejects": 0,
+      "promptTokens": 32914,
+      "completionTokens": 6012
+    },
+    "critique": {
+      "calls": 34,
+      "ms": 256410,
+      "in": 31,
+      "out": 30,
+      "rejects": 1,
+      "promptTokens": 14254,
+      "completionTokens": 5904
+    },
+    "solver": {
+      "calls": 172,
+      "ms": 94790,
+      "in": 30,
+      "out": 24,
+      "rejects": 6,
+      "promptTokens": 26915,
+      "completionTokens": 1592
+    },
+    "form": {
+      "calls": 9,
+      "ms": 29990,
+      "in": 24,
+      "out": 4,
+      "rejects": 20,
+      "promptTokens": 2261,
+      "completionTokens": 651
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 896,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 219991,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9597,
+      "completionTokens": 5203
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the purpose of the course 'Emerging Technologies & Law - I' as described in the passage?",
+      "ms": {
+        "draft": 8590,
+        "critique": 6631,
+        "solver": 1786,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a judge is asked to evaluate the reliability of a scientific testimony, which principle from the passage would they be expected to apply?",
+      "ms": {
+        "draft": 8590,
+        "critique": 7466,
+        "solver": 2899,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a subject included in the LL.M. syllabus under Science and Technology Law?",
+      "ms": {
+        "draft": 8590,
+        "critique": 7236,
+        "solver": 2051,
+        "form": 3804
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the most likely reason for universities in India to include Science and Technology Law as a specialization?",
+      "ms": {
+        "draft": 8590,
+        "critique": 8277,
+        "solver": 2453,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a law that regulates the practice of medicine in India?",
+      "ms": {
+        "draft": 32417,
+        "critique": 8211,
+        "solver": 1758
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the 'Right to Health' as mentioned in the course objectives?",
+      "ms": {
+        "draft": 32417,
+        "critique": 7884,
+        "solver": 1915,
+        "form": 3386
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a doctor fails to follow the standard of care while treating a patient, which law could be used to hold them accountable?",
+      "ms": {
+        "draft": 32417,
+        "critique": 10335
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the role of the National Medical Commission?",
+      "ms": {
+        "draft": 32417,
+        "critique": 8216,
+        "solver": 1674,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a principle of Bioethics mentioned in the passage?",
+      "ms": {
+        "draft": 6547,
+        "critique": 8442,
+        "solver": 1848,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main objective of the paper discussed in the passage?",
+      "ms": {
+        "draft": 6547,
+        "critique": 8358,
+        "solver": 1362,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a learning outcome of the Cyber Law course?",
+      "ms": {
+        "draft": 8767,
+        "critique": 10561,
+        "solver": 2549,
+        "form": 3357
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a patient refuses treatment, which of the following should be considered according to the passage?",
+      "ms": {
+        "draft": 6547,
+        "critique": 8083,
+        "solver": 18479,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a term related to online behavior mentioned in the course?",
+      "ms": {
+        "draft": 8767,
+        "critique": 8560,
+        "solver": 1543
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student needs to understand how technology influences intellectual property, which module should they focus on?",
+      "ms": {
+        "draft": 8767,
+        "critique": 8015,
+        "solver": 2344
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following laws is specifically mentioned in the passage as addressing reproductive health and human rights?",
+      "ms": {
+        "draft": 6547,
+        "critique": 11272,
+        "solver": 20438,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the role of the Reserve Bank of India (RBI) in the context of Fintech?",
+      "ms": {
+        "draft": 5901,
+        "critique": 5140,
+        "solver": 1255,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a key area of applicability of Fintech technology according to the passage?",
+      "ms": {
+        "draft": 5901,
+        "critique": 5402,
+        "solver": 1861,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is studying the impact of Fintech on financial services, which module of the course would they most likely be examining?",
+      "ms": {
+        "draft": 5901,
+        "critique": 5852,
+        "solver": 2203
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the relationship between Fintech and regulatory mechanisms?",
+      "ms": {
+        "draft": 5901,
+        "critique": 7156,
+        "solver": 2286,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a topic covered under the unit on Science and Technology Law?",
+      "ms": {
+        "draft": 5938,
+        "critique": 5691,
+        "solver": 1466,
+        "form": 4643
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a case study discussed in the unit on Science and Technology Law?",
+      "ms": {
+        "draft": 5938,
+        "critique": 5461,
+        "solver": 1438,
+        "form": 4541
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is asked to identify a legal framework related to electronic evidence, which of the following would be the most relevant?",
+      "ms": {
+        "draft": 5938,
+        "critique": 6209,
+        "solver": 1745,
+        "form": 2384
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the unit on Science and Technology Law, which of the following is an example of a legal challenge in marine biotechnology?",
+      "ms": {
+        "draft": 5938,
+        "critique": 6339,
+        "solver": 1394,
+        "form": 5761
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main aim of the course on Biotechnology Law?",
+      "ms": {
+        "draft": 5146,
+        "critique": 9885,
+        "solver": 1881,
+        "form": 2436
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a module covered in the unit on Science and Technology Law?",
+      "ms": {
+        "draft": 5146,
+        "critique": 6707,
+        "solver": 19755
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key concern related to the use of AI in military applications?",
+      "ms": {
+        "draft": 5146,
+        "critique": 7241,
+        "solver": 2318,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a category of food mentioned in the syllabus?",
+      "ms": {
+        "draft": 5167,
+        "critique": 7558,
+        "solver": 1444
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the Food Safety and Standards Act, 2006 according to the syllabus?",
+      "ms": {
+        "draft": 5167,
+        "critique": 7911,
+        "solver": 2070,
+        "form": 0,
+        "translation": 47990
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a multinational company wants to enter the Indian food sector, which of the following is a regulatory requirement?",
+      "ms": {
+        "draft": 5167,
+        "critique": 6578,
+        "solver": 907,
+        "form": 0,
+        "translation": 37026
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a company in India develops a new nanotechnology invention, which of the following would be relevant for its legal protection?",
+      "ms": {
+        "draft": 5146,
+        "critique": 8284,
+        "solver": 1891,
+        "form": 3192,
+        "translation": 63394
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the purpose of the National Cyber Coordination Centre (NCCC) as per the course content?",
+      "ms": {
+        "draft": 8767,
+        "critique": 6052,
+        "solver": 912,
+        "form": 0,
+        "translation": 62449
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of the course 'Emerging Technologies & Law - I' as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (65 vs 38 characters); about the syllabus, not its subject: asks what the course aims at"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a judge is asked to evaluate the reliability of a scientific testimony, which principle from the passage would they be expected to apply?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a subject included in the LL.M. syllabus under Science and Technology Law?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Refers to a broader area not specified in the passage…\"); distractor 3's reason is not a one-line misconception (\"Refers to a different branch of law not listed in the passag…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the most likely reason for universities in India to include Science and Technology Law as a specialization?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (78 vs 36 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a law that regulates the practice of medicine in India?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of the 'Right to Health' as mentioned in the course objectives?",
+      "reason": "about the syllabus, not its subject: asks what the syllabus lists"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a doctor fails to follow the standard of care while treating a patient, which law could be used to hold them accountable?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the role of the National Medical Commission?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a principle of Bioethics mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main objective of the paper discussed in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; about the syllabus, not its subject: asks what the course aims at"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a learning outcome of the Cyber Law course?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"focuses on administrative aspects not covered in the passage…\"); distractor 3's reason is not a one-line misconception (\"focuses on administrative aspects not covered in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a patient refuses treatment, which of the following should be considered according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a term related to online behavior mentioned in the course?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student needs to understand how technology influences intellectual property, which module should they focus on?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following laws is specifically mentioned in the passage as addressing reproductive health and human rights?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 are the same (\"The Mental Health Act 1987, 2017\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the role of the Reserve Bank of India (RBI) in the context of Fintech?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a key area of applicability of Fintech technology according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Not mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"Not mentioned in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student is studying the impact of Fintech on financial services, which module of the course would they most likely be examining?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the relationship between Fintech and regulatory mechanisms?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a topic covered under the unit on Science and Technology Law?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a case study discussed in the unit on Science and Technology Law?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student is asked to identify a legal framework related to electronic evidence, which of the following would be the most relevant?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the unit on Science and Technology Law, which of the following is an example of a legal challenge in marine biotechnology?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main aim of the course on Biotechnology Law?",
+      "reason": "the key is far longer than every distractor (100 vs 55 characters); about the syllabus, not its subject: asks what the course aims at"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT a module covered in the unit on Science and Technology Law?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key concern related to the use of AI in military applications?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a category of food mentioned in the syllabus?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for law: levels 5 and 6 skipped",
+    "no glossary in the corpus for Law (LL.M.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

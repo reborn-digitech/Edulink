@@ -1,0 +1,771 @@
+{
+  "subject": "MATHS",
+  "classLevel": 12,
+  "chapter": "Chapter 1 — Integrals",
+  "name": "Integrals",
+  "slug": "maths-12-integrals",
+  "summary": "This chapter introduces the concept of integrals and their applications in mathematics.",
+  "position": 1,
+  "source": "generated against NCERT Mathematics, Class 12, chapter 1 (Reprint 2026-27)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 1 - समाकलन",
+      "summary": "इस अध्याय में समाकलन की अवधारणा और गणित में उनके अनुप्रयोगों का परिचय दिया गया है।"
+    },
+    "mr": {
+      "name": "अध्याय 1 - समाकलन",
+      "summary": "हा अध्याय समाकलन आणि गणितात त्यांच्या अनुप्रयोगांच्या संकल्पनेचा परिचय देतो."
+    }
+  },
+  "board": "NCERT",
+  "book": "Mathematics Part-II",
+  "edition": "Reprint 2026-27",
+  "generatedAt": "2026-10-11T01:57:28.055Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the term used for a function whose derivative is the given function?",
+      "choices": [
+        "Anti derivative",
+        "Integral",
+        "Differentiation",
+        "Derivative"
+      ],
+      "answerIndex": 0,
+      "solution": "An anti derivative is a function whose derivative is the given function. An integral refers to the result of integration, not the function itself. Differentiation is the process of finding a derivative, not the function whose derivative is the given function. A derivative is the result of differentiation, not the function whose derivative is the given function.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किस शब्द का उपयोग एक फलन के लिए किया जाता है जिसका अवकलज दिया गया फलन होता है?",
+          "choices": [
+            "अन्तरज्ञान",
+            "समाकल",
+            "अवकलन",
+            "अवकलज"
+          ],
+          "solution": "एक अन्तरज्ञान एक ऐसा फलन होता है जिसका अवकलज दिया गया फलन होता है। समाकल का अर्थ समाकलन के परिणाम के लिए होता है, न कि फलन के लिए। अवकलन अवकलज ज्ञात करने की प्रक्रिया होती है, न कि एक ऐसा फलन जिसका अवकलज दिया गया फलन होता है। अवकलज अवकलन के परिणाम के लिए होता है, न कि एक ऐसा फलन जिसका अवकलज दिया गया फलन होता है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options and solution are correctly translated with appropriate mathematical terms used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दिलेल्या फलनाचा अवकलज असलेल्या फलनाला कोणते नाव आहे?",
+          "choices": [
+            "अंतर्गत अवकलज",
+            "समाकल",
+            "अवकलन",
+            "अवकलज"
+          ],
+          "solution": "अंतर्गत अवकलज असा फलन आहे ज्याचा अवकलज दिलेल्या फलनाचा असतो. समाकल म्हणजे समाकलनाचा निकाल असतो, नाहीतर फलन नाही. अवकलन म्हणजे अवकलज शोधण्याची प्रक्रिया असते, नाहीतर फलन नाही ज्याचा अवकलज दिलेल्या फलनाचा असतो. अवकलज म्हणजे अवकलनाचा निकाल असतो, नाहीतर फलन नाही ज्याचा अवकलज दिलेल्या फलनाचा असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terminology used in Marathi mathematics education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student confuses the term 'integral' with the process of finding an anti-derivative.",
+        "Confuses the process of finding an anti-derivative with the process of differentiation.",
+        "Confuses the inverse process of differentiation with the derivative itself"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 'Anti derivative' as it refers to a function whose derivative is the given function. The explanations for the wrong options align with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 5,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T01:57:28.055Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main purpose of the change of variable formula in integration?",
+      "choices": [
+        "To simplify the integral by replacing the variable with a constant",
+        "To find the derivative of the function",
+        "To change the limits of integration",
+        "To make the integrand easier to evaluate"
+      ],
+      "answerIndex": 3,
+      "solution": "The change of variable formula is used to make the integrand easier to evaluate by substituting a function whose derivative is also present in the integrand. The other options are incorrect because they do not align with the purpose of this technique. Adding constants, finding derivatives, or changing limits are not the main goals of this method.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "समाकलन में परिवर्तित चर सूत्र का मुख्य उद्देश्य क्या है?",
+          "choices": [
+            "समाकल को सरल बनाने के लिए चर के स्थान पर एक अचर को बदल देना",
+            "फलन के अवकलज को ज्ञात करना",
+            "समाकलन की सीमाओं को बदलना",
+            "समाकलन करने योग्य फलन को सरल बनाना"
+          ],
+          "solution": "परिवर्तित चर सूत्र का उपयोग समाकलन करने योग्य फलन को सरल बनाने के लिए किया जाता है, जिसमें एक फलन को प्रतिस्थापित किया जाता है जिसका अवकलज भी समाकलन में उपस्थित होता है। अन्य विकल्प इस तकनीक के उद्देश्य के साथ मेल नहीं खाते। अचर जोड़ना, अवकलज ज्ञात करना या सीमाओं को बदलना इस विधि का मुख्य उद्देश्य नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "संकलनात चल बदलण्याच्या सूत्राचा मुख्य उद्देश काय आहे?",
+          "choices": [
+            "समाकलन सोपे करण्यासाठी चलाला अचलाने बदलणे",
+            "फलनाचा व्युत्पन्न शोधणे",
+            "समाकलनाच्या सीमा बदलणे",
+            "समाकल्याला सोपे मोजणे"
+          ],
+          "solution": "चल बदलण्याच्या सूत्राचा उपयोग समाकल्याला सोपे मोजण्यासाठी केला जातो, कारण त्यामध्ये समाकल्यामध्ये असलेल्या फलनाच्या व्युत्पन्नासह बदल करण्यात येतो. इतर विकल्प अयोग्य आहेत कारण ते या तंत्राच्या उद्देशाशी जुळत नाहीत. अचल जोडणे, व्युत्पन्न शोधणे किंवा सीमा बदलणे हे या पद्धतीचे मुख्य उद्देश नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the purpose of the formula with a constant substitution",
+        "Misunderstands the role of the formula as a derivative tool",
+        "Thinks the formula is about changing limits of integration instead of simplifying the integrand",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3, as the main purpose of the change of variable formula is to simplify the integrand. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 6,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 7,
+          "pageStart": 14,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 8,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T01:57:28.055Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the integral of cos x with respect to x?",
+      "choices": [
+        "sin x + C",
+        "cos x + C",
+        "-sin x + C",
+        "-cos x + C"
+      ],
+      "answerIndex": 0,
+      "solution": "From the standard formulae of integration, the integral of cos x is sin x + C. The option 'cos x + C' is incorrect because it is the derivative, not the integral. The option '-sin x + C' is incorrect because it is the integral of -sin x, not cos x. The option '-cos x + C' is incorrect because it is the integral of -cos x, not cos x.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "cos x का x के सापेक्ष समाकल क्या है?",
+          "choices": [
+            "sin x + C",
+            "cos x + C",
+            "-sin x + C",
+            "-cos x + C"
+          ],
+          "solution": "मानक सूत्रों से, cos x का समाकल sin x + C है। 'cos x + C' विकल्प गलत है क्योंकि यह समाकल न होकर अवकलज है। '-sin x + C' विकल्प गलत है क्योंकि यह -sin x का समाकल है, न कि cos x का। '-cos x + C' विकल्प गलत है क्योंकि यह -cos x का समाकल है, न कि cos x का।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "cos x चे x च्या संदर्भात अवकलन काय आहे?",
+          "choices": [
+            "sin x + C",
+            "cos x + C",
+            "-sin x + C",
+            "-cos x + C"
+          ],
+          "solution": "मानक सूत्रांमुळे, cos x चे अवकलन sin x + C आहे. 'cos x + C' हा विकल्प चुकीचा आहे कारण हे अवकलन नसून अवकलज आहे. '-sin x + C' हा विकल्प चुकीचा आहे कारण हे -sin x चे अवकलन आहे, नाही की cos x चे. '-cos x + C' हा विकल्प चुकीचा आहे कारण हे -cos x चे अवकलन आहे, नाही की cos x चे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate mathematical terminology used in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the integral of cos x with its derivative",
+        "Thinks the integral of cos x is the negative of sin x",
+        "Confuses the integral of cos x with the integral of -sin x"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is sin x + C. The author's solution is accurate and the reasoning for the distractors reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T01:57:28.055Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If ∫f(x) dx = F(x) + C, what does F(x) represent?",
+      "choices": [
+        "The derivative of f(x)",
+        "The integral of f(x)",
+        "The constant of integration",
+        "The function whose derivative is f(x)"
+      ],
+      "answerIndex": 3,
+      "solution": "F(x) represents the function whose derivative is f(x), as the integral of f(x) gives a function whose derivative returns f(x). The derivative of f(x) would be f'(x), not F(x). The constant of integration is represented by C, not F(x). The integral of f(x) is F(x) + C, not just F(x).",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि ∫f(x) dx = F(x) + C, तो F(x) क्या प्रतिनिधित्व करता है?",
+          "choices": [
+            "f(x) का अवकलज",
+            "f(x) का समाकलन",
+            "समाकलन की अचर राशि",
+            "एक ऐसा फलन जिसका अवकलज f(x) है"
+          ],
+          "solution": "F(x), f(x) के अवकलज को प्रतिनिधित्व करता है, क्योंकि f(x) का समाकलन एक ऐसा फलन देता है जिसका अवकलज f(x) वापस लौटा देता है। f(x) का अवकलज f'(x) होगा, न कि F(x)। समाकलन की अचर राशि C द्वारा प्रतिनिधित्व की जाती है, न कि F(x)। f(x) का समाकलन F(x) + C होता है, न कि केवल F(x)।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर ∫f(x) dx = F(x) + C, तर F(x) काय प्रतिनिधित्व करतो?",
+          "choices": [
+            "f(x) चा अवकलज",
+            "f(x) चा समाकल",
+            "समाकलनाचा अचलांक",
+            "एक फलन ज्याचा अवकलज f(x) आहे"
+          ],
+          "solution": "F(x) हा f(x) चा अवकलज असलेल्या फलनाचे प्रतिनिधित्व करतो, कारण f(x) चा समाकल f(x) चा अवकलज परत देणारा फलन देतो. f(x) चा अवकलज f'(x) असेल, F(x) नाही. समाकलनाचा अचलांक C द्वारे दर्शवला जातो, F(x) नाही. f(x) चा समाकल F(x) + C असतो, केवळ F(x) नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses F(x) with the derivative of f(x).",
+        "Thinks F(x) is the constant of integration.",
+        "Does not understand the relationship between F(x) and f(x).",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the solution correctly identifies that F(x) is the antiderivative of f(x). The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 24,
+          "pageStart": 56,
+          "pageEnd": 58,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 25,
+          "pageStart": 58,
+          "pageEnd": 62,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 26,
+          "pageStart": 62,
+          "pageEnd": 64,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T01:57:28.055Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the integral of tan x with respect to x?",
+      "choices": [
+        "log |sec x| + C",
+        "log |sin x| + C",
+        "log |tan x| + C",
+        "log |cot x| + C"
+      ],
+      "answerIndex": 0,
+      "solution": "The integral of tan x with respect to x is log |sec x| + C. This is because the derivative of log |sec x| is tan x, which matches the integrand. The other options do not produce tan x when differentiated: log |sin x| differentiates to cot x, log |tan x| does not simplify to tan x, and log |cot x| also does not simplify to tan x.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "x के सापेक्ष tan x का समाकल क्या है?",
+          "choices": [
+            "log |sec x| + C",
+            "log |sin x| + C",
+            "log |tan x| + C",
+            "log |cot x| + C"
+          ],
+          "solution": "x के सापेक्ष tan x का समाकल log |sec x| + C होता है। इसके अंतरज का अवकलज tan x होता है, जो अंतरज के समान होता है। अन्य विकल्पों के अवकलज tan x नहीं होते: log |sin x| का अवकलज cot x होता है, log |tan x| tan x में सरल नहीं होता और log |cot x| भी tan x में सरल नहीं होता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "x च्या संदर्भात tan x चा समाकल किती आहे?",
+          "choices": [
+            "log |sec x| + C",
+            "log |sin x| + C",
+            "log |tan x| + C",
+            "log |cot x| + C"
+          ],
+          "solution": "x च्या संदर्भात tan x चा समाकल log |sec x| + C आहे. हे कारण आहे की log |sec x| चा व्युत्पन्न tan x आहे, जो समाकल्याशी जुळतो. इतर विकल्पांचा व्युत्पन्न tan x नाही: log |sin x| चा व्युत्पन्न cot x आहे, log |tan x| tan x मध्ये सोपे होत नाही आणि log |cot x| देखील tan x मध्ये सोपे होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the integral of tan x with log |sin x|",
+        "Assumes the integral of tan x is log |tan x|",
+        "Confuses the integral of tan x with log |cot x|"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is log |sec x| + C. The solution is sound and matches the key. The author's reasoning for the distractors is valid and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 27,
+          "pageStart": 64,
+          "pageEnd": 66,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 28,
+          "pageStart": 66,
+          "pageEnd": 67,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T01:57:28.055Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If the integrand is a proper rational function, what should be done first before finding the integral?",
+      "choices": [
+        "Integrate directly",
+        "Find the partial fraction decomposition",
+        "Use integration by parts",
+        "Differentiate the function"
+      ],
+      "answerIndex": 1,
+      "solution": "If the integrand is a proper rational function, the first step should be to find the partial fraction decomposition. This is because partial fraction decomposition simplifies the rational function into simpler fractions that are easier to integrate. The other options are incorrect because integrating directly or using integration by parts without decomposing the function may not simplify the integral, and differentiating the function is not the first step in integration.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि अंतरणीय फलन एक उचित परिमेय फलन है, तो समाकलन ज्ञात करने से पहले सबसे पहले क्या करना चाहिए?",
+          "choices": [
+            "सीधे समाकलन करें",
+            "आंशिक भिन्न विश्लेषण ज्ञात करें",
+            "समाकलन द्वारा भाग लें",
+            "फलन का अवकलन करें"
+          ],
+          "solution": "यदि अंतरणीय फलन एक उचित परिमेय फलन है, तो पहला कदम आंशिक भिन्न विश्लेषण ज्ञात करना होता है। इसका कारण यह है कि आंशिक भिन्न विश्लेषण परिमेय फलन को सरल भिन्नों में विभाजित कर देता है जिन्हें समाकलित करना आसान होता है। अन्य विकल्प गलत हैं क्योंकि बिना फलन के विश्लेषण के सीधे समाकलन करना या समाकलन द्वारा भाग लेना समाकलन को सरल नहीं कर सकता है, और फलन का अवकलन समाकलन के पहले कदम नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, uses standard mathematical terminology, and the correct answer remains in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर अंतर्गत फलन एक उचित परिमेय फलन असेल, तर समाकल शोधण्यापूर्वी सर्वप्रथम काय करावे?",
+          "choices": [
+            "सीधाच समाकलन करा",
+            "आंशिक भाग विश्लेषण शोधा",
+            "भागानुभागाने समाकलन करा",
+            "फलनाचे अवकलन करा"
+          ],
+          "solution": "जर अंतर्गत फलन एक उचित परिमेय फलन असेल, तर पहिले आंशिक भाग विश्लेषण शोधणे आवश्यक असते. हे कारण आंशिक भाग विश्लेषण परिमेय फलन अधिक सोपे भागांमध्ये विभाजित करते जे समाकलनासाठी सोपे असतात. इतर विकल्प चुकीचे आहेत कारण फलन विभाजित करण्याविना सीधाच समाकलन करणे किंवा भागानुभागाने समाकलन वापरणे समाकलन सोपे करू शकत नाही आणि फलनाचे अवकलन करणे समाकलनाच्या पहिल्या टप्प्यात नसते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "This is incorrect because integrating directly without decomposition may not be feasible for complex rational functions.",
+        null,
+        "This is incorrect because integration by parts is used for products of functions, not for rational functions.",
+        "This is incorrect because differentiation is the reverse process of integration and is not the first step in this case."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies partial fraction decomposition as the first step for integrating a proper rational function. The reasoning for the other options is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 12,
+          "pageStart": 29,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 13,
+          "pageStart": 31,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 14,
+          "pageStart": 33,
+          "pageEnd": 36,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T01:57:28.055Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What substitution is used to integrate 2x sin(x + 1)?",
+      "choices": [
+        "x + 1 = t",
+        "sin(x + 1) = t",
+        "x = t",
+        "tan(x + 1) = t"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct substitution is x + 1 = t, as the derivative of x + 1 is 2x, which appears in the integrand. The other options do not simplify the integrand in the same way. Substituting sin(x + 1) or tan(x + 1) would complicate the integration process, and substituting x = t does not help simplify the expression.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "2x sin(x + 1) का समाकलन करने के लिए कौन-सी प्रतिस्थापन उपयोग की जाती है?",
+          "choices": [
+            "x + 1 = t",
+            "sin(x + 1) = t",
+            "x = t",
+            "tan(x + 1) = t"
+          ],
+          "solution": "सही प्रतिस्थापन x + 1 = t है, क्योंकि x + 1 का अवकलज 2x है, जो समाकलन करने वाले में उपस्थित है। अन्य विकल्प समाकलन को इस प्रकार सरल नहीं करते। sin(x + 1) या tan(x + 1) की प्रतिस्थापन समाकलन प्रक्रिया को जटिल बना देती है, और x = t की प्रतिस्थापन व्यंजक को सरल नहीं करती।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "2x sin(x + 1) च्या समाकलनासाठी कोणती प्रतिस्थापन वापरली जाते?",
+          "choices": [
+            "x + 1 = t",
+            "sin(x + 1) = t",
+            "x = t",
+            "tan(x + 1) = t"
+          ],
+          "solution": "योग्य प्रतिस्थापन x + 1 = t आहे, कारण x + 1 चा व्युत्पन्न 2x आहे, जो समाकल्यात आहे. इतर पर्याय समाकल्याला एवढ्या सोप्या पद्धतीने सोडवत नाहीत. sin(x + 1) किंवा tan(x + 1) ची प्रतिस्थापन करणे समाकलन प्रक्रियेला अधिक जटिल करते, आणि x = t ची प्रतिस्थापन करणे व्यंजक सोपा करत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Chooses a substitution that does not match the derivative of the function",
+        "Selects a trigonometric substitution that is unnecessary",
+        "Fails to recognize that x = t does not simplify the expression"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct substitution is x + 1 = t, as it simplifies the integral by aligning with the derivative of the inner function. The other options do not provide a useful simplification.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 6,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 7,
+          "pageStart": 14,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 8,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T01:57:28.055Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Using the property of definite integrals, evaluate ∫_{π/6}^{π/3} 1/(√(sin x) + √(cos x)) dx.",
+      "choices": [
+        "π/12",
+        "π/6",
+        "π/3",
+        "π/4"
+      ],
+      "answerIndex": 3,
+      "solution": "The integral ∫_{π/6}^{π/3} 1/(√(sin x) + √(cos x)) dx can be evaluated using the property of definite integrals. By applying the property ∫_{a}^{b} f(x) dx = ∫_{a}^{b} f(a + b - x) dx, and adding the original and transformed integrals, the integral simplifies to ∫_{π/6}^{π/3} 1 dx, which equals π/4. The other options are incorrect because they do not match the final simplified result of the integral.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निश्चित समाकल के गुणधर्म का उपयोग करके, ∫_{π/6}^{π/3} 1/(√(sin x) + √(cos x)) dx का मूल्यांकन कीजिए।",
+          "choices": [
+            "π/12",
+            "π/6",
+            "π/3",
+            "π/4"
+          ],
+          "solution": "समाकल ∫_{π/6}^{π/3} 1/(√(sin x) + √(cos x)) dx का मूल्यांकन निश्चित समाकल के गुणधर्म का उपयोग करके किया जा सकता है। गुणधर्म ∫_{a}^{b} f(x) dx = ∫_{a}^{b} f(a + b - x) dx का उपयोग करके, मूल और रूपांतरित समाकलों को जोड़ने पर, समाकल सरल होकर ∫_{π/6}^{π/3} 1 dx बन जाता है, जो π/4 के बराबर होता है। अन्य विकल्प गलत हैं क्योंकि वे समाकल के अंतिम सरलीकृत परिणाम के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "निश्चित समाकलांच्या गुणधर्माचा वापर करून ∫_{π/6}^{π/3} 1/(√(sin x) + √(cos x)) dx मूल्यांकन करा.",
+          "choices": [
+            "π/12",
+            "π/6",
+            "π/3",
+            "π/4"
+          ],
+          "solution": "निश्चित समाकल ∫_{π/6}^{π/3} 1/(√(sin x) + √(cos x)) dx चे मूल्यांकन समाकलांच्या गुणधर्माचा वापर करून केले जाऊ शकते. गुणधर्म ∫_{a}^{b} f(x) dx = ∫_{a}^{b} f(a + b - x) dx चा वापर करून मूळ आणि परिवर्तित समाकलांचे जोडल्यास समाकल ∫_{π/6}^{π/3} 1 dx मध्ये सोपे होते, जे π/4 योग्य असते. इतर विकल्प चुकीचे असतात कारण ते समाकलाच्या अंतिम सोपे केलेल्या निकालाशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English content, with appropriate technical terms and correct answer positioning.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes the integral evaluates to half the interval length without considering the function's behavior",
+        "Student assumes the integral of 1/(√sinx + √cosx) over symmetric limits is half the correct value due to a misunderstanding of symmetry",
+        "Confuses the integral's symmetry with a simple average of the limits",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the property of definite integrals and simplifies the expression to π/4. The reasoning aligns with the correct method and the author's key.",
+      "sources": [
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 27,
+          "pageStart": 64,
+          "pageEnd": 66,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        },
+        {
+          "document": "ncert/12/mathematics/lemh201.pdf",
+          "ordinal": 28,
+          "pageStart": 66,
+          "pageEnd": 67,
+          "headingPath": [
+            "Chapter 1: Integrals"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T01:57:28.055Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

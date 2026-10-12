@@ -48,9 +48,14 @@ import {
   type QuizGenRequest,
   type QuizJobsState,
 } from "@edulink/contracts";
+import { handOverTo, type HandOver } from "./model-holders";
 
-/** The two tables this file touches; the web passes src/lib/db's client, the runner its own. */
-export type JobDb = Pick<PrismaClient, "quizGenJob" | "user">;
+/**
+ * The tables this file touches; the web passes src/lib/db's client, the runner its own. The crawl's
+ * table is read so a run ending beside an active competitions crawl hands it the servers it brought up
+ * (src/lib/model-holders.ts, 12 Oct 2026).
+ */
+export type JobDb = Pick<PrismaClient, "quizGenJob" | "user" | "competitionCrawlJob">;
 
 /** The apps/web directory: scripts/model-serve.sh, the runner's CLI and storage/ live under it. */
 export const APP_ROOT = process.cwd();
@@ -78,6 +83,11 @@ export type JobDeps = {
   /** Starts the runner, detached; its pid. */
   spawnRunner: (jobId: string) => number;
   now: () => Date;
+  /**
+   * Where the servers a run brought up go when it ends (competitions-crawler, 12 Oct 2026): to the other
+   * kind's active run if there is one, else down. Absent: the database's own answer (model-holders.ts).
+   */
+  handOver?: HandOver;
 };
 
 /* -------------------------------------------------------------------------- */
@@ -249,13 +259,18 @@ async function namesFor(db: JobDb, rows: JobRow[]): Promise<Map<string, string>>
   return new Map(users.map((u) => [u.id, u.preferredName ?? u.name]));
 }
 
-/** The servers a run brought up go down with it, through the script; a failure to stop is said, never thrown. */
-async function serversDownAfter(row: Pick<JobRow, "startedServers">, deps: JobDeps): Promise<string[]> {
+/**
+ * The servers a run brought up go down with it, through the script; a failure to stop is said, never
+ * thrown. While a competitions crawl is active they are handed to it instead (model-holders.ts): the
+ * crawl takes them down when it ends.
+ */
+async function serversDownAfter(db: JobDb, row: Pick<JobRow, "startedServers">, deps: JobDeps): Promise<string[]> {
   const problems: string[] = [];
-  for (const server of row.startedServers) {
-    if (!(MODEL_SERVERS as readonly string[]).includes(server)) continue;
+  const mine = row.startedServers.filter((s): s is ModelServer => (MODEL_SERVERS as readonly string[]).includes(s));
+  const toStop = await (deps.handOver ?? handOverTo(db, "QUIZ"))(mine);
+  for (const server of toStop) {
     try {
-      await deps.serve(`stop-${server as ModelServer}`);
+      await deps.serve(`stop-${server}`);
     } catch (error) {
       problems.push(`${server}: ${(error as Error).message}`);
     }
@@ -278,7 +293,7 @@ export async function finishJob(db: JobDb, jobId: string, state: "FINISHED" | "S
   if (count === 0) return false;
   const row = await db.quizGenJob.findUnique({ where: { id: jobId }, select: { startedServers: true } });
   if (row) {
-    const problems = await serversDownAfter(row, deps);
+    const problems = await serversDownAfter(db, row, deps);
     if (problems.length) await db.quizGenJob.update({ where: { id: jobId }, data: { error: [error, `stopping the model servers: ${problems.join("; ")}`].filter(Boolean).join(" — ").slice(0, 2000) } });
   }
   return true;
@@ -436,7 +451,8 @@ export async function startModelServer(server: ModelServer, deps: JobDeps = MACH
  */
 export async function stopModelServer(db: JobDb, server: ModelServer, deps: JobDeps = MACHINE): Promise<ModelServerStatus[]> {
   await reapJobs(db, deps);
-  const active = await db.quizGenJob.count({ where: { active: true, state: { in: ACTIVE } } });
+  // A competitions crawl holds the model too (12 Oct 2026): refused while either kind runs.
+  const active = (await db.quizGenJob.count({ where: { active: true, state: { in: ACTIVE } } })) + (await db.competitionCrawlJob.count({ where: { active: true } }));
   if (active > 0) throw new JobRefusal("quizJobs.stopRunFirst", 409);
   const [state] = (await modelServers(deps, { fresh: true })).filter((s) => s.server === server);
   if (state?.state === "STOPPED") return modelServers(deps);

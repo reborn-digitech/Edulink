@@ -1,0 +1,1137 @@
+{
+  "subject": "MATHS",
+  "classLevel": 6,
+  "chapter": "Chapter 5 — Prime Time",
+  "name": "Prime Time",
+  "slug": "maths-6-prime-time",
+  "summary": "This chapter explains common multiples, prime numbers, co-prime numbers, prime factorization, divisibility tests, and fun number activities.",
+  "position": 5,
+  "source": "generated against NCERT Mathematics, Class 6, chapter 5 (Reprint 2026-27)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "5. अभाज्य समय",
+      "summary": "इस अध्याय में सामान्य गुणज, अभाज्य संख्याएँ, सह-अभाज्य संख्याएँ, अभाज्य गुणनखंडन, विभाज्यता परीक्षण और संख्याओं के साथ मजेदार गतिविधियाँ सीखते हैं।"
+    },
+    "mr": {
+      "name": "5. अविभाज्य वेळ",
+      "summary": "ही अध्याय सामान्य गुणज, अविभाज्य संख्या, सह-अविभाज्य संख्या, अविभाज्य गुणनखंडन, विभाज्यता चाचणी आणि संख्यांच्या खेळांबद्दल शिकतो."
+    }
+  },
+  "board": "NCERT",
+  "book": "Ganita Prakash",
+  "edition": "Reprint 2026-27",
+  "generatedAt": "2026-10-11T08:58:40.035Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Which of the following numbers is a factor of 168?",
+      "choices": [
+        "10",
+        "12",
+        "14",
+        "16"
+      ],
+      "answerIndex": 1,
+      "solution": "12 is a factor of 168 because 168 divided by 12 equals 14, which is a whole number. 10 is not a factor because 168 divided by 10 leaves a remainder. 14 is not a factor because 168 divided by 14 equals 12, but 14 is not a divisor of 168 in the same way as 12. 16 is not a factor because 168 divided by 16 does not result in a whole number.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी संख्या 168 का गुणनखंड है?",
+          "choices": [
+            "10",
+            "12",
+            "14",
+            "16"
+          ],
+          "solution": "12, 168 का गुणनखंड है क्योंकि 168 को 12 से विभाजित करने पर 14 प्राप्त होता है, जो एक पूर्ण संख्या है। 10, गुणनखंड नहीं है क्योंकि 168 को 10 से विभाजित करने पर शेष रहता है। 14, गुणनखंड नहीं है क्योंकि 168 को 14 से विभाजित करने पर 12 प्राप्त होता है, लेकिन 14, 168 का विभाजक नहीं है जैसा कि 12 है। 16, गुणनखंड नहीं है क्योंकि 168 को 16 से विभाजित करने पर पूर्ण संख्या प्राप्त नहीं होती।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता संख्या 168 चा अपवर्तक आहे?",
+          "choices": [
+            "10",
+            "12",
+            "14",
+            "16"
+          ],
+          "solution": "12 हा 168 चा अपवर्तक आहे कारण 168 ला 12 ने भागल्यास 14 मिळतो, जो पूर्ण संख्या आहे. 10 हा अपवर्तक नाही कारण 168 ला 10 ने भागल्यास बाकी राहते. 14 हा अपवर्तक नाही कारण 168 ला 14 ने भागल्यास 12 मिळतो, परंतु 14 हा 168 चा अपवर्तक म्हणून 12 च्या प्रमाणे नाही. 16 हा अपवर्तक नाही कारण 168 ला 16 ने भागल्यास पूर्ण संख्या मिळत नाही.",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses divisibility by 2 and 5 with divisibility by 10",
+        null,
+        "Believes that any number with a prime factor present in the original number is a factor, ignoring multiplicity and proper inclusion",
+        "Believes that a number is a factor if it divides the number without considering all prime factors"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 12. The prime factorization of 168 is 2^3 × 3 × 7, and 12 = 2^2 × 3, which is a subset of the prime factors of 168. The other options (10, 14, 16) are not factors of 168. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.4 Prime Factorisation"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 11,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.5 Divisibility Tests"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 12,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.5 Divisibility Tests"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T08:58:40.035Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the definition of co-prime numbers?",
+      "choices": [
+        "Numbers that have at least one common factor",
+        "Numbers that have exactly one common factor",
+        "Numbers that have no common factors other than 1",
+        "Numbers that are both prime"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 'Numbers that have no common factors other than 1'. Co-prime numbers are defined as numbers that share no common factors except 1. The other options incorrectly describe co-prime numbers, either by suggesting they have common factors or by focusing on other properties like being prime.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सह-अभाज्य संख्याओं की परिभाषा क्या है?",
+          "choices": [
+            "कम से कम एक सामान्य गुणक वाली संख्याएँ",
+            "ठीक एक सामान्य गुणक वाली संख्याएँ",
+            "1 के अलावा कोई सामान्य गुणक न रखने वाली संख्याएँ",
+            "दोनों अभाज्य संख्याएँ"
+          ],
+          "solution": "सह-अभाज्य संख्याओं की सही उत्तर '1 के अलावा कोई सामान्य गुणक न रखने वाली संख्याएँ' है। सह-अभाज्य संख्याएँ ऐसी संख्याएँ होती हैं जिनके केवल 1 ही सामान्य गुणक होता है। अन्य विकल्प गलत रूप से सह-अभाज्य संख्याओं का वर्णन करते हैं, या तो यह बताकर कि उनके सामान्य गुणक होते हैं या अन्य गुणों जैसे अभाज्य होने पर ध्यान केंद्रित करके।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सह-अभाज्य संख्यांची व्याख्या काय आहे?",
+          "choices": [
+            "कमीत कमी एक सामायिक अपवर्तक असलेल्या संख्या",
+            "अचूक एक सामायिक अपवर्तक असलेल्या संख्या",
+            "1 व्यतिरिक्त अन्य कोणताही सामायिक अपवर्तक नसलेल्या संख्या",
+            "दोन्ही अभाज्य असलेल्या संख्या"
+          ],
+          "solution": "बरोबर उत्तर '1 व्यतिरिक्त अन्य कोणताही सामायिक अपवर्तक नसलेल्या संख्या' आहे. सह-अभाज्य संख्यांची व्याख्या संख्यांच्या 1 व्यतिरिक्त अन्य कोणताही सामायिक अपवर्तक नसलेल्या संख्यांच्या रूपात केली जाते. इतर विकल्प चुकीच्या पद्धतीने सह-अभाज्य संख्यांचे वर्णन करतात, जे सामायिक अपवर्तक असल्याचा अंदाज देतात किंवा अभाज्य असल्याच्या इतर गुणधर्मांवर भर देतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. Technical terms like 'सामायिक अपवर्तक' (common factor) are appropriately used as per Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses co-prime numbers with numbers having at least one common factor",
+        "Confuses co-prime numbers with numbers having exactly one common factor",
+        null,
+        "Incorrectly defines co-prime numbers as having no common factors at all"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct definition of co-prime numbers is that they have no common factors other than 1. The distractors reflect common misconceptions, such as thinking co-prime numbers have at least one common factor, exactly one common factor, or that they must both be prime.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.4 Prime Factorisation"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 8,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.4 Prime Factorisation"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.4 Prime Factorisation"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T08:58:40.035Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following numbers is a multiple of both 3 and 4?",
+      "choices": [
+        "12",
+        "18",
+        "22",
+        "28"
+      ],
+      "answerIndex": 0,
+      "solution": "The number 12 is a multiple of both 3 and 4. 12 ÷ 3 = 4 and 12 ÷ 4 = 3. 18 is not a multiple of 4, 22 is not a multiple of 3, and 28 is not a multiple of 3.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी संख्या 3 और 4 दोनों की गुणज है?",
+          "choices": [
+            "12",
+            "18",
+            "22",
+            "28"
+          ],
+          "solution": "संख्या 12 दोनों 3 और 4 की गुणज है। 12 ÷ 3 = 4 और 12 ÷ 4 = 3। 18, 4 की गुणज नहीं है, 22, 3 की गुणज नहीं है और 28, 3 की गुणज नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता नंबर 3 आणि 4 दोन्हीचा गुणक आहे?",
+          "choices": [
+            "12",
+            "18",
+            "22",
+            "28"
+          ],
+          "solution": "12 हा 3 आणि 4 दोन्हीचा गुणक आहे. 12 ÷ 3 = 4 आणि 12 ÷ 4 = 3. 18 हा 4 चा गुणक नाही, 22 हा 3 चा गुणक नाही, आणि 28 हा 3 चा गुणक नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes that a number is a multiple of 3 and 4 if it is divisible by 3 or 4, not both",
+        "Fails to check divisibility by both numbers",
+        "Fails to check divisibility by both numbers and chooses a number not divisible by either 3 or 4, but only 22 is a multiple of 2, not 3 or 4, and 28 is a multiple of 4 but not 3."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 12, which is divisible by both 3 and 4. The other options fail to meet both criteria, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 16,
+          "pageStart": 23,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 17,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 18,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T08:58:40.035Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following numbers is a prime number?",
+      "choices": [
+        "21",
+        "23",
+        "25",
+        "27"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 23 because it has no factors other than 1 and itself. 21 is divisible by 3 and 7. 25 is divisible by 5. 27 is divisible by 3.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्न में से कौन-सी संख्या एक अभाज्य संख्या है?",
+          "choices": [
+            "21",
+            "23",
+            "25",
+            "27"
+          ],
+          "solution": "सही उत्तर 23 है क्योंकि इसके केवल 1 और स्वयं ही गुणनखंड हैं। 21, 3 और 7 द्वारा विभाज्य है। 25, 5 द्वारा विभाज्य है। 27, 3 द्वारा विभाज्य है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता संख्या अभाज्य संख्या आहे?",
+          "choices": [
+            "21",
+            "23",
+            "25",
+            "27"
+          ],
+          "solution": "बरोबर उत्तर 23 आहे कारण तिला 1 आणि तिच्याशिवाय इतर कोणतेही घटक नाहीत. 21 ला 3 आणि 7 ने भाग जातो. 25 ला 5 ने भाग जातो. 27 ला 3 ने भाग जातो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Knows that 21 is not a prime but confuses it with a prime number",
+        null,
+        "Fails to recognize that 25 is not a prime number",
+        "Fails to recognize that 27 is not a prime number"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear correct answer and reasonable distractors based on common misconceptions about prime numbers.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 16,
+          "pageStart": 23,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 17,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 18,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T08:58:40.035Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the smallest number whose prime factorization has four different prime numbers?",
+      "choices": [
+        "210",
+        "120",
+        "30",
+        "105"
+      ],
+      "answerIndex": 0,
+      "solution": "The smallest number with four different prime factors is 2 × 3 × 5 × 7 = 210. 120 has prime factors 2, 3, and 5. 30 has 2, 3, and 5. 105 has 3, 5, and 7.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चार अलग-अलग अभाज्य संख्याओं के अभाज्य गुणनखंडन वाली सबसे छोटी संख्या क्या है?",
+          "choices": [
+            "210",
+            "120",
+            "30",
+            "105"
+          ],
+          "solution": "चार अलग-अलग अभाज्य गुणनखंड वाली सबसे छोटी संख्या 2 × 3 × 5 × 7 = 210 है। 120 के अभाज्य गुणनखंड 2, 3 और 5 हैं। 30 के अभाज्य गुणनखंड 2, 3 और 5 हैं। 105 के अभाज्य गुणनखंड 3, 5 और 7 हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the correct answer remains in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चार वेगवेगळ्या अविभाज्य अंकांच्या अविभाज्य अपघटनाचा असणारा सर्वांत लहान अंक कोणता आहे?",
+          "choices": [
+            "210",
+            "120",
+            "30",
+            "105"
+          ],
+          "solution": "चार वेगवेगळ्या अविभाज्य अंकांच्या अविभाज्य अपघटनाचा असणारा सर्वांत लहान अंक 2 × 3 × 5 × 7 = 210 आहे. 120 चे अविभाज्य अंक 2, 3 आणि 5 आहेत. 30 चे अविभाज्य अंक 2, 3 आणि 5 आहेत. 105 चे अविभाज्य अंक 3, 5 आणि 7 आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for prime factors and numbers.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the number with 2 × 3 × 5",
+        "Confuses the number with 2 × 2 × 2 × 3 × 5",
+        "Confuses the number with 3 × 5 × 7"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The smallest number with four different prime factors is 2 × 3 × 5 × 7 = 210. The other options have fewer than four distinct prime factors.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 19,
+          "pageStart": 28,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 20,
+          "pageStart": 30,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 21,
+          "pageStart": 32,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 22,
+          "pageStart": 33,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T08:58:40.035Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the 'idli-vada' game, what is the first number for which the players should say 'idli-vada'?",
+      "choices": [
+        "3",
+        "5",
+        "15",
+        "30"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 15 because it is the least common multiple of 3 and 5, meaning it is the first number divisible by both. The number 3 is only divisible by 3, and 5 is only divisible by 5, so they do not meet the condition of being divisible by both. The number 30 is also divisible by both but comes after 15, so it is not the first such number.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "इडली-वडा खेल में, खिलाड़ियों को किस पहली संख्या के लिए 'इडली-वडा' कहना चाहिए?",
+          "choices": [
+            "3",
+            "5",
+            "15",
+            "30"
+          ],
+          "solution": "सही उत्तर 15 है क्योंकि यह 3 और 5 का लघुत्तम समापवर्त्य है, जिसका अर्थ है कि यह दोनों से विभाज्य पहली संख्या है। संख्या 3 केवल 3 से विभाज्य है, और 5 केवल 5 से विभाज्य है, इसलिए वे दोनों से विभाज्य होने की शर्त पूरी नहीं करते। संख्या 30 भी दोनों से विभाज्य है लेकिन 15 के बाद आती है, इसलिए यह पहली ऐसी संख्या नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "इडली-वडा खेळात, खेळाडूंनी 'इडली-वडा' म्हणावे लागणारा पहिला संख्या कोणता असेल?",
+          "choices": [
+            "3",
+            "5",
+            "15",
+            "30"
+          ],
+          "solution": "बरोबर उत्तर 15 आहे कारण ते 3 आणि 5 चे लहानतम सामाईक गुणक आहे, जे दोन्ही नंबरने विभाज्य असलेला पहिला संख्या आहे. संख्या 3 फक्त 3 ने विभाज्य आहे, आणि 5 फक्त 5 ने विभाज्य आहे, म्हणून ते दोन्ही नंबरने विभाज्य असण्याच्या अटीला पूर्ण करत नाहीत. संख्या 30 देखील दोन्ही नंबरने विभाज्य आहे परंतु 15 नंतर येते, म्हणून ते पहिला असलेला संख्या नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the first multiple of 3 with 'idli-vada'",
+        "Confuses the first multiple of 5 with 'idli-vada'",
+        null,
+        "Confuses least common multiple with a higher multiple of 5"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 15, the least common multiple of 3 and 5. The author's reasoning is sound, and the distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.1 Common Multiples and Common Factors"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.1 Common Multiples and Common Factors"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.1 Common Multiples and Common Factors"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T08:58:40.035Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the smallest number that is a multiple of 3, 4, and 5?",
+      "choices": [
+        "60",
+        "30",
+        "45",
+        "15"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 60 because it is the least common multiple of 3, 4, and 5. 30 is a multiple of 3 and 5 but not 4. 45 is a multiple of 3 and 5 but not 4. 15 is a multiple of 3 and 5 but not 4.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "3, 4 और 5 के सबसे छोटी संख्या क्या है जो एक गुणज है?",
+          "choices": [
+            "60",
+            "30",
+            "45",
+            "15"
+          ],
+          "solution": "सही उत्तर 60 है क्योंकि यह 3, 4 और 5 का लघुत्तम समापवर्तक है। 30, 3 और 5 का गुणज है लेकिन 4 का नहीं। 45, 3 और 5 का गुणज है लेकिन 4 का नहीं। 15, 3 और 5 का गुणज है लेकिन 4 का नहीं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms like 'लघुत्तम समापवर्तक' (LCM) are correctly used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "3, 4 आणि 5 चा सर्वात लहान गुणक कोणता आहे?",
+          "choices": [
+            "60",
+            "30",
+            "45",
+            "15"
+          ],
+          "solution": "बरोबर उत्तर 60 आहे कारण ते 3, 4 आणि 5 चा लहानतम सामाईक गुणक आहे. 30 हा 3 आणि 5 चा गुणक आहे पण 4 चा नाही. 45 हा 3 आणि 5 चा गुणक आहे पण 4 चा नाही. 15 हा 3 आणि 5 चा गुणक आहे पण 4 चा नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Fails to recognize that 30 is not a multiple of 4",
+        "Fails to recognize that 45 is not a multiple of 4",
+        "Fails to recognize that 15 is not a multiple of 4"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is 60, the LCM of 3, 4, and 5. The distractors are all multiples of 3 and 5 but not 4, which matches the reasoning provided.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 16,
+          "pageStart": 23,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 17,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 18,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T08:58:40.035Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following numbers is the product of exactly three distinct prime numbers?",
+      "choices": [
+        "45",
+        "60",
+        "91",
+        "105"
+      ],
+      "answerIndex": 3,
+      "solution": "The number 105 is the product of three distinct prime numbers: 3 × 5 × 7. The other options are not. For example, 45 is 3² × 5, 60 is 2² × 3 × 5, and 91 is 7 × 13.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी संख्या तीन अलग-अलग अभाज्य संख्याओं का गुणनफल है?",
+          "choices": [
+            "45",
+            "60",
+            "91",
+            "105"
+          ],
+          "solution": "संख्या 105 तीन अलग-अलग अभाज्य संख्याओं का गुणनफल है: 3 × 5 × 7। अन्य विकल्प ऐसे नहीं हैं। उदाहरण के लिए, 45 गुणनखंड 3² × 5 है, 60 गुणनखंड 2² × 3 × 5 है, और 91 गुणनखंड 7 × 13 है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणती संख्या तीन विविध अभाज्य संख्यांच्या गुणाकाराच्या रूपात असते?",
+          "choices": [
+            "45",
+            "60",
+            "91",
+            "105"
+          ],
+          "solution": "संख्या 105 ही तीन विविध अभाज्य संख्यांच्या गुणाकाराच्या रूपात असते: 3 × 5 × 7. इतर विकल्प असत नाहीत. उदाहरणार्थ, 45 ही 3² × 5 आहे, 60 ही 2² × 3 × 5 आहे आणि 91 ही 7 × 13 आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Contains a repeated prime factor",
+        "Contains a repeated prime factor",
+        "Contains a repeated prime factor",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 105 (3 × 5 × 7), which is the product of three distinct primes. The other options have repeated prime factors or are products of fewer than three distinct primes. The author's reasoning is accurate.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.2 Prime Numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.2 Prime Numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.3 Co-prime numbers for safekeeping treasures"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.3 Co-prime numbers for safekeeping treasures"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T08:58:40.035Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the prime factorisation of two numbers has no common prime factors, what can be said about the numbers?",
+      "choices": [
+        "They are co-prime",
+        "They are both prime numbers",
+        "They are both even numbers",
+        "They are both odd numbers"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'They are co-prime'. If two numbers have no common prime factors, they are co-prime. The other options are incorrect because they do not accurately describe the relationship between prime factorisation and co-primality.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि दो संख्याओं के अभाज्य गुणनखंडन में कोई उभयनिष्ठ अभाज्य गुणनखंड नहीं है, तो इन संख्याओं के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "वे सह-अभाज्य हैं",
+            "वे दोनों अभाज्य संख्याएँ हैं",
+            "वे दोनों सम संख्याएँ हैं",
+            "वे दोनों विषम संख्याएँ हैं"
+          ],
+          "solution": "सही उत्तर 'वे सह-अभाज्य हैं' है। यदि दो संख्याओं में कोई उभयनिष्ठ अभाज्य गुणनखंड नहीं है, तो वे सह-अभाज्य होती हैं। अन्य विकल्प गलत हैं क्योंकि वे अभाज्य गुणनखंडन और सह-अभाज्यता के बीच संबंध का सही वर्णन नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर दोन संख्यांच्या अविभाज्य अपघटनाला कोणते अविभाज्य घटक सामायिक नसतील, तर त्या संख्यांबद्दल काय म्हणता येईल?",
+          "choices": [
+            "त्या सहअविभाज्य आहेत",
+            "त्या दोन्ही अविभाज्य संख्या आहेत",
+            "त्या दोन्ही सम संख्या आहेत",
+            "त्या दोन्ही विषम संख्या आहेत"
+          ],
+          "solution": "बरोबर उत्तर 'त्या सहअविभाज्य आहेत' आहे. जर दोन संख्यांच्या अविभाज्य अपघटनाला कोणते अविभाज्य घटक सामायिक नसतील, तर त्या सहअविभाज्य असतात. इतर विकल्प अयोग्य आहेत कारण ते अविभाज्य अपघटन आणि सहअविभाज्यतेच्या संबंधाचे योग्य वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes that if two numbers have no common factors, they must both be prime",
+        "A student might confuse co-prime with evenness or assume that numbers without common prime factors must share a different common property like being even",
+        "A pupil might incorrectly assume that co-prime numbers must both be odd, not realizing that even numbers can also be co-prime if they share no common prime factors."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, and the correct answer is clearly 'They are co-prime'. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.4 Prime Factorisation"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 8,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.4 Prime Factorisation"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.4 Prime Factorisation"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T08:58:40.035Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a number is co-prime with 10, which of the following could it be?",
+      "choices": [
+        "6",
+        "12",
+        "15",
+        "7"
+      ],
+      "answerIndex": 3,
+      "solution": "The number 7 is co-prime with 10 because they have no common factor other than 1. The other options (6, 12, 15) share common factors with 10. For example, 6 has a common factor of 2, 12 has a common factor of 2, and 15 has a common factor of 5.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई संख्या 10 के सह-अभाज्य है, तो निम्नलिखित में से कौन सा हो सकता है?",
+          "choices": [
+            "6",
+            "12",
+            "15",
+            "7"
+          ],
+          "solution": "संख्या 7, 10 के सह-अभाज्य है क्योंकि इनका कोई अन्य सामान्य गुणनखंड नहीं है। अन्य विकल्प (6, 12, 15) 10 के साथ सामान्य गुणनखंड साझा करते हैं। उदाहरण के लिए, 6 का सामान्य गुणनखंड 2 है, 12 का सामान्य गुणनखंड 2 है, और 15 का सामान्य गुणनखंड 5 है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक संख्या 10 शी सह-अभाज्य असेल, तर खालीलपैकी कोणती असू शकते?",
+          "choices": [
+            "6",
+            "12",
+            "15",
+            "7"
+          ],
+          "solution": "संख्या 7 ही 10 शी सह-अभाज्य आहे कारण त्यांना 1 शिवाय इतर कोणताही सामायिक अपवर्तक नाही. उरलेल्या विकल्पांमध्ये (6, 12, 15) 10 शी सामायिक अपवर्तक आहेत. उदाहरणार्थ, 6 चा सामायिक अपवर्तक 2 आहे, 12 चा सामायिक अपवर्तक 2 आहे आणि 15 चा सामायिक अपवर्तक 5 आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Shares a common factor",
+        "Shares a common factor",
+        "Shares a common factor",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. 7 is co-prime with 10, as their greatest common factor is 1. The other options (6, 12, 15) share common factors with 10 (2, 2, and 5 respectively), making them not co-prime.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.2 Prime Numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.2 Prime Numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.3 Co-prime numbers for safekeeping treasures"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.3 Co-prime numbers for safekeeping treasures"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T08:58:40.035Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If two numbers have a common prime factor, what can be said about their co-primality?",
+      "choices": [
+        "They are co-prime",
+        "They are not co-prime",
+        "They are both prime numbers",
+        "They are both composite numbers"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'They are not co-prime'. If two numbers have a common prime factor, they are not co-prime. The other options are incorrect because they do not accurately describe the relationship between common prime factors and co-primality.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि दो संख्याओं का एक सामान्य अभाज्य गुणनखंड हो, तो उनके सह-अभाज्यता के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "वे सह-अभाज्य हैं",
+            "वे सह-अभाज्य नहीं हैं",
+            "वे दोनों अभाज्य संख्याएँ हैं",
+            "वे दोनों भाज्य संख्याएँ हैं"
+          ],
+          "solution": "सही उत्तर 'वे सह-अभाज्य नहीं हैं' है। यदि दो संख्याओं का एक सामान्य अभाज्य गुणनखंड हो, तो वे सह-अभाज्य नहीं होतीं। अन्य विकल्प गलत हैं क्योंकि वे सामान्य अभाज्य गुणनखंड और सह-अभाज्यता के बीच संबंध का सही वर्णन नहीं करते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर दोन संख्यांना एक सामाईक अविभाज्य अपवर्तक असेल, तर त्यांच्या सहअविभाज्यतेबद्दल काय म्हणता येईल?",
+          "choices": [
+            "ते सहअविभाज्य आहेत",
+            "ते सहअविभाज्य नाहीत",
+            "ते दोन्ही अविभाज्य संख्या आहेत",
+            "ते दोन्ही भाज्य संख्या आहेत"
+          ],
+          "solution": "हे बरोबर उत्तर 'ते सहअविभाज्य नाहीत' आहे. जर दोन संख्यांना एक सामाईक अविभाज्य अपवर्तक असेल तर ते सहअविभाज्य नाहीत. इतर विकल्प चुकीचे आहेत कारण ते सामाईक अविभाज्य अपवर्तक आणि सहअविभाज्यतेमधील संबंध योग्यरित्या वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes that the presence of a common prime factor means the numbers are co-prime",
+        null,
+        "Misinterprets the relationship between prime numbers and co-primality",
+        "Misunderstands the concept of composite numbers"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that if two numbers share a common prime factor, they cannot be co-prime. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.4 Prime Factorisation"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 8,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.4 Prime Factorisation"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.4 Prime Factorisation"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-11T08:58:40.035Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

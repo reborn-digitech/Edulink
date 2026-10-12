@@ -1,0 +1,528 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-11T02:09:38.266Z",
+  "finishedAt": "2026-10-11T02:15:20.595Z",
+  "seconds": 342,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics Part-II",
+    "bookCode": "lemh2",
+    "document": "ncert/12/mathematics/lemh202.pdf",
+    "classLevel": 12,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Application of Integrals",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2022-23]\n9. In the given figure, the area bounded by the curve 𝑥 = 𝑓(𝑦), 𝑦 -axis and abscissa 𝑦 = 𝑎 and 𝑦 =\n𝑏 is equal to -\na) ∫ 𝑓(𝑦)𝑑𝑦 𝑎 𝑏 b) ∫ 𝑓(𝑥)𝑑𝑥 𝑎 𝑏 c) ∫ |𝑓(𝑦)| 𝑑𝑦 𝑎 𝑏 d) ∫ |𝑓(𝑥)| 𝑑𝑥 𝑎 𝑏",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2024-25]\n1. (C) 4\n 3 \nThe required area is given by 4 x dx =  x 2  = 2 ( 8 − 1 ) = 14 squnits.\n 1 ( )  3  3 3\n \n 2  1",
+      "[CBSE Class XII Mathematics, sample question paper, 2026-27]\n34. Using Integration, find the area of the region\n(A). {(𝑥, 𝑦): 0 ≤ 𝑦 ≤ √4 − 𝑥 , 𝑥 ≥ 2 − 𝑦}. 2\nOR 5\nQ34 Using Integration, find the area of the region bounded by the curve\n(B). 𝑦 = 2𝑥 and the line 𝑥 − 2𝑦 = 0. 2\nFor Visually Impaired:\nQ34 Using Integration, find the area of the region enclosed within 25𝑥 + 16𝑦 = 2 2\n(A). 400\nOR 5\nQ34 Using Integration find the area of the region in the first quadrant bounded by\n(B). the curve 𝑦 = 8𝑥, and the lines 𝑥 = 2, 𝑥 = 5 2 and x-axis.",
+      "[CBSE Class XII Mathematics, sample question paper, 2023-24]\n32. Make a rough sketch of the region   x y,  : 0  y  x 1, 0  y  x 1, 0  x  2 2  and find the\narea of the region, using the method of integration."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 163550,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 17634,
+      "completionTokens": 6914
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 277090,
+      "in": 24,
+      "out": 17,
+      "rejects": 7,
+      "promptTokens": 14703,
+      "completionTokens": 5493
+    },
+    "solver": {
+      "calls": 133,
+      "ms": 99447,
+      "in": 17,
+      "out": 14,
+      "rejects": 3,
+      "promptTokens": 26291,
+      "completionTokens": 1492
+    },
+    "form": {
+      "calls": 1,
+      "ms": 5031,
+      "in": 14,
+      "out": 3,
+      "rejects": 11,
+      "promptTokens": 269,
+      "completionTokens": 91
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 13,
+      "ms": 3102,
+      "in": 3,
+      "out": 2,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 73245,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4753,
+      "completionTokens": 2367
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "The area bounded by the curve y = 4x, the y-axis, and the line y = 3 is given by which of the following?",
+      "ms": {
+        "draft": 7635,
+        "critique": 9815
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the area enclosed by the circle x² + y² = a²?",
+      "ms": {
+        "draft": 7635,
+        "critique": 11209,
+        "solver": 17448,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the area bounded by the curve y = x|x|, the x-axis, and the lines x = -1 and x = 1?",
+      "ms": {
+        "draft": 7635,
+        "critique": 9232
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the area of the region bounded by the curve x = g(y), the y-axis, and the lines y = c and y = d?",
+      "ms": {
+        "draft": 7635,
+        "critique": 11769
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the area bounded by the curve y = cos x between x = 0 and x = 2π?",
+      "ms": {
+        "draft": 7635,
+        "critique": 11331,
+        "solver": 23076,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the inverse of differentiation in calculus?",
+      "ms": {
+        "draft": 5188,
+        "critique": 8268
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which mathematician is credited with the discovery that differentiation and integration are inverse operations?",
+      "ms": {
+        "draft": 5188,
+        "critique": 8355
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the area under the curve y = 2x from x = 1 to x = 3?",
+      "ms": {
+        "draft": 5188,
+        "critique": 9223
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage imply about the development of the concept of limits in calculus?",
+      "ms": {
+        "draft": 5188,
+        "critique": 11659
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage indicate about the relationship between differential and integral calculus?",
+      "ms": {
+        "draft": 5188,
+        "critique": 7672,
+        "solver": 15694,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is the correct representation for the area bounded by the curve x = f(y), y-axis, and the lines y = a and y = b?",
+      "ms": {
+        "draft": 5188,
+        "critique": 8779,
+        "solver": 18779
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the relationship between differentiation and integration according to the passage?",
+      "ms": {
+        "draft": 4180,
+        "critique": 8646,
+        "solver": 1286,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the inverse of differentiation in calculus?",
+      "ms": {
+        "draft": 4180,
+        "critique": 8646,
+        "solver": 2012
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, who is credited with the discovery that differentiation and integration are inverse operations?",
+      "ms": {
+        "draft": 4180,
+        "critique": 10072,
+        "solver": 1638,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage mentions that the justification of the concept of limit in calculus was developed by A.L. Cauchy. Which of the following best describes the significance of this development?",
+      "ms": {
+        "draft": 4180,
+        "critique": 9600,
+        "solver": 2787,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements best explains the contribution of Newton and Leibnitz to the development of calculus?",
+      "ms": {
+        "draft": 4180,
+        "critique": 8616,
+        "solver": 2240,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the area bounded by the curve y = f(x), x-axis, and the ordinates x = a and x = b?",
+      "ms": {
+        "draft": 10255,
+        "critique": 9654,
+        "solver": 1596,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the area enclosed by the circle x² + y² = a²?",
+      "ms": {
+        "draft": 10255,
+        "critique": 10858,
+        "solver": 2425,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the area of the region bounded by the curve y = cos x between x = 0 and x = 2π?",
+      "ms": {
+        "draft": 10255,
+        "critique": 11895,
+        "solver": 1482,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the correct way to calculate the area bounded by a curve that lies partially below and partially above the x-axis?",
+      "ms": {
+        "draft": 10255,
+        "critique": 9397,
+        "solver": 19695,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the area bounded by the curve y = 4x, y-axis, and the line y = 3?",
+      "ms": {
+        "draft": 10255,
+        "critique": 7599,
+        "solver": 7589
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the area bounded by the curve x = g(y), y-axis, and the lines y = c and y = d?",
+      "ms": {
+        "draft": 10255,
+        "critique": 8681,
+        "solver": 2508,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the area of a region bounded by a curve x = g(y), the y-axis, and the lines y = c and y = d?",
+      "ms": {
+        "draft": 7635,
+        "critique": 10117,
+        "solver": 16399,
+        "form": 0,
+        "translation": 30714
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the area under a curve is represented by the integral of a function, which of the following is used to compute the definite integral?",
+      "ms": {
+        "draft": 4180,
+        "critique": 9468,
+        "solver": 2395,
+        "form": 5031,
+        "translation": 37282
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The area bounded by the curve y = 4x, the y-axis, and the line y = 3 is given by which of the following?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the area enclosed by the circle x² + y² = a²?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What is the area bounded by the curve y = x|x|, the x-axis, and the lines x = -1 and x = 1?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the area of the region bounded by the curve x = g(y), the y-axis, and the lines y = c and y = d?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the area bounded by the curve y = cos x between x = 0 and x = 2π?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the inverse of differentiation in calculus?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which mathematician is credited with the discovery that differentiation and integration are inverse operations?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the area under the curve y = 2x from x = 1 to x = 3?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What does the passage imply about the development of the concept of limits in calculus?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage indicate about the relationship between differential and integral calculus?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is the correct representation for the area bounded by the curve x = f(y), y-axis, and the lines y = a and y = b?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the relationship between differentiation and integration according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's content…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the term used for the inverse of differentiation in calculus?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, who is credited with the discovery that differentiation and integration are inverse operations?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The passage mentions that the justification of the concept of limit in calculus was developed by A.L. Cauchy. Which of the following best describes the significance of this development?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements best explains the contribution of Newton and Leibnitz to the development of calculus?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (66 vs 39 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the area bounded by the curve y = f(x), x-axis, and the ordinates x = a and x = b?",
+      "reason": "options 0 and 3 say the same thing (\"A = ∫ f(x) dx from a to b\" / \"A = ∫ x dx from a to b\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the area enclosed by the circle x² + y² = a²?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the area of the region bounded by the curve y = cos x between x = 0 and x = 2π?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the correct way to calculate the area bounded by a curve that lies partially below and partially above the x-axis?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the area bounded by the curve y = 4x, y-axis, and the line y = 3?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the formula for the area bounded by the curve x = g(y), y-axis, and the lines y = c and y = d?",
+      "reason": "near-duplicate of batch item \"What is the formula for the area of a region bound…\" (cosine 0.966 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

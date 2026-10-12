@@ -1,0 +1,472 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-11T23:23:06.309Z",
+  "finishedAt": "2026-10-11T23:33:49.360Z",
+  "seconds": 643,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "SPPU",
+    "book": "LL. M. (2 Year) Syllabus For Affiliated law Colleges Academic Year 2025-2026",
+    "bookCode": null,
+    "document": "sppu/faculty-of-humanities/iii-law/LL._M._2_Year_Syllabus_For_Affiliated_law_Colleges_Academic_Year_2025-2026_27062025.pdf",
+    "classLevel": 13,
+    "subject": "Law (LL.M.)",
+    "chapter": "Unit 1 — Core Subjects",
+    "edition": "First Edition 2020",
+    "chunks": 10,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for law: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Law (LL.M.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 304892,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 24590,
+      "completionTokens": 4445
+    },
+    "critique": {
+      "calls": 23,
+      "ms": 327642,
+      "in": 22,
+      "out": 17,
+      "rejects": 5,
+      "promptTokens": 9738,
+      "completionTokens": 4023
+    },
+    "solver": {
+      "calls": 93,
+      "ms": 91639,
+      "in": 17,
+      "out": 15,
+      "rejects": 2,
+      "promptTokens": 14656,
+      "completionTokens": 843
+    },
+    "form": {
+      "calls": 5,
+      "ms": 32007,
+      "in": 15,
+      "out": 6,
+      "rejects": 9,
+      "promptTokens": 1233,
+      "completionTokens": 362
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 600,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 475778,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14932,
+      "completionTokens": 7911
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 2,
+    "4": 3,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the main objective of the Research Methodology course?",
+      "ms": {
+        "draft": 15506,
+        "critique": 14805
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a type of research mentioned in the syllabus?",
+      "ms": {
+        "draft": 15506,
+        "critique": 16123
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is conducting research on how laws affect social behavior, which module of the syllabus would be most relevant?",
+      "ms": {
+        "draft": 15506,
+        "critique": 14155,
+        "solver": 3403
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a fundamental duty listed in the syllabus?",
+      "ms": {
+        "draft": 14572,
+        "critique": 16983,
+        "solver": 3904,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the purpose of the course on Law and Social Transformation in India?",
+      "ms": {
+        "draft": 14572,
+        "critique": 16044,
+        "solver": 4971,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is analyzing the relationship between fundamental rights and directive principles, which module of the syllabus would they be focusing on?",
+      "ms": {
+        "draft": 14572,
+        "critique": 18993,
+        "solver": 3506,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a theory of Law and Justice discussed in the syllabus?",
+      "ms": {
+        "draft": 14919,
+        "critique": 23409,
+        "solver": 29435
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a module listed in the syllabus for the course on Law and Justice?",
+      "ms": {
+        "draft": 12444,
+        "critique": 10805,
+        "solver": 2772,
+        "form": 7003
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main aim of the course on Law and Justice as stated in the syllabus?",
+      "ms": {
+        "draft": 12444,
+        "critique": 9987,
+        "solver": 2589,
+        "form": 8422
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a fundamental right guaranteed under Article 19 of the Indian Constitution?",
+      "ms": {
+        "draft": 12417,
+        "critique": 11020
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the term 'public interest litigation' refer to in the context of Indian constitutional law?",
+      "ms": {
+        "draft": 12417,
+        "critique": 11520
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the relationship between Law and Justice as presented in the syllabus?",
+      "ms": {
+        "draft": 12444,
+        "critique": 11904,
+        "solver": 2326,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a state government in India is unable to perform its duties, which constitutional provision allows the central government to take control?",
+      "ms": {
+        "draft": 12417,
+        "critique": 12545
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of scientific methodology according to the passage?",
+      "ms": {
+        "draft": 12628,
+        "critique": 10918,
+        "solver": 2094,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the Research Design module according to the passage?",
+      "ms": {
+        "draft": 12628,
+        "critique": 11459,
+        "solver": 2473,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A law student is conducting a legal research project. According to the passage, which of the following research methods would be most appropriate for gathering qualitative data?",
+      "ms": {
+        "draft": 12628,
+        "critique": 9058,
+        "solver": 1039,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a suggested book on the concept of Law and Development?",
+      "ms": {
+        "draft": 14919,
+        "critique": 19318,
+        "solver": 4426,
+        "form": 5641,
+        "translation": 89130
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is studying the concept of Justice as a Virtue, which of the following would be the most relevant module to refer to?",
+      "ms": {
+        "draft": 14919,
+        "critique": 19465,
+        "solver": 3506,
+        "form": 0,
+        "translation": 61405
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student studying this course would be expected to critically evaluate which of the following?",
+      "ms": {
+        "draft": 12444,
+        "critique": 10869,
+        "solver": 4658,
+        "form": 3533,
+        "translation": 60385
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the purpose of a research design?",
+      "ms": {
+        "draft": 15506,
+        "critique": 17226,
+        "solver": 3282,
+        "form": 13540,
+        "translation": 95240
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A student is examining the role of public opinion in shaping legal frameworks. Which of the following modules would provide the most relevant information?",
+      "ms": {
+        "draft": 14572,
+        "critique": 19072,
+        "solver": 3752,
+        "form": 0,
+        "translation": 87787
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Considering the syllabus, which of the following would be the most appropriate approach for analyzing the relationship between Law and Morality?",
+      "ms": {
+        "draft": 14919,
+        "critique": 18121,
+        "solver": 2032,
+        "form": 0,
+        "translation": 66846
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main objective of the Research Methodology course?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a type of research mentioned in the syllabus?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student is conducting research on how laws affect social behavior, which module of the syllabus would be most relevant?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a fundamental duty listed in the syllabus?",
+      "reason": "about the syllabus, not its subject: asks what the syllabus lists"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the purpose of the course on Law and Social Transformation in India?",
+      "reason": "about the syllabus, not its subject: asks what the course aims at"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student is analyzing the relationship between fundamental rights and directive principles, which module of the syllabus would they be focusing on?",
+      "reason": "about the syllabus, not its subject: asks which book, module or part of the course"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a theory of Law and Justice discussed in the syllabus?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a module listed in the syllabus for the course on Law and Justice?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Adds a module not mentioned in the passage…\"); about the syllabus, not its subject: asks what the syllabus lists"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main aim of the course on Law and Justice as stated in the syllabus?",
+      "reason": "the key is far longer than every distractor (91 vs 37 characters); about the syllabus, not its subject: asks what the course aims at"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a fundamental right guaranteed under Article 19 of the Indian Constitution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the term 'public interest litigation' refer to in the context of Indian constitutional law?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the relationship between Law and Justice as presented in the syllabus?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a state government in India is unable to perform its duties, which constitutional provision allows the central government to take control?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of scientific methodology according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of the Research Design module according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A law student is conducting a legal research project. According to the passage, which of the following research methods would be most appropriate for gathering qualitative data?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for law: levels 5 and 6 skipped",
+    "no glossary in the corpus for Law (LL.M.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,590 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-11T23:52:52.696Z",
+  "finishedAt": "2026-10-12T00:04:53.450Z",
+  "seconds": 721,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "SPPU",
+    "book": "LL. M. (2 Year) Syllabus For Affiliated law Colleges Academic Year 2025-2026",
+    "bookCode": null,
+    "document": "sppu/faculty-of-humanities/iii-law/LL._M._2_Year_Syllabus_For_Affiliated_law_Colleges_Academic_Year_2025-2026_27062025.pdf",
+    "classLevel": 13,
+    "subject": "Law (LL.M.)",
+    "chapter": "Unit 4 — Constitutional and Administrative Law",
+    "edition": "First Edition 2020",
+    "chunks": 61,
+    "groups": 21
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for law: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Law (LL.M.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 171040,
+      "in": 29,
+      "out": 29,
+      "rejects": 1,
+      "promptTokens": 31456,
+      "completionTokens": 6718
+    },
+    "critique": {
+      "calls": 35,
+      "ms": 253096,
+      "in": 29,
+      "out": 25,
+      "rejects": 4,
+      "promptTokens": 16156,
+      "completionTokens": 6119
+    },
+    "solver": {
+      "calls": 169,
+      "ms": 84194,
+      "in": 25,
+      "out": 22,
+      "rejects": 3,
+      "promptTokens": 32547,
+      "completionTokens": 1752
+    },
+    "form": {
+      "calls": 10,
+      "ms": 29428,
+      "in": 22,
+      "out": 9,
+      "rejects": 13,
+      "promptTokens": 2376,
+      "completionTokens": 688
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 4,
+      "ms": 810,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 39,
+      "ms": 446494,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 24416,
+      "completionTokens": 13285
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 3,
+    "4": 2,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the primary function of Judicial Review according to the passage?",
+      "ms": {
+        "draft": 15210,
+        "critique": 8130
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a key objective of the Administrative Law course as described in the passage?",
+      "ms": {
+        "draft": 15210,
+        "critique": 9244
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a limitation of Judicial Review?",
+      "ms": {
+        "draft": 15210,
+        "critique": 7734
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a key objective of the course on Comparative Constitutional Law?",
+      "ms": {
+        "draft": 5812,
+        "critique": 6619,
+        "solver": 1333,
+        "form": 2832
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an administrative authority fails to follow the principle of natural justice, what can be the consequence?",
+      "ms": {
+        "draft": 15210,
+        "critique": 9743,
+        "solver": 11122,
+        "form": 2921
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is asked to compare the Indian Constitution with the constitutions of other countries, which module of the course would they most likely refer to?",
+      "ms": {
+        "draft": 5812,
+        "critique": 8233,
+        "solver": 1426,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following best explains the purpose of Module III on 'Striking a Balance Amongst the Branches of Government'?",
+      "ms": {
+        "draft": 5812,
+        "critique": 7609,
+        "solver": 1844,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a key objective of the course on Feminist Jurisprudence and Gender Studies?",
+      "ms": {
+        "draft": 5699,
+        "critique": 8627
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best reflects the role of law in achieving gender justice?",
+      "ms": {
+        "draft": 5699,
+        "critique": 6825,
+        "solver": 1385,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a key objective of the course on Law, Public Policy and Governance?",
+      "ms": {
+        "draft": 22780,
+        "critique": 6462,
+        "solver": 1529,
+        "form": 3147
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say is the role of the Indian Constitution in public policy?",
+      "ms": {
+        "draft": 22780,
+        "critique": 6437,
+        "solver": 1547,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to understand the process of how a public policy is created, which module should they focus on?",
+      "ms": {
+        "draft": 22780,
+        "critique": 6919,
+        "solver": 13865,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a factor that influences public policy making in India?",
+      "ms": {
+        "draft": 22780,
+        "critique": 8630,
+        "solver": 9948
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a constitutional protection provided to prisoners?",
+      "ms": {
+        "draft": 3343,
+        "critique": 6965,
+        "solver": 1584
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is most likely to be considered an innovative approach in corrections based on the passage?",
+      "ms": {
+        "draft": 3343,
+        "critique": 7971,
+        "solver": 1550,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary purpose of the module on mental health and criminal responsibility?",
+      "ms": {
+        "draft": 3241,
+        "critique": 7487,
+        "solver": 1638,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a psychological theory of criminal behavior discussed in the module?",
+      "ms": {
+        "draft": 3241,
+        "critique": 7368,
+        "solver": 1015,
+        "form": 2841
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A legal professional is asked to assess the admissibility of a witness's testimony in a criminal case. Which module of the course would provide the most relevant knowledge for this task?",
+      "ms": {
+        "draft": 5178,
+        "critique": 9069,
+        "solver": 1797,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the module on sentencing law and practice in India, which of the following would be most relevant when determining a sentence for a person convicted of a sexual offense?",
+      "ms": {
+        "draft": 3241,
+        "critique": 6220,
+        "solver": 18403,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a recommended reading for the course on International Criminal Law?",
+      "ms": {
+        "draft": 4443,
+        "critique": 6497,
+        "solver": 1293
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a learning outcome of the course on Principles of Evidence Law?",
+      "ms": {
+        "draft": 5178,
+        "critique": 7414,
+        "solver": 17643,
+        "form": 0,
+        "translation": 46869
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a learning outcome of the course on Comparative Constitutional Law?",
+      "ms": {
+        "draft": 5812,
+        "critique": 8183,
+        "solver": 12627,
+        "form": 3656,
+        "translation": 53137
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the concept of gender justice as discussed in the course?",
+      "ms": {
+        "draft": 5699,
+        "critique": 7450,
+        "solver": 1943,
+        "form": 2398,
+        "translation": 80841
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the 'Rarest of Rare' doctrine related to?",
+      "ms": {
+        "draft": 3343,
+        "critique": 6933,
+        "solver": 679,
+        "form": 3817,
+        "translation": 32218
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is analyzing a law through a feminist approach, which of the following would they most likely examine?",
+      "ms": {
+        "draft": 5699,
+        "critique": 7424,
+        "solver": 1714,
+        "form": 2947,
+        "translation": 51819
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a defendant is found to have a substance use disorder, which aspect of criminal responsibility would be most relevant to consider?",
+      "ms": {
+        "draft": 3241,
+        "critique": 7036,
+        "solver": 1541,
+        "form": 4006,
+        "translation": 55728
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a prisoner is released before completing their sentence under certain conditions, which term best describes this?",
+      "ms": {
+        "draft": 3343,
+        "critique": 6964,
+        "solver": 1312,
+        "form": 3481,
+        "translation": 42249
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a key provision of the Juvenile Justice (Care and Protection of Children) Act, 2015?",
+      "ms": {
+        "draft": 4443,
+        "critique": 5909,
+        "solver": 744,
+        "form": 0,
+        "translation": 28868
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A court is faced with the issue of whether a confession made by a suspect should be admissible. A student of the course is asked to analyze the case. Which two modules would provide the most relevant knowledge to address this issue?",
+      "ms": {
+        "draft": 5178,
+        "critique": 7800,
+        "solver": 1527,
+        "form": 0,
+        "translation": 50419
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which of the following is a key objective of the course on Co"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the primary function of Judicial Review according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a key objective of the Administrative Law course as described in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a limitation of Judicial Review?",
+      "reason": "option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a key objective of the course on Comparative Constitutional Law?",
+      "reason": "the key is far longer than every distractor (81 vs 47 characters); about the syllabus, not its subject: asks what the course aims at"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If an administrative authority fails to follow the principle of natural justice, what can be the consequence?",
+      "reason": "options 2 and 3 are the same (\"It will be considered as a valid administrative action\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that administrative decisions are always…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student is asked to compare the Indian Constitution with the constitutions of other countries, which module of the course would they most likely refer to?",
+      "reason": "about the syllabus, not its subject: asks which book, module or part of the course"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following best explains the purpose of Module III on 'Striking a Balance Amongst the Branches of Government'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a key objective of the course on Feminist Jurisprudence and Gender Studies?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best reflects the role of law in achieving gender justice?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misunderstands the passage's focus on transgender rights…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a key objective of the course on Law, Public Policy and Governance?",
+      "reason": "the key is far longer than every distractor (88 vs 53 characters); about the syllabus, not its subject: asks what the course aims at"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say is the role of the Indian Constitution in public policy?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student wants to understand the process of how a public policy is created, which module should they focus on?",
+      "reason": "about the syllabus, not its subject: asks which book, module or part of the course"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a factor that influences public policy making in India?",
+      "reason": "after redraft: the solver picked option 3 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a constitutional protection provided to prisoners?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is most likely to be considered an innovative approach in corrections based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary purpose of the module on mental health and criminal responsibility?",
+      "reason": "the key is far longer than every distractor (74 vs 45 characters); distractor 3's reason is not a one-line misconception (\"Overlooks the specific focus on mental health and legal acco…\"); about the syllabus, not its subject: asks what the course aims at"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a psychological theory of criminal behavior discussed in the module?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Overlooks the specific mention of psychological theories in …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A legal professional is asked to assess the admissibility of a witness's testimony in a criminal case. Which module of the course would provide the most relevant knowledge for this task?",
+      "reason": "about the syllabus, not its subject: asks which book, module or part of the course"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the module on sentencing law and practice in India, which of the following would be most relevant when determining a sentence for a person convicted of a sexual offense?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a recommended reading for the course on International Criminal Law?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for law: levels 5 and 6 skipped",
+    "no glossary in the corpus for Law (LL.M.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

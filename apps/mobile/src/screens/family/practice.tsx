@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
-import { familyParentPracticeSchema, familyStudentPracticeSchema, isCollegeClassLevel, quizBoardOrder, QUIZ_BOARD_BOTH, topicOnBoard, type QuizBoard, type QuizBoardChoice } from "@edulink/contracts";
+import { collegeTermParts, familyParentPracticeSchema, familyStudentPracticeSchema, isCollegeClassLevel, quizBoardOrder, QUIZ_BOARD_BOTH, sortCollegeTerms, STREAMS, topicOnBoard, type CollegeTerm, type PracticeSection, type QuizBoard, type QuizBoardChoice } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Icon, Loading, Row, Screen, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
@@ -14,6 +14,27 @@ import { ChildSwitcher, childQuery, Chips, levelName, Note, param, subjectName }
 /** "Class 8", or "College" for the placement bank at class 13 and above (integration, 11 Oct 2026). */
 function classLevelLabel(t: ReturnType<typeof useT>, classLevel: number): string {
   return isCollegeClassLevel(classLevel) ? t("practice.collegeLevel") : t("practice.classN", { n: classLevel });
+}
+
+/* ---- college-content (12 Oct 2026): a college's practice in two sections, as on the web ---- */
+
+/** "Year 2" / "Semester 3". */
+function termLabel(t: ReturnType<typeof useT>, term: CollegeTerm): string {
+  const { kind, n } = collegeTermParts(term);
+  return t(kind === "YEAR" ? "collegePractice.termYEAR" : "collegePractice.termSEMESTER", { n });
+}
+
+/** A college chapter's subject: the stream's name (a stream bank's subject is its stream code), else the school word. */
+function collegeSubject(t: ReturnType<typeof useT>, code: string): string {
+  return (STREAMS as readonly string[]).includes(code) ? t(`streams.${code}.name` as never) : subjectName(t, code);
+}
+
+const SECTION_KEY = { STREAM: "collegePractice.sectionSTREAM", PREP: "collegePractice.sectionPREP" } as const;
+
+/** The section chips: "My stream" and "Competitive Exams Prep". */
+function SectionChips({ value, onChange }: { value: PracticeSection; onChange: (value: PracticeSection) => void }) {
+  const t = useT();
+  return <Chips label={t("collegePractice.sectionLabel")} value={value} onChange={onChange} options={(["STREAM", "PREP"] as const).map((s) => ({ value: s, label: t(SECTION_KEY[s]) }))} />;
 }
 
 /**
@@ -71,10 +92,18 @@ function ChildPractice() {
   const d = query.data;
   const name = d?.childName ?? "";
   const childBoard = d?.schoolBoard ?? null;
-  const showBoards = d ? knowsBoards(d.topics, d.schoolBoard) && d.topics.length > 0 : false;
+  // college-content (12 Oct 2026): at a college no board chips; each card names its section (and a stream bank its programme).
+  const college = d?.practiceKind === "COLLEGE";
+  const showBoards = d ? !college && knowsBoards(d.topics, d.schoolBoard) && d.topics.length > 0 : false;
   const board: QuizBoardChoice = boardChosen ?? childBoard ?? QUIZ_BOARD_BOTH;
   const rows = d ? d.topics.filter((row) => !showBoards || topicOnBoard(row.board, board)) : [];
-  const subjects = [...new Set(rows.map((row) => row.subject))];
+  const groupOf = (row: (typeof rows)[number]) => (college ? `${row.section ?? ""}\u0000${row.section === "STREAM" ? (row.programme ?? "") : ""}\u0000${row.subject}` : row.subject);
+  const subjects = [...new Set(rows.map(groupOf))];
+  const groupTitle = (key: string) => {
+    if (!college) return subjectName(t, key);
+    const [sec, programmeName, subjectCode] = key.split("\u0000") as [string, string, string];
+    return sec === "STREAM" ? [programmeName || t("collegePractice.collegeWide"), collegeSubject(t, subjectCode)].join(" · ") : `${t("collegePractice.sectionPREP")} · ${subjectName(t, subjectCode)}`;
+  };
   return (
     <Screen title={d ? t("practice.parentPracticeTitle", { name }) : t("nav.practice")} description={d ? t("practice.parentPracticeIntro", { name }) : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {d ? <ChildSwitcher pupils={d.children} selectedId={childId ?? d.children[0]?.studentMembershipId ?? null} onSelect={(id) => { setChildId(id); setBoardChosen(null); }} /> : null}
@@ -96,13 +125,13 @@ function ChildPractice() {
             {showBoards ? <BoardChips schoolBoard={childBoard} value={board} onChange={setBoardChosen} /> : null}
             {rows.length === 0 ? <Empty title={t("feature.practice")} body={t("quizBoard.nothingOnBoard", { name, board: t(BOARD_KEY[board]) })} action={<Button label={t("quizBoard.ALL")} variant="secondary" onPress={() => setBoardChosen(QUIZ_BOARD_BOTH)} />} /> : null}
             {subjects.map((subject) => (
-              <Card key={subject} title={subjectName(t, subject)}>
+              <Card key={subject} title={groupTitle(subject)}>
                 {rows
-                  .filter((row) => row.subject === subject)
+                  .filter((row) => groupOf(row) === subject)
                   .map((row) => (
                     <Row
                       key={row.slug}
-                      title={[row.name, classLevelLabel(t, row.classLevel), row.board ? t(BOARD_KEY[row.board]) : null].filter(Boolean).join(" · ")}
+                      title={[row.name, row.section === "STREAM" ? (row.yearOrSemester ? termLabel(t, row.yearOrSemester) : null) : classLevelLabel(t, row.classLevel), row.board ? t(BOARD_KEY[row.board]) : null].filter(Boolean).join(" · ")}
                       caption={[levelName(t, row.level), `${t("practice.colTried")} ${row.seenCount}`, `${t("practice.colBadges")} ${row.tierCount}/6`, row.cleanCompletion ? t("student.badgeEarned") : null].filter(Boolean).join(" · ")}
                     />
                   ))}
@@ -122,21 +151,32 @@ function PupilPractice() {
   const [grade, setGrade] = useState<number | "all" | null>(null);
   const [subject, setSubject] = useState<string>("all");
   const [boardChosen, setBoardChosen] = useState<QuizBoardChoice | null>(null);
+  // college-content (12 Oct 2026): a college's two sections and the stream section's filters.
+  const [section, setSection] = useState<PracticeSection>("STREAM");
+  const [programme, setProgramme] = useState<string>("all");
+  const [term, setTerm] = useState<string>("all");
   const query = useQuery({
     queryKey: ["family", "student", "practice"],
     queryFn: async () => familyStudentPracticeSchema.parse(unwrap(await api().get("/api/v1/family/student/practice"))),
   });
   const d = query.data;
+  const college = d?.practiceKind === "COLLEGE";
   const schoolBoard = d?.schoolBoard ?? null;
-  const showBoards = d ? knowsBoards(d.topics, d.schoolBoard) : false;
+  const showBoards = d ? !college && knowsBoards(d.topics, d.schoolBoard) : false;
   const board: QuizBoardChoice = boardChosen ?? schoolBoard ?? QUIZ_BOARD_BOTH;
   // The board first: its chapters list their own classes and subjects, as on the web.
-  const topics = (d?.topics ?? []).filter((topic) => !showBoards || topicOnBoard(topic.board, board));
+  // At a college, the section first: the prep section lists by class and subject as a school does; the stream section by programme and term.
+  const topics = (d?.topics ?? []).filter((topic) => (college ? topic.section === section : !showBoards || topicOnBoard(topic.board, board)));
+  const streamMode = college && section === "STREAM";
+  const programmes = streamMode ? [...new Set(topics.map((x) => x.programme).filter((p): p is string => !!p))].sort((a, b) => a.localeCompare(b)) : [];
+  const terms = streamMode ? sortCollegeTerms(topics.map((x) => x.yearOrSemester)) : [];
   const grades = [...new Set(topics.map((topic) => topic.classLevel))].sort((a, b) => a - b);
   // No choice yet opens on the pupil's own grade, as the web does; "all" is the way out.
   const gradeNum = grade === "all" ? null : (grade ?? (d?.defaultGrade && grades.includes(d.defaultGrade) ? d.defaultGrade : null));
   const subjectsShown = [...new Set(topics.filter((topic) => gradeNum === null || topic.classLevel === gradeNum).map((topic) => topic.subject))];
-  const shown = topics.filter((topic) => (subject === "all" || topic.subject === subject) && (gradeNum === null || topic.classLevel === gradeNum));
+  const shown = streamMode
+    ? topics.filter((topic) => (programme === "all" || topic.programme === programme) && (term === "all" || topic.yearOrSemester === term || !topic.yearOrSemester))
+    : topics.filter((topic) => (subject === "all" || topic.subject === subject) && (gradeNum === null || topic.classLevel === gradeNum));
   const resume = d?.resume ?? null;
   const play = (params: QuizParams) => router.push({ pathname: "/(app)/quiz", params } as never);
   return (
@@ -145,6 +185,16 @@ function PupilPractice() {
       {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
       {/* My own journey (A3-inventory-14): the web's link beside the page title, here the first thing under it. */}
       {d ? <Button variant="secondary" label={t("journey.title")} onPress={() => router.push("/(app)/practice-journey" as never)} /> : null}
+      {d && college ? (
+        <SectionChips
+          value={section}
+          onChange={(value) => {
+            setSection(value);
+            setSubject("all");
+            setGrade(null);
+          }}
+        />
+      ) : null}
       {d && showBoards ? (
         <BoardChips
           schoolBoard={schoolBoard}
@@ -157,7 +207,11 @@ function PupilPractice() {
       ) : null}
       {d ? (
         topics.length === 0 ? (
-          <Empty title={t("student.noTopics")} body={t("student.noTopicsBody")} action={<Button label={t("nav.assignments")} variant="secondary" onPress={() => router.push("/(app)/assignments" as never)} />} />
+          college && section === "STREAM" ? (
+            <Empty title={t("collegePractice.noStreamTopics")} body={t("collegePractice.noStreamTopicsBody", { streams: (d.collegeStreams ?? []).map((x) => t(`streams.${x}.name` as never)).join(", ") || "—" })} action={<Button label={t("collegePractice.openPrep")} variant="secondary" onPress={() => setSection("PREP")} />} />
+          ) : (
+            <Empty title={t("student.noTopics")} body={t("student.noTopicsBody")} action={<Button label={t("nav.assignments")} variant="secondary" onPress={() => router.push("/(app)/assignments" as never)} />} />
+          )
         ) : (
           <>
             {resume ? (
@@ -204,7 +258,13 @@ function PupilPractice() {
               </Card>
             ) : null}
 
-            {grades.length > 1 ? (
+            {streamMode && programmes.length > 1 ? (
+              <Chips label={t("collegePractice.programmeLabel")} value={programme} onChange={setProgramme} options={[{ value: "all", label: t("collegePractice.allProgrammes") }, ...programmes.map((p) => ({ value: p, label: p }))]} />
+            ) : null}
+            {streamMode && terms.length > 0 ? (
+              <Chips label={t("collegePractice.termLabel")} value={term} onChange={setTerm} options={[{ value: "all", label: t("collegePractice.allTerms") }, ...terms.map((x) => ({ value: x, label: termLabel(t, x) }))]} />
+            ) : null}
+            {!streamMode && grades.length > 1 ? (
               <Chips
                 label={t("practice.allClasses")}
                 value={gradeNum === null ? "all" : String(gradeNum)}
@@ -212,7 +272,7 @@ function PupilPractice() {
                 options={[{ value: "all", label: t("practice.allClasses") }, ...grades.map((g) => ({ value: String(g), label: classLevelLabel(t, g) }))]}
               />
             ) : null}
-            {subjectsShown.length > 1 ? (
+            {!streamMode && subjectsShown.length > 1 ? (
               <Chips label={t("student.subjects")} value={subject} onChange={setSubject} options={[{ value: "all", label: t("practice.allSubjects") }, ...subjectsShown.map((s) => ({ value: s, label: subjectName(t, s) }))]} />
             ) : null}
 
@@ -220,7 +280,12 @@ function PupilPractice() {
               <Card key={topic.id}>
                 <Row
                   title={topic.name}
-                  caption={[subjectName(t, topic.subject), classLevelLabel(t, topic.classLevel), topic.board ? t(BOARD_KEY[topic.board]) : null].filter(Boolean).join(" · ")}
+                  caption={(streamMode
+                    ? [topic.programme ?? t("collegePractice.collegeWide"), collegeSubject(t, topic.subject), topic.yearOrSemester ? termLabel(t, topic.yearOrSemester) : null]
+                    : [subjectName(t, topic.subject), classLevelLabel(t, topic.classLevel), topic.board ? t(BOARD_KEY[topic.board]) : null]
+                  )
+                    .filter(Boolean)
+                    .join(" · ")}
                   right={
                     topic.badgeEarned ? (
                       <View accessible accessibilityLabel={t("student.badgeEarned")}>

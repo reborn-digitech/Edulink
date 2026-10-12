@@ -6,6 +6,7 @@ import { audit } from "./audit";
 import { awardPermanentBadge } from "./academic-year";
 import { SERVED_QUESTION } from "./quiz-served";
 import { servedFigure, type ServedFigure } from "./quiz-figure";
+import { practiceTenantOf, practiceTopicsWhere } from "./practice-audience"; // college-content (12 Oct 2026)
 import type { ActiveContext } from "./session";
 
 /**
@@ -101,6 +102,8 @@ const DEMOTE_AFTER = 2;
 import { normaliseLocale, type Locale } from "./i18n/locales";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { asQuizBoard, quizBoardForSchool, QUIZ_BOARD_BOTH, type QuizBoard, type QuizBoardChoice } from "@edulink/contracts";
+// college-content (12 Oct 2026)
+import { asCollegeTerm, asQuizAudience, cleanTopicStreams, practiceSectionOf, type CollegeTerm, type PracticeSection, type PracticeTenant, type QuizAudience, type StreamCode } from "@edulink/contracts";
 
 export {
   LOCALES as QUIZ_LANGUAGES,
@@ -313,6 +316,17 @@ export type TopicSummary = {
   tierCount: number;
   /** quiz-board (11 Oct 2026): the board the chapter is written against; null for a bank that follows no book. */
   board: QuizBoard | null;
+  // ---- college-content (12 Oct 2026) ----
+  /** Who the chapter is for (QuizTopic.audience). */
+  audience: QuizAudience;
+  /** A college chapter's streams; [] for a school chapter or a college-wide bank. */
+  streams: StreamCode[];
+  /** A college chapter's programme and year or semester; null for a school chapter. */
+  programme: string | null;
+  yearOrSemester: CollegeTerm | null;
+  /** At a college, the section the chapter lists in (STREAM or PREP); null at a school. */
+  section: PracticeSection | null;
+  // ---- end college-content ----
 };
 
 /**
@@ -329,11 +343,25 @@ export async function schoolQuizBoard(schoolId: string | null | undefined): Prom
 /** Topics for a class, with this child's progress against each. */
 export async function listTopics(
   session: ActiveContext,
-  opts: { subject?: string; classLevel?: number; language?: Locale; /** quiz-board (11 Oct 2026): one board's chapters (and those with none), or both ("ALL" or absent). */ board?: QuizBoardChoice } = {},
+  opts: {
+    subject?: string;
+    classLevel?: number;
+    language?: Locale;
+    /** quiz-board (11 Oct 2026): one board's chapters (and those with none), or both ("ALL" or absent). */
+    board?: QuizBoardChoice;
+    /**
+     * college-content (12 Oct 2026): the tenant's kind and streams (read from the session's school when
+     * absent) and, at a college, one section (STREAM or PREP; both when absent). A school lists the school
+     * bank only; a college its streams' banks and the NCERT prep chapters (practice-audience.ts).
+     */
+    tenant?: PracticeTenant;
+    section?: PracticeSection | null;
+  } = {},
 ): Promise<TopicSummary[]> {
   const membershipId = session.membershipId;
   const schoolId = session.schoolId;
   const language = normaliseLocale(opts.language);
+  const tenant = opts.tenant ?? (await practiceTenantOf(schoolId));
 
   const topics = await db.quizTopic.findMany({
     where: {
@@ -342,10 +370,14 @@ export async function listTopics(
       retiredAt: null,
       ...(opts.subject ? { subject: opts.subject } : {}),
       ...(opts.classLevel ? { classLevel: opts.classLevel } : {}),
-      // quiz-board: a chapter of the chosen board, or one that follows no book (the placement banks).
-      ...(opts.board && opts.board !== QUIZ_BOARD_BOTH ? { OR: [{ board: opts.board }, { board: null }] } : {}),
-      // The fixtures' zz- chapters, for a fixture school's readers only (quiz-fixtures.ts).
-      ...fixtureTopicsWhere(await schoolSeesFixtureTopics(schoolId)),
+      AND: [
+        // quiz-board: a chapter of the chosen board, or one that follows no book (the placement banks).
+        opts.board && opts.board !== QUIZ_BOARD_BOTH ? { OR: [{ board: opts.board }, { board: null }] } : {},
+        // college-content: what this tenant lists (and, at a college, which section).
+        practiceTopicsWhere(tenant, opts.section),
+        // The fixtures' zz- chapters, for a fixture school's readers only (quiz-fixtures.ts).
+        fixtureTopicsWhere(await schoolSeesFixtureTopics(schoolId)),
+      ],
     },
     include: {
       // Nothing is fetched for English, so the default path costs exactly what
@@ -442,8 +474,20 @@ export async function listTopics(
       badgeEarned: mine?.cleanCompletionAt != null,
       tierCount: tiersBySlug.get(topic.slug) ?? 0,
       board: asQuizBoard(topic.board),
+      // college-content (12 Oct 2026)
+      audience: asQuizAudience(topic.audience) ?? "SCHOOL",
+      streams: cleanTopicStreams(topic.streams),
+      programme: topic.programme,
+      yearOrSemester: asCollegeTerm(topic.yearOrSemester),
+      section: sectionAt(topic, tenant),
     };
   });
+}
+
+/** college-content (12 Oct 2026): the section a listed chapter sits in at a college; null at a school. */
+function sectionAt(topic: { audience: string; streams: string[]; board: string | null }, tenant: PracticeTenant): PracticeSection | null {
+  const section = practiceSectionOf(topic, tenant);
+  return section === "STREAM" || section === "PREP" ? section : null;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -464,7 +508,9 @@ export async function startAttempt(
 ): Promise<{ attemptId: string; topicId: string }> {
   const { schoolId, membershipId } = requireStudent(session);
 
-  const topic = await db.quizTopic.findUnique({ where: { slug: topicSlug }, select: { id: true } });
+  // college-content (12 Oct 2026): a chapter this tenant does not list cannot be opened by its slug either
+  // (a college reaches its streams' banks and the NCERT prep chapters; a school the school bank).
+  const topic = await db.quizTopic.findFirst({ where: { slug: topicSlug, ...practiceTopicsWhere(await practiceTenantOf(schoolId)) }, select: { id: true } });
   if (!topic) throw new AccessError("access.noSuchTopic", "NOT_FOUND");
 
   // Resuming rather than starting afresh matters for the badge: a child who

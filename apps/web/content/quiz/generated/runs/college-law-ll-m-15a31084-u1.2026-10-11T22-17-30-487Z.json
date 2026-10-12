@@ -1,0 +1,533 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-11T22:17:30.487Z",
+  "finishedAt": "2026-10-11T22:31:57.274Z",
+  "seconds": 867,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "SPPU",
+    "book": "LL. M. (2 Year) Syllabus Ac 2025-26 (Department)",
+    "bookCode": null,
+    "document": "sppu/faculty-of-humanities/ii-department-syllabus/LL._M._2_Year_Syllabus_Ac_2025-26_Department_08072025.pdf",
+    "classLevel": 13,
+    "subject": "Law (LL.M.)",
+    "chapter": "Unit 1 — Core Subjects",
+    "edition": "First Edition 2020",
+    "chunks": 10,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for law: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Law (LL.M.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 302947,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 24524,
+      "completionTokens": 4805
+    },
+    "critique": {
+      "calls": 30,
+      "ms": 453383,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 13617,
+      "completionTokens": 5255
+    },
+    "solver": {
+      "calls": 152,
+      "ms": 197107,
+      "in": 23,
+      "out": 18,
+      "rejects": 5,
+      "promptTokens": 32404,
+      "completionTokens": 1828
+    },
+    "form": {
+      "calls": 4,
+      "ms": 33175,
+      "in": 18,
+      "out": 2,
+      "rejects": 16,
+      "promptTokens": 1141,
+      "completionTokens": 340
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 2,
+      "ms": 218,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 240430,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5050,
+      "completionTokens": 2868
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the main objective of the Research Methodology course as described in the passage?",
+      "ms": {
+        "draft": 57529,
+        "critique": 12787,
+        "solver": 3409,
+        "form": 21
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of scientific methodology as mentioned in the passage?",
+      "ms": {
+        "draft": 57529,
+        "critique": 14590,
+        "solver": 3585,
+        "form": 5
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student is trying to understand the difference between scientific and normative research. Which of the following would be an example of scientific research according to the passage?",
+      "ms": {
+        "draft": 57529,
+        "critique": 14715,
+        "solver": 5860,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a feature of a good research design?",
+      "ms": {
+        "draft": 57529,
+        "critique": 18301,
+        "solver": 3438,
+        "form": 5
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a directive principle of state policy?",
+      "ms": {
+        "draft": 13966,
+        "critique": 16142,
+        "solver": 4689,
+        "form": 8735
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key aspect of the Indian federal structure?",
+      "ms": {
+        "draft": 13966,
+        "critique": 13825,
+        "solver": 2974,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is studying the concept of 'Dharma' in Indian thought, which module would they most likely be referring to?",
+      "ms": {
+        "draft": 10313,
+        "critique": 14728,
+        "solver": 2679
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a suggested reading book listed in the passage?",
+      "ms": {
+        "draft": 10313,
+        "critique": 12796,
+        "solver": 37084
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage mentions various theories of Law and Justice. Which of the following is NOT one of the theories discussed?",
+      "ms": {
+        "draft": 10313,
+        "critique": 17659,
+        "solver": 1975
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main objective of the course described in the passage?",
+      "ms": {
+        "draft": 10313,
+        "critique": 16481,
+        "solver": 28429,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a suggested reading book mentioned in the passage?",
+      "ms": {
+        "draft": 12642,
+        "critique": 12066,
+        "solver": 3823,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the course described in the passage?",
+      "ms": {
+        "draft": 12642,
+        "critique": 13274,
+        "solver": 4591,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a learning outcome of the course 'Law and Social Transformation in India' as stated in the passage?",
+      "ms": {
+        "draft": 16435,
+        "critique": 15052
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is an example of how the law contributes to social transformation?",
+      "ms": {
+        "draft": 12642,
+        "critique": 17855,
+        "solver": 4838,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is interested in understanding the theories of Law and Justice from both Western and Ancient Indian perspectives, which module of the course would they most likely study?",
+      "ms": {
+        "draft": 12642,
+        "critique": 11331,
+        "solver": 37993
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a legal scholar wants to examine how the Indian Constitution has been used to address social issues, which module would be most relevant to their research?",
+      "ms": {
+        "draft": 16435,
+        "critique": 15528,
+        "solver": 3682,
+        "form": 8958
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following best describes the role of law in the context of social transformation in India?",
+      "ms": {
+        "draft": 16435,
+        "critique": 18588,
+        "solver": 35050,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of scientific methodology as described in the passage?",
+      "ms": {
+        "draft": 12182,
+        "critique": 18774,
+        "solver": 2942,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains the relationship between law and public opinion in India?",
+      "ms": {
+        "draft": 16435,
+        "critique": 17979,
+        "solver": 35924,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is conducting research on the impact of legal policies on societal behavior, which type of research would be most appropriate according to the passage?",
+      "ms": {
+        "draft": 12182,
+        "critique": 13739,
+        "solver": 3332
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A researcher wants to study the behavior of participants in a courtroom setting. Which research method is most suitable for this purpose according to the passage?",
+      "ms": {
+        "draft": 12182,
+        "critique": 16780,
+        "solver": 2092,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main objective of the Research Methodology course as stated in the passage?",
+      "ms": {
+        "draft": 12182,
+        "critique": 20389,
+        "solver": 23772,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a fundamental right guaranteed under the Indian Constitution?",
+      "ms": {
+        "draft": 13966,
+        "critique": 17168,
+        "solver": 4586,
+        "form": 11236,
+        "translation": 107470
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a citizen believes their fundamental rights are being violated, which of the following can they approach for redressal?",
+      "ms": {
+        "draft": 13966,
+        "critique": 18529,
+        "solver": 3396,
+        "form": 5717,
+        "translation": 107374
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main objective of the Research Methodology course as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of scientific methodology as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student is trying to understand the difference between scientific and normative research. Which of the following would be an example of scientific research according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a feature of a good research design?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a directive principle of state policy?",
+      "reason": "the key is far longer than every distractor (58 vs 32 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key aspect of the Indian federal structure?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student is studying the concept of 'Dharma' in Indian thought, which module would they most likely be referring to?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a suggested reading book listed in the passage?",
+      "reason": "after redrafting distractors 0, 1, 2: the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The passage mentions various theories of Law and Justice. Which of the following is NOT one of the theories discussed?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main objective of the course described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 are the same (\"To help students understand the role of legal scholars in social transformation\"); about the syllabus, not its subject: asks what the course aims at"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a suggested reading book mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\"); about the syllabus, not its subject: asks what the syllabus lists"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of the course described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"Both A and C\"); option lengths are unalike (12 to 161 characters); about the syllabus, not its subject: asks what the course aims at"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a learning outcome of the course 'Law and Social Transformation in India' as stated in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is an example of how the law contributes to social transformation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (71 vs 43 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student is interested in understanding the theories of Law and Justice from both Western and Ancient Indian perspectives, which module of the course would they most likely study?",
+      "reason": "after redrafting distractors 1, 2, 3: the critic finds option 2 correct, the key is 0"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a legal scholar wants to examine how the Indian Constitution has been used to address social issues, which module would be most relevant to their research?",
+      "reason": "about the syllabus, not its subject: asks which book, module or part of the course"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which of the following best describes the role of law in the context of social transformation in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"This is incorrect as the passage discusses the impact of col…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of scientific methodology as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains the relationship between law and public opinion in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student is conducting research on the impact of legal policies on societal behavior, which type of research would be most appropriate according to the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A researcher wants to study the behavior of participants in a courtroom setting. Which research method is most suitable for this purpose according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main objective of the Research Methodology course as stated in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for law: levels 5 and 6 skipped",
+    "no glossary in the corpus for Law (LL.M.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

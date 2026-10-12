@@ -67,6 +67,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <Button asChild variant="ghost" size="sm">
               <Link href="/root/quiz-review">{t("quizReview.nav")}</Link>
             </Button>
+            {/* competitions-crawler (12 Oct 2026): the platform's competitions, those suggested from the web, and the crawler's sources. */}
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/root/competitions">{t("appadmin.competitions")}</Link>
+            </Button>
             {/* The global feed's take-down (4 Oct 2026): the operator is the actor above a school, and its desk is the moderation page. */}
             <Button asChild variant="ghost" size="sm">
               <Link href="/appadmin/moderation">{t("root.globalFeedModeration")}</Link>

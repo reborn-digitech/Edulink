@@ -4,6 +4,7 @@ import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { CpuIcon, PlayIcon, SparkleIcon, StopIcon } from "@phosphor-icons/react";
 import { QUIZ_BOARDS, QUIZ_GEN_ACTIVE_STATES, QUIZ_GEN_STAGES, QUIZ_GEN_SUBJECTS, type ModelServer, type ModelServerStatus, type QuizBoard, type QuizGenJob, type QuizGenProgress, type QuizGenRequest, type QuizGenSubject, type QuizJobsState } from "@edulink/contracts";
+import type { CollegeSyllabi, StreamCode } from "@edulink/contracts"; // college-content (12 Oct 2026)
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -31,7 +32,7 @@ function percent(rate: number | null): string | null {
  * servers a run brought up go down with it, a server cannot be stopped under a run — are the library's
  * (src/lib/quiz-jobs.ts); this card only asks.
  */
-export function GenerationCard({ initial, subjectLabels }: { initial: QuizJobsState; subjectLabels: Record<string, string> }) {
+export function GenerationCard({ initial, subjectLabels, college }: { initial: QuizJobsState; subjectLabels: Record<string, string>; /** college-content (12 Oct 2026): the syllabus corpus by stream, for the College scope. */ college?: CollegeSyllabi }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
@@ -44,6 +45,15 @@ export function GenerationCard({ initial, subjectLabels }: { initial: QuizJobsSt
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [limit, setLimit] = useState("");
+  // college-content (12 Oct 2026): the College scope's stream, programme, syllabus and unit range.
+  const [stream, setStream] = useState<StreamCode | "">("");
+  const [programme, setProgramme] = useState("");
+  const [syllabus, setSyllabus] = useState("");
+  const [unitFrom, setUnitFrom] = useState("");
+  const [unitTo, setUnitTo] = useState("");
+  const streamRow = college?.streams.find((s) => s.stream === stream) ?? null;
+  const programmeRow = streamRow?.programmes.find((p) => p.programme === programme) ?? null;
+  const streamName = (s: string) => t(`streams.${s}.name` as never);
 
   const job = state.current;
   const active = isActive(job);
@@ -62,10 +72,24 @@ export function GenerationCard({ initial, subjectLabels }: { initial: QuizJobsSt
 
   const start = () => {
     const n = (v: string) => (v.trim() ? Number(v) : undefined);
+    if (scope === "COLLEGE" && (!stream || !programme)) {
+      toast({ tone: "danger", title: t("collegeGen.needStream") });
+      return;
+    }
     const request: QuizGenRequest =
       scope === "EVERYTHING"
         ? { scope, ...(n(limit) ? { limit: n(limit) } : {}) }
-        : {
+        : scope === "COLLEGE"
+          ? {
+              scope,
+              ...(stream ? { stream } : {}),
+              ...(programme ? { programme } : {}),
+              ...(syllabus ? { document: syllabus } : {}),
+              ...(n(unitFrom) ? { unitFrom: n(unitFrom) } : {}),
+              ...(n(unitTo) ? { unitTo: n(unitTo) } : {}),
+              ...(n(limit) ? { limit: n(limit) } : {}),
+            }
+          : {
             scope,
             ...(board ? { board } : {}),
             ...(n(grade) ? { grade: n(grade) } : {}),
@@ -116,7 +140,10 @@ export function GenerationCard({ initial, subjectLabels }: { initial: QuizJobsSt
 
   const boardName = (b: string) => (quizBoardKey(b) ? t(quizBoardKey(b)!) : b);
   const chapterLabel = (c: NonNullable<QuizGenProgress["chapter"]>) =>
-    t("quizJobs.chapterLine", { board: boardName(c.board), grade: c.grade, subject: subjectLabels[c.subject] ?? c.subject, number: c.number, name: c.name || "—" });
+    // college-content: a college unit is named by its stream and programme.
+    c.stream
+      ? t("collegeGen.unitLine", { stream: streamName(c.stream), programme: c.programme ?? "—", number: c.number, name: c.name || "—" })
+      : t("quizJobs.chapterLine", { board: boardName(c.board), grade: c.grade, subject: subjectLabels[c.subject] ?? c.subject, number: c.number, name: c.name || "—" });
 
   return (
     <Card aria-busy={pending || undefined}>
@@ -134,15 +161,68 @@ export function GenerationCard({ initial, subjectLabels }: { initial: QuizJobsSt
             <fieldset className="space-y-2">
               <legend className="text-sm font-semibold">{t("quizJobs.scopeLabel")}</legend>
               <div className="flex flex-wrap gap-2">
-                {(["CHAPTERS", "EVERYTHING"] as const).map((s) => (
+                {(college ? (["CHAPTERS", "EVERYTHING", "COLLEGE"] as const) : (["CHAPTERS", "EVERYTHING"] as const)).map((s) => (
                   <Button key={s} size="sm" variant={scope === s ? "soft" : "secondary"} aria-pressed={scope === s} onClick={() => setScope(s)} className="h-auto min-h-11 whitespace-normal py-2 text-left">
-                    {t(s === "CHAPTERS" ? "quizJobs.scopeCHAPTERS" : "quizJobs.scopeEVERYTHING")}
+                    {t(s === "CHAPTERS" ? "quizJobs.scopeCHAPTERS" : s === "EVERYTHING" ? "quizJobs.scopeEVERYTHING" : "collegeGen.scopeCOLLEGE")}
                   </Button>
                 ))}
               </div>
             </fieldset>
             {scope === "EVERYTHING" ? (
               <p className="text-sm text-fg-muted">{t("quizJobs.everythingHint")}</p>
+            ) : scope === "COLLEGE" && college ? (
+              <>
+                <p className="text-sm text-fg-muted">{t("collegeGen.withCorpus", { list: college.streams.map((s) => `${streamName(s.stream)} (${s.boards.join(", ")})`).join("; ") || "—" })}</p>
+                {college.without.length > 0 && <p className="text-sm text-warn">{t("collegeGen.withoutCorpus", { list: college.without.map(streamName).join(", ") })}</p>}
+                <div className="grid gap-3 sm:grid-cols-3">
+                  <SelectField
+                    label={t("collegeGen.streamLabel")}
+                    value={stream}
+                    onChange={(e) => {
+                      setStream(e.target.value as StreamCode | "");
+                      setProgramme("");
+                      setSyllabus("");
+                    }}
+                    required
+                  >
+                    <option value="">{t("quizJobs.choose")}</option>
+                    {college.streams.map((s) => (
+                      <option key={s.stream} value={s.stream}>
+                        {streamName(s.stream)}
+                      </option>
+                    ))}
+                  </SelectField>
+                  <SelectField
+                    label={t("collegeGen.programmeLabel")}
+                    value={programme}
+                    onChange={(e) => {
+                      setProgramme(e.target.value);
+                      setSyllabus("");
+                    }}
+                    required
+                    disabled={!streamRow}
+                  >
+                    <option value="">{t("quizJobs.choose")}</option>
+                    {(streamRow?.programmes ?? []).map((p) => (
+                      <option key={p.programme} value={p.programme}>
+                        {p.programme}
+                      </option>
+                    ))}
+                  </SelectField>
+                  <SelectField label={t("collegeGen.documentLabel")} value={syllabus} onChange={(e) => setSyllabus(e.target.value)} disabled={!programmeRow}>
+                    <option value="">{t("collegeGen.allDocuments")}</option>
+                    {(programmeRow?.documents ?? []).map((d) => (
+                      <option key={d.path} value={d.path}>
+                        {t("collegeGen.documentOption", { title: d.title, n: d.units.length })}
+                      </option>
+                    ))}
+                  </SelectField>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <TextField label={t("collegeGen.unitFrom")} inputMode="numeric" type="number" min={1} max={200} value={unitFrom} onChange={(e) => setUnitFrom(e.target.value)} hint={t("collegeGen.unitRangeHint")} />
+                  <TextField label={t("collegeGen.unitTo")} inputMode="numeric" type="number" min={1} max={200} value={unitTo} onChange={(e) => setUnitTo(e.target.value)} />
+                </div>
+              </>
             ) : (
               <>
                 <div className="grid gap-3 sm:grid-cols-3">

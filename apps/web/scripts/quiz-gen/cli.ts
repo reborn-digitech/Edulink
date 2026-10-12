@@ -12,6 +12,8 @@
  *   … --dry           select and group the chapter, call no model
  *
  *   npm run quiz:gen -- --job=<QuizGenJob id>   the bank desk's generation job (scripts/quiz-gen/job.ts); the desk spawns it
+ *   npm run quiz:gen -- --document=<syllabus path> --unit=2 [--limit=6] [--dry]   one college unit (scripts/quiz-gen/college.ts,
+ *     college-content, 12 Oct 2026): a unit of a syllabus document of the corpus, landing as a COLLEGE topic when loaded
  *
  * Output: content/quiz/generated/<board>-<grade>-<subject>-<chapter>.json (the file) and
  * content/quiz/generated/runs/<same>.<time>.json (the run log: timings, tokens, rejects per stage).
@@ -160,6 +162,25 @@ async function main() {
     await runJob(job);
     // The runner is a process of its own: done is done (a keep-alive socket must not hold it open).
     process.exit(0);
+  }
+  // college-content (12 Oct 2026): one unit of a college syllabus document.
+  const document = arg("document");
+  if (document && document !== "true") {
+    const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_URL });
+    try {
+      const { generateCollegeUnit, selectCollegeUnit } = await import("./college");
+      const unit = Number(arg("unit") ?? 1);
+      if (arg("dry") === "true") {
+        const u = await selectCollegeUnit(db, { path: document, unit });
+        console.log(`  ${u.syllabusBoard} ${u.stream} ${u.programme}${u.yearOrSemester ? ` ${u.yearOrSemester}` : ""}: "${u.book}", ${u.chapterLabel}; ${u.chunks.length} chunks in ${groupChunks(u.chunks).length} groups`);
+        return;
+      }
+      const r = await generateCollegeUnit(db, { path: document, unit, limit: Number(arg("limit") ?? 0), perLevel: Number(arg("per-level") ?? 4) });
+      if (r.outPath && r.logPath) printSummary(r.runLog, r.outPath, r.logPath);
+    } finally {
+      await db.$disconnect();
+    }
+    return;
   }
   const board = arg("board");
   const grade = Number(arg("grade"));

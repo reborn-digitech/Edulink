@@ -1,0 +1,739 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-11T10:04:59.126Z",
+  "finishedAt": "2026-10-11T10:28:40.867Z",
+  "seconds": 1422,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp108.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Playing with Constructions",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n33. Correct given, to prove, construction, figure 1\nCorrect proof 2\nAR = AQ = 7cm ½\nBP = BR = AB-AR = 3cm ½\nCP =CQ = 5cm ½\nBC = BP+PC = 3+5 = 8 cm ½",
+      "[RMO 2017 — question paper]\n1. Let AOB be a given angle less than 180° and let P be an interior point of the\nangular region determined by ZAOB. Show, with proof, how to construct,\nusing only ruler and compasses, a line segment CD passing through P such\nthat C' lies on the ray OA and D lies on the ray OB, and CP: PD =1:2.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n33. Correct given, figure and construction\nCorrect Proof\nsince LM is parallel to QR\nLet PM= 𝑥\n௉௅ ௉ெ\n௉ொ = ௉ோ\nହ.଻ ௫\nଵହ.ଶ = ௫ାହ.ହ\n𝑥 =PM=3.3cm\n½\n½"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 475637,
+      "in": 38,
+      "out": 37,
+      "rejects": 2,
+      "promptTokens": 31776,
+      "completionTokens": 13825
+    },
+    "critique": {
+      "calls": 49,
+      "ms": 673598,
+      "in": 37,
+      "out": 29,
+      "rejects": 8,
+      "promptTokens": 24987,
+      "completionTokens": 8756
+    },
+    "solver": {
+      "calls": 236,
+      "ms": 273225,
+      "in": 29,
+      "out": 23,
+      "rejects": 6,
+      "promptTokens": 54577,
+      "completionTokens": 2729
+    },
+    "form": {
+      "calls": 9,
+      "ms": 194856,
+      "in": 23,
+      "out": 9,
+      "rejects": 14,
+      "promptTokens": 13260,
+      "completionTokens": 2777
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 4565,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 706573,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 19414,
+      "completionTokens": 10131
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 1,
+    "4": 0,
+    "5": 3,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 5,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a rectangle has sides of 7 cm and 4 cm, what is the length of its diagonal?",
+      "ms": {
+        "draft": 14384,
+        "critique": 12667
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of a rectangle?",
+      "ms": {
+        "draft": 14384,
+        "critique": 11091,
+        "solver": 2507,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a rectangle, which of the following is true about the diagonals?",
+      "ms": {
+        "draft": 14384,
+        "critique": 11998,
+        "solver": 32153,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of a rectangle?",
+      "ms": {
+        "draft": 14384,
+        "critique": 13963,
+        "solver": 5663,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which method is used to locate a point that is a fixed distance from two other points in a geometric construction?",
+      "ms": {
+        "draft": 11153,
+        "critique": 17587
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a rectangle has sides of 8 cm and 4 cm, and a square is drawn inside it such that the center of the square is the same as the center of the rectangle, what will be the side length of the square?",
+      "ms": {
+        "draft": 14384,
+        "critique": 17443,
+        "solver": 28329,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a geometric construction, if a point A is 5 cm from both points B and C, which method is most efficient to locate point A?",
+      "ms": {
+        "draft": 11153,
+        "critique": 12130
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the purpose of drawing supporting curves or figures in geometric constructions?",
+      "ms": {
+        "draft": 11153,
+        "critique": 10498,
+        "solver": 29487
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a rectangle has one side of 5 cm and a diagonal of 7 cm, which method is most accurate to locate the fourth vertex?",
+      "ms": {
+        "draft": 11153,
+        "critique": 14438
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How can the fourth vertex of a rectangle be found if three vertices are already known?",
+      "ms": {
+        "draft": 11153,
+        "critique": 16796
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A rectangle is constructed with one of its sides measuring 4 cm and the diagonal measuring 8 cm. What can be said about the other side of the rectangle?",
+      "ms": {
+        "draft": 11879,
+        "critique": 14537,
+        "solver": 3491,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of the line segment that connects the centre of a circle to any point on its circumference?",
+      "ms": {
+        "draft": 11879,
+        "critique": 15085,
+        "solver": 20851,
+        "form": 9033
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a construction, two points, X and Y, are placed on a dot grid such that their distances from A and B are equal. What is the relationship between the length of XY and the length of AB?",
+      "ms": {
+        "draft": 11879,
+        "critique": 11854,
+        "solver": 3297
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A rectangle is constructed in which the diagonals divide the opposite angles into 50° and 40°. What can be said about the sides of the rectangle?",
+      "ms": {
+        "draft": 11879,
+        "critique": 9698,
+        "solver": 19586,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a rectangle, if the diagonals are drawn, which of the following is true about the angles formed at the point of intersection of the diagonals?",
+      "ms": {
+        "draft": 11879,
+        "critique": 15789,
+        "solver": 3324,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a dot grid, how can we determine if a figure is a square without using measuring instruments?",
+      "ms": {
+        "draft": 22782,
+        "critique": 11139,
+        "solver": 2859
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a rectangle has sides of 4 cm and 6 cm, what is the length of its diagonal?",
+      "ms": {
+        "draft": 22782,
+        "critique": 14503
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a rectangle has a diagonal of 10 cm and one of its sides is 6 cm, what is the length of the other side?",
+      "ms": {
+        "draft": 22782,
+        "critique": 16018,
+        "solver": 34451
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A rectangle is constructed with one side 5 cm and a diagonal of 7 cm. Which method can be used to locate the point that is 7 cm from one end of the side?",
+      "ms": {
+        "draft": 13247,
+        "critique": 15691,
+        "solver": 3438,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "To construct a rectangle, a student draws a base and then a perpendicular line at one end. What is the next step to locate a point that is 7 cm from the other end of the base?",
+      "ms": {
+        "draft": 13247,
+        "critique": 15941,
+        "solver": 2435,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student is constructing a rectangle with a base of 5 cm and a diagonal of 7 cm. What is the next step after drawing the base and a perpendicular line at one end?",
+      "ms": {
+        "draft": 13247,
+        "critique": 15027,
+        "solver": 3192,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "To construct a rectangle, a student draws a base and then a perpendicular line at one end. What is the next step to locate a point that is 7 cm from the other end of the base?",
+      "ms": {
+        "draft": 13247,
+        "critique": 12271,
+        "solver": 2321,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of a rectangle?",
+      "ms": {
+        "draft": 16240,
+        "critique": 11951,
+        "solver": 3791,
+        "form": 6203
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the minimum distance between points X and Y in a rectangle when they are placed at the same distance from A and B respectively?",
+      "ms": {
+        "draft": 16240,
+        "critique": 14767,
+        "solver": 2790
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a rectangle, if the distance between X and Y is minimum, which of the following is true?",
+      "ms": {
+        "draft": 16240,
+        "critique": 18322,
+        "solver": 3811
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the shape of the curve formed when all points are 4 cm away from a fixed point P?",
+      "ms": {
+        "draft": 17365,
+        "critique": 15584
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the length of the diagonal AC in a rectangle with sides 7 cm and 4 cm?",
+      "ms": {
+        "draft": 16240,
+        "critique": 16991,
+        "solver": 30660,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How can you determine if a figure is a square without using measuring instruments?",
+      "ms": {
+        "draft": 17365,
+        "critique": 11289
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a rectangle is divided into three identical squares, what is the ratio of the length to the breadth of the rectangle?",
+      "ms": {
+        "draft": 16240,
+        "critique": 17030,
+        "solver": 28024,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a rectangle has opposite sides equal and all angles 90°, what is it called?",
+      "ms": {
+        "draft": 17365,
+        "critique": 12286,
+        "solver": 1451,
+        "form": 2603,
+        "translation": 85258
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of a rectangle?",
+      "ms": {
+        "draft": 22782,
+        "critique": 12277,
+        "solver": 28188,
+        "form": 0,
+        "translation": 70054
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of the line that connects the center of a circle to any point on its edge?",
+      "ms": {
+        "draft": 22782,
+        "critique": 15149,
+        "solver": 3376,
+        "form": 0,
+        "translation": 72273
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "To construct a rectangle with a given side and diagonal, what is the first step?",
+      "ms": {
+        "draft": 11153,
+        "critique": 13198,
+        "solver": 33455,
+        "form": 0,
+        "translation": 76054
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A rectangle is divided into 3 identical squares. If the length of the rectangle is 12 cm, what is its breadth?",
+      "ms": {
+        "draft": 22782,
+        "critique": 16924,
+        "solver": 35370,
+        "form": 0,
+        "translation": 75023
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a rectangle is divided into three identical squares, what is the ratio of its length to its breadth?",
+      "ms": {
+        "draft": 14384,
+        "critique": 18007,
+        "solver": 35041,
+        "form": 1,
+        "translation": 101951
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student is asked to construct a house with all sides of length 5 cm. Which technique will help locate the point that is 5 cm from both ends of a side?",
+      "ms": {
+        "draft": 13247,
+        "critique": 15295,
+        "solver": 3861,
+        "form": 0,
+        "translation": 119787
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student constructs a rectangle with one side 5 cm and a diagonal of 7 cm. What is the reasoning behind using a circle to locate the point that is 7 cm from one end of the side?",
+      "ms": {
+        "draft": 13247,
+        "critique": 13976,
+        "solver": 3501,
+        "form": 0,
+        "translation": 97742
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"What is the term used to describe the distance between the ce"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "If a rectangle is divided into three identical squares, what can be said about its length and breadth?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a rectangle has sides of 7 cm and 4 cm, what is the length of its diagonal?",
+      "reason": "the critic finds option 1 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a property of a rectangle?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct property, but not the one being asked…\"); distractor 3's reason is not a one-line misconception (\"Confuses rectangle with a rhombus or square, which have all …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a rectangle, which of the following is true about the diagonals?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a property of a rectangle?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct property, but not the one being asked…\"); distractor 3's reason is not a one-line misconception (\"Confuses rectangle with a rhombus or square, which have all …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which method is used to locate a point that is a fixed distance from two other points in a geometric construction?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a rectangle has sides of 8 cm and 4 cm, and a square is drawn inside it such that the center of the square is the same as the center of the rectangle, what will be the side length of the square?",
+      "reason": "figure: figure spec refused: spec.segments.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a geometric construction, if a point A is 5 cm from both points B and C, which method is most efficient to locate point A?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the purpose of drawing supporting curves or figures in geometric constructions?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a rectangle has one side of 5 cm and a diagonal of 7 cm, which method is most accurate to locate the fourth vertex?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How can the fourth vertex of a rectangle be found if three vertices are already known?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A rectangle is constructed with one of its sides measuring 4 cm and the diagonal measuring 8 cm. What can be said about the other side of the rectangle?",
+      "reason": "checkExpr \"sqrt(8^2 - 4^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the name of the line segment that connects the centre of a circle to any point on its circumference?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a construction, two points, X and Y, are placed on a dot grid such that their distances from A and B are equal. What is the relationship between the length of XY and the length of AB?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A rectangle is constructed in which the diagonals divide the opposite angles into 50° and 40°. What can be said about the sides of the rectangle?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a rectangle, if the diagonals are drawn, which of the following is true about the angles formed at the point of intersection of the diagonals?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a dot grid, how can we determine if a figure is a square without using measuring instruments?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a rectangle has sides of 4 cm and 6 cm, what is the length of its diagonal?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a rectangle has a diagonal of 10 cm and one of its sides is 6 cm, what is the length of the other side?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A rectangle is constructed with one side 5 cm and a diagonal of 7 cm. Which method can be used to locate the point that is 7 cm from one end of the side?",
+      "reason": "options 2 and 3 say the same thing (\"Drawing a triangle with 7 cm as one side\" / \"Drawing a square with 7 cm as one side\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "To construct a rectangle, a student draws a base and then a perpendicular line at one end. What is the next step to locate a point that is 7 cm from the other end of the base?",
+      "reason": "the key is far longer than every distractor (61 vs 35 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student is constructing a rectangle with a base of 5 cm and a diagonal of 7 cm. What is the next step after drawing the base and a perpendicular line at one end?",
+      "reason": "options 0 and 3 say the same thing (\"Draw a triangle with 7 cm as one side\" / \"Draw a square with 7 cm as one side\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "To construct a rectangle, a student draws a base and then a perpendicular line at one end. What is the next step to locate a point that is 7 cm from the other end of the base?",
+      "reason": "the key is far longer than every distractor (61 vs 35 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a property of a rectangle?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks only one pair of sides is equal in a rectangle, which…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the minimum distance between points X and Y in a rectangle when they are placed at the same distance from A and B respectively?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a rectangle, if the distance between X and Y is minimum, which of the following is true?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the shape of the curve formed when all points are 4 cm away from a fixed point P?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the length of the diagonal AC in a rectangle with sides 7 cm and 4 cm?",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals); checkExpr \"sqrt(7^2 + 4^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "How can you determine if a figure is a square without using measuring instruments?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If a rectangle is divided into three identical squares, what is the ratio of the length to the breadth of the rectangle?",
+      "reason": "near-duplicate of batch item \"If a rectangle is divided into three identical squ…\" (cosine 0.996 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-11T23:16:47.447Z",
+  "finishedAt": "2026-10-11T23:23:04.837Z",
+  "seconds": 377,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "SPPU",
+    "book": "Constitutional Law (ML 102) - LLM Compulsory from 2026-27",
+    "bookCode": null,
+    "document": "sppu/faculty-of-humanities/iii-law/Constitutional_Law_ML_102_-_LLM_Compulsory_from_2026-27_08072026.pdf",
+    "classLevel": 13,
+    "subject": "Law (LL.M.)",
+    "chapter": "Unit 1 — Constitutional Law (ML 102) - LLM Compulsory from 2026-27",
+    "edition": "2026",
+    "chunks": 2,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for law: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Law (LL.M.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 93426,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 6784,
+      "completionTokens": 1362
+    },
+    "critique": {
+      "calls": 10,
+      "ms": 152323,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 4446,
+      "completionTokens": 1686
+    },
+    "solver": {
+      "calls": 56,
+      "ms": 77448,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 10959,
+      "completionTokens": 635
+    },
+    "form": {
+      "calls": 4,
+      "ms": 29609,
+      "in": 7,
+      "out": 3,
+      "rejects": 4,
+      "promptTokens": 1002,
+      "completionTokens": 290
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 1361,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 466635,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 8685,
+      "completionTokens": 4941
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a student is asked to evaluate the functioning of Indian federalism, which module of the course would be most relevant?",
+      "ms": {
+        "draft": 10783,
+        "critique": 13235,
+        "solver": 3106,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main objective of the Constitutional Law course as stated in the passage?",
+      "ms": {
+        "draft": 10783,
+        "critique": 14459,
+        "solver": 3225,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains the relationship between fundamental rights and directive principles?",
+      "ms": {
+        "draft": 10783,
+        "critique": 18104,
+        "solver": 2401,
+        "form": 4
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a learning outcome of the Constitutional Law course?",
+      "ms": {
+        "draft": 10783,
+        "critique": 14565,
+        "solver": 32743
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How does the course address the relationship between Fundamental Rights and Directive Principles?",
+      "ms": {
+        "draft": 12574,
+        "critique": 16393,
+        "solver": 2590,
+        "form": 6579
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a course objective of the Constitutional Law (ML 102) course?",
+      "ms": {
+        "draft": 12574,
+        "critique": 15765,
+        "solver": 37308,
+        "form": 7450,
+        "translation": 160889
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary purpose of the 'Right to Constitutional Remedies' as discussed in the course?",
+      "ms": {
+        "draft": 12574,
+        "critique": 16585,
+        "solver": 6512,
+        "form": 6288,
+        "translation": 148093
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a citizen believes their fundamental rights have been violated, which constitutional mechanism can they use to seek justice?",
+      "ms": {
+        "draft": 12574,
+        "critique": 15756,
+        "solver": 2547,
+        "form": 12539,
+        "translation": 143774
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student is asked to evaluate the functioning of Indian federalism, which module of the course would be most relevant?",
+      "reason": "about the syllabus, not its subject: asks which book, module or part of the course"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main objective of the Constitutional Law course as stated in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains the relationship between fundamental rights and directive principles?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Assumes a value judgment not present in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a learning outcome of the Constitutional Law course?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "How does the course address the relationship between Fundamental Rights and Directive Principles?",
+      "reason": "the key is far longer than every distractor (115 vs 57 characters)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for law: levels 5 and 6 skipped",
+    "no glossary in the corpus for Law (LL.M.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -398,6 +398,8 @@ describe("the doors by role", () => {
     const doors = ENDPOINTS.filter((e) => e.path.startsWith(P));
     expect(doors.map((d) => `${d.method} ${d.path}`).sort()).toEqual([
       `GET ${P}`,
+      // college-content (12 Oct 2026): the generation card's college catalogue.
+      `GET ${P}/college-syllabi`,
       `GET ${P}/servers`,
       `GET ${P}/{jobId}`,
       `POST ${P}`,

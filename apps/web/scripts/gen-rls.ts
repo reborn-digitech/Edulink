@@ -133,6 +133,14 @@ const NO_SCHOOL_POLICY = new Set([
   // (src/lib/quiz-jobs.ts): the bank it fills belongs to no school, and neither do the people who start it.
   "QuizGenJob",
   // ---- end quiz-publish-jobs ----
+  // ---- competitions-crawler (12 Oct 2026) ----
+  // The organisers' sites the crawler reads, its page cache, where a suggested competition came from, and
+  // the crawl runs: all hang off Competition, which no school owns either (src/lib/competition-crawl-jobs.ts).
+  "CompetitionSource",
+  "CompetitionCrawlPage",
+  "CompetitionCrawl",
+  "CompetitionCrawlJob",
+  // ---- end competitions-crawler ----
 ]);
 
 /**

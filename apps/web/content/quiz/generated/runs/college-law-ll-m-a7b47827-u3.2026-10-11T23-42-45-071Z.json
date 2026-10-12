@@ -1,0 +1,532 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-11T23:42:45.071Z",
+  "finishedAt": "2026-10-11T23:52:52.009Z",
+  "seconds": 607,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "SPPU",
+    "book": "LL. M. (2 Year) Syllabus For Affiliated law Colleges Academic Year 2025-2026",
+    "bookCode": null,
+    "document": "sppu/faculty-of-humanities/iii-law/LL._M._2_Year_Syllabus_For_Affiliated_law_Colleges_Academic_Year_2025-2026_27062025.pdf",
+    "classLevel": 13,
+    "subject": "Law (LL.M.)",
+    "chapter": "Unit 3 — Business Law",
+    "edition": "First Edition 2020",
+    "chunks": 32,
+    "groups": 11
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for law: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Law (LL.M.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 164135,
+      "in": 26,
+      "out": 26,
+      "rejects": 0,
+      "promptTokens": 32665,
+      "completionTokens": 5815
+    },
+    "critique": {
+      "calls": 36,
+      "ms": 283862,
+      "in": 26,
+      "out": 19,
+      "rejects": 7,
+      "promptTokens": 16140,
+      "completionTokens": 6242
+    },
+    "solver": {
+      "calls": 162,
+      "ms": 109058,
+      "in": 19,
+      "out": 14,
+      "rejects": 5,
+      "promptTokens": 34317,
+      "completionTokens": 1790
+    },
+    "form": {
+      "calls": 8,
+      "ms": 28476,
+      "in": 14,
+      "out": 7,
+      "rejects": 7,
+      "promptTokens": 1997,
+      "completionTokens": 579
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 1029,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 31,
+      "ms": 497841,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 19370,
+      "completionTokens": 10688
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a function of the Reserve Bank of India?",
+      "ms": {
+        "draft": 5726,
+        "critique": 6421,
+        "solver": 1584,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a module covered under the course on Business Law?",
+      "ms": {
+        "draft": 9152,
+        "critique": 6477,
+        "solver": 1438
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following combinations best describes the legal framework for e-commerce in India?",
+      "ms": {
+        "draft": 9152,
+        "critique": 7407,
+        "solver": 2550
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main objective of the course on E-Commerce and Consumer Protection Law?",
+      "ms": {
+        "draft": 9152,
+        "critique": 6937,
+        "solver": 1393,
+        "form": 6460
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a key objective of Competition Law?",
+      "ms": {
+        "draft": 3764,
+        "critique": 7501,
+        "solver": 13465,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of commercial contract discussed in the course?",
+      "ms": {
+        "draft": 2840,
+        "critique": 6394,
+        "solver": 19032
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the syllabus, which of the following is a factor that determines the abuse of dominance in a market?",
+      "ms": {
+        "draft": 3764,
+        "critique": 10806,
+        "solver": 16830,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a business wants to prevent an employee from working with a competitor after leaving, which type of contract should it use?",
+      "ms": {
+        "draft": 2840,
+        "critique": 11483
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the course content, which of the following is an example of a situation where negotiation is used as a method of dispute resolution?",
+      "ms": {
+        "draft": 2840,
+        "critique": 11552
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of a commercial contract according to the course objectives?",
+      "ms": {
+        "draft": 2840,
+        "critique": 6397,
+        "solver": 18290
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a company acquires control of another company without directly purchasing its shares, what is this method called according to the passage?",
+      "ms": {
+        "draft": 7577,
+        "critique": 8473
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a stage in a merger and acquisition transaction according to the passage?",
+      "ms": {
+        "draft": 7577,
+        "critique": 9175
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the 'Takeover Code and Open Offer Requirements' section in the passage?",
+      "ms": {
+        "draft": 7577,
+        "critique": 8137,
+        "solver": 1714,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a situation where a company can be exempt from an open offer according to the passage?",
+      "ms": {
+        "draft": 7577,
+        "critique": 9986
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a legal regulation in the sports industry mentioned in the course?",
+      "ms": {
+        "draft": 7385,
+        "critique": 10364
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a key objective of the Sports Law course?",
+      "ms": {
+        "draft": 7385,
+        "critique": 9607,
+        "solver": 15457
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a key objective of the course on Corporate Law and Human Rights?",
+      "ms": {
+        "draft": 6572,
+        "critique": 6732,
+        "solver": 4308,
+        "form": 3771
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a key objective of the course on Economic Offences?",
+      "ms": {
+        "draft": 100683,
+        "critique": 8820
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of the Court of Arbitration for Sports as mentioned in the course?",
+      "ms": {
+        "draft": 7385,
+        "critique": 8456,
+        "solver": 16478,
+        "form": 3672
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of Business Law?",
+      "ms": {
+        "draft": 5726,
+        "critique": 5525,
+        "solver": 11894,
+        "form": 4456,
+        "translation": 109407
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a key area of knowledge for a lawyer specializing in Business Law?",
+      "ms": {
+        "draft": 5726,
+        "critique": 4946,
+        "solver": 1074,
+        "form": 5553,
+        "translation": 64788
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an anti-competitive agreement?",
+      "ms": {
+        "draft": 3764,
+        "critique": 6707,
+        "solver": 13936,
+        "form": 0,
+        "translation": 65609
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a business wants to handle a dispute with a financial institution, which law would be most relevant?",
+      "ms": {
+        "draft": 5726,
+        "critique": 5169,
+        "solver": 2188,
+        "form": 3010,
+        "translation": 129002
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is studying the Consumer Protection Act, which of the following would be an example of a legal issue they might encounter?",
+      "ms": {
+        "draft": 9152,
+        "critique": 6481,
+        "solver": 18269,
+        "form": 2918,
+        "translation": 71652
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a company in a market controls more than 50% of the market share, which of the following is most likely to occur?",
+      "ms": {
+        "draft": 3764,
+        "critique": 8420,
+        "solver": 17773,
+        "form": 0,
+        "translation": 53323
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the course modules, which of the following best describes the role of judiciary in safeguarding human rights?",
+      "ms": {
+        "draft": 6572,
+        "critique": 8435,
+        "solver": 1838,
+        "form": 3145,
+        "translation": 66444
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a function of the Reserve Bank of India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a module covered under the course on Business Law?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following combinations best describes the legal framework for e-commerce in India?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main objective of the course on E-Commerce and Consumer Protection Law?",
+      "reason": "the key is far longer than every distractor (95 vs 59 characters); distractor 2's reason is not a one-line misconception (\"Correct option is the only one that matches the objective st…\"); distractor 3's reason is not a one-line misconception (\"Confuses the objective of the course with the objective of a…\"); about the syllabus, not its subject: asks what the course aims at"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a key objective of Competition Law?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a type of commercial contract discussed in the course?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the syllabus, which of the following is a factor that determines the abuse of dominance in a market?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a business wants to prevent an employee from working with a competitor after leaving, which type of contract should it use?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the course content, which of the following is an example of a situation where negotiation is used as a method of dispute resolution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the purpose of a commercial contract according to the course objectives?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a company acquires control of another company without directly purchasing its shares, what is this method called according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a stage in a merger and acquisition transaction according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of the 'Takeover Code and Open Offer Requirements' section in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"This is a general description of the passage, not the specif…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is an example of a situation where a company can be exempt from an open offer according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a legal regulation in the sports industry mentioned in the course?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a key objective of the Sports Law course?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a key objective of the course on Corporate Law and Human Rights?",
+      "reason": "the key is far longer than every distractor (83 vs 46 characters); about the syllabus, not its subject: asks what the course aims at"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a key objective of the course on Economic Offences?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the role of the Court of Arbitration for Sports as mentioned in the course?",
+      "reason": "about the syllabus, not its subject: asks what the syllabus lists"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for law: levels 5 and 6 skipped",
+    "no glossary in the corpus for Law (LL.M.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

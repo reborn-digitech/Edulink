@@ -1,0 +1,610 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-12T00:20:58.168Z",
+  "finishedAt": "2026-10-12T00:25:50.658Z",
+  "seconds": 292,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "SPPU",
+    "book": "BTechDataScience 2024 Final",
+    "bookCode": null,
+    "document": "sppu/faculty-of-science-and-technology/iii-technology/BTechDataScience_2024_Final_23072024.pdf",
+    "classLevel": 13,
+    "subject": "Engineering (Technology)",
+    "chapter": "Unit 1 — Intake: 60 Duration: 4 Year",
+    "edition": "First Edition 2014",
+    "chunks": 222,
+    "groups": 74
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for engineering: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Engineering (Technology) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 75450,
+      "in": 31,
+      "out": 30,
+      "rejects": 1,
+      "promptTokens": 34532,
+      "completionTokens": 5329
+    },
+    "critique": {
+      "calls": 35,
+      "ms": 193299,
+      "in": 30,
+      "out": 24,
+      "rejects": 6,
+      "promptTokens": 14458,
+      "completionTokens": 5985
+    },
+    "solver": {
+      "calls": 157,
+      "ms": 69410,
+      "in": 24,
+      "out": 12,
+      "rejects": 12,
+      "promptTokens": 28028,
+      "completionTokens": 1595
+    },
+    "form": {
+      "calls": 6,
+      "ms": 15326,
+      "in": 12,
+      "out": 6,
+      "rejects": 6,
+      "promptTokens": 1423,
+      "completionTokens": 428
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 1,
+      "ms": 134,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 296560,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14015,
+      "completionTokens": 7433
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "A student wants to develop an AI-based solution for a real-world problem. According to the passage, which objective should guide this work?",
+      "ms": {
+        "draft": 1898,
+        "critique": 3478,
+        "solver": 1018
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of Program Outcomes (POs) according to the passage?",
+      "ms": {
+        "draft": 1898,
+        "critique": 3867,
+        "solver": 1193,
+        "form": 3
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a Program Educational Objective (PEO) listed in the passage?",
+      "ms": {
+        "draft": 1898,
+        "critique": 4401,
+        "solver": 1426,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a course title listed in the syllabus for the IV Year Semester-7?",
+      "ms": {
+        "draft": 2439,
+        "critique": 6037,
+        "solver": 993
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following combinations of outcomes would best support a student working on a data science project that involves ethical considerations and team collaboration?",
+      "ms": {
+        "draft": 1898,
+        "critique": 6967,
+        "solver": 1437
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main objective of the course BTDS 101: Linear Algebra and Calculus?",
+      "ms": {
+        "draft": 2439,
+        "critique": 5828,
+        "solver": 13051,
+        "form": 2347
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a component of data science according to the passage?",
+      "ms": {
+        "draft": 2259,
+        "critique": 6162
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the syllabus, which of the following is an application of linear algebra in data science?",
+      "ms": {
+        "draft": 2439,
+        "critique": 6460,
+        "solver": 12107,
+        "form": 2516
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A data scientist is working on a project that involves large volumes of unstructured data. Which data storage solution would be most appropriate?",
+      "ms": {
+        "draft": 2259,
+        "critique": 6658
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a component of internal assessment as described in the passage?",
+      "ms": {
+        "draft": 2028,
+        "critique": 5860
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a data scientist wants to analyze the relationship between two variables, which technique would they most likely use?",
+      "ms": {
+        "draft": 2259,
+        "critique": 6114,
+        "solver": 12285
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the purpose of hands-on labs in the course?",
+      "ms": {
+        "draft": 2028,
+        "critique": 4510,
+        "solver": 1351,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to deploy a machine learning model as an API, which of the following tools could they use according to the passage?",
+      "ms": {
+        "draft": 2028,
+        "critique": 5180,
+        "solver": 733
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a key objective of the Object-Oriented Programming Language course?",
+      "ms": {
+        "draft": 2028,
+        "critique": 4675,
+        "solver": 547,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student scores 20 marks in the Mid Semester Exam and 40 marks in the End Semester Exam, what is their total score?",
+      "ms": {
+        "draft": 1993,
+        "critique": 6541
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a component of Internal Assessment?",
+      "ms": {
+        "draft": 1993,
+        "critique": 5665,
+        "solver": 1275
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the maximum number of marks for the End Semester Exam?",
+      "ms": {
+        "draft": 1993,
+        "critique": 6208,
+        "solver": 1253
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a possible total score for a student?",
+      "ms": {
+        "draft": 1993,
+        "critique": 6758,
+        "solver": 906
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to learn how to build an intent classifier for a chatbot, which unit of the course should they focus on?",
+      "ms": {
+        "draft": 2398,
+        "critique": 7533,
+        "solver": 1179
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT part of the internal assessment for the course BTDS 831OE: CHATBOTS?",
+      "ms": {
+        "draft": 2398,
+        "critique": 6750,
+        "solver": 13024
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a learning outcome of the course BTDS 864PE: COGNITIVE COMPUTING?",
+      "ms": {
+        "draft": 3204,
+        "critique": 5587
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student wants to apply cognitive computing to improve decision-making in a business setting. Which part of the course would be most relevant for this purpose?",
+      "ms": {
+        "draft": 3204,
+        "critique": 5869,
+        "solver": 1376
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a key focus of the course BTDS 865PE: SEMANTIC WEB?",
+      "ms": {
+        "draft": 3204,
+        "critique": 5952
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a challenge in MANETs that is NOT addressed by the routing algorithms discussed in the course content?",
+      "ms": {
+        "draft": 3807,
+        "critique": 6081,
+        "solver": 661
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total number of marks for the course BTDS 862PE: Robotic Process Automation?",
+      "ms": {
+        "draft": 3386,
+        "critique": 5646,
+        "solver": 1274,
+        "form": 0,
+        "translation": 35655
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total number of marks for the course BTDS 864PE: COGNITIVE COMPUTING?",
+      "ms": {
+        "draft": 3204,
+        "critique": 6171,
+        "solver": 1729,
+        "form": 2918,
+        "translation": 40631
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the course objective of BTDS 831OE: CHATBOTS focus on?",
+      "ms": {
+        "draft": 2398,
+        "critique": 5867,
+        "solver": 1740,
+        "form": 0,
+        "translation": 40684
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of data cleaning in data science?",
+      "ms": {
+        "draft": 2259,
+        "critique": 4119,
+        "solver": 9929,
+        "form": 2111,
+        "translation": 51481
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student needs to solve a system of linear equations for an assignment. Which method from the syllabus should they use?",
+      "ms": {
+        "draft": 2439,
+        "critique": 6852,
+        "solver": 1068,
+        "form": 3626,
+        "translation": 56733
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the course content, which of the following is an application of evolutionary algorithms in the context of multi-objective optimization?",
+      "ms": {
+        "draft": 2398,
+        "critique": 6913,
+        "solver": 1929,
+        "form": 3016,
+        "translation": 60889
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A student wants to develop an AI-based solution for a real-world problem. According to the passage, which objective should guide this work?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of Program Outcomes (POs) according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Focuses on a specific application mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a Program Educational Objective (PEO) listed in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a course title listed in the syllabus for the IV Year Semester-7?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following combinations of outcomes would best support a student working on a data science project that involves ethical considerations and team collaboration?",
+      "reason": "the solver picked option 2 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main objective of the course BTDS 101: Linear Algebra and Calculus?",
+      "reason": "about the syllabus, not its subject: asks what the course aims at"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a component of data science according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the syllabus, which of the following is an application of linear algebra in data science?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A data scientist is working on a project that involves large volumes of unstructured data. Which data storage solution would be most appropriate?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is NOT a component of internal assessment as described in the passage?",
+      "reason": "option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a data scientist wants to analyze the relationship between two variables, which technique would they most likely use?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about the purpose of hands-on labs in the course?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student wants to deploy a machine learning model as an API, which of the following tools could they use according to the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a key objective of the Object-Oriented Programming Language course?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is not a component of Robotic Process Automation as described in the passage?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a student scores 20 marks in the Mid Semester Exam and 40 marks in the End Semester Exam, what is their total score?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a component of Internal Assessment?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the maximum number of marks for the End Semester Exam?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a possible total score for a student?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student wants to learn how to build an intent classifier for a chatbot, which unit of the course should they focus on?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT part of the internal assessment for the course BTDS 831OE: CHATBOTS?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a learning outcome of the course BTDS 864PE: COGNITIVE COMPUTING?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A student wants to apply cognitive computing to improve decision-making in a business setting. Which part of the course would be most relevant for this purpose?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a key focus of the course BTDS 865PE: SEMANTIC WEB?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a challenge in MANETs that is NOT addressed by the routing algorithms discussed in the course content?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for engineering: levels 5 and 6 skipped",
+    "no glossary in the corpus for Engineering (Technology) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

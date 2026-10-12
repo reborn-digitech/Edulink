@@ -1,5 +1,6 @@
 import "server-only";
 import { fixtureTopicsWhere, schoolSeesFixtureTopics } from "./quiz-fixtures";
+import { practiceTopicsWhereFor } from "./practice-audience"; // college-content (12 Oct 2026)
 import { createHash } from "node:crypto";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
@@ -58,8 +59,9 @@ export async function buildWorksheet(
   const count = Math.max(1, Math.min(MAX_QUESTIONS, Math.floor(input.count) || 10));
   const seed = input.seed.slice(0, 40) || "1";
 
-  const topic = await db.quizTopic.findUnique({
-    where: { slug: input.slug },
+  // college-content (12 Oct 2026): a chapter the school or college does not list prints no sheet.
+  const topic = await db.quizTopic.findFirst({
+    where: { slug: input.slug, ...(await practiceTopicsWhereFor(ctx.schoolId)) },
     select: { id: true, name: true, subject: true, classLevel: true },
   });
   if (!topic) throw new AccessError("access.chapterNotFound", "NOT_FOUND");
@@ -124,7 +126,8 @@ export async function worksheetTopics(ctx: ActiveContext) {
     throw new AccessError("access.onlyStaffPrintWorksheets");
   }
   return db.quizTopic.findMany({
-    where: fixtureTopicsWhere(await schoolSeesFixtureTopics(ctx.schoolId)),
+    // college-content (12 Oct 2026): only the chapters the school or college lists.
+    where: { AND: [fixtureTopicsWhere(await schoolSeesFixtureTopics(ctx.schoolId)), await practiceTopicsWhereFor(ctx.schoolId)] },
     orderBy: [{ classLevel: "asc" }, { subject: "asc" }, { position: "asc" }],
     select: { slug: true, name: true, subject: true, classLevel: true },
   });

@@ -1,0 +1,214 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-11T20:41:34.746Z",
+  "finishedAt": "2026-10-11T20:51:10.962Z",
+  "seconds": 576,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "SPPU",
+    "book": "BA LL. B., BBA LL.B., and LL. B.",
+    "bookCode": null,
+    "document": "sppu/faculty-of-humanities/iii-law/BA_LL._B._BBA_LL.B._and_LL._B._15072025.pdf",
+    "classLevel": 13,
+    "subject": "Law (BA LL.B.)",
+    "chapter": "Unit 1 — BA LL. B., BBA LL.B., and LL. B.",
+    "edition": "2025",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for law: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Law (BA LL.B.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 168741,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7557,
+      "completionTokens": 1540
+    },
+    "critique": {
+      "calls": 9,
+      "ms": 193208,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 4380,
+      "completionTokens": 1521
+    },
+    "solver": {
+      "calls": 48,
+      "ms": 208815,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 11652,
+      "completionTokens": 684
+    },
+    "form": {
+      "calls": 4,
+      "ms": 52232,
+      "in": 5,
+      "out": 2,
+      "rejects": 3,
+      "promptTokens": 1105,
+      "completionTokens": 321
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 1,
+      "ms": 131,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 341927,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5659,
+      "completionTokens": 3578
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a student is required to prepare a document for a civil suit, which module of the syllabus should they refer to?",
+      "ms": {
+        "draft": 30265,
+        "critique": 17346,
+        "solver": 15182,
+        "form": 18364
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the difference between civil and criminal litigation as outlined in the passage?",
+      "ms": {
+        "draft": 30265,
+        "critique": 32540,
+        "solver": 64020,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A law student is preparing for a civil case. Which of the following is most relevant to the process of initiating a lawsuit?",
+      "ms": {
+        "draft": 23841,
+        "critique": 16435
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A legal practitioner is handling a case that involves both civil and criminal procedures. Which of the following best explains the difference between civil and criminal litigation?",
+      "ms": {
+        "draft": 23841,
+        "critique": 15056,
+        "solver": 31485,
+        "form": 7007
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main aim of the course 'Introduction to Civil and Criminal Manual'?",
+      "ms": {
+        "draft": 30265,
+        "critique": 30132,
+        "solver": 85432,
+        "form": 14116,
+        "translation": 173768
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a procedural aspect covered in the Civil Manual?",
+      "ms": {
+        "draft": 30265,
+        "critique": 34681,
+        "solver": 25090,
+        "form": 16347,
+        "translation": 135599
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student is required to prepare a document for a civil suit, which module of the syllabus should they refer to?",
+      "reason": "about the syllabus, not its subject: asks which book, module or part of the course"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best describes the difference between civil and criminal litigation as outlined in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A law student is preparing for a civil case. Which of the following is most relevant to the process of initiating a lawsuit?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A legal practitioner is handling a case that involves both civil and criminal procedures. Which of the following best explains the difference between civil and criminal litigation?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"This contradicts the passage, which states that civil and cr…\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for law: levels 5 and 6 skipped",
+    "no glossary in the corpus for Law (BA LL.B.) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}
