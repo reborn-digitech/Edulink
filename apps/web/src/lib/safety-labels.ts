@@ -227,6 +227,11 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "appadmin.competition.published": "audit.appadminCompetitionPublished",
   "appadmin.competition.archived": "audit.appadminCompetitionArchived",
   "appadmin.competition.draft": "audit.appadminCompetitionDraft",
+  // The competitions desk of 12 October 2026 (the crawler's suggestions).
+  "appadmin.competition.audience": "audit.appadminCompetitionAudience",
+  "appadmin.competition.dismiss": "audit.appadminCompetitionDismiss",
+  "appadmin.competition.edit": "audit.appadminCompetitionEdit",
+  "appadmin.competition.reviewed": "audit.appadminCompetitionReviewed",
   "appadmin.question.create": "audit.appadminQuestionCreate",
   "appadmin.question.update": "audit.appadminQuestionUpdate",
   "appadmin.question.delete": "audit.appadminQuestionDelete",

@@ -358,3 +358,87 @@ run both at once on one machine (they would share the chat server's four slots).
 **Hosted.** The runner runs where the model runs. On the owner's machine that is this machine; on a hosted deployment
 the job belongs on the model's host, started from the same row and doors.
 
+
+## 10. The competitions crawler (12 October 2026)
+
+The crawler reads the official organisers' own sites and suggests the competitions they announce. What it finds
+lands on the competitions desk as drafts for a person to publish. The plan, with the rules, is
+[docs/plans/competitions-crawler.md](../plans/competitions-crawler.md).
+
+**Where.** The desk is `/appadmin` for the content team and `/root/competitions` for the operator. It has three tabs:
+
+- **Competitions**: the platform's competitions.
+- **Suggested from the web**: the crawl card, then the waiting drafts, "Changed since review" and "Dismissed".
+- **Sources**.
+
+**The sources.** The thirteen official organisers are seeded by `npm run zz:fixtures` (and by `npm run
+competitions:crawl -- --seed-sources`). The seed adds a root only when it is not in the table at all.
+
+- On the Sources tab you can add an organiser's own site, switch a source off or on, or remove it. Removing is a
+  stamp: what the source suggested stays on the desk.
+- Never add a coaching site or an aggregator. Untick "This is the organiser's own site" for anything that is not
+  the organiser's own: its competitions then publish unchecked.
+- `npm run competitions:crawl -- --check-sources` asks every root again (robots.txt and the root page, one
+  request a second) and prints what answered.
+
+**Start.** Press Start on the crawl card. Start:
+
+1. reads the two model servers' health;
+2. claims the one crawl slot. A second Start is refused while a crawl runs. A quiz generation run may go on beside
+   a crawl;
+3. brings up through `scripts/model-serve.sh` exactly the servers that were down, and records them;
+4. spawns the runner, `scripts/competitions-crawl/cli.ts --job=<id>`, detached, with its log in
+   `storage/competition-crawl/<id>.log`.
+
+The runner then reads one source at a time:
+
+- robots.txt first;
+- then the root page and the same-host pages it links to, at most forty;
+- one request a second;
+- every page cached by URL and hash and asked for again conditionally.
+
+A new or changed page that names a competition and a year goes to the chat model. Each entry the model returns is
+refused or kept by code, then deduplicated and landed.
+
+The live line is rewritten after every page:
+
+- sources visited;
+- pages read and pages unchanged;
+- candidates;
+- new drafts, updated drafts, "dismissed and unchanged", and published ones changed;
+- refusals by reason;
+- the sites not read, with why.
+
+Each source's own numbers are kept on the Sources tab.
+
+**Stop.** The crawl turns "Stopping" and the runner halts after the page in hand. A page whose extraction did not
+finish keeps no hash, so the next crawl reads it again.
+
+When a crawl ends it takes down the servers **it** brought up, with one exception: if a quiz generation run is still
+going, the servers are handed to that run, and go down when it ends (`src/lib/model-holders.ts`). A server's own Stop
+on the quiz desk is refused while either kind of run is active. A dead runner (its pid gone, or no heartbeat for ten
+minutes) is marked Failed on the next read, as a quiz run is.
+
+**Review.** Under "Suggested from the web":
+
+- **Publish** a draft. It is marked "Checked by Shalaghar" only when its source is the organiser's own site.
+- **Edit** it in place.
+- **Dismiss** it with a reason. It is not suggested again unless its page changes.
+
+Under "Changed since review" a published competition shows what its page now says. The crawler never edits a
+published one. Press Reviewed when you have looked, or Back to draft to edit it and publish it again.
+
+**Timing.** The model is shared with the quiz generator; on 12 October each page took about forty seconds of the
+chat model while a generation run held three of its four slots. Pages with no competition word and no year are not
+sent to the model.
+
+**From a shell.** The doors are:
+
+- `GET /api/v1/appadmin/competition-crawl` (the crawl and the servers);
+- `POST` to the same address to start (201, or 409 while one runs);
+- `POST …/{jobId}/stop`;
+- `GET` and `POST …/sources`, and `POST …/sources/{id}` with `ENABLE`, `DISABLE` or `REMOVE`;
+- `GET /api/v1/appadmin/competitions/suggested?show=SUGGESTED|CHANGED|DISMISSED`, and `POST
+  /api/v1/appadmin/competitions/{id}/edit|dismiss|reviewed`.
+
+They are for the operator and the app admins, with a bearer token.

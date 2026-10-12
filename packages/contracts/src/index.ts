@@ -267,3 +267,9 @@ export * from "./v1/quiz-board";
 // ---- quiz-publish-jobs (generation started and stopped from the bank desk, the model servers' state, 11 Oct 2026).
 export * from "./v1/quiz-jobs";
 // ---- end quiz-publish-jobs ----
+// ---- competitions-crawler (competitions suggested from the organisers' own sites, 12 Oct 2026).
+export * from "./v1/competition-crawl";
+// ---- end competitions-crawler ----
+// ---- college-content (college practice by stream, the prep section, competitions by audience, 12 Oct 2026).
+export * from "./v1/college-practice";
+// ---- end college-content ----

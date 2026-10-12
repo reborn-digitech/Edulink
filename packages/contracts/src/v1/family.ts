@@ -2,6 +2,8 @@ import { z } from "zod";
 import { cardExtrasSchema } from "./report-cards";
 import { courseAttendanceSchema } from "./academics";
 import { quizBoardSchema } from "./quiz-board"; // quiz-board (11 Oct 2026)
+import { collegeTermSchema, practiceKindSchema, practiceSectionSchema, quizAudienceSchema } from "./college-practice"; // college-content (12 Oct 2026)
+import { streamSchema } from "./streams"; // college-content (12 Oct 2026)
 
 /**
  * family: the pupil's and the guardian's pages as JSON — what each page
@@ -278,6 +280,16 @@ const practiceTopicSchema = z.object({
   tierCount: z.number().int(),
   // quiz-board (11 Oct 2026): the board the chapter is written against; null for a bank that follows no book (placement). Optional, so the phone reads an older server.
   board: quizBoardSchema.nullable().optional(),
+  // ---- college-content (12 Oct 2026): at a college, the section the chapter lists in (STREAM: the college's
+  // streams' banks; PREP: "Competitive Exams Prep", NCERT's chapters), and a stream bank's programme and year or
+  // semester. Optional, so the phone reads an older server, and an older phone ignores them (the server sends a
+  // college only what it may list).
+  audience: quizAudienceSchema.optional(),
+  streams: z.array(streamSchema).optional(),
+  programme: z.string().nullable().optional(),
+  yearOrSemester: collegeTermSchema.nullable().optional(),
+  section: practiceSectionSchema.nullable().optional(),
+  // ---- end college-content ----
 });
 
 /** GET /api/v1/family/student/practice — the topic list and the cards above it. */
@@ -285,6 +297,10 @@ export const familyStudentPracticeSchema = z.object({
   topics: z.array(practiceTopicSchema),
   // quiz-board (11 Oct 2026): the school's own practice board, shown first; null when the school's board is neither (both are shown).
   schoolBoard: quizBoardSchema.nullable().optional(),
+  // college-content (12 Oct 2026): SCHOOL (the board switch, classes, subjects) or COLLEGE (the two sections). Optional for an older server.
+  practiceKind: practiceKindSchema.optional(),
+  // college-content (12 Oct 2026): a college's own streams, named on the stream section's empty state.
+  collegeStreams: z.array(streamSchema).optional(),
   enrolledGrade: z.number().int().nullable(),
   /** The grade the page opens on: the pupil's own when the bank has it. */
   defaultGrade: z.number().int().nullable(),
@@ -439,10 +455,16 @@ export const familyParentPracticeSchema = z.object({
       cleanCompletion: z.boolean(),
       // quiz-board (11 Oct 2026): the chapter's board, as on the pupil's list.
       board: quizBoardSchema.nullable().optional(),
+      // college-content (12 Oct 2026): at a college, the section, and a stream bank's programme and year or semester.
+      section: practiceSectionSchema.nullable().optional(),
+      programme: z.string().nullable().optional(),
+      yearOrSemester: collegeTermSchema.nullable().optional(),
     }),
   ),
   // quiz-board (11 Oct 2026): the child's school's practice board, shown first.
   schoolBoard: quizBoardSchema.nullable().optional(),
+  // college-content (12 Oct 2026): the child's school's kind of practice page.
+  practiceKind: practiceKindSchema.optional(),
 });
 
 /** GET /api/v1/family/meetings — open windows of the children's teachers, and the family's bookings. */

@@ -2210,6 +2210,19 @@ model Competition {
   organizerSchool School?               @relation(fields: [organizerSchoolId], references: [id], onDelete: Cascade)
   entries         CompetitionEntry[]
   standings       CompetitionStanding[]
+  /// competitions-crawler (12 Oct 2026): where a competition suggested from the web came from, or the
+  /// crawler's note on a hand-posted one it found again. Null for a competition the crawler never saw.
+  crawl           CompetitionCrawl?
+
+  // ---- college-content (competitions by audience, 12 October 2026) ----
+  /// Who the competition is for: "SCHOOL" (with its class range, gradeLow/gradeHigh) | "COLLEGE" (with `streams`)
+  /// (COMPETITION_AUDIENCES in packages/contracts v1/college-practice.ts). Null: not set yet, shown to both as
+  /// before, until the content team or the operator edits it. A tenant's list shows only what fits it
+  /// (competitionFitsTenant): a school its SCHOOL ones, a college its COLLEGE ones of its streams (or of none).
+  audience String?
+  /// A COLLEGE competition's stream codes (STREAMS); empty: every college.
+  streams  String[] @default([])
+  // ---- end college-content ----
 
   @@index([status, registrationClosesAt])
   @@index([organizerSchoolId])
@@ -2998,6 +3011,21 @@ model QuizTopic {
   board String?
   // ---- end quiz-board ----
 
+  // ---- college-content (college practice by stream, 12 October 2026) ----
+  /// Who the chapter is for: "SCHOOL" (the school bank: authored, NCERT and Balbharati) | "COLLEGE" (a
+  /// stream's bank, generated from a syllabus unit, and the placement banks). QUIZ_AUDIENCES in packages/
+  /// contracts v1/college-practice.ts. A school lists SCHOOL chapters only; a college lists its streams'
+  /// COLLEGE chapters and, in "Competitive Exams Prep", the NCERT SCHOOL chapters (src/lib/practice-audience.ts).
+  audience       String   @default("SCHOOL")
+  /// A COLLEGE chapter's stream codes (STREAMS); empty for a school chapter, and for a college-wide bank
+  /// (the placement banks), which lists at every college.
+  streams        String[] @default([])
+  /// A COLLEGE chapter's programme as the syllabus names it ("LL.M.", "B.Pharm"); null for a school chapter.
+  programme      String?
+  /// A COLLEGE chapter's year or semester, coded Y1–Y5 | S1–S10 (COLLEGE_TERMS); null when the syllabus does not say.
+  yearOrSemester String?
+  // ---- end college-content ----
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -3009,6 +3037,8 @@ model QuizTopic {
   contributions       QuestionContribution[]
 
   @@index([subject, classLevel, position])
+  // college-content (12 Oct 2026): the practice list's audience filter.
+  @@index([audience])
 }
 
 /// A topic's name and summary in one other language.
@@ -10607,3 +10637,138 @@ model LeavingSettlement {
 
   @@index([schoolId])
 }
+
+// ---- competitions-crawler (competitions suggested from the organisers' own sites, 12 October 2026) ----
+/// AN ORGANISER'S OWN SITE the competitions crawler reads (scripts/competitions-crawl/): its root page and
+/// the pages it links to one level down on the same host. Edited on the operator's and the content team's
+/// competitions desks (add, disable, enable, remove; audited). Removing is a stamp, never a delete, so the
+/// fixture that seeds the official organisers does not bring a removed one back. A platform list like
+/// Competition: no school owns it (NO_SCHOOL_POLICY in scripts/gen-rls.ts).
+model CompetitionSource {
+  id              String    @id @default(cuid())
+  name            String
+  /// The site's root page, http(s); unique, so the seed is idempotent.
+  rootUrl         String    @unique
+  /// The organiser as it names itself ("Homi Bhabha Centre for Science Education").
+  organiser       String
+  /// OLYMPIAD | TALENT_SEARCH | SCIENCE_FAIR | QUIZ | OTHER, and for college organisers (college-content, 12 Oct
+  /// 2026) MOOT_COURT | HACKATHON | COLLEGE_EVENT (packages/contracts COMPETITION_SOURCE_KINDS); the kind gives a
+  /// crawled entry its audience when the page does not say (sourceKindAudience).
+  kind            String
+  /// college-content (12 Oct 2026): the streams a college organiser's competitions are for (the Bar Council's: LAW),
+  /// given to a crawled COLLEGE entry when the page names none; empty for a school organiser.
+  streams         String[]  @default([])
+  enabled         Boolean   @default(true)
+  /// The organiser's own site (not a coaching site or an aggregator): Publish marks its competitions verified.
+  official        Boolean   @default(true)
+  addedByUserId   String?
+  /// APP_ADMIN | OPERATOR | FIXTURE
+  addedByRole     String
+  removedAt       DateTime?
+  removedByUserId String?
+  lastCrawledAt   DateTime?
+  /// The last crawl's numbers for this source (competitionCrawlSourceResultSchema), or its refusal.
+  lastResult      Json?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  pages  CompetitionCrawlPage[]
+  crawls CompetitionCrawl[]
+
+  @@index([enabled, removedAt])
+}
+
+/// THE CRAWLER'S CACHE, one row per page URL: the validators the server gave (ETag, Last-Modified), the
+/// SHA-256 of the bytes, and the same-host links the page carried (so an unchanged root still leads to its
+/// children). A page is read again only when the server says it changed or its hash differs.
+model CompetitionCrawlPage {
+  id           String    @id @default(cuid())
+  sourceId     String
+  url          String    @unique
+  etag         String?
+  lastModified String?
+  sha256       String?
+  /// The last HTTP status, or 0 when nothing answered.
+  status       Int       @default(0)
+  contentType  String?
+  links        String[]  @default([])
+  /// Why the page was not read (robots, a login, rendered by script, an error), in words.
+  refused      String?
+  fetchedAt    DateTime?
+  checkedAt    DateTime  @default(now())
+
+  source CompetitionSource @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+
+  @@index([sourceId])
+}
+
+/// WHERE A SUGGESTED COMPETITION CAME FROM, one per Competition: the source, the page, its hash, when it
+/// was crawled and last checked, the model's confidence and the extracted JSON as the model gave it. On a
+/// re-crawl a DRAFT's fields are updated; a PUBLISHED one is never edited: `changedSinceReview` is set with
+/// the field-by-field `diff` kept for the reviewer. A dismissed one stays dismissed (and never public)
+/// unless its page changes. `matchedExisting` marks a hand-posted competition the crawler found again: it
+/// gets the diff and the flag, never an edit. Written only by scripts/competitions-crawl/land.ts and
+/// src/lib/competition-crawl-desk.ts. No school (NO_SCHOOL_POLICY).
+model CompetitionCrawl {
+  id                 String    @id @default(cuid())
+  competitionId      String    @unique
+  sourceId           String
+  pageUrl            String
+  pageHash           String
+  crawledAt          DateTime
+  lastCheckedAt      DateTime
+  /// 0 to 1, the model's own.
+  confidence         Float
+  /// The entry as extracted (competitionExtractEntrySchema), JSON.
+  extracted          Json
+  /// The competition's year, from its dates: the dedupe key with the organiser and the title.
+  year               Int?
+  matchedExisting    Boolean   @default(false)
+  changedSinceReview Boolean   @default(false)
+  /// The fields that differ, { field: { before, after } }, kept until the reviewer marks it reviewed.
+  diff               Json?
+  changedAt          DateTime?
+  reviewedAt         DateTime?
+  reviewedByUserId   String?
+  dismissedAt        DateTime?
+  /// packages/contracts COMPETITION_DISMISS_REASONS
+  dismissedReason    String?
+  dismissedByUserId  String?
+  /// The page's hash when it was dismissed: the entry comes back only when its page changes.
+  dismissedPageHash  String?
+
+  competition Competition       @relation(fields: [competitionId], references: [id], onDelete: Cascade)
+  source      CompetitionSource @relation(fields: [sourceId], references: [id])
+
+  @@index([sourceId])
+  @@index([changedSinceReview])
+}
+
+/// ONE CRAWL started from the competitions desk (/appadmin, /root/competitions) by the content team or the
+/// operator: the same shape and the same rules as QuizGenJob (one active at a time by the unique `active`,
+/// a detached runner's pid and heartbeat, the model servers it brought up and so takes down). A crawl may
+/// run beside a quiz generation run: different jobs, one model. Written only by
+/// src/lib/competition-crawl-jobs.ts. No school (NO_SCHOOL_POLICY).
+model CompetitionCrawlJob {
+  id              String    @id @default(cuid())
+  /// QUEUED | RUNNING | STOPPING | STOPPED | FINISHED | FAILED
+  state           String    @default("QUEUED")
+  active          Boolean?  @unique
+  /// competitionCrawlRequestSchema, JSON.
+  request         Json
+  /// The live line (competitionCrawlProgressSchema), JSON.
+  progress        Json?
+  pid             Int?
+  startedServers  String[]  @default([])
+  startedByUserId String
+  startedByRole   String
+  stopRequestedBy String?
+  error           String?
+  createdAt       DateTime  @default(now())
+  startedAt       DateTime?
+  finishedAt      DateTime?
+  heartbeatAt     DateTime?
+
+  @@index([createdAt])
+}
+// ---- end competitions-crawler ----

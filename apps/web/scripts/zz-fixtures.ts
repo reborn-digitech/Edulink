@@ -69,6 +69,7 @@ import { buildNbaBatches } from "./zz-nba-batches";
 import { buildCollegeExtras } from "./zz-college-extras";
 import { buildCollegeHomework } from "./zz-college-homework";
 import { buildPlanItems } from "./zz-plan-items";
+import { seedCompetitionSources } from "./competitions-crawl/sources"; // competitions-crawler (12 Oct 2026)
 import { openAlumnus } from "../src/lib/alumni-membership";
 import { SCHOOL_MODULES, DEFAULT_SCHOOL_MODULES, SCHOOL_VERSION_MODULES, modulesForKind } from "@edulink/contracts";
 import { refuseUnlessLocalDatabase } from "./local-db-guard.mjs";
@@ -2655,6 +2656,12 @@ async function main() {
   const planItems = await buildPlanItems(db);
   console.log(planItems ? `  Plan items at ZZ Vidya College: ${planItems.visits} reading-room visits today (one still inside), "ZZ Student Council" of ${planItems.councilMembers} with ${planItems.notices} notices (one waiting for review), ${planItems.templates} appointment letter templates${planItems.letter ? `, zz.faculty02's letter ${planItems.letter}` : " (no current year: no letter)"} — /library/reading-room, /bulletin/council, /admin/certificates/appointments, /account/letters` : "  Plan items: NOT built (ZZ Vidya College or its people are missing)");
   console.log(`  Inventory: ${stores.items} items, ${stores.movements} movements, ${stores.assets} assets${stores.made ? "" : " (already there)"}; payroll: ${payroll.salaries} salaries, ${payroll.slips} payslips, ${payroll.month} locked${payroll.made ? "" : " (already there)"}`);
+  // ---- competitions-crawler (12 Oct 2026): the official organisers the competitions crawler reads. Platform
+  // configuration, not school data: added only when the root URL is not in the table at all, so a source the
+  // desk disabled or removed stays as the desk left it, and --teardown leaves them alone. ----
+  const competitionSources = await seedCompetitionSources(db);
+  console.log(`  Competition sources: ${competitionSources.added} official organisers added, ${competitionSources.present} already listed — /appadmin?tab=sources, /root/competitions?tab=sources`);
+  // ---- end competitions-crawler ----
 
   const studentCount = await db.membership.count({
     where: { schoolId: northgate.school.id, role: "STUDENT" },

@@ -435,6 +435,11 @@ export const competitionCardSchema = z.object({
   startsAt: isoOrNull,
   endsAt: isoOrNull,
   entry: competitionEntrySchema.nullable(),
+  // competitions-crawler (12 Oct 2026): a competition suggested from the web and published says where it was read and when it was last checked; null for one posted by hand.
+  source: z.object({ organiser: z.string(), lastCheckedAt: z.string() }).nullable().optional(),
+  // college-content (12 Oct 2026): who it is for (SCHOOL, COLLEGE, or null: not set, everyone) and a COLLEGE one's streams; optional for an older server.
+  audience: z.enum(["SCHOOL", "COLLEGE"]).nullable().optional(),
+  streams: z.array(z.string()).optional(),
 });
 
 export const competitionConsentSchema = z.object({

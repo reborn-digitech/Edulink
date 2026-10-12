@@ -1,5 +1,7 @@
 import { z } from "zod";
 import { quizBoardSchema } from "./quiz-board";
+import { collegeSyllabusBoardSchema } from "./college-practice"; // college-content (12 Oct 2026)
+import { streamSchema } from "./streams"; // college-content (12 Oct 2026)
 
 /**
  * GENERATION STARTED AND STOPPED FROM THE BANK DESK (the owner, 11 October 2026). The operator and the
@@ -27,8 +29,13 @@ export const QUIZ_GEN_ACTIVE_STATES = ["QUEUED", "RUNNING", "STOPPING"] as const
 export const QUIZ_GEN_SUBJECTS = ["MATHS", "SCIENCE", "PHYSICS", "CHEMISTRY", "BIOLOGY", "EVS", "HISTORY", "GEOGRAPHY", "CIVICS", "ECONOMICS"] as const;
 export type QuizGenSubject = (typeof QUIZ_GEN_SUBJECTS)[number];
 
-/** What to generate: one board's class, subject and chapter range, or everything not yet generated in the plan's order. */
-export const QUIZ_GEN_SCOPES = ["CHAPTERS", "EVERYTHING"] as const;
+/**
+ * What to generate: one board's class, subject and chapter range, or everything not yet generated in the plan's order,
+ * or (college-content, 12 Oct 2026) COLLEGE: a stream's programme from the syllabus corpus, one syllabus document or
+ * every one of the programme, and a unit range; its items land as COLLEGE topics tagged with the stream, the
+ * programme and the year or semester (scripts/quiz-gen/college.ts).
+ */
+export const QUIZ_GEN_SCOPES = ["CHAPTERS", "EVERYTHING", "COLLEGE"] as const;
 
 export const quizGenRequestSchema = z
   .object({
@@ -40,6 +47,15 @@ export const quizGenRequestSchema = z
     chapterTo: z.number().int().min(1).max(40).optional(),
     /** Items asked for per chapter (the generator's --limit); absent is its own default, four a level. */
     limit: z.number().int().min(1).max(60).optional(),
+    // ---- college-content (12 Oct 2026): the COLLEGE scope ----
+    stream: streamSchema.optional(),
+    /** The programme as the desk's card lists it from the corpus ("LL.M."). */
+    programme: z.string().trim().min(1).max(120).optional(),
+    /** One syllabus document (ContentDocument.path); absent: every document of the programme. */
+    document: z.string().trim().min(1).max(400).optional(),
+    unitFrom: z.number().int().min(1).max(200).optional(),
+    unitTo: z.number().int().min(1).max(200).optional(),
+    // ---- end college-content ----
   })
   .strict()
   .superRefine((r, ctx) => {
@@ -49,6 +65,12 @@ export const quizGenRequestSchema = z
       if (!r.subject) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["subject"], message: "subject" });
     }
     if (r.chapterFrom && r.chapterTo && r.chapterFrom > r.chapterTo) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["chapterTo"], message: "range" });
+    // college-content (12 Oct 2026)
+    if (r.scope === "COLLEGE") {
+      if (!r.stream) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["stream"], message: "stream" });
+      if (!r.programme) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["programme"], message: "programme" });
+    }
+    if (r.unitFrom && r.unitTo && r.unitFrom > r.unitTo) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["unitTo"], message: "range" });
   });
 export type QuizGenRequest = z.infer<typeof quizGenRequestSchema>;
 
@@ -63,11 +85,15 @@ export type QuizGenPhase = (typeof QUIZ_GEN_PHASES)[number];
 const rejectsSchema = z.record(z.enum(QUIZ_GEN_STAGES), count);
 
 const chapterRefSchema = z.object({
-  board: quizBoardSchema,
+  // college-content (12 Oct 2026): a college unit's board is the syllabus's (SPPU, AICTE, PCI, MPKV).
+  board: z.union([quizBoardSchema, collegeSyllabusBoardSchema]),
   grade: z.number().int(),
   subject: z.string(),
   number: z.number().int(),
   name: z.string(),
+  // college-content (12 Oct 2026): a college unit's stream and programme (the card's line names them).
+  stream: streamSchema.optional(),
+  programme: z.string().optional(),
 });
 
 /** One chapter's numbers: drafted, kept, rejects per stage, seconds, and how many items reached the bank. */

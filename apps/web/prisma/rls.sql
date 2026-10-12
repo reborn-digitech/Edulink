@@ -3497,6 +3497,10 @@ CREATE TRIGGER "OperatorAccess_close_only"
 --   Company
 --   CompanyRecruiter
 --   Competition
+--   CompetitionCrawl
+--   CompetitionCrawlJob
+--   CompetitionCrawlPage
+--   CompetitionSource
 --   ContentChunk
 --   ContentDocument
 --   ExpertPayout

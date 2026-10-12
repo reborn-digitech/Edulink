@@ -19377,6 +19377,66 @@
                               "BALBHARATI"
                             ],
                             "nullable": true
+                          },
+                          "audience": {
+                            "type": "string",
+                            "enum": [
+                              "SCHOOL",
+                              "COLLEGE"
+                            ]
+                          },
+                          "streams": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "ARTS",
+                                "SCIENCE",
+                                "COMMERCE",
+                                "MANAGEMENT",
+                                "ENGINEERING",
+                                "PHARMACY",
+                                "LAW",
+                                "EDUCATION",
+                                "HEALTH_SCIENCES",
+                                "ARCHITECTURE",
+                                "AGRICULTURE",
+                                "VOCATIONAL"
+                              ]
+                            }
+                          },
+                          "programme": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "yearOrSemester": {
+                            "type": "string",
+                            "enum": [
+                              "Y1",
+                              "Y2",
+                              "Y3",
+                              "Y4",
+                              "Y5",
+                              "S1",
+                              "S2",
+                              "S3",
+                              "S4",
+                              "S5",
+                              "S6",
+                              "S7",
+                              "S8",
+                              "S9",
+                              "S10"
+                            ],
+                            "nullable": true
+                          },
+                          "section": {
+                            "type": "string",
+                            "enum": [
+                              "STREAM",
+                              "PREP"
+                            ],
+                            "nullable": true
                           }
                         },
                         "required": [
@@ -19405,6 +19465,19 @@
                         }
                       ],
                       "nullable": true
+                    },
+                    "practiceKind": {
+                      "type": "string",
+                      "enum": [
+                        "SCHOOL",
+                        "COLLEGE"
+                      ]
+                    },
+                    "collegeStreams": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/topics/items/properties/streams/items"
+                      }
                     },
                     "enrolledGrade": {
                       "type": "integer",
@@ -21041,6 +21114,39 @@
                               "BALBHARATI"
                             ],
                             "nullable": true
+                          },
+                          "section": {
+                            "type": "string",
+                            "enum": [
+                              "STREAM",
+                              "PREP"
+                            ],
+                            "nullable": true
+                          },
+                          "programme": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "yearOrSemester": {
+                            "type": "string",
+                            "enum": [
+                              "Y1",
+                              "Y2",
+                              "Y3",
+                              "Y4",
+                              "Y5",
+                              "S1",
+                              "S2",
+                              "S3",
+                              "S4",
+                              "S5",
+                              "S6",
+                              "S7",
+                              "S8",
+                              "S9",
+                              "S10"
+                            ],
+                            "nullable": true
                           }
                         },
                         "required": [
@@ -21064,6 +21170,13 @@
                         }
                       ],
                       "nullable": true
+                    },
+                    "practiceKind": {
+                      "type": "string",
+                      "enum": [
+                        "SCHOOL",
+                        "COLLEGE"
+                      ]
                     }
                   },
                   "required": [
@@ -29472,6 +29585,37 @@
                             ],
                             "additionalProperties": false,
                             "nullable": true
+                          },
+                          "source": {
+                            "type": "object",
+                            "properties": {
+                              "organiser": {
+                                "type": "string"
+                              },
+                              "lastCheckedAt": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "organiser",
+                              "lastCheckedAt"
+                            ],
+                            "additionalProperties": false,
+                            "nullable": true
+                          },
+                          "audience": {
+                            "type": "string",
+                            "enum": [
+                              "SCHOOL",
+                              "COLLEGE"
+                            ],
+                            "nullable": true
+                          },
+                          "streams": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
                           }
                         },
                         "required": [
@@ -29698,6 +29842,37 @@
                       ],
                       "additionalProperties": false,
                       "nullable": true
+                    },
+                    "source": {
+                      "type": "object",
+                      "properties": {
+                        "organiser": {
+                          "type": "string"
+                        },
+                        "lastCheckedAt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "organiser",
+                        "lastCheckedAt"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "audience": {
+                      "type": "string",
+                      "enum": [
+                        "SCHOOL",
+                        "COLLEGE"
+                      ],
+                      "nullable": true
+                    },
+                    "streams": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
                     },
                     "body": {
                       "type": "string"
@@ -223213,7 +223388,8 @@
                               "type": "string",
                               "enum": [
                                 "CHAPTERS",
-                                "EVERYTHING"
+                                "EVERYTHING",
+                                "COLLEGE"
                               ]
                             },
                             "board": {
@@ -223257,6 +223433,43 @@
                               "type": "integer",
                               "minimum": 1,
                               "maximum": 60
+                            },
+                            "stream": {
+                              "type": "string",
+                              "enum": [
+                                "ARTS",
+                                "SCIENCE",
+                                "COMMERCE",
+                                "MANAGEMENT",
+                                "ENGINEERING",
+                                "PHARMACY",
+                                "LAW",
+                                "EDUCATION",
+                                "HEALTH_SCIENCES",
+                                "ARCHITECTURE",
+                                "AGRICULTURE",
+                                "VOCATIONAL"
+                              ]
+                            },
+                            "programme": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 120
+                            },
+                            "document": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 400
+                            },
+                            "unitFrom": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 200
+                            },
+                            "unitTo": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 200
                             }
                           },
                           "required": [
@@ -223282,7 +223495,20 @@
                               "type": "object",
                               "properties": {
                                 "board": {
-                                  "$ref": "#/properties/current/properties/request/properties/board"
+                                  "anyOf": [
+                                    {
+                                      "$ref": "#/properties/current/properties/request/properties/board"
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "SPPU",
+                                        "AICTE",
+                                        "PCI",
+                                        "MPKV"
+                                      ]
+                                    }
+                                  ]
                                 },
                                 "grade": {
                                   "type": "integer"
@@ -223294,6 +223520,12 @@
                                   "type": "integer"
                                 },
                                 "name": {
+                                  "type": "string"
+                                },
+                                "stream": {
+                                  "$ref": "#/properties/current/properties/request/properties/stream"
+                                },
+                                "programme": {
                                   "type": "string"
                                 },
                                 "drafted": {
@@ -223611,7 +223843,7 @@
         }
       },
       "post": {
-        "summary": "Start a generation run on this machine: a board's class, subject and chapter range, or everything not yet generated in the plan's order; brings up the model servers that are down; 201 with the run, 409 while another run is active",
+        "summary": "Start a generation run on this machine: a board's class, subject and chapter range, or everything not yet generated in the plan's order, or a college stream's programme and unit range from the syllabus corpus; brings up the model servers that are down; 201 with the run, 409 while another run is active",
         "description": "The content team.",
         "security": [
           {
@@ -223653,7 +223885,8 @@
                               "type": "string",
                               "enum": [
                                 "CHAPTERS",
-                                "EVERYTHING"
+                                "EVERYTHING",
+                                "COLLEGE"
                               ]
                             },
                             "board": {
@@ -223697,6 +223930,43 @@
                               "type": "integer",
                               "minimum": 1,
                               "maximum": 60
+                            },
+                            "stream": {
+                              "type": "string",
+                              "enum": [
+                                "ARTS",
+                                "SCIENCE",
+                                "COMMERCE",
+                                "MANAGEMENT",
+                                "ENGINEERING",
+                                "PHARMACY",
+                                "LAW",
+                                "EDUCATION",
+                                "HEALTH_SCIENCES",
+                                "ARCHITECTURE",
+                                "AGRICULTURE",
+                                "VOCATIONAL"
+                              ]
+                            },
+                            "programme": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 120
+                            },
+                            "document": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 400
+                            },
+                            "unitFrom": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 200
+                            },
+                            "unitTo": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 200
                             }
                           },
                           "required": [
@@ -223722,7 +223992,20 @@
                               "type": "object",
                               "properties": {
                                 "board": {
-                                  "$ref": "#/properties/job/properties/request/properties/board"
+                                  "anyOf": [
+                                    {
+                                      "$ref": "#/properties/job/properties/request/properties/board"
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "SPPU",
+                                        "AICTE",
+                                        "PCI",
+                                        "MPKV"
+                                      ]
+                                    }
+                                  ]
                                 },
                                 "grade": {
                                   "type": "integer"
@@ -223734,6 +224017,12 @@
                                   "type": "integer"
                                 },
                                 "name": {
+                                  "type": "string"
+                                },
+                                "stream": {
+                                  "$ref": "#/properties/job/properties/request/properties/stream"
+                                },
+                                "programme": {
                                   "type": "string"
                                 },
                                 "drafted": {
@@ -224014,7 +224303,8 @@
                     "type": "string",
                     "enum": [
                       "CHAPTERS",
-                      "EVERYTHING"
+                      "EVERYTHING",
+                      "COLLEGE"
                     ]
                   },
                   "board": {
@@ -224058,6 +224348,43 @@
                     "type": "integer",
                     "minimum": 1,
                     "maximum": 60
+                  },
+                  "stream": {
+                    "type": "string",
+                    "enum": [
+                      "ARTS",
+                      "SCIENCE",
+                      "COMMERCE",
+                      "MANAGEMENT",
+                      "ENGINEERING",
+                      "PHARMACY",
+                      "LAW",
+                      "EDUCATION",
+                      "HEALTH_SCIENCES",
+                      "ARCHITECTURE",
+                      "AGRICULTURE",
+                      "VOCATIONAL"
+                    ]
+                  },
+                  "programme": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "document": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 400
+                  },
+                  "unitFrom": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 200
+                  },
+                  "unitTo": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 200
                   }
                 },
                 "required": [
@@ -224470,7 +224797,8 @@
                               "type": "string",
                               "enum": [
                                 "CHAPTERS",
-                                "EVERYTHING"
+                                "EVERYTHING",
+                                "COLLEGE"
                               ]
                             },
                             "board": {
@@ -224514,6 +224842,43 @@
                               "type": "integer",
                               "minimum": 1,
                               "maximum": 60
+                            },
+                            "stream": {
+                              "type": "string",
+                              "enum": [
+                                "ARTS",
+                                "SCIENCE",
+                                "COMMERCE",
+                                "MANAGEMENT",
+                                "ENGINEERING",
+                                "PHARMACY",
+                                "LAW",
+                                "EDUCATION",
+                                "HEALTH_SCIENCES",
+                                "ARCHITECTURE",
+                                "AGRICULTURE",
+                                "VOCATIONAL"
+                              ]
+                            },
+                            "programme": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 120
+                            },
+                            "document": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 400
+                            },
+                            "unitFrom": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 200
+                            },
+                            "unitTo": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 200
                             }
                           },
                           "required": [
@@ -224539,7 +224904,20 @@
                               "type": "object",
                               "properties": {
                                 "board": {
-                                  "$ref": "#/properties/job/properties/request/properties/board"
+                                  "anyOf": [
+                                    {
+                                      "$ref": "#/properties/job/properties/request/properties/board"
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "SPPU",
+                                        "AICTE",
+                                        "PCI",
+                                        "MPKV"
+                                      ]
+                                    }
+                                  ]
                                 },
                                 "grade": {
                                   "type": "integer"
@@ -224551,6 +224929,12 @@
                                   "type": "integer"
                                 },
                                 "name": {
+                                  "type": "string"
+                                },
+                                "stream": {
+                                  "$ref": "#/properties/job/properties/request/properties/stream"
+                                },
+                                "programme": {
                                   "type": "string"
                                 },
                                 "drafted": {
@@ -224832,6 +225216,218 @@
         ]
       }
     },
+    "/api/v1/appadmin/quiz-jobs/college-syllabi": {
+      "get": {
+        "summary": "The streams with a syllabus in the corpus (SPPU, AICTE, PCI, MPKV): each stream's programmes, their syllabus documents and units (the level-one headings), for the generation card's College scope; and the streams with none",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "streams": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "stream": {
+                            "type": "string",
+                            "enum": [
+                              "ARTS",
+                              "SCIENCE",
+                              "COMMERCE",
+                              "MANAGEMENT",
+                              "ENGINEERING",
+                              "PHARMACY",
+                              "LAW",
+                              "EDUCATION",
+                              "HEALTH_SCIENCES",
+                              "ARCHITECTURE",
+                              "AGRICULTURE",
+                              "VOCATIONAL"
+                            ]
+                          },
+                          "boards": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "SPPU",
+                                "AICTE",
+                                "PCI",
+                                "MPKV"
+                              ]
+                            }
+                          },
+                          "programmes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "programme": {
+                                  "type": "string"
+                                },
+                                "documents": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "path": {
+                                        "type": "string"
+                                      },
+                                      "title": {
+                                        "type": "string"
+                                      },
+                                      "board": {
+                                        "$ref": "#/properties/streams/items/properties/boards/items"
+                                      },
+                                      "programme": {
+                                        "type": "string"
+                                      },
+                                      "term": {
+                                        "type": "string",
+                                        "enum": [
+                                          "Y1",
+                                          "Y2",
+                                          "Y3",
+                                          "Y4",
+                                          "Y5",
+                                          "S1",
+                                          "S2",
+                                          "S3",
+                                          "S4",
+                                          "S5",
+                                          "S6",
+                                          "S7",
+                                          "S8",
+                                          "S9",
+                                          "S10"
+                                        ],
+                                        "nullable": true
+                                      },
+                                      "units": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "properties": {
+                                            "number": {
+                                              "type": "integer",
+                                              "exclusiveMinimum": true,
+                                              "minimum": 0
+                                            },
+                                            "name": {
+                                              "type": "string"
+                                            },
+                                            "chunks": {
+                                              "type": "integer",
+                                              "minimum": 0
+                                            }
+                                          },
+                                          "required": [
+                                            "number",
+                                            "name",
+                                            "chunks"
+                                          ],
+                                          "additionalProperties": false
+                                        }
+                                      }
+                                    },
+                                    "required": [
+                                      "path",
+                                      "title",
+                                      "board",
+                                      "programme",
+                                      "term",
+                                      "units"
+                                    ],
+                                    "additionalProperties": false
+                                  }
+                                }
+                              },
+                              "required": [
+                                "programme",
+                                "documents"
+                              ],
+                              "additionalProperties": false
+                            }
+                          }
+                        },
+                        "required": [
+                          "stream",
+                          "boards",
+                          "programmes"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "without": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/streams/items/properties/stream"
+                      }
+                    }
+                  },
+                  "required": [
+                    "streams",
+                    "without"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/appadmin/quiz-jobs/{jobId}/stop": {
       "post": {
         "summary": "Stop a run: the runner finishes the item in hand and halts, nothing half-written lands, and the model servers this run brought up go down with it; an ended run is left as it is",
@@ -224876,7 +225472,8 @@
                               "type": "string",
                               "enum": [
                                 "CHAPTERS",
-                                "EVERYTHING"
+                                "EVERYTHING",
+                                "COLLEGE"
                               ]
                             },
                             "board": {
@@ -224920,6 +225517,43 @@
                               "type": "integer",
                               "minimum": 1,
                               "maximum": 60
+                            },
+                            "stream": {
+                              "type": "string",
+                              "enum": [
+                                "ARTS",
+                                "SCIENCE",
+                                "COMMERCE",
+                                "MANAGEMENT",
+                                "ENGINEERING",
+                                "PHARMACY",
+                                "LAW",
+                                "EDUCATION",
+                                "HEALTH_SCIENCES",
+                                "ARCHITECTURE",
+                                "AGRICULTURE",
+                                "VOCATIONAL"
+                              ]
+                            },
+                            "programme": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 120
+                            },
+                            "document": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 400
+                            },
+                            "unitFrom": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 200
+                            },
+                            "unitTo": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 200
                             }
                           },
                           "required": [
@@ -224945,7 +225579,20 @@
                               "type": "object",
                               "properties": {
                                 "board": {
-                                  "$ref": "#/properties/job/properties/request/properties/board"
+                                  "anyOf": [
+                                    {
+                                      "$ref": "#/properties/job/properties/request/properties/board"
+                                    },
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "SPPU",
+                                        "AICTE",
+                                        "PCI",
+                                        "MPKV"
+                                      ]
+                                    }
+                                  ]
                                 },
                                 "grade": {
                                   "type": "integer"
@@ -224957,6 +225604,12 @@
                                   "type": "integer"
                                 },
                                 "name": {
+                                  "type": "string"
+                                },
+                                "stream": {
+                                  "$ref": "#/properties/job/properties/request/properties/stream"
+                                },
+                                "programme": {
                                   "type": "string"
                                 },
                                 "drafted": {
@@ -225229,6 +225882,3301 @@
         "parameters": [
           {
             "name": "jobId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/appadmin/competition-crawl": {
+      "get": {
+        "summary": "The competitions crawl in hand, or the last one, with its live line (sources visited, pages read, cached hits, candidates extracted, drafts written, updated, dismissed and unchanged, published ones changed, rejects by reason, refused sites); the latest five crawls; the two model servers' state",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "current": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "QUEUED",
+                            "RUNNING",
+                            "STOPPING",
+                            "STOPPED",
+                            "FINISHED",
+                            "FAILED"
+                          ]
+                        },
+                        "request": {
+                          "type": "object",
+                          "properties": {
+                            "sourceIds": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/properties/current/properties/id"
+                              },
+                              "maxItems": 60
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "progress": {
+                          "type": "object",
+                          "properties": {
+                            "phase": {
+                              "type": "string",
+                              "enum": [
+                                "STARTING_MODEL",
+                                "CRAWLING",
+                                "DONE"
+                              ]
+                            },
+                            "source": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "sourcesTotal": {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            "sourcesVisited": {
+                              "$ref": "#/properties/current/properties/progress/properties/sourcesTotal"
+                            },
+                            "pagesRead": {
+                              "$ref": "#/properties/current/properties/progress/properties/sourcesTotal"
+                            },
+                            "cachedHits": {
+                              "$ref": "#/properties/current/properties/progress/properties/sourcesTotal"
+                            },
+                            "candidates": {
+                              "$ref": "#/properties/current/properties/progress/properties/sourcesTotal"
+                            },
+                            "drafted": {
+                              "$ref": "#/properties/current/properties/progress/properties/sourcesTotal"
+                            },
+                            "updated": {
+                              "$ref": "#/properties/current/properties/progress/properties/sourcesTotal"
+                            },
+                            "dismissedUnchanged": {
+                              "$ref": "#/properties/current/properties/progress/properties/sourcesTotal"
+                            },
+                            "changedPublished": {
+                              "$ref": "#/properties/current/properties/progress/properties/sourcesTotal"
+                            },
+                            "rejects": {
+                              "type": "object",
+                              "required": [
+                                "SHAPE",
+                                "NO_DATE_NO_LINK",
+                                "OFF_HOST_LINK",
+                                "CONTACT_DETAILS",
+                                "LOW_CONFIDENCE",
+                                "PAST",
+                                "NOT_ENTERABLE"
+                              ],
+                              "properties": {
+                                "SHAPE": {
+                                  "$ref": "#/properties/current/properties/progress/properties/sourcesTotal"
+                                },
+                                "NO_DATE_NO_LINK": {
+                                  "$ref": "#/properties/current/properties/progress/properties/sourcesTotal"
+                                },
+                                "OFF_HOST_LINK": {
+                                  "$ref": "#/properties/current/properties/progress/properties/sourcesTotal"
+                                },
+                                "CONTACT_DETAILS": {
+                                  "$ref": "#/properties/current/properties/progress/properties/sourcesTotal"
+                                },
+                                "LOW_CONFIDENCE": {
+                                  "$ref": "#/properties/current/properties/progress/properties/sourcesTotal"
+                                },
+                                "PAST": {
+                                  "$ref": "#/properties/current/properties/progress/properties/sourcesTotal"
+                                },
+                                "NOT_ENTERABLE": {
+                                  "$ref": "#/properties/current/properties/progress/properties/sourcesTotal"
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "refused": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "source": {
+                                    "type": "string"
+                                  },
+                                  "reason": {
+                                    "type": "string",
+                                    "enum": [
+                                      "ROBOTS",
+                                      "LOGIN",
+                                      "RENDERED_BY_SCRIPT",
+                                      "HTTP_ERROR",
+                                      "UNREACHABLE",
+                                      "UNSUPPORTED_TYPE",
+                                      "TOO_LARGE"
+                                    ]
+                                  },
+                                  "detail": {
+                                    "type": "string",
+                                    "maxLength": 300
+                                  }
+                                },
+                                "required": [
+                                  "source",
+                                  "reason",
+                                  "detail"
+                                ],
+                                "additionalProperties": false
+                              }
+                            }
+                          },
+                          "required": [
+                            "phase",
+                            "source",
+                            "sourcesTotal",
+                            "sourcesVisited",
+                            "pagesRead",
+                            "cachedHits",
+                            "candidates",
+                            "drafted",
+                            "updated",
+                            "dismissedUnchanged",
+                            "changedPublished",
+                            "rejects",
+                            "refused"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "startedBy": {
+                          "type": "string"
+                        },
+                        "startedByRole": {
+                          "type": "string",
+                          "enum": [
+                            "APP_ADMIN",
+                            "OPERATOR"
+                          ]
+                        },
+                        "startedServers": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "chat",
+                              "embed"
+                            ]
+                          }
+                        },
+                        "error": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "startedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/current/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "finishedAt": {
+                          "$ref": "#/properties/current/properties/startedAt"
+                        },
+                        "heartbeatAt": {
+                          "$ref": "#/properties/current/properties/startedAt"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "state",
+                        "request",
+                        "progress",
+                        "startedBy",
+                        "startedByRole",
+                        "startedServers",
+                        "error",
+                        "createdAt",
+                        "startedAt",
+                        "finishedAt",
+                        "heartbeatAt"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "recent": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/current"
+                      }
+                    },
+                    "servers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "server": {
+                            "type": "string",
+                            "enum": [
+                              "chat",
+                              "embed"
+                            ]
+                          },
+                          "state": {
+                            "type": "string",
+                            "enum": [
+                              "RUNNING",
+                              "STARTING",
+                              "STOPPED"
+                            ]
+                          },
+                          "model": {
+                            "type": "string"
+                          },
+                          "port": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "checkedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        },
+                        "required": [
+                          "server",
+                          "state",
+                          "model",
+                          "port",
+                          "checkedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "current",
+                    "recent",
+                    "servers"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Start a crawl of the enabled sources (or those named) on this machine; brings up the model servers that are down; 201 with the crawl, 409 while another crawl is active (a quiz generation run may go on beside it)",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "job": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "QUEUED",
+                            "RUNNING",
+                            "STOPPING",
+                            "STOPPED",
+                            "FINISHED",
+                            "FAILED"
+                          ]
+                        },
+                        "request": {
+                          "type": "object",
+                          "properties": {
+                            "sourceIds": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/properties/job/properties/id"
+                              },
+                              "maxItems": 60
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "progress": {
+                          "type": "object",
+                          "properties": {
+                            "phase": {
+                              "type": "string",
+                              "enum": [
+                                "STARTING_MODEL",
+                                "CRAWLING",
+                                "DONE"
+                              ]
+                            },
+                            "source": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "sourcesTotal": {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            "sourcesVisited": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "pagesRead": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "cachedHits": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "candidates": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "drafted": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "updated": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "dismissedUnchanged": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "changedPublished": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "rejects": {
+                              "type": "object",
+                              "required": [
+                                "SHAPE",
+                                "NO_DATE_NO_LINK",
+                                "OFF_HOST_LINK",
+                                "CONTACT_DETAILS",
+                                "LOW_CONFIDENCE",
+                                "PAST",
+                                "NOT_ENTERABLE"
+                              ],
+                              "properties": {
+                                "SHAPE": {
+                                  "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                                },
+                                "NO_DATE_NO_LINK": {
+                                  "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                                },
+                                "OFF_HOST_LINK": {
+                                  "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                                },
+                                "CONTACT_DETAILS": {
+                                  "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                                },
+                                "LOW_CONFIDENCE": {
+                                  "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                                },
+                                "PAST": {
+                                  "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                                },
+                                "NOT_ENTERABLE": {
+                                  "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "refused": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "source": {
+                                    "type": "string"
+                                  },
+                                  "reason": {
+                                    "type": "string",
+                                    "enum": [
+                                      "ROBOTS",
+                                      "LOGIN",
+                                      "RENDERED_BY_SCRIPT",
+                                      "HTTP_ERROR",
+                                      "UNREACHABLE",
+                                      "UNSUPPORTED_TYPE",
+                                      "TOO_LARGE"
+                                    ]
+                                  },
+                                  "detail": {
+                                    "type": "string",
+                                    "maxLength": 300
+                                  }
+                                },
+                                "required": [
+                                  "source",
+                                  "reason",
+                                  "detail"
+                                ],
+                                "additionalProperties": false
+                              }
+                            }
+                          },
+                          "required": [
+                            "phase",
+                            "source",
+                            "sourcesTotal",
+                            "sourcesVisited",
+                            "pagesRead",
+                            "cachedHits",
+                            "candidates",
+                            "drafted",
+                            "updated",
+                            "dismissedUnchanged",
+                            "changedPublished",
+                            "rejects",
+                            "refused"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "startedBy": {
+                          "type": "string"
+                        },
+                        "startedByRole": {
+                          "type": "string",
+                          "enum": [
+                            "APP_ADMIN",
+                            "OPERATOR"
+                          ]
+                        },
+                        "startedServers": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "chat",
+                              "embed"
+                            ]
+                          }
+                        },
+                        "error": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "startedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/job/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "finishedAt": {
+                          "$ref": "#/properties/job/properties/startedAt"
+                        },
+                        "heartbeatAt": {
+                          "$ref": "#/properties/job/properties/startedAt"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "state",
+                        "request",
+                        "progress",
+                        "startedBy",
+                        "startedByRole",
+                        "startedServers",
+                        "error",
+                        "createdAt",
+                        "startedAt",
+                        "finishedAt",
+                        "heartbeatAt"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "job"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sourceIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    },
+                    "maxItems": 60
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/appadmin/competition-crawl/sources": {
+      "get": {
+        "summary": "The organisers' own sites the crawler reads, with each one's last crawl (pages, cached hits, candidates, drafts, rejects, or why it was refused) and how many of its suggestions wait",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "sources": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "rootUrl": {
+                            "type": "string"
+                          },
+                          "organiser": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "OLYMPIAD",
+                              "TALENT_SEARCH",
+                              "SCIENCE_FAIR",
+                              "QUIZ",
+                              "OTHER",
+                              "MOOT_COURT",
+                              "HACKATHON",
+                              "COLLEGE_EVENT"
+                            ]
+                          },
+                          "enabled": {
+                            "type": "boolean"
+                          },
+                          "official": {
+                            "type": "boolean"
+                          },
+                          "addedByRole": {
+                            "type": "string"
+                          },
+                          "lastCrawledAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "lastResult": {
+                            "type": "object",
+                            "properties": {
+                              "pages": {
+                                "type": "integer",
+                                "minimum": 0
+                              },
+                              "cached": {
+                                "$ref": "#/properties/sources/items/properties/lastResult/properties/pages"
+                              },
+                              "candidates": {
+                                "$ref": "#/properties/sources/items/properties/lastResult/properties/pages"
+                              },
+                              "drafted": {
+                                "$ref": "#/properties/sources/items/properties/lastResult/properties/pages"
+                              },
+                              "updated": {
+                                "$ref": "#/properties/sources/items/properties/lastResult/properties/pages"
+                              },
+                              "dismissedUnchanged": {
+                                "$ref": "#/properties/sources/items/properties/lastResult/properties/pages"
+                              },
+                              "changedPublished": {
+                                "$ref": "#/properties/sources/items/properties/lastResult/properties/pages"
+                              },
+                              "rejected": {
+                                "$ref": "#/properties/sources/items/properties/lastResult/properties/pages"
+                              },
+                              "refused": {
+                                "type": "object",
+                                "properties": {
+                                  "reason": {
+                                    "type": "string",
+                                    "enum": [
+                                      "ROBOTS",
+                                      "LOGIN",
+                                      "RENDERED_BY_SCRIPT",
+                                      "HTTP_ERROR",
+                                      "UNREACHABLE",
+                                      "UNSUPPORTED_TYPE",
+                                      "TOO_LARGE"
+                                    ]
+                                  },
+                                  "detail": {
+                                    "type": "string",
+                                    "maxLength": 300
+                                  }
+                                },
+                                "required": [
+                                  "reason",
+                                  "detail"
+                                ],
+                                "additionalProperties": false,
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "pages",
+                              "cached",
+                              "candidates",
+                              "drafted",
+                              "updated",
+                              "dismissedUnchanged",
+                              "changedPublished",
+                              "rejected",
+                              "refused"
+                            ],
+                            "additionalProperties": false,
+                            "nullable": true
+                          },
+                          "waiting": {
+                            "$ref": "#/properties/sources/items/properties/lastResult/properties/pages"
+                          },
+                          "streams": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "ARTS",
+                                "SCIENCE",
+                                "COMMERCE",
+                                "MANAGEMENT",
+                                "ENGINEERING",
+                                "PHARMACY",
+                                "LAW",
+                                "EDUCATION",
+                                "HEALTH_SCIENCES",
+                                "ARCHITECTURE",
+                                "AGRICULTURE",
+                                "VOCATIONAL"
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "rootUrl",
+                          "organiser",
+                          "kind",
+                          "enabled",
+                          "official",
+                          "addedByRole",
+                          "lastCrawledAt",
+                          "lastResult",
+                          "waiting"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "sources"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Add an organiser's own site (http or https root, the organiser, the kind, whether it is the organiser's own); 201, 409 when already listed",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "rootUrl": {
+                          "type": "string"
+                        },
+                        "organiser": {
+                          "type": "string"
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "OLYMPIAD",
+                            "TALENT_SEARCH",
+                            "SCIENCE_FAIR",
+                            "QUIZ",
+                            "OTHER",
+                            "MOOT_COURT",
+                            "HACKATHON",
+                            "COLLEGE_EVENT"
+                          ]
+                        },
+                        "enabled": {
+                          "type": "boolean"
+                        },
+                        "official": {
+                          "type": "boolean"
+                        },
+                        "addedByRole": {
+                          "type": "string"
+                        },
+                        "lastCrawledAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "lastResult": {
+                          "type": "object",
+                          "properties": {
+                            "pages": {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            "cached": {
+                              "$ref": "#/properties/source/properties/lastResult/properties/pages"
+                            },
+                            "candidates": {
+                              "$ref": "#/properties/source/properties/lastResult/properties/pages"
+                            },
+                            "drafted": {
+                              "$ref": "#/properties/source/properties/lastResult/properties/pages"
+                            },
+                            "updated": {
+                              "$ref": "#/properties/source/properties/lastResult/properties/pages"
+                            },
+                            "dismissedUnchanged": {
+                              "$ref": "#/properties/source/properties/lastResult/properties/pages"
+                            },
+                            "changedPublished": {
+                              "$ref": "#/properties/source/properties/lastResult/properties/pages"
+                            },
+                            "rejected": {
+                              "$ref": "#/properties/source/properties/lastResult/properties/pages"
+                            },
+                            "refused": {
+                              "type": "object",
+                              "properties": {
+                                "reason": {
+                                  "type": "string",
+                                  "enum": [
+                                    "ROBOTS",
+                                    "LOGIN",
+                                    "RENDERED_BY_SCRIPT",
+                                    "HTTP_ERROR",
+                                    "UNREACHABLE",
+                                    "UNSUPPORTED_TYPE",
+                                    "TOO_LARGE"
+                                  ]
+                                },
+                                "detail": {
+                                  "type": "string",
+                                  "maxLength": 300
+                                }
+                              },
+                              "required": [
+                                "reason",
+                                "detail"
+                              ],
+                              "additionalProperties": false,
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "pages",
+                            "cached",
+                            "candidates",
+                            "drafted",
+                            "updated",
+                            "dismissedUnchanged",
+                            "changedPublished",
+                            "rejected",
+                            "refused"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "waiting": {
+                          "$ref": "#/properties/source/properties/lastResult/properties/pages"
+                        },
+                        "streams": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "ARTS",
+                              "SCIENCE",
+                              "COMMERCE",
+                              "MANAGEMENT",
+                              "ENGINEERING",
+                              "PHARMACY",
+                              "LAW",
+                              "EDUCATION",
+                              "HEALTH_SCIENCES",
+                              "ARCHITECTURE",
+                              "AGRICULTURE",
+                              "VOCATIONAL"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "rootUrl",
+                        "organiser",
+                        "kind",
+                        "enabled",
+                        "official",
+                        "addedByRole",
+                        "lastCrawledAt",
+                        "lastResult",
+                        "waiting"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "source"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 120
+                  },
+                  "rootUrl": {
+                    "type": "string",
+                    "minLength": 8,
+                    "maxLength": 500
+                  },
+                  "organiser": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 140
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "OLYMPIAD",
+                      "TALENT_SEARCH",
+                      "SCIENCE_FAIR",
+                      "QUIZ",
+                      "OTHER",
+                      "MOOT_COURT",
+                      "HACKATHON",
+                      "COLLEGE_EVENT"
+                    ]
+                  },
+                  "official": {
+                    "type": "boolean"
+                  },
+                  "streams": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "ARTS",
+                        "SCIENCE",
+                        "COMMERCE",
+                        "MANAGEMENT",
+                        "ENGINEERING",
+                        "PHARMACY",
+                        "LAW",
+                        "EDUCATION",
+                        "HEALTH_SCIENCES",
+                        "ARCHITECTURE",
+                        "AGRICULTURE",
+                        "VOCATIONAL"
+                      ]
+                    },
+                    "maxItems": 12
+                  }
+                },
+                "required": [
+                  "name",
+                  "rootUrl",
+                  "organiser",
+                  "kind",
+                  "official"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/appadmin/competition-crawl/sources/{sourceId}": {
+      "post": {
+        "summary": "Switch a source off or on, or remove it (a stamp: what it suggested stays on the desk, and the fixture never brings it back); answers the sources as they now stand",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "sources": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "rootUrl": {
+                            "type": "string"
+                          },
+                          "organiser": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "OLYMPIAD",
+                              "TALENT_SEARCH",
+                              "SCIENCE_FAIR",
+                              "QUIZ",
+                              "OTHER",
+                              "MOOT_COURT",
+                              "HACKATHON",
+                              "COLLEGE_EVENT"
+                            ]
+                          },
+                          "enabled": {
+                            "type": "boolean"
+                          },
+                          "official": {
+                            "type": "boolean"
+                          },
+                          "addedByRole": {
+                            "type": "string"
+                          },
+                          "lastCrawledAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "lastResult": {
+                            "type": "object",
+                            "properties": {
+                              "pages": {
+                                "type": "integer",
+                                "minimum": 0
+                              },
+                              "cached": {
+                                "$ref": "#/properties/sources/items/properties/lastResult/properties/pages"
+                              },
+                              "candidates": {
+                                "$ref": "#/properties/sources/items/properties/lastResult/properties/pages"
+                              },
+                              "drafted": {
+                                "$ref": "#/properties/sources/items/properties/lastResult/properties/pages"
+                              },
+                              "updated": {
+                                "$ref": "#/properties/sources/items/properties/lastResult/properties/pages"
+                              },
+                              "dismissedUnchanged": {
+                                "$ref": "#/properties/sources/items/properties/lastResult/properties/pages"
+                              },
+                              "changedPublished": {
+                                "$ref": "#/properties/sources/items/properties/lastResult/properties/pages"
+                              },
+                              "rejected": {
+                                "$ref": "#/properties/sources/items/properties/lastResult/properties/pages"
+                              },
+                              "refused": {
+                                "type": "object",
+                                "properties": {
+                                  "reason": {
+                                    "type": "string",
+                                    "enum": [
+                                      "ROBOTS",
+                                      "LOGIN",
+                                      "RENDERED_BY_SCRIPT",
+                                      "HTTP_ERROR",
+                                      "UNREACHABLE",
+                                      "UNSUPPORTED_TYPE",
+                                      "TOO_LARGE"
+                                    ]
+                                  },
+                                  "detail": {
+                                    "type": "string",
+                                    "maxLength": 300
+                                  }
+                                },
+                                "required": [
+                                  "reason",
+                                  "detail"
+                                ],
+                                "additionalProperties": false,
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "pages",
+                              "cached",
+                              "candidates",
+                              "drafted",
+                              "updated",
+                              "dismissedUnchanged",
+                              "changedPublished",
+                              "rejected",
+                              "refused"
+                            ],
+                            "additionalProperties": false,
+                            "nullable": true
+                          },
+                          "waiting": {
+                            "$ref": "#/properties/sources/items/properties/lastResult/properties/pages"
+                          },
+                          "streams": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "ARTS",
+                                "SCIENCE",
+                                "COMMERCE",
+                                "MANAGEMENT",
+                                "ENGINEERING",
+                                "PHARMACY",
+                                "LAW",
+                                "EDUCATION",
+                                "HEALTH_SCIENCES",
+                                "ARCHITECTURE",
+                                "AGRICULTURE",
+                                "VOCATIONAL"
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "rootUrl",
+                          "organiser",
+                          "kind",
+                          "enabled",
+                          "official",
+                          "addedByRole",
+                          "lastCrawledAt",
+                          "lastResult",
+                          "waiting"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "sources"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "ENABLE",
+                      "DISABLE",
+                      "REMOVE"
+                    ]
+                  }
+                },
+                "required": [
+                  "action"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "sourceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/appadmin/competition-crawl/{jobId}": {
+      "get": {
+        "summary": "One crawl: its state, its live line, who started it and which model servers it brought up",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "job": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "QUEUED",
+                            "RUNNING",
+                            "STOPPING",
+                            "STOPPED",
+                            "FINISHED",
+                            "FAILED"
+                          ]
+                        },
+                        "request": {
+                          "type": "object",
+                          "properties": {
+                            "sourceIds": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/properties/job/properties/id"
+                              },
+                              "maxItems": 60
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "progress": {
+                          "type": "object",
+                          "properties": {
+                            "phase": {
+                              "type": "string",
+                              "enum": [
+                                "STARTING_MODEL",
+                                "CRAWLING",
+                                "DONE"
+                              ]
+                            },
+                            "source": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "sourcesTotal": {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            "sourcesVisited": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "pagesRead": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "cachedHits": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "candidates": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "drafted": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "updated": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "dismissedUnchanged": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "changedPublished": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "rejects": {
+                              "type": "object",
+                              "required": [
+                                "SHAPE",
+                                "NO_DATE_NO_LINK",
+                                "OFF_HOST_LINK",
+                                "CONTACT_DETAILS",
+                                "LOW_CONFIDENCE",
+                                "PAST",
+                                "NOT_ENTERABLE"
+                              ],
+                              "properties": {
+                                "SHAPE": {
+                                  "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                                },
+                                "NO_DATE_NO_LINK": {
+                                  "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                                },
+                                "OFF_HOST_LINK": {
+                                  "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                                },
+                                "CONTACT_DETAILS": {
+                                  "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                                },
+                                "LOW_CONFIDENCE": {
+                                  "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                                },
+                                "PAST": {
+                                  "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                                },
+                                "NOT_ENTERABLE": {
+                                  "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "refused": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "source": {
+                                    "type": "string"
+                                  },
+                                  "reason": {
+                                    "type": "string",
+                                    "enum": [
+                                      "ROBOTS",
+                                      "LOGIN",
+                                      "RENDERED_BY_SCRIPT",
+                                      "HTTP_ERROR",
+                                      "UNREACHABLE",
+                                      "UNSUPPORTED_TYPE",
+                                      "TOO_LARGE"
+                                    ]
+                                  },
+                                  "detail": {
+                                    "type": "string",
+                                    "maxLength": 300
+                                  }
+                                },
+                                "required": [
+                                  "source",
+                                  "reason",
+                                  "detail"
+                                ],
+                                "additionalProperties": false
+                              }
+                            }
+                          },
+                          "required": [
+                            "phase",
+                            "source",
+                            "sourcesTotal",
+                            "sourcesVisited",
+                            "pagesRead",
+                            "cachedHits",
+                            "candidates",
+                            "drafted",
+                            "updated",
+                            "dismissedUnchanged",
+                            "changedPublished",
+                            "rejects",
+                            "refused"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "startedBy": {
+                          "type": "string"
+                        },
+                        "startedByRole": {
+                          "type": "string",
+                          "enum": [
+                            "APP_ADMIN",
+                            "OPERATOR"
+                          ]
+                        },
+                        "startedServers": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "chat",
+                              "embed"
+                            ]
+                          }
+                        },
+                        "error": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "startedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/job/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "finishedAt": {
+                          "$ref": "#/properties/job/properties/startedAt"
+                        },
+                        "heartbeatAt": {
+                          "$ref": "#/properties/job/properties/startedAt"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "state",
+                        "request",
+                        "progress",
+                        "startedBy",
+                        "startedByRole",
+                        "startedServers",
+                        "error",
+                        "createdAt",
+                        "startedAt",
+                        "finishedAt",
+                        "heartbeatAt"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "job"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/appadmin/competition-crawl/{jobId}/stop": {
+      "post": {
+        "summary": "Stop a crawl: the runner finishes the page in hand and halts, and the model servers this crawl brought up go down with it (or to a quiz run still going); an ended crawl is left as it is",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "job": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "QUEUED",
+                            "RUNNING",
+                            "STOPPING",
+                            "STOPPED",
+                            "FINISHED",
+                            "FAILED"
+                          ]
+                        },
+                        "request": {
+                          "type": "object",
+                          "properties": {
+                            "sourceIds": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/properties/job/properties/id"
+                              },
+                              "maxItems": 60
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "progress": {
+                          "type": "object",
+                          "properties": {
+                            "phase": {
+                              "type": "string",
+                              "enum": [
+                                "STARTING_MODEL",
+                                "CRAWLING",
+                                "DONE"
+                              ]
+                            },
+                            "source": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "sourcesTotal": {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            "sourcesVisited": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "pagesRead": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "cachedHits": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "candidates": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "drafted": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "updated": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "dismissedUnchanged": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "changedPublished": {
+                              "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                            },
+                            "rejects": {
+                              "type": "object",
+                              "required": [
+                                "SHAPE",
+                                "NO_DATE_NO_LINK",
+                                "OFF_HOST_LINK",
+                                "CONTACT_DETAILS",
+                                "LOW_CONFIDENCE",
+                                "PAST",
+                                "NOT_ENTERABLE"
+                              ],
+                              "properties": {
+                                "SHAPE": {
+                                  "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                                },
+                                "NO_DATE_NO_LINK": {
+                                  "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                                },
+                                "OFF_HOST_LINK": {
+                                  "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                                },
+                                "CONTACT_DETAILS": {
+                                  "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                                },
+                                "LOW_CONFIDENCE": {
+                                  "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                                },
+                                "PAST": {
+                                  "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                                },
+                                "NOT_ENTERABLE": {
+                                  "$ref": "#/properties/job/properties/progress/properties/sourcesTotal"
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "refused": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "source": {
+                                    "type": "string"
+                                  },
+                                  "reason": {
+                                    "type": "string",
+                                    "enum": [
+                                      "ROBOTS",
+                                      "LOGIN",
+                                      "RENDERED_BY_SCRIPT",
+                                      "HTTP_ERROR",
+                                      "UNREACHABLE",
+                                      "UNSUPPORTED_TYPE",
+                                      "TOO_LARGE"
+                                    ]
+                                  },
+                                  "detail": {
+                                    "type": "string",
+                                    "maxLength": 300
+                                  }
+                                },
+                                "required": [
+                                  "source",
+                                  "reason",
+                                  "detail"
+                                ],
+                                "additionalProperties": false
+                              }
+                            }
+                          },
+                          "required": [
+                            "phase",
+                            "source",
+                            "sourcesTotal",
+                            "sourcesVisited",
+                            "pagesRead",
+                            "cachedHits",
+                            "candidates",
+                            "drafted",
+                            "updated",
+                            "dismissedUnchanged",
+                            "changedPublished",
+                            "rejects",
+                            "refused"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "startedBy": {
+                          "type": "string"
+                        },
+                        "startedByRole": {
+                          "type": "string",
+                          "enum": [
+                            "APP_ADMIN",
+                            "OPERATOR"
+                          ]
+                        },
+                        "startedServers": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "chat",
+                              "embed"
+                            ]
+                          }
+                        },
+                        "error": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "startedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/job/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "finishedAt": {
+                          "$ref": "#/properties/job/properties/startedAt"
+                        },
+                        "heartbeatAt": {
+                          "$ref": "#/properties/job/properties/startedAt"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "state",
+                        "request",
+                        "progress",
+                        "startedBy",
+                        "startedByRole",
+                        "startedServers",
+                        "error",
+                        "createdAt",
+                        "startedAt",
+                        "finishedAt",
+                        "heartbeatAt"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "job"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/appadmin/competitions/suggested": {
+      "get": {
+        "summary": "Competitions suggested from the web: the drafts waiting (SUGGESTED), the published ones whose page changed since review with the diff (CHANGED), or the dismissed (DISMISSED); each with its source, page, confidence and when it was last checked",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "show": {
+                      "type": "string",
+                      "enum": [
+                        "SUGGESTED",
+                        "CHANGED",
+                        "DISMISSED"
+                      ]
+                    },
+                    "counts": {
+                      "type": "object",
+                      "properties": {
+                        "suggested": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "changed": {
+                          "$ref": "#/properties/counts/properties/suggested"
+                        },
+                        "dismissed": {
+                          "$ref": "#/properties/counts/properties/suggested"
+                        }
+                      },
+                      "required": [
+                        "suggested",
+                        "changed",
+                        "dismissed"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "competitionId": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "summary": {
+                            "type": "string"
+                          },
+                          "organizerName": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "verified": {
+                            "type": "boolean"
+                          },
+                          "subject": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "gradeLow": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "gradeHigh": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "level": {
+                            "type": "string",
+                            "enum": [
+                              "SCHOOL",
+                              "STATE",
+                              "NATIONAL",
+                              "INTERNATIONAL"
+                            ],
+                            "nullable": true
+                          },
+                          "fee": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "eligibility": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "prizes": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "externalUrl": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "registrationOpensAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "registrationClosesAt": {
+                            "$ref": "#/properties/items/items/properties/registrationOpensAt"
+                          },
+                          "startsAt": {
+                            "$ref": "#/properties/items/items/properties/registrationOpensAt"
+                          },
+                          "endsAt": {
+                            "$ref": "#/properties/items/items/properties/registrationOpensAt"
+                          },
+                          "source": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "$ref": "#/properties/items/items/properties/competitionId"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "organiser": {
+                                "type": "string"
+                              },
+                              "official": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "name",
+                              "organiser",
+                              "official"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "pageUrl": {
+                            "type": "string"
+                          },
+                          "crawledAt": {
+                            "$ref": "#/properties/items/items/properties/registrationOpensAt"
+                          },
+                          "lastCheckedAt": {
+                            "$ref": "#/properties/items/items/properties/registrationOpensAt"
+                          },
+                          "confidence": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                          },
+                          "matchedExisting": {
+                            "type": "boolean"
+                          },
+                          "changedSinceReview": {
+                            "type": "boolean"
+                          },
+                          "diff": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "type": "object",
+                              "properties": {
+                                "before": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "enum": [
+                                        "null"
+                                      ],
+                                      "nullable": true
+                                    }
+                                  ]
+                                },
+                                "after": {
+                                  "$ref": "#/properties/items/items/properties/diff/additionalProperties/properties/before"
+                                }
+                              },
+                              "required": [
+                                "before",
+                                "after"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "nullable": true
+                          },
+                          "dismissedAt": {
+                            "$ref": "#/properties/items/items/properties/registrationOpensAt"
+                          },
+                          "dismissedReason": {
+                            "type": "string",
+                            "enum": [
+                              "NOT_A_COMPETITION",
+                              "DUPLICATE",
+                              "ALREADY_OVER",
+                              "NOT_FOR_PUPILS",
+                              "WRONG_DETAILS",
+                              "NOT_THE_ORGANISER",
+                              "OTHER"
+                            ],
+                            "nullable": true
+                          },
+                          "audience": {
+                            "type": "string",
+                            "enum": [
+                              "SCHOOL",
+                              "COLLEGE"
+                            ],
+                            "nullable": true
+                          },
+                          "streams": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "required": [
+                          "competitionId",
+                          "title",
+                          "summary",
+                          "organizerName",
+                          "status",
+                          "verified",
+                          "subject",
+                          "gradeLow",
+                          "gradeHigh",
+                          "level",
+                          "fee",
+                          "eligibility",
+                          "prizes",
+                          "externalUrl",
+                          "registrationOpensAt",
+                          "registrationClosesAt",
+                          "startsAt",
+                          "endsAt",
+                          "source",
+                          "pageUrl",
+                          "crawledAt",
+                          "lastCheckedAt",
+                          "confidence",
+                          "matchedExisting",
+                          "changedSinceReview",
+                          "diff",
+                          "dismissedAt",
+                          "dismissedReason"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "show",
+                    "counts",
+                    "items"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/appadmin/competitions/{competitionId}/edit": {
+      "post": {
+        "summary": "Edit a platform competition's draft in place (title, summary, organiser, subject, classes, eligibility, rules, prizes, link, dates); 409 for one already published",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "changed": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "changed"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "maxLength": 140
+                  },
+                  "summary": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "body": {
+                    "type": "string",
+                    "maxLength": 5000,
+                    "nullable": true
+                  },
+                  "organizerName": {
+                    "type": "string",
+                    "maxLength": 120,
+                    "nullable": true
+                  },
+                  "subject": {
+                    "type": "string",
+                    "maxLength": 40,
+                    "nullable": true
+                  },
+                  "gradeLow": {
+                    "type": "string",
+                    "maxLength": 10,
+                    "nullable": true
+                  },
+                  "gradeHigh": {
+                    "type": "string",
+                    "maxLength": 10,
+                    "nullable": true
+                  },
+                  "eligibility": {
+                    "type": "string",
+                    "maxLength": 5000,
+                    "nullable": true
+                  },
+                  "rules": {
+                    "type": "string",
+                    "maxLength": 5000,
+                    "nullable": true
+                  },
+                  "prizes": {
+                    "type": "string",
+                    "maxLength": 5000,
+                    "nullable": true
+                  },
+                  "externalUrl": {
+                    "type": "string",
+                    "maxLength": 500,
+                    "nullable": true
+                  },
+                  "registrationOpensAt": {
+                    "type": "string",
+                    "maxLength": 40,
+                    "nullable": true
+                  },
+                  "registrationClosesAt": {
+                    "$ref": "#/properties/registrationOpensAt"
+                  },
+                  "startsAt": {
+                    "$ref": "#/properties/registrationOpensAt"
+                  },
+                  "endsAt": {
+                    "$ref": "#/properties/registrationOpensAt"
+                  }
+                },
+                "required": [
+                  "title",
+                  "summary"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "competitionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/appadmin/competitions/{competitionId}/dismiss": {
+      "post": {
+        "summary": "Dismiss a suggestion with a coded reason; it is not suggested again unless the page it came from changes",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "suggestion": {
+                      "type": "object",
+                      "properties": {
+                        "competitionId": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "summary": {
+                          "type": "string"
+                        },
+                        "organizerName": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "verified": {
+                          "type": "boolean"
+                        },
+                        "subject": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "gradeLow": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "gradeHigh": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "level": {
+                          "type": "string",
+                          "enum": [
+                            "SCHOOL",
+                            "STATE",
+                            "NATIONAL",
+                            "INTERNATIONAL"
+                          ],
+                          "nullable": true
+                        },
+                        "fee": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "eligibility": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "prizes": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "externalUrl": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "registrationOpensAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "registrationClosesAt": {
+                          "$ref": "#/properties/suggestion/properties/registrationOpensAt"
+                        },
+                        "startsAt": {
+                          "$ref": "#/properties/suggestion/properties/registrationOpensAt"
+                        },
+                        "endsAt": {
+                          "$ref": "#/properties/suggestion/properties/registrationOpensAt"
+                        },
+                        "source": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "$ref": "#/properties/suggestion/properties/competitionId"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "organiser": {
+                              "type": "string"
+                            },
+                            "official": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "organiser",
+                            "official"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "pageUrl": {
+                          "type": "string"
+                        },
+                        "crawledAt": {
+                          "$ref": "#/properties/suggestion/properties/registrationOpensAt"
+                        },
+                        "lastCheckedAt": {
+                          "$ref": "#/properties/suggestion/properties/registrationOpensAt"
+                        },
+                        "confidence": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "matchedExisting": {
+                          "type": "boolean"
+                        },
+                        "changedSinceReview": {
+                          "type": "boolean"
+                        },
+                        "diff": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "before": {
+                                "anyOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "enum": [
+                                      "null"
+                                    ],
+                                    "nullable": true
+                                  }
+                                ]
+                              },
+                              "after": {
+                                "$ref": "#/properties/suggestion/properties/diff/additionalProperties/properties/before"
+                              }
+                            },
+                            "required": [
+                              "before",
+                              "after"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "nullable": true
+                        },
+                        "dismissedAt": {
+                          "$ref": "#/properties/suggestion/properties/registrationOpensAt"
+                        },
+                        "dismissedReason": {
+                          "type": "string",
+                          "enum": [
+                            "NOT_A_COMPETITION",
+                            "DUPLICATE",
+                            "ALREADY_OVER",
+                            "NOT_FOR_PUPILS",
+                            "WRONG_DETAILS",
+                            "NOT_THE_ORGANISER",
+                            "OTHER"
+                          ],
+                          "nullable": true
+                        },
+                        "audience": {
+                          "type": "string",
+                          "enum": [
+                            "SCHOOL",
+                            "COLLEGE"
+                          ],
+                          "nullable": true
+                        },
+                        "streams": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "competitionId",
+                        "title",
+                        "summary",
+                        "organizerName",
+                        "status",
+                        "verified",
+                        "subject",
+                        "gradeLow",
+                        "gradeHigh",
+                        "level",
+                        "fee",
+                        "eligibility",
+                        "prizes",
+                        "externalUrl",
+                        "registrationOpensAt",
+                        "registrationClosesAt",
+                        "startsAt",
+                        "endsAt",
+                        "source",
+                        "pageUrl",
+                        "crawledAt",
+                        "lastCheckedAt",
+                        "confidence",
+                        "matchedExisting",
+                        "changedSinceReview",
+                        "diff",
+                        "dismissedAt",
+                        "dismissedReason"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "suggestion"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "enum": [
+                      "NOT_A_COMPETITION",
+                      "DUPLICATE",
+                      "ALREADY_OVER",
+                      "NOT_FOR_PUPILS",
+                      "WRONG_DETAILS",
+                      "NOT_THE_ORGANISER",
+                      "OTHER"
+                    ]
+                  }
+                },
+                "required": [
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "competitionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/appadmin/competitions/{competitionId}/audience": {
+      "post": {
+        "summary": "Set who a platform competition is for, in any status: SCHOOL (its classes as posted), COLLEGE with zero or more streams (none: every college), or null (not set: schools and colleges alike); a tenant's competitions list shows only what fits it; audited",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "audience": {
+                      "type": "string",
+                      "enum": [
+                        "SCHOOL",
+                        "COLLEGE"
+                      ],
+                      "nullable": true
+                    },
+                    "streams": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "changed": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "audience",
+                    "streams",
+                    "changed"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "audience": {
+                    "type": "string",
+                    "enum": [
+                      "SCHOOL",
+                      "COLLEGE"
+                    ],
+                    "nullable": true
+                  },
+                  "streams": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "ARTS",
+                        "SCIENCE",
+                        "COMMERCE",
+                        "MANAGEMENT",
+                        "ENGINEERING",
+                        "PHARMACY",
+                        "LAW",
+                        "EDUCATION",
+                        "HEALTH_SCIENCES",
+                        "ARCHITECTURE",
+                        "AGRICULTURE",
+                        "VOCATIONAL"
+                      ]
+                    },
+                    "maxItems": 12,
+                    "default": []
+                  }
+                },
+                "required": [
+                  "audience"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "competitionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/appadmin/competitions/{competitionId}/reviewed": {
+      "post": {
+        "summary": "A published competition whose page changed has been looked at: the changed-since-review flag comes off and its diff is kept in the audit line",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "suggestion": {
+                      "type": "object",
+                      "properties": {
+                        "competitionId": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "summary": {
+                          "type": "string"
+                        },
+                        "organizerName": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "verified": {
+                          "type": "boolean"
+                        },
+                        "subject": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "gradeLow": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "gradeHigh": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "level": {
+                          "type": "string",
+                          "enum": [
+                            "SCHOOL",
+                            "STATE",
+                            "NATIONAL",
+                            "INTERNATIONAL"
+                          ],
+                          "nullable": true
+                        },
+                        "fee": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "eligibility": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "prizes": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "externalUrl": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "registrationOpensAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "registrationClosesAt": {
+                          "$ref": "#/properties/suggestion/properties/registrationOpensAt"
+                        },
+                        "startsAt": {
+                          "$ref": "#/properties/suggestion/properties/registrationOpensAt"
+                        },
+                        "endsAt": {
+                          "$ref": "#/properties/suggestion/properties/registrationOpensAt"
+                        },
+                        "source": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "$ref": "#/properties/suggestion/properties/competitionId"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "organiser": {
+                              "type": "string"
+                            },
+                            "official": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "organiser",
+                            "official"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "pageUrl": {
+                          "type": "string"
+                        },
+                        "crawledAt": {
+                          "$ref": "#/properties/suggestion/properties/registrationOpensAt"
+                        },
+                        "lastCheckedAt": {
+                          "$ref": "#/properties/suggestion/properties/registrationOpensAt"
+                        },
+                        "confidence": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "matchedExisting": {
+                          "type": "boolean"
+                        },
+                        "changedSinceReview": {
+                          "type": "boolean"
+                        },
+                        "diff": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "before": {
+                                "anyOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "enum": [
+                                      "null"
+                                    ],
+                                    "nullable": true
+                                  }
+                                ]
+                              },
+                              "after": {
+                                "$ref": "#/properties/suggestion/properties/diff/additionalProperties/properties/before"
+                              }
+                            },
+                            "required": [
+                              "before",
+                              "after"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "nullable": true
+                        },
+                        "dismissedAt": {
+                          "$ref": "#/properties/suggestion/properties/registrationOpensAt"
+                        },
+                        "dismissedReason": {
+                          "type": "string",
+                          "enum": [
+                            "NOT_A_COMPETITION",
+                            "DUPLICATE",
+                            "ALREADY_OVER",
+                            "NOT_FOR_PUPILS",
+                            "WRONG_DETAILS",
+                            "NOT_THE_ORGANISER",
+                            "OTHER"
+                          ],
+                          "nullable": true
+                        },
+                        "audience": {
+                          "type": "string",
+                          "enum": [
+                            "SCHOOL",
+                            "COLLEGE"
+                          ],
+                          "nullable": true
+                        },
+                        "streams": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "competitionId",
+                        "title",
+                        "summary",
+                        "organizerName",
+                        "status",
+                        "verified",
+                        "subject",
+                        "gradeLow",
+                        "gradeHigh",
+                        "level",
+                        "fee",
+                        "eligibility",
+                        "prizes",
+                        "externalUrl",
+                        "registrationOpensAt",
+                        "registrationClosesAt",
+                        "startsAt",
+                        "endsAt",
+                        "source",
+                        "pageUrl",
+                        "crawledAt",
+                        "lastCheckedAt",
+                        "confidence",
+                        "matchedExisting",
+                        "changedSinceReview",
+                        "diff",
+                        "dismissedAt",
+                        "dismissedReason"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "suggestion"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "competitionId",
             "in": "path",
             "required": true,
             "schema": {
