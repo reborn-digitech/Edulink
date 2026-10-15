@@ -11,7 +11,7 @@ import { isHttpsUrl } from "./app-admin";
 import { gigSettings, monthKey, type GigResult, type GigSettingsView } from "./gig-questions";
 import { HOLD_HOURS, UNPAID_SEAT_EXPIRY_MS, markCaptured, openCheckout, paymentSettings, paymentsOn, payoutAccountOf, refundSeatPayment, releaseDue, rupees, scheduleRelease, type PaymentSettings, type PayoutAccountView, type ReleaseRun, type SeatCheckout } from "./gig-payments";
 import type { ActiveContext } from "./session";
-import { assertFeatureOn, mayUse, type WhoLike } from "./platform-features";
+import { assertFeatureOn, assertFeatureSwitchOn, mayUse, type WhoLike } from "./platform-features";
 
 /**
  * Gigs, the free tier: one-to-one sessions and workshops (decision 0004).
@@ -132,7 +132,9 @@ async function provider(ctx: ActiveContext): Promise<Provider> {
  * a school's switch was on, or while an expert was on the list, is still theirs to mark and to cancel.
  */
 async function offerer(ctx: ActiveContext): Promise<Provider> {
-  if (ctx.role === "EXPERT" || ctx.role === "TEACHER") await assertKindOn(ctx.role, ctx);
+  // The platform switch alone (16 Oct 2026): what a provider offered while their plan held is still theirs to mark
+  // and to cancel after it ends (src/lib/person-plans.ts); offering anything NEW asks the plan (providerOrOff).
+  if (ctx.role === "EXPERT" || ctx.role === "TEACHER") await assertFeatureSwitchOn([FEATURE_OF_KIND[ctx.role]]);
   if (ctx.role === "EXPERT") return { userId: ctx.user.id, kind: "EXPERT", schoolId: null };
   if (ctx.role === "TEACHER" && ctx.schoolId) return { userId: ctx.user.id, kind: "TEACHER", schoolId: ctx.schoolId };
   // An alumnus mentor marks and cancels what they offered (placement-alumni.ts writes the slot, never priced).

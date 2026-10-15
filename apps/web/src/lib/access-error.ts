@@ -1,5 +1,5 @@
 import type { TranslationKey } from "@/lib/i18n/dictionary";
-import type { FeatureCode, SchoolModuleCode } from "@edulink/contracts";
+import type { FeatureCode, PlanCode, SchoolModuleCode } from "@edulink/contracts";
 
 /**
  * ⚠ THE MESSAGE IS A KEY, and the constructor's type is what enforces it.
@@ -96,5 +96,23 @@ export class FeatureOffError extends AccessError {
   ) {
     super(key, "NOT_FOUND", { feature });
     this.name = "FeatureOffError";
+  }
+}
+
+/**
+ * A door, page or write of a platform feature that is ON but needs a plan this person does not hold (16 Oct 2026;
+ * src/lib/person-plans.ts, decision 0006): the STUDENT plan for a pupil's practice, the TEACHER plan for a
+ * teacher's assistant, the EXPERT plan for offering time. `apiFailure` answers it 402 with the envelope code
+ * PLAN_REQUIRED and `plan`; a page gate shows the plan card instead (feature-page.ts), and a server action says the
+ * sentence, which names the plan. A FORBIDDEN AccessError otherwise, so a page that lets it escape renders the 404.
+ */
+const PLAN_REFUSAL: Record<PlanCode, TranslationKey> = { STUDENT: "plans.refuseStudent", TEACHER: "plans.refuseTeacher", EXPERT: "plans.refuseExpert" };
+export class PlanRequiredError extends AccessError {
+  constructor(
+    readonly plan: PlanCode,
+    readonly feature: FeatureCode,
+  ) {
+    super(PLAN_REFUSAL[plan], "FORBIDDEN", { plan, feature });
+    this.name = "PlanRequiredError";
   }
 }

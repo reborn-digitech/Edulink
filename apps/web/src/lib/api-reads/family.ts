@@ -39,6 +39,7 @@ import { MONTH_KEY, shiftMonth } from "@/lib/attendance-history";
 import { addDaysToKey, isDateKey, isTeachingDay, isWithin, parseTeachingDays, todayKey, weekdayOfKey } from "@/lib/dates";
 import { readJson, writeJson } from "@/lib/json";
 import { audit } from "@/lib/audit";
+import { assertChildMayUse } from "@/lib/platform-features"; // plans (16 Oct 2026)
 import { notify } from "@/lib/notify";
 import { publish, channel } from "@/lib/realtime";
 import { AVATAR_PRESETS } from "@/components/ui/avatar";
@@ -701,6 +702,8 @@ export async function parentAssignments(ctx: ActiveContext, childId?: string | n
 /** /parent/practice — every chapter the child has touched, for their guardian. */
 export async function parentPractice(ctx: ActiveContext, childId?: string | null) {
   const { children, selectedId } = await selectChild(ctx, childId, "RESULTS");
+  // plans (16 Oct 2026): a guardian reads a child's practice only while the CHILD may use it (402 PLAN_REQUIRED, STUDENT).
+  await assertChildMayUse("QUESTION_BANK", selectedId);
   const language = normaliseLanguage(ctx.user.prefs.locale);
   const { childName, topics, weeklyCount, schoolBoard, practiceKind } = await childPracticeProgress(ctx.user.id, selectedId, language);
   // quiz-board (11 Oct 2026): every chapter with its board, and the child's school's board for the phone's switch.

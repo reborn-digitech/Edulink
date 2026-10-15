@@ -1,11 +1,13 @@
 import "server-only";
 import { cache } from "react";
-import { PLATFORM_FEATURES, type FeatureCode, type OperatorFeature } from "@edulink/contracts";
+import { PLATFORM_FEATURES, type FeatureCode, type OperatorFeature, type PlanCode } from "@edulink/contracts";
 import { db } from "./db";
 import { audit } from "./audit";
-import { AccessError, FeatureOffError } from "./access-error";
+import { AccessError, FeatureOffError, PlanRequiredError } from "./access-error";
 import { forTenant } from "./tenant-context";
 import type { ActiveContext } from "./session";
+import type { Role } from "./constants";
+import { planLockFor } from "./person-plans";
 
 export { PLATFORM_FEATURES, type FeatureCode };
 
@@ -27,18 +29,24 @@ export { PLATFORM_FEATURES, type FeatureCode };
  *   - `mayUse(code, who)` to decide what to draw (a tile, a card, a section of a shared page);
  *   - a NAV entry's `feature` (nav.ts), dropped by the shell while off; the phone's by /api/v1/me's `features`.
  *
- * THE SEAM FOR WHAT COMES NEXT: the operator will sell student, teacher and expert subscriptions that
- * open a feature per person. That check is ANDed into `mayUse` below — the one function every gated
- * surface reaches — so no gated page or door has to be touched again. Today it is the platform switch.
+ * THE SEAM (16 October 2026, plans sold per person; src/lib/person-plans.ts, decision 0006): `mayUse` is the
+ * platform switch AND (the feature needs no plan for this person's role OR the person holds an entitlement
+ * covering now). A feature that is on but locked for the person answers 402 PLAN_REQUIRED at a door
+ * (`PlanRequiredError`), shows the plan card on a page (feature-page.ts), and keeps its nav entry so the person
+ * can reach the card (`featuresFor` is the switch alone; `lockedFor` names what is locked).
  */
 
-export type Who = { userId: string | null; schoolId: string | null };
+/**
+ * Who is asking. `role` is the role on the session, which decides whether a plan is needed (person-plans.ts
+ * PLAN_TABLE); a call naming no role — a job, the calendar feed, the texts — asks the platform switch alone.
+ */
+export type Who = { userId: string | null; schoolId: string | null; role?: Role | null };
 /** A session, or the person and school it is about; null for a call with nobody behind it (a job, the gate before a session). */
-export type WhoLike = Who | Pick<ActiveContext, "user" | "schoolId"> | null | undefined;
+export type WhoLike = Who | (Pick<ActiveContext, "user" | "schoolId"> & Partial<Pick<ActiveContext, "role">>) | null | undefined;
 
 function whoOf(who: WhoLike): Who {
-  if (!who) return { userId: null, schoolId: null };
-  if ("user" in who) return { userId: who.user.id, schoolId: who.schoolId };
+  if (!who) return { userId: null, schoolId: null, role: null };
+  if ("user" in who) return { userId: who.user.id, schoolId: who.schoolId, role: who.role ?? null };
   return who;
 }
 
@@ -86,13 +94,19 @@ export async function featureOn(code: FeatureCode): Promise<boolean> {
   return (await featuresOn()).includes(code);
 }
 
+/** The plan this person lacks for a feature that is on, or null (no plan needed, the plan inactive, or entitled). */
+export async function lockOf(code: FeatureCode, who: WhoLike): Promise<PlanCode | null> {
+  const w = whoOf(who);
+  return planLockFor(code, { userId: w.userId, role: w.role });
+}
+
 /**
- * MAY THIS PERSON USE THIS FEATURE HERE? The only question a gated surface asks. Today it is the platform
- * switch alone; the per-person subscription check of the next task is ANDed in here, with `who`.
+ * MAY THIS PERSON USE THIS FEATURE HERE? The only question a gated surface asks: the platform switch, and then
+ * (16 Oct 2026) the person's plan where their role needs one (person-plans.ts).
  */
 export async function mayUse(code: FeatureCode, who: WhoLike): Promise<boolean> {
-  void whoOf(who); // the person and the school the per-person entitlement will read
-  return featureOn(code);
+  if (!(await featureOn(code))) return false;
+  return (await lockOf(code, who)) === null;
 }
 
 /** Whether any of `codes` may be used: a page two features share (the family's /sessions, the office's). */
@@ -101,21 +115,74 @@ export async function mayUseAny(codes: readonly FeatureCode[], who: WhoLike): Pr
   return false;
 }
 
-/** The features this person may use: /api/v1/me's `features` and the shell's nav. */
+/**
+ * What a person meets at a surface of `codes` (any of): "open"; "off" while every one is off for the platform; or
+ * "plan" — a feature is on but the person lacks its plan — naming the first such feature and its plan.
+ */
+export type FeatureAccess = { state: "open" } | { state: "off"; feature: FeatureCode } | { state: "plan"; feature: FeatureCode; plan: PlanCode };
+export async function accessTo(codes: readonly FeatureCode[], who: WhoLike): Promise<FeatureAccess> {
+  let locked: { feature: FeatureCode; plan: PlanCode } | null = null;
+  for (const code of codes) {
+    if (!(await featureOn(code))) continue;
+    const plan = await lockOf(code, who);
+    if (plan === null) return { state: "open" };
+    locked ??= { feature: code, plan };
+  }
+  return locked ? { state: "plan", ...locked } : { state: "off", feature: codes[0]! };
+}
+
+/**
+ * The features this person is SHOWN: /api/v1/me's `features` and the shell's nav. The platform switch alone, so a
+ * feature behind a plan the person lacks keeps its entry and leads to the plan card (`lockedFor` names those).
+ */
 export async function featuresFor(who: WhoLike): Promise<FeatureCode[]> {
+  void who;
+  return [...(await featuresOn())];
+}
+
+/** The features on for the platform that this person reaches only with a plan they do not hold: /api/v1/me's `locked`. */
+export async function lockedFor(who: WhoLike): Promise<FeatureCode[]> {
   const out: FeatureCode[] = [];
-  for (const code of PLATFORM_FEATURES) if (await mayUse(code, who)) out.push(code);
+  for (const code of await featuresOn()) if ((await lockOf(code, who)) !== null) out.push(code);
   return out;
 }
 
-/** Throws FeatureOffError (404, code FEATURE_OFF at the API; the app's 404 on a page) unless `code` may be used. */
+/**
+ * Throws unless `code` may be used: FeatureOffError while the platform has it off (404 FEATURE_OFF at the API; the
+ * app's 404 on a page), PlanRequiredError while it is on and the person lacks its plan (402 PLAN_REQUIRED).
+ */
 export async function assertFeatureOn(code: FeatureCode, who: WhoLike): Promise<void> {
-  if (!(await mayUse(code, who))) throw new FeatureOffError(code);
+  await assertAnyFeatureOn([code], who);
 }
 
 /** …unless any of `codes` may be used. */
 export async function assertAnyFeatureOn(codes: readonly FeatureCode[], who: WhoLike): Promise<void> {
-  if (!(await mayUseAny(codes, who))) throw new FeatureOffError(codes[0]!);
+  const access = await accessTo(codes, who);
+  if (access.state === "off") throw new FeatureOffError(codes[0]!);
+  if (access.state === "plan") throw new PlanRequiredError(access.plan, access.feature);
+}
+
+/** The platform switch alone, plan or not: for what a lapsed plan must keep open (an expert's earnings, a provider's own bookings). */
+export async function assertFeatureSwitchOn(codes: readonly FeatureCode[]): Promise<void> {
+  for (const code of codes) if (await featureOn(code)) return;
+  throw new FeatureOffError(codes[0]!);
+}
+
+/**
+ * A GUARDIAN READING A CHILD'S FEATURE (16 Oct 2026): a guardian needs no plan of their own, but reads a child's
+ * practice only while the CHILD may use it — the plan the guardian buys is the pupil's. The child is the pupil of
+ * `studentMembershipId`, judged as a STUDENT. The gate cannot do this (the child is in the query, which the gate
+ * never sees), so the guardian's door and page call it once the child is chosen.
+ */
+export async function childLock(code: FeatureCode, studentMembershipId: string): Promise<PlanCode | null> {
+  const m = await db.membership.findUnique({ where: { id: studentMembershipId }, select: { userId: true, schoolId: true } });
+  if (!m) return null;
+  return planLockFor(code, { userId: m.userId, role: "STUDENT" });
+}
+export async function assertChildMayUse(code: FeatureCode, studentMembershipId: string): Promise<void> {
+  if (!(await featureOn(code))) throw new FeatureOffError(code);
+  const plan = await childLock(code, studentMembershipId);
+  if (plan) throw new PlanRequiredError(plan, code);
 }
 
 /* -------------------------------------------------------------------------- */

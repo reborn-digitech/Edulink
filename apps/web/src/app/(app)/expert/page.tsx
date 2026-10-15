@@ -12,7 +12,8 @@ import { EXPERT_BOOKING_STATUS_KEY, type ExpertBookingStatus } from "@/lib/const
 import { formatUtcMoment } from "@/lib/dates";
 import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/ui/page-header";
-import { mayUse } from "@/lib/platform-features";
+import { accessTo } from "@/lib/platform-features";
+import { PlanCard } from "@/components/plan-card";
 import { UserIcon } from "@phosphor-icons/react/ssr";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -25,7 +26,10 @@ export default async function ExpertHome() {
   const ctx = await requireExpert();
   // Expert sessions switched off on the platform (15 Oct 2026): the expert still signs in and keeps their profile,
   // and their home says, in one sentence, that sessions are not open yet; nothing else of the sessions is drawn.
-  if (!(await mayUse("EXPERT_SESSIONS", ctx))) {
+  // plans (16 Oct 2026): sessions on, but the EXPERT plan asked for and not held — the plan card, the profile still theirs.
+  const access = await accessTo(["EXPERT_SESSIONS"], ctx);
+  if (access.state === "plan") return <PlanCard plan={access.plan} feature={access.feature} />;
+  if (access.state === "off") {
     return (
       <div className="space-y-5">
         <PageHeader title={t("expert.bookings")} />

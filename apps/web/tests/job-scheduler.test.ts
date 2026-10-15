@@ -68,7 +68,7 @@ describe("startJobScheduler", () => {
     // messages:send is "* * * * *" and fires every minute by design, and
     // jobs:watch every quarter hour; the lists below look past them so the
     // once-per-minute rule is read on a job with a real schedule.
-    const daily = (jobs: string[]) => jobs.filter((j) => j !== "messages:send" && j !== "circulars:deliver" && j !== "jobs:watch");
+    const daily = (jobs: string[]) => jobs.filter((j) => j !== "messages:send" && j !== "circulars:deliver" && j !== "jobs:watch" && j !== "social:send" /* meta-posting (16 Oct 2026): every minute too */);
     try {
       expect(daily(await handle!.tick(at))).toEqual(["notifications:tidy"]);
       expect(await handle!.tick(at)).toEqual([]); // same minute: not again, messages:send included
@@ -91,7 +91,7 @@ describe("startJobScheduler", () => {
     const at = local(2026, 9, 18, 16, 0); // digest:weekly is "0 16 * * 5" (Friday)
     const handle = startJobScheduler({ run: async (name) => { if (name === "digest:weekly") throw new Error("mail is down"); return { status: "done" }; }, now: () => at, log });
     try {
-      expect((await handle!.tick(at)).filter((j) => j !== "messages:send" && j !== "circulars:deliver" && j !== "jobs:watch")).toEqual(["digest:weekly"]);
+      expect((await handle!.tick(at)).filter((j) => j !== "messages:send" && j !== "circulars:deliver" && j !== "jobs:watch" && j !== "social:send" /* meta-posting (16 Oct 2026) */)).toEqual(["digest:weekly"]);
       await new Promise((r) => setTimeout(r, 0));
       const errors = log.mock.calls.map(([l]) => JSON.parse(l as string)).filter((l) => l.level === "error");
       expect(errors).toHaveLength(1);

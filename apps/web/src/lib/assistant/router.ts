@@ -190,8 +190,9 @@ export async function runDoors(input: RunInput): Promise<DataRun[]> {
   const call = input.call ?? callDoor;
   const moduleOn = input.moduleOn ?? ((s: string, m: string) => isModuleOn(s, m as never));
   // A door of a platform feature the operator has off (15 Oct 2026) is not read: the handlers are called in-process, past the
-  // session's gate, so the gate's 404 FEATURE_OFF is answered here.
-  const featureOn = input.featureOn ?? ((features: readonly FeatureCode[]) => mayUseAny(features, { userId: input.userId, schoolId: input.schoolId }));
+  // session's gate, so the gate's 404 FEATURE_OFF is answered here — and (16 Oct 2026) a door behind a plan the
+  // asker does not hold (src/lib/person-plans.ts) is not read either, by the asker's role.
+  const featureOn = input.featureOn ?? ((features: readonly FeatureCode[]) => mayUseAny(features, { userId: input.userId, schoolId: input.schoolId, role: input.ctx.role }));
   const nowMs = input.now.getTime();
   const cached = cacheFor(input.conversationId, nowMs);
   const raws = new Map<string, unknown>(cached?.raw ?? []);

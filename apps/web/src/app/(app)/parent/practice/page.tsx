@@ -12,6 +12,8 @@ import { EmptyState } from "@/components/ui/states";
 import { ChildSwitcher } from "../child-switcher";
 import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
+import { PlanCard } from "@/components/plan-card";
+import { childLock } from "@/lib/platform-features";
 import { quizBoardChoice, topicOnBoard, type QuizBoardChoice } from "@edulink/contracts";
 import { classLevelLabel, QUIZ_BOARD_KEY, quizBoardKey, quizBoardOptions } from "@/lib/quiz-board";
 import { PracticeBoardSwitch } from "@/components/practice-board-switch";
@@ -57,6 +59,18 @@ export default async function ParentPracticePage({
         {children.length > 1 && <ChildSwitcher pupils={children} selectedId={selectedId} basePath="/parent/practice" />}
         <PageHeader title={t("practice.parentPracticeTitle", { name: chosen.name })} />
         <NotSharedState name={chosen.name} />
+      </div>
+    );
+  }
+
+  // plans (16 Oct 2026): the child's practice is the child's plan; while the STUDENT plan is asked for and the child
+  // does not hold it, the guardian sees the plan card for the child (a guardian subscribes for a pupil under eighteen).
+  const childPlan = await childLock("QUESTION_BANK", selectedId);
+  if (childPlan) {
+    return (
+      <div className="space-y-5">
+        {children.length > 1 && <ChildSwitcher pupils={children} selectedId={selectedId} basePath="/parent/practice" />}
+        <PlanCard plan={childPlan} feature="QUESTION_BANK" child={chosen.name} />
       </div>
     );
   }

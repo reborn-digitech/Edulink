@@ -152,6 +152,14 @@ const NO_SCHOOL_POLICY = new Set([
   // school's row is in it. The person is the fence, held in the library.
   "ExpertApplication",
   // ---- end expert-registration ----
+  // plans (16 Oct 2026)
+  // The plans sold per person and the entitlements they open (src/lib/person-plans.ts, decision 0006): the price
+  // list is the platform's, the same for every school and written by the operator alone; an entitlement is the
+  // PERSON's, bought for themselves or by a guardian, and follows them across every school they belong to. No
+  // school's row is in either; the person is the fence, held in the library.
+  "PersonPlan",
+  "Entitlement",
+  // end plans
 ]);
 
 /**

@@ -20,10 +20,19 @@ export const apiErrorSchema = z.object({
   code: z
     // MODULE_OFF is a 403 from a door whose module the school has not switched on.
     // FEATURE_OFF is a 404 from a door whose platform feature the operator has not switched on (15 Oct 2026).
-    .enum(["BAD_REQUEST", "UNAUTHORIZED", "FORBIDDEN", "NOT_FOUND", "CONFLICT", "RATE_LIMITED", "TOO_LARGE", "SERVER", "MODULE_OFF", "FEATURE_OFF"])
+    .enum(["BAD_REQUEST", "UNAUTHORIZED", "FORBIDDEN", "NOT_FOUND", "CONFLICT", "RATE_LIMITED", "TOO_LARGE", "SERVER", "MODULE_OFF", "FEATURE_OFF",
+      // plans (16 Oct 2026)
+      // PLAN_REQUIRED is a 402 from a door whose feature is on but needs a plan this person does not hold (v1/person-plans.ts).
+      "PLAN_REQUIRED",
+      // end plans
+    ])
     .optional(),
   issues: z.record(z.string()).optional(),
   retryAfterSeconds: z.number().int().positive().optional(),
+  // plans (16 Oct 2026)
+  /** With PLAN_REQUIRED: the plan that opens the door (v1/person-plans.ts PERSON_PLANS). */
+  plan: z.enum(["STUDENT", "TEACHER", "EXPERT"]).optional(),
+  // end plans
 });
 export type ApiError = z.infer<typeof apiErrorSchema>;
 
@@ -284,3 +293,9 @@ export * from "./v1/website";
 // website-builder B (a school's own domain for its public website, 15 Oct 2026).
 export * from "./v1/site-domains";
 // end website-builder B
+// meta-posting (16 Oct 2026): a school's Facebook Page and Instagram account, and the copies of its posts sent there.
+export * from "./v1/social";
+// end meta-posting
+// plans (16 Oct 2026): the three plans sold per person, their entitlements and the operator's grant (decision 0006).
+export * from "./v1/person-plans";
+// end plans

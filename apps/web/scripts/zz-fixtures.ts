@@ -54,6 +54,9 @@ import { buildAlumni } from "./zz-alumni";
 // website-builder A (15 Oct 2026)
 import { buildWebsite } from "./zz-website";
 // end website-builder A
+// plans (16 Oct 2026)
+import { buildPlans, removeZzEntitlements } from "./zz-plans";
+// end plans
 import { buildColleges } from "./zz-college";
 import { buildAcademics } from "./zz-academics";
 import { buildCollegeExams } from "./zz-exams";
@@ -409,6 +412,9 @@ async function teardown() {
   const schools = await db.school.deleteMany({ where: { slug: { startsWith: "zz-" } } });
   // Users next: ExpertProfile, Guardianship and any surviving Membership all
   // cascade from User. Matching on the domain is what makes this exact.
+  // plans (16 Oct 2026): entitlements have no foreign key to User, so they go first, by the ZZ people's ids.
+  await removeZzEntitlements(db, DOMAIN);
+  // end plans
   const users = await db.user.deleteMany({ where: { email: { endsWith: `@${DOMAIN}` } } });
   // expert-registration (15 Oct 2026): a ZZ application is no User, so it goes by its address too.
   await db.expertApplication.deleteMany({ where: { email: { endsWith: `@${DOMAIN}` } } });
@@ -2709,6 +2715,45 @@ async function main() {
   if (!keptDomain) await db.schoolSiteDomain.create({ data: { schoolId: northgate.school.id, domain: zzDomain, status: "PENDING_DNS", certStatus: "NONE", createdByUserId: northgate.admin.id } });
   console.log(`  Website domain: ${zzDomain} at ZZ Northgate ${keptDomain ? "already there" : "added, waiting for DNS"} — /admin/website/domain, /root/sites`);
   // end website-builder B
+  // meta-posting (16 Oct 2026): ZZ Northgate's Facebook Page, a fake one with a sealed fake token (only when sealing is
+  // available: FEES_SECRET_KEY), and on its first approved school-wide post one copy SENT to Facebook and one FAILED
+  // for Instagram, so the post's page, the settings page and the sweep see each state. Nothing here reaches Meta: the
+  // fake token opens to a string Meta would refuse, and the social:send job sends only QUEUED copies. The SENT copy's
+  // id is the catalog's retry sample (src/lib/api-catalog/social.ts), refused 409 because it has not failed.
+  // Idempotent: upserted by fixed ids; removed with the school by --teardown.
+  {
+    const schoolId = northgate.school.id;
+    let socialConnected = "NOT connected (FEES_SECRET_KEY unset, nothing to seal with)";
+    if (process.env.FEES_SECRET_KEY) {
+      try {
+        const { seal } = await import("../src/lib/secret-box");
+        // The binding is src/lib/social.ts tokenBinding's: `social:<schoolId>:page-token`.
+        const page = { provider: "META", pageId: "100000000000001", pageName: "ZZ Northgate School (fixture Page)", igUserId: "17800000000000001", igUsername: "zz_northgate_school", connectedByUserId: northgate.admin.id };
+        const existing = await db.socialConnection.findUnique({ where: { schoolId }, select: { id: true } });
+        if (existing) await db.socialConnection.update({ where: { schoolId }, data: { ...page, error: null } });
+        else await db.socialConnection.create({ data: { schoolId, ...page, pageTokenSealed: seal("zz-fixture-page-token-not-a-real-token", `social:${schoolId}:page-token`), lastCheckedAt: new Date() } });
+        socialConnected = existing ? "already connected" : "connected now";
+      } catch (error) {
+        socialConnected = `NOT connected (${error instanceof Error ? error.message : String(error)})`;
+      }
+    }
+    const socialPost = await db.post.findFirst({ where: { schoolId, scope: "SCHOOL", status: "APPROVED", audience: "ALL" }, orderBy: { createdAt: "asc" }, select: { id: true } });
+    if (socialPost) {
+      const sent = { schoolId, postId: socialPost.id, network: "FACEBOOK", status: "SENT", remoteId: "100000000000001_9000000000001", remoteUrl: "https://example.org/zz-northgate-facebook-post", error: null, attempts: 1, queuedByUserId: northgate.admin.id, sentAt: new Date() };
+      const failed = { schoolId, postId: socialPost.id, network: "INSTAGRAM", status: "FAILED", error: JSON.stringify({ code: "MEDIA", detail: "ZZ fixture: the picture could not be fetched" }), attempts: 3, queuedByUserId: northgate.admin.id };
+      // A copy of this post for the same network under another id (a test, a hand) gives way to the fixture's.
+      await db.socialPost.deleteMany({ where: { schoolId, postId: socialPost.id, NOT: { id: { in: ["zz-social-sent-northgate", "zz-social-failed-northgate"] } } } });
+      await db.socialPost.upsert({ where: { id: "zz-social-sent-northgate" }, create: { id: "zz-social-sent-northgate", ...sent }, update: { postId: socialPost.id, status: "SENT", error: null } });
+      await db.socialPost.upsert({ where: { id: "zz-social-failed-northgate" }, create: { id: "zz-social-failed-northgate", ...failed }, update: { postId: socialPost.id, status: "FAILED", error: failed.error, attempts: 3 } });
+    }
+    console.log(`  Facebook and Instagram: ZZ Northgate's fixture Page ${socialConnected}; ${socialPost ? "one copy SENT to Facebook and one FAILED for Instagram on its first school-wide post" : "NO school-wide post to hang the copies on"} — /admin/settings/social, /bulletin/${socialPost?.id ?? "…"}`);
+  }
+  // end meta-posting
+  // plans (16 Oct 2026): placeholder prices on the plans sold per person (only while unset), and a year's STUDENT grant for
+  // zz.pupil01 and TEACHER grant for zz.teacher1 so the sweep sees a working path (scripts/zz-plans.ts; idempotent).
+  const plans = await buildPlans(db, { domain: DOMAIN, operatorId: operator.id });
+  console.log(`  Plans: ${plans.priced ? `${plans.priced} plan(s) given placeholder prices` : "prices already set"}; ${plans.granted.length ? `granted ${plans.granted.join(", ")}` : "no new grant"}${plans.kept.length ? `; already held: ${plans.kept.join(", ")}` : ""} — /root/features, /account/plan`);
+  // end plans
 
   const studentCount = await db.membership.count({
     where: { schoolId: northgate.school.id, role: "STUDENT" },

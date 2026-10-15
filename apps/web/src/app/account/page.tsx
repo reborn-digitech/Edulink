@@ -23,7 +23,7 @@ import { db } from "@/lib/db";
 import { getSession, listContexts, DEFAULT_PREFS, type UserPrefs } from "@/lib/session";
 import { readJson } from "@/lib/json";
 import { formatPhone } from "@/lib/phone";
-import { relativeTime } from "@/lib/dates";
+import { formatInZone, relativeTime } from "@/lib/dates";
 import { HANDLE_DOMAIN, toDisplayLoginName } from "@/lib/login-name";
 import { hasRecord } from "@/lib/student-record";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
@@ -36,6 +36,7 @@ import { LanguageForm } from "./language-form";
 import { EmailForm } from "./email-form";
 import { MobileForm } from "./mobile-form";
 import { DeviceList } from "./device-list";
+import { myPlans, PLAN_NAME_KEY } from "@/lib/person-plans"; // plans (16 Oct 2026)
 import { TotpCard } from "./totp-card";
 import { twoFactorStatus } from "@/lib/two-factor";
 import { ROLE_META, type Role } from "@/lib/constants";
@@ -94,6 +95,11 @@ export default async function AccountPage({
   const staffModules = isStaff ? await enabledModules(live.schoolId) : [];
   // Two-step sign-in is offered to the office, the head and the operator alone.
   const twoFactor = await twoFactorStatus(session.user.id);
+  // plans (16 Oct 2026): "Your plan" — each plan sold per person this account holds now, and the day it runs to.
+  const held = await myPlans(session.user.id);
+  const planLine = held.length
+    ? held.map((h) => t("plans.yourPlanUntil", { name: t(PLAN_NAME_KEY[h.plan]), date: formatInZone(h.validTo, "Asia/Kolkata", { dateStyle: "medium" }, prefs.locale ?? "en") })).join(" · ")
+    : t("plans.yourPlanNone");
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
@@ -246,6 +252,20 @@ export default async function AccountPage({
           />
         </Card>
       )}
+
+      {/* plans (16 Oct 2026): the person's own plan, active until a day, or none. */}
+      <Card data-testid="your-plan">
+        <CardHeader
+          icon={<CertificateIcon weight="duotone" className="size-5" />}
+          title={t("plans.yourPlanTitle")}
+          description={planLine}
+          action={
+            <Button asChild size="sm" variant="secondary">
+              <Link href="/account/plan">{t("plans.yourPlanOpen")}</Link>
+            </Button>
+          }
+        />
+      </Card>
 
       {live.role && (LEAVE_APPLICANT_ROLES as readonly string[]).includes(live.role) && live.role !== "TEACHER" && live.role !== "PRINCIPAL" && (
         <Card>

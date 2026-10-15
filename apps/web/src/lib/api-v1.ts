@@ -3,12 +3,12 @@ import { NextResponse } from "next/server";
 import type { z } from "zod";
 import { apiErrorSchema, sessionResponseSchema as apiSessionSchema, meSchema, type ApiError, type InstitutionKind } from "@edulink/contracts";
 import { AccessError } from "@/lib/tenancy";
-import { FeatureOffError, ModuleOffError } from "@/lib/access-error";
+import { FeatureOffError, ModuleOffError, PlanRequiredError } from "@/lib/access-error";
 import { MODULE_META } from "@/lib/module-meta";
 import { enabledModules, enabledModulesForFamily, institutionKindOf } from "@/lib/modules";
 import { streamsOf } from "@/lib/streams";
 import { myDuties } from "@/lib/duties";
-import { featuresFor } from "@/lib/platform-features";
+import { featuresFor, lockedFor } from "@/lib/platform-features";
 import type { ActiveContext } from "@/lib/session";
 import { createApiSession, listContexts, bearerToken, getSession } from "@/lib/session";
 import { resolveContext } from "@/lib/resolve-context";
@@ -46,6 +46,11 @@ export async function apiFailure(error: unknown, where: string): Promise<NextRes
   if (error instanceof FeatureOffError) {
     recordError(kindOfStatus(404));
     return envelope({ error: t(error.key), code: "FEATURE_OFF" }, 404, { "x-edulink-code": "FEATURE_OFF" });
+  }
+  // A feature that is on, behind a plan this person does not hold (16 Oct 2026; person-plans.ts): 402, said as PLAN_REQUIRED with the plan.
+  if (error instanceof PlanRequiredError) {
+    recordError(kindOfStatus(403));
+    return envelope({ error: t(error.key), code: "PLAN_REQUIRED", plan: error.plan }, 402, { "x-edulink-code": "PLAN_REQUIRED" });
   }
   if (error instanceof AccessError) {
     const status = error.code === "UNAUTHENTICATED" ? 401 : error.code === "NOT_FOUND" ? 404 : 403;
@@ -252,6 +257,8 @@ export async function meBody(ctx: ActiveContext) {
     duties: await myDuties(ctx),
     // The platform features this person may use (15 Oct 2026); the phone hides a feature's tabs and screens by them.
     features: await featuresFor(ctx),
+    // Of those, the ones this person reaches only with a plan they do not hold (16 Oct 2026): their doors answer 402 PLAN_REQUIRED.
+    locked: await lockedFor(ctx),
   });
 }
 

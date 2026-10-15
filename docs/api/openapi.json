@@ -42,8 +42,19 @@
               "CONFLICT",
               "RATE_LIMITED",
               "SERVER",
-              "MODULE_OFF"
+              "MODULE_OFF",
+              "FEATURE_OFF",
+              "PLAN_REQUIRED"
             ]
+          },
+          "plan": {
+            "type": "string",
+            "enum": [
+              "STUDENT",
+              "TEACHER",
+              "EXPERT"
+            ],
+            "description": "With PLAN_REQUIRED: the plan that opens the door"
           },
           "issues": {
             "type": "object",
@@ -1295,6 +1306,12 @@
                           "TEXT_MESSAGING"
                         ]
                       }
+                    },
+                    "locked": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/features/items"
+                      }
                     }
                   },
                   "required": [
@@ -1594,6 +1611,12 @@
                           "JOB_BOARD",
                           "TEXT_MESSAGING"
                         ]
+                      }
+                    },
+                    "locked": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/features/items"
                       }
                     }
                   },
@@ -9785,6 +9808,9 @@
           "PRINCIPAL"
         ],
         "x-feature": "JOB_BOARD",
+        "x-plans": [
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -9881,6 +9907,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -9947,6 +9983,9 @@
           "ADMIN"
         ],
         "x-feature": "JOB_BOARD",
+        "x-plans": [
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -9971,6 +10010,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -10077,6 +10126,9 @@
           "ADMIN"
         ],
         "x-feature": "JOB_BOARD",
+        "x-plans": [
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -10102,6 +10154,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -13845,6 +13907,9 @@
           "TEACHER"
         ],
         "x-feature": "QUESTION_BANK",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -14131,6 +14196,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -14192,6 +14267,9 @@
           "TEACHER"
         ],
         "x-feature": "QUESTION_BANK",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -14214,6 +14292,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -14308,6 +14396,9 @@
           "TEACHER"
         ],
         "x-feature": "QUESTION_BANK",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -14333,6 +14424,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -15504,6 +15605,9 @@
           "TEACHER"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plans": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -15694,6 +15798,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -15770,6 +15884,9 @@
           "TEACHER"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plans": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -15792,6 +15909,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -19359,6 +19486,9 @@
           "STUDENT"
         ],
         "x-feature": "QUESTION_BANK",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -19679,6 +19809,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -21061,6 +21201,9 @@
           "PARENT"
         ],
         "x-feature": "QUESTION_BANK",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -21237,6 +21380,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -30796,6 +30949,9 @@
         ],
         "x-access": "signed-in",
         "x-feature": "EXPERT_SESSIONS",
+        "x-plans": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -30916,6 +31072,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -30960,6 +31126,9 @@
         ],
         "x-access": "signed-in",
         "x-feature": "EXPERT_SESSIONS",
+        "x-plans": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -31063,6 +31232,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -31117,6 +31296,9 @@
         ],
         "x-access": "signed-in",
         "x-feature": "EXPERT_SESSIONS",
+        "x-plans": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -31142,6 +31324,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -31608,6 +31800,9 @@
           "PRINCIPAL"
         ],
         "x-feature": "JOB_BOARD",
+        "x-plans": [
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -31697,6 +31892,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -31743,6 +31948,7 @@
           "EXPERT"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plan-free": "what is already booked with an expert stays theirs to read and keep after their plan ends (plans, 16 Oct 2026)",
         "responses": {
           "200": {
             "description": "OK",
@@ -31861,6 +32067,9 @@
           "EXPERT"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plans": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -31948,6 +32157,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -31992,6 +32211,9 @@
           "EXPERT"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plans": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -32017,6 +32239,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -32099,6 +32331,9 @@
           "EXPERT"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plans": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -32124,6 +32359,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -32788,6 +33033,9 @@
           "EXPERT"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plans": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -32896,6 +33144,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -32942,6 +33200,7 @@
           "EXPERT"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plan-free": "the calendar of what is already booked stays the expert's after their plan ends (plans, 16 Oct 2026)",
         "responses": {
           "200": {
             "description": "OK",
@@ -33018,6 +33277,7 @@
           "EXPERT"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plan-free": "the calendar of what is already booked stays the expert's after their plan ends (plans, 16 Oct 2026)",
         "responses": {
           "200": {
             "description": "OK",
@@ -33090,6 +33350,7 @@
         "security": [],
         "x-access": "anyone",
         "x-feature": "EXPERT_SESSIONS",
+        "x-plan-free": "the calendar of what is already booked stays the expert's after their plan ends (plans, 16 Oct 2026)",
         "responses": {
           "200": {
             "description": "OK",
@@ -42043,6 +42304,765 @@
         ]
       }
     },
+    "/api/v1/operator/person-plans": {
+      "get": {
+        "summary": "The plans sold per person: each one's monthly and yearly price in paise, the features it opens, whether it is asked for (active), who changed it last, and how many people hold it now and how many of them end within seven days",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "plans": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string",
+                            "enum": [
+                              "STUDENT",
+                              "TEACHER",
+                              "EXPERT"
+                            ]
+                          },
+                          "pricePaise": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 10000000
+                          },
+                          "yearlyPricePaise": {
+                            "$ref": "#/properties/plans/items/properties/pricePaise"
+                          },
+                          "features": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "ASSISTANT",
+                                "QUESTION_BANK",
+                                "QUESTION_GIG",
+                                "EXPERT_SESSIONS",
+                                "TEACHER_SESSIONS",
+                                "JOB_BOARD",
+                                "TEXT_MESSAGING"
+                              ]
+                            }
+                          },
+                          "active": {
+                            "type": "boolean"
+                          },
+                          "updatedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "updatedByName": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "entitledNow": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "expiringSoon": {
+                            "$ref": "#/properties/plans/items/properties/entitledNow"
+                          }
+                        },
+                        "required": [
+                          "code",
+                          "pricePaise",
+                          "yearlyPricePaise",
+                          "features",
+                          "active",
+                          "updatedAt",
+                          "updatedByName",
+                          "entitledNow",
+                          "expiringSoon"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "plans"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Change one plan's prices or its active switch ({ code, pricePaise?, yearlyPricePaise?, active? }); a field left out stays; audited, and a no-op when nothing changes",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "plan": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "enum": [
+                            "STUDENT",
+                            "TEACHER",
+                            "EXPERT"
+                          ]
+                        },
+                        "pricePaise": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 10000000
+                        },
+                        "yearlyPricePaise": {
+                          "$ref": "#/properties/plan/properties/pricePaise"
+                        },
+                        "features": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "ASSISTANT",
+                              "QUESTION_BANK",
+                              "QUESTION_GIG",
+                              "EXPERT_SESSIONS",
+                              "TEACHER_SESSIONS",
+                              "JOB_BOARD",
+                              "TEXT_MESSAGING"
+                            ]
+                          }
+                        },
+                        "active": {
+                          "type": "boolean"
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "updatedByName": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "entitledNow": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "expiringSoon": {
+                          "$ref": "#/properties/plan/properties/entitledNow"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "pricePaise",
+                        "yearlyPricePaise",
+                        "features",
+                        "active",
+                        "updatedAt",
+                        "updatedByName",
+                        "entitledNow",
+                        "expiringSoon"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "changed": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "plan",
+                    "changed"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "type": "string",
+                    "enum": [
+                      "STUDENT",
+                      "TEACHER",
+                      "EXPERT"
+                    ]
+                  },
+                  "pricePaise": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10000000
+                  },
+                  "yearlyPricePaise": {
+                    "$ref": "#/properties/pricePaise"
+                  },
+                  "active": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "code"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/entitlements": {
+      "get": {
+        "summary": "One person's entitlements by email (?email=), newest first, each with its feature, source, plan, window, who granted it and whether it covers now; `person` null when no account has the address",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "person": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "email"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "entitlements": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "feature": {
+                            "type": "string",
+                            "enum": [
+                              "ASSISTANT",
+                              "QUESTION_BANK",
+                              "QUESTION_GIG",
+                              "EXPERT_SESSIONS",
+                              "TEACHER_SESSIONS",
+                              "JOB_BOARD",
+                              "TEXT_MESSAGING"
+                            ]
+                          },
+                          "source": {
+                            "type": "string",
+                            "enum": [
+                              "ORDER",
+                              "GRANT",
+                              "SEAT"
+                            ]
+                          },
+                          "planCode": {
+                            "type": "string",
+                            "enum": [
+                              "STUDENT",
+                              "TEACHER",
+                              "EXPERT"
+                            ],
+                            "nullable": true
+                          },
+                          "validFrom": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "validTo": {
+                            "$ref": "#/properties/entitlements/items/properties/validFrom"
+                          },
+                          "grantedByName": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "note": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "revokedAt": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/entitlements/items/properties/validFrom"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "createdAt": {
+                            "$ref": "#/properties/entitlements/items/properties/validFrom"
+                          },
+                          "live": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "feature",
+                          "source",
+                          "planCode",
+                          "validFrom",
+                          "validTo",
+                          "grantedByName",
+                          "note",
+                          "revokedAt",
+                          "createdAt",
+                          "live"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "person",
+                    "entitlements"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 254
+                  }
+                },
+                "required": [
+                  "email"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Grant a plan to a person by email for 1, 3, 6 or 12 months with a note: one entitlement per feature of the plan, starting where the person's current window of that plan ends; audited, and the person is told in the app",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "userId": {
+                      "type": "string"
+                    },
+                    "plan": {
+                      "type": "string",
+                      "enum": [
+                        "STUDENT",
+                        "TEACHER",
+                        "EXPERT"
+                      ]
+                    },
+                    "validFrom": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "validTo": {
+                      "$ref": "#/properties/validFrom"
+                    },
+                    "created": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "userId",
+                    "plan",
+                    "validFrom",
+                    "validTo",
+                    "created"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 254
+                  },
+                  "plan": {
+                    "type": "string",
+                    "enum": [
+                      "STUDENT",
+                      "TEACHER",
+                      "EXPERT"
+                    ]
+                  },
+                  "months": {
+                    "anyOf": [
+                      {
+                        "type": "number",
+                        "enum": [
+                          1
+                        ]
+                      },
+                      {
+                        "type": "number",
+                        "enum": [
+                          3
+                        ]
+                      },
+                      {
+                        "type": "number",
+                        "enum": [
+                          6
+                        ]
+                      },
+                      {
+                        "type": "number",
+                        "enum": [
+                          12
+                        ]
+                      }
+                    ]
+                  },
+                  "note": {
+                    "type": "string",
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "email",
+                  "plan",
+                  "months"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/entitlements/{id}/revoke": {
+      "post": {
+        "summary": "End one entitlement now; audited, and a no-op on one already revoked",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "revokedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "changed": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "revokedAt",
+                    "changed"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
     "/api/v1/practice/attempts": {
       "post": {
         "summary": "Open a sitting on a chapter (or on a chapter the teacher set), or pick up the one left half-way, with the question to answer now",
@@ -42056,6 +43076,9 @@
           "STUDENT"
         ],
         "x-feature": "QUESTION_BANK",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -42237,6 +43260,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -42313,6 +43346,9 @@
           "STUDENT"
         ],
         "x-feature": "QUESTION_BANK",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -42396,6 +43432,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -42470,6 +43516,9 @@
           "STUDENT"
         ],
         "x-feature": "QUESTION_BANK",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -42525,6 +43574,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -42625,6 +43684,9 @@
           "STUDENT"
         ],
         "x-feature": "QUESTION_BANK",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -42655,6 +43717,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -42743,6 +43815,9 @@
           "STUDENT"
         ],
         "x-feature": "QUESTION_BANK",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -42789,6 +43864,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -42864,6 +43949,9 @@
           "STUDENT"
         ],
         "x-feature": "QUESTION_BANK",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -42956,6 +44044,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -43002,6 +44100,9 @@
           "STUDENT"
         ],
         "x-feature": "QUESTION_BANK",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -43063,6 +44164,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -43146,6 +44257,9 @@
           "STUDENT"
         ],
         "x-feature": "QUESTION_BANK",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -43197,6 +44311,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -43292,6 +44416,9 @@
           "TEACHER"
         ],
         "x-feature": "QUESTION_BANK",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -43370,6 +44497,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -43416,6 +44553,9 @@
           "TEACHER"
         ],
         "x-feature": "QUESTION_BANK",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -43493,6 +44633,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -43584,6 +44734,9 @@
         ],
         "x-access": "signed-in",
         "x-feature": "EXPERT_SESSIONS",
+        "x-plans": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -43715,6 +44868,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -43762,6 +44925,9 @@
           "TEACHER"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plans": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -43784,6 +44950,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -43868,6 +45044,9 @@
           "STUDENT"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plans": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -43890,6 +45069,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -43970,6 +45159,9 @@
           "PRINCIPAL"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plans": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -43995,6 +45187,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -44082,6 +45284,9 @@
           "PARENT"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plans": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -44107,6 +45312,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -44174,6 +45389,9 @@
           "PARENT"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plans": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -44199,6 +45417,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -44631,6 +45859,9 @@
           "PRINCIPAL"
         ],
         "x-feature": "JOB_BOARD",
+        "x-plans": [
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -44764,6 +45995,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -93173,6 +94414,9 @@
           "TEACHER"
         ],
         "x-feature": "QUESTION_GIG",
+        "x-plans": [
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -93487,6 +94731,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -93531,6 +94785,9 @@
           "TEACHER"
         ],
         "x-feature": "QUESTION_GIG",
+        "x-plans": [
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -93710,6 +94967,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -93830,6 +95097,9 @@
           "TEACHER"
         ],
         "x-feature": "QUESTION_GIG",
+        "x-plans": [
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -93890,6 +95160,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -93936,6 +95216,9 @@
           "TEACHER"
         ],
         "x-feature": "QUESTION_GIG",
+        "x-plans": [
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -93987,6 +95270,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -94076,6 +95369,9 @@
           "TEACHER"
         ],
         "x-feature": "QUESTION_GIG",
+        "x-plans": [
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -94246,6 +95542,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -94300,6 +95606,9 @@
           "TEACHER"
         ],
         "x-feature": "QUESTION_GIG",
+        "x-plans": [
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -94471,6 +95780,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -94609,6 +95928,9 @@
           "TEACHER"
         ],
         "x-feature": "QUESTION_GIG",
+        "x-plans": [
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -94780,6 +96102,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -94962,6 +96294,10 @@
         "x-feature": [
           "EXPERT_SESSIONS",
           "TEACHER_SESSIONS"
+        ],
+        "x-plans": [
+          "TEACHER",
+          "EXPERT"
         ],
         "responses": {
           "200": {
@@ -95263,6 +96599,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -95312,6 +96658,10 @@
         "x-feature": [
           "EXPERT_SESSIONS",
           "TEACHER_SESSIONS"
+        ],
+        "x-plans": [
+          "TEACHER",
+          "EXPERT"
         ],
         "responses": {
           "200": {
@@ -95421,6 +96771,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -95503,6 +96863,10 @@
         "x-feature": [
           "EXPERT_SESSIONS",
           "TEACHER_SESSIONS"
+        ],
+        "x-plans": [
+          "TEACHER",
+          "EXPERT"
         ],
         "responses": {
           "200": {
@@ -95599,6 +96963,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -95690,6 +97064,10 @@
           "EXPERT_SESSIONS",
           "TEACHER_SESSIONS"
         ],
+        "x-plans": [
+          "TEACHER",
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -95725,6 +97103,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -95812,6 +97200,10 @@
         "x-feature": [
           "EXPERT_SESSIONS",
           "TEACHER_SESSIONS"
+        ],
+        "x-plans": [
+          "TEACHER",
+          "EXPERT"
         ],
         "responses": {
           "200": {
@@ -95916,6 +97308,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -95976,6 +97378,10 @@
           "EXPERT_SESSIONS",
           "TEACHER_SESSIONS"
         ],
+        "x-plans": [
+          "TEACHER",
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -96001,6 +97407,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -96088,6 +97504,9 @@
           "PARENT"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plans": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -96170,6 +97589,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -96435,6 +97864,9 @@
           "PARENT"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plans": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -96464,6 +97896,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -96645,6 +98087,10 @@
         "x-feature": [
           "EXPERT_SESSIONS",
           "TEACHER_SESSIONS"
+        ],
+        "x-plans": [
+          "TEACHER",
+          "EXPERT"
         ],
         "responses": {
           "200": {
@@ -96898,6 +98344,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -96946,6 +98402,10 @@
           "EXPERT_SESSIONS",
           "TEACHER_SESSIONS"
         ],
+        "x-plans": [
+          "TEACHER",
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -96970,6 +98430,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -97077,6 +98547,10 @@
           "EXPERT_SESSIONS",
           "TEACHER_SESSIONS"
         ],
+        "x-plans": [
+          "TEACHER",
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -97102,6 +98576,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -97190,6 +98674,10 @@
           "EXPERT_SESSIONS",
           "TEACHER_SESSIONS"
         ],
+        "x-plans": [
+          "TEACHER",
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -97215,6 +98703,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -97302,6 +98800,7 @@
           "EXPERT"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plan-free": "what an expert earned, and the details the money owed is paid to, stay theirs after their plan ends (plans, 16 Oct 2026)",
         "responses": {
           "200": {
             "description": "OK",
@@ -97579,6 +99078,7 @@
           "EXPERT"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plan-free": "what an expert earned, and the details the money owed is paid to, stay theirs after their plan ends (plans, 16 Oct 2026)",
         "responses": {
           "200": {
             "description": "OK",
@@ -97923,6 +99423,7 @@
           "EXPERT"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plan-free": "what an expert earned, and the details the money owed is paid to, stay theirs after their plan ends (plans, 16 Oct 2026)",
         "responses": {
           "200": {
             "description": "OK",
@@ -98212,6 +99713,7 @@
           "EXPERT"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plan-free": "what an expert earned, and the details the money owed is paid to, stay theirs after their plan ends (plans, 16 Oct 2026)",
         "responses": {
           "200": {
             "description": "OK",
@@ -98519,6 +100021,7 @@
           "EXPERT"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plan-free": "what an expert earned, and the details the money owed is paid to, stay theirs after their plan ends (plans, 16 Oct 2026)",
         "responses": {
           "200": {
             "description": "OK",
@@ -98753,6 +100256,7 @@
           "EXPERT"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plan-free": "what an expert earned, and the details the money owed is paid to, stay theirs after their plan ends (plans, 16 Oct 2026)",
         "responses": {
           "200": {
             "description": "OK",
@@ -98845,6 +100349,10 @@
         "x-feature": [
           "EXPERT_SESSIONS",
           "TEACHER_SESSIONS"
+        ],
+        "x-plans": [
+          "TEACHER",
+          "EXPERT"
         ],
         "responses": {
           "200": {
@@ -98960,6 +100468,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -99007,6 +100525,9 @@
           "PRINCIPAL"
         ],
         "x-feature": "TEACHER_SESSIONS",
+        "x-plans": [
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -99029,6 +100550,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -206948,6 +208479,9 @@
           "TEACHER"
         ],
         "x-feature": "EXPERT_SESSIONS",
+        "x-plans": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -206975,6 +208509,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -216176,6 +217720,9 @@
           "STUDENT"
         ],
         "x-feature": "QUESTION_BANK",
+        "x-plans": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -216238,6 +217785,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -219146,6 +220703,10 @@
           "ACCOUNTS"
         ],
         "x-feature": "ASSISTANT",
+        "x-plans": [
+          "STUDENT",
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -219227,6 +220788,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -219288,6 +220859,10 @@
         ],
         "x-module": "ASSISTANT",
         "x-feature": "ASSISTANT",
+        "x-plans": [
+          "STUDENT",
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -219342,6 +220917,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -219437,6 +221022,10 @@
           "ACCOUNTS"
         ],
         "x-feature": "ASSISTANT",
+        "x-plans": [
+          "STUDENT",
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -219517,6 +221106,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -219577,6 +221176,10 @@
           "ACCOUNTS"
         ],
         "x-feature": "ASSISTANT",
+        "x-plans": [
+          "STUDENT",
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -219858,6 +221461,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -219926,6 +221539,10 @@
           "ACCOUNTS"
         ],
         "x-feature": "ASSISTANT",
+        "x-plans": [
+          "STUDENT",
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -219955,6 +221572,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -220034,6 +221661,10 @@
         ],
         "x-module": "ASSISTANT",
         "x-feature": "ASSISTANT",
+        "x-plans": [
+          "STUDENT",
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -220276,6 +221907,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -220375,6 +222016,10 @@
           "ACCOUNTS"
         ],
         "x-feature": "ASSISTANT",
+        "x-plans": [
+          "STUDENT",
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -220401,6 +222046,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -220491,6 +222146,10 @@
           "PRINCIPAL"
         ],
         "x-feature": "ASSISTANT",
+        "x-plans": [
+          "STUDENT",
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -220592,6 +222251,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -220646,6 +222315,10 @@
           "ADMIN"
         ],
         "x-feature": "ASSISTANT",
+        "x-plans": [
+          "STUDENT",
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -220747,6 +222420,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -220822,6 +222505,10 @@
           "PARENT"
         ],
         "x-feature": "ASSISTANT",
+        "x-plans": [
+          "STUDENT",
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -220882,6 +222569,16 @@
               }
             }
           },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
           "403": {
             "description": "This role may not",
             "content": {
@@ -220928,6 +222625,10 @@
           "PARENT"
         ],
         "x-feature": "ASSISTANT",
+        "x-plans": [
+          "STUDENT",
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -220959,6 +222660,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -221040,6 +222751,10 @@
           "HOD"
         ],
         "x-feature": "ASSISTANT",
+        "x-plans": [
+          "STUDENT",
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -221066,6 +222781,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -221130,6 +222855,10 @@
           "HOD"
         ],
         "x-feature": "ASSISTANT",
+        "x-plans": [
+          "STUDENT",
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -221156,6 +222885,16 @@
           },
           "401": {
             "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it",
             "content": {
               "application/json": {
                 "schema": {
@@ -232173,6 +233912,600 @@
             }
           }
         }
+      }
+    },
+    "/api/v1/admin/social": {
+      "get": {
+        "summary": "Whether the platform has a Meta app configured and can seal the Page's key, and the school's Facebook Page connection (the Page, its linked Instagram professional account, when it was last checked, whether it must be reconnected)",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "configured": {
+                      "type": "boolean"
+                    },
+                    "sealing": {
+                      "type": "boolean"
+                    },
+                    "connection": {
+                      "type": "object",
+                      "properties": {
+                        "provider": {
+                          "type": "string",
+                          "enum": [
+                            "META"
+                          ]
+                        },
+                        "pageId": {
+                          "type": "string"
+                        },
+                        "pageName": {
+                          "type": "string"
+                        },
+                        "igUserId": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "igUsername": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "connectedAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "lastCheckedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/connection/properties/connectedAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "tokenExpiresAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/connection/properties/connectedAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "needsReconnect": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "provider",
+                        "pageId",
+                        "pageName",
+                        "igUserId",
+                        "igUsername",
+                        "connectedAt",
+                        "lastCheckedAt",
+                        "tokenExpiresAt",
+                        "needsReconnect"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "configured",
+                    "sealing",
+                    "connection"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Disconnect the school's Facebook Page (the one named in the body); the Page's key is deleted, and what was already posted on Facebook or Instagram stays there; audited",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "disconnected": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "disconnected"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pageId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  }
+                },
+                "required": [
+                  "pageId"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/social/posts": {
+      "get": {
+        "summary": "The copies of one school post sent, or being sent, to the school's Facebook Page and Instagram account: queued, posted with a link, or failed with the reason",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "postId": {
+                            "type": "string"
+                          },
+                          "network": {
+                            "type": "string",
+                            "enum": [
+                              "FACEBOOK",
+                              "INSTAGRAM"
+                            ]
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "QUEUED",
+                              "SENT",
+                              "FAILED"
+                            ]
+                          },
+                          "remoteUrl": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "error": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string",
+                                "enum": [
+                                  "RECONNECT",
+                                  "PERMISSION",
+                                  "MEDIA",
+                                  "NO_PICTURE",
+                                  "NOT_CONNECTED",
+                                  "NO_INSTAGRAM",
+                                  "NETWORK",
+                                  "POST_GONE",
+                                  "META"
+                                ]
+                              },
+                              "detail": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "detail"
+                            ],
+                            "additionalProperties": false,
+                            "nullable": true
+                          },
+                          "attempts": {
+                            "type": "integer"
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "sentAt": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/items/items/properties/createdAt"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "nextAttemptAt": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/items/items/properties/createdAt"
+                              }
+                            ],
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "postId",
+                          "network",
+                          "status",
+                          "remoteUrl",
+                          "error",
+                          "attempts",
+                          "createdAt",
+                          "sentAt",
+                          "nextAttemptAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "postId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  }
+                },
+                "required": [
+                  "postId"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/social/posts/{socialPostId}/retry": {
+      "post": {
+        "summary": "Queue a failed copy of a post for Facebook or Instagram again, with three fresh attempts; a copy that has not failed is refused (409); audited",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "postId": {
+                      "type": "string"
+                    },
+                    "network": {
+                      "type": "string",
+                      "enum": [
+                        "FACEBOOK",
+                        "INSTAGRAM"
+                      ]
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "QUEUED",
+                        "SENT",
+                        "FAILED"
+                      ]
+                    },
+                    "remoteUrl": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "enum": [
+                            "RECONNECT",
+                            "PERMISSION",
+                            "MEDIA",
+                            "NO_PICTURE",
+                            "NOT_CONNECTED",
+                            "NO_INSTAGRAM",
+                            "NETWORK",
+                            "POST_GONE",
+                            "META"
+                          ]
+                        },
+                        "detail": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "detail"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "attempts": {
+                      "type": "integer"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "sentAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/createdAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "nextAttemptAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/createdAt"
+                        }
+                      ],
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "postId",
+                    "network",
+                    "status",
+                    "remoteUrl",
+                    "error",
+                    "attempts",
+                    "createdAt",
+                    "sentAt",
+                    "nextAttemptAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "socialPostId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     }
   }

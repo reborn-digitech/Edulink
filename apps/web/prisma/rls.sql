@@ -3505,6 +3505,24 @@ CREATE POLICY "SchoolSiteEnquiry_tenant_isolation" ON "SchoolSiteEnquiry"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- SocialConnection
+ALTER TABLE "SocialConnection" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "SocialConnection" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "SocialConnection_tenant_isolation" ON "SocialConnection";
+DROP POLICY IF EXISTS "SocialConnection_readable" ON "SocialConnection";
+CREATE POLICY "SocialConnection_tenant_isolation" ON "SocialConnection"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- SocialPost
+ALTER TABLE "SocialPost" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "SocialPost" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "SocialPost_tenant_isolation" ON "SocialPost";
+DROP POLICY IF EXISTS "SocialPost_readable" ON "SocialPost";
+CREATE POLICY "SocialPost_tenant_isolation" ON "SocialPost"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- OperatorAccess
 --
 -- APPEND-ONLY, AND DELIBERATELY HAS NO DELETE POLICY. Postgres denies
@@ -3574,6 +3592,7 @@ CREATE TRIGGER "OperatorAccess_close_only"
 --   CompetitionSource
 --   ContentChunk
 --   ContentDocument
+--   Entitlement
 --   ExpertApplication
 --   ExpertPayout
 --   ExpertPayoutAccount
@@ -3590,6 +3609,7 @@ CREATE TRIGGER "OperatorAccess_close_only"
 --   HelpEntry
 --   JobRun
 --   OutboundEmail
+--   PersonPlan
 --   Plan
 --   PlatformFeature
 --   PushSubscription

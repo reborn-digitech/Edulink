@@ -878,6 +878,19 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "site.domain.remove": "audit.siteDomainRemove",
   "site.domain.status": "audit.siteDomainStatus",
   // end website-builder B
+  // meta-posting (16 Oct 2026): the school's Facebook Page connected and disconnected, a post's copies sent and retried, and the refresh job's change.
+  "social.connect": "audit.socialConnect",
+  "social.disconnect": "audit.socialDisconnect",
+  "social.queue": "audit.socialQueue",
+  "social.retry": "audit.socialRetry",
+  "social.connection.status": "audit.socialConnectionStatus",
+  // end meta-posting
+  // plans (16 Oct 2026): the operator's plan prices and active switch, the grant and the revoke, and a plan's window ending (src/lib/person-plans.ts).
+  "operator.plan.update": "audit.operatorPlanUpdate",
+  "operator.entitlement.grant": "audit.operatorEntitlementGrant",
+  "operator.entitlement.revoke": "audit.operatorEntitlementRevoke",
+  "plans.entitlement.end": "audit.plansEntitlementEnd",
+  // end plans
 };
 
 export function actionKey(action: string): TranslationKey | null {

@@ -70,6 +70,9 @@ import { WEBSITE } from "./api-catalog/website";
 // website-builder B (15 Oct 2026): a school's own domain for its public website.
 import { WEBSITE_DOMAINS } from "./api-catalog/website-domains";
 // end website-builder B
+// meta-posting (16 Oct 2026): a school's Facebook Page and Instagram account, and the copies of its posts sent there.
+import { SOCIAL } from "./api-catalog/social";
+// end meta-posting
 import type { Endpoint } from "./api-catalog/types";
 
 export const ENDPOINTS: Endpoint[] = [...CORE, ...ADMIN, ...STAFF, ...FAMILY, ...SHARED, ...OPERATOR, ...PRACTICE, ...COMMUNITY, ...TEACHING, ...OFFICE, ...ACCOUNT, ...CONTEST, ...JOIN, ...FEES, ...MESSAGING, ...HEALTH, ...INCIDENTS, ...CIRCULARS, ...STAFF_ATTENDANCE, ...SYLLABUS, ...SUBSTITUTIONS, ...REPORT_CARDS, ...CERTIFICATES, ...ADMISSIONS, ...FILINGS, ...GIGS, ...TRANSPORT, ...ALUMNI, ...INVENTORY, ...PAYROLL, ...LIBRARY, ...HOSTEL, ...COLLEGE, ...ACADEMICS, ...PLACEMENT, ...EXAMS, ...IQAC, ...COLLEGE_ADMISSIONS, ...SCHOLARSHIPS, ...ACCOUNTS_DESK, ...COLLEGE_CAMPUS, ...OPERATOR_COLLEGE, ...DUTY_DOORS, ...STUDIO_DOORS, ...STREAM_RECORDS, ...OFFICE_YEAR, ...OFFICE_WRITES, ...COLLEGE_EXTRAS, ...UNVERSIONED, ...COLLEGE_HOMEWORK, ...PLAN_ITEMS, ...ASSISTANT, ...OWNER_DECISIONS, ...QUIZ_REVIEW, ...QUIZ_JOBS, ...COMPETITION_CRAWL];
@@ -79,3 +82,6 @@ ENDPOINTS.push(...WEBSITE);
 // website-builder B
 ENDPOINTS.push(...WEBSITE_DOMAINS);
 // end website-builder B
+// meta-posting
+ENDPOINTS.push(...SOCIAL);
+// end meta-posting

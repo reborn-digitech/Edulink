@@ -119,6 +119,12 @@ export const meSchema = z.object({
    * every entry), and an older phone that does not know the field ignores it.
    */
   features: z.array(platformFeatureSchema).optional(),
+  /**
+   * The features in `features` this person reaches only with a plan they do not hold (16 Oct 2026;
+   * v1/person-plans.ts): their tabs stay, and their doors answer 402 PLAN_REQUIRED naming the plan. Optional:
+   * an older server says nothing (nothing locked), and an older phone ignores it.
+   */
+  locked: z.array(platformFeatureSchema).optional(),
 });
 export type Me = z.infer<typeof meSchema>;
 

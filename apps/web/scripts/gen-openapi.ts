@@ -13,6 +13,15 @@ import { resolve } from "node:path";
 import { zodToJsonSchema } from "zod-to-json-schema";
 import { ENDPOINTS, type Endpoint } from "../src/lib/api-catalog";
 import { COLLEGE_DOORS } from "./college-doors";
+import { PERSON_PLANS, PLAN_FEATURES } from "@edulink/contracts";
+import { featuresOf } from "../src/lib/api-catalog/types";
+
+/** The plans a door's feature may ask for (16 Oct 2026): a door of such a feature may answer 402 PLAN_REQUIRED, unless planFree or left to its handler. */
+function plansOf(e: Endpoint): string[] {
+  if (e.planFree || e.featureInHandler) return [];
+  const features = featuresOf(e);
+  return PERSON_PLANS.filter((p) => PLAN_FEATURES[p].some((f) => features.includes(f)));
+}
 
 const OUT = resolve(process.cwd(), "../../docs/api/openapi.json");
 
@@ -40,6 +49,9 @@ function build() {
       ...(e.module ? { "x-module": e.module } : {}),
       ...(e.feature ? { "x-feature": typeof e.feature === "string" ? e.feature : [...e.feature] } : {}),
       ...(e.featureInHandler ? { "x-feature-note": e.featureInHandler } : {}),
+      // The plans the door's feature may ask for (402 PLAN_REQUIRED while on and not held), or why a plan is not asked (16 Oct 2026).
+      ...(plansOf(e).length ? { "x-plans": plansOf(e) } : {}),
+      ...(e.planFree ? { "x-plan-free": e.planFree } : {}),
       // The duties a FACULTY or HOD must hold to pass (5 Oct 2026); the phone's contract matrix reads it with the actor's /me duties.
       ...(e.duties?.length ? { "x-duties": e.duties } : {}),
       // A college's door (filed in a college module's catalog file): at a school it may answer 403 MODULE_OFF, module or none (LOAD-6).
@@ -47,6 +59,7 @@ function build() {
       responses: {
         "200": { description: "OK", content: { "application/json": { schema: zodToJsonSchema(e.response, { target: "openApi3" }) } } },
         "401": { description: "No or invalid session", content: { "application/json": { schema: { $ref: "#/components/schemas/ApiError" } } } },
+        ...(plansOf(e).length ? { "402": { description: "PLAN_REQUIRED: the feature is on and this person's role needs a plan they do not hold; `plan` names it", content: { "application/json": { schema: { $ref: "#/components/schemas/ApiError" } } } } } : {}),
         "403": { description: "This role may not", content: { "application/json": { schema: { $ref: "#/components/schemas/ApiError" } } } },
         "404": { description: "Not found, or not yours", content: { "application/json": { schema: { $ref: "#/components/schemas/ApiError" } } } },
         "422": { description: "Invalid body", content: { "application/json": { schema: { $ref: "#/components/schemas/ApiError" } } } },
@@ -69,7 +82,8 @@ function build() {
           required: ["error"],
           properties: {
             error: { type: "string" },
-            code: { type: "string", enum: ["BAD_REQUEST", "UNAUTHORIZED", "FORBIDDEN", "NOT_FOUND", "CONFLICT", "RATE_LIMITED", "SERVER", "MODULE_OFF"] },
+            code: { type: "string", enum: ["BAD_REQUEST", "UNAUTHORIZED", "FORBIDDEN", "NOT_FOUND", "CONFLICT", "RATE_LIMITED", "SERVER", "MODULE_OFF", "FEATURE_OFF", "PLAN_REQUIRED"] },
+            plan: { type: "string", enum: [...PERSON_PLANS], description: "With PLAN_REQUIRED: the plan that opens the door" },
             issues: { type: "object", additionalProperties: { type: "string" } },
             retryAfterSeconds: { type: "integer" },
           },

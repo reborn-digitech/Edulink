@@ -79,6 +79,13 @@ const SKIP_EXACT = new Set([
   "site:refresh",
   "site:domains", // the job name the scheduler prints, a code like site:refresh (15 Oct 2026)
   // end website-builder A
+  // meta-posting (16 Oct 2026): two job names, codes the crontab and /root/jobs key on (their words are root.jobDescSocialSend and root.jobDescSocialRefresh).
+  "social:send",
+  "social:refresh",
+  // end meta-posting
+  // plans (16 Oct 2026): a job's name, a code the crontab and /root/jobs key on (its words are root.jobDescPlansExpire).
+  "plans:expire",
+  // end plans
 ]);
 
 const PROPS = ["title", "description", "label", "placeholder", "hint", "alt", "aria-label", "empty", "cta"];

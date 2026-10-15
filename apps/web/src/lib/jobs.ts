@@ -26,6 +26,12 @@ import { refreshPublishedSites } from "./site-publish";
 // website-builder B (15 Oct 2026): a school's own website domain, re-checked until it is live.
 import { liveDeps as siteDomainDeps, recheckSiteDomains } from "./site-domains";
 // end website-builder B
+// meta-posting (16 Oct 2026): copies of school posts sent to Facebook and Instagram, and the Page tokens checked.
+import { drainSocialQueue, liveSendDeps, refreshSocialConnections } from "./social";
+// end meta-posting
+// plans (16 Oct 2026): the windows of the plans sold per person that ended, told once.
+import { expireEntitlements } from "./person-plans";
+// end plans
 import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
@@ -58,6 +64,13 @@ export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" |
   // website-builder B (15 Oct 2026)
   | "site:domains"
   // end website-builder B
+  // meta-posting (16 Oct 2026)
+  | "social:send"
+  | "social:refresh"
+  // end meta-posting
+  // plans (16 Oct 2026)
+  | "plans:expire"
+  // end plans
   ;
 
 /**
@@ -426,6 +439,56 @@ export const JOBS: Record<JobName, JobSpec> = {
     },
   },
   // end website-builder B
+  // meta-posting (16 Oct 2026)
+  "social:send": {
+    name: "social:send",
+    // Every minute, like messages:send: the copies of school posts the admin asked to send to the school's Facebook
+    // Page and Instagram account (src/lib/social.ts drainSocialQueue), fifty a run, each a minute after it was
+    // published; a failed attempt waits an hour, and the third failure is FAILED for the admin to retry.
+    schedule: "* * * * *",
+    describeKey: "root.jobDescSocialSend",
+    maxRunMs: 10 * 60_000,
+    expectEveryMs: 15 * 60_000,
+    narrows: ["schoolIds"],
+    run: async ({ now, scope }) => {
+      const { sent, failed, waiting, perSchool } = await drainSocialQueue(liveSendDeps(now), scope?.schoolIds ? { schoolIds: scope.schoolIds } : undefined);
+      return { summary: { sent, failed, waiting }, perSchool };
+    },
+  },
+  "social:refresh": {
+    name: "social:refresh",
+    // 04:10 daily (clear of 03:30, 03:40 and 04:00, and of the */10 and on-the-hour minutes other jobs and their tests
+    // read): each connected Facebook Page's token asked whether it still works, and the connection marked for the
+    // admin to reconnect where Meta says it does not (src/lib/social.ts refreshSocialConnections).
+    schedule: "10 4 * * *",
+    describeKey: "root.jobDescSocialRefresh",
+    maxRunMs: HOUR,
+    expectEveryMs: 2 * DAY,
+    narrows: ["schoolIds"],
+    run: async ({ now, scope }) => {
+      const { checked, ok, reconnect, unreachable, perSchool } = await refreshSocialConnections(liveSendDeps(now), scope?.schoolIds ? { schoolIds: scope.schoolIds } : undefined);
+      return { summary: { checked, ok, reconnect, unreachable }, perSchool };
+    },
+  },
+  // end meta-posting
+  // plans (16 Oct 2026)
+  "plans:expire": {
+    name: "plans:expire",
+    // 04:20 daily (clear of 03:30, 03:40, 04:10 and the ten-minute jobs; bank:stats shares the minute and touches
+    // nothing of this): every window of a plan sold per person that ended before today began, India time, and was
+    // not revoked is told once — an audit line and a notice in the app, never a text (src/lib/person-plans.ts
+    // expireEntitlements). A person who holds the plan again is not told.
+    schedule: "20 4 * * *",
+    describeKey: "root.jobDescPlansExpire",
+    maxRunMs: HOUR,
+    expectEveryMs: 2 * DAY,
+    narrows: ["userIds"],
+    run: async ({ now, scope }) => {
+      const { ended, told, renewed } = await expireEntitlements(now, scope?.userIds ? { userIds: scope.userIds } : {});
+      return { summary: { ended, told, renewed } };
+    },
+  },
+  // end plans
 };
 
 export const JOB_NAMES = Object.keys(JOBS) as JobName[];

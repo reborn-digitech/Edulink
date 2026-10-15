@@ -550,6 +550,10 @@ model School {
   // website-builder B (15 Oct 2026): the school's own domains for its public website.
   siteDomains            SchoolSiteDomain[]
   // end website-builder B
+  // meta-posting (16 Oct 2026): the school's Facebook Page connection and the copies of its posts sent to Meta.
+  socialConnection       SocialConnection?
+  socialPosts            SocialPost[]
+  // end meta-posting
 
   @@index([code])
   @@index([admissionsContactMembershipId])
@@ -10970,3 +10974,125 @@ model SchoolSiteEnquiry {
   @@index([schoolId, createdAt])
 }
 // end website-builder A
+
+// meta-posting (16 Oct 2026)
+/// A SCHOOL'S FACEBOOK PAGE, CONNECTED FOR POSTING (src/lib/social.ts is the one writer; the owner's ask of 15
+/// October 2026). The school's admin connects once at /admin/settings/social through Facebook Login and picks one
+/// Page; the Instagram professional account linked to that Page, if any, comes with it. `pageTokenSealed` is the
+/// Page's access token sealed under FEES_SECRET_KEY (src/lib/secret-box.ts) and bound to the school's id, so a copy
+/// of the database alone posts nothing. One connection per school; Disconnect deletes the row. `error` is a code
+/// ("RECONNECT"), never a sentence: the page and the composer word it. School-fenced like every school table.
+model SocialConnection {
+  id                String    @id @default(cuid())
+  schoolId          String    @unique
+  /// META (the only provider)
+  provider          String    @default("META")
+  pageId            String
+  pageName          String
+  igUserId          String?
+  igUsername        String?
+  pageTokenSealed   String
+  tokenExpiresAt    DateTime?
+  connectedByUserId String
+  connectedAt       DateTime  @default(now())
+  lastCheckedAt     DateTime?
+  error             String?
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+}
+
+/// ONE COPY OF A SCHOOL POST SENT TO ONE NETWORK (FACEBOOK | INSTAGRAM). Queued when the admin publishes a
+/// school-wide post with "Also post to …" ticked, sent by the social:send job (every minute), three attempts an hour
+/// apart and then FAILED; Retry queues it again. `postId` is deliberately NOT a foreign key: the copy on Meta outlives
+/// the post here (deleting or taking down a post does not delete it on Meta), so the record of what left the platform
+/// is kept with it. `fileId` is the picture sent (the post's first picture), and `pictureToken` the random token in
+/// the short-lived public link Instagram fetches it by (src/lib/files.ts, kind "social": open while QUEUED and for 24
+/// hours after SENT). `error` is a code with Meta's own words after a colon where there are any; the page words it.
+model SocialPost {
+  id             String    @id @default(cuid())
+  schoolId       String
+  postId         String
+  /// FACEBOOK | INSTAGRAM
+  network        String
+  /// QUEUED | SENT | FAILED
+  status         String    @default("QUEUED")
+  fileId         String?
+  pictureToken   String?
+  remoteId       String?
+  remoteUrl      String?
+  error          String?
+  attempts       Int       @default(0)
+  nextAttemptAt  DateTime  @default(now())
+  queuedByUserId String
+  createdAt      DateTime  @default(now())
+  sentAt         DateTime?
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@unique([postId, network])
+  @@index([schoolId, postId])
+  @@index([status, nextAttemptAt])
+  @@index([fileId])
+}
+
+// end meta-posting
+
+// plans (16 Oct 2026)
+/// A PLAN SOLD PER PERSON (the owner's decisions of 15–16 October 2026; decision 0006): STUDENT, TEACHER or
+/// EXPERT, one row each, created on first read with prices 0 and the contracts' feature lists, inactive. Not
+/// the `Plan` a school is put on (caps and a recorded price, src/lib/plans.ts): this one is bought by a person.
+/// OUTSIDE THE SCHOOL FENCE ON PURPOSE (NO_SCHOOL_POLICY): the platform's price list, the same for every school,
+/// read by every tenant's requests (the gate asks whether a plan is active) and written by the operator alone,
+/// who belongs to no school. Read and written only by src/lib/person-plans.ts; every change is audited
+/// ("operator.plan.update").
+model PersonPlan {
+  id               String   @id @default(cuid())
+  /// STUDENT | TEACHER | EXPERT: a checked string (the migration's CHECK holds it to the contracts' list).
+  code             String   @unique
+  /// The monthly price and the yearly price, in paise; 0 until the operator sets them.
+  pricePaise       Int      @default(0)
+  yearlyPricePaise Int      @default(0)
+  /// The FeatureCode list the plan opens (a JSON array), from the contracts' PLAN_FEATURES; a grant makes one
+  /// Entitlement row per entry.
+  features         Json     @default("[]")
+  /// Active: the plan is asked for. An inactive plan asks nothing, and its features follow the platform switch alone.
+  active           Boolean  @default(false)
+  updatedAt        DateTime @default(now()) @updatedAt
+  /// Null until the operator changes the row.
+  updatedByUserId  String?
+}
+
+/// ONE FEATURE OPEN TO ONE PERSON FOR A WINDOW (16 October 2026; decision 0006): a person is entitled to a
+/// feature while an unrevoked row covers now (validFrom ≤ now < validTo). Written by the operator's grant (GRANT)
+/// in this half, and by a paid pass (ORDER) or a paid seat (SEAT) in the second half, which fills orderId.
+/// OUTSIDE THE SCHOOL FENCE ON PURPOSE (NO_SCHOOL_POLICY): a plan is the PERSON's, bought for themselves or by a
+/// guardian for a pupil, and follows them across every school they belong to (a teacher at two schools, a pupil
+/// who moves); no school's row is in it. The person is the fence, held in src/lib/person-plans.ts: a person reads
+/// their own, the operator reads and writes every one. No foreign key to User, so the zz teardown and an account
+/// merge name it themselves.
+model Entitlement {
+  id              String    @id @default(cuid())
+  userId          String
+  /// A FeatureCode (checked in the migration).
+  feature         String
+  /// ORDER | GRANT | SEAT (checked in the migration).
+  source          String
+  /// The plan it came from; null for a SEAT.
+  planCode        String?
+  validFrom       DateTime
+  validTo         DateTime
+  /// The second half's payment order behind an ORDER or a SEAT.
+  orderId         String?
+  grantedByUserId String?
+  note            String?
+  revokedAt       DateTime?
+  revokedByUserId String?
+  /// Set by the plans:expire job once it has told the person the window ended, so a second run tells nobody twice.
+  endNotedAt      DateTime?
+  createdAt       DateTime  @default(now())
+
+  @@index([userId, feature, validTo])
+  @@index([validTo])
+}
+
+// end plans

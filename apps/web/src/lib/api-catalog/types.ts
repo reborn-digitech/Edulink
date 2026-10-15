@@ -68,6 +68,14 @@ export type Endpoint = {
    */
   featureInHandler?: string;
   /**
+   * A door of a feature that the platform switch closes but a PLAN does not (16 Oct 2026; src/lib/person-plans.ts),
+   * with why, in a sentence: an expert whose plan has ended still reads what they earned and the sessions already
+   * booked with them, and still gives the payout details the money owed is sent to. Without it a door of a feature
+   * that needs a plan for the caller's role answers 402 PLAN_REQUIRED (the gate, role-gate.ts). Published as
+   * `x-plan-free`.
+   */
+  planFree?: string;
+  /**
    * The limited roles a "signed-in" door also opens to: the module roles
    * (DRIVER, LIBRARIAN, WARDEN, ALUMNUS), the college's six staff roles
    * (FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS) and the RECRUITER —

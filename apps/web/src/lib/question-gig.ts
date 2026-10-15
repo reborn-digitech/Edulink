@@ -1,7 +1,7 @@
 import { AccessError } from "./tenancy";
 import { db } from "./db"; // quiz-board (11 Oct 2026): the payee door reads what is owed
-import { mayUse, type WhoLike } from "./platform-features";
-import { FeatureOffError } from "./access-error";
+import { accessTo, mayUse, type WhoLike } from "./platform-features";
+import { FeatureOffError, PlanRequiredError } from "./access-error";
 
 /**
  * THE TEACHERS' QUESTION GIG, behind one switch (the owner, 10 October 2026): the generated bank is
@@ -25,9 +25,14 @@ export async function questionGigOpen(who: WhoLike): Promise<boolean> {
   return mayUse("QUESTION_GIG", who);
 }
 
-/** For the doors and actions: 404 FEATURE_OFF while the gig is off. Call after the role check. */
+/**
+ * For the doors and actions: 404 FEATURE_OFF while the gig is off, and (16 Oct 2026) 402 PLAN_REQUIRED while it is
+ * on and the teacher does not hold the TEACHER plan (src/lib/person-plans.ts). Call after the role check.
+ */
 export async function assertQuestionGigOpen(who: WhoLike): Promise<void> {
-  if (!(await questionGigOpen(who))) throw new FeatureOffError("QUESTION_GIG", "quizReview.gigClosed");
+  const access = await accessTo(["QUESTION_GIG"], who);
+  if (access.state === "off") throw new FeatureOffError("QUESTION_GIG", "quizReview.gigClosed");
+  if (access.state === "plan") throw new PlanRequiredError(access.plan, "QUESTION_GIG");
 }
 
 /* ---- quiz-board (11 October 2026): the payee door stays open for a teacher still owed money ---- */
@@ -47,6 +52,8 @@ export async function owedForQuestionsPaise(userId: string): Promise<number> {
  * /teacher/payee page and its form). With the gig off, a teacher still owed money for earlier questions
  * must be able to correct their UPI id before the operator pays it; anyone else gets the gig's 404.
  */
+// No role is passed on purpose (16 Oct 2026): the payee door asks the platform switch alone, so a teacher whose plan
+// has ended can still correct the UPI id the money they are owed is sent to.
 export async function payeeDoorOpen(userId: string): Promise<boolean> {
   return (await questionGigOpen({ userId, schoolId: null })) || (await owedForQuestionsPaise(userId)) > 0;
 }

@@ -7,7 +7,7 @@ import { NAV, isActive } from "./nav";
 import { AccessError, ModuleOffError } from "./access-error";
 import { routePath } from "./route-header";
 import { assertModuleOn, enabledModules } from "./modules";
-import { assertAnyFeatureOn } from "./platform-features";
+import { assertAnyFeatureOn, assertFeatureSwitchOn } from "./platform-features";
 
 /**
  * THE GATE FOR THE MODULE ROLES, and for the modules themselves (3 October
@@ -42,6 +42,10 @@ import { assertAnyFeatureOn } from "./platform-features";
  *      while the operator has that feature off (src/lib/platform-features.ts,
  *      `mayUse`). A door whose entry says `featureInHandler` is left to its
  *      handler. This is the ONE place a door's feature is enforced.
+ *      (16 October 2026) While the feature is on but needs a plan the caller's
+ *      role must hold and the caller does not (src/lib/person-plans.ts), the
+ *      door answers 402 PLAN_REQUIRED naming the plan; a door marked `planFree`
+ *      asks the platform switch alone.
  *
  * And while a module role's OWN module is off at its school (a driver whose
  * school switched transport off), it keeps only its home, the notices and
@@ -157,10 +161,15 @@ export function ownPageModuleOff(role: Role, path: string, modulesOn: readonly s
  * page must be served as if the session had no school, "not-found" for the
  * role's own menu page whose module is off here, and "pass" otherwise.
  */
-/** Rule 3: the door's platform feature, unless its handler decides (`featureInHandler`). Throws FeatureOffError (404 FEATURE_OFF). */
-async function assertDoorFeature(e: Endpoint | null, ctx: { userId?: string | null; schoolId: string | null }): Promise<void> {
+/**
+ * Rule 3: the door's platform feature, unless its handler decides (`featureInHandler`). Throws FeatureOffError (404
+ * FEATURE_OFF), or PlanRequiredError (402 PLAN_REQUIRED) when the feature is on and the caller's role needs a plan
+ * they do not hold (16 Oct 2026); a `planFree` door asks the switch alone.
+ */
+async function assertDoorFeature(e: Endpoint | null, ctx: { userId?: string | null; schoolId: string | null; role?: Role | null }): Promise<void> {
   if (!e?.feature || e.featureInHandler) return;
-  await assertAnyFeatureOn(featuresOf(e), { userId: ctx.userId ?? null, schoolId: ctx.schoolId });
+  if (e.planFree) return assertFeatureSwitchOn(featuresOf(e));
+  await assertAnyFeatureOn(featuresOf(e), { userId: ctx.userId ?? null, schoolId: ctx.schoolId, role: ctx.role ?? null });
 }
 
 export async function gateRequest(route: string | null, ctx: { role: Role | null; schoolId: string | null; duties?: readonly string[]; userId?: string | null }, catalog: readonly Endpoint[] = ENDPOINTS): Promise<"pass" | "no-context" | "not-found"> {
