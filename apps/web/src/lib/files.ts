@@ -35,6 +35,8 @@ import { parentMaySee } from "./student-consent";
 
 export type FileAccess =
   | { allowed: true; kind: "logo"; public: true }
+  // website-builder A (15 Oct 2026): a picture on a school's published website, public while the site is live.
+  | { allowed: true; kind: "site"; public: true }
   // figures (10 Oct 2026): a practice question's figure; shared, nothing personal, cached privately.
   | { allowed: true; kind: "quiz"; public: false }
   | { allowed: true; kind: "assignment" | "submission" | "post" | "application" | "kyc" | "purchase" | "academics" | "scholarship" | "placement" | "iqac"; public: false }
@@ -77,6 +79,14 @@ export async function authorizeFileRead(
     select: { id: true },
   });
   if (logo) return { allowed: true, kind: "logo", public: true };
+
+  // website-builder A (15 Oct 2026): a picture on a school's PUBLISHED website (a news post's first picture, a
+  // gallery picture the office ticked consent for) is public while the site is live — the live version names its
+  // files (SchoolSiteVersion.imageFileIds) and is readable signed out (gen-rls GLOBALLY_READABLE). Unpublishing,
+  // or a version without it, closes it again; a copy a browser kept under the long cache is the logo's bargain.
+  const onSite = await db.schoolSiteVersion.findFirst({ where: { liveAt: { not: null }, imageFileIds: { has: fileId } }, select: { id: true } });
+  if (onSite) return { allowed: true, kind: "site", public: true };
+  // end website-builder A
 
   // Everything else needs a session before we look anything up at all, so an
   // anonymous request cannot use this endpoint to probe which ids exist.

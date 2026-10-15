@@ -81,6 +81,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <Button asChild variant="ghost" size="sm">
               <Link href="/root/jobs">{t("root.jobs")}</Link>
             </Button>
+            {/* website-builder B (15 Oct 2026): every published school website and school domain, read only. */}
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/root/sites">{t("siteDomains.opNav")}</Link>
+            </Button>
+            {/* end website-builder B */}
             {/* feature-switches (15 Oct 2026): the platform's features, each off until the operator switches it on. */}
             <Button asChild variant="ghost" size="sm">
               <Link href="/root/features">{t("platformFeatures.nav")}</Link>

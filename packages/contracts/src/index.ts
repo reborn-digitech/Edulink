@@ -278,3 +278,9 @@ export * from "./v1/college-practice";
 // ---- expert-registration (an expert's application from the login page, the operator's queue, 15 Oct 2026).
 export * from "./v1/expert-applications";
 // ---- end expert-registration ----
+// website-builder A (a school's public website: the draft, the doors, the coded lists, 15 Oct 2026).
+export * from "./v1/website";
+// end website-builder A
+// website-builder B (a school's own domain for its public website, 15 Oct 2026).
+export * from "./v1/site-domains";
+// end website-builder B

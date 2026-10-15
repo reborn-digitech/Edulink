@@ -18,6 +18,8 @@ export const MODULE_META: Record<SchoolModuleCode, { nameKey: TranslationKey; wh
   ALUMNI: { nameKey: "modules.alumniName", whatKey: "modules.alumniWhat", role: "ALUMNUS" },
   // The assistant (Phase B, 9 Oct 2026): on for every school and college from the start, brings no role.
   ASSISTANT: { nameKey: "modules.assistantName", whatKey: "modules.assistantWhat", role: null },
+  // website-builder A (15 Oct 2026): the school's public website, built from what is on the platform; brings no role.
+  WEBSITE: { nameKey: "modules.websiteName", whatKey: "modules.websiteWhat", role: null },
   // The college's six (4 Oct 2026), offered on a college's modules page only (modulesForKind).
   ACADEMICS: { nameKey: "modules.academicsName", whatKey: "modules.academicsWhat", role: "FACULTY" },
   EXAMS: { nameKey: "modules.examsName", whatKey: "modules.examsWhat", role: "EXAM_CONTROLLER" },

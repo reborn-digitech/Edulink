@@ -93,6 +93,7 @@ export const FILE_REFERENCES = [
   "application.documentsJson",
   "expertProfile.kycDocumentIds",
   "expertApplication.documentFileId", // expert-registration (15 Oct 2026)
+  "schoolSiteVersion.imageFileIds", // website-builder A (15 Oct 2026)
   "collegeApplication.documentsJson",
   "scholarshipClaim.documentsJson",
   "purchaseRecord.billFileId",
@@ -128,6 +129,8 @@ const READERS: Record<FileReference, () => Promise<Claimed>> = {
   "expertProfile.kycDocumentIds": async () => (await db.expertProfile.findMany({ where: { kycDocumentIds: { isEmpty: false } }, select: { kycDocumentIds: true } })).flatMap((r) => r.kycDocumentIds.map((fileId) => ({ fileId, schoolId: null }))),
   // expert-registration (15 Oct 2026): an expert's application document, the applicant's (no account, no school).
   "expertApplication.documentFileId": async () => (await db.expertApplication.findMany({ where: { documentFileId: { not: null } }, select: { documentFileId: true } })).map((r) => ({ fileId: r.documentFileId, schoolId: null })),
+  // website-builder A (15 Oct 2026): the pictures a school website's versions show — a post's pictures, already the post's; kept while a version names them.
+  "schoolSiteVersion.imageFileIds": async () => (await db.schoolSiteVersion.findMany({ where: { imageFileIds: { isEmpty: false } }, select: { schoolId: true, imageFileIds: true } })).flatMap((r) => r.imageFileIds.map((fileId) => ({ fileId, schoolId: r.schoolId }))),
   "collegeApplication.documentsJson": async () => (await db.collegeApplication.findMany({ where: { documentsJson: { contains: '"fileId"' } }, select: { schoolId: true, documentsJson: true } })).flatMap((r) => fileIdsInJson(r.documentsJson).map((fileId) => ({ fileId, schoolId: r.schoolId }))),
   "scholarshipClaim.documentsJson": async () => (await db.scholarshipClaim.findMany({ where: { documentsJson: { contains: '"fileId"' } }, select: { schoolId: true, documentsJson: true } })).flatMap((r) => fileIdsInJson(r.documentsJson).map((fileId) => ({ fileId, schoolId: r.schoolId }))),
   // A purchase record's scanned bill (the INVENTORY module).

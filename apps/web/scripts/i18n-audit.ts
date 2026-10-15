@@ -75,6 +75,10 @@ const SKIP_EXACT = new Set([
   "Mac", "Windows", "Linux", "PDF", "PNG", "JPEG", "WebP", "GIF", "CSV", "SMS",
   // The bundled typefaces, by the names their files give them (src/lib/fonts.ts).
   "Noto Sans Devanagari", "Noto Serif Devanagari", "Tiro Devanagari Marathi", "Noto Sans", "Noto Serif",
+  // website-builder A (15 Oct 2026): a job's name, a code the crontab and /root/jobs key on (its words are website.jobDesc).
+  "site:refresh",
+  "site:domains", // the job name the scheduler prints, a code like site:refresh (15 Oct 2026)
+  // end website-builder A
 ]);
 
 const PROPS = ["title", "description", "label", "placeholder", "hint", "alt", "aria-label", "empty", "cta"];
@@ -290,7 +294,12 @@ function scan(): Finding[] {
       // the question's language, read by the model and never by a person; assistant-retrieval.ts's
       // one string is the SQL expression its full-text index is built on. None reaches a page.
       (f) => !f.includes("i18n") && !f.endsWith("/places.ts") && !f.includes("/api-catalog/") && !f.endsWith("/lib/env.ts") && !f.endsWith("/lib/gig-gateway-env.ts") && !f.endsWith("/lib/message-templates.ts") && !f.endsWith("/lib/filing-codes.ts") && !f.endsWith("/lib/filings.ts") && !f.endsWith("/lib/module-file-headings.ts") && !f.endsWith("/lib/tally-export.ts") && !f.endsWith("/lib/peer-visits.ts") && !f.endsWith("/lib/assistant-env.ts") && !f.endsWith("/lib/assistant-model.ts") && !f.endsWith("/lib/assistant-retrieval.ts") && !f.endsWith("/lib/assistant/prompt.ts") && !f.endsWith("/lib/assistant/exams.ts") && !f.endsWith("/lib/assistant/summary.ts") && !f.endsWith("/lib/assistant/router.ts") && !f.endsWith("/lib/quiz-style.ts") && !f.endsWith("/lib/quiz-jobs.ts") && !f.endsWith("/lib/competition-crawl-jobs.ts"),
-    ),
+    )
+      // website-builder A (15 Oct 2026): the school website's renderer (src/lib/site-render.ts) is HTML markup in template
+      // literals — tags, attributes, CSS — and every word a reader sees in it comes from the dictionary (site.*) in the
+      // page's language; the school's own words are its data. The markup is not a sentence to translate.
+      .filter((f) => !f.endsWith("/lib/site-render.ts")),
+    // end website-builder A
     ...APP_TS_ROOTS.flatMap((root) => walk(root, ".ts")),
   ].sort();
 

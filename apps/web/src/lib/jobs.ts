@@ -20,6 +20,12 @@ import { rebuildQuestionStats } from "./bank-tools";
 import { sampleUsage } from "./plans";
 import { remindSubscriptions } from "./subscriptions";
 import { remindDueTomorrow } from "./library";
+// website-builder A (15 Oct 2026): a school's published website, its numbers counted again each night.
+import { refreshPublishedSites } from "./site-publish";
+// end website-builder A
+// website-builder B (15 Oct 2026): a school's own website domain, re-checked until it is live.
+import { liveDeps as siteDomainDeps, recheckSiteDomains } from "./site-domains";
+// end website-builder B
 import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
@@ -45,7 +51,14 @@ import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
  * the same door migrations and seeds use.
  */
 
-export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile" | "messages:send" | "circulars:deliver" | "gigs:remind" | "gigs:release" | "retention:sweep" | "admissions:expire-offers" | "accounts:tidy" | "jobs:watch" | "usage:sample" | "bank:stats" | "library:remind";
+export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile" | "messages:send" | "circulars:deliver" | "gigs:remind" | "gigs:release" | "retention:sweep" | "admissions:expire-offers" | "accounts:tidy" | "jobs:watch" | "usage:sample" | "bank:stats" | "library:remind"
+  // website-builder A (15 Oct 2026)
+  | "site:refresh"
+  // end website-builder A
+  // website-builder B (15 Oct 2026)
+  | "site:domains"
+  // end website-builder B
+  ;
 
 /**
  * What one run of a job hands back: the log line, and — for jobs whose work
@@ -379,6 +392,40 @@ export const JOBS: Record<JobName, JobSpec> = {
       return { summary: { sent }, perSchool };
     },
   },
+  // website-builder A (15 Oct 2026)
+  "site:refresh": {
+    name: "site:refresh",
+    // 03:40 nightly (03:30 is notifications:tidy, and the scheduler test reads that minute alone): each published school website's live numbers (pupils, staff, attendance this month, the
+    // pass rate, placement) counted again, and a new version rendered from the config the site was published
+    // with only where a number changed (src/lib/site-publish.ts refreshPublishedSites). The draft is untouched.
+    schedule: "40 3 * * *",
+    describeKey: "root.jobDescSiteRefresh",
+    maxRunMs: HOUR,
+    expectEveryMs: 2 * DAY,
+    narrows: ["schoolIds"],
+    run: async ({ now, scope }) => {
+      const { checked, refreshed, failed, perSchool } = await refreshPublishedSites(now, scope?.schoolIds ? { schoolIds: scope.schoolIds } : {});
+      return { summary: { checked, refreshed, failed }, perSchool };
+    },
+  },
+  // end website-builder A
+  // website-builder B (15 Oct 2026)
+  "site:domains": {
+    name: "site:domains",
+    // Every ten minutes, five past (clear of the on-the-hour and half-hour minutes other jobs and their tests use): each school domain that is VERIFYING (its DNS right, its certificate asked for) is checked
+    // again, and made LIVE once the hosting platform has issued the certificate (src/lib/site-domains.ts). Only
+    // VERIFYING rows; a domain still waiting for DNS moves when the school presses Verify.
+    schedule: "5-59/10 * * * *",
+    describeKey: "root.jobDescSiteDomains",
+    maxRunMs: 10 * 60_000,
+    expectEveryMs: HOUR,
+    narrows: ["schoolIds"],
+    run: async ({ now, scope }) => {
+      const { checked, live, failed, waiting, perSchool } = await recheckSiteDomains(siteDomainDeps(now), scope?.schoolIds ? { schoolIds: scope.schoolIds } : undefined);
+      return { summary: { checked, live, failed, waiting }, perSchool };
+    },
+  },
+  // end website-builder B
 };
 
 export const JOB_NAMES = Object.keys(JOBS) as JobName[];

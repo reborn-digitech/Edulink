@@ -1821,6 +1821,30 @@ async function main() {
     );
     // ---- end expert-registration ----
 
+    // website-builder B (15 Oct 2026)
+    // A SCHOOL'S OWN WEBSITE DOMAIN: readable by anyone once LIVE (the public site route finds the school for a host
+    // with no session), never while it is still being set up; another school reads the LIVE one and writes neither;
+    // the operator reads both. The unit suite runs as the owner and cannot see this.
+    psql(
+      DB,
+      `INSERT INTO "SchoolSiteDomain" ("id","schoolId","domain","status","certStatus","createdByUserId") VALUES
+         ('verify-dom-live','verify-a','www.verify-a.test','LIVE','ISSUED','verify-u'),
+         ('verify-dom-pending','verify-a','www.verify-a-next.test','PENDING_DNS','NONE','verify-u');`,
+    );
+    type DomainTx = { schoolSiteDomain: { findMany(a: unknown): Promise<{ id: string }[]>; updateMany(a: unknown): Promise<{ count: number }> } };
+    const domainIds = (rows: { id: string }[]) => rows.map((r) => r.id).sort().join(",");
+    const domainsNobody = await (client as unknown as DomainTx).schoolSiteDomain.findMany({ select: { id: true } });
+    const domainsAsB = await withTenantOn(client, "verify-b", (tx) => (tx as unknown as DomainTx).schoolSiteDomain.findMany({ select: { id: true } }));
+    const domainsAsA = await withTenantOn(client, "verify-a", (tx) => (tx as unknown as DomainTx).schoolSiteDomain.findMany({ select: { id: true } }));
+    const domainForgedByB = await withTenantOn(client, "verify-b", (tx) => (tx as unknown as DomainTx).schoolSiteDomain.updateMany({ where: { id: "verify-dom-live" }, data: { status: "FAILED" } }));
+    const domainsOperator = await asOperatorNowhere(true, (tx) => (tx as unknown as DomainTx).schoolSiteDomain.findMany({ select: { id: true } }));
+    check(
+      "⚠ a school's own website domain is readable by anyone once LIVE, never while it is being set up; another school writes none; the operator reads both",
+      domainIds(domainsNobody) === "verify-dom-live" && domainIds(domainsAsB) === "verify-dom-live" && domainIds(domainsAsA) === "verify-dom-live,verify-dom-pending" && domainForgedByB.count === 0 && domainIds(domainsOperator) === "verify-dom-live,verify-dom-pending",
+      `no tenant saw [${domainIds(domainsNobody)}] (want the LIVE one), school B [${domainIds(domainsAsB)}] (want the LIVE one), school A [${domainIds(domainsAsA)}] (want both), B rewrote ${domainForgedByB.count} (want 0), the operator saw [${domainIds(domainsOperator)}] (want both)`,
+    );
+    // end website-builder B
+
     // AN EXPERT REACHES THEIR ENGAGEMENT AND NOTHING ELSE OF THE SCHOOL. One
     // confirmed booking used to put the whole school in their tenant set; the
     // set is now empty and every reach is a clause keyed on the booking or

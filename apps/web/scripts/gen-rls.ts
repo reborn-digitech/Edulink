@@ -163,7 +163,12 @@ const NO_SCHOOL_POLICY = new Set([
  * into WITH CHECK: the operator cannot write a count, and the school's own
  * reads stay the ordinary tenant clause.
  */
-const SUPERUSER_READABLE = new Set(["UsageSample"]);
+const SUPERUSER_READABLE = new Set([
+  "UsageSample",
+  // website-builder B (15 Oct 2026): the operator's read-only table of every school's own domain and its state (/root/sites).
+  "SchoolSiteDomain",
+  // end website-builder B
+]);
 
 /**
  * Tables where a user may additionally READ their own rows, by the named column,
@@ -621,6 +626,29 @@ const GLOBALLY_READABLE: Record<string, string> = {
    * only; the college writes its own rows, through the teacher's own action.
    */
   FacultyPublicProfile: `"publishedAt" IS NOT NULL`,
+  // website-builder A (15 Oct 2026)
+  /**
+   * A SCHOOL'S PUBLISHED WEBSITE, THE ONE LIVE VERSION (the WEBSITE module; src/lib/site-publish.ts). The public
+   * site route (/sites/<slug>, and B's /sites/by-host/<host>) has no session: it finds the school by the slug
+   * copied onto the live version and serves its HTML, as a published disclosure is read. Readable by anyone
+   * while it is the version the site serves (`liveAt`), and by nobody outside the school the moment the office
+   * unpublishes or a newer version replaces it. What crosses is the static pages the office chose to publish —
+   * the school's own words and aggregate numbers, never a pupil — and the snapshot they were cut from. The
+   * draft (SchoolSite) and the website's enquiries stay the school's own. Read only, like everything here.
+   */
+  SchoolSiteVersion: `"liveAt" IS NOT NULL`,
+  // end website-builder A
+  // website-builder B (15 Oct 2026)
+  /**
+   * A SCHOOL'S OWN DOMAIN, ONCE IT IS LIVE (the WEBSITE module; src/lib/site-domains.ts). The public site route
+   * (/sites/by-host/<host>, src/lib/site-hosts.ts schoolIdForHost) has no session and must find which school a
+   * request's host belongs to: a LIVE row is readable by anyone. What crosses is a domain the school has pointed
+   * at its own public website, which every DNS resolver already publishes, with its state; a domain still being
+   * set up (PENDING_DNS, VERIFYING) or one that FAILED stays the school's own. Read only, like everything here;
+   * the school writes its own rows through the office's or the head's door.
+   */
+  SchoolSiteDomain: `"status" = 'LIVE'`,
+  // end website-builder B
 };
 
 /**

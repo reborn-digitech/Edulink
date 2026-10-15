@@ -192,6 +192,9 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/settings", labelKey: "nav.settings", icon: "gear", prefix: true, group: "running" },
     // The school's former pupils by batch, notes to a batch, the feed's setting (the alumni module, 3 Oct 2026).
     { href: "/admin/alumni", labelKey: "modules.alumniName", icon: "graduationCap", prefix: true, group: "running", module: "ALUMNI" },
+    // website-builder A (15 Oct 2026): the school's public website, built in six screens (the WEBSITE module).
+    { href: "/admin/website", labelKey: "modules.websiteName", icon: "globe", prefix: true, group: "running", module: "WEBSITE" },
+    // end website-builder A
     // The office can now write to anyone at the school, so the inbox is theirs too.
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
     // Hidden by the shell until somebody waits — see signed-in-shell.tsx.
@@ -271,6 +274,9 @@ export const NAV: Record<Role, NavItem[]> = {
     // Read-only for the head: the counts, the notices sent and their reports.
     { href: "/admin/messaging", labelKey: "nav.messaging", icon: "chatsCircle", prefix: true, group: "running" },
     { href: "/admin/circulars", labelKey: "nav.circulars", icon: "megaphone", prefix: true, group: "running" },
+    // website-builder A (15 Oct 2026): the school's public website, built in six screens (the WEBSITE module).
+    { href: "/admin/website", labelKey: "modules.websiteName", icon: "globe", prefix: true, group: "running", module: "WEBSITE" },
+    // end website-builder A
     // The sick-room and incident log: the whole school's, and the record pages under /incidents.
     { href: "/admin/incidents", labelKey: "nav.incidents", icon: "firstAidKit", prefix: true, group: "running", also: ["/incidents"] },
     // Transport (3 Oct 2026): routes, buses, drivers, seats and today's trips on a map; the head reads.

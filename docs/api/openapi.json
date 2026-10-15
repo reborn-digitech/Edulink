@@ -1222,6 +1222,7 @@
                           "PAYROLL",
                           "ALUMNI",
                           "ASSISTANT",
+                          "WEBSITE",
                           "ACADEMICS",
                           "EXAMS",
                           "IQAC",
@@ -1521,6 +1522,7 @@
                           "PAYROLL",
                           "ALUMNI",
                           "ASSISTANT",
+                          "WEBSITE",
                           "ACADEMICS",
                           "EXAMS",
                           "IQAC",
@@ -10992,6 +10994,7 @@
                               "PAYROLL",
                               "ALUMNI",
                               "ASSISTANT",
+                              "WEBSITE",
                               "ACADEMICS",
                               "EXAMS",
                               "IQAC",
@@ -11102,6 +11105,7 @@
                               "PAYROLL",
                               "ALUMNI",
                               "ASSISTANT",
+                              "WEBSITE",
                               "ACADEMICS",
                               "EXAMS",
                               "IQAC",
@@ -11194,6 +11198,7 @@
                       "PAYROLL",
                       "ALUMNI",
                       "ASSISTANT",
+                      "WEBSITE",
                       "ACADEMICS",
                       "EXAMS",
                       "IQAC",
@@ -194349,6 +194354,7 @@
                                 "PAYROLL",
                                 "ALUMNI",
                                 "ASSISTANT",
+                                "WEBSITE",
                                 "ACADEMICS",
                                 "EXAMS",
                                 "IQAC",
@@ -194824,6 +194830,7 @@
                               "PAYROLL",
                               "ALUMNI",
                               "ASSISTANT",
+                              "WEBSITE",
                               "ACADEMICS",
                               "EXAMS",
                               "IQAC",
@@ -194960,6 +194967,7 @@
                               "PAYROLL",
                               "ALUMNI",
                               "ASSISTANT",
+                              "WEBSITE",
                               "ACADEMICS",
                               "EXAMS",
                               "IQAC",
@@ -195061,6 +195069,7 @@
                       "PAYROLL",
                       "ALUMNI",
                       "ASSISTANT",
+                      "WEBSITE",
                       "ACADEMICS",
                       "EXAMS",
                       "IQAC",
@@ -230175,6 +230184,2232 @@
             }
           }
         ]
+      }
+    },
+    "/api/v1/admin/site": {
+      "get": {
+        "summary": "The school website's draft (look, words, sections, numbers, news, gallery with consent), whether a version is live and since when, its address, and the preview's warnings",
+        "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "WEBSITE",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "template": {
+                          "type": "string",
+                          "enum": [
+                            "CLASSIC",
+                            "MODERN",
+                            "WARM",
+                            "MINIMAL"
+                          ]
+                        },
+                        "colour": {
+                          "type": "string",
+                          "enum": [
+                            "#1d4ed8",
+                            "#0f766e",
+                            "#b45309",
+                            "#9f1239",
+                            "#4d7c0f",
+                            "#6d28d9"
+                          ]
+                        },
+                        "font": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40
+                        },
+                        "language": {
+                          "type": "string",
+                          "enum": [
+                            "en",
+                            "hi",
+                            "mr"
+                          ]
+                        },
+                        "offerOtherLanguages": {
+                          "type": "boolean"
+                        },
+                        "motto": {
+                          "type": "string",
+                          "maxLength": 140
+                        },
+                        "about": {
+                          "type": "string",
+                          "maxLength": 3000
+                        },
+                        "address": {
+                          "type": "string",
+                          "maxLength": 300
+                        },
+                        "phones": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "maxLength": 20
+                          },
+                          "maxItems": 3
+                        },
+                        "email": {
+                          "type": "string",
+                          "maxLength": 200
+                        },
+                        "mapUrl": {
+                          "type": "string",
+                          "maxLength": 500
+                        },
+                        "hours": {
+                          "type": "string",
+                          "maxLength": 200
+                        },
+                        "board": {
+                          "type": "string",
+                          "maxLength": 140
+                        },
+                        "foundedYear": {
+                          "type": "integer",
+                          "minimum": 1800,
+                          "maximum": 2100,
+                          "nullable": true
+                        },
+                        "principalMessage": {
+                          "type": "string",
+                          "maxLength": 2000
+                        },
+                        "principalNamed": {
+                          "type": "boolean"
+                        },
+                        "sections": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string",
+                                "enum": [
+                                  "NUMBERS",
+                                  "FACULTY",
+                                  "DISCLOSURE",
+                                  "ADMISSIONS",
+                                  "NEWS",
+                                  "GALLERY",
+                                  "CONTACT"
+                                ]
+                              },
+                              "on": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "on"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 7
+                        },
+                        "metrics": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "PUPILS",
+                              "TEACHING_STAFF",
+                              "ATTENDANCE_MONTH",
+                              "CLASSES",
+                              "BOARD",
+                              "YEARS_SINCE_FOUNDING",
+                              "PASS_RATE",
+                              "PROGRAMMES",
+                              "PLACEMENT_OFFERS",
+                              "PLACEMENT_HIGHEST",
+                              "PLACEMENT_MEDIAN"
+                            ]
+                          },
+                          "maxItems": 11
+                        },
+                        "admissionsText": {
+                          "type": "string",
+                          "maxLength": 2000
+                        },
+                        "enquiryForm": {
+                          "type": "boolean"
+                        },
+                        "newsPostIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "maxItems": 12
+                        },
+                        "gallery": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "postId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 64
+                              },
+                              "fileId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 200
+                              },
+                              "consent": {
+                                "type": "boolean"
+                              },
+                              "consentByUserId": {
+                                "type": "string",
+                                "maxLength": 64,
+                                "nullable": true
+                              },
+                              "consentAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "postId",
+                              "fileId",
+                              "consent"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 24
+                        }
+                      },
+                      "required": [
+                        "template",
+                        "colour",
+                        "font",
+                        "language",
+                        "offerOtherLanguages",
+                        "motto",
+                        "about",
+                        "address",
+                        "phones",
+                        "email",
+                        "mapUrl",
+                        "hours",
+                        "board",
+                        "foundedYear",
+                        "principalMessage",
+                        "principalNamed",
+                        "sections",
+                        "metrics",
+                        "admissionsText",
+                        "enquiryForm",
+                        "newsPostIds",
+                        "gallery"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "published": {
+                      "type": "boolean"
+                    },
+                    "publishedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "address": {
+                      "type": "string"
+                    },
+                    "warnings": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "NO_LOGO",
+                          "NO_ABOUT",
+                          "EMPTY_NUMBERS",
+                          "EMPTY_FACULTY",
+                          "EMPTY_DISCLOSURE",
+                          "EMPTY_NEWS",
+                          "EMPTY_GALLERY",
+                          "EMPTY_CONTACT",
+                          "GALLERY_NO_CONSENT"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "config",
+                    "published",
+                    "publishedAt",
+                    "address",
+                    "warnings"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Replace the website's draft with the whole config; each field checked (a bundled face, an https map link, the school's own approved posts and their pictures, at most 12 and 24); the consent tick on a picture is stamped with who and when by the server; nothing is published",
+        "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "WEBSITE",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "template": {
+                          "type": "string",
+                          "enum": [
+                            "CLASSIC",
+                            "MODERN",
+                            "WARM",
+                            "MINIMAL"
+                          ]
+                        },
+                        "colour": {
+                          "type": "string",
+                          "enum": [
+                            "#1d4ed8",
+                            "#0f766e",
+                            "#b45309",
+                            "#9f1239",
+                            "#4d7c0f",
+                            "#6d28d9"
+                          ]
+                        },
+                        "font": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40
+                        },
+                        "language": {
+                          "type": "string",
+                          "enum": [
+                            "en",
+                            "hi",
+                            "mr"
+                          ]
+                        },
+                        "offerOtherLanguages": {
+                          "type": "boolean"
+                        },
+                        "motto": {
+                          "type": "string",
+                          "maxLength": 140
+                        },
+                        "about": {
+                          "type": "string",
+                          "maxLength": 3000
+                        },
+                        "address": {
+                          "type": "string",
+                          "maxLength": 300
+                        },
+                        "phones": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "maxLength": 20
+                          },
+                          "maxItems": 3
+                        },
+                        "email": {
+                          "type": "string",
+                          "maxLength": 200
+                        },
+                        "mapUrl": {
+                          "type": "string",
+                          "maxLength": 500
+                        },
+                        "hours": {
+                          "type": "string",
+                          "maxLength": 200
+                        },
+                        "board": {
+                          "type": "string",
+                          "maxLength": 140
+                        },
+                        "foundedYear": {
+                          "type": "integer",
+                          "minimum": 1800,
+                          "maximum": 2100,
+                          "nullable": true
+                        },
+                        "principalMessage": {
+                          "type": "string",
+                          "maxLength": 2000
+                        },
+                        "principalNamed": {
+                          "type": "boolean"
+                        },
+                        "sections": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string",
+                                "enum": [
+                                  "NUMBERS",
+                                  "FACULTY",
+                                  "DISCLOSURE",
+                                  "ADMISSIONS",
+                                  "NEWS",
+                                  "GALLERY",
+                                  "CONTACT"
+                                ]
+                              },
+                              "on": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "on"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 7
+                        },
+                        "metrics": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "PUPILS",
+                              "TEACHING_STAFF",
+                              "ATTENDANCE_MONTH",
+                              "CLASSES",
+                              "BOARD",
+                              "YEARS_SINCE_FOUNDING",
+                              "PASS_RATE",
+                              "PROGRAMMES",
+                              "PLACEMENT_OFFERS",
+                              "PLACEMENT_HIGHEST",
+                              "PLACEMENT_MEDIAN"
+                            ]
+                          },
+                          "maxItems": 11
+                        },
+                        "admissionsText": {
+                          "type": "string",
+                          "maxLength": 2000
+                        },
+                        "enquiryForm": {
+                          "type": "boolean"
+                        },
+                        "newsPostIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "maxItems": 12
+                        },
+                        "gallery": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "postId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 64
+                              },
+                              "fileId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 200
+                              },
+                              "consent": {
+                                "type": "boolean"
+                              },
+                              "consentByUserId": {
+                                "type": "string",
+                                "maxLength": 64,
+                                "nullable": true
+                              },
+                              "consentAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "postId",
+                              "fileId",
+                              "consent"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 24
+                        }
+                      },
+                      "required": [
+                        "template",
+                        "colour",
+                        "font",
+                        "language",
+                        "offerOtherLanguages",
+                        "motto",
+                        "about",
+                        "address",
+                        "phones",
+                        "email",
+                        "mapUrl",
+                        "hours",
+                        "board",
+                        "foundedYear",
+                        "principalMessage",
+                        "principalNamed",
+                        "sections",
+                        "metrics",
+                        "admissionsText",
+                        "enquiryForm",
+                        "newsPostIds",
+                        "gallery"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "published": {
+                      "type": "boolean"
+                    },
+                    "publishedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "address": {
+                      "type": "string"
+                    },
+                    "warnings": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "NO_LOGO",
+                          "NO_ABOUT",
+                          "EMPTY_NUMBERS",
+                          "EMPTY_FACULTY",
+                          "EMPTY_DISCLOSURE",
+                          "EMPTY_NEWS",
+                          "EMPTY_GALLERY",
+                          "EMPTY_CONTACT",
+                          "GALLERY_NO_CONSENT"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "config",
+                    "published",
+                    "publishedAt",
+                    "address",
+                    "warnings"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "template": {
+                    "type": "string",
+                    "enum": [
+                      "CLASSIC",
+                      "MODERN",
+                      "WARM",
+                      "MINIMAL"
+                    ]
+                  },
+                  "colour": {
+                    "type": "string",
+                    "enum": [
+                      "#1d4ed8",
+                      "#0f766e",
+                      "#b45309",
+                      "#9f1239",
+                      "#4d7c0f",
+                      "#6d28d9"
+                    ]
+                  },
+                  "font": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 40
+                  },
+                  "language": {
+                    "type": "string",
+                    "enum": [
+                      "en",
+                      "hi",
+                      "mr"
+                    ]
+                  },
+                  "offerOtherLanguages": {
+                    "type": "boolean"
+                  },
+                  "motto": {
+                    "type": "string",
+                    "maxLength": 140
+                  },
+                  "about": {
+                    "type": "string",
+                    "maxLength": 3000
+                  },
+                  "address": {
+                    "type": "string",
+                    "maxLength": 300
+                  },
+                  "phones": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "maxLength": 20
+                    },
+                    "maxItems": 3
+                  },
+                  "email": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "mapUrl": {
+                    "type": "string",
+                    "maxLength": 500
+                  },
+                  "hours": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "board": {
+                    "type": "string",
+                    "maxLength": 140
+                  },
+                  "foundedYear": {
+                    "type": "integer",
+                    "minimum": 1800,
+                    "maximum": 2100,
+                    "nullable": true
+                  },
+                  "principalMessage": {
+                    "type": "string",
+                    "maxLength": 2000
+                  },
+                  "principalNamed": {
+                    "type": "boolean"
+                  },
+                  "sections": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "enum": [
+                            "NUMBERS",
+                            "FACULTY",
+                            "DISCLOSURE",
+                            "ADMISSIONS",
+                            "NEWS",
+                            "GALLERY",
+                            "CONTACT"
+                          ]
+                        },
+                        "on": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "on"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 7
+                  },
+                  "metrics": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "PUPILS",
+                        "TEACHING_STAFF",
+                        "ATTENDANCE_MONTH",
+                        "CLASSES",
+                        "BOARD",
+                        "YEARS_SINCE_FOUNDING",
+                        "PASS_RATE",
+                        "PROGRAMMES",
+                        "PLACEMENT_OFFERS",
+                        "PLACEMENT_HIGHEST",
+                        "PLACEMENT_MEDIAN"
+                      ]
+                    },
+                    "maxItems": 11
+                  },
+                  "admissionsText": {
+                    "type": "string",
+                    "maxLength": 2000
+                  },
+                  "enquiryForm": {
+                    "type": "boolean"
+                  },
+                  "newsPostIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    },
+                    "maxItems": 12
+                  },
+                  "gallery": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "postId": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "fileId": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200
+                        },
+                        "consent": {
+                          "type": "boolean"
+                        },
+                        "consentByUserId": {
+                          "type": "string",
+                          "maxLength": 64,
+                          "nullable": true
+                        },
+                        "consentAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "postId",
+                        "fileId",
+                        "consent"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 24
+                  }
+                },
+                "required": [
+                  "template",
+                  "colour",
+                  "font",
+                  "language",
+                  "offerOtherLanguages",
+                  "motto",
+                  "about",
+                  "address",
+                  "phones",
+                  "email",
+                  "mapUrl",
+                  "hours",
+                  "board",
+                  "foundedYear",
+                  "principalMessage",
+                  "principalNamed",
+                  "sections",
+                  "metrics",
+                  "admissionsText",
+                  "enquiryForm",
+                  "newsPostIds",
+                  "gallery"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/site/preview": {
+      "get": {
+        "summary": "The draft as the page it would publish (text/html), with today's numbers, ?lang= en, hi or mr; never cached",
+        "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "WEBSITE",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "lang": {
+                    "type": "string",
+                    "enum": [
+                      "en",
+                      "hi",
+                      "mr"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/public/sites/{slug}": {
+      "get": {
+        "summary": "A school's published website (text/html), signed out: static, no script, `Cache-Control: public, max-age=300`, ?lang= en, hi or mr where the site offers them; 404 with noindex while it is not published or the module is off",
+        "description": "No session needed.",
+        "security": [],
+        "x-access": "anyone",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "lang": {
+                    "type": "string",
+                    "enum": [
+                      "en",
+                      "hi",
+                      "mr"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/public/sites/{slug}/enquiry": {
+      "post": {
+        "summary": "An admission enquiry through a school's published website, signed out (name, a phone or email, the class asked about, the question); the admissions contact is told in the app; 201, 404 while the site carries no form, 422 for the form, 429 past five an hour per address",
+        "description": "No session needed.",
+        "security": [],
+        "x-access": "anyone",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "contact": {
+                    "type": "string",
+                    "minLength": 5,
+                    "maxLength": 200
+                  },
+                  "grade": {
+                    "type": "string",
+                    "maxLength": 60,
+                    "default": ""
+                  },
+                  "message": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2000
+                  },
+                  "website": {
+                    "type": "string",
+                    "maxLength": 200,
+                    "default": ""
+                  }
+                },
+                "required": [
+                  "name",
+                  "contact",
+                  "message"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/site/unpublish": {
+      "post": {
+        "summary": "Take the website down: its address answers 404 with noindex; the versions are kept; audited when something was live",
+        "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "WEBSITE",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/site/publish": {
+      "post": {
+        "summary": "Render the draft in every language the site offers and make it the live version at its address; audited",
+        "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "WEBSITE",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "versionId": {
+                      "type": "string"
+                    },
+                    "renderedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "address": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "versionId",
+                    "renderedAt",
+                    "address"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/site/domain": {
+      "get": {
+        "summary": "The school website's address (its subdomain), whether it is published, and the school's own domain with its state and the DNS records to add",
+        "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "WEBSITE",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "subdomain": {
+                      "type": "string"
+                    },
+                    "published": {
+                      "type": "boolean"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "certificatesHere": {
+                      "type": "boolean"
+                    },
+                    "domain": {
+                      "type": "object",
+                      "properties": {
+                        "domain": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "PENDING_DNS",
+                            "VERIFYING",
+                            "LIVE",
+                            "FAILED"
+                          ]
+                        },
+                        "certStatus": {
+                          "type": "string",
+                          "enum": [
+                            "NONE",
+                            "REQUESTED",
+                            "ISSUED",
+                            "FAILED"
+                          ]
+                        },
+                        "dnsCheckedAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "dnsError": {
+                          "type": "object",
+                          "properties": {
+                            "code": {
+                              "type": "string",
+                              "enum": [
+                                "NO_RECORD",
+                                "WRONG_TARGET",
+                                "LOOKUP_FAILED"
+                              ]
+                            },
+                            "host": {
+                              "type": "string"
+                            },
+                            "found": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "code",
+                            "host"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "certCheckedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/domain/properties/dnsCheckedAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "certError": {
+                          "type": "object",
+                          "properties": {
+                            "code": {
+                              "type": "string",
+                              "enum": [
+                                "NOT_CONFIGURED",
+                                "FLY_ERROR",
+                                "CERT_FAILED"
+                              ]
+                            },
+                            "host": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "code"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "createdAt": {
+                          "$ref": "#/properties/domain/properties/dnsCheckedAt"
+                        },
+                        "verifiedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/domain/properties/dnsCheckedAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "records": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "CNAME",
+                                  "A",
+                                  "REDIRECT"
+                                ]
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "host": {
+                                "type": "string"
+                              },
+                              "value": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "name",
+                              "host",
+                              "value"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "hosts": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "domain",
+                        "status",
+                        "certStatus",
+                        "dnsCheckedAt",
+                        "dnsError",
+                        "certCheckedAt",
+                        "certError",
+                        "createdAt",
+                        "verifiedAt",
+                        "records",
+                        "hosts"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "subdomain",
+                    "published",
+                    "target",
+                    "certificatesHere",
+                    "domain"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Save the school's own domain for its website (a hostname, no scheme or path), replacing the one it had; audited",
+        "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "WEBSITE",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "subdomain": {
+                      "type": "string"
+                    },
+                    "published": {
+                      "type": "boolean"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "certificatesHere": {
+                      "type": "boolean"
+                    },
+                    "domain": {
+                      "type": "object",
+                      "properties": {
+                        "domain": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "PENDING_DNS",
+                            "VERIFYING",
+                            "LIVE",
+                            "FAILED"
+                          ]
+                        },
+                        "certStatus": {
+                          "type": "string",
+                          "enum": [
+                            "NONE",
+                            "REQUESTED",
+                            "ISSUED",
+                            "FAILED"
+                          ]
+                        },
+                        "dnsCheckedAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "dnsError": {
+                          "type": "object",
+                          "properties": {
+                            "code": {
+                              "type": "string",
+                              "enum": [
+                                "NO_RECORD",
+                                "WRONG_TARGET",
+                                "LOOKUP_FAILED"
+                              ]
+                            },
+                            "host": {
+                              "type": "string"
+                            },
+                            "found": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "code",
+                            "host"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "certCheckedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/domain/properties/dnsCheckedAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "certError": {
+                          "type": "object",
+                          "properties": {
+                            "code": {
+                              "type": "string",
+                              "enum": [
+                                "NOT_CONFIGURED",
+                                "FLY_ERROR",
+                                "CERT_FAILED"
+                              ]
+                            },
+                            "host": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "code"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "createdAt": {
+                          "$ref": "#/properties/domain/properties/dnsCheckedAt"
+                        },
+                        "verifiedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/domain/properties/dnsCheckedAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "records": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "CNAME",
+                                  "A",
+                                  "REDIRECT"
+                                ]
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "host": {
+                                "type": "string"
+                              },
+                              "value": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "name",
+                              "host",
+                              "value"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "hosts": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "domain",
+                        "status",
+                        "certStatus",
+                        "dnsCheckedAt",
+                        "dnsError",
+                        "certCheckedAt",
+                        "certError",
+                        "createdAt",
+                        "verifiedAt",
+                        "records",
+                        "hosts"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "subdomain",
+                    "published",
+                    "target",
+                    "certificatesHere",
+                    "domain"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "domain": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "domain"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Remove the school's own domain (the one named in the body); its certificate is taken off the platform; audited",
+        "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "WEBSITE",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "removed": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "removed"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "domain": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "domain"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/site/domain/verify": {
+      "post": {
+        "summary": "Check the school's own domain's DNS now, ask for its certificate, and answer its new state (Waiting for DNS, Verifying, Live, Failed); audited",
+        "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "WEBSITE",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "subdomain": {
+                      "type": "string"
+                    },
+                    "published": {
+                      "type": "boolean"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "certificatesHere": {
+                      "type": "boolean"
+                    },
+                    "domain": {
+                      "type": "object",
+                      "properties": {
+                        "domain": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "PENDING_DNS",
+                            "VERIFYING",
+                            "LIVE",
+                            "FAILED"
+                          ]
+                        },
+                        "certStatus": {
+                          "type": "string",
+                          "enum": [
+                            "NONE",
+                            "REQUESTED",
+                            "ISSUED",
+                            "FAILED"
+                          ]
+                        },
+                        "dnsCheckedAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "dnsError": {
+                          "type": "object",
+                          "properties": {
+                            "code": {
+                              "type": "string",
+                              "enum": [
+                                "NO_RECORD",
+                                "WRONG_TARGET",
+                                "LOOKUP_FAILED"
+                              ]
+                            },
+                            "host": {
+                              "type": "string"
+                            },
+                            "found": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "code",
+                            "host"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "certCheckedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/domain/properties/dnsCheckedAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "certError": {
+                          "type": "object",
+                          "properties": {
+                            "code": {
+                              "type": "string",
+                              "enum": [
+                                "NOT_CONFIGURED",
+                                "FLY_ERROR",
+                                "CERT_FAILED"
+                              ]
+                            },
+                            "host": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "code"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "createdAt": {
+                          "$ref": "#/properties/domain/properties/dnsCheckedAt"
+                        },
+                        "verifiedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/domain/properties/dnsCheckedAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "records": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "CNAME",
+                                  "A",
+                                  "REDIRECT"
+                                ]
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "host": {
+                                "type": "string"
+                              },
+                              "value": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "name",
+                              "host",
+                              "value"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "hosts": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "domain",
+                        "status",
+                        "certStatus",
+                        "dnsCheckedAt",
+                        "dnsError",
+                        "certCheckedAt",
+                        "certError",
+                        "createdAt",
+                        "verifiedAt",
+                        "records",
+                        "hosts"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "subdomain",
+                    "published",
+                    "target",
+                    "certificatesHere",
+                    "domain"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "domain": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "domain"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
       }
     }
   }

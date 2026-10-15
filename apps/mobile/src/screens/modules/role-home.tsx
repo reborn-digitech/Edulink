@@ -17,6 +17,8 @@ export const MODULE_KEYS: Record<SchoolModuleCode, { name: TranslationKey; what:
   PAYROLL: { name: "modules.payrollName", what: "modules.payrollWhat" },
   ALUMNI: { name: "modules.alumniName", what: "modules.alumniWhat" },
   ASSISTANT: { name: "modules.assistantName", what: "modules.assistantWhat" },
+  // website-builder A (15 Oct 2026): the school's public website, built on the web only.
+  WEBSITE: { name: "modules.websiteName", what: "modules.websiteWhat" },
   // The college's six (4 Oct 2026).
   ACADEMICS: { name: "modules.academicsName", what: "modules.academicsWhat" },
   EXAMS: { name: "modules.examsName", what: "modules.examsWhat" },

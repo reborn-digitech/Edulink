@@ -13,7 +13,9 @@ import { z } from "zod";
  * words; what each one says to a person is a dictionary key
  * (`modules.<code>.name` / `.what`), never this string.
  */
-export const SCHOOL_VERSION_MODULES = ["TRANSPORT", "LIBRARY", "HOSTEL", "INVENTORY", "PAYROLL", "ALUMNI", "ASSISTANT"] as const;
+// website-builder A (15 Oct 2026): WEBSITE, the school's public website built from what is on the platform, offered to
+// schools and colleges alike and off until the admin switches it on (apps/web/src/lib/site-*.ts).
+export const SCHOOL_VERSION_MODULES = ["TRANSPORT", "LIBRARY", "HOSTEL", "INVENTORY", "PAYROLL", "ALUMNI", "ASSISTANT", "WEBSITE"] as const;
 
 /**
  * THE COLLEGE'S OWN SIX (the owner's decision of 4 October 2026), switched on

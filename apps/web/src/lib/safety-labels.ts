@@ -867,6 +867,17 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "operator.expertApplication.approve": "audit.operatorExpertApplicationApprove",
   "operator.expertApplication.refuse": "audit.operatorExpertApplicationRefuse",
   // end expert-registration
+  // website-builder A (15 Oct 2026): a school's public website published, unpublished, and an enquiry from it.
+  "site.publish": "audit.sitePublish",
+  "site.unpublish": "audit.siteUnpublish",
+  "site.enquiry": "audit.siteEnquiry",
+  // end website-builder A
+  // website-builder B (15 Oct 2026): a school's own domain for its website saved, verified, removed, and the job's state changes.
+  "site.domain.save": "audit.siteDomainSave",
+  "site.domain.verify": "audit.siteDomainVerify",
+  "site.domain.remove": "audit.siteDomainRemove",
+  "site.domain.status": "audit.siteDomainStatus",
+  // end website-builder B
 };
 
 export function actionKey(action: string): TranslationKey | null {

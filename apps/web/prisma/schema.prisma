@@ -542,6 +542,14 @@ model School {
   logbookEntries         LogbookEntry[]
   // R-61 Q2 (decisions builder, 10 Oct 2026): the office's settlements on leaving.
   leavingSettlements     LeavingSettlement[]
+  // website-builder A (15 Oct 2026): the school's public website — its draft, its rendered versions, the enquiries it took.
+  site                   SchoolSite?
+  siteVersions           SchoolSiteVersion[]
+  siteEnquiries          SchoolSiteEnquiry[]
+  // end website-builder A
+  // website-builder B (15 Oct 2026): the school's own domains for its public website.
+  siteDomains            SchoolSiteDomain[]
+  // end website-builder B
 
   @@index([code])
   @@index([admissionsContactMembershipId])
@@ -10851,3 +10859,114 @@ model ExpertApplication {
   @@index([inviteId])
 }
 // ---- end expert-registration ----
+
+// website-builder B
+/// A SCHOOL'S OWN DOMAIN FOR ITS PUBLIC WEBSITE (the WEBSITE module, 15 October 2026; src/lib/site-domains.ts is
+/// the one writer). The office or the head types a domain at /admin/website/domain, adds the two DNS records the
+/// page shows at their registrar, and presses Verify: the DNS is checked (PENDING_DNS -> VERIFYING), a certificate
+/// is asked of the hosting platform (certStatus NONE -> REQUESTED -> ISSUED), and once it is issued the domain is
+/// LIVE and the middleware serves the published site on it (src/lib/site-hosts.ts schoolIdForHost). The job
+/// site:domains re-checks VERIFYING domains every ten minutes. `domain` is lowercase ASCII (punycode for an
+/// internationalised name), unique across the platform: one domain is one school's. `dnsError` and `certError`
+/// hold a code (with the value found after a colon where there is one), never a sentence; the page words them.
+/// School-fenced like every school table; a LIVE row is also readable by anyone (GLOBALLY_READABLE in
+/// scripts/gen-rls.ts), because the public site route must find the school for a host with no session, and a
+/// domain the school has pointed at its own site is public by nature.
+model SchoolSiteDomain {
+  id              String    @id @default(cuid())
+  schoolId        String
+  domain          String    @unique
+  /// PENDING_DNS | VERIFYING | LIVE | FAILED
+  status          String    @default("PENDING_DNS")
+  dnsCheckedAt    DateTime?
+  dnsError        String?
+  /// NONE | REQUESTED | ISSUED | FAILED
+  certStatus      String    @default("NONE")
+  certCheckedAt   DateTime?
+  certError       String?
+  createdByUserId String
+  createdAt       DateTime  @default(now())
+  verifiedAt      DateTime?
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId])
+  @@index([status])
+}
+// end website-builder B
+
+// website-builder A
+/// A SCHOOL'S PUBLIC WEBSITE, THE DRAFT (the WEBSITE module, 15 October 2026; src/lib/site-admin.ts is the one
+/// writer). The admin or the head builds it in the six-screen flow at /admin/website with no free layout: a
+/// template, a colour, a face, a language, the school's own words, which sections are on and in what order, the
+/// posts and pictures chosen. `configJson` is that draft (siteConfigSchema in packages/contracts v1/website.ts),
+/// autosaved on each Continue; a gallery picture carries the admin's consent tick with who ticked it and when
+/// (minors' policy 0002). Nothing here is public: what the world reads is a SchoolSiteVersion.
+model SchoolSite {
+  id                 String   @id @default(cuid())
+  schoolId           String   @unique
+  configJson         String   @default("{}")
+  /// The version the public route serves; null while the site is not published (never, or unpublished).
+  publishedVersionId String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  updatedByUserId    String?
+
+  school   School              @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  versions SchoolSiteVersion[]
+}
+
+/// ONE RENDERED VERSION OF A SCHOOL'S WEBSITE (15 October 2026; src/lib/site-publish.ts is the one writer):
+/// static HTML per language cut at Publish, and again by the nightly site:refresh job when the live numbers have
+/// changed. `html` is JSON { en, hi, mr }; `snapshotJson` the config and the data it was cut from, the gallery's
+/// consent ticks with who and when among them; `imageFileIds` the stored files the pages show, which the file
+/// route then serves to anyone (files.ts) while the version is live. `liveAt` is set on the one version the site
+/// serves and cleared when another replaces it or the site is unpublished (a partial unique index allows one per
+/// school). A LIVE row is readable by anyone (GLOBALLY_READABLE in scripts/gen-rls.ts), as a published
+/// disclosure is: the public route finds it by `schoolSlug` with no session. What crosses is the school's own
+/// public words and aggregate numbers, never a pupil.
+model SchoolSiteVersion {
+  id                String    @id @default(cuid())
+  schoolId          String
+  siteId            String
+  /// School.slug at the render: the address <slug>.<SITE_DOMAIN> and /sites/<slug>.
+  schoolSlug        String
+  snapshotJson      String    @default("{}")
+  html              String    @default("{}")
+  imageFileIds      String[]  @default([])
+  /// A hash of the numbers shown, so the nightly job stores a new version only when one changed.
+  numbersHash       String    @default("")
+  renderedAt        DateTime  @default(now())
+  numbersAt         DateTime  @default(now())
+  /// Null for a version the nightly job cut.
+  publishedByUserId String?
+  liveAt            DateTime?
+
+  school School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  site   SchoolSite @relation(fields: [siteId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, renderedAt])
+  @@index([schoolSlug])
+}
+
+/// AN ENQUIRY FROM A SCHOOL'S PUBLIC WEBSITE (15 October 2026; src/lib/site-enquiry.ts). The shared enquiries
+/// (Enquiry) need a signed-in parent, and a visitor to a static site has no account, so the site's admission
+/// form writes here, rate-limited per address: a name, a phone or an email, the class asked about and a
+/// message. The admissions contact (or the admins) is told in the app; the office reads them on /admin/website.
+model SchoolSiteEnquiry {
+  id           String    @id @default(cuid())
+  schoolId     String
+  name         String
+  contact      String
+  grade        String    @default("")
+  message      String
+  locale       String    @default("en")
+  createdAt    DateTime  @default(now())
+  readAt       DateTime?
+  readByUserId String?
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, createdAt])
+}
+// end website-builder A

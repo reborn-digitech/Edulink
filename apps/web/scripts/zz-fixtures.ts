@@ -51,6 +51,9 @@ import { buildInventory, buildPayroll } from "./zz-fixtures-inventory-payroll";
 import { buildLibraryHostel } from "./zz-library-hostel";
 import { buildTransport } from "./zz-transport";
 import { buildAlumni } from "./zz-alumni";
+// website-builder A (15 Oct 2026)
+import { buildWebsite } from "./zz-website";
+// end website-builder A
 import { buildColleges } from "./zz-college";
 import { buildAcademics } from "./zz-academics";
 import { buildCollegeExams } from "./zz-exams";
@@ -2691,6 +2694,21 @@ async function main() {
   }
   console.log(`  Expert application: ZZ Expert Applicant <${applicantEmail}> ${waitingApplication ? "already waiting" : "added, waiting"} — /root/experts`);
   // ---- end expert-registration ----
+  // website-builder A (15 Oct 2026): ZZ Northgate's public website — the module on, a draft with every section and number on,
+  // one approved post with a consented picture, and a published version (zz-website.ts; idempotent).
+  const website = await buildWebsite(db, northgate.school, northgate.admin.id);
+  console.log(`  Website: ZZ Northgate ${website.published ? "published now" : "already published"}, every section on — /admin/website, /sites/${website.slug}`);
+  // end website-builder A
+  // website-builder B (15 Oct 2026): ZZ Northgate's own website domain, waiting for DNS (a .test name never resolves,
+  // so Verify leaves it there with "No record was found"). Idempotent: kept when it is there; any other domain the
+  // school was given since (a test, a hand) is put back to this one. Removed with the school by --teardown.
+  const zzDomain = "www.zz-northgate.test";
+  const domainRows = await db.schoolSiteDomain.findMany({ where: { schoolId: northgate.school.id }, select: { id: true, domain: true } });
+  const keptDomain = domainRows.some((r) => r.domain === zzDomain);
+  await db.schoolSiteDomain.deleteMany({ where: { schoolId: northgate.school.id, domain: { not: zzDomain } } });
+  if (!keptDomain) await db.schoolSiteDomain.create({ data: { schoolId: northgate.school.id, domain: zzDomain, status: "PENDING_DNS", certStatus: "NONE", createdByUserId: northgate.admin.id } });
+  console.log(`  Website domain: ${zzDomain} at ZZ Northgate ${keptDomain ? "already there" : "added, waiting for DNS"} — /admin/website/domain, /root/sites`);
+  // end website-builder B
 
   const studentCount = await db.membership.count({
     where: { schoolId: northgate.school.id, role: "STUDENT" },

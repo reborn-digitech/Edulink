@@ -3446,6 +3446,65 @@ CREATE POLICY "LeavingSettlement_tenant_isolation" ON "LeavingSettlement"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- SchoolSiteDomain
+ALTER TABLE "SchoolSiteDomain" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "SchoolSiteDomain" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "SchoolSiteDomain_tenant_isolation" ON "SchoolSiteDomain";
+DROP POLICY IF EXISTS "SchoolSiteDomain_readable" ON "SchoolSiteDomain";
+CREATE POLICY "SchoolSiteDomain_tenant_isolation" ON "SchoolSiteDomain"
+  FOR ALL
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- …and one row of this table belonging to ANOTHER school, by the
+  -- predicate below. See GLOBALLY_READABLE in scripts/gen-rls.ts for
+  -- what that predicate opens and why it is safe to open it.
+  -- All are in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "SchoolSiteDomain_readable" ON "SchoolSiteDomain"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR ("status" = 'LIVE')
+         OR current_setting('app.is_superuser', true) = '1'
+        );
+
+-- SchoolSite
+ALTER TABLE "SchoolSite" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "SchoolSite" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "SchoolSite_tenant_isolation" ON "SchoolSite";
+DROP POLICY IF EXISTS "SchoolSite_readable" ON "SchoolSite";
+CREATE POLICY "SchoolSite_tenant_isolation" ON "SchoolSite"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- SchoolSiteVersion
+ALTER TABLE "SchoolSiteVersion" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "SchoolSiteVersion" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "SchoolSiteVersion_tenant_isolation" ON "SchoolSiteVersion";
+DROP POLICY IF EXISTS "SchoolSiteVersion_readable" ON "SchoolSiteVersion";
+CREATE POLICY "SchoolSiteVersion_tenant_isolation" ON "SchoolSiteVersion"
+  FOR ALL
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- …and one row of this table belonging to ANOTHER school, by the
+  -- predicate below. See GLOBALLY_READABLE in scripts/gen-rls.ts for
+  -- what that predicate opens and why it is safe to open it.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "SchoolSiteVersion_readable" ON "SchoolSiteVersion"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR ("liveAt" IS NOT NULL)
+        );
+
+-- SchoolSiteEnquiry
+ALTER TABLE "SchoolSiteEnquiry" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "SchoolSiteEnquiry" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "SchoolSiteEnquiry_tenant_isolation" ON "SchoolSiteEnquiry";
+DROP POLICY IF EXISTS "SchoolSiteEnquiry_readable" ON "SchoolSiteEnquiry";
+CREATE POLICY "SchoolSiteEnquiry_tenant_isolation" ON "SchoolSiteEnquiry"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- OperatorAccess
 --
 -- APPEND-ONLY, AND DELIBERATELY HAS NO DELETE POLICY. Postgres denies
