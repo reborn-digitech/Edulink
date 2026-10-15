@@ -160,6 +160,13 @@ export default async function LoginPage({
               {t("recruiter.loginLink")}
             </Link>
           </p>
+          {/* expert-registration (15 Oct 2026): an expert applies; the operator approves. No account is made by applying. */}
+          <p className="mt-2 text-center text-sm text-fg-muted">
+            {t("expertApply.loginPrefix")}{" "}
+            <Link href="/register/expert" className="font-semibold text-accent-strong underline underline-offset-4">
+              {t("expertApply.loginLink")}
+            </Link>
+          </p>
 
           {/*
             THE ONE PAGE THAT MOST NEEDS THIS, and it was the one page without

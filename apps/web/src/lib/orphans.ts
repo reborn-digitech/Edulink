@@ -92,6 +92,7 @@ export const FILE_REFERENCES = [
   "submission.attachments",
   "application.documentsJson",
   "expertProfile.kycDocumentIds",
+  "expertApplication.documentFileId", // expert-registration (15 Oct 2026)
   "collegeApplication.documentsJson",
   "scholarshipClaim.documentsJson",
   "purchaseRecord.billFileId",
@@ -125,6 +126,8 @@ const READERS: Record<FileReference, () => Promise<Claimed>> = {
   "application.documentsJson": async () => (await db.application.findMany({ where: { documentsJson: { contains: '"fileId"' } }, select: { schoolId: true, documentsJson: true } })).flatMap((r) => fileIdsInJson(r.documentsJson).map((fileId) => ({ fileId, schoolId: r.schoolId }))),
   // An expert's KYC papers: the person's, no school's.
   "expertProfile.kycDocumentIds": async () => (await db.expertProfile.findMany({ where: { kycDocumentIds: { isEmpty: false } }, select: { kycDocumentIds: true } })).flatMap((r) => r.kycDocumentIds.map((fileId) => ({ fileId, schoolId: null }))),
+  // expert-registration (15 Oct 2026): an expert's application document, the applicant's (no account, no school).
+  "expertApplication.documentFileId": async () => (await db.expertApplication.findMany({ where: { documentFileId: { not: null } }, select: { documentFileId: true } })).map((r) => ({ fileId: r.documentFileId, schoolId: null })),
   "collegeApplication.documentsJson": async () => (await db.collegeApplication.findMany({ where: { documentsJson: { contains: '"fileId"' } }, select: { schoolId: true, documentsJson: true } })).flatMap((r) => fileIdsInJson(r.documentsJson).map((fileId) => ({ fileId, schoolId: r.schoolId }))),
   "scholarshipClaim.documentsJson": async () => (await db.scholarshipClaim.findMany({ where: { documentsJson: { contains: '"fileId"' } }, select: { schoolId: true, documentsJson: true } })).flatMap((r) => fileIdsInJson(r.documentsJson).map((fileId) => ({ fileId, schoolId: r.schoolId }))),
   // A purchase record's scanned bill (the INVENTORY module).

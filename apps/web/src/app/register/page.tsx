@@ -35,6 +35,13 @@ export default async function RegisterPage() {
       <main id="main" className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12">
         <RegisterWizard />
       </main>
+      {/* expert-registration (15 Oct 2026): the same way in for an expert as on the login page. */}
+      <footer className="border-t border-border px-4 py-6 text-center text-sm text-fg-muted sm:px-6">
+        {t("expertApply.loginPrefix")}{" "}
+        <Link href="/register/expert" className="font-semibold text-accent-strong underline underline-offset-4">
+          {t("expertApply.loginLink")}
+        </Link>
+      </footer>
     </div>
   );
 }

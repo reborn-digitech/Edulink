@@ -18,10 +18,13 @@ export function AcceptForm({
   token,
   suggestedName,
   suggestedEmail,
+  suggestedHeadline = null,
 }: {
   token: string;
   suggestedName: string | null;
   suggestedEmail: string | null;
+  /** expert-registration (15 Oct 2026): the headline of the application an operator approved, when there is one. */
+  suggestedHeadline?: string | null;
 }) {
   const t = useT();
   const [pending, startTransition] = useTransition();
@@ -29,7 +32,7 @@ export function AcceptForm({
   const [name, setName] = useState(suggestedName ?? "");
   const [email, setEmail] = useState(suggestedEmail ?? "");
   const [password, setPassword] = useState("");
-  const [headline, setHeadline] = useState("");
+  const [headline, setHeadline] = useState(suggestedHeadline ?? "");
 
   const ready =
     name.trim().length >= 2 && email.includes("@") && password.length > 0 && headline.trim().length >= 3;

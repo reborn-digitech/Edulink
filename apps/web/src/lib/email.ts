@@ -491,6 +491,26 @@ export async function sendExpertNotice(input: { to: string; subject: string; hea
 }
 
 /**
+ * AN EXPERT'S APPLICATION FROM THE LOGIN PAGE (15 Oct 2026): "we received it" and the operator's refusal with its
+ * reason, to an applicant who has no account, in the language they applied in. The caller translates the lines
+ * (src/lib/expert-applications.ts); an approval sends the invitation's own mail (`sendExpertInvite`) instead.
+ */
+export async function sendExpertApplicationNotice(input: { to: string; subject: string; lines: string[]; cta: { label: string; path: string } | null; locale: Locale }) {
+  await sendEmail({
+    to: input.to,
+    purpose: "EXPERT_APPLICATION",
+    subject: input.subject,
+    text: `${input.lines.join("\n\n")}${input.cta ? `\n\n${input.cta.label}: ${APP}${input.cta.path}` : ""}`,
+    html: layout(
+      input.locale,
+      input.subject,
+      input.lines.map((line) => `<p>${escapeHtml(line)}</p>`).join("\n       "),
+      input.cta ? { label: input.cta.label, url: `${APP}${input.cta.path}` } : undefined,
+    ),
+  });
+}
+
+/**
  * THE OPERATOR CLOSED (OR REOPENED) AN OUTSIDE ACCOUNT (G4-28, risks batch 5 Oct 2026): a recruiter or an expert
  * belongs to no school, so no school notice reaches them and the mail is the channel; the words come translated
  * into their own language (operator-college.ts `tellStanding`).

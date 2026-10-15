@@ -14,6 +14,7 @@ import { forJoinCode } from "./tenant-context";
 import { asTheSchool } from "./expert-binding";
 import { isValidTimeZone } from "./dates";
 import type { ActiveContext } from "./session";
+import { profileFromApplication } from "./expert-applications"; // expert-registration (15 Oct 2026)
 
 /**
  * The expert marketplace, and the bookings that come out of it.
@@ -186,6 +187,10 @@ type AcceptTx = {
     findUnique(args: unknown): Promise<{ id: string } | null>;
     create(args: unknown): Promise<{ id: string }>;
   };
+  // expert-registration (15 Oct 2026): the approved application an operator's invitation was sent for.
+  expertApplication: {
+    findFirst(args: unknown): Promise<{ headline: string; bio: string; specialisms: string; organisation: string | null; offering: string } | null>;
+  };
 };
 
 /**
@@ -267,15 +272,29 @@ export async function acceptExpertInvite(
         where: { userId },
         select: { id: true },
       });
+      /**
+       * expert-registration (15 Oct 2026): an invitation the operator sent on approving an application
+       * (src/lib/expert-applications.ts) makes the profile FROM THE APPLICATION when the account had none —
+       * an address that already had an account before it applied. A new applicant's profile was made at
+       * approval and is `existing` here, kept as it is.
+       */
+      const applied = existing
+        ? null
+        : await tx.expertApplication.findFirst({
+            where: { inviteId: invite.id, status: "APPROVED" },
+            select: { headline: true, bio: true, specialisms: true, organisation: true, offering: true },
+          });
       const created =
         existing ??
         (await tx.expertProfile.create({
-          data: {
-            userId,
-            headline,
-            bio: profile.bio?.trim() ?? "",
-            organisation: profile.organisation?.trim() || null,
-          },
+          data: applied
+            ? { userId, ...profileFromApplication(applied) }
+            : {
+                userId,
+                headline,
+                bio: profile.bio?.trim() ?? "",
+                organisation: profile.organisation?.trim() || null,
+              },
           select: { id: true },
         }));
 

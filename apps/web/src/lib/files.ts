@@ -164,6 +164,15 @@ export async function authorizeFileRead(
     return DENY;
   }
 
+  // ---- 2c-application. An expert's application document (expert-registration, 15 Oct 2026): the applicant
+  // has no account, so the operator (User.isSuperuser) alone, as with the papers above; the queue opens it
+  // through GET /api/v1/operator/expert-applications/{id}/document, which reads the id off the row.
+  const expertApplication = await db.expertApplication.findFirst({ where: { documentFileId: fileId }, select: { id: true } });
+  if (expertApplication) {
+    if (user.isSuperuser) return { allowed: true, kind: "kyc", public: false };
+    return DENY;
+  }
+
   // ---- 2c-college. a college admission's scrutiny document (the ADMISSIONS
   // module, 4 Oct 2026): the office and the principal of that college. A
   // scholarship claim's document: the student who added it, and the

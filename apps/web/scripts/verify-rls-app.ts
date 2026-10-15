@@ -1798,6 +1798,29 @@ async function main() {
       `accepted ${accepted.count} (want 1), touched another invite ${wrongToken.count} (want 0), rewrote a consumed one ${reused.count} (want 0)`,
     );
 
+    // ---- expert-registration (15 Oct 2026) ----
+    // THE OPERATOR'S INVITATION FROM AN APPROVED APPLICATION: the superuser writes and reads back an
+    // ExpertInvite naming NO school, and nothing more — not without the flag, not a school's invitation,
+    // not a school's rows read, not a delete. The unit suite runs as the owner and cannot see this.
+    const asOperatorNowhere = async <T>(superuser: boolean, work: (tx: TxLike) => Promise<T>): Promise<T> =>
+      client.$transaction(async (tx: TxLike) => {
+        await tx.$executeRawUnsafe(`SELECT set_config('app.user_id', 'verify-u', true)`);
+        if (superuser) await tx.$executeRawUnsafe(`SELECT set_config('app.is_superuser', '1', true)`);
+        return work(tx);
+      });
+    const operatorInvite = (id: string, schoolId: string | null) => ({ data: { id, schoolId, tokenHash: `verify-oinv-${id}`, email: "verify-applicant@test.invalid", expiresAt: new Date(Date.now() + 86_400_000) } });
+    const madeByOperator = await asOperatorNowhere(true, (tx) => outreachTx(tx).expertInvite!.create(operatorInvite("verify-oinv-1", null)).then(() => true, () => false));
+    const madeWithoutFlag = await asOperatorNowhere(false, (tx) => outreachTx(tx).expertInvite!.create(operatorInvite("verify-oinv-2", null)).then(() => true, () => false));
+    const madeForSchool = await asOperatorNowhere(true, (tx) => outreachTx(tx).expertInvite!.create(operatorInvite("verify-oinv-3", "verify-b")).then(() => true, () => false));
+    const operatorSees = await asOperatorNowhere(true, (tx) => outreachTx(tx).expertInvite!.count({ where: { id: { in: ["verify-oinv-1", "verify-xinv-live"] } } }));
+    const operatorDeletes = await asOperatorNowhere(true, (tx) => outreachTx(tx).expertInvite!.deleteMany({ where: { id: "verify-oinv-1" } }));
+    check(
+      "⚠ the operator writes and reads back an expert invitation naming no school — and no school's, not without the flag, never a delete",
+      madeByOperator && !madeWithoutFlag && !madeForSchool && operatorSees === 1 && operatorDeletes.count === 0,
+      `made one with the flag ${madeByOperator} (want true), without ${madeWithoutFlag} (want false), for a school ${madeForSchool} (want false); saw ${operatorSees} (want 1: its own, not school B's); deleted ${operatorDeletes.count} (want 0)`,
+    );
+    // ---- end expert-registration ----
+
     // AN EXPERT REACHES THEIR ENGAGEMENT AND NOTHING ELSE OF THE SCHOOL. One
     // confirmed booking used to put the whole school in their tenant set; the
     // set is now empty and every reach is a clause keyed on the booking or

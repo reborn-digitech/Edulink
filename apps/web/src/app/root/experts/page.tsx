@@ -7,6 +7,8 @@ import { getT } from "@/lib/i18n/server";
 import type { Metadata } from "next";
 import { DataToolbar } from "@/components/ui/data-toolbar";
 import { PageHeader } from "@/components/ui/page-header";
+import { listExpertApplications } from "@/lib/expert-applications"; // expert-registration
+import { ApplicationRow } from "./application-row"; // expert-registration
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -32,6 +34,7 @@ export default async function RootExpertsPage({
   const t = await getT();
   const session = await requireSuperuser();
   const experts = await listExpertsForCuration(session);
+  const applications = await listExpertApplications(session); // expert-registration (15 Oct 2026): the pending ones, oldest first
   const state = rawState === "waiting" || rawState === "listed" ? rawState : null;
   const needle = (q ?? "").trim().toLowerCase();
   const matches = (e: (typeof experts)[number]) =>
@@ -48,6 +51,22 @@ export default async function RootExpertsPage({
       <PageHeader title={t("expert.curationTitle")} description={experts.length === 0
             ? t("expert.curationNobodyYet")
             : t("expert.curationCount", { waiting: allWaiting.length, listed: allListed.length })} />
+
+      {/* expert-registration (15 Oct 2026): applications from the login page, above the curation queue. */}
+      <section aria-labelledby="expert-applications" className="space-y-3">
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <h2 id="expert-applications" className="text-lg font-semibold text-fg">
+            {t("expertApply.queueTitle")}
+          </h2>
+          {applications.length > 0 && <span className="text-sm text-fg-muted">{t("expertApply.queueCount", { count: applications.length })}</span>}
+        </div>
+        <p className="text-sm leading-relaxed text-fg-muted">{t("expertApply.queueIntro")}</p>
+        {applications.length === 0 ? (
+          <p className="rounded-[var(--radius-md)] border border-dashed border-border px-4 py-3 text-sm text-fg-muted">{t("expertApply.queueEmpty")}</p>
+        ) : (
+          applications.map((entry) => <ApplicationRow key={entry.id} entry={entry} />)
+        )}
+      </section>
 
       <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg-muted">
         {t("expert.curationNote")}

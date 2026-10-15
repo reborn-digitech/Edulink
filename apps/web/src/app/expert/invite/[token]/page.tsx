@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { readExpertInvite } from "@/lib/experts";
+import { applicationForInvite } from "@/lib/expert-applications"; // expert-registration (15 Oct 2026)
 import { AcceptForm } from "./form";
 import { getT } from "@/lib/i18n/server";
 import Link from "next/link";
@@ -54,7 +55,8 @@ export default async function ExpertInvitePage({
     <main className="mx-auto max-w-md px-5 py-12">
       <h1 className="text-2xl font-bold tracking-tight text-fg">{t("expert.joinTitle")}</h1>
       <p className="mt-2 text-sm text-fg-muted">{t("expert.joinBody")}</p>
-      <AcceptForm token={token} suggestedName={state.name} suggestedEmail={state.email} />
+      {/* expert-registration (15 Oct 2026): an invitation from an approved application brings the headline the applicant wrote. */}
+      <AcceptForm token={token} suggestedName={state.name} suggestedEmail={state.email} suggestedHeadline={(await applicationForInvite(state.inviteId))?.headline ?? null} />
     </main>
   );
 }

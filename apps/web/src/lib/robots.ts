@@ -17,6 +17,7 @@ const INDEXED: RegExp[] = [
   /^\/login$/,
   /^\/register$/,
   /^\/register\/recruiter$/,
+  /^\/register\/expert$/, // expert-registration (15 Oct 2026)
   /^\/privacy$/,
   /^\/public\/disclosure\/[^/]+$/,
   // A college's faculty pages, published by each teacher for the college's website (5 Oct 2026).

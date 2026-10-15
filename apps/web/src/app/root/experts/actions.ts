@@ -7,6 +7,8 @@ import { setExpertStanding } from "@/lib/superuser";
 import { decideKyc } from "@/lib/expert-kyc";
 import { setExpertAccess } from "@/lib/operator-college";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
+import { operatorExpertApplicationDecideBodySchema, type ExpertApplicationRefusal } from "@edulink/contracts"; // expert-registration
+import { decideExpertApplication } from "@/lib/expert-applications"; // expert-registration
 
 /** See the note in `expert/availability/actions.ts` on the two-field shape. */
 type Result = { ok: boolean; errorKey?: TranslationKey; error?: string; sessionsEnded?: number };
@@ -76,3 +78,29 @@ export async function setExpertAccessAction(profileId: string, input: { disabled
     return { ok: false, errorKey: "common.somethingWrong" };
   }
 }
+
+// ---- expert-registration (15 Oct 2026) ----
+/**
+ * The operator's answer to an expert's application from the login page: the same library call as
+ * POST /api/v1/operator/expert-applications/{id}/decide. Approve makes the account, an unpublished profile and the
+ * invitation; refuse takes a coded reason (OTHER with a note) and tells the applicant. Both audited.
+ */
+export async function decideExpertApplicationAction(
+  applicationId: string,
+  input: { decision: "APPROVE" | "REFUSE"; reason?: ExpertApplicationRefusal; note?: string },
+): Promise<Result & { inviteSent?: boolean }> {
+  try {
+    const session = await requireSuperuser();
+    const parsed = operatorExpertApplicationDecideBodySchema.safeParse(input);
+    if (!parsed.success) return { ok: false, errorKey: "common.checkTheForm" };
+    const result = await decideExpertApplication(session, applicationId, parsed.data);
+    if (!result.ok) return { ok: false, errorKey: result.errorKey };
+    revalidatePath("/root/experts");
+    return { ok: true, inviteSent: result.inviteSent };
+  } catch (error) {
+    if (error instanceof AccessError) return { ok: false, error: (await getT())(error.key, error.vars) };
+    console.error("[root-experts-application]", error);
+    return { ok: false, errorKey: "common.somethingWrong" };
+  }
+}
+// ---- end expert-registration ----

@@ -234,6 +234,7 @@ export default async function LandingPage() {
             <Link href="/login" className="hover:text-fg">{t("login.title")}</Link>
             <Link href="/join" className="hover:text-fg">{t("landing.joinWithCode")}</Link>
             <Link href="/register" className="hover:text-fg">{t("landing.footerRegister")}</Link>
+            <Link href="/register/expert" className="hover:text-fg">{t("expertApply.footerLink")}</Link>
             <Link href="/offline" className="hover:text-fg">{t("landing.footerOffline")}</Link>
             <Link href="/privacy" className="hover:text-fg">{t("landing.footerPrivacy")}</Link>
             <Link href="/delete-account" className="hover:text-fg">{t("landing.footerDeletion")}</Link>

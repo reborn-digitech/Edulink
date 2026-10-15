@@ -25,7 +25,7 @@ describe("the root layout's robots", () => {
 });
 
 describe("robotsFor", () => {
-  it.each(["/", "/login", "/register", "/register/recruiter", "/privacy", "/public/disclosure/zz-northgate-school", "/certificates/check"])("indexes the public page %s", (path) => {
+  it.each(["/", "/login", "/register", "/register/recruiter", "/register/expert", "/privacy", "/public/disclosure/zz-northgate-school", "/certificates/check"])("indexes the public page %s", (path) => {
     expect(robotsFor(`GET ${path}`)).toEqual({ index: true, follow: true });
   });
 
