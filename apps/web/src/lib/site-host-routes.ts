@@ -1,21 +1,27 @@
 import "server-only";
+import { siteEnquiryBodySchema, type SiteLanguage } from "@edulink/contracts";
 import { publishedSiteFor, type PublishedSite } from "./site-publish";
 import { siteNotFoundResponse, siteResponse } from "./site-http";
+import { takeSiteEnquiry } from "./site-enquiry";
+import { renderSiteNotice } from "./site-render";
+import { retryHintKey } from "./rate-limit";
+import { translator } from "./i18n/dictionary";
 import { schoolIdForHost } from "./site-hosts";
 import { normaliseHost, SITE_CSP } from "./site-host-match";
 
 /**
  * WHAT A SCHOOL WEBSITE'S HOST ANSWERS (website-builder B, 15 October 2026). The middleware rewrites every request
- * on a site host to /sites/by-host/<host><path> (src/lib/site-host-match.ts); these build the three answers it
- * has — the page, robots.txt and sitemap.xml — and the 404 for everything else. The page and the 404 are the flow
- * builder's own answers (src/lib/site-http.ts, shared with /sites/<slug>, so the two routes' headers cannot
- * drift): the published HTML for ?lang=, public for five minutes, or "no website here", noindex and uncached, when
- * the host is unknown, the domain not LIVE, the site unpublished or the module off. No session is read and no
- * cookie set.
+ * on a site host to /sites/by-host/<host><path> (src/lib/site-host-match.ts); these build the four answers it
+ * has — the page, robots.txt, sitemap.xml and the enquiry form's POST /enquiry — and the 404 for everything else.
+ * The page and the 404 are the flow builder's own answers (src/lib/site-http.ts, shared with the office's view at
+ * /sites/<slug>, so the two routes' headers cannot drift): the published HTML for ?lang=, public for five minutes,
+ * or "no website here", noindex and uncached, when the host is unknown, the domain not LIVE, the site unpublished
+ * or the module off. No session is read and no cookie set. A site is public only here, on the school's own domain
+ * (and on `<slug>.localhost` in development): the owner's decision of 16 October 2026.
  *
  * THE HOST'S OWN HARDENING, on top: the site carries no script, so its policy forbids every script, plugin and
  * frame, lets the page load only its own pictures (the platform's file route), fonts and inline styles, and posts
- * its one form (the enquiry, to /sites/<slug>/enquiry, which the middleware passes through) to its own host.
+ * its one form (the enquiry, to /enquiry, rewritten here like every other path) to its own host.
  */
 
 
@@ -109,4 +115,62 @@ export async function siteSitemap(request: Request, host: string): Promise<Respo
   const site = await siteOf(host);
   if (!site) return siteNotFound(request);
   return hardened(new Response(sitemapXml(site, siteOrigin(request, host)), { status: 200, headers: { "Content-Type": "application/xml; charset=utf-8", "Cache-Control": "public, max-age=300" } }));
+}
+
+/* -------------------------------------------------------------------------- */
+/* The enquiry form (POST /enquiry on the site's own host, 16 Oct 2026)        */
+/* -------------------------------------------------------------------------- */
+
+const FORM_LIMIT_BYTES = 16 * 1024;
+
+function formPage(status: number, html: string, extra: Record<string, string> = {}): Response {
+  return hardened(new Response(html, { status, headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store", "X-Robots-Tag": "noindex", "X-Content-Type-Options": "nosniff", ...extra } }));
+}
+
+/** Back to the page the form was on when the browser says it was this host, else the site's front page. */
+function backHref(request: Request, hostParam: string): string {
+  const referer = request.headers.get("referer");
+  if (!referer) return "/";
+  try {
+    const from = new URL(referer);
+    const hostname = normaliseHost(decodeURIComponent(hostParam))?.hostname;
+    if (!hostname || normaliseHost(from.host)?.hostname !== hostname) return "/";
+    return `${from.pathname}${from.search}`;
+  } catch {
+    return "/";
+  }
+}
+
+/**
+ * POST /enquiry on a site host: the published site's admission form (a plain HTML form, no script; CSP's
+ * form-action 'self' holds because it posts to its own host). The school is the host's (a LIVE domain), never a
+ * slug; the act is src/lib/site-enquiry.ts. The answer is a small page in the site's colour and language — thanks,
+ * or what to fix — with a link back to the page the visitor came from.
+ */
+export async function siteEnquiry(request: Request, host: string): Promise<Response> {
+  const declared = Number(request.headers.get("content-length") ?? "0");
+  let fields: Record<string, string> = {};
+  if (!(Number.isFinite(declared) && declared > FORM_LIMIT_BYTES)) {
+    const form = await request.formData().catch(() => null);
+    if (form) fields = Object.fromEntries([...form.entries()].filter((e): e is [string, string] => typeof e[1] === "string"));
+  }
+  const locale: SiteLanguage = fields.lang === "hi" || fields.lang === "mr" ? fields.lang : "en";
+  const t = translator(locale);
+  const back = { href: backHref(request, host), label: t("site.thanksBack") };
+  const parsed = siteEnquiryBodySchema.safeParse(fields);
+  try {
+    if (!parsed.success) return formPage(422, renderSiteNotice({ locale, title: t("site.refusedTitle"), body: t("site.refusedBody"), back }));
+    const made = await takeSiteEnquiry(await schoolOf(host), parsed.data);
+    const colour = made.colour;
+    if (made.ok) return formPage(200, renderSiteNotice({ locale, colour, title: t("site.thanksTitle"), body: t("site.thanksBody", { school: made.schoolName }), back }));
+    if (made.status === 429) {
+      const hint = retryHintKey(made.retryAfterSeconds ?? 3600);
+      return formPage(429, renderSiteNotice({ locale, colour, title: t("site.refusedTitle"), body: t("site.busyBody", { when: t(hint.key, hint.vars) }), back }), { "Retry-After": String(made.retryAfterSeconds ?? 3600) });
+    }
+    if (made.status === 404) return formPage(404, renderSiteNotice({ locale, title: t("site.notFoundTitle"), body: t("site.notFoundBody") }));
+    return formPage(422, renderSiteNotice({ locale, colour, title: t("site.refusedTitle"), body: t(made.errorKey), back }));
+  } catch (error) {
+    console.error("[sites/by-host/enquiry]", error);
+    return formPage(500, renderSiteNotice({ locale, title: t("site.refusedTitle"), body: t("site.failedBody"), back }));
+  }
 }

@@ -94,8 +94,8 @@ describe("the first screen says what the assistant is for, the conversation as t
     const m = wrap(React.createElement(AssistantChat, { status: PARENT, role: "PARENT" }), "mr");
     expect(m).toContain(mr("assistantUi.firstConversation"));
     expect(mr("assistantUi.firstConversation").endsWith(".")).toBe(true);
-    expect(mr("assistantUi.cardSwitch")).toContain("शाळे");
-    expect(mr("assistantUi.cardSwitch")).not.toContain("स्कूल");
+    expect(mr("modules.assistantByOperator")).toContain("शाळे");
+    expect(mr("modules.assistantByOperator")).not.toContain("स्कूल");
   });
 
   it("offers no box when the door says the person may not ask, and says why", () => {
@@ -219,7 +219,7 @@ describe("the doors the panel calls", () => {
   });
 });
 
-describe("the office's card: counts only, the switch and the helpline", () => {
+describe("the office's card: counts only and the helpline; the switch is the operator's (16 Oct 2026)", () => {
   const usage: AssistantUsage = { on: true, platformOn: true, month: "2026-10", questions: 120, answered: 90, hints: 6, refused: 24, counsellorRoutes: 1, helpful: 30, notHelpful: 4, people: 41, tokens: 360000, tokenBudget: 1000000, dailyCapPerPerson: 40, helplineText: null, helplineDefault: "ZZ Tele-MANAS 14416", retentionDays: 30 };
 
   it("shows the month against the budget and every count, with the form for the office", () => {
@@ -230,7 +230,9 @@ describe("the office's card: counts only, the switch and the helpline", () => {
     expect(html).toContain(t("assistantUi.cardUsed", { used: "3,60,000", budget: "10,00,000", percent: 36 }));
     for (const [, key] of USAGE_COUNTS) expect(html).toContain(t(key));
     expect(html).toMatch(/aria-valuenow="36"/);
-    expect(html).toContain(t("assistantUi.cardSwitch"));
+    // No switch: one line says the platform's operator switches the assistant on.
+    expect(html).toContain(t("modules.assistantByOperator"));
+    expect(html).not.toMatch(/name="on"/);
     expect(html).toMatch(/<textarea[^>]*name="helplineText"[^>]*maxLength="300"[^>]*placeholder="ZZ Tele-MANAS 14416"/);
     expect(html).not.toContain(t("assistantUi.cardKilled"));
   });
@@ -238,7 +240,7 @@ describe("the office's card: counts only, the switch and the helpline", () => {
   it("gives the head the counts without the form, and says when the platform's switch is thrown", () => {
     const html = decode(wrap(React.createElement(UsageBody, { usage: { ...usage, platformOn: false }, canEdit: false, t })));
     expect(html).toContain(t("assistantUi.cardKilled"));
-    expect(html).not.toContain(t("assistantUi.cardSwitch"));
+    expect(html).not.toContain(t("modules.assistantByOperator"));
     expect(html).not.toContain("<form");
   });
 });

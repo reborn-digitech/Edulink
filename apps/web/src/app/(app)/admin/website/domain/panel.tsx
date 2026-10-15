@@ -56,7 +56,7 @@ export function DomainForm({ current }: { current: string }) {
 }
 
 /** Verify and Remove, for the domain the page shows. */
-export function DomainActions({ domain, subdomain }: { domain: string; subdomain: string }) {
+export function DomainActions({ domain }: { domain: string }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
@@ -85,7 +85,7 @@ export function DomainActions({ domain, subdomain }: { domain: string; subdomain
         loading={pending && which === "remove"}
         disabled={pending}
         onClick={() => {
-          if (!window.confirm(t("siteDomains.confirmRemove", { domain, subdomain }))) return;
+          if (!window.confirm(t("siteDomains.confirmRemove", { domain }))) return;
           run("remove", () => removeDomainAction(domain), t("siteDomains.removed"));
         }}
         data-testid="site-domain-remove"

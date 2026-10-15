@@ -2697,7 +2697,7 @@ async function main() {
   // website-builder A (15 Oct 2026): ZZ Northgate's public website — the module on, a draft with every section and number on,
   // one approved post with a consented picture, and a published version (zz-website.ts; idempotent).
   const website = await buildWebsite(db, northgate.school, northgate.admin.id);
-  console.log(`  Website: ZZ Northgate ${website.published ? "published now" : "already published"}, every section on — /admin/website, /sites/${website.slug}`);
+  console.log(`  Website: ZZ Northgate ${website.published ? "published now" : website.refreshed ? "published again (its form now posts to /enquiry)" : "already published"}, every section on — /admin/website, http://${website.slug}.localhost:3000/ in development`);
   // end website-builder A
   // website-builder B (15 Oct 2026): ZZ Northgate's own website domain, waiting for DNS (a .test name never resolves,
   // so Verify leaves it there with "No record was found"). Idempotent: kept when it is there; any other domain the

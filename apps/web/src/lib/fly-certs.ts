@@ -3,9 +3,9 @@ import "server-only";
 /**
  * CERTIFICATES FOR A SCHOOL'S OWN DOMAIN, ASKED OF THE HOSTING PLATFORM (website-builder B, 15 October 2026).
  *
- * The sites are served by a Fly app (FLY_SITES_APP) that holds a wildcard certificate for `*.<SITE_DOMAIN>`; a
- * school's own domain needs a certificate of its own on that app, which Fly issues once the domain's DNS points at
- * it. Three calls to Fly's GraphQL API with FLY_API_TOKEN: addCertificate (ask), app.certificate (how is it), and
+ * The sites are served by a Fly app (FLY_SITES_APP) answering at SITE_CNAME_TARGET; a school's website lives only
+ * on the school's own domain (16 Oct 2026), which needs a certificate of its own on that app, issued by Fly once the
+ * domain's DNS points at it. Three calls to Fly's GraphQL API with FLY_API_TOKEN: addCertificate (ask), app.certificate (how is it), and
  * deleteCertificate (the school removed the domain). Each answers a small outcome and never throws: a network
  * failure or a refusal is `{ ok: false, error }` with a code the page words (FLY_ERROR), and the job tries again.
  *

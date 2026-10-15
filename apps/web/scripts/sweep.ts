@@ -2332,6 +2332,19 @@ async function main() {
     skip("report card rules", "no ZZ fixtures with a published report card (run zz:fixtures)");
   }
 
+  /* ---- the school website by slug: the office's own view, never public (16 Oct 2026) ---- */
+  // A site is public only on its school's own domain (/sites/by-host/<host> through the middleware); /sites/<slug>
+  // on the app's host is the published version for that school's office and head alone, 404 for anyone else.
+  const zzSite = northgate ? await db.schoolSiteVersion.findFirst({ where: { schoolId: northgate.id, liveAt: { not: null } }, select: { schoolSlug: true } }) : null;
+  if (northgate && zzSite) {
+    const zzOffice = await mint("zz.admin@zz.test", "ADMIN", northgate.id, "zz-admin");
+    await check(zzOffice, `/sites/${zzSite.schoolSlug}`, 200, "the office sees its own published website by slug");
+    await check(null, `/sites/${zzSite.schoolSlug}`, 404, "⚠ …which is not public: a site is public only on its school's own domain");
+    await check(otherAdmin, `/sites/${zzSite.schoolSlug}`, 404, "⚠ …nor another school's office's");
+  } else {
+    skip("school website by slug", "no ZZ fixture website is published (run zz:fixtures)");
+  }
+
   /* ---- certificates: the office's templates, records and issue pages; the document, its PDF and the public check ---- */
   // ZZ Northgate carries templates in three languages and issued certificates
   // on its grade-3 pupils; the actors are its office, the class's lead

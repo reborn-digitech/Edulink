@@ -15,8 +15,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 /**
  * THE OPERATOR'S TABLE OF SCHOOL WEBSITES (website-builder B, 15 October 2026): every published site and every
- * school's own domain, with the domain's state, its certificate and the last thing that went wrong. Read only:
- * a school's office sets its own domain at /admin/website/domain. The library is src/lib/site-domains.ts.
+ * school's own domain, with the domain's state, its certificate and the last thing that went wrong. A site lives
+ * only on its school's own domain (16 Oct 2026), so the table shows the domain and its state, and no other address.
+ * Read only: a school's office sets its own domain at /admin/website/domain. The library is src/lib/site-domains.ts.
  */
 export default async function RootSitesPage() {
   const session = await requireSuperuser();
@@ -36,7 +37,6 @@ export default async function RootSitesPage() {
             <thead className="text-fg-muted">
               <tr>
                 <th scope="col" className="py-1.5 pr-3 font-medium">{t("siteDomains.opColSchool")}</th>
-                <th scope="col" className="py-1.5 pr-3 font-medium">{t("siteDomains.opColAddress")}</th>
                 <th scope="col" className="py-1.5 pr-3 font-medium">{t("siteDomains.opColPublished")}</th>
                 <th scope="col" className="py-1.5 pr-3 font-medium">{t("siteDomains.opColDomain")}</th>
                 <th scope="col" className="py-1.5 pr-3 font-medium">{t("siteDomains.opColState")}</th>
@@ -57,7 +57,6 @@ export default async function RootSitesPage() {
                         </Badge>
                       ) : null}
                     </td>
-                    <td className="py-2 pr-3 break-all text-fg">{r.subdomain}</td>
                     <td className="py-2 pr-3 text-fg-muted">{r.publishedAt ? relative(r.publishedAt) : t("siteDomains.opNotPublished")}</td>
                     <td className="py-2 pr-3 break-all text-fg">{r.domain?.domain ?? t("siteDomains.opNoDomain")}</td>
                     <td className="py-2 pr-3">

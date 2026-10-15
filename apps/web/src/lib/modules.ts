@@ -15,6 +15,7 @@ export { MODULE_META, SCHOOL_MODULES, type SchoolModuleCode };
  * owner's decision of 3 October 2026). One SchoolModule row per module that
  * is ON; absence is off. The admin switches, from /admin/settings/modules or
  * POST /api/v1/admin/modules; ALUMNI is on for every school from the start.
+ * ASSISTANT is the operator's to switch, never the admin's (16 Oct 2026).
  *
  * WHAT A MODULE BUILDER CALLS:
  *   - nothing, for an /api/v1 door: give its catalog entry `module: "X"` and
@@ -100,6 +101,8 @@ export async function assertCollege(schoolId: string | null | undefined, key?: T
  * Every module this institution is offered, with whether it is on and since
  * when: the admin's page and GET /api/v1/admin/modules. A school (and a junior
  * college) is offered the school version's six; a college all twelve.
+ * ASSISTANT is left out (16 Oct 2026): the platform's operator switches it
+ * (operatorSchoolModules, operator-college.ts), not the school.
  */
 export async function schoolModules(ctx: ActiveContext): Promise<{ module: SchoolModuleCode; on: boolean; enabledAt: Date | null; byPlatform: boolean }[]> {
   if (!ctx.schoolId || (ctx.role !== "ADMIN" && ctx.role !== "PRINCIPAL")) throw new AccessError("access.wrongRoleForThisAction");
@@ -112,7 +115,7 @@ export async function schoolModules(ctx: ActiveContext): Promise<{ module: Schoo
   const enablers = [...new Set(rows.map((r) => r.enabledByUserId).filter((id): id is string => Boolean(id)))];
   const members = enablers.length ? new Set((await db.membership.findMany({ where: { schoolId: ctx.schoolId, userId: { in: enablers } }, select: { userId: true } })).map((m) => m.userId)) : new Set<string>();
   const platform = new Set(rows.filter((r) => r.enabledByUserId && !members.has(r.enabledByUserId)).map((r) => r.module));
-  return modulesForKind(kind).map((module) => ({ module, on: byModule.has(module), enabledAt: byModule.get(module) ?? null, byPlatform: platform.has(module) }));
+  return modulesForKind(kind).filter((module) => !isOperatorsModule(module)).map((module) => ({ module, on: byModule.has(module), enabledAt: byModule.get(module) ?? null, byPlatform: platform.has(module) }));
 }
 
 /**
@@ -126,6 +129,17 @@ export function isAlwaysOn(module: SchoolModuleCode, kind: string | null | undef
 }
 
 /**
+ * A module the platform's operator switches for a school and the school does
+ * not (the owner's decision of 16 October 2026): ASSISTANT, which opens under
+ * the student and teacher plans. It is not on the admin's modules page or door,
+ * and `setModule` refuses it; the operator's switch (switchModuleFor with
+ * byOperator, from operator-college.ts) still offers it.
+ */
+export function isOperatorsModule(module: SchoolModuleCode): boolean {
+  return module === "ASSISTANT";
+}
+
+/**
  * Switch one module on or off. The ADMIN's alone (the head reads the page),
  * as every settings door is. Idempotent: switching on what is on, or off
  * what is off, changes nothing and writes no audit row. Switching off keeps
@@ -136,6 +150,7 @@ export function isAlwaysOn(module: SchoolModuleCode, kind: string | null | undef
  */
 export async function setModule(ctx: ActiveContext, module: SchoolModuleCode, on: boolean): Promise<{ changed: boolean }> {
   if (!ctx.schoolId || ctx.role !== "ADMIN") throw new AccessError("access.wrongRoleForThisAction");
+  if (isOperatorsModule(module)) throw new AccessError("modules.refuseAssistant");
   return switchModuleFor(ctx.schoolId, ctx.user.id, module, on);
 }
 

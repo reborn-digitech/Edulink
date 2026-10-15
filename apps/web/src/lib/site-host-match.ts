@@ -1,28 +1,29 @@
 /**
  * WHICH REQUESTS ARE A SCHOOL WEBSITE'S, AND WHAT A SCHOOL MAY TYPE AS ITS DOMAIN (website-builder B, 15 October
- * 2026). Pure functions over a host, a path and the environment (src/lib/site-env.ts), so the middleware, the
- * library and the tests share one reading.
+ * 2026; the school's own domain only since the owner's decision of 16 October 2026). Pure functions over a host, a
+ * path and the environment (src/lib/site-env.ts), so the middleware, the library and the tests share one reading.
  *
- * A SITE HOST is a request host that is not the app's: `<slug>.<SITE_DOMAIN>`, `<slug>.localhost` in development,
- * or — once the app's own hosts are known (APP_HOSTS, or the development default) — any other named host, which
- * is a school's own domain. Never a site host: one of APP_HOSTS, a bare IP address (the platform's health checks
- * and machines reach the app by address), a name with no dot, and the platform's private names (.internal,
- * .flycast). On a site host the middleware rewrites every path to /sites/by-host/<host>, which answers /,
- * /robots.txt and /sitemap.xml and 404s the rest — the sign-in, the app's pages and its API are not there — except
- * the few paths a published page itself loads: Next's own files, the platform's file route (pictures), the bundled
- * fonts and marks, the health check, the public sites doors (the enquiry form), and /sites/ itself.
+ * A SITE HOST is a request host that may be a school's own domain: once the app's own hosts are known (APP_HOSTS,
+ * or the development default), any other named host. Whether it IS one — a LIVE SchoolSiteDomain — is the route's
+ * to decide (src/lib/site-hosts.ts), since the edge has no database; any other host answers the 404. In development
+ * `<slug>.localhost` is a site host too, mapped by the school's slug, so the owner can try a site on this machine
+ * (zz-northgate-school.localhost:3000) without a domain. There is no platform subdomain. Never a site host: one of
+ * APP_HOSTS, a bare IP address (the platform's health checks and machines reach the app by address), a name with
+ * no dot, the platform's private names (.internal, .flycast), and anything at all in production while APP_HOSTS is
+ * unset. On a site host the middleware rewrites every path to /sites/by-host/<host>, which answers /, /robots.txt,
+ * /sitemap.xml and the enquiry form's POST /enquiry, and 404s the rest — the sign-in, the app's pages and its API
+ * are not there — except the few paths a published page itself loads: Next's own files, the platform's file route
+ * (pictures), the bundled fonts and marks, and the health check.
  *
  * NO IMPORTS, on purpose: the middleware runs on the edge.
  */
 
 export type HostEnv = {
-  /** SITE_DOMAIN, lowercase. */
-  siteDomain: string;
   /** APP_HOSTS, lowercase, each with its port where it has one. */
   appHosts: readonly string[];
   /** Whether APP_HOSTS is known (set, or the development default): only then is another named host a custom domain. */
   appHostsKnown: boolean;
-  /** A development process: `<slug>.localhost` is a site host. */
+  /** A development process: `<slug>.localhost` is a site host, mapped by the school's slug. */
   dev: boolean;
 };
 
@@ -48,17 +49,17 @@ export function isIpLiteral(hostname: string): boolean {
 
 const PRIVATE_SUFFIXES = [".internal", ".flycast", ".local"];
 
-/** `<slug>` when the host is `<slug>.<SITE_DOMAIN>` (or `<slug>.localhost` in development), else null. */
-export function slugOfSiteHost(rawHost: string | null | undefined, env: Pick<HostEnv, "siteDomain" | "dev">): string | null {
+/**
+ * `<slug>` when the host is `<slug>.localhost` in a development process, else null: the only way a site is reached
+ * by its school's slug, so the owner can try a published site on this machine before any domain exists. Never in
+ * production, where a site lives only on the school's own LIVE domain.
+ */
+export function devSlugOfHost(rawHost: string | null | undefined, dev: boolean): string | null {
+  if (!dev) return null;
   const n = normaliseHost(rawHost);
-  if (!n) return null;
-  const suffixes = [`.${env.siteDomain}`, ...(env.dev ? [".localhost"] : [])];
-  for (const suffix of suffixes) {
-    if (!n.hostname.endsWith(suffix)) continue;
-    const label = n.hostname.slice(0, -suffix.length);
-    return /^[a-z0-9](?:[a-z0-9-]{0,78}[a-z0-9])?$/.test(label) ? label : null;
-  }
-  return null;
+  if (!n || !n.hostname.endsWith(".localhost")) return null;
+  const label = n.hostname.slice(0, -".localhost".length);
+  return /^[a-z0-9](?:[a-z0-9-]{0,78}[a-z0-9])?$/.test(label) ? label : null;
 }
 
 /** Whether a request with this Host header belongs to a school's website rather than the app. */
@@ -69,16 +70,10 @@ export function isSiteHost(rawHost: string | null | undefined, env: HostEnv): bo
   if (isIpLiteral(n.hostname)) return false;
   if (!n.hostname.includes(".")) return false;
   if (PRIVATE_SUFFIXES.some((s) => n.hostname.endsWith(s))) return false;
-  if (n.hostname === env.siteDomain || n.hostname.endsWith(`.${env.siteDomain}`)) return true;
   if (n.hostname.endsWith(".localhost")) return env.dev;
   return env.appHostsKnown;
 }
 
-/**
- * The paths a site host passes through to the app untouched: what a published page itself loads, and the
- * health check. Every top-level entry of public/ is decided here or in DENIED_PUBLIC (a test holds the two lists
- * to the directory): the bundled fonts and the marks are the site's; the service worker is the app's alone.
- */
 /**
  * A published site's own policy: no script, no plugin, no frame, inline styles only (the renderer writes them),
  * pictures from the platform's file route. Set by the middleware on every site response, by host or by slug,
@@ -87,7 +82,14 @@ export function isSiteHost(rawHost: string | null | undefined, env: HostEnv): bo
  */
 export const SITE_CSP = "default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'self'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'";
 
-export const SITE_PASS_PREFIXES = ["/sites/", "/_next/", "/api/files/", "/api/health", "/api/v1/public/sites/", "/fonts/", "/brand/", "/icons/"] as const;
+/**
+ * The paths a site host passes through to the app untouched: what a published page itself loads, and the
+ * health check. Every top-level entry of public/ is decided here or in DENIED_PUBLIC (a test holds the two lists
+ * to the directory): the bundled fonts and the marks are the site's; the service worker is the app's alone.
+ * /sites/ is NOT passed (16 Oct 2026): the enquiry form posts to /enquiry on the site's own host, which is
+ * rewritten like every other path, and /sites/<slug> is the office's preview on the app's host alone.
+ */
+export const SITE_PASS_PREFIXES = ["/_next/", "/api/files/", "/api/health", "/fonts/", "/brand/", "/icons/"] as const;
 export const SITE_PASS_FILES = ["/favicon.ico", "/icon.png"] as const;
 /** public/ entries a site host does not serve. */
 export const DENIED_PUBLIC = ["sw.js"] as const;
@@ -113,15 +115,15 @@ export function siteRewritePath(rawHost: string | null | undefined, pathname: st
 /* What a school may type as its own domain                                    */
 /* -------------------------------------------------------------------------- */
 
-export type DomainRefusal = "EMPTY" | "SCHEME" | "PATH" | "INVALID" | "IP" | "APP_HOST" | "SITE_DOMAIN";
+export type DomainRefusal = "EMPTY" | "SCHEME" | "PATH" | "INVALID" | "IP" | "APP_HOST";
 
 /**
  * The domain a school typed, checked and made canonical: lowercase ASCII (an internationalised name in punycode,
  * through the URL parser's own IDNA), no trailing dot. A hostname only: no scheme, no path, no port, no address.
- * Refused: one of the app's own hosts, SITE_DOMAIN and every name under it (the sites' own addresses), localhost.
+ * Refused: one of the app's own hosts, the sites app's own name the records point at (SITE_CNAME_TARGET), localhost.
  * www.example.in and example.in are both accepted as typed.
  */
-export function canonicalDomain(raw: string, env: Pick<HostEnv, "siteDomain" | "appHosts">): { ok: true; domain: string } | { ok: false; reason: DomainRefusal } {
+export function canonicalDomain(raw: string, env: Pick<HostEnv, "appHosts"> & { target: string }): { ok: true; domain: string } | { ok: false; reason: DomainRefusal } {
   const typed = raw.trim().toLowerCase();
   if (!typed) return { ok: false, reason: "EMPTY" };
   if (/^[a-z][a-z0-9+.-]*:\/\//.test(typed)) return { ok: false, reason: "SCHEME" };
@@ -142,8 +144,7 @@ export function canonicalDomain(raw: string, env: Pick<HostEnv, "siteDomain" | "
   if (!/^(?:[a-z]{2,63}|xn--[a-z0-9-]{1,59})$/.test(tld)) return { ok: false, reason: "INVALID" };
   if (hostname === "localhost" || hostname.endsWith(".localhost")) return { ok: false, reason: "APP_HOST" };
   const appNames = env.appHosts.map((h) => normaliseHost(h)?.hostname).filter((h): h is string => Boolean(h));
-  if (appNames.includes(hostname)) return { ok: false, reason: "APP_HOST" };
-  if (hostname === env.siteDomain || hostname.endsWith(`.${env.siteDomain}`)) return { ok: false, reason: "SITE_DOMAIN" };
+  if (appNames.includes(hostname) || hostname === env.target) return { ok: false, reason: "APP_HOST" };
   return { ok: true, domain: hostname };
 }
 

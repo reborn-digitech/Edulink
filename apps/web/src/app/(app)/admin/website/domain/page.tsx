@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { GlobeIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { isModuleOn } from "@/lib/modules";
 import { siteDomainView } from "@/lib/site-domains";
@@ -18,9 +17,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
 /**
  * THE WEBSITE FLOW'S SIXTH SCREEN, "Your domain" (website-builder B, 15 October 2026). The office and the head,
- * with the WEBSITE module on: the site's own address (`<slug>.<SITE_DOMAIN>`), the school's own domain typed once,
- * exactly the records to add at the registrar, a Verify that checks the DNS and asks for the certificate, the state
- * in plain words with the last thing that went wrong, and Remove. The library is src/lib/site-domains.ts.
+ * with the WEBSITE module on: the school's own domain typed once — the only address a school website has (the
+ * owner's decision of 16 October 2026) — exactly the records to add at the registrar, a Verify that checks the DNS
+ * and asks for the certificate, the state in plain words with the last thing that went wrong, and Remove; until the
+ * domain is live, where the published site stands. The library is src/lib/site-domains.ts.
  */
 export default async function WebsiteDomainPage() {
   const ctx = await requireRole("ADMIN", "PRINCIPAL");
@@ -40,18 +40,12 @@ export default async function WebsiteDomainPage() {
   return (
     <div className="space-y-6">
       <p className="text-sm text-fg-muted">{t("siteDomains.intro")}</p>
-      <Card>
-        <CardHeader icon={<GlobeIcon weight="duotone" className="size-5" />} title={t("siteDomains.currentAddress")} description={view.published ? t("siteDomains.publishedHere") : t("siteDomains.notPublishedYet")} />
-        <CardBody>
-          {view.published ? (
-            <a className="inline-flex min-h-11 items-center break-all font-medium text-accent-strong underline" href={`https://${view.subdomain}`} target="_blank" rel="noopener noreferrer" data-testid="site-subdomain">
-              {`https://${view.subdomain}`}
-            </a>
-          ) : (
-            <p className="break-all font-medium text-fg" data-testid="site-subdomain">{`https://${view.subdomain}`}</p>
-          )}
-        </CardBody>
-      </Card>
+      {/* A site lives only on the school's own domain (16 Oct 2026): where the published site stands until it is live. */}
+      {d?.status !== "LIVE" ? (
+        <p className="text-sm font-medium text-fg" data-testid="site-publish-state">
+          {t(view.published ? "siteDomains.publishedWaiting" : "siteDomains.notPublishedYet")}
+        </p>
+      ) : null}
 
       <Card>
         <CardHeader title={t("siteDomains.fieldLabel")} description={d ? t("siteDomains.replaceNote") : undefined} />
@@ -83,7 +77,7 @@ export default async function WebsiteDomainPage() {
             </section>
 
             <p className="text-sm text-fg-muted">{t("siteDomains.verifyHint")}</p>
-            <DomainActions domain={d.domain} subdomain={view.subdomain} />
+            <DomainActions domain={d.domain} />
           </CardBody>
         </Card>
       ) : null}

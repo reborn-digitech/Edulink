@@ -7,7 +7,9 @@
  * (PENDING_DNS -> VERIFYING -> LIVE, FAILED, development's LIVE without a certificate and production's wait); the
  * library on a ZZ school of its own (who may, the module, the refusals, one domain per school, another school's
  * domain, a stale screen, the audit rows, the job's flip under no actor, the operator's table); the host resolver
- * (a sites subdomain by slug, a LIVE domain and its www/bare counterpart, nothing for a domain still being set up);
+ * (a LIVE domain and its www/bare counterpart, nothing for a domain still being set up, and — since 16 October 2026,
+ * when a site came to live only on its school's own domain — no platform subdomain and no slug host outside
+ * development);
  * the doors' answers; and the public routes: the page, robots.txt and sitemap.xml for a published site on its host,
  * and 404 noindex for an unknown host, an unpublished site and any other path.
  *
@@ -52,11 +54,11 @@ import { POST as verifyPost } from "@/app/api/v1/admin/site/domain/verify/route"
 
 const db = new PrismaClient();
 const STAMP = Date.now();
-const TARGET = "sites.shalaghar.site";
+const TARGET = "sites.shalaghar.com";
 const ids = { school: "", other: "", admin: "", principal: "", teacher: "", operator: "", otherAdmin: "" };
 const SLUG = `zz-domains-${STAMP}`;
 const D = (name: string) => `${name}.zz-domains-${STAMP}.test`;
-const savedEnv = { SITE_DOMAIN: process.env.SITE_DOMAIN, SITE_APEX_IP: process.env.SITE_APEX_IP, FLY_API_TOKEN: process.env.FLY_API_TOKEN, FLY_SITES_APP: process.env.FLY_SITES_APP };
+const savedEnv = { SITE_CNAME_TARGET: process.env.SITE_CNAME_TARGET, SITE_APEX_IP: process.env.SITE_APEX_IP, FLY_API_TOKEN: process.env.FLY_API_TOKEN, FLY_SITES_APP: process.env.FLY_SITES_APP };
 
 async function as(userId: string, role: string | null, schoolId: string | null = ids.school): Promise<ActiveContext> {
   __resetCookies();
@@ -111,7 +113,7 @@ const okDns = async () => ({ ok: true as const });
 const deps = (over: Partial<DomainDeps> = {}): DomainDeps => ({ now: new Date(), dns: okDns, fly: null, production: false, apexIp: null, ...over });
 
 beforeAll(async () => {
-  process.env.SITE_DOMAIN = "shalaghar.site";
+  delete process.env.SITE_CNAME_TARGET;
   delete process.env.SITE_APEX_IP;
   delete process.env.FLY_API_TOKEN;
   delete process.env.FLY_SITES_APP;
@@ -267,16 +269,17 @@ describe("the office's domain (the library)", () => {
     expect(off).toBeInstanceOf(ModuleOffError);
     await db.schoolModule.create({ data: { schoolId: ids.school, module: "WEBSITE" } });
     const view = siteDomainViewSchema.parse(await siteDomainView(await as(ids.principal, "PRINCIPAL")));
-    expect(view).toMatchObject({ subdomain: `${SLUG}.shalaghar.site`, published: false, target: TARGET, certificatesHere: false, domain: null });
+    expect(view).toMatchObject({ published: false, target: TARGET, certificatesHere: false, domain: null });
+    expect(view).not.toHaveProperty("subdomain");
   });
 
-  it("refuses what is not a domain, the app's and the sites' own hosts", async () => {
+  it("refuses what is not a domain, the app's own hosts and the CNAME target", async () => {
     const admin = await as(ids.admin, "ADMIN");
     await refusedWith(saveSiteDomain(admin, "https://www.example.in"), "siteDomains.refuseScheme");
     await refusedWith(saveSiteDomain(admin, "www.example.in/x"), "siteDomains.refusePath");
     await refusedWith(saveSiteDomain(admin, "not a domain"), "siteDomains.refuseInvalid");
     await refusedWith(saveSiteDomain(admin, "10.0.0.1"), "siteDomains.refuseIp");
-    await refusedWith(saveSiteDomain(admin, `${SLUG}.shalaghar.site`), "siteDomains.refuseSiteDomain");
+    await refusedWith(saveSiteDomain(admin, TARGET), "siteDomains.refuseAppHost");
     await refusedWith(saveSiteDomain(admin, "localhost"), "siteDomains.refuseInvalid");
     expect(await db.schoolSiteDomain.count({ where: { schoolId: ids.school } })).toBe(0);
   });
@@ -335,28 +338,32 @@ describe("the office's domain (the library)", () => {
     expect(JOBS["site:domains"]).toMatchObject({ schedule: "5-59/10 * * * *", describeKey: "root.jobDescSiteDomains", narrows: ["schoolIds"] });
   });
 
-  it("finds the school for its LIVE domain and the counterpart, for its sites subdomain, and says where the site lives", async () => {
+  it("finds the school for its LIVE domain and the counterpart, never by a subdomain or slug, and says where the site lives", async () => {
     const domain = `www.zz-domains-${STAMP}.test`;
     expect(await schoolIdForHost(domain)).toBe(ids.school);
     expect(await schoolIdForHost(`ZZ-DOMAINS-${STAMP}.test:443`)).toBe(ids.school);
-    expect(await schoolIdForHost(`${SLUG}.shalaghar.site`)).toBe(ids.school);
+    // ⚠ No platform subdomain (16 Oct 2026), and <slug>.localhost only in a development process (this is a test one).
+    expect(await schoolIdForHost(`${SLUG}.shalaghar.site`)).toBeNull();
+    expect(await schoolIdForHost(`${SLUG}.localhost:3000`)).toBeNull();
     expect(await schoolIdForHost("www.nobody-zz.test")).toBeNull();
     expect(await siteHostFor(ids.school)).toBe(domain);
-    expect(await siteHostFor(ids.other)).toBe(`zz-domains-other-${STAMP}.shalaghar.site`);
+    // A school with no LIVE domain has no address at all.
+    expect(await siteHostFor(ids.other)).toBeNull();
     await db.schoolSiteDomain.updateMany({ where: { schoolId: ids.school }, data: { status: "VERIFYING" } });
     // Remembered for a minute in this process…
     expect(await schoolIdForHost(domain)).toBe(ids.school);
     forgetSiteHosts();
     // …and a domain still being set up is nobody's.
     expect(await schoolIdForHost(domain)).toBeNull();
-    expect(await siteHostFor(ids.school)).toBe(`${SLUG}.shalaghar.site`);
+    expect(await siteHostFor(ids.school)).toBeNull();
     await db.schoolSiteDomain.updateMany({ where: { schoolId: ids.school }, data: { status: "LIVE" } });
   });
 
   it("the operator's table lists the school with its domain, and refuses anybody else", async () => {
     const rows = await operatorSites(await as(ids.operator, null, null));
     const mine = rows.find((r) => r.schoolId === ids.school);
-    expect(mine).toMatchObject({ subdomain: `${SLUG}.shalaghar.site`, publishedAt: null, isTestFixture: true, domain: { domain: `www.zz-domains-${STAMP}.test`, status: "LIVE" } });
+    expect(mine).toMatchObject({ publishedAt: null, isTestFixture: true, domain: { domain: `www.zz-domains-${STAMP}.test`, status: "LIVE" } });
+    expect(mine).not.toHaveProperty("subdomain");
     await refusedWith(operatorSites(await as(ids.admin, "ADMIN")), "access.thisAreaBelongsToWhoeverRunsThe");
   });
 });
@@ -377,7 +384,7 @@ describe("the public routes on a site host", () => {
     }
   });
 
-  it("serves the published page on the LIVE domain and the sites subdomain, with the language asked for and the host's hardening", async () => {
+  it("serves the published page on the LIVE domain, and not on a platform subdomain, with the language asked for and the host's hardening", async () => {
     mocked.published.set(ids.school, { html: { en: "<p>EN</p>", hi: "<p>HI</p>", mr: "<p>EN</p>" }, renderedAt: new Date("2026-10-15T08:00:00Z"), language: "en", colour: "#1d4ed8" });
     const res = await pageGet(call("/?lang=hi", domain()), params(domain()));
     expect(res.status).toBe(200);
@@ -388,9 +395,10 @@ describe("the public routes on a site host", () => {
     expect(res.headers.get("content-security-policy")).not.toContain("script-src");
     expect(res.headers.get("x-robots-tag")).toBeNull();
     expect(res.headers.get("set-cookie")).toBeNull();
+    // ⚠ The published site is not on any platform subdomain (16 Oct 2026).
     const sub = await pageGet(call("/", `${SLUG}.shalaghar.site`), params(`${SLUG}.shalaghar.site`));
-    expect(sub.status).toBe(200);
-    expect(await sub.text()).toBe("<p>EN</p>");
+    expect(sub.status).toBe(404);
+    expect(sub.headers.get("x-robots-tag")).toContain("noindex");
   });
 
   it("robots.txt names the sitemap, and the sitemap lists one URL per language the site offers", async () => {

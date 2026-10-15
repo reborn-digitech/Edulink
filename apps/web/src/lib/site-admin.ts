@@ -69,9 +69,9 @@ export type SiteView = {
   config: SiteConfig;
   published: boolean;
   publishedAt: Date | null;
-  /** https://<host>, the school's own domain once it is live (site-hosts.ts), else its subdomain. */
-  address: string;
-  /** /sites/<slug> on this server: the published site, reachable while DNS for the subdomain is not set up. */
+  /** https://<the school's own domain> once it is LIVE (site-hosts.ts), else null: a site lives only there (16 Oct 2026). */
+  address: string | null;
+  /** /sites/<slug> on the app's host: the office's and the head's own view of the published version, signed in. */
   localPath: string;
   warnings: SiteWarning[];
   school: { name: string; slug: string; logoFileId: string | null; kind: string };
@@ -87,7 +87,7 @@ export async function loadSite(ctx: ActiveContext): Promise<SiteView> {
     config,
     published: Boolean(live),
     publishedAt: live?.liveAt ?? null,
-    address: `https://${await siteHostFor(ed.schoolId)}`,
+    address: await addressOf(ed.schoolId),
     localPath: `/sites/${school.slug}`,
     warnings: siteWarnings(config, data),
     school: { name: school.name, slug: school.slug, logoFileId: school.logoPath, kind: school.kind },
@@ -185,14 +185,39 @@ export async function saveSite(ctx: ActiveContext, patch: Partial<SiteConfig>): 
 /* Publish and unpublish                                                                           */
 /* ------------------------------------------------------------------------------------------------ */
 
-/** Render the draft in every language the site offers and make it the live version. Audited site.publish. */
-export async function publishSite(ctx: ActiveContext): Promise<{ versionId: string; renderedAt: Date; address: string }> {
+/** Render the draft in every language the site offers and make it the live version. Audited site.publish. The address is null until the school's own domain is LIVE. */
+export async function publishSite(ctx: ActiveContext): Promise<{ versionId: string; renderedAt: Date; address: string | null }> {
   const ed = await siteEditor(ctx);
   const school = await db.school.findUniqueOrThrow({ where: { id: ed.schoolId }, select: { logoPath: true } });
   const { config } = await draftConfigFor(ed.schoolId, await logoSwatchFor(school.logoPath));
   const made = await renderAndStore(ed.schoolId, ed.userId, config);
   await audit({ schoolId: ed.schoolId, actorUserId: ed.userId, action: "site.publish", targetType: "SchoolSiteVersion", targetId: made.versionId, meta: { template: config.template, language: config.language, sections: config.sections.filter((s) => s.on).map((s) => s.code) } });
-  return { ...made, address: `https://${await siteHostFor(ed.schoolId)}` };
+  return { ...made, address: await addressOf(ed.schoolId) };
+}
+
+/** https://<the school's own domain> while it is LIVE, else null. */
+async function addressOf(schoolId: string): Promise<string | null> {
+  const host = await siteHostFor(schoolId);
+  return host ? `https://${host}` : null;
+}
+
+/**
+ * /sites/<slug>: the published version, for the office and the head of THAT school only (16 Oct 2026: a site is
+ * public only on the school's own domain). The school whose published site to show, or null for anybody else — a
+ * school's slug that is not the signed-in person's own, another role, or the module off — which the route answers
+ * with the 404 every refusal there is.
+ */
+export async function publishedPreviewSchool(ctx: ActiveContext, slug: string): Promise<string | null> {
+  let ed: SiteEditor;
+  try {
+    ed = await siteEditor(ctx);
+  } catch (error) {
+    // ModuleOffError is an AccessError too.
+    if (error instanceof AccessError) return null;
+    throw error;
+  }
+  const school = await db.school.findUnique({ where: { id: ed.schoolId }, select: { slug: true } });
+  return school?.slug === slug ? ed.schoolId : null;
 }
 
 /** Take the site down: the public route answers 404 with noindex; the versions are kept. Audited site.unpublish. */

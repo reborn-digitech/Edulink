@@ -16,8 +16,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 /**
- * Screen 5, Publish: the site's address, Publish (every language at once), Unpublish (the versions are kept),
- * and "Your own domain" for the sixth screen; under them the enquiries the site's form has brought in.
+ * Screen 5, Publish: the site's address — the school's own domain once it is live, and until then what that means
+ * with the way to the sixth screen (16 Oct 2026: no platform subdomain) — Publish (every language at once; allowed
+ * before any domain, the version is stored), Unpublish (the versions are kept), the office's own view of the
+ * published version (/sites/<slug>, signed in); under them the enquiries the site's form has brought in.
  */
 export default async function WebsitePublishPage() {
   const ctx = await requireRole("ADMIN", "PRINCIPAL");
@@ -34,23 +36,38 @@ export default async function WebsitePublishPage() {
           action={view.published ? <Badge tone="ok">{t("website.liveBadge")}</Badge> : <Badge>{t("website.draftBadge")}</Badge>}
         />
         <CardBody className="space-y-4">
-          <div>
-            <p className="text-sm font-medium text-fg">{t("website.siteAddressLabel")}</p>
-            <p className="break-all text-base font-semibold text-fg">{view.address}</p>
-            <p className="text-xs text-fg-muted">{t("website.siteAddressHint")}</p>
-            {view.published ? (
-              <a className="mt-1 inline-flex min-h-11 items-center text-sm text-accent-strong underline" href={view.localPath} target="_blank" rel="noopener">
-                {t("website.openHere")}
+          {view.address ? (
+            <div data-testid="site-address">
+              <p className="text-sm font-medium text-fg">{t("website.siteAddressLabel")}</p>
+              <a className="inline-flex min-h-11 items-center break-all text-base font-semibold text-accent-strong underline" href={view.address} target="_blank" rel="noopener noreferrer">
+                {view.address}
               </a>
-            ) : null}
-          </div>
+              <p className="text-xs text-fg-muted">{t("website.siteAddressHint")}</p>
+            </div>
+          ) : (
+            // A site lives only on the school's own domain (16 Oct 2026): until it is live, say where the site stands and
+            // how to connect the domain. Publishing first is allowed; the version is stored and opens once the domain does.
+            <div className="space-y-2" data-testid="site-awaiting-domain">
+              <p className="text-sm text-fg">{t(view.published ? "website.publishedAwaitingDomain" : "website.publishBeforeDomain")}</p>
+              <Button asChild variant="secondary">
+                <Link href="/admin/website/domain">{t("website.connectDomain")}</Link>
+              </Button>
+            </div>
+          )}
+          {view.published ? (
+            <a className="inline-flex min-h-11 items-center text-sm text-accent-strong underline" href={view.localPath} target="_blank" rel="noopener">
+              {t("website.openHere")}
+            </a>
+          ) : null}
           <PublishControls published={view.published} warnings={view.warnings.length} />
-          <div className="border-t border-border pt-4">
-            <p className="text-sm text-fg-muted">{t("website.domainNext")}</p>
-            <Button asChild variant="secondary" className="mt-2">
-              <Link href="/admin/website/domain">{t("website.domainLink")}</Link>
-            </Button>
-          </div>
+          {view.address ? (
+            <div className="border-t border-border pt-4">
+              <p className="text-sm text-fg-muted">{t("website.domainNext")}</p>
+              <Button asChild variant="secondary" className="mt-2">
+                <Link href="/admin/website/domain">{t("website.domainLink")}</Link>
+              </Button>
+            </div>
+          ) : null}
         </CardBody>
       </Card>
 

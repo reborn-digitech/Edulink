@@ -10,7 +10,7 @@ import { markSiteEnquiry, publishSite, saveSite, unpublishSite } from "@/lib/sit
  * The website flow's actions (website-builder A, 15 Oct 2026): each screen's Continue saves the fields it
  * shows into the draft; Publish and Unpublish. Every rule, check and audit row is the library's (site-admin.ts).
  */
-type Result = { ok: boolean; error?: string; field?: string; address?: string };
+type Result = { ok: boolean; error?: string; field?: string; address?: string | null };
 
 async function refusal(error: unknown, where: string): Promise<Result> {
   const t = await getT();

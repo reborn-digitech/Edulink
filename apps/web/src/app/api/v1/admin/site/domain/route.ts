@@ -8,7 +8,7 @@ import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
  * and the head. The catalog's `module: "WEBSITE"` answers 403 MODULE_OFF before these run while the module is off.
  */
 
-/** GET /api/v1/admin/site/domain — the site's subdomain, whether it is published, and the school's own domain with its state and the records to add. */
+/** GET /api/v1/admin/site/domain — whether the site is published, and the school's own domain (its only address) with its state and the records to add. */
 export async function GET() {
   try {
     const ctx = await requireApiRole("ADMIN", "PRINCIPAL");

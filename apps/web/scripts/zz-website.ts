@@ -10,7 +10,9 @@ import { fixturePng } from "./png";
  * ZZ NORTHGATE'S PUBLIC WEBSITE (website-builder A, 15 October 2026): the WEBSITE module on, a draft with every
  * section and every number switched on, one approved school-wide post with a picture (the News item and, with
  * the admin's consent tick, the Gallery's one picture), and a published version — so /admin/website opens on a
- * live site and /sites/zz-northgate-school answers 200.
+ * live site, /sites/zz-northgate-school answers 200 to Northgate's own office and head (the public site is on the
+ * school's own domain only, 16 Oct 2026; the fixture's www.zz-northgate.test waits for DNS) and, in development,
+ * http://zz-northgate-school.localhost:3000/ serves it by host.
  *
  * IDEMPOTENT. The post is found by its title before it is made; the draft is written back to the fixture's own
  * every run (a test or a hand may have changed it); a version is published only when none is live, so a run
@@ -19,7 +21,7 @@ import { fixturePng } from "./png";
  */
 export const ZZ_SITE_POST_TITLE = "ZZ Website: Annual day";
 
-export async function buildWebsite(db: PrismaClient, school: { id: string }, adminUserId: string): Promise<{ published: boolean; postId: string; slug: string }> {
+export async function buildWebsite(db: PrismaClient, school: { id: string }, adminUserId: string): Promise<{ published: boolean; refreshed: boolean; postId: string; slug: string }> {
   await db.schoolModule.createMany({ data: [{ schoolId: school.id, module: "WEBSITE", enabledByUserId: adminUserId }], skipDuplicates: true });
 
   let post = await db.post.findFirst({ where: { schoolId: school.id, title: ZZ_SITE_POST_TITLE, scope: "SCHOOL" }, select: { id: true, media: true } });
@@ -72,7 +74,10 @@ export async function buildWebsite(db: PrismaClient, school: { id: string }, adm
     update: { configJson: JSON.stringify(config), updatedByUserId: adminUserId },
   });
 
-  const live = await db.schoolSiteVersion.findFirst({ where: { schoolId: school.id, liveAt: { not: null } }, select: { id: true } });
-  if (!live) await renderAndStore(school.id, adminUserId, config);
-  return { published: !live, postId: post.id, slug: row.slug };
+  const live = await db.schoolSiteVersion.findFirst({ where: { schoolId: school.id, liveAt: { not: null } }, select: { id: true, html: true } });
+  // A version rendered before 16 Oct 2026 posts its enquiry form to the slug path /sites/<slug>/enquiry, which no
+  // longer exists (a site is public only on its own domain, where the form posts to /enquiry): render it again once.
+  const stale = Boolean(live && live.html.includes('action=\\"/sites/'));
+  if (!live || stale) await renderAndStore(school.id, adminUserId, config);
+  return { published: !live, refreshed: stale, postId: post.id, slug: row.slug };
 }

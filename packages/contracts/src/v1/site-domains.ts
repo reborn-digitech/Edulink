@@ -52,11 +52,9 @@ export type SiteDomain = z.infer<typeof siteDomainSchema>;
 
 /** GET /api/v1/admin/site/domain, and the answer to a save or a verify. */
 export const siteDomainViewSchema = z.object({
-  /** `<slug>.<SITE_DOMAIN>`: the address every published site has. */
-  subdomain: z.string(),
-  /** Whether the school's site is published now. */
+  /** Whether the school's site is published now. It is reachable only at its own domain once that is LIVE (16 Oct 2026). */
   published: z.boolean(),
-  /** `sites.<SITE_DOMAIN>`: where a www record points. */
+  /** SITE_CNAME_TARGET: where a www record points. */
   target: z.string(),
   /** Whether certificates are issued here (false in development: the hosted platform issues them). */
   certificatesHere: z.boolean(),

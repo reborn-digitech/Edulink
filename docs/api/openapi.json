@@ -10960,7 +10960,7 @@
     },
     "/api/v1/admin/modules": {
       "get": {
-        "summary": "Every optional module and whether this school has it on",
+        "summary": "Every optional module the school switches and whether this school has it on (the assistant is not listed: the platform's operator switches it)",
         "description": "Roles: ADMIN, PRINCIPAL.",
         "security": [
           {
@@ -11072,7 +11072,7 @@
         }
       },
       "post": {
-        "summary": "Switch one module on or off; the answer is every module as it now stands",
+        "summary": "Switch one module on or off; the answer is every module as it now stands; ASSISTANT is refused (403), the platform's operator switches it",
         "description": "Roles: ADMIN.",
         "security": [
           {
@@ -220635,7 +220635,7 @@
     },
     "/api/v1/admin/assistant/settings": {
       "post": {
-        "summary": "Switch the assistant on or off for the school, and set the helpline sentence the counsellor route names",
+        "summary": "Set the helpline sentence the counsellor route names; the assistant itself is switched on for a school by the platform's operator, so `on` asking for a change is refused (403) and `on` naming the current state changes nothing",
         "description": "Roles: ADMIN.",
         "security": [
           {
@@ -230188,7 +230188,7 @@
     },
     "/api/v1/admin/site": {
       "get": {
-        "summary": "The school website's draft (look, words, sections, numbers, news, gallery with consent), whether a version is live and since when, its address, and the preview's warnings",
+        "summary": "The school website's draft (look, words, sections, numbers, news, gallery with consent), whether a version is live and since when, its address (the school's own domain once live, else null), and the preview's warnings",
         "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
         "security": [
           {
@@ -230435,7 +230435,8 @@
                       "nullable": true
                     },
                     "address": {
-                      "type": "string"
+                      "type": "string",
+                      "nullable": true
                     },
                     "warnings": {
                       "type": "array",
@@ -230757,7 +230758,8 @@
                       "nullable": true
                     },
                     "address": {
-                      "type": "string"
+                      "type": "string",
+                      "nullable": true
                     },
                     "warnings": {
                       "type": "array",
@@ -231158,237 +231160,9 @@
         }
       }
     },
-    "/api/v1/public/sites/{slug}": {
-      "get": {
-        "summary": "A school's published website (text/html), signed out: static, no script, `Cache-Control: public, max-age=300`, ?lang= en, hi or mr where the site offers them; 404 with noindex while it is not published or the module is off",
-        "description": "No session needed.",
-        "security": [],
-        "x-access": "anyone",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    }
-                  },
-                  "required": [
-                    "ok"
-                  ],
-                  "additionalProperties": false
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "No or invalid session",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "This role may not",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiError"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found, or not yours",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiError"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Invalid body",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiError"
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "lang": {
-                    "type": "string",
-                    "enum": [
-                      "en",
-                      "hi",
-                      "mr"
-                    ]
-                  }
-                },
-                "additionalProperties": false
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "slug",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      }
-    },
-    "/api/v1/public/sites/{slug}/enquiry": {
-      "post": {
-        "summary": "An admission enquiry through a school's published website, signed out (name, a phone or email, the class asked about, the question); the admissions contact is told in the app; 201, 404 while the site carries no form, 422 for the form, 429 past five an hour per address",
-        "description": "No session needed.",
-        "security": [],
-        "x-access": "anyone",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    }
-                  },
-                  "required": [
-                    "ok"
-                  ],
-                  "additionalProperties": false
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "No or invalid session",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "This role may not",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiError"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found, or not yours",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiError"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Invalid body",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiError"
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 120
-                  },
-                  "contact": {
-                    "type": "string",
-                    "minLength": 5,
-                    "maxLength": 200
-                  },
-                  "grade": {
-                    "type": "string",
-                    "maxLength": 60,
-                    "default": ""
-                  },
-                  "message": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 2000
-                  },
-                  "website": {
-                    "type": "string",
-                    "maxLength": 200,
-                    "default": ""
-                  }
-                },
-                "required": [
-                  "name",
-                  "contact",
-                  "message"
-                ],
-                "additionalProperties": false
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "slug",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      }
-    },
     "/api/v1/admin/site/unpublish": {
       "post": {
-        "summary": "Take the website down: its address answers 404 with noindex; the versions are kept; audited when something was live",
+        "summary": "Take the website down: its domain answers 404 with noindex; the versions are kept; audited when something was live",
         "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
         "security": [
           {
@@ -231468,7 +231242,7 @@
     },
     "/api/v1/admin/site/publish": {
       "post": {
-        "summary": "Render the draft in every language the site offers and make it the live version at its address; audited",
+        "summary": "Render the draft in every language the site offers and make it the live version, served at the school's own domain once that is live (the address is null until then); audited",
         "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
         "security": [
           {
@@ -231502,7 +231276,8 @@
                       "format": "date-time"
                     },
                     "address": {
-                      "type": "string"
+                      "type": "string",
+                      "nullable": true
                     }
                   },
                   "required": [
@@ -231561,7 +231336,7 @@
     },
     "/api/v1/admin/site/domain": {
       "get": {
-        "summary": "The school website's address (its subdomain), whether it is published, and the school's own domain with its state and the DNS records to add",
+        "summary": "Whether the school website is published, where a www record points, and the school's own domain (the only address a site has) with its state and the DNS records to add",
         "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
         "security": [
           {
@@ -231581,9 +231356,6 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "subdomain": {
-                      "type": "string"
-                    },
                     "published": {
                       "type": "boolean"
                     },
@@ -231744,7 +231516,6 @@
                     }
                   },
                   "required": [
-                    "subdomain",
                     "published",
                     "target",
                     "certificatesHere",
@@ -231818,9 +231589,6 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "subdomain": {
-                      "type": "string"
-                    },
                     "published": {
                       "type": "boolean"
                     },
@@ -231981,7 +231749,6 @@
                     }
                   },
                   "required": [
-                    "subdomain",
                     "published",
                     "target",
                     "certificatesHere",
@@ -232174,9 +231941,6 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "subdomain": {
-                      "type": "string"
-                    },
                     "published": {
                       "type": "boolean"
                     },
@@ -232337,7 +232101,6 @@
                     }
                   },
                   "required": [
-                    "subdomain",
                     "published",
                     "target",
                     "certificatesHere",

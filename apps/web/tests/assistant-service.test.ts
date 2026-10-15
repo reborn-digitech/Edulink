@@ -23,6 +23,7 @@ import { gateRequest } from "@/lib/role-gate";
 import { ModuleOffError } from "@/lib/access-error";
 import { AccessError } from "@/lib/tenancy";
 import { sweepExpired } from "@/lib/retention";
+import { switchModuleFor } from "@/lib/modules";
 import { RETENTION_DEFAULTS } from "@/lib/env";
 import {
   AssistantUnavailableError,
@@ -193,11 +194,15 @@ describe("the switches and the caps", () => {
     await expect(openConversation(fenPupil, { language: "en" })).rejects.toMatchObject({ reason: "MODULE_OFF" });
   });
 
-  it("is switched by the office (audited, idempotent), and the door's status says so", async () => {
+  it("is switched by the platform's operator, never the office (16 Oct 2026), and the door's status says so", async () => {
     const admin = await as(ids.admin, "ADMIN", ids.lark);
-    expect((await saveAssistantSettings(admin, { on: false })).on).toBe(false);
+    // The office's card no longer switches: a change of `on` is refused, the current state is accepted with the helpline.
+    await expect(saveAssistantSettings(admin, { on: false })).rejects.toMatchObject({ key: "modules.refuseAssistant" });
+    // The operator's path (switchModuleFor with byOperator, as operator-college.ts calls it), audited in the school's log.
+    expect(await switchModuleFor(ids.lark, ids.admin, "ASSISTANT", false, { byOperator: true })).toEqual({ changed: true });
     const pupil = await as(ids.pupil, "STUDENT", ids.lark);
     expect((await assistantStatus(pupil)).reason).toBe("MODULE_OFF");
+    expect(await switchModuleFor(ids.lark, ids.admin, "ASSISTANT", true, { byOperator: true })).toEqual({ changed: true });
     const admin2 = await as(ids.admin, "ADMIN", ids.lark);
     expect((await saveAssistantSettings(admin2, { on: true, helplineText: "Talk to Mrs ZZ Joshi in the counselling room." })).on).toBe(true);
     expect(await db.auditLog.count({ where: { schoolId: ids.lark, action: { in: ["school.module.off", "school.module.on"] } } })).toBe(2);

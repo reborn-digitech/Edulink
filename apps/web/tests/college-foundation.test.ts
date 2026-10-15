@@ -137,12 +137,13 @@ describe("the modules by kind, and the autonomous switch", () => {
   it("offer a school the school version's six and a college all twelve", async () => {
     await as(ids.sAdmin, "ADMIN", ids.school, null);
     const school = (await getSession())!;
-    expect((await schoolModules(school)).map((m) => m.module)).toEqual([...SCHOOL_VERSION_MODULES]);
+    // The assistant is the operator's to switch (16 Oct 2026): not on the school's own list.
+    expect((await schoolModules(school)).map((m) => m.module)).toEqual(SCHOOL_VERSION_MODULES.filter((m) => m !== "ASSISTANT"));
     await expect(setModule(school, "ACADEMICS", true)).rejects.toMatchObject({ key: "modules.refuseNotForKind" });
     expect(await enabledModules(ids.school)).toEqual(["ALUMNI"]);
     await as(ids.cAdmin, "ADMIN", ids.college, null);
     const college = (await getSession())!;
-    expect((await schoolModules(college)).map((m) => m.module)).toEqual([...SCHOOL_MODULES]);
+    expect((await schoolModules(college)).map((m) => m.module)).toEqual(SCHOOL_MODULES.filter((m) => m !== "ASSISTANT"));
     // And a college may switch one of its own off and on, audited as any module.
     expect(await setModule(college, "PLACEMENT", false)).toEqual({ changed: true });
     expect(await setModule(college, "PLACEMENT", true)).toEqual({ changed: true });

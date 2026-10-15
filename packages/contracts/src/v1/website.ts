@@ -112,8 +112,8 @@ export const adminSiteSchema = z.object({
   config: siteConfigSchema,
   published: z.boolean(),
   publishedAt: z.string().datetime().nullable(),
-  /** https://<slug>.<SITE_DOMAIN>, or the school's own domain once it is live. */
-  address: z.string(),
+  /** https://<the school's own domain> once it is LIVE, else null: a site lives only on its own domain (16 Oct 2026). */
+  address: z.string().nullable(),
   warnings: z.array(z.enum(SITE_WARNINGS)),
 });
 export type AdminSite = z.infer<typeof adminSiteSchema>;
@@ -126,15 +126,14 @@ export const adminSitePublishedSchema = z.object({
   ok: z.literal(true),
   versionId: z.string(),
   renderedAt: z.string().datetime(),
-  address: z.string(),
+  /** As adminSiteSchema's: null while the school's own domain is not LIVE (the version is stored all the same). */
+  address: z.string().nullable(),
 });
 
-/** GET /api/v1/public/sites/{slug}?lang= — the HTML; the query is the language. */
-export const publicSiteQuerySchema = z.object({ lang: z.enum(SITE_LANGUAGES).optional() });
-
 /**
- * POST /api/v1/public/sites/{slug}/enquiry — an admission enquiry from the site's form, signed out. `website`
- * is a field a person never sees and a form-filling robot fills: a body carrying it is thanked and dropped.
+ * The published site's admission form, posted signed out to /enquiry on the school's own domain (the by-host route;
+ * 16 Oct 2026 — no slug path and no public door). `website` is a field a person never sees and a form-filling robot
+ * fills: a body carrying it is thanked and dropped.
  */
 export const siteEnquiryBodySchema = z.object({
   name: z.string().trim().min(1).max(120),
@@ -144,4 +143,3 @@ export const siteEnquiryBodySchema = z.object({
   website: z.string().max(200).optional().default(""),
 });
 export type SiteEnquiryBody = z.infer<typeof siteEnquiryBodySchema>;
-export const siteEnquiryReceivedSchema = z.object({ ok: z.literal(true) });

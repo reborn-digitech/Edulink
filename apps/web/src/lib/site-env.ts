@@ -1,12 +1,15 @@
 /**
  * THE SCHOOL WEBSITES' ENVIRONMENT (the WEBSITE module, website-builder B, 15 October 2026), read in one place.
  *
- *   SITE_DOMAIN    the sites' own domain; a published site lives at `<slug>.<SITE_DOMAIN>`, and a school's own
- *                  domain points its www record at `sites.<SITE_DOMAIN>`. Default "shalaghar.site".
+ * A school's website lives ONLY on the school's own domain (the owner's decision of 16 October 2026): there is no
+ * platform subdomain, so no `<slug>.<sites domain>` and no SITE_DOMAIN.
+ *
+ *   SITE_CNAME_TARGET  where a school's www record points: the sites app's own name. Default "sites.shalaghar.com".
  *   APP_HOSTS      a comma list of the app's own hosts (with the port where there is one). A request whose host is
- *                  not one of them is a website's (src/lib/site-host-match.ts). Unset in development it is
- *                  "localhost:3000,127.0.0.1:3000"; unset in production only `<slug>.<SITE_DOMAIN>` hosts are sites,
- *                  so a deployment that forgot it never serves its own pages as somebody's website.
+ *                  not one of them may be a website's (src/lib/site-host-match.ts); the route serves it only when
+ *                  it is a LIVE school domain. Unset in development it is "localhost:3000,127.0.0.1:3000"; unset in
+ *                  production NO host is a site, so a deployment that forgot it never serves its own pages as
+ *                  somebody's website.
  *   SITE_APEX_IP   the address a school's bare domain (example.in) may point an A record at; unset, the page tells
  *                  the school to send the bare domain to www with its registrar's redirect.
  *   FLY_API_TOKEN, FLY_SITES_APP   the hosting platform's API token and the app the sites are served from, for
@@ -17,7 +20,7 @@
  */
 
 export type SiteEnv = {
-  SITE_DOMAIN?: string;
+  SITE_CNAME_TARGET?: string;
   APP_HOSTS?: string;
   SITE_APEX_IP?: string;
   FLY_API_TOKEN?: string;
@@ -28,7 +31,7 @@ export type SiteEnv = {
 /** The process's own environment, each variable read by name. */
 export function processSiteEnv(): SiteEnv {
   return {
-    SITE_DOMAIN: process.env.SITE_DOMAIN,
+    SITE_CNAME_TARGET: process.env.SITE_CNAME_TARGET,
     APP_HOSTS: process.env.APP_HOSTS,
     SITE_APEX_IP: process.env.SITE_APEX_IP,
     FLY_API_TOKEN: process.env.FLY_API_TOKEN,
@@ -37,21 +40,16 @@ export function processSiteEnv(): SiteEnv {
   };
 }
 
-export const DEFAULT_SITE_DOMAIN = "shalaghar.site";
+export const DEFAULT_SITE_CNAME_TARGET = "sites.shalaghar.com";
 export const DEV_APP_HOSTS = ["localhost:3000", "127.0.0.1:3000"];
 
-/** The sites' own domain, lowercase, with no leading or trailing dot. */
-export function siteDomain(env: SiteEnv = processSiteEnv()): string {
-  const raw = (env.SITE_DOMAIN ?? "").trim().toLowerCase().replace(/^\.+|\.+$/g, "");
-  return raw || DEFAULT_SITE_DOMAIN;
-}
-
-/** Where a school's www record points: `sites.<SITE_DOMAIN>`. */
+/** Where a school's www record points (SITE_CNAME_TARGET), lowercase, with no leading or trailing dot. */
 export function sitesTarget(env: SiteEnv = processSiteEnv()): string {
-  return `sites.${siteDomain(env)}`;
+  const raw = (env.SITE_CNAME_TARGET ?? "").trim().toLowerCase().replace(/^\.+|\.+$/g, "");
+  return raw || DEFAULT_SITE_CNAME_TARGET;
 }
 
-/** Whether this is a development process (the `*.localhost` site hosts, the default APP_HOSTS). */
+/** Whether this is a development process (the `<slug>.localhost` site hosts, the default APP_HOSTS). */
 export function isDevelopment(env: SiteEnv = processSiteEnv()): boolean {
   return env.NODE_ENV === "development";
 }

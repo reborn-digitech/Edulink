@@ -22,7 +22,7 @@ import { chatComplete, embedTexts, type ChatMessage, type ChatOptions, type Chat
 import { searchCurriculum, searchHelp, type CurriculumHit, type CurriculumQuery, type HelpHit, type HelpQuery } from "../assistant-retrieval";
 import { translator, type TranslationKey } from "../i18n/dictionary";
 import { normaliseLocale } from "../i18n/locales";
-import { isModuleOn, switchModuleFor } from "../modules";
+import { isModuleOn } from "../modules";
 import { AccessError, assertAssignmentAccess, assertGuardianAccess } from "../tenancy";
 import { isCollegeKind } from "@edulink/contracts";
 import { ROLES, type Role } from "../constants";
@@ -800,10 +800,15 @@ export async function assistantUsage(ctx: ActiveContext, now = new Date()): Prom
   };
 }
 
-/** The office's switch (the ASSISTANT module, one switch) and the helpline sentence. ADMIN only, audited, idempotent. */
+/**
+ * The office's helpline sentence. ADMIN only, audited, idempotent. The ASSISTANT module is no longer the office's to
+ * switch (16 Oct 2026: the platform's operator switches it on for a school, under the student and teacher plans):
+ * `on` naming the state the school already has is accepted and changes nothing, so an older client's form still
+ * saves its helpline; `on` asking for a change is refused with modules.refuseAssistant.
+ */
 export async function saveAssistantSettings(ctx: ActiveContext, input: { on?: boolean; helplineText?: string | null }, now = new Date()): Promise<AssistantUsage> {
   if (!ctx.schoolId || ctx.role !== "ADMIN") throw new AccessError("access.wrongRoleForThisAction");
-  if (input.on !== undefined) await switchModuleFor(ctx.schoolId, ctx.user.id, "ASSISTANT", input.on);
+  if (input.on !== undefined && input.on !== (await isModuleOn(ctx.schoolId, "ASSISTANT"))) throw new AccessError("modules.refuseAssistant");
   if (input.helplineText !== undefined) {
     const next = input.helplineText?.trim() || null;
     const school = await schoolOf(ctx.schoolId);

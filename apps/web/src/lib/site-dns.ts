@@ -5,7 +5,7 @@ import { apexOf, counterpartOf, isApex } from "./site-host-match";
 /**
  * THE DNS A SCHOOL'S OWN DOMAIN NEEDS, AND THE CHECK THAT IT IS THERE (website-builder B, 15 October 2026).
  *
- * WHAT THE PAGE ASKS FOR (dnsRecordsFor): a www name (or any subdomain) is a CNAME to `sites.<SITE_DOMAIN>`; the bare
+ * WHAT THE PAGE ASKS FOR (dnsRecordsFor): a www name (or any subdomain) is a CNAME to SITE_CNAME_TARGET; the bare
  * domain is an A record (or the registrar's ALIAS/ANAME) to SITE_APEX_IP when the platform has one, and otherwise
  * the registrar's own redirect to www — in which case a school that typed the bare domain is served on www.
  *

@@ -8,7 +8,7 @@ import { forSchool } from "./tenant-context";
 import { CONTACTABLE_ROLES } from "./constants";
 import { readJson } from "./json";
 import { isEmailish, isPhoneish, sectionOn } from "./site-config";
-import { publishedSiteFor, schoolIdForSlug, type SiteSnapshot } from "./site-publish";
+import { publishedSiteFor, type SiteSnapshot } from "./site-publish";
 import type { TranslationKey } from "./i18n/dictionary";
 
 /**
@@ -16,7 +16,8 @@ import type { TranslationKey } from "./i18n/dictionary";
  *
  * The site is static and its visitor signed in to nothing, while the shared enquiries (Enquiry, enquiries.ts)
  * need a signed-in parent — so the site's form writes its own row, SchoolSiteEnquiry, under the school's
- * binding (the school id is the live version's, which the database returned for the slug). The form exists
+ * binding (the school id is the one the database returned for the site's own LIVE domain: the form posts to
+ * /enquiry on that host, src/lib/site-host-routes.ts; never to a slug path, 16 Oct 2026). The form exists
  * only while the published site carries the Admissions section with the form on; the module must be on.
  *
  * LIMITS, as every signed-out form here: five valid enquiries an hour per caller address (counted after the
@@ -33,8 +34,8 @@ export type SiteEnquiryOutcome =
   | { ok: true; schoolId: string; schoolName: string; language: SiteLanguage; colour: string }
   | { ok: false; status: 404 | 422 | 429; errorKey: TranslationKey; retryAfterSeconds?: number; language?: SiteLanguage; colour?: string };
 
-export async function takeSiteEnquiry(slug: string, body: SiteEnquiryBody): Promise<SiteEnquiryOutcome> {
-  const schoolId = await schoolIdForSlug(slug);
+/** `schoolId` is the school of the site's host (schoolIdForHost), null for a host that is nobody's. */
+export async function takeSiteEnquiry(schoolId: string | null, body: SiteEnquiryBody): Promise<SiteEnquiryOutcome> {
   const site = schoolId ? await publishedSiteFor(schoolId) : null;
   if (!schoolId || !site) return { ok: false, status: 404, errorKey: "site.notFoundBody" };
   const live = await db.schoolSiteVersion.findFirst({ where: { schoolId, liveAt: { not: null } }, select: { snapshotJson: true } });

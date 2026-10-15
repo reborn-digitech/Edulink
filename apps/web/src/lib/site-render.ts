@@ -15,8 +15,9 @@ import type { SiteNumber } from "./site-metrics";
  * admin's order, h3 inside; alt text on every picture (the post's own, which the post's author had to give);
  * inline CSS only and NO JavaScript; no outside host at all (pictures from the platform's own file route,
  * faces from the bundled /fonts, else the system's); a language switch of plain links (?lang=) when the
- * admin turns it on; the footer "Built with Shalaghar". The enquiry form is a plain POST to
- * /sites/<slug>/enquiry, same host, so it works on a custom domain too (CSP form-action 'self').
+ * admin turns it on; the footer "Built with Shalaghar". The enquiry form is a plain POST to /enquiry on the
+ * site's own host — the school's own domain, where the middleware rewrites it to the by-host route (16 Oct 2026:
+ * never a slug path) — so CSP's form-action 'self' holds.
  *
  * FOUR TEMPLATES, ONE CSS BASE. Classic, Modern, Warm and Minimal differ in the header's layout, the
  * sections' rhythm and how much of the colour they use; everything else — the type scale, spacing, the
@@ -316,11 +317,11 @@ function disclosure({ data, t }: Ctx): string {
   return sectionShell("DISCLOSURE", t, `<p>${esc(t("site.disclosureBody"))}</p><p><a href="${esc(`${data.appUrl}/public/disclosure/${data.slug}`)}">${esc(t("site.disclosureLink"))}</a></p>`);
 }
 
-function admissions({ config, data, locale, t }: Ctx): string {
+function admissions({ config, locale, t }: Ctx): string {
   const words = config.admissionsText.trim() ? paragraphs(config.admissionsText, 2000) : `<p>${esc(t("site.admissionsDefault"))}</p>`;
   const form = config.enquiryForm
     ? [
-        `<form class="enquiry" method="post" action="/sites/${esc(data.slug)}/enquiry">`,
+        `<form class="enquiry" method="post" action="/enquiry">`,
         `<h3>${esc(t("site.enquiryTitle"))}</h3>`,
         `<input type="hidden" name="lang" value="${locale}">`,
         `<label>${esc(t("site.enquiryName"))}<input name="name" required maxlength="120" autocomplete="name"></label>`,

@@ -4,9 +4,10 @@
  * The renderer is pure, so its four templates are snapshotted from one fixture draft, and the rules every
  * template must keep (no script, a skip link, one h1, alt text on every picture, escaped words) are asserted
  * outright. Then one ZZ school of this suite's own walks the library: the aggregate numbers, the draft's
- * checks (a foreign post, an http map link, the consent stamp, the head's own name tick), Publish and the
- * public route's 200, the file route opening a consented picture, the enquiry door, the nightly refresh, and
- * Unpublish and the module switch answering 404 with noindex. Every row it makes is its own school's.
+ * checks (a foreign post, an http map link, the consent stamp, the head's own name tick), Publish, the office's own
+ * view by slug and the public site on the school's own LIVE domain (16 Oct 2026: never by slug to anybody else),
+ * the file route opening a consented picture, the enquiry form on the domain, the nightly refresh, and Unpublish
+ * and the module switch answering 404 with noindex. Every row it makes is its own school's.
  */
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
@@ -23,16 +24,19 @@ import { publishedSiteFor, refreshPublishedSites, schoolIdForSlug } from "@/lib/
 import { authorizeFileRead } from "@/lib/files";
 import { actionKey } from "@/lib/safety-labels";
 import { todayKey } from "@/lib/dates";
+import { forgetSiteHosts } from "@/lib/site-hosts";
 import { GET as siteGet } from "@/app/sites/[slug]/route";
-import { POST as enquiryPost } from "@/app/api/v1/public/sites/[slug]/enquiry/route";
-import { POST as formPost } from "@/app/sites/[slug]/enquiry/route";
+import { GET as hostGet } from "@/app/sites/by-host/[host]/route";
+import { GET as hostEnquiryGet, POST as hostEnquiryPost } from "@/app/sites/by-host/[host]/enquiry/route";
 import { GET as adminSiteGet } from "@/app/api/v1/admin/site/route";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
 const SLUG = `zz-site-${STAMP}`;
 const PIC = `zz-site-pic-${STAMP}`;
-const ids = { school: "", other: "", admin: "", head: "", teacher: "", pupil1: "", pupil2: "", klass: "", post: "", otherPost: "" };
+const ids = { school: "", other: "", admin: "", head: "", teacher: "", otherAdmin: "", pupil1: "", pupil2: "", klass: "", post: "", otherPost: "" };
+/** The school's own domain, made LIVE by hand once the suite has published (the domain flow is site-domains.test.ts's). */
+const DOMAIN = `www.zz-site-${STAMP}.test`;
 
 async function as(userId: string, role: string, schoolId: string) {
   __resetCookies();
@@ -47,6 +51,8 @@ function signedOut() {
   __setHeaders({});
 }
 const params = (slug: string) => ({ params: Promise.resolve({ slug }) });
+const hostParams = (host: string) => ({ params: Promise.resolve({ host }) });
+const bySlug = (query = "") => siteGet(new Request(`http://localhost/sites/${SLUG}${query}`), params(SLUG));
 
 /* ------------------------------------------------------------------------------------------------ */
 /* The pure parts                                                                                  */
@@ -136,7 +142,9 @@ describe("the renderer (pure)", () => {
     expect(html).not.toContain('id="news"');
     expect(html).not.toContain('id="gallery"');
     expect(html).toContain('id="admissions"');
-    expect(html).toContain('action="/sites/zz-river/enquiry"');
+    // The form posts to its own host's /enquiry (the by-host route), never to a slug path (16 Oct 2026).
+    expect(html).toContain('action="/enquiry"');
+    expect(html).not.toContain("/sites/zz-river");
   });
 
   it("prints the head's name only when ticked", () => {
@@ -193,10 +201,11 @@ beforeAll(async () => {
   ids.other = (await mkSchool("Other", `${SLUG}-other`)).id;
   await db.schoolModule.createMany({ data: [{ schoolId: ids.school, module: "WEBSITE" }, { schoolId: ids.other, module: "WEBSITE" }] });
   const mk = (who: string) => db.user.create({ data: { name: `ZZ Site ${who}`, email: `zz-site-${who.toLowerCase()}-${STAMP}@test.invalid` }, select: { id: true } });
-  const [a, h, t, p1, p2] = await Promise.all([mk("Admin"), mk("Head"), mk("Teacher"), mk("PupilOne"), mk("PupilTwo")]);
-  Object.assign(ids, { admin: a.id, head: h.id, teacher: t.id });
+  const [a, h, t, p1, p2, oa] = await Promise.all([mk("Admin"), mk("Head"), mk("Teacher"), mk("PupilOne"), mk("PupilTwo"), mk("OtherAdmin")]);
+  Object.assign(ids, { admin: a.id, head: h.id, teacher: t.id, otherAdmin: oa.id });
   await db.membership.createMany({
     data: [
+      { userId: oa.id, schoolId: ids.other, role: "ADMIN", status: "ACTIVE" },
       { userId: a.id, schoolId: ids.school, role: "ADMIN", status: "ACTIVE" },
       { userId: h.id, schoolId: ids.school, role: "PRINCIPAL", status: "ACTIVE" },
       { userId: t.id, schoolId: ids.school, role: "TEACHER", status: "ACTIVE" },
@@ -298,25 +307,62 @@ describe("the draft", () => {
   });
 });
 
-describe("publish, the public route, and unpublish", () => {
-  it("is not there before Publish: 404 with noindex", async () => {
+describe("publish, the office's view by slug, the public site on its own domain, and unpublish", () => {
+  it("is not there before Publish: 404 with noindex, even to the office", async () => {
     signedOut();
     expect(await schoolIdForSlug(SLUG)).toBeNull();
-    const res = await siteGet(new Request(`http://localhost/sites/${SLUG}`), params(SLUG));
+    const res = await bySlug();
     expect(res.status).toBe(404);
     expect(res.headers.get("x-robots-tag")).toBe("noindex");
+    await as(ids.admin, "ADMIN", ids.school);
+    expect((await bySlug()).status).toBe(404);
   });
 
-  it("publishes every language, audited, and serves it signed out with a short public cache and no cookie", async () => {
+  it("publishes every language before any domain (the version is stored, the address null), audited", async () => {
     const made = await publishSite(await as(ids.admin, "ADMIN", ids.school));
-    expect(made.address).toMatch(new RegExp(`^https://${SLUG}\\.`));
+    expect(made.address).toBeNull();
     const audit = await db.auditLog.findFirst({ where: { schoolId: ids.school, action: "site.publish" } });
     expect(audit?.targetId).toBe(made.versionId);
     expect(actionKey("site.publish")).toBe("audit.sitePublish");
+    const view = await loadSite(await as(ids.admin, "ADMIN", ids.school));
+    expect(view).toMatchObject({ published: true, address: null, localPath: `/sites/${SLUG}` });
+  });
 
+  it("⚠ shows the published version by slug to that school's office and head only, privately; 404 to anyone else", async () => {
+    for (const [who, role, school] of [[ids.admin, "ADMIN", ids.school], [ids.head, "PRINCIPAL", ids.school]] as const) {
+      await as(who, role, school);
+      const res = await bySlug();
+      expect(res.status, role).toBe(200);
+      expect(res.headers.get("cache-control")).toBe("private, no-store");
+      expect(res.headers.get("x-robots-tag")).toBe("noindex");
+      expect(res.headers.get("set-cookie")).toBeNull();
+      const html = await res.text();
+      expect(html).toContain(`ZZ Site Main ${STAMP}`);
+      expect(html).toContain("ZZ Sports day");
+      expect(html).not.toMatch(/<script/i);
+    }
+    await as(ids.admin, "ADMIN", ids.school);
+    expect(await (await bySlug("?lang=hi")).text()).toContain('<html lang="hi">');
+    // Signed out, another role, another school's office: the 404 with noindex, never the site.
     signedOut();
-    expect(await schoolIdForSlug(SLUG)).toBe(ids.school);
-    const res = await siteGet(new Request(`http://localhost/sites/${SLUG}`), params(SLUG));
+    const out = await bySlug();
+    expect(out.status).toBe(404);
+    expect(out.headers.get("x-robots-tag")).toBe("noindex");
+    await as(ids.teacher, "TEACHER", ids.school);
+    expect((await bySlug()).status).toBe(404);
+    await as(ids.otherAdmin, "ADMIN", ids.other);
+    expect((await bySlug()).status).toBe(404);
+  });
+
+  it("serves the site publicly on the school's own domain once it is LIVE, and gives that as the address", async () => {
+    signedOut();
+    const call = (host: string, query = "") => hostGet(new Request(`http://localhost/${query}`, { headers: { host } }), hostParams(host));
+    await db.schoolSiteDomain.create({ data: { schoolId: ids.school, domain: DOMAIN, status: "PENDING_DNS", createdByUserId: ids.admin } });
+    forgetSiteHosts();
+    expect((await call(DOMAIN)).status).toBe(404);
+    await db.schoolSiteDomain.updateMany({ where: { schoolId: ids.school }, data: { status: "LIVE", verifiedAt: new Date() } });
+    forgetSiteHosts();
+    const res = await call(DOMAIN);
     expect(res.status).toBe(200);
     expect(res.headers.get("cache-control")).toBe("public, max-age=300");
     expect(res.headers.get("content-type")).toContain("text/html");
@@ -324,10 +370,10 @@ describe("publish, the public route, and unpublish", () => {
     expect(res.headers.get("x-robots-tag")).toBeNull();
     const html = await res.text();
     expect(html).toContain(`ZZ Site Main ${STAMP}`);
-    expect(html).toContain("ZZ Sports day");
-    expect(html).not.toMatch(/<script/i);
-    const hi = await (await siteGet(new Request(`http://localhost/sites/${SLUG}?lang=hi`), params(SLUG))).text();
-    expect(hi).toContain('<html lang="hi">');
+    expect(html).toContain('action="/enquiry"');
+    expect(await (await call(DOMAIN, "?lang=hi")).text()).toContain('<html lang="hi">');
+    expect((await loadSite(await as(ids.admin, "ADMIN", ids.school))).address).toBe(`https://${DOMAIN}`);
+    expect((await publishSite(await as(ids.admin, "ADMIN", ids.school))).address).toBe(`https://${DOMAIN}`);
   });
 
   it("opens a consented picture of the live site to anyone, and nothing else", async () => {
@@ -336,26 +382,27 @@ describe("publish, the public route, and unpublish", () => {
     expect(await authorizeFileRead(`zz-site-unknown-${STAMP}`, null)).toMatchObject({ allowed: false });
   });
 
-  it("takes an enquiry signed out, tells the office and keeps a robot's out", async () => {
+  it("takes an enquiry signed out through the form on the school's own domain, tells the office and keeps a robot's out", async () => {
     signedOut();
-    const post = (body: unknown) => enquiryPost(new Request(`http://localhost/api/v1/public/sites/${SLUG}/enquiry`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) }), params(SLUG));
-    expect((await post({ name: "ZZ Parent", contact: "parent@zz-site.test", grade: "5", message: "Is there a seat in class 5?" })).status).toBe(201);
-    expect((await post({ name: "ZZ Robot", contact: "robot@zz-site.test", message: "Buy now", website: "http://spam.test" })).status).toBe(201);
+    const post = (fields: Record<string, string>, host = DOMAIN) =>
+      hostEnquiryPost(new Request("http://localhost/enquiry", { method: "POST", headers: { host, "content-type": "application/x-www-form-urlencoded", referer: `https://${host}/?lang=en` }, body: new URLSearchParams(fields) }), hostParams(host));
+    const ok = await post({ name: "ZZ Parent", contact: "parent@zz-site.test", grade: "5", message: "Is there a seat in class 5?", lang: "en" });
+    expect(ok.status).toBe(200);
+    expect(ok.headers.get("content-security-policy")).toContain("default-src 'none'");
+    const page = await ok.text();
+    expect(page).toContain('href="/?lang=en"');
+    expect(page).not.toMatch(/<script/i);
+    expect((await post({ name: "ZZ Robot", contact: "robot@zz-site.test", message: "Buy now", website: "http://spam.test" })).status).toBe(200);
     expect((await post({ name: "ZZ Parent", contact: "nothing", message: "Hello" })).status).toBe(422);
     expect((await post({})).status).toBe(422);
+    // A host that is nobody's LIVE domain takes nothing.
+    expect((await post({ name: "ZZ Lost", contact: "lost@zz-site.test", message: "Hello?" }, "www.nobody-zz-site.test")).status).toBe(404);
+    expect((await hostEnquiryGet(new Request("http://localhost/enquiry", { headers: { host: DOMAIN } }))).status).toBe(404);
     const rows = await db.schoolSiteEnquiry.findMany({ where: { schoolId: ids.school } });
     expect(rows.map((r) => r.name)).toEqual(["ZZ Parent"]);
     const told = await db.notification.findFirst({ where: { userId: ids.admin, schoolId: ids.school, kind: "ENQUIRY" } });
     expect(told?.title).toContain("ZZ Parent");
     expect((await siteEnquiries(await as(ids.head, "PRINCIPAL", ids.school))).map((q) => q.message)).toEqual(["Is there a seat in class 5?"]);
-
-    signedOut();
-    const form = new URLSearchParams({ name: "ZZ Form Parent", contact: "+91 98200 00000", message: "When do forms open?", lang: "en" });
-    const res = await formPost(new Request(`http://localhost/sites/${SLUG}/enquiry`, { method: "POST", headers: { "content-type": "application/x-www-form-urlencoded", referer: `http://localhost/sites/${SLUG}` }, body: form }), params(SLUG));
-    expect(res.status).toBe(200);
-    const page = await res.text();
-    expect(page).toContain(`href="/sites/${SLUG}"`);
-    expect(page).not.toMatch(/<script/i);
   });
 
   it("re-renders at night only when a number changed", async () => {
@@ -371,14 +418,18 @@ describe("publish, the public route, and unpublish", () => {
   });
 
   it("answers 404 with noindex while the module is off, and serves again when it is back on", async () => {
+    const onDomain = () => hostGet(new Request("http://localhost/", { headers: { host: DOMAIN } }), hostParams(DOMAIN));
     await db.schoolModule.deleteMany({ where: { schoolId: ids.school, module: "WEBSITE" } });
     signedOut();
     expect(await publishedSiteFor(ids.school)).toBeNull();
-    expect((await siteGet(new Request(`http://localhost/sites/${SLUG}`), params(SLUG))).status).toBe(404);
+    expect((await onDomain()).status).toBe(404);
     await expect(loadSite(await as(ids.admin, "ADMIN", ids.school))).rejects.toBeInstanceOf(ModuleOffError);
+    expect((await bySlug()).status).toBe(404);
     await db.schoolModule.create({ data: { schoolId: ids.school, module: "WEBSITE" } });
     signedOut();
-    expect((await siteGet(new Request(`http://localhost/sites/${SLUG}`), params(SLUG))).status).toBe(200);
+    expect((await onDomain()).status).toBe(200);
+    await as(ids.admin, "ADMIN", ids.school);
+    expect((await bySlug()).status).toBe(200);
   });
 
   it("unpublishes, audited: 404 with noindex, the picture closed again, the versions kept", async () => {
@@ -387,9 +438,11 @@ describe("publish, the public route, and unpublish", () => {
     expect(await unpublishSite(await as(ids.head, "PRINCIPAL", ids.school))).toEqual({ changed: false });
     expect(await db.auditLog.count({ where: { schoolId: ids.school, action: "site.unpublish" } })).toBe(1);
     signedOut();
-    const res = await siteGet(new Request(`http://localhost/sites/${SLUG}`), params(SLUG));
+    const res = await hostGet(new Request("http://localhost/", { headers: { host: DOMAIN } }), hostParams(DOMAIN));
     expect(res.status).toBe(404);
     expect(res.headers.get("x-robots-tag")).toBe("noindex");
+    await as(ids.admin, "ADMIN", ids.school);
+    expect((await bySlug()).status).toBe(404);
     expect(await schoolIdForSlug(SLUG)).toBeNull();
     expect(await authorizeFileRead(PIC, null)).toMatchObject({ allowed: false });
     expect(await db.schoolSiteVersion.count({ where: { schoolId: ids.school } })).toBe(versions);

@@ -6,8 +6,8 @@ import { audit } from "./audit";
 import { AccessError } from "./access-error";
 import { assertModuleOn } from "./modules";
 import { publishedSiteFor } from "./site-publish";
-import { forgetSiteHosts, subdomainFor } from "./site-hosts";
-import { appHosts, flyConfig, processSiteEnv, siteApexIp, siteDomain, sitesTarget } from "./site-env";
+import { forgetSiteHosts } from "./site-hosts";
+import { appHosts, flyConfig, processSiteEnv, siteApexIp, sitesTarget } from "./site-env";
 import { canonicalDomain, counterpartOf, type DomainRefusal } from "./site-host-match";
 import { checkDns, dnsRecordsFor, servedHosts, storedDomainFor, type DnsOutcome } from "./site-dns";
 import { certificateState, removeCertificate, requestCertificate, type CertState, type FlyConfig } from "./fly-certs";
@@ -180,13 +180,12 @@ export async function siteDomainView(ctx: ActiveContext): Promise<SiteDomainView
 async function viewFor(schoolId: string): Promise<SiteDomainView> {
   const env = processSiteEnv();
   const [school, row, published] = await Promise.all([
-    db.school.findUnique({ where: { id: schoolId }, select: { slug: true } }),
+    db.school.findUnique({ where: { id: schoolId }, select: { id: true } }),
     currentRow(schoolId),
     publishedSiteFor(schoolId),
   ]);
   if (!school) throw new AccessError("siteDomains.refuseRole", "NOT_FOUND");
   return {
-    subdomain: subdomainFor(school.slug),
     published: published !== null,
     target: sitesTarget(env),
     certificatesHere: flyConfig(env) !== null,
@@ -201,12 +200,11 @@ const REFUSAL_KEYS: Record<DomainRefusal, TranslationKey> = {
   INVALID: "siteDomains.refuseInvalid",
   IP: "siteDomains.refuseIp",
   APP_HOST: "siteDomains.refuseAppHost",
-  SITE_DOMAIN: "siteDomains.refuseSiteDomain",
 };
 
 /** Check what a school typed, as the stored domain or the refusal's key. Also for the page's own form. */
 export function checkTypedDomain(typed: string, env = processSiteEnv()): { ok: true; domain: string } | { ok: false; key: TranslationKey } {
-  const c = canonicalDomain(typed, { siteDomain: siteDomain(env), appHosts: appHosts(env) });
+  const c = canonicalDomain(typed, { appHosts: appHosts(env), target: sitesTarget(env) });
   if (!c.ok) return { ok: false, key: REFUSAL_KEYS[c.reason] };
   return { ok: true, domain: storedDomainFor(c.domain, siteApexIp(env)) };
 }
@@ -214,7 +212,7 @@ export function checkTypedDomain(typed: string, env = processSiteEnv()): { ok: t
 /**
  * Save the school's own domain (POST /api/v1/admin/site/domain). The same domain again changes nothing; another
  * replaces the one the school had, whose certificate is taken off the platform. Refused: an invalid name, the
- * app's or the sites' own hosts, and a domain (or its www/bare counterpart) another school holds.
+ * app's own hosts and the sites app's own name, and a domain (or its www/bare counterpart) another school holds.
  */
 export async function saveSiteDomain(ctx: ActiveContext, typed: string): Promise<SiteDomainView> {
   const me = office(ctx);
@@ -320,7 +318,6 @@ export type OperatorSiteRow = {
   schoolId: string;
   schoolName: string;
   isTestFixture: boolean;
-  subdomain: string;
   publishedAt: Date | null;
   domain: SiteDomain | null;
 };
@@ -339,11 +336,11 @@ export async function operatorSites(ctx: ActiveContext): Promise<OperatorSiteRow
   ]);
   const ids = [...new Set([...live.map((v) => v.schoolId), ...domains.map((d) => d.schoolId)])];
   if (ids.length === 0) return [];
-  const schools = await db.school.findMany({ where: { id: { in: ids } }, select: { id: true, name: true, slug: true, isTestFixture: true } });
+  const schools = await db.school.findMany({ where: { id: { in: ids } }, select: { id: true, name: true, isTestFixture: true } });
   const rows: OperatorSiteRow[] = schools.map((s) => {
     const version = live.find((v) => v.schoolId === s.id);
     const domain = domains.find((d) => d.schoolId === s.id);
-    return { schoolId: s.id, schoolName: s.name, isTestFixture: s.isTestFixture, subdomain: subdomainFor(s.slug), publishedAt: version?.liveAt ?? null, domain: domain ? domainOut(domain, env) : null };
+    return { schoolId: s.id, schoolName: s.name, isTestFixture: s.isTestFixture, publishedAt: version?.liveAt ?? null, domain: domain ? domainOut(domain, env) : null };
   });
   return rows.sort((a, b) => Number(a.isTestFixture) - Number(b.isTestFixture) || a.schoolName.localeCompare(b.schoolName));
 }

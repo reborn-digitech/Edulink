@@ -10929,7 +10929,7 @@ model SchoolSiteVersion {
   id                String    @id @default(cuid())
   schoolId          String
   siteId            String
-  /// School.slug at the render: the address <slug>.<SITE_DOMAIN> and /sites/<slug>.
+  /// School.slug at the render: the office's own view at /sites/<slug>, and <slug>.localhost in development (16 Oct 2026: no platform subdomain).
   schoolSlug        String
   snapshotJson      String    @default("{}")
   html              String    @default("{}")

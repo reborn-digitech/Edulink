@@ -8,6 +8,7 @@ import { getT, getLocale } from "@/lib/i18n/server";
 import { db } from "@/lib/db";
 import { isCollegeKind } from "@/lib/institution";
 import { formatInZone } from "@/lib/dates";
+import { mayUse } from "@/lib/platform-features";
 import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -24,13 +25,18 @@ export async function generateMetadata(): Promise<Metadata> {
  * (4 Oct 2026) academics, exams, IQAC, placement, admissions and
  * scholarships too (modulesForKind). The admin
  * switches; the head reads. What each does and which role it brings is said
- * on its card.
+ * on its card. The assistant is not among them (16 Oct 2026): the platform's
+ * operator switches it, and one line says so while the ASSISTANT feature is on.
  */
 export default async function ModulesPage() {
   const ctx = await requireRole("ADMIN", "PRINCIPAL");
   const t = await getT();
   const locale = await getLocale();
-  const [modules, school] = await Promise.all([schoolModules(ctx), db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true, kind: true } })]);
+  const [modules, school, assistantFeature] = await Promise.all([
+    schoolModules(ctx),
+    db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true, kind: true } }),
+    mayUse("ASSISTANT", ctx),
+  ]);
   // A college is offered the college's six too, and the page says "college" (4 Oct 2026).
   const college = isCollegeKind(school.kind);
   const date = (at: Date) => formatInZone(at, school.timezone, { day: "numeric", month: "long", year: "numeric" }, locale);
@@ -68,6 +74,12 @@ export default async function ModulesPage() {
           );
         })}
       </ul>
+      {/* The assistant is the operator's to switch (16 Oct 2026), not a card here: one line, while the platform offers it. */}
+      {assistantFeature ? (
+        <p className="text-sm text-fg-muted" data-testid="modules-assistant-by-operator">
+          {t("modules.assistantByOperator")}
+        </p>
+      ) : null}
     </div>
   );
 }

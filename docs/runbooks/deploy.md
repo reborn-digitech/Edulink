@@ -213,52 +213,61 @@ more than a hundred families to go out.
 
 ## School websites and their own domains
 
-<!-- website-builder B (15 Oct 2026) -->
+<!-- website-builder B (15 Oct 2026); own domain only since 16 Oct 2026 -->
 A school or college with the WEBSITE module publishes a static site from the
-flow at `/admin/website`; it is served by the same web machines, at
-`<slug>.<SITE_DOMAIN>` and, once the school has added and verified one, at
-the school's own domain. The middleware decides by the request's `Host`
-(`src/lib/site-host-match.ts`): a host that is not one of `APP_HOSTS` is a
-site's and every path but `/`, `/robots.txt`, `/sitemap.xml` and what the page
-loads itself (`/_next/`, `/api/files/`, `/fonts/`, `/brand/`, `/icons/`,
-`/sites/…` for the enquiry form, `/api/health`) answers 404 noindex, so the
-sign-in and the API do not exist on a site's host. A bare IP address, a name
-with no dot and `*.internal`/`*.flycast` are never site hosts, so the health
-check and machine-to-machine calls are unaffected.
+flow at `/admin/website`; it is served by the same web machines, and **only
+at the school's own domain** once the school has added and verified one. There
+is no platform subdomain (the owner's decision of 16 October 2026). Publishing
+before the domain is live is allowed: the version is stored and the Publish
+screen says the site opens once the domain is connected. The office and the
+head can open their own published version at `/sites/<slug>` on the app's host,
+signed in; anybody else gets the 404 there. The middleware decides by the
+request's `Host` (`src/lib/site-host-match.ts`): a host that is not one of
+`APP_HOSTS` is rewritten to `/sites/by-host/<host>`, which serves the site only
+when the host is a LIVE school domain, and every path but `/`, `/robots.txt`,
+`/sitemap.xml`, the enquiry form's `POST /enquiry` and what the page loads
+itself (`/_next/`, `/api/files/`, `/fonts/`, `/brand/`, `/icons/`,
+`/api/health`) answers 404 noindex, so the sign-in and the API do not exist on
+a site's host. `/sites/by-host/…` typed on the app's host is a 404. A bare IP
+address, a name with no dot and `*.internal`/`*.flycast` are never site hosts,
+so the health check and machine-to-machine calls are unaffected.
 
 | Variable | Notes |
 | --- | --- |
-| `APP_HOSTS` | **set it**: the app's own public hosts, comma-separated, e.g. `app.example,edulink-web.fly.dev`. Unset in production only `<slug>.<SITE_DOMAIN>` is treated as a site and no school's own domain is served; a host left out of it is served as a website (404 for the app) |
-| `SITE_DOMAIN` | the sites' own domain, default `shalaghar.site` |
+| `APP_HOSTS` | **set it**: the app's own public hosts, comma-separated, e.g. `app.example,edulink-web.fly.dev`. Unset in production NO host is treated as a site and no school's domain is served; a host left out of it is served as a website (404 for the app) |
+| `SITE_CNAME_TARGET` | the name a school's `www` CNAME points at: the sites app's own hostname, default `sites.shalaghar.com` |
 | `SITE_APEX_IP` | optional: the IPv4 a school's bare domain may point an A record at (`fly ips list`; a dedicated v4, `fly ips allocate-v4`, is the safe choice for bare domains). Unset, the domain page tells the school to forward the bare domain to www at its registrar |
 | `FLY_API_TOKEN` | a token that may manage the sites app's certificates (`fly tokens create deploy -a <app>`) |
 | `FLY_SITES_APP` | the Fly app the sites are served from and whose certificates the schools' domains get — `edulink-web` while the sites are served by the web machines |
 
 Once, before the first site:
 
-1. **The sites' domain at its DNS host.** `*.SITE_DOMAIN` and `sites.SITE_DOMAIN`
-   as CNAMEs to `edulink-web.fly.dev` (or A/AAAA to the app's addresses).
-2. **The wildcard certificate**: `fly certs add "*.SITE_DOMAIN" -a edulink-web`,
-   then the `_acme-challenge` CNAME Fly prints (a wildcard is issued by DNS-01
-   only), and `fly certs show "*.SITE_DOMAIN"` until it says Ready. Add
-   `sites.SITE_DOMAIN` the same way (`fly certs add sites.SITE_DOMAIN`).
-3. Set the five variables above as secrets and deploy.
-4. Check: `curl -sI https://<a published slug>.SITE_DOMAIN/` is 200 with
-   `Cache-Control: public, max-age=300`; `curl -sI https://<app host>/login` is
-   still the app; `curl -s https://<slug>.SITE_DOMAIN/login` is the 404.
+1. **The CNAME target at its DNS host.** `SITE_CNAME_TARGET` (e.g.
+   `sites.shalaghar.com`) as a CNAME to `edulink-web.fly.dev` (or A/AAAA to the
+   app's addresses). No wildcard and no wildcard certificate: each school's
+   domain gets its own certificate when the school verifies it.
+2. Set the variables above as secrets and deploy.
+3. Check: `curl -sI https://<app host>/login` is still the app;
+   `curl -s -o /dev/null -w '%{http_code}' https://<app host>/sites/<a published slug>`
+   is 404 signed out.
 
 A school's own domain then needs nobody here: the office types it at
-`/admin/website/domain`, adds a CNAME `www → sites.SITE_DOMAIN` (and the bare
+`/admin/website/domain`, adds a CNAME `www → SITE_CNAME_TARGET` (and the bare
 domain's A record or forwarding) at its registrar, and presses Verify, which
 checks the DNS and asks Fly for that hostname's certificate (`addCertificate`
 on `FLY_SITES_APP`). The `site:domains` job (every ten minutes, `/root/jobs`)
 re-checks each domain that is Verifying and makes it Live when Fly reports the
 certificate Ready; `/root/sites` lists every published site and domain with
-its state and the last error. Removing a domain deletes its certificate on Fly.
+its state and the last error. Removing a domain deletes its certificate on Fly,
+and the site, still published, opens nowhere until a domain is live again.
 Without `FLY_API_TOKEN`/`FLY_SITES_APP` a production domain stays Verifying
 ("certificates are issued on the hosted platform"); in development it goes
-Live once its DNS is right, with no certificate. In development a site is at
-`http://<slug>.localhost:3000/` (browsers resolve `*.localhost` to the machine).
+Live once its DNS is right, with no certificate. Once a domain is Live, check
+`curl -sI https://<the school's domain>/` is 200 with
+`Cache-Control: public, max-age=300` and `curl -s https://<the school's domain>/login`
+is the 404. In development only, a published site is also at
+`http://<slug>.localhost:3000/` (browsers resolve `*.localhost` to the machine),
+so it can be tried before any domain exists.
 <!-- end website-builder B -->
 
 ## Open items before the first real school

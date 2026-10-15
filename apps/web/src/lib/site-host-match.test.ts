@@ -1,23 +1,26 @@
 /**
  * THE SITE-HOST MATCHER (website-builder B, 15 October 2026; src/lib/site-host-match.ts, read by the edge
  * middleware). Which hosts are a school website's, which paths a site host passes through, what the rewrite is, and
- * what a school may type as its own domain. Pure: no database, no network.
+ * what a school may type as its own domain. Since 16 October 2026 a site lives only on its school's own domain:
+ * no platform subdomain, no SITE_DOMAIN, and `<slug>.localhost` only in development. Pure: no database, no network.
  */
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { apexOf, canonicalDomain, counterpartOf, DENIED_PUBLIC, isApex, isSiteHost, normaliseHost, siteRewritePath, slugOfSiteHost, SITE_PASS_FILES, SITE_PASS_PREFIXES, type HostEnv } from "./site-host-match";
-import { appHosts, appHostsKnown, flyConfig, siteApexIp, siteDomain, sitesTarget } from "./site-env";
+import { apexOf, canonicalDomain, counterpartOf, DENIED_PUBLIC, devSlugOfHost, isApex, isSiteHost, normaliseHost, siteRewritePath, SITE_PASS_FILES, SITE_PASS_PREFIXES, type HostEnv } from "./site-host-match";
+import * as siteEnv from "./site-env";
+import { appHosts, appHostsKnown, flyConfig, siteApexIp, sitesTarget } from "./site-env";
 
-const DEV: HostEnv = { siteDomain: "shalaghar.site", appHosts: ["localhost:3000", "127.0.0.1:3000"], appHostsKnown: true, dev: true };
-const PROD: HostEnv = { siteDomain: "shalaghar.site", appHosts: ["app.shalaghar.in", "edulink-web.fly.dev"], appHostsKnown: true, dev: false };
-const PROD_UNSET: HostEnv = { siteDomain: "shalaghar.site", appHosts: [], appHostsKnown: false, dev: false };
+const DEV: HostEnv = { appHosts: ["localhost:3000", "127.0.0.1:3000"], appHostsKnown: true, dev: true };
+const PROD: HostEnv = { appHosts: ["app.shalaghar.in", "edulink-web.fly.dev"], appHostsKnown: true, dev: false };
+const PROD_UNSET: HostEnv = { appHosts: [], appHostsKnown: false, dev: false };
 
 describe("the environment", () => {
-  it("defaults SITE_DOMAIN and reads APP_HOSTS, with the development default only in development", () => {
-    expect(siteDomain({})).toBe("shalaghar.site");
-    expect(siteDomain({ SITE_DOMAIN: " .Sites.Example.IN. " })).toBe("sites.example.in");
-    expect(sitesTarget({ SITE_DOMAIN: "x.in" })).toBe("sites.x.in");
+  it("defaults SITE_CNAME_TARGET and reads APP_HOSTS, with the development default only in development; no SITE_DOMAIN", () => {
+    expect(sitesTarget({})).toBe("sites.shalaghar.com");
+    expect(sitesTarget({ SITE_CNAME_TARGET: " .Sites.Example.IN. " })).toBe("sites.example.in");
+    expect(Object.keys(siteEnv)).not.toContain("siteDomain");
+    expect(Object.keys(siteEnv.processSiteEnv())).not.toContain("SITE_DOMAIN");
     expect(appHosts({ NODE_ENV: "development" })).toEqual(["localhost:3000", "127.0.0.1:3000"]);
     expect(appHosts({ NODE_ENV: "production" })).toEqual([]);
     expect(appHostsKnown({ NODE_ENV: "production" })).toBe(false);
@@ -44,25 +47,26 @@ describe("which hosts are a school website's", () => {
     expect(isSiteHost("edulink-web.fly.dev:443", PROD)).toBe(false);
   });
 
-  it("a subdomain of SITE_DOMAIN, <slug>.localhost in development, and any other named host once APP_HOSTS is known", () => {
-    expect(isSiteHost("zz-northgate-school.shalaghar.site", PROD)).toBe(true);
+  it("<slug>.localhost in development, and any other named host once APP_HOSTS is known (the route then serves only a LIVE domain)", () => {
     expect(isSiteHost("zz-northgate-school.localhost:3000", DEV)).toBe(true);
     expect(isSiteHost("zz-northgate-school.localhost:3000", PROD)).toBe(false);
     expect(isSiteHost("www.zz-northgate.test", DEV)).toBe(true);
     expect(isSiteHost("www.example.in", PROD)).toBe(true);
   });
 
-  it("⚠ with APP_HOSTS unset in production, only the sites' own subdomains: the app is never served as a website", () => {
-    expect(isSiteHost("app.shalaghar.in", PROD_UNSET)).toBe(false);
-    expect(isSiteHost("www.example.in", PROD_UNSET)).toBe(false);
-    expect(isSiteHost("abc.shalaghar.site", PROD_UNSET)).toBe(true);
+  it("⚠ with APP_HOSTS unset in production, no host at all: the app is never served as a website", () => {
+    for (const host of ["app.shalaghar.in", "www.example.in", "abc.shalaghar.site", "zz-northgate-school.localhost:3000"]) {
+      expect(isSiteHost(host, PROD_UNSET), host).toBe(false);
+      expect(siteRewritePath(host, "/", PROD_UNSET), host).toBeNull();
+    }
   });
 
-  it("reads the slug of a sites subdomain", () => {
-    expect(slugOfSiteHost("zz-northgate-school.shalaghar.site", PROD)).toBe("zz-northgate-school");
-    expect(slugOfSiteHost("zz-northgate-school.localhost:3000", DEV)).toBe("zz-northgate-school");
-    expect(slugOfSiteHost("a.b.shalaghar.site", PROD)).toBeNull();
-    expect(slugOfSiteHost("www.example.in", PROD)).toBeNull();
+  it("reads a school's slug from <slug>.localhost in development only: there is no platform subdomain", () => {
+    expect(devSlugOfHost("zz-northgate-school.localhost:3000", true)).toBe("zz-northgate-school");
+    expect(devSlugOfHost("zz-northgate-school.localhost:3000", false)).toBeNull();
+    expect(devSlugOfHost("a.b.localhost", true)).toBeNull();
+    expect(devSlugOfHost("zz-northgate-school.shalaghar.site", true)).toBeNull();
+    expect(devSlugOfHost("www.example.in", true)).toBeNull();
     expect(normaliseHost("Example.IN.:8080")).toEqual({ host: "example.in:8080", hostname: "example.in" });
     expect(normaliseHost("bad host")).toBeNull();
   });
@@ -80,9 +84,13 @@ describe("the rewrite", () => {
   });
 
   it("passes through what a published page loads itself, and touches nothing on the app's hosts", () => {
-    for (const path of ["/_next/static/x.js", "/api/files/abc?w=640", "/fonts/NotoSans-Regular.ttf", "/brand/mark.svg", "/icons/192.png", "/favicon.ico", "/sites/zz-northgate-school/enquiry", "/api/health", "/api/v1/public/sites/x/enquiry"]) {
+    for (const path of ["/_next/static/x.js", "/api/files/abc?w=640", "/fonts/NotoSans-Regular.ttf", "/brand/mark.svg", "/icons/192.png", "/favicon.ico", "/api/health"]) {
       expect(siteRewritePath("www.example.in", path.split("?")[0]!, PROD), path).toBeNull();
     }
+    // The enquiry form posts to /enquiry on its own host, rewritten like every page; no slug path passes (16 Oct 2026).
+    expect(siteRewritePath("www.example.in", "/enquiry", PROD)).toBe("/sites/by-host/www.example.in/enquiry");
+    expect(siteRewritePath("www.example.in", "/sites/zz-northgate-school", PROD)).toBe("/sites/by-host/www.example.in/sites/zz-northgate-school");
+    expect(siteRewritePath("www.example.in", "/api/v1/public/sites/x/enquiry", PROD)).toBe("/sites/by-host/www.example.in/api/v1/public/sites/x/enquiry");
     expect(siteRewritePath("localhost:3000", "/", DEV)).toBeNull();
     expect(siteRewritePath("app.shalaghar.in", "/admin", PROD)).toBeNull();
     expect(siteRewritePath("www.example.in", "/api/healthz", PROD)).toBe("/sites/by-host/www.example.in/api/healthz");
@@ -104,7 +112,7 @@ describe("the rewrite", () => {
 });
 
 describe("what a school may type as its domain", () => {
-  const env = { siteDomain: "shalaghar.site", appHosts: ["app.shalaghar.in", "localhost:3000"] };
+  const env = { appHosts: ["app.shalaghar.in", "localhost:3000"], target: "sites.shalaghar.com" };
   it("accepts www.example.in and example.in, lowercase, and an internationalised name in punycode", () => {
     expect(canonicalDomain("www.Example.in", env)).toEqual({ ok: true, domain: "www.example.in" });
     expect(canonicalDomain(" example.in. ", env)).toEqual({ ok: true, domain: "example.in" });
@@ -112,7 +120,7 @@ describe("what a school may type as its domain", () => {
     expect(canonicalDomain("शाळा.भारत", env)).toEqual({ ok: true, domain: "xn--w2bfyb.xn--h2brj9c" });
   });
 
-  it("refuses a scheme, a path, a port, an address, a single label, the app's hosts and SITE_DOMAIN", () => {
+  it("refuses a scheme, a path, a port, an address, a single label, the app's hosts and the CNAME target", () => {
     const reason = (s: string) => {
       const r = canonicalDomain(s, env);
       return r.ok ? "ok" : r.reason;
@@ -128,8 +136,9 @@ describe("what a school may type as its domain", () => {
     expect(reason("203.0.113.9")).toBe("IP");
     expect(reason("app.shalaghar.in")).toBe("APP_HOST");
     expect(reason("zz.localhost")).toBe("APP_HOST");
-    expect(reason("shalaghar.site")).toBe("SITE_DOMAIN");
-    expect(reason("zz-northgate-school.shalaghar.site")).toBe("SITE_DOMAIN");
+    expect(reason("sites.shalaghar.com")).toBe("APP_HOST");
+    // No platform subdomain any more: a name under the old sites domain is just a domain a school might own.
+    expect(reason("zz-northgate-school.shalaghar.site")).toBe("ok");
   });
 
   it("tells a bare domain from a subdomain, India's second-level names included", () => {
@@ -147,18 +156,26 @@ describe("the middleware's rewrite (src/middleware.ts)", () => {
   it("rewrites a site host's page to /sites/by-host, keeps the query, and leaves the app's host alone", async () => {
     const { NextRequest } = await import("next/server");
     const { middleware } = await import("@/middleware");
-    const saved = { APP_HOSTS: process.env.APP_HOSTS, SITE_DOMAIN: process.env.SITE_DOMAIN };
+    const saved = { APP_HOSTS: process.env.APP_HOSTS };
     process.env.APP_HOSTS = "localhost:3000,127.0.0.1:3000";
-    process.env.SITE_DOMAIN = "shalaghar.site";
     try {
       const at = (url: string, host: string) => middleware(new NextRequest(url, { headers: { host } }));
       const site = at("http://www.example.in/?lang=hi", "www.example.in");
       expect(site.headers.get("x-middleware-rewrite")).toBe("http://www.example.in/sites/by-host/www.example.in?lang=hi");
-      expect(at("http://abc.shalaghar.site/login", "abc.shalaghar.site").headers.get("x-middleware-rewrite")).toBe("http://abc.shalaghar.site/sites/by-host/abc.shalaghar.site/login");
+      expect(at("http://www.example.in/login", "www.example.in").headers.get("x-middleware-rewrite")).toBe("http://www.example.in/sites/by-host/www.example.in/login");
       expect(at("http://www.example.in/api/files/f1?w=640", "www.example.in").headers.get("x-middleware-rewrite")).toBeNull();
       const app = at("http://localhost:3000/login", "localhost:3000");
       expect(app.headers.get("x-middleware-rewrite")).toBeNull();
       expect(app.headers.get("content-security-policy")).toContain("nonce-");
+      // ⚠ The by-host routes are reached only through the rewrite: typed on the app's host they are the 404.
+      const direct = at("http://localhost:3000/sites/by-host/www.example.in", "localhost:3000");
+      expect(direct.status).toBe(404);
+      expect(direct.headers.get("x-robots-tag")).toBe("noindex");
+      expect(at("http://localhost:3000/sites/by-host/www.example.in/sitemap.xml", "localhost:3000").status).toBe(404);
+      // The office's own view by slug passes on the app's host, under the site's no-script policy.
+      const preview = at("http://localhost:3000/sites/zz-northgate-school", "localhost:3000");
+      expect(preview.status).toBe(200);
+      expect(preview.headers.get("content-security-policy")).toContain("default-src 'none'");
     } finally {
       for (const [k, v] of Object.entries(saved)) {
         if (v === undefined) delete process.env[k];

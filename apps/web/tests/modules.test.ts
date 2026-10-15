@@ -22,7 +22,8 @@ import { routeStamp } from "@/lib/route-header";
 import { ModuleOffError } from "@/lib/access-error";
 import { AccessError, assertClassAccess } from "@/lib/tenancy";
 import { apiFailure } from "@/lib/api-v1";
-import { setModule, enabledModules, enabledModulesForFamily } from "@/lib/modules";
+import { setModule, switchModuleFor, enabledModules, enabledModulesForFamily } from "@/lib/modules";
+import { saveAssistantSettings } from "@/lib/assistant/service";
 import { recordDeparture, undoDeparture } from "@/lib/school-record";
 import { resolveContext } from "@/lib/resolve-context";
 import { createPost } from "@/lib/bulletin";
@@ -218,7 +219,8 @@ describe("the admin's switch", () => {
     await as(ids.hillPrincipal, "PRINCIPAL", ids.hill, "GET /api/v1/admin/modules");
     const listed = (await (await modulesGet()).json()) as { modules: { module: string; on: boolean }[] };
     // A school is offered the school version's six (4 Oct 2026); a college all twelve (tests/college-foundation.test.ts).
-    expect(listed.modules.map((m) => m.module)).toEqual([...SCHOOL_VERSION_MODULES]);
+    // The assistant is the operator's to switch (16 Oct 2026), so the school's own list leaves it out.
+    expect(listed.modules.map((m) => m.module)).toEqual(SCHOOL_VERSION_MODULES.filter((m) => m !== "ASSISTANT"));
     expect(listed.modules.every((m) => m.on)).toBe(true);
     await as(ids.hillPrincipal, "PRINCIPAL", ids.hill, "POST /api/v1/admin/modules");
     expect((await modulesPost(json("/api/v1/admin/modules", { module: "LIBRARY", on: false }))).status).toBe(403);
@@ -235,6 +237,25 @@ describe("the admin's switch", () => {
     expect(rows.map((r) => r.action)).toEqual(["school.module.off", "school.module.on"]);
     expect(actionKey("school.module.on")).toBe("audit.schoolModuleOn");
     expect(actionKey("school.module.off")).toBe("audit.schoolModuleOff");
+    expect(await enabledModules(ids.hill)).toEqual([...SCHOOL_MODULES]);
+  });
+
+  it("⚠ never switches the assistant: the operator does (16 Oct 2026); the door, the library and the office's assistant card all refuse", async () => {
+    await as(ids.hillAdmin, "ADMIN", ids.hill, "POST /api/v1/admin/modules");
+    const refused = await modulesPost(json("/api/v1/admin/modules", { module: "ASSISTANT", on: false }));
+    expect(refused.status).toBe(403);
+    expect(((await refused.json()) as { error: string }).error).toBe("The platform's operator switches the assistant on for a school.");
+    const admin = (await getSession())!;
+    await expect(setModule(admin, "ASSISTANT", false)).rejects.toMatchObject({ key: "modules.refuseAssistant" });
+    await expect(setModule(admin, "ASSISTANT", true)).rejects.toMatchObject({ key: "modules.refuseAssistant" });
+    // The office's assistant card: a change of `on` is refused; the state the school already has is accepted (an older client).
+    await expect(saveAssistantSettings(admin, { on: false })).rejects.toMatchObject({ key: "modules.refuseAssistant" });
+    expect((await saveAssistantSettings(admin, { on: true })).on).toBe(true);
+    expect(await enabledModules(ids.hill)).toContain("ASSISTANT");
+    expect(await db.auditLog.count({ where: { schoolId: ids.hill, action: { startsWith: "school.module." }, meta: { contains: "ASSISTANT" } } })).toBe(0);
+    // The operator's path (switchModuleFor with byOperator, operator-college.ts) still switches it.
+    expect(await switchModuleFor(ids.hill, ids.hillAdmin, "ASSISTANT", false, { byOperator: true })).toEqual({ changed: true });
+    expect(await switchModuleFor(ids.hill, ids.hillAdmin, "ASSISTANT", true, { byOperator: true })).toEqual({ changed: true });
     expect(await enabledModules(ids.hill)).toEqual([...SCHOOL_MODULES]);
   });
 });

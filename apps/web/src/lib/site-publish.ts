@@ -60,7 +60,11 @@ const VERSIONS_KEPT = 20;
 /* The public read                                                                                 */
 /* ------------------------------------------------------------------------------------------------ */
 
-/** The school whose website is live at this slug, or null. Readable signed out. */
+/**
+ * The school whose website is live at this slug, or null. Readable signed out. Only `<slug>.localhost` in a
+ * development process reaches a site by its slug (src/lib/site-hosts.ts, 16 Oct 2026); the public site is on the
+ * school's own domain, and /sites/<slug> is the office's signed-in view.
+ */
 export async function schoolIdForSlug(slug: string): Promise<string | null> {
   if (!/^[a-z0-9-]{1,80}$/.test(slug)) return null;
   const row = await db.schoolSiteVersion.findFirst({ where: { schoolSlug: slug, liveAt: { not: null } }, select: { schoolId: true } });

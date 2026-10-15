@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { contentSecurityPolicy, isPage, NONCE_HEADER } from "@/lib/csp";
 import { ROUTE_HEADER, routeStamp } from "@/lib/route-header";
 // website-builder B (15 Oct 2026): a school website's host is rewritten to its public route (edge-safe, no imports).
-import { appHosts, appHostsKnown, isDevelopment, processSiteEnv, siteDomain } from "@/lib/site-env";
+import { appHosts, appHostsKnown, isDevelopment, processSiteEnv } from "@/lib/site-env";
 import { SITE_CSP, siteRewritePath, type HostEnv } from "@/lib/site-host-match";
 // end website-builder B
 
@@ -58,7 +58,10 @@ export function middleware(request: NextRequest) {
   // website-builder B: a school website's host (src/lib/site-host-match.ts) — its pages are the published site.
   const site = siteRewrite(request);
   if (site) return site;
-  // A published site reached by its slug on the app's own host carries the site's policy, not a page's (15 Oct 2026).
+  // The by-host routes answer only through the rewrite above (16 Oct 2026): a site is reached at its school's own
+  // domain, never by a path on the app's host.
+  if (pathname === "/sites/by-host" || pathname.startsWith("/sites/by-host/")) return new NextResponse(null, { status: 404, headers: { "X-Robots-Tag": "noindex", "Cache-Control": "no-store" } });
+  // The office's preview of its published site by slug (/sites/<slug>, signed in) carries the site's policy, not a page's (15 Oct 2026).
   if (pathname.startsWith("/sites/")) {
     const response = NextResponse.next({ request: { headers: routed(request) } });
     response.headers.set("Content-Security-Policy", SITE_CSP);
@@ -132,16 +135,17 @@ function cors(request: NextRequest) {
 
 // website-builder B (15 Oct 2026)
 /**
- * A SCHOOL WEBSITE'S HOST: `<slug>.<SITE_DOMAIN>`, `<slug>.localhost` in development, or a school's own LIVE domain
- * (any named host that is not one of APP_HOSTS). Every path but the few a published page loads itself is rewritten
- * to /sites/by-host/<host><path>, query kept, which serves the site, its robots.txt and sitemap.xml and answers 404
+ * A SCHOOL WEBSITE'S HOST: a school's own LIVE domain (any named host that is not one of APP_HOSTS; none at all in
+ * production while APP_HOSTS is unset), and `<slug>.localhost` in development. There is no platform subdomain (16 Oct
+ * 2026). Every path but the few a published page loads itself is rewritten to /sites/by-host/<host><path>, query
+ * kept, which serves the site, its robots.txt and sitemap.xml and the enquiry form's POST /enquiry, and answers 404
  * to anything else: the sign-in, the app's pages and its API do not exist on a site's host. No database here (the
- * edge): which school the host is, and whether it is LIVE, is the route's to decide. The route stamp names the
- * rewritten path, and no nonce is minted, since the site carries no script.
+ * edge): which school the host is, and whether its domain is LIVE, is the route's to decide. The route stamp names
+ * the rewritten path, and no nonce is minted, since the site carries no script.
  */
 function hostEnv(): HostEnv {
   const env = processSiteEnv();
-  return { siteDomain: siteDomain(env), appHosts: appHosts(env), appHostsKnown: appHostsKnown(env), dev: isDevelopment(env) };
+  return { appHosts: appHosts(env), appHostsKnown: appHostsKnown(env), dev: isDevelopment(env) };
 }
 
 function siteRewrite(request: NextRequest): NextResponse | null {

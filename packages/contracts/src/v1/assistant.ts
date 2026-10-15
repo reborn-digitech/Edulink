@@ -254,8 +254,9 @@ export const assistantUsageSchema = z.object({
 });
 export type AssistantUsage = z.infer<typeof assistantUsageSchema>;
 
-/** POST /api/v1/admin/assistant/settings — the switch and the helpline; either may be left out. Answers the usage view. */
+/** POST /api/v1/admin/assistant/settings — the helpline; may be left out. Answers the usage view. */
 export const assistantSettingsSchema = z.object({
+  /** Kept for older clients: the operator switches the assistant (16 Oct 2026), so only the current state is accepted. */
   on: z.boolean().optional(),
   helplineText: z.string().trim().max(ASSISTANT_HELPLINE_MAX).nullable().optional(),
 });

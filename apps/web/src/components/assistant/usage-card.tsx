@@ -6,7 +6,7 @@ import { ChatsCircleIcon } from "@phosphor-icons/react";
 import { ASSISTANT_HELPLINE_MAX, type AssistantUsage } from "@edulink/contracts";
 import { Button, Spinner } from "@/components/ui/button";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
-import { CheckboxField, TextAreaField } from "@/components/ui/field";
+import { TextAreaField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { useLocale, useT, type Translate, type TranslationKey } from "@/lib/i18n";
 import { call, type DoorFailure } from "./doors";
@@ -32,8 +32,9 @@ export function budgetPercent(u: Pick<AssistantUsage, "tokens" | "tokenBudget">)
 
 /**
  * The office's card on its home (Phase C; /admin is the school office's and the college registrar's): the school's
- * month against its budget, the switch and the helpline sentence, from GET /api/v1/admin/assistant/usage and saved
- * through POST …/settings (the office only; the head reads the same counts and is not offered the form). Counts only.
+ * month against its budget and the helpline sentence, from GET /api/v1/admin/assistant/usage and saved through POST
+ * …/settings (the office only; the head reads the same counts and is not offered the form). Counts only. No switch
+ * since 16 Oct 2026: the platform's operator switches the assistant on for a school, and the card says so.
  */
 export function AssistantUsageCard({ canEdit }: { canEdit: boolean }) {
   const t = useT();
@@ -60,7 +61,6 @@ export function AssistantUsageCard({ canEdit }: { canEdit: boolean }) {
 export function UsageBody({ usage, canEdit, t, onSaved }: { usage: AssistantUsage; canEdit: boolean; t: Translate; onSaved?: (u: AssistantUsage) => void }) {
   const locale = useLocale();
   const { toast } = useToast();
-  const [on, setOn] = useState(usage.on);
   const [helpline, setHelpline] = useState(usage.helplineText ?? "");
   const [saving, setSaving] = useState(false);
   const [failure, setFailure] = useState<DoorFailure | null>(null);
@@ -70,7 +70,7 @@ export function UsageBody({ usage, canEdit, t, onSaved }: { usage: AssistantUsag
   const save = async () => {
     setSaving(true);
     setFailure(null);
-    const got = await call<AssistantUsage>("POST", SETTINGS_DOOR, { on, helplineText: helpline.trim() ? helpline.trim() : null });
+    const got = await call<AssistantUsage>("POST", SETTINGS_DOOR, { helplineText: helpline.trim() ? helpline.trim() : null });
     setSaving(false);
     if (!got.ok) return setFailure(got);
     onSaved?.(got.data);
@@ -108,7 +108,9 @@ export function UsageBody({ usage, canEdit, t, onSaved }: { usage: AssistantUsag
             void save();
           }}
         >
-          <CheckboxField label={t("assistantUi.cardSwitch")} description={t("assistantUi.cardSwitchHint")} checked={on} onChange={(event) => setOn(event.target.checked)} name="on" />
+          <p className="text-sm text-fg-muted" data-testid="assistant-by-operator">
+            {t("modules.assistantByOperator")}
+          </p>
           <TextAreaField
             label={t("assistantUi.cardHelpline")}
             hint={t("assistantUi.cardHelplineHint")}
