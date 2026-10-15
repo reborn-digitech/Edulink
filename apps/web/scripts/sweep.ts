@@ -1346,6 +1346,9 @@ async function operatorArea() {
   await check(actor, "/root/jobs/schools", 307, "⚠ …and the cross-school job health page");
   await check(actor, "/root/plans", 307, "⚠ …and the plans page");
   await check(actor, "/root/metrics", 307, "⚠ …and the server's counters");
+  // website-builder B (15 Oct 2026): every school's published site and own domain.
+  await check(actor, "/root/sites", 307, "⚠ …and the school websites' table");
+  // end website-builder B
   await check(null, "/root/audit", 307, "…to nobody at all either");
   // The marketplace queue names every expert on the installation, so it is as
   // closed as the rest of this area.
@@ -1367,6 +1370,9 @@ async function operatorArea() {
     await check(actor, "/root/jobs/schools", 200, "…and what those runs did school by school");
     await check(actor, "/root/plans", 200, "…and the plans the operator offers, with this month's usage on /root");
     await check(actor, "/root/metrics", 200, "…and this process's counters");
+    // website-builder B (15 Oct 2026)
+    await check(actor, "/root/sites", 200, "…and every school website and school domain, read only");
+    // end website-builder B
     // THE DOOR THAT HAD NO HANDLE. `publishedAt` has always gated the
     // marketplace and nothing in the app could set it — only the seed — so no
     // expert could ever be listed on a real installation.

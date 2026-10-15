@@ -1,6 +1,10 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { contentSecurityPolicy, isPage, NONCE_HEADER } from "@/lib/csp";
 import { ROUTE_HEADER, routeStamp } from "@/lib/route-header";
+// website-builder B (15 Oct 2026): a school website's host is rewritten to its public route (edge-safe, no imports).
+import { appHosts, appHostsKnown, isDevelopment, processSiteEnv, siteDomain } from "@/lib/site-env";
+import { SITE_CSP, siteRewritePath, type HostEnv } from "@/lib/site-host-match";
+// end website-builder B
 
 /**
  * CORS for /api/v1 and for the files it names (/api/files), and only there,
@@ -51,6 +55,16 @@ const LOCKED_PATHS = /^\/api\/(push$|practice\/|auth\/)/;
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  // website-builder B: a school website's host (src/lib/site-host-match.ts) — its pages are the published site.
+  const site = siteRewrite(request);
+  if (site) return site;
+  // A published site reached by its slug on the app's own host carries the site's policy, not a page's (15 Oct 2026).
+  if (pathname.startsWith("/sites/")) {
+    const response = NextResponse.next({ request: { headers: routed(request) } });
+    response.headers.set("Content-Security-Policy", SITE_CSP);
+    return response;
+  }
+  // end website-builder B
   if (isPage(pathname)) return page(request);
   if (CORS_PATHS.test(pathname)) return cors(request);
   if (LOCKED_PATHS.test(pathname)) return originLock(request) ?? NextResponse.next({ request: { headers: routed(request) } });
@@ -115,6 +129,33 @@ function cors(request: NextRequest) {
   }
   return response;
 }
+
+// website-builder B (15 Oct 2026)
+/**
+ * A SCHOOL WEBSITE'S HOST: `<slug>.<SITE_DOMAIN>`, `<slug>.localhost` in development, or a school's own LIVE domain
+ * (any named host that is not one of APP_HOSTS). Every path but the few a published page loads itself is rewritten
+ * to /sites/by-host/<host><path>, query kept, which serves the site, its robots.txt and sitemap.xml and answers 404
+ * to anything else: the sign-in, the app's pages and its API do not exist on a site's host. No database here (the
+ * edge): which school the host is, and whether it is LIVE, is the route's to decide. The route stamp names the
+ * rewritten path, and no nonce is minted, since the site carries no script.
+ */
+function hostEnv(): HostEnv {
+  const env = processSiteEnv();
+  return { siteDomain: siteDomain(env), appHosts: appHosts(env), appHostsKnown: appHostsKnown(env), dev: isDevelopment(env) };
+}
+
+function siteRewrite(request: NextRequest): NextResponse | null {
+  const target = siteRewritePath(request.headers.get("host"), request.nextUrl.pathname, hostEnv());
+  if (!target) return null;
+  const url = request.nextUrl.clone();
+  url.pathname = target;
+  const headers = new Headers(request.headers);
+  headers.set(ROUTE_HEADER, routeStamp(request.method, target));
+  const response = NextResponse.rewrite(url, { request: { headers } });
+  response.headers.set("Content-Security-Policy", SITE_CSP);
+  return response;
+}
+// end website-builder B
 
 // EVERY REQUEST BUT NEXT'S OWN FILES (A3-S-3, 5 Oct 2026). The middleware is
 // the only writer of the route stamp the session's gate reads, and it can only
