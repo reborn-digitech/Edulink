@@ -11,6 +11,9 @@ import { Button } from "@/components/ui/button";
 import { getT } from "@/lib/i18n/server";
 import { isCollegeKind } from "@edulink/contracts";
 import { institutionKindOf } from "@/lib/modules";
+// meta-posting (16 Oct 2026)
+import { composerSocial } from "@/lib/social";
+// end meta-posting
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -80,6 +83,10 @@ export default async function NewPostPage({
     for (const b of batches) targets.push({ value: `BATCH:${b.entryYear}`, label: t("collegeHub.batchOf", { year: b.entryYear }), group: "BATCH" });
   }
 
+  // meta-posting (16 Oct 2026): the school's Facebook Page and Instagram account, offered to the ADMIN on a school-wide post.
+  const social = await composerSocial(session);
+  // end meta-posting
+
   if (isStudent && classes.length === 0) {
     return (
       <div className="mx-auto max-w-xl space-y-6">
@@ -114,6 +121,7 @@ export default async function NewPostPage({
         // admins are the only ones who should be addressing the whole school
         // casually — teachers get both, defaulting to their class.
         allowSchoolWide={session.role !== "STUDENT"}
+        social={social}
       />
     </div>
   );

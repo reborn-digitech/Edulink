@@ -80,6 +80,10 @@ export const OUTSIDE_THE_CATALOG: OutsideTheCatalog[] = [
   { path: "/api/files/{fileId}", methods: ["GET"], reason: "A stored file's bytes, not JSON. Who may read is decided by the record that holds the file (authorizeFileRead) or a signed ?t= ticket, never by a role, and every refusal is a 404 by design; the doors that list a file or hand out its link are catalogued." },
   { path: "/api/sso/{provider}/start", methods: ["GET"], reason: "A browser redirect to the identity provider (state, nonce and PKCE in a transient cookie); signed out by nature, answering a redirect, not JSON." },
   { path: "/api/sso/{provider}/callback", methods: ["GET", "POST"], reason: "The identity provider's answer to the browser (Apple posts it as a cross-site form); it ends in a session cookie and a redirect, not JSON." },
+  // meta-posting (16 Oct 2026)
+  { path: "/api/social/meta/start", methods: ["GET"], reason: "A browser redirect to Facebook Login for the school's admin (the state in a transient cookie bound to the school and the admin); answering a redirect, not JSON." },
+  { path: "/api/social/meta/callback", methods: ["GET"], reason: "Facebook Login's answer to the browser: the code exchanged and the admin's Pages listed, ending in a sealed ten-minute cookie and a redirect to /admin/settings/social, not JSON." },
+  // end meta-posting
   { path: "/api/webhooks/razorpay/{schoolId}", methods: ["POST"], reason: "Razorpay's signed callback for one school's fees account: verified by that school's webhook secret, no session; a person never calls it." },
   { path: "/api/webhooks/gateway/sessions", methods: ["POST"], reason: "The company gateway's signed callback for paid seats and the expert's held share (decision 0004): verified by the company's secret, no session." },
   { path: "/api/webhooks/twilio/status/{schoolId}", methods: ["POST"], reason: "Twilio's signed delivery report for one school's messages: verified by the request signature, no session." },

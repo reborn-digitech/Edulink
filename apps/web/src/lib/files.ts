@@ -37,6 +37,9 @@ export type FileAccess =
   | { allowed: true; kind: "logo"; public: true }
   // website-builder A (15 Oct 2026): a picture on a school's published website, public while the site is live.
   | { allowed: true; kind: "site"; public: true }
+  // meta-posting (16 Oct 2026): a post's picture Meta fetches for Instagram, by the link in a queued copy (?social=), for a day.
+  | { allowed: true; kind: "social"; public: false }
+  // end meta-posting
   // figures (10 Oct 2026): a practice question's figure; shared, nothing personal, cached privately.
   | { allowed: true; kind: "quiz"; public: false }
   | { allowed: true; kind: "assignment" | "submission" | "post" | "application" | "kyc" | "purchase" | "academics" | "scholarship" | "placement" | "iqac"; public: false }

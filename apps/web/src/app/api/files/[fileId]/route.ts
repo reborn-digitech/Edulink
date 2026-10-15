@@ -2,6 +2,9 @@ import { getSession } from "@/lib/session";
 import { authorizeFileRead, type FileAccess } from "@/lib/files";
 import { verifyFileLink } from "@/lib/file-links";
 import { etagFor, readStoredFile, readStoredVariant, VARIANT_WIDTHS, type VariantWidth } from "@/lib/storage";
+// meta-posting (16 Oct 2026)
+import { asJpeg, socialPictureOpen } from "@/lib/social";
+// end meta-posting
 
 /**
  * Serves a stored file.
@@ -27,6 +30,19 @@ export async function GET(
   // the read rule below for the person who asked (see lib/file-links.ts). It
   // opens this one file, privately cached, and nothing else.
   const linked = verifyFileLink(fileId, url.searchParams.get("t"));
+  // meta-posting (16 Oct 2026): ?social= is the link a queued copy of a school post hands Instagram, which fetches the
+  // picture itself with no session (src/lib/social.ts socialPictureOpen): open while the copy is QUEUED and for a
+  // day after it is SENT, and served as a JPEG, the only kind Instagram takes.
+  const social = !linked && url.searchParams.has("social") ? await socialPictureOpen(fileId, url.searchParams.get("social")) : false;
+  if (social) {
+    const picture = await readStoredFile(fileId);
+    if (!picture || !picture.mime.startsWith("image/")) return new Response("Not found", { status: 404 });
+    const jpeg = await asJpeg(picture.bytes, picture.mime);
+    return new Response(new Uint8Array(jpeg.bytes), {
+      headers: { "Content-Type": jpeg.mime, "Cache-Control": cacheControl(false, "social"), "X-Content-Type-Options": "nosniff", "Content-Disposition": "inline", "Content-Security-Policy": "default-src 'none'; img-src 'self'; sandbox", "X-Robots-Tag": "noindex" },
+    });
+  }
+  // end meta-posting
 
   // A logo is public, so the session is only fetched when it might be needed —
   // authorizeFileRead checks the logo case before anything else.

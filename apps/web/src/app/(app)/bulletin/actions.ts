@@ -21,8 +21,11 @@ import { storeAttachments, discard, AttachmentError } from "@/lib/uploads";
 import type { MediaItem } from "@/lib/json";
 import type { PostStatus } from "@/lib/constants";
 import { audienceTargetSchema, type AudienceTarget } from "@edulink/contracts";
+// meta-posting (16 Oct 2026)
+import { checkSocialAsk, queueSocialPosts, type SocialAsk } from "@/lib/social";
+// end meta-posting
 
-export type PostState = { ok: boolean; errors: FieldErrors; postId?: string; status?: PostStatus };
+export type PostState = { ok: boolean; errors: FieldErrors; postId?: string; status?: PostStatus; /** meta-posting (16 Oct 2026): the post went up but its copies for Meta could not be queued. */ socialError?: string };
 
 /** "PROGRAMME:<id>" from the composer's picker as the bulletin's target; anything else is no target. createPost checks the id is this college's. */
 function targetOf(raw: string): AudienceTarget | null {
@@ -94,6 +97,15 @@ export async function submitPost(formData: FormData): Promise<PostState> {
     };
   }
 
+  // meta-posting (16 Oct 2026): "Also post to Facebook / Instagram", checked BEFORE anything is stored, so a refused
+  // copy never leaves behind a post the admin thought would also go to Meta (src/lib/social.ts checkSocialAsk).
+  const socialAsk: SocialAsk = { facebook: formData.get("socialFacebook") === "on", instagram: formData.get("socialInstagram") === "on", consent: formData.get("socialConsent") === "on" };
+  if (socialAsk.facebook || socialAsk.instagram) {
+    const refused = await checkSocialAsk(session, socialAsk, { scope: parsed.data.scope, audience: parsed.data.audience, media: files.map((f) => ({ kind: f.type.startsWith("video/") ? ("video" as const) : ("image" as const) })) });
+    if (refused) return { ok: false, errors: { social: (await getT())(refused) } };
+  }
+  // end meta-posting
+
   let media: MediaItem[] = [];
 
   if (files.length > 0) {
@@ -141,6 +153,17 @@ export async function submitPost(formData: FormData): Promise<PostState> {
       consentBy: String(formData.get("consentBy") ?? "").trim() || undefined,
     });
     revalidatePath("/bulletin");
+    // meta-posting (16 Oct 2026): the copies for Meta, queued once the post is up; the social:send job sends them.
+    if ((socialAsk.facebook || socialAsk.instagram) && result.status === "APPROVED") {
+      try {
+        await queueSocialPosts(session, result.postId, socialAsk);
+      } catch (error) {
+        const t = await getT();
+        if (!(error instanceof AccessError)) console.error("[submitPost] social", error);
+        return { ok: true, errors: {}, ...result, socialError: error instanceof AccessError ? t(error.key, error.vars) : t("social.queueFailed") };
+      }
+    }
+    // end meta-posting
     return { ok: true, errors: {}, ...result };
   } catch (error) {
     // The post is what makes a stored file reachable and deletable. If it never

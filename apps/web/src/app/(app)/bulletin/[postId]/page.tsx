@@ -27,6 +27,11 @@ import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { ROLE_META, type PostCategory, type Role } from "@/lib/constants";
 import { PAGE_TITLE } from "@/components/ui/page-header";
 import { cn } from "@/lib/cn";
+// meta-posting (16 Oct 2026)
+import { socialPostsFor } from "@/lib/social";
+import { getRelativeTime } from "@/lib/i18n/server";
+import { SocialStatus } from "./social-status";
+// end meta-posting
 
 /* Same keys the feed card uses — the deep link must not say less than the
    card the reader clicked. */
@@ -102,6 +107,10 @@ export default async function PostPage({ params, searchParams }: { params: Promi
       if (!(error instanceof AccessError)) throw error;
     }
   }
+  // meta-posting (16 Oct 2026): the copies of a school-wide post sent to Facebook and Instagram, for the school's ADMIN.
+  const socialItems = session.role === "ADMIN" && post.scope === "SCHOOL" && session.schoolId === post.schoolId ? await socialPostsFor(session, post.id) : [];
+  const relative = socialItems.length > 0 ? await getRelativeTime() : null;
+  // end meta-posting
   const slipDay = (key: string) => formatDateKey(key, { day: "numeric", month: "short", year: "numeric" }, locale);
 
   return (
@@ -220,6 +229,9 @@ export default async function PostPage({ params, searchParams }: { params: Promi
       {/* ---- who this circular has reached, class by class ---- */}
       {reach && <ReachReport reach={reach} office={session.role === "ADMIN" || session.role === "PRINCIPAL"} timezone={timezone} />}
       {slipAnswers && <SlipReport report={slipAnswers} t={t} day={slipDay} />}
+      {/* meta-posting (16 Oct 2026) */}
+      {relative ? <SocialStatus items={socialItems} postId={post.id} t={t} relative={relative} /> : null}
+      {/* end meta-posting */}
 
       <section aria-labelledby="comments">
         <h2 id="comments" className="text-sm font-semibold uppercase tracking-wide text-fg-muted">

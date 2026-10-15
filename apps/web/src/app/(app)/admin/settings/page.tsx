@@ -20,6 +20,9 @@ import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 import { officeUsage } from "@/lib/plans";
 import { UsageCard } from "@/app/root/usage-card";
+// meta-posting (16 Oct 2026)
+import { ShareNetworkIcon } from "@phosphor-icons/react/ssr";
+// end meta-posting
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -102,6 +105,17 @@ export default async function SettingsPage() {
           </Link>
         </CardBody>
       </Card>
+
+      {/* meta-posting (16 Oct 2026): the school's Facebook Page and Instagram account, for posting school-wide posts there too. */}
+      <Card>
+        <CardHeader icon={<ShareNetworkIcon weight="duotone" className="size-5" />} title={t("social.settingsCardTitle")} description={t("social.settingsCardBody")} />
+        <CardBody>
+          <Link href="/admin/settings/social" className="font-semibold text-accent-strong underline underline-offset-4">
+            {t("social.settingsCardOpen")}
+          </Link>
+        </CardBody>
+      </Card>
+      {/* end meta-posting */}
 
       {/* A college's regulator references (4 Oct 2026); a school has none. */}
       {isCollegeKind(school.kind) && (

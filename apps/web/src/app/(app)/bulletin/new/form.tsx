@@ -14,6 +14,10 @@ import type { FontKey } from "@/lib/fonts";
 import { POSTABLE_CATEGORIES, type PostCategory, type Role } from "@/lib/constants";
 import { CATEGORY_KEYS } from "../categories";
 import { fieldClass } from "@/components/ui/field-class";
+// meta-posting (16 Oct 2026)
+import Link from "next/link";
+import type { ComposerSocial } from "@/lib/social";
+// end meta-posting
 
 /**
  * Mirror MAX_UPLOAD_BYTES / MAX_VIDEO_BYTES in storage.ts. Duplicated rather
@@ -39,6 +43,7 @@ export function ComposeForm({
   initialTitle,
   initialTags,
   initialCategory,
+  social = null,
 }: {
   classes: { id: string; name: string }[];
   grades: string[];
@@ -51,6 +56,8 @@ export function ComposeForm({
   initialTitle?: string;
   initialTags?: string[];
   initialCategory?: PostCategory;
+  /** meta-posting (16 Oct 2026): the school's Facebook Page and Instagram account, for the ADMIN's school-wide post; null offers nothing. */
+  social?: ComposerSocial | null;
 }) {
   const t = useT();
   const router = useRouter();
@@ -79,6 +86,10 @@ export function ComposeForm({
   const [tags, setTags] = useState<string[]>(initialTags ?? []);
   const [tagDraft, setTagDraft] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  // meta-posting (16 Oct 2026): "Also post to Facebook / Instagram" and the consent tick for the people pictured.
+  const [toFacebook, setToFacebook] = useState(false);
+  const [toInstagram, setToInstagram] = useState(false);
+  const [socialConsent, setSocialConsent] = useState(false);
 
   /**
    * One entry per picture, each carrying its own alt text and its own preview.
@@ -110,6 +121,10 @@ export function ComposeForm({
       for (const picture of picturesRef.current) URL.revokeObjectURL(picture.preview);
     };
   }, []);
+
+  // meta-posting (16 Oct 2026): offered only to the ADMIN, on a school-wide post that is not a staff-only notice.
+  const socialOn = Boolean(social) && role === "ADMIN" && scope === "SCHOOL" && audience !== "TEACHERS";
+  const hasImage = pictures.some((p) => p.file.type.startsWith("image/"));
 
   function choosePictures(chosen: FileList | null) {
     if (!chosen) return;
@@ -200,6 +215,11 @@ export function ComposeForm({
         next[`alt-${index}`] = t("bulletin.describeThisPicture");
       }
     });
+    // meta-posting (16 Oct 2026): the server checks again (checkSocialAsk); this only says it before the upload.
+    if (socialOn && (toFacebook || toInstagram)) {
+      if (toInstagram && !hasImage) next.social = t("social.refuseNoPicture");
+      else if (pictures.length > 0 && !socialConsent) next.social = t("social.refuseConsent");
+    }
     setErrors(next);
     if (Object.keys(next).length > 0) return;
 
@@ -228,6 +248,12 @@ export function ComposeForm({
         payload.append("images", picture.file);
         payload.append("alts", picture.alt.trim());
       }
+      // meta-posting (16 Oct 2026)
+      if (socialOn) {
+        payload.set("socialFacebook", toFacebook ? "on" : "");
+        payload.set("socialInstagram", toInstagram && social?.instagram ? "on" : "");
+        payload.set("socialConsent", socialConsent ? "on" : "");
+      }
 
       const result = await submitPost(payload);
 
@@ -251,6 +277,14 @@ export function ComposeForm({
         router.push("/bulletin?filter=mine");
       } else {
         toast({ tone: "ok", title: t("bulletin.posted") });
+        // meta-posting (16 Oct 2026): the post is up; its copies for Meta are queued, or could not be.
+        if (result.socialError) toast({ tone: "danger", title: result.socialError, duration: 9000 });
+        else if (socialOn && (toFacebook || toInstagram) && result.postId) {
+          toast({ tone: "ok", title: t("social.queuedToast") });
+          router.push(`/bulletin/${result.postId}`);
+          router.refresh();
+          return;
+        }
         router.push("/bulletin");
       }
       router.refresh();
@@ -600,6 +634,54 @@ export function ComposeForm({
         )}
         <p className="mt-1 text-xs text-fg-muted">{t("bulletin.tagsHint")}</p>
       </div>
+
+      {/* meta-posting (16 Oct 2026): a copy to the school's Facebook Page and Instagram account. */}
+      {socialOn && social ? (
+        <fieldset className="space-y-3 rounded-[var(--radius-md)] border border-border bg-surface p-3.5" data-testid="post-social">
+          <legend className="px-1 text-sm font-medium text-fg">{t("social.composerLegend")}</legend>
+          {social.needsReconnect ? (
+            <p role="status" className="text-sm text-danger" data-testid="post-social-reconnect">
+              {t("social.composerReconnect")}{" "}
+              <Link href="/admin/settings/social" className="font-semibold underline underline-offset-4">
+                {t("social.reconnect")}
+              </Link>
+            </p>
+          ) : (
+            <>
+              <label className="flex items-start gap-3">
+                <input type="checkbox" checked={toFacebook} onChange={(e) => setToFacebook(e.target.checked)} className="mt-0.5 size-4 accent-[var(--accent)]" data-testid="post-social-facebook" />
+                <span className="min-w-0 text-sm font-medium text-fg">{t("social.alsoFacebook", { page: social.pageName })}</span>
+              </label>
+              {social.instagram ? (
+                <label className="flex items-start gap-3">
+                  <input type="checkbox" checked={toInstagram && hasImage} disabled={!hasImage} onChange={(e) => setToInstagram(e.target.checked)} className="mt-0.5 size-4 accent-[var(--accent)]" data-testid="post-social-instagram" />
+                  <span className="min-w-0">
+                    <span className="block text-sm font-medium text-fg">{t("social.alsoInstagram", { username: social.igUsername ?? "" })}</span>
+                    {!hasImage ? <span className="mt-0.5 block text-xs text-fg-muted">{t("social.instagramNeedsPicture")}</span> : null}
+                  </span>
+                </label>
+              ) : null}
+              {toFacebook || (toInstagram && hasImage) ? (
+                <>
+                  <p className="text-xs leading-relaxed text-fg-muted">{t("social.leavesPlatform")}</p>
+                  {pictures.length > 0 ? (
+                    <label className="flex items-start gap-3">
+                      <input type="checkbox" checked={socialConsent} onChange={(e) => setSocialConsent(e.target.checked)} className="mt-0.5 size-4 accent-[var(--accent)]" data-testid="post-social-consent" />
+                      <span className="min-w-0 text-sm font-medium text-fg">{t("social.consentLabel")}</span>
+                    </label>
+                  ) : null}
+                </>
+              ) : null}
+            </>
+          )}
+          {errors.social ? (
+            <p role="alert" className="text-xs font-medium text-danger">
+              {errors.social}
+            </p>
+          ) : null}
+        </fieldset>
+      ) : null}
+      {/* end meta-posting */}
 
       {/* The rule, restated right where they press the button. */}
       {role === "STUDENT" && (
