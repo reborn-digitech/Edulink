@@ -56,7 +56,7 @@ export const UNVERSIONED: Endpoint[] = [
   // No sampleBody: an answer needs a sitting the pupil opened, and answering is the act. The handler refuses a body without its three fields with 422 (R-51; it was 400), before it looks at the sitting.
   {
     method: "POST",
-    path: "/api/practice/answer",
+    path: "/api/practice/answer", feature: "QUESTION_BANK",
     summary: "The web's practice answer, the target of its offline outbox and replay-safe as its twin POST /api/v1/practice/answer is (a second delivery returns the stored verdict, replayed: true)",
     access: ["STUDENT"],
     request: c.webPracticeAnswerBodySchema,

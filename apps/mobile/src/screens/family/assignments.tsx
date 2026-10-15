@@ -12,8 +12,9 @@ import { pickAndUpload } from "@/lib/pick-file";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { useRole } from "@/lib/session";
+import { useRole, useSessionIfAny } from "@/lib/session";
 import { ChildSwitcher, childQuery, formatMilli, Note, param, Pill, relativeTime, SectionTitle, Tabs, useAuthHeaders } from "./shared";
+import { featuresOf } from "@/lib/nav";
 
 type Tab = "todo" | "handed" | "marked";
 type StudentWork = z.infer<typeof familyStudentAssignmentsSchema>["todo"][number];
@@ -118,6 +119,9 @@ function ChildAssignments() {
 }
 
 function PupilAssignments() {
+  // The practice bank is the platform's QUESTION_BANK feature (15 Oct 2026; /me's `features`): no way into it while it is off.
+  const practiceSession = useSessionIfAny();
+  const practiceOn = featuresOf(practiceSession?.status === "signed-in" ? practiceSession.me : null).includes("QUESTION_BANK");
   const t = useT();
   const th = useTheme();
   const router = useRouter();
@@ -155,7 +159,7 @@ function PupilAssignments() {
               body={tab === "todo" ? t("student.workEmpty") : tab === "handed" ? t("assignments.nothingHandedBody") : t("assignments.nothingMarkedBody")}
               action={
                 tab === "todo" ? (
-                  <Button label={t("nav.practice")} variant="secondary" onPress={() => router.push("/(app)/practice" as never)} />
+                  practiceOn ? <Button label={t("nav.practice")} variant="secondary" onPress={() => router.push("/(app)/practice" as never)} /> : undefined
                 ) : (
                   <Button label={t("assignments.tabTodo")} variant="secondary" onPress={() => setTab("todo")} />
                 )

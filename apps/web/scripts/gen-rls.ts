@@ -141,6 +141,17 @@ const NO_SCHOOL_POLICY = new Set([
   "CompetitionCrawl",
   "CompetitionCrawlJob",
   // ---- end competitions-crawler ----
+  // ---- feature-switches (15 Oct 2026) ----
+  // The platform's feature switches (src/lib/platform-features.ts): one row per feature, the same for every
+  // school, read by every tenant's requests and written by the operator alone, who belongs to no school.
+  "PlatformFeature",
+  // ---- end feature-switches ----
+  // ---- expert-registration (15 Oct 2026) ----
+  // An expert's application from the login page (src/lib/expert-applications.ts): the applicant has no
+  // session and no school, the reader and decider is the operator alone, who belongs to no school, and no
+  // school's row is in it. The person is the fence, held in the library.
+  "ExpertApplication",
+  // ---- end expert-registration ----
 ]);
 
 /**
@@ -1528,6 +1539,28 @@ function generate(): string {
         `     AND "revokedAt" IS NULL)`,
         `  WITH CHECK (${held});`,
       );
+      // ---- expert-registration (15 Oct 2026) ----
+      // THE OPERATOR'S INVITATION FROM AN APPROVED APPLICATION. Approving an expert's application
+      // (src/lib/expert-applications.ts) writes an ExpertInvite naming NO school — until now only
+      // `npm run expert:invite` could, on the owner's connection — and Prisma reads the row back as it
+      // creates it. So the superuser may INSERT and SELECT a row whose schoolId IS NULL, and nothing
+      // else: no UPDATE, no DELETE, and never a school's invitation. Acceptance stays the token
+      // holder's (the policy above).
+      lines.push(
+        ``,
+        `  -- The operator's invitation from an approved expert application: a row`,
+        `  -- naming no school, written and read back by the superuser alone. See`,
+        `  -- the expert-registration note in scripts/gen-rls.ts.`,
+        `DROP POLICY IF EXISTS "${table}_operator_insert" ON "${table}";`,
+        `CREATE POLICY "${table}_operator_insert" ON "${table}"`,
+        `  FOR INSERT`,
+        `  WITH CHECK ("schoolId" IS NULL AND current_setting('app.is_superuser', true) = '1');`,
+        `DROP POLICY IF EXISTS "${table}_operator_read" ON "${table}";`,
+        `CREATE POLICY "${table}_operator_read" ON "${table}"`,
+        `  FOR SELECT`,
+        `  USING ("schoolId" IS NULL AND current_setting('app.is_superuser', true) = '1');`,
+      );
+      // ---- end expert-registration ----
     }
     for (const write of EXPERT_WRITES[table] ?? []) {
       lines.push(

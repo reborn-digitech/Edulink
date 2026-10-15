@@ -148,12 +148,13 @@ describe("the modules by kind, and the autonomous switch", () => {
     expect(await setModule(college, "PLACEMENT", true)).toEqual({ changed: true });
   });
 
-  it("start a new college with alumni, the assistant and academics, a school with alumni and the assistant", async () => {
+  it("start a new college with alumni and academics, a school with alumni (the assistant module off since 15 Oct 2026)", async () => {
     const fresh = await db.school.create({ data: { name: `ZZ College Fresh ${STAMP}`, slug: `zz-col-fresh-${STAMP}`, code: `ZCLF${String(STAMP).slice(-5)}`, contactEmail: `zz-col-fresh-${STAMP}@test.invalid`, kind: "COLLEGE" }, select: { id: true } });
     try {
       await writeDefaultModules(fresh.id, undefined, "COLLEGE");
-      // …and the assistant, on for every tenant from the start (Phase B, decision 0005).
-      expect(await enabledModules(fresh.id)).toEqual(["ALUMNI", "ASSISTANT", "ACADEMICS"]);
+      // The assistant was on for every new tenant (Phase B, decision 0005); since 15 Oct 2026 a new tenant starts with it off and the
+      // platform's ASSISTANT feature decides whether it can be switched on at all (src/lib/platform-features.ts).
+      expect(await enabledModules(fresh.id)).toEqual(["ALUMNI", "ACADEMICS"]);
     } finally {
       await db.school.deleteMany({ where: { id: fresh.id } });
     }

@@ -9,7 +9,7 @@ import { refused } from "@/app/api/v1/shared/helpers";
 export async function POST(_request: Request, { params }: { params: Promise<{ contributionId: string }> }) {
   try {
     const ctx = await requireApiRole("TEACHER");
-    assertQuestionGigOpen(); // review-queue (10 Oct 2026): 404 while the teachers' question gig is off.
+    await assertQuestionGigOpen(ctx); // 404 FEATURE_OFF while the QUESTION_GIG platform feature is off (15 Oct 2026; the gate answers it first).
     const { contributionId } = await params;
     const result = await withdrawContribution(ctx, contributionId);
     if (!result.ok) return refused(result.errorKey, result.vars);

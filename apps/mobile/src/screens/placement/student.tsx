@@ -13,6 +13,7 @@ import { useTheme } from "@/lib/theme";
 import { Notice } from "../staff/shared";
 import { INTERNSHIP_STATUS_KEY, OUTCOME_KEY, applicationLabel, offerLine, packageRange, reasons } from "./words";
 import { formatDateRange, formatDateTime } from "@/lib/dates";
+import { featuresOf } from "@/lib/nav";
 
 /**
  * A student's placement on the phone (the placement module, 4 Oct 2026), the
@@ -175,7 +176,7 @@ export function StudentPlacementScreen() {
             {p.mentorSlots.map((s) => (
               <Row key={s.id} title={s.title} caption={`${s.mentorName}${s.batchYear ? ` (${s.batchYear})` : ""} · ${formatDateTime(s.startsAt)}`} />
             ))}
-            {p.mentorSlots.length ? <Button label={t("placement.bookInSessions")} variant="secondary" onPress={() => router.push("/(app)/sessions" as never)} /> : null}
+            {p.mentorSlots.length && featuresOf(session.status === "signed-in" ? session.me : null).some((f) => f === "EXPERT_SESSIONS" || f === "TEACHER_SESSIONS") ? <Button label={t("placement.bookInSessions")} variant="secondary" onPress={() => router.push("/(app)/sessions" as never)} /> : null}
           </Card>
         </>
       ) : null}

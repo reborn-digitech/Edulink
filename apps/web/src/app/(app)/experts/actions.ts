@@ -5,12 +5,15 @@ import { getT } from "@/lib/i18n/server";
 import { requireApiRole, requireApiUser, AccessError } from "@/lib/tenancy";
 import { bookSlot, cancelBooking, postMessage, inviteExpert } from "@/lib/experts";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
+import { assertFeatureForAction } from "@/lib/feature-page";
 
 /** See the note in `expert/availability/actions.ts` on the two-field shape. */
 type Result = { ok: boolean; errorKey?: TranslationKey; error?: string };
 
 async function run<T>(work: () => Promise<T>): Promise<(Result & { data?: T })> {
   try {
+    // The expert directory and a school's expert bookings are expert sessions (15 Oct 2026).
+    await assertFeatureForAction("EXPERT_SESSIONS");
     const data = await work();
     revalidatePath("/experts");
     return { ok: true, data };

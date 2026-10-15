@@ -13,6 +13,7 @@ import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 import { Button } from "@/components/ui/button";
 import { AssignmentAssistantSwitch } from "@/components/assistant/assignment-switch";
+import { mayUse } from "@/lib/platform-features";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -77,7 +78,7 @@ export default async function AssignmentPage({
 
       {/* The assistant's hint rule for this assignment (Phase C, 10 Oct 2026): the class's teacher's switch; the door
           names TEACHER, FACULTY and HOD, so the office reading this page is not offered it. */}
-      {ctx.role === "TEACHER" && <AssignmentAssistantSwitch assignmentId={assignment.id} />}
+      {ctx.role === "TEACHER" && (await mayUse("ASSISTANT", ctx)) && <AssignmentAssistantSwitch assignmentId={assignment.id} />}
 
       <div>
         <h2 className="text-sm font-semibold uppercase tracking-wide text-fg-muted">

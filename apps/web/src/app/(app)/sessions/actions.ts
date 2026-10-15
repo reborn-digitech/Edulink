@@ -6,6 +6,9 @@ import { AccessError } from "@/lib/tenancy";
 import { requireApiSession } from "@/lib/api-reads/shared";
 import { bookSeat, cancelBooking, cancelSlot, closeBooking, consentToBooking, offerSlot, rateBooking, reportUnheld, seatCheckout, setTeacherGuidance, type SlotInput } from "@/lib/gig-sessions";
 import type { GigResult } from "@/lib/gig-questions";
+import { assertFeatureForAction } from "@/lib/feature-page";
+import { SESSION_FEATURES } from "@/lib/nav";
+import type { FeatureCode } from "@edulink/contracts";
 
 /**
  * The web's doors to sessions and workshops, for a family, a provider and
@@ -16,8 +19,10 @@ type Result<T = object> = ({ ok: true } & T) | { ok: false; error: string };
 
 const PAGES = ["/sessions", "/expert/sessions", "/teacher/guidance", "/admin/sessions"];
 
-async function run<T extends object>(work: () => Promise<GigResult<T>>): Promise<Result<T>> {
+async function run<T extends object>(work: () => Promise<GigResult<T>>, feature: FeatureCode | readonly FeatureCode[] = SESSION_FEATURES): Promise<Result<T>> {
   try {
+    // Open while expert or teacher sessions are on (15 Oct 2026); gig-sessions.ts refuses the provider kind that is off.
+    await assertFeatureForAction(feature);
     const result = await work();
     if (!result.ok) return { ok: false, error: (await getT())(result.errorKey, result.vars) };
     for (const page of PAGES) revalidatePath(page);
@@ -56,8 +61,8 @@ export async function closeSeatAction(bookingId: string, outcome: "DELIVERED" | 
 }
 /** The order for a seat waiting for the guardian's payment: the panel was closed, or the gateway was down at booking. */
 export async function seatCheckoutAction(bookingId: string) {
-  return run(async () => seatCheckout(await requireApiSession(), bookingId));
+  return run(async () => seatCheckout(await requireApiSession(), bookingId), "EXPERT_SESSIONS");
 }
 export async function guidanceAction(on: boolean) {
-  return run(async () => setTeacherGuidance(await requireApiSession(), on));
+  return run(async () => setTeacherGuidance(await requireApiSession(), on), "TEACHER_SESSIONS");
 }

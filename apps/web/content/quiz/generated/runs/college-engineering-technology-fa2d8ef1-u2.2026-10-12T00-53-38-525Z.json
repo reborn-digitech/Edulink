@@ -1,0 +1,241 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-12T00:53:38.525Z",
+  "finishedAt": "2026-10-12T00:56:08.028Z",
+  "seconds": 150,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "SPPU",
+    "book": "Foundation Course in Ethical Hacking",
+    "bookCode": null,
+    "document": "sppu/faculty-of-science-and-technology/iii-technology/Foundation_Course_in_Ethical_Hacking.pdf",
+    "classLevel": 13,
+    "subject": "Engineering (Technology)",
+    "chapter": "Unit 2 — Syllabus",
+    "edition": "2024",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for engineering: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Engineering (Technology) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 25986,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7902,
+      "completionTokens": 1309
+    },
+    "critique": {
+      "calls": 10,
+      "ms": 60982,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 4190,
+      "completionTokens": 1744
+    },
+    "solver": {
+      "calls": 56,
+      "ms": 34242,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 10924,
+      "completionTokens": 603
+    },
+    "form": {
+      "calls": 5,
+      "ms": 14006,
+      "in": 7,
+      "out": 4,
+      "rejects": 3,
+      "promptTokens": 1177,
+      "completionTokens": 315
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 491,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 186691,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9374,
+      "completionTokens": 5066
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a type of hacker as described in the course syllabus?",
+      "ms": {
+        "draft": 3879,
+        "critique": 6154,
+        "solver": 2175,
+        "form": 3484
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a core principle of information security that the course covers?",
+      "ms": {
+        "draft": 3879,
+        "critique": 6577,
+        "solver": 2986,
+        "form": 4144
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student is asked to identify a method to detect vulnerabilities in a network. Based on the course content, which of the following would be the most appropriate method?",
+      "ms": {
+        "draft": 3879,
+        "critique": 5789,
+        "solver": 15529
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A network administrator is trying to identify the type of attack that involves intercepting and reading data transmitted over a network. According to the course syllabus, which of the following best describes this type of attack?",
+      "ms": {
+        "draft": 3879,
+        "critique": 6780,
+        "solver": 8909,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a goal of system hacking?",
+      "ms": {
+        "draft": 2617,
+        "critique": 7735,
+        "solver": 2300,
+        "form": 2781,
+        "translation": 48628
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of vulnerability scanning in ethical hacking?",
+      "ms": {
+        "draft": 2617,
+        "critique": 7401,
+        "solver": 1967,
+        "form": 3620,
+        "translation": 58854
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a hacker wants to gather information about a target's network, which technique would they most likely use?",
+      "ms": {
+        "draft": 2617,
+        "critique": 7022,
+        "solver": 1564,
+        "form": 0,
+        "translation": 40672
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the objective of penetration testing?",
+      "ms": {
+        "draft": 2617,
+        "critique": 5854,
+        "solver": 788,
+        "form": 1084,
+        "translation": 34266
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a type of hacker as described in the course syllabus?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct term is White Hat Hacker…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a core principle of information security that the course covers?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Includes terms not mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"Uses a term not in the passage and adds 'Accuracy' which is …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A student is asked to identify a method to detect vulnerabilities in a network. Based on the course content, which of the following would be the most appropriate method?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A network administrator is trying to identify the type of attack that involves intercepting and reading data transmitted over a network. According to the course syllabus, which of the following best describes this type of attack?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for engineering: levels 5 and 6 skipped",
+    "no glossary in the corpus for Engineering (Technology) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

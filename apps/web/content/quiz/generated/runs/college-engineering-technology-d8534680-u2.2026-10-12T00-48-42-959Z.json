@@ -1,0 +1,369 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-12T00:48:42.959Z",
+  "finishedAt": "2026-10-12T00:52:30.285Z",
+  "seconds": 227,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "SPPU",
+    "book": "Foundation Course in Data Science",
+    "bookCode": null,
+    "document": "sppu/faculty-of-science-and-technology/iii-technology/Foundation_Course_in_Data_Science.pdf",
+    "classLevel": 13,
+    "subject": "Engineering (Technology)",
+    "chapter": "Unit 2 — Syllabus",
+    "edition": "2024",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for engineering: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Engineering (Technology) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 54370,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 13658,
+      "completionTokens": 2732
+    },
+    "critique": {
+      "calls": 18,
+      "ms": 124094,
+      "in": 16,
+      "out": 6,
+      "rejects": 10,
+      "promptTokens": 7377,
+      "completionTokens": 3026
+    },
+    "solver": {
+      "calls": 44,
+      "ms": 26039,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 7006,
+      "completionTokens": 448
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 386,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 15,
+      "ms": 136808,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7581,
+      "completionTokens": 3980
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the purpose of Exploratory Data Analysis (EDA) according to the passage?",
+      "ms": {
+        "draft": 4499,
+        "critique": 6800
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a discipline covered under Data science according to the passage?",
+      "ms": {
+        "draft": 4499,
+        "critique": 7556
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A data scientist is analyzing the relationship between two numerical variables. Which technique from the passage should they use?",
+      "ms": {
+        "draft": 4499,
+        "critique": 7556
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A researcher wants to compare the means of three different groups. Which statistical test from the passage is most appropriate?",
+      "ms": {
+        "draft": 4499,
+        "critique": 7556
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the term 'bias-variance tradeoff' refer to in machine learning?",
+      "ms": {
+        "draft": 2931,
+        "critique": 7653
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a common evaluation metric used in classification tasks?",
+      "ms": {
+        "draft": 2931,
+        "critique": 8660
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A data scientist is using K-fold cross-validation to evaluate a regression model. What is the main advantage of using K-fold over a single train-test split?",
+      "ms": {
+        "draft": 2931,
+        "critique": 5373
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a model has high bias, what does this indicate about its performance?",
+      "ms": {
+        "draft": 16995,
+        "critique": 5942,
+        "solver": 3137,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary objective of the 'Fundamentals of Statistics for Data Science' module?",
+      "ms": {
+        "draft": 3620,
+        "critique": 8357
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a common evaluation metric for classification tasks?",
+      "ms": {
+        "draft": 16995,
+        "critique": 5686,
+        "solver": 17947
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A data scientist is analyzing the relationship between two variables in a dataset. Which technique from the 'Exploratory Data Analysis (EDA)' module would be most appropriate to visualize this relationship?",
+      "ms": {
+        "draft": 3620,
+        "critique": 8052
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A researcher is comparing the means of three different groups using a statistical test. Which test from the 'Statistical Inference' module would be most suitable for this task?",
+      "ms": {
+        "draft": 3620,
+        "critique": 6388
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a graphical method for data visualization covered in the 'Fundamentals of Statistics for Data Science' module?",
+      "ms": {
+        "draft": 3620,
+        "critique": 8372,
+        "solver": 7441
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a technique used for model evaluation in the machine learning pipeline?",
+      "ms": {
+        "draft": 16995,
+        "critique": 5375,
+        "solver": 1424,
+        "form": 0,
+        "translation": 39581
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a supervised learning algorithm?",
+      "ms": {
+        "draft": 16995,
+        "critique": 9741,
+        "solver": 1752,
+        "form": 0,
+        "translation": 36361
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A data scientist is evaluating a model for a healthcare application where missing predictions can be life-threatening. Which metric should be prioritized?",
+      "ms": {
+        "draft": 2931,
+        "critique": 5363,
+        "solver": 925,
+        "form": 0,
+        "translation": 56630
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the purpose of Exploratory Data Analysis (EDA) according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a discipline covered under Data science according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A data scientist is analyzing the relationship between two numerical variables. Which technique from the passage should they use?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A researcher wants to compare the means of three different groups. Which statistical test from the passage is most appropriate?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the term 'bias-variance tradeoff' refer to in machine learning?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a common evaluation metric used in classification tasks?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A data scientist is using K-fold cross-validation to evaluate a regression model. What is the main advantage of using K-fold over a single train-test split?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If a model has high bias, what does this indicate about its performance?",
+      "reason": "options 0 and 2 say the same thing (\"It performs well on training data but poorly on test data\" / \"It performs well on test data but poorly on training data\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the primary objective of the 'Fundamentals of Statistics for Data Science' module?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT a common evaluation metric for classification tasks?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A data scientist is analyzing the relationship between two variables in a dataset. Which technique from the 'Exploratory Data Analysis (EDA)' module would be most appropriate to visualize this relationship?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A researcher is comparing the means of three different groups using a statistical test. Which test from the 'Statistical Inference' module would be most suitable for this task?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a graphical method for data visualization covered in the 'Fundamentals of Statistics for Data Science' module?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for engineering: levels 5 and 6 skipped",
+    "no glossary in the corpus for Engineering (Technology) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -47,6 +47,7 @@ import { PersonLink } from "@/components/person-link";
 import { PAGE_TITLE } from "@/components/ui/page-header";
 import { openSlipsForFamily } from "@/lib/permission-slips-family";
 import { FamilySlipsCard } from "./slips-card";
+import { mayUse } from "@/lib/platform-features";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -227,7 +228,7 @@ export default async function ParentDashboard({
 
   return (
     <div className="space-y-6">
-      {!welcomeDismissed && <WelcomeTour />}
+      {!welcomeDismissed && <WelcomeTour practice={await mayUse("QUESTION_BANK", session)} />}
 
       {children.length > 1 && (
         <ChildSwitcher pupils={children} selectedId={selectedId} />

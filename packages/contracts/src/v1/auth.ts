@@ -3,6 +3,7 @@ import { localeSchema } from "../locale";
 import { institutionKindSchema, schoolModuleSchema } from "./modules";
 import { streamSchema } from "./streams";
 import { dutySchema } from "./duties";
+import { platformFeatureSchema } from "./platform-features";
 
 /**
  * Signing in from the phone. Every sign-in answers with the same session
@@ -111,6 +112,13 @@ export const meSchema = z.object({
    * hides a duty's tabs and cards without it.
    */
   duties: z.array(dutySchema).default([]),
+  /**
+   * The platform features the operator has switched on (15 Oct 2026; v1/platform-features.ts), for this
+   * person: the phone hides a feature's tabs, menu entries and screens by it. Optional: an answer from a
+   * server older than the switches says nothing, which reads as "everything as before" (the phone keeps
+   * every entry), and an older phone that does not know the field ignores it.
+   */
+  features: z.array(platformFeatureSchema).optional(),
 });
 export type Me = z.infer<typeof meSchema>;
 

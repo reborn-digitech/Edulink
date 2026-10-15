@@ -20,6 +20,7 @@ import { relativeTime } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { Gradebook } from "../../../teacher/assignments/[assignmentId]/gradebook";
 import { postInternalAction, publishWorkAction, saveFacultyGrades } from "../actions";
+import { mayUse } from "@/lib/platform-features";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("collegeWork.markTitle") };
@@ -67,7 +68,8 @@ export default async function FacultyWorkItemPage({ params, searchParams }: { pa
       {a.body ? <div className="whitespace-pre-wrap rounded-[var(--radius-md)] border border-border bg-surface p-4 text-sm leading-relaxed text-fg-muted">{a.body}</div> : null}
       {a.attachments.length ? <AttachmentList target="assignment" assignmentId={a.id} recordId={a.id} attachments={book.assignment.attachments} canEdit={false} /> : null}
       {/* The assistant's hint rule for this piece of work (Phase C, 10 Oct 2026): the door names FACULTY and HOD. */}
-      <AssignmentAssistantSwitch assignmentId={a.id} />
+      {/* …while the operator has the assistant on (15 Oct 2026). */}
+      {(await mayUse("ASSISTANT", ctx)) && <AssignmentAssistantSwitch assignmentId={a.id} />}
       <Card>
         <CardHeader icon={<ArrowSquareInIcon weight="duotone" className="size-5" />} title={t("collegeWork.postTitle")} description={view.locked ? t("collegeWork.postLocked") : t("collegeWork.postBody")} />
         {!view.locked && view.components.length > 0 && a.pointsMilli ? (

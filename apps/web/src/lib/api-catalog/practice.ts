@@ -18,7 +18,7 @@ export const PRACTICE: Endpoint[] = [
   // ---- /student/practice/{slug} --------------------------------------------
   {
     method: "POST",
-    path: "/api/v1/practice/attempts",
+    path: "/api/v1/practice/attempts", feature: "QUESTION_BANK",
     summary: "Open a sitting on a chapter (or on a chapter the teacher set), or pick up the one left half-way, with the question to answer now",
     access: ["STUDENT"],
     request: c.practiceBeginBodySchema,
@@ -27,10 +27,10 @@ export const PRACTICE: Endpoint[] = [
   },
   // The sweep's samples for the three reads that need a query name an attempt,
   // a question and a chapter nobody has: a permitted role gets the 404, not a bare call's 422.
-  { method: "GET", path: "/api/v1/practice/next", summary: "The question to answer now in a sitting; null once the chapter is done", access: ["STUDENT"], request: c.practiceNextQuerySchema, response: c.practiceNextSchema, sample: "/api/v1/practice/next?attemptId=czzsweepnoattempt000000000" },
+  { method: "GET", path: "/api/v1/practice/next", feature: "QUESTION_BANK", summary: "The question to answer now in a sitting; null once the chapter is done", access: ["STUDENT"], request: c.practiceNextQuerySchema, response: c.practiceNextSchema, sample: "/api/v1/practice/next?attemptId=czzsweepnoattempt000000000" },
   {
     method: "POST",
-    path: "/api/v1/practice/answer",
+    path: "/api/v1/practice/answer", feature: "QUESTION_BANK",
     summary: "Answer a question, with the verdict and the working — replay-safe, so the outbox may deliver it twice",
     access: ["STUDENT"],
     request: c.practiceAnswerBodySchema,
@@ -39,7 +39,7 @@ export const PRACTICE: Endpoint[] = [
   },
   {
     method: "POST",
-    path: "/api/v1/practice/reveal",
+    path: "/api/v1/practice/reveal", feature: "QUESTION_BANK",
     summary: "Show the working before answering; costs the chapter's badge for this sitting",
     access: ["STUDENT"],
     request: c.practiceRevealBodySchema,
@@ -47,12 +47,12 @@ export const PRACTICE: Endpoint[] = [
     emptyBodyStatus: 422,
   },
   // ---- /student/practice/revision ------------------------------------------
-  { method: "GET", path: "/api/v1/practice/revision", summary: "Smart revision: the pupil's own missed questions, rested and ready again", access: ["STUDENT"], request: c.practiceLanguageQuerySchema, response: c.practiceRevisionSchema },
-  { method: "GET", path: "/api/v1/practice/journey", summary: "The pupil's own journey: every badge newest first (sixty at most), the tier badges of the last six months, the weeks in a row with practice and the totals; compared with their own past only", access: ["STUDENT"], response: c.practiceJourneySchema },
-  { method: "GET", path: "/api/v1/practice/revision/question", summary: "One queued revision question, without its answer", access: ["STUDENT"], request: c.practiceRevisionQuestionQuerySchema, response: c.practiceRevisionQuestionSchema, sample: "/api/v1/practice/revision/question?questionId=zz-sweep-no-question" },
+  { method: "GET", path: "/api/v1/practice/revision", feature: "QUESTION_BANK", summary: "Smart revision: the pupil's own missed questions, rested and ready again", access: ["STUDENT"], request: c.practiceLanguageQuerySchema, response: c.practiceRevisionSchema },
+  { method: "GET", path: "/api/v1/practice/journey", feature: "QUESTION_BANK", summary: "The pupil's own journey: every badge newest first (sixty at most), the tier badges of the last six months, the weeks in a row with practice and the totals; compared with their own past only", access: ["STUDENT"], response: c.practiceJourneySchema },
+  { method: "GET", path: "/api/v1/practice/revision/question", feature: "QUESTION_BANK", summary: "One queued revision question, without its answer", access: ["STUDENT"], request: c.practiceRevisionQuestionQuerySchema, response: c.practiceRevisionQuestionSchema, sample: "/api/v1/practice/revision/question?questionId=zz-sweep-no-question" },
   {
     method: "POST",
-    path: "/api/v1/practice/revision/answer",
+    path: "/api/v1/practice/revision/answer", feature: "QUESTION_BANK",
     summary: "Answer a revision question through the chapter's own sitting, so it moves the same ladder",
     access: ["STUDENT"],
     request: c.practiceRevisionAnswerBodySchema,
@@ -60,6 +60,6 @@ export const PRACTICE: Endpoint[] = [
     emptyBodyStatus: 422,
   },
   // ---- /teacher/worksheets -------------------------------------------------
-  { method: "GET", path: "/api/v1/practice/worksheets", summary: "The chapters a worksheet can be built from, the rungs, and the most a paper holds", access: ["TEACHER"], response: c.practiceWorksheetTopicsSchema },
-  { method: "GET", path: "/api/v1/practice/worksheets/sheet", summary: "A worksheet and its answer key: the same chapter, rung, count and seed always build the same paper", access: ["TEACHER"], request: c.practiceWorksheetQuerySchema, response: c.practiceWorksheetSchema, sample: "/api/v1/practice/worksheets/sheet?slug=zz-sweep-no-chapter" },
+  { method: "GET", path: "/api/v1/practice/worksheets", feature: "QUESTION_BANK", summary: "The chapters a worksheet can be built from, the rungs, and the most a paper holds", access: ["TEACHER"], response: c.practiceWorksheetTopicsSchema },
+  { method: "GET", path: "/api/v1/practice/worksheets/sheet", feature: "QUESTION_BANK", summary: "A worksheet and its answer key: the same chapter, rung, count and seed always build the same paper", access: ["TEACHER"], request: c.practiceWorksheetQuerySchema, response: c.practiceWorksheetSchema, sample: "/api/v1/practice/worksheets/sheet?slug=zz-sweep-no-chapter" },
 ];

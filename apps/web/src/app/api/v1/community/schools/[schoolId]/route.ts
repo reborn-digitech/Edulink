@@ -4,6 +4,7 @@ import { readSchoolProfile } from "@/lib/school-profile";
 import { findMyOpenEnquiry } from "@/lib/enquiries";
 import { apiFailure, ok } from "@/lib/api-v1";
 import { requireApiSession } from "@/lib/api-reads/shared";
+import { mayUse } from "@/lib/platform-features";
 
 /**
  * GET /api/v1/community/schools/{schoolId} — the web's /explore/[schoolId]:
@@ -28,7 +29,8 @@ export async function GET(_request: Request, { params }: { params: Promise<{ sch
       communitySchoolProfileSchema.parse({
         ...shown,
         highlights: shown.highlights.map((h) => ({ ...h, createdAt: h.createdAt.toISOString() })),
-        vacancies: shown.vacancies.map((v) => ({ ...v, createdAt: v.createdAt.toISOString() })),
+        // No vacancies while the platform has the job board off (15 Oct 2026); they come back, still open, when it is on.
+        vacancies: (await mayUse("JOB_BOARD", ctx)) ? shown.vacancies.map((v) => ({ ...v, createdAt: v.createdAt.toISOString() })) : [],
         myEnquiryId,
       }),
     );

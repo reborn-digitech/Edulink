@@ -7,7 +7,9 @@ import { z } from "zod";
  * school's admin switches it on, except ALUMNI, which every school starts
  * with, and ASSISTANT (the help and tutor chat, docs/plans/assistant.md and
  * decision 0005), which every school and college starts with and the office
- * may switch off (9 Oct 2026; migration 20261010… backfilled every tenant). A coded list, so the web, the phone and the database agree on the
+ * may switch off (9 Oct 2026; migration 20261010… backfilled every tenant); since 15 Oct 2026 a new
+ * tenant starts with it off and it opens only while the operator has the ASSISTANT platform feature on
+ * (v1/platform-features.ts). A coded list, so the web, the phone and the database agree on the
  * words; what each one says to a person is a dictionary key
  * (`modules.<code>.name` / `.what`), never this string.
  */
@@ -31,10 +33,15 @@ export const SCHOOL_MODULES = [...SCHOOL_VERSION_MODULES, ...COLLEGE_MODULES] as
 export const schoolModuleSchema = z.enum(SCHOOL_MODULES);
 export type SchoolModuleCode = z.infer<typeof schoolModuleSchema>;
 
-/** The modules a new school is given without asking. */
-export const DEFAULT_SCHOOL_MODULES: readonly SchoolModuleCode[] = ["ALUMNI", "ASSISTANT"];
+/**
+ * The modules a new school is given without asking. ASSISTANT is no longer among them (15 Oct 2026): the
+ * assistant is dark on the whole platform until the operator switches the ASSISTANT platform feature on
+ * (v1/platform-features.ts), and a new school then switches its own module on. Existing SchoolModule
+ * rows are left as they are.
+ */
+export const DEFAULT_SCHOOL_MODULES: readonly SchoolModuleCode[] = ["ALUMNI"];
 /** …and a new college: alumni, and academics, which a college cannot run without. */
-export const DEFAULT_COLLEGE_MODULES: readonly SchoolModuleCode[] = ["ALUMNI", "ACADEMICS", "ASSISTANT"];
+export const DEFAULT_COLLEGE_MODULES: readonly SchoolModuleCode[] = ["ALUMNI", "ACADEMICS"];
 
 /**
  * WHAT KIND OF INSTITUTION A TENANT IS (4 October 2026): a school (every row

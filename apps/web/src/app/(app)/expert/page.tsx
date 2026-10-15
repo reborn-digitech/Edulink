@@ -12,6 +12,8 @@ import { EXPERT_BOOKING_STATUS_KEY, type ExpertBookingStatus } from "@/lib/const
 import { formatUtcMoment } from "@/lib/dates";
 import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/ui/page-header";
+import { mayUse } from "@/lib/platform-features";
+import { UserIcon } from "@phosphor-icons/react/ssr";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -21,6 +23,24 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ExpertHome() {
   const t = await getT();
   const ctx = await requireExpert();
+  // Expert sessions switched off on the platform (15 Oct 2026): the expert still signs in and keeps their profile,
+  // and their home says, in one sentence, that sessions are not open yet; nothing else of the sessions is drawn.
+  if (!(await mayUse("EXPERT_SESSIONS", ctx))) {
+    return (
+      <div className="space-y-5">
+        <PageHeader title={t("expert.bookings")} />
+        <EmptyState
+          icon={<BriefcaseIcon weight="duotone" className="size-8" />}
+          title={t("platformFeatures.expertNotOpen")}
+          action={
+            <Button asChild variant="secondary" icon={<UserIcon weight="bold" />}>
+              <Link href="/expert/profile">{t("nav.profile")}</Link>
+            </Button>
+          }
+        />
+      </div>
+    );
+  }
   const [bookings, duty] = await Promise.all([listBookings(ctx), freeDutyRemaining(ctx.user.id)]);
   const dutyLines = [
     duty.oneToOnes > 0 ? (duty.stage.oneToOnes === "START" ? t("gigs.freeDutyStartOneToOnes", { count: duty.oneToOnes, start: duty.asked.startOneToOnes }) : t("gigs.freeDutyMonthOneToOnes", { count: duty.oneToOnes })) : null,

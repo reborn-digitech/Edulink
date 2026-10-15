@@ -13,6 +13,7 @@ import { BadgeGrid } from "./badges";
 import { getT } from "@/lib/i18n/server";
 import { mayEditOwnBirthdate } from "@/lib/birthdate";
 import { PageHeader } from "@/components/ui/page-header";
+import { mayUse } from "@/lib/platform-features";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -133,11 +134,13 @@ export default async function StudentProfilePage() {
                 </div>
               ))}
             </dl>
-            <p className="mt-2 text-sm">
-              <Link href="/student/practice" className="font-medium text-accent hover:underline">
-                {t("student.keepPractising")}
-              </Link>
-            </p>
+            {(await mayUse("QUESTION_BANK", ctx)) && (
+              <p className="mt-2 text-sm">
+                <Link href="/student/practice" className="font-medium text-accent hover:underline">
+                  {t("student.keepPractising")}
+                </Link>
+              </p>
+            )}
           </CardBody>
         </Card>
       )}

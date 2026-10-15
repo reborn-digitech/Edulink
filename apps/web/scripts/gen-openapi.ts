@@ -38,6 +38,8 @@ function build() {
       // The module roles a signed-in door also opens to, and the module a door belongs to (403 MODULE_OFF while the school has it off).
       ...(e.limitedRoles?.length ? { "x-limited-roles": e.limitedRoles } : {}),
       ...(e.module ? { "x-module": e.module } : {}),
+      ...(e.feature ? { "x-feature": typeof e.feature === "string" ? e.feature : [...e.feature] } : {}),
+      ...(e.featureInHandler ? { "x-feature-note": e.featureInHandler } : {}),
       // The duties a FACULTY or HOD must hold to pass (5 Oct 2026); the phone's contract matrix reads it with the actor's /me duties.
       ...(e.duties?.length ? { "x-duties": e.duties } : {}),
       // A college's door (filed in a college module's catalog file): at a school it may answer 403 MODULE_OFF, module or none (LOAD-6).

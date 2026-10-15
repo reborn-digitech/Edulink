@@ -1,0 +1,382 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-12T00:44:54.286Z",
+  "finishedAt": "2026-10-12T00:48:42.083Z",
+  "seconds": 228,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "SPPU",
+    "book": "Foundation Course in Data Science",
+    "bookCode": null,
+    "document": "sppu/faculty-of-science-and-technology/iii-technology/Foundation_Course_in_Data_Science.pdf",
+    "classLevel": 13,
+    "subject": "Engineering (Technology)",
+    "chapter": "Unit 1 — Foundation Course in Data Science",
+    "edition": "2024",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for engineering: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Engineering (Technology) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 70363,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 13096,
+      "completionTokens": 3176
+    },
+    "critique": {
+      "calls": 22,
+      "ms": 182643,
+      "in": 16,
+      "out": 13,
+      "rejects": 3,
+      "promptTokens": 9628,
+      "completionTokens": 3824
+    },
+    "solver": {
+      "calls": 103,
+      "ms": 64629,
+      "in": 13,
+      "out": 10,
+      "rejects": 3,
+      "promptTokens": 16253,
+      "completionTokens": 1074
+    },
+    "form": {
+      "calls": 7,
+      "ms": 19100,
+      "in": 10,
+      "out": 3,
+      "rejects": 7,
+      "promptTokens": 1675,
+      "completionTokens": 505
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 390,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 164932,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 8020,
+      "completionTokens": 4532
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the primary purpose of the 'Fundamentals of Statistics for Data Science' module?",
+      "ms": {
+        "draft": 6443,
+        "critique": 8580,
+        "solver": 1531
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a personal attribute required for the job role described in the passage?",
+      "ms": {
+        "draft": 6443,
+        "critique": 8867,
+        "solver": 17869
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is preparing a data science awareness campaign, which of the following tasks would they most likely perform?",
+      "ms": {
+        "draft": 6443,
+        "critique": 9467,
+        "solver": 21054,
+        "form": 4022
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total number of credits for the Certificate in Data Science course?",
+      "ms": {
+        "draft": 3822,
+        "critique": 7461,
+        "solver": 1707
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the course structure, which of the following combinations of modules would a student most likely study in the first half of the course?",
+      "ms": {
+        "draft": 6443,
+        "critique": 12829,
+        "solver": 16431,
+        "form": 3031
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student scores 50 marks in the university examination and 20 marks in internal assessment, what is the total score for the course?",
+      "ms": {
+        "draft": 3822,
+        "critique": 8977
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many credits does the Certificate in Data Science course have in total?",
+      "ms": {
+        "draft": 3651,
+        "critique": 9472
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is taking the 'Machine Learning' module, which other module would they most likely have already studied?",
+      "ms": {
+        "draft": 3651,
+        "critique": 8924
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which module covers the basics of statistics for data science?",
+      "ms": {
+        "draft": 3651,
+        "critique": 8610,
+        "solver": 13514,
+        "form": 2855
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the 'Exploratory Data Analysis (EDA)' module?",
+      "ms": {
+        "draft": 3651,
+        "critique": 9035,
+        "solver": 11921,
+        "form": 4595
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a personal attribute required for a job in data science according to the passage?",
+      "ms": {
+        "draft": 3675,
+        "critique": 8144,
+        "solver": 2129,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an objective of the data science course mentioned in the passage?",
+      "ms": {
+        "draft": 3675,
+        "critique": 7991,
+        "solver": 1712,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is an important aspect of the course that ensures students can apply their knowledge in real-world situations?",
+      "ms": {
+        "draft": 3675,
+        "critique": 7538,
+        "solver": 1180,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the practical part in the Certificate in Data Science course?",
+      "ms": {
+        "draft": 3822,
+        "critique": 9599,
+        "solver": 9051,
+        "form": 1409,
+        "translation": 55039
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is preparing training material for a data science awareness campaign, which of the following is most likely to be part of their task?",
+      "ms": {
+        "draft": 3675,
+        "critique": 8422,
+        "solver": 1771,
+        "form": 2367,
+        "translation": 59187
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following modules is included in the Exploratory Data Analysis (EDA) section of the course?",
+      "ms": {
+        "draft": 3822,
+        "critique": 6587,
+        "solver": 1346,
+        "form": 1684,
+        "translation": 45568
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the primary purpose of the 'Fundamentals of Statistics for Data Science' module?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a personal attribute required for the job role described in the passage?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student is preparing a data science awareness campaign, which of the following tasks would they most likely perform?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the total number of credits for the Certificate in Data Science course?",
+      "reason": "the solver picked option 2 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the course structure, which of the following combinations of modules would a student most likely study in the first half of the course?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrect as these modules are advanced and likely to be stu…\"); about the syllabus, not its subject: its options are the syllabus's modules"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a student scores 50 marks in the university examination and 20 marks in internal assessment, what is the total score for the course?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "How many credits does the Certificate in Data Science course have in total?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a student is taking the 'Machine Learning' module, which other module would they most likely have already studied?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which module covers the basics of statistics for data science?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 1's reason is not a one-line misconception (\"Refers to another module mentioned in the passage…\"); about the syllabus, not its subject: asks which book, module or part of the course"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of the 'Exploratory Data Analysis (EDA)' module?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Refers to another module in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a personal attribute required for a job in data science according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an objective of the data science course mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; about the syllabus, not its subject: asks what the syllabus lists"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is an important aspect of the course that ensures students can apply their knowledge in real-world situations?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for engineering: levels 5 and 6 skipped",
+    "no glossary in the corpus for Engineering (Technology) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

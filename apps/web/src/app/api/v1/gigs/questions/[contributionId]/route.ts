@@ -9,7 +9,7 @@ import { refused } from "@/app/api/v1/shared/helpers";
 export async function GET(_request: Request, { params }: { params: Promise<{ contributionId: string }> }) {
   try {
     const ctx = await requireApiRole("TEACHER");
-    assertQuestionGigOpen(); // review-queue (10 Oct 2026): 404 while the teachers' question gig is off.
+    await assertQuestionGigOpen(ctx); // 404 FEATURE_OFF while the QUESTION_GIG platform feature is off (15 Oct 2026; the gate answers it first).
     const { contributionId } = await params;
     return ok(gigContributionSchema.parse(await getMyContribution(ctx, contributionId)));
   } catch (error) {
@@ -21,7 +21,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ con
 export async function POST(request: Request, { params }: { params: Promise<{ contributionId: string }> }) {
   try {
     const ctx = await requireApiRole("TEACHER");
-    assertQuestionGigOpen(); // review-queue (10 Oct 2026): 404 while the teachers' question gig is off.
+    await assertQuestionGigOpen(ctx); // 404 FEATURE_OFF while the QUESTION_GIG platform feature is off (15 Oct 2026; the gate answers it first).
     const { contributionId } = await params;
     const parsed = gigContributionSaveSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);

@@ -16,6 +16,7 @@ import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 import { UnlinkChild } from "./unlink-child";
 import { FamilyAssistantCard } from "@/components/assistant/family-card";
+import { mayUse } from "@/lib/platform-features";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -116,7 +117,7 @@ export default async function ParentSettingsPage() {
       {/* ---------- the assistant, per child (Phase C, 10 Oct 2026) ----------
           On by default for every pupil (decision 0005); the guardian turns it off for a child here, and the
           assistant's first screen sends a guardian to this card (#assistant). */}
-      <FamilyAssistantCard />
+      {(await mayUse("ASSISTANT", session)) && <FamilyAssistantCard />}
 
       {/* ---------- the family's own data (DPDP s.11) ---------- */}
       <Card>

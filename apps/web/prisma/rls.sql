@@ -1029,6 +1029,18 @@ CREATE POLICY "ExpertInvite_accept_update" ON "ExpertInvite"
   WITH CHECK (current_setting('app.join_code', true) <> ''
           AND "tokenHash" = current_setting('app.join_code', true));
 
+  -- The operator's invitation from an approved expert application: a row
+  -- naming no school, written and read back by the superuser alone. See
+  -- the expert-registration note in scripts/gen-rls.ts.
+DROP POLICY IF EXISTS "ExpertInvite_operator_insert" ON "ExpertInvite";
+CREATE POLICY "ExpertInvite_operator_insert" ON "ExpertInvite"
+  FOR INSERT
+  WITH CHECK ("schoolId" IS NULL AND current_setting('app.is_superuser', true) = '1');
+DROP POLICY IF EXISTS "ExpertInvite_operator_read" ON "ExpertInvite";
+CREATE POLICY "ExpertInvite_operator_read" ON "ExpertInvite"
+  FOR SELECT
+  USING ("schoolId" IS NULL AND current_setting('app.is_superuser', true) = '1');
+
 -- MentorThread
 ALTER TABLE "MentorThread" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "MentorThread" FORCE ROW LEVEL SECURITY;
@@ -3503,6 +3515,7 @@ CREATE TRIGGER "OperatorAccess_close_only"
 --   CompetitionSource
 --   ContentChunk
 --   ContentDocument
+--   ExpertApplication
 --   ExpertPayout
 --   ExpertPayoutAccount
 --   ExpertProfile
@@ -3519,6 +3532,7 @@ CREATE TRIGGER "OperatorAccess_close_only"
 --   JobRun
 --   OutboundEmail
 --   Plan
+--   PlatformFeature
 --   PushSubscription
 --   QuestionContribution
 --   QuizGenJob

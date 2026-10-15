@@ -15,6 +15,7 @@ import {
 import type { ActiveContext } from "@/lib/session";
 import { reviseQuestion, revisionAttempt } from "@/lib/practice-insights";
 import type { ServedFigure } from "@/lib/quiz-figure";
+import { assertFeatureForAction } from "@/lib/feature-page";
 
 /**
  * Practice, from the child's side.
@@ -50,6 +51,7 @@ function languageOf(ctx: ActiveContext): QuizLanguage {
 export async function begin(slug: string): Promise<Ok<{ attemptId: string; question: ServedQuestion | null }> | Failure> {
   try {
     const ctx = await requireApiRole("STUDENT");
+    await assertFeatureForAction("QUESTION_BANK");
     const { attemptId } = await startAttempt(ctx, slug);
     const question = await nextQuestion(ctx, attemptId, languageOf(ctx));
     return { ok: true, attemptId, question };
@@ -65,6 +67,7 @@ export async function answer(
 ): Promise<Ok<{ result: AnswerResult }> | Failure> {
   try {
     const ctx = await requireApiRole("STUDENT");
+    await assertFeatureForAction("QUESTION_BANK");
     const result = await submitAnswer(ctx, attemptId, questionId, chosenIndex, languageOf(ctx));
     return { ok: true, result };
   } catch (error) {
@@ -75,6 +78,7 @@ export async function answer(
 export async function advance(attemptId: string): Promise<Ok<{ question: ServedQuestion | null }> | Failure> {
   try {
     const ctx = await requireApiRole("STUDENT");
+    await assertFeatureForAction("QUESTION_BANK");
     const question = await nextQuestion(ctx, attemptId, languageOf(ctx));
     return { ok: true, question };
   } catch (error) {
@@ -89,6 +93,7 @@ export async function reveal(
 ): Promise<Ok<{ solution: string; answerIndex: number; badgeForfeited: boolean }> | Failure> {
   try {
     const ctx = await requireApiRole("STUDENT");
+    await assertFeatureForAction("QUESTION_BANK");
     const revealed = await revealSolution(ctx, attemptId, questionId, languageOf(ctx));
     return { ok: true, ...revealed };
   } catch (error) {
@@ -111,6 +116,7 @@ export async function reviseServe(
 ): Promise<Ok<{ stem: string; choices: string[]; topicSlug: string; image: ServedFigure | null }> | Failure> {
   try {
     const ctx = await requireApiRole("STUDENT");
+    await assertFeatureForAction("QUESTION_BANK");
     const q = await reviseQuestion(ctx, questionId, languageOf(ctx));
     // figures (10 Oct 2026): the re-served question's figure with it.
     return { ok: true, stem: q.stem, choices: q.choices, topicSlug: q.topicSlug, image: q.image };
@@ -125,6 +131,7 @@ export async function reviseAnswer(
 ): Promise<Ok<{ result: AnswerResult }> | Failure> {
   try {
     const ctx = await requireApiRole("STUDENT");
+    await assertFeatureForAction("QUESTION_BANK");
     const { attemptId } = await revisionAttempt(ctx, questionId, languageOf(ctx));
     const result = await submitAnswer(ctx, attemptId, questionId, chosenIndex, languageOf(ctx));
     return { ok: true, result };

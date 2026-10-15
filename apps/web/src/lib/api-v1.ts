@@ -3,11 +3,12 @@ import { NextResponse } from "next/server";
 import type { z } from "zod";
 import { apiErrorSchema, sessionResponseSchema as apiSessionSchema, meSchema, type ApiError, type InstitutionKind } from "@edulink/contracts";
 import { AccessError } from "@/lib/tenancy";
-import { ModuleOffError } from "@/lib/access-error";
+import { FeatureOffError, ModuleOffError } from "@/lib/access-error";
 import { MODULE_META } from "@/lib/module-meta";
 import { enabledModules, enabledModulesForFamily, institutionKindOf } from "@/lib/modules";
 import { streamsOf } from "@/lib/streams";
 import { myDuties } from "@/lib/duties";
+import { featuresFor } from "@/lib/platform-features";
 import type { ActiveContext } from "@/lib/session";
 import { createApiSession, listContexts, bearerToken, getSession } from "@/lib/session";
 import { resolveContext } from "@/lib/resolve-context";
@@ -40,6 +41,11 @@ export async function apiFailure(error: unknown, where: string): Promise<NextRes
     // …or a college's door at a school (NotACollegeError), which says so in its own sentence.
     const sentence = error.key === "modules.refuseOff" ? t("modules.refuseOff", { module: t(MODULE_META[error.module].nameKey) }) : t(error.key);
     return envelope({ error: sentence, code: "MODULE_OFF" }, 403);
+  }
+  // A platform feature the operator has not switched on (15 Oct 2026): 404, said as FEATURE_OFF.
+  if (error instanceof FeatureOffError) {
+    recordError(kindOfStatus(404));
+    return envelope({ error: t(error.key), code: "FEATURE_OFF" }, 404, { "x-edulink-code": "FEATURE_OFF" });
   }
   if (error instanceof AccessError) {
     const status = error.code === "UNAUTHENTICATED" ? 401 : error.code === "NOT_FOUND" ? 404 : 403;
@@ -160,8 +166,8 @@ export async function readBounded(request: Request, limit: number): Promise<stri
   return Buffer.concat(chunks).toString("utf8");
 }
 
-function envelope(body: ApiError, status: number): NextResponse {
-  return NextResponse.json(apiErrorSchema.parse(body), { status, headers: { "Cache-Control": "no-store" } });
+function envelope(body: ApiError, status: number, extra: Record<string, string> = {}): NextResponse {
+  return NextResponse.json(apiErrorSchema.parse(body), { status, headers: { "Cache-Control": "no-store", ...extra } });
 }
 
 export function ok<T>(data: T, status = 200): NextResponse {
@@ -244,6 +250,8 @@ export async function meBody(ctx: ActiveContext) {
     // The active college's streams and the active membership's duties (5 Oct 2026); empty at a school and for every role but FACULTY and HOD.
     streams: await streamsOf(ctx.schoolId),
     duties: await myDuties(ctx),
+    // The platform features this person may use (15 Oct 2026); the phone hides a feature's tabs and screens by them.
+    features: await featuresFor(ctx),
   });
 }
 

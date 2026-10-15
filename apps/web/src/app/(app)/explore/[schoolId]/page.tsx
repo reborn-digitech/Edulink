@@ -15,6 +15,7 @@ import { getT, getRelativeTime, getLocale } from "@/lib/i18n/server";
 import { EMPLOYMENT_TYPE_KEYS, type EmploymentType } from "@/lib/constants";
 import { EnquireForm } from "../enquire-form";
 import { PageHeader } from "@/components/ui/page-header";
+import { mayUse } from "@/lib/platform-features";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -166,7 +167,7 @@ export default async function SchoolProfilePage({
         </Card>
       )}
 
-      {school.vacancies.length > 0 && (
+      {school.vacancies.length > 0 && (await mayUse("JOB_BOARD", ctx)) && (
         <section className="space-y-2">
           <h2 className="text-sm font-semibold uppercase tracking-wide text-fg-muted">
             {t("explore.vacanciesTitle")}

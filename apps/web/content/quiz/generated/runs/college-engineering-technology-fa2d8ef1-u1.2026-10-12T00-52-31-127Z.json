@@ -1,0 +1,251 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-12T00:52:31.127Z",
+  "finishedAt": "2026-10-12T00:53:37.649Z",
+  "seconds": 67,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "SPPU",
+    "book": "Foundation Course in Ethical Hacking",
+    "bookCode": null,
+    "document": "sppu/faculty-of-science-and-technology/iii-technology/Foundation_Course_in_Ethical_Hacking.pdf",
+    "classLevel": 13,
+    "subject": "Engineering (Technology)",
+    "chapter": "Unit 1 — Foundation Course in Digital Ethical Hacking",
+    "edition": "2024",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for engineering: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Engineering (Technology) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 30721,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7846,
+      "completionTokens": 1552
+    },
+    "critique": {
+      "calls": 9,
+      "ms": 64333,
+      "in": 8,
+      "out": 3,
+      "rejects": 5,
+      "promptTokens": 3716,
+      "completionTokens": 1586
+    },
+    "solver": {
+      "calls": 21,
+      "ms": 9937,
+      "in": 3,
+      "out": 2,
+      "rejects": 1,
+      "promptTokens": 3272,
+      "completionTokens": 201
+    },
+    "form": {
+      "calls": 2,
+      "ms": 4872,
+      "in": 2,
+      "out": 0,
+      "rejects": 2,
+      "promptTokens": 483,
+      "completionTokens": 162
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 4440,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 174,
+      "completionTokens": 272
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is a duty of a person working in digital ethical hacking?",
+      "ms": {
+        "draft": 3926,
+        "critique": 7643
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student wants to identify vulnerabilities in a network. Which module from the course would be most relevant for this task?",
+      "ms": {
+        "draft": 3926,
+        "critique": 7610,
+        "solver": 1467
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student wants to evaluate the security of a web server. Which course modules would best support this activity?",
+      "ms": {
+        "draft": 3926,
+        "critique": 8061,
+        "solver": 959,
+        "form": 2918
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main aim of the course 'Foundation in Digital Ethical Hacking'?",
+      "ms": {
+        "draft": 3926,
+        "critique": 8383,
+        "solver": 10025,
+        "form": 1954
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main responsibility of a person working in digital ethical hacking?",
+      "ms": {
+        "draft": 3755,
+        "critique": 7639
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is tasked with identifying weaknesses in a website's security, which module of the course would they most likely apply?",
+      "ms": {
+        "draft": 3755,
+        "critique": 8417
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a remedial technique in digital ethical hacking?",
+      "ms": {
+        "draft": 3755,
+        "critique": 8418
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student wants to understand how to detect and analyze network threats. Which combination of modules should they focus on?",
+      "ms": {
+        "draft": 3755,
+        "critique": 3360
+      },
+      "outcome": "critique",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a duty of a person working in digital ethical hacking?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A student wants to identify vulnerabilities in a network. Which module from the course would be most relevant for this task?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A student wants to evaluate the security of a web server. Which course modules would best support this activity?",
+      "reason": "about the syllabus, not its subject: its options are the syllabus's modules"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main aim of the course 'Foundation in Digital Ethical Hacking'?",
+      "reason": "about the syllabus, not its subject: asks what the course aims at"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main responsibility of a person working in digital ethical hacking?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a student is tasked with identifying weaknesses in a website's security, which module of the course would they most likely apply?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a remedial technique in digital ethical hacking?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A student wants to understand how to detect and analyze network threats. Which combination of modules should they focus on?",
+      "reason": "option 3 is not wrong"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for engineering: levels 5 and 6 skipped",
+    "no glossary in the corpus for Engineering (Technology) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

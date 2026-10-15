@@ -31,7 +31,8 @@ export default async function AdminSessionsPage() {
   return (
     <div className="space-y-6">
       <PageHeader title={t("gigs.officeTitle")} description={t("gigs.officeIntro")} />
-      <GuidanceSwitch on={view.guidanceOn} canSwitch={view.canSwitch} />
+      {/* The teachers' guidance switch, while the platform has teacher sessions on (15 Oct 2026). */}
+      {view.teacherSessionsOn && <GuidanceSwitch on={view.guidanceOn} canSwitch={view.canSwitch} />}
       <Card>
         <CardBody>
           {view.bookings.length === 0 ? (

@@ -16,12 +16,13 @@ const iso = z.string().datetime();
 const count = z.number().int().nonnegative();
 
 /**
- * THE TEACHERS' QUESTION GIG, OFF (the owner, 10 October 2026). One place: the web's nav, the
- * teacher's /teacher/contributions pages (404), the /api/v1/gigs/questions and /gigs/payee doors (404,
- * catalogued with statusByRole TEACHER 404 while this is false) and the phone's menu entry and two
- * screens all read it. Nothing is deleted: QuestionContribution rows stay, the content team still reads
- * them at /appadmin/contributions, and the operator still records what is owed. The owner removes the
- * gig altogether once the review by the app admins has proved itself.
+ * THE TEACHERS' QUESTION GIG (the owner, 10 October 2026), and since 15 October 2026 NOT THE SWITCH ANY
+ * MORE: the gig is the QUESTION_GIG platform feature (v1/platform-features.ts), switched by the operator
+ * at /root/features and read at run time by the web's nav, the /teacher/contributions pages, the
+ * /api/v1/gigs/questions doors (the catalog's `feature`), the payee door and the phone's menu and
+ * screens (/api/v1/me's `features`). This build-time constant is kept, false, for one reader that this
+ * change leaves alone: the help index's build (scripts/help-index.ts), which leaves the gig's doors out of
+ * the help, and the suites that hold that. Nothing else may read it.
  */
 export const QUESTION_GIG_FOR_TEACHERS: boolean = false;
 

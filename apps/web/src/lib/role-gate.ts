@@ -1,12 +1,13 @@
 import "server-only";
 import { ENDPOINTS } from "./api-catalog";
-import { permits, type Endpoint } from "./api-catalog/types";
+import { featuresOf, permits, type Endpoint } from "./api-catalog/types";
 import { MODULE_OF_ROLE } from "@edulink/contracts";
 import { isLimitedRole, ROLE_HOME, type LimitedRole, type Role } from "./constants";
 import { NAV, isActive } from "./nav";
 import { AccessError, ModuleOffError } from "./access-error";
 import { routePath } from "./route-header";
 import { assertModuleOn, enabledModules } from "./modules";
+import { assertAnyFeatureOn } from "./platform-features";
 
 /**
  * THE GATE FOR THE MODULE ROLES, and for the modules themselves (3 October
@@ -34,6 +35,13 @@ import { assertModuleOn, enabledModules } from "./modules";
  *   2. An /api/v1 door whose catalog entry names a `module` answers 403 with
  *      code MODULE_OFF, for every role, while the session's school has not
  *      switched that module on.
+ *
+ *   3. (15 October 2026) A door whose catalog entry names a platform `feature`
+ *      — an /api/v1 door, or one of the catalogued doors outside it — answers
+ *      404 with code FEATURE_OFF, for every role and before any other refusal,
+ *      while the operator has that feature off (src/lib/platform-features.ts,
+ *      `mayUse`). A door whose entry says `featureInHandler` is left to its
+ *      handler. This is the ONE place a door's feature is enforced.
  *
  * And while a module role's OWN module is off at its school (a driver whose
  * school switched transport off), it keeps only its home, the notices and
@@ -145,11 +153,17 @@ export function ownPageModuleOff(role: Role, path: string, modulesOn: readonly s
 
 /**
  * What the gate makes of one request. Throws the API refusals (AccessError,
- * ModuleOffError — apiFailure answers them 403); returns "no-context" when a
+ * ModuleOffError — apiFailure answers them 403 — and FeatureOffError, 404); returns "no-context" when a
  * page must be served as if the session had no school, "not-found" for the
  * role's own menu page whose module is off here, and "pass" otherwise.
  */
-export async function gateRequest(route: string | null, ctx: { role: Role | null; schoolId: string | null; duties?: readonly string[] }, catalog: readonly Endpoint[] = ENDPOINTS): Promise<"pass" | "no-context" | "not-found"> {
+/** Rule 3: the door's platform feature, unless its handler decides (`featureInHandler`). Throws FeatureOffError (404 FEATURE_OFF). */
+async function assertDoorFeature(e: Endpoint | null, ctx: { userId?: string | null; schoolId: string | null }): Promise<void> {
+  if (!e?.feature || e.featureInHandler) return;
+  await assertAnyFeatureOn(featuresOf(e), { userId: ctx.userId ?? null, schoolId: ctx.schoolId });
+}
+
+export async function gateRequest(route: string | null, ctx: { role: Role | null; schoolId: string | null; duties?: readonly string[]; userId?: string | null }, catalog: readonly Endpoint[] = ENDPOINTS): Promise<"pass" | "no-context" | "not-found"> {
   // FAIL CLOSED (campaign S-11). No stamp means the middleware did not run — a path its matcher
   // skips, such as one ending in ".ab", still reaches a page — and a stamp whose path does not
   // decode ("!") cannot be gated. Either way a limited role is served as if it had no school,
@@ -161,9 +175,11 @@ export async function gateRequest(route: string | null, ctx: { role: Role | null
   const path = raw === "!" ? null : routePath(raw);
   if (path === null) return isLimitedRole(ctx.role) ? "no-context" : "pass";
   if (path.startsWith("/api/v1/")) {
-    // Nothing to look up for the older roles while no door names a module.
-    if (!isLimitedRole(ctx.role) && !routesOf(catalog).some((r) => r.e.module)) return "pass";
+    // Nothing to look up for the older roles while no door names a module or a feature.
+    if (!isLimitedRole(ctx.role) && !routesOf(catalog).some((r) => r.e.module || r.e.feature)) return "pass";
     const e = endpointFor(method, path, catalog);
+    // A feature the operator has off is "not here" for everybody, whatever else the door would say.
+    await assertDoorFeature(e, ctx);
     if (isLimitedRole(ctx.role)) {
       // A door naming `duties` (5 Oct 2026) lets a FACULTY or HOD through only with one of them; its own sentence says so.
       if (!e || !permits({ access: e.access, limitedRoles: e.limitedRoles }, ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
@@ -174,7 +190,11 @@ export async function gateRequest(route: string | null, ctx: { role: Role | null
     if (e?.module && ctx.schoolId) await assertModuleOn(ctx.schoolId, e.module);
     return "pass";
   }
-  if (path.startsWith("/api/")) return "pass";
+  if (path.startsWith("/api/")) {
+    // The catalogued doors outside /api/v1 (api-catalog/unversioned.ts): the web's practice answer is the question bank's.
+    if (routesOf(catalog).some((r) => r.e.feature && !r.e.path.startsWith("/api/v1/"))) await assertDoorFeature(endpointFor(method, path, catalog), ctx);
+    return "pass";
+  }
   if (isLimitedRole(ctx.role)) {
     const on = await enabledModules(ctx.schoolId);
     if (!modulePagePermitted(ctx.role, path, on, ctx.duties ?? [])) return ownPageModuleOff(ctx.role, path, on) ? "not-found" : "no-context";

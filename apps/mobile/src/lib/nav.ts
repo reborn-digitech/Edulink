@@ -1,4 +1,4 @@
-import { DUTY_STREAMS, QUESTION_GIG_FOR_TEACHERS, type DutyCode, type RoleCode, type SchoolModuleCode, type StreamCode } from "@edulink/contracts";
+import { DUTY_STREAMS, PLATFORM_FEATURES, type DutyCode, type FeatureCode, type RoleCode, type SchoolModuleCode, type StreamCode } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
 
 /** The streams that keep labs and a practical record (those that offer a lab in-charge, 5 Oct 2026). */
@@ -21,7 +21,34 @@ const CLINICAL_STREAMS: readonly StreamCode[] = DUTY_STREAMS.CLINICAL_COORDINATO
  * `duty` (5 Oct 2026): the tab or entry exists only for a FACULTY or HOD who
  * holds that duty (/api/v1/me's `duties`), as the web's NAV entries with `duty`.
  */
-export type Tab = { name: string; labelKey: TranslationKey; icon: string; module?: SchoolModuleCode; duty?: DutyCode };
+/**
+ * `feature` (15 Oct 2026): the tab or entry exists only while the platform feature is on for this person
+ * (/api/v1/me's `features`), as the web's NAV entries with `feature`; a list is "any of" (sessions, shared by
+ * expert and teacher sessions). The operator switches them at /root/features on the web.
+ */
+type FeatureField = FeatureCode | readonly FeatureCode[];
+export type Tab = { name: string; labelKey: TranslationKey; icon: string; module?: SchoolModuleCode; duty?: DutyCode; feature?: FeatureField };
+
+/** Both kinds of sessions: the sessions screen stays while either is on. */
+export const SESSION_FEATURES: readonly FeatureCode[] = ["EXPERT_SESSIONS", "TEACHER_SESSIONS"];
+
+/**
+ * What a server older than the switches meant (its /me says nothing of `features`): everything ran as it
+ * always had, and the teachers' question gig was off by a constant. So an older server keeps every entry
+ * but the gig's, as before.
+ */
+export const FEATURES_BEFORE_SWITCHES: readonly FeatureCode[] = PLATFORM_FEATURES.filter((code) => code !== "QUESTION_GIG");
+
+/** The features this person may use, from /me; an older server's answer reads as FEATURES_BEFORE_SWITCHES. */
+export function featuresOf(me: { features?: readonly FeatureCode[] } | null | undefined): readonly FeatureCode[] {
+  return me?.features ?? FEATURES_BEFORE_SWITCHES;
+}
+
+/** Whether an entry's feature (any of a list) is among `on`; an entry with none always is. */
+export function featureShown(item: { feature?: FeatureField }, on: readonly string[]): boolean {
+  if (!item.feature) return true;
+  return (typeof item.feature === "string" ? [item.feature] : item.feature).some((f) => on.includes(f));
+}
 
 export const TABS: Record<RoleCode, Tab[]> = {
   TEACHER: [
@@ -39,7 +66,7 @@ export const TABS: Record<RoleCode, Tab[]> = {
   STUDENT: [
     { name: "index", labelKey: "nav.today", icon: "house" },
     { name: "assignments", labelKey: "nav.assignments", icon: "clipboard" },
-    { name: "practice", labelKey: "nav.practice", icon: "brain" },
+    { name: "practice", labelKey: "nav.practice", icon: "brain", feature: "QUESTION_BANK" },
     { name: "messages", labelKey: "nav.messages", icon: "chat" },
   ],
   ADMIN: [
@@ -56,10 +83,10 @@ export const TABS: Record<RoleCode, Tab[]> = {
   ],
   EXPERT: [
     { name: "index", labelKey: "nav.bookings", icon: "house" },
-    { name: "availability", labelKey: "nav.availability", icon: "calendar" },
-    { name: "mentoring", labelKey: "nav.mentoring", icon: "chat" },
+    { name: "availability", labelKey: "nav.availability", icon: "calendar", feature: "EXPERT_SESSIONS" },
+    { name: "mentoring", labelKey: "nav.mentoring", icon: "chat", feature: "EXPERT_SESSIONS" },
     // Sessions and workshops with pupils (gigs): a primary of the expert's on the web, and their fourth tab here. For every other role it is a More entry.
-    { name: "sessions", labelKey: "nav.sessions", icon: "users" },
+    { name: "sessions", labelKey: "nav.sessions", icon: "users", feature: "EXPERT_SESSIONS" },
   ],
   // The module roles (3 Oct 2026): a home that says whether the module is on; a module builder adds the rest.
   DRIVER: [{ name: "index", labelKey: "modules.transportName", icon: "bus" }],
@@ -128,7 +155,7 @@ export const ALL_TAB_SCREENS = ["index", "attendance", "classes", "messages", "a
  */
 export type MenuGroup = "daily" | "school" | "running";
 /** `streams` (5 Oct 2026): hidden at a college whose recorded streams include none of them (the practical record at a law college); none recorded keeps it. */
-export type MenuItem = { labelKey: TranslationKey; icon: string; group: MenuGroup; module?: SchoolModuleCode; duty?: DutyCode; streams?: readonly StreamCode[] } & ({ screen: string; web?: undefined } | { web: string; screen?: undefined });
+export type MenuItem = { labelKey: TranslationKey; icon: string; group: MenuGroup; module?: SchoolModuleCode; duty?: DutyCode; streams?: readonly StreamCode[]; feature?: FeatureField } & ({ screen: string; web?: undefined } | { web: string; screen?: undefined });
 
 /**
  * What every college staff role's More carries (4 Oct 2026): the account, and my own leave (GET/POST
@@ -158,7 +185,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.assignments", icon: "clipboard", group: "daily", screen: "/(app)/assignments" },
     { labelKey: "nav.exams", icon: "clipboard", group: "daily", screen: "/(app)/exams" },
     { labelKey: "nav.timetable", icon: "clock", group: "daily", screen: "/(app)/timetable" },
-    { labelKey: "nav.practice", icon: "brain", group: "daily", screen: "/(app)/practice" },
+    { labelKey: "nav.practice", icon: "brain", group: "daily", screen: "/(app)/practice", feature: "QUESTION_BANK" },
     { labelKey: "nav.meetings", icon: "calendar", group: "daily", screen: "/(app)/meetings" },
     { labelKey: "nav.leave", icon: "calendar", group: "running", screen: "/(app)/leave" },
     { labelKey: "nav.staffAttendance", icon: "checks", group: "running", screen: "/(app)/my-attendance" },
@@ -169,16 +196,16 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "appraisal.myTitle", icon: "clipboard", group: "running", screen: "/(app)/my-appraisals" },
     { labelKey: "joinRequests.navLabel", icon: "userPlus", group: "running", screen: "/(app)/joins" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
-    { labelKey: "nav.experts", icon: "briefcase", group: "school", screen: "/(app)/experts" },
-    { labelKey: "nav.vacancies", icon: "briefcase", group: "school", screen: "/(app)/vacancies" },
+    { labelKey: "nav.experts", icon: "briefcase", group: "school", screen: "/(app)/experts", feature: "EXPERT_SESSIONS" },
+    { labelKey: "nav.vacancies", icon: "briefcase", group: "school", screen: "/(app)/vacancies", feature: "JOB_BOARD" },
     { labelKey: "nav.enquiries", icon: "envelope", group: "school", screen: "/(app)/enquiries" },
-    { labelKey: "nav.mentoring", icon: "chat", group: "school", screen: "/(app)/mentoring" },
+    { labelKey: "nav.mentoring", icon: "chat", group: "school", screen: "/(app)/mentoring", feature: "EXPERT_SESSIONS" },
     { labelKey: "nav.competitions", icon: "trophy", group: "school", screen: "/(app)/competitions" },
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
-    { labelKey: "nav.guidance", icon: "calendar", group: "school", screen: "/(app)/sessions" },
-    // review-queue (10 Oct 2026): the question gig, only while QUESTION_GIG_FOR_TEACHERS is on (the web's src/lib/question-gig.ts).
-    ...(QUESTION_GIG_FOR_TEACHERS ? [{ labelKey: "nav.contributions", icon: "clipboard", group: "running", screen: "/(app)/contributions" } satisfies MenuItem] : []),
+    { labelKey: "nav.guidance", icon: "calendar", group: "school", screen: "/(app)/sessions", feature: "TEACHER_SESSIONS" },
+    // The question gig (review-queue, 10 Oct 2026): since 15 Oct 2026 the QUESTION_GIG platform feature, from /me's `features`.
+    { labelKey: "nav.contributions", icon: "clipboard", group: "running", screen: "/(app)/contributions", feature: "QUESTION_GIG" },
     { labelKey: "nav.signatures", icon: "pencil", group: "running", screen: "/(app)/signatures" },
     // My own payslips while the school runs payroll in the app (3 Oct 2026).
     { labelKey: "payroll.myTitle", icon: "receipt", group: "running", screen: "/(app)/payslips", module: "PAYROLL" },
@@ -198,14 +225,14 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.health", icon: "heart", group: "daily", screen: "/(app)/health" },
     { labelKey: "nav.incidents", icon: "firstAid", group: "daily", screen: "/(app)/family-incidents" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
-    { labelKey: "nav.mentoring", icon: "chat", group: "school", screen: "/(app)/mentoring" },
+    { labelKey: "nav.mentoring", icon: "chat", group: "school", screen: "/(app)/mentoring", feature: "EXPERT_SESSIONS" },
     // What an adult student at a college lets their guardians see (4 Oct 2026); under ACADEMICS, which only a college has.
     { labelKey: "consent.title", icon: "users", group: "running", screen: "/(app)/consent", module: "ACADEMICS" },
     { labelKey: "nav.competitions", icon: "trophy", group: "school", screen: "/(app)/competitions" },
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
     { labelKey: "nav.me", icon: "user", group: "running", screen: "/(app)/profile" },
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
-    { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions" },
+    { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions", feature: SESSION_FEATURES },
     // The library and the hostel (3 Oct 2026): my loans and the catalogue; my room, tonight's roll call and leave.
     { labelKey: "modules.libraryName", icon: "bookOpen", group: "school", screen: "/(app)/library", module: "LIBRARY" },
     { labelKey: "modules.hostelName", icon: "bed", group: "school", screen: "/(app)/hostel", module: "HOSTEL" },
@@ -232,7 +259,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
   ],
   PARENT: [
     { labelKey: "nav.exams", icon: "chartLine", group: "daily", screen: "/(app)/exams" },
-    { labelKey: "nav.practice", icon: "brain", group: "daily", screen: "/(app)/practice" },
+    { labelKey: "nav.practice", icon: "brain", group: "daily", screen: "/(app)/practice", feature: "QUESTION_BANK" },
     { labelKey: "nav.timetable", icon: "clock", group: "daily", screen: "/(app)/timetable" },
     { labelKey: "nav.meetings", icon: "calendar", group: "daily", screen: "/(app)/meetings" },
     { labelKey: "nav.fees", icon: "receipt", group: "daily", screen: "/(app)/fees" },
@@ -249,11 +276,11 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.applications", icon: "clipboard", group: "school", screen: "/(app)/my-applications" },
     { labelKey: "nav.enquiries", icon: "envelope", group: "school", screen: "/(app)/enquiries" },
     { labelKey: "nav.competitions", icon: "trophy", group: "school", screen: "/(app)/competitions" },
-    { labelKey: "nav.mentoring", icon: "chat", group: "school", screen: "/(app)/mentoring" },
+    { labelKey: "nav.mentoring", icon: "chat", group: "school", screen: "/(app)/mentoring", feature: "EXPERT_SESSIONS" },
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
     { labelKey: "nav.settings", icon: "gear", group: "running", screen: "/(app)/settings" },
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
-    { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions" },
+    { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions", feature: SESSION_FEATURES },
     // The library and the hostel (3 Oct 2026). No `module`: a parent's /me names no school, so each screen says when the child's school has it off.
     { labelKey: "modules.libraryName", icon: "bookOpen", group: "daily", screen: "/(app)/library" },
     { labelKey: "modules.hostelName", icon: "bed", group: "daily", screen: "/(app)/hostel" },
@@ -297,14 +324,14 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.directory", icon: "buildings", group: "running", screen: "/(app)/directory-profile" },
     { labelKey: "joinRequests.navLabel", icon: "userPlus", group: "running", screen: "/(app)/joins" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
-    { labelKey: "nav.experts", icon: "briefcase", group: "school", screen: "/(app)/experts" },
-    { labelKey: "nav.vacancies", icon: "briefcase", group: "school", screen: "/(app)/vacancies" },
+    { labelKey: "nav.experts", icon: "briefcase", group: "school", screen: "/(app)/experts", feature: "EXPERT_SESSIONS" },
+    { labelKey: "nav.vacancies", icon: "briefcase", group: "school", screen: "/(app)/vacancies", feature: "JOB_BOARD" },
     { labelKey: "nav.enquiries", icon: "envelope", group: "school", screen: "/(app)/enquiries" },
-    { labelKey: "nav.mentoring", icon: "chat", group: "school", screen: "/(app)/mentoring" },
+    { labelKey: "nav.mentoring", icon: "chat", group: "school", screen: "/(app)/mentoring", feature: "EXPERT_SESSIONS" },
     { labelKey: "nav.competitions", icon: "trophy", group: "school", screen: "/(app)/competitions" },
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
-    { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions" },
+    { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions", feature: SESSION_FEATURES },
     { labelKey: "nav.reportCards", icon: "clipboard", group: "running", screen: "/(app)/report-card-rules" },
     { labelKey: "nav.signatures", icon: "pencil", group: "running", screen: "/(app)/signatures" },
     // The alumni module (3 Oct 2026): the office's page on the web, and the directory here.
@@ -361,12 +388,12 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "transport.title", icon: "bus", group: "running", screen: "/(app)/office-transport", module: "TRANSPORT" },
     { labelKey: "joinRequests.navLabel", icon: "userPlus", group: "running", screen: "/(app)/joins" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
-    { labelKey: "nav.vacancies", icon: "briefcase", group: "school", screen: "/(app)/vacancies" },
+    { labelKey: "nav.vacancies", icon: "briefcase", group: "school", screen: "/(app)/vacancies", feature: "JOB_BOARD" },
     { labelKey: "nav.enquiries", icon: "envelope", group: "school", screen: "/(app)/enquiries" },
     { labelKey: "nav.competitions", icon: "trophy", group: "school", screen: "/(app)/competitions" },
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
-    { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions" },
+    { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions", feature: SESSION_FEATURES },
     { labelKey: "nav.reportCards", icon: "clipboard", group: "running", screen: "/(app)/report-card-rules" },
     { labelKey: "nav.signatures", icon: "pencil", group: "running", screen: "/(app)/signatures" },
     // The payroll summary and the stores, read; the head's own payslips (3 Oct 2026).
@@ -571,7 +598,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
  * while the active school has the ASSISTANT module on (on by default), as the web's NAV has it for every role. Appended
  * rather than written into each list, so a role added later has it too. The screen reads the web's doors.
  */
-export const ASSISTANT_ENTRY: MenuItem = { labelKey: "assistantUi.navLabel", icon: "chats", group: "daily", screen: "/(app)/assistant", module: "ASSISTANT" };
+export const ASSISTANT_ENTRY: MenuItem = { labelKey: "assistantUi.navLabel", icon: "chats", group: "daily", screen: "/(app)/assistant", module: "ASSISTANT", feature: "ASSISTANT" };
 /** Not for the outside accounts (an expert, a recruiter): they belong to no school, and the doors refuse them. */
 export const ASSISTANT_NOT_FOR: readonly RoleCode[] = ["EXPERT", "RECRUITER"];
 for (const [role, list] of Object.entries(MENU) as [RoleCode, MenuItem[]][]) if (!ASSISTANT_NOT_FOR.includes(role) && !list.some((item) => item.screen === ASSISTANT_ENTRY.screen)) list.push(ASSISTANT_ENTRY);
@@ -796,14 +823,14 @@ export const HIDDEN_SCREENS = [
 ] as const;
 
 /** The More sheet's entries for a role, grouped in the web's order; an entry whose module the school has off, or whose duty the person does not hold (5 Oct 2026), is left out. */
-export function menuFor(role: RoleCode, modules?: readonly string[], duties: readonly string[] = [], streams: readonly string[] = []): { group: MenuGroup; items: MenuItem[] }[] {
-  const shown = MENU[role].filter((item) => (!item.module || !modules || modules.includes(item.module)) && (!item.duty || duties.includes(item.duty)) && (!item.streams || streams.length === 0 || item.streams.some((s) => streams.includes(s))));
+export function menuFor(role: RoleCode, modules?: readonly string[], duties: readonly string[] = [], streams: readonly string[] = [], features: readonly string[] = FEATURES_BEFORE_SWITCHES): { group: MenuGroup; items: MenuItem[] }[] {
+  const shown = MENU[role].filter((item) => (!item.module || !modules || modules.includes(item.module)) && (!item.duty || duties.includes(item.duty)) && (!item.streams || streams.length === 0 || item.streams.some((s) => streams.includes(s))) && featureShown(item, features));
   return MENU_GROUPS.map((group) => ({ group, items: shown.filter((item) => item.group === group) })).filter((g) => g.items.length > 0);
 }
 
-/** Whether a tab is drawn: always, unless it belongs to a module the school has off or a duty the person does not hold. */
-export function tabShown(tab: Tab, modules: readonly string[], duties: readonly string[] = []): boolean {
-  return (!tab.module || modules.includes(tab.module)) && (!tab.duty || duties.includes(tab.duty));
+/** Whether a tab is drawn: always, unless it belongs to a module the school has off, a duty the person does not hold, or a platform feature that is off (15 Oct 2026). */
+export function tabShown(tab: Tab, modules: readonly string[], duties: readonly string[] = [], features: readonly string[] = FEATURES_BEFORE_SWITCHES): boolean {
+  return (!tab.module || modules.includes(tab.module)) && (!tab.duty || duties.includes(tab.duty)) && featureShown(tab, features);
 }
 
 /**

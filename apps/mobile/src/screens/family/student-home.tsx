@@ -1,6 +1,6 @@
 import { View } from "react-native";
 import { useRouter } from "expo-router";
-import { QUICK } from "@/lib/nav";
+import { QUICK, featuresOf } from "@/lib/nav";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { familyStudentOverviewSchema } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Loading, QuickActions, Row, Screen, Stat, Text } from "@/components";
@@ -11,9 +11,13 @@ import { useTheme } from "@/lib/theme";
 import { CompleteRecordCard } from "./record";
 import { CelebrationsCard } from "../shared/celebrations";
 import { ATTENDANCE, ExamMarksCards, formatDateKey, LessonList, Pill, relativeTime } from "./shared";
+import { useSessionIfAny } from "@/lib/session";
 
 /** The pupil's Today — the web's /student: attendance, the day's lessons, what is due, the latest exam marks. */
 export function StudentHome() {
+  // The practice bank is the platform's QUESTION_BANK feature (15 Oct 2026; /me's `features`): no way into it while it is off.
+  const practiceSession = useSessionIfAny();
+  const practiceOn = featuresOf(practiceSession?.status === "signed-in" ? practiceSession.me : null).includes("QUESTION_BANK");
   const t = useT();
   const th = useTheme();
   const { locale } = useLocale();
@@ -98,7 +102,7 @@ export function StudentHome() {
               {d.upcoming.length === 0 ? t("student.nothingDueShort") : d.upcoming.length === 1 ? t("student.toDoCountOne") : t("student.toDoCountMany", { count: d.upcoming.length })}
             </Text>
             {d.upcoming.length === 0 ? (
-              <Empty title={t("student.nothingDue")} body={t("student.nothingDueBody")} action={<Button label={t("nav.practice")} variant="secondary" onPress={() => router.push("/(app)/practice" as never)} />} />
+              <Empty title={t("student.nothingDue")} body={t("student.nothingDueBody")} action={practiceOn ? <Button label={t("nav.practice")} variant="secondary" onPress={() => router.push("/(app)/practice" as never)} /> : undefined} />
             ) : (
               d.upcoming.map((item) => (
                 <Row

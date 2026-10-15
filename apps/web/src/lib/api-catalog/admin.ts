@@ -105,10 +105,10 @@ export const ADMIN: Endpoint[] = [
   { method: "GET", path: "/api/v1/admin/settings", summary: "The school's details, directory profile and housekeeping thresholds", access: ["ADMIN"], response: c.adminSettingsSchema },
   { method: "POST", path: "/api/v1/admin/settings", summary: "Save the school's details", access: ["ADMIN"], request: c.schoolDetailsBodySchema, response: c.okSchema, emptyBodyStatus: 422 },
   // ---- /admin/vacancies ----------------------------------------------------
-  { method: "GET", path: "/api/v1/admin/vacancies", summary: "The school's own vacancies, with enquiry counts", access: ["ADMIN", "PRINCIPAL"], request: c.adminVacanciesQuerySchema, response: c.adminVacanciesSchema },
-  { method: "POST", path: "/api/v1/admin/vacancies", summary: "Post a vacancy", access: ["ADMIN"], request: c.vacancyCreateBodySchema, response: c.vacancyCreatedSchema, emptyBodyStatus: 422 },
+  { method: "GET", path: "/api/v1/admin/vacancies", feature: "JOB_BOARD", summary: "The school's own vacancies, with enquiry counts", access: ["ADMIN", "PRINCIPAL"], request: c.adminVacanciesQuerySchema, response: c.adminVacanciesSchema },
+  { method: "POST", path: "/api/v1/admin/vacancies", feature: "JOB_BOARD", summary: "Post a vacancy", access: ["ADMIN"], request: c.vacancyCreateBodySchema, response: c.vacancyCreatedSchema, emptyBodyStatus: 422 },
   // No body: the call is the act. Sampled with the fixture's vacancy that is already filled and closed (scripts/sweep-doors.ts), which closing again refuses (422).
-  { method: "POST", path: "/api/v1/admin/vacancies/{postingId}/close", summary: "Take a vacancy off the board", access: ["ADMIN"], response: c.okSchema, sample: (f) => (f.vacancyId ? `/api/v1/admin/vacancies/${f.vacancyId}/close` : null) },
+  { method: "POST", path: "/api/v1/admin/vacancies/{postingId}/close", feature: "JOB_BOARD", summary: "Take a vacancy off the board", access: ["ADMIN"], response: c.okSchema, sample: (f) => (f.vacancyId ? `/api/v1/admin/vacancies/${f.vacancyId}/close` : null) },
   // ---- /principal/leave, /principal/staff ----------------------------------
   { method: "GET", path: "/api/v1/admin/leave", summary: "The leave queue with balances, duty counts and cover suggestions", access: ["ADMIN", "PRINCIPAL"], response: c.adminLeaveSchema },
   // Deciding the fixture's request is a one-way door, so no sampleBody: the sweep's empty body is refused (422) before the request is looked at, and the suite covers the decision.

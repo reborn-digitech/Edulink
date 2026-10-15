@@ -1,5 +1,5 @@
 import type { TranslationKey } from "@/lib/i18n/dictionary";
-import type { SchoolModuleCode } from "@edulink/contracts";
+import type { FeatureCode, SchoolModuleCode } from "@edulink/contracts";
 
 /**
  * ⚠ THE MESSAGE IS A KEY, and the constructor's type is what enforces it.
@@ -79,5 +79,22 @@ export class NotACollegeError extends ModuleOffError {
   constructor(key: TranslationKey = "collegeOffice.refuseNotCollege") {
     super("ACADEMICS", key);
     this.name = "NotACollegeError";
+  }
+}
+
+/**
+ * A door, page or write of a PLATFORM FEATURE the operator has not switched on (15 Oct 2026;
+ * src/lib/platform-features.ts). A NOT_FOUND refusal, so a page renders the app's 404 (the digest above)
+ * and code that maps AccessError codes reads "not here"; `apiFailure` answers it 404 with the envelope
+ * code FEATURE_OFF, so the phone can tell "not open yet" from a missing row. `vars.feature` is the code,
+ * for a log line.
+ */
+export class FeatureOffError extends AccessError {
+  constructor(
+    readonly feature: FeatureCode,
+    key: TranslationKey = "platformFeatures.refuseOff",
+  ) {
+    super(key, "NOT_FOUND", { feature });
+    this.name = "FeatureOffError";
   }
 }

@@ -15,7 +15,8 @@ import { NAV } from "@/lib/nav";
 import { enabledModules, enabledModulesForFamily } from "@/lib/modules";
 import { myDuties } from "@/lib/duties";
 import { streamsOf } from "@/lib/streams";
-import { hiddenByKind } from "@/lib/nav";
+import { hiddenByFeature, hiddenByKind } from "@/lib/nav";
+import { featuresFor } from "@/lib/platform-features";
 import { institutionKindsForFamily } from "@/lib/family-child";
 import { isCollegeKind, streamLabel } from "@/lib/institution";
 
@@ -109,6 +110,11 @@ export async function SignedInShell({
   if (NAV[role].some((item) => item.module)) {
     const on = role === "PARENT" ? await enabledModulesForFamily(session.user.id) : await enabledModules(session.schoolId);
     for (const item of NAV[role]) if (item.module && !on.includes(item.module)) hiddenHrefs.push(item.href);
+  }
+  // A platform feature's entries (15 Oct 2026) exist only while this person may use it (platform-features.ts `mayUse`), for every role.
+  if (NAV[role].some((item) => item.feature)) {
+    const features = await featuresFor(session);
+    for (const href of hiddenByFeature(NAV[role], features)) if (!hiddenHrefs.includes(href)) hiddenHrefs.push(href);
   }
   // A duty's entries (5 Oct 2026) exist only for a FACULTY or HOD who holds the duty (lib/duties.ts).
   if (NAV[role].some((item) => item.duty)) {

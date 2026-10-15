@@ -12,9 +12,10 @@ import { api, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { useRole } from "@/lib/session";
+import { useRole, useSessionIfAny } from "@/lib/session";
 import { formatDateKey, formatInstant, Note, Pill } from "./shared";
 import { MyDataCard } from "./settings";
+import { featuresOf } from "@/lib/nav";
 
 type Profile = z.infer<typeof familyStudentProfileSchema>;
 const DATE_KEY = /^\d{4}-\d{2}-\d{2}$/;
@@ -29,6 +30,9 @@ const FIRST_AVATAR = "preset:fox-sunset";
  * their badges. Choosing an avatar is the app's own picker ("/(app)/avatar").
  */
 export function StudentProfile() {
+  // The practice bank is the platform's QUESTION_BANK feature (15 Oct 2026; /me's `features`): no way into it while it is off.
+  const practiceSession = useSessionIfAny();
+  const practiceOn = featuresOf(practiceSession?.status === "signed-in" ? practiceSession.me : null).includes("QUESTION_BANK");
   // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
   usePrivateScreen();
   const t = useT();
@@ -55,7 +59,7 @@ export function StudentProfile() {
         <>
           <ProfileForm key={`${d.preferredName ?? ""}:${d.bio ?? ""}:${d.birthdate ?? ""}`} profile={d} />
           {d.previousSchools.length > 0 ? <PreviousSchools profile={d} /> : null}
-          {d.practice.topicsPractised > 0 ? (
+          {d.practice.topicsPractised > 0 && practiceOn ? (
             <Card title={t("student.practiceCardTitle")} action={<Button label={t("student.keepPractising")} variant="ghost" onPress={() => router.push("/(app)/practice" as never)} />}>
               <Text variant="xs" tone="muted">
                 {t("student.practiceCardBody")}

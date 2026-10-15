@@ -21,6 +21,7 @@ import { ModuleOff } from "@/components/module-off";
 import { Flash, INTERNSHIP_KIND_KEY, INTERNSHIP_STATUS_KEY, LINK, OUTCOME_KEY, ROUND_KIND_KEY, applicationBadge, offerLine, packageRange, reasons, statusBadge } from "@/components/placement/parts";
 import { answerOfferAction, applyAction, diaryAction, internshipFileAction, proposeInternshipAction, saveProfileAction, withdrawAction } from "@/app/(app)/placement/actions";
 import { ActionForm } from "@/components/ui/action-form";
+import { mayUse, mayUseAny } from "@/lib/platform-features";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -40,6 +41,8 @@ const CHECK = "flex items-center gap-2 text-sm";
  */
 export default async function StudentPlacementPage({ searchParams }: { searchParams: Promise<{ ok?: string; error?: string }> }) {
   const ctx = await requireRole("STUDENT");
+  // The platform's switches (15 Oct 2026): the practice links while the question bank is on; the sessions link while either kind of session is.
+  const [practiceOn, sessionsOn] = await Promise.all([mayUse("QUESTION_BANK", ctx), mayUseAny(["EXPERT_SESSIONS", "TEACHER_SESSIONS"], ctx)]);
   const moment = await momentFormatter(ctx.schoolId);
   const streams = await streamsOf(ctx.schoolId);
   const t = await getT();
@@ -242,7 +245,7 @@ export default async function StudentPlacementPage({ searchParams }: { searchPar
             {p.prep.length === 0 ? <p className="text-fg-muted">{t("placement.noPrep")}</p> : null}
             {p.prep.map((x) => (
               <div key={x.slug} className="flex justify-between gap-3">
-                <Link className={LINK} href={`/student/practice/${x.slug}`}>{x.name}</Link>
+                {practiceOn ? <Link className={LINK} href={`/student/practice/${x.slug}`}>{x.name}</Link> : <span>{x.name}</span>}
                 <span className="text-fg-muted">{t("placement.prepLine", { count: x.questionCount, level: x.level })}</span>
               </div>
             ))}
@@ -259,7 +262,7 @@ export default async function StudentPlacementPage({ searchParams }: { searchPar
               </div>
             ))}
             {p.mentorSlots.length ? <p className="text-fg-muted" data-testid="mentor-free-line">{t("riskDecisions.alumniSessionFree")}</p> : null}
-            {p.mentorSlots.length ? <Link className={LINK} href="/sessions">{t("placement.bookInSessions")}</Link> : null}
+            {p.mentorSlots.length && sessionsOn ? <Link className={LINK} href="/sessions">{t("placement.bookInSessions")}</Link> : null}
           </CardBody>
         </Card>
       </div>

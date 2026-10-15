@@ -1279,6 +1279,21 @@
                         ]
                       },
                       "default": []
+                    },
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "ASSISTANT",
+                          "QUESTION_BANK",
+                          "QUESTION_GIG",
+                          "EXPERT_SESSIONS",
+                          "TEACHER_SESSIONS",
+                          "JOB_BOARD",
+                          "TEXT_MESSAGING"
+                        ]
+                      }
                     }
                   },
                   "required": [
@@ -1563,6 +1578,21 @@
                         ]
                       },
                       "default": []
+                    },
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "ASSISTANT",
+                          "QUESTION_BANK",
+                          "QUESTION_GIG",
+                          "EXPERT_SESSIONS",
+                          "TEACHER_SESSIONS",
+                          "JOB_BOARD",
+                          "TEXT_MESSAGING"
+                        ]
+                      }
                     }
                   },
                   "required": [
@@ -9752,6 +9782,7 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-feature": "JOB_BOARD",
         "responses": {
           "200": {
             "description": "OK",
@@ -9913,6 +9944,7 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-feature": "JOB_BOARD",
         "responses": {
           "200": {
             "description": "OK",
@@ -10042,6 +10074,7 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-feature": "JOB_BOARD",
         "responses": {
           "200": {
             "description": "OK",
@@ -13806,6 +13839,7 @@
         "x-access": [
           "TEACHER"
         ],
+        "x-feature": "QUESTION_BANK",
         "responses": {
           "200": {
             "description": "OK",
@@ -14152,6 +14186,7 @@
         "x-access": [
           "TEACHER"
         ],
+        "x-feature": "QUESTION_BANK",
         "responses": {
           "200": {
             "description": "OK",
@@ -14267,6 +14302,7 @@
         "x-access": [
           "TEACHER"
         ],
+        "x-feature": "QUESTION_BANK",
         "responses": {
           "200": {
             "description": "OK",
@@ -15462,6 +15498,7 @@
           "ADMIN",
           "TEACHER"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -15727,6 +15764,7 @@
           "ADMIN",
           "TEACHER"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -19315,6 +19353,7 @@
         "x-access": [
           "STUDENT"
         ],
+        "x-feature": "QUESTION_BANK",
         "responses": {
           "200": {
             "description": "OK",
@@ -21016,6 +21055,7 @@
         "x-access": [
           "PARENT"
         ],
+        "x-feature": "QUESTION_BANK",
         "responses": {
           "200": {
             "description": "OK",
@@ -30382,6 +30422,8 @@
           }
         ],
         "x-access": "signed-in",
+        "x-feature": "JOB_BOARD",
+        "x-feature-note": "an enquiry about a vacancy is refused 404 FEATURE_OFF while the JOB_BOARD feature is off; an admission enquiry is always open (src/lib/enquiries.ts)",
         "responses": {
           "200": {
             "description": "OK",
@@ -30748,6 +30790,7 @@
           }
         ],
         "x-access": "signed-in",
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -30911,6 +30954,7 @@
           }
         ],
         "x-access": "signed-in",
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -31067,6 +31111,7 @@
           }
         ],
         "x-access": "signed-in",
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -31557,6 +31602,7 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-feature": "JOB_BOARD",
         "responses": {
           "200": {
             "description": "OK",
@@ -31691,6 +31737,7 @@
         "x-access": [
           "EXPERT"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -31808,6 +31855,7 @@
         "x-access": [
           "EXPERT"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -31938,6 +31986,7 @@
         "x-access": [
           "EXPERT"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -32044,6 +32093,7 @@
         "x-access": [
           "EXPERT"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -32732,6 +32782,7 @@
         "x-access": [
           "EXPERT"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -32885,6 +32936,7 @@
         "x-access": [
           "EXPERT"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -32960,6 +33012,7 @@
         "x-access": [
           "EXPERT"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -33031,6 +33084,7 @@
         "description": "No session needed.",
         "security": [],
         "x-access": "anyone",
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -33596,6 +33650,239 @@
             }
           }
         }
+      }
+    },
+    "/api/v1/operator/features": {
+      "get": {
+        "summary": "The platform's feature switches: each feature on or off, when and by whom it was last switched, and the one count that explains it",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string",
+                            "enum": [
+                              "ASSISTANT",
+                              "QUESTION_BANK",
+                              "QUESTION_GIG",
+                              "EXPERT_SESSIONS",
+                              "TEACHER_SESSIONS",
+                              "JOB_BOARD",
+                              "TEXT_MESSAGING"
+                            ]
+                          },
+                          "enabled": {
+                            "type": "boolean"
+                          },
+                          "changedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "changedByName": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "count": {
+                            "type": "integer",
+                            "minimum": 0
+                          }
+                        },
+                        "required": [
+                          "code",
+                          "enabled",
+                          "changedAt",
+                          "changedByName",
+                          "count"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "features"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/features/{code}": {
+      "post": {
+        "summary": "Switch one platform feature on or off for the whole platform ({ on }); audited, and a no-op when it already stands so",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "enum": [
+                        "ASSISTANT",
+                        "QUESTION_BANK",
+                        "QUESTION_GIG",
+                        "EXPERT_SESSIONS",
+                        "TEACHER_SESSIONS",
+                        "JOB_BOARD",
+                        "TEXT_MESSAGING"
+                      ]
+                    },
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "changed": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "enabled",
+                    "changed"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "on": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "on"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/api/v1/operator/overview": {
@@ -41145,6 +41432,612 @@
         ]
       }
     },
+    "/api/v1/public/expert-applications": {
+      "post": {
+        "summary": "Apply to be an expert, signed out: a multipart body with the fields as JSON (`application`) and one PDF, JPG or PNG of at most 5 MB (`document`); no account is made; the applicant is emailed in their language; 201 with the address the operator will write to, 422 with the field for a refusal (an address already an expert's, an application already waiting), 429 at the hourly limit per address",
+        "description": "No session needed.",
+        "security": [],
+        "x-access": "anyone",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "email": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "email"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "maxLength": 400
+                  },
+                  "email": {
+                    "type": "string",
+                    "maxLength": 400
+                  },
+                  "phone": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "city": {
+                    "type": "string",
+                    "maxLength": 400
+                  },
+                  "organisation": {
+                    "type": "string",
+                    "maxLength": 400,
+                    "nullable": true
+                  },
+                  "headline": {
+                    "type": "string",
+                    "maxLength": 400
+                  },
+                  "specialisms": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "maxLength": 40
+                    },
+                    "maxItems": 20
+                  },
+                  "languages": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "maxLength": 8
+                    },
+                    "maxItems": 10
+                  },
+                  "yearsExperience": {
+                    "type": "number"
+                  },
+                  "bio": {
+                    "type": "string",
+                    "maxLength": 4000
+                  },
+                  "links": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "maxLength": 1000
+                    },
+                    "maxItems": 10,
+                    "default": []
+                  },
+                  "offering": {
+                    "type": "string",
+                    "maxLength": 20
+                  },
+                  "declaration": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "name",
+                  "email",
+                  "phone",
+                  "city",
+                  "headline",
+                  "specialisms",
+                  "languages",
+                  "yearsExperience",
+                  "bio",
+                  "offering",
+                  "declaration"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/expert-applications": {
+      "get": {
+        "summary": "The experts who applied from the login page, every field and whether a document was sent (?status=, PENDING by default, oldest first)",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "email": {
+                            "type": "string"
+                          },
+                          "phone": {
+                            "type": "string"
+                          },
+                          "city": {
+                            "type": "string"
+                          },
+                          "organisation": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "headline": {
+                            "type": "string"
+                          },
+                          "specialisms": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "languages": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "yearsExperience": {
+                            "type": "integer"
+                          },
+                          "bio": {
+                            "type": "string"
+                          },
+                          "links": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "offering": {
+                            "type": "string"
+                          },
+                          "hasDocument": {
+                            "type": "boolean"
+                          },
+                          "declarationAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "PENDING",
+                              "APPROVED",
+                              "REFUSED",
+                              "WITHDRAWN"
+                            ]
+                          },
+                          "refusalCode": {
+                            "type": "string",
+                            "enum": [
+                              "NOT_QUALIFIED",
+                              "DOCUMENT_UNCLEAR",
+                              "DUPLICATE",
+                              "OTHER"
+                            ],
+                            "nullable": true
+                          },
+                          "refusalNote": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "decidedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "locale": {
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "email",
+                          "phone",
+                          "city",
+                          "organisation",
+                          "headline",
+                          "specialisms",
+                          "languages",
+                          "yearsExperience",
+                          "bio",
+                          "links",
+                          "offering",
+                          "hasDocument",
+                          "declarationAt",
+                          "status",
+                          "refusalCode",
+                          "refusalNote",
+                          "decidedAt",
+                          "locale",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "PENDING",
+                      "APPROVED",
+                      "REFUSED",
+                      "WITHDRAWN"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/expert-applications/{id}/decide": {
+      "post": {
+        "summary": "Approve an expert's application (the account, an unpublished profile and the invitation's link that sets the password; KYC still runs) or refuse it with a coded reason (OTHER with a note), the applicant told by email in their language; audited",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "APPROVED",
+                        "REFUSED"
+                      ]
+                    },
+                    "userId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "inviteSent": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "status",
+                    "userId",
+                    "inviteSent"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "decision": {
+                    "type": "string",
+                    "enum": [
+                      "APPROVE",
+                      "REFUSE"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string",
+                    "enum": [
+                      "NOT_QUALIFIED",
+                      "DOCUMENT_UNCLEAR",
+                      "DUPLICATE",
+                      "OTHER"
+                    ]
+                  },
+                  "note": {
+                    "type": "string",
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "decision"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/operator/expert-applications/{id}/document": {
+      "get": {
+        "summary": "The document an expert sent with their application, to the operator alone (the file named on the application's own row; never cached)",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
     "/api/v1/practice/attempts": {
       "post": {
         "summary": "Open a sitting on a chapter (or on a chapter the teacher set), or pick up the one left half-way, with the question to answer now",
@@ -41157,6 +42050,7 @@
         "x-access": [
           "STUDENT"
         ],
+        "x-feature": "QUESTION_BANK",
         "responses": {
           "200": {
             "description": "OK",
@@ -41413,6 +42307,7 @@
         "x-access": [
           "STUDENT"
         ],
+        "x-feature": "QUESTION_BANK",
         "responses": {
           "200": {
             "description": "OK",
@@ -41569,6 +42464,7 @@
         "x-access": [
           "STUDENT"
         ],
+        "x-feature": "QUESTION_BANK",
         "responses": {
           "200": {
             "description": "OK",
@@ -41723,6 +42619,7 @@
         "x-access": [
           "STUDENT"
         ],
+        "x-feature": "QUESTION_BANK",
         "responses": {
           "200": {
             "description": "OK",
@@ -41840,6 +42737,7 @@
         "x-access": [
           "STUDENT"
         ],
+        "x-feature": "QUESTION_BANK",
         "responses": {
           "200": {
             "description": "OK",
@@ -41960,6 +42858,7 @@
         "x-access": [
           "STUDENT"
         ],
+        "x-feature": "QUESTION_BANK",
         "responses": {
           "200": {
             "description": "OK",
@@ -42097,6 +42996,7 @@
         "x-access": [
           "STUDENT"
         ],
+        "x-feature": "QUESTION_BANK",
         "responses": {
           "200": {
             "description": "OK",
@@ -42240,6 +43140,7 @@
         "x-access": [
           "STUDENT"
         ],
+        "x-feature": "QUESTION_BANK",
         "responses": {
           "200": {
             "description": "OK",
@@ -42385,6 +43286,7 @@
         "x-access": [
           "TEACHER"
         ],
+        "x-feature": "QUESTION_BANK",
         "responses": {
           "200": {
             "description": "OK",
@@ -42508,6 +43410,7 @@
         "x-access": [
           "TEACHER"
         ],
+        "x-feature": "QUESTION_BANK",
         "responses": {
           "200": {
             "description": "OK",
@@ -42675,6 +43578,7 @@
           }
         ],
         "x-access": "signed-in",
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -42852,6 +43756,7 @@
           "ADMIN",
           "TEACHER"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -42957,6 +43862,7 @@
         "x-access": [
           "STUDENT"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -43058,6 +43964,7 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -43169,6 +44076,7 @@
         "x-access": [
           "PARENT"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -43260,6 +44168,7 @@
           "TEACHER",
           "PARENT"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -43716,6 +44625,7 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-feature": "JOB_BOARD",
         "responses": {
           "200": {
             "description": "OK",
@@ -60491,6 +61401,9 @@
                       "items": {
                         "type": "string"
                       }
+                    },
+                    "platformOn": {
+                      "type": "boolean"
                     }
                   },
                   "required": [
@@ -60725,7 +61638,8 @@
                         "cap-daily",
                         "no-transport",
                         "disabled",
-                        "unverifiedNumber"
+                        "unverifiedNumber",
+                        "feature-off"
                       ],
                       "nullable": true
                     }
@@ -92253,6 +93167,7 @@
         "x-access": [
           "TEACHER"
         ],
+        "x-feature": "QUESTION_GIG",
         "responses": {
           "200": {
             "description": "OK",
@@ -92610,6 +93525,7 @@
         "x-access": [
           "TEACHER"
         ],
+        "x-feature": "QUESTION_GIG",
         "responses": {
           "200": {
             "description": "OK",
@@ -92908,6 +93824,7 @@
         "x-access": [
           "TEACHER"
         ],
+        "x-feature": "QUESTION_GIG",
         "responses": {
           "200": {
             "description": "OK",
@@ -93013,6 +93930,7 @@
         "x-access": [
           "TEACHER"
         ],
+        "x-feature": "QUESTION_GIG",
         "responses": {
           "200": {
             "description": "OK",
@@ -93152,6 +94070,7 @@
         "x-access": [
           "TEACHER"
         ],
+        "x-feature": "QUESTION_GIG",
         "responses": {
           "200": {
             "description": "OK",
@@ -93375,6 +94294,7 @@
         "x-access": [
           "TEACHER"
         ],
+        "x-feature": "QUESTION_GIG",
         "responses": {
           "200": {
             "description": "OK",
@@ -93683,6 +94603,7 @@
         "x-access": [
           "TEACHER"
         ],
+        "x-feature": "QUESTION_GIG",
         "responses": {
           "200": {
             "description": "OK",
@@ -93917,6 +94838,8 @@
         "x-access": [
           "TEACHER"
         ],
+        "x-feature": "QUESTION_GIG",
+        "x-feature-note": "open while the QUESTION_GIG feature is on, and while it is off to a teacher the company still owes for questions the bank took (src/lib/question-gig.ts payeeDoorOpen); 404 to any other teacher",
         "responses": {
           "200": {
             "description": "OK",
@@ -94030,6 +94953,10 @@
         "x-access": [
           "STUDENT",
           "PARENT"
+        ],
+        "x-feature": [
+          "EXPERT_SESSIONS",
+          "TEACHER_SESSIONS"
         ],
         "responses": {
           "200": {
@@ -94377,6 +95304,10 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-feature": [
+          "EXPERT_SESSIONS",
+          "TEACHER_SESSIONS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -94564,6 +95495,10 @@
         "x-access": [
           "PARENT"
         ],
+        "x-feature": [
+          "EXPERT_SESSIONS",
+          "TEACHER_SESSIONS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -94746,6 +95681,10 @@
           "TEACHER",
           "EXPERT"
         ],
+        "x-feature": [
+          "EXPERT_SESSIONS",
+          "TEACHER_SESSIONS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -94864,6 +95803,10 @@
         "x-access": [
           "STUDENT",
           "PARENT"
+        ],
+        "x-feature": [
+          "EXPERT_SESSIONS",
+          "TEACHER_SESSIONS"
         ],
         "responses": {
           "200": {
@@ -95024,6 +95967,10 @@
           "STUDENT",
           "PARENT"
         ],
+        "x-feature": [
+          "EXPERT_SESSIONS",
+          "TEACHER_SESSIONS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -95135,6 +96082,7 @@
         "x-access": [
           "PARENT"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -95481,6 +96429,7 @@
         "x-access": [
           "PARENT"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -95687,6 +96636,10 @@
         "x-access": [
           "EXPERT",
           "TEACHER"
+        ],
+        "x-feature": [
+          "EXPERT_SESSIONS",
+          "TEACHER_SESSIONS"
         ],
         "responses": {
           "200": {
@@ -95984,6 +96937,10 @@
           "EXPERT",
           "TEACHER"
         ],
+        "x-feature": [
+          "EXPERT_SESSIONS",
+          "TEACHER_SESSIONS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -96111,6 +97068,10 @@
           "EXPERT",
           "TEACHER"
         ],
+        "x-feature": [
+          "EXPERT_SESSIONS",
+          "TEACHER_SESSIONS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -96219,6 +97180,10 @@
         "x-access": [
           "EXPERT",
           "TEACHER"
+        ],
+        "x-feature": [
+          "EXPERT_SESSIONS",
+          "TEACHER_SESSIONS"
         ],
         "responses": {
           "200": {
@@ -96331,6 +97296,7 @@
         "x-access": [
           "EXPERT"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -96607,6 +97573,7 @@
         "x-access": [
           "EXPERT"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -96950,6 +97917,7 @@
         "x-access": [
           "EXPERT"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -97238,6 +98206,7 @@
         "x-access": [
           "EXPERT"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -97544,6 +98513,7 @@
         "x-access": [
           "EXPERT"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -97777,6 +98747,7 @@
         "x-access": [
           "EXPERT"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -97865,6 +98836,10 @@
         "x-access": [
           "ADMIN",
           "PRINCIPAL"
+        ],
+        "x-feature": [
+          "EXPERT_SESSIONS",
+          "TEACHER_SESSIONS"
         ],
         "responses": {
           "200": {
@@ -98026,6 +99001,7 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-feature": "TEACHER_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -205962,6 +206938,7 @@
           "ADMIN",
           "TEACHER"
         ],
+        "x-feature": "EXPERT_SESSIONS",
         "responses": {
           "200": {
             "description": "OK",
@@ -215189,6 +216166,7 @@
         "x-access": [
           "STUDENT"
         ],
+        "x-feature": "QUESTION_BANK",
         "responses": {
           "200": {
             "description": "OK",
@@ -218158,6 +219136,7 @@
           "TPO",
           "ACCOUNTS"
         ],
+        "x-feature": "ASSISTANT",
         "responses": {
           "200": {
             "description": "OK",
@@ -218299,6 +219278,7 @@
           "ACCOUNTS"
         ],
         "x-module": "ASSISTANT",
+        "x-feature": "ASSISTANT",
         "responses": {
           "200": {
             "description": "OK",
@@ -218447,6 +219427,7 @@
           "TPO",
           "ACCOUNTS"
         ],
+        "x-feature": "ASSISTANT",
         "responses": {
           "200": {
             "description": "OK",
@@ -218586,6 +219567,7 @@
           "TPO",
           "ACCOUNTS"
         ],
+        "x-feature": "ASSISTANT",
         "responses": {
           "200": {
             "description": "OK",
@@ -218934,6 +219916,7 @@
           "TPO",
           "ACCOUNTS"
         ],
+        "x-feature": "ASSISTANT",
         "responses": {
           "200": {
             "description": "OK",
@@ -219041,6 +220024,7 @@
           "ACCOUNTS"
         ],
         "x-module": "ASSISTANT",
+        "x-feature": "ASSISTANT",
         "responses": {
           "200": {
             "description": "OK",
@@ -219381,6 +220365,7 @@
           "TPO",
           "ACCOUNTS"
         ],
+        "x-feature": "ASSISTANT",
         "responses": {
           "200": {
             "description": "OK",
@@ -219496,6 +220481,7 @@
           "ADMIN",
           "PRINCIPAL"
         ],
+        "x-feature": "ASSISTANT",
         "responses": {
           "200": {
             "description": "OK",
@@ -219650,6 +220636,7 @@
         "x-access": [
           "ADMIN"
         ],
+        "x-feature": "ASSISTANT",
         "responses": {
           "200": {
             "description": "OK",
@@ -219825,6 +220812,7 @@
         "x-access": [
           "PARENT"
         ],
+        "x-feature": "ASSISTANT",
         "responses": {
           "200": {
             "description": "OK",
@@ -219930,6 +220918,7 @@
         "x-access": [
           "PARENT"
         ],
+        "x-feature": "ASSISTANT",
         "responses": {
           "200": {
             "description": "OK",
@@ -220041,6 +221030,7 @@
           "FACULTY",
           "HOD"
         ],
+        "x-feature": "ASSISTANT",
         "responses": {
           "200": {
             "description": "OK",
@@ -220130,6 +221120,7 @@
           "FACULTY",
           "HOD"
         ],
+        "x-feature": "ASSISTANT",
         "responses": {
           "200": {
             "description": "OK",

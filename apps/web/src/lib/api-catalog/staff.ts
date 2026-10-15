@@ -28,9 +28,9 @@ export const STAFF: Endpoint[] = [
   // ---- /timetable -----------------------------------------------------------
   { method: "GET", path: "/api/v1/staff/timetable", summary: "The teacher's own week", access: ["TEACHER"], request: c.weekQuerySchema, response: c.staffTimetableSchema },
   // ---- /teacher/practice ----------------------------------------------------
-  { method: "GET", path: "/api/v1/staff/practice", summary: "One class's practice picture", access: ["TEACHER"], request: c.practiceQuerySchema, response: c.staffPracticeSchema },
-  { method: "POST", path: "/api/v1/staff/practice", summary: "Set a chapter and a rung for a class", access: ["TEACHER"], request: c.setPracticeSchema, response: c.practiceCreatedSchema, emptyBodyStatus: 422 },
-  { method: "POST", path: "/api/v1/staff/practice/archive", summary: "Take a set chapter down", access: ["TEACHER"], request: c.archivePracticeSchema, response: c.okSchema, emptyBodyStatus: 422 },
+  { method: "GET", path: "/api/v1/staff/practice", feature: "QUESTION_BANK", summary: "One class's practice picture", access: ["TEACHER"], request: c.practiceQuerySchema, response: c.staffPracticeSchema },
+  { method: "POST", path: "/api/v1/staff/practice", feature: "QUESTION_BANK", summary: "Set a chapter and a rung for a class", access: ["TEACHER"], request: c.setPracticeSchema, response: c.practiceCreatedSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/staff/practice/archive", feature: "QUESTION_BANK", summary: "Take a set chapter down", access: ["TEACHER"], request: c.archivePracticeSchema, response: c.okSchema, emptyBodyStatus: 422 },
   // ---- /teacher/meetings ----------------------------------------------------
   { method: "GET", path: "/api/v1/staff/meetings", summary: "My upcoming meeting slots", access: ["TEACHER"], response: c.staffMeetingsSchema },
   { method: "POST", path: "/api/v1/staff/meetings", summary: "Offer a run of meeting slots", access: ["TEACHER"], request: c.publishSlotsSchema, response: c.slotsPublishedSchema, emptyBodyStatus: 422 },
@@ -42,8 +42,8 @@ export const STAFF: Endpoint[] = [
   { method: "GET", path: "/api/v1/staff/profile", summary: "The teacher's own profile", access: ["TEACHER"], response: c.staffProfileSchema },
   { method: "POST", path: "/api/v1/staff/profile", summary: "Save my preferred name, bio, avatar and date of birth", access: ["TEACHER"], request: c.saveProfileSchema, response: c.okSchema, emptyBodyStatus: 422 },
   // ---- /experts -------------------------------------------------------------
-  { method: "GET", path: "/api/v1/staff/experts", summary: "The expert marketplace and this school's bookings", access: ["ADMIN", "TEACHER"], request: c.expertsQuerySchema, response: c.staffExpertsSchema },
-  { method: "POST", path: "/api/v1/staff/experts/book", summary: "Book an expert's open slot", access: ["ADMIN", "TEACHER"], request: c.bookExpertSchema, response: c.expertBookedSchema, emptyBodyStatus: 422 },
+  { method: "GET", path: "/api/v1/staff/experts", feature: "EXPERT_SESSIONS", summary: "The expert marketplace and this school's bookings", access: ["ADMIN", "TEACHER"], request: c.expertsQuerySchema, response: c.staffExpertsSchema },
+  { method: "POST", path: "/api/v1/staff/experts/book", feature: "EXPERT_SESSIONS", summary: "Book an expert's open slot", access: ["ADMIN", "TEACHER"], request: c.bookExpertSchema, response: c.expertBookedSchema, emptyBodyStatus: 422 },
   // ---- /principal -----------------------------------------------------------
   { method: "GET", path: "/api/v1/staff/principal/overview", summary: "The head's dashboard over a window", access: ["PRINCIPAL", "ADMIN"], request: c.spanQuerySchema, response: c.principalOverviewSchema },
   { method: "GET", path: "/api/v1/staff/principal/classes", summary: "Class insights over a window", access: ["PRINCIPAL", "ADMIN"], request: c.principalClassesQuerySchema, response: c.principalClassesSchema },

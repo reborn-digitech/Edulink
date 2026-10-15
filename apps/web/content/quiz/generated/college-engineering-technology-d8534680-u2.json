@@ -1,0 +1,294 @@
+{
+  "subject": "ENGINEERING",
+  "classLevel": 13,
+  "chapter": "Unit 2 — Syllabus",
+  "name": "Syllabus",
+  "slug": "college-engineering-technology-d8534680-u2",
+  "summary": "This chapter explains the importance of project planning and management in engineering projects.",
+  "position": 2,
+  "source": "generated against SPPU \"Foundation Course in Data Science\", Technology, unit 2 (2024)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "प्रकल्प योजना एवं प्रबंधन",
+      "summary": "इस अध्याय में इंजीनियरिंग परियोजनाओं में प्रोजेक्ट प्लानिंग एवं प्रबंधन के महत्व की चर्चा की गई है।"
+    },
+    "mr": {
+      "name": "प्रकल्प योजना आणि प्रबंधन",
+      "summary": "ही अध्याय इंजीनियरिंग परियोजनांमध्ये प्रकल्प योजना आणि प्रबंधनच्या महत्त्वाचा अभ्यास करते."
+    }
+  },
+  "audience": "COLLEGE",
+  "streams": [
+    "ENGINEERING"
+  ],
+  "programme": "Technology",
+  "yearOrSemester": null,
+  "syllabusBoard": "SPPU",
+  "document": "sppu/faculty-of-science-and-technology/iii-technology/Foundation_Course_in_Data_Science.pdf",
+  "book": "Foundation Course in Data Science",
+  "edition": "2024",
+  "generatedAt": "2026-10-12T00:48:42.959Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a technique used for model evaluation in the machine learning pipeline?",
+      "choices": [
+        "Grid search",
+        "Leave-one-out cross-validation",
+        "Bayesian optimization",
+        "Hyperparameter tuning"
+      ],
+      "answerIndex": 1,
+      "solution": "Leave-one-out cross-validation is a technique used for model evaluation. Grid search, Bayesian optimization, and hyperparameter tuning are related to model optimization, not evaluation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी एक मॉडल मूल्यांकन के लिए मशीन लर्निंग पाइपलाइन में उपयोग की जाने वाली तकनीक है?",
+          "choices": [
+            "ग्रिड सर्च",
+            "एक-एक करके छोड़ देना क्रॉस-वैलिडेशन",
+            "बेयसियन अनुकूलन",
+            "अतिपैरामीटर समायोजन"
+          ],
+          "solution": "एक-एक करके छोड़ देना क्रॉस-वैलिडेशन मॉडल मूल्यांकन के लिए एक तकनीक है। ग्रिड सर्च, बेयसियन अनुकूलन और अतिपैरामीटर समायोजन मॉडल अनुकूलन से संबंधित हैं, न कि मूल्यांकन से।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi technical terms for machine learning concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणती तंत्रे मशीन लर्निंग पायामध्ये मॉडेल मूल्यांकनासाठी वापरली जाते?",
+          "choices": [
+            "ग्रिड सर्च",
+            "लिव्ह-ओन-आउट क्रॉस-वैलिडेशन",
+            "बेझियन ऑप्टिमायझेशन",
+            "हायपरपॅरामीटर ट्यूनिंग"
+          ],
+          "solution": "लिव्ह-ओन-आउट क्रॉस-वैलिडेशन मॉडेल मूल्यांकनासाठी वापरली जाणारी तंत्रे आहे. ग्रिड सर्च, बेझियन ऑप्टिमायझेशन आणि हायपरपॅरामीटर ट्यूनिंग मॉडेल ऑप्टिमायझेशनशी संबंधित आहेत, मूल्यांकनाशी नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for machine learning concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses model optimization with evaluation",
+        null,
+        "Knows the term but not its purpose",
+        "Mixes up different stages of model development"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies leave-one-out cross-validation as a model evaluation technique, while distinguishing it from optimization methods. The reasoning aligns with standard machine learning concepts.",
+      "sources": [
+        {
+          "document": "sppu/faculty-of-science-and-technology/iii-technology/Foundation_Course_in_Data_Science.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Syllabus"
+          ]
+        },
+        {
+          "document": "sppu/faculty-of-science-and-technology/iii-technology/Foundation_Course_in_Data_Science.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Syllabus"
+          ]
+        }
+      ],
+      "edition": "2024",
+      "generatedAt": "2026-10-12T00:48:42.959Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of a supervised learning algorithm?",
+      "choices": [
+        "K-means clustering",
+        "Principal Component Analysis (PCA)",
+        "Decision Tree",
+        "Random Forest"
+      ],
+      "answerIndex": 2,
+      "solution": "A Decision Tree is a supervised learning algorithm, as it uses labeled data to make predictions. K-means, PCA, and Random Forest are not supervised learning algorithms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक सुपरवाइज्ड लर्निंग एल्गोरिथ्म का उदाहरण है?",
+          "choices": [
+            "के-मीन्स क्लस्टरिंग",
+            "प्रिंसिपल कम्पोनेंट एनालिसिस (PCA)",
+            "निर्णय वृक्ष",
+            "रैंडम फॉरेस्ट"
+          ],
+          "solution": "निर्णय वृक्ष एक सुपरवाइज्ड लर्निंग एल्गोरिथ्म है, क्योंकि यह लेबल वाले डेटा का उपयोग प्रस्तावना करने के लिए करता है। के-मीन्स, PCA और रैंडम फॉरेस्ट सुपरवाइज्ड लर्निंग एल्गोरिथ्म नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original meaning, with appropriate technical terms used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता एक नियंत्रित शिक्षण अल्गोरिदमचा उदाहरण आहे?",
+          "choices": [
+            "K-means क्लस्टरिंग",
+            "मुख्य घटक विश्लेषण (PCA)",
+            "निर्णय वृक्ष",
+            "रॅंडॉम फॉरेस्ट"
+          ],
+          "solution": "निर्णय वृक्ष हा नियंत्रित शिक्षण अल्गोरिदम आहे, कारण तो निश्चित डेटा वापरून भविष्यवाणी करतो. K-means, PCA आणि रॅंडॉम फॉरेस्ट हे नियंत्रित शिक्षण अल्गोरिदम नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi technical terms for machine learning concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses unsupervised learning with supervised learning",
+        "Knows the term but not its classification",
+        null,
+        "Mixes up different types of algorithms"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (Decision Tree), as it is a supervised learning algorithm. The other options are indeed unsupervised or ensemble methods, not supervised. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "sppu/faculty-of-science-and-technology/iii-technology/Foundation_Course_in_Data_Science.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Syllabus"
+          ]
+        },
+        {
+          "document": "sppu/faculty-of-science-and-technology/iii-technology/Foundation_Course_in_Data_Science.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Syllabus"
+          ]
+        }
+      ],
+      "edition": "2024",
+      "generatedAt": "2026-10-12T00:48:42.959Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A data scientist is evaluating a model for a healthcare application where missing predictions can be life-threatening. Which metric should be prioritized?",
+      "choices": [
+        "Accuracy",
+        "F1-score",
+        "Precision",
+        "Recall"
+      ],
+      "answerIndex": 3,
+      "solution": "Recall should be prioritized because it measures the ability of the model to correctly identify positive cases, which is crucial in healthcare applications where missing a positive case can have severe consequences. Accuracy, F1-score, and Precision are less focused on identifying all positive cases.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक डेटा विज्ञानी के लिए स्वास्थ्य देखभाल एप्लिकेशन के लिए एक मॉडल का मूल्यांकन कर रहा है जहां अनुमान छूट सकते हैं जो जीवन खतरनाक हो सकते हैं। कौन सा मापदंड प्राथमिकता देना चाहिए?",
+          "choices": [
+            "सहीता",
+            "F1-स्कोर",
+            "सटीकता",
+            "याददाश्त"
+          ],
+          "solution": "याददाश्त को प्राथमिकता देनी चाहिए क्योंकि यह मॉडल के सकारात्मक मामलों को सही ढंग से पहचानने की क्षमता को मापता है, जो स्वास्थ्य देखभाल एप्लिकेशन में महत्वपूर्ण है जहां सकारात्मक मामले छूट सकते हैं जिसके गंभीर परिणाम हो सकते हैं। सहीता, F1-स्कोर और सटीकता सकारात्मक मामलों को पहचानने पर कम ध्यान केंद्रित करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the correct answer remains in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका आरोग्य संरक्षण अनुप्रयोगासाठी मॉडेलच्या मूल्यांकनासाठी डेटा विज्ञानी असतो, जेथे अनुमानात असलेल्या अभावामुळे जीवन धोक्यात येऊ शकते. कोणता मापदंड वरीष्ठता द्यायला हवा?",
+          "choices": [
+            "अचूकता",
+            "F1-स्कोअर",
+            "सार्थकता",
+            "संवेदनशीलता"
+          ],
+          "solution": "संवेदनशीलता वरीष्ठता द्यायला हवी कारण ती मॉडेलच्या धनात्मक परिस्थितींच्या योग्य ओळखीच्या क्षमतेचे मापन करते, जे आरोग्य संरक्षण अनुप्रयोगांमध्ये खूप महत्वाचे आहे कारण धनात्मक परिस्थिती ओळखू शकल्याखेरीज गंभीर परिणाम होऊ शकतात. अचूकता, F1-स्कोअर आणि सार्थकता धनात्मक परिस्थितींच्या ओळखीवर जास्त लक्ष केंद्रित करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for machine learning metrics.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Focuses on overall correctness",
+        "Balances precision and recall",
+        "Focuses on correct positive predictions",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies recall as the most appropriate metric in this context, as it focuses on minimizing false negatives, which is critical in healthcare applications where missing a positive case can be life-threatening.",
+      "sources": [
+        {
+          "document": "sppu/faculty-of-science-and-technology/iii-technology/Foundation_Course_in_Data_Science.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Syllabus"
+          ]
+        },
+        {
+          "document": "sppu/faculty-of-science-and-technology/iii-technology/Foundation_Course_in_Data_Science.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Syllabus"
+          ]
+        }
+      ],
+      "edition": "2024",
+      "generatedAt": "2026-10-12T00:48:42.959Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

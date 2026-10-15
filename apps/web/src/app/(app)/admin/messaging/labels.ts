@@ -36,6 +36,8 @@ export const SKIP_KEY: Record<string, TranslationKey> = {
   "no-transport": "messaging.skipNoTransport",
   disabled: "messaging.skipDisabled",
   unverifiedNumber: "officeBulk.skipUnverifiedNumber",
+  // The platform's text messaging switched off by the operator (15 Oct 2026).
+  "feature-off": "platformFeatures.skipFeatureOff",
 };
 
 /** What each caller of deliverToUser names as its purpose. */

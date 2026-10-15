@@ -5,6 +5,7 @@ import { getT } from "@/lib/i18n/server";
 import { requireApiUser, AccessError } from "@/lib/tenancy";
 import { addSlot, removeSlot } from "@/lib/experts";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
+import { assertFeatureForAction } from "@/lib/feature-page";
 
 /**
  * ⚠ `errorKey` AND `error`, and the split is honest rather than untidy — the
@@ -17,6 +18,8 @@ type Result = { ok: boolean; errorKey?: TranslationKey; error?: string };
 
 async function run(work: () => Promise<void>): Promise<Result> {
   try {
+    // An expert's offered times are expert sessions (15 Oct 2026).
+    await assertFeatureForAction("EXPERT_SESSIONS");
     await work();
     revalidatePath("/expert/availability");
     return { ok: true };

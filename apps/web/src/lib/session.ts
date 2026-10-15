@@ -353,7 +353,7 @@ const readSession = cache(async (): Promise<ActiveContext | null> => {
   let refusal: unknown = null;
   let moduleOffPage = false;
   try {
-    const verdict = await gateRequest((await headers()).get(ROUTE_HEADER), { role, schoolId, duties });
+    const verdict = await gateRequest((await headers()).get(ROUTE_HEADER), { role, schoolId, duties, userId: session.userId });
     if (verdict === "no-context") {
       schoolId = null;
       role = null;

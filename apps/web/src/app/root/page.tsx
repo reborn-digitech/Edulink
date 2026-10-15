@@ -18,6 +18,7 @@ import { CopyChip } from "./copy-chip";
 import { UsageSummary } from "./usage-summary";
 import { TableScroll } from "@/components/ui/table-scroll";
 import { ModelServersCard } from "@/components/quiz-review/model-servers-card";
+import { FeaturesCard } from "./features/card";
 
 export async function generateMetadata() {
   const t = await getT();
@@ -88,6 +89,9 @@ export default async function RootPage({
         </ul>
         <p className="mt-1.5 text-xs text-fg-subtle">{t("root.tilesNote")}</p>
       </section>
+
+      {/* feature-switches (15 Oct 2026): the platform's features, each off until switched on at /root/features. */}
+      <FeaturesCard />
 
       {/* quiz-publish-jobs (11 Oct 2026): the two model servers' state and the way to the generated bank. */}
       <ModelServersCard deskHref="/root/quiz-review" />

@@ -9,6 +9,8 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
+import { useSession } from "@/lib/session";
+import { featuresOf } from "@/lib/nav";
 import { formatInstant, Note, Pill } from "../family/shared";
 
 /**
@@ -27,7 +29,11 @@ export function ExpertHome() {
   const th = useTheme();
   const router = useRouter();
   const { locale } = useLocale();
+  const session = useSession();
+  // Expert sessions switched off on the platform (15 Oct 2026; /me's `features`): one sentence, and the profile.
+  const sessionsOn = featuresOf(session.status === "signed-in" ? session.me : null).includes("EXPERT_SESSIONS");
   const query = useQuery({
+    enabled: sessionsOn,
     queryKey: ["expert", "bookings"],
     queryFn: async () => expertBookingsSchema.parse(unwrap(await api().get("/api/v1/shared/expert/bookings"))),
   });
@@ -38,6 +44,7 @@ export function ExpertHome() {
   });
   // Decision 0004's free duty, from the one function that gates a price (the web's freeDutyRemaining).
   const duty = useQuery({
+    enabled: sessionsOn,
     queryKey: ["expert", "free-duty"],
     queryFn: async () => expertFreeDutySchema.parse(unwrap(await api().get("/api/v1/expert/free-duty"))),
   });
@@ -70,6 +77,13 @@ export function ExpertHome() {
       }
     />
   );
+  if (!sessionsOn) {
+    return (
+      <Screen title={t("expert.bookings")}>
+        <Empty title={t("platformFeatures.expertNotOpen")} action={<Button label={t("nav.profile")} variant="secondary" onPress={() => router.push("/(app)/profile" as never)} />} />
+      </Screen>
+    );
+  }
   return (
     <Screen title={t("expert.bookings")} description={t("expert.bookingsBody")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {profile.data && !profile.data.profile.published ? (

@@ -1,7 +1,6 @@
 import type { Role } from "./constants";
 import type { TranslationKey } from "./i18n/dictionary";
-import { DUTY_STREAMS, type DutyCode, type InstitutionKind, type SchoolModuleCode, type StreamCode } from "@edulink/contracts";
-import { QUESTION_GIG_FOR_TEACHERS } from "@edulink/contracts";
+import { DUTY_STREAMS, type DutyCode, type FeatureCode, type InstitutionKind, type SchoolModuleCode, type StreamCode } from "@edulink/contracts";
 
 /**
  * Navigation model.
@@ -67,7 +66,25 @@ export type NavItem = {
    * child is at one of these kinds (hiddenByKind). The page itself still opens.
    */
   kinds?: readonly InstitutionKind[];
+  /**
+   * The PLATFORM FEATURE this entry belongs to (15 Oct 2026; src/lib/platform-features.ts): the shell drops
+   * it, for every role, while the operator has the feature off (hiddenByFeature below, read with the
+   * person's `mayUse`). A list is "any of": the family's /sessions and the office's /admin/sessions stay
+   * while expert or teacher sessions are on. The page itself also refuses (assertFeatureOn), so a typed-in
+   * address is the app's 404.
+   */
+  feature?: FeatureCode | readonly FeatureCode[];
 };
+
+/** Both kinds of sessions: a page two features share, open while either is on. */
+export const SESSION_FEATURES: readonly FeatureCode[] = ["EXPERT_SESSIONS", "TEACHER_SESSIONS"];
+
+/** The hrefs of a role's entries whose platform feature (any of them, for a list) is not among `on`. */
+export function hiddenByFeature(items: readonly NavItem[], on: readonly string[]): string[] {
+  return items
+    .filter((item) => item.feature && !(typeof item.feature === "string" ? [item.feature] : item.feature).some((f) => on.includes(f)))
+    .map((item) => item.href);
+}
 
 /** The kinds that run the school version's day: classes, the day register, exam series, the syllabus (DS-4). */
 export const SCHOOL_KINDS: readonly InstitutionKind[] = ["SCHOOL", "JUNIOR_COLLEGE"];
@@ -182,12 +199,12 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
     // The student council's notices and members (risks batch 5A, 5 Oct 2026).
     { href: "/bulletin/council", labelKey: "councilNotices.navTitle", icon: "megaphone", group: "school" },
-    { href: "/experts", labelKey: "nav.experts", icon: "briefcase", prefix: true, group: "school" },
-    { href: "/admin/vacancies", labelKey: "nav.vacancies", icon: "briefcase", prefix: true, group: "school", also: ["/vacancies"] },
+    { href: "/experts", labelKey: "nav.experts", icon: "briefcase", prefix: true, group: "school", feature: "EXPERT_SESSIONS" },
+    { href: "/admin/vacancies", labelKey: "nav.vacancies", icon: "briefcase", prefix: true, group: "school", also: ["/vacancies"], feature: "JOB_BOARD" },
     // Hidden by the shell until the school has any — see signed-in-shell.tsx.
     { href: "/enquiries", labelKey: "nav.enquiries", icon: "envelope", prefix: true, group: "school" },
-    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, group: "school" },
-    { href: "/admin/sessions", labelKey: "nav.sessions", icon: "calendar", prefix: true, group: "school" },
+    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, group: "school", feature: "EXPERT_SESSIONS" },
+    { href: "/admin/sessions", labelKey: "nav.sessions", icon: "calendar", prefix: true, group: "school", feature: SESSION_FEATURES },
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
     { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
     // Inventory and assets, and HR and payroll (3 Oct 2026): the office runs both; the head reads payroll's summary.
@@ -264,10 +281,10 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
     // The student council's notices and members (risks batch 5A, 5 Oct 2026).
     { href: "/bulletin/council", labelKey: "councilNotices.navTitle", icon: "megaphone", group: "school" },
-    { href: "/admin/vacancies", labelKey: "nav.vacancies", icon: "briefcase", prefix: true, group: "school", also: ["/vacancies"] },
+    { href: "/admin/vacancies", labelKey: "nav.vacancies", icon: "briefcase", prefix: true, group: "school", also: ["/vacancies"], feature: "JOB_BOARD" },
     { href: "/enquiries", labelKey: "nav.enquiries", icon: "envelope", prefix: true, group: "school" },
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
-    { href: "/admin/sessions", labelKey: "nav.sessions", icon: "calendar", prefix: true, group: "school" },
+    { href: "/admin/sessions", labelKey: "nav.sessions", icon: "calendar", prefix: true, group: "school", feature: SESSION_FEATURES },
     { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
     { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
     // The payroll summary (no one's slip unless the office shares a run) and the stores, read; the head's own payslips and things.
@@ -304,25 +321,25 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/teacher/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true },
     { href: "/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "daily" },
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
-    { href: "/teacher/practice", labelKey: "nav.practice", icon: "brain", prefix: true, group: "daily" },
+    { href: "/teacher/practice", labelKey: "nav.practice", icon: "brain", prefix: true, group: "daily", feature: "QUESTION_BANK" },
     { href: "/teacher/meetings", labelKey: "nav.meetings", icon: "calendar", prefix: true, group: "daily" },
     { href: "/teacher/leave", labelKey: "nav.leave", icon: "calendar", prefix: true, group: "running" },
     { href: "/teacher/attendance/me", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },
     { href: "/teacher/incidents", labelKey: "nav.incidents", icon: "firstAidKit", prefix: true, group: "running", also: ["/incidents"] },
     { href: "/teacher/signatures", labelKey: "nav.signatures", icon: "clipboard", group: "running" },
-    // review-queue (10 Oct 2026): the question gig, while QUESTION_GIG_FOR_TEACHERS is on (src/lib/question-gig.ts).
-    ...(QUESTION_GIG_FOR_TEACHERS ? [{ href: "/teacher/contributions", labelKey: "nav.contributions", icon: "books", prefix: true, group: "running" } satisfies NavItem] : []),
+    // The question gig (review-queue, 10 Oct 2026): since 15 Oct 2026 the QUESTION_GIG platform feature, dropped by the shell while off.
+    { href: "/teacher/contributions", labelKey: "nav.contributions", icon: "books", prefix: true, group: "running", feature: "QUESTION_GIG" },
     { href: "/teacher/profile", labelKey: "nav.me", icon: "user", prefix: true, group: "running" },
     // What the head has shown me of my observations, targets and appraisals (lib/appraisal.ts).
     { href: "/teacher/appraisals", labelKey: "appraisal.myTitle", icon: "clipboard", prefix: true, group: "running" },
     // Hidden by the shell until somebody waits — see signed-in-shell.tsx.
     { href: "/joins", labelKey: "joinRequests.navLabel", icon: "userPlus", prefix: true, group: "running" },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
-    { href: "/experts", labelKey: "nav.experts", icon: "briefcase", prefix: true, group: "school" },
-    { href: "/vacancies", labelKey: "nav.vacancies", icon: "briefcase", prefix: true, group: "school" },
+    { href: "/experts", labelKey: "nav.experts", icon: "briefcase", prefix: true, group: "school", feature: "EXPERT_SESSIONS" },
+    { href: "/vacancies", labelKey: "nav.vacancies", icon: "briefcase", prefix: true, group: "school", feature: "JOB_BOARD" },
     { href: "/enquiries", labelKey: "nav.enquiries", icon: "envelope", prefix: true, group: "school" },
-    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, group: "school" },
-    { href: "/teacher/guidance", labelKey: "nav.guidance", icon: "calendar", prefix: true, group: "school" },
+    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, group: "school", feature: "EXPERT_SESSIONS" },
+    { href: "/teacher/guidance", labelKey: "nav.guidance", icon: "calendar", prefix: true, group: "school", feature: "TEACHER_SESSIONS" },
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
     { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
     // My own payslips and what the stores issued to me (3 Oct 2026), while the school has the module on.
@@ -342,7 +359,7 @@ export const NAV: Record<Role, NavItem[]> = {
     // The school's exams and report cards (DS-4, 10 Oct 2026): a college student's are under /student/exams.
     { href: "/exams", labelKey: "nav.exams", icon: "chartLine", primary: true, prefix: true, also: ["/report-cards"], kinds: SCHOOL_KINDS },
     { href: "/student/certificates", labelKey: "nav.certificates", icon: "clipboard", prefix: true, group: "school", also: ["/certificates", "/student/record"] },
-    { href: "/student/practice", labelKey: "nav.practice", icon: "brain", primary: true, prefix: true },
+    { href: "/student/practice", labelKey: "nav.practice", icon: "brain", primary: true, prefix: true, feature: "QUESTION_BANK" },
     { href: "/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "daily" },
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
     { href: "/reviews", labelKey: "nav.feedback", icon: "star", prefix: true, group: "daily" },
@@ -354,8 +371,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
     // The student council's notices and members (risks batch 5A, 5 Oct 2026).
     { href: "/bulletin/council", labelKey: "councilNotices.navTitle", icon: "megaphone", group: "school" },
-    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, group: "school" },
-    { href: "/sessions", labelKey: "nav.sessions", icon: "calendar", prefix: true, group: "school" },
+    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, group: "school", feature: "EXPERT_SESSIONS" },
+    { href: "/sessions", labelKey: "nav.sessions", icon: "calendar", prefix: true, group: "school", feature: SESSION_FEATURES },
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
     { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
     { href: "/student/profile", labelKey: "nav.me", icon: "user", prefix: true, group: "running" },
@@ -391,7 +408,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/exams", labelKey: "nav.exams", icon: "chartLine", primary: true, prefix: true, also: ["/report-cards"], kinds: SCHOOL_KINDS },
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", primary: true, prefix: true },
     { href: "/parent/certificates", labelKey: "nav.certificates", icon: "clipboard", prefix: true, group: "daily", also: ["/certificates", "/parent/record"] },
-    { href: "/parent/practice", labelKey: "nav.practice", icon: "brain", prefix: true, group: "daily" },
+    { href: "/parent/practice", labelKey: "nav.practice", icon: "brain", prefix: true, group: "daily", feature: "QUESTION_BANK" },
     { href: "/parent/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "daily" },
     { href: "/parent/meetings", labelKey: "nav.meetings", icon: "calendar", prefix: true, group: "daily" },
     { href: "/parent/fees", labelKey: "nav.fees", icon: "receipt", prefix: true, group: "daily" },
@@ -409,8 +426,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/parent/applications", labelKey: "nav.applications", icon: "clipboard", prefix: true, group: "school" },
     { href: "/enquiries", labelKey: "nav.enquiries", icon: "envelope", prefix: true, group: "school" },
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
-    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, group: "school" },
-    { href: "/sessions", labelKey: "nav.sessions", icon: "calendar", prefix: true, group: "school" },
+    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, group: "school", feature: "EXPERT_SESSIONS" },
+    { href: "/sessions", labelKey: "nav.sessions", icon: "calendar", prefix: true, group: "school", feature: SESSION_FEATURES },
     { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
     { href: "/parent/settings", labelKey: "nav.settings", icon: "gear", prefix: true, group: "running" },
     // The library and the hostel (3 Oct 2026): a child's loans and dues; a boarder's room, roll call and leave to consent to.
@@ -430,10 +447,10 @@ export const NAV: Record<Role, NavItem[]> = {
   // An expert sees their own work and nothing resembling a school's internals.
   EXPERT: [
     { href: "/expert", labelKey: "nav.bookings", icon: "house", primary: true },
-    { href: "/expert/availability", labelKey: "nav.availability", icon: "calendar", primary: true, prefix: true },
-    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", primary: true, prefix: true },
-    { href: "/expert/sessions", labelKey: "nav.sessions", icon: "calendar", primary: true, prefix: true },
-    { href: "/expert/earnings", labelKey: "gigs.earningsTitle", icon: "chartLine", prefix: true, group: "running" },
+    { href: "/expert/availability", labelKey: "nav.availability", icon: "calendar", primary: true, prefix: true, feature: "EXPERT_SESSIONS" },
+    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", primary: true, prefix: true, feature: "EXPERT_SESSIONS" },
+    { href: "/expert/sessions", labelKey: "nav.sessions", icon: "calendar", primary: true, prefix: true, feature: "EXPERT_SESSIONS" },
+    { href: "/expert/earnings", labelKey: "gigs.earningsTitle", icon: "chartLine", prefix: true, group: "running", feature: "EXPERT_SESSIONS" },
     { href: "/expert/profile", labelKey: "nav.profile", icon: "user", prefix: true, group: "running" },
     { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
   ],
@@ -673,7 +690,7 @@ export const NAV: Record<Role, NavItem[]> = {
  * over any page from the shell. A module role reaches the page through this entry (role-gate.ts).
  */
 export const ASSISTANT_HREF = "/assistant";
-const ASSISTANT_ENTRY: NavItem = { href: ASSISTANT_HREF, labelKey: "assistantUi.navLabel", icon: "chatsCircle", prefix: true, group: "daily", module: "ASSISTANT" };
+const ASSISTANT_ENTRY: NavItem = { href: ASSISTANT_HREF, labelKey: "assistantUi.navLabel", icon: "chatsCircle", prefix: true, group: "daily", module: "ASSISTANT", feature: "ASSISTANT" };
 /** Not for the outside accounts: an expert and a recruiter belong to no school, and the assistant's doors refuse them (Phase B). */
 export const ASSISTANT_NOT_FOR: readonly Role[] = ["EXPERT", "RECRUITER"];
 for (const [role, list] of Object.entries(NAV) as [Role, NavItem[]][]) if (!ASSISTANT_NOT_FOR.includes(role) && !list.some((item) => item.href === ASSISTANT_HREF)) list.push(ASSISTANT_ENTRY);

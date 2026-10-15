@@ -4,11 +4,14 @@ import { revalidatePath } from "next/cache";
 import { requireApiUser, requireApiRole, AccessError } from "@/lib/tenancy";
 import { createMentorship, consentToMentorship, closeMentorship, postMentorMessage, requestMentor, decideMentorRequest } from "@/lib/mentoring";
 import { getT } from "@/lib/i18n/server";
+import { assertFeatureForAction } from "@/lib/feature-page";
 
 type Result = { ok: boolean; error?: string };
 
 async function run(work: () => Promise<unknown>): Promise<Result> {
   try {
+    // Mentoring is an expert's (15 Oct 2026): closed while the platform has expert sessions off.
+    await assertFeatureForAction("EXPERT_SESSIONS");
     await work();
     revalidatePath("/mentoring");
     return { ok: true };
@@ -55,6 +58,7 @@ export async function askForMentor(input: {
 }): Promise<{ ok: boolean; error?: string }> {
   try {
     const session = await requireApiUser();
+    await assertFeatureForAction("EXPERT_SESSIONS");
     const result = await requestMentor(session, input);
     // The lib mints a KEY; this boundary is where it becomes the reader's words.
     if (!result.ok) return { ok: false, error: (await getT())(result.errorKey, result.errorVars) };
@@ -74,6 +78,7 @@ export async function decideRequest(
 ): Promise<{ ok: boolean; error?: string }> {
   try {
     const session = await requireApiUser();
+    await assertFeatureForAction("EXPERT_SESSIONS");
     const result = await decideMentorRequest(session, threadId, decision);
     if (!result.ok) return { ok: false, error: (await getT())(result.errorKey, result.errorVars) };
     revalidatePath("/mentoring");

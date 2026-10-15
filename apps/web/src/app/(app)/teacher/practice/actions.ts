@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
 import { createPracticeAssignment, archivePracticeAssignment } from "@/lib/practice-insights";
 import { getT } from "@/lib/i18n/server";
+import { assertFeatureForAction } from "@/lib/feature-page";
 
 /**
  * Setting practice for a class. The class id and topic slug travel in the
@@ -13,6 +14,7 @@ import { getT } from "@/lib/i18n/server";
  */
 export async function setPractice(formData: FormData): Promise<void> {
   const ctx = await requireApiRole("TEACHER");
+  await assertFeatureForAction("QUESTION_BANK");
   const classId = String(formData.get("classId") ?? "");
   const topicSlug = String(formData.get("topicSlug") ?? "");
   const targetLevel = Number(formData.get("targetLevel") ?? 0);
@@ -41,6 +43,7 @@ export async function setPractice(formData: FormData): Promise<void> {
 
 export async function removePractice(formData: FormData): Promise<void> {
   const ctx = await requireApiRole("TEACHER");
+  await assertFeatureForAction("QUESTION_BANK");
   const id = String(formData.get("id") ?? "");
   const classId = String(formData.get("classId") ?? "");
   await archivePracticeAssignment(ctx, id);

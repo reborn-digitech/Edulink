@@ -177,6 +177,7 @@ async function loadLibs() {
     leave: await import("@/lib/leave"),
     subs: await import("@/lib/subscriptions"),
     gigs: await import("@/lib/gig-sessions"),
+    features: await import("@/lib/platform-features"),
     alumni: await import("@/lib/alumni"),
     conv: await import("@/lib/conversations"),
     consent: await import("@/lib/student-consent"),
@@ -946,7 +947,24 @@ async function rejoin(W: SchoolWorld, yearId: string, y: number) {
   else note(`rejoined by PEN: STUDENT ${student?.id === r.membershipId ? "reused" : "new"}, ALUMNUS closed ${alumnus.leftAt.toISOString().slice(0, 10)}`);
 }
 
+/**
+ * THE PLATFORM'S EXPERT_SESSIONS FEATURE (15 Oct 2026; src/lib/platform-features.ts) is off until the operator
+ * switches it on, and an expert's workshop is refused while it is. This walk's own ZZ operator switches it on
+ * for the workshop and back to how it found it afterwards (both audited in the operator's log), so the walk
+ * proves the workshop as before without leaving the platform's switch changed.
+ */
 async function workshop(W: SchoolWorld, y: number) {
+  const operator = await operatorActor();
+  const was = await L.features.featureOn("EXPERT_SESSIONS");
+  if (!was) await L.features.setFeature(operator.ctx, "EXPERT_SESSIONS", true);
+  try {
+    await workshopSteps(W, y);
+  } finally {
+    if (!was) await L.features.setFeature(operator.ctx, "EXPERT_SESSIONS", false);
+  }
+}
+
+async function workshopSteps(W: SchoolWorld, y: number) {
   const day = `${y + 1}-02-01`;
   setClock(day, 10);
   const expert = await expertActor();

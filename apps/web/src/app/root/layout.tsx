@@ -81,6 +81,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <Button asChild variant="ghost" size="sm">
               <Link href="/root/jobs">{t("root.jobs")}</Link>
             </Button>
+            {/* feature-switches (15 Oct 2026): the platform's features, each off until the operator switches it on. */}
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/root/features">{t("platformFeatures.nav")}</Link>
+            </Button>
             <Button asChild variant="ghost" size="sm">
               <Link href="/root/plans">{t("root.plans")}</Link>
             </Button>

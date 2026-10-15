@@ -407,6 +407,8 @@ async function teardown() {
   // Users next: ExpertProfile, Guardianship and any surviving Membership all
   // cascade from User. Matching on the domain is what makes this exact.
   const users = await db.user.deleteMany({ where: { email: { endsWith: `@${DOMAIN}` } } });
+  // expert-registration (15 Oct 2026): a ZZ application is no User, so it goes by its address too.
+  await db.expertApplication.deleteMany({ where: { email: { endsWith: `@${DOMAIN}` } } });
   console.log(`\n  Removed ${schools.count} ZZ school(s) and ${users.count} ZZ user(s).\n`);
 }
 
@@ -2662,6 +2664,33 @@ async function main() {
   const competitionSources = await seedCompetitionSources(db);
   console.log(`  Competition sources: ${competitionSources.added} official organisers added, ${competitionSources.present} already listed — /appadmin?tab=sources, /root/competitions?tab=sources`);
   // ---- end competitions-crawler ----
+  // ---- expert-registration (15 Oct 2026): one PENDING expert application, so the operator's queue at /root/experts has
+  // a row. Idempotent: made only when no application from the address is waiting; no document (the form's upload is
+  // what the test proves), so "No document was sent." shows. Removed by --teardown with the ZZ people. ----
+  const applicantEmail = `zz.expert.applicant@${DOMAIN}`;
+  const waitingApplication = await db.expertApplication.findFirst({ where: { email: applicantEmail, status: "PENDING" }, select: { id: true } });
+  if (!waitingApplication) {
+    await db.expertApplication.create({
+      data: {
+        name: "ZZ Expert Applicant",
+        email: applicantEmail,
+        phone: "+919876500001",
+        city: "Pune",
+        organisation: "ZZ Robotics Lab",
+        headline: "ZZ robotics engineer who coaches school teams",
+        specialisms: JSON.stringify(["ENGINEERING", "CODING", "OLYMPIADS"]),
+        languages: JSON.stringify(["en", "mr"]),
+        yearsExperience: 9,
+        bio: "ZZ Expert Applicant is a ZZ test fixture. Nothing here describes a real person.",
+        links: JSON.stringify(["https://example.org/zz-expert-applicant"]),
+        offering: "SESSIONS",
+        declarationAt: new Date(),
+        locale: "en",
+      },
+    });
+  }
+  console.log(`  Expert application: ZZ Expert Applicant <${applicantEmail}> ${waitingApplication ? "already waiting" : "added, waiting"} — /root/experts`);
+  // ---- end expert-registration ----
 
   const studentCount = await db.membership.count({
     where: { schoolId: northgate.school.id, role: "STUDENT" },

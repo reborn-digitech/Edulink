@@ -8,6 +8,7 @@ import { CONTACTABLE_ROLES, type EnquiryKind } from "./constants";
 import { forSchool } from "./tenant-context";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "./i18n/dictionary";
+import { assertFeatureOn } from "./platform-features";
 
 /**
  * Enquiries — the conversation an outsider opens with a school.
@@ -118,6 +119,8 @@ export async function openEnquiry(
   if (input.kind === "ADMISSION") {
     if (ctx.role !== "PARENT") throw new AccessError("access.onlyAParentAsksAboutAdmission");
   } else if (input.kind === "JOB") {
+    // The job board switched off on the platform (15 Oct 2026): a vacancy is "not here", an admission enquiry is untouched.
+    await assertFeatureOn("JOB_BOARD", ctx);
     if (ctx.role !== "TEACHER") throw new AccessError("access.onlyATeacherAsksAboutAVacancy");
     if (ctx.schoolId === input.schoolId) {
       return { ok: false, errorKey: "enquiries.thisIsYourOwnSchool" };

@@ -27,7 +27,9 @@ import { reviseQuestion, revisionQueue } from "@/lib/practice-insights";
 import { buildWorksheet } from "@/lib/worksheets";
 import { updateBankQuestion } from "@/lib/app-admin";
 import { reviewTranslation } from "@/lib/translation-review";
-import { NAV } from "@/lib/nav";
+import { NAV, hiddenByFeature } from "@/lib/nav";
+import { PLATFORM_FEATURES } from "@edulink/contracts";
+import { setFeaturesForTests } from "@/lib/platform-features";
 import { ENDPOINTS } from "@/lib/api-catalog";
 import { GET as listGet } from "@/app/api/v1/appadmin/quiz-review/route";
 import { GET as nextGet } from "@/app/api/v1/appadmin/quiz-review/next/route";
@@ -382,13 +384,19 @@ describe("published without review, taken down and put back", () => {
 });
 
 describe("the teachers' question gig, switched off", () => {
-  it("is off, in one place", () => {
+  // Since 15 Oct 2026 the gig is the QUESTION_GIG platform feature (src/lib/platform-features.ts): off here, the rest on.
+  beforeAll(() => setFeaturesForTests(PLATFORM_FEATURES.filter((code) => code !== "QUESTION_GIG")));
+  afterAll(() => setFeaturesForTests([...PLATFORM_FEATURES]));
+
+  it("is off, in one place: the platform feature (the old constant stays false for the help index alone)", () => {
     expect(QUESTION_GIG_FOR_TEACHERS).toBe(false);
   });
 
-  it("the teacher's nav has no entry for it, and its pages answer 404", () => {
-    expect(NAV.TEACHER.some((item) => item.href.startsWith("/teacher/contributions"))).toBe(false);
-    expect(() => ContributionsLayout({ children: null })).toThrow();
+  it("the teacher's nav drops its entry while the feature is off, and its pages answer 404", async () => {
+    expect(NAV.TEACHER.find((item) => item.href === "/teacher/contributions")?.feature).toBe("QUESTION_GIG");
+    expect(hiddenByFeature(NAV.TEACHER, PLATFORM_FEATURES.filter((code) => code !== "QUESTION_GIG"))).toContain("/teacher/contributions");
+    await signInAs("TEACHER");
+    await expect(ContributionsLayout({ children: null })).rejects.toThrow();
   });
 
   it("its doors answer 404 to a teacher after the role check, 403 to another role, 401 signed out; the catalog says so for the sweep", async () => {
@@ -401,7 +409,8 @@ describe("the teachers' question gig, switched off", () => {
     expect((await gigQuestionsGet()).status).toBe(401);
     const doors = ENDPOINTS.filter((e) => e.path.startsWith("/api/v1/gigs/questions") || e.path === "/api/v1/gigs/payee");
     expect(doors).toHaveLength(8);
-    for (const door of doors) expect(door.statusByRole?.TEACHER, `${door.method} ${door.path}`).toBe(404);
+    // The catalog names the feature on all eight (the session's gate answers 404 FEATURE_OFF while it is off); the payee door decides in its handler.
+    for (const door of doors) expect(door.feature, `${door.method} ${door.path}`).toBe("QUESTION_GIG");
     // The content team's queue of teachers' contributions stays readable.
     expect(ENDPOINTS.some((e) => e.path === "/api/v1/appadmin/contributions" && !e.statusByRole)).toBe(true);
   });

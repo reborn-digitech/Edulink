@@ -1,6 +1,8 @@
 import "server-only";
-import type { AssistantLanguage } from "@edulink/contracts";
+import type { AssistantLanguage, FeatureCode } from "@edulink/contracts";
 import { isModuleOn } from "../modules";
+import { mayUseAny } from "../platform-features";
+import { featuresOf } from "../api-catalog/types";
 import { consume } from "../rate-limit";
 import { HEAVY_READ_BUDGET } from "../api-v1";
 import type { Role } from "../constants";
@@ -35,7 +37,8 @@ import { COMPOSE_PATH, mayOfferCompose } from "./links";
 
 export type DoorSearch = (q: HelpQuery) => Promise<HelpHit[]>;
 
-export type ChosenDoor = { door: DoorPath; similarity: number; calls: DoorCall[]; module: string | null; fromCache: boolean };
+/** `features` (15 Oct 2026): the door's platform features (the catalog's `feature`); read only while one is on for the person. */
+export type ChosenDoor = { door: DoorPath; similarity: number; calls: DoorCall[]; module: string | null; fromCache: boolean; features?: readonly FeatureCode[] };
 
 /** A short question that points back at the last answer's rows. Pure. */
 export function isFollowUp(question: string): boolean {
@@ -108,7 +111,7 @@ export function chooseDoors(input: { hits: Pick<HelpHit, "door" | "similarity">[
     if (e.module && input.ctx.modules && !input.ctx.modules.has(e.module)) return;
     const calls = callsFor(e, input.ctx, input.hints);
     if (!calls?.length) return;
-    out.push({ door: e.path as DoorPath, similarity, calls, module: e.module ?? null, fromCache });
+    out.push({ door: e.path as DoorPath, similarity, calls, module: e.module ?? null, fromCache, features: e.featureInHandler ? [] : featuresOf(e) });
   };
   for (const door of input.previous ?? []) add(door, 1, true);
   const ranked = input.hits
@@ -178,12 +181,17 @@ export type RunInput = {
   call?: (call: DoorCall) => Promise<{ status: number; raw: unknown }>;
   /** For the tests: the module switch in place of the school's. */
   moduleOn?: (schoolId: string, module: string) => Promise<boolean>;
+  /** For the tests: the platform's feature switches (any of the list) in place of `mayUseAny`. */
+  featureOn?: (features: readonly FeatureCode[]) => Promise<boolean>;
 };
 
 /** Reads the chosen doors as the person, summed up and stripped; remembers them for a follow-up. */
 export async function runDoors(input: RunInput): Promise<DataRun[]> {
   const call = input.call ?? callDoor;
   const moduleOn = input.moduleOn ?? ((s: string, m: string) => isModuleOn(s, m as never));
+  // A door of a platform feature the operator has off (15 Oct 2026) is not read: the handlers are called in-process, past the
+  // session's gate, so the gate's 404 FEATURE_OFF is answered here.
+  const featureOn = input.featureOn ?? ((features: readonly FeatureCode[]) => mayUseAny(features, { userId: input.userId, schoolId: input.schoolId }));
   const nowMs = input.now.getTime();
   const cached = cacheFor(input.conversationId, nowMs);
   const raws = new Map<string, unknown>(cached?.raw ?? []);
@@ -193,7 +201,8 @@ export async function runDoors(input: RunInput): Promise<DataRun[]> {
   const blocks = input.chosen.slice(0, MAX_DOORS_PER_QUESTION).reduce((n, c) => n + (FOLLOW[c.door] ? FOLLOW_MAX : c.calls.length), 0);
   const share = Math.max(900, Math.min(TOOL_ANSWER_MAX_CHARS, Math.floor(DATA_MAX_CHARS / Math.max(1, blocks))));
 
-  const read = async (c: DoorCall, module: string | null): Promise<{ status: number | null; raw: unknown; fromCache: boolean }> => {
+  const read = async (c: DoorCall, module: string | null, features: readonly FeatureCode[] = []): Promise<{ status: number | null; raw: unknown; fromCache: boolean }> => {
+    if (features.length && !(await featureOn(features))) return { status: 404, raw: null, fromCache: false };
     if (raws.has(c.url)) return { status: 200, raw: raws.get(c.url), fromCache: true };
     if (module && !(await moduleOn(input.schoolId, module))) return { status: 403, raw: null, fromCache: false };
     const gate = await consume(`assistant-tool:${input.userId}`, HEAVY_READ_BUDGET.limit, HEAVY_READ_BUDGET.windowMs);
@@ -239,12 +248,12 @@ export async function runDoors(input: RunInput): Promise<DataRun[]> {
         rows.sort((a, b) => b.score - a.score || a.i - b.i);
         for (const { r } of rows.slice(0, FOLLOW_MAX)) {
           const one: DoorCall = { door: chosen.door, url: chosen.door.replace(`{${follow.param}}`, encodeURIComponent(r.id)), params: { ...c.params, [follow.param]: r.id }, child: c.child };
-          const got = await read(one, chosen.module);
+          const got = await read(one, chosen.module, chosen.features);
           pending.push({ call: one, ...got });
         }
         continue;
       }
-      const got = await read(c, chosen.module);
+      const got = await read(c, chosen.module, chosen.features);
       pending.push({ call: c, ...got, fromCache: got.fromCache || chosen.fromCache });
     }
     const holds = pending.some((p) => p.status === 200 && !isEmptyAnswer(p.raw));

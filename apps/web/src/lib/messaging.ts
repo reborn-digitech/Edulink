@@ -13,6 +13,7 @@ import { formatPhone } from "./phone";
 import { todayKey, zonedStartOfDay } from "./dates";
 import { currentAcademicYear } from "./academic-year";
 import { notify } from "./notify";
+import { mayUse } from "./platform-features";
 import { MESSAGE_EVENTS, MESSAGE_TEMPLATES, OPT_OUT_FORM, isMessageTemplateKey, renderTemplate, smsSegments, whatsappVarOrder, type MessageEvent, type MessageTemplateKey } from "./message-templates";
 
 /**
@@ -43,7 +44,8 @@ import { MESSAGE_EVENTS, MESSAGE_TEMPLATES, OPT_OUT_FORM, isMessageTemplateKey, 
  */
 
 export type Channel = "SMS" | "WHATSAPP";
-export type SkipReason = "no-phone" | "opted-out" | "channel-off" | "event-off" | "cap-monthly" | "cap-daily" | "no-transport" | "disabled" | "unverifiedNumber";
+/** "feature-off" (15 Oct 2026): the operator has the platform's TEXT_MESSAGING feature off (src/lib/platform-features.ts); nothing is texted anywhere, and the row says why. */
+export type SkipReason = "no-phone" | "opted-out" | "channel-off" | "event-off" | "cap-monthly" | "cap-daily" | "no-transport" | "disabled" | "unverifiedNumber" | "feature-off";
 
 /**
  * THE EVENTS THAT MAY REACH A NUMBER NOBODY PROVED. With School.textOfficePhones
@@ -219,6 +221,9 @@ export async function deliverToUser(req: SendRequest): Promise<SendOutcome> {
     return { id: row.id, status: "SKIPPED", channel, skipReason: reason };
   };
 
+  // THE PLATFORM'S SWITCH FIRST (15 Oct 2026): while the operator has text messaging off, nothing is sent and the
+  // office's report says why. In-app notices and push are not this path and go on as before (notify.ts).
+  if (!(await mayUse("TEXT_MESSAGING", { userId: null, schoolId: req.schoolId }))) return skip("feature-off");
   if (!user || user.disabledAt) return skip("disabled");
   if (!user.phone && !officeEntered) return skip("no-phone");
   if (!user.phone && !officeRouteOpen) return skip("unverifiedNumber");
@@ -391,6 +396,21 @@ function escapeHtml(value: string): string {
  * when the runner is the app role.
  */
 export async function drainQueue(limit = 300): Promise<{ sent: number; failed: number; perSchool: Record<string, { sent: number; failed: number }> }> {
+  // While the platform's text messaging is off (15 Oct 2026), a row queued before the switch went off is not sent:
+  // it is recorded SKIPPED "feature-off", as a new one is, and its broadcast's counts are brought up to date.
+  if (!(await mayUse("TEXT_MESSAGING", null))) {
+    const waiting = await db.outboundMessage.findMany({ where: { status: "QUEUED" }, orderBy: { createdAt: "asc" }, take: limit, select: { id: true, schoolId: true, broadcastId: true } });
+    const touched = new Set<string>();
+    for (const row of waiting) {
+      await forSchool(row.schoolId, () => db.outboundMessage.update({ where: { id: row.id }, data: { status: "SKIPPED", skipReason: "feature-off" } }));
+      if (row.broadcastId) touched.add(`${row.schoolId}:${row.broadcastId}`);
+    }
+    for (const key of touched) {
+      const [schoolId, broadcastId] = key.split(":") as [string, string];
+      await forSchool(schoolId, () => refreshBroadcastCounts(broadcastId));
+    }
+    return { sent: 0, failed: 0, perSchool: {} };
+  }
   const rows = await db.outboundMessage.findMany({ where: { status: "QUEUED" }, orderBy: { createdAt: "asc" }, take: limit });
   const perSchool: Record<string, { sent: number; failed: number }> = {};
   const touched = new Set<string>();
@@ -686,6 +706,8 @@ export type MessagingOverview = {
   recentMessages: MessageRow[];
   parentsWithPhone: number;
   parentsTotal: number;
+  /** Whether the operator has the platform's TEXT_MESSAGING feature on (15 Oct 2026); while false the page says texts are off platform-wide. */
+  platformOn: boolean;
 };
 
 export async function messagingOverview(ctx: ActiveContext): Promise<MessagingOverview> {
@@ -721,6 +743,7 @@ export async function messagingOverview(ctx: ActiveContext): Promise<MessagingOv
     recentMessages: recentMessages.map(messageRow),
     parentsWithPhone: guardians.filter((g) => g.parent.phone).length,
     parentsTotal: guardians.length,
+    platformOn: await mayUse("TEXT_MESSAGING", ctx),
   };
 }
 

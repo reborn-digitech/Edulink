@@ -25,7 +25,7 @@
  * by the sweep; without one the sweep skips the endpoint and says so.
  */
 import type { ZodTypeAny } from "zod";
-import { LIMITED_ROLES, type DutyCode, type LimitedRoleCode, type RoleCode, type SchoolModuleCode } from "@edulink/contracts";
+import { LIMITED_ROLES, type DutyCode, type FeatureCode, type LimitedRoleCode, type RoleCode, type SchoolModuleCode } from "@edulink/contracts";
 
 /** The /api doors outside /api/v1 that the catalog lists (api-catalog/unversioned.ts). */
 export type UnversionedPath = "/api/attendance" | "/api/practice/answer";
@@ -50,6 +50,23 @@ export type Endpoint = {
    * /api/v1/me's `modules`.
    */
   module?: SchoolModuleCode;
+  /**
+   * THE PLATFORM FEATURE THIS DOOR BELONGS TO (15 October 2026; src/lib/platform-features.ts). While the
+   * operator has it off, the door answers 404 with code FEATURE_OFF, for every role, before the handler
+   * runs: the session's gate (src/lib/role-gate.ts) reads this field, beside `module`. A list is "any of":
+   * a door two features share (the family's sessions, a provider's slots) stays open while either is on,
+   * and its library hides or refuses what belongs to the one that is off. `access` stays the truth about
+   * who may call it WHILE IT IS ON; the docs publish this as `x-feature`, and the sweep's expectations read
+   * it (a door of a feature that is off is a 404 for every role, its `access` unchanged).
+   */
+  feature?: FeatureCode | readonly FeatureCode[];
+  /**
+   * A door of a feature that the gate leaves to its HANDLER, with why, in a sentence (15 Oct 2026): the
+   * payee door stays open while a teacher is still owed money; the shared enquiries door refuses only its
+   * vacancy kind. Set with `feature`, which then names the feature without the gate enforcing it.
+   * Published as `x-feature-note`.
+   */
+  featureInHandler?: string;
   /**
    * The limited roles a "signed-in" door also opens to: the module roles
    * (DRIVER, LIBRARIAN, WARDEN, ALUMNUS), the college's six staff roles
@@ -306,4 +323,10 @@ export function permits(e: Pick<Endpoint, "access" | "limitedRoles" | "duties">,
   if (!byRole) return false;
   if (e.duties?.length && (role === "FACULTY" || role === "HOD")) return e.duties.some((d) => duties.includes(d));
   return true;
+}
+
+/** The features a door belongs to, as a list (empty for none). */
+export function featuresOf(e: Pick<Endpoint, "feature">): readonly FeatureCode[] {
+  if (!e.feature) return [];
+  return typeof e.feature === "string" ? [e.feature] : e.feature;
 }

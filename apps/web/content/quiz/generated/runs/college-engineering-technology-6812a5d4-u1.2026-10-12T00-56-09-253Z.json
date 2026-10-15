@@ -1,0 +1,254 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-12T00:56:09.253Z",
+  "finishedAt": "2026-10-12T00:57:25.708Z",
+  "seconds": 76,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "SPPU",
+    "book": "MM Curriclum upadated structure 2024",
+    "bookCode": null,
+    "document": "sppu/faculty-of-science-and-technology/iii-technology/MM_Curriclum_upadated_structure_2024_24042024.pdf",
+    "classLevel": 13,
+    "subject": "Engineering (Technology)",
+    "chapter": "Unit 1 — MM Curriclum upadated structure 2024",
+    "edition": "2024",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for engineering: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Engineering (Technology) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 22404,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8162,
+      "completionTokens": 1119
+    },
+    "critique": {
+      "calls": 8,
+      "ms": 47579,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 3188,
+      "completionTokens": 1362
+    },
+    "solver": {
+      "calls": 40,
+      "ms": 18157,
+      "in": 8,
+      "out": 5,
+      "rejects": 3,
+      "promptTokens": 4490,
+      "completionTokens": 320
+    },
+    "form": {
+      "calls": 2,
+      "ms": 5371,
+      "in": 5,
+      "out": 1,
+      "rejects": 4,
+      "promptTokens": 441,
+      "completionTokens": 160
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 414,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 26136,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2436,
+      "completionTokens": 1558
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the name of the program described in the passage?",
+      "ms": {
+        "draft": 3120,
+        "critique": 6905,
+        "solver": 1243,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a mandatory component of the program?",
+      "ms": {
+        "draft": 3120,
+        "critique": 7727,
+        "solver": 1635
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary purpose of the OJT/FP component in the program?",
+      "ms": {
+        "draft": 3120,
+        "critique": 7306,
+        "solver": 1735,
+        "form": 3497
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student completes an internship that lasts for 7 weeks, how many credits will they earn?",
+      "ms": {
+        "draft": 3120,
+        "critique": 5691,
+        "solver": 623
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the university mentioned in the passage?",
+      "ms": {
+        "draft": 2481,
+        "critique": 5655,
+        "solver": 2260,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the 'OJT/FP' mentioned in the passage?",
+      "ms": {
+        "draft": 2481,
+        "critique": 6159,
+        "solver": 2764,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an elective subject?",
+      "ms": {
+        "draft": 2481,
+        "critique": 4428,
+        "solver": 694
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a mandatory subject in the first semester?",
+      "ms": {
+        "draft": 2481,
+        "critique": 5382,
+        "solver": 1428,
+        "form": 3768,
+        "translation": 19978
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the program described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a mandatory component of the program?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary purpose of the OJT/FP component in the program?",
+      "reason": "the key is far longer than every distractor (53 vs 32 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student completes an internship that lasts for 7 weeks, how many credits will they earn?",
+      "reason": "the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the university mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of the 'OJT/FP' mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of an elective subject?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for engineering: levels 5 and 6 skipped",
+    "no glossary in the corpus for Engineering (Technology) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

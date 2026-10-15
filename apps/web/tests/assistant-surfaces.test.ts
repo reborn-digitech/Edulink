@@ -276,11 +276,12 @@ describe("where the surfaces hang", () => {
   });
 
   it("puts the office's card on /admin, the opt-out on the family's settings and the switch on the teacher's and the faculty's assignment", () => {
-    expect(read("src/app/(app)/admin/page.tsx")).toContain("<AssistantUsageCard canEdit />");
-    expect(read("src/app/(app)/parent/settings/page.tsx")).toContain("<FamilyAssistantCard />");
+    expect(read("src/app/(app)/admin/page.tsx")).toContain('{(await mayUse("ASSISTANT", ctx)) && <AssistantUsageCard canEdit />}');
+    expect(read("src/app/(app)/parent/settings/page.tsx")).toContain('{(await mayUse("ASSISTANT", session)) && <FamilyAssistantCard />}');
     expect(read("src/components/assistant/family-card.tsx")).toContain('<Card id="assistant"');
-    expect(read("src/app/(app)/teacher/assignments/[assignmentId]/page.tsx")).toContain('{ctx.role === "TEACHER" && <AssignmentAssistantSwitch assignmentId={assignment.id} />}');
-    expect(read("src/app/(app)/faculty/work/[assignmentId]/page.tsx")).toContain("<AssignmentAssistantSwitch assignmentId={a.id} />");
+    // …each drawn only while the platform's ASSISTANT feature is on (15 Oct 2026; src/lib/platform-features.ts).
+    expect(read("src/app/(app)/teacher/assignments/[assignmentId]/page.tsx")).toContain('{ctx.role === "TEACHER" && (await mayUse("ASSISTANT", ctx)) && <AssignmentAssistantSwitch assignmentId={assignment.id} />}');
+    expect(read("src/app/(app)/faculty/work/[assignmentId]/page.tsx")).toContain('{(await mayUse("ASSISTANT", ctx)) && <AssignmentAssistantSwitch assignmentId={a.id} />}');
   });
 });
 

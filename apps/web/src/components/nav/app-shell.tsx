@@ -87,7 +87,8 @@ export function AppShell({
   })).filter((g) => g.items.length > 0);
   // Only on the pages it belongs to (QuickAction.on), and never on the page it opens.
   const primary = PRIMARY_ACTION[user.role];
-  const action = primary && primary.on?.includes(pathname) && primary.href !== pathname ? primary : null;
+  // …and not while its page is hidden (an expert's "Offer time" while expert sessions are off, 15 Oct 2026).
+  const action = primary && !hiddenHrefs.includes(primary.href) && primary.on?.includes(pathname) && primary.href !== pathname ? primary : null;
   const assistant = items.some((item) => item.href === ASSISTANT_HREF) && !pathname.startsWith(ASSISTANT_HREF);
 
   useEffect(() => {

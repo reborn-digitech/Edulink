@@ -1,0 +1,372 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-12T00:41:18.853Z",
+  "finishedAt": "2026-10-12T00:44:53.166Z",
+  "seconds": 214,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "SPPU",
+    "book": "Foundation Course in Cyber Security",
+    "bookCode": null,
+    "document": "sppu/faculty-of-science-and-technology/iii-technology/Foundation_Course_in_Cyber_Security.pdf",
+    "classLevel": 13,
+    "subject": "Engineering (Technology)",
+    "chapter": "Unit 1 — Syllabus",
+    "edition": "2024",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for engineering: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Engineering (Technology) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 35016,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 13750,
+      "completionTokens": 2937
+    },
+    "critique": {
+      "calls": 19,
+      "ms": 77525,
+      "in": 16,
+      "out": 15,
+      "rejects": 1,
+      "promptTokens": 8074,
+      "completionTokens": 3218
+    },
+    "solver": {
+      "calls": 93,
+      "ms": 29576,
+      "in": 15,
+      "out": 13,
+      "rejects": 2,
+      "promptTokens": 12269,
+      "completionTokens": 828
+    },
+    "form": {
+      "calls": 6,
+      "ms": 10895,
+      "in": 13,
+      "out": 6,
+      "rejects": 7,
+      "promptTokens": 1392,
+      "completionTokens": 402
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 2,
+      "ms": 256,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 273622,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 13675,
+      "completionTokens": 7431
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "A company wants to protect its network from unauthorized access. Which of the following should it implement?",
+      "ms": {
+        "draft": 2316,
+        "critique": 3390,
+        "solver": 952,
+        "form": 2
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of cyber security threat?",
+      "ms": {
+        "draft": 2316,
+        "critique": 3631,
+        "solver": 1298,
+        "form": 1709
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the CIA triad stand for in information security?",
+      "ms": {
+        "draft": 2316,
+        "critique": 3874,
+        "solver": 1520,
+        "form": 2229
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student wants to identify the IP address of a device on the same network. Which command should they use?",
+      "ms": {
+        "draft": 2316,
+        "critique": 4824,
+        "solver": 1237,
+        "form": 1856
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A company wants to ensure that only authorized users can access its internal network. Which security control would be most appropriate for this purpose?",
+      "ms": {
+        "draft": 10851,
+        "critique": 4241
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A web application is affected by malware, and the database server needs to be restored. Which of the following should be prioritized to ensure minimal data loss?",
+      "ms": {
+        "draft": 10851,
+        "critique": 3687,
+        "solver": 3366,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of an incident response plan according to the passage?",
+      "ms": {
+        "draft": 2324,
+        "critique": 3787,
+        "solver": 1045,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of security control mentioned in the passage?",
+      "ms": {
+        "draft": 2324,
+        "critique": 4071,
+        "solver": 1244
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key component of continuous security monitoring?",
+      "ms": {
+        "draft": 2324,
+        "critique": 5652,
+        "solver": 874
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains the role of a network firewall?",
+      "ms": {
+        "draft": 2012,
+        "critique": 4155,
+        "solver": 535,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of Cyber Security?",
+      "ms": {
+        "draft": 2012,
+        "critique": 5539,
+        "solver": 1450,
+        "form": 1779,
+        "translation": 41660
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the purpose of security controls in cyber security?",
+      "ms": {
+        "draft": 10851,
+        "critique": 4661,
+        "solver": 7350,
+        "form": 0,
+        "translation": 40738
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a cyber security threat?",
+      "ms": {
+        "draft": 2012,
+        "critique": 5406,
+        "solver": 1277,
+        "form": 2235,
+        "translation": 42996
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes an incident response plan?",
+      "ms": {
+        "draft": 10851,
+        "critique": 4182,
+        "solver": 7324,
+        "form": 0,
+        "translation": 53207
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a network administrator wants to prevent unauthorized access to a network, which of the following should they use?",
+      "ms": {
+        "draft": 2012,
+        "critique": 5871,
+        "solver": 640,
+        "form": 0,
+        "translation": 36316
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a web application's database is affected by malware, which of the following would be most relevant to create a disaster recovery plan?",
+      "ms": {
+        "draft": 2324,
+        "critique": 4205,
+        "solver": 1930,
+        "form": 1552,
+        "translation": 49536
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A company wants to protect its network from unauthorized access. Which of the following should it implement?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer is implied by the passage, which mentions 'fu…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a type of cyber security threat?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is explicitly mentioned in the passage as a t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the CIA triad stand for in information security?",
+      "reason": "options 1 and 3 are the same (\"Confidentiality, Integrity, Authorization\"); distractor 1's reason is not a one-line misconception (\"Correct answer is explicitly mentioned in the passage, which…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A student wants to identify the IP address of a device on the same network. Which command should they use?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Implies knowledge from the passage, which mentions 'ipconfig…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A company wants to ensure that only authorized users can access its internal network. Which security control would be most appropriate for this purpose?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A web application is affected by malware, and the database server needs to be restored. Which of the following should be prioritized to ensure minimal data loss?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of an incident response plan according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a type of security control mentioned in the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key component of continuous security monitoring?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains the role of a network firewall?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (56 vs 32 characters)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for engineering: levels 5 and 6 skipped",
+    "no glossary in the corpus for Engineering (Technology) (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

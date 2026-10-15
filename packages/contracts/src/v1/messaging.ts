@@ -15,7 +15,8 @@ const count = z.number().int().min(0);
 export const messageEventSchema = z.enum(["absence", "feeReminders", "feeReceipts", "circulars", "incidents"]);
 export const messageChannelSchema = z.enum(["SMS", "WHATSAPP"]);
 export const messageStatusSchema = z.enum(["QUEUED", "SENT", "DELIVERED", "FAILED", "UNDELIVERED", "SKIPPED"]);
-export const messageSkipReasonSchema = z.enum(["no-phone", "opted-out", "channel-off", "event-off", "cap-monthly", "cap-daily", "no-transport", "disabled", "unverifiedNumber"]);
+/** "feature-off" (15 Oct 2026): the operator has the platform's TEXT_MESSAGING feature off, so nothing is texted anywhere. */
+export const messageSkipReasonSchema = z.enum(["no-phone", "opted-out", "channel-off", "event-off", "cap-monthly", "cap-daily", "no-transport", "disabled", "unverifiedNumber", "feature-off"]);
 export const transportStateSchema = z.enum(["devbox", "twilio", "off"]);
 
 export const messagingSettingsSchema = z.object({
@@ -102,6 +103,12 @@ export const messagingOverviewSchema = z.object({
   /** The classes and grades a notice can be aimed at. */
   classes: z.array(z.object({ id: z.string(), name: z.string(), gradeLevel: z.string().nullable() })),
   grades: z.array(z.string()),
+  /**
+   * Whether the operator has the platform's TEXT_MESSAGING feature on (15 Oct 2026). While false nothing is
+   * texted anywhere and every text is recorded SKIPPED "feature-off"; the page says so. Optional: an older
+   * server says nothing, which reads as on.
+   */
+  platformOn: z.boolean().optional(),
 });
 export type MessagingOverview = z.infer<typeof messagingOverviewSchema>;
 

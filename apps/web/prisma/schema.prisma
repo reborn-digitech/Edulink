@@ -10772,3 +10772,82 @@ model CompetitionCrawlJob {
   @@index([createdAt])
 }
 // ---- end competitions-crawler ----
+
+// ---- feature-switches (15 Oct 2026) ----
+/// THE PLATFORM'S FEATURE SWITCHES (the owner's ask of 15 October 2026): one row per feature code
+/// (packages/contracts v1/platform-features.ts — ASSISTANT, QUESTION_BANK, QUESTION_GIG, EXPERT_SESSIONS,
+/// TEACHER_SESSIONS, JOB_BOARD, TEXT_MESSAGING), OFF until the operator switches it on at /root/features.
+/// OUTSIDE THE SCHOOL FENCE ON PURPOSE (NO_SCHOOL_POLICY): a switch is the platform's, the same for every
+/// school, read by every request of every tenant and written by the operator alone, who belongs to no
+/// school. A row is created on first read when missing (enabled false). Read and written only by
+/// src/lib/platform-features.ts; the switch is audited ("operator.feature.on" / "operator.feature.off").
+model PlatformFeature {
+  /// The feature's code: a checked string (the migration's CHECK holds it to the contracts' list, and the
+  /// library reads only codes of that list), not a Prisma enum.
+  code            String   @id
+  enabled         Boolean   @default(false)
+  /// When the operator last switched it, and who; both null while nobody has.
+  changedAt       DateTime?
+  changedByUserId String?
+}
+// ---- end feature-switches ----
+
+// ---- expert-registration (15 Oct 2026) ----
+/// AN EXPERT'S APPLICATION FROM THE LOGIN PAGE (the owner's ask of 15 October 2026). Somebody who wants to mentor
+/// pupils fills /register/expert (or POST /api/v1/public/expert-applications); no account is made, and only the
+/// operator turns an application into one (src/lib/expert-applications.ts, the one writer): Approve makes the User
+/// and an unpublished ExpertProfile from these fields and sends an ExpertInvite's link, whose existing form sets
+/// the password; Refuse records a coded reason and the applicant is told by email in `locale`.
+/// OUTSIDE THE SCHOOL FENCE ON PURPOSE (NO_SCHOOL_POLICY in scripts/gen-rls.ts): an applicant belongs to no
+/// school and has no session, the reader is the operator alone, who belongs to no school either, and no school's
+/// row is in it. The person is the fence, held in the library: written only by the public form's call, read and
+/// decided only under `isSuperuser`. One open application per address: the partial unique index
+/// "ExpertApplication_one_pending" (migration expert_applications) holds `email` unique while PENDING.
+model ExpertApplication {
+  id               String    @id @default(cuid())
+  name             String
+  /// Lower-cased on the way in.
+  email            String
+  /// E.164, an Indian mobile (+91 and ten digits from 6 to 9), never proved by a code: it is for the operator to
+  /// call, never a sign-in identifier, and is not copied to the account on approval.
+  phone            String
+  city             String
+  organisation     String?
+  /// What they do, 120 characters at most.
+  headline         String
+  /// JSON string[] of EXPERT_SPECIALISMS codes (packages/contracts v1/expert-applications.ts), one to five.
+  specialisms      String    @default("[]")
+  /// JSON string[] of the languages they can teach in: en, hi, mr.
+  languages        String    @default("[]")
+  yearsExperience  Int
+  /// 1,000 characters at most.
+  bio              String
+  /// JSON string[] of up to three https URLs.
+  links            String    @default("[]")
+  /// SESSIONS | MENTORING | BOTH, the ExpertProfile's own list (EXPERT_OFFERINGS), copied onto the profile.
+  offering         String
+  /// A stored file id (storage.ts; never a URL): the qualification or identity document, opened by the operator
+  /// alone through GET /api/v1/operator/expert-applications/{id}/document; claimed by the orphan sweep.
+  documentFileId   String?
+  /// When the applicant ticked the declaration (over 18, pupils only through the platform, consent to checks).
+  declarationAt    DateTime
+  /// PENDING | APPROVED | REFUSED | WITHDRAWN.
+  status           String    @default("PENDING")
+  /// NOT_QUALIFIED | DOCUMENT_UNCLEAR | DUPLICATE | OTHER, with a note for OTHER.
+  refusalCode      String?
+  refusalNote      String?
+  decidedAt        DateTime?
+  decidedByUserId  String?
+  /// The account made on approval; null when the address already had one (the invitation attaches the profile).
+  createdUserId    String?
+  /// The ExpertInvite sent on approval: the invite's acceptance reads the application by it.
+  inviteId         String?
+  /// The applicant's language for every email about the application.
+  locale           String    @default("en")
+  createdAt        DateTime  @default(now())
+
+  @@index([status, createdAt])
+  @@index([email])
+  @@index([inviteId])
+}
+// ---- end expert-registration ----

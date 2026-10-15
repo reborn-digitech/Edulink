@@ -44,7 +44,8 @@ function subscribeToStorage(onChange: () => void): () => void {
  * cookie is written so every later visit is decided on the server like
  * everyone else's. The server snapshot therefore says "not dismissed".
  */
-export function WelcomeTour() {
+/** `practice`: whether the practice door is drawn (the platform's QUESTION_BANK feature, 15 Oct 2026). */
+export function WelcomeTour({ practice = true }: { practice?: boolean } = {}) {
   const t = useT();
   const dismissedBefore = useSyncExternalStore(
     subscribeToStorage,
@@ -77,7 +78,7 @@ export function WelcomeTour() {
     { href: "/parent/assignments", icon: ClipboardTextIcon, label: t("welcomeTour.doorHomework") },
     { href: "/parent/practice", icon: BrainIcon, label: t("welcomeTour.doorPractice") },
     { href: "/parent/meetings", icon: CalendarCheckIcon, label: t("welcomeTour.doorMeetings") },
-  ];
+  ].filter((door) => practice || door.href !== "/parent/practice");
 
   return (
     <section

@@ -53,6 +53,13 @@ export default async function MessagingPage() {
         }
       />
 
+      {/* The platform's switch (15 Oct 2026): while the operator has text messaging off, nothing is texted from any school. */}
+      {!o.platformOn && (
+        <p role="status" className="rounded-[var(--radius-md)] border border-warn/40 bg-warn-soft px-4 py-3 text-sm font-medium text-warn" data-testid="messaging-platform-off">
+          {t("platformFeatures.messagingOffNotice")}
+        </p>
+      )}
+
       {/* ---------------- the numbers ---------------- */}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         <StatTile label={t("messaging.cardSentMonth")} value={o.month.sent} />

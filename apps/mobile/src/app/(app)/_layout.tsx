@@ -5,7 +5,7 @@ import { inboxSchema, notificationsSchema } from "@edulink/contracts";
 import { Icon, Loading, TabLabel } from "@/components";
 import { useRole, useSession } from "@/lib/session";
 import { ChooseContext } from "@/components/choose-context";
-import { ALL_TAB_SCREENS, HIDDEN_SCREENS, TABS, tabShown } from "@/lib/nav";
+import { ALL_TAB_SCREENS, HIDDEN_SCREENS, TABS, featuresOf, tabShown } from "@/lib/nav";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
@@ -49,7 +49,8 @@ export default function AppLayout() {
   // A tab of a module the active school has off is not drawn (3 Oct 2026).
   const modules = session.status === "signed-in" ? (session.me.modules ?? []) : [];
   // …and a duty's tab only for whoever holds it (5 Oct 2026).
-  const tabs = TABS[role].filter((tab) => tabShown(tab, modules, session.status === "signed-in" ? (session.me.duties ?? []) : []));
+  // …and a platform feature's tab only while the operator has it on (15 Oct 2026; /me's `features`).
+  const tabs = TABS[role].filter((tab) => tabShown(tab, modules, session.status === "signed-in" ? (session.me.duties ?? []) : [], featuresOf(session.status === "signed-in" ? session.me : null)));
   return (
     <Tabs
       // "Back" from a screen opened from More goes to More, not to the first tab.

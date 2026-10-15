@@ -8,7 +8,7 @@ import { apiFailure, ok } from "@/lib/api-v1";
 export async function GET() {
   try {
     const ctx = await requireApiRole("TEACHER");
-    assertQuestionGigOpen(); // review-queue (10 Oct 2026): 404 while the teachers' question gig is off.
+    await assertQuestionGigOpen(ctx); // 404 FEATURE_OFF while the QUESTION_GIG platform feature is off (15 Oct 2026; the gate answers it first).
     return ok(gigTopicsSchema.parse({ topics: await contributionTopics(ctx) }));
   } catch (error) {
     return apiFailure(error, "api/v1/gigs/questions/topics");

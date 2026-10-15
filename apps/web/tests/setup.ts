@@ -65,3 +65,14 @@ const setupDb = new PrismaClient();
  */
 await setupDb.rateLimit.deleteMany({ where: { NOT: { bucket: { startsWith: "zz-test:" } } } });
 await setupDb.$disconnect();
+
+/**
+ * THE PLATFORM'S FEATURE SWITCHES ARE ALL ON FOR THE SUITES (15 Oct 2026). The developer's database has every
+ * feature off until the operator switches it on (src/lib/platform-features.ts), and the suites that exercise
+ * the assistant, practice, sessions, vacancies or texts were written for a platform where they ran. The
+ * library honours this process-local list while VITEST is set and never otherwise; a suite about the switch
+ * itself (tests/platform-features.test.ts) sets its own list, or null to read the table.
+ */
+import { PLATFORM_FEATURES } from "@edulink/contracts";
+
+(globalThis as Record<string, unknown>).__edulinkPlatformFeaturesForTests = [...PLATFORM_FEATURES];

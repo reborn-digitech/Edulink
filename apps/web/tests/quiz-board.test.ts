@@ -24,6 +24,7 @@ import {
   quizBoardForSchool,
   quizBoardOrder,
   QUESTION_GIG_FOR_TEACHERS,
+  PLATFORM_FEATURES,
   topicOnBoard,
 } from "@edulink/contracts";
 import { createSession, type ActiveContext } from "@/lib/session";
@@ -33,6 +34,7 @@ import { quizBoardOptions } from "@/lib/quiz-board";
 import { studentPractice } from "@/lib/api-reads/family";
 import { getItem, listQueue, readGeneration } from "@/lib/quiz-review";
 import { owedForQuestionsPaise, payeeDoorOpen } from "@/lib/question-gig";
+import { setFeaturesForTests } from "@/lib/platform-features";
 import { readStoredFile } from "@/lib/storage";
 import { ENDPOINTS } from "@/lib/api-catalog";
 import { POST as gigPayeePost } from "@/app/api/v1/gigs/payee/route";
@@ -350,6 +352,10 @@ describe("quiz:queue draws a generated item's figure and is the one way in", () 
 });
 
 describe("the payee door the closed gig keeps", () => {
+  // The gig closed is the QUESTION_GIG platform feature off (15 Oct 2026); the suites otherwise run with every feature on.
+  beforeAll(() => setFeaturesForTests(PLATFORM_FEATURES.filter((code) => code !== "QUESTION_GIG")));
+  afterAll(() => setFeaturesForTests([...PLATFORM_FEATURES]));
+
   it("is open to a teacher still owed money and 404 to one who is not; the page likewise", async () => {
     expect(QUESTION_GIG_FOR_TEACHERS).toBe(false);
     expect(await owedForQuestionsPaise(ids.owed)).toBe(2500);
@@ -378,7 +384,9 @@ describe("the payee door the closed gig keeps", () => {
 
   it("the catalog still tells the sweep a teacher with nothing owed gets 404", () => {
     const door = ENDPOINTS.find((e) => e.method === "POST" && e.path === "/api/v1/gigs/payee")!;
-    expect(door.statusByRole?.TEACHER).toBe(404);
+    // The gate leaves this door to its handler (15 Oct 2026), and the catalog says why for the sweep.
+    expect(door.feature).toBe("QUESTION_GIG");
+    expect(door.featureInHandler).toMatch(/owes/);
     expect(door.summary).toMatch(/owed/);
   });
 });

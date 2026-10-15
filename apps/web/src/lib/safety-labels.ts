@@ -462,6 +462,9 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "library.subscription.save": "audit.riskSubscriptionSave",
   "superuser.regulator.remind": "audit.superuserRegulatorRemind",
   "operator.read.college": "audit.operatorReadCollege",
+  // The platform's feature switches (15 Oct 2026; src/lib/platform-features.ts): the operator's own log, no school.
+  "operator.feature.on": "audit.operatorFeatureOn",
+  "operator.feature.off": "audit.operatorFeatureOff",
   "substitutions.acknowledge": "audit.substitutionsAcknowledge",
   "substitutions.decline": "audit.substitutionsDecline",
   "syllabus.template.save": "audit.syllabusTemplateSave",
@@ -859,6 +862,11 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "assistant.assignmentSwitch": "audit.assistantAssignmentSwitch",
   "assistant.counsellorRoute": "audit.assistantCounsellorRoute",
   "assistant.notice": "audit.assistantNotice",
+  // expert-registration (15 Oct 2026): an expert's application from the login page and the operator's decision.
+  "expert.application.submit": "audit.expertApplicationSubmit",
+  "operator.expertApplication.approve": "audit.operatorExpertApplicationApprove",
+  "operator.expertApplication.refuse": "audit.operatorExpertApplicationRefuse",
+  // end expert-registration
 };
 
 export function actionKey(action: string): TranslationKey | null {

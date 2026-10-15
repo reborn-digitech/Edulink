@@ -19,7 +19,8 @@ export const apiErrorSchema = z.object({
   error: z.string().min(1),
   code: z
     // MODULE_OFF is a 403 from a door whose module the school has not switched on.
-    .enum(["BAD_REQUEST", "UNAUTHORIZED", "FORBIDDEN", "NOT_FOUND", "CONFLICT", "RATE_LIMITED", "TOO_LARGE", "SERVER", "MODULE_OFF"])
+    // FEATURE_OFF is a 404 from a door whose platform feature the operator has not switched on (15 Oct 2026).
+    .enum(["BAD_REQUEST", "UNAUTHORIZED", "FORBIDDEN", "NOT_FOUND", "CONFLICT", "RATE_LIMITED", "TOO_LARGE", "SERVER", "MODULE_OFF", "FEATURE_OFF"])
     .optional(),
   issues: z.record(z.string()).optional(),
   retryAfterSeconds: z.number().int().positive().optional(),
@@ -96,6 +97,7 @@ export const messageSentSchema = z.object({ messageId: z.string() });
 
 export * from "./v1/auth";
 export * from "./v1/modules";
+export * from "./v1/platform-features";
 export * from "./v1/college";
 export * from "./v1/alumni";
 export * from "./v1/admin";
@@ -273,3 +275,6 @@ export * from "./v1/competition-crawl";
 // ---- college-content (college practice by stream, the prep section, competitions by audience, 12 Oct 2026).
 export * from "./v1/college-practice";
 // ---- end college-content ----
+// ---- expert-registration (an expert's application from the login page, the operator's queue, 15 Oct 2026).
+export * from "./v1/expert-applications";
+// ---- end expert-registration ----

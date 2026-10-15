@@ -36,6 +36,7 @@ import { schoolJobStory, JOB_COUNT_LABELS, JOB_ATTENTION_KEYS } from "@/lib/job-
 import { PageHeader } from "@/components/ui/page-header";
 import { StreamHome } from "@/components/college/stream-home";
 import { isCollegeKind } from "@edulink/contracts";
+import { mayUse } from "@/lib/platform-features";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -383,9 +384,12 @@ export default async function AdminDashboard({
             }
           />
           <CardBody className="flex flex-wrap gap-2 pt-0">
-            <Button asChild size="sm">
-              <Link href="/admin/vacancies/new">{t("admin.staffingPostVacancy")}</Link>
-            </Button>
+            {/* The job board (15 Oct 2026): offered only while the operator has it on. */}
+            {(await mayUse("JOB_BOARD", ctx)) && (
+              <Button asChild size="sm">
+                <Link href="/admin/vacancies/new">{t("admin.staffingPostVacancy")}</Link>
+              </Button>
+            )}
             <Button asChild size="sm" variant="secondary">
               <Link href="/admin/timetable">{t("admin.staffingOpenTimetable")}</Link>
             </Button>
@@ -443,7 +447,7 @@ export default async function AdminDashboard({
       {/* ---------------- the assistant ----------------
           The school's month against its budget, the switch and the helpline sentence (Phase C, 10 Oct 2026): counts
           only, read by the card from the office's door so the page waits for nothing. A college's office too. */}
-      <AssistantUsageCard canEdit />
+      {(await mayUse("ASSISTANT", ctx)) && <AssistantUsageCard canEdit />}
 
       {/* ---------------- next steps ---------------- */}
       {!college && teacherCount === 0 && (

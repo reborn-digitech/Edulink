@@ -24,7 +24,7 @@ async function refusal(result: Extract<GigResult, { ok: false }>): Promise<{ ok:
 export async function saveContributionAction(contributionId: string | null, input: ContributionInput): Promise<Result<{ id: string }>> {
   try {
     const ctx = await requireApiRole("TEACHER");
-    assertQuestionGigOpen();
+    await assertQuestionGigOpen(ctx);
     const result = contributionId ? await reviseContribution(ctx, contributionId, input) : await submitContribution(ctx, input);
     if (!result.ok) return refusal(result);
     revalidatePath("/teacher/contributions");
@@ -37,7 +37,7 @@ export async function saveContributionAction(contributionId: string | null, inpu
 export async function withdrawContributionAction(contributionId: string): Promise<Result> {
   try {
     const ctx = await requireApiRole("TEACHER");
-    assertQuestionGigOpen();
+    await assertQuestionGigOpen(ctx);
     const result = await withdrawContribution(ctx, contributionId);
     if (!result.ok) return refusal(result);
     revalidatePath("/teacher/contributions");
@@ -50,7 +50,7 @@ export async function withdrawContributionAction(contributionId: string): Promis
 export async function draftTranslationsAction(english: QuestionText): Promise<Result<{ hi: QuestionText; mr: QuestionText }>> {
   try {
     const ctx = await requireApiRole("TEACHER");
-    assertQuestionGigOpen();
+    await assertQuestionGigOpen(ctx);
     const result = await draftTranslations(ctx, english);
     if (!result.ok) return refusal(result);
     return { ok: true, hi: result.hi, mr: result.mr };

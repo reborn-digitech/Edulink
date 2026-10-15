@@ -9,9 +9,8 @@ import {
   WalletIcon,
   WarningCircleIcon,
 } from "@phosphor-icons/react/ssr";
-import { QUESTION_GIG_FOR_TEACHERS } from "@edulink/contracts";
 import { formatPaise } from "@edulink/i18n";
-import { owedForQuestionsPaise } from "@/lib/question-gig";
+import { owedForQuestionsPaise, questionGigOpen } from "@/lib/question-gig";
 import { requireRole, teacherClassIds } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { formatDateKey, relativeTime, todayKey, weekdayOfKey } from "@/lib/dates";
@@ -97,7 +96,7 @@ export default async function TeacherHome() {
   const covers = (await myCovers(ctx, dateKey)).items;
   // quiz-board (11 Oct 2026): the question gig is closed, but a teacher still owed for earlier questions
   // is pointed at the one page it keeps, to check where the company will pay them.
-  const owedPaise = ctx.role === "TEACHER" && !QUESTION_GIG_FOR_TEACHERS ? await owedForQuestionsPaise(ctx.user.id) : 0;
+  const owedPaise = ctx.role === "TEACHER" && !(await questionGigOpen(ctx)) ? await owedForQuestionsPaise(ctx.user.id) : 0;
   const payeeCard = owedPaise > 0 && (
     <Card data-testid="teacher-payee-card">
       <CardHeader
