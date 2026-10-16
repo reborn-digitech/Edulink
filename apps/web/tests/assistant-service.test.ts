@@ -47,6 +47,8 @@ import type { CurriculumHit, HelpHit } from "@/lib/assistant-retrieval";
 import type { ChatMessage, ChatOptions } from "@/lib/assistant-model";
 import type { RealtimeEvent } from "@/lib/realtime";
 import { GET as statusGet } from "@/app/api/v1/assistant/route";
+import { POST as conversationsPost } from "@/app/api/v1/assistant/conversations/route";
+import { POST as assignmentSwitchPost } from "@/app/api/v1/teacher/assignments/[assignmentId]/assistant/route";
 import { chooseDoors, runDoors } from "@/lib/assistant/router";
 import { hintsOf, type DataContext } from "@/lib/assistant/doors";
 import { nameLexicon } from "@/lib/assistant/lexicon";
@@ -277,6 +279,20 @@ describe("a conversation", () => {
     const res = await statusGet();
     expect(res.status).toBe(200);
     expect(await res.json()).toMatchObject({ available: true, tutor: true, help: true, reason: null, retentionDays: 30 });
+  });
+
+  it("refuses the roles it is not for 403 before the body is read, as the catalog says (16 Oct 2026)", async () => {
+    // An expert belongs to no school: refused at the door, not answered as a person with no school.
+    await as(ids.parent, "EXPERT", null, "GET /api/v1/assistant");
+    expect((await statusGet()).status).toBe(403);
+    await as(ids.parent, "EXPERT", null, "POST /api/v1/assistant/conversations");
+    expect((await conversationsPost(new Request("http://localhost/api/v1/assistant/conversations", { method: "POST", headers: { "content-type": "application/json" }, body: "{}" }))).status).toBe(403);
+    // The teacher's per-assignment switch: a pupil sending an empty body is refused by role, not by the parser.
+    await as(ids.pupil, "STUDENT", ids.lark, "POST /api/v1/teacher/assignments/x/assistant");
+    const switchPost = await assignmentSwitchPost(new Request("http://localhost/x", { method: "POST", headers: { "content-type": "application/json" }, body: "{}" }), { params: Promise.resolve({ assignmentId: ids.homework }) });
+    expect(switchPost.status).toBe(403);
+    await as(ids.pupil, "STUDENT", ids.lark, "GET /api/v1/assistant");
+    expect((await statusGet()).status).toBe(200);
   });
 });
 

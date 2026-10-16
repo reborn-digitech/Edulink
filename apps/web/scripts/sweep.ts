@@ -7,6 +7,16 @@
  * rendered, not a route that works.
  *
  * Run: tsx --tsconfig scripts/tsconfig.json scripts/sweep.ts
+ *   npm run sweep -- --features=on   with every platform feature switched on for the run, as the ZZ operator, and
+ *                                    back off at its end (audited both ways); add --plans=on to make the three plans
+ *                                    active the same way, so a locked page's plan card is swept
+ *
+ * FEATURES AND PLANS (16 Oct 2026, scripts/sweep-features.ts): the run reads the platform's feature switches, the
+ * active plans and the live entitlements first. A page under a feature's layout carries the app's not-found boundary
+ * for a signed-in person while the feature is off — whatever the page itself would have said — and the plan card
+ * (`data-testid="plan-card"`) in place of the page while it is on and locked behind a plan the person lacks. A menu
+ * entry the shell hides for an off feature is not "shown"; typed in, it is the app's 404. `check` applies this to every
+ * line, so the expectations below are written for the features ON.
  */
 import { streamedStatus } from "./streamed-status";
 import { PrismaClient } from "@prisma/client";
@@ -14,17 +24,20 @@ import { createHash, randomBytes, randomUUID } from "node:crypto";
 import { mkdir, writeFile, rm } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { config } from "dotenv";
-import { NAV, PRIMARY_ACTION, QUICK_ACTIONS } from "@/lib/nav";
+import { NAV, PRIMARY_ACTION, QUICK_ACTIONS, hiddenByFeature } from "@/lib/nav";
 import { isLimitedRole, ROLE_HOME, type Role } from "@/lib/constants";
 import { isDutyRole, MODULE_OF_ROLE, parseDuties } from "@edulink/contracts";
 import { warmPlan, warmUp } from "./sweep-warm";
+import { describeGateState, gateFlags, pageGate, readGateState, runSwitches, type GateState } from "./sweep-features";
+import { request as httpRequest } from "node:http";
 
 config();
 
 const BASE = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL });
 
-type Actor = { label: string; cookie: string; sessionId: string };
+/** `role` and `userId` (16 Oct 2026) are what the feature gate and the plans judge a page by (sweep-features.ts). */
+type Actor = { label: string; cookie: string; sessionId: string; role: string | null; userId: string | null };
 
 async function mint(email: string, role: string | null, schoolId: string | null, label: string): Promise<Actor> {
   const user = await db.user.findUnique({ where: { email } });
@@ -44,7 +57,7 @@ async function mint(email: string, role: string | null, schoolId: string | null,
       expiresAt: new Date(Date.now() + 86_400_000),
     },
   });
-  return { label, cookie: `edulink_session=${token}; __Host-edulink_session=${token}`, sessionId: session.id };
+  return { label, cookie: `edulink_session=${token}; __Host-edulink_session=${token}`, sessionId: session.id, role, userId: user.id };
 }
 
 /**
@@ -53,7 +66,7 @@ async function mint(email: string, role: string | null, schoolId: string | null,
  * "other side closed" mid-run — a fact about the socket, not the route. A GET
  * is safe to reissue; a 500 is a result and is still reported first time.
  */
-async function hit(actor: Actor | null, path: string): Promise<{ status: number; body: string; loc: string | null }> {
+async function hit(actor: Actor | null, path: string): Promise<{ status: number; body: string; loc: string | null; raw: { status: number; body: string } }> {
   for (let attempt = 1; ; attempt++) {
     try {
       const started = performance.now();
@@ -67,7 +80,7 @@ async function hit(actor: Actor | null, path: string): Promise<{ status: number;
       // browser gets (scripts/streamed-status.ts, R-64).
       const seen = streamedStatus(res.status, body, res.headers.get("location"));
       timings.push({ who: actor?.label ?? "anonymous", path, status: seen.status, ms: Math.round(performance.now() - started) });
-      return { status: seen.status, body: seen.streamed ? "" : body, loc: seen.loc };
+      return { status: seen.status, body: seen.streamed ? "" : body, loc: seen.loc, raw: { status: res.status, body } };
     } catch (error) {
       if (attempt >= 3) {
         // Three refusals of one page: the server, or the page? The health
@@ -159,9 +172,36 @@ function skip(what: string, why: string) {
 /** Made for the length of a run and removed in a `finally`. */
 const SWEEP_EXPERT_EMAIL = "zz.sweep.expert@edulink.test";
 
+/** The switches, the active plans and the live entitlements, read once at the start of main (sweep-features.ts). */
+let gate: GateState = { on: new Set(), activePlans: new Set(), entitled: new Map() };
+/** How many lines the feature gate and the plans decided, for the summary. */
+const gatedLines = { off: 0, plan: 0 };
+
 async function check(actor: Actor | null, path: string, expected = 200, note = "") {
-  const { status, loc } = await hit(actor, path);
-  const ok = status === expected;
+  // A page under a feature's layout (16 Oct 2026): the app's 404 while the feature is off, whatever the page would
+  // have said — the layout answers before the page's own refusal does — and, while it is on and locked behind a plan
+  // the person lacks, a 200 that is the plan card and not the page. Signed out is the sign-in's answer as before.
+  // A page whose own answer is a redirect may still send the person on before its layout's not-found is drawn (the old
+  // /expert/bookings/<id> spelling redirects before reading anything): with the feature off that redirect, which
+  // lands on another page of the same feature, is let stand — the person meets the not-found there.
+  const g = actor ? pageGate(path, { role: actor.role, userId: actor.userId }, gate) : null;
+  const alsoOk: number[] = [];
+  if (g?.state === "off") {
+    if (expected === 307) alsoOk.push(307);
+    expected = 404;
+    note = `${note} [feature ${g.feature} off: the app's not-found${alsoOk.length ? ", or the page's own redirect" : ""}]`.trim();
+  }
+  const { status: seen, loc, body, raw } = await hit(actor, path);
+  const planCard = g?.state === "plan" && expected === 200;
+  // A locked page is the layout's plan card in place of its children. Next renders the page beside the layout all the
+  // same, and a page whose own read asks for the plan (/teacher/guidance, /expert/sessions) leaves a not-found digest
+  // in the payload that the browser never draws, as the module-off website screen does (16 Oct 2026). So the card is
+  // judged on the raw answer: a 200 that carries it.
+  const status = planCard && raw.status === 200 && raw.body.includes('data-testid="plan-card"') ? 200 : seen;
+  const ok = (status === expected || alsoOk.includes(status)) && (!planCard || (status === 200 && (body || raw.body).includes('data-testid="plan-card"')));
+  if (ok && g?.state === "off") gatedLines.off++;
+  if (ok && planCard) gatedLines.plan++;
+  if (planCard) note = `${note} [${g.feature} locked: the ${g.plan} plan card]`.trim();
   results.push({
     role: actor?.label ?? "anonymous",
     path,
@@ -170,6 +210,31 @@ async function check(actor: Actor | null, path: string, expected = 200, note = "
     ok,
     note: ok ? note : `${note}${loc ? ` → ${loc}` : ""}`.trim(),
   });
+}
+
+/**
+ * A request with another Host (16 Oct 2026): a school's website is served on its own domain through the middleware's
+ * host rewrite (/sites/by-host/<host>), and in development on <slug>.localhost. Node's fetch will not send a Host of
+ * its own, so this goes through node:http to the same server.
+ */
+function hitHost(host: string, path: string, method = "GET"): Promise<{ status: number; body: string; headers: Record<string, string | string[] | undefined> }> {
+  const url = new URL(BASE);
+  return new Promise((resolve, reject) => {
+    const req = httpRequest({ hostname: url.hostname, port: url.port || 80, path, method, headers: { host } }, (res) => {
+      let body = "";
+      res.setEncoding("utf8");
+      res.on("data", (chunk: string) => (body += chunk));
+      res.on("end", () => resolve({ status: res.statusCode ?? 0, body, headers: res.headers }));
+    });
+    req.on("error", reject);
+    req.end();
+  });
+}
+
+async function checkHost(host: string, path: string, expected: number, note: string, body?: (text: string, headers: Record<string, string | string[] | undefined>) => boolean, method = "GET") {
+  const res = await hitHost(host, path, method);
+  const ok = res.status === expected && (!body || body(res.body, res.headers));
+  results.push({ role: `host ${host}`, path: method === "GET" ? path : `${method} ${path}`, status: res.status, expected, ok, note });
 }
 
 /**
@@ -375,12 +440,12 @@ async function transfer(fromSchoolId: string, toSchoolId: string) {
         "⚠ …but not the old school's own page about them",
       );
 
-      // THE DOCUMENT ITSELF. The child opens it from their new school; the
-      // receiving head does not — a certificate is the family's to hand over,
-      // the office that reads /reports sees its figures there. Same 404 as a
-      // guessed id.
+      // THE DOCUMENT ITSELF. The child opens it from their new school, and since the transfer demo of 6 October 2026
+      // (39a2dcc2, school-record.ts certificateFor) so does the office of the school that has the child NOW, the way
+      // a family does — the admitting office is who asks for the paper. The office of a school the child is not on
+      // the roll of is still refused, as the old school's own page about them is above.
       await check(atNewSchool, `/certificate/${record.id}`, 200, "⚠ the child opens the certificate as a document");
-      await check(head, `/certificate/${record.id}`, 404, "⚠ …the receiving office cannot, by id");
+      await check(head, `/certificate/${record.id}`, 200, "…and the receiving office, whose roll the child is on now");
     }
     await check(atOldSchool, `/certificate/${record.id}`, 200, "⚠ …and from the old cookie too: it is theirs, not the school's");
     await check(null, `/certificate/${record.id}`, 307, "signed-out certificate redirects to login");
@@ -1040,12 +1105,22 @@ async function staffingAndDuty(schoolId: string) {
  * College, where their pages are, and the module roles at ZZ Northgate,
  * which has their modules on.
  */
+/**
+ * Menu entries whose page is a redirect by design, for every role shown them: the school website's entry opens the
+ * flow on the screen the office left it at, Look or Publish (admin/website/page.tsx, 15 Oct 2026).
+ */
+const NAV_REDIRECTS: Record<string, number> = { "/admin/website": 307 };
+
 type NavWalker = { role: Role; actor: Actor; modulesOn: readonly string[]; where: string; expect?: Record<string, number>; also?: string[]; /** A FACULTY's or HOD's duties (5 Oct 2026): an entry carrying `duty` is shown only to its holder. */ duties?: readonly string[] };
 
 async function everyNavLink(walkers: NavWalker[]) {
   for (const w of walkers) {
     const role = w.role;
-    const shown = NAV[role].filter((item) => (!item.module || w.modulesOn.includes(item.module)) && (!item.duty || (w.duties ?? []).includes(item.duty)));
+    const inScope = NAV[role].filter((item) => (!item.module || w.modulesOn.includes(item.module)) && (!item.duty || (w.duties ?? []).includes(item.duty)));
+    // An entry the shell drops while its platform feature is off (nav.ts hiddenByFeature) is not shown; typed in,
+    // its page is the app's 404 — asked below, so a hidden entry whose page still opens is caught (16 Oct 2026).
+    const hidden = new Set(hiddenByFeature(inScope, [...gate.on]));
+    const shown = inScope.filter((item) => !hidden.has(item.href));
     const hrefs = [
       ...shown.map((item) => item.href),
       ...QUICK_ACTIONS[role].map((action) => action.href),
@@ -1058,12 +1133,17 @@ async function everyNavLink(walkers: NavWalker[]) {
     const home = ROLE_HOME[role];
     const keptWhenOff = (href: string) => href === home || href.startsWith(`${home}/`) || href.startsWith("/notifications") || href.startsWith("/account");
 
+    for (const href of [...hidden].filter((h) => !h.includes("["))) {
+      if (ownOff && !keptWhenOff(href)) continue;
+      await check(w.actor, href, 404, `${role}'s menu hides this while its feature is off at ${w.where}; typed in, the app's 404`);
+    }
     for (const href of [...new Set(hrefs)]) {
+      if (hidden.has(href)) continue;
       if (ownOff && !keptWhenOff(href)) {
         skip(`${role} ${href} at ${w.where}`, `the role's own module ${own} is off there: the gate keeps only its home`);
         continue;
       }
-      await check(w.actor, href, w.expect?.[href] ?? 200, `⚠ ${role} is shown this link at ${w.where}`);
+      await check(w.actor, href, w.expect?.[href] ?? NAV_REDIRECTS[href] ?? 200, `⚠ ${role} is shown this link at ${w.where}`);
     }
   }
 }
@@ -1426,6 +1506,132 @@ async function operatorArea() {
     }
   } finally {
     await db.user.update({ where: { id: staff.user.id }, data: { isSuperuser: false } });
+  }
+}
+
+/**
+ * THIS WEEK'S NEW SURFACES (16 Oct 2026), each asked as the people who should and should not reach it: the operator's
+ * feature switches and plans (/root/features), sites and expert applications; the expert's application form, signed
+ * out; the plan page; the school website's six screens and preview (WEBSITE is on at ZZ Northgate and off at
+ * Riverside); the modules page without the assistant's switch; the Facebook and Instagram connection (ADMIN alone);
+ * and the published website on its own host, through the middleware's rewrite, as a visitor sees it.
+ */
+async function paidSurfaces(riversideAdmin: Actor, riversideTeacher: Actor, devServer: boolean) {
+  // Signed out: the expert's application is the one new page anyone may open; the rest send them to sign in.
+  await check(null, "/register/expert", 200, "anyone may apply to be an expert, signed out");
+  {
+    const login = await hit(null, "/login");
+    results.push({ role: "anonymous", path: "/login (expert link)", status: login.status, expected: 200, ok: login.status === 200 && login.body.includes('href="/register/expert"'), note: "the sign-in page leads to the expert's application" });
+  }
+  await check(null, "/account/plan", 307, "signed-out plan page redirects to login");
+  await check(null, "/root/features", 307, "the feature switches are nobody's signed out");
+  await check(riversideTeacher, "/root/features", 307, "⚠ …nor a teacher's");
+  await check(riversideAdmin, "/root/features", 307, "⚠ …nor a school office's");
+  await check(riversideTeacher, "/account/plan", 200, "a signed-in person reads the plan page");
+
+  // The ZZ operator (zz-fixtures.ts), signed in with no school and no role, the way the operator really is.
+  const operator = await db.user.findUnique({ where: { email: "zz.operator@zz.test" }, select: { isSuperuser: true } });
+  if (operator?.isSuperuser) {
+    const op = await mint("zz.operator@zz.test", null, null, "zz-operator");
+    if (op.userId) touched.delete(op.userId);
+    const features = await hit(op, "/root/features");
+    results.push({ role: op.label, path: "/root/features", status: features.status, expected: 200, ok: features.status === 200 && features.body.includes('data-testid="platform-features"') && features.body.includes('data-testid="person-plans"'), note: "the operator switches the platform's features and sets the plans" });
+    await check(op, "/root/sites", 200, "…reads every school website and domain");
+    const experts = await hit(op, "/root/experts");
+    results.push({ role: op.label, path: "/root/experts", status: experts.status, expected: 200, ok: experts.status === 200 && experts.body.includes('id="expert-applications"'), note: "…and the expert applications above the curation queue" });
+  } else {
+    skip("the operator's new pages", "no ZZ operator (run zz:fixtures)");
+  }
+
+  const northgate = await db.school.findUnique({ where: { slug: "zz-northgate-school" }, select: { id: true } });
+  if (!northgate) return skip("the website, modules and social pages", "no ZZ Northgate (run zz:fixtures)");
+  const touchedBefore = new Set(touched);
+  const zzAdmin = await mint("zz.admin@zz.test", "ADMIN", northgate.id, "zz-admin");
+  const zzPrincipal = await mint("zz.principal@zz.test", "PRINCIPAL", northgate.id, "zz-principal");
+  const teacherRow = await db.membership.findFirst({ where: { schoolId: northgate.id, role: "TEACHER", status: "ACTIVE", user: { email: "zz.teacher1@zz.test" } }, select: { id: true } });
+  const zzTeacher = teacherRow ? await mint("zz.teacher1@zz.test", "TEACHER", northgate.id, "zz-teacher1") : null;
+  // These pages read and cause no notice; the fixture people's notices are other suites' too, so the run's clean-up leaves them be.
+  for (const a of [zzAdmin, zzPrincipal, zzTeacher]) if (a?.userId && !touchedBefore.has(a.userId)) touched.delete(a.userId);
+  const websiteOn = (await db.schoolModule.count({ where: { schoolId: northgate.id, module: "WEBSITE" } })) > 0;
+
+  // The school website's flow: the office and the head at a school with the module on; the module-off answer at Riverside.
+  if (websiteOn) {
+    const published = (await db.schoolSiteVersion.count({ where: { schoolId: northgate.id } })) > 0;
+    const opens = await hit(zzAdmin, "/admin/website");
+    results.push({ role: zzAdmin.label, path: "/admin/website", status: opens.status, expected: 307, ok: opens.status === 307 && (opens.loc ?? "").endsWith(published ? "/admin/website/publish" : "/admin/website/look"), note: `opens the flow where the office left it (${published ? "Publish" : "Look"})${opens.loc ? ` → ${opens.loc}` : ""}` });
+    for (const screen of ["look", "about", "sections", "review", "publish", "domain"]) {
+      const page = await hit(zzAdmin, `/admin/website/${screen}`);
+      results.push({ role: zzAdmin.label, path: `/admin/website/${screen}`, status: page.status, expected: 200, ok: page.status === 200 && page.body.includes('aria-current="step"'), note: "the office's screen, inside the progress strip" });
+    }
+    await check(zzAdmin, "/admin/website/preview?lang=en", 200, "…and the draft as the page it would publish");
+    await check(zzPrincipal, "/admin/website/look", 200, "the head builds the website too");
+    if (zzTeacher) await check(zzTeacher, "/admin/website/look", 307, "⚠ a teacher does not");
+    await check(null, "/admin/website/look", 307, "signed-out website flow redirects to login");
+  } else {
+    skip("the website flow", "WEBSITE is not on at ZZ Northgate (run zz:fixtures)");
+  }
+  const riversideWebsite = await db.school.findFirst({ where: { name: { contains: "Riverside" } }, select: { id: true } });
+  if (riversideWebsite && (await db.schoolModule.count({ where: { schoolId: riversideWebsite.id, module: "WEBSITE" } })) === 0) {
+    // Read raw, not through streamedStatus: the layout draws the module-off answer and leaves its children out, but
+    // Next renders the screen beside it, and the screen's own refusal (site-admin.ts siteEditor) puts a not-found
+    // digest in the payload that the browser never draws — seen in the browser pane on 16 Oct 2026, which shows
+    // "Website is not switched on". The sweep's digest reading would call that a 404.
+    const res = await fetch(BASE + "/admin/website/look", { headers: { cookie: riversideAdmin.cookie }, redirect: "manual" });
+    const text = res.status === 200 ? await res.text() : "";
+    results.push({ role: riversideAdmin.label, path: "/admin/website/look", status: res.status, expected: 200, ok: res.status === 200 && text.includes('href="/admin/settings/modules"') && !text.includes('aria-current="step"'), note: "a school with the module off is told so and offered nothing else" });
+  }
+
+  // The modules page: the office switches its own modules, never the assistant (the operator's, 16 Oct 2026).
+  const modules = await hit(zzAdmin, "/admin/settings/modules");
+  const assistantLine = modules.body.includes('data-testid="modules-assistant-by-operator"');
+  results.push({
+    role: zzAdmin.label,
+    path: "/admin/settings/modules",
+    status: modules.status,
+    expected: 200,
+    ok: modules.status === 200 && modules.body.includes('data-testid="module-switch-WEBSITE"') && !modules.body.includes('data-testid="module-switch-ASSISTANT"') && assistantLine === gate.on.has("ASSISTANT"),
+    note: `the office's modules carry no assistant switch; the line saying the operator switches it ${gate.on.has("ASSISTANT") ? "is shown (ASSISTANT on)" : "is not (ASSISTANT off)"}`,
+  });
+
+  // Facebook and Instagram: the school's ADMIN alone.
+  await check(zzAdmin, "/admin/settings/social", 200, "the office connects the school's Facebook Page");
+  await check(zzPrincipal, "/admin/settings/social", 307, "⚠ …the head does not");
+  if (zzTeacher) await check(zzTeacher, "/admin/settings/social", 307, "⚠ …nor a teacher");
+  await check(null, "/admin/settings/social", 307, "signed-out social settings redirect to login");
+
+  // The plan page names the plan a person holds; zz.teacher1 holds TEACHER (zz-plans.ts).
+  if (zzTeacher) {
+    const plan = await hit(zzTeacher, "/account/plan");
+    results.push({ role: zzTeacher.label, path: "/account/plan", status: plan.status, expected: 200, ok: plan.status === 200 && plan.body.includes('data-testid="payment-soon"') && plan.body.includes('data-testid="your-plan-now"'), note: "the plan page: payment opens soon, and the plan held now" });
+  }
+
+  // The published website by slug: the office's and the head's own view, 404 to the rest (16 Oct 2026).
+  const zzSite = await db.schoolSiteVersion.findFirst({ where: { schoolId: northgate.id, liveAt: { not: null } }, select: { schoolSlug: true } });
+  if (zzSite) {
+    await check(zzPrincipal, `/sites/${zzSite.schoolSlug}`, 200, "the head sees the school's published website by slug");
+    if (zzTeacher) await check(zzTeacher, `/sites/${zzSite.schoolSlug}`, 404, "⚠ …a teacher does not: it is the office's preview");
+
+    // On its own host, as a visitor: <slug>.localhost in development (site-host-match.ts devSlugOfHost); a real domain
+    // only once LIVE, and the fixture's www.zz-northgate.test waits for DNS, so it answers nothing of the site yet.
+    if (devServer) {
+      const host = `${zzSite.schoolSlug}.localhost${new URL(BASE).port ? `:${new URL(BASE).port}` : ""}`;
+      const cache = (h: Record<string, string | string[] | undefined>) => String(h["cache-control"] ?? "");
+      const noindex = (h: Record<string, string | string[] | undefined>) => String(h["x-robots-tag"] ?? "").includes("noindex");
+      await checkHost(host, "/", 200, "the published site on its own host, public and without a script", (b, h) => cache(h).includes("public") && !/<script/i.test(b) && b.includes('action="/enquiry"'));
+      await checkHost(host, "/?lang=hi", 200, "…in another language");
+      await checkHost(host, "/robots.txt", 200, "…its robots.txt names the sitemap", (b) => b.includes("sitemap.xml"));
+      await checkHost(host, "/sitemap.xml", 200, "…and its sitemap lists the pages", (b) => b.includes("<urlset"));
+      await checkHost(host, "/login", 404, "⚠ the app's sign-in does not exist on a site's host", (_b, h) => noindex(h));
+      await checkHost(host, "/api/v1/me", 404, "⚠ …nor the app's API", (_b, h) => noindex(h));
+      await checkHost(host, `/sites/${zzSite.schoolSlug}`, 404, "⚠ …nor the office's view by slug", (_b, h) => noindex(h));
+      await checkHost(host, "/enquiry", 404, "the enquiry form takes a POST, not a GET", (_b, h) => noindex(h));
+      await checkHost("www.zz-northgate.test", "/", 404, "a domain still waiting for DNS serves nothing yet", (_b, h) => noindex(h));
+      await check(null, `/sites/by-host/${host}`, 404, "⚠ the host rewrite's own path is not reachable from the app's host");
+    } else {
+      skip("the website on its own host", "the <slug>.localhost host is a site host on a dev server only");
+    }
+  } else {
+    skip("the published website", "no ZZ fixture website is published (run zz:fixtures)");
   }
 }
 
@@ -1903,7 +2109,23 @@ async function joinCodeBootstrap(riversideId: string) {
   }
 }
 
+/** `--features=on` / `--plans=on`: what this run switched on, put back before it exits, on a throw and on a signal. */
+const switches = runSwitches(db, BASE, gateFlags(process.argv));
+for (const signal of ["SIGINT", "SIGTERM", "SIGHUP"] as const) {
+  process.once(signal, () => {
+    void switches
+      .restore()
+      .catch((e) => console.error(`✗ could not switch back: ${(e as Error).message} — switch it off at /root/features`))
+      .then(() => db.session.deleteMany({ where: { userAgent: "sweep" } }))
+      .finally(() => process.exit(130));
+  });
+}
+
 async function main() {
+  const switched = await switches.on();
+  if (switched.features.length || switched.plans.length) console.log(`· switched on for this run, as the ZZ operator: ${[...switched.features, ...switched.plans.map((p) => `plan ${p}`)].join(", ")}`);
+  gate = await readGateState(db, "everyone");
+  console.log(`· ${describeGateState(gate)}`);
   const riverside = await db.school.findFirst({ where: { name: { contains: "Riverside" } } });
   const oakfield = await db.school.findFirst({ where: { name: { contains: "Oakfield" } } });
   if (!riverside || !oakfield) throw new Error("seed missing");
@@ -1935,7 +2157,7 @@ async function main() {
       expiresAt: new Date(Date.now() + 86_400_000),
     },
   });
-  const student: Actor = { label: "student", cookie: `edulink_session=${studentToken}; __Host-edulink_session=${studentToken}`, sessionId: "" };
+  const student: Actor = { label: "student", cookie: `edulink_session=${studentToken}; __Host-edulink_session=${studentToken}`, sessionId: "", role: "STUDENT", userId: studentUser.id };
 
   // The warm pass before anything is counted (R-29, sweep-warm.ts): the cheap pages once, every answer thrown away.
   const warmed = await warmUp(BASE, warmPlan([
@@ -2617,6 +2839,7 @@ async function main() {
   await leaveAndPrincipal(riverside.id);
   await staffingAndDuty(riverside.id);
   await operatorArea();
+  await paidSurfaces(admin, teacher, devServer);
   await onboardingSignposts(riverside.id);
   await sharedDeviceSignposts(riverside.id);
 
@@ -2789,7 +3012,14 @@ async function main() {
   }
 
   /* ---- competitions: the one thing that is NOT school-scoped ---- */
-  const openComp = await db.competition.findFirst({ where: { status: "PUBLISHED" } });
+  // A PLATFORM competition for every audience: a school's own competition is another school's 404 by design
+  // (competitions.ts getCompetition), and "the first published one" had come to be Riverside's own spelling bee.
+  const openComp = await db.competition.findFirst({ where: { status: "PUBLISHED", organizerSchoolId: null, audience: null }, orderBy: { id: "asc" } });
+  const ownComp = await db.competition.findFirst({ where: { status: "PUBLISHED", organizerSchoolId: riverside.id }, orderBy: { id: "asc" } });
+  if (ownComp) {
+    await check(student, `/competitions/${ownComp.id}`, 200, "a school's own competition, to its pupils");
+    await check(otherAdmin, `/competitions/${ownComp.id}`, 404, "⚠ …is another school's not-found, not its catalogue");
+  }
   const draftComp = await db.competition.findFirst({ where: { status: "DRAFT" } });
 
   for (const actor of [admin, teacher, student, parent]) {
@@ -2850,11 +3080,14 @@ async function main() {
     console.log("-".repeat(96));
   }
   printSlowest();
+  console.log(`· judged by the platform's switches and plans (${describeGateState(gate)}): ${gatedLines.off} pages the app's not-found for a feature that is off, ${gatedLines.plan} the plan card, as expected`);
   console.log(
     `${results.length - failed.length}/${results.length} as expected, ${failed.length} unexpected` +
       (skipped.length > 0 ? `, ${skipped.length} skipped.` : "."),
   );
 
+  // Never leave a feature or a plan on that this run switched on.
+  await switches.restore();
   await db.session.deleteMany({ where: { userAgent: "sweep" } });
   // The notices this run caused its actors — a restored access, a suggested mentor — are the run's, not theirs to keep.
   const notices = await db.notification.deleteMany({ where: { userId: { in: [...touched] }, createdAt: { gte: startedAt } } });
@@ -2865,6 +3098,7 @@ async function main() {
 main().catch(async (e) => {
   if (e instanceof ServerGone) console.error(`✗ ${e.message}: nothing after it was tried. Restart the server (check ${BASE}/api/health) and rerun.`);
   else console.error(e);
+  await switches.restore().catch((err) => console.error(`✗ could not switch back what this run switched on: ${(err as Error).message} — switch it off at /root/features`));
   await db.session.deleteMany({ where: { userAgent: "sweep" } });
   process.exit(e instanceof ServerGone ? 2 : 1);
 });

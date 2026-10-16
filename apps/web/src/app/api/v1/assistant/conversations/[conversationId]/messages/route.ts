@@ -1,8 +1,7 @@
 import { assistantAnswerSchema, assistantAskSchema } from "@edulink/contracts";
 import { apiInvalid, ok, readJson } from "@/lib/api-v1";
-import { requireApiSession } from "@/lib/api-reads/shared";
 import { ask } from "@/lib/assistant/service";
-import { assistantFailure } from "@/lib/assistant/http";
+import { assistantFailure, requireAssistantSession } from "@/lib/assistant/http";
 
 /** A question with a pasted homework text is a few kilobytes. */
 const ASK_BODY_LIMIT = 16 * 1024;
@@ -15,7 +14,7 @@ const ASK_BODY_LIMIT = 16 * 1024;
  */
 export async function POST(request: Request, { params }: { params: Promise<{ conversationId: string }> }) {
   try {
-    const ctx = await requireApiSession();
+    const ctx = await requireAssistantSession();
     const parsed = assistantAskSchema.safeParse(await readJson(request, ASK_BODY_LIMIT));
     if (!parsed.success) return apiInvalid(parsed);
     const { conversationId } = await params;

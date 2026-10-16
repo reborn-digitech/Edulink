@@ -2750,7 +2750,8 @@ async function main() {
   }
   // end meta-posting
   // plans (16 Oct 2026): placeholder prices on the plans sold per person (only while unset), and a year's STUDENT grant for
-  // zz.pupil01 and TEACHER grant for zz.teacher1 so the sweep sees a working path (scripts/zz-plans.ts; idempotent).
+  // zz.pupil01, TEACHER grant for zz.teacher1 and EXPERT grant for zz.expert1 so the sweep sees a working path
+  // (scripts/zz-plans.ts; idempotent).
   const plans = await buildPlans(db, { domain: DOMAIN, operatorId: operator.id });
   console.log(`  Plans: ${plans.priced ? `${plans.priced} plan(s) given placeholder prices` : "prices already set"}; ${plans.granted.length ? `granted ${plans.granted.join(", ")}` : "no new grant"}${plans.kept.length ? `; already held: ${plans.kept.join(", ")}` : ""} — /root/features, /account/plan`);
   // end plans

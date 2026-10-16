@@ -2,8 +2,24 @@ import "server-only";
 import { NextResponse } from "next/server";
 import { apiErrorSchema } from "@edulink/contracts";
 import { apiFailure } from "../api-v1";
-import { getSession } from "../session";
+import { getSession, type ActiveContext } from "../session";
+import { AccessError } from "../access-error";
+import { requireApiSession } from "../api-reads/shared";
 import { AssistantUnavailableError, unavailableSentence } from "./service";
+import { policyFor } from "./policy";
+
+/**
+ * The assistant's own doors' first line (16 Oct 2026): signed in, in a role the assistant is for — every role but
+ * the expert and the recruiter, who belong to no school (policy.ts `help`; the catalog's PEOPLE says the same) — and
+ * refused 403 otherwise, before the body is read. The expert used to be answered as a person with no school (a 200
+ * status saying NO_SCHOOL, an empty list, a 422 for an empty body) where the catalog, the docs and the phone's gate
+ * say 403; the API sweep with the feature on found it.
+ */
+export async function requireAssistantSession(): Promise<ActiveContext> {
+  const ctx = await requireApiSession();
+  if (!policyFor(ctx.role).help) throw new AccessError("access.wrongRoleForThisAction");
+  return ctx;
+}
 
 /**
  * The assistant's doors answer every failure through apiFailure, and the one refusal of their own —

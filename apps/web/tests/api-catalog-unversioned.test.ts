@@ -16,7 +16,10 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { attendanceRegisterBodySchema, attendanceRegisterRosterSchema, attendanceRegisterSavedSchema } from "@edulink/contracts";
 import { createSession } from "@/lib/session";
-import { __resetCookies } from "../tests/stubs/next-headers";
+import { __resetCookies, __setHeaders } from "../tests/stubs/next-headers";
+import { PLATFORM_FEATURES } from "@edulink/contracts";
+import { setFeaturesForTests } from "@/lib/platform-features";
+import { setActivePlansForTests } from "@/lib/person-plans";
 import { attendanceBatchSchema } from "@/lib/validation";
 import { ENDPOINTS, type SweepFixture } from "@/lib/api-catalog";
 import { SWEEP_REGISTER_CLIENT_ID, SWEEP_REGISTER_DAY } from "@/lib/api-catalog/unversioned";
@@ -148,5 +151,27 @@ describe("POST /api/practice/answer in the catalog", () => {
     expect((await answerPost(post("/api/practice/answer", {}))).status).toBe(401);
     await signInAs("STUDENT");
     expect((await answerPost(post("/api/practice/answer", {}))).status).toBe(e.emptyBodyStatus);
+  });
+
+  it("answers the question bank switched off and a plan the pupil lacks as the v1 doors do (16 Oct 2026)", async () => {
+    // The session's gate reads the route the middleware stamps.
+    __setHeaders({ "x-edulink-route": "POST /api/practice/answer" });
+    try {
+      await signInAs("STUDENT");
+      setFeaturesForTests(PLATFORM_FEATURES.filter((c) => c !== "QUESTION_BANK"));
+      const off = await answerPost(post("/api/practice/answer", {}));
+      expect(off.status).toBe(404);
+      expect(off.headers.get("x-edulink-code")).toBe("FEATURE_OFF");
+      expect(((await off.json()) as { code?: string }).code).toBe("FEATURE_OFF");
+      setFeaturesForTests([...PLATFORM_FEATURES]);
+      setActivePlansForTests(["STUDENT"]);
+      const locked = await answerPost(post("/api/practice/answer", {}));
+      expect(locked.status).toBe(402);
+      expect(((await locked.json()) as { code?: string; plan?: string })).toMatchObject({ code: "PLAN_REQUIRED", plan: "STUDENT" });
+    } finally {
+      setFeaturesForTests([...PLATFORM_FEATURES]);
+      setActivePlansForTests([]);
+      __setHeaders({});
+    }
   });
 });

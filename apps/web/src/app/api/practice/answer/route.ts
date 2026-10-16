@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { webPracticeAnswerBodySchema } from "@edulink/contracts";
 import { AccessError, requireApiRole } from "@/lib/tenancy";
-import { apiInvalid } from "@/lib/api-v1";
+import { apiFailure, apiInvalid } from "@/lib/api-v1";
+import { FeatureOffError, PlanRequiredError } from "@/lib/access-error";
 import { submitAnswerIdempotent, normaliseLanguage } from "@/lib/quiz";
 import { getT } from "@/lib/i18n/server";
 
@@ -33,6 +34,10 @@ export async function POST(request: Request) {
     );
     return NextResponse.json({ ok: true, ...outcome });
   } catch (error) {
+    // The question bank switched off (404 FEATURE_OFF) or a plan the pupil lacks (402 PLAN_REQUIRED): answered as every
+    // v1 door answers them, with the envelope code the catalog publishes for this door (x-feature, x-plans). Mapped by
+    // hand below they were a bare 404 and a 403 (the page sweep of 16 Oct 2026).
+    if (error instanceof FeatureOffError || error instanceof PlanRequiredError) return apiFailure(error, "api/practice/answer");
     if (error instanceof AccessError) {
       const status = error.code === "UNAUTHENTICATED" ? 401 : error.code === "NOT_FOUND" ? 404 : 403;
       return NextResponse.json({ error: (await getT())(error.key, error.vars) }, { status });

@@ -46,6 +46,7 @@ describe("the API sweep's sessions", () => {
     // The two mints (the actors, the session the sign-out door signs out) and the renewal.
     expect(src.match(/expiresAt: sweepSessionExpiry\(\)/g)?.length).toBe(3);
     expect(src).toMatch(/keepSessionsAlive\(\(\) => db\.session\.updateMany\(\{ where: \{ id: \{ in: minted \} \}/);
-    expect(src).toMatch(/purgeSessionsOnSignal\(\(\) => db\.session\.deleteMany\(\{ where: \{ id: \{ in: minted \} \} \}\)\)/);
+    // On a signal the run first switches back what --features=on / --plans=on switched on (16 Oct 2026), then deletes its sessions.
+    expect(src).toMatch(/purgeSessionsOnSignal\(async \(\) => \{\s*await switches\.restore\(\)[^\n]*\n\s*await db\.session\.deleteMany\(\{ where: \{ id: \{ in: minted \} \} \}\);\s*\}\)/);
   });
 });

@@ -7,9 +7,11 @@ import { PERSON_PLANS, PLAN_FEATURES, type PlanCode } from "@edulink/contracts";
  *   - Placeholder prices on the three plans sold per person, which the owner sets for real: ₹99 a month / ₹999 a year
  *     STUDENT, ₹199 / ₹1,999 TEACHER, ₹499 / ₹4,999 EXPERT. Written only while a plan's two prices are both still 0,
  *     so a price the operator has set stands. Whether a plan is ACTIVE is left exactly as the operator left it.
- *   - A working path for the sweep: ZZ Northgate's first pupil (zz.pupil01) holds the STUDENT plan and its first
- *     teacher (zz.teacher1) the TEACHER plan, a year from the first run, granted by the ZZ operator. Made only when the
- *     person holds no live GRANT of that plan, so a second run adds nothing.
+ *   - A working path for the sweep: ZZ Northgate's first pupil (zz.pupil01) holds the STUDENT plan, its first
+ *     teacher (zz.teacher1) the TEACHER plan and the sweep's expert (zz.expert1, 16 Oct 2026) the EXPERT plan, a year
+ *     from the first run, granted by the ZZ operator — the three people the API sweep signs in as, so with a plan
+ *     active the sweep proves the holder let through and everybody else answered 402. Made only when the person holds
+ *     no live GRANT of that plan, so a second run adds nothing.
  *
  * No audit row and no notice: these are fixture rows, not the operator's act. Removed by --teardown with the ZZ people.
  */
@@ -34,7 +36,7 @@ export async function buildPlans(db: PrismaClient, opts: { domain: string; opera
   }
   const granted: string[] = [];
   const kept: string[] = [];
-  for (const [email, plan] of [[`zz.pupil01@${opts.domain}`, "STUDENT"], [`zz.teacher1@${opts.domain}`, "TEACHER"]] as const) {
+  for (const [email, plan] of [[`zz.pupil01@${opts.domain}`, "STUDENT"], [`zz.teacher1@${opts.domain}`, "TEACHER"], [`zz.expert1@${opts.domain}`, "EXPERT"]] as const) {
     const user = await db.user.findUnique({ where: { email }, select: { id: true } });
     if (!user) continue;
     const live = await db.entitlement.count({ where: { userId: user.id, planCode: plan, source: "GRANT", revokedAt: null, validTo: { gt: now } } });

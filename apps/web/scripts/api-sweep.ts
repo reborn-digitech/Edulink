@@ -5,6 +5,12 @@
  *   npm run api:sweep                       against NEXT_PUBLIC_APP_URL (default :3000)
  *   npm run api:sweep -- --only=/shared/joins   only the endpoints whose path contains the text:
  *                                               a check of one change, not the sweep's count
+ *   npm run api:sweep -- --chunk=2/6        the second of six consecutive slices of the catalog, in catalog order
+ *                                           (16 Oct 2026): the whole catalog is two and a half hours on `next dev`,
+ *                                           and a server that stops answering ends a run; run zz:fixtures before each
+ *   npm run api:sweep -- --features=on      with every platform feature switched on for the run, as the ZZ
+ *                                           operator, and back off at its end (audited both ways); add
+ *                                           --plans=on to make the three plans active the same way (402 swept)
  *   npm run api:sweep -- --clean-since=<ISO> [--clean-until=<ISO>]
  *                                               no sweep: take away what a run that never reached its own
  *                                               clean-up wrote to the ZZ fixture schools in that window (W-13)
@@ -25,6 +31,16 @@
  * college-only door gives a school. Every call is timed, and the slowest
  * twenty doors are printed at the end (SWEEPS-3).
  *
+ * FEATURES AND PLANS (16 Oct 2026, scripts/sweep-features.ts). Before the walk the run reads the platform's feature
+ * switches, the plans the operator has made active and each actor's entitlements. A door whose catalog `feature` is
+ * off answers 404 FEATURE_OFF to every role token, before any other refusal (role-gate.ts rule 3), and that is the
+ * expected answer, counted as a pass; a door whose feature is on but needs a plan the actor's role must hold, while
+ * that plan is active and the actor holds no entitlement, answers 402 PLAN_REQUIRED (a `planFree` door asks the switch
+ * alone). Signed out, a door is 401 as before — the gate reads a session — except an `anyone` door of a feature, whose
+ * handler answers 404 FEATURE_OFF itself while the switch is off. `--features=on` switches every feature that is off
+ * on for the run as the ZZ operator, through the operator's door (audited), and back off at the end, in a `finally`
+ * and on a signal; `--plans=on` does the same for the plans' active switches, so the 402 path can be swept.
+ *
  * BY DESIGN, NOT BY A LIST (G4-2, decided 5 Oct 2026: keep 404 and MODULE_OFF): the module gate's answer is
  * judged from the door's own `module` (published as `x-module`) against the actor's school's modules, and a
  * college's door at a school from the catalog file it is filed in (`COLLEGE_DOORS`, published as `x-college`),
@@ -36,7 +52,7 @@ import { createHash, randomBytes } from "node:crypto";
 import { fixturePng } from "./png";
 import { Prisma, PrismaClient } from "@prisma/client";
 import { ENDPOINTS, type Endpoint, type SweepFixture } from "../src/lib/api-catalog";
-import { declaredStatus, permits } from "../src/lib/api-catalog/types";
+import { declaredStatus, featuresOf, permits } from "../src/lib/api-catalog/types";
 import { COLLEGE_DOORS } from "./college-doors";
 import { isCollegeKind, isDutyRole, parseDuties } from "@edulink/contracts";
 import { ROLES, type Role } from "../src/lib/constants";
@@ -47,6 +63,7 @@ import { inOwnWindow } from "./sweep-window";
 import { crossPlan, FIXTURE_ID, PLATFORM_WIDE } from "./cross-sampler";
 import { PLACEMENT_FIXTURE } from "../src/lib/api-catalog/placement-fixture";
 import { keepSessionsAlive, purgeSessionsOnSignal, sweepSessionExpiry } from "./sweep-sessions";
+import { describeGateState, doorGate, gateFlags, readGateState, runSwitches, type GateState } from "./sweep-features";
 
 const BASE = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
@@ -61,6 +78,26 @@ const skipped: string[] = [];
  * minutes, a signal deletes them (`purgeSessionsOnSignal`), and the `finally` at the end deletes them as before
  * (scripts/sweep-sessions.ts).
  */
+
+/** Each actor's person, for the plans: whether they hold an entitlement (sweep-features.ts). Filled by `mint`. */
+const userOf: Partial<Record<Role, string>> = {};
+/** The switches, the active plans and the actors' entitlements, read after the actors are minted (main, crossProbe). */
+let gate: GateState = { on: new Set(), activePlans: new Set(), entitled: new Map() };
+/** How many calls were judged by the feature gate (404 FEATURE_OFF) and by the plans (402 PLAN_REQUIRED). */
+const gated = { FEATURE_OFF: 0, PLAN_REQUIRED: 0 };
+
+/**
+ * The answer the feature gate gives this caller at this door before anything else, or null when it lets them by.
+ * A role token meets the session's gate (role-gate.ts rule 3); signed out, only an `anyone` door of a feature answers
+ * for the feature (its handler asks the switch), every other door being the session's 401 first.
+ */
+function featureAnswer(e: Endpoint, role: Role | null): { status: 404 | 402; code: "FEATURE_OFF" | "PLAN_REQUIRED" } | null {
+  if (role === null && e.access !== "anyone") return null;
+  const g = doorGate(e, { role, userId: role ? (userOf[role] ?? null) : null }, gate);
+  if (g.state === "off") return { status: 404, code: "FEATURE_OFF" };
+  if (g.state === "plan") return { status: 402, code: "PLAN_REQUIRED" };
+  return null;
+}
 
 /** Where each actor stands: its school's modules and whether that school is a college (a guardian: the children's schools). Filled by `actors()`. */
 type Tenant = { schoolId: string | null; modules: Set<string>; college: boolean };
@@ -96,7 +133,7 @@ function moduleOff(e: Endpoint, role: Role): "must" | "may" | "no" {
   return "no";
 }
 
-/** One call's answer: the status, the envelope's code on a 403, and how long it took. */
+/** One call's answer: the status, the refusal's code (the x-edulink-code header, or the envelope's on a 403), and how long it took. */
 type Answer = { status: number; code: string | null; ms: number };
 /** Every call's time, for the slowest doors at the end (SWEEPS-3). */
 const timings: { door: string; ms: number }[] = [];
@@ -115,6 +152,7 @@ async function mint(userId: string, role: Role, schoolId: string | null): Promis
     data: { userId, tokenHash: createHash("sha256").update(token).digest("hex"), activeSchoolId: schoolId, activeRole: role, userAgent: "api-sweep", expiresAt: sweepSessionExpiry() },
   });
   minted.push(s.id);
+  userOf[role] = userId;
   return token;
 }
 
@@ -550,9 +588,10 @@ async function hitOnce(e: Endpoint, token: string | null, path: string, body?: s
       controller.abort(); // a stream: the status is the answer
       return done(res.status);
     }
-    // A refusal's envelope says which: MODULE_OFF is the module gate's (and a college's door at a school).
-    let code: string | null = null;
-    if (res.status === 403) code = ((await res.json().catch(() => null)) as { code?: string } | null)?.code ?? null;
+    // A refusal's envelope says which: MODULE_OFF is the module gate's (and a college's door at a school); the
+    // header says FEATURE_OFF and PLAN_REQUIRED (16 Oct 2026), including on the calendar feed, which has no envelope.
+    let code: string | null = res.headers.get("x-edulink-code");
+    if (res.status === 403) code = ((await res.json().catch(() => null)) as { code?: string } | null)?.code ?? code;
     else await res.arrayBuffer().catch(() => null);
     return done(res.status, code);
   } catch (err) {
@@ -600,6 +639,14 @@ function printSlowest(): void {
  * operator's and the content team's) are outside a school's fence and skipped.
  */
 const CROSS_MODE = (process.argv.find((a) => a.startsWith("--cross="))?.slice(8) ?? null) as "school" | "person" | null;
+/** `--chunk=i/n`: the i-th of n consecutive slices of the catalog, so a long run can be taken in parts that add up to it. */
+const CHUNK = ((m) => (m ? { i: Number(m[1]), n: Number(m[2]) } : null))(process.argv.find((a) => a.startsWith("--chunk="))?.match(/^--chunk=(\d+)\/(\d+)$/) ?? null);
+function inChunk(index: number): boolean {
+  if (!CHUNK) return true;
+  const from = Math.floor(((CHUNK.i - 1) * ENDPOINTS.length) / CHUNK.n);
+  const to = Math.floor((CHUNK.i * ENDPOINTS.length) / CHUNK.n);
+  return index >= from && index < to;
+}
 /** `--only=a,b`: the endpoints whose catalog path contains any of these. */
 const ONLY = process.argv.find((a) => a.startsWith("--only="))?.slice(7).split(",").filter(Boolean) ?? null;
 const CROSS_SCHOOL = process.argv.find((a) => a.startsWith("--other="))?.slice(8) ?? "zz-southbank-school";
@@ -969,21 +1016,34 @@ async function cleanWindow(sinceText: string, untilText: string | null): Promise
   console.log(`deleted ${sessions.count} expired api-sweep sessions minted in the window.`);
 }
 
+/** `--features=on` / `--plans=on`: what this run switched on, put back in main's `finally` and on a signal (sweep-features.ts). */
+const switches = runSwitches(db, BASE, gateFlags(process.argv));
+
 async function main() {
   if (CLEAN_SINCE) return cleanWindow(CLEAN_SINCE, CLEAN_UNTIL);
-  // The run's own sessions: renewed while it lives, deleted if it is stopped by a signal (A3-S-15).
+  // The run's own sessions: renewed while it lives, deleted if it is stopped by a signal (A3-S-15) — after the
+  // switches this run turned on are turned off again.
   keepSessionsAlive(() => db.session.updateMany({ where: { id: { in: minted } }, data: { expiresAt: sweepSessionExpiry() } }));
-  purgeSessionsOnSignal(() => db.session.deleteMany({ where: { id: { in: minted } } }));
+  purgeSessionsOnSignal(async () => {
+    await switches.restore().catch((e) => console.error(`✗ could not switch back: ${(e as Error).message}`));
+    await db.session.deleteMany({ where: { id: { in: minted } } });
+  });
+  const switched = await switches.on();
+  if (switched.features.length || switched.plans.length) console.log(`· switched on for this run, as the ZZ operator: ${[...switched.features, ...switched.plans.map((p) => `plan ${p}`)].join(", ")}`);
   // The cross probes write too (an application, a guardian's PEN decision): their window is swept like the main run's (STREAMS-8).
   if (CROSS_MODE) return inOwnWindow(() => crossProbe(CROSS_MODE), sweepAway);
   const startedAt = new Date();
   const tokens = await actors();
+  gate = await readGateState(db, Object.values(userOf));
+  console.log(`· ${describeGateState(gate)}`);
   // The rows whose doors remove them, put back first, so this run proves the removal and not the last run's 404.
   const northgate = await db.school.findUniqueOrThrow({ where: { slug: "zz-northgate-school" }, select: { id: true } });
   await restoreSweepThrowaways(db, northgate.id);
   const fx = await fixture();
   await readCheckInClosure();
-  for (const e of ENDPOINTS) {
+  if (CHUNK && !(CHUNK.n >= 1 && CHUNK.i >= 1 && CHUNK.i <= CHUNK.n)) throw new Error(`--chunk=${CHUNK.i}/${CHUNK.n}: not a slice (1 ≤ i ≤ n)`);
+  for (const [index, e] of ENDPOINTS.entries()) {
+    if (!inChunk(index)) continue;
     if (ONLY && !ONLY.some((text) => e.path.includes(text))) continue;
     const path = typeof e.sample === "function" ? e.sample(fx) : (e.sample ?? e.path);
     if (path === null || /\{\w+\}/.test(path)) {
@@ -996,11 +1056,31 @@ async function main() {
     const roles: (Role | null)[] = e.access === "anyone" ? [null] : [null, ...(ROLES as readonly Role[]).filter((r) => tokens[r])];
     for (const role of roles) {
       if (e.path === "/api/v1/auth/logout" && role) continue; // would revoke the sweep's own session
+      // A feature the operator has off, or a plan the actor lacks, is the gate's answer before any other (16 Oct 2026).
+      const byFeature = featureAnswer(e, role);
+      if (byFeature) {
+        const got = await hit(e, role ? tokens[role] : null, path);
+        const ok = got.status === byFeature.status && got.code === byFeature.code;
+        if (ok) gated[byFeature.code]++;
+        results.push({ endpoint: `${e.method} ${e.path}`, role: role ?? "anonymous", expected: `${byFeature.status} ${byFeature.code}`, got: got.status, ok });
+        // A valid body meets the same gate: the refusal holds for a request the handler would take.
+        if (goodBody && role && e.method !== "GET" && (e.access === "signed-in" || Array.isArray(e.access)) && actorPermits(e, role)) {
+          const answer = await hit(e, tokens[role], path, JSON.stringify(goodBody));
+          const bodyOk = answer.status === byFeature.status && answer.code === byFeature.code;
+          if (bodyOk) gated[byFeature.code]++;
+          results.push({ endpoint: `${e.method} ${e.path} (valid body)`, role, expected: `${byFeature.status} ${byFeature.code}`, got: answer.status, ok: bodyOk });
+        }
+        continue;
+      }
       const want = expected(e, role);
       // A permitted role at a school with the door's module off is answered by the gate (SWEEPS-4).
       const off = role && actorPermits(e, role) && e.access !== "operator" && e.access !== "app-admin" ? moduleOff(e, role) : "no";
+      // A door whose handler decides its feature (`featureInHandler`) may answer a permitted role 404 while the feature
+      // is off — the payee door does for a teacher the company does not owe (catalog gigs.ts): that 404 is allowed too.
+      const byHandler = role !== null && actorPermits(e, role) && !!e.featureInHandler && featuresOf(e).every((f) => !gate.on.has(f));
+      const handlerOk = (a: Answer) => byHandler && a.status === 404;
       const got = await hit(e, role ? tokens[role] : null, path);
-      results.push({ endpoint: `${e.method} ${e.path}`, role: role ?? "anonymous", expected: wanted(want, off), got: got.status, ok: judge(want, off, got) });
+      results.push({ endpoint: `${e.method} ${e.path}`, role: role ?? "anonymous", expected: byHandler ? `${JSON.stringify(wanted(want, off))} or 404 (its handler, feature off)` : wanted(want, off), got: got.status, ok: judge(want, off, got) || handlerOk(got) });
       // With a valid body, a permitted role must get through (200), which is
       // the half of the contract an empty body cannot prove.
       if (goodBody && role && e.method !== "GET" && (e.access === "signed-in" || Array.isArray(e.access)) && actorPermits(e, role)) {
@@ -1009,13 +1089,14 @@ async function main() {
         // actor, an HOD may not write a college-wide visit) is the valid-body answer too; otherwise a permitted role gets through.
         const declared = e.statusByRole?.[role];
         const want = refusedOnClosedDay(e) ? [403] : declared !== undefined ? declared : [200, 201];
-        results.push({ endpoint: `${e.method} ${e.path} (valid body)`, role, expected: wanted(want, off), got: answer.status, ok: judge(want, off, answer) });
+        results.push({ endpoint: `${e.method} ${e.path} (valid body)`, role, expected: byHandler ? `${JSON.stringify(wanted(want, off))} or 404 (its handler, feature off)` : wanted(want, off), got: answer.status, ok: judge(want, off, answer) || handlerOk(answer) });
       }
     }
   }
   const failed = results.filter((r) => !r.ok);
   for (const r of failed) console.log(`✗ ${r.endpoint} as ${r.role}: expected ${JSON.stringify(r.expected)}, got ${r.got}`);
   for (const s of skipped) console.log(`· skipped (no sample): ${s}`);
+  console.log(`· judged by the platform's switches and plans (${describeGateState(gate)}): ${gated.FEATURE_OFF} calls 404 FEATURE_OFF, ${gated.PLAN_REQUIRED} calls 402 PLAN_REQUIRED, as expected`);
   console.log(`${results.length - failed.length}/${results.length} as expected, ${failed.length} unexpected, ${skipped.length} skipped.`);
   printSlowest();
   if (failed.length) process.exitCode = 1;
@@ -1034,6 +1115,11 @@ main()
     process.exitCode = 1;
   })
   .finally(async () => {
+    // Never leave a feature or a plan on that this run switched on (--features=on, --plans=on).
+    await switches.restore().catch((e) => {
+      console.error(`✗ could not switch back what this run switched on: ${(e as Error).message} — switch it off at /root/features`);
+      process.exitCode = 1;
+    });
     if (minted.length) await db.session.deleteMany({ where: { id: { in: minted } } });
     await db.$disconnect();
   });
