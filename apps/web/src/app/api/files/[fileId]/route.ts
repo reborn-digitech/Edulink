@@ -5,6 +5,9 @@ import { etagFor, readStoredFile, readStoredVariant, VARIANT_WIDTHS, type Varian
 // meta-posting (16 Oct 2026)
 import { asJpeg, socialPictureOpen } from "@/lib/social";
 // end meta-posting
+// website-two (16 Oct 2026)
+import { siteReviewFileOpen } from "@/lib/site-share";
+// end website-two
 
 /**
  * Serves a stored file.
@@ -46,9 +49,15 @@ export async function GET(
 
   // A logo is public, so the session is only fetched when it might be needed —
   // authorizeFileRead checks the logo case before anything else.
+  // website-two (16 Oct 2026): ?review= is a review link's token (src/lib/site-share.ts): a picture or PDF the school's
+  // website draft names opens, privately and uncached, while the link is open, to a reader with no account.
+  const reviewing = !linked && url.searchParams.has("review") && /^[A-Za-z0-9._-]{1,200}$/.test(fileId) ? await siteReviewFileOpen(fileId, url.searchParams.get("review")) : false;
+  // end website-two
   const access: FileAccess = linked
     ? { allowed: true, kind: "submission", public: false }
-    : await authorizeFileRead(fileId, await getSession());
+    : reviewing
+      ? { allowed: true, kind: "site", public: false }
+      : await authorizeFileRead(fileId, await getSession());
 
   if (!access.allowed) return new Response("Not found", { status: 404 });
 

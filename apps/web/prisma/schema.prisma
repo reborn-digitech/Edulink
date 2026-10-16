@@ -547,6 +547,11 @@ model School {
   siteVersions           SchoolSiteVersion[]
   siteEnquiries          SchoolSiteEnquiry[]
   // end website-builder A
+  // website-two (16 Oct 2026): review links to the draft, page-view counts, the files uploaded for the site.
+  siteShares             SchoolSiteShare[]
+  siteVisits             SchoolSiteVisit[]
+  siteFiles              SchoolSiteFile[]
+  // end website-two
   // website-builder B (15 Oct 2026): the school's own domains for its public website.
   siteDomains            SchoolSiteDomain[]
   // end website-builder B
@@ -10945,6 +10950,12 @@ model SchoolSiteVersion {
   /// Null for a version the nightly job cut.
   publishedByUserId String?
   liveAt            DateTime?
+  // website-two (16 Oct 2026)
+  /// The pages besides the home page, JSON { <path>: { en, hi, mr } } (`html` stays the home page's), rendered with
+  /// the version: about, academics, admissions, facilities, faculty, gallery, news, events, achievements, downloads,
+  /// contact and the custom pages' own paths. A page with nothing to show is not rendered and answers 404.
+  pagesHtml         String    @default("{}")
+  // end website-two
 
   school School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   site   SchoolSite @relation(fields: [siteId], references: [id], onDelete: Cascade)
@@ -10968,12 +10979,92 @@ model SchoolSiteEnquiry {
   createdAt    DateTime  @default(now())
   readAt       DateTime?
   readByUserId String?
+  // website-two (16 Oct 2026): the inbox in the editor. NEW until the office replies by email (REPLIED, with what it
+  // wrote) or closes it (CLOSED); `lastActivityAt` moves with every act. The weekly site:enquiries job deletes an
+  // enquiry closed, or untouched, for 180 days (src/lib/site-inbox.ts), which the form says.
+  /// An email the form asked for apart from the contact (the form's optional field), or "".
+  email           String    @default("")
+  /// The enquirer asked to visit the school (the form's optional tick).
+  wantsVisit      Boolean   @default(false)
+  /// NEW | REPLIED | CLOSED
+  status          String    @default("NEW")
+  replyText       String    @default("")
+  repliedAt       DateTime?
+  repliedByUserId String?
+  closedAt        DateTime?
+  lastActivityAt  DateTime  @default(now())
+  // end website-two
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, createdAt])
+  @@index([schoolId, status])
+  @@index([lastActivityAt])
+}
+// end website-builder A
+
+// website-two (16 Oct 2026)
+/// A LINK TO REVIEW A SCHOOL WEBSITE'S DRAFT, SIGNED OUT (src/lib/site-share.ts is the one writer). The office or the
+/// head makes one from the editor's header for a principal or a colleague to read the draft before it is published:
+/// /sites/review/<token>, read-only, never indexed, valid seven days, revocable; making a new one revokes the old.
+/// Only the token's SHA-256 is kept, so the link is shown once, when it is made. A row neither revoked nor expired is
+/// readable with no session (GLOBALLY_READABLE in scripts/gen-rls.ts), because the review route has none and must find
+/// the school by the token; what crosses is the hash and its school, never the draft (read under the school's binding).
+model SchoolSiteShare {
+  id              String    @id @default(cuid())
+  schoolId        String
+  tokenHash       String    @unique
+  createdByUserId String
+  createdAt       DateTime  @default(now())
+  expiresAt       DateTime
+  revokedAt       DateTime?
 
   school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
   @@index([schoolId, createdAt])
 }
-// end website-builder A
+
+/// A SCHOOL WEBSITE'S PAGE VIEWS, COUNTED ON THE SERVER (src/lib/site-visits.ts): one row per page per day in the
+/// school's zone, a number and nothing else — no cookie is set, no address or browser is stored, so nothing here can
+/// tell one visitor from another. Written by the public route on the school's own domain under the school's binding;
+/// read as a thirty-day line and totals on the editor's Publish section; rows older than 400 days go with the weekly
+/// site:enquiries job. A row per (school, day, page) so a count is an increment, never a read-modify-write of JSON.
+model SchoolSiteVisit {
+  id       String @id @default(cuid())
+  schoolId String
+  /// YYYY-MM-DD in the school's zone.
+  dateKey  String
+  /// The page's path key: "home", "about", … or a custom page's own.
+  page     String
+  count    Int    @default(0)
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@unique([schoolId, dateKey, page])
+}
+
+/// A FILE UPLOADED FOR A SCHOOL'S WEBSITE (src/lib/site-files.ts): a picture (the hero, a facility, an album, an
+/// achievement) or a PDF (the prospectus, the downloads). The row names the file so the file route can let the office
+/// and the head read it while it is only in the draft (files.ts) and the orphan sweep keeps it (orphans.ts); the
+/// published version's `imageFileIds` makes it public while a live page shows it. A picture of people still needs the
+/// consent tick where the draft uses it (minors' policy 0002); the row only says who uploaded it.
+model SchoolSiteFile {
+  id               String   @id @default(cuid())
+  schoolId         String
+  fileId           String   @unique
+  /// IMAGE | PDF
+  kind             String
+  mime             String
+  size             Int
+  name             String   @default("")
+  uploadedByUserId String?
+  createdAt        DateTime @default(now())
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, createdAt])
+}
+// end website-two
 
 // meta-posting (16 Oct 2026)
 /// A SCHOOL'S FACEBOOK PAGE, CONNECTED FOR POSTING (src/lib/social.ts is the one writer; the owner's ask of 15

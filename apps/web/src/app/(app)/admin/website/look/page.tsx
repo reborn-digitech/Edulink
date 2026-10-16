@@ -1,32 +1,12 @@
-import type { Metadata } from "next";
-import { requireRole } from "@/lib/tenancy";
-import { getT } from "@/lib/i18n/server";
-import { loadSite } from "@/lib/site-admin";
-import { FONTS } from "@/lib/fonts";
-import { Card, CardBody, CardHeader } from "@/components/ui/card";
-import { LookForm } from "./look-form";
+import { redirect } from "next/navigation";
+import { websitePageContext } from "../gate";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getT();
-  return { title: [t("website.stepLook"), t("website.title")].join(" · ") };
-}
-
-/** Screen 1, Look: a template, a colour (the logo's nearest by default), a face, the site's language. */
-export default async function WebsiteLookPage() {
-  const ctx = await requireRole("ADMIN", "PRINCIPAL");
-  const t = await getT();
-  const view = await loadSite(ctx);
-  const c = view.config;
-  return (
-    <Card>
-      <CardHeader title={t("website.lookTitle")} description={t("website.lookIntro")} />
-      <CardBody>
-        <LookForm
-          initial={{ template: c.template, colour: c.colour, font: c.font, language: c.language, offerOtherLanguages: c.offerOtherLanguages }}
-          fonts={FONTS.map((f) => ({ key: f.key, family: f.family, devanagari: f.scripts.includes("devanagari") }))}
-          hasLogo={Boolean(view.school.logoFileId)}
-        />
-      </CardBody>
-    </Card>
-  );
+/**
+ * /admin/website/look — one of the six screens of 15 October 2026, now a section of the one editor at /admin/website
+ * (website-two, 16 Oct 2026): it opens the editor there, so a saved link or a notice still lands where it meant. The
+ * module off, the layout's notice alone (a plain 200).
+ */
+export default async function WebsiteOldScreen() {
+  if (!(await websitePageContext())) return null;
+  redirect("/admin/website?s=look");
 }

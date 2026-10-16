@@ -28,10 +28,13 @@ const mocked = vi.hoisted(() => ({
 vi.mock("@/lib/site-publish", () => ({
   publishedSiteFor: vi.fn(async (schoolId: string) => mocked.published.get(schoolId) ?? null),
   schoolIdForSlug: vi.fn(async (slug: string) => mocked.slugs.get(slug) ?? null),
-  siteHtmlFor: (site: { html: Record<string, string>; language: string }, lang: string | null) => {
+  // website-two (16 Oct 2026): a page's path besides the home page; a site here has no other page.
+  siteHtmlFor: (site: { html: Record<string, string>; language: string; pages?: Record<string, Record<string, string>> }, lang: string | null, path = "") => {
     const language = lang === "en" || lang === "hi" || lang === "mr" ? lang : site.language;
+    if (path) return site.pages?.[path] ? { html: site.pages[path]![language], language } : null;
     return { html: site.html[language], language };
   },
+  appUrl: () => "http://localhost:3000",
 }));
 
 import { ENDPOINTS } from "@/lib/api-catalog";
@@ -417,7 +420,8 @@ describe("the public routes on a site host", () => {
   });
 
   it("⚠ answers every other path on a site host 404, noindex", async () => {
-    const res = await restGet(call("/login", domain()));
+    // Since website-two (16 Oct 2026) a GET of one of the site's pages is that page; /login is none of them.
+    const res = await restGet(call("/login", domain()), { params: Promise.resolve({ host: domain(), rest: ["login"] }) });
     expect(res.status).toBe(404);
     expect(res.headers.get("x-robots-tag")).toContain("noindex");
   });

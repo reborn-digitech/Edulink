@@ -34,14 +34,18 @@ export type SiteEnquiryOutcome =
   | { ok: true; schoolId: string; schoolName: string; language: SiteLanguage; colour: string }
   | { ok: false; status: 404 | 422 | 429; errorKey: TranslationKey; retryAfterSeconds?: number; language?: SiteLanguage; colour?: string };
 
-/** `schoolId` is the school of the site's host (schoolIdForHost), null for a host that is nobody's. */
-export async function takeSiteEnquiry(schoolId: string | null, body: SiteEnquiryBody): Promise<SiteEnquiryOutcome> {
+/**
+ * `schoolId` is the school of the site's host (schoolIdForHost), null for a host that is nobody's. `lang` is the
+ * language of the page the form was on: the office replies in it (site-inbox.ts).
+ */
+export async function takeSiteEnquiry(schoolId: string | null, body: SiteEnquiryBody, lang?: SiteLanguage): Promise<SiteEnquiryOutcome> {
   const site = schoolId ? await publishedSiteFor(schoolId) : null;
   if (!schoolId || !site) return { ok: false, status: 404, errorKey: "site.notFoundBody" };
   const live = await db.schoolSiteVersion.findFirst({ where: { schoolId, liveAt: { not: null } }, select: { snapshotJson: true } });
   const config = readJson<Partial<SiteSnapshot>>(live?.snapshotJson, {}).config;
   if (!config || !sectionOn(config, "ADMISSIONS") || !config.enquiryForm) return { ok: false, status: 404, errorKey: "site.notFoundBody", language: site.language, colour: site.colour };
   const look = { language: site.language, colour: site.colour };
+  const language: SiteLanguage = lang ?? site.language;
 
   // A robot filled the field nobody sees: thank it and keep nothing.
   if (body.website.trim()) {
@@ -50,6 +54,10 @@ export async function takeSiteEnquiry(schoolId: string | null, body: SiteEnquiry
   }
   const contact = body.contact.trim();
   if (!isEmailish(contact) && !isPhoneish(contact)) return { ok: false, status: 422, errorKey: "site.refusedContact", ...look };
+  // website-two: the form's optional fields, kept only where the published form asks for them.
+  const asks = new Set(config.enquiryFields ?? ["GRADE"]);
+  const email = asks.has("EMAIL") ? body.email.trim() : "";
+  if (email && !isEmailish(email)) return { ok: false, status: 422, errorKey: "site.refusedContact", ...look };
 
   const gate = await consumeByCaller("site-enquiry", SITE_ENQUIRIES_PER_HOUR);
   if (!gate.allowed) return { ok: false, status: 429, errorKey: "site.busyBody", retryAfterSeconds: gate.retryAfterSeconds, ...look };
@@ -59,11 +67,11 @@ export async function takeSiteEnquiry(schoolId: string | null, body: SiteEnquiry
   return forSchool(schoolId, async () => {
     const school = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { name: true, admissionsContactMembershipId: true } });
     const row = await db.schoolSiteEnquiry.create({
-      data: { schoolId, name: body.name.trim(), contact, grade: body.grade.trim(), message: body.message.trim(), locale: site.language },
+      data: { schoolId, name: body.name.trim(), contact, grade: asks.has("GRADE") ? body.grade.trim() : "", email, wantsVisit: asks.has("VISIT") && body.visit === "yes", message: body.message.trim(), locale: language },
       select: { id: true },
     });
     const recipients = await contactsOf(schoolId, school.admissionsContactMembershipId);
-    await Promise.all(recipients.map((userId) => notify({ userId, schoolId, kind: "ENQUIRY", titleKey: "website.notifEnquiry", titleVars: { name: body.name.trim().slice(0, 60) }, url: "/admin/website/publish#enquiries" })));
+    await Promise.all(recipients.map((userId) => notify({ userId, schoolId, kind: "ENQUIRY", titleKey: "website.notifEnquiry", titleVars: { name: body.name.trim().slice(0, 60) }, url: "/admin/website?s=enquiries" })));
     await audit({ schoolId, actorUserId: null, action: "site.enquiry", targetType: "SchoolSiteEnquiry", targetId: row.id });
     return { ok: true, schoolId, schoolName: school.name, ...look };
   });

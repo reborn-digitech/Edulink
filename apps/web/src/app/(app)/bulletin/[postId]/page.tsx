@@ -31,6 +31,10 @@ import { cn } from "@/lib/cn";
 import { socialPostsFor } from "@/lib/social";
 import { getRelativeTime } from "@/lib/i18n/server";
 import { SocialStatus } from "./social-status";
+// website-two (16 Oct 2026)
+import { postOnSite } from "@/lib/site-admin";
+import { SiteTick } from "./site-tick";
+// end website-two
 // end meta-posting
 
 /* Same keys the feed card uses — the deep link must not say less than the
@@ -111,6 +115,9 @@ export default async function PostPage({ params, searchParams }: { params: Promi
   const socialItems = session.role === "ADMIN" && post.scope === "SCHOOL" && session.schoolId === post.schoolId ? await socialPostsFor(session, post.id) : [];
   const relative = socialItems.length > 0 ? await getRelativeTime() : null;
   // end meta-posting
+  // website-two (16 Oct 2026): "Show on the website" for the office and the head, on a post the school's website may carry.
+  const onSite = (session.role === "ADMIN" || session.role === "PRINCIPAL") && session.schoolId === post.schoolId && post.scope === "SCHOOL" ? await postOnSite(session, post.id) : null;
+  // end website-two
   const slipDay = (key: string) => formatDateKey(key, { day: "numeric", month: "short", year: "numeric" }, locale);
 
   return (
@@ -232,6 +239,7 @@ export default async function PostPage({ params, searchParams }: { params: Promi
       {/* meta-posting (16 Oct 2026) */}
       {relative ? <SocialStatus items={socialItems} postId={post.id} t={t} relative={relative} /> : null}
       {/* end meta-posting */}
+      {onSite ? <SiteTick postId={post.id} on={onSite.on} /> : null}
 
       <section aria-labelledby="comments">
         <h2 id="comments" className="text-sm font-semibold uppercase tracking-wide text-fg-muted">

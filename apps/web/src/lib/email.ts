@@ -524,3 +524,20 @@ export async function sendStandingNotice(input: { to: string; subject: string; l
     html: layout(input.locale, input.subject, input.lines.map((line) => `<p>${escapeHtml(line)}</p>`).join("\n       ")),
   });
 }
+
+// website-two (16 Oct 2026)
+/**
+ * THE OFFICE'S REPLY TO AN ENQUIRY FROM THE SCHOOL'S WEBSITE (src/lib/site-inbox.ts): the enquirer has no account, so
+ * the mail is the channel, in the language of the page the form was on; the caller translates the greeting and the
+ * footer and passes the office's own words between them as typed (escaped here like every line).
+ */
+export async function sendSiteEnquiryReply(input: { to: string; subject: string; lines: string[]; locale: Locale }) {
+  await sendEmail({
+    to: input.to,
+    purpose: "SITE_ENQUIRY_REPLY",
+    subject: input.subject,
+    text: input.lines.join("\n\n"),
+    html: layout(input.locale, input.subject, input.lines.map((line) => `<p>${escapeHtml(line).replace(/\n/g, "<br>")}</p>`).join("\n       ")),
+  });
+}
+// end website-two

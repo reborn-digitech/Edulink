@@ -231956,19 +231956,14 @@
                             "CLASSIC",
                             "MODERN",
                             "WARM",
-                            "MINIMAL"
+                            "MINIMAL",
+                            "HERITAGE",
+                            "BOLD"
                           ]
                         },
                         "colour": {
                           "type": "string",
-                          "enum": [
-                            "#1d4ed8",
-                            "#0f766e",
-                            "#b45309",
-                            "#9f1239",
-                            "#4d7c0f",
-                            "#6d28d9"
-                          ]
+                          "pattern": "^#[0-9a-fA-F]{6}$"
                         },
                         "font": {
                           "type": "string",
@@ -232049,7 +232044,10 @@
                                   "ADMISSIONS",
                                   "NEWS",
                                   "GALLERY",
-                                  "CONTACT"
+                                  "CONTACT",
+                                  "EVENTS",
+                                  "ACHIEVEMENTS",
+                                  "FACILITIES"
                                 ]
                               },
                               "on": {
@@ -232062,7 +232060,7 @@
                             ],
                             "additionalProperties": false
                           },
-                          "maxItems": 7
+                          "maxItems": 10
                         },
                         "metrics": {
                           "type": "array",
@@ -232137,6 +232135,505 @@
                             "additionalProperties": false
                           },
                           "maxItems": 24
+                        },
+                        "accent": {
+                          "$ref": "#/properties/config/properties/colour",
+                          "default": "#b45309"
+                        },
+                        "theme": {
+                          "type": "string",
+                          "enum": [
+                            "LIGHT",
+                            "DARK"
+                          ],
+                          "default": "LIGHT"
+                        },
+                        "headingFont": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40,
+                          "default": "default"
+                        },
+                        "headerStyle": {
+                          "type": "string",
+                          "enum": [
+                            "TEMPLATE",
+                            "LOGO_LEFT",
+                            "LOGO_CENTRED",
+                            "WORDMARK"
+                          ],
+                          "default": "TEMPLATE"
+                        },
+                        "heroStyle": {
+                          "type": "string",
+                          "enum": [
+                            "BAND",
+                            "PICTURE",
+                            "MOTTO"
+                          ],
+                          "default": "BAND"
+                        },
+                        "heroPicture": {
+                          "type": "object",
+                          "properties": {
+                            "fileId": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 200
+                            },
+                            "postId": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 64,
+                              "nullable": true
+                            },
+                            "alt": {
+                              "type": "string",
+                              "maxLength": 200
+                            },
+                            "consent": {
+                              "type": "boolean"
+                            },
+                            "consentByUserId": {
+                              "type": "string",
+                              "maxLength": 64,
+                              "nullable": true
+                            },
+                            "consentAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "fileId",
+                            "postId",
+                            "alt",
+                            "consent"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true,
+                          "default": null
+                        },
+                        "announcement": {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "string",
+                              "maxLength": 160
+                            },
+                            "from": {
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    ""
+                                  ]
+                                }
+                              ]
+                            },
+                            "to": {
+                              "anyOf": [
+                                {
+                                  "$ref": "#/properties/config/properties/announcement/properties/from/anyOf/0"
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    ""
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "text",
+                            "from",
+                            "to"
+                          ],
+                          "additionalProperties": false,
+                          "default": {
+                            "text": "",
+                            "from": "",
+                            "to": ""
+                          }
+                        },
+                        "social": {
+                          "type": "object",
+                          "properties": {
+                            "facebook": {
+                              "type": "string",
+                              "maxLength": 200
+                            },
+                            "instagram": {
+                              "type": "string",
+                              "maxLength": 200
+                            },
+                            "youtube": {
+                              "type": "string",
+                              "maxLength": 200
+                            },
+                            "whatsapp": {
+                              "type": "string",
+                              "maxLength": 20
+                            }
+                          },
+                          "required": [
+                            "facebook",
+                            "instagram",
+                            "youtube",
+                            "whatsapp"
+                          ],
+                          "additionalProperties": false,
+                          "default": {
+                            "facebook": "",
+                            "instagram": "",
+                            "youtube": "",
+                            "whatsapp": ""
+                          }
+                        },
+                        "pages": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string",
+                                "enum": [
+                                  "HOME",
+                                  "ABOUT",
+                                  "ACADEMICS",
+                                  "ADMISSIONS",
+                                  "FACILITIES",
+                                  "FACULTY",
+                                  "GALLERY",
+                                  "NEWS",
+                                  "EVENTS",
+                                  "ACHIEVEMENTS",
+                                  "DOWNLOADS",
+                                  "CONTACT"
+                                ]
+                              },
+                              "on": {
+                                "type": "boolean"
+                              },
+                              "title": {
+                                "type": "string",
+                                "maxLength": 60
+                              },
+                              "lead": {
+                                "type": "string",
+                                "maxLength": 300
+                              },
+                              "seoTitle": {
+                                "type": "string",
+                                "maxLength": 70
+                              },
+                              "seoDescription": {
+                                "type": "string",
+                                "maxLength": 160
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "on",
+                              "title",
+                              "lead",
+                              "seoTitle",
+                              "seoDescription"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 12,
+                          "default": []
+                        },
+                        "sectionTexts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string",
+                                "enum": [
+                                  "NUMBERS",
+                                  "FACULTY",
+                                  "DISCLOSURE",
+                                  "ADMISSIONS",
+                                  "NEWS",
+                                  "GALLERY",
+                                  "CONTACT",
+                                  "EVENTS",
+                                  "ACHIEVEMENTS",
+                                  "FACILITIES"
+                                ]
+                              },
+                              "title": {
+                                "type": "string",
+                                "maxLength": 60
+                              },
+                              "lead": {
+                                "type": "string",
+                                "maxLength": 300
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "title",
+                              "lead"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 10,
+                          "default": []
+                        },
+                        "academicsText": {
+                          "type": "string",
+                          "maxLength": 2000,
+                          "default": ""
+                        },
+                        "medium": {
+                          "type": "string",
+                          "maxLength": 60,
+                          "default": ""
+                        },
+                        "academicsSubjects": {
+                          "type": "boolean",
+                          "default": true
+                        },
+                        "prospectusFileId": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200,
+                          "nullable": true,
+                          "default": null
+                        },
+                        "enquiryFields": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "GRADE",
+                              "EMAIL",
+                              "VISIT"
+                            ]
+                          },
+                          "maxItems": 3,
+                          "default": [
+                            "GRADE"
+                          ]
+                        },
+                        "facilities": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string",
+                                "enum": [
+                                  "LIBRARY",
+                                  "LABORATORIES",
+                                  "PLAYGROUND",
+                                  "TRANSPORT",
+                                  "HOSTEL",
+                                  "CANTEEN",
+                                  "COMPUTER_LAB",
+                                  "SMART_CLASSES",
+                                  "CUSTOM"
+                                ]
+                              },
+                              "label": {
+                                "type": "string",
+                                "maxLength": 60
+                              },
+                              "line": {
+                                "type": "string",
+                                "maxLength": 200
+                              },
+                              "picture": {
+                                "allOf": [
+                                  {
+                                    "$ref": "#/properties/config/properties/heroPicture"
+                                  }
+                                ],
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "label",
+                              "line",
+                              "picture"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 16,
+                          "default": []
+                        },
+                        "albums": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 40
+                              },
+                              "title": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 80
+                              },
+                              "pictures": {
+                                "type": "array",
+                                "items": {
+                                  "$ref": "#/properties/config/properties/heroPicture"
+                                },
+                                "maxItems": 24
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "title",
+                              "pictures"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 8,
+                          "default": []
+                        },
+                        "achievements": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 40
+                              },
+                              "title": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 100
+                              },
+                              "dateKey": {
+                                "$ref": "#/properties/config/properties/announcement/properties/from/anyOf/0"
+                              },
+                              "line": {
+                                "type": "string",
+                                "maxLength": 300
+                              },
+                              "picture": {
+                                "allOf": [
+                                  {
+                                    "$ref": "#/properties/config/properties/heroPicture"
+                                  }
+                                ],
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "title",
+                              "dateKey",
+                              "line",
+                              "picture"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 20,
+                          "default": []
+                        },
+                        "downloads": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 40
+                              },
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "PROSPECTUS",
+                                  "FEE_STRUCTURE",
+                                  "DISCLOSURE",
+                                  "ACADEMIC_CALENDAR",
+                                  "OTHER"
+                                ]
+                              },
+                              "title": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 100
+                              },
+                              "fileId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 200
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "kind",
+                              "title",
+                              "fileId"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 12,
+                          "default": []
+                        },
+                        "customPages": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 40
+                              },
+                              "slug": {
+                                "type": "string",
+                                "pattern": "^[a-z0-9](?:[a-z0-9-]{0,38}[a-z0-9])?$"
+                              },
+                              "title": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 60
+                              },
+                              "on": {
+                                "type": "boolean"
+                              },
+                              "html": {
+                                "type": "string",
+                                "maxLength": 20000
+                              },
+                              "seoDescription": {
+                                "type": "string",
+                                "maxLength": 160
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "slug",
+                              "title",
+                              "on",
+                              "html",
+                              "seoDescription"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 4,
+                          "default": []
                         }
                       },
                       "required": [
@@ -232193,6 +232690,42 @@
                           "GALLERY_NO_CONSENT"
                         ]
                       }
+                    },
+                    "checklist": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string",
+                            "enum": [
+                              "LOGO",
+                              "ABOUT",
+                              "HERO_PICTURE",
+                              "CONTACT",
+                              "ADMISSIONS",
+                              "PICTURE_CONSENT",
+                              "DOMAIN"
+                            ]
+                          },
+                          "done": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "code",
+                          "done"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "unpublishedChanges": {
+                      "type": "boolean"
+                    },
+                    "draftSavedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
                     }
                   },
                   "required": [
@@ -232200,7 +232733,10 @@
                     "published",
                     "publishedAt",
                     "address",
-                    "warnings"
+                    "warnings",
+                    "checklist",
+                    "unpublishedChanges",
+                    "draftSavedAt"
                   ],
                   "additionalProperties": false
                 }
@@ -232279,19 +232815,14 @@
                             "CLASSIC",
                             "MODERN",
                             "WARM",
-                            "MINIMAL"
+                            "MINIMAL",
+                            "HERITAGE",
+                            "BOLD"
                           ]
                         },
                         "colour": {
                           "type": "string",
-                          "enum": [
-                            "#1d4ed8",
-                            "#0f766e",
-                            "#b45309",
-                            "#9f1239",
-                            "#4d7c0f",
-                            "#6d28d9"
-                          ]
+                          "pattern": "^#[0-9a-fA-F]{6}$"
                         },
                         "font": {
                           "type": "string",
@@ -232372,7 +232903,10 @@
                                   "ADMISSIONS",
                                   "NEWS",
                                   "GALLERY",
-                                  "CONTACT"
+                                  "CONTACT",
+                                  "EVENTS",
+                                  "ACHIEVEMENTS",
+                                  "FACILITIES"
                                 ]
                               },
                               "on": {
@@ -232385,7 +232919,7 @@
                             ],
                             "additionalProperties": false
                           },
-                          "maxItems": 7
+                          "maxItems": 10
                         },
                         "metrics": {
                           "type": "array",
@@ -232460,6 +232994,505 @@
                             "additionalProperties": false
                           },
                           "maxItems": 24
+                        },
+                        "accent": {
+                          "$ref": "#/properties/config/properties/colour",
+                          "default": "#b45309"
+                        },
+                        "theme": {
+                          "type": "string",
+                          "enum": [
+                            "LIGHT",
+                            "DARK"
+                          ],
+                          "default": "LIGHT"
+                        },
+                        "headingFont": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40,
+                          "default": "default"
+                        },
+                        "headerStyle": {
+                          "type": "string",
+                          "enum": [
+                            "TEMPLATE",
+                            "LOGO_LEFT",
+                            "LOGO_CENTRED",
+                            "WORDMARK"
+                          ],
+                          "default": "TEMPLATE"
+                        },
+                        "heroStyle": {
+                          "type": "string",
+                          "enum": [
+                            "BAND",
+                            "PICTURE",
+                            "MOTTO"
+                          ],
+                          "default": "BAND"
+                        },
+                        "heroPicture": {
+                          "type": "object",
+                          "properties": {
+                            "fileId": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 200
+                            },
+                            "postId": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 64,
+                              "nullable": true
+                            },
+                            "alt": {
+                              "type": "string",
+                              "maxLength": 200
+                            },
+                            "consent": {
+                              "type": "boolean"
+                            },
+                            "consentByUserId": {
+                              "type": "string",
+                              "maxLength": 64,
+                              "nullable": true
+                            },
+                            "consentAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "fileId",
+                            "postId",
+                            "alt",
+                            "consent"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true,
+                          "default": null
+                        },
+                        "announcement": {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "string",
+                              "maxLength": 160
+                            },
+                            "from": {
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    ""
+                                  ]
+                                }
+                              ]
+                            },
+                            "to": {
+                              "anyOf": [
+                                {
+                                  "$ref": "#/properties/config/properties/announcement/properties/from/anyOf/0"
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    ""
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "text",
+                            "from",
+                            "to"
+                          ],
+                          "additionalProperties": false,
+                          "default": {
+                            "text": "",
+                            "from": "",
+                            "to": ""
+                          }
+                        },
+                        "social": {
+                          "type": "object",
+                          "properties": {
+                            "facebook": {
+                              "type": "string",
+                              "maxLength": 200
+                            },
+                            "instagram": {
+                              "type": "string",
+                              "maxLength": 200
+                            },
+                            "youtube": {
+                              "type": "string",
+                              "maxLength": 200
+                            },
+                            "whatsapp": {
+                              "type": "string",
+                              "maxLength": 20
+                            }
+                          },
+                          "required": [
+                            "facebook",
+                            "instagram",
+                            "youtube",
+                            "whatsapp"
+                          ],
+                          "additionalProperties": false,
+                          "default": {
+                            "facebook": "",
+                            "instagram": "",
+                            "youtube": "",
+                            "whatsapp": ""
+                          }
+                        },
+                        "pages": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string",
+                                "enum": [
+                                  "HOME",
+                                  "ABOUT",
+                                  "ACADEMICS",
+                                  "ADMISSIONS",
+                                  "FACILITIES",
+                                  "FACULTY",
+                                  "GALLERY",
+                                  "NEWS",
+                                  "EVENTS",
+                                  "ACHIEVEMENTS",
+                                  "DOWNLOADS",
+                                  "CONTACT"
+                                ]
+                              },
+                              "on": {
+                                "type": "boolean"
+                              },
+                              "title": {
+                                "type": "string",
+                                "maxLength": 60
+                              },
+                              "lead": {
+                                "type": "string",
+                                "maxLength": 300
+                              },
+                              "seoTitle": {
+                                "type": "string",
+                                "maxLength": 70
+                              },
+                              "seoDescription": {
+                                "type": "string",
+                                "maxLength": 160
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "on",
+                              "title",
+                              "lead",
+                              "seoTitle",
+                              "seoDescription"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 12,
+                          "default": []
+                        },
+                        "sectionTexts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string",
+                                "enum": [
+                                  "NUMBERS",
+                                  "FACULTY",
+                                  "DISCLOSURE",
+                                  "ADMISSIONS",
+                                  "NEWS",
+                                  "GALLERY",
+                                  "CONTACT",
+                                  "EVENTS",
+                                  "ACHIEVEMENTS",
+                                  "FACILITIES"
+                                ]
+                              },
+                              "title": {
+                                "type": "string",
+                                "maxLength": 60
+                              },
+                              "lead": {
+                                "type": "string",
+                                "maxLength": 300
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "title",
+                              "lead"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 10,
+                          "default": []
+                        },
+                        "academicsText": {
+                          "type": "string",
+                          "maxLength": 2000,
+                          "default": ""
+                        },
+                        "medium": {
+                          "type": "string",
+                          "maxLength": 60,
+                          "default": ""
+                        },
+                        "academicsSubjects": {
+                          "type": "boolean",
+                          "default": true
+                        },
+                        "prospectusFileId": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200,
+                          "nullable": true,
+                          "default": null
+                        },
+                        "enquiryFields": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "GRADE",
+                              "EMAIL",
+                              "VISIT"
+                            ]
+                          },
+                          "maxItems": 3,
+                          "default": [
+                            "GRADE"
+                          ]
+                        },
+                        "facilities": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string",
+                                "enum": [
+                                  "LIBRARY",
+                                  "LABORATORIES",
+                                  "PLAYGROUND",
+                                  "TRANSPORT",
+                                  "HOSTEL",
+                                  "CANTEEN",
+                                  "COMPUTER_LAB",
+                                  "SMART_CLASSES",
+                                  "CUSTOM"
+                                ]
+                              },
+                              "label": {
+                                "type": "string",
+                                "maxLength": 60
+                              },
+                              "line": {
+                                "type": "string",
+                                "maxLength": 200
+                              },
+                              "picture": {
+                                "allOf": [
+                                  {
+                                    "$ref": "#/properties/config/properties/heroPicture"
+                                  }
+                                ],
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "label",
+                              "line",
+                              "picture"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 16,
+                          "default": []
+                        },
+                        "albums": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 40
+                              },
+                              "title": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 80
+                              },
+                              "pictures": {
+                                "type": "array",
+                                "items": {
+                                  "$ref": "#/properties/config/properties/heroPicture"
+                                },
+                                "maxItems": 24
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "title",
+                              "pictures"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 8,
+                          "default": []
+                        },
+                        "achievements": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 40
+                              },
+                              "title": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 100
+                              },
+                              "dateKey": {
+                                "$ref": "#/properties/config/properties/announcement/properties/from/anyOf/0"
+                              },
+                              "line": {
+                                "type": "string",
+                                "maxLength": 300
+                              },
+                              "picture": {
+                                "allOf": [
+                                  {
+                                    "$ref": "#/properties/config/properties/heroPicture"
+                                  }
+                                ],
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "title",
+                              "dateKey",
+                              "line",
+                              "picture"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 20,
+                          "default": []
+                        },
+                        "downloads": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 40
+                              },
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "PROSPECTUS",
+                                  "FEE_STRUCTURE",
+                                  "DISCLOSURE",
+                                  "ACADEMIC_CALENDAR",
+                                  "OTHER"
+                                ]
+                              },
+                              "title": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 100
+                              },
+                              "fileId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 200
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "kind",
+                              "title",
+                              "fileId"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 12,
+                          "default": []
+                        },
+                        "customPages": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 40
+                              },
+                              "slug": {
+                                "type": "string",
+                                "pattern": "^[a-z0-9](?:[a-z0-9-]{0,38}[a-z0-9])?$"
+                              },
+                              "title": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 60
+                              },
+                              "on": {
+                                "type": "boolean"
+                              },
+                              "html": {
+                                "type": "string",
+                                "maxLength": 20000
+                              },
+                              "seoDescription": {
+                                "type": "string",
+                                "maxLength": 160
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "slug",
+                              "title",
+                              "on",
+                              "html",
+                              "seoDescription"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 4,
+                          "default": []
                         }
                       },
                       "required": [
@@ -232516,6 +233549,42 @@
                           "GALLERY_NO_CONSENT"
                         ]
                       }
+                    },
+                    "checklist": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string",
+                            "enum": [
+                              "LOGO",
+                              "ABOUT",
+                              "HERO_PICTURE",
+                              "CONTACT",
+                              "ADMISSIONS",
+                              "PICTURE_CONSENT",
+                              "DOMAIN"
+                            ]
+                          },
+                          "done": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "code",
+                          "done"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "unpublishedChanges": {
+                      "type": "boolean"
+                    },
+                    "draftSavedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
                     }
                   },
                   "required": [
@@ -232523,7 +233592,10 @@
                     "published",
                     "publishedAt",
                     "address",
-                    "warnings"
+                    "warnings",
+                    "checklist",
+                    "unpublishedChanges",
+                    "draftSavedAt"
                   ],
                   "additionalProperties": false
                 }
@@ -232584,19 +233656,14 @@
                       "CLASSIC",
                       "MODERN",
                       "WARM",
-                      "MINIMAL"
+                      "MINIMAL",
+                      "HERITAGE",
+                      "BOLD"
                     ]
                   },
                   "colour": {
                     "type": "string",
-                    "enum": [
-                      "#1d4ed8",
-                      "#0f766e",
-                      "#b45309",
-                      "#9f1239",
-                      "#4d7c0f",
-                      "#6d28d9"
-                    ]
+                    "pattern": "^#[0-9a-fA-F]{6}$"
                   },
                   "font": {
                     "type": "string",
@@ -232677,7 +233744,10 @@
                             "ADMISSIONS",
                             "NEWS",
                             "GALLERY",
-                            "CONTACT"
+                            "CONTACT",
+                            "EVENTS",
+                            "ACHIEVEMENTS",
+                            "FACILITIES"
                           ]
                         },
                         "on": {
@@ -232690,7 +233760,7 @@
                       ],
                       "additionalProperties": false
                     },
-                    "maxItems": 7
+                    "maxItems": 10
                   },
                   "metrics": {
                     "type": "array",
@@ -232765,6 +233835,505 @@
                       "additionalProperties": false
                     },
                     "maxItems": 24
+                  },
+                  "accent": {
+                    "$ref": "#/properties/colour",
+                    "default": "#b45309"
+                  },
+                  "theme": {
+                    "type": "string",
+                    "enum": [
+                      "LIGHT",
+                      "DARK"
+                    ],
+                    "default": "LIGHT"
+                  },
+                  "headingFont": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 40,
+                    "default": "default"
+                  },
+                  "headerStyle": {
+                    "type": "string",
+                    "enum": [
+                      "TEMPLATE",
+                      "LOGO_LEFT",
+                      "LOGO_CENTRED",
+                      "WORDMARK"
+                    ],
+                    "default": "TEMPLATE"
+                  },
+                  "heroStyle": {
+                    "type": "string",
+                    "enum": [
+                      "BAND",
+                      "PICTURE",
+                      "MOTTO"
+                    ],
+                    "default": "BAND"
+                  },
+                  "heroPicture": {
+                    "type": "object",
+                    "properties": {
+                      "fileId": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 200
+                      },
+                      "postId": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 64,
+                        "nullable": true
+                      },
+                      "alt": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "consentByUserId": {
+                        "type": "string",
+                        "maxLength": 64,
+                        "nullable": true
+                      },
+                      "consentAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                      }
+                    },
+                    "required": [
+                      "fileId",
+                      "postId",
+                      "alt",
+                      "consent"
+                    ],
+                    "additionalProperties": false,
+                    "nullable": true,
+                    "default": null
+                  },
+                  "announcement": {
+                    "type": "object",
+                    "properties": {
+                      "text": {
+                        "type": "string",
+                        "maxLength": 160
+                      },
+                      "from": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              ""
+                            ]
+                          }
+                        ]
+                      },
+                      "to": {
+                        "anyOf": [
+                          {
+                            "$ref": "#/properties/announcement/properties/from/anyOf/0"
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              ""
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "text",
+                      "from",
+                      "to"
+                    ],
+                    "additionalProperties": false,
+                    "default": {
+                      "text": "",
+                      "from": "",
+                      "to": ""
+                    }
+                  },
+                  "social": {
+                    "type": "object",
+                    "properties": {
+                      "facebook": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "instagram": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "youtube": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "whatsapp": {
+                        "type": "string",
+                        "maxLength": 20
+                      }
+                    },
+                    "required": [
+                      "facebook",
+                      "instagram",
+                      "youtube",
+                      "whatsapp"
+                    ],
+                    "additionalProperties": false,
+                    "default": {
+                      "facebook": "",
+                      "instagram": "",
+                      "youtube": "",
+                      "whatsapp": ""
+                    }
+                  },
+                  "pages": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "enum": [
+                            "HOME",
+                            "ABOUT",
+                            "ACADEMICS",
+                            "ADMISSIONS",
+                            "FACILITIES",
+                            "FACULTY",
+                            "GALLERY",
+                            "NEWS",
+                            "EVENTS",
+                            "ACHIEVEMENTS",
+                            "DOWNLOADS",
+                            "CONTACT"
+                          ]
+                        },
+                        "on": {
+                          "type": "boolean"
+                        },
+                        "title": {
+                          "type": "string",
+                          "maxLength": 60
+                        },
+                        "lead": {
+                          "type": "string",
+                          "maxLength": 300
+                        },
+                        "seoTitle": {
+                          "type": "string",
+                          "maxLength": 70
+                        },
+                        "seoDescription": {
+                          "type": "string",
+                          "maxLength": 160
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "on",
+                        "title",
+                        "lead",
+                        "seoTitle",
+                        "seoDescription"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 12,
+                    "default": []
+                  },
+                  "sectionTexts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "enum": [
+                            "NUMBERS",
+                            "FACULTY",
+                            "DISCLOSURE",
+                            "ADMISSIONS",
+                            "NEWS",
+                            "GALLERY",
+                            "CONTACT",
+                            "EVENTS",
+                            "ACHIEVEMENTS",
+                            "FACILITIES"
+                          ]
+                        },
+                        "title": {
+                          "type": "string",
+                          "maxLength": 60
+                        },
+                        "lead": {
+                          "type": "string",
+                          "maxLength": 300
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "title",
+                        "lead"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 10,
+                    "default": []
+                  },
+                  "academicsText": {
+                    "type": "string",
+                    "maxLength": 2000,
+                    "default": ""
+                  },
+                  "medium": {
+                    "type": "string",
+                    "maxLength": 60,
+                    "default": ""
+                  },
+                  "academicsSubjects": {
+                    "type": "boolean",
+                    "default": true
+                  },
+                  "prospectusFileId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200,
+                    "nullable": true,
+                    "default": null
+                  },
+                  "enquiryFields": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "GRADE",
+                        "EMAIL",
+                        "VISIT"
+                      ]
+                    },
+                    "maxItems": 3,
+                    "default": [
+                      "GRADE"
+                    ]
+                  },
+                  "facilities": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "enum": [
+                            "LIBRARY",
+                            "LABORATORIES",
+                            "PLAYGROUND",
+                            "TRANSPORT",
+                            "HOSTEL",
+                            "CANTEEN",
+                            "COMPUTER_LAB",
+                            "SMART_CLASSES",
+                            "CUSTOM"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "maxLength": 60
+                        },
+                        "line": {
+                          "type": "string",
+                          "maxLength": 200
+                        },
+                        "picture": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/heroPicture"
+                            }
+                          ],
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "label",
+                        "line",
+                        "picture"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 16,
+                    "default": []
+                  },
+                  "albums": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40
+                        },
+                        "title": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 80
+                        },
+                        "pictures": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/properties/heroPicture"
+                          },
+                          "maxItems": 24
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "title",
+                        "pictures"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 8,
+                    "default": []
+                  },
+                  "achievements": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40
+                        },
+                        "title": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 100
+                        },
+                        "dateKey": {
+                          "$ref": "#/properties/announcement/properties/from/anyOf/0"
+                        },
+                        "line": {
+                          "type": "string",
+                          "maxLength": 300
+                        },
+                        "picture": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/heroPicture"
+                            }
+                          ],
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "title",
+                        "dateKey",
+                        "line",
+                        "picture"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 20,
+                    "default": []
+                  },
+                  "downloads": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "PROSPECTUS",
+                            "FEE_STRUCTURE",
+                            "DISCLOSURE",
+                            "ACADEMIC_CALENDAR",
+                            "OTHER"
+                          ]
+                        },
+                        "title": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 100
+                        },
+                        "fileId": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "kind",
+                        "title",
+                        "fileId"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 12,
+                    "default": []
+                  },
+                  "customPages": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40
+                        },
+                        "slug": {
+                          "type": "string",
+                          "pattern": "^[a-z0-9](?:[a-z0-9-]{0,38}[a-z0-9])?$"
+                        },
+                        "title": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 60
+                        },
+                        "on": {
+                          "type": "boolean"
+                        },
+                        "html": {
+                          "type": "string",
+                          "maxLength": 20000
+                        },
+                        "seoDescription": {
+                          "type": "string",
+                          "maxLength": 160
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "slug",
+                        "title",
+                        "on",
+                        "html",
+                        "seoDescription"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 4,
+                    "default": []
                   }
                 },
                 "required": [
@@ -232800,7 +234369,7 @@
     },
     "/api/v1/admin/site/preview": {
       "get": {
-        "summary": "The draft as the page it would publish (text/html), with today's numbers, ?lang= en, hi or mr; never cached",
+        "summary": "The draft as the page it would publish (text/html), with today's numbers, ?lang= en, hi or mr, ?page= a page's path (the home page without one); never cached",
         "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
         "security": [
           {
@@ -232890,6 +234459,11 @@
                       "hi",
                       "mr"
                     ]
+                  },
+                  "page": {
+                    "type": "string",
+                    "maxLength": 40,
+                    "pattern": "^[a-z0-9-]*$"
                   }
                 },
                 "additionalProperties": false
@@ -233024,6 +234598,2821 @@
                     "versionId",
                     "renderedAt",
                     "address"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/site/versions": {
+      "get": {
+        "summary": "Every version of the website kept (the live one and up to twenty before it), newest first, with who published it or that the nightly refresh cut it",
+        "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "WEBSITE",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "versions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "renderedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "live": {
+                            "type": "boolean"
+                          },
+                          "byName": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "nightly": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "renderedAt",
+                          "live",
+                          "byName",
+                          "nightly"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "versions"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/site/versions/{versionId}/restore": {
+      "post": {
+        "summary": "Restore: a version's config becomes the draft ({ confirm: true }), the draft's changes thrown away; nothing is published; audited",
+        "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "WEBSITE",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "template": {
+                          "type": "string",
+                          "enum": [
+                            "CLASSIC",
+                            "MODERN",
+                            "WARM",
+                            "MINIMAL",
+                            "HERITAGE",
+                            "BOLD"
+                          ]
+                        },
+                        "colour": {
+                          "type": "string",
+                          "pattern": "^#[0-9a-fA-F]{6}$"
+                        },
+                        "font": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40
+                        },
+                        "language": {
+                          "type": "string",
+                          "enum": [
+                            "en",
+                            "hi",
+                            "mr"
+                          ]
+                        },
+                        "offerOtherLanguages": {
+                          "type": "boolean"
+                        },
+                        "motto": {
+                          "type": "string",
+                          "maxLength": 140
+                        },
+                        "about": {
+                          "type": "string",
+                          "maxLength": 3000
+                        },
+                        "address": {
+                          "type": "string",
+                          "maxLength": 300
+                        },
+                        "phones": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "maxLength": 20
+                          },
+                          "maxItems": 3
+                        },
+                        "email": {
+                          "type": "string",
+                          "maxLength": 200
+                        },
+                        "mapUrl": {
+                          "type": "string",
+                          "maxLength": 500
+                        },
+                        "hours": {
+                          "type": "string",
+                          "maxLength": 200
+                        },
+                        "board": {
+                          "type": "string",
+                          "maxLength": 140
+                        },
+                        "foundedYear": {
+                          "type": "integer",
+                          "minimum": 1800,
+                          "maximum": 2100,
+                          "nullable": true
+                        },
+                        "principalMessage": {
+                          "type": "string",
+                          "maxLength": 2000
+                        },
+                        "principalNamed": {
+                          "type": "boolean"
+                        },
+                        "sections": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string",
+                                "enum": [
+                                  "NUMBERS",
+                                  "FACULTY",
+                                  "DISCLOSURE",
+                                  "ADMISSIONS",
+                                  "NEWS",
+                                  "GALLERY",
+                                  "CONTACT",
+                                  "EVENTS",
+                                  "ACHIEVEMENTS",
+                                  "FACILITIES"
+                                ]
+                              },
+                              "on": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "on"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 10
+                        },
+                        "metrics": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "PUPILS",
+                              "TEACHING_STAFF",
+                              "ATTENDANCE_MONTH",
+                              "CLASSES",
+                              "BOARD",
+                              "YEARS_SINCE_FOUNDING",
+                              "PASS_RATE",
+                              "PROGRAMMES",
+                              "PLACEMENT_OFFERS",
+                              "PLACEMENT_HIGHEST",
+                              "PLACEMENT_MEDIAN"
+                            ]
+                          },
+                          "maxItems": 11
+                        },
+                        "admissionsText": {
+                          "type": "string",
+                          "maxLength": 2000
+                        },
+                        "enquiryForm": {
+                          "type": "boolean"
+                        },
+                        "newsPostIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "maxItems": 12
+                        },
+                        "gallery": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "postId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 64
+                              },
+                              "fileId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 200
+                              },
+                              "consent": {
+                                "type": "boolean"
+                              },
+                              "consentByUserId": {
+                                "type": "string",
+                                "maxLength": 64,
+                                "nullable": true
+                              },
+                              "consentAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "postId",
+                              "fileId",
+                              "consent"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 24
+                        },
+                        "accent": {
+                          "$ref": "#/properties/config/properties/colour",
+                          "default": "#b45309"
+                        },
+                        "theme": {
+                          "type": "string",
+                          "enum": [
+                            "LIGHT",
+                            "DARK"
+                          ],
+                          "default": "LIGHT"
+                        },
+                        "headingFont": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40,
+                          "default": "default"
+                        },
+                        "headerStyle": {
+                          "type": "string",
+                          "enum": [
+                            "TEMPLATE",
+                            "LOGO_LEFT",
+                            "LOGO_CENTRED",
+                            "WORDMARK"
+                          ],
+                          "default": "TEMPLATE"
+                        },
+                        "heroStyle": {
+                          "type": "string",
+                          "enum": [
+                            "BAND",
+                            "PICTURE",
+                            "MOTTO"
+                          ],
+                          "default": "BAND"
+                        },
+                        "heroPicture": {
+                          "type": "object",
+                          "properties": {
+                            "fileId": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 200
+                            },
+                            "postId": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 64,
+                              "nullable": true
+                            },
+                            "alt": {
+                              "type": "string",
+                              "maxLength": 200
+                            },
+                            "consent": {
+                              "type": "boolean"
+                            },
+                            "consentByUserId": {
+                              "type": "string",
+                              "maxLength": 64,
+                              "nullable": true
+                            },
+                            "consentAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "fileId",
+                            "postId",
+                            "alt",
+                            "consent"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true,
+                          "default": null
+                        },
+                        "announcement": {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "string",
+                              "maxLength": 160
+                            },
+                            "from": {
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    ""
+                                  ]
+                                }
+                              ]
+                            },
+                            "to": {
+                              "anyOf": [
+                                {
+                                  "$ref": "#/properties/config/properties/announcement/properties/from/anyOf/0"
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    ""
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "text",
+                            "from",
+                            "to"
+                          ],
+                          "additionalProperties": false,
+                          "default": {
+                            "text": "",
+                            "from": "",
+                            "to": ""
+                          }
+                        },
+                        "social": {
+                          "type": "object",
+                          "properties": {
+                            "facebook": {
+                              "type": "string",
+                              "maxLength": 200
+                            },
+                            "instagram": {
+                              "type": "string",
+                              "maxLength": 200
+                            },
+                            "youtube": {
+                              "type": "string",
+                              "maxLength": 200
+                            },
+                            "whatsapp": {
+                              "type": "string",
+                              "maxLength": 20
+                            }
+                          },
+                          "required": [
+                            "facebook",
+                            "instagram",
+                            "youtube",
+                            "whatsapp"
+                          ],
+                          "additionalProperties": false,
+                          "default": {
+                            "facebook": "",
+                            "instagram": "",
+                            "youtube": "",
+                            "whatsapp": ""
+                          }
+                        },
+                        "pages": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string",
+                                "enum": [
+                                  "HOME",
+                                  "ABOUT",
+                                  "ACADEMICS",
+                                  "ADMISSIONS",
+                                  "FACILITIES",
+                                  "FACULTY",
+                                  "GALLERY",
+                                  "NEWS",
+                                  "EVENTS",
+                                  "ACHIEVEMENTS",
+                                  "DOWNLOADS",
+                                  "CONTACT"
+                                ]
+                              },
+                              "on": {
+                                "type": "boolean"
+                              },
+                              "title": {
+                                "type": "string",
+                                "maxLength": 60
+                              },
+                              "lead": {
+                                "type": "string",
+                                "maxLength": 300
+                              },
+                              "seoTitle": {
+                                "type": "string",
+                                "maxLength": 70
+                              },
+                              "seoDescription": {
+                                "type": "string",
+                                "maxLength": 160
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "on",
+                              "title",
+                              "lead",
+                              "seoTitle",
+                              "seoDescription"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 12,
+                          "default": []
+                        },
+                        "sectionTexts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string",
+                                "enum": [
+                                  "NUMBERS",
+                                  "FACULTY",
+                                  "DISCLOSURE",
+                                  "ADMISSIONS",
+                                  "NEWS",
+                                  "GALLERY",
+                                  "CONTACT",
+                                  "EVENTS",
+                                  "ACHIEVEMENTS",
+                                  "FACILITIES"
+                                ]
+                              },
+                              "title": {
+                                "type": "string",
+                                "maxLength": 60
+                              },
+                              "lead": {
+                                "type": "string",
+                                "maxLength": 300
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "title",
+                              "lead"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 10,
+                          "default": []
+                        },
+                        "academicsText": {
+                          "type": "string",
+                          "maxLength": 2000,
+                          "default": ""
+                        },
+                        "medium": {
+                          "type": "string",
+                          "maxLength": 60,
+                          "default": ""
+                        },
+                        "academicsSubjects": {
+                          "type": "boolean",
+                          "default": true
+                        },
+                        "prospectusFileId": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200,
+                          "nullable": true,
+                          "default": null
+                        },
+                        "enquiryFields": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "GRADE",
+                              "EMAIL",
+                              "VISIT"
+                            ]
+                          },
+                          "maxItems": 3,
+                          "default": [
+                            "GRADE"
+                          ]
+                        },
+                        "facilities": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string",
+                                "enum": [
+                                  "LIBRARY",
+                                  "LABORATORIES",
+                                  "PLAYGROUND",
+                                  "TRANSPORT",
+                                  "HOSTEL",
+                                  "CANTEEN",
+                                  "COMPUTER_LAB",
+                                  "SMART_CLASSES",
+                                  "CUSTOM"
+                                ]
+                              },
+                              "label": {
+                                "type": "string",
+                                "maxLength": 60
+                              },
+                              "line": {
+                                "type": "string",
+                                "maxLength": 200
+                              },
+                              "picture": {
+                                "allOf": [
+                                  {
+                                    "$ref": "#/properties/config/properties/heroPicture"
+                                  }
+                                ],
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "label",
+                              "line",
+                              "picture"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 16,
+                          "default": []
+                        },
+                        "albums": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 40
+                              },
+                              "title": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 80
+                              },
+                              "pictures": {
+                                "type": "array",
+                                "items": {
+                                  "$ref": "#/properties/config/properties/heroPicture"
+                                },
+                                "maxItems": 24
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "title",
+                              "pictures"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 8,
+                          "default": []
+                        },
+                        "achievements": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 40
+                              },
+                              "title": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 100
+                              },
+                              "dateKey": {
+                                "$ref": "#/properties/config/properties/announcement/properties/from/anyOf/0"
+                              },
+                              "line": {
+                                "type": "string",
+                                "maxLength": 300
+                              },
+                              "picture": {
+                                "allOf": [
+                                  {
+                                    "$ref": "#/properties/config/properties/heroPicture"
+                                  }
+                                ],
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "title",
+                              "dateKey",
+                              "line",
+                              "picture"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 20,
+                          "default": []
+                        },
+                        "downloads": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 40
+                              },
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "PROSPECTUS",
+                                  "FEE_STRUCTURE",
+                                  "DISCLOSURE",
+                                  "ACADEMIC_CALENDAR",
+                                  "OTHER"
+                                ]
+                              },
+                              "title": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 100
+                              },
+                              "fileId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 200
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "kind",
+                              "title",
+                              "fileId"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 12,
+                          "default": []
+                        },
+                        "customPages": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 40
+                              },
+                              "slug": {
+                                "type": "string",
+                                "pattern": "^[a-z0-9](?:[a-z0-9-]{0,38}[a-z0-9])?$"
+                              },
+                              "title": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 60
+                              },
+                              "on": {
+                                "type": "boolean"
+                              },
+                              "html": {
+                                "type": "string",
+                                "maxLength": 20000
+                              },
+                              "seoDescription": {
+                                "type": "string",
+                                "maxLength": 160
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "slug",
+                              "title",
+                              "on",
+                              "html",
+                              "seoDescription"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 4,
+                          "default": []
+                        }
+                      },
+                      "required": [
+                        "template",
+                        "colour",
+                        "font",
+                        "language",
+                        "offerOtherLanguages",
+                        "motto",
+                        "about",
+                        "address",
+                        "phones",
+                        "email",
+                        "mapUrl",
+                        "hours",
+                        "board",
+                        "foundedYear",
+                        "principalMessage",
+                        "principalNamed",
+                        "sections",
+                        "metrics",
+                        "admissionsText",
+                        "enquiryForm",
+                        "newsPostIds",
+                        "gallery"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "config"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "confirm": {
+                    "type": "boolean",
+                    "enum": [
+                      true
+                    ]
+                  }
+                },
+                "required": [
+                  "confirm"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "versionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/site/revert": {
+      "post": {
+        "summary": "Back to published: the live version's config becomes the draft ({ confirm: true }), the draft's changes thrown away; 404 when nothing is published; audited",
+        "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "WEBSITE",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "template": {
+                          "type": "string",
+                          "enum": [
+                            "CLASSIC",
+                            "MODERN",
+                            "WARM",
+                            "MINIMAL",
+                            "HERITAGE",
+                            "BOLD"
+                          ]
+                        },
+                        "colour": {
+                          "type": "string",
+                          "pattern": "^#[0-9a-fA-F]{6}$"
+                        },
+                        "font": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40
+                        },
+                        "language": {
+                          "type": "string",
+                          "enum": [
+                            "en",
+                            "hi",
+                            "mr"
+                          ]
+                        },
+                        "offerOtherLanguages": {
+                          "type": "boolean"
+                        },
+                        "motto": {
+                          "type": "string",
+                          "maxLength": 140
+                        },
+                        "about": {
+                          "type": "string",
+                          "maxLength": 3000
+                        },
+                        "address": {
+                          "type": "string",
+                          "maxLength": 300
+                        },
+                        "phones": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "maxLength": 20
+                          },
+                          "maxItems": 3
+                        },
+                        "email": {
+                          "type": "string",
+                          "maxLength": 200
+                        },
+                        "mapUrl": {
+                          "type": "string",
+                          "maxLength": 500
+                        },
+                        "hours": {
+                          "type": "string",
+                          "maxLength": 200
+                        },
+                        "board": {
+                          "type": "string",
+                          "maxLength": 140
+                        },
+                        "foundedYear": {
+                          "type": "integer",
+                          "minimum": 1800,
+                          "maximum": 2100,
+                          "nullable": true
+                        },
+                        "principalMessage": {
+                          "type": "string",
+                          "maxLength": 2000
+                        },
+                        "principalNamed": {
+                          "type": "boolean"
+                        },
+                        "sections": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string",
+                                "enum": [
+                                  "NUMBERS",
+                                  "FACULTY",
+                                  "DISCLOSURE",
+                                  "ADMISSIONS",
+                                  "NEWS",
+                                  "GALLERY",
+                                  "CONTACT",
+                                  "EVENTS",
+                                  "ACHIEVEMENTS",
+                                  "FACILITIES"
+                                ]
+                              },
+                              "on": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "on"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 10
+                        },
+                        "metrics": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "PUPILS",
+                              "TEACHING_STAFF",
+                              "ATTENDANCE_MONTH",
+                              "CLASSES",
+                              "BOARD",
+                              "YEARS_SINCE_FOUNDING",
+                              "PASS_RATE",
+                              "PROGRAMMES",
+                              "PLACEMENT_OFFERS",
+                              "PLACEMENT_HIGHEST",
+                              "PLACEMENT_MEDIAN"
+                            ]
+                          },
+                          "maxItems": 11
+                        },
+                        "admissionsText": {
+                          "type": "string",
+                          "maxLength": 2000
+                        },
+                        "enquiryForm": {
+                          "type": "boolean"
+                        },
+                        "newsPostIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "maxItems": 12
+                        },
+                        "gallery": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "postId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 64
+                              },
+                              "fileId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 200
+                              },
+                              "consent": {
+                                "type": "boolean"
+                              },
+                              "consentByUserId": {
+                                "type": "string",
+                                "maxLength": 64,
+                                "nullable": true
+                              },
+                              "consentAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "postId",
+                              "fileId",
+                              "consent"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 24
+                        },
+                        "accent": {
+                          "$ref": "#/properties/config/properties/colour",
+                          "default": "#b45309"
+                        },
+                        "theme": {
+                          "type": "string",
+                          "enum": [
+                            "LIGHT",
+                            "DARK"
+                          ],
+                          "default": "LIGHT"
+                        },
+                        "headingFont": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40,
+                          "default": "default"
+                        },
+                        "headerStyle": {
+                          "type": "string",
+                          "enum": [
+                            "TEMPLATE",
+                            "LOGO_LEFT",
+                            "LOGO_CENTRED",
+                            "WORDMARK"
+                          ],
+                          "default": "TEMPLATE"
+                        },
+                        "heroStyle": {
+                          "type": "string",
+                          "enum": [
+                            "BAND",
+                            "PICTURE",
+                            "MOTTO"
+                          ],
+                          "default": "BAND"
+                        },
+                        "heroPicture": {
+                          "type": "object",
+                          "properties": {
+                            "fileId": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 200
+                            },
+                            "postId": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 64,
+                              "nullable": true
+                            },
+                            "alt": {
+                              "type": "string",
+                              "maxLength": 200
+                            },
+                            "consent": {
+                              "type": "boolean"
+                            },
+                            "consentByUserId": {
+                              "type": "string",
+                              "maxLength": 64,
+                              "nullable": true
+                            },
+                            "consentAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "fileId",
+                            "postId",
+                            "alt",
+                            "consent"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true,
+                          "default": null
+                        },
+                        "announcement": {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "string",
+                              "maxLength": 160
+                            },
+                            "from": {
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    ""
+                                  ]
+                                }
+                              ]
+                            },
+                            "to": {
+                              "anyOf": [
+                                {
+                                  "$ref": "#/properties/config/properties/announcement/properties/from/anyOf/0"
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    ""
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "text",
+                            "from",
+                            "to"
+                          ],
+                          "additionalProperties": false,
+                          "default": {
+                            "text": "",
+                            "from": "",
+                            "to": ""
+                          }
+                        },
+                        "social": {
+                          "type": "object",
+                          "properties": {
+                            "facebook": {
+                              "type": "string",
+                              "maxLength": 200
+                            },
+                            "instagram": {
+                              "type": "string",
+                              "maxLength": 200
+                            },
+                            "youtube": {
+                              "type": "string",
+                              "maxLength": 200
+                            },
+                            "whatsapp": {
+                              "type": "string",
+                              "maxLength": 20
+                            }
+                          },
+                          "required": [
+                            "facebook",
+                            "instagram",
+                            "youtube",
+                            "whatsapp"
+                          ],
+                          "additionalProperties": false,
+                          "default": {
+                            "facebook": "",
+                            "instagram": "",
+                            "youtube": "",
+                            "whatsapp": ""
+                          }
+                        },
+                        "pages": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string",
+                                "enum": [
+                                  "HOME",
+                                  "ABOUT",
+                                  "ACADEMICS",
+                                  "ADMISSIONS",
+                                  "FACILITIES",
+                                  "FACULTY",
+                                  "GALLERY",
+                                  "NEWS",
+                                  "EVENTS",
+                                  "ACHIEVEMENTS",
+                                  "DOWNLOADS",
+                                  "CONTACT"
+                                ]
+                              },
+                              "on": {
+                                "type": "boolean"
+                              },
+                              "title": {
+                                "type": "string",
+                                "maxLength": 60
+                              },
+                              "lead": {
+                                "type": "string",
+                                "maxLength": 300
+                              },
+                              "seoTitle": {
+                                "type": "string",
+                                "maxLength": 70
+                              },
+                              "seoDescription": {
+                                "type": "string",
+                                "maxLength": 160
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "on",
+                              "title",
+                              "lead",
+                              "seoTitle",
+                              "seoDescription"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 12,
+                          "default": []
+                        },
+                        "sectionTexts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string",
+                                "enum": [
+                                  "NUMBERS",
+                                  "FACULTY",
+                                  "DISCLOSURE",
+                                  "ADMISSIONS",
+                                  "NEWS",
+                                  "GALLERY",
+                                  "CONTACT",
+                                  "EVENTS",
+                                  "ACHIEVEMENTS",
+                                  "FACILITIES"
+                                ]
+                              },
+                              "title": {
+                                "type": "string",
+                                "maxLength": 60
+                              },
+                              "lead": {
+                                "type": "string",
+                                "maxLength": 300
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "title",
+                              "lead"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 10,
+                          "default": []
+                        },
+                        "academicsText": {
+                          "type": "string",
+                          "maxLength": 2000,
+                          "default": ""
+                        },
+                        "medium": {
+                          "type": "string",
+                          "maxLength": 60,
+                          "default": ""
+                        },
+                        "academicsSubjects": {
+                          "type": "boolean",
+                          "default": true
+                        },
+                        "prospectusFileId": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200,
+                          "nullable": true,
+                          "default": null
+                        },
+                        "enquiryFields": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "GRADE",
+                              "EMAIL",
+                              "VISIT"
+                            ]
+                          },
+                          "maxItems": 3,
+                          "default": [
+                            "GRADE"
+                          ]
+                        },
+                        "facilities": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string",
+                                "enum": [
+                                  "LIBRARY",
+                                  "LABORATORIES",
+                                  "PLAYGROUND",
+                                  "TRANSPORT",
+                                  "HOSTEL",
+                                  "CANTEEN",
+                                  "COMPUTER_LAB",
+                                  "SMART_CLASSES",
+                                  "CUSTOM"
+                                ]
+                              },
+                              "label": {
+                                "type": "string",
+                                "maxLength": 60
+                              },
+                              "line": {
+                                "type": "string",
+                                "maxLength": 200
+                              },
+                              "picture": {
+                                "allOf": [
+                                  {
+                                    "$ref": "#/properties/config/properties/heroPicture"
+                                  }
+                                ],
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "label",
+                              "line",
+                              "picture"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 16,
+                          "default": []
+                        },
+                        "albums": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 40
+                              },
+                              "title": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 80
+                              },
+                              "pictures": {
+                                "type": "array",
+                                "items": {
+                                  "$ref": "#/properties/config/properties/heroPicture"
+                                },
+                                "maxItems": 24
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "title",
+                              "pictures"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 8,
+                          "default": []
+                        },
+                        "achievements": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 40
+                              },
+                              "title": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 100
+                              },
+                              "dateKey": {
+                                "$ref": "#/properties/config/properties/announcement/properties/from/anyOf/0"
+                              },
+                              "line": {
+                                "type": "string",
+                                "maxLength": 300
+                              },
+                              "picture": {
+                                "allOf": [
+                                  {
+                                    "$ref": "#/properties/config/properties/heroPicture"
+                                  }
+                                ],
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "title",
+                              "dateKey",
+                              "line",
+                              "picture"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 20,
+                          "default": []
+                        },
+                        "downloads": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 40
+                              },
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "PROSPECTUS",
+                                  "FEE_STRUCTURE",
+                                  "DISCLOSURE",
+                                  "ACADEMIC_CALENDAR",
+                                  "OTHER"
+                                ]
+                              },
+                              "title": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 100
+                              },
+                              "fileId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 200
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "kind",
+                              "title",
+                              "fileId"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 12,
+                          "default": []
+                        },
+                        "customPages": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 40
+                              },
+                              "slug": {
+                                "type": "string",
+                                "pattern": "^[a-z0-9](?:[a-z0-9-]{0,38}[a-z0-9])?$"
+                              },
+                              "title": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 60
+                              },
+                              "on": {
+                                "type": "boolean"
+                              },
+                              "html": {
+                                "type": "string",
+                                "maxLength": 20000
+                              },
+                              "seoDescription": {
+                                "type": "string",
+                                "maxLength": 160
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "slug",
+                              "title",
+                              "on",
+                              "html",
+                              "seoDescription"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 4,
+                          "default": []
+                        }
+                      },
+                      "required": [
+                        "template",
+                        "colour",
+                        "font",
+                        "language",
+                        "offerOtherLanguages",
+                        "motto",
+                        "about",
+                        "address",
+                        "phones",
+                        "email",
+                        "mapUrl",
+                        "hours",
+                        "board",
+                        "foundedYear",
+                        "principalMessage",
+                        "principalNamed",
+                        "sections",
+                        "metrics",
+                        "admissionsText",
+                        "enquiryForm",
+                        "newsPostIds",
+                        "gallery"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "config"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "confirm": {
+                    "type": "boolean",
+                    "enum": [
+                      true
+                    ]
+                  }
+                },
+                "required": [
+                  "confirm"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/site/shares": {
+      "get": {
+        "summary": "The links to review the draft that are still open (made, expires, by whom), never their tokens",
+        "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "WEBSITE",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "shares": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "expiresAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "byName": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "createdAt",
+                          "expiresAt",
+                          "byName"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "shares"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Make a link to review the draft signed out ({ days: 1–7 }), revoking the one before; the URL with its token is shown this once; audited",
+        "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "WEBSITE",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "expiresAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "url",
+                    "expiresAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "days": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 7
+                  }
+                },
+                "required": [
+                  "days"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/site/shares/{shareId}": {
+      "delete": {
+        "summary": "Revoke a review link: it answers 404 from the next request; audited",
+        "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "WEBSITE",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "shareId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/site/enquiries": {
+      "get": {
+        "summary": "The website's enquiries, newest first, ?status= NEW, REPLIED or CLOSED, with the count in each; an enquiry is deleted 180 days after it is closed or last touched",
+        "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "WEBSITE",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "enquiries": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "contact": {
+                            "type": "string"
+                          },
+                          "email": {
+                            "type": "string"
+                          },
+                          "grade": {
+                            "type": "string"
+                          },
+                          "wantsVisit": {
+                            "type": "boolean"
+                          },
+                          "message": {
+                            "type": "string"
+                          },
+                          "language": {
+                            "type": "string",
+                            "enum": [
+                              "en",
+                              "hi",
+                              "mr"
+                            ]
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "NEW",
+                              "REPLIED",
+                              "CLOSED"
+                            ]
+                          },
+                          "replyText": {
+                            "type": "string"
+                          },
+                          "repliedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "replyTo": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "contact",
+                          "email",
+                          "grade",
+                          "wantsVisit",
+                          "message",
+                          "language",
+                          "createdAt",
+                          "status",
+                          "replyText",
+                          "repliedAt",
+                          "replyTo"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "counts": {
+                      "type": "object",
+                      "properties": {
+                        "NEW": {
+                          "type": "integer"
+                        },
+                        "REPLIED": {
+                          "type": "integer"
+                        },
+                        "CLOSED": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "NEW",
+                        "REPLIED",
+                        "CLOSED"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "enquiries",
+                    "counts"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "NEW",
+                      "REPLIED",
+                      "CLOSED"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/site/enquiries/{enquiryId}/reply": {
+      "post": {
+        "summary": "Reply to an enquiry by email in the enquirer's language ({ text }); it becomes REPLIED with the words kept; 409 when the enquirer gave no email; audited",
+        "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "WEBSITE",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "contact": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "grade": {
+                      "type": "string"
+                    },
+                    "wantsVisit": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "language": {
+                      "type": "string",
+                      "enum": [
+                        "en",
+                        "hi",
+                        "mr"
+                      ]
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "NEW",
+                        "REPLIED",
+                        "CLOSED"
+                      ]
+                    },
+                    "replyText": {
+                      "type": "string"
+                    },
+                    "repliedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "replyTo": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "contact",
+                    "email",
+                    "grade",
+                    "wantsVisit",
+                    "message",
+                    "language",
+                    "createdAt",
+                    "status",
+                    "replyText",
+                    "repliedAt",
+                    "replyTo"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4000
+                  }
+                },
+                "required": [
+                  "text"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "enquiryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/site/enquiries/{enquiryId}/status": {
+      "post": {
+        "summary": "Close an enquiry, or open it again ({ status }); audited when it changes",
+        "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "WEBSITE",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "contact": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "grade": {
+                      "type": "string"
+                    },
+                    "wantsVisit": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "language": {
+                      "type": "string",
+                      "enum": [
+                        "en",
+                        "hi",
+                        "mr"
+                      ]
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "NEW",
+                        "REPLIED",
+                        "CLOSED"
+                      ]
+                    },
+                    "replyText": {
+                      "type": "string"
+                    },
+                    "repliedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "replyTo": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "contact",
+                    "email",
+                    "grade",
+                    "wantsVisit",
+                    "message",
+                    "language",
+                    "createdAt",
+                    "status",
+                    "replyText",
+                    "repliedAt",
+                    "replyTo"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "NEW",
+                      "REPLIED",
+                      "CLOSED"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "enquiryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/site/visits": {
+      "get": {
+        "summary": "The website's page views of the last thirty days by day and by page, counted on the server with no cookie and no address",
+        "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "WEBSITE",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "days": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "dateKey": {
+                            "type": "string"
+                          },
+                          "count": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "dateKey",
+                          "count"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "total": {
+                      "type": "integer"
+                    },
+                    "pages": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "page": {
+                            "type": "string"
+                          },
+                          "count": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "page",
+                          "count"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "days",
+                    "total",
+                    "pages"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/site/files": {
+      "get": {
+        "summary": "The pictures and PDFs uploaded for the website (the editor uploads them), newest first",
+        "description": "Roles: ADMIN, PRINCIPAL. Only while the school has WEBSITE switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "WEBSITE",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "files": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fileId": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "IMAGE",
+                              "PDF"
+                            ]
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "size": {
+                            "type": "integer"
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        },
+                        "required": [
+                          "fileId",
+                          "kind",
+                          "name",
+                          "size",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "files"
                   ],
                   "additionalProperties": false
                 }

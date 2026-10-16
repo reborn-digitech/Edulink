@@ -32,6 +32,9 @@ import { drainSocialQueue, liveSendDeps, refreshSocialConnections } from "./soci
 // plans (16 Oct 2026): the windows of the plans sold per person that ended, told once.
 import { expireEntitlements } from "./person-plans";
 // end plans
+// website-two (16 Oct 2026): the website's enquiries kept 180 days after they close or go quiet, and its page-view counts 400.
+import { tidySiteEnquiries } from "./site-inbox";
+// end website-two
 import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
@@ -71,6 +74,9 @@ export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" |
   // plans (16 Oct 2026)
   | "plans:expire"
   // end plans
+  // website-two (16 Oct 2026)
+  | "site:enquiries"
+  // end website-two
   ;
 
 /**
@@ -489,6 +495,23 @@ export const JOBS: Record<JobName, JobSpec> = {
     },
   },
   // end plans
+  // website-two (16 Oct 2026)
+  "site:enquiries": {
+    name: "site:enquiries",
+    // 04:30 on Sundays (clear of 03:30, 03:40, 04:10, 04:20 and the ten-minute jobs): the school websites' enquiries
+    // closed for 180 days, or untouched for as long, deleted — the rule the form states — and the sites' page-view
+    // counts older than 400 days (src/lib/site-inbox.ts tidySiteEnquiries). Counts per school, never a name.
+    schedule: "30 4 * * 0",
+    describeKey: "root.jobDescSiteEnquiries",
+    maxRunMs: HOUR,
+    expectEveryMs: 8 * DAY,
+    narrows: ["schoolIds"],
+    run: async ({ now, scope }) => {
+      const { deleted, visitsPruned, perSchool } = await tidySiteEnquiries(now, scope?.schoolIds ? { schoolIds: scope.schoolIds } : {});
+      return { summary: { deleted, visitsPruned }, perSchool };
+    },
+  },
+  // end website-two
 };
 
 export const JOB_NAMES = Object.keys(JOBS) as JobName[];

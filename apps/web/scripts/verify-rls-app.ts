@@ -1844,6 +1844,30 @@ async function main() {
       `no tenant saw [${domainIds(domainsNobody)}] (want the LIVE one), school B [${domainIds(domainsAsB)}] (want the LIVE one), school A [${domainIds(domainsAsA)}] (want both), B rewrote ${domainForgedByB.count} (want 0), the operator saw [${domainIds(domainsOperator)}] (want both)`,
     );
     // end website-builder B
+    // website-two (16 Oct 2026)
+    // The dates are written at UTC, as Prisma writes them, and the open one lasts an hour: a policy reading now() in
+    // the session's zone would hide it (16 Oct 2026).
+    // A LINK TO REVIEW A WEBSITE'S DRAFT: an open one (neither revoked nor expired) is readable by anyone, because the
+    // review route has no session and finds the school by the token's hash; a revoked or expired one stays the
+    // school's own; another school writes none.
+    psql(
+      DB,
+      `INSERT INTO "SchoolSiteShare" ("id","schoolId","tokenHash","createdByUserId","expiresAt","revokedAt") VALUES
+         ('verify-share-open','verify-a','verify-hash-open','verify-u', (now() AT TIME ZONE 'utc') + interval '1 hour', NULL),
+         ('verify-share-revoked','verify-a','verify-hash-revoked','verify-u', (now() AT TIME ZONE 'utc') + interval '7 days', now()),
+         ('verify-share-expired','verify-a','verify-hash-expired','verify-u', (now() AT TIME ZONE 'utc') - interval '1 hour', NULL);`,
+    );
+    type ShareTx = { schoolSiteShare: { findMany(a: unknown): Promise<{ id: string }[]>; updateMany(a: unknown): Promise<{ count: number }> } };
+    const shareIds = (rows: { id: string }[]) => rows.map((r) => r.id).filter((id) => id.startsWith("verify-share-")).sort().join(",");
+    const sharesNobody = await (client as unknown as ShareTx).schoolSiteShare.findMany({ select: { id: true } });
+    const sharesAsA = await withTenantOn(client, "verify-a", (tx) => (tx as unknown as ShareTx).schoolSiteShare.findMany({ select: { id: true } }));
+    const shareForgedByB = await withTenantOn(client, "verify-b", (tx) => (tx as unknown as ShareTx).schoolSiteShare.updateMany({ where: { id: "verify-share-open" }, data: { revokedAt: new Date() } }));
+    check(
+      "⚠ a website draft's review link is readable by anyone only while it is open; a revoked or expired one stays the school's; another school writes none",
+      shareIds(sharesNobody) === "verify-share-open" && shareIds(sharesAsA) === "verify-share-expired,verify-share-open,verify-share-revoked" && shareForgedByB.count === 0,
+      `no tenant saw [${shareIds(sharesNobody)}] (want the open one), school A [${shareIds(sharesAsA)}] (want all three), B rewrote ${shareForgedByB.count} (want 0)`,
+    );
+    // end website-two
 
     // AN EXPERT REACHES THEIR ENGAGEMENT AND NOTHING ELSE OF THE SCHOOL. One
     // confirmed booking used to put the whole school in their tenant set; the

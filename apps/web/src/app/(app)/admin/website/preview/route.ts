@@ -1,25 +1,22 @@
-import type { SiteLanguage } from "@edulink/contracts";
-import { getSession } from "@/lib/session";
-import { AccessError } from "@/lib/access-error";
-import { previewHtml } from "@/lib/site-admin";
+import { previewSitePage } from "@/lib/site-routes";
 
 /**
  * /admin/website/preview?lang= — the draft as the page Publish would make (website-builder A, 15 Oct 2026), whole,
- * for the office and the head to open in a tab of its own from the Preview screen. Never cached, never indexed;
- * signed out, or not the office, or the module off, it is the 404 every refusal here is.
+ * for the office and the head to open in a tab of its own; its other pages at /admin/website/preview/<page>
+ * (website-two, 16 Oct 2026). POST `{ config, page, lang }` is the editor's live frame: a draft the editor holds and
+ * has not saved, drawn the same way (src/lib/site-routes.ts). Never cached, never indexed; signed out, not the office,
+ * or the module off, it is the 404 every refusal here is.
  */
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
-  const lang = new URL(request.url).searchParams.get("lang");
-  const asked: SiteLanguage | null = lang === "en" || lang === "hi" || lang === "mr" ? lang : null;
-  try {
-    const ctx = await getSession();
-    if (!ctx) return new Response(null, { status: 404, headers: { "Cache-Control": "no-store", "X-Robots-Tag": "noindex" } });
-    const html = await previewHtml(ctx, asked);
-    return new Response(html, { status: 200, headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "private, no-store", "X-Robots-Tag": "noindex" } });
-  } catch (error) {
-    if (!(error instanceof AccessError)) console.error("[admin/website/preview]", error);
-    return new Response(null, { status: 404, headers: { "Cache-Control": "no-store", "X-Robots-Tag": "noindex" } });
-  }
+  return previewSitePage(request, new URL(request.url).searchParams.get("page") ?? "");
+}
+
+export async function POST(request: Request) {
+  const declared = Number(request.headers.get("content-length") ?? "0");
+  if (Number.isFinite(declared) && declared > 512 * 1024) return new Response(null, { status: 413 });
+  const body = (await request.json().catch(() => null)) as { config?: unknown; page?: unknown } | null;
+  if (!body || typeof body !== "object" || !body.config || typeof body.config !== "object") return new Response(null, { status: 422 });
+  return previewSitePage(request, typeof body.page === "string" ? body.page : "", body.config);
 }

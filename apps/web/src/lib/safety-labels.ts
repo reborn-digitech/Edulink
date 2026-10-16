@@ -872,6 +872,13 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "site.unpublish": "audit.siteUnpublish",
   "site.enquiry": "audit.siteEnquiry",
   // end website-builder A
+  // website-two (16 Oct 2026): a version restored as the draft, review links made and revoked, the inbox's replies and states.
+  "site.restore": "audit.siteRestore",
+  "site.share.create": "audit.siteShareCreate",
+  "site.share.revoke": "audit.siteShareRevoke",
+  "site.enquiry.reply": "audit.siteEnquiryReply",
+  "site.enquiry.status": "audit.siteEnquiryStatus",
+  // end website-two
   // website-builder B (15 Oct 2026): a school's own domain for its website saved, verified, removed, and the job's state changes.
   "site.domain.save": "audit.siteDomainSave",
   "site.domain.verify": "audit.siteDomainVerify",

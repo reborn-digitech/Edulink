@@ -12,7 +12,16 @@ import type { ActiveContext } from "@/lib/session";
  */
 async function body(ctx: ActiveContext) {
   const view = await loadSite(ctx);
-  return adminSiteSchema.parse({ config: view.config, published: view.published, publishedAt: view.publishedAt?.toISOString() ?? null, address: view.address, warnings: view.warnings });
+  return adminSiteSchema.parse({
+    config: view.config,
+    published: view.published,
+    publishedAt: view.publishedAt?.toISOString() ?? null,
+    address: view.address,
+    warnings: view.warnings,
+    checklist: view.checklist,
+    unpublishedChanges: view.unpublishedChanges,
+    draftSavedAt: view.draftSavedAt?.toISOString() ?? null,
+  });
 }
 
 /** GET /api/v1/admin/site — the draft, whether a version is live and since when, the address, the preview's warnings. */

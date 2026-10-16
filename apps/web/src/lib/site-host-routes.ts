@@ -8,6 +8,7 @@ import { retryHintKey } from "./rate-limit";
 import { translator } from "./i18n/dictionary";
 import { schoolIdForHost } from "./site-hosts";
 import { normaliseHost, SITE_CSP } from "./site-host-match";
+import { countSiteVisit } from "./site-visits";
 
 /**
  * WHAT A SCHOOL WEBSITE'S HOST ANSWERS (website-builder B, 15 October 2026). The middleware rewrites every request
@@ -77,9 +78,21 @@ export function offeredLanguages(site: Pick<PublishedSite, "html" | "language">)
   return [site.language, ...(Object.keys(site.html) as (keyof typeof site.html)[]).filter((l) => l !== site.language && site.html[l] !== own)];
 }
 
-/** GET / on a site host. */
-export async function sitePage(request: Request, host: string): Promise<Response> {
-  return hardened(await siteResponse(await schoolOf(host), langOf(request)));
+/** A page's path as the host was asked for it: one segment of lowercase letters, digits and hyphens, or "" (home). */
+const PAGE_PATH = /^[a-z0-9-]{1,40}$/;
+
+/**
+ * GET / and GET /<page> on a site host (website-two, 16 Oct 2026: every page of the site; `rest` is the path's
+ * segments after the host). A page served is counted for the office (site-visits.ts: a number per page per day, no
+ * cookie, nothing about the visitor); a page the site does not show is the 404.
+ */
+export async function sitePage(request: Request, host: string, rest: string[] = []): Promise<Response> {
+  const path = rest.length === 0 ? "" : rest.length === 1 && PAGE_PATH.test(rest[0]!) ? rest[0]! : null;
+  if (path === null) return siteNotFound(request);
+  const schoolId = await schoolOf(host);
+  const response = await siteResponse(schoolId, langOf(request), { path, origin: siteOrigin(request, host), base: "" });
+  if (schoolId && response.status === 200) await countSiteVisit(schoolId, path || "home");
+  return hardened(response);
 }
 
 /** The published site behind a host, or null. */
@@ -98,16 +111,22 @@ export async function siteRobots(request: Request, host: string): Promise<Respon
 
 const xml = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-/** The sitemap's XML for a published site at an origin: one URL per language it offers, each naming the others. */
-export function sitemapXml(site: Pick<PublishedSite, "html" | "language" | "renderedAt">, origin: string): string {
+/**
+ * The sitemap's XML for a published site at an origin: one URL per page the site shows and per language it offers,
+ * each naming the page's other languages (website-two, 16 Oct 2026: every page, not the home page alone).
+ */
+export function sitemapXml(site: Pick<PublishedSite, "html" | "language" | "renderedAt"> & { pages?: PublishedSite["pages"] }, origin: string): string {
   const languages = offeredLanguages(site);
-  const urlFor = (l: string) => (l === site.language ? `${origin}/` : `${origin}/?lang=${l}`);
+  const paths = ["", ...Object.keys(site.pages ?? {}).sort()];
+  const urlFor = (path: string, l: string) => `${origin}/${path}${l === site.language ? "" : `?lang=${l}`}`;
   const lastmod = site.renderedAt.toISOString().slice(0, 10);
   // An XML element built from its parts (the i18n audit reads a tag written out in a template as page text).
   const element = (name: string, attrs: Record<string, string>) => `<${name} ${Object.entries(attrs).map(([k, v]) => `${k}="${xml(v)}"`).join(" ")}/>`;
-  const alternates = languages.length > 1 ? languages.map((l) => `    ${element("xhtml:link", { rel: "alternate", hreflang: l, href: urlFor(l) })}`).join("\n") : "";
-  const urls = languages.map((l) => `  <url>\n    <loc>${xml(urlFor(l))}</loc>\n    <lastmod>${lastmod}</lastmod>${alternates ? `\n${alternates}` : ""}\n  </url>`).join("\n");
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls}\n</urlset>\n`;
+  const urls = paths.flatMap((path) => {
+    const alternates = languages.length > 1 ? languages.map((l) => `    ${element("xhtml:link", { rel: "alternate", hreflang: l, href: urlFor(path, l) })}`).join("\n") : "";
+    return languages.map((l) => `  <url>\n    <loc>${xml(urlFor(path, l))}</loc>\n    <lastmod>${lastmod}</lastmod>${alternates ? `\n${alternates}` : ""}\n  </url>`);
+  });
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join("\n")}\n</urlset>\n`;
 }
 
 /** GET /sitemap.xml on a site host. */
@@ -160,7 +179,7 @@ export async function siteEnquiry(request: Request, host: string): Promise<Respo
   const parsed = siteEnquiryBodySchema.safeParse(fields);
   try {
     if (!parsed.success) return formPage(422, renderSiteNotice({ locale, title: t("site.refusedTitle"), body: t("site.refusedBody"), back }));
-    const made = await takeSiteEnquiry(await schoolOf(host), parsed.data);
+    const made = await takeSiteEnquiry(await schoolOf(host), parsed.data, fields.lang === "hi" || fields.lang === "mr" || fields.lang === "en" ? fields.lang : undefined);
     const colour = made.colour;
     if (made.ok) return formPage(200, renderSiteNotice({ locale, colour, title: t("site.thanksTitle"), body: t("site.thanksBody", { school: made.schoolName }), back }));
     if (made.status === 429) {

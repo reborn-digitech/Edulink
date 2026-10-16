@@ -27,6 +27,7 @@ import { todayKey } from "@/lib/dates";
 import { forgetSiteHosts } from "@/lib/site-hosts";
 import { GET as siteGet } from "@/app/sites/[slug]/route";
 import { GET as hostGet } from "@/app/sites/by-host/[host]/route";
+import { GET as hostRest } from "@/app/sites/by-host/[host]/[...rest]/route";
 import { GET as hostEnquiryGet, POST as hostEnquiryPost } from "@/app/sites/by-host/[host]/enquiry/route";
 import { GET as adminSiteGet } from "@/app/api/v1/admin/site/route";
 
@@ -130,8 +131,9 @@ describe("the renderer (pure)", () => {
   it("says the page's own words in the page's language and offers the other two as links", () => {
     const hi = renderSite(FIXTURE_CONFIG, FIXTURE_DATA, "hi");
     expect(hi).toContain("हमारे बारे में");
-    expect(hi).toContain('href="?lang=en"');
-    expect(hi).toContain('href="?lang=mr"');
+    // Links between pages and languages hang from the base the route fills in (website-two: every page).
+    expect(hi).toContain('href="__SITE_BASE__/?lang=en"');
+    expect(hi).toContain('href="__SITE_BASE__/?lang=mr"');
     expect(hi).toContain('aria-current="page">हिन्दी');
     const one = renderSite({ ...FIXTURE_CONFIG, offerOtherLanguages: false }, FIXTURE_DATA, "en");
     expect(one).not.toContain("?lang=");
@@ -142,9 +144,11 @@ describe("the renderer (pure)", () => {
     expect(html).not.toContain('id="news"');
     expect(html).not.toContain('id="gallery"');
     expect(html).toContain('id="admissions"');
-    // The form posts to its own host's /enquiry (the by-host route), never to a slug path (16 Oct 2026).
-    expect(html).toContain('action="/enquiry"');
-    expect(html).not.toContain("/sites/zz-river");
+    // The form is on the Admissions page (website-two) and posts to its own host's /enquiry (the by-host route), never
+    // to a slug path (16 Oct 2026).
+    const admissions = renderSite(FIXTURE_CONFIG, { ...FIXTURE_DATA, news: [], gallery: [] }, "en", "ADMISSIONS");
+    expect(admissions).toContain('action="/enquiry"');
+    expect(admissions).not.toContain("/sites/zz-river");
   });
 
   it("prints the head's name only when ticked", () => {
@@ -168,7 +172,7 @@ describe("the draft's shape (pure)", () => {
     expect(fixed.template).toBe(defaults.template);
     expect(fixed.font).toBe("default");
     expect(fixed.mapUrl).toBe("");
-    expect(fixed.sections.map((s) => s.code)).toEqual(["NEWS", "NUMBERS", "FACULTY", "DISCLOSURE", "ADMISSIONS", "GALLERY", "CONTACT"]);
+    expect(fixed.sections.map((s) => s.code)).toEqual(["NEWS", "NUMBERS", "FACULTY", "DISCLOSURE", "ADMISSIONS", "GALLERY", "CONTACT", "EVENTS", "ACHIEVEMENTS", "FACILITIES"]);
     expect(fixed.sections[0]).toEqual({ code: "NEWS", on: true });
     expect(fixed.metrics).toEqual(defaults.metrics);
   });
@@ -370,7 +374,10 @@ describe("publish, the office's view by slug, the public site on its own domain,
     expect(res.headers.get("x-robots-tag")).toBeNull();
     const html = await res.text();
     expect(html).toContain(`ZZ Site Main ${STAMP}`);
-    expect(html).toContain('action="/enquiry"');
+    // The enquiry form is on the Admissions page, served at /admissions on the same host (website-two).
+    const page = await hostRest(new Request("http://localhost/admissions", { headers: { host: DOMAIN } }), { params: Promise.resolve({ host: DOMAIN, rest: ["admissions"] }) });
+    expect(page.status).toBe(200);
+    expect(await page.text()).toContain('action="/enquiry"');
     expect(await (await call(DOMAIN, "?lang=hi")).text()).toContain('<html lang="hi">');
     expect((await loadSite(await as(ids.admin, "ADMIN", ids.school))).address).toBe(`https://${DOMAIN}`);
     expect((await publishSite(await as(ids.admin, "ADMIN", ids.school))).address).toBe(`https://${DOMAIN}`);

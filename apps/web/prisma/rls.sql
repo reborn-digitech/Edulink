@@ -3505,6 +3505,44 @@ CREATE POLICY "SchoolSiteEnquiry_tenant_isolation" ON "SchoolSiteEnquiry"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- SchoolSiteShare
+ALTER TABLE "SchoolSiteShare" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "SchoolSiteShare" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "SchoolSiteShare_tenant_isolation" ON "SchoolSiteShare";
+DROP POLICY IF EXISTS "SchoolSiteShare_readable" ON "SchoolSiteShare";
+CREATE POLICY "SchoolSiteShare_tenant_isolation" ON "SchoolSiteShare"
+  FOR ALL
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- …and one row of this table belonging to ANOTHER school, by the
+  -- predicate below. See GLOBALLY_READABLE in scripts/gen-rls.ts for
+  -- what that predicate opens and why it is safe to open it.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "SchoolSiteShare_readable" ON "SchoolSiteShare"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR ("revokedAt" IS NULL AND "expiresAt" > (now() AT TIME ZONE 'utc'))
+        );
+
+-- SchoolSiteVisit
+ALTER TABLE "SchoolSiteVisit" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "SchoolSiteVisit" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "SchoolSiteVisit_tenant_isolation" ON "SchoolSiteVisit";
+DROP POLICY IF EXISTS "SchoolSiteVisit_readable" ON "SchoolSiteVisit";
+CREATE POLICY "SchoolSiteVisit_tenant_isolation" ON "SchoolSiteVisit"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- SchoolSiteFile
+ALTER TABLE "SchoolSiteFile" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "SchoolSiteFile" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "SchoolSiteFile_tenant_isolation" ON "SchoolSiteFile";
+DROP POLICY IF EXISTS "SchoolSiteFile_readable" ON "SchoolSiteFile";
+CREATE POLICY "SchoolSiteFile_tenant_isolation" ON "SchoolSiteFile"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- SocialConnection
 ALTER TABLE "SocialConnection" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "SocialConnection" FORCE ROW LEVEL SECURITY;

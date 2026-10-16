@@ -1,34 +1,12 @@
-import type { Metadata } from "next";
-import { requireRole } from "@/lib/tenancy";
-import { getT } from "@/lib/i18n/server";
-import { db } from "@/lib/db";
-import { loadSite } from "@/lib/site-admin";
-import { Card, CardBody, CardHeader } from "@/components/ui/card";
-import { AboutForm } from "./about-form";
+import { redirect } from "next/navigation";
+import { websitePageContext } from "../gate";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getT();
-  return { title: [t("website.stepAbout"), t("website.title")].join(" · ") };
-}
-
-/** Screen 2, About: the school's own words and how to reach it, prefilled from what the school already entered. */
-export default async function WebsiteAboutPage() {
-  const ctx = await requireRole("ADMIN", "PRINCIPAL");
-  const t = await getT();
-  const view = await loadSite(ctx);
-  const head = await db.membership.findFirst({ where: { schoolId: ctx.schoolId, role: "PRINCIPAL", status: "ACTIVE", leftAt: null }, orderBy: { joinedAt: "asc" }, select: { user: { select: { name: true } } } });
-  const c = view.config;
-  return (
-    <Card>
-      <CardHeader title={t("website.aboutTitle")} description={t("website.aboutIntro")} />
-      <CardBody>
-        <AboutForm
-          schoolName={view.school.name}
-          principalName={head?.user.name ?? null}
-          canName={ctx.role === "PRINCIPAL"}
-          initial={{ motto: c.motto, about: c.about, address: c.address, phones: c.phones, email: c.email, mapUrl: c.mapUrl, hours: c.hours, board: c.board, foundedYear: c.foundedYear, principalMessage: c.principalMessage, principalNamed: c.principalNamed }}
-        />
-      </CardBody>
-    </Card>
-  );
+/**
+ * /admin/website/about — one of the six screens of 15 October 2026, now a section of the one editor at /admin/website
+ * (website-two, 16 Oct 2026): it opens the editor there, so a saved link or a notice still lands where it meant. The
+ * module off, the layout's notice alone (a plain 200).
+ */
+export default async function WebsiteOldScreen() {
+  if (!(await websitePageContext())) return null;
+  redirect("/admin/website?s=about");
 }

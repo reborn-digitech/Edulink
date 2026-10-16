@@ -37,6 +37,8 @@ export type FileAccess =
   | { allowed: true; kind: "logo"; public: true }
   // website-builder A (15 Oct 2026): a picture on a school's published website, public while the site is live.
   | { allowed: true; kind: "site"; public: true }
+  // website-two (16 Oct 2026): a file uploaded for the website and only in the draft, for the office and the head.
+  | { allowed: true; kind: "site"; public: false }
   // meta-posting (16 Oct 2026): a post's picture Meta fetches for Instagram, by the link in a queued copy (?social=), for a day.
   | { allowed: true; kind: "social"; public: false }
   // end meta-posting
@@ -108,6 +110,16 @@ export async function authorizeFileRead(
 
   const { schoolId, membershipId, role, user } = session;
   const ref = jsonRef(fileId);
+
+  // website-two (16 Oct 2026): a file uploaded for a school's website (a picture, a PDF) while it is only in the draft:
+  // the office and the head of that school, who build the site. Live on a published page, the `onSite` branch above
+  // opened it to anyone already.
+  const siteFile = await db.schoolSiteFile.findFirst({ where: { fileId }, select: { schoolId: true } });
+  if (siteFile) {
+    if ((role === "ADMIN" || role === "PRINCIPAL") && schoolId === siteFile.schoolId) return { allowed: true, kind: "site", public: false };
+    return DENY;
+  }
+  // end website-two
 
   // ---- 2. submission attachment: a child's own work. Tightest rules.
   const submission = await db.submission.findFirst({

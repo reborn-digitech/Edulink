@@ -2701,9 +2701,10 @@ async function main() {
   console.log(`  Expert application: ZZ Expert Applicant <${applicantEmail}> ${waitingApplication ? "already waiting" : "added, waiting"} — /root/experts`);
   // ---- end expert-registration ----
   // website-builder A (15 Oct 2026): ZZ Northgate's public website — the module on, a draft with every section and number on,
-  // one approved post with a consented picture, and a published version (zz-website.ts; idempotent).
+  // one approved post with a consented picture, and a published version (zz-website.ts; idempotent). website-two (16 Oct
+  // 2026): every page on with something on it, a prospectus PDF, one enquiry replied and one new, a week of page views.
   const website = await buildWebsite(db, northgate.school, northgate.admin.id);
-  console.log(`  Website: ZZ Northgate ${website.published ? "published now" : website.refreshed ? "published again (its form now posts to /enquiry)" : "already published"}, every section on — /admin/website, http://${website.slug}.localhost:3000/ in development`);
+  console.log(`  Website: ZZ Northgate ${website.published ? "published now" : website.refreshed ? "published again (every page)" : "already published"}, every page and section on, ${website.enquiries ? `${website.enquiries} enquiries added` : "enquiries already there"}, ${website.visits} page views this week — /admin/website, http://${website.slug}.localhost:3000/ in development`);
   // end website-builder A
   // website-builder B (15 Oct 2026): ZZ Northgate's own website domain, waiting for DNS (a .test name never resolves,
   // so Verify leaves it there with "No record was found"). Idempotent: kept when it is there; any other domain the

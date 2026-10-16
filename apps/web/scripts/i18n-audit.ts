@@ -79,6 +79,9 @@ const SKIP_EXACT = new Set([
   "site:refresh",
   "site:domains", // the job name the scheduler prints, a code like site:refresh (15 Oct 2026)
   // end website-builder A
+  // website-two (16 Oct 2026): a job's name, a code the crontab and /root/jobs key on (its words are root.jobDescSiteEnquiries).
+  "site:enquiries",
+  // end website-two
   // meta-posting (16 Oct 2026): two job names, codes the crontab and /root/jobs key on (their words are root.jobDescSocialSend and root.jobDescSocialRefresh).
   "social:send",
   "social:refresh",

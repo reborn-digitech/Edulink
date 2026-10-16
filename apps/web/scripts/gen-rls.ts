@@ -657,6 +657,19 @@ const GLOBALLY_READABLE: Record<string, string> = {
    */
   SchoolSiteDomain: `"status" = 'LIVE'`,
   // end website-builder B
+  // website-two (16 Oct 2026)
+  /**
+   * A LINK TO REVIEW A SCHOOL WEBSITE'S DRAFT, WHILE IT IS OPEN (src/lib/site-share.ts). The review route
+   * (/sites/review/<token>) has no session and must find which school a token belongs to: a row neither revoked nor
+   * expired is readable by anyone. What crosses is the SHA-256 of a random token, its school and its dates — never
+   * the token, never the draft, which is read under the school's own binding once the school is known. A revoked or
+   * expired link stays the school's own. Read only, like everything here; the office writes its rows.
+   * THE CLOCK IS UTC: Prisma writes a DateTime into timestamp(3) as UTC, while now() alone is read in the session's
+   * zone (Asia/Kolkata here and on Fly), which made a one-hour link look expired five and a half hours early and
+   * hid every link from the review route (the sweep of 16 Oct 2026 caught it); so now() is taken at UTC.
+   */
+  SchoolSiteShare: `"revokedAt" IS NULL AND "expiresAt" > (now() AT TIME ZONE 'utc')`,
+  // end website-two
 };
 
 /**

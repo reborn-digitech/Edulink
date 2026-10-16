@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { requireRole } from "@/lib/tenancy";
-import { isModuleOn } from "@/lib/modules";
+import { websitePageContext } from "../gate";
 import { siteDomainView } from "@/lib/site-domains";
 import { domainProblem, STATUS_KEYS } from "@/lib/site-domain-words";
 import { getRelativeTime, getT } from "@/lib/i18n/server";
@@ -23,11 +22,12 @@ export async function generateMetadata(): Promise<Metadata> {
  * domain is live, where the published site stands. The library is src/lib/site-domains.ts.
  */
 export default async function WebsiteDomainPage() {
-  const ctx = await requireRole("ADMIN", "PRINCIPAL");
-  const t = await getT();
   // The flow's layout (/admin/website/layout.tsx, builder A) draws the heading, the progress strip and the module's
-  // "switched off" page; this screen is its cards.
-  if (!(await isModuleOn(ctx.schoolId, "WEBSITE"))) return null;
+  // "switched off" page; this screen is its cards, and nothing at all while the module is off (website-two: the early
+  // return, so the answer carries no not-found marker).
+  const ctx = await websitePageContext();
+  if (!ctx) return null;
+  const t = await getT();
   const relative = await getRelativeTime();
   const view = await siteDomainView(ctx);
   const d = view.domain;
@@ -84,7 +84,7 @@ export default async function WebsiteDomainPage() {
 
       <div>
         <Button asChild variant="secondary">
-          <Link href="/admin/website/publish">{t("siteDomains.back")}</Link>
+          <Link href="/admin/website?s=publish">{t("siteDomains.back")}</Link>
         </Button>
       </div>
     </div>

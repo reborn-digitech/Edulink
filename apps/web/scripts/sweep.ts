@@ -66,7 +66,7 @@ async function mint(email: string, role: string | null, schoolId: string | null,
  * "other side closed" mid-run — a fact about the socket, not the route. A GET
  * is safe to reissue; a 500 is a result and is still reported first time.
  */
-async function hit(actor: Actor | null, path: string): Promise<{ status: number; body: string; loc: string | null; raw: { status: number; body: string } }> {
+async function hit(actor: Actor | null, path: string): Promise<{ status: number; body: string; loc: string | null }> {
   for (let attempt = 1; ; attempt++) {
     try {
       const started = performance.now();
@@ -80,7 +80,7 @@ async function hit(actor: Actor | null, path: string): Promise<{ status: number;
       // browser gets (scripts/streamed-status.ts, R-64).
       const seen = streamedStatus(res.status, body, res.headers.get("location"));
       timings.push({ who: actor?.label ?? "anonymous", path, status: seen.status, ms: Math.round(performance.now() - started) });
-      return { status: seen.status, body: seen.streamed ? "" : body, loc: seen.loc, raw: { status: res.status, body } };
+      return { status: seen.status, body: seen.streamed ? "" : body, loc: seen.loc };
     } catch (error) {
       if (attempt >= 3) {
         // Three refusals of one page: the server, or the page? The health
@@ -191,14 +191,11 @@ async function check(actor: Actor | null, path: string, expected = 200, note = "
     expected = 404;
     note = `${note} [feature ${g.feature} off: the app's not-found${alsoOk.length ? ", or the page's own redirect" : ""}]`.trim();
   }
-  const { status: seen, loc, body, raw } = await hit(actor, path);
+  const { status, loc, body } = await hit(actor, path);
+  // A locked page is the layout's plan card in place of its children: a plain 200 that carries the card. The pages under
+  // a plan return nothing while the person lacks it (website-two, 16 Oct 2026), so no not-found marker rides along.
   const planCard = g?.state === "plan" && expected === 200;
-  // A locked page is the layout's plan card in place of its children. Next renders the page beside the layout all the
-  // same, and a page whose own read asks for the plan (/teacher/guidance, /expert/sessions) leaves a not-found digest
-  // in the payload that the browser never draws, as the module-off website screen does (16 Oct 2026). So the card is
-  // judged on the raw answer: a 200 that carries it.
-  const status = planCard && raw.status === 200 && raw.body.includes('data-testid="plan-card"') ? 200 : seen;
-  const ok = (status === expected || alsoOk.includes(status)) && (!planCard || (status === 200 && (body || raw.body).includes('data-testid="plan-card"')));
+  const ok = (status === expected || alsoOk.includes(status)) && (!planCard || (status === 200 && body.includes('data-testid="plan-card"')));
   if (ok && g?.state === "off") gatedLines.off++;
   if (ok && planCard) gatedLines.plan++;
   if (planCard) note = `${note} [${g.feature} locked: the ${g.plan} plan card]`.trim();
@@ -1106,10 +1103,10 @@ async function staffingAndDuty(schoolId: string) {
  * which has their modules on.
  */
 /**
- * Menu entries whose page is a redirect by design, for every role shown them: the school website's entry opens the
- * flow on the screen the office left it at, Look or Publish (admin/website/page.tsx, 15 Oct 2026).
+ * Menu entries whose page is a redirect by design, for every role shown them. None since website-two (16 Oct 2026):
+ * the school website's entry is the editor itself, no longer a redirect to one of the six screens.
  */
-const NAV_REDIRECTS: Record<string, number> = { "/admin/website": 307 };
+const NAV_REDIRECTS: Record<string, number> = {};
 
 type NavWalker = { role: Role; actor: Actor; modulesOn: readonly string[]; where: string; expect?: Record<string, number>; also?: string[]; /** A FACULTY's or HOD's duties (5 Oct 2026): an entry carrying `duty` is shown only to its holder. */ duties?: readonly string[] };
 
@@ -1554,31 +1551,60 @@ async function paidSurfaces(riversideAdmin: Actor, riversideTeacher: Actor, devS
   for (const a of [zzAdmin, zzPrincipal, zzTeacher]) if (a?.userId && !touchedBefore.has(a.userId)) touched.delete(a.userId);
   const websiteOn = (await db.schoolModule.count({ where: { schoolId: northgate.id, module: "WEBSITE" } })) > 0;
 
-  // The school website's flow: the office and the head at a school with the module on; the module-off answer at Riverside.
+  // The school website's editor (website-two, 16 Oct 2026): the office and the head at a school with the module on, each
+  // section of the one screen by ?s=, the six screens of 15 October sending on to their sections, the preview in a tab
+  // with its other pages, the enquiries inbox, the domain screen; a review link to the draft opened signed out while it
+  // is open and 404 once revoked; the module-off answer at Riverside.
   if (websiteOn) {
-    const published = (await db.schoolSiteVersion.count({ where: { schoolId: northgate.id } })) > 0;
-    const opens = await hit(zzAdmin, "/admin/website");
-    results.push({ role: zzAdmin.label, path: "/admin/website", status: opens.status, expected: 307, ok: opens.status === 307 && (opens.loc ?? "").endsWith(published ? "/admin/website/publish" : "/admin/website/look"), note: `opens the flow where the office left it (${published ? "Publish" : "Look"})${opens.loc ? ` → ${opens.loc}` : ""}` });
-    for (const screen of ["look", "about", "sections", "review", "publish", "domain"]) {
-      const page = await hit(zzAdmin, `/admin/website/${screen}`);
-      results.push({ role: zzAdmin.label, path: `/admin/website/${screen}`, status: page.status, expected: 200, ok: page.status === 200 && page.body.includes('aria-current="step"'), note: "the office's screen, inside the progress strip" });
+    const editor = await hit(zzAdmin, "/admin/website");
+    results.push({ role: zzAdmin.label, path: "/admin/website", status: editor.status, expected: 200, ok: editor.status === 200 && editor.body.includes('data-testid="site-editor"') && editor.body.includes('data-testid="site-state"'), note: "the office opens the website editor: the state, Save, Publish and the rail" });
+    for (const section of ["look", "about", "page:HOME", "page:ABOUT", "page:ACADEMICS", "page:ADMISSIONS", "page:FACILITIES", "page:GALLERY", "page:NEWS", "page:EVENTS", "page:ACHIEVEMENTS", "page:DOWNLOADS", "page:CONTACT", "publish", "enquiries"]) {
+      const page = await hit(zzAdmin, `/admin/website?s=${encodeURIComponent(section)}`);
+      results.push({ role: zzAdmin.label, path: `/admin/website?s=${section}`, status: page.status, expected: 200, ok: page.status === 200 && page.body.includes(`data-section="${section}"`), note: "a section of the editor, opened by its address" });
     }
-    await check(zzAdmin, "/admin/website/preview?lang=en", 200, "…and the draft as the page it would publish");
-    await check(zzPrincipal, "/admin/website/look", 200, "the head builds the website too");
-    if (zzTeacher) await check(zzTeacher, "/admin/website/look", 307, "⚠ a teacher does not");
-    await check(null, "/admin/website/look", 307, "signed-out website flow redirects to login");
+    const inbox = await hit(zzAdmin, "/admin/website?s=enquiries");
+    results.push({ role: zzAdmin.label, path: "/admin/website?s=enquiries (inbox)", status: inbox.status, expected: 200, ok: inbox.status === 200 && inbox.body.includes('data-testid="site-enquiries"') && inbox.body.includes("data-enquiry="), note: "the enquiries inbox lists the fixture's enquiries" });
+    const ready = await hit(zzAdmin, "/admin/website?s=publish");
+    results.push({ role: zzAdmin.label, path: "/admin/website?s=publish (checklist)", status: ready.status, expected: 200, ok: ready.status === 200 && ready.body.includes('data-testid="site-checklist"') && ready.body.includes('data-testid="site-versions"') && ready.body.includes('data-testid="site-visits"'), note: "Publish: the ready-to-publish card, the versions and the visits" });
+    for (const [screen, section] of [["look", "look"], ["about", "about"], ["sections", "home"], ["review", "publish"], ["publish", "publish"]] as const) {
+      const old = await hit(zzAdmin, `/admin/website/${screen}`);
+      results.push({ role: zzAdmin.label, path: `/admin/website/${screen}`, status: old.status, expected: 307, ok: old.status === 307 && (old.loc ?? "").endsWith(`/admin/website?s=${section}`), note: `the screen of 15 October opens its section of the editor${old.loc ? ` → ${old.loc}` : ""}` });
+    }
+    const domainScreen = await hit(zzAdmin, "/admin/website/domain");
+    results.push({ role: zzAdmin.label, path: "/admin/website/domain", status: domainScreen.status, expected: 200, ok: domainScreen.status === 200 && domainScreen.body.includes('data-testid="site-domain"'), note: "the domain screen, with the fixture's domain waiting for DNS" });
+    await check(zzAdmin, "/admin/website/preview?lang=en", 200, "…the draft as the page it would publish");
+    await check(zzAdmin, "/admin/website/preview/admissions?lang=hi", 200, "…and its other pages, in another language");
+    await check(zzPrincipal, "/admin/website", 200, "the head builds the website too");
+    await check(zzPrincipal, "/admin/website?s=enquiries", 200, "…and answers its enquiries");
+    if (zzTeacher) await check(zzTeacher, "/admin/website", 307, "⚠ a teacher does not");
+    if (zzTeacher) await check(zzTeacher, "/admin/website/preview", 404, "⚠ …nor reads its draft");
+    await check(null, "/admin/website", 307, "signed-out website editor redirects to login");
+
+    // A review link, made here as the office would make it (only its hash is stored) and closed again before the run ends.
+    const token = randomBytes(32).toString("base64url");
+    const share = await db.schoolSiteShare.create({ data: { schoolId: northgate.id, tokenHash: createHash("sha256").update(token).digest("hex"), createdByUserId: zzAdmin.userId ?? "sweep", expiresAt: new Date(Date.now() + 60 * 60_000) }, select: { id: true } });
+    try {
+      const review = await hit(null, `/sites/review/${token}`);
+      results.push({ role: "anonymous", path: "/sites/review/<token>", status: review.status, expected: 200, ok: review.status === 200 && !/<script/i.test(review.body) && review.body.includes(`/sites/review/${token}/`), note: "a link to review the draft opens it signed out, its pages linked under the link" });
+      await check(null, `/sites/review/${token}/admissions`, 200, "…and its other pages");
+      await check(null, `/sites/review/${token}/no-such-page`, 404, "…but not a page the draft does not show");
+      await db.schoolSiteShare.update({ where: { id: share.id }, data: { revokedAt: new Date() } });
+      await check(null, `/sites/review/${token}`, 404, "⚠ a revoked review link is the site's 404");
+    } finally {
+      await db.schoolSiteShare.deleteMany({ where: { id: share.id } });
+    }
+    await check(null, `/sites/review/${randomBytes(32).toString("base64url")}`, 404, "⚠ a review link nobody made is the site's 404");
   } else {
-    skip("the website flow", "WEBSITE is not on at ZZ Northgate (run zz:fixtures)");
+    skip("the website editor", "WEBSITE is not on at ZZ Northgate (run zz:fixtures)");
   }
   const riversideWebsite = await db.school.findFirst({ where: { name: { contains: "Riverside" } }, select: { id: true } });
   if (riversideWebsite && (await db.schoolModule.count({ where: { schoolId: riversideWebsite.id, module: "WEBSITE" } })) === 0) {
-    // Read raw, not through streamedStatus: the layout draws the module-off answer and leaves its children out, but
-    // Next renders the screen beside it, and the screen's own refusal (site-admin.ts siteEditor) puts a not-found
-    // digest in the payload that the browser never draws — seen in the browser pane on 16 Oct 2026, which shows
-    // "Website is not switched on". The sweep's digest reading would call that a 404.
-    const res = await fetch(BASE + "/admin/website/look", { headers: { cookie: riversideAdmin.cookie }, redirect: "manual" });
-    const text = res.status === 200 ? await res.text() : "";
-    results.push({ role: riversideAdmin.label, path: "/admin/website/look", status: res.status, expected: 200, ok: res.status === 200 && text.includes('href="/admin/settings/modules"') && !text.includes('aria-current="step"'), note: "a school with the module off is told so and offered nothing else" });
+    // The layout draws the module-off answer and every screen under it returns nothing first (website-two, 16 Oct 2026),
+    // so the answer is a plain 200 with no not-found marker: the link to Settings, Modules, and no editor.
+    for (const path of ["/admin/website", "/admin/website/look", "/admin/website/domain"]) {
+      const off = await hit(riversideAdmin, path);
+      results.push({ role: riversideAdmin.label, path, status: off.status, expected: 200, ok: off.status === 200 && off.body.includes('href="/admin/settings/modules"') && !off.body.includes('data-testid="site-editor"'), note: "a school with the module off is told so and offered nothing else" });
+    }
   }
 
   // The modules page: the office switches its own modules, never the assistant (the operator's, 16 Oct 2026).
@@ -1617,10 +1643,16 @@ async function paidSurfaces(riversideAdmin: Actor, riversideTeacher: Actor, devS
       const host = `${zzSite.schoolSlug}.localhost${new URL(BASE).port ? `:${new URL(BASE).port}` : ""}`;
       const cache = (h: Record<string, string | string[] | undefined>) => String(h["cache-control"] ?? "");
       const noindex = (h: Record<string, string | string[] | undefined>) => String(h["x-robots-tag"] ?? "").includes("noindex");
-      await checkHost(host, "/", 200, "the published site on its own host, public and without a script", (b, h) => cache(h).includes("public") && !/<script/i.test(b) && b.includes('action="/enquiry"'));
+      await checkHost(host, "/", 200, "the published site on its own host, public and without a script", (b, h) => cache(h).includes("public") && !/<script/i.test(b) && b.includes('href="/admissions"'));
       await checkHost(host, "/?lang=hi", 200, "…in another language");
+      // website-two (16 Oct 2026): every page on its own path, the form on Admissions and Contact, a custom page.
+      await checkHost(host, "/admissions", 200, "…its Admissions page, whose form posts to /enquiry", (b, h) => cache(h).includes("public") && !/<script/i.test(b) && b.includes('action="/enquiry"'));
+      await checkHost(host, "/about?lang=mr", 200, "…its About page in another language");
+      await checkHost(host, "/transport", 200, "…a page of the school's own");
+      await checkHost(host, "/faculty", 404, "…a page with nothing to show is the 404", (_b, h) => noindex(h));
+      await checkHost(host, "/about/deeper", 404, "…and so is a path below a page", (_b, h) => noindex(h));
       await checkHost(host, "/robots.txt", 200, "…its robots.txt names the sitemap", (b) => b.includes("sitemap.xml"));
-      await checkHost(host, "/sitemap.xml", 200, "…and its sitemap lists the pages", (b) => b.includes("<urlset"));
+      await checkHost(host, "/sitemap.xml", 200, "…and its sitemap lists the pages", (b) => b.includes("<urlset") && b.includes("/admissions"));
       await checkHost(host, "/login", 404, "⚠ the app's sign-in does not exist on a site's host", (_b, h) => noindex(h));
       await checkHost(host, "/api/v1/me", 404, "⚠ …nor the app's API", (_b, h) => noindex(h));
       await checkHost(host, `/sites/${zzSite.schoolSlug}`, 404, "⚠ …nor the office's view by slug", (_b, h) => noindex(h));
