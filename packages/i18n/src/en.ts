@@ -3843,86 +3843,59 @@ export const en = {
   /* change the language.                                                     */
   /* ---------------------------------------------------------------------- */
   landing: {
+    // company-site (16 Oct 2026): the company's own site at the root. Plain sentences, nothing the product does not do,
+    // and nothing behind a platform switch (the assistant, the question bank, sessions, the job board, texts).
     metaDescription:
-      "Attendance in ten seconds. Grades parents actually see. A calm, safe place for schools, students and families. Installs as an app and works offline.",
+      "Shalaghar is software for running a school or a college in India: attendance, fees, circulars, certificates, report cards and filings, in English, Hindi and Marathi.",
 
     joinWithCode: "Join with a code",
     goToDashboard: "Go to my dashboard",
-    registerSchool: "Register your school",
+    registerSchool: "Register a school",
+    becomeExpert: "Become an expert",
 
-    badge: "Works offline · Installs like a real app",
-    /* Two halves of one sentence, because the second is set in a gradient on
-       its own line. Kept apart so a translator can put the break where the
-       grammar wants it rather than where English happens to need it. */
-    heroLead: "School and home,",
-    heroEmphasis: "finally on the same page.",
+    heroTitle: "Shalaghar is software for running a school or a college.",
     heroBody:
-      "Mark attendance in ten seconds — even with no signal. Parents see attendance, grades and teacher notes the moment they happen. Children get a place that is genuinely theirs, and genuinely safe.",
-    ctaRegister: "Register your school — free",
-    ctaHaveCode: "I have a school code",
-    noCardNeeded: "No card needed. Set up in about five minutes.",
+      "The office, teachers, students and families each sign in to their own part of it, in a browser on a computer or a phone, in English, Hindi or Marathi.",
 
-    rolesTitle: "One app. Four very different days.",
-    rolesBody: "Shalaghar shows each person exactly what they need and nothing they do not.",
+    schoolsTitle: "For schools",
+    schoolsLead: "What a school uses every day.",
+    schoolsAttendance: "Attendance: class registers, staff check-in, and a notice to the family when a pupil is marked absent.",
+    schoolsFees:
+      "Fees ledger: fee heads, demands, concessions, receipts and dues. A family pays into the school's own account; the money never passes through Shalaghar.",
+    schoolsCirculars: "Circulars and the school's feed, with a record of which families have read each circular.",
+    schoolsPapers: "Certificates and report cards, printed from the school's own templates and marking rules.",
+    schoolsFilings: "Filings: the UDISE+ student and teacher sheets and the board's lists, made from the school's own records.",
+    schoolsAdmissions: "Admissions: a family applies online, and the office takes the application through to a seat.",
+    modulesLead: "Switched on by the school when it needs them:",
+    collegesTitle: "For colleges",
+    collegesLead: "A college has these as well:",
+    moreComing: "More is being added.",
 
-    teachers: "Teachers",
-    teachersLead: "Ten seconds, not ten minutes.",
-    teachersPoint1: "One-tap attendance that works with no signal",
-    teachersPoint2: "Assignments and grading in the same place",
-    teachersPoint3: "Message a parent without giving out your number",
+    dataTitle: "How your data is handled",
+    dataResponsible: "The school is responsible for its pupils' data; Shalaghar keeps it on the school's behalf.",
+    dataFence: "Each school's records are kept apart from every other school's by the database itself, not only by the app.",
+    dataMinors:
+      "A child's records are read only by the child, the child's guardians and the school's staff who need them. A pupil's post is checked by the school before anyone else sees it. There is no advertising and no tracking, and no data is sold.",
+    dataAadhaar: "Shalaghar never asks for an Aadhaar number and has nowhere to keep one.",
+    dataDeletion:
+      "A person can ask to close their account. The page on closing an account says what is removed and what the school must keep.",
+    dataLanguages: "Every screen reads in English, Hindi and Marathi.",
+    dataPrivacy: "Read the privacy policy",
 
-    students: "Students",
-    studentsLead: "A place that feels like yours.",
-    studentsPoint1: "Today's work, no scrolling required",
-    studentsPoint2: "Pick an avatar, collect gentle streaks",
-    studentsPoint3: "Share what you have made — safely reviewed first",
+    pricingTitle: "Pricing",
+    pricingBody: "Prices are agreed with each school and college.",
+    pricingAsk: "Ask us at {email}.",
 
-    parents: "Parents",
-    parentsLead: "Know before you have to ask.",
-    parentsPoint1: "Attendance and grades for every child, one screen",
-    parentsPoint2: "Reply to a teacher without a phone-tag chain",
-    parentsPoint3: "Choose what you get told, and when",
-
-    admins: "School admins",
-    adminsLead: "See the whole school clearly.",
-    adminsPoint1: "Invite staff and classes in bulk",
-    adminsPoint2: "Attendance and engagement trends",
-    adminsPoint3: "Moderation queue and full audit trail",
-
-    offlineTitle: "Built for the back of the field trip bus",
-    offlineBody:
-      "Mark attendance with no bars at all. Your changes queue on the device and sync themselves the moment signal returns — nothing to remember, nothing to re-enter.",
-    installTitle: "A real app, without an app store",
-    installBody:
-      "Install straight from the browser on Android. Home-screen icon, full screen, push notifications that arrive when the app is closed. No downloads, no approvals, no waiting.",
-    safeTitle: "Safe by construction, not by policy",
-    safeBody:
-      "Every school's data is walled off. Children's posts are reviewed before anyone sees them. No public profiles, no student-to-stranger messaging, full export and deletion on request.",
-
-    setupTitle: "Set up your school before your tea goes cold",
-    step1Title: "Register the school",
-    step1Body: "Name, logo, contact. You get a code like RIVER-7X9K.",
-    step2Title: "Invite your teachers",
-    step2Body: "Paste a list of emails or upload a CSV. One click each to accept.",
-    step3Title: "Share the class code",
-    step3Body:
-      "Students join with a code or the classroom QR. Parents link to their child.",
-    startCta: "Start with your school",
+    aboutTitle: "About the company",
+    grievanceTitle: "Grievance Officer under the Digital Personal Data Protection Act, 2023",
+    grievanceWrite: "Write to {email} with a question or a complaint about how your personal data is processed.",
+    grievanceBoard: "If you are not satisfied with the answer, you may complain to the Data Protection Board of India.",
 
     footerRegister: "Register a school",
     footerOffline: "Offline",
-    footerTagline: "Built for schools, students and families.",
     footerPrivacy: "Privacy",
     footerDeletion: "Closing an account",
-
-    /* The mock register on the hero. FAKE DATA ON PURPOSE — no school's real
-       roster is on the front page — but it is read like any other screen, so
-       the words around the fake names are translated like any other screen. */
-    previewClass: "Grade 5 · Sunflower",
-    previewMeta: "Monday 27 July · 24 students",
-    previewOffline: "Offline",
-    previewSaved: "6 saved on this device",
-    previewNotified: "Parents notified on sync",
+    footerBuiltBy: "Built by {name}",
   },
 
   /* ---------------------------------------------------------------------- */
@@ -5079,9 +5052,12 @@ export const en = {
     tooManyRequests: "Too many requests. Try again {when}.",
     tryAgainShortly: "Try again shortly.",
     didNotWork: "That did not work.",
-    quote:
-      "\u201cAttendance used to eat the first ten minutes of every lesson. Now it is done before the class has sat down.\u201d",
-    quoteAttribution: "A Year 5 teacher",
+    // company-site (16 Oct 2026): the panel beside the form says who signs in here, in place of a quotation nobody said.
+    whoTitle: "Who signs in here",
+    whoSchool: "A school's office, its teachers, its students and their families.",
+    whoCollege: "A college's desks: faculty, heads of department, the exam cell, the quality cell, placement and accounts.",
+    whoLanguages: "Every screen reads in English, Hindi and Marathi.",
+    whoSupport: "Support reaches a person at {email}.",
   },
 
   /* ---------------------------------------------------------------------- */
@@ -19254,4 +19230,25 @@ export const en = {
     previewNote: "A preview of the draft. It is not published.",
   },
   // end website-two
+  // company-site (16 Oct 2026): the company's details as the owner sets them on the server (src/lib/company.ts).
+  company: {
+    legalName: "Legal name",
+    brandLine: "About line",
+    cin: "Corporate Identification Number (CIN)",
+    gstin: "GST registration number (GSTIN)",
+    registeredAddress: "Registered office",
+    correspondenceAddress: "Address for letters",
+    supportEmail: "Support email",
+    supportPhone: "Support phone",
+    grievanceName: "Grievance officer's name",
+    grievanceDesignation: "Grievance officer's designation",
+    grievanceEmail: "Grievance officer's email",
+    foundedYear: "Founded",
+    directors: "Directors",
+    missingTitle: "Company details to fill",
+    missingBody: "The home page shows each company detail once it is set on the server, and nothing in its place until then. Still to fill: {fields}.",
+    missingRequired: "Needed before the page is complete: the legal name, the registered office, the support email, and the grievance officer's name and email.",
+    missingHow: "How to set them",
+  },
+  // end company-site
 } as const;

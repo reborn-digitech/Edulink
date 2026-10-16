@@ -19,6 +19,7 @@ import { UsageSummary } from "./usage-summary";
 import { TableScroll } from "@/components/ui/table-scroll";
 import { ModelServersCard } from "@/components/quiz-review/model-servers-card";
 import { FeaturesCard } from "./features/card";
+import { CompanyDetailsCard } from "./company-card";
 
 export async function generateMetadata() {
   const t = await getT();
@@ -89,6 +90,9 @@ export default async function RootPage({
         </ul>
         <p className="mt-1.5 text-xs text-fg-subtle">{t("root.tilesNote")}</p>
       </section>
+
+      {/* company-site (16 Oct 2026): the company's details the home page still lacks, until the required ones are set. */}
+      <CompanyDetailsCard />
 
       {/* feature-switches (15 Oct 2026): the platform's features, each off until switched on at /root/features. */}
       <FeaturesCard />

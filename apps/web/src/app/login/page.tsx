@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Wordmark } from "@/components/brand";
 import { LoginForm } from "./form";
+import { WhoSignsIn } from "./who-signs-in";
 import { LanguageSwitch } from "@/components/language-switch";
 import { getSession } from "@/lib/session";
 import { enabledProviders, type SsoProviderId } from "@/lib/sso";
@@ -188,19 +189,8 @@ export default async function LoginPage({
         </div>
       </div>
 
-      {/* Decorative panel — hidden on phones where it would just push the form
-          below the fold. */}
-      <div
-        aria-hidden="true"
-        className="relative hidden items-center justify-center overflow-hidden bg-gradient-to-br from-[#4f8dfb] to-[#7e22ce] p-12 lg:flex"
-      >
-        <blockquote className="max-w-md text-white">
-          <p className="text-2xl font-semibold leading-snug">
-            {t("login.quote")}
-          </p>
-          <footer className="mt-4 text-sm text-white/80">{t("login.quoteAttribution")}</footer>
-        </blockquote>
-      </div>
+      {/* Who signs in here, in place of the quotation (company-site, 16 Oct 2026). */}
+      <WhoSignsIn t={t} />
     </main>
   );
 }

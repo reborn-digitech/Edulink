@@ -25,6 +25,13 @@ const INDEXED: RegExp[] = [
   /^\/certificates\/check$/,
 ];
 
+/**
+ * The fixed public pages a search engine is handed in the app host's sitemap (company-site, 16 Oct 2026): the
+ * company's own site first. Each is indexed by INDEXED above (src/lib/robots.test.ts holds the two together); the
+ * pages with an id in the path are reached by their links, not listed.
+ */
+export const SITEMAP_PATHS = ["/", "/login", "/register", "/register/expert", "/register/recruiter", "/privacy", "/certificates/check"] as const;
+
 /** The robots metadata for the path the middleware stamped ("GET /login"); no stamp is not indexed. */
 export function robotsFor(stamp: string | null | undefined): NonNullable<Metadata["robots"]> {
   const path = stamp?.split(" ")[1] ?? null;

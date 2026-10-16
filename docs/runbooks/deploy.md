@@ -270,6 +270,62 @@ is the 404. In development only, a published site is also at
 so it can be tried before any domain exists.
 <!-- end website-builder B -->
 
+## Company details
+
+<!-- company-site (16 Oct 2026) -->
+The home page at `/` is the company's own site. Its "About the company" section,
+the "Built by" line in its footer, the pricing line's address and the sign-in
+page's support line come from the environment alone (`src/lib/company.ts`), so
+they are filled in one place and nothing is invented: a variable that is unset,
+or set in a shape the law does not give it, is simply not shown. Until the
+legal name, the registered office, the support email and the grievance
+officer's name and email are all set, the operator's `/root` shows a card
+"Company details to fill" naming every detail still missing, which links here.
+Set them as secrets (`fly secrets set COMPANY_LEGAL_NAME="…" …`) and the next
+machine start shows them; no deploy of the image is needed.
+
+| Variable | Notes |
+| --- | --- |
+| `COMPANY_LEGAL_NAME` | **required**: the name on the certificate of incorporation, e.g. `… Private Limited`; also the footer's "Built by" |
+| `COMPANY_BRAND_LINE` | optional: one sentence shown as written under the heading, e.g. "Shalaghar is a product of …" (not translated) |
+| `COMPANY_CIN` | the Corporate Identification Number from the MCA register, 21 characters (`U` or `L`, five digits, the state's two letters, the year, three letters, six digits); anything else is not shown |
+| `COMPANY_GSTIN` | the GST registration number, 15 characters; anything else is not shown |
+| `COMPANY_REGISTERED_ADDRESS` | **required**: the registered office, its lines separated by `\|` |
+| `COMPANY_CORRESPONDENCE_ADDRESS` | optional: where letters go when it is not the registered office, lines separated by `\|` |
+| `COMPANY_SUPPORT_EMAIL` | **required**: where support mail reaches a person; shown on the home page (pricing and About) and the sign-in page. Unset, the older `SUPPORT_EMAIL` (read by `/privacy` and `/delete-account`) is used |
+| `COMPANY_SUPPORT_PHONE` | optional: a number with at least ten digits, shown as a `tel:` link |
+| `COMPANY_GRIEVANCE_OFFICER_NAME` | **required**: the person below |
+| `COMPANY_GRIEVANCE_OFFICER_DESIGNATION` | optional but expected: their designation, shown after the name |
+| `COMPANY_GRIEVANCE_OFFICER_EMAIL` | **required**: the address that person reads |
+| `COMPANY_FOUNDED_YEAR` | optional: four digits, not in the future |
+| `COMPANY_DIRECTORS` | optional: names separated by `\|` |
+
+**The grievance officer line and the DPDP Act.** The Digital Personal Data
+Protection Act, 2023 asks a data fiduciary to publish the business contact
+information of a person able to answer, on its behalf, the questions a data
+principal raises about the processing of their personal data (s.8(9); a Data
+Protection Officer only where the company is notified as a Significant Data
+Fiduciary), to run a way of redressing their grievances (s.8(10)), and lets a
+data principal complain to the Data Protection Board of India once that way has
+been used (s.13). The DPDP Rules, 2025, as read for this page and for counsel to
+confirm, add that the contact is published
+prominently on the website or app and named in every reply to a request, and
+that the fiduciary publishes the period in which it answers a grievance. The
+page therefore shows, under "Grievance Officer under the Digital Personal Data
+Protection Act, 2023": the officer's name and designation, the sentence
+"Write to <email> with a question or a complaint about how your personal data is
+processed", and "If you are not satisfied with the answer, you may complain to
+the Data Protection Board of India". It does not state a response period: the
+owner decides it with counsel, and it is added as a sentence when it is known.
+For a school's pupils the school is the data fiduciary and the company its
+processor (decision 0002); the company is the fiduciary for its own records,
+such as an expert's application and a school's registration. Have counsel read
+the final text before launch.
+
+Terms of use are not linked from the site until the owner provides them; there
+is no placeholder page.
+<!-- end company-site -->
+
 ## Open items before the first real school
 
 - **Cloudflare in front**, with the rate limits in `rate-limit.ts` as the

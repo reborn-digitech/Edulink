@@ -1507,6 +1507,48 @@ async function operatorArea() {
 }
 
 /**
+ * THE COMPANY'S SITE AND THE SIGN-IN PAGE (company-site, 16 Oct 2026). Signed out, / is the company's own site with
+ * its ways in; signed in, it sends the person to their own home, as the sign-in page does. The sign-in page carries the
+ * "who signs in here" panel and no quotation. The app's host has a robots.txt naming its sitemap, and the sitemap
+ * leads with the root. The company's details themselves are env-driven and unit-tested (tests/company-site.test.ts).
+ */
+async function companySite(admin: Actor, parent: Actor) {
+  const root = await hit(null, "/");
+  results.push({
+    role: "anonymous",
+    path: "/ (company site)",
+    status: root.status,
+    expected: 200,
+    ok: root.status === 200 && root.body.includes('data-testid="company-site"') && ['href="/login"', 'href="/register"', 'href="/register/expert"', 'href="/join"', 'href="/privacy"'].every((h) => root.body.includes(h)) && !root.body.includes('href="/terms"'),
+    note: "the company's site, with Log in, Register a school, Become an expert and join with a code",
+  });
+  for (const [actor, role] of [[admin, "ADMIN"], [parent, "PARENT"]] as const) {
+    const home = await hit(actor, "/");
+    results.push({
+      role: actor.label,
+      path: "/ (signed in)",
+      status: home.status,
+      expected: 307,
+      ok: home.status === 307 && (home.loc ?? "").endsWith(ROLE_HOME[role]),
+      note: `a signed-in person is sent to their own home (${ROLE_HOME[role]})${home.loc ? ` → ${home.loc}` : ""}`,
+    });
+  }
+  const login = await hit(null, "/login");
+  results.push({
+    role: "anonymous",
+    path: "/login (who signs in)",
+    status: login.status,
+    expected: 200,
+    ok: login.status === 200 && login.body.includes('data-testid="login-who"') && !login.body.includes("<blockquote"),
+    note: "the panel says who signs in here; the invented quotation is gone",
+  });
+  const robots = await hit(null, "/robots.txt");
+  results.push({ role: "anonymous", path: "/robots.txt", status: robots.status, expected: 200, ok: robots.status === 200 && robots.body.includes("sitemap.xml"), note: "the app's host names its sitemap" });
+  const sitemap = await hit(null, "/sitemap.xml");
+  results.push({ role: "anonymous", path: "/sitemap.xml", status: sitemap.status, expected: 200, ok: sitemap.status === 200 && sitemap.body.includes("<urlset") && /<loc>[^<]*\/<\/loc>/.test(sitemap.body), note: "…and the sitemap lists the root" });
+}
+
+/**
  * THIS WEEK'S NEW SURFACES (16 Oct 2026), each asked as the people who should and should not reach it: the operator's
  * feature switches and plans (/root/features), sites and expert applications; the expert's application form, signed
  * out; the plan page; the school website's six screens and preview (WEBSITE is on at ZZ Northgate and off at
@@ -2872,6 +2914,7 @@ async function main() {
   await staffingAndDuty(riverside.id);
   await operatorArea();
   await paidSurfaces(admin, teacher, devServer);
+  await companySite(admin, parent);
   await onboardingSignposts(riverside.id);
   await sharedDeviceSignposts(riverside.id);
 

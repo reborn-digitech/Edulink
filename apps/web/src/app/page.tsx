@@ -1,24 +1,23 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import {
   ArrowRightIcon,
+  BuildingsIcon,
   CheckCircleIcon,
   ChalkboardTeacherIcon,
-  ChatCircleDotsIcon,
-  ClipboardTextIcon,
-  DeviceMobileIcon,
+  CurrencyInrIcon,
   GraduationCapIcon,
-  HandHeartIcon,
   LockKeyIcon,
-  SparkleIcon,
-  UsersThreeIcon,
-  WifiSlashIcon,
 } from "@phosphor-icons/react/ssr";
 import { Button } from "@/components/ui/button";
 import { Wordmark } from "@/components/brand";
 import { InstallButton } from "@/components/install-button";
+import { LanguageSwitch } from "@/components/language-switch";
+import { EMAIL_SLOT, WithEmail } from "@/components/with-email";
 import { getSession } from "@/lib/session";
-import { ROLE_HOME, ATTENDANCE_META } from "@/lib/constants";
+import { ROLE_HOME } from "@/lib/constants";
+import { company, companyHasDetails, type Company } from "@/lib/company";
 import { getT } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";
 
@@ -27,219 +26,181 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: t("meta.tagline"), description: t("landing.metaDescription") };
 }
 
-export default async function LandingPage() {
-  const t = await getT();
-  // Signed-in visitors get a route back to their own dashboard rather than a
-  // marketing page they have already been sold. (§7 no dead ends)
+/** The per-school modules a school switches on itself (modules page), named and described in the modules' own words. */
+const SCHOOL_MODULES = ["transport", "library", "hostel", "inventory", "payroll", "website"] as const;
+/** What a college has beside a school's day: the academics every college has, the exam cell, the quality cell, placement. */
+const COLLEGE_MODULES = ["academics", "exams", "iqac", "placement"] as const;
+
+/**
+ * THE COMPANY'S OWN SITE (company-site, 16 Oct 2026): what www.shalaghar.com shows somebody who is not signed in.
+ *
+ * Plain and true. It lists what a school and a college can use today and nothing behind a platform switch (the
+ * assistant, the question bank, sessions, the job board, texts): those say "more is being added" until they are on
+ * for everybody. Prices are "ask us". The company's legal details come from the server's environment alone
+ * (src/lib/company.ts) and each one appears only once it is set; with none set the "About the company" section is not
+ * drawn at all, and the operator's /root says what is still to fill.
+ *
+ * A signed-in person is sent to their own home, as the sign-in page sends them; one with no role yet (the operator,
+ * the content team, somebody between schools) goes to /switch, which knows where each of them belongs.
+ */
+export default async function CompanySite() {
   const session = await getSession();
-  const home = session?.role ? ROLE_HOME[session.role] : null;
+  if (session?.role) redirect(ROLE_HOME[session.role]);
+  if (session) redirect("/switch");
+
+  const t = await getT();
+  const c = company();
 
   return (
     <div className="min-h-safe bg-bg">
-      <header className="sticky top-0 z-40 border-b border-border/70 bg-bg/85 backdrop-blur-md">
+      <header className="sticky top-0 z-40 border-b border-border/70 bg-bg/90 backdrop-blur-md">
         <nav
           aria-label={t("common.mainContent")}
-          className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6"
+          className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-2 px-4 sm:px-6"
         >
-          <Link href="/" className="rounded-[var(--radius-sm)]" aria-label={t("common.homeLink")}>
+          <Link href="/" className="shrink-0 rounded-[var(--radius-sm)]" aria-label={t("common.homeLink")}>
             <Wordmark />
           </Link>
-          <div className="flex items-center gap-2">
-            <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex">
-              <Link href="/join">{t("landing.joinWithCode")}</Link>
+          <div className="flex items-center gap-1 sm:gap-2">
+            {/* Under 360 px the bar holds the wordmark and one button; the hero and the footer keep the other ways in. */}
+            <Button asChild variant="ghost" size="sm" className="hidden min-[360px]:inline-flex">
+              <Link href="/login">{t("login.title")}</Link>
             </Button>
-            {home ? (
-              <Button asChild size="sm" iconRight={<ArrowRightIcon weight="bold" />}>
-                {/* "Go to my dashboard" is 182 px; beside the wordmark it overflowed a 320 px bar. Under 360 px the bar says "Dashboard". */}
-                <Link href={home} aria-label={t("landing.goToDashboard")}>
-                  <span className="min-[360px]:hidden">{t("nav.dashboard")}</span>
-                  <span className="hidden min-[360px]:inline">{t("landing.goToDashboard")}</span>
-                </Link>
-              </Button>
-            ) : (
-              <>
-                {/* Under 360 px the pair overflowed the bar by 60 px and the whole page scrolled sideways; the footer keeps the link. */}
-                <Button asChild variant="ghost" size="sm" className="hidden min-[360px]:inline-flex">
-                  <Link href="/login">{t("login.title")}</Link>
-                </Button>
-                <Button asChild size="sm">
-                  <Link href="/register">{t("landing.registerSchool")}</Link>
-                </Button>
-              </>
-            )}
+            <Button asChild variant="ghost" size="sm" className="hidden md:inline-flex">
+              <Link href="/register/expert">{t("landing.becomeExpert")}</Link>
+            </Button>
+            <Button asChild size="sm">
+              <Link href="/register">{t("landing.registerSchool")}</Link>
+            </Button>
           </div>
         </nav>
       </header>
 
-      <main id="main">
-        {/* ---------------------------------------------------------------- */}
-        <section className="relative overflow-hidden px-4 pb-16 pt-14 sm:px-6 sm:pb-24 sm:pt-20">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 -top-32 h-96 bg-[radial-gradient(60%_60%_at_50%_50%,color-mix(in_oklab,#2563eb_18%,transparent),transparent)]"
-          />
-          <div className="relative mx-auto max-w-3xl text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1.5 text-xs font-semibold text-fg-muted shadow-sm">
-              <SparkleIcon weight="fill" className="text-accent" />
-              {t("landing.badge")}
-            </span>
+      <main id="main" data-testid="company-site">
+        <section className="border-b border-border px-4 pb-12 pt-12 sm:px-6 sm:pb-16 sm:pt-16">
+          <div className="mx-auto max-w-3xl">
+            <h1 className="text-3xl font-bold leading-tight tracking-tight text-fg sm:text-5xl">{t("landing.heroTitle")}</h1>
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-fg-muted">{t("landing.heroBody")}</p>
 
-            <h1 className="mt-6 text-[2.5rem] font-bold leading-[1.08] tracking-tight text-fg sm:text-6xl">
-              {t("landing.heroLead")}
-              <span className="block bg-gradient-to-r from-[#4f8dfb] to-[#7e22ce] bg-clip-text text-transparent">
-                {t("landing.heroEmphasis")}
-              </span>
-            </h1>
-
-            <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-fg-muted">
-              {t("landing.heroBody")}
-            </p>
-
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Button asChild size="lg" iconRight={<ArrowRightIcon weight="bold" />}>
-                <Link href="/register">{t("landing.ctaRegister")}</Link>
+                <Link href="/register">{t("landing.registerSchool")}</Link>
               </Button>
               <Button asChild size="lg" variant="secondary">
-                <Link href="/join">{t("landing.ctaHaveCode")}</Link>
+                <Link href="/join">{t("landing.joinWithCode")}</Link>
+              </Button>
+              <Button asChild size="lg" variant="secondary">
+                <Link href="/login">{t("login.title")}</Link>
               </Button>
             </div>
+            <p className="mt-4 text-sm text-fg-muted">
+              <Link href="/register/expert" className="font-medium text-accent-strong underline underline-offset-4">
+                {t("landing.becomeExpert")}
+              </Link>
+            </p>
 
-            <p className="mt-4 text-sm text-fg-muted">{t("landing.noCardNeeded")}</p>
-
-            <div className="mt-6 flex justify-center">
+            <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <LanguageSwitch showLabel />
               <InstallButton />
             </div>
           </div>
-
-          <div className="relative mx-auto mt-14 max-w-5xl">
-            <AttendancePreview t={t} />
-          </div>
         </section>
 
-        {/* ---------------------------------------------------------------- */}
-        <section className="border-y border-border bg-surface px-4 py-16 sm:px-6 sm:py-20">
-          <div className="mx-auto max-w-6xl">
-            <h2 className="text-center text-3xl font-bold tracking-tight text-fg sm:text-4xl">
-              {t("landing.rolesTitle")}
-            </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-center text-fg-muted">
-              {t("landing.rolesBody")}
-            </p>
-
-            <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              <RoleCard
-                role="teacher"
-                icon={<ChalkboardTeacherIcon weight="duotone" className="size-7" />}
-                title={t("landing.teachers")}
-                lead={t("landing.teachersLead")}
-                points={[
-                  t("landing.teachersPoint1"),
-                  t("landing.teachersPoint2"),
-                  t("landing.teachersPoint3"),
-                ]}
-              />
-              <RoleCard
-                role="student"
-                icon={<GraduationCapIcon weight="duotone" className="size-7" />}
-                title={t("landing.students")}
-                lead={t("landing.studentsLead")}
-                points={[
-                  t("landing.studentsPoint1"),
-                  t("landing.studentsPoint2"),
-                  t("landing.studentsPoint3"),
-                ]}
-              />
-              <RoleCard
-                role="parent"
-                icon={<HandHeartIcon weight="duotone" className="size-7" />}
-                title={t("landing.parents")}
-                lead={t("landing.parentsLead")}
-                points={[
-                  t("landing.parentsPoint1"),
-                  t("landing.parentsPoint2"),
-                  t("landing.parentsPoint3"),
-                ]}
-              />
-              <RoleCard
-                role="admin"
-                icon={<UsersThreeIcon weight="duotone" className="size-7" />}
-                title={t("landing.admins")}
-                lead={t("landing.adminsLead")}
-                points={[
-                  t("landing.adminsPoint1"),
-                  t("landing.adminsPoint2"),
-                  t("landing.adminsPoint3"),
-                ]}
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* ---------------------------------------------------------------- */}
-        <section className="px-4 py-16 sm:px-6 sm:py-20">
-          <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-3">
-            <Feature
-              icon={<WifiSlashIcon weight="duotone" className="size-6" />}
-              title={t("landing.offlineTitle")}
-              body={t("landing.offlineBody")}
-            />
-            <Feature
-              icon={<DeviceMobileIcon weight="duotone" className="size-6" />}
-              title={t("landing.installTitle")}
-              body={t("landing.installBody")}
-            />
-            <Feature
-              icon={<LockKeyIcon weight="duotone" className="size-6" />}
-              title={t("landing.safeTitle")}
-              body={t("landing.safeBody")}
-            />
-          </div>
-        </section>
-
-        {/* ---------------------------------------------------------------- */}
-        <section className="border-t border-border bg-surface px-4 py-16 sm:px-6 sm:py-20">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-fg sm:text-4xl">
-              {t("landing.setupTitle")}
-            </h2>
-            <ol className="mx-auto mt-10 grid gap-4 text-left sm:grid-cols-3">
-              {[
-                { n: 1, title: t("landing.step1Title"), body: t("landing.step1Body") },
-                { n: 2, title: t("landing.step2Title"), body: t("landing.step2Body") },
-                { n: 3, title: t("landing.step3Title"), body: t("landing.step3Body") },
-              ].map((step) => (
-                <li key={step.n} className="rounded-[var(--radius-lg)] border border-border bg-bg p-5">
-                  <span className="grid size-9 place-items-center rounded-full bg-accent text-sm font-bold text-accent-fg">
-                    {step.n}
-                  </span>
-                  <h3 className="mt-3 font-semibold text-fg">{step.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-fg-muted">{step.body}</p>
+        <section id="schools" aria-labelledby="schools-title" className="px-4 py-12 sm:px-6 sm:py-16">
+          <div className="mx-auto max-w-5xl">
+            <SectionHeading id="schools-title" icon={<ChalkboardTeacherIcon weight="duotone" className="size-6" />} title={t("landing.schoolsTitle")} lead={t("landing.schoolsLead")} />
+            <ul className="mt-6 grid gap-3 md:grid-cols-2">
+              {(
+                [
+                  "landing.schoolsAttendance",
+                  "landing.schoolsFees",
+                  "landing.schoolsCirculars",
+                  "landing.schoolsPapers",
+                  "landing.schoolsFilings",
+                  "landing.schoolsAdmissions",
+                ] as const
+              ).map((key) => (
+                <li key={key} className="flex items-start gap-2.5 rounded-[var(--radius-md)] border border-border bg-surface p-4 text-sm leading-relaxed text-fg">
+                  <CheckCircleIcon weight="fill" className="mt-0.5 size-4 shrink-0 text-accent" aria-hidden="true" />
+                  {t(key)}
                 </li>
               ))}
-            </ol>
-
-            <div className="mt-10">
-              <Button asChild size="lg" iconRight={<ArrowRightIcon weight="bold" />}>
-                <Link href="/register">{t("landing.startCta")}</Link>
-              </Button>
-            </div>
+            </ul>
+            <p className="mt-8 font-semibold text-fg">{t("landing.modulesLead")}</p>
+            <ModuleGrid t={t} modules={SCHOOL_MODULES} />
           </div>
         </section>
+
+        <section id="colleges" aria-labelledby="colleges-title" className="border-y border-border bg-surface px-4 py-12 sm:px-6 sm:py-16">
+          <div className="mx-auto max-w-5xl">
+            <SectionHeading id="colleges-title" icon={<GraduationCapIcon weight="duotone" className="size-6" />} title={t("landing.collegesTitle")} lead={t("landing.collegesLead")} />
+            <ModuleGrid t={t} modules={COLLEGE_MODULES} />
+            <p className="mt-6 text-sm text-fg-muted">{t("landing.moreComing")}</p>
+          </div>
+        </section>
+
+        <section id="data" aria-labelledby="data-title" className="px-4 py-12 sm:px-6 sm:py-16">
+          <div className="mx-auto max-w-3xl">
+            <SectionHeading id="data-title" icon={<LockKeyIcon weight="duotone" className="size-6" />} title={t("landing.dataTitle")} />
+            <ul className="mt-6 space-y-3 text-fg-muted">
+              {(
+                [
+                  "landing.dataResponsible",
+                  "landing.dataFence",
+                  "landing.dataMinors",
+                  "landing.dataAadhaar",
+                  "landing.dataDeletion",
+                  "landing.dataLanguages",
+                ] as const
+              ).map((key) => (
+                <li key={key} className="leading-relaxed">
+                  {t(key)}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+              <Link href="/privacy" className="font-medium text-accent-strong underline underline-offset-4">
+                {t("landing.dataPrivacy")}
+              </Link>
+              <Link href="/delete-account" className="font-medium text-accent-strong underline underline-offset-4">
+                {t("landing.footerDeletion")}
+              </Link>
+            </p>
+          </div>
+        </section>
+
+        <section id="pricing" aria-labelledby="pricing-title" className="border-t border-border bg-surface px-4 py-12 sm:px-6 sm:py-16">
+          <div className="mx-auto max-w-3xl">
+            <SectionHeading id="pricing-title" icon={<CurrencyInrIcon weight="duotone" className="size-6" />} title={t("landing.pricingTitle")} />
+            <p className="mt-4 text-fg-muted">
+              {t("landing.pricingBody")}
+              {c.supportEmail && (
+                <>
+                  {" "}
+                  <WithEmail sentence={t("landing.pricingAsk", { email: EMAIL_SLOT })} email={c.supportEmail} />
+                </>
+              )}
+            </p>
+          </div>
+        </section>
+
+        {companyHasDetails(c) && <About t={t} c={c} />}
       </main>
 
       <footer className="border-t border-border px-4 py-10 sm:px-6">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-sm text-fg-muted sm:flex-row">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-5 text-sm text-fg-muted">
           <Wordmark size={24} />
           <nav aria-label={t("common.footerNav")} className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-            <Link href="/login" className="hover:text-fg">{t("login.title")}</Link>
-            <Link href="/join" className="hover:text-fg">{t("landing.joinWithCode")}</Link>
-            <Link href="/register" className="hover:text-fg">{t("landing.footerRegister")}</Link>
-            <Link href="/register/expert" className="hover:text-fg">{t("expertApply.footerLink")}</Link>
-            <Link href="/offline" className="hover:text-fg">{t("landing.footerOffline")}</Link>
-            <Link href="/privacy" className="hover:text-fg">{t("landing.footerPrivacy")}</Link>
-            <Link href="/delete-account" className="hover:text-fg">{t("landing.footerDeletion")}</Link>
+            <Link href="/login" className="inline-flex min-h-11 items-center hover:text-fg">{t("login.title")}</Link>
+            <Link href="/join" className="inline-flex min-h-11 items-center hover:text-fg">{t("landing.joinWithCode")}</Link>
+            <Link href="/register" className="inline-flex min-h-11 items-center hover:text-fg">{t("landing.footerRegister")}</Link>
+            <Link href="/register/expert" className="inline-flex min-h-11 items-center hover:text-fg">{t("expertApply.footerLink")}</Link>
+            <Link href="/offline" className="inline-flex min-h-11 items-center hover:text-fg">{t("landing.footerOffline")}</Link>
+            <Link href="/privacy" className="inline-flex min-h-11 items-center hover:text-fg">{t("landing.footerPrivacy")}</Link>
+            <Link href="/delete-account" className="inline-flex min-h-11 items-center hover:text-fg">{t("landing.footerDeletion")}</Link>
           </nav>
-          <p>{t("landing.footerTagline")}</p>
+          {/* Terms are left out until the owner provides them (company-site brief): no placeholder page. */}
+          {c.legalName && <p data-testid="built-by">{t("landing.footerBuiltBy", { name: c.legalName })}</p>}
         </div>
       </footer>
     </div>
@@ -248,125 +209,110 @@ export default async function LandingPage() {
 
 /* -------------------------------------------------------------------------- */
 
-function RoleCard({
-  role,
-  icon,
-  title,
-  lead,
-  points,
-}: {
-  role: string;
-  icon: React.ReactNode;
-  title: string;
-  lead: string;
-  points: string[];
-}) {
+function SectionHeading({ id, icon, title, lead }: { id: string; icon: React.ReactNode; title: string; lead?: string }) {
   return (
-    // data-role re-tints the whole card via the accent tokens — the same
-    // mechanism the real dashboards use, so this preview cannot drift.
-    <div
-      data-role={role}
-      className="rounded-[var(--radius-lg)] border border-border bg-bg p-5 transition-[transform,box-shadow] duration-[var(--dur)] ease-[var(--ease-out)] hover:-translate-y-1 hover:shadow-md"
-    >
-      <span className="grid size-12 place-items-center rounded-[var(--radius-md)] bg-accent-soft text-accent-strong">
-        {icon}
-      </span>
-      <h3 className="mt-4 text-lg font-bold text-fg">{title}</h3>
-      <p className="mt-0.5 text-sm font-medium text-accent-strong">{lead}</p>
-      <ul className="mt-3 space-y-2">
-        {points.map((point) => (
-          <li key={point} className="flex items-start gap-2 text-sm leading-relaxed text-fg-muted">
-            <CheckCircleIcon weight="fill" className="mt-0.5 size-4 shrink-0 text-accent" />
-            {point}
-          </li>
-        ))}
-      </ul>
+    <div>
+      <h2 id={id} className="flex items-center gap-2.5 text-2xl font-bold tracking-tight text-fg sm:text-3xl">
+        <span aria-hidden="true" className="grid size-10 shrink-0 place-items-center rounded-[var(--radius-md)] bg-accent-soft text-accent-strong">
+          {icon}
+        </span>
+        {title}
+      </h2>
+      {lead && <p className="mt-2 text-fg-muted">{lead}</p>}
     </div>
   );
 }
 
-function Feature({ icon, title, body }: { icon: React.ReactNode; title: string; body: string }) {
+type ModuleName = (typeof SCHOOL_MODULES)[number] | (typeof COLLEGE_MODULES)[number];
+
+function ModuleGrid({ t, modules }: { t: Translate; modules: readonly ModuleName[] }) {
   return (
-    <div className="rounded-[var(--radius-lg)] border border-border bg-surface p-6">
-      <span className="grid size-11 place-items-center rounded-[var(--radius-md)] bg-accent-soft text-accent-strong">
-        {icon}
-      </span>
-      <h3 className="mt-4 text-lg font-bold text-fg">{title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-fg-muted">{body}</p>
+    <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {modules.map((m) => (
+        <li key={m} className="rounded-[var(--radius-md)] border border-border bg-bg p-4">
+          <p className="font-semibold text-fg">{t(`modules.${m}Name` as const)}</p>
+          <p className="mt-1 text-sm leading-relaxed text-fg-muted">{t(`modules.${m}What` as const)}</p>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/** One label and its value; nothing is drawn for a value that is not set. */
+function Detail({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="border-t border-border py-3 sm:grid sm:grid-cols-3 sm:gap-4">
+      <dt className="text-sm font-medium text-fg-muted">{label}</dt>
+      <dd className="mt-1 text-fg sm:col-span-2 sm:mt-0">{children}</dd>
     </div>
+  );
+}
+
+function Lines({ lines }: { lines: string[] }) {
+  return (
+    <address className="not-italic">
+      {lines.map((line, i) => (
+        <span key={i} className="block">
+          {line}
+        </span>
+      ))}
+    </address>
   );
 }
 
 /**
- * Static preview of the register screen — the product's core moment.
- *
- * TAKES `t` AS A PROP. There is no `"use client"` here and so no provider above
- * it; this is a plain function the server component calls, which is the same
- * shape `week-grid.tsx` settled on for the same reason.
+ * "About the company": the fields the owner has set and no others. The grievance officer's block carries what the
+ * DPDP Act, 2023 asks a data fiduciary to publish (s.8(9): who answers questions about the processing of personal data,
+ * and how to reach them) and the route to the Data Protection Board once that is used (s.13).
  */
-function AttendancePreview({ t }: { t: Translate }) {
-  const roster = [
-    { name: "Amara O.", status: "PRESENT" as const },
-    { name: "Ben C.", status: "PRESENT" as const },
-    { name: "Chloé D.", status: "LATE" as const },
-    { name: "Dev P.", status: "PRESENT" as const },
-    { name: "Elif K.", status: "ABSENT" as const },
-    { name: "Farid H.", status: "EXCUSED" as const },
-  ];
-
+function About({ t, c }: { t: Translate; c: Company }) {
+  const g = c.grievanceOfficer;
   return (
-    <div
-      data-role="teacher"
-      className="mx-auto max-w-md overflow-hidden rounded-[var(--radius-xl)] border border-border bg-surface shadow-lg"
-    >
-      <div className="flex items-center justify-between gap-3 border-b border-border bg-accent-soft px-4 py-3">
-        <div>
-          <p className="text-sm font-bold text-fg">{t("landing.previewClass")}</p>
-          <p className="text-xs text-fg-muted">{t("landing.previewMeta")}</p>
-        </div>
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-warn-soft px-2.5 py-1 text-xs font-semibold text-warn">
-          <WifiSlashIcon weight="bold" className="size-3.5" />
-          {t("landing.previewOffline")}
-        </span>
-      </div>
+    <section id="about" aria-labelledby="about-title" data-testid="company-about" className="border-t border-border px-4 py-12 sm:px-6 sm:py-16">
+      <div className="mx-auto max-w-3xl">
+        <SectionHeading id="about-title" icon={<BuildingsIcon weight="duotone" className="size-6" />} title={t("landing.aboutTitle")} />
+        {c.brandLine && <p className="mt-4 text-fg-muted">{c.brandLine}</p>}
+        <dl className="mt-6">
+          {c.legalName && <Detail label={t("company.legalName")}>{c.legalName}</Detail>}
+          {c.cin && <Detail label={t("company.cin")}><span className="font-mono">{c.cin}</span></Detail>}
+          {c.gstin && <Detail label={t("company.gstin")}><span className="font-mono">{c.gstin}</span></Detail>}
+          {c.registeredAddress && <Detail label={t("company.registeredAddress")}><Lines lines={c.registeredAddress} /></Detail>}
+          {c.correspondenceAddress && <Detail label={t("company.correspondenceAddress")}><Lines lines={c.correspondenceAddress} /></Detail>}
+          {c.supportEmail && (
+            <Detail label={t("company.supportEmail")}>
+              <a href={`mailto:${c.supportEmail}`} className="font-medium text-accent-strong underline underline-offset-4">{c.supportEmail}</a>
+            </Detail>
+          )}
+          {c.supportPhone && (
+            <Detail label={t("company.supportPhone")}>
+              <a href={`tel:${c.supportPhone.replace(/[^\d+]/g, "")}`} className="font-medium text-accent-strong underline underline-offset-4">{c.supportPhone}</a>
+            </Detail>
+          )}
+          {c.foundedYear !== undefined && <Detail label={t("company.foundedYear")}>{c.foundedYear}</Detail>}
+          {c.directors && (
+            <Detail label={t("company.directors")}>
+              <ul>
+                {c.directors.map((name) => (
+                  <li key={name}>{name}</li>
+                ))}
+              </ul>
+            </Detail>
+          )}
+        </dl>
 
-      <ul className="divide-y divide-border">
-        {roster.map((student) => (
-          <li key={student.name} className="flex items-center justify-between gap-3 px-4 py-3">
-            <div className="flex items-center gap-3">
-              <span className="grid size-9 place-items-center rounded-full bg-surface-muted text-xs font-bold text-fg-muted">
-                {student.name.slice(0, 1)}
-              </span>
-              <span className="text-sm font-medium text-fg">{student.name}</span>
-            </div>
-            {/* ⚠ THE SAME TABLE THE REAL REGISTER USES, so the shop window
-                cannot drift from the product — and so "Present" is not the one
-                English word left on a Marathi front page. The colour token
-                comes from the table too, rather than being re-lowercased here
-                and quietly disagreeing with it. */}
-            <span
-              className="rounded-full px-2.5 py-1 text-xs font-semibold"
-              style={{
-                backgroundColor: `var(--att-${ATTENDANCE_META[student.status].softToken})`,
-                color: `var(--att-${ATTENDANCE_META[student.status].token})`,
-              }}
-            >
-              {t(ATTENDANCE_META[student.status].labelKey)}
-            </span>
-          </li>
-        ))}
-      </ul>
-
-      <div className="flex items-center justify-between gap-3 border-t border-border px-4 py-3">
-        <span className="inline-flex items-center gap-1.5 text-xs font-medium text-fg-muted">
-          <ClipboardTextIcon weight="bold" className="size-4" />
-          {t("landing.previewSaved")}
-        </span>
-        <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent-strong">
-          <ChatCircleDotsIcon weight="fill" className="size-4" />
-          {t("landing.previewNotified")}
-        </span>
+        {g && (
+          <div data-testid="grievance-officer" className="mt-8 rounded-[var(--radius-lg)] border border-border bg-surface p-5">
+            <h3 className="font-semibold text-fg">{t("landing.grievanceTitle")}</h3>
+            {(g.name || g.designation) && <p className="mt-2 text-fg">{[g.name, g.designation].filter(Boolean).join(", ")}</p>}
+            {g.email && (
+              <p className="mt-2 text-sm leading-relaxed text-fg-muted">
+                <WithEmail sentence={t("landing.grievanceWrite", { email: EMAIL_SLOT })} email={g.email} />
+              </p>
+            )}
+            <p className="mt-2 text-sm leading-relaxed text-fg-muted">{t("landing.grievanceBoard")}</p>
+          </div>
+        )}
       </div>
-    </div>
+    </section>
   );
 }
