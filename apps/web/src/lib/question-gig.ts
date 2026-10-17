@@ -1,6 +1,6 @@
 import { AccessError } from "./tenancy";
 import { db } from "./db"; // quiz-board (11 Oct 2026): the payee door reads what is owed
-import { accessTo, mayUse, type WhoLike } from "./platform-features";
+import { accessTo, featureOn, mayUse, type WhoLike } from "./platform-features";
 import { FeatureOffError, PlanRequiredError } from "./access-error";
 
 /**
@@ -54,8 +54,14 @@ export async function owedForQuestionsPaise(userId: string): Promise<number> {
  */
 // No role is passed on purpose (16 Oct 2026): the payee door asks the platform switch alone, so a teacher whose plan
 // has ended can still correct the UPI id the money they are owed is sent to.
+// seats (17 Oct 2026): the same UPI id is where a teacher's sold guidance seats are paid (gig-payments.ts, the company-collects
+// rows), so the door is open too while teacher sessions are on — the platform switch alone — or while the company owes the
+// teacher for seats.
 export async function payeeDoorOpen(userId: string): Promise<boolean> {
-  return (await questionGigOpen({ userId, schoolId: null })) || (await owedForQuestionsPaise(userId)) > 0;
+  if ((await questionGigOpen({ userId, schoolId: null })) || (await owedForQuestionsPaise(userId)) > 0) return true;
+  if (await featureOn("TEACHER_SESSIONS")) return true;
+  const owedForSeats = await db.sessionPayment.count({ where: { expertUserId: userId, path: "COMPANY", status: { in: ["PAID", "HELD", "DUE"] } } });
+  return owedForSeats > 0;
 }
 
 /** For the payee door and its action: a 404 unless the gig is open or the teacher is owed money. Call after the role check. */

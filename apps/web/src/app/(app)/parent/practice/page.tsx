@@ -70,7 +70,7 @@ export default async function ParentPracticePage({
     return (
       <div className="space-y-5">
         {children.length > 1 && <ChildSwitcher pupils={children} selectedId={selectedId} basePath="/parent/practice" />}
-        <PlanCard plan={childPlan} feature="QUESTION_BANK" child={chosen.name} />
+        <PlanCard plan={childPlan} feature="QUESTION_BANK" child={chosen.name} childId={chosen.studentMembershipId} />
       </div>
     );
   }

@@ -52,12 +52,23 @@ async function call<T>(path: string, init: { method?: "GET" | "POST"; body?: unk
   return json as T;
 }
 
-async function poll(paymentId: string, signal: AbortSignal): Promise<GigPaymentStatus | null> {
+/**
+ * WHICH DOORS THE PANEL SPEAKS TO (plans-pay, 17 Oct 2026): a seat's by default; a pass bought for a plan
+ * (src/lib/pass-orders.ts) passes its own status and confirm doors, its title and its note, and is otherwise the same
+ * panel — the gateway's script, the devbox wait, the poll. A pass waits as CREATED where a seat waits as INITIATED.
+ */
+export type CheckoutDoors = { status: (paymentId: string) => string; confirm: (paymentId: string) => string; confirmBody?: (paymentId: string) => Record<string, string>; title?: string; doneText?: string; note?: string };
+const SEAT_DOORS: CheckoutDoors = { status: (id) => `/api/v1/gigs/payments/${encodeURIComponent(id)}`, confirm: (id) => `/api/v1/gigs/payments/${encodeURIComponent(id)}/confirm` };
+/** A status read by either kind of door: the seat's GigPaymentStatus, or a pass's { status, reason, checkout }. */
+type PolledStatus = { status: string; reason: string | null; checkout: GigCheckout | null };
+const WAITING = new Set(["INITIATED", "CREATED"]);
+
+async function poll(paymentId: string, signal: AbortSignal, doors: CheckoutDoors = SEAT_DOORS): Promise<PolledStatus | null> {
   const until = Date.now() + POLL_FOR_MS;
   while (!signal.aborted && Date.now() < until) {
     try {
-      const status = await call<GigPaymentStatus>(`/api/v1/gigs/payments/${encodeURIComponent(paymentId)}`);
-      if (status.status !== "INITIATED") return status;
+      const status = await call<PolledStatus>(doors.status(paymentId));
+      if (!WAITING.has(status.status)) return status;
     } catch {
       // A blip between polls is not a failed payment; the next tick asks again.
     }
@@ -68,7 +79,7 @@ async function poll(paymentId: string, signal: AbortSignal): Promise<GigPaymentS
 
 type Phase = { kind: "starting" } | { kind: "devbox"; paymentId: string } | { kind: "open" } | { kind: "checking" } | { kind: "paid" } | { kind: "failed"; reason: string | null } | { kind: "cancelled" } | { kind: "unconfirmed" } | { kind: "error"; message: string };
 
-export function SeatCheckout({ checkout, paymentId, onClose }: { checkout?: GigCheckout | null; paymentId?: string | null; onClose: () => void }) {
+export function SeatCheckout({ checkout, paymentId, onClose, doors = SEAT_DOORS }: { checkout?: GigCheckout | null; paymentId?: string | null; onClose: () => void; doors?: CheckoutDoors }) {
   const t = useT();
   const locale = useLocale();
   const router = useRouter();
@@ -81,7 +92,7 @@ export function SeatCheckout({ checkout, paymentId, onClose }: { checkout?: GigC
     if (started.current) return;
     started.current = true;
     const abort = new AbortController();
-    const finish = (status: GigPaymentStatus | null) => {
+    const finish = (status: PolledStatus | GigPaymentStatus | null) => {
       if (abort.signal.aborted) return;
       if (status && (status.status === "PAID" || status.status === "HELD" || status.status === "DUE" || status.status === "PAID_OUT")) {
         setPhase({ kind: "paid" });
@@ -96,9 +107,9 @@ export function SeatCheckout({ checkout, paymentId, onClose }: { checkout?: GigC
       let made: GigCheckout | null = checkout ?? null;
       if (!made && paymentId) {
         try {
-          const status = await call<GigPaymentStatus>(`/api/v1/gigs/payments/${encodeURIComponent(paymentId)}`);
+          const status = await call<PolledStatus>(doors.status(paymentId));
           if (!status.checkout) {
-            finish(status.status === "INITIATED" ? null : status);
+            finish(WAITING.has(status.status) ? null : status);
             return;
           }
           made = status.checkout;
@@ -114,7 +125,7 @@ export function SeatCheckout({ checkout, paymentId, onClose }: { checkout?: GigC
       setOrder(made);
       if (made.transport !== "razorpay") {
         setPhase({ kind: "devbox", paymentId: made.paymentId });
-        finish(await poll(made.paymentId, abort.signal));
+        finish(await poll(made.paymentId, abort.signal, doors));
         return;
       }
       try {
@@ -139,11 +150,11 @@ export function SeatCheckout({ checkout, paymentId, onClose }: { checkout?: GigC
           setPhase({ kind: "checking" });
           void (async () => {
             try {
-              await call(`/api/v1/gigs/payments/${encodeURIComponent(theOrder.paymentId)}/confirm`, { method: "POST", body: { gatewayPaymentId: response.razorpay_payment_id, signature: response.razorpay_signature } });
+              await call(doors.confirm(theOrder.paymentId), { method: "POST", body: { ...(doors.confirmBody?.(theOrder.paymentId) ?? {}), gatewayPaymentId: response.razorpay_payment_id, signature: response.razorpay_signature } });
             } catch {
               // The webhook is the settlement of record; the poll still finds a payment the confirm could not verify in time.
             }
-            finish(await poll(theOrder.paymentId, abort.signal));
+            finish(await poll(theOrder.paymentId, abort.signal, doors));
           })();
         },
         modal: {
@@ -166,7 +177,7 @@ export function SeatCheckout({ checkout, paymentId, onClose }: { checkout?: GigC
   return (
     <div className="w-full space-y-3 rounded-[var(--radius-md)] border border-border bg-surface-muted p-4" aria-live="polite" data-testid="seat-checkout">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <p className="text-sm font-semibold text-fg">{t("gigs.payTitle")}</p>
+        <p className="text-sm font-semibold text-fg">{doors.title ?? t("gigs.payTitle")}</p>
         {amount && <p className="text-sm font-semibold tabular-nums text-fg">{amount}</p>}
       </div>
       {(phase.kind === "starting" || phase.kind === "open") && (
@@ -198,7 +209,7 @@ export function SeatCheckout({ checkout, paymentId, onClose }: { checkout?: GigC
       {phase.kind === "paid" && (
         <p className="flex items-center gap-2 text-sm font-medium text-ok" data-testid="seat-checkout-paid">
           <CheckCircleIcon weight="fill" className="size-4 shrink-0" />
-          {t("gigs.payDone")}
+          {doors.doneText ?? t("gigs.payDone")}
         </p>
       )}
       {phase.kind === "failed" && (
@@ -216,7 +227,7 @@ export function SeatCheckout({ checkout, paymentId, onClose }: { checkout?: GigC
           {phase.message}
         </p>
       )}
-      <p className="text-xs text-fg-muted">{t("gigs.payeeNote")}</p>
+      <p className="text-xs text-fg-muted">{doors.note ?? t("gigs.payeeNote")}</p>
       {phase.kind !== "starting" && phase.kind !== "open" && phase.kind !== "checking" && (
         <div>
           <Button size="sm" variant="ghost" onClick={onClose}>

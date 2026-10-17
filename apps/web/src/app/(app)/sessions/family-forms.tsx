@@ -27,8 +27,11 @@ export function ResumeCheckout({ paymentId }: { paymentId: string }) {
   );
 }
 
-/** A seat in an open time: what the pupil wants from it, then the ask (a pupil) or the booking (a guardian) — and, for a paid seat, the payment. */
-export function BookSeat({ slotId, childId, byGuardian, title, priceLabel = null }: { slotId: string; childId: string; byGuardian: boolean; title: string; /** "Pay ₹100" when this pupil's seat would be a paid one; null for a free seat. */ priceLabel?: string | null }) {
+/**
+ * A seat in an open time: what the pupil wants from it, then the ask (a pupil under eighteen) or the booking (a
+ * guardian, or a pupil of eighteen or more for themselves) — and, for a paid seat, the payment by whoever pays.
+ */
+export function BookSeat({ slotId, childId, byGuardian, selfPays = byGuardian, title, priceLabel = null }: { slotId: string; childId: string; byGuardian: boolean; /** The reader pays for a priced seat themselves (seats, 17 Oct 2026). */ selfPays?: boolean; title: string; /** "Pay ₹100" when this pupil's seat would be a paid one, "Ask your parent" for a pupil under eighteen; null for a free seat. */ priceLabel?: string | null }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
@@ -37,7 +40,7 @@ export function BookSeat({ slotId, childId, byGuardian, title, priceLabel = null
   const [purpose, setPurpose] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [checkout, setCheckout] = useState<GigCheckout | null>(null);
-  const verb = byGuardian ? (priceLabel ?? t("gigs.bookSeat")) : t("gigs.askSeat");
+  const verb = priceLabel ?? (selfPays ? t("gigs.bookSeat") : t("gigs.askSeat"));
 
   if (checkout)
     return (

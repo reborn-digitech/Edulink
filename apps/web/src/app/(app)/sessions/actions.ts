@@ -59,9 +59,9 @@ export async function cancelSlotAction(slotId: string, reason: string) {
 export async function closeSeatAction(bookingId: string, outcome: "DELIVERED" | "MISSED") {
   return run(async () => closeBooking(await requireApiSession(), bookingId, outcome));
 }
-/** The order for a seat waiting for the guardian's payment: the panel was closed, or the gateway was down at booking. */
+/** The order for a seat waiting for its payer's payment: the panel was closed, or the gateway was down at booking. Either session feature: a teacher's guidance may be sold too (seats, 17 Oct 2026). */
 export async function seatCheckoutAction(bookingId: string) {
-  return run(async () => seatCheckout(await requireApiSession(), bookingId), "EXPERT_SESSIONS");
+  return run(async () => seatCheckout(await requireApiSession(), bookingId));
 }
 export async function guidanceAction(on: boolean) {
   return run(async () => setTeacherGuidance(await requireApiSession(), on), "TEACHER_SESSIONS");

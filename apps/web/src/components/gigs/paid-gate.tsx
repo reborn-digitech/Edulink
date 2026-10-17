@@ -1,5 +1,6 @@
 import { getT } from "@/lib/i18n/server";
-import { MENTORING_OFFER_DAYS, type PaidGate } from "@/lib/gig-sessions";
+import Link from "next/link";
+import { MENTORING_OFFER_DAYS, type PaidGate, type TeacherPaidGate } from "@/lib/gig-sessions";
 
 /**
  * The four conditions before an expert may price a workshop seat, as a
@@ -29,6 +30,40 @@ export async function PaidGateList({ gate }: { gate: PaidGate }) {
             {done ? "✓" : ""}
           </span>
           <span className={done ? "text-fg-muted line-through" : "text-fg"}>{label}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/**
+ * A teacher's two conditions before guidance may be priced (seats, 17 Oct 2026; decision 0006): the operator's switch
+ * for paid sessions, and a UPI id saved for the company to pay them by (the same payee as for questions, /teacher/payee).
+ */
+export async function TeacherGateList({ gate }: { gate: TeacherPaidGate }) {
+  const t = await getT();
+  const rows: [boolean, React.ReactNode, string][] = [
+    [gate.paymentsOn, gate.paymentsOn ? t("seats.teacherGatePaymentsOn") : t("seats.teacherGateOff"), "payments"],
+    [
+      gate.payeeSaved,
+      gate.payeeSaved ? (
+        t("seats.teacherGatePayee")
+      ) : (
+        <Link href="/teacher/payee" className="font-medium text-accent-strong underline underline-offset-2">
+          {t("seats.teacherGatePayeeLink")}
+        </Link>
+      ),
+      "payee",
+    ],
+  ];
+  return (
+    <ul className="space-y-1.5 text-sm" data-testid="teacher-gate-list">
+      {rows.map(([done, label, key]) => (
+        <li key={key} className="flex items-center gap-2" data-done={done ? "yes" : "no"}>
+          <span aria-hidden="true" className={`inline-flex size-4 items-center justify-center rounded-full text-[10px] font-bold ${done ? "bg-ok text-surface" : "border border-border text-fg-muted"}`}>
+            {done ? "✓" : ""}
+          </span>
+          <span className={done ? "text-fg-muted" : "text-fg"}>{label}</span>
         </li>
       ))}
     </ul>

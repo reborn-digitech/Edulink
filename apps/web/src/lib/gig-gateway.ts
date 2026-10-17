@@ -324,3 +324,33 @@ export function signSessionsWebhook(rawBody: string, secret: string = webhookSec
 export function signSeatCheckout(orderId: string, paymentId: string, secret = "devbox"): string {
   return hmacHex(secret, `${orderId}|${paymentId}`);
 }
+
+// plans-pay (17 Oct 2026)
+/**
+ * A PASS'S ORDER (decision 0006): the plan's price with its GST, collected by the company for itself — the company's
+ * own revenue, so a plain order with NO transfer, no Route, no split; the same allow-listed POST /v1/orders. A refund
+ * is refundSeat(paymentId, total, notes, false): nothing to reverse. `receipt` is our PassOrder id.
+ */
+export async function createPassOrderAtGateway(input: { amountPaise: number; receipt: string; notes?: Record<string, string> }): Promise<SeatOrder> {
+  if (!Number.isInteger(input.amountPaise) || input.amountPaise < 100) throw new GigGatewayError("gateway: an order needs a whole number of paise, at least ₹1");
+  const account = platformAccount();
+  if (!account) return { orderId: devboxId("order"), amountPaise: input.amountPaise, currency: "INR" };
+  const order = await call<{ id: string; amount: number }>(account, "POST", "/v1/orders", { amount: input.amountPaise, currency: "INR", receipt: input.receipt, partial_payment: false, notes: input.notes ?? {} });
+  return { orderId: order.id, amountPaise: order.amount, currency: "INR" };
+}
+// end plans-pay
+// seats (17 Oct 2026)
+/**
+ * A TEACHER'S SEAT (decision 0006, built 17 Oct 2026): a teacher has no linked account at the gateway, so the seat is
+ * a plain order for the whole price on the company's account, with NO transfer — the company-collects path of 0004's
+ * second amendment — and the company pays the teacher by hand after the hold (gig-payments.ts). The same allow-listed
+ * POST /v1/orders; a refund is refundSeat(paymentId, amount, notes, false): nothing to reverse.
+ */
+export async function createCompanyOrder(input: { amountPaise: number; receipt: string; notes?: Record<string, string> }): Promise<SeatOrder> {
+  if (!Number.isInteger(input.amountPaise) || input.amountPaise < 100) throw new GigGatewayError("gateway: an order needs a whole number of paise, at least ₹1");
+  const account = platformAccount();
+  if (!account) return { orderId: devboxId("order"), amountPaise: input.amountPaise, currency: "INR" };
+  const order = await call<{ id: string; amount: number }>(account, "POST", "/v1/orders", { amount: input.amountPaise, currency: "INR", receipt: input.receipt, partial_payment: false, notes: input.notes ?? {} });
+  return { orderId: order.id, amountPaise: order.amount, currency: "INR" };
+}
+// end seats

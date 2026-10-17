@@ -52,7 +52,7 @@ const g2 = () => ctx("g2", "PARENT", null);
 let n = 0;
 const slot = (kind: "ONE_TO_ONE" | "WORKSHOP", hoursAhead = 48, over: Record<string, unknown> = {}) => {
   n += 1;
-  return { kind, title: `ZZ paid ${STAMP}-${n}`, startsAt: new Date(Date.now() + hoursAhead * HOUR + n * 4 * HOUR).toISOString(), meetingUrl: `https://meet.example.test/zz-pay-${STAMP}-${n}`, ...over };
+  return { kind, title: `ZZ paid ${STAMP}-${n}`, startsAt: new Date(Date.now() + hoursAhead * HOUR + n * 4 * HOUR).toISOString(), meetingUrl: `https://meet.jit.si/zz-pay-${STAMP}-${n}`, ...over };
 };
 const offer = async (kind: "ONE_TO_ONE" | "WORKSHOP", over: Record<string, unknown> = {}, hoursAhead = 48) => {
   const result = await offerSlot(expert(), slot(kind, hoursAhead, over));
@@ -272,9 +272,11 @@ describe("the expert's linked account", () => {
 });
 
 describe("the paid gate and the switch", () => {
-  it("a one-to-one is never priced, a teacher never charges, and each remaining condition refuses by name until it is met", async () => {
-    expect(await offerSlot(expert(), slot("ONE_TO_ONE", 48, { pricePaise: 10000 }))).toMatchObject({ ok: false, errorKey: "gigs.refuseOneToOnePriced" });
-    expect(await offerSlot(teacher(), slot("ONE_TO_ONE", 48, { pricePaise: 10000 }))).toMatchObject({ ok: false, errorKey: "gigs.refuseOneToOnePriced" });
+  it("a one-to-one is priced behind the same gate as a workshop seat (decision 0006), a teacher behind theirs, and each remaining condition refuses by name until it is met", async () => {
+    // Since 17 Oct 2026 (seats) a one-to-one may carry a price: the expert's gate is asked of it as of a workshop seat,
+    // and a teacher's guidance asks the teacher's own (a UPI id saved; tests/seats.test.ts has the rest).
+    expect(await offerSlot(expert(), slot("ONE_TO_ONE", 48, { pricePaise: 10000 }))).toMatchObject({ ok: false, errorKey: "gigs.refuseNeedMentoring" });
+    expect(await offerSlot(teacher(), slot("ONE_TO_ONE", 48, { pricePaise: 10000 }))).toMatchObject({ ok: false, errorKey: "seats.refuseTeacherPayee" });
     // An open free one-to-one in the coming thirty days.
     expect(await offerSlot(expert(), slot("WORKSHOP", 48, { pricePaise: 10000 }))).toMatchObject({ ok: false, errorKey: "gigs.refuseNeedMentoring" });
     expect((await expertPayoutStanding(expert())).gate).toMatchObject({ paymentsOn: true, kycVerified: true, payoutActive: true, mentoringOffer: false, dutyDone: true, canCharge: false });
@@ -325,11 +327,15 @@ describe("a paid seat, from the order to Razorpay's release", () => {
   let bookingId = "";
   let orderId = "";
 
-  it("the free allowance is used first; past it a guardian's booking waits for payment with an order carrying the expert's net, and a pupil's ask waits for consent and then payment", async () => {
+  it("a priced seat is bought whatever is left of the allowance (seats, 17 Oct 2026); a guardian's booking waits for payment with an order carrying the expert's net, and a pupil's ask waits for consent and then payment", async () => {
     paidSlot = await offer("WORKSHOP", { pricePaise: 10000, seats: 10 });
-    const free = await bookSeat(g1(), { slotId: paidSlot, studentMembershipId: member.p1, purpose: "ZZ the first workshop of the year, free." });
-    expect(free).toMatchObject({ ok: true, status: "CONFIRMED", checkout: null });
-    expect(await bookingOf((free as { bookingId: string }).bookingId)).toMatchObject({ paid: false });
+    // The allowance is for free times alone: p1 has both free workshop seats left, and the priced seat is still bought.
+    const bought = await bookSeat(g1(), { slotId: paidSlot, studentMembershipId: member.p1, purpose: "ZZ the first workshop of the year, priced." });
+    expect(bought).toMatchObject({ ok: true, status: "PENDING_PAYMENT" });
+    expect(await bookingOf((bought as { bookingId: string }).bookingId)).toMatchObject({ paid: true });
+    expect((await familySessions(g1())).children[0]!.allowance.WORKSHOP.used).toBe(0);
+    // Given up before it is paid, so the job's count of unpaid seats below is this file's own.
+    expect(await cancelBooking(g1(), (bought as { bookingId: string }).bookingId)).toMatchObject({ ok: true });
     await useAllowance("p2", g2());
     const booked = await bookSeat(g2(), { slotId: paidSlot, studentMembershipId: member.p2, purpose: "ZZ a third workshop, past the two free ones." });
     expect(booked).toMatchObject({ ok: true, status: "PENDING_PAYMENT" });

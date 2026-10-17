@@ -28,7 +28,8 @@ describe("sessions and workshops, for a family", () => {
   it("loads, then shows the allowance, a confirmed seat with its link, and what is open", async () => {
     const gate = gated();
     const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
-    await mountStaff(<FamilySessions />, "PARENT", { [`GET ${PATH}`]: gate.answer });
+    // The room comes from the join door as Join is pressed (seats, 17 Oct 2026), not from the list.
+    await mountStaff(<FamilySessions />, "PARENT", { [`GET ${PATH}`]: gate.answer, [`GET ${PATH}/b1/join`]: () => json({ bookingId: "b1", title: "ZZ Ask an engineer", startsAt: "2030-10-07T10:00:00.000Z", endsAt: "2030-10-07T10:30:00.000Z", meetingUrl: "https://meet.jit.si/zz-a", as: "SEAT" }) });
     expect(screen.getByRole("progressbar")).toBeTruthy();
     gate.open(() => json(view([seat({})])));
     expect(await screen.findByText("Free this school year: 1 of 2 one-to-ones and 2 of 2 workshop seats left.")).toBeTruthy();
@@ -38,7 +39,7 @@ describe("sessions and workshops, for a family", () => {
     expect(screen.getByText(/19 seats left/)).toBeTruthy();
     expect(screen.getByText("ZZ Careers in engineering")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Join the meeting: ZZ Ask an engineer" }));
-    expect(open).toHaveBeenCalledWith("https://meet.zz.test/a");
+    await waitFor(() => expect(open).toHaveBeenCalledWith("https://meet.jit.si/zz-a"));
     open.mockRestore();
   });
 
@@ -160,5 +161,24 @@ describe("sessions and workshops, for a family", () => {
     await mountStaff(<FamilySessions />, "PARENT", { [`GET ${PATH}`]: refused("ZZ broke") });
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ broke");
     expect(screen.getByRole("button", { name: "Try again" })).toBeTruthy();
+  });
+
+  it("seats (17 Oct 2026): a pupil under eighteen is offered no Pay button on a priced time, only Ask your parent; a pupil of eighteen or more pays for their own", async () => {
+    const priced = { ...OPEN, id: "s3", kind: "ONE_TO_ONE", title: "ZZ Priced one-to-one", pricePaise: 20000, freeSeat: false };
+    await mountStaff(<FamilySessions />, "STUDENT", { [`GET ${PATH}`]: () => json(view([], [priced], { selfPays: false })) });
+    expect(await screen.findByRole("button", { name: "Ask your parent: ZZ Priced one-to-one" })).toBeTruthy();
+    expect(screen.getByText("Your parent or guardian pays for this seat. Asking sends them your request.")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: /^Pay / })).toBeNull();
+  });
+
+  it("seats (17 Oct 2026): a college student of eighteen or more sees the price on the button, and a refused join says why", async () => {
+    const priced = { ...OPEN, id: "s3", kind: "ONE_TO_ONE", title: "ZZ Priced one-to-one", pricePaise: 20000, freeSeat: false };
+    await mountStaff(<FamilySessions />, "STUDENT", {
+      [`GET ${PATH}`]: () => json(view([seat({ canJoin: true })], [priced], { selfPays: true })),
+      [`GET ${PATH}/b1/join`]: refused("The link opens once the seat is paid for.", 403),
+    });
+    expect(await screen.findByRole("button", { name: /^Pay .*: ZZ Priced one-to-one$/ })).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Join the meeting: ZZ Ask an engineer" }));
+    expect(await screen.findByText("The link opens once the seat is paid for.")).toBeTruthy();
   });
 });

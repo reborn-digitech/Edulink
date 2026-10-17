@@ -5,7 +5,7 @@ import { notify } from "./notify";
 import { AccessError } from "./access-error";
 import { RuleRefusal } from "./rule-refusal";
 import { assertCollege, assertModuleOn, isModuleOn } from "./modules";
-import { isHttpsUrl } from "./app-admin";
+import { isMeetingLink } from "./meeting-links";
 import { todayKey } from "./dates";
 import { nameOf } from "./placement";
 import { mentorSlotsAt } from "./placement-student";
@@ -127,7 +127,8 @@ export async function offerMentorSlot(ctx: ActiveContext, input: { title: string
   const startsAt = new Date(input.startsAt);
   if (Number.isNaN(startsAt.getTime()) || startsAt.getTime() < now.getTime() + 3_600_000) throw new RuleRefusal("gigs.refuseSlotTooSoon", 422, undefined, "startsAt");
   if (startsAt.getTime() > now.getTime() + 120 * 86_400_000) throw new RuleRefusal("gigs.refuseSlotTooFar", 422, undefined, "startsAt");
-  if (!isHttpsUrl(input.meetingUrl.trim())) throw new RuleRefusal("gigs.refuseMeetingUrl", 422, undefined, "meetingUrl");
+  // A Meet, Zoom, Teams or Jitsi room, as on every slot (seats, 17 Oct 2026; meeting-links.ts).
+  if (!isMeetingLink(input.meetingUrl)) throw new RuleRefusal("seats.refuseMeetingLink", 422, undefined, "meetingUrl");
   const endsAt = new Date(startsAt.getTime() + input.minutes * 60_000);
   const clash = await db.gigSlot.findFirst({ where: { providerUserId: me.userId, cancelledAt: null, startsAt: { lt: endsAt }, endsAt: { gt: startsAt } }, select: { id: true } });
   if (clash) throw new RuleRefusal("gigs.refuseSlotOverlap", 409, undefined, "startsAt");

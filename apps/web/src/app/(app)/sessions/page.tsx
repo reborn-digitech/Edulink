@@ -29,6 +29,8 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
   const locale = await getLocale();
   const { children, freeCancelHours, paymentsOn } = await familySessions(ctx);
   const byGuardian = ctx.role === "PARENT";
+  // Who pays for a priced seat (seats, 17 Oct 2026): a guardian, or a pupil of eighteen or more for themselves.
+  const selfPays = children.some((c) => c.selfPays);
   // A checkout the phone started: the gateway's script runs here, on the web, on the phone's own order.
   const { checkout: resume } = await searchParams;
   const money = (paise: number) => formatPaise(paise, locale);
@@ -36,7 +38,7 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
   return (
     <div className="space-y-6">
       <PageHeader title={t("gigs.sessionsTitle")} description={t("gigs.sessionsIntro")} />
-      {byGuardian && resume && <ResumeCheckout paymentId={resume} />}
+      {selfPays && resume && <ResumeCheckout paymentId={resume} />}
       {children.map((c) => {
         const when = (iso: string) => formatInZone(new Date(iso), c.timeZone, { dateStyle: "medium", timeStyle: "short" }, locale);
         return (
@@ -79,7 +81,7 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
                           </div>
                           <Badge tone={TONE[b.status]}>{t(`gigs.bookingStatus${b.status}`)}</Badge>
                         </div>
-                        {b.meetingUrl && (
+                        {b.canJoin && b.meetingUrl && (
                           <p className="text-sm">
                             <a href={b.meetingUrl} target="_blank" rel="noreferrer noopener" className="tap inline-flex items-center font-medium text-accent-strong underline underline-offset-4" data-testid="session-link">
                               {t("gigs.joinLink")}
@@ -121,8 +123,21 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
                               {s.freeSeat ? t("gigs.seatFree") : t("gigs.seatPrice", { amount: money(s.pricePaise) })}
                             </p>
                           )}
+                          {/* A pupil under eighteen never sees a Pay button: their ask goes to a parent, who pays (seats, 17 Oct 2026). */}
+                          {s.pricePaise > 0 && !s.freeSeat && !c.selfPays && (
+                            <p className="text-xs text-fg-muted" data-testid="session-ask-parent-note">
+                              {t("seats.askParentNote")}
+                            </p>
+                          )}
                         </div>
-                        <BookSeat slotId={s.id} childId={c.id} byGuardian={byGuardian} title={s.title} priceLabel={s.pricePaise > 0 && !s.freeSeat && paymentsOn ? t("gigs.payNow", { amount: money(s.pricePaise) }) : null} />
+                        <BookSeat
+                          slotId={s.id}
+                          childId={c.id}
+                          selfPays={Boolean(c.selfPays)}
+                          byGuardian={byGuardian}
+                          title={s.title}
+                          priceLabel={s.pricePaise > 0 && !s.freeSeat && paymentsOn ? (c.selfPays ? t("gigs.payNow", { amount: money(s.pricePaise) }) : t("seats.askParent")) : null}
+                        />
                       </li>
                     ))}
                   </ul>

@@ -222,7 +222,7 @@ Press "Worksheets" on the practice page to open `/teacher/worksheets`. Pick the 
 
 ## How do I offer free guidance to pupils?
 
-Open `/teacher/guidance` ("Guidance"). Only when the office has switched on teachers' guidance; otherwise the page says "Your school has not switched on teachers' guidance. Ask the office." A teacher's guidance is always free and always a one-to-one of thirty minutes with a pupil of your own school.
+Open `/teacher/guidance` ("Guidance"). Only when the office has switched on teachers' guidance; otherwise the page says "Your school has not switched on teachers' guidance. Ask the office." A teacher's guidance is always a one-to-one of thirty minutes with a pupil of your own school. It is free unless you put a price on it: once the operator has switched paid sessions on and you have saved your UPI ID on `/teacher/payee`, a price within the operator's band can be set, and the family pays for the seat; the company pays you the rest after the session. The meeting link must be a Google Meet, Zoom, Microsoft Teams or Jitsi room.
 
 1. Under "Offer a time", say "What it is about", set "Starts" and give a "Meeting link" (an https link to your own room).
 2. Press "Offer it".

@@ -446,9 +446,23 @@ export const facultyProfileSnapshotSchema = z.object({
   research: z.array(z.object({ kind: z.string(), title: z.string(), year: z.number().int(), indexing: z.string() })),
 });
 export type FacultyProfileSnapshot = z.infer<typeof facultyProfileSnapshotSchema>;
-/** GET /api/v1/faculty/profile — my record's public page: whether there is a record to publish, the preview, and whether it is up. */
-export const myFacultyPublicProfileSchema = z.object({ hasRecord: z.boolean(), publishedAt: z.string().datetime().nullable(), preview: facultyProfileSnapshotSchema.nullable(), url: z.string().nullable() });
+/**
+ * GET /api/v1/faculty/profile — my record's public page: whether there is a record to publish, the preview, and whether it is up.
+ * website-three (17 Oct 2026): `photo`, my own public photo with when I ticked my consent (null: none), shown on the college
+ * website's Faculty page and the public faculty page while the website is live; set and removed on the web.
+ */
+export const myFacultyPublicProfileSchema = z.object({
+  hasRecord: z.boolean(),
+  publishedAt: z.string().datetime().nullable(),
+  preview: facultyProfileSnapshotSchema.nullable(),
+  url: z.string().nullable(),
+  photo: z.object({ fileId: z.string(), consentAt: z.string().datetime() }).nullable().optional(),
+});
 /** POST /api/v1/faculty/profile — publish (or refresh) my page, or take it down. */
 export const facultyProfilePublishSchema = z.object({ publish: z.boolean() });
 /** GET /api/v1/public/faculty/{slug} — a college's published profiles, signed out. */
-export const publicFacultySchema = z.object({ collegeName: z.string().nullable(), profiles: z.array(facultyProfileSnapshotSchema.extend({ id: z.string(), publishedAt: z.string().datetime() })) });
+export const publicFacultySchema = z.object({
+  collegeName: z.string().nullable(),
+  /** website-three (17 Oct 2026): `photoFileId` only while the college's website is live (the file is public through it then). */
+  profiles: z.array(facultyProfileSnapshotSchema.extend({ id: z.string(), publishedAt: z.string().datetime(), photoFileId: z.string().nullable().optional() })),
+});

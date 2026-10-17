@@ -45,7 +45,7 @@ let n = 0;
 /** A slot `hoursAhead` from now, each an hour and a half after the last so that none overlaps. */
 const slot = (kind: "ONE_TO_ONE" | "WORKSHOP", hoursAhead = 48, over: Record<string, unknown> = {}) => {
   n += 1;
-  return { kind, title: `ZZ session ${STAMP}-${n}`, startsAt: new Date(Date.now() + hoursAhead * HOUR + n * 90 * 60_000).toISOString(), meetingUrl: `https://meet.example.test/zz-${STAMP}-${n}`, ...over };
+  return { kind, title: `ZZ session ${STAMP}-${n}`, startsAt: new Date(Date.now() + hoursAhead * HOUR + n * 90 * 60_000).toISOString(), meetingUrl: `https://meet.jit.si/zz-${STAMP}-${n}`, ...over };
 };
 const offer = async (who: ActiveContext, kind: "ONE_TO_ONE" | "WORKSHOP", hoursAhead = 48, over: Record<string, unknown> = {}) => {
   const result = await offerSlot(who, slot(kind, hoursAhead, over));
@@ -116,7 +116,8 @@ describe("sessions and workshops", () => {
     expect(await refused({ minutes: 10 })).toBe("gigs.refuseSlotLength");
     expect(await refused({ seats: 1 })).toBe("gigs.refuseSeats");
     expect(await refused({ seats: 31 })).toBe("gigs.refuseSeats");
-    expect(await refused({ meetingUrl: "http://meet.example.test/plain" })).toBe("gigs.refuseMeetingUrl");
+    expect(await refused({ meetingUrl: "http://meet.jit.si/plain" })).toBe("seats.refuseMeetingLink");
+    expect(await refused({ meetingUrl: "https://meet.example.test/zz" })).toBe("seats.refuseMeetingLink");
     // A one-to-one is thirty minutes and one seat whatever is asked; a second time over the first is refused.
     const first = slot("ONE_TO_ONE", 200, { minutes: 90, seats: 9 });
     const made = await offerSlot(expert(), first);
@@ -137,7 +138,7 @@ describe("sessions and workshops", () => {
     const other = await seenBy(q(), "q");
     expect(other).toContain(byExpert);
     expect(other).not.toContain(byTeacher);
-    expect(JSON.stringify((await mine(p1(), "p1")).open)).not.toContain("meet.example.test");
+    expect(JSON.stringify((await mine(p1(), "p1")).open)).not.toContain("meet.jit.si");
     // Asked for by name, the other school's teacher's time is not found.
     await expect(bookSeat(q(), { slotId: byTeacher, purpose: "ZZ I want help with fractions" })).rejects.toMatchObject({ code: "NOT_FOUND" });
     await expect(bookSeat(gq(), { slotId: byTeacher, studentMembershipId: member.q, purpose: "ZZ I want help with fractions" })).rejects.toMatchObject({ code: "NOT_FOUND" });
@@ -177,7 +178,7 @@ describe("sessions and workshops", () => {
     expect(await consentToBooking(g1(), bookingId, true)).toMatchObject({ ok: true, status: "CONFIRMED" });
     seat = (await mine(p1(), "p1")).bookings.find((b) => b.id === bookingId)!;
     expect(seat.status).toBe("CONFIRMED");
-    expect(seat.meetingUrl).toContain("https://meet.example.test/");
+    expect(seat.meetingUrl).toContain("https://meet.jit.si/");
     // Now the expert is told, and the office, an outside adult being about to meet its pupil.
     expect(await db.notification.count({ where: { userId: id.expert!, title: { contains: "has a seat in" } } })).toBe(1);
     expect(await db.notification.count({ where: { userId: id.admin!, title: { contains: "is to meet" } } })).toBe(1);
@@ -314,7 +315,7 @@ describe("sessions and workshops", () => {
     expect(view.guidanceOn).toBe(true);
     expect(view.bookings.length).toBeGreaterThan(3);
     expect(view.bookings.every((b) => b.pupilName.startsWith("ZZ p1") || b.pupilName.startsWith("ZZ p2"))).toBe(true);
-    expect(JSON.stringify(view)).not.toContain("meet.example.test");
+    expect(JSON.stringify(view)).not.toContain("meet.jit.si");
     const slotId = await offer(expert(), "WORKSHOP", 1000, { seats: 3 });
     const booked = await bookSeat(q(), { slotId, purpose: "ZZ A workshop q's office will cancel" });
     const bookingId = booked.ok ? booked.bookingId : "";

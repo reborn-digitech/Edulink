@@ -319,6 +319,9 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.filings", icon: "fileText", group: "running", screen: "/(app)/filings" },
     // Transport (3 Oct 2026): the office's routes, buses, seats and the day's trips on a map, on the web.
     { labelKey: "transport.title", icon: "bus", group: "running", screen: "/(app)/office-transport", module: "TRANSPORT" },
+    // website-three (17 Oct 2026): the school's website at a glance, read-only; built and changed on the web.
+    { labelKey: "modules.websiteName", icon: "globe", group: "running", screen: "/(app)/website", module: "WEBSITE" },
+    // end website-three
     { labelKey: "nav.settings", icon: "gear", group: "running", screen: "/(app)/settings" },
     { labelKey: "nav.invites", icon: "plus", group: "running", screen: "/(app)/invites" },
     { labelKey: "nav.directory", icon: "buildings", group: "running", screen: "/(app)/directory-profile" },
@@ -386,6 +389,9 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.filings", icon: "fileText", group: "running", screen: "/(app)/filings" },
     // Transport (3 Oct 2026): the head reads the day's trips on the web.
     { labelKey: "transport.title", icon: "bus", group: "running", screen: "/(app)/office-transport", module: "TRANSPORT" },
+    // website-three (17 Oct 2026): the school's website at a glance, read-only; built and changed on the web.
+    { labelKey: "modules.websiteName", icon: "globe", group: "running", screen: "/(app)/website", module: "WEBSITE" },
+    // end website-three
     { labelKey: "joinRequests.navLabel", icon: "userPlus", group: "running", screen: "/(app)/joins" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
     { labelKey: "nav.vacancies", icon: "briefcase", group: "school", screen: "/(app)/vacancies", feature: "JOB_BOARD" },
@@ -610,6 +616,9 @@ for (const [role, list] of Object.entries(MENU) as [RoleCode, MenuItem[]][]) if 
  * list against the files on disk.
  */
 export const HIDDEN_SCREENS = [
+  // website-three (17 Oct 2026): the school's website at a glance for the office and the head.
+  "website",
+  // end website-three
   // The assistant (Phase C, 10 Oct 2026): from More, for every role while the module is on.
   "assistant",
   // The college at a glance for the head and the registrar (campaign 2026-10-04, G-4).

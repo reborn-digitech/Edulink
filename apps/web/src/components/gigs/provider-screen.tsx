@@ -8,7 +8,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import type { ActiveContext } from "@/lib/session";
 import { formatPaise } from "@edulink/i18n";
 import { CancelWithReason, CloseSeat, OfferForm } from "./provider-forms";
-import { PaidGateList } from "./paid-gate";
+import { PaidGateList, TeacherGateList } from "./paid-gate";
 
 const TONE: Record<BookingStatus, "info" | "ok" | "neutral" | "warn" | "danger"> = { PENDING_CONSENT: "info", PENDING_PAYMENT: "warn", CONFIRMED: "ok", CANCELLED: "neutral", DELIVERED: "ok", MISSED: "warn", UNHELD: "danger" };
 
@@ -25,10 +25,12 @@ export async function ProviderScreen({ ctx }: { ctx: ActiveContext }) {
   const when = (iso: string) => formatInZone(new Date(iso), view.timeZone, { dateStyle: "medium", timeStyle: "short" }, locale);
   const d = view.duty;
   const gate = view.gate;
+  const teacherGate = view.teacherGate;
+  const earnings = view.earnings;
 
   return (
     <div className="space-y-6">
-      <PageHeader title={t("gigs.providerTitle")} description={t(view.kind === "EXPERT" ? "gigs.providerIntroEXPERT" : "gigs.providerIntroTEACHER")} />
+      <PageHeader title={t("gigs.providerTitle")} description={t(view.kind === "EXPERT" ? "gigs.providerIntroEXPERT" : "seats.providerIntroTEACHER")} />
       {!view.enabled || !d ? (
         <p className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-3 text-sm text-fg" data-testid="guidance-off">
           {t("gigs.guidanceOff")}
@@ -48,16 +50,46 @@ export async function ProviderScreen({ ctx }: { ctx: ActiveContext }) {
           <Card>
             <CardHeader title={t("gigs.offerTitle")} />
             <CardBody className="space-y-4">
-              <OfferForm workshops={view.kind === "EXPERT"} maxSeats={settings.workshopMaxSeats} gate={gate} />
+              <OfferForm workshops={view.kind === "EXPERT"} maxSeats={settings.workshopMaxSeats} gate={gate ?? teacherGate} />
               {gate && (
                 <div className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-3" data-testid="paid-gate">
                   <p className="text-sm font-medium text-fg">{t("gigs.gateTitle")}</p>
-                  <p className="mb-2 text-xs text-fg-muted">{t("gigs.gateIntro")}</p>
+                  <p className="mb-2 text-xs text-fg-muted">{t("seats.gateIntro")}</p>
                   <PaidGateList gate={gate} />
+                </div>
+              )}
+              {teacherGate && (
+                <div className="rounded-[var(--radius-md)] border border-border bg-surface-muted px-4 py-3" data-testid="teacher-paid-gate">
+                  <p className="text-sm font-medium text-fg">{t("seats.teacherGateTitle")}</p>
+                  <p className="mb-2 text-xs text-fg-muted">{t("seats.teacherGateIntro")}</p>
+                  <TeacherGateList gate={teacherGate} />
                 </div>
               )}
             </CardBody>
           </Card>
+          {/* A teacher's sold seats (seats, 17 Oct 2026): an expert reads theirs, seat by seat, on /expert/earnings. */}
+          {view.kind === "TEACHER" && earnings && earnings.seats + earnings.refundedPaise > 0 && (
+            <Card>
+              <CardHeader title={t("seats.earningsTitle")} description={t("seats.earningsNote", { percent: teacherGate?.commissionPercent ?? 0 })} />
+              <CardBody>
+                <dl className="grid grid-cols-2 gap-3 text-sm sm:grid-cols-4" data-testid="provider-earnings">
+                  {(
+                    [
+                      ["seats.earningsHeld", earnings.heldPaise],
+                      ["seats.earningsDue", earnings.duePaise],
+                      ["seats.earningsPaid", earnings.paidPaise],
+                      ["seats.earningsRefunded", earnings.refundedPaise],
+                    ] as const
+                  ).map(([key, paise]) => (
+                    <div key={key}>
+                      <dt className="text-xs text-fg-muted">{t(key)}</dt>
+                      <dd className="font-semibold tabular-nums text-fg">{formatPaise(paise, locale)}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </CardBody>
+            </Card>
+          )}
           <Card>
             <CardHeader title={t("gigs.yourSlots")} />
             <CardBody>
@@ -77,6 +109,12 @@ export async function ProviderScreen({ ctx }: { ctx: ActiveContext }) {
                         </div>
                         {s.cancelled ? <Badge tone="neutral">{t("gigs.slotIsCancelled")}</Badge> : !s.started && <CancelWithReason id={s.id} what="slot" title={s.title} />}
                       </div>
+                      {/* The provider's own room, always theirs to open (seats, 17 Oct 2026). */}
+                      {!s.cancelled && s.meetingUrl.startsWith("https://") && (
+                        <a href={s.meetingUrl} target="_blank" rel="noreferrer noopener" className="tap inline-flex items-center text-sm font-medium text-accent-strong underline underline-offset-4" aria-label={[t("seats.openRoom"), s.title].join(": ")} data-testid="provider-room">
+                          {t("seats.openRoom")}
+                        </a>
+                      )}
                       {s.bookings.length > 0 && (
                         <ul className="space-y-2 rounded-[var(--radius-md)] bg-surface-muted px-3 py-2">
                           {s.bookings.map((b) => (

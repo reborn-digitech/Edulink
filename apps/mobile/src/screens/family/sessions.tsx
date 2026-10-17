@@ -3,7 +3,7 @@ import { Linking, View } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { gigCheckoutSchema, gigFamilySessionsSchema, gigPaymentStatusSchema, type GigCheckout } from "@edulink/contracts";
+import { gigCheckoutSchema, gigFamilySessionsSchema, gigJoinSchema, gigPaymentStatusSchema, type GigCheckout } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Field, Loading, Screen, Text } from "@/components";
 import { API_BASE, api, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
@@ -27,6 +27,11 @@ import { Chips, formatInstant, Note, openWeb, Pill } from "./shared";
  * pattern — with a real gateway the phone opens the web's sessions page on
  * the same order, where the gateway's script runs, and watches the payment
  * from here; under devbox it watches alone until /dev/payments marks it.
+ *
+ * SEATS (17 October 2026): a one-to-one and a teacher's guidance may be priced too; a pupil of eighteen or more pays
+ * for their own seat, a pupil under eighteen never sees a Pay button ("Ask your parent" sends the ask to a guardian).
+ * Join asks the join door for the room as it is pressed (GET /gigs/sessions/{bookingId}/join), so a seat cancelled
+ * since the list was read is not joined.
  */
 type Job = { path: string; body?: Record<string, unknown>; done: string | ((data: unknown) => string) };
 /** How often and how long the phone asks after a started payment; a test shortens both. */
@@ -94,6 +99,18 @@ export function FamilySessions() {
     },
   });
   const seat = (bookingId: string, tail: string) => `/api/v1/gigs/sessions/${bookingId}/${tail}`;
+  const [joining, setJoining] = useState<string | null>(null);
+  /** The room, from the join door at the moment of joining; a refusal (not yet confirmed or paid) is said as the server says it. */
+  const join = async (bookingId: string) => {
+    setJoining(bookingId);
+    setError(null);
+    const got = await api().get(seat(bookingId, "join"));
+    setJoining(null);
+    if (!got.ok) return setError(errorText(got, t("common.somethingWrong")));
+    const link = gigJoinSchema.safeParse(got.data);
+    if (!link.success) return setError(t("common.somethingWrong"));
+    await Linking.openURL(link.data.meetingUrl).catch(() => setError(t("common.somethingWrong")));
+  };
   const running = (path: string) => act.isPending && act.variables?.path === path;
   const d = query.data;
 
@@ -155,9 +172,9 @@ export function FamilySessions() {
                     {b.payment && RECEIPT_STATUSES.includes(b.payment.status as SessionPaymentStatus) ? <Button label={t("gigs.receiptLink")} variant="ghost" accessibilityLabel={[t("gigs.receiptLink"), b.title].join(": ")} busy={receiptBusy === b.payment.paymentId} onPress={() => void openReceipt(b.payment!.paymentId)} /> : null}
                     <Pill label={t(BOOKING_STATUS[b.status].label)} tone={BOOKING_STATUS[b.status].tone} />
                     {b.canPay ? <Button label={t("gigs.payNow", { amount: money(b.pricePaise, locale) })} accessibilityLabel={[t("gigs.payNow", { amount: money(b.pricePaise, locale) }), b.title].join(": ")} busy={running(seat(b.id, "checkout"))} onPress={() => act.mutate({ path: seat(b.id, "checkout"), done: "" })} /> : null}
-                    {b.meetingUrl ? (
+                    {(b.canJoin ?? Boolean(b.meetingUrl)) ? (
                       <>
-                        <Button label={t("gigs.joinLink")} accessibilityLabel={[t("gigs.joinLink"), b.title].join(": ")} onPress={() => void Linking.openURL(b.meetingUrl!).catch(() => setError(t("common.somethingWrong")))} />
+                        <Button label={t("gigs.joinLink")} accessibilityLabel={[t("gigs.joinLink"), b.title].join(": ")} busy={joining === b.id} onPress={() => void join(b.id)} />
                         <Text variant="xs" tone="muted">
                           {t("gigs.linkHint")}
                         </Text>
@@ -206,7 +223,10 @@ export function FamilySessions() {
               ) : (
                 c.open.map((s) => {
                   const key = [c.id, s.id].join(":");
-                  const verb = byGuardian ? (s.pricePaise > 0 && !s.freeSeat && d.paymentsOn ? t("gigs.payNow", { amount: money(s.pricePaise, locale) }) : t("gigs.bookSeat")) : t("gigs.askSeat");
+                  // A guardian, or a pupil of eighteen or more, pays for a priced seat; a pupil under eighteen asks a parent.
+                  const selfPays = c.selfPays ?? byGuardian;
+                  const priced = s.pricePaise > 0 && !s.freeSeat && d.paymentsOn;
+                  const verb = priced ? (selfPays ? t("gigs.payNow", { amount: money(s.pricePaise, locale) }) : t("seats.askParent")) : selfPays ? t("gigs.bookSeat") : t("gigs.askSeat");
                   return (
                     <View key={s.id} style={{ gap: th.space[2], paddingVertical: th.space[2], borderTopWidth: 1, borderTopColor: th.border }}>
                       <Text variant="base" bold>
@@ -218,6 +238,11 @@ export function FamilySessions() {
                       {s.pricePaise > 0 ? (
                         <Text variant="xs" bold>
                           {s.freeSeat ? t("gigs.seatFree") : t("gigs.seatPrice", { amount: money(s.pricePaise, locale) })}
+                        </Text>
+                      ) : null}
+                      {priced && !selfPays ? (
+                        <Text variant="xs" tone="muted">
+                          {t("seats.askParentNote")}
                         </Text>
                       ) : null}
                       {s.providerHeadline ? (

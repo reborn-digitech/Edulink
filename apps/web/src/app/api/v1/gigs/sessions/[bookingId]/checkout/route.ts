@@ -9,13 +9,14 @@ const CHECKOUT_BUDGET = { limit: 30, windowMs: 60 * 60 * 1000 };
 
 /**
  * POST /api/v1/gigs/sessions/{bookingId}/checkout — the order for a seat
- * waiting for the guardian's payment: the one already made while it stands,
+ * waiting for its payer's payment (a guardian, or since 17 Oct 2026 a pupil of
+ * eighteen or more for themselves): the one already made while it stands,
  * a fresh one after a failed attempt. The amount is the slot's own price,
  * never the client's.
  */
 export async function POST(_request: Request, { params }: { params: Promise<{ bookingId: string }> }) {
   try {
-    const ctx = await requireGigRole("PARENT");
+    const ctx = await requireGigRole("PARENT", "STUDENT");
     const { bookingId } = await params;
     const over = await budget(`gig-checkout:${ctx.user.id}`, CHECKOUT_BUDGET.limit, CHECKOUT_BUDGET.windowMs);
     if (over) return over;

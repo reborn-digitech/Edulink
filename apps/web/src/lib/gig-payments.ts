@@ -7,7 +7,7 @@ import { notify } from "./notify";
 import { AccessError } from "./tenancy";
 import { forSchool, forUser } from "./tenant-context";
 import { gigSettings, monthKey, type GigResult } from "./gig-questions";
-import { createLinkedAccount, createSeatOrder, createStakeholder, fetchRouteProduct, GigGatewayError, platformAccount, refundSeat, releaseTransfer, requestRouteProduct, ROUTE_STATUSES, routeStatusOf, setRouteBank, stateNameOf, transferFromPayment, transfersOf, transport, verifySeatCheckout, webhookSecret, type RouteProduct, type RouteRequirement, type RouteStatus } from "./gig-gateway";
+import { createCompanyOrder, createLinkedAccount, createSeatOrder, createStakeholder, fetchRouteProduct, GigGatewayError, platformAccount, refundSeat, releaseTransfer, requestRouteProduct, ROUTE_STATUSES, routeStatusOf, setRouteBank, stateNameOf, transferFromPayment, transfersOf, transport, verifySeatCheckout, webhookSecret, type RouteProduct, type RouteRequirement, type RouteStatus } from "./gig-gateway";
 import type { GigGatewayTransport } from "./gig-gateway-env";
 import { open, seal, sealingAvailable } from "./secret-box";
 import { openPan, writePan } from "./pan";
@@ -45,7 +45,11 @@ import type { ActiveContext } from "./session";
  *
  * THE COMPANY-COLLECTS ROWS (the second amendment's path COMPANY: HELD → DUE
  * → PAID_OUT by the operator's recorded transfer) stay readable, and an OPEN
- * payout of theirs can still be recorded; no new row takes that path.
+ * payout of theirs can still be recorded. Since 17 October 2026 (seats,
+ * decision 0006) a TEACHER's priced guidance takes that path too: a teacher
+ * has no linked account at the gateway, so the company collects the seat on a
+ * plain order and the operator pays the teacher's UPI id (GigPayee) by hand,
+ * with the invoice for the commission; an expert's seat is always ROUTE.
  *
  * ONE DOOR FOR A CAPTURE: `markCaptured`, used by the webhook, the checkout's
  * own confirm and the devbox page alike, so a payment settles once and the
@@ -537,7 +541,9 @@ function figuresOf(amountPaise: number, s: { commissionPercent: number; gstPerce
  * is replaced by a fresh order on the same row. Refused with the reason when
  * payments are off, the expert's linked account is not active, or the
  * gateway is down — the seat stays PENDING_PAYMENT for another try until it
- * expires.
+ * expires. A teacher's seat (seats, 17 Oct 2026) is a plain order on the
+ * company's account with no transfer — the company-collects path — refused
+ * while the teacher has saved no UPI id for the company to pay.
  */
 export async function openCheckout(input: { bookingId: string; slotId: string; schoolId: string; payerUserId: string; expertUserId: string; amountPaise: number; title: string; pupilName: string; payerName: string; payerEmail: string | null }): Promise<GigResult<{ checkout: SeatCheckout }>> {
   const about = { title: input.title, pupilName: input.pupilName, payerName: input.payerName, payerEmail: input.payerEmail };
@@ -545,20 +551,30 @@ export async function openCheckout(input: { bookingId: string; slotId: string; s
   if (existing && existing.status === "INITIATED") return { ok: true, checkout: checkoutOf(existing, about) };
   if (existing && existing.status !== "FAILED") return { ok: false, errorKey: "gigs.refuseAlreadyPaid" };
   if (!(await paymentsOn())) return { ok: false, errorKey: "gigs.refusePaymentsOff" };
-  const payout = await payoutAccountOf(input.expertUserId);
-  const linked = await db.expertPayoutAccount.findUnique({ where: { expertUserId: input.expertUserId }, select: { linkedAccountId: true } });
-  if (payout.status !== "ACTIVE" || !linked?.linkedAccountId) return { ok: false, errorKey: "gigs.refuseExpertNoPayout" };
+  const provider = await db.gigSlot.findUnique({ where: { id: input.slotId }, select: { providerKind: true } });
+  const path: "ROUTE" | "COMPANY" = provider?.providerKind === "TEACHER" ? "COMPANY" : "ROUTE";
+  let linkedAccountId: string | null = null;
+  if (path === "COMPANY") {
+    if (!(await db.gigPayee.findUnique({ where: { userId: input.expertUserId }, select: { upiId: true } }))?.upiId) return { ok: false, errorKey: "gigs.refuseExpertNoPayout" };
+  } else {
+    const payout = await payoutAccountOf(input.expertUserId);
+    const linked = await db.expertPayoutAccount.findUnique({ where: { expertUserId: input.expertUserId }, select: { linkedAccountId: true } });
+    if (payout.status !== "ACTIVE" || !linked?.linkedAccountId) return { ok: false, errorKey: "gigs.refuseExpertNoPayout" };
+    linkedAccountId = linked.linkedAccountId;
+  }
   const settings = await paymentSettings();
   const figures = figuresOf(input.amountPaise, settings);
   if (figures.netPaise < 1) return { ok: false, errorKey: "gigs.refusePrice" };
   // The row first, so the order's receipt carries our id; the order id is written once the gateway answers.
   const row = existing
-    ? await db.sessionPayment.update({ where: { id: existing.id }, data: { status: "INITIATED", path: "ROUTE", transferId: null, amountPaise: input.amountPaise, ...figures, payerUserId: input.payerUserId, reason: null, lastError: null, pendingAction: null, attempts: existing.attempts + 1 }, select: PAYMENT_SELECT })
-    : await db.sessionPayment.create({ data: { bookingId: input.bookingId, slotId: input.slotId, payerUserId: input.payerUserId, expertUserId: input.expertUserId, amountPaise: input.amountPaise, ...figures, path: "ROUTE", orderId: `pending_${input.bookingId}`, status: "INITIATED" }, select: PAYMENT_SELECT });
+    ? await db.sessionPayment.update({ where: { id: existing.id }, data: { status: "INITIATED", path, transferId: null, amountPaise: input.amountPaise, ...figures, payerUserId: input.payerUserId, reason: null, lastError: null, pendingAction: null, attempts: existing.attempts + 1 }, select: PAYMENT_SELECT })
+    : await db.sessionPayment.create({ data: { bookingId: input.bookingId, slotId: input.slotId, payerUserId: input.payerUserId, expertUserId: input.expertUserId, amountPaise: input.amountPaise, ...figures, path, orderId: `pending_${input.bookingId}`, status: "INITIATED" }, select: PAYMENT_SELECT });
   let orderId: string;
   try {
-    // The net is what the gateway holds for the expert; the commission and its GST stay with the company.
-    const order = await createSeatOrder({ amountPaise: input.amountPaise, expertSharePaise: figures.netPaise, linkedAccountId: linked.linkedAccountId, receipt: row.id, notes: { shalaghar_session_payment: row.id, seat: input.title.slice(0, 60) } });
+    const notes = { shalaghar_session_payment: row.id, seat: input.title.slice(0, 60) };
+    // ROUTE: the net is what the gateway holds for the expert; the commission and its GST stay with the company.
+    // COMPANY (a teacher's seat): the whole price to the company's account, the teacher paid by hand after the hold.
+    const order = linkedAccountId ? await createSeatOrder({ amountPaise: input.amountPaise, expertSharePaise: figures.netPaise, linkedAccountId, receipt: row.id, notes }) : await createCompanyOrder({ amountPaise: input.amountPaise, receipt: row.id, notes });
     orderId = order.orderId;
   } catch (error) {
     const reason = error instanceof GigGatewayError ? error.message : "gateway error";
@@ -669,7 +685,8 @@ export async function markOrderFailed(orderId: string, reason: string): Promise<
  * door. Returns the capture's outcome; the caller tells the family.
  */
 export async function confirmSeatCheckout(ctx: ActiveContext, input: { paymentId: string; gatewayPaymentId: string; signature: string }): Promise<{ orderId: string; amountPaise: number }> {
-  if (ctx.role !== "PARENT") throw new AccessError("access.wrongRoleForThisAction");
+  // The payer alone: a guardian, or a pupil of eighteen or more who bought their own seat (seats, 17 Oct 2026).
+  if (ctx.role !== "PARENT" && ctx.role !== "STUDENT") throw new AccessError("access.wrongRoleForThisAction");
   const p = await db.sessionPayment.findFirst({ where: { id: input.paymentId, payerUserId: ctx.user.id }, select: { orderId: true, amountPaise: true } });
   if (!p) throw new AccessError("gigs.noSuchPayment", "NOT_FOUND");
   if (!verifySeatCheckout(p.orderId, input.gatewayPaymentId, input.signature)) throw new AccessError("gigs.refuseBadSignature");
@@ -823,7 +840,9 @@ export async function releaseDue(now: Date = new Date()): Promise<ReleaseRun> {
     for (const id of result.ids) await audit({ actorUserId: null, action: "gig.payment.due", targetType: "SessionPayment", targetId: id, meta: { payoutId: result.payoutId } });
     if (result.opened) {
       await audit({ actorUserId: null, action: "gig.payout.open", targetType: "ExpertPayout", targetId: result.payoutId, meta: { expertUserId, netPaise: result.sum, paymentsCount: result.count } });
-      await forUser(expertUserId, () => notify({ userId: expertUserId, schoolId: null, kind: "EXPERT", titleKey: "gigs.notifDue", titleVars: { amount: rupees(result.sum), count: result.count }, url: "/expert/earnings", meta: { payoutId: result.payoutId } })).catch((error) => console.error("[gig-payments] due notice failed", error));
+      // A teacher's guidance seats (seats, 17 Oct 2026) are counted on their guidance page; an expert's on the earnings page.
+      const teacher = (await db.gigSlot.findUnique({ where: { id: rows[0]!.slotId }, select: { providerKind: true } }))?.providerKind === "TEACHER";
+      await forUser(expertUserId, () => notify({ userId: expertUserId, schoolId: null, kind: teacher ? "SYSTEM" : "EXPERT", titleKey: "gigs.notifDue", titleVars: { amount: rupees(result.sum), count: result.count }, url: teacher ? "/teacher/guidance" : "/expert/earnings", meta: { payoutId: result.payoutId } })).catch((error) => console.error("[gig-payments] due notice failed", error));
       run.payoutsOpened += 1;
     }
     run.due += result.count;
@@ -980,8 +999,11 @@ export async function recordPayout(ctx: ActiveContext, payoutId: string, input: 
   const payout = await db.expertPayout.findUnique({ where: { id: payoutId }, select: { id: true, expertUserId: true, status: true, netPaise: true, paymentsCount: true, expert: { select: { name: true, prefs: true } } } });
   if (!payout) throw new AccessError("gigs.noSuchPayout", "NOT_FOUND");
   if (payout.status !== "OPEN") return { ok: false, errorKey: "gigs.refusePayoutPaid" };
-  const payee = await db.expertPayoutAccount.findUnique({ where: { expertUserId: payout.expertUserId }, select: PAYEE_SELECT });
-  if (!payeeComplete(payee) || !payee) return { ok: false, errorKey: "gigs.refuseNoPayee" };
+  const expertPayee = await db.expertPayoutAccount.findUnique({ where: { expertUserId: payout.expertUserId }, select: PAYEE_SELECT });
+  // A teacher's guidance seats (seats, 17 Oct 2026) are paid to the UPI id they keep for questions (GigPayee): no GSTIN, no state on file.
+  const teacherPayee = expertPayee ? null : await db.gigPayee.findUnique({ where: { userId: payout.expertUserId }, select: { upiId: true, payeeName: true } });
+  const payee = expertPayee && payeeComplete(expertPayee) ? { payeeName: expertPayee.payeeName, gstin: expertPayee.gstin, gstStateCode: expertPayee.gstStateCode } : teacherPayee?.upiId ? { payeeName: teacherPayee.payeeName, gstin: null, gstStateCode: null } : null;
+  if (!payee) return { ok: false, errorKey: "gigs.refuseNoPayee" };
   if (await db.expertPayout.findUnique({ where: { reference }, select: { id: true } })) return { ok: false, errorKey: "gigs.refuseUtrUsed" };
   const locale = normaliseLocale(readJson<{ locale?: string }>(payout.expert.prefs, {}).locale);
   const seller: InvoiceParty = { name: company.legalName!, gstin: company.gstin, address: company.address, stateCode: company.stateCode };
@@ -1009,7 +1031,7 @@ export async function recordPayout(ctx: ActiveContext, payoutId: string, input: 
   }
   await audit({ actorUserId: ctx.user.id, action: "gig.payout.paid", targetType: "ExpertPayout", targetId: payout.id, meta: { expertUserId: payout.expertUserId, netPaise: made.payout.netPaise, paymentsCount: made.payout.paymentsCount, reference, invoiceNumber: made.invoice.number } });
   await audit({ actorUserId: ctx.user.id, action: "gig.invoice.issue", targetType: "GigInvoice", targetId: made.invoice.id, meta: { number: made.invoice.number, expertUserId: payout.expertUserId, totalPaise: made.invoice.totalPaise, payoutId: payout.id } });
-  await forUser(payout.expertUserId, () => notify({ userId: payout.expertUserId, schoolId: null, kind: "EXPERT", titleKey: "gigs.notifPaidOut", titleVars: { amount: rupees(made.payout.netPaise), count: made.payout.paymentsCount, reference }, url: "/expert/earnings", meta: { payoutId: payout.id, invoiceId: made.invoice.id } })).catch((error) => console.error("[gig-payments] payout notice failed", error));
+  await forUser(payout.expertUserId, () => notify({ userId: payout.expertUserId, schoolId: null, kind: teacherPayee ? "SYSTEM" : "EXPERT", titleKey: "gigs.notifPaidOut", titleVars: { amount: rupees(made.payout.netPaise), count: made.payout.paymentsCount, reference }, url: teacherPayee ? "/teacher/guidance" : "/expert/earnings", meta: { payoutId: payout.id, invoiceId: made.invoice.id } })).catch((error) => console.error("[gig-payments] payout notice failed", error));
   return { ok: true, ...made };
 }
 
@@ -1194,7 +1216,7 @@ export async function operatorPayouts(ctx: ActiveContext, now: Date = new Date()
     db.sessionPayment.aggregate({ where: { status: "PAID_OUT", paidOutAt: { gte: monthStart } }, _sum: { netPaise: true } }),
     db.sessionPayment.aggregate({ where: { status: "REFUNDED", refundedAt: { gte: monthStart } }, _sum: { amountPaise: true } }),
     db.sessionPayment.findMany({ where: { OR: [{ pendingAction: { not: null } }, { status: "PAID", paidAt: { lt: new Date(now.getTime() - HOUR) } }] }, orderBy: { createdAt: "asc" }, take: 100, select: { ...PAYMENT_SELECT, expert: { select: { name: true } } } }),
-    db.expertPayout.findMany({ where: { status: "OPEN" }, orderBy: { createdAt: "asc" }, take: 200, select: { id: true, expertUserId: true, netPaise: true, paymentsCount: true, createdAt: true, expert: { select: { name: true, payoutAccount: { select: { payeeName: true, upiId: true, bankLast4: true, ifsc: true, gstStateCode: true, gstin: true, status: true } }, expertProfile: { select: { kycStatus: true } } } } } }),
+    db.expertPayout.findMany({ where: { status: "OPEN" }, orderBy: { createdAt: "asc" }, take: 200, select: { id: true, expertUserId: true, netPaise: true, paymentsCount: true, createdAt: true, expert: { select: { name: true, payoutAccount: { select: { payeeName: true, upiId: true, bankLast4: true, ifsc: true, gstStateCode: true, gstin: true, status: true } }, expertProfile: { select: { kycStatus: true } }, gigPayee: { select: { upiId: true, payeeName: true } } } } } }),
     db.expertPayout.findMany({ where: { status: { in: ["PAID", "RELEASED"] } }, orderBy: { paidAt: "desc" }, take: 100, select: { id: true, expertUserId: true, status: true, netPaise: true, paymentsCount: true, reference: true, paidAt: true, note: true, expert: { select: { name: true } }, invoice: { select: { id: true, number: true } } } }),
     db.expertPayoutAccount.findMany({ orderBy: { updatedAt: "desc" }, take: 300, select: { expertUserId: true, ...PAYEE_SELECT, expert: { select: { name: true, expertProfile: { select: { kycStatus: true } } } } } }),
   ]);
@@ -1222,7 +1244,8 @@ export async function operatorPayouts(ctx: ActiveContext, now: Date = new Date()
     refundedThisMonthPaise: refunded._sum.amountPaise ?? 0,
     company,
     failures: failures.map((p) => ({ paymentId: p.id, expertName: p.expert.name, amountPaise: p.pendingAction === "REFUND" ? p.amountPaise : p.netPaise, action: p.pendingAction === "REFUND" || p.pendingAction === "RELEASE" || p.pendingAction === "TRANSFER" ? p.pendingAction : ("HOLD" as const), lastError: p.lastError, attempts: p.attempts, since: p.createdAt.toISOString() })),
-    toPay: open.map((x) => ({ id: x.id, expertUserId: x.expertUserId, expertName: x.expert.name, payee: standing(x.expert.payoutAccount, x.expert.expertProfile?.kycStatus), netPaise: x.netPaise, paymentsCount: x.paymentsCount, createdAt: x.createdAt.toISOString() })),
+    // A teacher's guidance seats (seats, 17 Oct 2026) are paid to the UPI id the teacher keeps for questions.
+    toPay: open.map((x) => ({ id: x.id, expertUserId: x.expertUserId, expertName: x.expert.name, payee: !x.expert.payoutAccount && x.expert.gigPayee ? { payeeName: x.expert.gigPayee.payeeName, upiId: x.expert.gigPayee.upiId, bankLast4: null, ifsc: null, gstStateCode: null, gstin: null, status: "ACTIVE" as const } : standing(x.expert.payoutAccount, x.expert.expertProfile?.kycStatus), netPaise: x.netPaise, paymentsCount: x.paymentsCount, createdAt: x.createdAt.toISOString() })),
     paid: paid.map((x) => ({ id: x.id, expertUserId: x.expertUserId, expertName: x.expert.name, status: x.status === "RELEASED" ? ("RELEASED" as const) : ("PAID" as const), netPaise: x.netPaise, paymentsCount: x.paymentsCount, reference: x.reference, paidAt: x.paidAt?.toISOString() ?? null, invoiceId: x.invoice?.id ?? null, invoiceNumber: x.invoice?.number ?? null, note: x.note })),
   };
 }

@@ -7,7 +7,7 @@ import { requireGigRole } from "../../../guard";
 /** POST /api/v1/gigs/payments/{paymentId}/confirm — the checkout's handler signature, checked with the company's key secret, then the one door every capture goes through. */
 export async function POST(request: Request, { params }: { params: Promise<{ paymentId: string }> }) {
   try {
-    const ctx = await requireGigRole("PARENT");
+    const ctx = await requireGigRole("PARENT", "STUDENT");
     const { paymentId } = await params;
     const parsed = gigCheckoutConfirmBodySchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);

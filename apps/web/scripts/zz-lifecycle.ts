@@ -968,7 +968,7 @@ async function workshopSteps(W: SchoolWorld, y: number) {
   const day = `${y + 1}-02-01`;
   setClock(day, 10);
   const expert = await expertActor();
-  const slot = await step("EXPERT", "gigs.offerSlot", () => L.gigs.offerSlot(expert.ctx, { kind: "WORKSHOP", title: `ZZ Careers in science ${y + 1}`, startsAt: ist(`${y + 1}-02-10`, 16).toISOString(), minutes: 60, meetingUrl: "https://meet.example.test/zzlc", seats: 10 } as never, now()));
+  const slot = await step("EXPERT", "gigs.offerSlot", () => L.gigs.offerSlot(expert.ctx, { kind: "WORKSHOP", title: `ZZ Careers in science ${y + 1}`, startsAt: ist(`${y + 1}-02-10`, 16).toISOString(), minutes: 60, meetingUrl: "https://meet.jit.si/zzlc", seats: 10 } as never, now()));
   if (!slot || !(slot as Any).ok) return;
   const slotId = (slot as Any).slotId;
   const cls = (await liveClasses(W.id)).find((c: Any) => c.gradeLevel === "9");

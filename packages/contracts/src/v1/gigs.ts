@@ -426,6 +426,8 @@ export const gigFamilySessionsSchema = z.object({
       name: z.string(),
       schoolName: z.string(),
       timeZone: z.string(),
+      /** Who reads this pays for a priced seat themselves — a guardian, or a pupil of eighteen or more; a pupil under eighteen asks a parent (seats, 17 Oct 2026). */
+      selfPays: z.boolean().optional(),
       allowance: z.object({ ONE_TO_ONE: gigAllowanceRowSchema, WORKSHOP: gigAllowanceRowSchema }),
       bookings: z.array(
         z.object({
@@ -438,8 +440,10 @@ export const gigFamilySessionsSchema = z.object({
           providerKind: gigProviderKindSchema,
           purpose: z.string(),
           status: gigBookingStatusSchema,
-          /** The provider's own room: present only while the seat is confirmed. */
+          /** The provider's own room: present only once the seat is confirmed and, when priced, paid. */
           meetingUrl: z.string().nullable(),
+          /** GET /gigs/sessions/{bookingId}/join answers with the link now (seats, 17 Oct 2026). */
+          canJoin: z.boolean().optional(),
           lateCancel: z.boolean(),
           rating: z.number().int().nullable(),
           /** Bought past the allowance, and where its money stands. */
@@ -483,8 +487,12 @@ export const gigProviderSchema = z.object({
   kind: gigProviderKindSchema,
   timeZone: z.string(),
   duty: z.object({ deliveredOneToOnes: z.number().int(), heldWorkshops: z.number().int(), oneToOnesThisMonth: z.number().int(), workshopsThisQuarter: z.number().int(), startOneToOnes: z.number().int(), startWorkshops: z.number().int(), monthlyOneToOnes: z.number().int(), quarterlyWorkshops: z.number().int() }).nullable(),
-  /** An expert's standing to price a workshop seat; null for a teacher. */
+  /** An expert's standing to price a time (a workshop seat or a one-to-one); null for a teacher. */
   gate: gigPaidGateSchema.nullable(),
+  /** A teacher's standing to price guidance: payments on, and a UPI id saved for the company to pay them (seats, 17 Oct 2026); null for an expert. */
+  teacherGate: z.object({ paymentsOn: z.boolean(), payeeSaved: z.boolean(), canCharge: z.boolean(), seatPriceMinPaise: z.number().int(), seatPriceMaxPaise: z.number().int(), commissionPercent: z.number().int() }).nullable().optional(),
+  /** The provider's sold seats by where their money stands: the net held, due and paid, and the gross refunded. */
+  earnings: z.object({ heldPaise: z.number().int(), duePaise: z.number().int(), paidPaise: z.number().int(), refundedPaise: z.number().int(), seats: z.number().int() }).nullable().optional(),
   slots: z.array(
     z.object({
       id,
@@ -504,8 +512,8 @@ export const gigProviderSchema = z.object({
 });
 export type GigProvider = z.infer<typeof gigProviderSchema>;
 
-/** POST /api/v1/gigs/slots — offer a time: a one-to-one of thirty minutes, or a workshop with its length and seats. */
-/** `pricePaise` prices a workshop seat past a pupil's allowance, behind the four conditions of the paid gate (decision 0004 as amended); a one-to-one is refused any price. Omitted or 0 is a free time. */
+/** POST /api/v1/gigs/slots — offer a time: a one-to-one of thirty minutes, or a workshop with its length and seats, on a Meet, Zoom, Teams or Jitsi link. */
+/** `pricePaise` prices a seat — a workshop's or, since decision 0006 (17 Oct 2026), a one-to-one's, an expert's or a teacher's — within the operator's band, behind the provider's paid gate. Omitted or 0 is a free time, which draws on a pupil's allowance. */
 export const gigSlotBodySchema = z.object({ kind: gigSessionKindSchema, title: z.string().max(200), startsAt: z.string().max(40), minutes: z.number().int().optional(), meetingUrl: z.string().max(600), seats: z.number().int().optional(), pricePaise: z.number().int().min(0).max(10_000_000).optional() });
 export const gigSlotMadeSchema = z.object({ slotId: id });
 
@@ -523,3 +531,7 @@ export const gigSchoolSessionsSchema = z.object({
 /** POST /api/v1/gigs/school/guidance — the school lets its teachers offer free guidance to its own pupils, or stops. */
 export const gigGuidanceBodySchema = z.object({ on: z.boolean() });
 export const gigGuidanceSetSchema = z.object({ guidanceOn: z.boolean() });
+
+/** GET /api/v1/gigs/sessions/{bookingId}/join — the meeting link: the provider's always, a seat holder's once the seat is confirmed and, when priced, paid (seats, 17 Oct 2026). */
+export const gigJoinSchema = z.object({ bookingId: id, title: z.string(), startsAt: z.string(), endsAt: z.string(), meetingUrl: z.string(), as: z.enum(["PROVIDER", "SEAT"]) });
+export type GigJoin = z.infer<typeof gigJoinSchema>;

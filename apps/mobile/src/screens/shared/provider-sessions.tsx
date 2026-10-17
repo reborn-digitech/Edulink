@@ -24,8 +24,10 @@ import { BOOKING_STATUS, ReasonThen, SESSION_KIND, type SessionKind } from "./gi
  * phone knows; the server is sent the instant.
  *
  * An expert also sees the paid side (decision 0004 as amended): a seat's
- * price on a workshop, allowed only past the four conditions shown as a
- * checklist; where they are paid; and their earnings.
+ * price, allowed only past the four conditions shown as a checklist; where
+ * they are paid; and their earnings. Since 17 October 2026 (seats, decision
+ * 0006) the price is asked on a one-to-one as on a workshop, and a teacher
+ * prices guidance once paid sessions are on and their UPI id is saved.
  */
 const KEY = ["gigs", "slots"] as const;
 type Job = { path: string; body?: Record<string, unknown>; done: string; reset?: boolean };
@@ -79,14 +81,16 @@ export function ProviderSessions() {
       return;
     }
     const rupees = price.trim() === "" ? 0 : Math.round(Number(price) * 100);
-    act.mutate({ path: "/api/v1/gigs/slots", body: { kind, title, startsAt: at.toISOString(), meetingUrl: link, ...(kind === "WORKSHOP" ? { minutes: Number(minutes), seats: Number(seats), ...(rupees > 0 ? { pricePaise: rupees } : {}) } : {}) }, done: t("gigs.offered"), reset: true });
+    act.mutate({ path: "/api/v1/gigs/slots", body: { kind, title, startsAt: at.toISOString(), meetingUrl: link, ...(kind === "WORKSHOP" ? { minutes: Number(minutes), seats: Number(seats) } : {}), ...(rupees > 0 ? { pricePaise: rupees } : {}) }, done: t("gigs.offered"), reset: true });
   };
   const d = query.data;
   const gate = d?.gate ?? null;
+  /** The price box asks either provider's gate: an expert's four conditions or a teacher's two (seats, 17 Oct 2026). */
+  const priceGate = gate ?? d?.teacherGate ?? null;
   const when = (iso: string) => formatInstant(iso, locale, { weekday: "short", day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }, d?.timeZone);
 
   return (
-    <Screen title={t("gigs.providerTitle")} description={d ? t(d.kind === "EXPERT" ? "gigs.providerIntroEXPERT" : "gigs.providerIntroTEACHER") : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
+    <Screen title={t("gigs.providerTitle")} description={d ? t(d.kind === "EXPERT" ? "gigs.providerIntroEXPERT" : "seats.providerIntroTEACHER") : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {error ? <Failed message={error} /> : null}
       {done ? (
         <Note tone="ok">
@@ -130,10 +134,10 @@ export function ProviderSessions() {
               <>
                 <Field label={t("gigs.slotMinutes")} value={minutes} onChangeText={setMinutes} keyboardType="number-pad" />
                 <Field label={t("gigs.slotSeats")} value={seats} onChangeText={setSeats} keyboardType="number-pad" />
-                {gate ? <Field label={t("gigs.priceLabel")} hint={t("gigs.priceHint", { min: money(gate.seatPriceMinPaise, locale), max: money(gate.seatPriceMaxPaise, locale), percent: gate.commissionPercent })} value={price} onChangeText={setPrice} keyboardType="decimal-pad" editable={gate.canCharge} /> : null}
               </>
             ) : null}
-            <Field label={t("gigs.slotLink")} hint={t("gigs.slotLinkHint")} value={link} onChangeText={setLink} autoCapitalize="none" keyboardType="url" maxLength={500} />
+            {priceGate ? <Field label={t("gigs.priceLabel")} hint={t("gigs.priceHint", { min: money(priceGate.seatPriceMinPaise, locale), max: money(priceGate.seatPriceMaxPaise, locale), percent: priceGate.commissionPercent })} value={price} onChangeText={setPrice} keyboardType="decimal-pad" editable={priceGate.canCharge} /> : null}
+            <Field label={t("gigs.slotLink")} hint={t("seats.linkHint")} value={link} onChangeText={setLink} autoCapitalize="none" keyboardType="url" maxLength={500} />
             <Button label={t("gigs.offer")} busy={running("/api/v1/gigs/slots")} onPress={offer} />
             {gate ? (
               <View style={{ gap: th.space[1], padding: th.space[3], borderRadius: th.radius.md, backgroundColor: th.surfaceMuted }}>
@@ -141,7 +145,7 @@ export function ProviderSessions() {
                   {t("gigs.gateTitle")}
                 </Text>
                 <Text variant="xs" tone="muted">
-                  {t("gigs.gateIntro")}
+                  {t("seats.gateIntro")}
                 </Text>
                 <PaidGateList gate={gate} />
               </View>

@@ -548,7 +548,7 @@ describe("alumni mentors", () => {
   it("offer one-to-ones that are never priced, booked free by a student", async () => {
     await as("ALUMNUS");
     const at = new Date(Date.now() + 3 * 86_400_000).toISOString();
-    const res = await mentorSlotPost(json("/x", { title: "ZZ Mock interview", startsAt: at, minutes: 30, meetingUrl: "https://meet.zz.test/x" }));
+    const res = await mentorSlotPost(json("/x", { title: "ZZ Mock interview", startsAt: at, minutes: 30, meetingUrl: "https://meet.jit.si/zz-x" }));
     expect(res.status).toBe(200);
     const slot = await db.gigSlot.findFirstOrThrow({ where: { providerUserId: ids.alumnusUser }, select: { id: true, pricePaise: true, kind: true, providerKind: true, teacherSchoolId: true } });
     expect(slot).toMatchObject({ pricePaise: 0, kind: "ONE_TO_ONE", providerKind: "ALUMNUS", teacherSchoolId: ids.host });

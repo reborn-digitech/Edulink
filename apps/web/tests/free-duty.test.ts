@@ -93,12 +93,9 @@ describe("free duty (decision 0004)", () => {
     expect((await freeDutyRemaining(id.seasoned!, JAN_15))).toMatchObject({ workshops: 1, period: { quarter: "2027-Q1" } });
   });
 
-  it("a one-to-one is never priced; a workshop price is refused while free one-to-ones are owed, with how many, and stored once the duty is given (decision 0004 as amended)", async () => {
-    const slot = (over: Record<string, unknown>) => ({ kind: "ONE_TO_ONE" as const, title: `ZZ priced ${STAMP}`, startsAt: new Date(OCT_15.getTime() + 48 * 3_600_000).toISOString(), meetingUrl: "https://meet.example.test/zz-priced", ...over });
-    // Mentoring is the condition of charging, not the thing charged for: no one-to-one carries a price, whoever offers it.
-    expect(await offerSlot(ctx("starter", "EXPERT", null), slot({ pricePaise: 50_000 }), OCT_15)).toEqual({ ok: false, errorKey: "gigs.refuseOneToOnePriced" });
-    expect(await offerSlot(ctx("seasoned", "EXPERT", null), slot({ pricePaise: 50_000 }), OCT_15)).toEqual({ ok: false, errorKey: "gigs.refuseOneToOnePriced" });
-    expect(await offerSlot(ctx("teacher", "TEACHER", schoolId), slot({ pricePaise: 50_000 }), OCT_15)).toEqual({ ok: false, errorKey: "gigs.refuseOneToOnePriced" });
+  it("a price — on a workshop seat or, since decision 0006, a one-to-one — is refused while free one-to-ones are owed, with how many, and stored once the duty is given (decision 0004 as amended)", async () => {
+    const slot = (over: Record<string, unknown>) => ({ kind: "ONE_TO_ONE" as const, title: `ZZ priced ${STAMP}`, startsAt: new Date(OCT_15.getTime() + 48 * 3_600_000).toISOString(), meetingUrl: "https://meet.jit.si/zz-priced", ...over });
+    // Mentoring is still the condition of charging (seats, 17 Oct 2026): a one-to-one may now be priced, behind the same gate.
     // The gate's other three conditions met, so that the free duty is the one read here.
     const switched = await db.gigSettings.findUniqueOrThrow({ where: { id: "gigs" }, select: { paymentsEnabled: true } });
     await db.gigSettings.update({ where: { id: "gigs" }, data: { paymentsEnabled: true } });
@@ -114,12 +111,16 @@ describe("free duty (decision 0004)", () => {
       const workshop = (over: Record<string, unknown>) => slot({ kind: "WORKSHOP", title: `ZZ priced workshop ${STAMP}`, startsAt: new Date(OCT_15.getTime() + 72 * 3_600_000).toISOString(), ...over });
       expect(await offerSlot(ctx("starter", "EXPERT", null), workshop({ pricePaise: 10_000 }), OCT_15)).toEqual({ ok: false, errorKey: "gigs.freeDutyFirst", vars: { count: 7 } });
       expect(await offerSlot(ctx("seasoned", "EXPERT", null), workshop({ pricePaise: 10_000 }), OCT_15)).toEqual({ ok: false, errorKey: "gigs.freeDutyFirst", vars: { count: 1 } });
+      const pricedOne = (over: Record<string, unknown>) => slot({ title: `ZZ priced one-to-one ${STAMP}`, startsAt: new Date(OCT_15.getTime() + 120 * 3_600_000).toISOString(), ...over });
+      expect(await offerSlot(ctx("starter", "EXPERT", null), pricedOne({ pricePaise: 10_000 }), OCT_15)).toEqual({ ok: false, errorKey: "gigs.freeDutyFirst", vars: { count: 7 } });
       // October's second one-to-one given: the month's duty is done, and a price within the band is stored.
       await held("seasoned", "ONE_TO_ONE", new Date("2026-10-09T06:00:00Z"), ["p3"]);
       expect((await freeDutyRemaining(id.seasoned!, OCT_15)).oneToOnes).toBe(0);
       const priced = await offerSlot(ctx("seasoned", "EXPERT", null), workshop({ pricePaise: 10_000 }), OCT_15);
       expect(priced.ok).toBe(true);
       expect((await db.gigSlot.findUniqueOrThrow({ where: { id: priced.ok ? priced.slotId : "" } })).pricePaise).toBe(10_000);
+      const pricedOneToOne = await offerSlot(ctx("seasoned", "EXPERT", null), pricedOne({ pricePaise: 10_000 }), OCT_15);
+      expect(pricedOneToOne.ok).toBe(true);
       // A free time is still offered, and the row's price stays zero.
       const free = await offerSlot(ctx("seasoned", "EXPERT", null), slot({ pricePaise: 0, startsAt: new Date(OCT_15.getTime() + 96 * 3_600_000).toISOString() }), OCT_15);
       expect(free.ok).toBe(true);
