@@ -2,7 +2,7 @@ Roles: ADMIN
 
 # The office's guide (school)
 
-This guide is for the school office: the people who sign in with the Admin role. You start at `/admin`, the "Overview". The menu's first five entries ("Overview", "People", "Classes", "Timetable", "Exams") are the ones you open most; the rest sit under "More" in three groups: "Day to day" (your messages and the assistant), "School life" (the feed, the student council, experts, vacancies, enquiries, mentoring, sessions, competitions, past years) and "Running things" (everything else the office runs). A page that belongs to a module is in the menu only while the school has that module switched on at `/admin/settings/modules`. The command palette offers the same pages and a few quick actions: "Invite a teacher", "Admit pupils from a list", "Create a class", "Build the timetable", "Schedule an exam", "Review leave requests" and "School branding". The floating "Invite people" button is on "People" and "Classes". This guide follows a school year: setting up, every day, every term, records and papers, the year's end, the modules, and the pages shared with everyone.
+This guide is for the school office: the people who sign in with the Admin role. You start at `/admin`, the "Overview". The menu's first five entries ("Overview", "People", "Classes", "Timetable", "Exams") are the ones you open most; the rest sit under "More" in three groups: "Day to day" (your messages), "School life" (the feed, the student council, experts, vacancies, enquiries, mentoring, sessions, competitions, past years) and "Running things" (everything else the office runs). A page that belongs to a module is in the menu only while the school has that module switched on at `/admin/settings/modules`. The command palette offers the same pages and a few quick actions: "Invite a teacher", "Admit pupils from a list", "Create a class", "Build the timetable", "Schedule an exam", "Review leave requests" and "School branding". The floating "Invite people" button is on "People" and "Classes". This guide follows a school year: setting up, every day, every term, records and papers, the year's end, the modules, and the pages shared with everyone.
 
 ## How do I finish setting up the school?
 
@@ -10,7 +10,7 @@ The "Overview" at `/admin` carries a "Finish setting up" card with the checklist
 
 1. Open `/admin`. The header shows the "School code" with "Copy code"; people can join with it.
 2. Work through the checklist's links: "Set up the year", "Create a class first", "Invite your first teacher".
-3. Read the other cards every morning: "Attendance marked" ("{done} of {total} today"), "Exams & report cards", "Lessons without a teacher" (with "Post a vacancy" and "Open the timetable"), "Overnight housekeeping" and the "Assistant" card.
+3. Read the other cards every morning: "Attendance marked" ("{done} of {total} today"), "Exams & report cards", "Lessons without a teacher" (with "Post a vacancy" and "Open the timetable"), "Overnight housekeeping" and the "Vidura" card.
 
 The welcome message is dismissed with "Dismiss welcome message". When a term or the year has run its course the overview offers "Finish {name}" and "Update the calendar".
 
@@ -464,15 +464,31 @@ Only when the school has the Alumni module on. "Alumni" at `/admin/alumni` lists
 
 A pupil recorded as left keeps a link to the school as an alumnus. At a college the page also records gifts and meets; see the college guide.
 
-## How do I switch the assistant on and read its usage?
+## Who switches Vidura on, and how do I read its usage?
 
-The "Assistant" card on `/admin` shows this month's use against the school's budget. Counts only: no question and no answer is shown.
+Shalaghar's operator switches Vidura on for a school, under the student and teacher plans; the office does not, and the card says so: "Vidura is not switched here: the platform's operator switches it on for a school, under the student and teacher plans." While Vidura is on for the school, the "Vidura" card on `/admin` shows this month's use against the school's budget ("{used} of {budget} used this month ({percent}%)", with a bar) and the counts "Questions", "Answered with the fixed sentence", "Sent on the counsellor route", "People who asked", "Marked helpful" and "Marked not helpful". Counts only: no question and no answer is shown. While the operator has Vidura off for the whole platform, the card says "Vidura is switched off for the whole platform just now."
 
-1. Tick or untick "Let people at this school use the assistant". Off, the panel and the phone's tab say it is switched off and nothing is sent to the model.
-2. Fill the "Helpline sentence" shown to a pupil whose question is about hurting themselves; left blank, the national helpline is named.
-3. Press "Save".
+1. Fill the "Helpline sentence" shown to a pupil whose question is about hurting themselves; left blank, the national helpline is named.
+2. Press "Save"; the toast reads "Vidura's settings are saved."
 
-The office's own assistant at `/assistant` answers questions about using the platform, naming the page and the steps; the tutor for school subjects is for pupils and teachers only. A conversation is deleted thirty days after it was last used. When a pupil's question suggests they may be struggling, the school's counsellor (a staff record whose designation names a counsellor), else the head, else the office is told who, never their words. The office's assistant also answers counts from the pages the office already sees (pupils enrolled, certificate requests waiting, fees overdue, applications in), from the platform's own figures, with class names and never a list of children, and under "Sources" it links the circular or the message thread it read.
+When a pupil's question suggests they may be struggling, the school's counsellor (a staff record whose designation names a counsellor), else the head, else the office is told who, never their words.
+
+## How do I ask Vidura, and what will it answer?
+
+Vidura is Shalaghar's assistant. Its one way in is the round button at the bottom right of every page, labelled "Ask Vidura" for screen readers; on a phone-width screen it sits above the bottom bar, and above the page's own round quick-action button where one is shown. The button is there only while Shalaghar's operator has Vidura switched on for the platform and for your school; the office does not switch it. There is no menu entry for Vidura, and opening `/assistant` takes you back to the page you came from with its drawer open.
+
+Pressing the button opens Vidura's drawer. On a computer it docks at the right of the window and the page stays usable beside it, so you can follow the steps while you read them, and it stays open as you move between pages. On a phone it opens as a sheet from the bottom of the screen, and following a link from inside it closes it. Escape closes it, and so does "Close Vidura" (the cross).
+
+For the office it answers questions about using the platform, naming the page and the steps; topic questions from the books are for pupils, teachers, faculty and heads of department. It is not a general chatbot: anything else gets one sentence saying what it is for. Vidura knows the page it opened beside: "How do I use this page?" or "how do I do this here?" is answered from that page's own help and your own figures shown there. Under "My records", or when Vidura picks it, it answers counts from the pages the office already sees (pupils enrolled, certificate requests waiting, fees overdue, applications in), from the platform's own figures, with class names and never a list of children, and under "Sources" it links the circular or the message thread it read.
+
+1. Type in "Your question" and press "Ask". Do not type names, phone numbers or anyone's details. An empty conversation shows "What Vidura is for" and, under "Try asking", three questions for your role and the page you are on (on a page other than your home the first is "How do I use this page?"); pressing one asks it.
+2. To send one question a particular way, choose under "Mode for your next question": "Vidura picks" (the default), "Using Shalaghar" (how the platform works, which page and which steps) or "My records" (your own figures, counts and links, read from the pages you already see). The pick sends only your next question that way, then Vidura picks again, and no pick gets past a refusal. Each answer wears a small label naming the mode it was answered in.
+3. Answer "Was this helpful?" with "Yes" or "No".
+4. "New conversation" starts afresh. "Your conversations" lists the conversations of the last thirty days inside the drawer: press one to re-read it and ask more in it, "Delete this conversation" removes one sooner, and "Back to the conversation" returns.
+
+Answers are set out with headings, numbered steps, bold for what matters, and a small table when your own figures have several rows. A definition is short (about sixty words) and a how-to gives numbered steps (up to about 250 words). If an answer stops at its length limit it says "The answer stopped at its length limit." and "Go on" continues it; "Go on" counts as one of your questions for the day, and an answer can be continued at most twice. Each person has twenty questions a day, a conversation remembers what was said in it only, and each conversation is deleted thirty days after it was last used.
+
+When Vidura cannot answer (its one sentence saying what it is for, a refusal, or an answer saying it is not sure), the answer shows "Vidura could not answer this; a person at your school can." and one button: "Ask the principal", which opens a message conversation with them. Nothing of your question is copied into the message; you write your own.
 
 ## How do I deal with reports and the audit log?
 

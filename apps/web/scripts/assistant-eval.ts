@@ -8,6 +8,7 @@
  *   npm run assistant:eval -- --limit=20 --only=tu-0    a few cases (ids starting so)
  *   npm run assistant:eval -- --pilot                   the refusal gate, then the pilot through the doors
  *   npm run assistant:eval -- --metrics [--only=st-]   the data questions' set through the live doors (metrics.json)
+ *   … --metrics --tenants=saraswati-college,…          only those demo tenants' cases
  *   … --out=<dir>                                       where results go (default storage/assistant-eval/<stamp>, out of git)
  *
  * The sets live in content/assistant-eval/*.json (what each scores is written in its `about`); the
@@ -787,7 +788,10 @@ async function runMetrics(): Promise<void> {
   const health = await fetch(`${BASE}/api/health`).then((r) => r.json() as Promise<{ ok: boolean }>).catch(() => ({ ok: false }));
   if (!health.ok) throw new Error(`the dev server at ${BASE} is not healthy; the metrics set needs it`);
   const set = loadSet<{ cases: MetricCase[] }>("metrics");
-  const cases = pick(set.cases);
+  // `--tenants=a,b` (Vidura pass 1): only the cases of those demo tenants, for a run that must leave another tenant's
+  // switches as they are; the summary then says which tenants it covers.
+  const tenants = arg("tenants")?.split(",").map((x) => x.trim()).filter(Boolean) ?? null;
+  const cases = pick(set.cases).filter((c) => !tenants || tenants.includes(c.tenant));
   const slugs = [...new Set(cases.map((c) => c.tenant))];
   const schools = await admin.school.findMany({ where: { slug: { in: slugs } }, select: { id: true, slug: true } });
   const schoolIds = schools.map((s) => s.id);

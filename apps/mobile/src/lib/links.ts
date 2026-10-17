@@ -249,3 +249,28 @@ export function webPathUrl(path: string, base: string): string | null {
     return null;
   }
 }
+
+/**
+ * The web page a phone screen stands for (Vidura pass 1, 17 Oct 2026: page awareness), read back from the table above:
+ * the screen's own path ("/fees") is matched against FLAT's screens, and the first web page that opens it is the one
+ * Vidura is told the person is beside; the home tab is the role's home. Null for a screen with no web page here, which
+ * Vidura then reads as no page at all (the server keeps only the role's own pages). Pure.
+ */
+/** Each role's home page on the web (the web's ROLE_HOME, src/lib/constants.ts), which the phone's home tab stands for. */
+export const WEB_HOME: Record<string, string> = {
+  ADMIN: "/admin", PRINCIPAL: "/principal", TEACHER: "/teacher", STUDENT: "/student", PARENT: "/parent", EXPERT: "/expert",
+  DRIVER: "/driver", LIBRARIAN: "/library", WARDEN: "/hostel", ALUMNUS: "/alumni", FACULTY: "/faculty", HOD: "/hod",
+  EXAM_CONTROLLER: "/exam-cell", IQAC: "/iqac", TPO: "/placement", ACCOUNTS: "/accounts", RECRUITER: "/recruiter",
+};
+
+export function webPageFor(pathname: string | null | undefined, home: string): string | null {
+  if (!pathname) return null;
+  const p = pathname.replace(/^\/\(app\)/, "").replace(/\/$/, "") || "/";
+  if (p === "/" || p === "/index") return home;
+  const screen = `/(app)${p}`;
+  const pages = Object.entries(FLAT)
+    .filter(([, s]) => s === screen)
+    .map(([page]) => page);
+  const homeSegment = home.split("/")[1] ?? "";
+  return pages.find((page) => page.split("/")[1] === homeSegment) ?? pages[0] ?? null;
+}

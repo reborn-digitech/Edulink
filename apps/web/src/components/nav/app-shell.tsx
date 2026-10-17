@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ChatsCircleIcon, CommandIcon, DotsThreeOutlineIcon, MagnifyingGlassIcon, SignOutIcon } from "@phosphor-icons/react";
 import { OutboxBadge } from "./outbox-badge";
 import { ASSISTANT_HREF, NAV, NAV_GROUP_KEY, PRIMARY_ACTION, isActive, type NavGroup, type NavItem } from "@/lib/nav";
 import { NavIcon } from "./icons";
 import { CommandPalette } from "./command-palette";
-import { AssistantPanel } from "@/components/assistant/panel";
+import { ViduraDrawer, useDesk } from "@/components/assistant/drawer";
+import { DRAWER_PARAM } from "@/components/assistant/model";
 import { TypingSwitch } from "@/components/typing-switch";
 import { Avatar } from "@/components/ui/avatar";
 import { Logo } from "@/components/brand";
@@ -52,10 +53,18 @@ export function AppShell({
   unreadCount = 0,
   hiddenHrefs = [],
   badges = {},
+  vidura = null,
 }: {
   user: ShellUser;
   children: React.ReactNode;
   unreadCount?: number;
+  /**
+   * VIDURA'S ROUND BUTTON (docs/plans/vidura.md; pass 1, 17 Oct 2026): "open" where this person may use it
+   * (platform-features.ts `mayUse`: the operator's switch, the school's module, the plan where the role needs one),
+   * "plan" where the switch and the module are on but the person lacks the plan (the button then opens the plan card),
+   * null where it is not theirs at all (no button). Decided by signed-in-shell.tsx.
+   */
+  vidura?: "open" | "plan" | null;
   /** Counts worn by nav entries, keyed by href — unread messages on /remarks. */
   badges?: Record<string, number>;
   /** Nav entries that exist for the role but not for this person right now —
@@ -67,14 +76,41 @@ export function AppShell({
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
   /**
-   * The assistant's panel (Phase C, 10 Oct 2026): opened from the rail and the phone's top bar on every page, the
-   * role homes included, while the role's menu carries the assistant's entry (the module on: signed-in-shell hides
-   * the entry, and so the launcher, when the school has ASSISTANT off). Not on the assistant's own page.
+   * VIDURA (pass 1, 17 Oct 2026): ONE ENTRY POINT, the round button at the bottom right of every page (the rail's
+   * button, the phone-width top bar's launcher, the menu entry and the /assistant page are gone). It opens the drawer:
+   * docked beside the page on a desk, which stays open as the person moves through the pages, and a bottom sheet on a
+   * phone, which a link followed from inside it closes. The drawer is told the page it is beside (page awareness).
+   * `?vidura=open` (or `?vidura=<conversationId>`) in the address opens it: where the old /assistant pages now send.
    */
-  // Open on the page it was opened on: a link followed from inside it (a help citation, a guardian's way to the
-  // opt-out) lands on a page with the panel shut.
-  const [assistantOpenOn, setAssistantOpenOn] = useState<string | null>(null);
-  const closeAssistant = useCallback(() => setAssistantOpenOn(null), []);
+  const desk = useDesk();
+  const viduraButton = useRef<HTMLButtonElement>(null);
+  const [viduraOpen, setViduraOpen] = useState(false);
+  const [viduraConversation, setViduraConversation] = useState<string | null>(null);
+  const closeVidura = useCallback(() => {
+    setViduraOpen(false);
+    setViduraConversation(null);
+  }, []);
+  const [viduraPath, setViduraPath] = useState(pathname);
+  if (viduraPath !== pathname) {
+    setViduraPath(pathname);
+    // A phone's sheet covers the page: a link followed from inside it lands on a page with the sheet shut.
+    if (viduraOpen && !desk) closeVidura();
+  }
+  useEffect(() => {
+    if (vidura !== "open") return;
+    const params = new URLSearchParams(window.location.search);
+    const asked = params.get(DRAWER_PARAM);
+    if (!asked) return;
+    params.delete(DRAWER_PARAM);
+    const rest = params.toString();
+    window.history.replaceState(window.history.state, "", `${window.location.pathname}${rest ? `?${rest}` : ""}${window.location.hash}`);
+    // Opened from the address once the page is drawn (a timer, not the effect's body: the address is outside React).
+    const timer = window.setTimeout(() => {
+      setViduraConversation(asked === "open" ? null : asked);
+      setViduraOpen(true);
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, [pathname, vidura]);
   const items = NAV[user.role].filter((item) => !hiddenHrefs.includes(item.href));
   const primaryItems = items.filter((i) => i.primary).slice(0, 5);
   /* The rest, as three short lists. FIVE PRIMARIES carry the day; the rail
@@ -89,7 +125,8 @@ export function AppShell({
   const primary = PRIMARY_ACTION[user.role];
   // …and not while its page is hidden (an expert's "Offer time" while expert sessions are off, 15 Oct 2026).
   const action = primary && !hiddenHrefs.includes(primary.href) && primary.on?.includes(pathname) && primary.href !== pathname ? primary : null;
-  const assistant = items.some((item) => item.href === ASSISTANT_HREF) && !pathname.startsWith(ASSISTANT_HREF);
+  // Not on the old /assistant page itself, where a person without the plan reads the plan card.
+  const viduraShown = (vidura === "open" || vidura === "plan") && !pathname.startsWith(ASSISTANT_HREF);
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -188,18 +225,6 @@ export function AppShell({
               </span>
             )}
           </Link>
-          {assistant && (
-            <button
-              type="button"
-              onClick={() => setAssistantOpenOn(pathname)}
-              aria-haspopup="dialog"
-              data-testid="assistant-launcher-rail"
-              className="mb-2 flex min-h-11 w-full items-center gap-2 rounded-[var(--radius-md)] border border-border px-3 py-2.5 text-sm font-medium text-fg-muted transition-colors hover:bg-surface-muted hover:text-fg"
-            >
-              <ChatsCircleIcon className="size-5" aria-hidden="true" />
-              <span className="flex-1 text-left">{t("assistantUi.open")}</span>
-            </button>
-          )}
           <button
             type="button"
             onClick={() => setPaletteOpen(true)}
@@ -249,18 +274,6 @@ export function AppShell({
               <DotsThreeOutlineIcon className="size-5" aria-hidden="true" />
             </button>
           )}
-          {assistant && (
-            <button
-              type="button"
-              onClick={() => setAssistantOpenOn(pathname)}
-              aria-label={t("assistantUi.open")}
-              aria-haspopup="dialog"
-              data-testid="assistant-launcher"
-              className="tap grid place-items-center rounded-full text-fg-muted hover:bg-surface-muted"
-            >
-              <ChatsCircleIcon className="size-5" aria-hidden="true" />
-            </button>
-          )}
           <button
             type="button"
             onClick={() => setPaletteOpen(true)}
@@ -293,11 +306,17 @@ export function AppShell({
       </header>
 
       {/* ---------- content ---------- */}
-      <div data-wash className="lg:pl-64 print:pl-0">
+      {/* The docked drawer takes the right of a desk's window: the page makes room for it and stays usable beside it. */}
+      <div data-wash className={cn("lg:pl-64 print:pl-0", viduraOpen && "lg:pr-[26rem]")}>
         <main
           id="main"
-          // Room under the last row for the bottom bar, and for the floating button where one is drawn (its bottom edge is 8.75 rem up).
-          className={cn("mx-auto max-w-5xl px-4 pt-4 sm:px-6 lg:pb-12 lg:pt-8 print:p-0", action ? "pb-44" : "pb-24")}
+          // Room under the last row for the bottom bar, and for the floating buttons where they are drawn: the action's
+          // top edge is 8.75 rem up, Vidura's 8.75 rem alone or 12.75 rem above the action; on a desk Vidura's is 5 rem.
+          className={cn(
+            "mx-auto max-w-5xl px-4 pt-4 sm:px-6 lg:pt-8 print:p-0",
+            viduraShown ? (action ? "pb-56" : "pb-40") : action ? "pb-44" : "pb-24",
+            viduraShown ? "lg:pb-24" : "lg:pb-12",
+          )}
         >
           {children}
         </main>
@@ -405,7 +424,37 @@ export function AppShell({
         </div>
       )}
 
-      {assistant && <AssistantPanel open={assistantOpenOn === pathname} onClose={closeAssistant} role={user.role} />}
+      {/* ---------- Vidura: the round button and its drawer ---------- */}
+      {viduraShown && vidura === "plan" ? (
+        // The plan is missing: the button opens the plan card (the old page's layout draws it), from this page.
+        <Link
+          href={`${ASSISTANT_HREF}?from=${encodeURIComponent(pathname)}`}
+          aria-label={t("viduraUi.planButton")}
+          data-testid="vidura-button"
+          data-access="plan"
+          className={viduraButtonClass(!!action)}
+        >
+          <ChatsCircleIcon weight="fill" className="size-7" aria-hidden="true" />
+        </Link>
+      ) : null}
+      {viduraShown && vidura === "open" ? (
+        <>
+          <button
+            ref={viduraButton}
+            type="button"
+            onClick={() => (viduraOpen ? closeVidura() : setViduraOpen(true))}
+            aria-label={t("assistantUi.open")}
+            aria-haspopup="dialog"
+            aria-expanded={viduraOpen}
+            data-testid="vidura-button"
+            data-access="open"
+            className={viduraButtonClass(!!action)}
+          >
+            <ChatsCircleIcon weight="fill" className="size-7" aria-hidden="true" />
+          </button>
+          <ViduraDrawer open={viduraOpen} onClose={closeVidura} role={user.role} page={pathname} initialConversationId={viduraConversation} />
+        </>
+      ) : null}
 
       <CommandPalette
         open={paletteOpen}
@@ -416,6 +465,16 @@ export function AppShell({
         hiddenHrefs={hiddenHrefs}
       />
     </div>
+  );
+}
+
+/** The round button: bottom right, above the bottom bar and the action's button on a phone, in the corner on a desk. */
+function viduraButtonClass(withAction: boolean): string {
+  return cn(
+    "fixed right-4 z-40 grid size-14 place-items-center rounded-full border border-border bg-surface text-accent-strong shadow-lg",
+    "transition-transform duration-[var(--dur-fast)] hover:brightness-105 active:scale-95 print:hidden",
+    withAction ? "bottom-[calc(env(safe-area-inset-bottom,0px)+9.25rem)]" : "bottom-[calc(env(safe-area-inset-bottom,0px)+5.25rem)]",
+    "lg:bottom-6 lg:right-6",
   );
 }
 

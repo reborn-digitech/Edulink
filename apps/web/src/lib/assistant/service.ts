@@ -1,12 +1,15 @@
 import "server-only";
 import type {
   AssistantAnswer,
+  AssistantAskPerson,
+  AssistantChip,
   AssistantCitation,
   AssistantConversation,
   AssistantConversationDetail,
   AssistantLanguage,
   AssistantMessage,
   AssistantStatus,
+  AssistantSuggestions,
   AssistantUnavailable,
   AssistantUsage,
   AssistantVerdict,
@@ -19,12 +22,12 @@ import { channel, publish, type RealtimeEvent } from "../realtime";
 import { readRetentionConfig } from "../env";
 import { readAssistantConfig } from "../assistant-env";
 import { chatComplete, embedTexts, type ChatMessage, type ChatOptions, type ChatResult } from "../assistant-model";
-import { searchCurriculum, searchHelp, type CurriculumHit, type CurriculumQuery, type HelpHit, type HelpQuery } from "../assistant-retrieval";
+import { helpForPage, searchCurriculum, searchHelp, type CurriculumHit, type CurriculumQuery, type HelpHit, type HelpQuery } from "../assistant-retrieval";
 import { translator, type TranslationKey } from "../i18n/dictionary";
 import { normaliseLocale } from "../i18n/locales";
 import { isModuleOn } from "../modules";
 import { AccessError, assertAssignmentAccess, assertGuardianAccess } from "../tenancy";
-import { isCollegeKind } from "@edulink/contracts";
+import { isCollegeKind, restrictAnswerMarkdown } from "@edulink/contracts";
 import { ROLES, type Role } from "../constants";
 import type { ActiveContext } from "../session";
 import {
@@ -34,6 +37,9 @@ import {
   CURRICULUM_PASSAGES,
   DOOR_SCOPE_THRESHOLD,
   EMBED_TIMEOUT_MS,
+  GO_ON_MAX,
+  PAGE_DOOR_SIMILARITY,
+  answerTokenCap,
   GRADE_WIDEN_FLOOR,
   HELP_PASSAGES,
   MAX_ANSWER_TOKENS,
@@ -47,16 +53,20 @@ import { corpusBoardFor, gradeBandOf, policyFor } from "./policy";
 import { citedNumbers, gateAnswer, gateQuestion, tableVerdict } from "./gate";
 import { stripIdentifiers, restoreSelf, type NameEntry } from "./strip";
 import { withoutInjectedLines } from "./refusals";
-import { NCERT_NOTE, helpMessages, questionShape, tutorMessages, asksExamScope } from "./prompt";
+import { NCERT_NOTE, answerKindFor, onPageNote, helpMessages, questionShape, tutorMessages, asksExamScope } from "./prompt";
 import { detectLanguage } from "./language";
 import { nameLexicon } from "./lexicon";
 import { foreignPaths, pageIsRoles, ownPathsWithoutHost } from "./pages";
+// Vidura pass 1 (17 Oct 2026): the modes, page awareness, "go on" and "Ask a person".
+import { asksAboutThisPage, asksToGoOn, chipOf, helpChip, jobOf, modesFor, offersAskPerson, preferFor } from "./vidura";
+import { askPersonFor } from "./ask-person";
+import { suggestionsFor } from "./suggestions";
 import { asksAboutExams, type ToolRun } from "./tools";
 import { COLLEGE_EXAMS_DOOR, EXAMS_SUMMARY_NAME, FAMILY_EXAMS_DOOR, examSummary } from "./exams";
 // The data questions (11 Oct 2026): the person's own doors, routed over the catalog and summed up by code.
 import { chooseDoors, followUpCache, isFollowUp, runDoors as runDoorsReal, searchDoors, type DataRun, type RunInput } from "./router";
 import { doorTitle, hintsOf, type DataContext, type DoorPath } from "./doors";
-import { dataContextFor, pageForDoor } from "./data";
+import { dataContextFor, doorsShownOn, pageForDoor } from "./data";
 import { asksAnotherPersonsRecord, ownChildrenAsWords } from "./data-privacy";
 import { linkCitations } from "./links";
 import { pupilAssessmentItems } from "./assessment";
@@ -93,6 +103,8 @@ export type AssistantDeps = {
   runDoors: (input: RunInput) => Promise<DataRun[]>;
   publish: (userId: string, event: RealtimeEvent) => void;
   now: () => Date;
+  /** The help index's cards for one page (Vidura pass 1, page awareness); absent, a question is read as asked from nowhere. */
+  pageCards?: (q: { page: string; language: AssistantLanguage; role: Role }) => Promise<HelpHit[]>;
 };
 
 /** The model is not configured or not reachable: the answer is MODEL_UNAVAILABLE and nothing is charged. */
@@ -113,6 +125,7 @@ export function realDeps(): AssistantDeps {
     runDoors: runDoorsReal,
     publish: (userId, event) => publish([channel.user(userId)], event),
     now: () => new Date(),
+    pageCards: (q) => helpForPage({ ...q, kinds: ["nav"], limit: 2 }, { db }),
   };
 }
 
@@ -203,7 +216,7 @@ export async function assistantStatus(ctx: ActiveContext, now = new Date()): Pro
   const role = isRole(ctx.role) ? ctx.role : null;
   const policy = policyFor(role);
   const language = localeOf(ctx);
-  const base = { help: policy.help, tutor: policy.tutor, language, dailyCap: dailyQuestionCap(), retentionDays: retentionDays(), optOutPath: role === "PARENT" ? "/parent/settings" : null };
+  const base = { help: policy.help, tutor: policy.tutor, language, dailyCap: dailyQuestionCap(), retentionDays: retentionDays(), optOutPath: role === "PARENT" ? "/parent/settings" : null, modes: modesFor(policy) };
   let asker: Asker;
   try {
     asker = await askerFor(ctx);
@@ -213,6 +226,17 @@ export async function assistantStatus(ctx: ActiveContext, now = new Date()): Pro
   }
   const { reason, usedToday } = await unavailableReason(asker, now, { countToday: true });
   return { ...base, available: reason === null, reason, usedToday };
+}
+
+/**
+ * GET /api/v1/assistant/suggestions (Vidura pass 1): three questions for an empty drawer, per role and page, in the
+ * person's language, from the help index (suggestions.ts). A page that is not the person's is read as none.
+ */
+export async function assistantSuggestions(ctx: ActiveContext, page: string | null): Promise<AssistantSuggestions> {
+  const role = isRole(ctx.role) ? ctx.role : null;
+  if (!role || !policyFor(role).help) return { suggestions: [] };
+  const safe = page && /^\/(?!\/)[^\s?#]{0,199}$/.test(page) ? page : null;
+  return { suggestions: await suggestionsFor({ role, language: localeOf(ctx), page: safe }) };
 }
 
 function conversationView(row: { id: string; language: string; createdAt: Date; lastAt: Date; title: string | null; _count?: { messages: number } }, days: number): AssistantConversation {
@@ -276,30 +300,59 @@ async function ownConversation(ctx: ActiveContext, conversationId: string) {
   return row;
 }
 
-function messageView(m: { id: string; role: string; text: string; createdAt: Date; citationsJson: string; verdict: string | null; mode: string | null; hint: boolean; helpful: boolean | null }): AssistantMessage {
-  let citations: AssistantCitation[] = [];
+/**
+ * What an answer row keeps beside its citations (Vidura pass 1): the citations column holds the plain list, or — for
+ * an answer that stopped at its length cap — `{ citations, cut, depth, rootId }`: cut for "Go on", how many times the
+ * answer has been continued already (GO_ON_MAX at most), and the question it answers. No migration: the column is
+ * text, and a row from before reads as a list.
+ */
+type Stored = { citations: AssistantCitation[]; cut: boolean; depth: number; rootId: string | null };
+export function readStored(json: string): Stored {
   try {
-    citations = JSON.parse(m.citationsJson) as AssistantCitation[];
+    const parsed = JSON.parse(json) as unknown;
+    if (Array.isArray(parsed)) return { citations: parsed as AssistantCitation[], cut: false, depth: 0, rootId: null };
+    const o = (parsed ?? {}) as Partial<Stored>;
+    return { citations: Array.isArray(o.citations) ? o.citations : [], cut: o.cut === true, depth: typeof o.depth === "number" ? o.depth : 0, rootId: typeof o.rootId === "string" ? o.rootId : null };
   } catch {
-    citations = [];
+    return { citations: [], cut: false, depth: 0, rootId: null };
   }
+}
+function writeStored(citations: AssistantCitation[], extra: { cut: boolean; depth: number; rootId: string | null }): string {
+  return extra.cut || extra.depth > 0 ? JSON.stringify({ citations, ...extra }) : JSON.stringify(citations);
+}
+
+function messageView(m: { id: string; role: string; text: string; createdAt: Date; citationsJson: string; verdict: string | null; mode: string | null; hint: boolean; helpful: boolean | null }, askPerson: AssistantAskPerson | null = null): AssistantMessage {
+  const stored = readStored(m.citationsJson);
+  const verdict = (m.verdict as AssistantVerdict | null) ?? null;
+  const assistant = m.role !== "USER";
   return {
     id: m.id,
     role: m.role === "USER" ? "USER" : "ASSISTANT",
     text: m.text,
     createdAt: m.createdAt.toISOString(),
-    citations,
-    verdict: (m.verdict as AssistantVerdict | null) ?? null,
-    mode: m.mode === "HELP" || m.mode === "TUTOR" ? m.mode : null,
+    citations: stored.citations,
+    verdict,
+    mode: jobOf(m.mode),
     hint: m.hint,
     helpful: m.helpful,
+    chip: assistant ? chipOf(m.mode) : null,
+    cut: assistant && stored.cut,
+    askPerson: assistant && askPerson && offersAskPerson(verdict, m.text) ? askPerson : null,
   };
+}
+
+/** Who "Ask a person" reaches for this conversation's asker (ask-person.ts), read once per answer or conversation. */
+async function askPersonOf(conv: { role: string; userId: string; membershipId: string | null; schoolId: string }): Promise<AssistantAskPerson | null> {
+  if (!isRole(conv.role)) return null;
+  const school = await db.school.findUnique({ where: { id: conv.schoolId }, select: { kind: true } });
+  return askPersonFor({ role: conv.role, userId: conv.userId, membershipId: conv.membershipId, schoolId: conv.schoolId, college: isCollegeKind(school?.kind) }).catch(() => null);
 }
 
 export async function getConversation(ctx: ActiveContext, conversationId: string): Promise<AssistantConversationDetail> {
   const row = await ownConversation(ctx, conversationId);
   const messages = await db.assistantMessage.findMany({ where: { conversationId: row.id }, orderBy: { createdAt: "asc" } });
-  return { conversation: conversationView({ ...row, _count: { messages: messages.length } }, retentionDays()), messages: messages.map(messageView) };
+  const person = messages.some((m) => m.role === "ASSISTANT" && offersAskPerson((m.verdict as AssistantVerdict | null) ?? null, m.text)) ? await askPersonOf(row) : null;
+  return { conversation: conversationView({ ...row, _count: { messages: messages.length } }, retentionDays()), messages: messages.map((m) => messageView(m, person)) };
 }
 
 export async function deleteConversation(ctx: ActiveContext, conversationId: string): Promise<{ conversationId: string; deleted: true }> {
@@ -371,6 +424,10 @@ type Outcome = {
   verdict: AssistantVerdict;
   text: string;
   mode: "HELP" | "TUTOR" | null;
+  /** The chip (Vidura pass 1): what the answer was made from; null on a fixed sentence. */
+  chip: AssistantChip | null;
+  /** The answer stopped at its token cap. */
+  cut: boolean;
   hint: boolean;
   citations: AssistantCitation[];
   matchedAssignmentId: string | null;
@@ -383,7 +440,12 @@ type Outcome = {
  * The question, through both gates. Returns the saved question and answer; streams the stages and
  * the checked answer over the person's own channel as it goes.
  */
-export async function ask(ctx: ActiveContext, conversationId: string, input: { text: string; language?: AssistantLanguage }, deps: AssistantDeps = realDeps()): Promise<AssistantAnswer> {
+export async function ask(
+  ctx: ActiveContext,
+  conversationId: string,
+  input: { text: string; language?: AssistantLanguage; mode?: AssistantChip; page?: string; goOn?: boolean },
+  deps: AssistantDeps = realDeps(),
+): Promise<AssistantAnswer> {
   const now = deps.now();
   const conv = await ownConversation(ctx, conversationId);
   const asker: Asker = { userId: ctx.user.id, role: conv.role as Role, membershipId: conv.membershipId, schoolId: conv.schoolId, locale: localeOf(ctx) };
@@ -396,11 +458,18 @@ export async function ask(ctx: ActiveContext, conversationId: string, input: { t
   if (!reserved.ok) throw new AssistantUnavailableError("DAILY_CAP", { cap: dailyQuestionCap() });
 
   const original = input.text.trim();
-  const language: AssistantLanguage = input.language ?? detectLanguage(original) ?? ((["en", "hi", "mr"].includes(conv.language) ? conv.language : asker.locale) as AssistantLanguage);
   const lexicon = await nameLexicon({ userId: asker.userId, schoolId: asker.schoolId });
   const stripped = stripIdentifiers(original, lexicon);
   // The conversation's last two turns, for the second-ask rule (§9.4).
-  const previous = await db.assistantMessage.findMany({ where: { conversationId: conv.id }, orderBy: { createdAt: "desc" }, take: 2, select: { role: true, textForModel: true, text: true, hint: true, matchedAssignmentId: true } });
+  const previous = await db.assistantMessage.findMany({ where: { conversationId: conv.id }, orderBy: { createdAt: "desc" }, take: 2, select: { id: true, role: true, textForModel: true, text: true, hint: true, matchedAssignmentId: true, citationsJson: true, mode: true, verdict: true } });
+  // "GO ON" (Vidura pass 1): the last answer stopped at its cap and the person pressed "Go on", or typed it. The question
+  // answered again is the one the cut answer answers, with the parts written so far for the model to continue; a third
+  // continuation in a row is not offered (GO_ON_MAX), and anything else typed is a question of its own.
+  const last = previous[0]?.role === "ASSISTANT" ? previous[0] : null;
+  const lastStored = last ? readStored(last.citationsJson) : null;
+  const goOn = !!last && !!lastStored?.cut && lastStored.depth < GO_ON_MAX && (input.goOn === true || asksToGoOn(original)) ? await continuationOf(conv.id, last, lastStored) : null;
+  const askedText = goOn ? goOn.root.text : original;
+  const language: AssistantLanguage = input.language ?? detectLanguage(askedText) ?? ((["en", "hi", "mr"].includes(conv.language) ? conv.language : asker.locale) as AssistantLanguage);
   const question = await db.assistantMessage.create({ data: { conversationId: conv.id, schoolId: conv.schoolId, role: "USER", text: original, textForModel: stripped.text, createdAt: now } });
   const emit = (event: RealtimeEvent) => {
     try {
@@ -413,7 +482,22 @@ export async function ask(ctx: ActiveContext, conversationId: string, input: { t
 
   let outcome: Outcome;
   try {
-    outcome = await answerQuestion({ asker, policy, school, language, original, stripped: stripped.text, lexicon, previous, deps, emit, conversationId: conv.id });
+    outcome = await answerQuestion({
+      asker,
+      policy,
+      school,
+      language,
+      original: askedText,
+      stripped: goOn ? (goOn.root.textForModel ?? stripIdentifiers(goOn.root.text, lexicon).text) : stripped.text,
+      lexicon,
+      previous,
+      deps,
+      emit,
+      conversationId: conv.id,
+      prefer: goOn ? goOn.chip : (input.mode ?? null),
+      page: goOn ? null : (input.page ?? null),
+      continuation: goOn?.sofar ?? null,
+    });
   } catch (error) {
     if (!(error instanceof ModelUnavailable) && !isModelFailure(error)) {
       await releaseQuestion(day);
@@ -421,7 +505,7 @@ export async function ask(ctx: ActiveContext, conversationId: string, input: { t
     }
     // The endpoint is down or too slow: the sentence, and the question is given back to the person's day.
     await releaseQuestion(day);
-    outcome = { verdict: "MODEL_UNAVAILABLE", text: fixedSentence("MODEL_UNAVAILABLE", language, null), mode: null, hint: false, citations: [], matchedAssignmentId: null, promptTokens: 0, completionTokens: 0, modelCalls: 0 };
+    outcome = { verdict: "MODEL_UNAVAILABLE", text: fixedSentence("MODEL_UNAVAILABLE", language, null), mode: null, chip: null, cut: false, hint: false, citations: [], matchedAssignmentId: null, promptTokens: 0, completionTokens: 0, modelCalls: 0 };
   }
 
   // The counsellor route: a pupil's self-harm question tells a caring adult, once a school day.
@@ -438,9 +522,14 @@ export async function ask(ctx: ActiveContext, conversationId: string, input: { t
       schoolId: conv.schoolId,
       role: "ASSISTANT",
       text: outcome.text,
-      citationsJson: JSON.stringify(outcome.citations),
+      citationsJson: writeStored(outcome.citations, {
+        cut: outcome.cut && (goOn ? goOn.depth + 1 : 0) < GO_ON_MAX,
+        depth: goOn ? goOn.depth + 1 : 0,
+        rootId: goOn ? goOn.root.id : outcome.cut ? question.id : null,
+      }),
       verdict: outcome.verdict,
-      mode: outcome.mode,
+      // The chip since Vidura pass 1 (USING, RECORDS, LEARNING); a fixed sentence keeps none.
+      mode: outcome.chip,
       hint: outcome.hint,
       matchedAssignmentId: outcome.matchedAssignmentId,
       promptTokens: outcome.promptTokens,
@@ -464,7 +553,22 @@ export async function ask(ctx: ActiveContext, conversationId: string, input: { t
   });
   streamPieces(outcome.text).forEach((text, seq) => emit({ type: "assistant.delta", conversationId: conv.id, messageId: answer.id, seq, text }));
   emit({ type: "assistant.done", conversationId: conv.id, messageId: answer.id, verdict: outcome.verdict });
-  return { conversationId: conv.id, question: messageView(question), answer: messageView(answer) };
+  // "Ask a person" (Vidura pass 1): on a fixed sentence, or an answer saying it is not sure.
+  const person = offersAskPerson(outcome.verdict, outcome.text) ? await askPersonOf(conv) : null;
+  return { conversationId: conv.id, question: messageView(question), answer: messageView(answer, person) };
+}
+
+/**
+ * The cut answer a "go on" continues: the question it answers (the first part's question) and every part written so
+ * far, in order, for the model to continue; with the mode it was answered in and how many parts it has had.
+ */
+async function continuationOf(conversationId: string, last: { id: string; text: string; mode: string | null }, stored: Stored): Promise<{ root: { id: string; text: string; textForModel: string | null }; sofar: string; chip: AssistantChip | null; depth: number } | null> {
+  if (!stored.rootId) return null;
+  const root = await db.assistantMessage.findFirst({ where: { id: stored.rootId, conversationId, role: "USER" }, select: { id: true, text: true, textForModel: true, createdAt: true } });
+  if (!root) return null;
+  const parts = await db.assistantMessage.findMany({ where: { conversationId, role: "ASSISTANT", createdAt: { gt: root.createdAt } }, orderBy: { createdAt: "asc" }, select: { id: true, text: true }, take: GO_ON_MAX + 1 });
+  const sofar = parts.map((p) => p.text).join("\n");
+  return { root, sofar: sofar || last.text, chip: chipOf(last.mode), depth: stored.depth };
 }
 
 function isModelFailure(error: unknown): boolean {
@@ -492,6 +596,12 @@ type AnswerInput = {
   dataContext?: DataContext & { childNames: string[] };
   /** The harness's door answers (previewAnswer), in place of reading the chosen doors. */
   toolRuns?: ToolRun[];
+  /** The person's pick of mode for this question (Vidura pass 1): re-routes between the scopes the gate allows. */
+  prefer?: AssistantChip | null;
+  /** The page the drawer is beside (Vidura pass 1): read only for a question that points at it. */
+  page?: string | null;
+  /** "Go on" (Vidura pass 1): the answer so far, which the model continues. */
+  continuation?: string | null;
 };
 
 /** A door answer the harness handed in, as the runner's run. */
@@ -501,7 +611,7 @@ function harnessRun(r: ToolRun): DataRun {
 
 async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   const { asker, policy, school, language, deps } = a;
-  const fixed = (verdict: AssistantVerdict, extra: Partial<Outcome> = {}): Outcome => ({ verdict, text: fixedSentence(verdict, language, school.helplineText), mode: null, hint: false, citations: [], matchedAssignmentId: null, promptTokens: 0, completionTokens: 0, modelCalls: 0, ...extra });
+  const fixed = (verdict: AssistantVerdict, extra: Partial<Outcome> = {}): Outcome => ({ verdict, text: fixedSentence(verdict, language, school.helplineText), mode: null, chip: null, cut: false, hint: false, citations: [], matchedAssignmentId: null, promptTokens: 0, completionTokens: 0, modelCalls: 0, ...extra });
 
   // 1. The tables, on the person's own words: nothing searched, nothing sent anywhere.
   const table = tableVerdict(a.original, asker.role);
@@ -514,6 +624,14 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   if (asksAnotherPersonsRecord(a.original, a.lexicon, dataCtx?.childNames ?? [])) return fixed("PERSONAL_DATA");
   if (dataCtx?.childNames.length) a.stripped = stripIdentifiers(ownChildrenAsWords(a.original, dataCtx.childNames), a.lexicon).text;
   const hints = hintsOf(a.original, now);
+
+  // 1c. PAGE AWARENESS (Vidura pass 1): a question that points at the page the drawer is beside ("how do I do this?")
+  // is read against that page's own help card, given first, and the person's own data shown on it; any other question
+  // is answered as if asked from nowhere. The card is found by its page, not by closeness, so it adds nothing to the
+  // retrieval's scores: the gate's thresholds and the classifier decide as before.
+  const pageHere = a.page && policy.help && deps.pageCards && pageIsRoles(a.page, asker.role) && asksAboutThisPage(a.original) ? a.page : null;
+  const cards = pageHere ? (await deps.pageCards!({ page: pageHere, language, role: asker.role })).filter((h) => h.pagePath && pageIsRoles(h.pagePath, asker.role)) : [];
+  const helpQuery = cards.length ? `${a.stripped}\n${cards[0]!.title} — ${pageHere}` : a.stripped;
 
   // 2. Retrieval in the scopes the role may use.
   const college = isCollegeKind(school.kind);
@@ -528,7 +646,8 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   // never a passage the model reads: in the pilot those were the closest passages to most help questions,
   // and the answers sent a pupil to /api/v1/family/student/assignments and a driver to /admin/people.
   // Three times the passages are fetched so that enough page passages remain.
-  const helpScope = policy.help ? keepClose((await deps.searchHelp({ query: a.stripped, language, role: asker.role, limit: HELP_PASSAGES * 3 })).filter((h) => !h.pagePath || pageIsRoles(h.pagePath, asker.role))) : [];
+  const searchedHelp = policy.help ? keepClose((await deps.searchHelp({ query: helpQuery, language, role: asker.role, limit: HELP_PASSAGES * 3 })).filter((h) => !h.pagePath || pageIsRoles(h.pagePath, asker.role))) : [];
+  const helpScope = [...cards, ...searchedHelp.filter((h) => !cards.some((c) => c.entryId === h.entryId))];
   const help = helpScope.filter((h) => h.pagePath || !h.door).slice(0, HELP_PASSAGES);
   let curriculum: CurriculumHit[] = [];
   let boardNote: string | null = null;
@@ -572,7 +691,9 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
 
   // 2b. The person's own doors: ranked over the catalog by their summaries (router.ts); a follow-up reads the
   // conversation's last doors again first.
-  const doorHits = dataCtx ? await searchDoors(deps.searchHelp, { query: a.stripped, language, role: asker.role }) : [];
+  // The doors whose data the page shows come first for a question pointing at the page (page awareness).
+  const pageDoors = pageHere ? doorsShownOn(pageHere, asker.role).map((d) => ({ door: `GET ${d}`, similarity: PAGE_DOOR_SIMILARITY })) : [];
+  const doorHits = dataCtx ? [...pageDoors, ...(await searchDoors(deps.searchHelp, { query: helpQuery, language, role: asker.role }))] : [];
   const previousDoors = dataCtx && isFollowUp(a.original) ? (followUpCache.get(a.conversationId)?.doors ?? []) : [];
   // A follow-up is read beside the question before it ("and how many of those are paid" alone is about nothing):
   // the classifier and the help prompt see both, the person's earlier words as stripped as these.
@@ -581,7 +702,22 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   const chosen = dataCtx ? chooseDoors({ hits: doorHits, language, ctx: dataCtx, hints, previous: previousDoors }) : [];
 
   // 3. The gate before the model.
-  const gate = await gateQuestion({ original: a.original, stripped: previousQuestion ? `${previousQuestion}\n${a.stripped}` : a.stripped, language, policy, helpTop: best(helpScope), curriculumTop: best(curriculum), ownDoor: chosen.some((c) => c.similarity >= DOOR_SCOPE_THRESHOLD) || (a.toolRuns?.length ?? 0) > 0, role: asker.role }, { chat: deps.chat });
+  const onPage = pageHere && cards.length ? onPageNote(cards[0]!.title, pageHere) : "";
+  const gate = await gateQuestion(
+    {
+      original: a.original,
+      stripped: `${previousQuestion ? `${previousQuestion}\n` : ""}${a.stripped}${onPage}`,
+      language,
+      policy,
+      helpTop: best(helpScope),
+      curriculumTop: best(curriculum),
+      ownDoor: chosen.some((c) => c.similarity >= DOOR_SCOPE_THRESHOLD) || (a.toolRuns?.length ?? 0) > 0,
+      role: asker.role,
+      // The person's pick of mode (Vidura pass 1): only between the scopes the gate already allows.
+      prefer: preferFor(a.prefer),
+    },
+    { chat: deps.chat },
+  );
   if (!gate.pass) return fixed(gate.verdict, { promptTokens: gate.tokens, modelCalls: gate.modelCalled ? 1 : 0 });
   let tokens = { prompt: gate.tokens, completion: 0 };
   let modelCalls = 1;
@@ -605,6 +741,8 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   let rowLinks: DataRun["links"] = [];
   /** The <data> blocks' own numbers: citable, never shown as a source. */
   let blockNumbers: number[] = [];
+  /** The chip (Vidura pass 1): LEARNING for the tutor; for help, RECORDS when the person's own data was read, else USING. */
+  let chip: AssistantChip = gate.mode === "TUTOR" ? "LEARNING" : "USING";
   if (gate.mode === "TUTOR") {
     const passages = curriculum.slice(0, CURRICULUM_PASSAGES).map((h, i) => ({ n: i + 1, heading: `${h.board}, "${h.book}" (class ${h.grade}), ${h.headingPath.join(" › ") || h.chapter || ""}, page ${h.pageStart}`, text: withoutInjectedLines(stripIdentifiers(h.text.slice(0, 1800), a.lexicon).text) }));
     citationsByNumber = curriculum.slice(0, CURRICULUM_PASSAGES).map((h, i) => ({ kind: "CURRICULUM", n: i + 1, board: h.board, book: h.book, grade: h.grade, chapter: h.chapter, section: h.section, page: h.pageStart, sourceUrl: h.sourceUrl || null, chunkId: h.chunkId }));
@@ -619,15 +757,16 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
       exams = summary ? withoutInjectedLines(stripIdentifiers(summary, a.lexicon).text) : null;
       if (exams) allowedText += `\n${exams}`;
     }
-    messages = tutorMessages({ question: a.stripped, language, band, shape: questionShape(a.original), passages, hint, boardNote, laterClass, exams });
+    messages = tutorMessages({ question: a.stripped, language, band, shape: questionShape(a.original), passages, hint, boardNote, laterClass, exams, continuation: a.continuation });
   } else {
     const passages = help.slice(0, HELP_PASSAGES).map((h, i) => ({ n: i + 1, heading: `${h.title}${h.pagePath ? ` — page ${h.pagePath}` : ""}`, text: withoutInjectedLines(stripIdentifiers(h.text.slice(0, 1200), a.lexicon).text) }));
     citationsByNumber = help.slice(0, HELP_PASSAGES).map((h, i) => ({ kind: "HELP", n: i + 1, title: h.title, pagePath: h.pagePath, entryId: h.entryId }));
     allowedText = passages.map((p) => `${p.heading}\n${p.text}`).join("\n");
     // The person's own doors, read as the person (router.ts); their rows numbered after the passages.
+    // "Using Shalaghar" picked by the person (Vidura pass 1): the guides only, the person's own data not read.
     const runs = a.toolRuns
       ? a.toolRuns.map(harnessRun)
-      : chosen.length && dataCtx
+      : chosen.length && dataCtx && a.prefer !== "USING"
         ? await deps.runDoors({ chosen, ctx: dataCtx, schoolId: asker.schoolId, userId: asker.userId, question: a.original, hints, lexicon: a.lexicon, firstNumber: passages.length + 1, conversationId: a.conversationId, now })
         : [];
     const childLabel = (r: DataRun) => (r.child ? `child ${r.child.n}${r.child.className ? ` (${r.child.className})` : ""}` : null);
@@ -644,12 +783,29 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     blockNumbers = data.map((d) => d.n!);
     // Nothing a person can act on and none of their own data: the sentence, and no answer is written.
     if (!passages.length && !data.length) return fixed("OUT_OF_SCOPE", { promptTokens: tokens.prompt, modelCalls });
-    messages = helpMessages({ question: a.stripped, language, role: asker.role, passages, data, numberedRows: rowLinks.length > 0, previousQuestion });
+    // "My records" when the answer is the person's own figures: data was read and the question is not a how-to or a
+    // where-is that a guide passage answers (the live walk of 17 Oct 2026: "how do I issue a book" wore My records
+    // because a door had been read beside the guide). A pick of "My records" keeps it whenever data was read.
+    chip = helpChip({ data: data.length, passages: passages.length, prefer: a.prefer ?? null, question: a.original });
+    messages = helpMessages({
+      question: a.stripped,
+      language,
+      role: asker.role,
+      passages,
+      data,
+      numberedRows: rowLinks.length > 0,
+      previousQuestion,
+      chip,
+      pageHere: pageHere && cards.length ? { path: pageHere, title: cards[0]!.title } : null,
+      continuation: a.continuation,
+    });
   }
 
   // 6. The model.
   a.emit({ type: "assistant.stage", conversationId: a.conversationId, stage: "WRITING" });
-  const result = await deps.chat(messages, { maxTokens: MAX_ANSWER_TOKENS, temperature: 0.3, timeoutMs: ANSWER_TIMEOUT_MS });
+  // The length rule (Vidura's decision 6): the cap by the question's kind and language; a hint keeps Phase B's cap.
+  const maxTokens = hint ? MAX_ANSWER_TOKENS : answerTokenCap(answerKindFor(chip, a.original), language);
+  const result = await deps.chat(messages, { maxTokens, temperature: 0.3, timeoutMs: ANSWER_TIMEOUT_MS });
   modelCalls += 1;
   tokens = { prompt: tokens.prompt + (result.usage?.promptTokens ?? 0), completion: tokens.completion + (result.usage?.completionTokens ?? 0) };
 
@@ -661,6 +817,9 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   let content = (citationsByNumber.length || rowLinks.length || blockNumbers.length ? result.content : result.content.replace(/\s?\[\d{1,2}\]/g, "")).replace(/\s?\[data(?::[^\]]*)?\]/gi, "");
   // A page of the person's own under an invented host becomes the bare path (pages.ts); any other link is still discarded.
   if (gate.mode === "HELP") content = ownPathsWithoutHost(content, asker.role);
+  // Restricted Markdown (Vidura's decision 6): narrowed to headings, lists, bold and tables BEFORE the check, so the
+  // gate reads exactly what is shown (a Markdown link to a host keeps its words; the host goes, as any link would).
+  content = restrictAnswerMarkdown(content);
   // Every number a passage or a numbered row of the person's own data carries may be cited, and nothing else.
   const citable = new Set([...citationsByNumber.map((c) => c.n), ...rowLinks.map((l) => l.n), ...blockNumbers]);
   const checked = await gateAnswer({ answer: content, label: gate.label, passageCount: Math.max(0, ...citable), allowedText, lexicon: a.lexicon, hint, alsoLabel: exams ? "PLATFORM" : undefined, role: asker.role }, { chat: deps.chat });
@@ -673,7 +832,7 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   }
   // "Should I study this for the exam" (the exam-scope reader, 10 Oct 2026): the platform owns the sentence that the
   // teacher knows what the paper covers; an answer that still opens with yes or no is discarded, in any of the three languages.
-  const examScope = gate.mode === "TUTOR" && !hint && asksExamScope(a.original);
+  const examScope = gate.mode === "TUTOR" && !hint && !a.continuation && asksExamScope(a.original);
   let body = content;
   if (examScope && /^\s*(?:yes|no|nope|हाँ|हां|नहीं|हो|होय|नाही)\b/i.test(body)) {
     // The opening yes-or-no sentence goes (the model wrote one in spite of the rule); the explanation after it stays, already checked.
@@ -698,8 +857,12 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   if (blockNumbers.length) body = body.replace(/\s?\[(\d{1,3})\]/g, (mark, n: string) => (blockNumbers.includes(Number(n)) ? "" : mark));
   return {
     verdict: hint ? "HINT" : "ANSWERED",
-    text: `${examScope ? `${translator(language)("assistantService.examScopeTeacher")} ` : ""}${restoreSelf(body.trim(), stripIdentifiers(a.original, a.lexicon).replacements, "")}`,
+    // The platform's sentence as a paragraph of its own, so the answer's first heading still starts a line.
+    text: `${examScope ? `${translator(language)("assistantService.examScopeTeacher")}\n\n` : ""}${restoreSelf(body.trim(), stripIdentifiers(a.original, a.lexicon).replacements, "")}`,
     mode: gate.mode,
+    chip,
+    // Stopped at its cap: "Go on" continues it (the length rule's no-uncapped-answers half).
+    cut: result.finishReason === "length",
     hint,
     citations: [...citationsByNumber.filter((c) => cited.has(c.n)), ...(gate.mode === "HELP" ? linkCitations(rowLinks, cited, asker.role, language) : [])],
     matchedAssignmentId,
@@ -751,7 +914,7 @@ export async function previewAnswer(
     return { ...outcome, language };
   } catch (error) {
     if (!(error instanceof ModelUnavailable) && !isModelFailure(error)) throw error;
-    return { verdict: "MODEL_UNAVAILABLE", text: fixedSentence("MODEL_UNAVAILABLE", language, null), mode: null, hint: false, citations: [], matchedAssignmentId: null, promptTokens: 0, completionTokens: 0, modelCalls: 0, language };
+    return { verdict: "MODEL_UNAVAILABLE", text: fixedSentence("MODEL_UNAVAILABLE", language, null), mode: null, chip: null, cut: false, hint: false, citations: [], matchedAssignmentId: null, promptTokens: 0, completionTokens: 0, modelCalls: 0, language };
   }
 }
 

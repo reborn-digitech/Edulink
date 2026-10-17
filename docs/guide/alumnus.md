@@ -2,7 +2,7 @@ Roles: ALUMNUS
 
 # The former pupil's guide (school and college)
 
-This guide is for a former pupil of a school or college on Shalaghar. When you leave, the school keeps a place for you: you can read its feed, write to its staff, join its directory and ask for a paper again. You start at `/alumni`, the "Alumni" page. The bar carries "Alumni", "Social Media", "Messages" and "Alumni directory"; at a college it also carries "Your college". The "More" menu holds "Papers from the school", "Account", "Alumni survey" (only at a college with the IQAC module on) and "Assistant". "Social Media", "Messages" and "Alumni directory" are only in the menu while the school has the Alumni module on.
+This guide is for a former pupil of a school or college on Shalaghar. When you leave, the school keeps a place for you: you can read its feed, write to its staff, join its directory and ask for a paper again. You start at `/alumni`, the "Alumni" page. The bar carries "Alumni", "Social Media", "Messages" and "Alumni directory"; at a college it also carries "Your college". The "More" menu holds "Papers from the school", "Account" and "Alumni survey" (only at a college with the IQAC module on). "Social Media", "Messages" and "Alumni directory" are only in the menu while the school has the Alumni module on.
 
 ## What does my home page show?
 
@@ -80,6 +80,19 @@ Open `/alumni/college` ("Your college"): "What your college asks of its alumni: 
 
 "Gifts" lists what the college recorded of your gifts with "receipt {ref}": "Receipts are issued by the college, outside the app."
 
-## What does the assistant answer for me?
+## What does Vidura answer for me?
 
-Press "Ask the assistant" on any page or open `/assistant` ("Assistant"; only while the school has the Assistant module on). For a former pupil it answers how to use Shalaghar: which page to open and the steps to take there. It does not answer topics from the textbooks, and it is not a general chatbot. Type in "Your question" and press "Ask", answer "Was this helpful?" with "Yes" or "No", and do not type names or phone numbers. Each conversation is deleted thirty days after it was last used; "Delete this conversation" removes one sooner. It also answers questions about your own records from the pages you already see (your batch and last class, your certificate requests, unread messages), and under "Sources" it links the post or the message thread it read.
+Vidura is Shalaghar's assistant. Its one way in is the round button at the bottom right of every page, labelled "Ask Vidura" for screen readers; on a phone-width screen it sits above the bottom bar, and above the page's own round quick-action button where one is shown. The button is there only while Shalaghar's operator has Vidura switched on for the platform and for your school; the office does not switch it. There is no menu entry for Vidura, and opening `/assistant` takes you back to the page you came from with its drawer open.
+
+Pressing the button opens Vidura's drawer. On a computer it docks at the right of the window and the page stays usable beside it, so you can follow the steps while you read them, and it stays open as you move between pages. On a phone it opens as a sheet from the bottom of the screen, and following a link from inside it closes it. Escape closes it, and so does "Close Vidura" (the cross).
+
+For a former pupil it answers how to use Shalaghar: which page to open and the steps to take there. It does not answer topics from the textbooks, and it is not a general chatbot: anything else gets one sentence saying what it is for. Vidura knows the page it opened beside: "How do I use this page?" or "how do I do this here?" is answered from that page's own help and your own figures shown there. Under "My records", or when Vidura picks it, it answers questions about your own records from the pages you already see (your batch and last class, your certificate requests, unread messages), and under "Sources" it links the post or the message thread it read.
+
+1. Type in "Your question" and press "Ask". Do not type names, phone numbers or anyone's details. An empty conversation shows "What Vidura is for" and, under "Try asking", three questions for your role and the page you are on (on a page other than your home the first is "How do I use this page?"); pressing one asks it.
+2. To send one question a particular way, choose under "Mode for your next question": "Vidura picks" (the default), "Using Shalaghar" (how the platform works, which page and which steps) or "My records" (your own figures, counts and links, read from the pages you already see). The pick sends only your next question that way, then Vidura picks again, and no pick gets past a refusal. Each answer wears a small label naming the mode it was answered in.
+3. Answer "Was this helpful?" with "Yes" or "No".
+4. "New conversation" starts afresh. "Your conversations" lists the conversations of the last thirty days inside the drawer: press one to re-read it and ask more in it, "Delete this conversation" removes one sooner, and "Back to the conversation" returns.
+
+Answers are set out with headings, numbered steps, bold for what matters, and a small table when your own figures have several rows. A definition is short (about sixty words) and a how-to gives numbered steps (up to about 250 words). If an answer stops at its length limit it says "The answer stopped at its length limit." and "Go on" continues it; "Go on" counts as one of your questions for the day, and an answer can be continued at most twice. Each person has twenty questions a day, a conversation remembers what was said in it only, and each conversation is deleted thirty days after it was last used.
+
+When Vidura cannot answer (its one sentence saying what it is for, a refusal, or an answer saying it is not sure), the answer shows "Vidura could not answer this; a person at your school can." and one button: "Ask the school office" (at a college, "Ask the registrar's office"), which opens a message conversation with them. Nothing of your question is copied into the message; you write your own.

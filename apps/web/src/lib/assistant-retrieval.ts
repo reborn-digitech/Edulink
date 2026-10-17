@@ -320,3 +320,38 @@ export async function searchHelp(q: HelpQuery, ctx: RetrievalContext): Promise<H
   }));
   return (await rerank(q.query, hits)).slice(0, limit);
 }
+
+/**
+ * THE HELP INDEX'S ENTRIES FOR ONE PAGE, no search (Vidura pass 1, 17 Oct 2026: page awareness and the suggested
+ * questions): the entries naming `page` — its page cards first — for the role (or every role) in the language asked,
+ * English beside it. Each carries a similarity of null: it was found by its page, not by closeness.
+ */
+export async function helpForPage(q: { page: string; language: Language; role: string; kinds?: string[]; limit?: number }, ctx: Pick<RetrievalContext, "db">): Promise<HelpHit[]> {
+  const limit = Math.max(1, Math.min(10, q.limit ?? 2));
+  const kinds = q.kinds?.length ? Prisma.sql`AND h."kind" IN (${Prisma.join(q.kinds)})` : Prisma.empty;
+  const rows = await ctx.db.$queryRaw<(HelpRow & { similarity: null })[]>`
+    SELECT ${HELP_COLUMNS}, NULL::float AS "similarity"
+      FROM "HelpEntry" h
+     WHERE h."pagePath" = ${q.page}
+       AND (cardinality(h."roles") = 0 OR ${q.role} = ANY(h."roles"))
+       AND h."language" IN (${Prisma.join([...new Set([q.language, "en"])])}) ${kinds}
+     ORDER BY (h."language" = ${q.language}) DESC, (h."kind" = 'nav') DESC, h."id"
+     LIMIT ${limit}`;
+  return rows.map((r) => ({
+    entryId: r.id,
+    kind: r.kind,
+    title: r.title,
+    text: r.text,
+    pagePath: r.pagePath,
+    door: r.door,
+    module: r.module,
+    roles: r.roles,
+    language: r.language,
+    sourceFile: r.sourceFile,
+    commit: r.commit,
+    similarity: null,
+    vectorRank: null,
+    keywordRank: null,
+    score: 0,
+  }));
+}

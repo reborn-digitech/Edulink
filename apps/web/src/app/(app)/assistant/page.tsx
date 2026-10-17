@@ -1,26 +1,16 @@
-import type { Metadata } from "next";
-import { getT } from "@/lib/i18n/server";
+import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 import { getSession } from "@/lib/session";
-import { PageHeader } from "@/components/ui/page-header";
-import { AssistantHome } from "@/components/assistant/pages";
-
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getT();
-  return { title: t("assistantUi.title") };
-}
+import { backTo, withDrawer } from "@/lib/assistant/back-to";
 
 /**
- * The assistant's page (Phase C, 10 Oct 2026): a new conversation and the person's own of the last thirty days. Every
- * role's menu has it behind the ASSISTANT module (lib/nav.ts); the (app) layout has already asked for a session, and
- * what the person may do here is the doors' to say (GET /api/v1/assistant: the module, the platform's switch, a
- * guardian's opt-out, the caps), read by the client so the web and the phone are answered by the same code.
+ * /assistant, since Vidura pass 1 (17 Oct 2026; docs/plans/vidura.md): not a page of its own any more. The one entry
+ * point is the round button at the bottom right of every page, and the history lives in its drawer; an old link, a
+ * bookmark or a notice that still opens /assistant is sent back to the page the person was on — `?from=`, else the
+ * page that linked here, else their home — with the drawer open (`?vidura=open`, read by the shell). A person whose
+ * plan is missing never reaches this: the layout draws the plan card instead, which is where the round button leads them.
  */
-export default async function AssistantPage() {
-  const [t, session] = await Promise.all([getT(), getSession()]);
-  return (
-    <div className="mx-auto max-w-3xl space-y-5">
-      <PageHeader title={t("assistantUi.title")} description={t("assistantUi.intro")} />
-      <AssistantHome role={session?.role ?? null} />
-    </div>
-  );
+export default async function AssistantPage({ searchParams }: { searchParams: Promise<{ from?: string }> }) {
+  const [session, { from }, h] = await Promise.all([getSession(), searchParams, headers()]);
+  redirect(withDrawer(backTo(from ?? null, h.get("referer"), h.get("host"), session?.role ?? null), "open"));
 }

@@ -600,14 +600,12 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
 };
 
 /**
- * The assistant (Phase C, 10 Oct 2026; docs/plans/assistant.md): an entry in the More of every role that belongs to a school, under "Day to day",
- * while the active school has the ASSISTANT module on (on by default), as the web's NAV has it for every role. Appended
- * rather than written into each list, so a role added later has it too. The screen reads the web's doors.
+ * Vidura, the assistant (pass 1, 17 Oct 2026; docs/plans/vidura.md): NO MENU ENTRY. The one entry point is the round
+ * button above the tab bar on every screen (screens/shared/vidura.tsx, drawn by (app)/_layout.tsx), opening a bottom
+ * sheet; the Phase C entry under More is gone. The route /(app)/assistant stays only to open the sheet for an old link.
  */
-export const ASSISTANT_ENTRY: MenuItem = { labelKey: "assistantUi.navLabel", icon: "chats", group: "daily", screen: "/(app)/assistant", module: "ASSISTANT", feature: "ASSISTANT" };
 /** Not for the outside accounts (an expert, a recruiter): they belong to no school, and the doors refuse them. */
 export const ASSISTANT_NOT_FOR: readonly RoleCode[] = ["EXPERT", "RECRUITER"];
-for (const [role, list] of Object.entries(MENU) as [RoleCode, MenuItem[]][]) if (!ASSISTANT_NOT_FOR.includes(role) && !list.some((item) => item.screen === ASSISTANT_ENTRY.screen)) list.push(ASSISTANT_ENTRY);
 
 /**
  * Every route under (app) that is not a tab: the Tabs navigator lists every
@@ -619,7 +617,7 @@ export const HIDDEN_SCREENS = [
   // website-three (17 Oct 2026): the school's website at a glance for the office and the head.
   "website",
   // end website-three
-  // The assistant (Phase C, 10 Oct 2026): from More, for every role while the module is on.
+  // Vidura (pass 1, 17 Oct 2026): the old route, which opens the sheet for an old link.
   "assistant",
   // The college at a glance for the head and the registrar (campaign 2026-10-04, G-4).
   "college",

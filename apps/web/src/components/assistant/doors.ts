@@ -1,4 +1,4 @@
-import type { AssistantAnswer, AssistantConversation, AssistantConversationDetail, AssistantLanguage, AssistantStatus } from "@edulink/contracts";
+import type { AssistantAnswer, AssistantChip, AssistantConversation, AssistantConversationDetail, AssistantLanguage, AssistantStatus } from "@edulink/contracts";
 import { ASSISTANT_DOORS } from "./model";
 
 /**
@@ -46,7 +46,11 @@ export async function call<T>(method: "GET" | "POST" | "DELETE", path: string, b
 
 export const readStatus = () => call<AssistantStatus>("GET", ASSISTANT_DOORS.status);
 export const openConversation = (language: AssistantLanguage) => call<AssistantConversation>("POST", ASSISTANT_DOORS.conversations, { language });
-export const askQuestion = (conversationId: string, text: string) => call<AssistantAnswer>("POST", ASSISTANT_DOORS.messages(conversationId), { text });
+/** The question, with the mode the person picked, the page the drawer is beside and "go on" (Vidura pass 1), each only when set. */
+export const askQuestion = (conversationId: string, text: string, opts: { mode?: AssistantChip; page?: string; goOn?: boolean } = {}) =>
+  call<AssistantAnswer>("POST", ASSISTANT_DOORS.messages(conversationId), { text, ...(opts.mode ? { mode: opts.mode } : {}), ...(opts.page ? { page: opts.page } : {}), ...(opts.goOn ? { goOn: true } : {}) });
+/** "Ask a person" (Vidura pass 1): open, or find, the room with them through the messaging door every "Message" button uses. */
+export const openRoomWith = (schoolId: string, userId: string) => call<{ conversationId: string; created: boolean }>("POST", "/api/v1/shared/conversations", { schoolId, userId });
 export const sendFeedback = (conversationId: string, messageId: string, helpful: boolean) => call<unknown>("POST", ASSISTANT_DOORS.feedback(conversationId), { messageId, helpful });
 export const listConversations = () => call<{ conversations: AssistantConversation[]; retentionDays: number }>("GET", ASSISTANT_DOORS.conversations);
 export const readConversation = (id: string) => call<AssistantConversationDetail>("GET", ASSISTANT_DOORS.conversation(id));

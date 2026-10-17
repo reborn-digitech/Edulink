@@ -1,4 +1,4 @@
-import { ASSISTANT_QUESTION_MAX, type AssistantCitation, type AssistantEvent, type AssistantMessage, type AssistantStatus } from "@edulink/contracts";
+import { ASSISTANT_QUESTION_MAX, answerPlainText, type AssistantCitation, type AssistantEvent, type AssistantMessage, type AssistantStatus } from "@edulink/contracts";
 import type { Translate, TranslationKey } from "@/lib/i18n";
 
 /**
@@ -17,11 +17,21 @@ export const ASSISTANT_DOORS = {
   conversation: (id: string) => `/api/v1/assistant/conversations/${encodeURIComponent(id)}`,
   messages: (id: string) => `/api/v1/assistant/conversations/${encodeURIComponent(id)}/messages`,
   feedback: (id: string) => `/api/v1/assistant/conversations/${encodeURIComponent(id)}/feedback`,
+  suggestions: "/api/v1/assistant/suggestions",
 } as const;
 
-/** The page that lists a person's conversations, and one conversation on it. */
+/**
+ * The old page (/assistant, Phase C): since Vidura pass 1 it sends the person back to the page they came from with the
+ * drawer open (`?vidura=open`, or `?vidura=<conversationId>` for one conversation). Its layout still draws the plan
+ * card for a person whose plan is missing, which is where the round button leads them.
+ */
 export const ASSISTANT_PAGE = "/assistant";
-export const conversationHref = (id: string) => `${ASSISTANT_PAGE}/${encodeURIComponent(id)}`;
+export const DRAWER_PARAM = "vidura";
+
+/** The suggestions door for the page the drawer is beside (a path on this platform), or for no page. */
+export function suggestionsPath(page: string | null | undefined): string {
+  return page && /^\/(?!\/)/.test(page) ? `${ASSISTANT_DOORS.suggestions}?page=${encodeURIComponent(page)}` : ASSISTANT_DOORS.suggestions;
+}
 
 /** A question is sent trimmed and at most this long: the door's own limit. */
 export const QUESTION_MAX = ASSISTANT_QUESTION_MAX;
@@ -94,7 +104,8 @@ export const isFixedSentence = (m: Pick<AssistantMessage, "role" | "verdict">): 
  */
 export function announcement(m: AssistantMessage | null, t: Translate): string {
   if (!m || m.role !== "ASSISTANT") return "";
-  return t("assistantUi.announce", { answer: m.text });
+  // The words, not the Markdown marks: a screen reader would otherwise read "hash hash hash" and "star star".
+  return t("assistantUi.announce", { answer: answerPlainText(m.text) });
 }
 
 /**

@@ -54,13 +54,19 @@ export function sentences(text: string): string[] {
     .filter((s) => s.replace(/\[\d+\]/g, "").trim().length > 1);
 }
 
-/** Words, without the [n] citation markers. */
+/** Words, without the [n] citation markers and (Vidura pass 1) the Markdown's marks: a "###" or a table's "|" is no word. */
 export function wordCount(text: string): number {
-  return text.replace(/\[\d+\]/g, " ").split(/\s+/).filter(Boolean).length;
+  return text.replace(/\[\d+\]/g, " ").replace(/[#*|]+/g, " ").replace(/(?<=\s)-{2,}(?=\s)/g, " ").split(/\s+/).filter(Boolean).length;
 }
 
-/** The word limits the prompt sets per shape (prompt.ts), with a fifth of slack; a definition needs no example, an explanation its check question. */
-export const SHAPE_LIMITS: Record<QuestionShape, number> = { DEFINE: 80, EXPLAIN: 270, WHY: 190, OTHER: 190 };
+/**
+ * The word limits the prompt sets per shape (prompt.ts), with a fifth of slack; a definition needs no example, an
+ * explanation its check question. Since Vidura pass 1 (the owner's decision 6, 12 Oct 2026) a worked explanation may
+ * run to 350 words and a "why" to 200; Phase D's were 220 and 150 (EXPLAIN 270, WHY 190 with the slack).
+ */
+export const SHAPE_LIMITS: Record<QuestionShape, number> = { DEFINE: 80, EXPLAIN: 420, WHY: 240, OTHER: 190 };
+/** Phase D's limits, kept so a run can be scored by the rule it was written under. */
+export const SHAPE_LIMITS_PHASE_D: Record<QuestionShape, number> = { DEFINE: 80, EXPLAIN: 270, WHY: 190, OTHER: 190 };
 
 export function shapeOk(shape: QuestionShape, text: string): { ok: boolean; reason: string | null } {
   const words = wordCount(text);

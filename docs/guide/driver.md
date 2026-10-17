@@ -2,7 +2,7 @@ Roles: DRIVER
 
 # The driver's guide (school and college)
 
-This guide is for a bus driver on the staff of a school or college on Shalaghar. You start at `/driver`, the "Transport" page, which is the only page in the bar. The "More" menu holds "Global feed" and "Assistant" under "Day to day", and "Account", "Leave" and "Staff attendance" under "Running things". The trips themselves are only there when the school has the Transport module on; otherwise `/driver` says the module is switched off.
+This guide is for a bus driver on the staff of a school or college on Shalaghar. You start at `/driver`, the "Transport" page, which is the only page in the bar. The "More" menu holds "Global feed" under "Day to day", and "Account", "Leave" and "Staff attendance" under "Running things". The trips themselves are only there when the school has the Transport module on; otherwise `/driver` says the module is switched off.
 
 ## What do I see on the Transport page?
 
@@ -37,6 +37,21 @@ Open `/account/leave` ("Leave"). The header reads "Ask to be away. The office an
 
 Each request lists as waiting, approved or declined with the office's note; "Withdraw this request" takes back a waiting one. The office, not the principal, decides a driver's leave.
 
-## Where are the feed, my account and the assistant?
+## Where are the feed, my account and Vidura?
 
-`/bulletin/global` ("Global feed") shows "Posts schools have chosen to share with everyone. Each one says which school published it, and each school decides for itself what to publish and what to show." `/account` ("Account") has three tabs: "Sign-in and schools" (how you sign in, "Where you belong", a "Leave" card with "Open", and "My payslips" with "Open" when the school has the Payroll module on), "Preferences" ("Notifications", "Language", "Appearance and reading") and "Devices" ("Signed-in devices"); "Sign out" is at the foot. Press "Ask the assistant" on any page or open `/assistant` ("Assistant"; only while the school has the Assistant module on): it answers how to use Shalaghar, which page to open and the steps to take there. Type in "Your question" and press "Ask"; do not type names or phone numbers. It also answers questions about your own records from the pages you already see (today's trips, your check-in and leave), counting from the platform's own figures, and under "Sources" it links the post it read.
+`/bulletin/global` ("Global feed") shows "Posts schools have chosen to share with everyone. Each one says which school published it, and each school decides for itself what to publish and what to show." `/account` ("Account") has three tabs: "Sign-in and schools" (how you sign in, "Where you belong", a "Leave" card with "Open", and "My payslips" with "Open" when the school has the Payroll module on), "Preferences" ("Notifications", "Language", "Appearance and reading") and "Devices" ("Signed-in devices"); "Sign out" is at the foot.
+
+Vidura is Shalaghar's assistant. Its one way in is the round button at the bottom right of every page, labelled "Ask Vidura" for screen readers; on a phone-width screen it sits above the bottom bar, and above the page's own round quick-action button where one is shown. The button is there only while Shalaghar's operator has Vidura switched on for the platform and for your school; the office does not switch it. There is no menu entry for Vidura, and opening `/assistant` takes you back to the page you came from with its drawer open.
+
+Pressing the button opens Vidura's drawer. On a computer it docks at the right of the window and the page stays usable beside it, so you can follow the steps while you read them, and it stays open as you move between pages. On a phone it opens as a sheet from the bottom of the screen, and following a link from inside it closes it. Escape closes it, and so does "Close Vidura" (the cross).
+
+For you it answers how to use Shalaghar, which page to open and the steps to take there, and your own records; topic questions from the books are for pupils, teachers, faculty and heads of department. It is not a general chatbot: anything else gets one sentence saying what it is for. Vidura knows the page it opened beside: "How do I use this page?" or "how do I do this here?" is answered from that page's own help and your own figures shown there. Under "My records", or when Vidura picks it, it answers questions about your own records from the pages you already see (today's trips, your check-in and leave), counting from the platform's own figures, and under "Sources" it links the post it read.
+
+1. Type in "Your question" and press "Ask". Do not type names, phone numbers or anyone's details. An empty conversation shows "What Vidura is for" and, under "Try asking", three questions for your role and the page you are on (on a page other than your home the first is "How do I use this page?"); pressing one asks it.
+2. To send one question a particular way, choose under "Mode for your next question": "Vidura picks" (the default), "Using Shalaghar" (how the platform works, which page and which steps) or "My records" (your own figures, counts and links, read from the pages you already see). The pick sends only your next question that way, then Vidura picks again, and no pick gets past a refusal. Each answer wears a small label naming the mode it was answered in.
+3. Answer "Was this helpful?" with "Yes" or "No".
+4. "New conversation" starts afresh. "Your conversations" lists the conversations of the last thirty days inside the drawer: press one to re-read it and ask more in it, "Delete this conversation" removes one sooner, and "Back to the conversation" returns.
+
+Answers are set out with headings, numbered steps, bold for what matters, and a small table when your own figures have several rows. A definition is short (about sixty words) and a how-to gives numbered steps (up to about 250 words). If an answer stops at its length limit it says "The answer stopped at its length limit." and "Go on" continues it; "Go on" counts as one of your questions for the day, and an answer can be continued at most twice. Each person has twenty questions a day, a conversation remembers what was said in it only, and each conversation is deleted thirty days after it was last used.
+
+Your menu has no "Messages", so when Vidura cannot answer it offers no button to write to a person at the school.

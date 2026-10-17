@@ -83,6 +83,13 @@ export async function gateQuestion(
     ownDoor?: boolean;
     /** The asker's role: the money row reads "loan" by it (refusals.ts STAFF_ROLES_FOR_LOANS). */
     role?: string | null;
+    /**
+     * THE PERSON'S PICK OF MODE (Vidura pass 1, 17 Oct 2026): "Using Shalaghar" or "My records" prefer PLATFORM,
+     * "Learning" prefers CURRICULUM. It re-routes only between the scopes this gate already allows: the tables come
+     * first, a question below both thresholds is still out of scope, the classifier's REFUSE still refuses, and the
+     * tutor is still only for its roles. Never a way past a refusal.
+     */
+    prefer?: "PLATFORM" | "CURRICULUM" | null;
   },
   model: ClassifyPort,
 ): Promise<QuestionGate> {
@@ -95,7 +102,9 @@ export async function gateQuestion(
   if (!help && !curriculum) return { pass: false, verdict: "OUT_OF_SCOPE", modelCalled: false, tokens: 0 };
   const c = await classify(model, "question", input.stripped);
   if (c.label === "REFUSE") return { pass: false, verdict: "OUT_OF_SCOPE", modelCalled: true, tokens: c.tokens };
-  if (c.label === "PLATFORM") {
+  // The person's pick, only where its own scope is open (the retrieval above its threshold, the tutor's role).
+  const label = input.prefer === "CURRICULUM" && curriculum && input.policy.tutor ? "CURRICULUM" : input.prefer === "PLATFORM" && help ? "PLATFORM" : c.label;
+  if (label === "PLATFORM") {
     if (!help) return { pass: false, verdict: "OUT_OF_SCOPE", modelCalled: true, tokens: c.tokens };
     return { pass: true, mode: "HELP", label: "PLATFORM", confidence: c.confidence, tokens: c.tokens };
   }

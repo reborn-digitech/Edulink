@@ -12,6 +12,8 @@ import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { type } from "@edulink/tokens";
 import { consolesFor } from "@/screens/shared/console-home";
+import { ViduraHost, viduraAccess } from "@/screens/shared/vidura";
+import { WEB_HOME } from "@/lib/links";
 
 /**
  * The shell: a bottom tab bar per role mirroring the web NAV's primaries, and
@@ -51,7 +53,9 @@ export default function AppLayout() {
   // …and a duty's tab only for whoever holds it (5 Oct 2026).
   // …and a platform feature's tab only while the operator has it on (15 Oct 2026; /me's `features`).
   const tabs = TABS[role].filter((tab) => tabShown(tab, modules, session.status === "signed-in" ? (session.me.duties ?? []) : [], featuresOf(session.status === "signed-in" ? session.me : null)));
+  // Vidura's round button and sheet over every screen (pass 1, 17 Oct 2026), where the web draws its button.
   return (
+    <ViduraHost access={viduraAccess(session.status === "signed-in" ? session.me : null)} home={WEB_HOME[role] ?? "/"}>
     <Tabs
       // "Back" from a screen opened from More goes to More, not to the first tab.
       backBehavior="history"
@@ -107,6 +111,7 @@ export default function AppLayout() {
         <Tabs.Screen key={name} name={name} options={{ href: null, title: name === "notifications" ? t("shell.notifications") : undefined }} />
       ))}
     </Tabs>
+    </ViduraHost>
   );
 }
 

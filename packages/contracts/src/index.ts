@@ -265,6 +265,8 @@ export * from "./v1/reading-room";
 export * from "./v1/council-notices";
 // The assistant, Phase B (9-10 Oct 2026): conversations, the verdicts, the office's usage and the family's opt-out (docs/plans/assistant.md, decision 0005).
 export * from "./v1/assistant";
+// Vidura pass 1 (17 Oct 2026): the answers' restricted Markdown, parsed once for the web and the phone.
+export * from "./v1/assistant-markdown";
 // The owner's decisions of 10 Oct 2026 (decisions builder): settle on leaving (R-61 Q2), the previous schools' papers (R-70), the record copy (R-69).
 export * from "./v1/owner-decisions";
 // The generated bank's review queue and the teachers' question gig switched off (review-queue builder, 10 Oct 2026).

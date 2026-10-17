@@ -2,7 +2,7 @@ Roles: FACULTY
 
 # The faculty member's guide (college)
 
-This guide is for a faculty member at a college: a teacher whose home is `/faculty`. It covers your day (lectures and their registers, homework, the course file, internal marks), the term (countersigning, mentoring, your exam duties, the internships and projects you supervise), the year (your research register, your public page, the surveys the IQAC opens to you), your own leave, attendance and letters, and the duties the office may give you beside your teaching. The menu has three groups: "Day to day" holds "Messages", "Exam duties", "Students' work", "Homework", "Practical record", "Moot courts" and "Assistant"; "School life" holds "E-resources"; "Running things" holds "Account", "Leave", "Staff attendance", "My letters", "My research", "My public page", "My appraisal" and the desk of each duty you hold. A page behind a module is only in the menu while the college has that module on; academics is always on at a college. A head of department reads this guide too: an HOD's teaching uses the same pages, under "My teaching" in their menu.
+This guide is for a faculty member at a college: a teacher whose home is `/faculty`. It covers your day (lectures and their registers, homework, the course file, internal marks), the term (countersigning, mentoring, your exam duties, the internships and projects you supervise), the year (your research register, your public page, the surveys the IQAC opens to you), your own leave, attendance and letters, and the duties the office may give you beside your teaching. The menu has three groups: "Day to day" holds "Messages", "Exam duties", "Students' work", "Homework", "Practical record" and "Moot courts"; "School life" holds "E-resources"; "Running things" holds "Account", "Leave", "Staff attendance", "My letters", "My research", "My public page", "My appraisal" and the desk of each duty you hold. A page behind a module is only in the menu while the college has that module on; academics is always on at a college. A head of department reads this guide too: an HOD's teaching uses the same pages, under "My teaching" in their menu.
 
 ## How do I see my day?
 
@@ -78,24 +78,31 @@ Open the piece of work from `/faculty/work`. The card "Post into internal marks"
 
 The work must have a maximum mark ("Give this work a maximum mark before posting it into internal marks."), the course must have an open part ("This course has no internal component open for marks. Add one on the course's internal marks tab."), and at least one registered student must be marked. Once the HOD has locked the course the card says "This course's internal marks are locked, so nothing more can be posted."
 
-## How do I control what the assistant tells students about an assignment?
+## How do I control what Vidura tells students about an assignment?
 
-Open the piece of work from `/faculty/work`. The card "The assistant and this assignment" explains: "When a pupil asks the assistant a question that matches this assignment, it gives a hint first: the idea, the chapter and a guiding question, never the answer."
+Open the piece of work from `/faculty/work`. The card "Vidura and this assignment" explains the rule: when a pupil asks Vidura a question that matches this assignment, it gives a hint first (the idea, the chapter and a guiding question), never the answer.
 
 1. Tick or untick "Give the worked answer when the same question is asked a second time".
-2. The change saves at once and the page says "The assistant's rule for this assignment is saved."
+2. The change saves at once and the page says "Vidura's rule for this assignment is saved."
 
 Ticked, a student who asks the same question again in the same conversation gets the worked answer; unticked, it stays a hint.
 
-## How do I use the assistant?
+## How do I use Vidura?
 
-Press the assistant's launcher in the top bar, or open `/assistant`. As a faculty member you have both halves: questions about using the platform (which page, which steps) and questions about topics in the books, answered with the book, chapter and page cited. It also answers questions about your own records from the pages you already see (today's lectures, students below the attendance threshold, components to moderate, your leave), counting from the platform's own figures, and under "Sources" it links the post or the message thread it read.
+Vidura is Shalaghar's assistant. Its one way in is the round button at the bottom right of every page, labelled "Ask Vidura" for screen readers; on a phone-width screen it sits above the bottom bar, and above the page's own round quick-action button where one is shown. The button is there only while Shalaghar's operator has Vidura switched on for the platform and for your college; the office does not switch it. There is no menu entry for Vidura, and opening `/assistant` takes you back to the page you came from with its drawer open.
 
-1. Press "New conversation", type in "Your question" and press "Ask". Do not type names, phone numbers or anyone's details.
-2. "Your conversations" lists the last thirty days; a conversation is deleted thirty days after it was last used, or sooner with "Delete this conversation".
-3. Under each answer, "Was this helpful?" takes a "Yes" or "No".
+Pressing the button opens Vidura's drawer. On a computer it docks at the right of the window and the page stays usable beside it, so you can follow the steps while you read them, and it stays open as you move between pages. On a phone it opens as a sheet from the bottom of the screen, and following a link from inside it closes it. Escape closes it, and so does "Close Vidura" (the cross).
 
-The assistant remembers only the conversation it is in. It is not a general chatbot: anything outside the platform and the books gets one sentence saying what it is for.
+As a faculty member you have both halves: questions about using the platform (which page, which steps) and questions about topics in the books, answered with the book, chapter and page cited under "Sources". It is not a general chatbot: anything outside the platform and the books gets one sentence saying what it is for. Vidura knows the page it opened beside: "How do I use this page?" or "how do I do this here?" is answered from that page's own help and your own figures shown there. Under "My records", or when Vidura picks it, it answers questions about your own records from the pages you already see (today's lectures, students below the attendance threshold, components to moderate, your leave), counting from the platform's own figures, and under "Sources" it links the post or the message thread it read.
+
+1. Type in "Your question" and press "Ask". Do not type names, phone numbers or anyone's details. An empty conversation shows "What Vidura is for" and, under "Try asking", three questions for your role and the page you are on (on a page other than your home the first is "How do I use this page?"); pressing one asks it.
+2. To send one question a particular way, choose under "Mode for your next question": "Vidura picks" (the default), "Using Shalaghar" (how the platform works, which page and which steps), "My records" (your own figures, counts and links, read from the pages you already see) or "Learning" (topics from the books, with the book, chapter and page under "Sources"). The pick sends only your next question that way, then Vidura picks again, and no pick gets past a refusal. Each answer wears a small label naming the mode it was answered in.
+3. Answer "Was this helpful?" with "Yes" or "No".
+4. "New conversation" starts afresh. "Your conversations" lists the conversations of the last thirty days inside the drawer: press one to re-read it and ask more in it, "Delete this conversation" removes one sooner, and "Back to the conversation" returns.
+
+Answers are set out with headings, numbered steps, bold for what matters, and a small table when your own figures have several rows. A definition is short (about sixty words) and a how-to gives numbered steps (up to about 250 words); an explanation of a topic has four short parts, up to about 350 words in all: the idea, an example, what the book says, and a question to check yourself. If an answer stops at its length limit it says "The answer stopped at its length limit." and "Go on" continues it; "Go on" counts as one of your questions for the day, and an answer can be continued at most twice. Each person has twenty questions a day, a conversation remembers what was said in it only, and each conversation is deleted thirty days after it was last used.
+
+When Vidura cannot answer (its one sentence saying what it is for, a refusal, or an answer saying it is not sure), the answer shows "Vidura could not answer this; a person at your school can." and one button: "Ask the registrar's office", which opens a message conversation with them. Nothing of your question is copied into the message; you write your own.
 
 ## How do I keep the practical record?
 

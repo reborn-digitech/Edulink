@@ -53,13 +53,14 @@ describe("the role policy", () => {
 describe("the catalog's assistant doors", () => {
   it("open the person's own doors to exactly the roles with platform help", () => {
     const own = ASSISTANT.filter((e) => e.path.startsWith("/api/v1/assistant"));
-    expect(own.length).toBe(7);
+    // Seven since Phase B, and the suggested questions of Vidura pass 1 (17 Oct 2026).
+    expect(own.length).toBe(8);
     for (const e of own) for (const role of ROLES) expect(permits(e, role), `${e.method} ${e.path} ${role}`).toBe(ROLE_POLICY[role].help);
   });
 
   it("put opening and asking behind the ASSISTANT module, and never the office's switch, the opt-out or the teacher's switch", () => {
     const moduled = ASSISTANT.filter((e) => e.module === "ASSISTANT").map((e) => `${e.method} ${e.path}`).sort();
-    expect(moduled).toEqual(["POST /api/v1/assistant/conversations", "POST /api/v1/assistant/conversations/{conversationId}/messages"]);
+    expect(moduled).toEqual(["GET /api/v1/assistant/suggestions", "POST /api/v1/assistant/conversations", "POST /api/v1/assistant/conversations/{conversationId}/messages"]);
     for (const e of ASSISTANT.filter((x) => /admin|family|teacher/.test(x.path))) expect(e.module, e.path).toBeUndefined();
   });
 

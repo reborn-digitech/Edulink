@@ -75,3 +75,14 @@ export function pageForDoor(door: string, role: Role): string | null {
   const page = DOOR_PAGES[door]?.[role] ?? null;
   return page && pageIsRoles(page, role) ? page : null;
 }
+
+/**
+ * The doors whose data is seen on `page` for this role (Vidura pass 1, page awareness): the reverse of DOOR_PAGES, so
+ * "what is due here?" asked beside /parent/fees reads the family's fees door.
+ */
+export function doorsShownOn(page: string, role: Role): string[] {
+  return Object.entries(DOOR_PAGES)
+    .filter(([, pages]) => pages[role] === page)
+    .map(([door]) => door)
+    .filter(() => pageIsRoles(page, role));
+}

@@ -106,8 +106,11 @@ export const APP_SEGMENTS = [
   "report-cards", "reports", "reviews", "sessions", "student", "teacher", "timetable", "vacancies",
 ] as const;
 
-/** Pages every module role may open besides its home and its NAV: the notices. */
-const MODULE_ROLE_PAGES = ["/notifications"];
+/**
+ * Pages every module role may open besides its home and its NAV: the notices, and /assistant (Vidura pass 1, 17 Oct
+ * 2026: no longer a menu entry; it sends the person back with Vidura's drawer open).
+ */
+const MODULE_ROLE_PAGES = ["/notifications", "/assistant"];
 
 /**
  * The person's own doors: who I am, my account, my devices, my notices, my

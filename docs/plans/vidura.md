@@ -1,6 +1,6 @@
 # Vidura — the assistant's next shape (plan of 12 October 2026)
 
-Status: planned, not built. The owner's decisions of 11–12 October 2026 and the coordinator's recommendations,
+Status: pass 1 built on 17 October 2026 (below); passes 2 to 4 planned, not built. The owner's decisions of 11–12 October 2026 and the coordinator's recommendations,
 in four passes, each a builder's brief. Run with `/vidura <pass>` (`.claude/commands/vidura.md`). Pass 1 was
 meant for the week of 12 October; passes 2 to 4 after the weekly reset of 17 October. Everything here sits on
 the assistant as built in [assistant.md](assistant.md) (Phases A–D, the exam-scope reader, the data questions,
@@ -55,6 +55,22 @@ guides and the persona; the three modes (the gate's label → the chip; a manual
 question); the answer shape per mode with restricted Markdown rendered in the drawer and on the phone, the
 length rule, "go on"; suggested questions; page awareness; "Ask a person". Measured on the nine sets (the
 refusal gate must stay 180/180) and the metrics set; a live walk of every actor's home with the drawer.
+
+**Built, 17 October 2026 (pass 1).** One entry point: the round button at the bottom right of every page
+(`components/nav/app-shell.tsx`, drawn where `accessTo(["ASSISTANT"])` in `signed-in-shell.tsx` says Vidura is the
+person's, as the way to the plan card where only the plan is missing) opening `components/assistant/drawer.tsx`, docked
+and not modal at a desk's width, a modal bottom sheet below it, the history inside; the menu entry, the rail's button,
+the top bar's launcher and the `/assistant` pages are gone (`/assistant` sends the person back with `?vidura=open`).
+The phone: `screens/shared/vidura.tsx` (the button above the tab bar and the sheet), the More entry gone. The name in
+the dictionaries (`assistantUi`, the new `viduraUi`), the seventeen guides and the persona (`prompt.ts`). The three
+modes as `AssistantChip` (contracts), the gate's label made the chip (`vidura.ts`, kept in the message's `mode`
+column, HELP and TUTOR read as before), a person's pick re-routing the next question only between the scopes the gate
+allows (`gate.ts` `prefer`). The answer's shape per mode in restricted Markdown (`prompt.ts`; one parser for both
+apps, `packages/contracts v1/assistant-markdown.ts`, narrowed before the answer gate), the length rule as token caps
+by kind and language (`config.ts` `ANSWER_TOKENS`), "go on" for an answer cut at its cap (at most twice, each a
+question of the day). Suggested questions (`suggestions.ts`, `GET /api/v1/assistant/suggestions`), page awareness
+(`page` on the ask, the page's card first for a question pointing at it, the doors its data comes from), "Ask a
+person" (`ask-person.ts`, through `POST /api/v1/shared/conversations`). The builder's report has the measurements.
 
 ### Pass 2 — languages and personal answers (8 to 12 points)
 The question rendered into English by the local model for retrieval only (the answer in the question's

@@ -71,6 +71,33 @@ export const assistantModeSchema = z.enum(["HELP", "TUTOR"]);
 export type AssistantMode = z.infer<typeof assistantModeSchema>;
 
 /**
+ * VIDURA'S THREE MODES (docs/plans/vidura.md, the owner's decision 3; pass 1, 17 Oct 2026): the chip an answer wears
+ * and the one a person may pick for the next question. USING ("Using Shalaghar") is platform help from the guides and
+ * the page cards; RECORDS ("My records") is the person's own data read through their own doors; LEARNING ("Learning")
+ * is the tutor over the books. The gate picks it (the classifier's PLATFORM becomes USING or RECORDS by whether the
+ * person's own data was read, CURRICULUM becomes LEARNING); a person's pick re-routes the next question only between
+ * the scopes the gate already allows, never past a refusal.
+ */
+export const ASSISTANT_CHIPS = ["USING", "RECORDS", "LEARNING"] as const;
+export const assistantChipSchema = z.enum(ASSISTANT_CHIPS);
+export type AssistantChip = z.infer<typeof assistantChipSchema>;
+
+/**
+ * "ASK A PERSON" (pass 1): when Vidura cannot answer — a fixed sentence, or an answer saying it is not sure — the one
+ * person at the conversation's school the asker may write to under the messaging rule (src/lib/conversations.ts
+ * `mayConverse`): a pupil's or a guardian's class teacher, else the office (at a college, the registrar's office),
+ * and for the office the head. The surfaces open (or find) the room with them through the existing doors; nothing of
+ * the question is carried.
+ */
+export const ASSISTANT_ASK_PERSON = ["CLASS_TEACHER", "OFFICE", "REGISTRAR", "HEAD"] as const;
+export const assistantAskPersonSchema = z.object({
+  who: z.enum(ASSISTANT_ASK_PERSON),
+  schoolId: z.string(),
+  userId: z.string(),
+});
+export type AssistantAskPerson = z.infer<typeof assistantAskPersonSchema>;
+
+/**
  * A citation points at a passage the search actually returned (the answer gate refuses any other).
  * CURRICULUM: the board's book, chapter, section and page, with the publisher's own PDF (`sourceUrl`,
  * open with `#page=<page>`). HELP: the platform page the help entry names. LINK: one of the person's own
@@ -128,6 +155,12 @@ export const assistantMessageSchema = z.object({
   hint: z.boolean(),
   /** The person's "was this helpful", or null when not said. */
   helpful: z.boolean().nullable(),
+  /** The mode chip the answer wears (pass 1); null on the person's own message and on a fixed sentence. */
+  chip: assistantChipSchema.nullable().default(null),
+  /** The answer stopped at its length cap (pass 1): "Go on" continues it, as one more question of the day. */
+  cut: z.boolean().default(false),
+  /** Who to ask instead, on a fixed sentence or an answer that says it is not sure (pass 1); null otherwise. */
+  askPerson: assistantAskPersonSchema.nullable().default(null),
 });
 export type AssistantMessage = z.infer<typeof assistantMessageSchema>;
 
@@ -165,6 +198,8 @@ export const assistantStatusSchema = z.object({
   retentionDays: z.number().int().positive(),
   /** A guardian's only: where the opt-out per child is (a path on this platform). */
   optOutPath: z.string().nullable(),
+  /** The modes this person may pick for a question (pass 1): USING for everyone, RECORDS for every role with their own data, LEARNING for the tutor's roles. */
+  modes: z.array(assistantChipSchema).default([]),
 });
 export type AssistantStatus = z.infer<typeof assistantStatusSchema>;
 
@@ -195,6 +230,15 @@ export const assistantAskSchema = z.object({
   text: z.string().trim().min(1).max(ASSISTANT_QUESTION_MAX),
   /** The language to answer in; omitted, the language the question is typed in, else the conversation's. */
   language: assistantLanguageSchema.optional(),
+  /** The person's pick of mode for this question (pass 1); omitted, the gate picks. Never past a refusal. */
+  mode: assistantChipSchema.optional(),
+  /**
+   * The page the drawer is beside (pass 1, page awareness): a path on this platform. "How do I do this?" is read
+   * against that page's help card and the person's own data shown there; a page that is not the person's is ignored.
+   */
+  page: z.string().max(200).regex(/^\/(?!\/)[^\s?#]*$/).optional(),
+  /** "Go on" (pass 1): continue the conversation's last answer, which stopped at its length cap. */
+  goOn: z.boolean().optional(),
 });
 export type AssistantAsk = z.infer<typeof assistantAskSchema>;
 
@@ -204,6 +248,15 @@ export const assistantAnswerSchema = z.object({
   answer: assistantMessageSchema,
 });
 export type AssistantAnswer = z.infer<typeof assistantAnswerSchema>;
+
+/**
+ * GET /api/v1/assistant/suggestions?page=/student/assignments — three questions for an empty drawer (pass 1), per
+ * role and page, in the person's language, from the help index: the guides' own questions for the page and the role,
+ * and the page cards' labels. `page` is the page the drawer is beside; a page that is not the person's is ignored.
+ */
+export const assistantSuggestionSchema = z.object({ text: z.string(), mode: assistantChipSchema.nullable() });
+export const assistantSuggestionsSchema = z.object({ suggestions: z.array(assistantSuggestionSchema).max(3) });
+export type AssistantSuggestions = z.infer<typeof assistantSuggestionsSchema>;
 
 /** POST /api/v1/assistant/conversations/{conversationId}/feedback — "was this helpful", once per answer, changeable. */
 export const assistantFeedbackSchema = z.object({ messageId: cuidish, helpful: z.boolean() });

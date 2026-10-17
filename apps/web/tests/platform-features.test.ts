@@ -189,13 +189,14 @@ describe("what a person is told", () => {
 
   it("drops a feature's nav entries for every role while it is off, and none while all are on", () => {
     const expected: Partial<Record<Role, string[]>> = {
-      ADMIN: ["/experts", "/admin/vacancies", "/mentoring", "/admin/sessions", "/assistant"],
-      PRINCIPAL: ["/admin/vacancies", "/admin/sessions", "/assistant"],
-      TEACHER: ["/teacher/practice", "/teacher/contributions", "/experts", "/vacancies", "/mentoring", "/teacher/guidance", "/assistant"],
-      STUDENT: ["/student/practice", "/mentoring", "/sessions", "/assistant"],
-      PARENT: ["/parent/practice", "/mentoring", "/sessions", "/assistant"],
+      ADMIN: ["/experts", "/admin/vacancies", "/mentoring", "/admin/sessions"],
+      PRINCIPAL: ["/admin/vacancies", "/admin/sessions"],
+      TEACHER: ["/teacher/practice", "/teacher/contributions", "/experts", "/vacancies", "/mentoring", "/teacher/guidance"],
+      STUDENT: ["/student/practice", "/mentoring", "/sessions"],
+      PARENT: ["/parent/practice", "/mentoring", "/sessions"],
       EXPERT: ["/expert/availability", "/mentoring", "/expert/sessions", "/expert/earnings"],
-      DRIVER: ["/assistant"],
+      // Vidura has no menu entry since pass 1 (17 Oct 2026): its round button is drawn by the shell (signed-in-shell.tsx).
+      DRIVER: [],
     };
     for (const [role, hrefs] of Object.entries(expected) as [Role, string[]][]) {
       expect(new Set(hiddenByFeature(NAV[role], [])), role).toEqual(new Set(hrefs));

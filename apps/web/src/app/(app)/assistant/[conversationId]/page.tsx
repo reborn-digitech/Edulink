@@ -1,22 +1,15 @@
-import type { Metadata } from "next";
-import { getT } from "@/lib/i18n/server";
+import { redirect } from "next/navigation";
 import { getSession } from "@/lib/session";
-import { PageHeader } from "@/components/ui/page-header";
-import { AssistantConversationView } from "@/components/assistant/pages";
+import { ROLE_HOME, type Role } from "@/lib/constants";
+import { withDrawer } from "@/lib/assistant/back-to";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getT();
-  return { title: t("assistantUi.title") };
-}
-
-/** One of the person's conversations (Phase C): the door answers 404 for anyone else's, and the view says it is not here. */
+/**
+ * /assistant/{id}, since Vidura pass 1 (17 Oct 2026): one of the person's conversations opens in the drawer on their
+ * home (`?vidura=<id>`); the door answers 404 for anyone else's, and the drawer says so.
+ */
 export default async function AssistantConversationPage({ params }: { params: Promise<{ conversationId: string }> }) {
-  const [t, session] = await Promise.all([getT(), getSession()]);
-  const { conversationId } = await params;
-  return (
-    <div className="mx-auto max-w-3xl space-y-5">
-      <PageHeader title={t("assistantUi.title")} back={{ href: "/assistant", label: t("assistantUi.allConversations") }} />
-      <AssistantConversationView id={conversationId} role={session?.role ?? null} />
-    </div>
-  );
+  const [session, { conversationId }] = await Promise.all([getSession(), params]);
+  const role = session?.role ?? null;
+  const home = role && role in ROLE_HOME ? ROLE_HOME[role as Role] : "/";
+  redirect(withDrawer(home, /^[\w-]{1,64}$/.test(conversationId) ? conversationId : "open"));
 }

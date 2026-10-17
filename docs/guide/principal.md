@@ -2,7 +2,7 @@ Roles: PRINCIPAL
 
 # The head's guide
 
-This guide is for the head of a school, and for a college principal under the headings that say at a college. You sign in with the Principal role and start at `/principal`, the "Dashboard"; at a college the dashboard sends you on to "The college" at `/principal/college`. A head reads and decides. There is no register, no gradebook and no class set-up on these pages: the teachers mark and the office sets up, and the head's pages read what they wrote and decide what the rules leave to the head. The menu's first five entries are "Dashboard", "Classes", "Leave", "Reviews" and "Exams"; the rest sit under "More" in "Day to day" (messages, the assistant), "School life" (the feed, the student council, vacancies, enquiries, competitions, sessions, past years) and "Running things" (every office page the head reads, and the ones the head decides on). A page behind a module is in the menu only while the school has that module on. The command palette's quick actions are "Review leave requests" and "Class insights".
+This guide is for the head of a school, and for a college principal under the headings that say at a college. You sign in with the Principal role and start at `/principal`, the "Dashboard"; at a college the dashboard sends you on to "The college" at `/principal/college`. A head reads and decides. There is no register, no gradebook and no class set-up on these pages: the teachers mark and the office sets up, and the head's pages read what they wrote and decide what the rules leave to the head. The menu's first five entries are "Dashboard", "Classes", "Leave", "Reviews" and "Exams"; the rest sit under "More" in "Day to day" (messages), "School life" (the feed, the student council, vacancies, enquiries, competitions, sessions, past years) and "Running things" (every office page the head reads, and the ones the head decides on). A page behind a module is in the menu only while the school has that module on. The command palette's quick actions are "Review leave requests" and "Class insights".
 
 ## What do I see on the dashboard?
 
@@ -142,15 +142,30 @@ The "Incident log" at `/admin/incidents` is the whole school's ("Open", "Closed"
 
 The office and the head write the card and close incidents; a teacher of the class reads the card and records incidents for their own pupils.
 
-## What do I do when the assistant tells me a pupil may need someone?
+## What do I do when Vidura tells me a pupil may need someone?
 
-When a pupil asks the assistant something that reads as self-harm, the pupil is given a helpline sentence and a caring adult at the school is told: the school's counsellor (a member of staff whose designation on the staff record names a counsellor), else the head, else the office.
+When a pupil asks Vidura something that reads as self-harm, the pupil is given a helpline sentence and a caring adult at the school is told: the school's counsellor (a member of staff whose designation on the staff record names a counsellor), else the head, else the office.
 
-1. The notice arrives among your notifications, marked urgent: "A pupil may need someone to talk to" — "{name} ({className}) asked the assistant something that suggests they may be struggling. Their words are not shared; please check in with them today."
+1. The notice arrives among your notifications, marked urgent: "A pupil may need someone to talk to" — "{name} ({className}) asked Vidura something that suggests they may be struggling. Their words are not shared; please check in with them today."
 2. Check in with the pupil that day. Nobody is told twice for the same pupil in a school day, and the pupil's words are never shown to anyone.
-3. The office sets the "Helpline sentence" on the "Assistant" card of `/admin`; left blank, the national helpline is named.
+3. The office sets the "Helpline sentence" on the "Vidura" card of `/admin`; left blank, the national helpline is named.
 
-Your own "Assistant" at `/assistant` answers questions about using the platform, naming the page and the steps; the tutor for school subjects is for pupils and teachers. A conversation is deleted thirty days after it was last used. Your assistant also answers counts from the pages you already see (leave requests waiting, classes behind on the syllabus, fees overdue, open incidents), from the platform's own figures, with class names and never a list of children, and under "Sources" it links the circular or the message thread it read.
+## How do I ask Vidura, and what will it answer?
+
+Vidura is Shalaghar's assistant. Its one way in is the round button at the bottom right of every page, labelled "Ask Vidura" for screen readers; on a phone-width screen it sits above the bottom bar, and above the page's own round quick-action button where one is shown. The button is there only while Shalaghar's operator has Vidura switched on for the platform and for your school or college; the office does not switch it. There is no menu entry for Vidura, and opening `/assistant` takes you back to the page you came from with its drawer open.
+
+Pressing the button opens Vidura's drawer. On a computer it docks at the right of the window and the page stays usable beside it, so you can follow the steps while you read them, and it stays open as you move between pages. On a phone it opens as a sheet from the bottom of the screen, and following a link from inside it closes it. Escape closes it, and so does "Close Vidura" (the cross).
+
+For the head it answers questions about using the platform, naming the page and the steps; topic questions from the books are for pupils, teachers, faculty and heads of department. It is not a general chatbot: anything else gets one sentence saying what it is for. Vidura knows the page it opened beside: "How do I use this page?" or "how do I do this here?" is answered from that page's own help and your own figures shown there. Under "My records", or when Vidura picks it, it answers counts from the pages you already see (leave requests waiting, classes behind on the syllabus, fees overdue, open incidents), from the platform's own figures, with class names and never a list of children, and under "Sources" it links the circular or the message thread it read.
+
+1. Type in "Your question" and press "Ask". Do not type names, phone numbers or anyone's details. An empty conversation shows "What Vidura is for" and, under "Try asking", three questions for your role and the page you are on (on a page other than your home the first is "How do I use this page?"); pressing one asks it.
+2. To send one question a particular way, choose under "Mode for your next question": "Vidura picks" (the default), "Using Shalaghar" (how the platform works, which page and which steps) or "My records" (your own figures, counts and links, read from the pages you already see). The pick sends only your next question that way, then Vidura picks again, and no pick gets past a refusal. Each answer wears a small label naming the mode it was answered in.
+3. Answer "Was this helpful?" with "Yes" or "No".
+4. "New conversation" starts afresh. "Your conversations" lists the conversations of the last thirty days inside the drawer: press one to re-read it and ask more in it, "Delete this conversation" removes one sooner, and "Back to the conversation" returns.
+
+Answers are set out with headings, numbered steps, bold for what matters, and a small table when your own figures have several rows. A definition is short (about sixty words) and a how-to gives numbered steps (up to about 250 words). If an answer stops at its length limit it says "The answer stopped at its length limit." and "Go on" continues it; "Go on" counts as one of your questions for the day, and an answer can be continued at most twice. Each person has twenty questions a day, a conversation remembers what was said in it only, and each conversation is deleted thirty days after it was last used.
+
+When Vidura cannot answer (its one sentence saying what it is for, a refusal, or an answer saying it is not sure), the answer shows "Vidura could not answer this; a person at your school can." and one button: "Ask the school office" (at a college, "Ask the registrar's office"), which opens a message conversation with them. Nothing of your question is copied into the message; you write your own.
 
 ## How do I read my decisions and the school's trends?
 

@@ -16,7 +16,8 @@ import { enabledModules, enabledModulesForFamily } from "@/lib/modules";
 import { myDuties } from "@/lib/duties";
 import { streamsOf } from "@/lib/streams";
 import { hiddenByFeature, hiddenByKind } from "@/lib/nav";
-import { featuresFor } from "@/lib/platform-features";
+import { accessTo, featuresFor } from "@/lib/platform-features";
+import { ASSISTANT_NOT_FOR } from "@/lib/nav";
 import { institutionKindsForFamily } from "@/lib/family-child";
 import { isCollegeKind, streamLabel } from "@/lib/institution";
 
@@ -136,6 +137,21 @@ export async function SignedInShell({
   }
 
   /**
+   * VIDURA'S ROUND BUTTON (pass 1, 17 Oct 2026; docs/plans/vidura.md): drawn where this person may use it — the
+   * operator's ASSISTANT switch, the school's ASSISTANT module (a guardian's: any child's school), and the plan where
+   * the role needs one (platform-features.ts `accessTo`, the question `mayUse` asks) — and drawn as the way to the plan
+   * card where only the plan is missing. Never for the expert or the recruiter, who belong to no school.
+   */
+  let vidura: "open" | "plan" | null = null;
+  if (!ASSISTANT_NOT_FOR.includes(role)) {
+    const moduleOn = (role === "PARENT" ? await enabledModulesForFamily(session.user.id) : await enabledModules(session.schoolId)).includes("ASSISTANT");
+    if (moduleOn) {
+      const access = await accessTo(["ASSISTANT"], session);
+      vidura = access.state === "open" ? "open" : access.state === "plan" ? "plan" : null;
+    }
+  }
+
+  /**
    * Enquiries obey the same rule as Feedback: the entry exists only while
    * there is a conversation to show. A parent who never enquired, a teacher
    * who is nobody's contact and an admin whose school has drawn none all see
@@ -183,6 +199,7 @@ export async function SignedInShell({
       unreadCount={unreadCount}
       hiddenHrefs={hiddenHrefs}
       badges={badges}
+      vidura={vidura}
     >
       {children}
     </AppShell>

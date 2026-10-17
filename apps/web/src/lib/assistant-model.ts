@@ -70,6 +70,8 @@ export type ChatResult = {
   promptTokensPerSecond: number | null;
   /** The first token's log-probability, when asked for and reported (the classifier's confidence). */
   firstTokenLogprob: number | null;
+  /** Why the model stopped ("stop", "length" at the token cap), when the endpoint says (Vidura pass 1: "Go on"). */
+  finishReason?: string | null;
 };
 
 export type ChatOptions = {
@@ -105,7 +107,7 @@ export async function chatComplete(ep: AssistantEndpoint, messages: ChatMessage[
   });
   if (!res.ok) throw new Error(`chat endpoint answered ${res.status}: ${(await res.text()).slice(0, 300)}`);
   const body = (await res.json()) as {
-    choices?: { message?: { content?: string }; logprobs?: { content?: { logprob?: number }[] } }[];
+    choices?: { message?: { content?: string }; logprobs?: { content?: { logprob?: number }[] }; finish_reason?: string | null }[];
     usage?: { prompt_tokens?: number; completion_tokens?: number };
     timings?: { predicted_per_second?: number; prompt_per_second?: number };
   };
@@ -117,5 +119,6 @@ export async function chatComplete(ep: AssistantEndpoint, messages: ChatMessage[
     tokensPerSecond: body.timings?.predicted_per_second ?? null,
     promptTokensPerSecond: body.timings?.prompt_per_second ?? null,
     firstTokenLogprob: body.choices?.[0]?.logprobs?.content?.[0]?.logprob ?? null,
+    finishReason: body.choices?.[0]?.finish_reason ?? null,
   };
 }

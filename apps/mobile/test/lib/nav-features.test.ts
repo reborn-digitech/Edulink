@@ -21,7 +21,9 @@ describe("the phone's menus follow the platform's features", () => {
 
   it("shows each entry with its feature on, a shared one with either", () => {
     const all = screens("TEACHER", PLATFORM_FEATURES);
-    for (const screen of ["/(app)/practice", "/(app)/experts", "/(app)/vacancies", "/(app)/mentoring", "/(app)/sessions", "/(app)/contributions", "/(app)/assistant"]) expect(all).toContain(screen);
+    for (const screen of ["/(app)/practice", "/(app)/experts", "/(app)/vacancies", "/(app)/mentoring", "/(app)/sessions", "/(app)/contributions"]) expect(all).toContain(screen);
+    // Vidura has no menu entry since pass 1 (17 Oct 2026): the round button above the tab bar (screens/shared/vidura.tsx).
+    expect(all).not.toContain("/(app)/assistant");
     // The family's sessions stay while expert OR teacher sessions are on.
     expect(screens("PARENT", ["TEACHER_SESSIONS"])).toContain("/(app)/sessions");
     expect(screens("PARENT", ["EXPERT_SESSIONS"])).toContain("/(app)/sessions");

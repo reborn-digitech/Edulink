@@ -2,7 +2,7 @@ Roles: WARDEN
 
 # The warden's guide (school and college)
 
-This guide is for the warden of a hostel at a school or college on Shalaghar: the person who takes the roll call, decides leave, keeps the gate, gives beds, puts up the mess menu and records what happens in the hostel. You start at `/hostel`, the "Hostel" page. The bar carries "Hostel", "Roll call", "Leave" and "Rooms". The "More" menu holds "Tonight", "Visitors" and "Global feed" under "Day to day", and "Expulsions", "Mess menu", "Incidents", "Account", "Leave" and "Staff attendance" under "Running things"; "Assistant" is there while the school has the Assistant module on. At a college the menu adds "Squad, rooms and numbers" and "No-dues". The hostel pages are in the menu only when the school has the Hostel module on. The principal reads these pages but cannot write on them.
+This guide is for the warden of a hostel at a school or college on Shalaghar: the person who takes the roll call, decides leave, keeps the gate, gives beds, puts up the mess menu and records what happens in the hostel. You start at `/hostel`, the "Hostel" page. The bar carries "Hostel", "Roll call", "Leave" and "Rooms". The "More" menu holds "Tonight", "Visitors" and "Global feed" under "Day to day", and "Expulsions", "Mess menu", "Incidents", "Account", "Leave" and "Staff attendance" under "Running things". At a college the menu adds "Squad, rooms and numbers" and "No-dues". The hostel pages are in the menu only when the school has the Hostel module on. The principal reads these pages but cannot write on them.
 
 ## What does the Hostel page show?
 
@@ -77,9 +77,24 @@ Each proposal reads "{hostel} {room} · from {date} · proposed by {name}"; "Wit
 
 Open `/account/attendance` ("Staff attendance"), the "My attendance" page, and press "I'm in" under "Today"; the toast reads "Checked in. Have a good day." or "Checked in — after {time}, so it is marked late." Open `/account/leave` ("Leave"): "Ask to be away. The office answers, and you see its answer here." Press "Apply for leave", set "First day away", "Last day away" and the "Kind of leave", write "Why" and press "Send to the office"; "Withdraw this request" takes back a waiting one. "Leave this year" shows your balance.
 
-## Where are my account, the feed and the assistant?
+## Where are my account, the feed and Vidura?
 
-`/account` ("Account") has "Sign-in and schools", "Preferences" ("Notifications", "Language", "Appearance and reading") and "Devices", with "Sign out" at the foot; its "Leave" card opens `/account/leave`, and "My payslips" appears when the school has the Payroll module on. `/bulletin/global` ("Global feed") shows the posts every school has chosen to share. Press "Ask the assistant" on any page or open `/assistant` ("Assistant"): it answers how to use Shalaghar, which page to open and the steps to take there; type in "Your question" and press "Ask", and do not type names or phone numbers. It also answers counts from the hostel's own pages (boarders, beds occupied, leave requests open, visitors today), from the platform's own figures and never a list of boarders, and under "Sources" it links the post it read.
+`/account` ("Account") has "Sign-in and schools", "Preferences" ("Notifications", "Language", "Appearance and reading") and "Devices", with "Sign out" at the foot; its "Leave" card opens `/account/leave`, and "My payslips" appears when the school has the Payroll module on. `/bulletin/global` ("Global feed") shows the posts every school has chosen to share.
+
+Vidura is Shalaghar's assistant. Its one way in is the round button at the bottom right of every page, labelled "Ask Vidura" for screen readers; on a phone-width screen it sits above the bottom bar, and above the page's own round quick-action button where one is shown. The button is there only while Shalaghar's operator has Vidura switched on for the platform and for your school; the office does not switch it. There is no menu entry for Vidura, and opening `/assistant` takes you back to the page you came from with its drawer open.
+
+Pressing the button opens Vidura's drawer. On a computer it docks at the right of the window and the page stays usable beside it, so you can follow the steps while you read them, and it stays open as you move between pages. On a phone it opens as a sheet from the bottom of the screen, and following a link from inside it closes it. Escape closes it, and so does "Close Vidura" (the cross).
+
+For you it answers how to use Shalaghar, which page to open and the steps to take there, and your own records; topic questions from the books are for pupils, teachers, faculty and heads of department. It is not a general chatbot: anything else gets one sentence saying what it is for. Vidura knows the page it opened beside: "How do I use this page?" or "how do I do this here?" is answered from that page's own help and your own figures shown there. Under "My records", or when Vidura picks it, it answers counts from the hostel's own pages (boarders, beds occupied, leave requests open, visitors today), from the platform's own figures and never a list of boarders, and under "Sources" it links the post it read.
+
+1. Type in "Your question" and press "Ask". Do not type names, phone numbers or anyone's details. An empty conversation shows "What Vidura is for" and, under "Try asking", three questions for your role and the page you are on (on a page other than your home the first is "How do I use this page?"); pressing one asks it.
+2. To send one question a particular way, choose under "Mode for your next question": "Vidura picks" (the default), "Using Shalaghar" (how the platform works, which page and which steps) or "My records" (your own figures, counts and links, read from the pages you already see). The pick sends only your next question that way, then Vidura picks again, and no pick gets past a refusal. Each answer wears a small label naming the mode it was answered in.
+3. Answer "Was this helpful?" with "Yes" or "No".
+4. "New conversation" starts afresh. "Your conversations" lists the conversations of the last thirty days inside the drawer: press one to re-read it and ask more in it, "Delete this conversation" removes one sooner, and "Back to the conversation" returns.
+
+Answers are set out with headings, numbered steps, bold for what matters, and a small table when your own figures have several rows. A definition is short (about sixty words) and a how-to gives numbered steps (up to about 250 words). If an answer stops at its length limit it says "The answer stopped at its length limit." and "Go on" continues it; "Go on" counts as one of your questions for the day, and an answer can be continued at most twice. Each person has twenty questions a day, a conversation remembers what was said in it only, and each conversation is deleted thirty days after it was last used.
+
+Your menu has no "Messages", so when Vidura cannot answer it offers no button to write to a person at the school.
 
 ## At a college
 

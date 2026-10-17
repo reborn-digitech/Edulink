@@ -689,17 +689,15 @@ export const NAV: Record<Role, NavItem[]> = {
 };
 
 /**
- * The assistant (Phase C, 10 Oct 2026; docs/plans/assistant.md): one entry for every role that belongs to a school, after the role's own, under
- * "Day to day", behind the ASSISTANT module (on by default; the office may switch it off, and the shell then hides
- * the entry and the panel's launcher with it). Appended here rather than written into each role's list, so a role added
- * later has it too; the page is /assistant (the conversations of the last thirty days and a new one), the panel opens
- * over any page from the shell. A module role reaches the page through this entry (role-gate.ts).
+ * The assistant, Vidura (pass 1, 17 Oct 2026; docs/plans/vidura.md): NO MENU ENTRY. Its one entry point is the round
+ * button at the bottom right of every page (components/nav/app-shell.tsx), drawn by the shell where the person may use
+ * it; the Phase C entry under "Day to day" and the /assistant page's place in the menus are gone. /assistant itself now
+ * sends the person back to the page they were on with the drawer open (and draws the plan card for a person whose
+ * plan is missing); every role may open it (role-gate.ts MODULE_ROLE_PAGES).
  */
 export const ASSISTANT_HREF = "/assistant";
-const ASSISTANT_ENTRY: NavItem = { href: ASSISTANT_HREF, labelKey: "assistantUi.navLabel", icon: "chatsCircle", prefix: true, group: "daily", module: "ASSISTANT", feature: "ASSISTANT" };
 /** Not for the outside accounts: an expert and a recruiter belong to no school, and the assistant's doors refuse them (Phase B). */
 export const ASSISTANT_NOT_FOR: readonly Role[] = ["EXPERT", "RECRUITER"];
-for (const [role, list] of Object.entries(NAV) as [Role, NavItem[]][]) if (!ASSISTANT_NOT_FOR.includes(role) && !list.some((item) => item.href === ASSISTANT_HREF)) list.push(ASSISTANT_ENTRY);
 
 /** The one action each role does most. Becomes the floating action button. */
 export const PRIMARY_ACTION: Record<Role, QuickAction | null> = {

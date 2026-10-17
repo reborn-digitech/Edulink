@@ -244,7 +244,7 @@ describe("the admin's switch", () => {
     await as(ids.hillAdmin, "ADMIN", ids.hill, "POST /api/v1/admin/modules");
     const refused = await modulesPost(json("/api/v1/admin/modules", { module: "ASSISTANT", on: false }));
     expect(refused.status).toBe(403);
-    expect(((await refused.json()) as { error: string }).error).toBe("The platform's operator switches the assistant on for a school.");
+    expect(((await refused.json()) as { error: string }).error).toBe("The platform's operator switches Vidura on for a school.");
     const admin = (await getSession())!;
     await expect(setModule(admin, "ASSISTANT", false)).rejects.toMatchObject({ key: "modules.refuseAssistant" });
     await expect(setModule(admin, "ASSISTANT", true)).rejects.toMatchObject({ key: "modules.refuseAssistant" });

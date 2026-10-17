@@ -366,12 +366,13 @@ describe("the exam-scope reader through the service (10 October 2026)", () => {
     deps.searchCurriculum = async (q) => search({ ...q, query: "area" });
     const ok = await previewAnswer({ role: "STUDENT", grade: 6, question: "should I study the area of a rectangle for my coming exam", toolRuns: [{ name: "myExams", ok: true, status: 200, data: "{}", raw }] }, deps);
     expect(ok.verdict).toBe("ANSWERED");
-    expect(ok.text.startsWith("What the exam will cover, your teacher can tell you; here is the topic. Area = 19 × 9")).toBe(true);
+    // The platform's sentence is a paragraph of its own (Vidura pass 1: the answer's first heading still starts a line).
+    expect(ok.text.startsWith("What the exam will cover, your teacher can tell you; here is the topic.\n\nArea = 19 × 9")).toBe(true);
     const chat = deps.chat;
     deps.chat = async (m, o) => (m[0]!.content.startsWith("You classify") ? chat(m, o) : { content: "Yes, you should study it. Area = 19 × 9 = 171 cm² [1].", usage: { promptTokens: 1, completionTokens: 1 }, tokensPerSecond: null, promptTokensPerSecond: null, firstTokenLogprob: null });
     const yes = await previewAnswer({ role: "STUDENT", grade: 6, question: "should I study the area of a rectangle for my coming exam", toolRuns: [{ name: "myExams", ok: true, status: 200, data: "{}", raw }] }, deps);
     expect(yes.verdict).toBe("ANSWERED");
-    expect(yes.text).toBe("What the exam will cover, your teacher can tell you; here is the topic. Area = 19 × 9 = 171 cm² [1].");
+    expect(yes.text).toBe("What the exam will cover, your teacher can tell you; here is the topic.\n\nArea = 19 × 9 = 171 cm² [1].");
     deps.chat = async (m, o) => (m[0]!.content.startsWith("You classify") ? chat(m, o) : { content: "Yes, study it.", usage: { promptTokens: 1, completionTokens: 1 }, tokensPerSecond: null, promptTokensPerSecond: null, firstTokenLogprob: null });
     const only = await previewAnswer({ role: "STUDENT", grade: 6, question: "should I study the area of a rectangle for my coming exam", toolRuns: [{ name: "myExams", ok: true, status: 200, data: "{}", raw }] }, deps);
     expect(only.verdict).toBe("ANSWER_DISCARDED");
@@ -422,7 +423,10 @@ describe("a help answer written from the person's own data alone (the pilot of 1
   });
   it("still asks for citations when a passage is numbered", () => {
     const system = helpMessages({ question: "how much fee is due", language: "en", role: "PARENT", passages: [{ n: 1, heading: "Fees — page /parent/fees", text: "The fees page lists demands." }], data })[0]!.content;
-    expect(system).toMatch(/each with its citation like \[1\]/);
+    expect(system).toMatch(/with its citation like \[1\]/);
+    // A how-to question gets numbered steps, each cited (Vidura pass 1's shape for "Using Shalaghar").
+    const howTo = helpMessages({ question: "how do I pay the fee", language: "en", role: "PARENT", passages: [{ n: 1, heading: "Fees — page /parent/fees", text: "The fees page lists demands." }], data: [] })[0]!.content;
+    expect(howTo).toMatch(/two to six numbered steps[^\n]*each with its citation like \[1\]/);
   });
 });
 

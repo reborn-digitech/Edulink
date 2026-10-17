@@ -38,6 +38,30 @@ export const ANSWER_TIMEOUT_MS = 90_000;
 export const EMBED_TIMEOUT_MS = 10_000;
 export const MAX_ANSWER_TOKENS = 700;
 
+/**
+ * VIDURA'S LENGTH RULE (docs/plans/vidura.md, the owner's decision 6; pass 1, 17 Oct 2026): the answer's length by
+ * the question's kind — a definition about 60 words, a how-to up to 250 with numbered steps, a worked explanation up
+ * to 350 with its check question, a data answer as long as its rows need. The prompt asks for the words; these are
+ * the model's hard caps in tokens, so no answer is uncapped: an answer that reaches its cap is cut, marked, and "Go
+ * on" continues it as one more question of the person's day (GO_ON_MAX in a row at most). Devanagari takes about
+ * twice the tokens of English for the same words (measured on the Phase D speaker sheets), hence the second column.
+ */
+export type AnswerKind = "DEFINE" | "WHERE" | "HOWTO" | "EXPLAIN" | "WHY" | "OTHER" | "DATA";
+export const ANSWER_TOKENS: Record<AnswerKind, { en: number; deva: number }> = {
+  DEFINE: { en: 220, deva: 420 },
+  WHERE: { en: 300, deva: 560 },
+  HOWTO: { en: 600, deva: 1100 },
+  EXPLAIN: { en: 800, deva: 1400 },
+  WHY: { en: 600, deva: 1100 },
+  OTHER: { en: 450, deva: 820 },
+  DATA: { en: 900, deva: 1400 },
+};
+export function answerTokenCap(kind: AnswerKind, language: AssistantLanguage): number {
+  return language === "en" ? ANSWER_TOKENS[kind].en : ANSWER_TOKENS[kind].deva;
+}
+/** "Go on" continues a cut answer at most this many times in a row; the next one is the fixed sentence to ask afresh. */
+export const GO_ON_MAX = 2;
+
 /** Passages given to the model, per scope. */
 export const CURRICULUM_PASSAGES = 4;
 export const HELP_PASSAGES = 5;
@@ -64,6 +88,12 @@ export const DOOR_THRESHOLD: Record<AssistantLanguage, number> = { en: 0.55, hi:
  * fall short ("what is the overall syllabus coverage", 0.64 on the coverage door).
  */
 export const DOOR_SCOPE_THRESHOLD = 0.64;
+/**
+ * A door whose data the page beside the drawer shows (Vidura pass 1, page awareness: data.ts `doorsShownOn`) is ranked
+ * this close for a question pointing at that page: above the reading threshold and the scope threshold, so it is read
+ * first; the classifier still has to call the question PLATFORM.
+ */
+export const PAGE_DOOR_SIMILARITY = 0.8;
 /** At most this many doors are read for one question (a guardian's door taken once per child counts once). */
 export const MAX_DOORS_PER_QUESTION = 3;
 /**
