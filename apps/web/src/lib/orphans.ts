@@ -95,6 +95,8 @@ export const FILE_REFERENCES = [
   "expertApplication.documentFileId", // expert-registration (15 Oct 2026)
   "schoolSiteVersion.imageFileIds", // website-builder A (15 Oct 2026)
   "schoolSiteFile.fileId", // website-two (16 Oct 2026)
+  "facultyPublicProfile.publicPhotoFileId", // website-three (17 Oct 2026)
+  "facultyRecord.publicPhotoFileId", // website-three (17 Oct 2026)
   "collegeApplication.documentsJson",
   "scholarshipClaim.documentsJson",
   "purchaseRecord.billFileId",
@@ -134,6 +136,9 @@ const READERS: Record<FileReference, () => Promise<Claimed>> = {
   "schoolSiteVersion.imageFileIds": async () => (await db.schoolSiteVersion.findMany({ where: { imageFileIds: { isEmpty: false } }, select: { schoolId: true, imageFileIds: true } })).flatMap((r) => r.imageFileIds.map((fileId) => ({ fileId, schoolId: r.schoolId }))),
   // website-two (16 Oct 2026): a picture or PDF uploaded for a school's website, the school's while the row stands.
   "schoolSiteFile.fileId": async () => (await db.schoolSiteFile.findMany({ select: { schoolId: true, fileId: true } })).map((r) => ({ fileId: r.fileId, schoolId: r.schoolId })),
+  // website-three (17 Oct 2026): a faculty member's own public photo, on their record and on the page they published.
+  "facultyPublicProfile.publicPhotoFileId": async () => (await db.facultyPublicProfile.findMany({ where: { publicPhotoFileId: { not: null } }, select: { schoolId: true, publicPhotoFileId: true } })).map((r) => ({ fileId: r.publicPhotoFileId, schoolId: r.schoolId })),
+  "facultyRecord.publicPhotoFileId": async () => (await db.facultyRecord.findMany({ where: { publicPhotoFileId: { not: null } }, select: { schoolId: true, publicPhotoFileId: true } })).map((r) => ({ fileId: r.publicPhotoFileId, schoolId: r.schoolId })),
   "collegeApplication.documentsJson": async () => (await db.collegeApplication.findMany({ where: { documentsJson: { contains: '"fileId"' } }, select: { schoolId: true, documentsJson: true } })).flatMap((r) => fileIdsInJson(r.documentsJson).map((fileId) => ({ fileId, schoolId: r.schoolId }))),
   "scholarshipClaim.documentsJson": async () => (await db.scholarshipClaim.findMany({ where: { documentsJson: { contains: '"fileId"' } }, select: { schoolId: true, documentsJson: true } })).flatMap((r) => fileIdsInJson(r.documentsJson).map((fileId) => ({ fileId, schoolId: r.schoolId }))),
   // A purchase record's scanned bill (the INVENTORY module).

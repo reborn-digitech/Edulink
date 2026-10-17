@@ -12,8 +12,14 @@ import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
 import { IqacFlash } from "@/components/iqac/parts";
 import { FacultyProfileCard } from "@/components/faculty-profile-card";
-import { setPublicProfileAction } from "./actions";
+import { removePublicPhotoAction, setPublicPhotoAction, setPublicProfileAction } from "./actions";
 import { ActionForm } from "@/components/ui/action-form";
+// website-three (17 Oct 2026)
+import { FileField } from "@/components/ui/file-field";
+import { CheckboxField } from "@/components/ui/field";
+import { formatInZone } from "@/lib/dates";
+import { db } from "@/lib/db";
+// end website-three
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -39,6 +45,7 @@ export default async function FacultyProfilePage({ searchParams }: { searchParam
     );
   }
   const mine = await myPublicProfile(ctx);
+  const zone = (await db.school.findUnique({ where: { id: ctx.schoolId }, select: { timezone: true } }))?.timezone ?? "Asia/Kolkata";
   return (
     <div className="space-y-5">
       <PageHeader title={t("collegeDesks.profileTitle")} description={t("collegeDesks.profileIntro")} />
@@ -75,10 +82,39 @@ export default async function FacultyProfilePage({ searchParams }: { searchParam
               ) : null}
             </CardBody>
           </Card>
+          {/* website-three (17 Oct 2026): my own public photo, with my consent, for the college website and the public page. */}
+          <Card data-testid="faculty-photo">
+            <CardHeader title={t("facultyPhoto.title")} description={t("facultyPhoto.intro")} />
+            <CardBody className="space-y-4">
+              {mine.photo ? (
+                <div className="flex flex-wrap items-center gap-4">
+                  {/* eslint-disable-next-line @next/next/no-img-element -- my own stored photo through the file route, sized by ?w */}
+                  <img src={`/api/files/${encodeURIComponent(mine.photo.fileId)}?w=320`} alt={t("facultyPhoto.alt", { name: mine.preview.name })} className="size-24 rounded-full object-cover" />
+                  <div className="space-y-2 text-sm">
+                    <p className="text-fg">{t("facultyPhoto.consentGiven", { date: formatInZone(new Date(mine.photo.consentAt), zone, { day: "numeric", month: "short", year: "numeric" }, locale) })}</p>
+                    <ActionForm action={removePublicPhotoAction}>
+                      <Button type="submit" size="sm" variant="secondary">
+                        {t("facultyPhoto.remove")}
+                      </Button>
+                    </ActionForm>
+                  </div>
+                </div>
+              ) : (
+                <p className="text-sm text-fg-muted">{t("facultyPhoto.none")}</p>
+              )}
+              <ActionForm action={setPublicPhotoAction} className="space-y-3">
+                <FileField label={mine.photo ? t("facultyPhoto.replaceLabel") : t("facultyPhoto.uploadLabel")} name="photo" accept="image/png,image/jpeg,image/webp" required hint={t("facultyPhoto.hint")} />
+                <CheckboxField name="consent" label={t("facultyPhoto.consentTick")} description={t("facultyPhoto.consentHint")} required />
+                <Button type="submit" size="sm">
+                  {t("facultyPhoto.save")}
+                </Button>
+              </ActionForm>
+            </CardBody>
+          </Card>
           <Card>
             <CardHeader title={t("collegeDesks.profilePreview")} />
             <CardBody>
-              <FacultyProfileCard p={mine.preview} t={t} />
+              <FacultyProfileCard p={mine.preview} t={t} photoFileId={mine.photo?.fileId ?? null} />
             </CardBody>
           </Card>
         </>

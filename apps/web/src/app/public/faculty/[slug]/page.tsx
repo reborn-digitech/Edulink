@@ -37,7 +37,7 @@ export default async function PublicFacultyPage({ params }: { params: Promise<{ 
         </div>
         {list.profiles.length === 0 ? <h2 className="text-lg font-semibold text-fg">{t("collegeDesks.publicNone")}</h2> : null}
         {list.profiles.map((p) => (
-          <FacultyProfileCard key={p.id} p={p} t={t} footer={t("collegeDesks.publicAsOf", { date: formatDateKey(p.publishedAt.slice(0, 10), { day: "numeric", month: "short", year: "numeric" }, locale) })} />
+          <FacultyProfileCard key={p.id} p={p} t={t} photoFileId={p.photoFileId ?? null} footer={t("collegeDesks.publicAsOf", { date: formatDateKey(p.publishedAt.slice(0, 10), { day: "numeric", month: "short", year: "numeric" }, locale) })} />
         ))}
       </div>
     </div>

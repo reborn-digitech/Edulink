@@ -1,4 +1,4 @@
-import type { SiteCheck, SiteConfig, SiteEnquiryRow, SiteEnquiryStatus } from "@edulink/contracts";
+import type { SiteCheck, SiteConfig, SiteEnquiryRow, SiteEnquiryStatus, SiteFileUse } from "@edulink/contracts";
 import type { SiteData } from "@/lib/site-content";
 
 /**
@@ -8,7 +8,8 @@ import type { SiteData } from "@/lib/site-content";
  */
 
 export type EditorPost = { id: string; title: string; createdAt: string; images: { fileId: string; alt: string }[] };
-export type EditorFile = { fileId: string; kind: "IMAGE" | "PDF"; name: string; size: number; createdAt: string };
+/** website-three (17 Oct 2026): `usedBy`, where the saved draft and the live site use it (the server's word at the page's load). */
+export type EditorFile = { fileId: string; kind: "IMAGE" | "PDF"; name: string; size: number; createdAt: string; usedBy?: { use: SiteFileUse; label: string }[] };
 export type EditorVersion = { id: string; renderedAt: string; live: boolean; byName: string | null; nightly: boolean };
 export type EditorShare = { id: string; createdAt: string; expiresAt: string; byName: string | null };
 export type EditorVisits = { days: { dateKey: string; count: number }[]; total: number; pages: { page: string; count: number }[] };
@@ -40,6 +41,13 @@ export type EditorProps = {
   admissionsOn: boolean;
   metricValues: Partial<Record<string, string>>;
   section: string;
+  /* website-three (17 Oct 2026) */
+  /** The draft's save count at the page's load: every save sends it back, and a save after someone else's is refused. */
+  draftVersion: number;
+  /** Another person who saved the draft in the last five minutes, or null. */
+  alsoEditing: string | null;
+  /** The most files a site keeps. */
+  filesMax: number;
 };
 
 /** A change to the draft: the editor's one setter, handed to every section. */

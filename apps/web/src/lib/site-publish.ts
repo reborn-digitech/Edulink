@@ -28,7 +28,7 @@ import { announcementShown, pictureShown, renderSite, sectionHasContent, sitePag
  * THE NIGHTLY REFRESH re-renders each live site from the config it was PUBLISHED with (the version's snapshot,
  * not the draft the office may be half-way through), and stores a new version only when what the pages show by
  * date changed: the numbers, the calendar's upcoming entries, or the announcement coming into or going out of its
- * dates. A post taken down since, or a picture whose post was unpublished, drops out then.
+ * dates; and (website-three, 17 Oct 2026) the faculty pages published and their photos. A post taken down since, or a picture whose post was unpublished, drops out then.
  */
 
 export type PublishedSite = {
@@ -122,14 +122,18 @@ function imagesOf(media: string): MediaItem[] {
 }
 
 /** The school's draft, brought to the current shape (the defaults when there is none yet). Caller binds the school. */
-export async function draftConfigFor(schoolId: string, logoSwatch?: string | null): Promise<{ config: SiteConfig; exists: boolean; publishedVersionId: string | null; updatedAt: Date | null }> {
+export async function draftConfigFor(
+  schoolId: string,
+  logoSwatch?: string | null,
+): Promise<{ config: SiteConfig; exists: boolean; publishedVersionId: string | null; updatedAt: Date | null; draftVersion: number; updatedByUserId: string | null }> {
   const [school, site] = await Promise.all([
     db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { locale: true, profileAbout: true, addressLine: true, city: true, region: true, postalCode: true, contactEmail: true, contactPhone: true, board: true, affiliationNumber: true, kind: true, medium: true } }),
-    db.schoolSite.findUnique({ where: { schoolId }, select: { configJson: true, publishedVersionId: true, updatedAt: true } }),
+    // website-three (17 Oct 2026): the draft's save count and who saved it last, for the editor's stale-save refusal and "Also editing".
+    db.schoolSite.findUnique({ where: { schoolId }, select: { configJson: true, publishedVersionId: true, updatedAt: true, draftVersion: true, updatedByUserId: true } }),
   ]);
   const defaults = defaultSiteConfig({ ...school, logoSwatch: logoSwatch ?? null });
-  if (!site) return { config: await firstDraft(schoolId, defaults), exists: false, publishedVersionId: null, updatedAt: null };
-  return { config: repairSiteConfig(readJson<unknown>(site.configJson, {}), defaults), exists: true, publishedVersionId: site.publishedVersionId, updatedAt: site.updatedAt };
+  if (!site) return { config: await firstDraft(schoolId, defaults), exists: false, publishedVersionId: null, updatedAt: null, draftVersion: 0, updatedByUserId: null };
+  return { config: repairSiteConfig(readJson<unknown>(site.configJson, {}), defaults), exists: true, publishedVersionId: site.publishedVersionId, updatedAt: site.updatedAt, draftVersion: site.draftVersion, updatedByUserId: site.updatedByUserId };
 }
 
 /**
@@ -159,7 +163,7 @@ export async function gatherSiteData(schoolId: string, config: SiteConfig, now: 
     const postIds = [...new Set([...wantNews, ...wantGallery.map((g) => g.postId), ...pictures.flatMap((p) => (p.picture.postId ? [p.picture.postId] : []))])];
     const [numbers, faculty, disclosure, posts, principal, events, classes, slots, departments, cycle, siteFiles] = await Promise.all([
       siteMetrics(schoolId, { board: config.board, foundedYear: config.foundedYear }, now),
-      publicFaculty(school.slug),
+      publicFaculty(school.slug, { photos: "always" }),
       db.disclosurePage.findFirst({ where: { schoolId, publishedAt: { not: null } }, select: { id: true } }),
       postIds.length ? db.post.findMany({ where: { schoolId, id: { in: postIds }, ...SITE_POST_WHERE }, select: { id: true, title: true, body: true, media: true, createdAt: true } }) : Promise.resolve([]),
       config.principalNamed
@@ -189,6 +193,7 @@ export async function gatherSiteData(schoolId: string, config: SiteConfig, now: 
     const files: NonNullable<SiteData["files"]> = {};
     for (const f of siteFiles) files[f.fileId] = { size: f.size, kind: f.kind === "PDF" ? "PDF" : "IMAGE" };
     for (const p of posts) for (const m of imagesOf(p.media)) files[m.fileId] = { size: 0, kind: "IMAGE" };
+    for (const f of faculty.profiles) if (f.photoFileId) files[f.photoFileId] = { size: 0, kind: "IMAGE" };
     const subjectsOf = new Map<string, Set<string>>();
     for (const s of slots) {
       const set = subjectsOf.get(s.classId) ?? new Set<string>();
@@ -202,7 +207,8 @@ export async function gatherSiteData(schoolId: string, config: SiteConfig, now: 
       logoFileId: school.logoPath,
       numbers,
       numbersDateKey: today,
-      faculty: faculty.profiles.map((f) => ({ name: f.name, designation: f.designation, department: f.departmentName ?? "" })),
+      // website-three (17 Oct 2026): the member's own photo, its words their name.
+      faculty: faculty.profiles.map((f) => ({ name: f.name, designation: f.designation, department: f.departmentName ?? "", photo: f.photoFileId ? { fileId: f.photoFileId, alt: f.name } : null })),
       appUrl: appUrl(),
       disclosurePublished: Boolean(disclosure),
       facultyPublished: faculty.profiles.length > 0,
@@ -240,7 +246,10 @@ export function languagesOf(config: SiteConfig): SiteLanguage[] {
  */
 export function refreshSignature(config: SiteConfig, data: SiteData): string {
   const events = (data.events ?? []).map((e) => `${e.startKey}:${e.endKey}:${e.title}`).join(",");
-  return `${numbersHash(data.numbers)}|ann=${announcementShown(config, data.todayKey) ? 1 : 0}|ev=${events}`;
+  // website-three (17 Oct 2026): the faculty pages published and their photos, so a page taken down or a photo withdrawn
+  // leaves the live site at the next refresh (and at once: faculty-profile.ts asks for this school's refresh).
+  const faculty = data.faculty.map((f) => `${f.name}:${f.photo?.fileId ?? ""}`).join(",");
+  return `${numbersHash(data.numbers)}|ann=${announcementShown(config, data.todayKey) ? 1 : 0}|ev=${events}|fac=${faculty}`;
 }
 
 /* ------------------------------------------------------------------------------------------------ */
@@ -265,6 +274,8 @@ export function filesShown(config: SiteConfig, data: SiteData): string[] {
   const out = new Set<string>();
   for (const n of data.news) if (n.image) out.add(n.image.fileId);
   for (const g of data.gallery) out.add(g.fileId);
+  // website-three (17 Oct 2026): the faculty's own photos, on the Faculty page and section.
+  for (const f of data.faculty) if (f.photo) out.add(f.photo.fileId);
   for (const { picture } of sitePictures(config)) if (pictureShown(picture, data)) out.add(picture.fileId);
   const pdf = (id: string | null) => id && data.files?.[id]?.kind === "PDF";
   if (pdf(config.prospectusFileId)) out.add(config.prospectusFileId!);
@@ -328,6 +339,16 @@ export async function takeDown(schoolId: string): Promise<boolean> {
     });
     return gone > 0;
   });
+}
+
+/**
+ * A file deleted from the site's uploads (site-files.ts, website-three, 17 Oct 2026) taken out of the versions kept from
+ * before, which no one serves: the live version never names it (the delete is refused while it does). Caller binds the school.
+ */
+export async function forgetFileInOldVersions(schoolId: string, fileId: string): Promise<number> {
+  const rows = await db.schoolSiteVersion.findMany({ where: { schoolId, liveAt: null, imageFileIds: { has: fileId } }, select: { id: true, imageFileIds: true } });
+  for (const r of rows) await db.schoolSiteVersion.update({ where: { id: r.id }, data: { imageFileIds: r.imageFileIds.filter((id) => id !== fileId) } });
+  return rows.length;
 }
 
 /** Keep the newest VERSIONS_KEPT versions besides the live one. */

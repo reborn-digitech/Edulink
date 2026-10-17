@@ -13,7 +13,8 @@ import type { SiteNumber } from "./site-metrics";
 
 export type SiteImage = { fileId: string; alt: string };
 export type SiteNewsItem = { id: string; title: string; body: string; dateKey: string; image: SiteImage | null };
-export type SiteFacultyItem = { name: string; designation: string; department: string };
+/** website-three (17 Oct 2026): `photo`, the member's own public photo (their consent ticked on their profile page), or none. */
+export type SiteFacultyItem = { name: string; designation: string; department: string; photo?: SiteImage | null };
 /** An entry of the school calendar: a holiday, an exam or a function. */
 export type SiteEventItem = { title: string; startKey: string; endKey: string; kind: "HOLIDAY" | "EXAM" | "EVENT" };
 /** What the Academics page lists: a school's classes with the subjects its timetable teaches, a college's departments. */
@@ -208,12 +209,44 @@ export function pageHasContent(code: SitePage, config: SiteConfig, data: SiteDat
 /** One page of the site as the menu lists it: its key (a built-in page's code or "custom:<id>"), its path and its name. */
 export type SitePageLink = { key: string; path: string; title: string };
 
-/** The pages the site shows, in the admin's order: on and with something to show; the custom pages after them. */
+/**
+ * THE MENU'S ONE ORDER (website-three, 17 Oct 2026): every page's key once — a built-in page's code, a custom page's
+ * "custom:<id>" — in the admin's order (`menuOrder`), Home first; a key the order does not name (a draft saved before the
+ * order was kept, a page added since) follows in the pages' own order, the custom pages after the built-in ones, and a key
+ * naming no page any more is dropped.
+ */
+export function menuKeys(config: SiteConfig): string[] {
+  const all = [...config.pages.map((p) => p.code as string), ...config.customPages.map((p) => `custom:${p.id}`)];
+  const known = new Set(all);
+  const seen = new Set<string>(["HOME"]);
+  const out = ["HOME"];
+  for (const key of [...(config.menuOrder ?? []), ...all]) {
+    if (!known.has(key) || seen.has(key)) continue;
+    seen.add(key);
+    out.push(key);
+  }
+  return out;
+}
+
+/** A custom page has words to show (its rich text holds more than tags). */
+export function customPageHasText(page: { html: string }): boolean {
+  return Boolean(page.html.replace(/<[^>]*>/g, "").trim());
+}
+
+/** The pages the site shows, in the menu's one order (`menuKeys`): on and with something to show. */
 export function sitePagesShown(config: SiteConfig, data: SiteData, t?: Translate): SitePageLink[] {
   const name = (code: SitePage, own: string) => own.trim() || (t ? t(SITE_PAGE_TITLE[code]) : code);
-  const built = config.pages.filter((p) => (p.on || p.code === "HOME") && pageHasContent(p.code, config, data)).map((p) => ({ key: p.code, path: SITE_PAGE_PATH[p.code], title: name(p.code, p.title) }));
-  const custom = config.customPages.filter((p) => p.on && p.html.replace(/<[^>]*>/g, "").trim()).map((p) => ({ key: `custom:${p.id}`, path: p.slug, title: p.title }));
-  return [...built, ...custom];
+  const out: SitePageLink[] = [];
+  for (const key of menuKeys(config)) {
+    if (key.startsWith("custom:")) {
+      const p = config.customPages.find((c) => `custom:${c.id}` === key);
+      if (p && p.on && customPageHasText(p)) out.push({ key, path: p.slug, title: p.title });
+      continue;
+    }
+    const p = config.pages.find((b) => b.code === key);
+    if (p && (p.on || p.code === "HOME") && pageHasContent(p.code, config, data)) out.push({ key: p.code, path: SITE_PAGE_PATH[p.code], title: name(p.code, p.title) });
+  }
+  return out;
 }
 
 /** The home sections the page carries, in the admin's order: switched on and with something to show. */
@@ -229,6 +262,41 @@ export function draftPictures(config: SiteConfig): { where: string; picture: Sit
   config.facilities.forEach((f, i) => f.picture && out.push({ where: `facility:${i}`, picture: f.picture }));
   for (const album of config.albums) album.pictures.forEach((p) => out.push({ where: `album:${album.id}`, picture: p }));
   for (const a of config.achievements) if (a.picture) out.push({ where: `achievement:${a.id}`, picture: a.picture });
+  return out;
+}
+
+/** A file's use as the editor's Files panel and a refusal say it (website-three, 17 Oct 2026). */
+export const SITE_FILE_USE_KEY: Record<"HERO" | "FACILITY" | "ALBUM" | "ACHIEVEMENT" | "PROSPECTUS" | "DOWNLOAD" | "LIVE", TranslationKey> = {
+  HERO: "siteThree.useHERO",
+  FACILITY: "siteThree.useFACILITY",
+  ALBUM: "siteThree.useALBUM",
+  ACHIEVEMENT: "siteThree.useACHIEVEMENT",
+  PROSPECTUS: "siteThree.usePROSPECTUS",
+  DOWNLOAD: "siteThree.useDOWNLOAD",
+  LIVE: "siteThree.useLIVE",
+};
+
+/** One use of a file as a sentence says it: "a facility (Library)", a coded facility's name in the reader's language. */
+export function fileUseText(t: Translate, u: { use: keyof typeof SITE_FILE_USE_KEY; label: string }): string {
+  const coded = u.use === "FACILITY" && Object.prototype.hasOwnProperty.call(SITE_FACILITY_NAME, u.label);
+  const label = coded ? t(SITE_FACILITY_NAME[u.label as keyof typeof SITE_FACILITY_NAME]) : u.label;
+  return t(SITE_FILE_USE_KEY[u.use]) + (label ? ` (${label})` : "");
+}
+
+/**
+ * WHERE A FILE UPLOADED FOR THE SITE IS USED IN A DRAFT (website-three, 17 Oct 2026), by file id: the hero, a facility (by
+ * its name), an album (by its title), a proud moment (by its title), the prospectus, a download (by its title). The editor's
+ * Files panel reads it from the draft it holds; the server's delete reads it from the saved draft and adds the live site.
+ */
+export function draftFileUses(config: SiteConfig, facilityName?: (code: Exclude<SiteConfig["facilities"][number]["code"], "CUSTOM">) => string): Map<string, { use: "HERO" | "FACILITY" | "ALBUM" | "ACHIEVEMENT" | "PROSPECTUS" | "DOWNLOAD"; label: string }[]> {
+  const out = new Map<string, { use: "HERO" | "FACILITY" | "ALBUM" | "ACHIEVEMENT" | "PROSPECTUS" | "DOWNLOAD"; label: string }[]>();
+  const add = (fileId: string, use: "HERO" | "FACILITY" | "ALBUM" | "ACHIEVEMENT" | "PROSPECTUS" | "DOWNLOAD", label: string) => out.set(fileId, [...(out.get(fileId) ?? []), { use, label }]);
+  if (config.heroPicture && !config.heroPicture.postId) add(config.heroPicture.fileId, "HERO", "");
+  for (const f of config.facilities) if (f.picture && !f.picture.postId) add(f.picture.fileId, "FACILITY", f.code === "CUSTOM" ? f.label : facilityName ? facilityName(f.code) : f.code);
+  for (const a of config.albums) for (const p of a.pictures) if (!p.postId) add(p.fileId, "ALBUM", a.title);
+  for (const a of config.achievements) if (a.picture && !a.picture.postId) add(a.picture.fileId, "ACHIEVEMENT", a.title);
+  if (config.prospectusFileId) add(config.prospectusFileId, "PROSPECTUS", "");
+  for (const d of config.downloads) add(d.fileId, "DOWNLOAD", d.title);
   return out;
 }
 

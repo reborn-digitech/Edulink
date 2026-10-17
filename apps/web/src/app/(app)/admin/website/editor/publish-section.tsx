@@ -42,7 +42,7 @@ export function PublishSection(props: {
   visits: EditorVisits;
   when: (iso: string) => string;
   goTo: (section: string) => void;
-  onRestored: (config: SiteConfig) => void;
+  onRestored: (config: SiteConfig, draftVersion?: number) => void;
   publishing: boolean;
   onPublish: () => void;
 }) {
@@ -59,7 +59,7 @@ export function PublishSection(props: {
     startRestore(async () => {
       const r = await restoreSiteVersionAction(versionId);
       if (!r.ok || !r.config) return void toast({ tone: "danger", title: r.error ?? t("common.tryAgain") });
-      props.onRestored(r.config);
+      props.onRestored(r.config, r.draftVersion);
       toast({ tone: "ok", title: t(versionId ? "siteEditor.restored" : "siteEditor.reverted") });
       router.refresh();
     });

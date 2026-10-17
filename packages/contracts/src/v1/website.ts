@@ -235,6 +235,12 @@ export const siteConfigSchema = z.object({
   achievements: z.array(siteAchievementSchema).max(SITE_ACHIEVEMENTS_MAX).default([]),
   downloads: z.array(siteDownloadSchema).max(SITE_DOWNLOADS_MAX).default([]),
   customPages: z.array(siteCustomPageSchema).max(SITE_CUSTOM_PAGES_MAX).default([]),
+  // website-three (17 Oct 2026)
+  /**
+   * The menu's one order: the built-in pages' codes and the custom pages' "custom:<id>" keys, Home first. Empty in a draft
+   * saved before it, read then as the pages' own order with the custom pages after (apps/web/src/lib/site-content.ts menuKeys).
+   */
+  menuOrder: z.array(z.string().min(1).max(48)).max(SITE_PAGES.length + SITE_CUSTOM_PAGES_MAX).default([]),
 });
 export type SiteConfig = z.infer<typeof siteConfigSchema>;
 
@@ -259,6 +265,12 @@ export const adminSiteSchema = z.object({
   checklist: z.array(siteCheckSchema),
   unpublishedChanges: z.boolean(),
   draftSavedAt: z.string().datetime().nullable(),
+  /**
+   * website-three (17 Oct 2026): the draft's save count. PUT may send it back as `If-Match: <n>`; a draft saved by someone
+   * else since is then refused 409 CONFLICT. `alsoEditing`: another person's name when they saved it in the last five minutes.
+   */
+  draftVersion: z.number().int().optional(),
+  alsoEditing: z.string().nullable().optional(),
 });
 export type AdminSite = z.infer<typeof adminSiteSchema>;
 
@@ -328,6 +340,8 @@ export const siteEnquiryRowSchema = z.object({
   repliedAt: z.string().datetime().nullable(),
   /** The address a reply goes to: the email field, else the contact when it is an email; null when only a phone was given. */
   replyTo: z.string().nullable(),
+  /** website-three (17 Oct 2026): every reply sent on the thread, oldest first (`replyText` is the latest). */
+  replies: z.array(z.object({ text: z.string(), at: z.string().datetime(), byName: z.string().nullable() })).default([]),
 });
 export type SiteEnquiryRow = z.infer<typeof siteEnquiryRowSchema>;
 /** GET /api/v1/admin/site/enquiries?status= */
@@ -345,5 +359,51 @@ export const siteVisitsSchema = z.object({
   pages: z.array(z.object({ page: z.string(), count: z.number().int() })),
 });
 
+/** website-three (17 Oct 2026): where a file uploaded for the site is used — a part of the saved draft, or a page of the live site. */
+export const SITE_FILE_USES = ["HERO", "FACILITY", "ALBUM", "ACHIEVEMENT", "PROSPECTUS", "DOWNLOAD", "LIVE"] as const;
+export type SiteFileUse = (typeof SITE_FILE_USES)[number];
+
 /** GET /api/v1/admin/site/files — the files uploaded for the site (pictures and PDFs). */
-export const siteFilesSchema = z.object({ files: z.array(z.object({ fileId: z.string(), kind: z.enum(["IMAGE", "PDF"]), name: z.string(), size: z.number().int(), createdAt: z.string().datetime() })) });
+export const siteFilesSchema = z.object({
+  files: z.array(
+    z.object({
+      fileId: z.string(),
+      kind: z.enum(["IMAGE", "PDF"]),
+      name: z.string(),
+      size: z.number().int(),
+      createdAt: z.string().datetime(),
+      /** website-three (17 Oct 2026): where the saved draft and the live site use it (SITE_FILE_USES); empty: unused, so it may be deleted. */
+      usedBy: z.array(z.object({ use: z.enum(SITE_FILE_USES), label: z.string() })).default([]),
+    }),
+  ),
+  /** website-three: how many there are and the most a site keeps. */
+  count: z.number().int().optional(),
+  max: z.number().int().optional(),
+});
+
+/* ------------------------------------------------------------------------------------------------ */
+/* website-three (17 October 2026): files deleted, concurrent edits, the phone's read                */
+/* ------------------------------------------------------------------------------------------------ */
+
+/**
+ * GET /api/v1/admin/site/summary — the website at a glance, for the phone (read-only; editing is on the web): draft or
+ * published, the live address, the "Ready: n of 7" list, the enquiries waiting with the newest three, and the page views
+ * of the last thirty days.
+ */
+export const siteSummarySchema = z.object({
+  state: z.enum(["DRAFT", "PUBLISHED"]),
+  publishedAt: z.string().datetime().nullable(),
+  unpublishedChanges: z.boolean(),
+  address: z.string().nullable(),
+  checklist: z.array(siteCheckSchema),
+  ready: z.object({ done: z.number().int(), total: z.number().int() }),
+  enquiries: z.object({
+    newCount: z.number().int(),
+    total: z.number().int(),
+    newest: z.array(z.object({ id: z.string(), name: z.string(), createdAt: z.string().datetime(), status: z.enum(SITE_ENQUIRY_STATUSES), wantsVisit: z.boolean() })).max(3),
+  }),
+  visits: z.object({ total: z.number().int(), days: z.array(z.object({ dateKey: z.string(), count: z.number().int() })) }),
+  /** The editor's path on the web app, for "Edit on the web". */
+  editPath: z.string(),
+});
+export type SiteSummary = z.infer<typeof siteSummarySchema>;

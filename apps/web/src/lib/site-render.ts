@@ -225,7 +225,7 @@ function baseCss(config: Pick<SiteConfig, "colour" | "accent" | "theme">, body: 
     ".numbers{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:1rem;margin:0;padding:0;list-style:none}",
     ".numbers li{border:1px solid var(--line);border-radius:10px;padding:1rem;background:var(--card)}.numbers .v{display:block;font-size:1.8rem;font-weight:700;color:var(--link);line-height:1.2}.numbers .l{display:block;color:var(--muted);font-size:.95rem}",
     ".asof{color:var(--muted);font-size:.9rem;margin:1rem 0 0}",
-    ".people{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1rem;margin:0;padding:0;list-style:none}.people li{border-left:4px solid var(--c);padding:.25rem .75rem}.people span{display:block;color:var(--muted);font-size:.95rem}",
+    ".people{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1rem;margin:0;padding:0;list-style:none}.people li{border-left:4px solid var(--c);padding:.25rem .75rem}.people span{display:block;color:var(--muted);font-size:.95rem}.people img{width:4.5rem;height:4.5rem;border-radius:50%;object-fit:cover;margin-bottom:.5rem}",
     ".news{display:grid;gap:1.5rem;margin:0;padding:0;list-style:none}.news article{display:grid;gap:.75rem}@media(min-width:48rem){.news article.pic{grid-template-columns:16rem 1fr}}",
     ".news time,.when{color:var(--muted);font-size:.9rem}.news img{border-radius:8px}",
     ".gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(12rem,1fr));gap:.75rem;margin:0;padding:0;list-style:none}.gallery img{border-radius:8px;aspect-ratio:4/3;object-fit:cover;width:100%}",
@@ -431,8 +431,9 @@ function numbersInner({ config, data, locale, t }: Ctx): string {
   return `<ul class="numbers">${items}</ul><p class="asof">${esc(t("site.numbersAsOf", { date: dayText(data.numbersDateKey, locale) }))}</p>`;
 }
 
-function facultyInner({ data, t }: Ctx): string {
-  const items = data.faculty.map((f) => `<li>${esc(f.name)}<span>${esc([f.designation, f.department].filter(Boolean).join(", "))}</span></li>`).join("");
+function facultyInner({ data, t, opts }: Ctx): string {
+  // website-three (17 Oct 2026): the member's own photo above the name when they set one (its words are their name).
+  const items = data.faculty.map((f) => `<li>${f.photo ? img(f.photo, 320, opts) : ""}${esc(f.name)}<span>${esc([f.designation, f.department].filter(Boolean).join(", "))}</span></li>`).join("");
   const all = data.facultyPublished ? `<p><a href="${esc(`${data.appUrl}/public/faculty/${data.slug}`)}">${esc(t("site.facultyAll"))}</a></p>` : "";
   return `<ul class="people">${items}</ul>${all}`;
 }

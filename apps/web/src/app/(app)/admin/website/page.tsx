@@ -5,7 +5,7 @@ import { db } from "@/lib/db";
 import { isModuleOn } from "@/lib/modules";
 import { FONTS } from "@/lib/fonts";
 import { loadSite, logoColourFor, sitePostChoices, siteVersions } from "@/lib/site-admin";
-import { siteFiles } from "@/lib/site-files";
+import { siteFiles, SITE_FILES_MAX } from "@/lib/site-files";
 import { siteShares } from "@/lib/site-share";
 import { siteInbox } from "@/lib/site-inbox";
 import { siteVisits } from "@/lib/site-visits";
@@ -77,6 +77,9 @@ export default async function WebsiteEditorPage({ searchParams }: { searchParams
       admissionsOn={admissionsOn}
       metricValues={metricValues}
       section={s ?? ""}
+      draftVersion={view.draftVersion}
+      alsoEditing={view.alsoEditing}
+      filesMax={SITE_FILES_MAX}
     />
   );
 }

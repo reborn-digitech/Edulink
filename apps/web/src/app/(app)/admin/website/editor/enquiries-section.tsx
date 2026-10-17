@@ -93,7 +93,17 @@ function EnquiryItem({ q, when, onChanged }: { q: SiteEnquiryRow; when: (iso: st
         {q.wantsVisit ? ` · ${t("siteEditor.enquiryWantsVisit")}` : ""}
       </p>
       <p className="whitespace-pre-line text-sm text-fg">{q.message}</p>
-      {q.replyText ? (
+      {/* website-three (17 Oct 2026): the thread, every reply sent on it, oldest first; a further reply joins it. */}
+      {q.replies.length ? (
+        <ol className="space-y-2" aria-label={t("siteThree.threadLabel")} data-testid="site-enquiry-thread">
+          {q.replies.map((r, i) => (
+            <li key={`${r.at}-${i}`} className="rounded-[var(--radius-sm)] bg-surface-muted p-2 text-sm">
+              <p className="text-xs font-medium text-fg-muted">{r.byName ? t("siteThree.repliedBy", { name: r.byName, when: when(r.at) }) : t("siteEditor.repliedAt", { when: when(r.at) })}</p>
+              <p className="whitespace-pre-line text-fg">{r.text}</p>
+            </li>
+          ))}
+        </ol>
+      ) : q.replyText ? (
         <div className="rounded-[var(--radius-sm)] bg-surface-muted p-2 text-sm">
           <p className="text-xs font-medium text-fg-muted">{q.repliedAt ? t("siteEditor.repliedAt", { when: when(q.repliedAt) }) : t("siteEditor.enquiryReplied")}</p>
           <p className="whitespace-pre-line text-fg">{q.replyText}</p>
@@ -102,7 +112,7 @@ function EnquiryItem({ q, when, onChanged }: { q: SiteEnquiryRow; when: (iso: st
       {q.status !== "CLOSED" ? (
         q.replyTo ? (
           <div className="space-y-2">
-            <TextAreaField label={t("siteEditor.replyLabel", { to: q.replyTo })} hint={t("siteEditor.replyHint", { language })} maxLength={4000} rows={3} value={text} onChange={(e) => setText(e.target.value)} />
+            <TextAreaField label={t("siteEditor.replyLabel", { to: q.replyTo })} hint={q.replies.length ? t("siteThree.replyAgainHint", { language }) : t("siteEditor.replyHint", { language })} maxLength={4000} rows={3} value={text} onChange={(e) => setText(e.target.value)} />
             <Button type="button" size="sm" loading={pending} disabled={!text.trim()} onClick={reply}>
               {t("siteEditor.replySend")}
             </Button>

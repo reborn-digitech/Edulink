@@ -7,6 +7,10 @@ import { AccessError } from "./access-error";
 import { audit } from "./audit";
 import { assertModuleOn } from "./modules";
 import type { ActiveContext } from "./session";
+// website-three (17 Oct 2026)
+import { deleteStoredFile, storeFile, UploadError } from "./storage";
+import type { TranslationKey } from "./i18n/dictionary";
+// end website-three
 
 /**
  * A FACULTY MEMBER'S PUBLIC PROFILE (5 October 2026; integration decision 10,
@@ -43,7 +47,7 @@ async function me(ctx: ActiveContext, opts: { module: boolean } = { module: true
 }
 
 /** The snapshot of one record, from today's rows. */
-async function snapshotOf(schoolId: string, membershipId: string, now: Date): Promise<FacultyProfileSnapshot | null> {
+export async function snapshotOf(schoolId: string, membershipId: string, now: Date): Promise<FacultyProfileSnapshot | null> {
   const record = await db.facultyRecord.findFirst({ where: { schoolId, membershipId }, select: { designation: true, highestQualification: true, netSetQualified: true, experienceBeforeYears: true, joinedOn: true, departmentId: true } });
   if (!record) return null;
   const [member, school, department, research] = await Promise.all([
@@ -76,12 +80,14 @@ export async function myPublicProfile(ctx: ActiveContext, now: Date = new Date()
 }
 
 async function profileOf(m: { schoolId: string; membershipId: string }, now: Date): Promise<MyProfile> {
-  const [preview, row, school] = await Promise.all([
+  const [preview, row, school, record] = await Promise.all([
     snapshotOf(m.schoolId, m.membershipId, now),
     db.facultyPublicProfile.findFirst({ where: { schoolId: m.schoolId, record: { membershipId: m.membershipId } }, select: { publishedAt: true } }),
     db.school.findUniqueOrThrow({ where: { id: m.schoolId }, select: { slug: true } }),
+    db.facultyRecord.findFirst({ where: { schoolId: m.schoolId, membershipId: m.membershipId }, select: { publicPhotoFileId: true, publicPhotoConsentAt: true } }),
   ]);
-  return { hasRecord: preview !== null, publishedAt: row?.publishedAt.toISOString() ?? null, preview, url: row ? `/public/faculty/${school.slug}` : null };
+  const photo = record?.publicPhotoFileId && record.publicPhotoConsentAt ? { fileId: record.publicPhotoFileId, consentAt: record.publicPhotoConsentAt.toISOString() } : null;
+  return { hasRecord: preview !== null, publishedAt: row?.publishedAt.toISOString() ?? null, preview, url: row ? `/public/faculty/${school.slug}` : null, photo };
 }
 
 /** Publish (or refresh) my page from today's rows, or take it down. Taking down what is not up is the same. */
@@ -93,12 +99,15 @@ export async function setMyPublicProfile(ctx: ActiveContext, publish: boolean, n
   if (!record) throw new AccessError("collegeDesks.refuseProfileNoRecord");
   if (publish) {
     const snapshot = await snapshotOf(m.schoolId, m.membershipId, now);
+    // website-three (17 Oct 2026): the page carries the member's own photo when they set one, with their consent.
+    const photo = await db.facultyRecord.findFirst({ where: { id: record.id }, select: { publicPhotoFileId: true, publicPhotoConsentAt: true } });
+    const publicPhotoFileId = photo?.publicPhotoFileId && photo.publicPhotoConsentAt ? photo.publicPhotoFileId : null;
     await db.$tenantTransaction(async (raw) => {
       const tx = raw as typeof db;
       await tx.facultyPublicProfile.upsert({
         where: { facultyRecordId: record.id },
-        create: { schoolId: m.schoolId, schoolSlug: school.slug, facultyRecordId: record.id, snapshotJson: JSON.stringify(snapshot), publishedAt: now },
-        update: { schoolSlug: school.slug, snapshotJson: JSON.stringify(snapshot), publishedAt: now },
+        create: { schoolId: m.schoolId, schoolSlug: school.slug, facultyRecordId: record.id, snapshotJson: JSON.stringify(snapshot), publishedAt: now, publicPhotoFileId },
+        update: { schoolSlug: school.slug, snapshotJson: JSON.stringify(snapshot), publishedAt: now, publicPhotoFileId },
       });
       await tx.facultyRecord.update({ where: { id: record.id }, data: { publicProfileAt: now } });
     });
@@ -107,6 +116,83 @@ export async function setMyPublicProfile(ctx: ActiveContext, publish: boolean, n
     const gone = await db.facultyPublicProfile.deleteMany({ where: { facultyRecordId: record.id } });
     await db.facultyRecord.update({ where: { id: record.id }, data: { publicProfileAt: null } });
     if (gone.count > 0) await audit({ schoolId: m.schoolId, actorUserId: m.userId, action: "faculty.profile.unpublish", targetType: "FacultyRecord", targetId: record.id, meta: {} });
+  }
+  // website-three (17 Oct 2026): the college's live website shows its faculty as they are now.
+  await refreshCollegeSite(m.schoolId);
+  return profileOf(m, now);
+}
+
+/* ------------------------------------------------------------------------------------------------ */
+/* website-three (17 October 2026): the member's own public photo                                   */
+/* ------------------------------------------------------------------------------------------------ */
+
+/** A photo of one face needs no more: the website shows it small. */
+export const FACULTY_PHOTO_MAX_BYTES = 2 * 1024 * 1024;
+
+export type FacultyPhotoResult = { ok: true; profile: MyProfile } | { ok: false; errorKey: TranslationKey; vars?: Record<string, string | number> };
+
+/**
+ * The live website re-rendered from the config it was published with when what its Faculty page shows changed (a page
+ * published or taken down, a photo set or removed), so a photo withdrawn stops being public at once rather than at the
+ * nightly refresh. A college with no live site, or with WEBSITE off, is left alone; a failure is logged, never the
+ * member's problem (the nightly refresh tries again).
+ */
+async function refreshCollegeSite(schoolId: string): Promise<void> {
+  try {
+    const { refreshPublishedSites } = await import("./site-publish");
+    await refreshPublishedSites(new Date(), { schoolIds: [schoolId] });
+  } catch (error) {
+    console.error("[faculty-profile] site refresh", schoolId, error);
+  }
+}
+
+/**
+ * SET MY PUBLIC PHOTO (website-three, 17 Oct 2026): a picture of me for the college website's Faculty page and the public
+ * faculty page, uploaded by me with my own consent tick — nobody else may put up my photo (the office may take my page
+ * down, which takes the photo with it). A PNG, JPEG or WebP (EXIF stripped by the store), 2 MB at most. A page already
+ * published shows it at once, and the live website is re-rendered; the photo before it is no longer named anywhere and the
+ * orphan sweep reclaims it. Audited faculty.photo.set.
+ */
+export async function setMyPublicPhoto(ctx: ActiveContext, file: File, consent: boolean, now: Date = new Date()): Promise<FacultyPhotoResult> {
+  const m = await me(ctx);
+  if (!consent) return { ok: false, errorKey: "facultyPhoto.refuseConsent" };
+  const record = await db.facultyRecord.findFirst({ where: { schoolId: m.schoolId, membershipId: m.membershipId }, select: { id: true } });
+  if (!record) throw new AccessError("collegeDesks.refuseProfileNoRecord");
+  let stored;
+  try {
+    stored = await storeFile(file, { maxBytes: FACULTY_PHOTO_MAX_BYTES });
+  } catch (error) {
+    if (error instanceof UploadError) return { ok: false, errorKey: error.key, vars: error.vars };
+    throw error;
+  }
+  if (stored.kind !== "image" || stored.mime === "image/gif") {
+    await deleteStoredFile(stored.fileId);
+    return { ok: false, errorKey: "facultyPhoto.refuseNotPicture" };
+  }
+  await db.$tenantTransaction(async (raw) => {
+    const tx = raw as typeof db;
+    await tx.facultyRecord.update({ where: { id: record.id }, data: { publicPhotoFileId: stored.fileId, publicPhotoConsentAt: now } });
+    await tx.facultyPublicProfile.updateMany({ where: { facultyRecordId: record.id }, data: { publicPhotoFileId: stored.fileId } });
+  });
+  await audit({ schoolId: m.schoolId, actorUserId: m.userId, action: "faculty.photo.set", targetType: "FacultyRecord", targetId: record.id, meta: { consent: true } });
+  await refreshCollegeSite(m.schoolId);
+  return { ok: true, profile: await profileOf(m, now) };
+}
+
+/** Remove my public photo: off my record and my published page at once, and the live website re-rendered. Audited faculty.photo.remove when there was one. */
+export async function removeMyPublicPhoto(ctx: ActiveContext, now: Date = new Date()): Promise<MyProfile> {
+  // As taking the page down: allowed with IQAC switched off, so a member can always withdraw their photo.
+  const m = await me(ctx, { module: false });
+  const record = await db.facultyRecord.findFirst({ where: { schoolId: m.schoolId, membershipId: m.membershipId }, select: { id: true, publicPhotoFileId: true } });
+  if (!record) throw new AccessError("collegeDesks.refuseProfileNoRecord");
+  if (record.publicPhotoFileId) {
+    await db.$tenantTransaction(async (raw) => {
+      const tx = raw as typeof db;
+      await tx.facultyRecord.update({ where: { id: record.id }, data: { publicPhotoFileId: null, publicPhotoConsentAt: null } });
+      await tx.facultyPublicProfile.updateMany({ where: { facultyRecordId: record.id }, data: { publicPhotoFileId: null } });
+    });
+    await audit({ schoolId: m.schoolId, actorUserId: m.userId, action: "faculty.photo.remove", targetType: "FacultyRecord", targetId: record.id, meta: {} });
+    await refreshCollegeSite(m.schoolId);
   }
   return profileOf(m, now);
 }
@@ -131,15 +217,24 @@ export async function takeDownProfileOf(schoolId: string, membershipId: string, 
   const gone = await db.facultyPublicProfile.deleteMany({ where: { facultyRecordId: record.id } });
   await db.facultyRecord.update({ where: { id: record.id }, data: { publicProfileAt: null } });
   if (gone.count > 0) await audit({ schoolId, actorUserId, action: "faculty.profile.takedown", targetType: "FacultyRecord", targetId: record.id, meta: { reason } });
+  // website-three (17 Oct 2026): a page taken down leaves the live website's Faculty page (and its photo) at once.
+  if (gone.count > 0) await refreshCollegeSite(schoolId);
   return true;
 }
 
-/** For the signed-out page: a college's published profiles by its slug, by name. Reads only the rows the policy opens to anyone. */
-export async function publicFaculty(slug: string): Promise<PublicFaculty> {
+/**
+ * For the signed-out page: a college's published profiles by its slug, by name. Reads only the rows the policy opens to anyone.
+ * website-three (17 Oct 2026): a profile's photo is named only while the college's website is live, which is when the file
+ * route serves it to anyone (`photos: "whenLive"`, the public page); the website's own render asks for it always (`"always"`),
+ * since the draft's preview is read by the office and a published version makes it public with itself.
+ */
+export async function publicFaculty(slug: string, opts: { photos: "whenLive" | "always" } = { photos: "whenLive" }): Promise<PublicFaculty> {
   if (!/^[a-z0-9-]{1,80}$/.test(slug)) return { collegeName: null, profiles: [] };
-  const rows = await db.facultyPublicProfile.findMany({ where: { schoolSlug: slug }, select: { id: true, snapshotJson: true, publishedAt: true } });
+  const rows = await db.facultyPublicProfile.findMany({ where: { schoolSlug: slug }, select: { id: true, schoolId: true, snapshotJson: true, publishedAt: true, publicPhotoFileId: true } });
+  const withPhoto = rows.find((r) => r.publicPhotoFileId);
+  const photos = Boolean(withPhoto) && (opts.photos === "always" || Boolean(await db.schoolSiteVersion.findFirst({ where: { schoolId: withPhoto!.schoolId, liveAt: { not: null } }, select: { id: true } })));
   const profiles = rows
-    .map((r) => ({ id: r.id, publishedAt: r.publishedAt.toISOString(), ...(JSON.parse(r.snapshotJson) as FacultyProfileSnapshot) }))
+    .map((r) => ({ id: r.id, publishedAt: r.publishedAt.toISOString(), ...(JSON.parse(r.snapshotJson) as FacultyProfileSnapshot), photoFileId: photos ? r.publicPhotoFileId : null }))
     .sort((a, b) => a.name.localeCompare(b.name));
   return { collegeName: profiles[0]?.collegeName ?? null, profiles };
 }

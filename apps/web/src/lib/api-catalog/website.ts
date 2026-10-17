@@ -20,12 +20,16 @@ import type { Endpoint } from "./types";
  * (POST asks for `{ days }`, so the sweep makes none; DELETE of an id that is not one is the 404), the enquiries inbox
  * (reply by email, close or open again: each asks for a body, and the sweep's samples name no real enquiry), the
  * page-view counts and the files uploaded for the site. tests/site-two.test.ts.
+ *
+ * WEBSITE-THREE (17 October 2026): a file uploaded for the site deleted from the editor's Files panel (the sweep's sample
+ * names no file, so it is the 404), and the phone's read-only summary. PUT takes `If-Match: <draftVersion>` (409 when
+ * someone else saved since). tests/site-three.test.ts.
  */
 const OFFICE = ["ADMIN", "PRINCIPAL"] as const;
 
 export const WEBSITE: Endpoint[] = [
   { method: "GET", path: "/api/v1/admin/site", summary: "The school website's draft (look, words, sections, numbers, news, gallery with consent), whether a version is live and since when, its address (the school's own domain once live, else null), and the preview's warnings", access: [...OFFICE], module: "WEBSITE", response: c.adminSiteSchema },
-  { method: "PUT", path: "/api/v1/admin/site", summary: "Replace the website's draft with the whole config; each field checked (a bundled face, an https map link, the school's own approved posts and their pictures, at most 12 and 24); the consent tick on a picture is stamped with who and when by the server; nothing is published", access: [...OFFICE], module: "WEBSITE", request: c.siteConfigSchema, response: c.adminSiteSchema, emptyBodyStatus: 422 },
+  { method: "PUT", path: "/api/v1/admin/site", summary: "Replace the website's draft with the whole config; each field checked (a bundled face, an https map link, the school's own approved posts and their pictures, at most 12 and 24); the consent tick on a picture is stamped with who and when by the server; nothing is published; If-Match: <draftVersion> (GET's) makes it conditional, 409 when someone else saved the draft since", access: [...OFFICE], module: "WEBSITE", request: c.siteConfigSchema, response: c.adminSiteSchema, emptyBodyStatus: 422 },
   { method: "GET", path: "/api/v1/admin/site/preview", summary: "The draft as the page it would publish (text/html), with today's numbers, ?lang= en, hi or mr, ?page= a page's path (the home page without one); never cached", access: [...OFFICE], module: "WEBSITE", request: c.adminSitePreviewQuerySchema, response: c.okSchema, sample: "/api/v1/admin/site/preview?lang=en" },
   { method: "POST", path: "/api/v1/admin/site/unpublish", summary: "Take the website down: its domain answers 404 with noindex; the versions are kept; audited when something was live", access: [...OFFICE], module: "WEBSITE", response: c.okSchema },
   { method: "POST", path: "/api/v1/admin/site/publish", summary: "Render the draft in every language the site offers and make it the live version, served at the school's own domain once that is live (the address is null until then); audited", access: [...OFFICE], module: "WEBSITE", response: c.adminSitePublishedSchema },
@@ -40,6 +44,10 @@ export const WEBSITE: Endpoint[] = [
   { method: "POST", path: "/api/v1/admin/site/enquiries/{enquiryId}/reply", summary: "Reply to an enquiry by email in the enquirer's language ({ text }); it becomes REPLIED with the words kept; 409 when the enquirer gave no email; audited", access: [...OFFICE], module: "WEBSITE", request: c.siteEnquiryReplySchema, response: c.siteEnquiryRowSchema, sample: "/api/v1/admin/site/enquiries/zz-sweep-no-such-enquiry/reply", emptyBodyStatus: 422 },
   { method: "POST", path: "/api/v1/admin/site/enquiries/{enquiryId}/status", summary: "Close an enquiry, or open it again ({ status }); audited when it changes", access: [...OFFICE], module: "WEBSITE", request: c.siteEnquiryStatusSchema, response: c.siteEnquiryRowSchema, sample: "/api/v1/admin/site/enquiries/zz-sweep-no-such-enquiry/status", emptyBodyStatus: 422 },
   { method: "GET", path: "/api/v1/admin/site/visits", summary: "The website's page views of the last thirty days by day and by page, counted on the server with no cookie and no address", access: [...OFFICE], module: "WEBSITE", response: c.siteVisitsSchema },
-  { method: "GET", path: "/api/v1/admin/site/files", summary: "The pictures and PDFs uploaded for the website (the editor uploads them), newest first", access: [...OFFICE], module: "WEBSITE", response: c.siteFilesSchema },
+  { method: "GET", path: "/api/v1/admin/site/files", summary: "The pictures and PDFs uploaded for the website (the editor uploads them), newest first, each with where the saved draft and the live site use it, and the count against the 120 a site keeps", access: [...OFFICE], module: "WEBSITE", response: c.siteFilesSchema },
   // end website-two
+  // website-three (17 Oct 2026)
+  { method: "DELETE", path: "/api/v1/admin/site/files/{fileId}", summary: "Delete a picture or PDF uploaded for the website: 409 naming where while the saved draft or the live site uses it, 404 for a file that is not this school's upload; the row and the bytes go at once otherwise; audited", access: [...OFFICE], module: "WEBSITE", response: c.okSchema, sample: "/api/v1/admin/site/files/zz-sweep-no-such-file.png", emptyBodyStatus: 404 },
+  { method: "GET", path: "/api/v1/admin/site/summary", summary: "The website at a glance for the phone, read-only: draft or published and since when, the live address, the \"Ready: n of 7\" list, the enquiries waiting with the newest three (a name, when, the state) and the page views of the last thirty days; editing is on the web", access: [...OFFICE], module: "WEBSITE", response: c.siteSummarySchema },
+  // end website-three
 ];

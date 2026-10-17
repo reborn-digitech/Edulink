@@ -27,6 +27,12 @@ type Message = {
   text: string;
   html: string;
   purpose?: string;
+  // website-three (17 Oct 2026): a website enquiry's reply answers to the school and keeps one thread in the enquirer's mail.
+  replyTo?: string | null;
+  messageId?: string | null;
+  inReplyTo?: string | null;
+  references?: string[];
+  // end website-three
 };
 
 const APP = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
@@ -60,7 +66,13 @@ export async function sendEmail(message: Message): Promise<void> {
   const transport = process.env.EMAIL_TRANSPORT ?? "devbox";
 
   if (transport === "devbox") {
-    await db.outboundEmail.create({ data: { ...message, purpose: message.purpose ?? null } });
+    // website-three (17 Oct 2026): the Reply-To and the threading headers kept beside the message, as a real mail carries
+    // them — written only for a message that has them, so every other mail keeps the row's old shape.
+    const threaded = Boolean(message.replyTo || message.messageId || message.inReplyTo || message.references?.length);
+    const headers = { messageId: message.messageId ?? null, inReplyTo: message.inReplyTo ?? null, references: message.references ?? [] };
+    await db.outboundEmail.create({
+      data: { to: message.to, subject: message.subject, text: message.text, html: message.html, purpose: message.purpose ?? null, ...(threaded ? { replyTo: message.replyTo ?? null, headersJson: JSON.stringify(headers) } : {}) },
+    });
     if (process.env.NODE_ENV === "development") {
       console.info(`[mail] "${message.subject}" -> ${message.to}  (read at ${APP}/dev/mailbox)`);
     }
@@ -76,6 +88,11 @@ export async function sendEmail(message: Message): Promise<void> {
       subject: message.subject,
       text: message.text,
       html: message.html,
+      // website-three (17 Oct 2026)
+      ...(message.replyTo ? { replyTo: message.replyTo } : {}),
+      ...(message.messageId ? { messageId: message.messageId } : {}),
+      ...(message.inReplyTo ? { inReplyTo: message.inReplyTo } : {}),
+      ...(message.references?.length ? { references: message.references } : {}),
     });
     return;
   }
@@ -531,13 +548,33 @@ export async function sendStandingNotice(input: { to: string; subject: string; l
  * the mail is the channel, in the language of the page the form was on; the caller translates the greeting and the
  * footer and passes the office's own words between them as typed (escaped here like every line).
  */
-export async function sendSiteEnquiryReply(input: { to: string; subject: string; lines: string[]; locale: Locale }) {
+export async function sendSiteEnquiryReply(input: {
+  to: string;
+  subject: string;
+  lines: string[];
+  locale: Locale;
+  // website-three (17 Oct 2026): the thread quoted under the words, the school's address to answer to, and the thread's ids.
+  quoted?: { intro: string; lines: string[] }[];
+  replyTo?: string | null;
+  messageId?: string | null;
+  inReplyTo?: string | null;
+  references?: string[];
+}) {
+  const quoted = input.quoted ?? [];
+  const quotedText = quoted.map((q) => [q.intro, ...q.lines].join("\n"));
+  const quotedHtml = quoted.map(
+    (q) => `<p style="color:#555;margin:16px 0 4px">${escapeHtml(q.intro)}</p><blockquote style="margin:0;padding-left:12px;border-left:3px solid #ccc;color:#555">${q.lines.map((l) => escapeHtml(l.replace(/^> ?/, ""))).join("<br>")}</blockquote>`,
+  );
   await sendEmail({
     to: input.to,
     purpose: "SITE_ENQUIRY_REPLY",
     subject: input.subject,
-    text: input.lines.join("\n\n"),
-    html: layout(input.locale, input.subject, input.lines.map((line) => `<p>${escapeHtml(line).replace(/\n/g, "<br>")}</p>`).join("\n       ")),
+    text: [...input.lines, ...quotedText].join("\n\n"),
+    html: layout(input.locale, input.subject, [...input.lines.map((line) => `<p>${escapeHtml(line).replace(/\n/g, "<br>")}</p>`), ...quotedHtml].join("\n       ")),
+    replyTo: input.replyTo ?? null,
+    messageId: input.messageId ?? null,
+    inReplyTo: input.inReplyTo ?? null,
+    references: input.references ?? [],
   });
 }
 // end website-two

@@ -79,6 +79,8 @@ export async function siteReviewFileOpen(fileId: string, token: string | null): 
     const uploaded = await db.schoolSiteFile.count({ where: { schoolId, fileId } });
     if (uploaded > 0) return true;
     const named = await db.schoolSite.count({ where: { schoolId, configJson: { contains: `"fileId":"${fileId}"` } } });
-    return named > 0;
+    if (named > 0) return true;
+    // website-three (17 Oct 2026): a faculty member's photo on the page they published, which the draft's Faculty page shows.
+    return (await db.facultyPublicProfile.count({ where: { schoolId, publicPhotoFileId: fileId } })) > 0;
   });
 }

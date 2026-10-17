@@ -98,12 +98,60 @@ export type SiteView = {
   publishedOnce: boolean;
   /** The data the draft is drawn with today, for the editor's lines ("nothing to show yet"). */
   data: SiteData;
+  /* website-three (17 Oct 2026) */
+  /** The draft's save count: the editor sends it back with each save, and a save after someone else's is refused. */
+  draftVersion: number;
+  /** Another person's name when they saved the draft in the last five minutes; null otherwise. */
+  alsoEditing: string | null;
 };
+
+/* ------------------------------------------------------------------------------------------------ */
+/* website-three (17 October 2026): two editors at once                                             */
+/* ------------------------------------------------------------------------------------------------ */
+
+/** How long another person's save keeps "Also editing: <name>" up. */
+export const ALSO_EDITING_MS = 5 * 60_000;
+
+/** The name of the person who last saved the draft, when that is someone else and within the last five minutes. */
+export async function alsoEditingName(by: string | null, at: Date | null, me: string, now: Date = new Date()): Promise<string | null> {
+  if (!by || by === me || !at || now.getTime() - at.getTime() > ALSO_EDITING_MS) return null;
+  const person = await db.user.findUnique({ where: { id: by }, select: { name: true, preferredName: true } });
+  return person ? (person.preferredName ?? person.name) : null;
+}
+
+/**
+ * Write the draft only if it is still at `expected` saves (null: no draft stored yet), counting this save; null when
+ * another save came first (or another first draft was stored a moment before). The compare and the write are one
+ * statement, so two saves of the same count cannot both land.
+ */
+async function writeDraft(schoolId: string, userId: string, config: SiteConfig, expected: number | null): Promise<{ draftVersion: number; savedAt: Date } | null> {
+  const configJson = JSON.stringify(config);
+  if (expected === null) {
+    try {
+      const made = await db.schoolSite.create({ data: { schoolId, configJson, updatedByUserId: userId, draftVersion: 1 }, select: { draftVersion: true, updatedAt: true } });
+      return { draftVersion: made.draftVersion, savedAt: made.updatedAt };
+    } catch (error) {
+      if (typeof error === "object" && error !== null && (error as { code?: string }).code === "P2002") return null;
+      throw error;
+    }
+  }
+  const done = await db.schoolSite.updateMany({ where: { schoolId, draftVersion: expected }, data: { configJson, updatedByUserId: userId, draftVersion: { increment: 1 } } });
+  if (done.count === 0) return null;
+  const row = await db.schoolSite.findUniqueOrThrow({ where: { schoolId }, select: { draftVersion: true, updatedAt: true } });
+  return { draftVersion: row.draftVersion, savedAt: row.updatedAt };
+}
+
+/** Where the draft stands now, for the editor's check every minute: its save count and who else saved in the last five minutes. */
+export async function siteDraftState(ctx: ActiveContext): Promise<{ draftVersion: number; alsoEditing: string | null; savedAt: Date | null }> {
+  const ed = await siteEditor(ctx);
+  const site = await db.schoolSite.findUnique({ where: { schoolId: ed.schoolId }, select: { draftVersion: true, updatedByUserId: true, updatedAt: true } });
+  return { draftVersion: site?.draftVersion ?? 0, alsoEditing: await alsoEditingName(site?.updatedByUserId ?? null, site?.updatedAt ?? null, ed.userId), savedAt: site?.updatedAt ?? null };
+}
 
 export async function loadSite(ctx: ActiveContext): Promise<SiteView> {
   const ed = await siteEditor(ctx);
   const school = await db.school.findUniqueOrThrow({ where: { id: ed.schoolId }, select: { name: true, slug: true, logoPath: true, kind: true } });
-  const { config, updatedAt } = await draftConfigFor(ed.schoolId, await logoSwatchFor(school.logoPath));
+  const { config, updatedAt, draftVersion, updatedByUserId } = await draftConfigFor(ed.schoolId, await logoSwatchFor(school.logoPath));
   const [live, versions, data, address] = await Promise.all([
     db.schoolSiteVersion.findFirst({ where: { schoolId: ed.schoolId, liveAt: { not: null } }, select: { liveAt: true, snapshotJson: true } }),
     db.schoolSiteVersion.count({ where: { schoolId: ed.schoolId } }),
@@ -124,6 +172,8 @@ export async function loadSite(ctx: ActiveContext): Promise<SiteView> {
     draftSavedAt: updatedAt,
     publishedOnce: versions > 0,
     data,
+    draftVersion,
+    alsoEditing: await alsoEditingName(updatedByUserId, updatedAt, ed.userId),
   };
 }
 
@@ -199,18 +249,27 @@ function sanitisedDraft(config: SiteConfig): SiteConfig {
 /* Saving the draft                                                                                */
 /* ------------------------------------------------------------------------------------------------ */
 
-export type SiteSaveResult = { ok: true; config: SiteConfig } | { ok: false; field: string; errorKey: TranslationKey };
+export type SiteSaveResult =
+  | { ok: true; config: SiteConfig; draftVersion: number; savedAt: Date; alsoEditing: string | null }
+  | { ok: false; field: string; errorKey: TranslationKey; stale?: boolean };
 
 const refuse = (field: string, errorKey: TranslationKey): SiteSaveResult => ({ ok: false, field, errorKey });
+/** website-three: the refusal of a save made on a draft someone else saved since. */
+const STALE: SiteSaveResult = { ok: false, field: "draftVersion", errorKey: "siteThree.refuseStale", stale: true };
 
 /**
  * Save the draft: `patch` is the fields the editor changed (the whole config from PUT). Checked here, field by
  * field; the stored draft is replaced only when everything holds.
+ *
+ * website-three (17 Oct 2026): `baseVersion` is the draft's save count the editor read it at; a save after someone
+ * else's is refused ("Someone else saved this draft a moment ago") and the editor reloads. Without it (the post page's
+ * tick, PUT without If-Match) the save still never lands over one made while it was being checked.
  */
-export async function saveSite(ctx: ActiveContext, patch: Partial<SiteConfig>): Promise<SiteSaveResult> {
+export async function saveSite(ctx: ActiveContext, patch: Partial<SiteConfig>, opts: { baseVersion?: number | null } = {}): Promise<SiteSaveResult> {
   const ed = await siteEditor(ctx);
   const school = await db.school.findUniqueOrThrow({ where: { id: ed.schoolId }, select: { logoPath: true } });
-  const { config: current } = await draftConfigFor(ed.schoolId, await logoSwatchFor(school.logoPath));
+  const { config: current, exists, draftVersion, updatedByUserId, updatedAt } = await draftConfigFor(ed.schoolId, await logoSwatchFor(school.logoPath));
+  if (typeof opts.baseVersion === "number" && opts.baseVersion !== draftVersion) return STALE;
   const merged = { ...current, ...patch };
   const parsed = siteConfigSchema.safeParse(merged);
   if (!parsed.success) return refuse(String(parsed.error.issues[0]?.path[0] ?? "config"), "website.refuseForm");
@@ -280,16 +339,17 @@ export async function saveSite(ctx: ActiveContext, patch: Partial<SiteConfig>): 
   const wasPicture = new Map(sitePictures(current).map((p) => [`${p.where}|${p.picture.fileId}`, p.picture]));
   const stampAt = (where: string, p: SitePicture | null): SitePicture | null => (p ? stamp({ ...p, alt: p.alt.trim() }, wasPicture.get(`${where}|${p.fileId}`)) : null);
   next.heroPicture = stampAt("hero", next.heroPicture);
-  next.facilities = next.facilities.map((f, i) => ({ ...f, label: f.code === "CUSTOM" ? f.label.trim() : "", picture: stampAt(`facility:${i}`, f.picture) }));
+  // website-three (17 Oct 2026): a facility's picture keeps its stamp by the picture (its file), not by the facility's
+  // place in the list, so moving the facilities never re-stamps a consent with whoever saved the move.
+  const wasFacility = new Map(current.facilities.flatMap((f) => (f.picture ? [[f.picture.fileId, f.picture] as const] : [])));
+  next.facilities = next.facilities.map((f) => ({ ...f, label: f.code === "CUSTOM" ? f.label.trim() : "", picture: f.picture ? stamp({ ...f.picture, alt: f.picture.alt.trim() }, wasFacility.get(f.picture.fileId)) : null }));
   next.albums = next.albums.map((a) => ({ ...a, pictures: a.pictures.map((p) => stampAt(`album:${a.id}`, p)!) }));
   next.achievements = next.achievements.map((a) => ({ ...a, picture: stampAt(`achievement:${a.id}`, a.picture) }));
 
-  await db.schoolSite.upsert({
-    where: { schoolId: ed.schoolId },
-    create: { schoolId: ed.schoolId, configJson: JSON.stringify(next), updatedByUserId: ed.userId },
-    update: { configJson: JSON.stringify(next), updatedByUserId: ed.userId },
-  });
-  return { ok: true, config: next };
+  // website-three (17 Oct 2026): written only if no other save came since the draft was read above.
+  const written = await writeDraft(ed.schoolId, ed.userId, next, exists ? draftVersion : null);
+  if (!written) return STALE;
+  return { ok: true, config: next, draftVersion: written.draftVersion, savedAt: written.savedAt, alsoEditing: await alsoEditingName(updatedByUserId, updatedAt, ed.userId) };
 }
 
 /**
@@ -301,9 +361,9 @@ export async function setPostOnSite(ctx: ActiveContext, postId: string, on: bool
   const post = await db.post.findFirst({ where: { id: postId, schoolId: ed.schoolId, ...SITE_POST_WHERE }, select: { id: true } });
   if (!post) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   const school = await db.school.findUniqueOrThrow({ where: { id: ed.schoolId }, select: { logoPath: true } });
-  const { config } = await draftConfigFor(ed.schoolId, await logoSwatchFor(school.logoPath));
+  const { config, draftVersion, updatedAt } = await draftConfigFor(ed.schoolId, await logoSwatchFor(school.logoPath));
   const has = config.newsPostIds.includes(postId);
-  if (has === on) return { ok: true, config };
+  if (has === on) return { ok: true, config, draftVersion, savedAt: updatedAt ?? new Date(), alsoEditing: null };
   if (on && config.newsPostIds.length >= SITE_NEWS_MAX) return refuse("newsPostIds", "siteEditor.refuseNewsFull");
   return saveSite(ctx, { newsPostIds: on ? [postId, ...config.newsPostIds] : config.newsPostIds.filter((id) => id !== postId) });
 }
@@ -334,7 +394,7 @@ export async function publishSite(ctx: ActiveContext): Promise<{ versionId: stri
   const school = await db.school.findUniqueOrThrow({ where: { id: ed.schoolId }, select: { logoPath: true } });
   const { config, exists } = await draftConfigFor(ed.schoolId, await logoSwatchFor(school.logoPath));
   // The first draft was built for the office and never saved: publishing it saves it, so the draft is what is live.
-  if (!exists) await db.schoolSite.upsert({ where: { schoolId: ed.schoolId }, create: { schoolId: ed.schoolId, configJson: JSON.stringify(config), updatedByUserId: ed.userId }, update: {} });
+  if (!exists) await db.schoolSite.upsert({ where: { schoolId: ed.schoolId }, create: { schoolId: ed.schoolId, configJson: JSON.stringify(config), updatedByUserId: ed.userId, draftVersion: 1 }, update: {} });
   const made = await renderAndStore(ed.schoolId, ed.userId, config);
   await audit({ schoolId: ed.schoolId, actorUserId: ed.userId, action: "site.publish", targetType: "SchoolSiteVersion", targetId: made.versionId, meta: { template: config.template, language: config.language, sections: config.sections.filter((s) => s.on).map((s) => s.code) } });
   return { ...made, address: await addressOf(ed.schoolId) };
@@ -395,10 +455,11 @@ export async function restoreSiteVersion(ctx: ActiveContext, versionId: string |
   const school = await db.school.findUniqueOrThrow({ where: { id: ed.schoolId }, select: { logoPath: true } });
   const { config: current } = await draftConfigFor(ed.schoolId, await logoSwatchFor(school.logoPath));
   const config = repairSiteConfig(readJson<Partial<SiteSnapshot>>(version.snapshotJson, {}).config ?? {}, current);
+  // website-three (17 Oct 2026): a restore is a save of its own: it counts, so an editor still holding the draft before it reloads.
   await db.schoolSite.upsert({
     where: { schoolId: ed.schoolId },
-    create: { schoolId: ed.schoolId, configJson: JSON.stringify(config), updatedByUserId: ed.userId },
-    update: { configJson: JSON.stringify(config), updatedByUserId: ed.userId },
+    create: { schoolId: ed.schoolId, configJson: JSON.stringify(config), updatedByUserId: ed.userId, draftVersion: 1 },
+    update: { configJson: JSON.stringify(config), updatedByUserId: ed.userId, draftVersion: { increment: 1 } },
   });
   await audit({ schoolId: ed.schoolId, actorUserId: ed.userId, action: "site.restore", targetType: "SchoolSiteVersion", targetId: version.id, meta: { backToPublished: versionId === null } });
   return config;

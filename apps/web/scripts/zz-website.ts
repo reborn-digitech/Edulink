@@ -6,6 +6,9 @@ import { defaultPages, defaultSiteConfig } from "../src/lib/site-config";
 import { renderAndStore } from "../src/lib/site-publish";
 import { addDaysToKey, todayKey } from "../src/lib/dates";
 import { fixturePng } from "./png";
+// website-three (17 Oct 2026)
+import { snapshotOf } from "../src/lib/faculty-profile";
+// end website-three
 
 /**
  * ZZ NORTHGATE'S PUBLIC WEBSITE (website-builder A, 15 October 2026; website-two, 16 October 2026): the WEBSITE module
@@ -108,17 +111,20 @@ export async function buildWebsite(db: PrismaClient, school: { id: string }, adm
     achievements: [{ id: "zz-science-fair", title: "ZZ District science fair, first place", dateKey: "2026-09-12", line: "ZZ The Grade 8 team's water filter. A test fixture.", picture: null }],
     downloads: [{ id: "zz-fees", kind: "FEE_STRUCTURE", title: "ZZ Fee structure 2026–27", fileId: pdf.fileId }],
     customPages: [{ id: "zz-transport", slug: "transport", title: "ZZ Transport", on: true, html: "<h2>ZZ Bus routes</h2><p>Three <strong>buses</strong> cover the town. A test fixture.</p><ul><li>ZZ North route</li><li>ZZ River route</li></ul>", seoDescription: "ZZ Northgate's bus routes." }],
+    // website-three (17 Oct 2026): the custom page sits in the menu between the built-in ones, after Facilities.
+    menuOrder: ["HOME", "ABOUT", "ACADEMICS", "ADMISSIONS", "FACILITIES", "custom:zz-transport", "FACULTY", "GALLERY", "NEWS", "EVENTS", "ACHIEVEMENTS", "DOWNLOADS", "CONTACT"],
   };
+  // website-three (17 Oct 2026): a write of the draft counts as a save, so an editor open on it reloads rather than overwriting it.
   await db.schoolSite.upsert({
     where: { schoolId: school.id },
-    create: { schoolId: school.id, configJson: JSON.stringify(config), updatedByUserId: adminUserId },
-    update: { configJson: JSON.stringify(config), updatedByUserId: adminUserId },
+    create: { schoolId: school.id, configJson: JSON.stringify(config), updatedByUserId: adminUserId, draftVersion: 1 },
+    update: { configJson: JSON.stringify(config), updatedByUserId: adminUserId, draftVersion: { increment: 1 } },
   });
 
-  const live = await db.schoolSiteVersion.findFirst({ where: { schoolId: school.id, liveAt: { not: null } }, select: { id: true, html: true, pagesHtml: true } });
+  const live = await db.schoolSiteVersion.findFirst({ where: { schoolId: school.id, liveAt: { not: null } }, select: { id: true, html: true, pagesHtml: true, snapshotJson: true } });
   // A version rendered before 16 Oct 2026 posts its enquiry form to the slug path, and one rendered before website-two
-  // has no page besides home: render it again once.
-  const stale = Boolean(live && (live.html.includes('action=\\"/sites/') || live.pagesHtml === "{}"));
+  // has no page besides home: render it again once. website-three (17 Oct 2026): nor one cut before the menu's one order.
+  const stale = Boolean(live && (live.html.includes('action=\\"/sites/') || live.pagesHtml === "{}" || !live.snapshotJson.includes('"menuOrder"')));
   if (!live || stale) await renderAndStore(school.id, adminUserId, config);
 
   // The inbox: one new enquiry, one the office replied to.
@@ -132,6 +138,18 @@ export async function buildWebsite(db: PrismaClient, school: { id: string }, adm
     await db.schoolSiteEnquiry.create({ data: { schoolId: school.id, ...e } });
     madeEnquiries += 1;
   }
+  // website-three (17 Oct 2026): the replied enquiry is a thread of two replies, the second on the first's thread — the
+  // same every run (its times counted from the enquiry's own, its Message-IDs fixed).
+  const replied = await db.schoolSiteEnquiry.findFirst({ where: { schoolId: school.id, name: ZZ_ENQUIRY_REPLIED }, select: { id: true, createdAt: true } });
+  if (replied) {
+    const at = (hours: number) => new Date(replied.createdAt.getTime() + hours * 3_600_000);
+    const thread = [
+      { text: "ZZ हाँ, तीन बसें हैं।", at: at(1).toISOString(), byUserId: adminUserId, messageId: `<site-enquiry.${replied.id}.1.zz@localhost>` },
+      { text: "ZZ बस का समय सुबह 7:30 है।", at: at(26).toISOString(), byUserId: adminUserId, messageId: `<site-enquiry.${replied.id}.2.zz@localhost>` },
+    ];
+    await db.schoolSiteEnquiry.update({ where: { id: replied.id }, data: { status: "REPLIED", replyText: thread[1]!.text, repliedAt: at(26), repliedByUserId: adminUserId, repliesJson: JSON.stringify(thread), closedAt: null } });
+  }
+  // end website-three
 
   // A week of page views, the same numbers every run.
   let visits = 0;
@@ -143,4 +161,30 @@ export async function buildWebsite(db: PrismaClient, school: { id: string }, adm
     }
   }
   return { published: !live, refreshed: stale, postId: post.id, slug: row.slug, enquiries: madeEnquiries, visits };
+}
+
+/**
+ * website-three (17 Oct 2026): ONE FACULTY PHOTO. A faculty member's own public photo lives on a college's faculty record
+ * (a school has no faculty profiles, so ZZ Northgate cannot carry one): ZZ Vidya's zz.faculty01 gets a placeholder picture
+ * (scripts/png.ts, made in code) with their consent ticked, and their public page published with it, so /faculty/profile
+ * shows the photo card filled and /public/faculty/zz-vidya-college lists the page (the photo shows there only while the
+ * college's website is live; Vidya has none). Idempotent: the photo is made once and the page kept; the snapshot refreshed.
+ */
+export async function buildFacultyPhoto(db: PrismaClient): Promise<{ made: boolean; slug: string } | null> {
+  const school = await db.school.findUnique({ where: { slug: "zz-vidya-college" }, select: { id: true, slug: true } });
+  if (!school) return null;
+  const record = await db.facultyRecord.findFirst({ where: { schoolId: school.id, membership: { user: { email: "zz.faculty01@zz.test" } } }, select: { id: true, membershipId: true, publicPhotoFileId: true, publicPhotoConsentAt: true } });
+  if (!record) return null;
+  let fileId = record.publicPhotoFileId;
+  const made = !fileId;
+  if (!fileId) fileId = (await storeFile(new File([new Uint8Array(fixturePng(400, 400))], "zz-faculty-photo.png", { type: "image/png" }))).fileId;
+  const consentAt = record.publicPhotoConsentAt ?? new Date();
+  await db.facultyRecord.update({ where: { id: record.id }, data: { publicPhotoFileId: fileId, publicPhotoConsentAt: consentAt, publicProfileAt: new Date() } });
+  const snapshot = await snapshotOf(school.id, record.membershipId, new Date());
+  await db.facultyPublicProfile.upsert({
+    where: { facultyRecordId: record.id },
+    create: { schoolId: school.id, schoolSlug: school.slug, facultyRecordId: record.id, snapshotJson: JSON.stringify(snapshot), publicPhotoFileId: fileId },
+    update: { schoolSlug: school.slug, snapshotJson: JSON.stringify(snapshot), publicPhotoFileId: fileId },
+  });
+  return { made, slug: school.slug };
 }

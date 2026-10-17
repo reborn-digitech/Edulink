@@ -49,6 +49,20 @@ export type FileAccess =
 
 const DENY: FileAccess = { allowed: false, reason: "not-found" };
 
+/**
+ * website-three (17 Oct 2026): a lookup on a column newer than the running process's database client (a dev server not yet
+ * restarted after the migration) answers "no such file" instead of failing every file read; it fails closed. Any other
+ * error is thrown as before.
+ */
+async function newColumnLookup<T>(lookup: () => Promise<T | null>): Promise<T | null> {
+  try {
+    return await lookup();
+  } catch (error) {
+    if ((error as { name?: string } | null)?.name === "PrismaClientValidationError") return null;
+    throw error;
+  }
+}
+
 /** A college offering's teacher (R-48): its faculty member, or the HOD of the department whose programme owns its course. */
 async function teachesOffering(offeringId: string, membershipId: string, role: string | null): Promise<boolean> {
   if (role !== "FACULTY" && role !== "HOD") return false;
@@ -92,6 +106,12 @@ export async function authorizeFileRead(
   const onSite = await db.schoolSiteVersion.findFirst({ where: { liveAt: { not: null }, imageFileIds: { has: fileId } }, select: { id: true } });
   if (onSite) return { allowed: true, kind: "site", public: true };
   // end website-builder A
+  // website-three (17 Oct 2026): a faculty member's own public photo, on a page they published, while the college's
+  // website is live — both rows readable signed out (gen-rls GLOBALLY_READABLE). The page taken down, the photo removed or
+  // the site unpublished, it closes again.
+  const facultyPhoto = await newColumnLookup(() => db.facultyPublicProfile.findFirst({ where: { publicPhotoFileId: fileId }, select: { schoolId: true } }));
+  if (facultyPhoto && (await db.schoolSiteVersion.findFirst({ where: { schoolId: facultyPhoto.schoolId, liveAt: { not: null } }, select: { id: true } }))) return { allowed: true, kind: "site", public: true };
+  // end website-three
 
   // Everything else needs a session before we look anything up at all, so an
   // anonymous request cannot use this endpoint to probe which ids exist.
@@ -120,6 +140,14 @@ export async function authorizeFileRead(
     return DENY;
   }
   // end website-two
+  // website-three (17 Oct 2026): a faculty member's public photo before it is public: the member themself (their profile
+  // page) and the office and the head of their college (the website editor's preview).
+  const ownPhoto = await newColumnLookup(() => db.facultyRecord.findFirst({ where: { publicPhotoFileId: fileId }, select: { schoolId: true, membership: { select: { userId: true } } } }));
+  if (ownPhoto) {
+    if (ownPhoto.membership.userId === user.id || ((role === "ADMIN" || role === "PRINCIPAL") && schoolId === ownPhoto.schoolId)) return { allowed: true, kind: "site", public: false };
+    return DENY;
+  }
+  // end website-three
 
   // ---- 2. submission attachment: a child's own work. Tightest rules.
   const submission = await db.submission.findFirst({

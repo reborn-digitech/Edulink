@@ -6,8 +6,9 @@ import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
  * preview at /faculty/profile and the college's signed-out list at
  * /public/faculty/<slug> draw the same card from the same snapshot. Codes are
  * said in the reader's language; the titles are the teacher's own.
+ * website-three (17 Oct 2026): `photoFileId`, the member's own photo.
  */
-export function FacultyProfileCard({ p, t, footer }: { p: FacultyProfileSnapshot; t: Translate; footer?: string }) {
+export function FacultyProfileCard({ p, t, footer, photoFileId }: { p: FacultyProfileSnapshot; t: Translate; footer?: string; photoFileId?: string | null }) {
   const tt = (key: string) => t(key as TranslationKey);
   const said = (key: string, code: string) => {
     const word = tt(`${key}.${code}`);
@@ -15,6 +16,11 @@ export function FacultyProfileCard({ p, t, footer }: { p: FacultyProfileSnapshot
   };
   return (
     <article className="space-y-2 rounded-[var(--radius-lg)] border border-border bg-surface p-4">
+      {/* website-three (17 Oct 2026): the member's own photo, when they set one and (on the public page) while the college's website is live. */}
+      {photoFileId ? (
+        // eslint-disable-next-line @next/next/no-img-element -- a stored file through the file route, sized by ?w
+        <img src={`/api/files/${encodeURIComponent(photoFileId)}?w=320`} alt={t("facultyPhoto.alt", { name: p.name })} className="size-20 rounded-full object-cover" />
+      ) : null}
       <h2 className="text-lg font-semibold text-fg">{p.name}</h2>
       <p className="text-sm text-fg-muted">
         {[said("iqac.designation", p.designation), p.departmentName, said("iqac.qualification", p.qualification), p.netSetQualified ? t("collegeDesks.publicNetSet") : null, t("collegeDesks.publicYears", { years: p.experienceYears })].filter(Boolean).join(" · ")}

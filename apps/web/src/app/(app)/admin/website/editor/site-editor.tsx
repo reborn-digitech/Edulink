@@ -12,8 +12,8 @@ import { useToast } from "@/components/ui/toast";
 import { useT } from "@/lib/i18n";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { cn } from "@/lib/cn";
-import { pageHasContent, siteChecklist, SITE_PAGE_PATH, SITE_PAGE_TITLE } from "@/lib/site-content";
-import { publishSiteAction, saveSiteDraftAction } from "../actions";
+import { customPageHasText, menuKeys, pageHasContent, siteChecklist, SITE_PAGE_PATH, SITE_PAGE_TITLE } from "@/lib/site-content";
+import { publishSiteAction, reloadSiteDraftAction, saveSiteDraftAction, siteDraftStateAction } from "../actions";
 import type { EditorFile, EditorProps, SetDraft } from "./types";
 import { LookSection } from "./look-section";
 import { AboutSection } from "./about-section";
@@ -22,6 +22,7 @@ import { PageSection } from "./page-sections";
 import { CustomPageSection } from "./custom-page-section";
 import { PublishSection } from "./publish-section";
 import { EnquiriesSection } from "./enquiries-section";
+import { FilesSection } from "./files-section";
 import { ShareButton } from "./share";
 import { useWhen } from "./when";
 
@@ -33,6 +34,12 @@ import { useWhen } from "./when";
  * after each change (POST /admin/website/preview into a srcdoc frame: the app's pages refuse to be framed, its own
  * included) at a phone's, a tablet's or a desk's width. Above them the site's state, Save (and a save each time a field
  * is left), Preview in a tab, the review link and Publish, which stays one click away.
+ *
+ * WEBSITE-THREE (17 October 2026): the pages and the custom pages are one menu order in the rail; a Files part lists every
+ * upload with where it is used and deletes an unused one; and two people editing at once no longer overwrite each other —
+ * each save carries the save count the draft was read at, one save waits for the one before it, a save after somebody
+ * else's is refused with a sentence and the draft reloaded where the editor stands, and "Also editing: <name>" shows while
+ * another person saved in the last five minutes (checked every minute).
  */
 
 type Width = "phone" | "tablet" | "desktop";
@@ -57,6 +64,15 @@ export function SiteEditor(props: EditorProps) {
   const [problem, setProblem] = useState<{ field?: string; message: string } | null>(null);
   const [files, setFiles] = useState<EditorFile[]>(props.files);
   const [publishing, startPublish] = useTransition();
+  // website-three: the save count the draft is held at, who else saved lately, and the saves made one after another.
+  const [alsoEditing, setAlsoEditing] = useState<string | null>(props.alsoEditing);
+  const baseRef = useRef(props.draftVersion);
+  const saving = useRef<Promise<boolean> | null>(null);
+  // What the saves and the minute's check read: the draft and its counts as last drawn (kept after each render).
+  const live = useRef({ draft, version, savedVersion, section });
+  useEffect(() => {
+    live.current = { draft, version, savedVersion, section };
+  });
 
   /** Open a section; the preview follows to the section's page, or stays where it was for Look, Publish and the inbox. */
   const setSection = (id: string) => {
@@ -70,23 +86,39 @@ export function SiteEditor(props: EditorProps) {
     setVersion((v) => v + 1);
     setSaveState("idle");
   }, []);
-  const replaceDraft = (config: SiteConfig) => {
+  const replaceDraft = (config: SiteConfig, draftVersion?: number) => {
+    const next = live.current.version + 1;
     setDraftState(config);
-    setVersion(version + 1);
-    setSavedVersion(version + 1);
+    setVersion(next);
+    setSavedVersion(next);
     setSaveState("idle");
+    if (typeof draftVersion === "number") baseRef.current = draftVersion;
   };
 
-  const save = async (): Promise<boolean> => {
-    if (!dirty) return true;
+  /** The draft as saved now, reloaded in place: the section stays where it is (or Look, when it was a page since removed). */
+  const reload = async (): Promise<void> => {
+    const fresh = await reloadSiteDraftAction();
+    if (!fresh.ok || !fresh.config) return;
+    replaceDraft(fresh.config, fresh.draftVersion ?? 0);
+    setSavedAt(fresh.savedAt ?? null);
+    setAlsoEditing(fresh.alsoEditing ?? null);
+    setSectionState((current) => normaliseSection(current, fresh.config!));
+  };
+
+  const saveOnce = async (): Promise<boolean> => {
+    const { draft: sending, version: sent, savedVersion: saved } = live.current;
+    if (sent === saved) return true;
     setSaveState("saving");
-    const sent = version;
-    const r = await saveSiteDraftAction(draft as unknown as Record<string, unknown>);
+    const r = await saveSiteDraftAction(sending as unknown as Record<string, unknown>, baseRef.current);
     if (!r.ok) {
       setSaveState("error");
       setProblem({ field: r.field, message: r.error ?? t("common.tryAgain") });
+      // Someone else saved since this draft was read: theirs is reloaded and the editor stays on this section.
+      if (r.stale) await reload();
       return false;
     }
+    if (typeof r.draftVersion === "number") baseRef.current = r.draftVersion;
+    setAlsoEditing(r.alsoEditing ?? null);
     setSavedVersion((v) => Math.max(v, sent));
     setProblem(null);
     setSaveState("saved");
@@ -94,6 +126,32 @@ export function SiteEditor(props: EditorProps) {
     setChangedSincePublish(true);
     return true;
   };
+
+  /** One save at a time: a save asked for while one is on its way waits for it, then sends what is still unsaved. */
+  const save = async (): Promise<boolean> => {
+    while (saving.current) await saving.current;
+    const run = saveOnce();
+    saving.current = run;
+    try {
+      return await run;
+    } finally {
+      saving.current = null;
+    }
+  };
+
+  // Every minute: who else saved lately, and a draft someone else saved is reloaded at once while nothing here is unsaved.
+  useEffect(() => {
+    const timer = setInterval(async () => {
+      if (saving.current) return;
+      const r = await siteDraftStateAction();
+      if (!r.ok || typeof r.draftVersion !== "number") return;
+      setAlsoEditing(r.alsoEditing ?? null);
+      const { version: v, savedVersion: sv } = live.current;
+      if (r.draftVersion !== baseRef.current && v === sv && !saving.current) await reload();
+    }, 60_000);
+    return () => clearInterval(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Autosave: a field left (focus moving out of it) saves the draft when something changed.
   const onBlurCapture = () => {
@@ -110,33 +168,28 @@ export function SiteEditor(props: EditorProps) {
       router.refresh();
     });
 
-  /* ---- the rail ---- */
-  const pageOrder = draft.pages;
-  const movePage = (from: number, to: number) => {
-    if (from === to || from < 1 || to < 1 || to >= pageOrder.length) return;
-    const next = [...pageOrder];
+  /* ---- the rail: the menu's one order (website-three), Home first and fixed ---- */
+  const order = menuKeys(draft);
+  const moveMenu = (from: number, to: number) => {
+    if (from === to || from < 1 || to < 1 || to >= order.length) return;
+    const next = [...order];
     const [moved] = next.splice(from, 1);
     next.splice(to, 0, moved!);
-    setDraft("pages", next);
+    setDraft("menuOrder", next);
+    // The pages' and the custom pages' own lists follow the one order, so every reader of the draft sees the same.
+    const rank = new Map(next.map((k, i) => [k, i]));
+    setDraft("pages", [...draft.pages].sort((a, b) => (rank.get(a.code) ?? 0) - (rank.get(b.code) ?? 0)));
+    setDraft("customPages", [...draft.customPages].sort((a, b) => (rank.get(`custom:${a.id}`) ?? 0) - (rank.get(`custom:${b.id}`) ?? 0)));
   };
-  const moveCustom = (from: number, to: number) => {
-    if (to < 0 || to >= draft.customPages.length) return;
-    const next = [...draft.customPages];
-    const [moved] = next.splice(from, 1);
-    next.splice(to, 0, moved!);
-    setDraft("customPages", next);
+  const dragFrom = useRef<number | null>(null);
+  const onDragStart = (index: number) => () => {
+    dragFrom.current = index;
   };
-  const dragFrom = useRef<{ list: "pages" | "custom"; index: number } | null>(null);
-  const onDragStart = (list: "pages" | "custom", index: number) => () => {
-    dragFrom.current = { list, index };
-  };
-  const onDrop = (list: "pages" | "custom", index: number) => (e: DragEvent) => {
+  const onDrop = (index: number) => (e: DragEvent) => {
     e.preventDefault();
     const from = dragFrom.current;
     dragFrom.current = null;
-    if (!from || from.list !== list) return;
-    if (list === "pages") movePage(from.index, index);
-    else moveCustom(from.index, index);
+    if (from !== null) moveMenu(from, index);
   };
   const addCustomPage = () => {
     if (draft.customPages.length >= SITE_CUSTOM_PAGES_MAX) return;
@@ -190,6 +243,7 @@ export function SiteEditor(props: EditorProps) {
   else if (section.startsWith("page:")) body = <PageSection {...common} code={section.slice(5) as SitePage} college={props.school.college} admissionsOn={props.admissionsOn} goTo={setSection} />;
   else if (section.startsWith("custom:")) body = <CustomPageSection {...common} id={section.slice(7)} onRemoved={() => setSection("page:HOME")} />;
   else if (section === "enquiries") body = <EnquiriesSection inbox={props.inbox} when={when} />;
+  else if (section === "files") body = <FilesSection draft={draft} files={files} max={props.filesMax} when={when} onDeleted={(fileId) => setFiles((list) => list.filter((f) => f.fileId !== fileId))} />;
   else
     body = (
       <PublishSection
@@ -230,6 +284,11 @@ export function SiteEditor(props: EditorProps) {
             {props.published && changedSincePublish ? <Badge tone="warn">{t("siteEditor.unpublishedChanges")}</Badge> : null}
             {props.published ? <Badge tone="ok">{t("website.liveBadge")}</Badge> : <Badge>{t("website.draftBadge")}</Badge>}
             {props.address ? null : <Badge tone="outline">{t("siteEditor.noDomain")}</Badge>}
+            {alsoEditing ? (
+              <Badge tone="warn" data-testid="site-also-editing">
+                {t("siteThree.alsoEditing", { name: alsoEditing })}
+              </Badge>
+            ) : null}
             <span role="status" aria-live="polite" className="text-xs text-fg-muted" data-testid="site-save-state">
               {saveState === "saving" ? t("siteEditor.saving") : saveState === "saved" ? t("siteEditor.saved") : saveState === "error" ? t("siteEditor.saveFailed") : dirty ? t("siteEditor.unsaved") : ""}
             </span>
@@ -263,28 +322,26 @@ export function SiteEditor(props: EditorProps) {
           <RailGroup title={t("siteEditor.railSite")}>
             <RailItem id="look" current={section} onPick={setSection} label={t("website.stepLook")} />
             <RailItem id="about" current={section} onPick={setSection} label={t("website.stepAbout")} />
+            <RailItem id="files" current={section} onPick={setSection} label={t("siteThree.filesRail", { count: files.length, max: props.filesMax })} />
           </RailGroup>
           <RailGroup title={t("siteEditor.railPages")}>
-            {pageOrder.map((p, i) => {
-              const shows = pageHasContent(p.code, draft, data);
-              const name = shownName(p.code, p.title);
+            {order.map((key, i) => {
+              const custom = key.startsWith("custom:") ? draft.customPages.find((c) => `custom:${c.id}` === key) : null;
+              const built = custom ? null : draft.pages.find((b) => b.code === key);
+              if (!custom && !built) return null;
+              const home = key === "HOME";
+              const name = custom ? custom.title : shownName(built!.code, built!.title);
+              const dot = custom ? (custom.on ? (customPageHasText(custom) ? "on" : "empty") : "off") : built!.on || home ? (pageHasContent(built!.code, draft, data) ? "on" : "empty") : "off";
               return (
-                <li
-                  key={p.code}
-                  draggable={p.code !== "HOME"}
-                  onDragStart={onDragStart("pages", i)}
-                  onDragOver={(e) => e.preventDefault()}
-                  onDrop={onDrop("pages", i)}
-                  className="flex items-center gap-1"
-                >
-                  {p.code !== "HOME" ? <DotsSixVerticalIcon aria-hidden="true" className="size-4 shrink-0 cursor-grab text-fg-subtle" /> : <span className="size-4 shrink-0" />}
-                  <RailButton id={`page:${p.code}`} current={section} onPick={setSection} label={name} dot={p.on || p.code === "HOME" ? (shows ? "on" : "empty") : "off"} t={t} />
-                  {p.code !== "HOME" ? (
+                <li key={key} draggable={!home} onDragStart={onDragStart(i)} onDragOver={(e) => e.preventDefault()} onDrop={onDrop(i)} className="flex items-center gap-1" data-menu-key={key}>
+                  {!home ? <DotsSixVerticalIcon aria-hidden="true" className="size-4 shrink-0 cursor-grab text-fg-subtle" /> : <span className="size-4 shrink-0" />}
+                  <RailButton id={custom ? key : `page:${key}`} current={section} onPick={setSection} label={name} dot={dot} t={t} />
+                  {!home ? (
                     <span className="flex">
-                      <Button type="button" variant="ghost" size="icon-sm" disabled={i <= 1} aria-label={t("website.moveUp", { section: name })} onClick={() => movePage(i, i - 1)}>
+                      <Button type="button" variant="ghost" size="icon-sm" disabled={i <= 1} aria-label={t("website.moveUp", { section: name })} onClick={() => moveMenu(i, i - 1)}>
                         <ArrowUpIcon aria-hidden="true" className="size-4" />
                       </Button>
-                      <Button type="button" variant="ghost" size="icon-sm" disabled={i === pageOrder.length - 1} aria-label={t("website.moveDown", { section: name })} onClick={() => movePage(i, i + 1)}>
+                      <Button type="button" variant="ghost" size="icon-sm" disabled={i === order.length - 1} aria-label={t("website.moveDown", { section: name })} onClick={() => moveMenu(i, i + 1)}>
                         <ArrowDownIcon aria-hidden="true" className="size-4" />
                       </Button>
                     </span>
@@ -292,20 +349,6 @@ export function SiteEditor(props: EditorProps) {
                 </li>
               );
             })}
-            {draft.customPages.map((p, i) => (
-              <li key={p.id} draggable onDragStart={onDragStart("custom", i)} onDragOver={(e) => e.preventDefault()} onDrop={onDrop("custom", i)} className="flex items-center gap-1">
-                <DotsSixVerticalIcon aria-hidden="true" className="size-4 shrink-0 cursor-grab text-fg-subtle" />
-                <RailButton id={`custom:${p.id}`} current={section} onPick={setSection} label={p.title} dot={p.on ? (p.html.replace(/<[^>]*>/g, "").trim() ? "on" : "empty") : "off"} t={t} />
-                <span className="flex">
-                  <Button type="button" variant="ghost" size="icon-sm" disabled={i === 0} aria-label={t("website.moveUp", { section: p.title })} onClick={() => moveCustom(i, i - 1)}>
-                    <ArrowUpIcon aria-hidden="true" className="size-4" />
-                  </Button>
-                  <Button type="button" variant="ghost" size="icon-sm" disabled={i === draft.customPages.length - 1} aria-label={t("website.moveDown", { section: p.title })} onClick={() => moveCustom(i, i + 1)}>
-                    <ArrowDownIcon aria-hidden="true" className="size-4" />
-                  </Button>
-                </span>
-              </li>
-            ))}
             <li>
               <Button type="button" variant="ghost" size="sm" onClick={addCustomPage} disabled={draft.customPages.length >= SITE_CUSTOM_PAGES_MAX}>
                 <PlusIcon aria-hidden="true" className="size-4" />
@@ -365,7 +408,7 @@ const WIDTH_KEY: Record<Width, TranslationKey> = { phone: "website.previewPhone"
 
 /** The section a ?s= names (the six screens' old names included), or Look. */
 function normaliseSection(raw: string, config: SiteConfig): string {
-  const old: Record<string, string> = { look: "look", about: "about", sections: "page:HOME", home: "page:HOME", review: "publish", preview: "publish", publish: "publish", enquiries: "enquiries" };
+  const old: Record<string, string> = { look: "look", about: "about", sections: "page:HOME", home: "page:HOME", review: "publish", preview: "publish", publish: "publish", enquiries: "enquiries", files: "files" };
   if (old[raw]) return old[raw]!;
   if (raw.startsWith("page:") && config.pages.some((p) => `page:${p.code}` === raw)) return raw;
   if (raw.startsWith("custom:") && config.customPages.some((p) => `custom:${p.id}` === raw)) return raw;

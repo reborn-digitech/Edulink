@@ -219,7 +219,7 @@ function FacultyBody({ data }: SectionProps) {
     <Card>
       <CardBody className="space-y-2">
         <p className="text-sm text-fg-muted">{data.faculty.length > 0 ? t("website.facultyCount", { count: data.faculty.length }) : t("website.facultyNone")}</p>
-        <p className="text-xs text-fg-muted">{t("siteEditor.facultyNoPhotos")}</p>
+        <p className="text-xs text-fg-muted">{t("siteThree.facultyPhotosNote")}</p>
       </CardBody>
     </Card>
   );

@@ -541,7 +541,8 @@ describe("the post page's tick, and the catalog", () => {
   });
 
   it("lists every new door for the office and the head behind the WEBSITE module, with words for its audit actions", () => {
-    const doors = ENDPOINTS.filter((e) => /^\/api\/v1\/admin\/site\/(versions|revert|shares|enquiries|visits|files)/.test(e.path));
+    // website-three (17 Oct 2026) added DELETE …/files/{fileId}, which tests/site-three.test.ts counts.
+    const doors = ENDPOINTS.filter((e) => /^\/api\/v1\/admin\/site\/(versions|revert|shares|enquiries|visits|files)/.test(e.path) && e.path !== "/api/v1/admin/site/files/{fileId}");
     expect(doors).toHaveLength(11);
     for (const d of doors) {
       expect(d.module, d.path).toBe("WEBSITE");

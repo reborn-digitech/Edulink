@@ -5,8 +5,9 @@ import { SITE_ENQUIRY_STATUSES, siteConfigSchema, type SiteConfig, type SiteEnqu
 import { getT } from "@/lib/i18n/server";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
 import { UploadError } from "@/lib/storage";
-import { publishSite, restoreSiteVersion, saveSite, setPostOnSite, unpublishSite } from "@/lib/site-admin";
-import { uploadSiteFile, type SiteFileRow } from "@/lib/site-files";
+import { loadSite, publishSite, restoreSiteVersion, saveSite, setPostOnSite, siteDraftState, unpublishSite } from "@/lib/site-admin";
+import { deleteSiteFile, uploadSiteFile, type SiteFileRow } from "@/lib/site-files";
+import { fileUseText } from "@/lib/site-content";
 import { createSiteShare, revokeSiteShare } from "@/lib/site-share";
 import { replyToSiteEnquiry, setSiteEnquiryStatus } from "@/lib/site-inbox";
 
@@ -26,18 +27,59 @@ async function refusal(error: unknown, where: string): Promise<Result> {
   return { ok: false, error: t("common.tryAgain") };
 }
 
-/** Save the draft (a part of it, or the whole); refused, it names the field. */
-export async function saveSiteDraftAction(patch: Record<string, unknown>): Promise<Result & { savedAt?: string }> {
+/**
+ * Save the draft (a part of it, or the whole); refused, it names the field. website-three (17 Oct 2026): `baseVersion` is
+ * the save count the editor holds the draft at; refused as `stale` when someone else saved since, the editor reloads.
+ */
+export async function saveSiteDraftAction(patch: Record<string, unknown>, baseVersion?: number): Promise<Result & { savedAt?: string; draftVersion?: number; alsoEditing?: string | null; stale?: boolean }> {
   try {
     const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
     const parsed = siteConfigSchema.partial().safeParse(patch);
     if (!parsed.success) return { ok: false, error: (await getT())("website.refuseForm"), field: String(parsed.error.issues[0]?.path[0] ?? "") };
-    const saved = await saveSite(ctx, parsed.data);
-    if (!saved.ok) return { ok: false, error: (await getT())(saved.errorKey), field: saved.field };
+    const saved = await saveSite(ctx, parsed.data, { baseVersion: typeof baseVersion === "number" ? baseVersion : null });
+    if (!saved.ok) return { ok: false, error: (await getT())(saved.errorKey), field: saved.field, stale: saved.stale };
     revalidatePath("/admin/website", "layout");
-    return { ok: true, savedAt: new Date().toISOString() };
+    return { ok: true, savedAt: saved.savedAt.toISOString(), draftVersion: saved.draftVersion, alsoEditing: saved.alsoEditing };
   } catch (error) {
     return refusal(error, "saveSiteDraftAction");
+  }
+}
+
+/** website-three (17 Oct 2026): the draft as saved now, for the editor to reload after a refused stale save. */
+export async function reloadSiteDraftAction(): Promise<Result & { config?: SiteConfig; draftVersion?: number; savedAt?: string | null; alsoEditing?: string | null }> {
+  try {
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const view = await loadSite(ctx);
+    return { ok: true, config: view.config, draftVersion: view.draftVersion, savedAt: view.draftSavedAt?.toISOString() ?? null, alsoEditing: view.alsoEditing };
+  } catch (error) {
+    return refusal(error, "reloadSiteDraftAction");
+  }
+}
+
+/** website-three (17 Oct 2026): the editor's check every minute — the draft's save count and who else saved it lately. */
+export async function siteDraftStateAction(): Promise<Result & { draftVersion?: number; alsoEditing?: string | null }> {
+  try {
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const state = await siteDraftState(ctx);
+    return { ok: true, draftVersion: state.draftVersion, alsoEditing: state.alsoEditing };
+  } catch (error) {
+    return refusal(error, "siteDraftStateAction");
+  }
+}
+
+/** website-three (17 Oct 2026): delete a file uploaded for the site; refused, naming where, while the draft or the live site uses it. */
+export async function deleteSiteFileAction(fileId: string): Promise<Result> {
+  try {
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const done = await deleteSiteFile(ctx, String(fileId));
+    if (!done.ok) {
+      const t = await getT();
+      return { ok: false, error: t(done.errorKey, { where: done.usedBy.map((u) => fileUseText(t, u)).join(", ") }) };
+    }
+    revalidatePath("/admin/website", "layout");
+    return { ok: true };
+  } catch (error) {
+    return refusal(error, "deleteSiteFileAction");
   }
 }
 
@@ -79,12 +121,13 @@ export async function uploadSiteFileAction(form: FormData): Promise<Result & { f
 }
 
 /** Restore a version as the draft (`versionId`), or "Back to published" (null). The draft is returned for the editor to hold. */
-export async function restoreSiteVersionAction(versionId: string | null): Promise<Result & { config?: SiteConfig }> {
+export async function restoreSiteVersionAction(versionId: string | null): Promise<Result & { config?: SiteConfig; draftVersion?: number }> {
   try {
     const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
     const config = await restoreSiteVersion(ctx, versionId === null ? null : String(versionId));
     revalidatePath("/admin/website", "layout");
-    return { ok: true, config };
+    // website-three (17 Oct 2026): the restore counted as a save; the editor holds the draft at the new count.
+    return { ok: true, config, draftVersion: (await siteDraftState(ctx)).draftVersion };
   } catch (error) {
     return refusal(error, "restoreSiteVersionAction");
   }

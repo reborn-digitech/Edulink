@@ -15,7 +15,7 @@ import {
 } from "@edulink/contracts";
 import { FONT_KEYS } from "./fonts";
 import { isHexColour } from "./site-colour";
-import { draftPictures } from "./site-content";
+import { draftPictures, menuKeys } from "./site-content";
 
 /**
  * A SCHOOL'S WEBSITE DRAFT, ITS DEFAULTS AND ITS REPAIR (website-builder A, 15 October 2026; website-two, 16 October).
@@ -125,6 +125,8 @@ export function defaultSiteConfig(src: SiteDefaultsSource): SiteConfig {
     achievements: [],
     downloads: [],
     customPages: [],
+    // website-three (17 Oct 2026)
+    menuOrder: [],
   };
 }
 
@@ -157,6 +159,8 @@ export function repairSiteConfig(raw: unknown, defaults: SiteConfig): SiteConfig
   const slugs = new Set<string>();
   config.customPages = config.customPages.filter((p) => (slugs.has(p.slug) ? false : (slugs.add(p.slug), true)));
   config.enquiryFields = [...new Set(config.enquiryFields)];
+  // website-three (17 Oct 2026): the menu's one order, every page once, Home first (an older draft's from its pages' order).
+  config.menuOrder = menuKeys(config);
   return config;
 }
 
