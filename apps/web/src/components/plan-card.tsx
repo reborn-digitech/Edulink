@@ -12,18 +12,21 @@ import { getLocale, getT } from "@/lib/i18n/server";
 /**
  * WHAT A LOCKED PERSON SEES (16 October 2026; src/lib/person-plans.ts, decision 0006): in place of a page whose
  * feature is on but needs a plan they do not hold, the plan's name, why this page needs it, what the plan
- * includes, its monthly and yearly price in rupees, and Subscribe. In this half nothing can be paid: Subscribe leads
- * to /account/plan, which says payment opens soon and that the office or the operator can switch the plan on.
- * `child` is set on a guardian's page about a pupil, whose plan it is.
+ * includes, its monthly and yearly price in rupees, and Subscribe, which leads to /account/plan where the pass is
+ * bought through the company's gateway (plans-pay, 17 Oct 2026; src/lib/pass-orders.ts) — or, for a pupil under
+ * eighteen, asked of a guardian. `child` (the name) and `childId` (the membership) are set on a guardian's page about
+ * a pupil, whose plan it is; Subscribe then opens on that child.
  */
 export async function PlanCard({
   plan,
   feature,
   child,
+  childId,
 }: {
   plan: PlanCode;
   feature: FeatureCode;
   child?: string;
+  childId?: string;
 }) {
   const t = await getT();
   const locale = await getLocale();
@@ -90,7 +93,7 @@ export async function PlanCard({
           )}
           <Button asChild>
             <Link
-              href={`/account/plan?plan=${plan}`}
+              href={`/account/plan?plan=${plan}${childId ? `&child=${encodeURIComponent(childId)}` : ""}`}
               data-testid="plan-card-subscribe"
             >
               {t("plans.subscribe")}

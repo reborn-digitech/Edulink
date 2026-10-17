@@ -89,3 +89,44 @@ export const GIGS: Endpoint[] = [
   { method: "GET", path: "/api/v1/operator/gigs/invoices", summary: "Every GST tax invoice the company has issued to an expert, newest first", access: "operator", response: c.gigOperatorInvoicesSchema, sample: "/api/v1/operator/gigs/invoices" },
   { method: "POST", path: "/api/v1/operator/gigs/payees/{expertUserId}/suspend", summary: "Stop paying an expert, with a reason they can read, or lift the stop; a suspended payee cannot price a seat", access: "operator", request: c.gigPayeeSuspendBodySchema, response: c.gigPayeeSuspendedSchema, emptyBodyStatus: 422, sample: (f) => (f.gigExpertUserId ? `/api/v1/operator/gigs/payees/${f.gigExpertUserId}/suspend` : null) },
 ];
+// seats (17 Oct 2026): pay per seat for every session, and decision 0004's rules as decision 0006 amends them
+// (src/lib/gig-sessions.ts, tests/seats.test.ts). A one-to-one and a teacher's guidance may now be priced, so the paid
+// doors open to both session features; a pupil of eighteen or more (a college student) pays for their own seat, so the
+// checkout and its confirmation name STUDENT beside PARENT (a pupil under eighteen is refused, "Ask your parent"); and a
+// new door gives the meeting link, gated as the family's list gates it. The existing entries are amended here rather
+// than edited in place (the wave's shared-file fence); `amend` throws on a door that is not there, so a rename is caught.
+{
+  const amend = (method: Endpoint["method"], path: string, patch: Partial<Endpoint>) => {
+    const e = GIGS.find((x) => x.method === method && x.path === path);
+    if (!e) throw new Error(`api-catalog/gigs.ts (seats): no ${method} ${path} to amend`);
+    Object.assign(e, patch);
+  };
+  const BOTH = ["EXPERT_SESSIONS", "TEACHER_SESSIONS"] as const;
+  amend("POST", "/api/v1/gigs/sessions/{bookingId}/checkout", {
+    feature: BOTH,
+    access: ["PARENT", "STUDENT"],
+    summary: "The order for a paid seat — an expert's workshop or one-to-one, or a teacher's guidance — waiting for its payer's payment: a guardian, or a pupil of eighteen or more for themselves (a pupil under eighteen is refused, and asks a parent); the same order while it stands, a fresh one after a failed attempt; a handful an hour per person",
+  });
+  amend("POST", "/api/v1/gigs/payments/{paymentId}/confirm", {
+    feature: BOTH,
+    access: ["PARENT", "STUDENT"],
+    summary: "The checkout's own confirmation by its payer (a guardian, or a pupil of eighteen or more who bought their own seat), verified with the company's key secret (the webhook remains the record)",
+  });
+  amend("POST", "/api/v1/gigs/slots", {
+    summary: "Offer a time on the provider's own Meet, Zoom, Teams or Jitsi link (https, refused on any other host): a one-to-one of thirty minutes or (an expert) a workshop with its length and seats; a price within the operator's band on either kind, behind the provider's paid gate (an expert's four conditions; a teacher's payments on and a UPI id saved); 0 is a free time, which draws on a pupil's allowance",
+  });
+  amend("GET", "/api/v1/gigs/sessions", {
+    summary: "For a pupil, or each of a guardian's children: the free allowance of the school year (spent on free times alone), their seats (the meeting link only once one is confirmed and, when priced, paid), who pays for a priced seat, and the times open to book (never with a link)",
+  });
+  GIGS.push({
+    method: "GET",
+    path: "/api/v1/gigs/sessions/{bookingId}/join",
+    feature: BOTH,
+    planFree: "a provider whose plan has ended still holds the sessions already booked with them, and reads where to hold them (seats, 17 Oct 2026)",
+    summary: "The meeting link of one booking: the provider's own always; the pupil's and their guardians' once the seat is confirmed and, when priced, paid (403 with the reason before then); anybody else's is not found, and the office never reads it",
+    access: ["STUDENT", "PARENT", "EXPERT", "TEACHER"],
+    response: c.gigJoinSchema,
+    sample: (f) => seat(f, "/join"),
+  });
+}
+// end seats

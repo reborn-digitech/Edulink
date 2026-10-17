@@ -4,6 +4,7 @@ import React from "react";
 import { Document, Font, Page, StyleSheet, Text, View, renderToBuffer } from "@react-pdf/renderer";
 import { dictionaryFor, translatorFor, type Locale, type TranslationKey } from "@edulink/i18n";
 import type { InvoiceView, ReceiptView } from "./gig-payments";
+import type { PassInvoiceView } from "./pass-orders"; // plans-pay (17 Oct 2026)
 import { dateKeyInZone } from "./dates";
 import { dateInFigures, numberToWords, type WordsLocale } from "./words";
 
@@ -245,3 +246,120 @@ export async function renderReceiptPdf(r: ReceiptView, locale: Locale): Promise<
   );
   return Buffer.from(await renderToBuffer(doc));
 }
+
+// plans-pay (17 Oct 2026)
+/**
+ * THE COMPANY'S TAX INVOICE FOR ONE PASS (decision 0006; src/lib/pass-orders.ts): the expert invoice's seller block,
+ * fonts, figures in paise and words, with the payer as the buyer, one line for the plan and its period (for whom,
+ * from when to when), the taxable value, CGST+SGST (the place of supply the company's state while the buyer's
+ * address is not on record), the total and the total in words. Every figure is the frozen row's. A refunded pass's
+ * invoice carries the refund line and the stamp.
+ */
+function PassInvoicePage({ inv }: { inv: PassInvoiceView }) {
+  const locale = inv.locale;
+  const t = wordsOf(locale);
+  const gst = inv.cgstPaise + inv.sgstPaise + inv.igstPaise;
+  const rate = inv.taxableValuePaise > 0 ? Math.round((gst / inv.taxableValuePaise) * 100) : 0;
+  const half = rate / 2;
+  const planName = t(inv.line.plan === "STUDENT" ? "plans.nameStudent" : inv.line.plan === "TEACHER" ? "plans.nameTeacher" : "plans.nameExpert");
+  const title = t(inv.line.period === "MONTH" ? "passes.titleMonth" : "passes.titleYear", { plan: planName });
+  return (
+    <Page size="A4" style={styles.page}>
+      <Text style={styles.title}>{t("gigs.invTitle")}</Text>
+      <Text style={styles.sub}>{t("passes.invSubtitle")}</Text>
+      <View style={styles.parties}>
+        <View style={styles.party}>
+          <Text style={styles.label}>{t("gigs.invSeller")}</Text>
+          <Text style={styles.strong}>{inv.seller.name}</Text>
+          {inv.seller.address ? <Text>{inv.seller.address}</Text> : null}
+          <Text>{t("gigs.invGstinLine", { gstin: inv.seller.gstin ?? "—" })}</Text>
+          <Text>{t("gigs.invStateLine", { code: inv.seller.stateCode ?? "—" })}</Text>
+        </View>
+        <View style={styles.party}>
+          <Text style={styles.label}>{t("gigs.invBuyer")}</Text>
+          <Text style={styles.strong}>{inv.buyer.name}</Text>
+          <Text>{t("gigs.invUnregistered")}</Text>
+        </View>
+      </View>
+      <View style={styles.meta}>
+        <Text>
+          <Text style={styles.label}>{t("gigs.invNumber")} </Text>
+          {inv.number}
+        </Text>
+        <Text>
+          <Text style={styles.label}>{t("gigs.invDate")} </Text>
+          {day(inv.issuedAt)}
+        </Text>
+        <Text>
+          <Text style={styles.label}>{t("gigs.invPlaceOfSupply")} </Text>
+          {inv.seller.stateCode ?? "—"}
+        </Text>
+        <Text>
+          <Text style={styles.label}>{t("gigs.invSac")} </Text>
+          {inv.sacCode}
+        </Text>
+        <Text>
+          <Text style={styles.label}>{t("gigs.invSupply")} </Text>
+          {t("gigs.invIntraState")}
+        </Text>
+      </View>
+      <View style={[styles.row, styles.head]}>
+        <Text style={styles.cTitle}>{t("passes.invColPass")}</Text>
+        <Text style={styles.cDate}>{t("passes.invColFrom")}</Text>
+        <Text style={styles.cDate}>{t("passes.invColTo")}</Text>
+        <Text style={styles.cNum}>{t("passes.invColValue")}</Text>
+      </View>
+      <View style={styles.row}>
+        <Text style={styles.cTitle}>{t("passes.invLine", { title, name: inv.line.holderName })}</Text>
+        <Text style={styles.cDate}>{day(inv.line.validFrom)}</Text>
+        <Text style={styles.cDate}>{day(new Date(new Date(inv.line.validTo).getTime() - 1).toISOString())}</Text>
+        <Text style={styles.cNum}>{money(inv.line.amountPaise, locale)}</Text>
+      </View>
+      <View style={styles.totals}>
+        <View style={styles.tRow}>
+          <Text style={styles.strong}>{t("gigs.invTaxable")}</Text>
+          <Text style={styles.strong}>{money(inv.taxableValuePaise, locale)}</Text>
+        </View>
+        {inv.igstPaise > 0 ? (
+          <View style={styles.tRow}>
+            <Text>{t("gigs.invIgst", { rate })}</Text>
+            <Text>{money(inv.igstPaise, locale)}</Text>
+          </View>
+        ) : (
+          <>
+            <View style={styles.tRow}>
+              <Text>{t("gigs.invCgst", { rate: half })}</Text>
+              <Text>{money(inv.cgstPaise, locale)}</Text>
+            </View>
+            <View style={styles.tRow}>
+              <Text>{t("gigs.invSgst", { rate: half })}</Text>
+              <Text>{money(inv.sgstPaise, locale)}</Text>
+            </View>
+          </>
+        )}
+        <View style={[styles.tRow, styles.tGrand]}>
+          <Text>{t("gigs.invTotal")}</Text>
+          <Text>{money(inv.totalPaise, locale)}</Text>
+        </View>
+        <Text style={styles.words}>{inWords(inv.totalPaise, locale, t)}</Text>
+      </View>
+      <Text style={styles.note}>{t("passes.invPaidNote")}</Text>
+      {inv.refundedAt ? <Text style={styles.note}>{t("passes.invRefundLine", { amount: money(inv.totalPaise, locale), date: day(inv.refundedAt) })}</Text> : null}
+      {inv.refundedAt ? <Text style={styles.stamp}>{t("passes.statusREFUNDED").toUpperCase()}</Text> : null}
+      <Text style={styles.footer} fixed>
+        {t("passes.invFooter")}
+      </Text>
+    </Page>
+  );
+}
+
+export async function renderPassInvoicePdf(inv: PassInvoiceView): Promise<Buffer> {
+  ensureFonts();
+  const doc = (
+    <Document title={`${wordsOf(inv.locale)("gigs.invTitle")} · ${inv.number}`} author={inv.seller.name}>
+      <PassInvoicePage inv={inv} />
+    </Document>
+  );
+  return Buffer.from(await renderToBuffer(doc));
+}
+// end plans-pay

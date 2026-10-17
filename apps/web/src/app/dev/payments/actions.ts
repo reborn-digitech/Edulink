@@ -6,6 +6,7 @@ import { requireSuperuser } from "@/lib/tenancy";
 import { failOnlinePayment, settleOnlinePayment } from "@/lib/fees-payments";
 import { markOrderFailed } from "@/lib/gig-payments";
 import { settleSeatPayment } from "@/lib/gig-sessions";
+import { markPassFailed, markPassPaid } from "@/lib/pass-orders"; // plans-pay (17 Oct 2026)
 
 /**
  * The devbox gateway's two buttons. Each goes through the SAME door the real
@@ -63,3 +64,27 @@ export async function failSeatAction(formData: FormData): Promise<void> {
   revalidatePath("/dev/payments");
   redirect("/dev/payments?outcome=failed");
 }
+
+// plans-pay (17 Oct 2026)
+/** A pass bought for a plan: the same door the platform webhook uses (markPassPaid), no school bound. */
+export async function markPassPaidAction(formData: FormData): Promise<void> {
+  gate();
+  await requireSuperuser();
+  const orderId = String(formData.get("orderId") ?? "");
+  const amountPaise = Number(formData.get("amountPaise") ?? 0);
+  if (!orderId || !Number.isInteger(amountPaise) || amountPaise <= 0) redirect("/dev/payments?outcome=bad-request");
+  const result = await markPassPaid({ orderId, gatewayPaymentId: `pay_devbox${Date.now()}`, amountPaise });
+  revalidatePath("/dev/payments");
+  redirect(`/dev/payments?outcome=${encodeURIComponent(result.outcome)}`);
+}
+
+export async function failPassAction(formData: FormData): Promise<void> {
+  gate();
+  await requireSuperuser();
+  const orderId = String(formData.get("orderId") ?? "");
+  if (!orderId) redirect("/dev/payments?outcome=bad-request");
+  await markPassFailed(orderId, "devbox: failed by the operator");
+  revalidatePath("/dev/payments");
+  redirect("/dev/payments?outcome=failed");
+}
+// end plans-pay

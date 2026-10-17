@@ -85,3 +85,7 @@ ENDPOINTS.push(...WEBSITE_DOMAINS);
 // meta-posting
 ENDPOINTS.push(...SOCIAL);
 // end meta-posting
+// plans-pay (17 Oct 2026): passes bought through the company's gateway, the person's doors (the operator's are in operator.ts).
+import { PASSES } from "./api-catalog/passes";
+ENDPOINTS.push(...PASSES);
+// end plans-pay

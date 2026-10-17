@@ -879,6 +879,11 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "site.enquiry.reply": "audit.siteEnquiryReply",
   "site.enquiry.status": "audit.siteEnquiryStatus",
   // end website-two
+  // website-three (17 Oct 2026): a file uploaded for the website deleted, and a faculty member's own public photo set or removed.
+  "site.file.delete": "audit.siteFileDelete",
+  "faculty.photo.set": "audit.facultyPhotoSet",
+  "faculty.photo.remove": "audit.facultyPhotoRemove",
+  // end website-three
   // website-builder B (15 Oct 2026): a school's own domain for its website saved, verified, removed, and the job's state changes.
   "site.domain.save": "audit.siteDomainSave",
   "site.domain.verify": "audit.siteDomainVerify",
@@ -898,6 +903,14 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "operator.entitlement.revoke": "audit.operatorEntitlementRevoke",
   "plans.entitlement.end": "audit.plansEntitlementEnd",
   // end plans
+  // plans-pay (17 Oct 2026): passes bought through the company's gateway (src/lib/pass-orders.ts).
+  "pass.order.start": "audit.passOrderStart",
+  "pass.order.paid": "audit.passOrderPaid",
+  "pass.order.mismatch": "audit.passOrderMismatch",
+  "operator.pass.refund": "audit.operatorPassRefund",
+  "pass.refund.failed": "audit.passRefundFailed",
+  "pass.ask.guardian": "audit.passAskGuardian",
+  // end plans-pay
 };
 
 export function actionKey(action: string): TranslationKey | null {

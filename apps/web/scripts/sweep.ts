@@ -1621,6 +1621,24 @@ async function paidSurfaces(riversideAdmin: Actor, riversideTeacher: Actor, devS
     if (zzTeacher) await check(zzTeacher, "/admin/website", 307, "⚠ a teacher does not");
     if (zzTeacher) await check(zzTeacher, "/admin/website/preview", 404, "⚠ …nor reads its draft");
     await check(null, "/admin/website", 307, "signed-out website editor redirects to login");
+    // website-three (17 Oct 2026): the Files panel with the count and where each upload is used, the replied enquiry's
+    // thread of two replies (zz-website.ts), and a faculty member's own photo at ZZ Vidya (a school has no faculty pages).
+    const filesPanel = await hit(zzAdmin, "/admin/website?s=files");
+    results.push({ role: zzAdmin.label, path: "/admin/website?s=files (Files panel)", status: filesPanel.status, expected: 200, ok: filesPanel.status === 200 && filesPanel.body.includes('data-testid="site-files"') && filesPanel.body.includes("data-site-file=") && / of 120 /.test(filesPanel.body), note: "the Files panel lists the uploads, where each is used, and the count against 120" });
+    const thread = await hit(zzAdmin, "/admin/website?s=enquiries");
+    results.push({ role: zzAdmin.label, path: "/admin/website?s=enquiries (thread)", status: thread.status, expected: 200, ok: thread.status === 200 && thread.body.includes('data-testid="site-enquiries"') && thread.body.includes("ZZ हाँ, तीन बसें हैं।") && thread.body.includes("ZZ बस का समय सुबह 7:30 है।"), note: "the replied enquiry carries its thread, both replies (the inbox opens on New; the thread is drawn on the Replied tab in the browser, so the page's data is read, not the list)" });
+    const vidyaCollege = await db.school.findUnique({ where: { slug: "zz-vidya-college" }, select: { id: true } });
+    const photoRecord = vidyaCollege ? await db.facultyRecord.findFirst({ where: { schoolId: vidyaCollege.id, publicPhotoFileId: { not: null }, membership: { user: { email: "zz.faculty01@zz.test" } } }, select: { publicPhotoFileId: true } }) : null;
+    if (vidyaCollege && photoRecord) {
+      const facultyActor = await mint("zz.faculty01@zz.test", "FACULTY", vidyaCollege.id, "zz-vidya-faculty01-photo");
+      const profile = await hit(facultyActor, "/faculty/profile");
+      results.push({ role: facultyActor.label, path: "/faculty/profile (photo)", status: profile.status, expected: 200, ok: profile.status === 200 && profile.body.includes('data-testid="faculty-photo"') && profile.body.includes(`/api/files/${photoRecord.publicPhotoFileId}`), note: "a faculty member's own photo, with their consent, on their profile page" });
+      await check(facultyActor, `/api/files/${photoRecord.publicPhotoFileId}?w=320`, 200, "…readable by its owner");
+      await check(null, "/public/faculty/zz-vidya-college", 200, "the public faculty page lists the published page (its photo only while the college's website is live)");
+    } else {
+      skip("the faculty photo", "zz.faculty01 at ZZ Vidya has no photo (run zz:fixtures)");
+    }
+    // end website-three
 
     // A review link, made here as the office would make it (only its hash is stored) and closed again before the run ends.
     const token = randomBytes(32).toString("base64url");
@@ -1670,8 +1688,29 @@ async function paidSurfaces(riversideAdmin: Actor, riversideTeacher: Actor, devS
   // The plan page names the plan a person holds; zz.teacher1 holds TEACHER (zz-plans.ts).
   if (zzTeacher) {
     const plan = await hit(zzTeacher, "/account/plan");
-    results.push({ role: zzTeacher.label, path: "/account/plan", status: plan.status, expected: 200, ok: plan.status === 200 && plan.body.includes('data-testid="payment-soon"') && plan.body.includes('data-testid="your-plan-now"'), note: "the plan page: payment opens soon, and the plan held now" });
+    results.push({ role: zzTeacher.label, path: "/account/plan", status: plan.status, expected: 200, ok: plan.status === 200 && plan.body.includes('data-testid="pass-offers"') && plan.body.includes('data-testid="your-plan-now"'), note: "the plan page: payment opens soon, and the plan held now" });
   }
+
+  // plans-pay (17 Oct 2026): the plan page offers zz.teacher1 the Teacher plan's pass (or says why not), and the guardian
+  // who bought zz.pupil01's month (zz-passes.ts) reads it with its invoice; the invoice is a PDF to that guardian and
+  // "not found" to anybody else.
+  if (zzTeacher) {
+    const offers = await hit(zzTeacher, "/account/plan");
+    results.push({ role: zzTeacher.label, path: "/account/plan (passes)", status: offers.status, expected: 200, ok: offers.status === 200 && offers.body.includes('data-testid="pass-offers"') && offers.body.includes('data-testid="pass-offer-TEACHER"'), note: "the plan page offers the Teacher plan's pass, or says why it cannot be bought" });
+  }
+  const fixturePass = await db.passOrder.findUnique({ where: { gatewayOrderId: "order_zzfixturepupil01pass" }, select: { id: true } });
+  if (fixturePass) {
+    const before = new Set(touched);
+    const zzParent = await mint("zz.parent01@zz.test", "PARENT", null, "zz-parent01");
+    if (zzParent.userId && !before.has(zzParent.userId)) touched.delete(zzParent.userId);
+    const bought = await hit(zzParent, "/account/plan");
+    results.push({ role: zzParent.label, path: "/account/plan (a pass bought)", status: bought.status, expected: 200, ok: bought.status === 200 && bought.body.includes('data-testid="pass-orders"') && bought.body.includes('data-testid="pass-invoice"'), note: "the guardian who bought a pass reads it with its invoice" });
+    await check(zzParent, `/api/v1/account/pass/orders/${fixturePass.id}/invoice`, 200, "…and downloads the invoice as a PDF");
+    if (zzTeacher) await check(zzTeacher, `/api/v1/account/pass/orders/${fixturePass.id}/invoice`, 404, "⚠ …nobody else does");
+  } else {
+    skip("the fixture's pass", "no fixture pass order (run zz:fixtures)");
+  }
+  // end plans-pay
 
   // The published website by slug: the office's and the head's own view, 404 to the rest (16 Oct 2026).
   const zzSite = await db.schoolSiteVersion.findFirst({ where: { schoolId: northgate.id, liveAt: { not: null } }, select: { schoolSlug: true } });

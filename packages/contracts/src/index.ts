@@ -299,3 +299,6 @@ export * from "./v1/social";
 // plans (16 Oct 2026): the three plans sold per person, their entitlements and the operator's grant (decision 0006).
 export * from "./v1/person-plans";
 // end plans
+// plans-pay (17 Oct 2026): passes bought through the company's gateway, their orders and invoices (decision 0006).
+export * from "./v1/passes";
+// end plans-pay

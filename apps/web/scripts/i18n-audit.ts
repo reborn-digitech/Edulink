@@ -89,6 +89,12 @@ const SKIP_EXACT = new Set([
   // plans (16 Oct 2026): a job's name, a code the crontab and /root/jobs key on (its words are root.jobDescPlansExpire).
   "plans:expire",
   // end plans
+  // plans-pay (17 Oct 2026): a job's name, a code the crontab and /root/jobs key on (its words are root.jobDescPassExpiring).
+  "pass:expiring",
+  // end plans-pay
+  // seats (17 Oct 2026): a job's name, a code the crontab and /root/jobs key on (its words are root.jobDescSessionsRemind).
+  "sessions:remind",
+  // end seats
 ]);
 
 const PROPS = ["title", "description", "label", "placeholder", "hint", "alt", "aria-label", "empty", "cta"];

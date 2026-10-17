@@ -799,6 +799,12 @@ async function crossProbe(mode: "school" | "person") {
           tried.push(`POST ${door(tail).path} as ${role}${body ? " (valid body)" : ""}`);
         }
       }
+      // seats (17 Oct 2026): another pupil's meeting link is nobody's here — not the sweep's pupil, their parent, nor a teacher whose session it is not.
+      const join = ENDPOINTS.find((x) => x.method === "GET" && x.path === "/api/v1/gigs/sessions/{bookingId}/join")!;
+      for (const role of ["PARENT", "STUDENT", "TEACHER"] as const) {
+        await check(join, role, `/api/v1/gigs/sessions/${othersSeat.id}/join`, null, role === "TEACHER" ? "the link of a seat in another provider's session" : "another pupil's meeting link");
+        tried.push(`GET ${join.path} as ${role}`);
+      }
     } else skipped.push("/api/v1/gigs/sessions/{bookingId}/* (no other pupil's seat in the fixtures)");
     // A picture on another pupil's certificate: the sweep's pupil and their parent are refused it.
     if (homeFx.otherPupilSignatureId) {

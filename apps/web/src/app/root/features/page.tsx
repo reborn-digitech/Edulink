@@ -18,6 +18,10 @@ import { Button } from "@/components/ui/button";
 import { CardHeader } from "@/components/ui/card";
 import { GrantForm, PlanPrices, RevokeButton } from "./plans";
 // end plans
+// plans-pay (17 Oct 2026)
+import { operatorPassOrders, operatorPassOrdersOf } from "@/lib/pass-orders";
+import { RefundPassButton } from "./passes";
+// end plans-pay
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("platformFeatures.title") };
@@ -41,6 +45,37 @@ export default async function FeaturesPage({ searchParams }: { searchParams: Pro
   const asked = operatorEntitlementsQuerySchema.safeParse({ email: (await searchParams).email ?? "" });
   const lookup = asked.success ? await listEntitlements(session, asked.data.email) : null;
   // end plans
+  // plans-pay (17 Oct 2026): the month's pass revenue, the last orders, and the looked-up person's passes with their invoices.
+  const passes = await operatorPassOrders(session);
+  const lookupPasses = lookup?.person ? await operatorPassOrdersOf(session, lookup.person.id) : [];
+  const money = (paise: number) => formatPaise(paise, locale, { always: true });
+  const PASS_STATUS_KEY = { CREATED: "passes.statusCREATED", PAID: "passes.statusPAID", FAILED: "passes.statusFAILED", REFUNDED: "passes.statusREFUNDED" } as const;
+  const passRow = (o: (typeof passes.orders)[number]) => (
+    <li key={o.id} className="flex flex-wrap items-start justify-between gap-3 py-3" data-testid="op-pass-order" data-status={o.status}>
+      <div className="min-w-0 flex-1 space-y-0.5">
+        <p className="flex flex-wrap items-center gap-2 text-sm text-fg">
+          <span className="font-medium">{t(o.period === "MONTH" ? "passes.titleMonth" : "passes.titleYear", { plan: t(PLAN_NAME_KEY[o.plan]) })}</span>
+          <span className="text-fg-muted">{t("passes.orderFor", { name: o.holderName })}</span>
+          <Badge size="sm" tone={o.status === "PAID" ? "ok" : o.status === "FAILED" ? "danger" : "neutral"}>
+            {t(PASS_STATUS_KEY[o.status])}
+          </Badge>
+        </p>
+        <p className="text-xs tabular-nums text-fg-subtle">
+          {money(o.totalPaise)} · {o.payerName} · {day(o.createdAt)}
+          {o.refundable && o.paidAt ? ` · ${t("passes.refundableUntil", { date: day(new Date(new Date(o.paidAt).getTime() + 7 * 86_400_000).toISOString()) })}` : ""}
+        </p>
+      </div>
+      <div className="flex flex-wrap items-center gap-3">
+        {o.invoiceNumber && (
+          <a href={`/api/v1/account/pass/orders/${encodeURIComponent(o.id)}/invoice`} target="_blank" rel="noopener" className="text-sm font-semibold text-accent-strong underline underline-offset-2">
+            {t("passes.invoice")} {o.invoiceNumber}
+          </a>
+        )}
+        {o.refundable && <RefundPassButton id={o.id} total={money(o.totalPaise)} name={o.payerName} />}
+      </div>
+    </li>
+  );
+  // end plans-pay
 
   return (
     <div className="space-y-5">
@@ -171,7 +206,42 @@ export default async function FeaturesPage({ searchParams }: { searchParams: Pro
             )}
           </CardBody>
         </Card>
+        {/* plans-pay (17 Oct 2026): the looked-up person's passes, each with its invoice. */}
+        {lookup?.person && lookupPasses.length > 0 && (
+          <Card data-testid="lookup-passes">
+            <CardHeader title={t("passes.ordersTitle")} />
+            <CardBody>
+              <ul className="divide-y divide-border">{lookupPasses.map(passRow)}</ul>
+            </CardBody>
+          </Card>
+        )}
+        {/* end plans-pay */}
       </section>
+
+      {/* plans-pay (17 Oct 2026): passes bought through the company's gateway (src/lib/pass-orders.ts, decision 0006). */}
+      <section className="space-y-3" aria-labelledby="passes-heading" data-testid="pass-revenue">
+        <h2 id="passes-heading" className="text-lg font-semibold text-fg">
+          {t("passes.opTitle")}
+        </h2>
+        <p className="text-sm text-fg-muted">{t("passes.opIntro")}</p>
+        <Card>
+          <CardHeader title={t("passes.revenueTitle")} />
+          <CardBody>
+            <ul className="space-y-1">
+              {passes.revenue.map((r) => (
+                <li key={r.plan} className="text-sm tabular-nums text-fg" data-testid={`pass-revenue-${r.plan}`}>
+                  <span className="font-medium">{t(PLAN_NAME_KEY[r.plan])}</span> · {t("passes.revenueLine", { count: r.count.toLocaleString(), amount: money(r.amountPaise), gst: money(r.gstPaise), total: money(r.totalPaise) })}
+                </li>
+              ))}
+            </ul>
+          </CardBody>
+        </Card>
+        <Card>
+          <CardHeader title={t("passes.lastOrders")} />
+          <CardBody>{passes.orders.length === 0 ? <p className="text-sm text-fg-muted">{t("passes.opNone")}</p> : <ul className="divide-y divide-border">{passes.orders.map(passRow)}</ul>}</CardBody>
+        </Card>
+      </section>
+      {/* end plans-pay */}
     </div>
   );
 }

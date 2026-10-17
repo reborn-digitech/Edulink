@@ -2780,6 +2780,12 @@ model OutboundEmail {
   html      String
   purpose   String?
   createdAt DateTime @default(now())
+  // website-three (17 Oct 2026)
+  /// The Reply-To a message carried (the school's own address on a website enquiry's reply), and its threading
+  /// headers as JSON { messageId, inReplyTo, references }, so the dev mailbox shows what a real mail would carry.
+  replyTo     String?
+  headersJson String   @default("{}")
+  // end website-three
 
   @@index([to, createdAt])
   @@index([createdAt])
@@ -5494,10 +5500,11 @@ model GigSlot {
   /// writer (src/lib/gig-sessions.ts), which claims a seat with the booking and releases it when the
   /// booking is cancelled; checked by data:audit.
   seatsTaken      Int       @default(0)
-  /// What a seat costs a family past their allowance, in paise. Always 0 on a one-to-one — mentoring is
-  /// never priced (decision 0004, amended 2026-10-02) — and on a workshop only while the expert passes
-  /// the paid gate in src/lib/gig-sessions.ts (KYC, a payout account, an open free one-to-one offer,
-  /// the period's free one-to-ones given).
+  /// What a seat costs a family past their allowance, in paise. 0 is a free time, which the free
+  /// allowances count; a one-to-one and a teacher's guidance may carry a price within the operator's
+  /// band since decision 0006 (17 October 2026, amending 0004's "never priced"), a workshop as before,
+  /// only while the provider passes the paid gate in src/lib/gig-sessions.ts (KYC, a payout account or a
+  /// UPI id for a teacher, an open free offer, the period's free duties given).
   pricePaise      Int       @default(0)
   cancelledAt     DateTime?
   cancelReason    String?
@@ -5544,6 +5551,12 @@ model GigBooking {
   feedback            String?
   ratedAt             DateTime?
   remindedAt          DateTime?
+  // seats (17 Oct 2026)
+  /// When the family and the provider were told, about thirty minutes before the start, that the session is about to
+  /// begin and where to join it (sessions:remind, src/lib/gig-sessions.ts). Claimed before anybody is told, so two runs
+  /// at once tell a family once.
+  joinRemindedAt      DateTime?
+  // end seats
   /// A seat past the pupil's free allowance, bought by a guardian: it draws on no allowance, and its
   /// money is the SessionPayment row. Set once, at booking.
   paid                Boolean   @default(false)
@@ -9643,12 +9656,22 @@ model FacultyRecord {
   /// The faculty member's own opt-in to a public profile page (5 Oct 2026): when they published it; null while they
   /// have not, or after they (or the office) took it down. Written only by lib/faculty-profile.ts.
   publicProfileAt       DateTime?
+  // website-three (17 Oct 2026)
+  /// The faculty member's own public photo (a stored file, uploaded on /faculty/profile with their own consent tick),
+  /// shown on the college website's Faculty page and the public faculty page while the site is live. Written only by
+  /// lib/faculty-profile.ts; the consent stamp is when they ticked it. Removing the photo clears both.
+  publicPhotoFileId     String?
+  publicPhotoConsentAt  DateTime?
+  // end website-three
 
   school        School                @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   membership    Membership            @relation("FacultyRecordOf", fields: [membershipId], references: [id], onDelete: Cascade)
   publicProfile FacultyPublicProfile?
 
   @@index([schoolId])
+  // website-three (17 Oct 2026)
+  @@index([publicPhotoFileId])
+  // end website-three
 }
 
 /// A FACULTY MEMBER'S PUBLIC PROFILE (5 Oct 2026; integration decision 10): the
@@ -9667,12 +9690,21 @@ model FacultyPublicProfile {
   snapshotJson    String   @default("{}")
   publishedAt     DateTime @default(now())
   updatedAt       DateTime @updatedAt
+  // website-three (17 Oct 2026)
+  /// The photo the published page shows: the record's own public photo, copied here when the page is published or
+  /// refreshed and at once when the member changes or removes it. Public (the file route) only while the college's
+  /// website is live.
+  publicPhotoFileId String?
+  // end website-three
 
   school School        @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   record FacultyRecord @relation(fields: [facultyRecordId], references: [id], onDelete: Cascade)
 
   @@index([schoolId])
   @@index([schoolSlug])
+  // website-three (17 Oct 2026)
+  @@index([publicPhotoFileId])
+  // end website-three
 }
 
 /// A return the college files (SSR, AQAR, IIQA, NIRF, AISHE, the AICTE
@@ -10920,6 +10952,11 @@ model SchoolSite {
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
   updatedByUserId    String?
+  // website-three (17 Oct 2026)
+  /// Counts the draft's saves: a save names the number it was read at and is refused when another save came between
+  /// (site-admin.ts saveSite), so two editors never silently overwrite each other.
+  draftVersion       Int      @default(0)
+  // end website-three
 
   school   School              @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   versions SchoolSiteVersion[]
@@ -10994,6 +11031,11 @@ model SchoolSiteEnquiry {
   closedAt        DateTime?
   lastActivityAt  DateTime  @default(now())
   // end website-two
+  // website-three (17 Oct 2026)
+  /// Every reply sent on the thread, oldest first: JSON [{ text, at, byUserId, messageId }]. `replyText`/`repliedAt` stay
+  /// the latest one's. A reply's mail carries the earlier ones' Message-IDs, so the enquirer's mail keeps one thread.
+  repliesJson     String    @default("[]")
+  // end website-three
 
   school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
@@ -11187,3 +11229,90 @@ model Entitlement {
 }
 
 // end plans
+
+// plans-pay (17 Oct 2026)
+/// ONE PASS BOUGHT THROUGH THE COMPANY'S GATEWAY (17 October 2026; decision 0006, src/lib/pass-orders.ts): a month
+/// or a year of one plan sold per person, for `userId` (the person entitled), paid by `payerUserId` (the guardian
+/// for a pupil under eighteen, else the same person). The money is the company's own revenue and the company
+/// collects it directly: no Route, no transfer, no split (decision 0006's collection rule; decision 0003 untouched,
+/// a school's fees never come here). The plan's price is frozen on the row when the order is made, with the GST on
+/// it at the company's rate (GigSettings.gstPercent); the gateway charges `totalPaise`. CREATED → PAID (a signed
+/// capture: the checkout's own confirm or the platform webhook, whichever is first; the ORDER entitlements written
+/// by person-plans.ts grantPassFromOrder and the tax invoice issued) | FAILED (the gateway said so; a later signed
+/// capture on the same order still settles) ; PAID → REFUNDED by the operator alone, in full, within seven days of
+/// payment, revoking the entitlements it granted. No card detail ever touches the platform (policy 0002): the
+/// gateway's own page takes them.
+/// OUTSIDE THE SCHOOL FENCE ON PURPOSE (NO_SCHOOL_POLICY): a pass is the PERSON's and follows them across schools,
+/// like the Entitlement rows it opens; a guardian belongs to no school. The person is the fence, held in the
+/// library: the payer and the holder read their own, the operator every one. No foreign key to User (the
+/// Entitlement precedent), so the zz teardown names the rows itself.
+model PassOrder {
+  id               String    @id @default(cuid())
+  /// The person the pass is for.
+  userId           String
+  /// Who paid: the guardian for a pupil under eighteen, else userId.
+  payerUserId      String
+  /// STUDENT | TEACHER | EXPERT (checked in the migration).
+  planCode         String
+  /// MONTH | YEAR (checked in the migration).
+  period           String
+  /// The plan's price when the order was made: the taxable value.
+  amountPaise      Int
+  /// The GST on it at gstPercent, and what the gateway charges (amountPaise + gstPaise).
+  gstPaise         Int
+  totalPaise       Int
+  gstPercent       Int
+  /// The gateway's order (a placeholder "pending_<id>" for the instant before it answers).
+  gatewayOrderId   String    @unique
+  /// The captured payment: one payment settles one order, once.
+  gatewayPaymentId String?   @unique
+  /// CREATED | PAID | FAILED | REFUNDED (checked in the migration).
+  status           String    @default("CREATED")
+  paidAt           DateTime?
+  failedReason     String?
+  refundedAt       DateTime?
+  refundedByUserId String?
+  gatewayRefundId  String?
+  /// The tax invoice issued for it (PassInvoice), once paid.
+  invoiceId        String?   @unique
+  createdAt        DateTime  @default(now())
+
+  @@index([userId, createdAt])
+  @@index([payerUserId, createdAt])
+  @@index([status, paidAt])
+}
+
+/// THE COMPANY'S GST TAX INVOICE FOR ONE PAID PASS (17 October 2026): the GigInvoice shape, the company as the
+/// seller (the same seller block, GigSettings frozen into sellerJson) and the payer as the buyer, numbered in its own
+/// financial-year series "<prefix>-PASS/2026-27/0001" under the GigSettings row lock inside the transaction that
+/// writes it, as every company series is — never reused, never a gap on a failed write. Every figure is frozen.
+/// The place of supply is the company's state while the buyer's address is not on record (CGST+SGST); the
+/// accountant confirms it (docs/decisions/0006). Rendered as a PDF on read in the payer's language. The payer reads
+/// their own; the operator every one. No school.
+model PassInvoice {
+  id                String   @id @default(cuid())
+  number            String   @unique
+  series            String
+  serial            Int
+  passOrderId       String   @unique
+  payerUserId       String
+  issuedAt          DateTime @default(now())
+  /// en | hi | mr — the payer's language when it was issued.
+  locale            String   @default("en")
+  taxableValuePaise Int
+  cgstPaise         Int
+  sgstPaise         Int
+  igstPaise         Int
+  totalPaise        Int
+  sacCode           String
+  /// { name, gstin, address, stateCode } of the company, as it stood.
+  sellerJson        String
+  /// { name, gstin, address, stateCode } of the payer, as it stood (no GSTIN: a person).
+  buyerJson         String
+  /// One line: { passOrderId, plan, period, holderName, validFrom, validTo, amountPaise, gstPaise }.
+  linesJson         String
+
+  @@unique([series, serial])
+  @@index([payerUserId, issuedAt])
+}
+// end plans-pay

@@ -229,6 +229,8 @@ describe("the gate and the envelope", () => {
         "GET /api/v1/expert/invoices",
         "GET /api/v1/expert/invoices/{invoiceId}/pdf",
         "GET /api/v1/expert/payout",
+        // seats (17 Oct 2026): the meeting link of a session already booked stays the provider's after their plan ends.
+        "GET /api/v1/gigs/sessions/{bookingId}/join",
         "GET /api/v1/shared/expert/bookings",
         "POST /api/v1/expert/calendar/token",
         "POST /api/v1/expert/payout",

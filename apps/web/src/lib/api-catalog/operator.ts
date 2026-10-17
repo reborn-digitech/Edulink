@@ -104,4 +104,9 @@ export const OPERATOR: Endpoint[] = [
   { method: "POST", path: "/api/v1/operator/entitlements", summary: "Grant a plan to a person by email for 1, 3, 6 or 12 months with a note: one entitlement per feature of the plan, starting where the person's current window of that plan ends; audited, and the person is told in the app", access: "operator", request: c.operatorGrantBodySchema, response: c.operatorGrantSchema, emptyBodyStatus: 422 },
   { method: "POST", path: "/api/v1/operator/entitlements/{id}/revoke", summary: "End one entitlement now; audited, and a no-op on one already revoked", access: "operator", response: c.operatorRevokeSchema, sample: "/api/v1/operator/entitlements/zz-sweep-no-such-entitlement/revoke" },
   // end plans
+  // plans-pay (17 Oct 2026): passes bought through the company's gateway (src/lib/pass-orders.ts, decision 0006): the month's pass
+  // revenue and the last orders, and the refund — the operator's alone, in full, within seven days of payment, audited.
+  { method: "GET", path: "/api/v1/operator/pass-orders", summary: "Passes bought through the company's gateway: this month's revenue by plan (count, price, GST and total; refunded passes out) and the last twenty orders, each with whether it may still be refunded", access: "operator", response: c.operatorPassOrdersSchema, sample: "/api/v1/operator/pass-orders" },
+  { method: "POST", path: "/api/v1/operator/pass-orders/{id}/refund", summary: "Refund a paid pass in full to the payer's instrument, within seven days of payment, revoking the entitlements it opened; the payer and the holder told; audited", access: "operator", response: c.operatorPassRefundSchema, sample: "/api/v1/operator/pass-orders/zz-sweep-no-such-pass-order/refund" },
+  // end plans-pay
 ];

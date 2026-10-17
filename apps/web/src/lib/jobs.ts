@@ -32,9 +32,15 @@ import { drainSocialQueue, liveSendDeps, refreshSocialConnections } from "./soci
 // plans (16 Oct 2026): the windows of the plans sold per person that ended, told once.
 import { expireEntitlements } from "./person-plans";
 // end plans
+// plans-pay (17 Oct 2026): the in-app reminder before a plan ends (no auto-renewal, no mandate).
+import { passExpiringNotices } from "./pass-orders";
+// end plans-pay
 // website-two (16 Oct 2026): the website's enquiries kept 180 days after they close or go quiet, and its page-view counts 400.
 import { tidySiteEnquiries } from "./site-inbox";
 // end website-two
+// seats (17 Oct 2026): the thirty-minute join reminder for a confirmed (and, when priced, paid) seat.
+import { remindJoins } from "./gig-sessions";
+// end seats
 import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
@@ -74,9 +80,15 @@ export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" |
   // plans (16 Oct 2026)
   | "plans:expire"
   // end plans
+  // plans-pay (17 Oct 2026)
+  | "pass:expiring"
+  // end plans-pay
   // website-two (16 Oct 2026)
   | "site:enquiries"
   // end website-two
+  // seats (17 Oct 2026)
+  | "sessions:remind"
+  // end seats
   ;
 
 /**
@@ -495,6 +507,24 @@ export const JOBS: Record<JobName, JobSpec> = {
     },
   },
   // end plans
+  // plans-pay (17 Oct 2026)
+  "pass:expiring": {
+    name: "pass:expiring",
+    // 05:10 daily (clear of 03:30, 03:40, 04:10, 04:20, 04:30 and every */n job): each person whose plan — their latest
+    // running window of it, a pass or a grant — ends seven days from today or tomorrow, India's calendar, is told in the
+    // app; nothing renews by itself and no mandate is taken, so this is the only reminder (src/lib/pass-orders.ts
+    // passExpiringNotices). Once a day at most per plan and notice; never a text.
+    schedule: "10 5 * * *",
+    describeKey: "root.jobDescPassExpiring",
+    maxRunMs: HOUR,
+    expectEveryMs: 2 * DAY,
+    narrows: ["userIds"],
+    run: async ({ now, scope }) => {
+      const { week, day, skipped } = await passExpiringNotices(now, scope?.userIds ? { userIds: scope.userIds } : {});
+      return { summary: { week, day, skipped } };
+    },
+  },
+  // end plans-pay
   // website-two (16 Oct 2026)
   "site:enquiries": {
     name: "site:enquiries",
@@ -512,6 +542,24 @@ export const JOBS: Record<JobName, JobSpec> = {
     },
   },
   // end website-two
+  // seats (17 Oct 2026)
+  "sessions:remind": {
+    name: "sessions:remind",
+    // Every five minutes at 2, 7, 12 … 57 past the hour (a range with a step, clear of the 03:30, 03:40, 04:10, 04:20
+    // and 04:30 minutes and of every */n pattern): a seat its holder may join, in a session that starts within thirty
+    // minutes, is told to the family once with where to join, and its provider once for the slot — in the app only
+    // (src/lib/gig-sessions.ts remindJoins).
+    schedule: "2-57/5 * * * *",
+    describeKey: "root.jobDescSessionsRemind",
+    maxRunMs: 4 * 60_000,
+    expectEveryMs: HOUR,
+    narrows: [],
+    run: async ({ now }) => {
+      const { reminded, providers, perSchool } = await remindJoins(now);
+      return { summary: { reminded, providers }, perSchool };
+    },
+  },
+  // end seats
 };
 
 export const JOB_NAMES = Object.keys(JOBS) as JobName[];

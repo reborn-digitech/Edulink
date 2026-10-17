@@ -402,3 +402,84 @@ export async function expireEntitlements(now: Date = new Date(), scope: { userId
   }
   return { ended: rows.length, told, renewed };
 }
+
+// plans-pay (17 Oct 2026)
+/* -------------------------------------------------------------------------- */
+/* Passes bought through the gateway: the ORDER rows (src/lib/pass-orders.ts)   */
+/* -------------------------------------------------------------------------- */
+
+/** The client a pass's writes go through: the transaction's own (pass-orders.ts marks a pass paid inside one), or db. */
+type EntitlementClient = Pick<typeof db, "entitlement" | "personPlan">;
+
+/** The day a person's current window of a plan ends (any source, unrevoked, still running), or null when they hold none now. */
+export async function planHeldUntil(userId: string, plan: PlanCode, now: Date = new Date(), client: EntitlementClient = db): Promise<Date | null> {
+  const latest = await client.entitlement.aggregate({ where: { userId, planCode: plan, revokedAt: null, validTo: { gt: now } }, _max: { validTo: true } });
+  return latest._max.validTo && latest._max.validTo > now ? latest._max.validTo : null;
+}
+
+export const PASS_MONTHS = { MONTH: 1, YEAR: 12 } as const;
+
+/**
+ * A PAID PASS'S ENTITLEMENTS (the second half's hook beside grantPlan; this file stays the one writer): one ORDER row
+ * per feature of the plan, carrying the order's id, for a month or a year. A RENEWAL EXTENDS FROM THE CURRENT END,
+ * not from today: a person holding the plan (a grant or an earlier pass) gets the new window from where theirs ends.
+ * Idempotent on the order: a second call for an order that already has rows writes nothing and answers their window,
+ * so the checkout's confirm and the webhook can both arrive. `client` is the caller's transaction when there is one.
+ * No audit and no notice here: pass-orders.ts audits the payment and tells the people once.
+ */
+export async function grantPassFromOrder(
+  order: { id: string; userId: string; planCode: string; period: "MONTH" | "YEAR" },
+  now: Date = new Date(),
+  client: EntitlementClient = db,
+): Promise<{ validFrom: Date; validTo: Date; created: number }> {
+  if (!isPlan(order.planCode)) throw new AccessError("plans.unknownPlan", "NOT_FOUND");
+  const plan = order.planCode;
+  const existing = await client.entitlement.findMany({ where: { orderId: order.id, source: "ORDER" }, select: { validFrom: true, validTo: true } });
+  if (existing.length > 0) {
+    const validFrom = new Date(Math.min(...existing.map((r) => r.validFrom.getTime())));
+    const validTo = new Date(Math.max(...existing.map((r) => r.validTo.getTime())));
+    return { validFrom, validTo, created: 0 };
+  }
+  const row = await client.personPlan.findUnique({ where: { code: plan }, select: { code: true, features: true } });
+  const features = row ? featuresOfRow(row) : [...PLAN_FEATURES[plan]];
+  const validFrom = (await planHeldUntil(order.userId, plan, now, client)) ?? now;
+  const validTo = addMonths(validFrom, PASS_MONTHS[order.period]);
+  const { count } = await client.entitlement.createMany({
+    data: features.map((feature) => ({ userId: order.userId, feature, source: "ORDER", planCode: plan, validFrom, validTo, orderId: order.id })),
+  });
+  return { validFrom, validTo, created: count };
+}
+
+/** A refunded pass: every unrevoked row its order opened ends now. Returns how many. */
+export async function revokePassEntitlements(orderId: string, actorUserId: string | null, now: Date = new Date(), client: EntitlementClient = db): Promise<number> {
+  const { count } = await client.entitlement.updateMany({ where: { orderId, source: "ORDER", revokedAt: null }, data: { revokedAt: now, revokedByUserId: actorUserId } });
+  return count;
+}
+
+/** A refund the gateway failed: the rows the refund ended at `revokedAt` are open again, since the money never left. */
+export async function restorePassEntitlements(orderId: string, revokedAt: Date, client: EntitlementClient = db): Promise<number> {
+  const { count } = await client.entitlement.updateMany({ where: { orderId, source: "ORDER", revokedAt }, data: { revokedAt: null, revokedByUserId: null } });
+  return count;
+}
+
+/** The window each order opened, for the order lists: the earliest start and the latest end of its rows. */
+export async function passWindows(orderIds: string[]): Promise<Map<string, { validFrom: Date; validTo: Date }>> {
+  const out = new Map<string, { validFrom: Date; validTo: Date }>();
+  if (orderIds.length === 0) return out;
+  const rows = await db.entitlement.groupBy({ by: ["orderId"], where: { orderId: { in: orderIds }, source: "ORDER" }, _min: { validFrom: true }, _max: { validTo: true } });
+  for (const r of rows) if (r.orderId && r._min.validFrom && r._max.validTo) out.set(r.orderId, { validFrom: r._min.validFrom, validTo: r._max.validTo });
+  return out;
+}
+
+/** Each person's latest running window per plan that ends between `from` and `to` (the pass:expiring job's read). */
+export async function windowsEndingBetween(from: Date, to: Date, scope: { userIds?: string[] } = {}): Promise<{ userId: string; plan: PlanCode; validTo: Date }[]> {
+  const rows = await db.entitlement.groupBy({
+    by: ["userId", "planCode"],
+    where: { revokedAt: null, validTo: { gt: from }, planCode: { not: null }, ...(scope.userIds ? { userId: { in: scope.userIds } } : {}) },
+    _max: { validTo: true },
+  });
+  return rows
+    .filter((r): r is typeof r & { planCode: PlanCode } => Boolean(r.planCode && isPlan(r.planCode) && r._max.validTo && r._max.validTo <= to))
+    .map((r) => ({ userId: r.userId, plan: r.planCode, validTo: r._max.validTo! }));
+}
+// end plans-pay

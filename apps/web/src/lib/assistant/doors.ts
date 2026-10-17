@@ -29,6 +29,9 @@ export const NEVER_DOORS: { path: RegExp; why: string }[] = [
   { path: /^\/api\/v1\/auth\//, why: "sign-in" },
   { path: /^\/api\/v1\/admin\/site(?:\/|$)/, why: "the school website's draft, preview HTML and domain, not a person's data (15 Oct 2026)" },
   { path: /^\/api\/v1\/admin\/social(?:\/|$)/, why: "the school's Facebook connection and its copies of posts, not a person's data (16 Oct 2026)" },
+  // plans-pay (17 Oct 2026)
+  { path: /^\/api\/v1\/account\/pass(?:\/|$)/, why: "a person's passes, payments and invoices: the account's Plans page shows them, a chat does not (17 Oct 2026)" },
+  // end plans-pay
   { path: /^\/api\/v1\/(?:me\/sessions|account\/totp)(?:\/|$)/, why: "the account's security, never read for a chat" },
   { path: /\/export(?:\/|$)/, why: "an export: a file, or a person's whole data (DPDP s.11)" },
   { path: /^\/api\/v1\/search(?:\/|$)/, why: "the search door would carry the question's words" },

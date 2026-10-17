@@ -160,6 +160,14 @@ const NO_SCHOOL_POLICY = new Set([
   "PersonPlan",
   "Entitlement",
   // end plans
+  // plans-pay (17 Oct 2026)
+  // A pass bought through the company's gateway and its tax invoice (src/lib/pass-orders.ts, decision 0006): the
+  // PERSON's, bought for themselves or by a guardian, following them across schools like the entitlements it opens;
+  // the money is the company's own revenue and no school's row is in either. The payer and the holder are the fence,
+  // held in the library; the operator reads every one.
+  "PassOrder",
+  "PassInvoice",
+  // end plans-pay
 ]);
 
 /**

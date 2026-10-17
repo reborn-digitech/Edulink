@@ -15,6 +15,7 @@ import { useSession } from "@/lib/session";
 import { isThemeChoice, useTheme, useThemeChoice, type ThemeChoice } from "@/lib/theme";
 import { Confirm, Note, Pill, relativeTime, Tabs } from "../family/shared";
 import { TwoStepCard } from "./two-step-card";
+import { PlanCard } from "./plan-card"; // plans-pay (17 Oct 2026)
 
 type Tab = "profile" | "prefs" | "devices";
 type Sessions = z.infer<typeof sessionsListSchema>;
@@ -123,6 +124,8 @@ function ProfileTab({ overview }: { overview: AccountOverview }) {
         <View style={{ height: 1, backgroundColor: th.border }} />
         <MobileSection overview={overview} />
       </Card>
+      {/* plans-pay (17 Oct 2026): the plans held, and the web's Plans page to buy one. */}
+      <PlanCard />
       {/* Two-step sign-in: the card draws itself for the office, the head and the operator alone. */}
       <TwoStepCard />
     </>

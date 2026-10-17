@@ -188,6 +188,7 @@ export const DOOR_LOADERS: Record<string, () => Promise<{ GET?: unknown }>> = {
   "/api/v1/gigs/questions/topics": () => import("@/app/api/v1/gigs/questions/topics/route"),
   "/api/v1/gigs/school": () => import("@/app/api/v1/gigs/school/route"),
   "/api/v1/gigs/sessions": () => import("@/app/api/v1/gigs/sessions/route"),
+  "/api/v1/gigs/sessions/{bookingId}/join": () => import("@/app/api/v1/gigs/sessions/[bookingId]/join/route"),
   "/api/v1/gigs/slots": () => import("@/app/api/v1/gigs/slots/route"),
   "/api/v1/hostel/boarders": () => import("@/app/api/v1/hostel/boarders/route"),
   "/api/v1/hostel/boarders/{allotmentId}/health": () => import("@/app/api/v1/hostel/boarders/[allotmentId]/health/route"),

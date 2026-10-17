@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { formatInZone } from "@/lib/dates";
-import { failAction, failSeatAction, markPaidAction, markSeatPaidAction } from "./actions";
+import { failAction, failPassAction, failSeatAction, markPaidAction, markPassPaidAction, markSeatPaidAction } from "./actions"; // failPassAction, markPassPaidAction: plans-pay (17 Oct 2026)
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -54,6 +54,9 @@ export default async function DevPaymentsPage({ searchParams }: { searchParams: 
   rows.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
   // Paid workshop seats waiting at the company's own (pretend) gateway: no school binding, the rows are nobody's tenant.
   const seats = await db.sessionPayment.findMany({ where: { status: "INITIATED" }, orderBy: { createdAt: "desc" }, take: 50, select: { id: true, orderId: true, amountPaise: true, createdAt: true, bookingId: true, slot: { select: { title: true } } } });
+  // plans-pay (17 Oct 2026): passes waiting at the same pretend gateway, the company's own revenue; no school either.
+  const passes = await db.passOrder.findMany({ where: { status: "CREATED", NOT: { gatewayOrderId: { startsWith: "pending_" } } }, orderBy: { createdAt: "desc" }, take: 50, select: { id: true, gatewayOrderId: true, totalPaise: true, planCode: true, period: true, createdAt: true } });
+  // end plans-pay
 
   return (
     <main id="main" className="mx-auto max-w-3xl px-4 py-10">
@@ -75,6 +78,41 @@ export default async function DevPaymentsPage({ searchParams }: { searchParams: 
           <code>{outcome}</code>
         </p>
       )}
+
+      {/* plans-pay (17 Oct 2026) */}
+      <section className="mb-8 space-y-3" data-testid="dev-pass-orders">
+        <h2 className="text-lg font-semibold text-fg">{t("passes.devTitle")}</h2>
+        <p className="text-sm text-fg-muted">{t("passes.devIntro")}</p>
+        {passes.length === 0 ? (
+          <p className="text-sm text-fg-muted">{t("passes.devNone")}</p>
+        ) : (
+          <ul className="space-y-3">
+            {passes.map((row) => (
+              <li key={row.id} data-testid="dev-pass-order" data-order-id={row.gatewayOrderId} data-pass-id={row.id}>
+                <Card>
+                  <CardHeader title={formatPaise(row.totalPaise, locale, { always: true })} description={[row.planCode, row.period, formatInZone(row.createdAt, "Asia/Kolkata")].join(" · ")} action={<Badge tone="accent" size="sm">{t("passes.statusCREATED")}</Badge>} />
+                  <CardBody className="flex flex-wrap gap-2">
+                    <form action={markPassPaidAction}>
+                      <input type="hidden" name="orderId" value={row.gatewayOrderId} />
+                      <input type="hidden" name="amountPaise" value={row.totalPaise} />
+                      <Button type="submit" size="sm" data-testid="dev-pass-paid">
+                        {t("fees.devPaymentsMarkPaid")}
+                      </Button>
+                    </form>
+                    <form action={failPassAction}>
+                      <input type="hidden" name="orderId" value={row.gatewayOrderId} />
+                      <Button type="submit" size="sm" variant="danger">
+                        {t("fees.devPaymentsFail")}
+                      </Button>
+                    </form>
+                  </CardBody>
+                </Card>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+      {/* end plans-pay */}
 
       <section className="mb-8 space-y-3" data-testid="dev-session-orders">
         <h2 className="text-lg font-semibold text-fg">{t("gigs.devSessionsTitle")}</h2>

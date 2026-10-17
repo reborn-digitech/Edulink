@@ -681,6 +681,16 @@ In this order. Each item is switched on, proved, and then the next begins.
   `product.route.under_review`, `product.route.needs_clarification` and `product.route.activated`, with the
   same webhook secret.
 
+  <!-- plans-pay (17 Oct 2026) -->
+  **Passes for the plans (decision 0006).** Add a second webhook, to `https://<host>/api/webhooks/razorpay/platform`,
+  for `payment.captured`, `payment.failed` and `refund.failed`, with the same webhook secret: it opens a pass bought
+  when the buyer closed the browser before the checkout's own confirm. Passes go on sale per plan once the plan is
+  active and priced on `/root/features` and the company's details are complete on `/root/gigs`; they do not wait for
+  the paid-seats switch. Test first in Razorpay's test mode: a test teacher buys a month of the Teacher plan on
+  `/account/plan`, the plan's doors open at once, the invoice downloads, and the operator refunds it from
+  `/root/features` (the doors close again).
+  <!-- end plans-pay -->
+
   **First in Razorpay's test mode.** With the test key and a test webhook against a staging host: one expert
   presses "Link with Razorpay" on their profile, the account reaches *activated* (the card says so), the
   operator turns paid seats on, a test family buys a seat, the order carries the transfer on hold (Razorpay's

@@ -54,9 +54,18 @@ import { buildAlumni } from "./zz-alumni";
 // website-builder A (15 Oct 2026)
 import { buildWebsite } from "./zz-website";
 // end website-builder A
+// website-three (17 Oct 2026)
+import { buildFacultyPhoto } from "./zz-website";
+// end website-three
 // plans (16 Oct 2026)
 import { buildPlans, removeZzEntitlements } from "./zz-plans";
 // end plans
+// plans-pay (17 Oct 2026)
+import { buildPasses, removeZzPasses } from "./zz-passes";
+// end plans-pay
+// seats (17 Oct 2026)
+import { buildSeats } from "./zz-seats";
+// end seats
 import { buildColleges } from "./zz-college";
 import { buildAcademics } from "./zz-academics";
 import { buildCollegeExams } from "./zz-exams";
@@ -412,6 +421,9 @@ async function teardown() {
   const schools = await db.school.deleteMany({ where: { slug: { startsWith: "zz-" } } });
   // Users next: ExpertProfile, Guardianship and any surviving Membership all
   // cascade from User. Matching on the domain is what makes this exact.
+  // plans-pay (17 Oct 2026): pass orders and invoices have no foreign key to User either; before the entitlements.
+  await removeZzPasses(db, DOMAIN);
+  // end plans-pay
   // plans (16 Oct 2026): entitlements have no foreign key to User, so they go first, by the ZZ people's ids.
   await removeZzEntitlements(db, DOMAIN);
   // end plans
@@ -2706,6 +2718,11 @@ async function main() {
   const website = await buildWebsite(db, northgate.school, northgate.admin.id);
   console.log(`  Website: ZZ Northgate ${website.published ? "published now" : website.refreshed ? "published again (every page)" : "already published"}, every page and section on, ${website.enquiries ? `${website.enquiries} enquiries added` : "enquiries already there"}, ${website.visits} page views this week — /admin/website, http://${website.slug}.localhost:3000/ in development`);
   // end website-builder A
+  // website-three (17 Oct 2026): the replied enquiry is a thread of two replies (zz-website.ts), and one faculty photo with
+  // its owner's consent on ZZ Vidya's zz.faculty01, their public page published with it (a school has no faculty profiles).
+  const facultyPhoto = await buildFacultyPhoto(db);
+  console.log(`  Faculty photo: ${facultyPhoto ? `zz.faculty01 at ${facultyPhoto.slug} ${facultyPhoto.made ? "given a photo with consent" : "already has a photo"}, page published — /faculty/profile, /public/faculty/${facultyPhoto.slug}` : "ZZ Vidya's zz.faculty01 has no record yet, skipped"}; the replied enquiry is a thread of two`);
+  // end website-three
   // website-builder B (15 Oct 2026): ZZ Northgate's own website domain, waiting for DNS (a .test name never resolves,
   // so Verify leaves it there with "No record was found"). Idempotent: kept when it is there; any other domain the
   // school was given since (a test, a hand) is put back to this one. Removed with the school by --teardown.
@@ -2756,6 +2773,18 @@ async function main() {
   const plans = await buildPlans(db, { domain: DOMAIN, operatorId: operator.id });
   console.log(`  Plans: ${plans.priced ? `${plans.priced} plan(s) given placeholder prices` : "prices already set"}; ${plans.granted.length ? `granted ${plans.granted.join(", ")}` : "no new grant"}${plans.kept.length ? `; already held: ${plans.kept.join(", ")}` : ""} — /root/features, /account/plan`);
   // end plans
+  // plans-pay (17 Oct 2026): one PAID month of the STUDENT plan for zz.pupil01, bought by zz.parent01, with its ORDER
+  // entitlements and its invoice in the fixture's own series (scripts/zz-passes.ts; idempotent; after buildPlans, so the
+  // month starts where the pupil's grant ends).
+  const passes = await buildPasses(db, { domain: DOMAIN });
+  console.log(`  Passes: ${passes.made ? "a paid month of the Student plan for zz.pupil01, bought by zz.parent01" : `no new pass (${passes.reason})`}${passes.invoiceNumber ? `, invoice ${passes.invoiceNumber}` : ""} — /account/plan as zz.parent01, /root/features`);
+  // end plans-pay
+  // seats (17 Oct 2026): a priced one-to-one by zz.expert1 with zz.pupil01's seat bought by their guardian (the
+  // company-collects form), and a priced guidance slot by zz.teacher1 (scripts/zz-seats.ts; idempotent; after
+  // buildGigSessions, which clears its providers' "ZZ " slots first).
+  const seats = await buildSeats(db, { domain: DOMAIN, northgateId: northgate.school.id });
+  console.log(`  Seats: ${seats.expertSeat ? "a priced one-to-one by zz.expert1 with zz.pupil01's paid seat" : "no priced one-to-one (no published zz.expert1 or no guardian)"}; ${seats.teacherSlot ? "a priced guidance slot by zz.teacher1" : "no zz.teacher1"} — /sessions, /teacher/guidance`);
+  // end seats
 
   const studentCount = await db.membership.count({
     where: { schoolId: northgate.school.id, role: "STUDENT" },

@@ -353,7 +353,9 @@ describe("quiz:queue draws a generated item's figure and is the one way in", () 
 
 describe("the payee door the closed gig keeps", () => {
   // The gig closed is the QUESTION_GIG platform feature off (15 Oct 2026); the suites otherwise run with every feature on.
-  beforeAll(() => setFeaturesForTests(PLATFORM_FEATURES.filter((code) => code !== "QUESTION_GIG")));
+  // TEACHER_SESSIONS off too (17 Oct 2026): the same UPI id is where a teacher's sold guidance seats are paid, so the
+  // payee door is open while teacher sessions are on, whatever the gig says (payeeDoorOpen in question-gig.ts).
+  beforeAll(() => setFeaturesForTests(PLATFORM_FEATURES.filter((code) => code !== "QUESTION_GIG" && code !== "TEACHER_SESSIONS")));
   afterAll(() => setFeaturesForTests([...PLATFORM_FEATURES]));
 
   it("is open to a teacher still owed money and 404 to one who is not; the page likewise", async () => {

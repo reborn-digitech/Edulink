@@ -385,7 +385,9 @@ describe("published without review, taken down and put back", () => {
 
 describe("the teachers' question gig, switched off", () => {
   // Since 15 Oct 2026 the gig is the QUESTION_GIG platform feature (src/lib/platform-features.ts): off here, the rest on.
-  beforeAll(() => setFeaturesForTests(PLATFORM_FEATURES.filter((code) => code !== "QUESTION_GIG")));
+  // TEACHER_SESSIONS off too (17 Oct 2026): the payee door stays open while teacher sessions are on, since a teacher's
+  // sold guidance seats are paid to the same UPI id (payeeDoorOpen in question-gig.ts).
+  beforeAll(() => setFeaturesForTests(PLATFORM_FEATURES.filter((code) => code !== "QUESTION_GIG" && code !== "TEACHER_SESSIONS")));
   afterAll(() => setFeaturesForTests([...PLATFORM_FEATURES]));
 
   it("is off, in one place: the platform feature (the old constant stays false for the help index alone)", () => {

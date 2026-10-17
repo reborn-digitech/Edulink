@@ -3647,6 +3647,8 @@ CREATE TRIGGER "OperatorAccess_close_only"
 --   HelpEntry
 --   JobRun
 --   OutboundEmail
+--   PassInvoice
+--   PassOrder
 --   PersonPlan
 --   Plan
 --   PlatformFeature

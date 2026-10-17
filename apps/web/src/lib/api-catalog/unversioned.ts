@@ -86,6 +86,9 @@ export const OUTSIDE_THE_CATALOG: OutsideTheCatalog[] = [
   // end meta-posting
   { path: "/api/webhooks/razorpay/{schoolId}", methods: ["POST"], reason: "Razorpay's signed callback for one school's fees account: verified by that school's webhook secret, no session; a person never calls it." },
   { path: "/api/webhooks/gateway/sessions", methods: ["POST"], reason: "The company gateway's signed callback for paid seats and the expert's held share (decision 0004): verified by the company's secret, no session." },
+  // plans-pay (17 Oct 2026)
+  { path: "/api/webhooks/razorpay/platform", methods: ["POST"], reason: "The company gateway's signed callback for passes bought for a plan (decision 0006): verified by the company's secret, no session; a person never calls it." },
+  // end plans-pay
   { path: "/api/webhooks/twilio/status/{schoolId}", methods: ["POST"], reason: "Twilio's signed delivery report for one school's messages: verified by the request signature, no session." },
   { path: "/api/auth/logout", methods: ["POST"], reason: "The web's sign-out form: clears the cookie and redirects to /login. The phone's and the docs' door is POST /api/v1/auth/logout, which is catalogued." },
   { path: "/api/push", methods: ["GET", "POST", "DELETE"], reason: "A browser's Web Push subscription (a PushSubscription object with VAPID keys), which only a browser holds; the phone registers its device through the catalogued /api/v1/me/devices." },
