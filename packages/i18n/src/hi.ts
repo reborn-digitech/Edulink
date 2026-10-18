@@ -17643,6 +17643,7 @@ export const hi: Dictionary = {
     serversTitle: "मॉडल सर्वर",
     serversNote: "चक्र उन्हीं सर्वरों को चालू करता है जो बंद हों, और खत्म होने पर केवल उन्हीं को बंद करता है।",
     serverchat: "बातचीत मॉडल",
+    serverchat2: "दूसरा बातचीत मॉडल (केवल प्रश्न बनाने के लिए)",
     serverembed: "एम्बेडिंग मॉडल",
     serversmall: "विदुर का जाँच मॉडल",
     serverLine: "पोर्ट {port} पर {model}",

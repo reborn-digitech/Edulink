@@ -23,7 +23,7 @@ import { requireAssistantConfig } from "../../src/lib/assistant-env";
 import { collegeTermOf, programmeOf, readCollegeSyllabi, studyChunks, syllabusStreamOf, tidyTitle, unitsOf } from "../../src/lib/college-syllabi";
 import { collegeSyllabusBoardOf } from "@edulink/contracts";
 import { slugify } from "./checks";
-import { chatClient } from "./model";
+import { generatorClient } from "./model";
 import { runChapter } from "./pipeline";
 import { bankStems, styleExcerpts, type SelectedChapter, type SelectedChunk } from "./select";
 import { LICENCE, OUT_DIR, type ChapterHooks, type GeneratedChapter } from "./cli";
@@ -120,7 +120,7 @@ export async function generateCollegeUnit(db: PrismaClient, args: { path: string
   log(`  "${unit.book}" (${unit.syllabusBoard}, ${unit.stream}, ${unit.programme}${unit.yearOrSemester ? `, ${unit.yearOrSemester}` : ""}), ${unit.documentPath}: ${unit.chapterLabel}`);
   log(`  ${unit.chunks.length} chunks, pp. ${unit.chunks[0]!.pageStart}–${unit.chunks[unit.chunks.length - 1]!.pageEnd}`);
   const endpoints = requireAssistantConfig("quiz:gen");
-  const client = chatClient(endpoints.chat, endpoints.embed);
+  const client = await generatorClient(endpoints, log);
   const [stems, style] = await Promise.all([
     bankStems(db, unit.subjectCode, unit.classLevel),
     // The entrance and olympiad papers are school papers: a college unit's levels 5 and 6 take no style block unless the corpus has one for the subject.

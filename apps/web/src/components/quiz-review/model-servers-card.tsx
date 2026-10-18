@@ -8,7 +8,8 @@ import { Button } from "@/components/ui/button";
 
 /**
  * THE MODEL SERVERS' LINE on the operator's dashboard (/root) and the content team's home (/appadmin)
- * (the owner, 11 October 2026): each of the two local servers Running, Starting or Stopped, with the
+ * (the owner, 11 October 2026): each local server (the chat model, since 19 October 2026 the generator's second
+ * chat server, the embeddings and the gate's small model; MODEL_SERVERS) Running, Starting or Stopped, with the
  * model's name and the port, read live from its health endpoint (cached ten seconds, src/lib/quiz-jobs.ts),
  * and the way to the bank desk, where generation and the servers are started and stopped. The page it
  * sits on asserts its own gate.

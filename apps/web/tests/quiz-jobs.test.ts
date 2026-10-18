@@ -32,6 +32,7 @@ import { chaptersWanted, planCombos } from "../scripts/quiz-gen/plan";
 import { passContinues, landChapter } from "../scripts/quiz-gen/job";
 import type { GeneratedTopicFile } from "../scripts/quiz-gen/shape";
 import { isServed } from "@/lib/quiz-served";
+import { chat2Enabled, handOverTo, neededServers, requiredServers, type HolderDb } from "@/lib/model-holders";
 import { runChapter } from "../scripts/quiz-gen/pipeline";
 import type { ChatClient } from "../scripts/quiz-gen/model";
 import type { SelectedChapter } from "../scripts/quiz-gen/select";
@@ -226,7 +227,8 @@ describe("a finished chapter lands in the bank as it goes", () => {
 
 describe("the job's state machine", () => {
   it("Start with both servers up: none started, the runner spawned and its pid kept, QUEUED → RUNNING; a second Start is refused", async () => {
-    const m = machine({ chat: true, embed: true });
+    // gen-throughput (19 Oct 2026): the second chat server up too, so nothing is started.
+    const m = machine({ chat: true, chat2: true, embed: true });
     const job = await start(m);
     expect(job.state).toBe("QUEUED");
     expect(job.startedServers).toEqual([]);
@@ -255,14 +257,15 @@ describe("the job's state machine", () => {
     expect(ended.finishedAt).not.toBeNull();
     // This run started no server, so it stopped none: they were up for the assistant and stay up.
     expect(m.calls.filter((c) => c.startsWith("stop-"))).toEqual([]);
-    expect(m.up).toEqual({ chat: true, embed: true });
+    expect(m.up).toEqual({ chat: true, chat2: true, embed: true });
     // Ended once: a second finish changes nothing; a stop of an ended run is left as it is.
     expect(await finishJob(jobDb, job.id, "FAILED", m.deps, "zz")).toBe(false);
     expect((await stopJob(jobDb, job.id, { userId: ids.curator }, m.deps)).state).toBe("STOPPED");
   });
 
   it("Start with the servers down brings both up through the script and records them; the run's end takes exactly those down", async () => {
-    const m = machine({ chat: false, embed: false });
+    // The second chat server is off unless QUIZ_GEN_CHAT2=on (gen-throughput, 19 Oct 2026): down, it stays down.
+    const m = machine({ chat: false, chat2: false, embed: false });
     const job = await start(m);
     expect(job.startedServers.sort()).toEqual(["chat", "embed"]);
     expect(job.progress?.phase).toBe("STARTING_MODEL");
@@ -270,17 +273,85 @@ describe("the job's state machine", () => {
     await stopJob(jobDb, job.id, { userId: ids.operator }, m.deps);
     await runnerHalts(job.id, m);
     expect(m.calls.filter((c) => c.startsWith("stop-")).sort()).toEqual(["stop-chat", "stop-embed"]);
-    expect(m.up).toEqual({ chat: false, embed: false });
+    expect(m.up).toEqual({ chat: false, chat2: false, embed: false });
   });
 
   it("only the server that was down is started, and only it goes down at the end (the other stays up for the assistant)", async () => {
-    const m = machine({ chat: true, embed: false });
+    const m = machine({ chat: true, chat2: true, embed: false });
     const job = await start(m);
     expect(job.startedServers).toEqual(["embed"]);
     await markRunning(jobDb, job.id);
     await finishJob(jobDb, job.id, "FINISHED", m.deps);
     expect(m.calls.filter((c) => /^(start|stop)-/.test(c))).toEqual(["start-embed", "stop-embed"]);
-    expect(m.up).toEqual({ chat: true, embed: false });
+    expect(m.up).toEqual({ chat: true, chat2: true, embed: false });
+  });
+
+  it("the second chat server (gen-throughput): switched on, a run starts it when it is down and takes it down only if it started it; refused for memory, the run goes on without it and does not record it", async () => {
+    const was = process.env.QUIZ_GEN_CHAT2;
+    process.env.QUIZ_GEN_CHAT2 = "on";
+    try {
+      // Down: started and recorded, and down again at the end.
+      const m = machine({ chat: true, embed: true, chat2: false });
+      const job = await start(m);
+      expect(job.startedServers).toEqual(["chat2"]);
+      expect(m.calls).toEqual(["start-chat2", `spawn ${job.id}`]);
+      await markRunning(jobDb, job.id);
+      await finishJob(jobDb, job.id, "FINISHED", m.deps);
+      expect(m.calls.at(-1)).toBe("stop-chat2");
+      expect(m.up).toEqual({ chat: true, embed: true, chat2: false });
+
+      // Up already (somebody started it by hand, or a run before this one handed it on): neither started nor stopped.
+      const up = machine({ chat: true, embed: true, chat2: true });
+      const second = await start(up);
+      expect(second.startedServers).toEqual([]);
+      await finishJob(jobDb, second.id, "FINISHED", up.deps);
+      expect(up.calls.filter((c) => /chat2/.test(c))).toEqual([]);
+
+      // The script refuses it (memory short, exit 3): the run starts on the chat server alone, chat2 not recorded, never stopped.
+      const short = machine({ chat: true, embed: true, chat2: false });
+      const refusing: JobDeps = {
+        ...short.deps,
+        serve: async (command) => {
+          if (command === "start-chat2") {
+            short.calls.push(command);
+            throw new Error("scripts/model-serve.sh start-chat2 exited 3");
+          }
+          return short.deps.serve(command);
+        },
+      };
+      const third = await startJob(jobDb, who(), CHAPTER, refusing);
+      made.push(third.id);
+      expect(third.state).toBe("QUEUED");
+      expect(third.startedServers).toEqual([]);
+      expect(short.calls).toEqual(["start-chat2", `spawn ${third.id}`]);
+      await finishJob(jobDb, third.id, "FINISHED", refusing);
+      expect(short.calls.filter((c) => c.startsWith("stop-"))).toEqual([]);
+
+      // A required server's failure still fails the Start, as before.
+      const broken = machine({ chat: true, embed: false, chat2: true });
+      await expect(startJob(jobDb, who(), CHAPTER, { ...broken.deps, serve: async () => Promise.reject(new Error("exited 1")) })).rejects.toMatchObject({ errorKey: "quizJobs.serverFailed", status: 500 });
+      expect(await db.quizGenJob.count({ where: { active: true } })).toBe(0);
+    } finally {
+      if (was === undefined) delete process.env.QUIZ_GEN_CHAT2;
+      else process.env.QUIZ_GEN_CHAT2 = was;
+    }
+    // Which kind of run starts it: a generation run only, and only switched on; a crawl and an evaluation never do (they may be handed it).
+    expect(neededServers("QUIZ", { QUIZ_GEN_CHAT2: "on" })).toEqual(["chat", "embed", "chat2"]);
+    expect(neededServers("QUIZ", {})).toEqual(["chat", "embed"]);
+    expect(chat2Enabled({ QUIZ_GEN_CHAT2: "ON " })).toBe(true);
+    expect(chat2Enabled({ QUIZ_GEN_CHAT2: "1" })).toBe(false);
+    expect(requiredServers("QUIZ", { QUIZ_GEN_CHAT2: "on" })).toEqual(["chat", "embed"]);
+    expect(neededServers("CRAWL", {})).toEqual(["chat", "embed"]);
+    expect(neededServers("EVAL", { ASSISTANT_GATE_MODEL_URL: "http://127.0.0.1:8182/v1" })).toEqual(["chat", "embed", "small"]);
+    // The hand-over covers it: a generation run ending beside an active crawl hands the crawl the chat2 it brought up.
+    const given: string[][] = [];
+    const table = (active: boolean) => ({
+      findFirst: async () => (active ? { id: "zz-peer", startedServers: ["embed"] } : null),
+      updateMany: async ({ data }: { data: { startedServers: string[] } }) => (given.push(data.startedServers), { count: 1 }),
+    });
+    const peerDb = { quizGenJob: table(false), competitionCrawlJob: table(true), assistantEvalJob: table(false) } as unknown as HolderDb;
+    expect(await handOverTo(peerDb, "QUIZ")(["chat2"])).toEqual([]);
+    expect(given).toEqual([["embed", "chat2"]]);
   });
 
   it("a dead pid: the active row becomes FAILED with the reason on the next read, the slot frees, its servers go down; stopping a dead STOPPING runner reaps it STOPPED", async () => {
@@ -307,8 +378,8 @@ describe("the job's state machine", () => {
 
   it("the model servers' own Start and Stop: a stopped server starts; stopping one under an active run is refused; a server the script did not start is refused", async () => {
     const m = machine({ chat: false, embed: true });
-    // The gate's small model is the third line since Vidura pass 3 (18 Oct 2026); a generation run never needs it.
-    expect((await modelServers(m.deps, { fresh: true })).map((s) => `${s.server}:${s.state}`)).toEqual(["chat:STOPPED", "embed:RUNNING", "small:STOPPED"]);
+    // The gate's small model is a line since Vidura pass 3 (18 Oct 2026), a generation run never needing it; the second chat server since 19 Oct 2026.
+    expect((await modelServers(m.deps, { fresh: true })).map((s) => `${s.server}:${s.state}`)).toEqual(["chat:STOPPED", "chat2:STOPPED", "embed:RUNNING", "small:STOPPED"]);
     const afterStart = await startModelServer("chat", m.deps);
     expect(afterStart.find((s) => s.server === "chat")?.state).toBe("RUNNING");
     expect(m.calls).toEqual(["start-chat"]);
@@ -323,8 +394,8 @@ describe("the job's state machine", () => {
     // A server loading, or whose script pid lives while the port is still closed, reads Starting.
     const loading = machine({ chat: false, embed: false });
     const states = await modelServers({ ...loading.deps, health: async (s) => (s === "chat" ? "loading" : "down"), serverPid: (s) => (s === "embed" ? 77 : null), pidAlive: (pid) => pid === 77 }, { fresh: true });
-    expect(states.map((s) => s.state)).toEqual(["STARTING", "STARTING", "STOPPED"]);
-    expect(states.map((s) => s.port)).toEqual([8180, 8181, 8182]);
+    expect(states.map((s) => s.state)).toEqual(["STARTING", "STOPPED", "STARTING", "STOPPED"]);
+    expect(states.map((s) => s.port)).toEqual([8180, 8183, 8181, 8182]);
   });
 });
 
@@ -347,6 +418,25 @@ describe("the dashboards' line", () => {
     useJobDepsForTests(null);
   });
 
+  it("shows the second chat server as a line of its own, in each language (gen-throughput)", async () => {
+    useJobDepsForTests(machine({ chat: true, chat2: true, embed: true }).deps);
+    for (const lang of ["en", "hi", "mr"] as const) {
+      const t = translator(lang);
+      expect(t("quizJobs.serverchat2")).not.toBe("quizJobs.serverchat2");
+    }
+    forgetHealth();
+    const t = translator("en");
+    const html = renderToStaticMarkup(await ModelServersCard({ deskHref: "/root/quiz-review" }));
+    expect(html.match(/<li /g)?.length).toBe(4);
+    expect(html).toContain(t("quizJobs.serverchat"));
+    expect(html).toContain(t("quizJobs.serverchat2"));
+    expect(html).toContain(t("quizJobs.serverLine", { model: "qwen3-30b-a3b", port: 8183 }));
+    // Chat, the second chat server and the embeddings running; the gate's small model stopped.
+    expect(html.split(`>${t("quizJobs.serverRUNNING")}<`).length - 1).toBe(3);
+    expect(html.split(`>${t("quizJobs.serverSTOPPED")}<`).length - 1).toBe(1);
+    useJobDepsForTests(null);
+  });
+
   it("both dashboards draw it", async () => {
     const { readFileSync } = await import("node:fs");
     for (const [page, href] of [["src/app/root/page.tsx", "/root/quiz-review"], ["src/app/appadmin/page.tsx", "/appadmin/quiz-review"]] as const) {
@@ -363,7 +453,7 @@ describe("the doors by role", () => {
       for (const whom of ["CURATOR", "OPERATOR"] as const) {
         await signInAs(whom);
         expect((await jobsGet()).status, whom).toBe(200);
-        expect(modelServersSchema.parse(await (await serversGet()).json()).servers).toHaveLength(3);
+        expect(modelServersSchema.parse(await (await serversGet()).json()).servers).toHaveLength(4);
         expect((await jobGet(get(`${P}/zz-no-such`), { params: Promise.resolve({ jobId: "zz-no-such" }) })).status).toBe(404);
         expect((await serverStartPost(post(`${P}/servers/zz/start`), { params: Promise.resolve({ server: "zz" }) })).status).toBe(404);
       }

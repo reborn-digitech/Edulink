@@ -18114,6 +18114,7 @@ export const en = {
     serversTitle: "Model servers",
     serversNote: "A run brings up the servers that are down, and takes down only those when it ends.",
     serverchat: "Chat model",
+    serverchat2: "Second chat model (question generation only)",
     serverembed: "Embedding model",
     serversmall: "Vidura's gate model",
     serverLine: "{model} on port {port}",

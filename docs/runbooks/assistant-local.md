@@ -19,7 +19,8 @@ on 127.0.0.1 only:
 
 | Server | Model | Weights | Port | Memory in use |
 | --- | --- | --- | --- | --- |
-| chat | Qwen3-30B-A3B, Q8_0 (`Qwen/Qwen3-30B-A3B-GGUF:Q8_0`) | 32.5 GB | 8180 | about 34 GB |
+| chat | Qwen3-30B-A3B, Q8_0 (`Qwen/Qwen3-30B-A3B-GGUF:Q8_0`), four slots of 8k (`ASSISTANT_CHAT_SLOTS`) | 32.5 GB | 8180 | about 34 GB |
+| chat2 (the quiz generator's alone, off unless `QUIZ_GEN_CHAT2=on`; section 9) | the same model and settings | the same 32.5 GB, shared | 8183 | about 7 GB beside a running chat server |
 | embeddings | Qwen3-Embedding-0.6B, Q8_0 (`Qwen/Qwen3-Embedding-0.6B-GGUF:Q8_0`), 1024 dimensions, last-token pooling, one slot, flash attention off | 0.64 GB | 8181 | about 2.5 GB |
 | small (Vidura's gate, pass 3; not in use, see section 11) | Qwen3-4B, Q8_0 (`Qwen/Qwen3-4B-GGUF:Q8_0`), four slots of 4k | 4.3 GB | 8182 | about 5 GB |
 
@@ -31,7 +32,15 @@ npm run model:serve -- chat     # one in the foreground (or embed)
 npm run model:serve -- start-chat      # one in the background (or start-embed); the bank desk's Start
 npm run model:serve -- stop-chat       # one the script started (or stop-embed); the bank desk's Stop
 npm run model:serve -- start-small     # Vidura's gate model (pass 3), in the background; stop-small stops it
+npm run model:serve -- start-chat2     # the generator's second chat server (19 Oct 2026), if memory allows; stop-chat2 stops it
 ```
+
+The chat server's slots are `ASSISTANT_CHAT_SLOTS` (four by default), each with 8k of context (`-c` is slots × 8,192).
+The quiz generator reads the count from the server's `/props` and keeps one fewer request in flight there, so a slot
+is always free for Vidura. `start-chat2` checks the memory first — free, inactive, speculative and purgeable pages from
+`vm_stat` against `QUIZ_GEN_CHAT2_MIN_FREE_GB` (48 by default: room for the weights if no other server maps them) — and
+writes the reading as the first line of `storage/models/chat2.log` either way ("chat2: 70 GB of memory available, 48
+GB needed: starting"); refused, it exits 3 and a generation run goes on without it.
 
 The bank desk (`/root/quiz-review`, `/appadmin/quiz-review`) starts and stops these servers through the
 same script and nothing else; section 9 says how.
@@ -367,10 +376,11 @@ start (the seeds repeat, so it asks the same questions). When a run ends (stoppe
 through `model-serve.sh stop-chat` / `stop-embed` the servers **it** brought up, and no others: servers that were
 already up for the assistant stay up.
 
-**The model servers line.** The card lists both servers, Running, Starting or Stopped, with the model and the port,
-each with its own Start and Stop. Stop is refused while a run is active ("Stop the generation run first"), and for a
+**The model servers line.** The card lists the servers — chat, the generator's second chat server (19 October 2026),
+the embeddings and Vidura's gate model — Running, Starting or Stopped, with the model and the port, each with its own
+Start and Stop. Stop is refused while a run is active ("Stop the generation run first"), and for a
 server the script did not start (no pid file in `storage/models/`: it was started by hand, and is stopped there). The
-operator's dashboard (`/root`) and the content team's home (`/appadmin`) show the same two lines, read live with a
+operator's dashboard (`/root`) and the content team's home (`/appadmin`) show the same lines, read live with a
 ten-second cache, and a link to the desk.
 
 **A run that died.** If the runner's process is gone (the machine slept, the process was killed) or has not written for
@@ -380,9 +390,52 @@ chapter with no batch.
 
 **From a shell.** The same library is what the doors call: `GET /api/v1/appadmin/quiz-jobs` (the run and the servers),
 `POST /api/v1/appadmin/quiz-jobs` (start; 201, 409 while one runs), `POST …/{jobId}/stop`,
-`POST …/servers/{chat|embed}/start|stop`, for the operator and the app admins with a bearer token. `npm run quiz:gen`
-from a shell still runs one chapter in the foreground and loads nothing; it does not take the desk's slot, so do not
-run both at once on one machine (they would share the chat server's four slots).
+`POST …/servers/{chat|chat2|embed|small}/start|stop`, for the operator and the app admins with a bearer token.
+`npm run quiz:gen` from a shell still runs one chapter in the foreground and loads nothing; it does not take the
+desk's slot, so do not run both at once on one machine (each keeps the chat server's slots less one in flight).
+
+### Throughput: the slots and the second chat server (19 October 2026)
+
+The owner asked for more questions an hour with the question and distractor quality untouched. Two levers were
+built and measured on this Mac (M5 Max, 128 GB, llama.cpp b11429, Qwen3-30B-A3B Q8_0):
+
+- **The generator's calls go through a pool of chat servers** (`scripts/quiz-gen/model.ts`): each server's slots are
+  read from `/props` when a chapter starts; the chat server Vidura shares gets its slots less one, the second chat
+  server all of its slots; each drafting, critique, solver and translation call goes to the server with the fewest in
+  flight that has a free slot; a server that stops answering (nothing answers and its `/health` does not either) is
+  dropped with a line in the run's log ("chat server chat2 (…) stopped answering …: dropped from the pool, the run goes
+  on with chat 3 in flight left") and the call is sent again to the rest. The pipeline keeps as many items in hand as
+  the pool keeps calls in flight (three before). The run's log says the pool at each chapter: "chat servers: chat
+  (http://127.0.0.1:8180) 3 in flight of 4 slots (one left for Vidura); chat2 not used (QUIZ_GEN_CHAT2 is not on)".
+- **A second chat server** (`start-chat2`, :8183, the same weights and settings). With `QUIZ_GEN_CHAT2=on` a generation
+  run brings it up when it is down and memory allows and takes it down at the end only if it brought it up; a crawl
+  and an evaluation never start it, and the hand-over between runs covers it like the others.
+
+Measured, one chapter (NCERT class 8 science chapter 3, limit 20, `npm run quiz:gen`; a second chapter, class 7
+science chapter 4, beside it):
+
+| Configuration | Seconds | Kept | Seconds a kept item | Rejected at critique / solver / form / dedupe |
+| --- | --- | --- | --- | --- |
+| Before: one server, four slots, three in flight | 556 | 11 of 32 drafted | 51 | 5 / 2 / 12 / 2 |
+| Both servers, eight slots each, 7 + 8 in flight | 649 | 11 of 38 | 59 | 9 / 3 / 15 / 0 |
+| One server, eight slots, seven in flight | 538 | 10 of 34 | 54 | 4 / 5 / 14 / 1 |
+| Before, class 7 science chapter 4 | 566 | 14 of 30 | 40 | 2 / 2 / 12 / 0 |
+| Two chapters at once on one server of eight slots (two processes) | 870 for both | 11 + 9 | 44 | 2 / 2 / 18 / 1 and 1 / 2 / 21 / 0 |
+
+Why: the model's experts barely share a batch, so the GPU writes about 75 tokens a second for one request, 83 for three,
+118 for seven and 158 for fourteen on one server of eight slots, and two servers on the one GPU wrote fewer together
+(92 for two, 100 for six, 134 for fourteen). A chapter is mostly waiting on the GPU, and the second server only splits
+it. So the defaults stay as they were: four slots, three in flight, the second server off. Two chapters at once on
+eight slots wrote 76 tokens a second against 61 for one chapter at a time (25 % more tokens an hour) but kept no more
+items an hour within the noise of two runs, and is not built: chapters generated side by side would not see each
+other's new items in the near-duplicate check. Asking all of a round's drafting groups at once (with the counts each
+would have had, an answer re-asked when a group before it brought back other levels) was tried too: 624 s and 11 kept
+on eight slots, six of its sixteen drafting calls asked again, so it was taken out and the drafting is as it was.
+
+Memory: the chat server at four slots holds about 3 GB beside the weights when fresh and 13 GB after a week (KV cache
+and prompt cache); at eight slots about 6 GB fresh and 13 GB after a chapter; the second server took 7 GB more beside a
+running chat server, the weights' pages being shared (available memory 71 → 64 GB, wired 41 → 48 GB), and with both
+busy available memory was 55 GB, wired 51 GB.
 
 **Hosted.** The runner runs where the model runs. On the owner's machine that is this machine; on a hosted deployment
 the job belongs on the model's host, started from the same row and doors.

@@ -28,7 +28,7 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { requireAssistantConfig } from "../../src/lib/assistant-env";
 import { chapterNumberOf, groupChunks, matchTopic, newTopicSlug } from "./checks";
-import { chatClient } from "./model";
+import { generatorClient } from "./model";
 import { runChapter, type PipelineOptions, type RunLog } from "./pipeline";
 import { bankStems, bankTopics, glossaryFor, listChapters, selectChapter, styleExcerpts, type SelectedChapter } from "./select";
 import type { GeneratedTopicFile } from "./shape";
@@ -54,7 +54,8 @@ export function fileNameFor(chapter: Pick<SelectedChapter, "board" | "classLevel
   return `${chapter.board.toLowerCase()}-${chapter.classLevel}-${chapter.subjectCode.toLowerCase()}-${chapter.chapterNumber}`;
 }
 
-export type GenerateArgs = { board: string; grade: number; subject: string; book?: string; limit: number; perLevel: number };
+/** quiz-topup (19 Oct 2026): `variant` is the target run's pass number, mixed into the drafting seeds so a chapter asked again gets new drafts rather than the same ones the bank already holds. */
+export type GenerateArgs = { board: string; grade: number; subject: string; book?: string; limit: number; perLevel: number; variant?: number };
 
 /** quiz-publish-jobs (11 Oct 2026): the generation job's hooks into one chapter (scripts/quiz-gen/job.ts). */
 export type ChapterHooks = {
@@ -82,7 +83,7 @@ export async function generateChapter(db: PrismaClient, chapterNumber: number, a
   log(`  ${chapter.chunks.length} chunks, pp. ${chapter.chunks[0]!.pageStart}–${chapter.chunks[chapter.chunks.length - 1]!.pageEnd}, ${chapter.figures.size} figures (${[...chapter.figures.values()].filter((f) => f.caption).length} captioned)`);
 
   const endpoints = requireAssistantConfig("quiz:gen");
-  const client = chatClient(endpoints.chat, endpoints.embed);
+  const client = await generatorClient(endpoints, log);
   const [stems, topics, glossary, style] = await Promise.all([
     bankStems(db, chapter.subjectCode, chapter.classLevel),
     bankTopics(db, chapter.subjectCode, chapter.classLevel),
@@ -93,7 +94,7 @@ export async function generateChapter(db: PrismaClient, chapterNumber: number, a
   const slug = existing?.slug ?? newTopicSlug(chapter.board, chapter.subjectCode, chapter.classLevel, chapter.chapterName);
   log(`  topic: ${existing ? `the bank's "${existing.slug}" (${existing.chapter})` : `new, "${slug}"`}; ${stems.length} served questions in class ${chapter.classLevel} ${chapter.subjectCode} for the duplicate check`);
 
-  const { questions, log: runLog, topicWords, stopped } = await runChapter(client, chapter, { limit: args.limit, perLevel: args.perLevel, bankStems: stems, glossary, style, log, onProgress: hooks.onProgress, shouldStop: hooks.shouldStop });
+  const { questions, log: runLog, topicWords, stopped } = await runChapter(client, chapter, { limit: args.limit, perLevel: args.perLevel, variant: args.variant, bankStems: stems, glossary, style, log, onProgress: hooks.onProgress, shouldStop: hooks.shouldStop });
   if (stopped) {
     log(`  stopped: the chapter was halted after the items in hand; nothing was written`);
     return { chapter, runLog, stopped: true, file: null, fileName: null, outPath: null, logPath: null };

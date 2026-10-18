@@ -108,6 +108,8 @@ type Working = {
 export type PipelineOptions = {
   limit: number;
   perLevel: number;
+  /** quiz-topup (19 Oct 2026): the target run's pass; 0 or absent is the first asking. Changes only the drafting seeds. */
+  variant?: number;
   bankStems: { id: string; stem: string }[];
   glossary: { text: string }[];
   style: StyleBlock;
@@ -298,7 +300,7 @@ export async function runChapter(client: ChatClient, chapter: SelectedChapter, o
             note: chapter.draftNote, // college-content (12 Oct 2026)
           }),
           schema: draftSchemaFor(total),
-          seed: seedFor(`${chapter.documentPath}#${group[0]!.ordinal}`, round),
+          seed: seedFor(`${chapter.documentPath}#${group[0]!.ordinal}`, round + 100 * (opts.variant ?? 0)),
           temperature: 0.8,
           maxTokens: 3000,
         });
@@ -313,7 +315,7 @@ export async function runChapter(client: ChatClient, chapter: SelectedChapter, o
       stages.draft.in += items.length;
       let n = 0;
       for (const d of items) {
-        const w = fromDraft(d, group, chapter.documentPath, `${chapter.documentPath}#${group[0]!.ordinal}#${round}#${n++}`);
+        const w = fromDraft(d, group, chapter.documentPath, `${chapter.documentPath}#${group[0]!.ordinal}#${round}${opts.variant ? `v${opts.variant}` : ""}#${n++}`);
         if ("error" in w) {
           stages.draft.rejects++;
           rejects.push({ stage: "draft", level: (d.difficulty as Level) || 1, stem: d.stem ?? "", reason: w.error });
@@ -511,10 +513,15 @@ export async function runChapter(client: ChatClient, chapter: SelectedChapter, o
     return true;
   }
 
+  // As many items in hand as the client keeps calls in flight (three before 19 Oct 2026, when that was the one server's
+  // cap; the pool's slots now, scripts/quiz-gen/model.ts). Each item is judged alone, so how many are in hand at once
+  // changes when its calls are made, not what they ask.
+  const itemWorkers = Math.max(3, client.capacity ?? 3);
+
   async function processAll(drafts: Working[]) {
-    // Three items in flight at most (the client's own slot cap bounds the calls).
+    // The client's own slot cap bounds the calls.
     const queue = [...drafts];
-    const workers = Array.from({ length: 3 }, async () => {
+    const workers = Array.from({ length: itemWorkers }, async () => {
       for (;;) {
         if (halted()) return;
         const w = queue.shift();
@@ -630,7 +637,7 @@ export async function runChapter(client: ChatClient, chapter: SelectedChapter, o
   {
     const queue = [...kept];
     stages.translation.in = kept.length * 2;
-    const workers = Array.from({ length: 3 }, async () => {
+    const workers = Array.from({ length: itemWorkers }, async () => {
       for (;;) {
         if (halted()) return;
         const w = queue.shift();

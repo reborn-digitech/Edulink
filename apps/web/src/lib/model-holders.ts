@@ -10,7 +10,10 @@
  *
  * Since pass 3 there are three servers (chat, embed and the gate's small model); a run brings up only those it needs
  * (`neededServers`): a generation run and a crawl the chat and embedding models, an evaluation run the small one too
- * when the gate is configured to ask it.
+ * when the gate is configured to ask it. Since 19 Oct 2026 a fourth, "chat2" (the chat model again on :8183, the
+ * generator's alone): with QUIZ_GEN_CHAT2=on a generation run brings it up if it is down and memory allows, and takes it
+ * down at its end only if it brought it up; a crawl and an evaluation never start it; the hand-over below covers it like
+ * any other.
  *
  * No server-only import: the runners (plain Node processes) end their runs through these too.
  */
@@ -30,10 +33,38 @@ export function splitAtEnd(servers: ModelServer[], peer: { startedServers: strin
   return { stop: [], keepFor: [...new Set([...peer.startedServers, ...servers])] };
 }
 
-/** The servers a kind of run needs up: the generation and the crawl the chat and embedding models; an evaluation the gate's small model too when the gate asks one. Pure. */
+/**
+ * Whether the quiz generator uses the second chat server (gen-throughput, 19 Oct 2026): only with QUIZ_GEN_CHAT2=on.
+ * Measured on the owner's Mac (M5 Max, 128 GB) the two servers share one GPU and together decoded fewer tokens a second
+ * than the one server with the same requests in flight (134 against 158 at fourteen), and a chapter took 649 s against
+ * 556 s, so it is off unless switched on (docs/runbooks/assistant-local.md section 9). Pure.
+ */
+export function chat2Enabled(env: Record<string, string | undefined> = process.env): boolean {
+  return env.QUIZ_GEN_CHAT2?.trim().toLowerCase() === "on";
+}
+
+/**
+ * The servers a kind of run brings up when they are down: the generation and the crawl the chat and embedding models; an
+ * evaluation the gate's small model too when the gate asks one; and since 19 Oct 2026 (gen-throughput) a generation run
+ * the second chat server as well when it is switched on (chat2Enabled), which a crawl and an evaluation never start
+ * (they may still be handed it). Pure.
+ */
 export function neededServers(kind: HolderKind, env: Record<string, string | undefined> = process.env): ModelServer[] {
   const base: ModelServer[] = ["chat", "embed"];
+  if (kind === "QUIZ") return chat2Enabled(env) ? [...base, "chat2"] : base;
   return kind === "EVAL" && env.ASSISTANT_GATE_MODEL_URL?.trim() ? [...base, "small"] : base;
+}
+
+/**
+ * The servers a run can do without (gen-throughput, 19 Oct 2026): the second chat server is started only when free
+ * memory allows (scripts/model-serve.sh start-chat2 refuses otherwise, and says so), so a run whose start of it fails
+ * goes on without it and does not record it. Every other server a run needs is required: its failure fails the Start.
+ */
+export const OPTIONAL_SERVERS: readonly ModelServer[] = ["chat2"];
+
+/** The servers a run must wait for before it begins (its needs without the optional ones). Pure. */
+export function requiredServers(kind: HolderKind, env: Record<string, string | undefined> = process.env): ModelServer[] {
+  return neededServers(kind, env).filter((s) => !OPTIONAL_SERVERS.includes(s));
 }
 
 /** The other kinds' tables, in the order a hand-over tries them. */

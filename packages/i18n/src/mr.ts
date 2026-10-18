@@ -17637,6 +17637,7 @@ export const mr: Dictionary = {
     serversTitle: "मॉडेल सर्व्हर",
     serversNote: "फेरी बंद असलेलेच सर्व्हर सुरू करते, आणि संपल्यावर फक्त तेच बंद करते.",
     serverchat: "संवाद मॉडेल",
+    serverchat2: "दुसरे संवाद मॉडेल (फक्त प्रश्ननिर्मितीसाठी)",
     serverembed: "एम्बेडिंग मॉडेल",
     serversmall: "विदुरचे तपासणी मॉडेल",
     serverLine: "पोर्ट {port} वर {model}",

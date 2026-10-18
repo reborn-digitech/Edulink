@@ -5,7 +5,8 @@
  * and writes it only through src/lib/quiz-jobs.ts:
  *
  *   1. waits for both model servers to answer ok ("starting the model": Start brought them up when they
- *      were down; about a minute to load), at most ten minutes;
+ *      were down; about a minute to load), at most ten minutes; then for the second chat server a few minutes more
+ *      while it loads (gen-throughput, 19 Oct 2026), beginning without it when it is not up;
  *   2. marks the run RUNNING and works through the request in the plan's order (scripts/quiz-gen/plan.ts),
  *      leaving out every chapter whose batch already exists — so a stopped run picks up where it was;
  *   3. per chapter: the generator's pipeline (generateChapter, the CLI's own path) with the live line
@@ -26,7 +27,8 @@ import { join } from "node:path";
 import { execFileSync } from "node:child_process";
 import type { QuizGenProgress, QuizGenStage } from "@edulink/contracts";
 import { readAssistantConfig } from "../../src/lib/assistant-env";
-import { MACHINE, emptyProgress, finishJob, heartbeat, markRunning, modelReady, runnerRow, writeProgress, type JobDb } from "../../src/lib/quiz-jobs";
+import { chat2Enabled, requiredServers } from "../../src/lib/model-holders";
+import { MACHINE, emptyProgress, finishJob, heartbeat, markRunning, modelReady, modelServers, runnerRow, writeProgress, type JobDb } from "../../src/lib/quiz-jobs";
 import { loadGeneratedBatches, type QueueBatch } from "../quiz-queue-load";
 import { fileNameFor, generateChapter, OUT_DIR, type ChapterHooks, type GeneratedChapter } from "./cli";
 import { chaptersWanted, planCombos } from "./plan";
@@ -37,6 +39,8 @@ import type { GeneratedTopicFile } from "./shape";
 
 const BEAT_MS = 3_000;
 const MODEL_WAIT_MS = 10 * 60_000;
+/** How long a run waits for the second chat server to finish loading before it begins without it. */
+const CHAT2_WAIT_MS = 5 * 60_000;
 const STAGES: QuizGenStage[] = ["draft", "critique", "solver", "form", "verify", "dedupe", "translation"];
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -73,7 +77,7 @@ export async function servedCount(db: PrismaClient, ref: Pick<ChapterRef, "board
   return db.quizQuestion.count({ where: { topicId: { in: topics.map((t) => t.id) }, takenDownAt: null } });
 }
 
-type Work = { ref: ChapterRef; label: string; fileName: string; generate: (hooks: ChapterHooks) => Promise<GeneratedChapter> };
+type Work = { ref: ChapterRef; label: string; fileName: string; generate: (hooks: ChapterHooks, variant?: number) => Promise<GeneratedChapter> };
 
 /** The run's numbers out of the pipeline's log, for the "last chapter" line. */
 function chapterNumbers(ref: ChapterRef, log: RunLog, loaded: number): NonNullable<QuizGenProgress["last"]> {
@@ -160,13 +164,32 @@ export async function runJob(jobId: string): Promise<void> {
     // 1. the model
     await write();
     const deadline = Date.now() + MODEL_WAIT_MS;
-    while (!(await modelReady(MACHINE))) {
+    while (!(await modelReady(MACHINE, requiredServers("QUIZ")))) {
       if (stop) return await end("STOPPED");
       if (Date.now() > deadline) return await end("FAILED", "the model servers did not answer within ten minutes");
       await sleep(5_000);
     }
     if (stop || !(await markRunning(jobDb, jobId))) return await end("STOPPED");
     log("the model is up; running");
+    // gen-throughput (19 Oct 2026): the second chat server, when it is switched on (QUIZ_GEN_CHAT2=on) and while it loads
+    // (Start brought it up), is waited for a few minutes; not up by then, or not started (memory), the run begins on the
+    // chat server alone, and each chapter looks for it again when its pool is made (scripts/quiz-gen/model.ts).
+    const chat2Deadline = Date.now() + CHAT2_WAIT_MS;
+    while (chat2Enabled()) {
+      const two = (await modelServers(MACHINE, { fresh: true })).find((s) => s.server === "chat2");
+      if (two?.state === "STARTING" && !stop && Date.now() < chat2Deadline) {
+        await sleep(5_000);
+        continue;
+      }
+      log(
+        two?.state === "RUNNING"
+          ? "the second chat server (chat2) is up: generating on both chat servers"
+          : two?.state === "STARTING"
+            ? `the second chat server (chat2) is still loading after ${CHAT2_WAIT_MS / 60_000} minutes: beginning on the chat server alone`
+            : "the second chat server (chat2) is not running (storage/models/chat2.log says why when its start was refused): generating on the chat server alone",
+      );
+      break;
+    }
 
     // 2. the plan
     progress.phase = "PLANNING";
@@ -208,7 +231,7 @@ export async function runJob(jobId: string): Promise<void> {
             ref: { board: combo.boardCode, grade: combo.grade, subject: combo.subjectCode, number, name },
             label: `${combo.board} class ${combo.grade} ${combo.subject}, chapter ${number}${name ? ` (${name})` : ""}`,
             fileName: `${fileNameFor({ board: combo.board, classLevel: combo.grade, subjectCode: combo.subjectCode, chapterNumber: number })}.json`,
-            generate: (hooks) => generateChapter(appDb, number, { board: combo.board, grade: combo.grade, subject: combo.subject, limit, perLevel: 4 }, hooks),
+            generate: (hooks, variant) => generateChapter(appDb, number, { board: combo.board, grade: combo.grade, subject: combo.subject, limit, perLevel: 4, variant }, hooks),
           };
         }
       }
@@ -248,7 +271,8 @@ export async function runJob(jobId: string): Promise<void> {
       await write();
       log(label);
       try {
-        const r = await work.generate({
+        const r = await work.generate(
+          {
           log,
           shouldStop: () => stop,
           onProgress: (p) => {
@@ -257,7 +281,9 @@ export async function runJob(jobId: string): Promise<void> {
             Object.assign(progress.chapter, { drafted: p.drafted, kept: p.kept, rejects: { ...zeroRejects(), ...p.rejects }, seconds, keepRate: ratio(p.kept, p.drafted), secondsPerKept: perKept(seconds, p.kept) });
             void write();
           },
-        });
+          },
+          target ? pass : undefined,
+        );
         if (r.stopped || !r.file || !r.fileName) break;
 
         // The chapter's file is written: verified and loaded into the bank now, served while the run goes on.

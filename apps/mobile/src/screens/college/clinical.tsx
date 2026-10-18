@@ -223,7 +223,6 @@ export function ClinicalLogbookScreen() {
   const on = (me?.modules ?? []).includes("ACADEMICS");
   const streams = me?.streams ?? [];
   const offeredHere = streams.length === 0 || streams.some((s) => CLINICAL_STREAMS.includes(s));
-  const today = todayKey();
   const [draft, setDraft] = useState<Draft | null>(null);
   const [notice, setNotice] = useState<{ tone: "ok" | "danger"; text: string } | null>(null);
   const mine = useQuery({ queryKey: ["family", "clinical"], enabled: on && offeredHere, queryFn: async () => familyClinicalSchema.parse(unwrap(await api().get("/api/v1/family/clinical"))) });
@@ -244,6 +243,9 @@ export function ClinicalLogbookScreen() {
   const title = t("duties.clinical.myTitle");
   if (!on || !offeredHere) return <Refused title={title} body={t(on ? "duties.clinical.notOffered" : "duties.moduleOff")} icon="puzzle" />;
   const d = mine.data;
+  // The server's own day (its clock, the college's zone), not the phone's: a posting that opens on the server's tomorrow
+  // is not open yet here, whatever the device says (the clinical test turned over on 19 Oct 2026).
+  const today = d?.today ?? todayKey();
   const open = (d?.postings ?? []).filter((p) => p.from <= today);
   const dayOk = draft ? /^\d{4}-\d{2}-\d{2}$/.test(draft.on) : false;
   return (

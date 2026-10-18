@@ -381,9 +381,13 @@ describe("4. evaluation runs from the panel", () => {
   /**
    * A real evaluation run may be going on this database (the panel's, on this machine): every read reaps, and a fake
    * machine's pids would read the real runner as dead and end it (it happened twice on 18 October 2026). These cases
-   * skip while one is active.
+   * skip while one is active — and while a real generation run or crawl holds the model (19 October 2026), since
+   * startEval then refuses with errModelBusy by design, which is the holders rule, not these cases' question.
    */
-  const realRunActive = async () => (await db.assistantEvalJob.count({ where: { active: true } })) > 0;
+  const realRunActive = async () =>
+    (await db.assistantEvalJob.count({ where: { active: true } })) > 0 ||
+    (await db.quizGenJob.count({ where: { active: true } })) > 0 ||
+    (await db.competitionCrawlJob.count({ where: { active: true } })) > 0;
 
   it("starts one run at a time, bringing up the servers it needs that were down, and records them", async (ctx) => {
     if (await realRunActive()) ctx.skip();
@@ -395,7 +399,7 @@ describe("4. evaluation runs from the panel", () => {
     await expect(startEval(evalDb, { userId: ids.operator }, { sets: ["help"] }, m.deps)).rejects.toMatchObject({ errorKey: "viduraOps.errOneAtATime", status: 409 });
     const state = await readEvals(evalDb, m.deps);
     expect(state.current?.id).toBe(job.id);
-    expect(state.servers.map((s) => s.server)).toEqual(["chat", "embed", "small"]);
+    expect(state.servers.map((s) => s.server)).toEqual(["chat", "chat2", "embed", "small"]);
 
     // The runner's end: the scores kept, the slot freed, the server it brought up taken down.
     expect(await finishEval(evalDb, job.id, "FINISHED", m.deps, { scores: [{ set: "refusal", cases: 5, pass: 5, gate: true, lines: ["by language: en 5/5"] }], gate: true })).toBe(true);

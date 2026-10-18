@@ -830,8 +830,8 @@ describe("the doors by role", () => {
     const m = machine({ chat: true, embed: true });
     useCrawlDepsForTests(m.deps);
     await signInAs("CURATOR");
-    // Three servers since Vidura pass 3 (18 Oct 2026): the chat model, the embeddings and the gate's small model.
-    expect(competitionCrawlStateSchema.parse(await (await stateGet()).json()).servers.length).toBe(3);
+    // Four servers since 19 Oct 2026: the chat model, the generator's second chat server, the embeddings and the gate's small model.
+    expect(competitionCrawlStateSchema.parse(await (await stateGet()).json()).servers.length).toBe(4);
     const started = await startPost(post("/api/v1/appadmin/competition-crawl", { sourceIds: [sources.crawl] }));
     expect(started.status).toBe(201);
     const { job } = competitionCrawlJobReadSchema.parse(await started.json());

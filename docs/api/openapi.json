@@ -226360,6 +226360,7 @@
                             "type": "string",
                             "enum": [
                               "chat",
+                              "chat2",
                               "embed",
                               "small"
                             ]
@@ -226697,6 +226698,7 @@
                             "type": "string",
                             "enum": [
                               "chat",
+                              "chat2",
                               "embed",
                               "small"
                             ]
@@ -227026,6 +227028,7 @@
                             "type": "string",
                             "enum": [
                               "chat",
+                              "chat2",
                               "embed",
                               "small"
                             ]
@@ -230884,7 +230887,7 @@
     },
     "/api/v1/appadmin/quiz-jobs": {
       "get": {
-        "summary": "The generation run in hand, or the last one, with its live line (the chapter running, items drafted and kept, the keep rate, seconds per kept item, rejects per stage, the last chapter's numbers); the latest five runs; the two model servers' state",
+        "summary": "The generation run in hand, or the last one, with its live line (the chapter running, items drafted and kept, the keep rate, seconds per kept item, rejects per stage, the last chapter's numbers); the latest five runs; the model servers' state (chat, the generator's second chat server, embeddings, the gate's small model)",
         "description": "The content team.",
         "security": [
           {
@@ -230972,6 +230975,21 @@
                               "minimum": 1,
                               "maximum": 60
                             },
+                            "target": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 500
+                            },
+                            "gradeFrom": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 12
+                            },
+                            "gradeTo": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 12
+                            },
                             "stream": {
                               "type": "string",
                               "enum": [
@@ -231018,6 +231036,10 @@
                         "progress": {
                           "type": "object",
                           "properties": {
+                            "pass": {
+                              "type": "integer",
+                              "minimum": 1
+                            },
                             "phase": {
                               "type": "string",
                               "enum": [
@@ -231230,6 +231252,7 @@
                             "type": "string",
                             "enum": [
                               "chat",
+                              "chat2",
                               "embed",
                               "small"
                             ]
@@ -231382,7 +231405,7 @@
         }
       },
       "post": {
-        "summary": "Start a generation run on this machine: a board's class, subject and chapter range, or everything not yet generated in the plan's order, or a college stream's programme and unit range from the syllabus corpus; brings up the model servers that are down; 201 with the run, 409 while another run is active",
+        "summary": "Start a generation run on this machine: a board's class, subject and chapter range, or everything not yet generated in the plan's order, or a college stream's programme and unit range from the syllabus corpus; brings up the model servers that are down (the second chat server only when memory allows); 201 with the run, 409 while another run is active",
         "description": "The content team.",
         "security": [
           {
@@ -231470,6 +231493,21 @@
                               "minimum": 1,
                               "maximum": 60
                             },
+                            "target": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 500
+                            },
+                            "gradeFrom": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 12
+                            },
+                            "gradeTo": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 12
+                            },
                             "stream": {
                               "type": "string",
                               "enum": [
@@ -231516,6 +231554,10 @@
                         "progress": {
                           "type": "object",
                           "properties": {
+                            "pass": {
+                              "type": "integer",
+                              "minimum": 1
+                            },
                             "phase": {
                               "type": "string",
                               "enum": [
@@ -231728,6 +231770,7 @@
                             "type": "string",
                             "enum": [
                               "chat",
+                              "chat2",
                               "embed",
                               "small"
                             ]
@@ -231889,6 +231932,21 @@
                     "minimum": 1,
                     "maximum": 60
                   },
+                  "target": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 500
+                  },
+                  "gradeFrom": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 12
+                  },
+                  "gradeTo": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 12
+                  },
                   "stream": {
                     "type": "string",
                     "enum": [
@@ -231939,7 +231997,7 @@
     },
     "/api/v1/appadmin/quiz-jobs/servers": {
       "get": {
-        "summary": "The two model servers, Running, Starting or Stopped, with the model's name and the port, read from their health endpoints (cached ten seconds)",
+        "summary": "The model servers (chat, chat2, embed, small), Running, Starting or Stopped, with the model's name and the port, read from their health endpoints (cached ten seconds)",
         "description": "The content team.",
         "security": [
           {
@@ -231964,6 +232022,7 @@
                             "type": "string",
                             "enum": [
                               "chat",
+                              "chat2",
                               "embed",
                               "small"
                             ]
@@ -232052,7 +232111,7 @@
     },
     "/api/v1/appadmin/quiz-jobs/servers/{server}/start": {
       "post": {
-        "summary": "Start one model server (chat or embed) through scripts/model-serve.sh; nothing when it already answers",
+        "summary": "Start one model server (chat, chat2, embed or small) through scripts/model-serve.sh; nothing when it already answers; chat2 is refused (500) when the machine has too little free memory",
         "description": "The content team.",
         "security": [
           {
@@ -232077,6 +232136,7 @@
                             "type": "string",
                             "enum": [
                               "chat",
+                              "chat2",
                               "embed",
                               "small"
                             ]
@@ -232200,6 +232260,7 @@
                             "type": "string",
                             "enum": [
                               "chat",
+                              "chat2",
                               "embed",
                               "small"
                             ]
@@ -232386,6 +232447,21 @@
                               "minimum": 1,
                               "maximum": 60
                             },
+                            "target": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 500
+                            },
+                            "gradeFrom": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 12
+                            },
+                            "gradeTo": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 12
+                            },
                             "stream": {
                               "type": "string",
                               "enum": [
@@ -232432,6 +232508,10 @@
                         "progress": {
                           "type": "object",
                           "properties": {
+                            "pass": {
+                              "type": "integer",
+                              "minimum": 1
+                            },
                             "phase": {
                               "type": "string",
                               "enum": [
@@ -232644,6 +232724,7 @@
                             "type": "string",
                             "enum": [
                               "chat",
+                              "chat2",
                               "embed",
                               "small"
                             ]
@@ -233062,6 +233143,21 @@
                               "minimum": 1,
                               "maximum": 60
                             },
+                            "target": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 500
+                            },
+                            "gradeFrom": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 12
+                            },
+                            "gradeTo": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 12
+                            },
                             "stream": {
                               "type": "string",
                               "enum": [
@@ -233108,6 +233204,10 @@
                         "progress": {
                           "type": "object",
                           "properties": {
+                            "pass": {
+                              "type": "integer",
+                              "minimum": 1
+                            },
                             "phase": {
                               "type": "string",
                               "enum": [
@@ -233320,6 +233420,7 @@
                             "type": "string",
                             "enum": [
                               "chat",
+                              "chat2",
                               "embed",
                               "small"
                             ]
@@ -233633,6 +233734,7 @@
                             "type": "string",
                             "enum": [
                               "chat",
+                              "chat2",
                               "embed",
                               "small"
                             ]
@@ -233971,6 +234073,7 @@
                             "type": "string",
                             "enum": [
                               "chat",
+                              "chat2",
                               "embed",
                               "small"
                             ]
@@ -235065,6 +235168,7 @@
                             "type": "string",
                             "enum": [
                               "chat",
+                              "chat2",
                               "embed",
                               "small"
                             ]
@@ -235368,6 +235472,7 @@
                             "type": "string",
                             "enum": [
                               "chat",
+                              "chat2",
                               "embed",
                               "small"
                             ]

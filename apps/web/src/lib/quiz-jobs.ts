@@ -23,8 +23,8 @@
  *          heartbeat is ten minutes old) becomes FAILED with the reason (STOPPED if a stop was asked);
  *          that covers a machine or dev server restarted under a run.
  *
- * The model servers are controlled through scripts/model-serve.sh ONLY (start-chat, start-embed,
- * stop-chat, stop-embed), never by killing a process here; the script stops only servers it started (by
+ * The model servers are controlled through scripts/model-serve.sh ONLY (start-chat, start-chat2, start-embed,
+ * start-small and their stops), never by killing a process here; the script stops only servers it started (by
  * its pid files). Stopping a server while a run is active is refused until the run is stopped.
  *
  * HOSTED: the runner runs where the model runs. On the owner's machine that is this machine; on a hosted
@@ -48,7 +48,7 @@ import {
   type QuizGenRequest,
   type QuizJobsState,
 } from "@edulink/contracts";
-import { activeRuns, handOverTo, neededServers, type HandOver } from "./model-holders";
+import { activeRuns, handOverTo, neededServers, OPTIONAL_SERVERS, type HandOver } from "./model-holders";
 
 /**
  * The tables this file touches; the web passes src/lib/db's client, the runner its own. The crawl's
@@ -99,6 +99,9 @@ const DEFAULTS: Record<ModelServer, { url: string; model: string; urlKey: string
   embed: { url: "http://127.0.0.1:8181/v1", model: "qwen3-embedding-0.6b", urlKey: "ASSISTANT_EMBED_URL", modelKey: "ASSISTANT_EMBED_MODEL" },
   // Vidura pass 3 (18 Oct 2026): the gate's small model (scripts/model-serve.sh start-small).
   small: { url: "http://127.0.0.1:8182/v1", model: "qwen3-4b", urlKey: "ASSISTANT_GATE_MODEL_URL", modelKey: "ASSISTANT_GATE_MODEL" },
+  // gen-throughput (19 Oct 2026): the generator's second chat server, the same model on :8183 (scripts/model-serve.sh
+  // start-chat2); the assistant never reads it (src/lib/assistant-env.ts), so all its slots are the generator's.
+  chat2: { url: "http://127.0.0.1:8183/v1", model: "qwen3-30b-a3b", urlKey: "QUIZ_GEN_CHAT2_URL", modelKey: "QUIZ_GEN_CHAT2_MODEL" },
 };
 
 /** The server's address and name from the assistant's own settings (src/lib/assistant-env.ts), else the script's defaults. */
@@ -365,7 +368,8 @@ function isUniqueClash(error: unknown): boolean {
  */
 export async function startJob(db: JobDb, who: { userId: string; role: "APP_ADMIN" | "OPERATOR" }, request: QuizGenRequest, deps: JobDeps = MACHINE): Promise<QuizGenJob> {
   await reapJobs(db, deps);
-  // Only the servers a generation run needs (the gate's small model is the assistant's, pass 3).
+  // Only the servers a generation run needs (the gate's small model is the assistant's, pass 3; the second chat server
+  // is the generator's own since 19 Oct 2026).
   const servers = (await modelServers(deps, { fresh: true })).filter((s) => neededServers("QUIZ").includes(s.server));
   const down = servers.filter((s) => s.state === "STOPPED").map((s) => s.server);
   let row: JobRow;
@@ -386,10 +390,23 @@ export async function startJob(db: JobDb, who: { userId: string; role: "APP_ADMI
     throw error;
   }
   try {
-    for (const server of down) await deps.serve(`start-${server}`);
+    // gen-throughput (19 Oct 2026): the second chat server is optional. The script refuses it when free memory is short
+    // (and says so in storage/models/chat2.log); the run then goes on without it and does not record it as its own.
+    const notStarted: ModelServer[] = [];
+    for (const server of down) {
+      try {
+        await deps.serve(`start-${server}`);
+      } catch (error) {
+        if (!OPTIONAL_SERVERS.includes(server)) throw error;
+        notStarted.push(server);
+      }
+    }
     forgetHealth();
     const pid = deps.spawnRunner(row.id);
-    row = await db.quizGenJob.update({ where: { id: row.id }, data: { pid, heartbeatAt: deps.now() } });
+    row = await db.quizGenJob.update({
+      where: { id: row.id },
+      data: { pid, heartbeatAt: deps.now(), ...(notStarted.length ? { startedServers: down.filter((s) => !notStarted.includes(s)) } : {}) },
+    });
   } catch (error) {
     await finishJob(db, row.id, "FAILED", deps, couldNotBegin(error));
     throw new JobRefusal("quizJobs.serverFailed", 500);
