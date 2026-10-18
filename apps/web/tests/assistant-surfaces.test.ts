@@ -51,8 +51,8 @@ const STUDENT: AssistantStatus = { available: true, reason: null, help: true, tu
 const PARENT: AssistantStatus = { ...STUDENT, tutor: false, optOutPath: "/parent/settings#assistant", modes: ["USING", "RECORDS"] };
 const ADMIN: AssistantStatus = { ...STUDENT, tutor: false, modes: ["USING", "RECORDS"] };
 
-const msg = (over: Partial<AssistantMessage>): AssistantMessage => ({ id: "zz-m", role: "ASSISTANT", text: "ZZ answer", createdAt: "2026-10-10T04:00:00.000Z", citations: [], verdict: "ANSWERED", mode: "HELP", hint: false, helpful: null, chip: "USING", cut: false, askPerson: null, standard: false, ...over });
-const BOOK = { kind: "CURRICULUM" as const, n: 1, board: "NCERT", book: "Science: Exploration", grade: "9", chapter: "6", section: "6.6", page: 87, sourceUrl: "https://ncert.nic.in/textbook/pdf/iesc106.pdf", chunkId: "zz-chunk" };
+const msg = (over: Partial<AssistantMessage>): AssistantMessage => ({ id: "zz-m", role: "ASSISTANT", text: "ZZ answer", createdAt: "2026-10-10T04:00:00.000Z", citations: [], verdict: "ANSWERED", mode: "HELP", hint: false, helpful: null, chip: "USING", cut: false, askPerson: null, standard: false, references: [], ...over });
+const BOOK = { kind: "CURRICULUM" as const, n: 1, board: "NCERT", book: "Science: Exploration", grade: "9", chapter: "6", section: "6.6", page: 87, sourceUrl: "https://ncert.nic.in/textbook/pdf/iesc106.pdf", chunkId: "zz-chunk", attribution: null };
 const HELP = { kind: "HELP" as const, n: 2, title: "People", pagePath: "/admin/people", entryId: "zz-help" };
 
 describe("the question box clears as the question is sent (10 October 2026)", () => {

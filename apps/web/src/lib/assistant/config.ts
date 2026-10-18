@@ -19,6 +19,12 @@ export const HELP_THRESHOLD: Record<AssistantLanguage, number> = { en: 0.6, hi: 
 export const CURRICULUM_THRESHOLD: Record<AssistantLanguage, number> = { en: 0.55, hi: 0.42, mr: 0.42 };
 /** Below this, a class's own books are taken not to carry the topic and the band is widened one class either side (Phase A's GRADE_FLOOR). */
 export const GRADE_WIDEN_FLOOR = 0.62;
+/**
+ * THE BOOKS FIRST AT A COLLEGE (Vidura pass 4, 18 Oct 2026): a college's tutor searches the whole corpus as before (the
+ * NCERT 11–12 and NIOS books, the syllabi) and, beside it, the sources only a college reads (the Wikipedia subset for its
+ * streams). A book's passage keeps its place ahead of a new source's unless the new one is closer by more than this.
+ */
+export const BOOKS_FIRST_MARGIN = 0.04;
 /** Passages further than this below the best one are dropped before the prompt (keyword noise). */
 export const CLOSE_TO_BEST = 0.12;
 /** A curriculum hit must beat the best help hit by this much to make a question a topic question. */

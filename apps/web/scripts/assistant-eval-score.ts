@@ -271,3 +271,37 @@ export function answerCarries(text: string, truth: MetricValue): boolean {
   }
   return text.toLowerCase().includes(String(truth.value).toLowerCase());
 }
+
+/* ---- the college knowledge set (Vidura pass 4, 18 Oct 2026) ------------------------------------------------- */
+
+/** A cited passage's document as the scorer reads it: its corpus source, its title and its attribution's title and licence. */
+export type CitedDocument = { chunkId: string; source: string; title: string; attributionTitle: string | null; attributionLicence: string | null };
+
+/**
+ * THE SOURCE: at least one cited passage from a document the case accepts. Each pattern is "source:title regex"
+ * ("wikipedia:Tort|Vicarious liability", "nios:Law"), the regex tested on the document's title, case-insensitive. Pure.
+ */
+export function sourceAccepted(docs: Pick<CitedDocument, "source" | "title">[], accept: string[]): boolean {
+  return docs.some((d) =>
+    accept.some((pattern) => {
+      const at = pattern.indexOf(":");
+      const source = at < 0 ? pattern : pattern.slice(0, at);
+      const title = at < 0 ? "" : pattern.slice(at + 1);
+      if (d.source !== source) return false;
+      try {
+        return !title || new RegExp(title, "i").test(d.title);
+      } catch {
+        return d.title.toLowerCase().includes(title.toLowerCase());
+      }
+    }),
+  );
+}
+
+/**
+ * THE ATTRIBUTION: every cited Wikipedia passage carries an attribution in its citation whose title is its document's
+ * title and whose licence is named (CC BY-SA asks for both on every passage shown). A passage of a book carries none and
+ * needs none. Pure.
+ */
+export function attributionHolds(docs: CitedDocument[]): boolean {
+  return docs.filter((d) => d.source === "wikipedia").every((d) => d.attributionTitle === d.title && !!d.attributionLicence && /BY-SA/i.test(d.attributionLicence));
+}

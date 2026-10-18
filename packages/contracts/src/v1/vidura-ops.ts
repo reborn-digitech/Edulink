@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { roleSchema } from "./auth";
-import { assistantCitationSchema, assistantLanguageSchema, assistantVerdictSchema, ASSISTANT_CHIPS, ASSISTANT_QUESTION_MAX } from "./assistant";
+import { assistantCitationSchema, assistantLanguageSchema, assistantVerdictSchema, ASSISTANT_CHIPS, ASSISTANT_QUESTION_MAX, ASSISTANT_REFERENCE_KINDS } from "./assistant";
 import { modelServerNameSchema, modelServerSchema, QUIZ_GEN_JOB_STATES } from "./quiz-jobs";
 
 /**
@@ -104,8 +104,8 @@ export type ViduraUnanswered = z.infer<typeof viduraUnansweredSchema>;
 
 /* ---- evaluation runs ------------------------------------------------------------------------------------------- */
 
-/** The harness's nine sets (scripts/assistant-eval.ts), in its own order. */
-export const VIDURA_EVAL_SETS = ["refusal", "counsellor", "redteam", "role", "injection", "language", "help", "tutor", "hint"] as const;
+/** The harness's sets (scripts/assistant-eval.ts), in its own order: the nine of Phase D and pass 4's college knowledge set. */
+export const VIDURA_EVAL_SETS = ["refusal", "counsellor", "redteam", "role", "injection", "language", "help", "tutor", "hint", "college"] as const;
 export const viduraEvalSetSchema = z.enum(VIDURA_EVAL_SETS);
 export type ViduraEvalSet = z.infer<typeof viduraEvalSetSchema>;
 
@@ -174,3 +174,71 @@ export const viduraEvalsSchema = z.object({
 });
 export type ViduraEvals = z.infer<typeof viduraEvalsSchema>;
 export const viduraEvalReadSchema = z.object({ job: viduraEvalJobSchema });
+
+/* ---- the reference allow-list (pass 4, 18 Oct 2026) ------------------------------------------------------------ */
+
+/**
+ * VIDURA PASS 4 (docs/plans/vidura.md, the owner's decision 8): the public education sources Vidura may link to beside a
+ * Learning answer, kept by the operator on /root/vidura-references. A link is built by the server from the source's
+ * template and the cited passage's heading; it is shown to the roles named, a STUDENT only when an adult at a college,
+ * and never to a pupil while decision 0002 stands.
+ */
+export const VIDURA_REFERENCE_KINDS = ASSISTANT_REFERENCE_KINDS;
+/** The roles a source's links may be shown to: the tutor's roles (a Learning answer is theirs alone). */
+export const VIDURA_REFERENCE_ROLES = ["TEACHER", "FACULTY", "HOD", "STUDENT"] as const;
+export const viduraReferenceRoleSchema = z.enum(VIDURA_REFERENCE_ROLES);
+
+export const viduraReferenceSourceSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  host: z.string(),
+  kind: z.enum(VIDURA_REFERENCE_KINDS),
+  licence: z.string(),
+  licenceUrl: z.string().nullable(),
+  linkTemplate: z.string(),
+  shownTo: z.array(viduraReferenceRoleSchema),
+  enabled: z.boolean(),
+  createdAt: iso,
+  updatedAt: iso,
+  /** Who last changed it; null for the seeded rows. */
+  updatedBy: z.string().nullable(),
+});
+export type ViduraReferenceSource = z.infer<typeof viduraReferenceSourceSchema>;
+
+/** GET /api/v1/operator/vidura/references */
+export const viduraReferenceSourcesSchema = z.object({ sources: z.array(viduraReferenceSourceSchema) });
+export type ViduraReferenceSources = z.infer<typeof viduraReferenceSourcesSchema>;
+
+const referenceFields = {
+  name: z.string().trim().min(2).max(80),
+  /** The host alone, lower case: "nptel.ac.in". */
+  host: z.string().trim().toLowerCase().min(3).max(120),
+  kind: z.enum(VIDURA_REFERENCE_KINDS),
+  licence: z.string().trim().min(2).max(800),
+  licenceUrl: z.string().trim().max(400).nullable().optional(),
+  /** https on the host, with "{topic}" where the passage's heading goes. */
+  linkTemplate: z.string().trim().min(10).max(400),
+  shownTo: z.array(viduraReferenceRoleSchema).min(1).max(VIDURA_REFERENCE_ROLES.length),
+};
+
+/** POST /api/v1/operator/vidura/references — add a source (201). Audited. */
+export const viduraReferenceAddSchema = z.object(referenceFields);
+export type ViduraReferenceAdd = z.infer<typeof viduraReferenceAddSchema>;
+
+/** POST /api/v1/operator/vidura/references/{sourceId} — ENABLE, DISABLE or EDIT (any of the fields). Audited; the same act again changes nothing. */
+export const viduraReferenceActSchema = z.discriminatedUnion("action", [
+  z.object({ action: z.literal("ENABLE") }),
+  z.object({ action: z.literal("DISABLE") }),
+  z.object({
+    action: z.literal("EDIT"),
+    name: referenceFields.name.optional(),
+    host: referenceFields.host.optional(),
+    kind: referenceFields.kind.optional(),
+    licence: referenceFields.licence.optional(),
+    licenceUrl: referenceFields.licenceUrl,
+    linkTemplate: referenceFields.linkTemplate.optional(),
+    shownTo: referenceFields.shownTo.optional(),
+  }),
+]);
+export type ViduraReferenceAct = z.infer<typeof viduraReferenceActSchema>;
+export const viduraReferenceReadSchema = z.object({ source: viduraReferenceSourceSchema });

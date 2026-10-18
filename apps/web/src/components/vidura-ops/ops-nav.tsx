@@ -2,12 +2,14 @@ import Link from "next/link";
 import type { Translate } from "@/lib/i18n";
 import { cn } from "@/lib/cn";
 
-/** Vidura's four desks on the operator's panel (passes 2 and 3), one row of links on each of them. */
+/** Vidura's desks on the operator's panel (passes 2 to 4), one row of links on each of them. */
 const DESKS = [
   { href: "/root/vidura-answers", key: "viduraOps.navAnswers" },
   { href: "/root/vidura-unanswered", key: "viduraOps.navUnanswered" },
   { href: "/root/vidura-evals", key: "viduraOps.navEvals" },
   { href: "/root/vidura-review", key: "viduraReview.nav" },
+  // Vidura pass 4 (18 Oct 2026): the reference allow-list.
+  { href: "/root/vidura-references", key: "viduraOps.navReferences" },
 ] as const;
 
 /** Drawn by the page with its own `t` (a server page's words), so it stays a plain component. */

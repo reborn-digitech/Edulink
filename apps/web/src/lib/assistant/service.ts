@@ -1,6 +1,7 @@
 import "server-only";
 import type {
   AssistantAbout,
+  AssistantReference,
   AssistantAnswer,
   AssistantAskPerson,
   AssistantChip,
@@ -33,6 +34,7 @@ import { ROLES, type Role } from "../constants";
 import type { ActiveContext } from "../session";
 import {
   ANSWER_TIMEOUT_MS,
+  BOOKS_FIRST_MARGIN,
   CLOSE_TO_BEST,
   CURRICULUM_THRESHOLD,
   DOOR_THRESHOLD,
@@ -85,6 +87,9 @@ import { pupilAssessmentItems } from "./assessment";
 import { cosine, decideAssessment, type AssessmentDecision, type AssessmentItem } from "./assessment-rule";
 import { routeToCounsellor } from "./counsellor";
 import { addUsage, counsellorRoutedToday, dayKeyFor, monthTotals, questionsToday, releaseQuestion, reserveQuestion } from "./usage";
+// Vidura pass 4 (18 Oct 2026): college knowledge and the reference allow-list.
+import { enabledReferenceSources, isRecordedAdult, referenceLinks, topicOf, type ReferenceSourceRow } from "./references";
+import { streamsOf } from "../streams";
 
 /**
  * THE ASSISTANT SERVICE (docs/plans/assistant.md Phase B), a library behind the catalogued doors under
@@ -133,6 +138,11 @@ export type AssistantDeps = {
    * any. Absent (the evaluation harness, the operator's own trial), every answer is the model's.
    */
   standardAnswer?: (q: { role: Role; language: AssistantLanguage; question: string }) => Promise<{ id: string; text: string; citations: AssistantCitation[] } | null>;
+  /**
+   * THE REFERENCE ALLOW-LIST (pass 4, references.ts): the operator's enabled sources, for the links beside a Learning
+   * answer. Absent, no link is offered.
+   */
+  referenceSources?: () => Promise<ReferenceSourceRow[]>;
 };
 
 /** The model is not configured or not reachable: the answer is MODEL_UNAVAILABLE and nothing is charged. */
@@ -174,6 +184,7 @@ export function realDeps(): AssistantDeps {
     now: () => new Date(),
     pageCards: (q) => helpForPage({ ...q, kinds: ["nav"], limit: 2 }, { db }),
     standardAnswer: findStandardAnswer,
+    referenceSources: () => enabledReferenceSources(),
     render: (stripped, language) => renderForSearch(stripped, language, { chat: (messages, opts) => chatComplete(need().chat, messages, opts) }),
   };
 }
@@ -355,19 +366,21 @@ async function ownConversation(ctx: ActiveContext, conversationId: string) {
  * answer has been continued already (GO_ON_MAX at most), and the question it answers. No migration: the column is
  * text, and a row from before reads as a list.
  */
-type Stored = { citations: AssistantCitation[]; cut: boolean; depth: number; rootId: string | null };
+type Stored = { citations: AssistantCitation[]; cut: boolean; depth: number; rootId: string | null; references: AssistantReference[] };
 export function readStored(json: string): Stored {
   try {
     const parsed = JSON.parse(json) as unknown;
-    if (Array.isArray(parsed)) return { citations: parsed as AssistantCitation[], cut: false, depth: 0, rootId: null };
+    if (Array.isArray(parsed)) return { citations: parsed as AssistantCitation[], cut: false, depth: 0, rootId: null, references: [] };
     const o = (parsed ?? {}) as Partial<Stored>;
-    return { citations: Array.isArray(o.citations) ? o.citations : [], cut: o.cut === true, depth: typeof o.depth === "number" ? o.depth : 0, rootId: typeof o.rootId === "string" ? o.rootId : null };
+    return { citations: Array.isArray(o.citations) ? o.citations : [], cut: o.cut === true, depth: typeof o.depth === "number" ? o.depth : 0, rootId: typeof o.rootId === "string" ? o.rootId : null, references: Array.isArray(o.references) ? o.references : [] };
   } catch {
-    return { citations: [], cut: false, depth: 0, rootId: null };
+    return { citations: [], cut: false, depth: 0, rootId: null, references: [] };
   }
 }
-function writeStored(citations: AssistantCitation[], extra: { cut: boolean; depth: number; rootId: string | null }): string {
-  return extra.cut || extra.depth > 0 ? JSON.stringify({ citations, ...extra }) : JSON.stringify(citations);
+/** Pass 4: an answer with reference links keeps them beside its citations, in the same column (no migration). */
+function writeStored(citations: AssistantCitation[], extra: { cut: boolean; depth: number; rootId: string | null; references?: AssistantReference[] }): string {
+  const references = extra.references ?? [];
+  return extra.cut || extra.depth > 0 || references.length ? JSON.stringify({ citations, cut: extra.cut, depth: extra.depth, rootId: extra.rootId, ...(references.length ? { references } : {}) }) : JSON.stringify(citations);
 }
 
 function messageView(m: { id: string; role: string; text: string; createdAt: Date; citationsJson: string; verdict: string | null; mode: string | null; hint: boolean; helpful: boolean | null; cachedAnswerId?: string | null }, askPerson: AssistantAskPerson | null = null): AssistantMessage {
@@ -388,6 +401,7 @@ function messageView(m: { id: string; role: string; text: string; createdAt: Dat
     cut: assistant && stored.cut,
     askPerson: assistant && askPerson && offersAskPerson(verdict, m.text) ? askPerson : null,
     standard: assistant && !!m.cachedAnswerId,
+    references: assistant ? stored.references : [],
   };
 }
 
@@ -490,6 +504,8 @@ type Outcome = {
   reasons?: string[];
   /** Pass 3: the standard answer served, when one was. */
   standardId?: string | null;
+  /** Pass 4: the allow-listed links beside a Learning answer, for the people decision 0002 lets see them. */
+  references?: AssistantReference[];
 };
 
 /**
@@ -554,6 +570,9 @@ export async function ask(
       page: goOn ? null : (input.page ?? null),
       continuation: goOn?.sofar ?? null,
       about: goOn ? null : (input.about ?? null),
+      // Pass 4: a college's streams (its own sources searched first) and whether a student is a recorded adult (links).
+      streams: isCollegeKind(school.kind) ? await streamsOf(asker.schoolId) : [],
+      adult: asker.role === "STUDENT" && isCollegeKind(school.kind) ? await isRecordedAdult(asker.userId, now) : false,
     });
   } catch (error) {
     if (!(error instanceof ModelUnavailable) && !isModelFailure(error)) {
@@ -583,6 +602,7 @@ export async function ask(
         cut: outcome.cut && (goOn ? goOn.depth + 1 : 0) < GO_ON_MAX,
         depth: goOn ? goOn.depth + 1 : 0,
         rootId: goOn ? goOn.root.id : outcome.cut ? question.id : null,
+        references: outcome.references,
       }),
       verdict: outcome.verdict,
       // The chip since Vidura pass 1 (USING, RECORDS, LEARNING); a fixed sentence keeps none.
@@ -667,6 +687,10 @@ type AnswerInput = {
   continuation?: string | null;
   /** "Explain this to me" (Vidura pass 2): the row the person pressed the link beside, read again through their own door. */
   about?: AssistantAbout | null;
+  /** Pass 4: the college's streams, whose own sources a college's tutor searches first; empty for a school. */
+  streams?: string[];
+  /** Pass 4: a STUDENT who is an adult by a recorded date of birth (reference links at a college). */
+  adult?: boolean;
 };
 
 /** A door answer the harness handed in, as the runner's run. */
@@ -769,7 +793,22 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     let found: CurriculumHit[] = [];
     let note: string | null = null;
     let later: string | null = null;
-    if (policy.tutor) {
+    if (policy.tutor && college) {
+      // PASS 4: A COLLEGE'S TUTOR searches the whole corpus as before (the books, the syllabi) and, beside it, the
+      // sources only a college reads (the Wikipedia subset), its own streams' first and every stream's when those fall
+      // short; the books keep their place unless a new source is clearly closer (booksFirst).
+      const streams = a.streams?.length ? a.streams : undefined;
+      const [own, extra] = await Promise.all([
+        deps.searchCurriculum({ query, language, limit: CURRICULUM_PASSAGES }),
+        deps.searchCurriculum({ query, language, collegeSources: "ONLY", streams, limit: CURRICULUM_PASSAGES }),
+      ]);
+      let more = extra;
+      if (streams && best(extra) < CURRICULUM_THRESHOLD[scale]) {
+        const any = await deps.searchCurriculum({ query, language, collegeSources: "ONLY", limit: CURRICULUM_PASSAGES });
+        if (best(any) > best(extra)) more = any;
+      }
+      found = booksFirst(own, more);
+    } else if (policy.tutor) {
       const scoped = policy.gradeScoped && grade !== null && !college;
       found = await deps.searchCurriculum({ query, language, board, grade: scoped && grade !== null ? grade : undefined, limit: CURRICULUM_PASSAGES });
       // Nothing close in the class's own books: the classes either side (Phase A's widening).
@@ -907,13 +946,18 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   let seePage: string | null = null;
   /** Pass 2: the question names days that none of the doors read could be narrowed to. */
   let windowUnserved = false;
+  /** Pass 4: the numbers of the passages from a law book or article (a law source's links only beside those). */
+  let lawPassages = new Set<number>();
   if (gate.mode === "TUTOR") {
     const found = await books();
     const curriculum: CurriculumHit[] = keepClose(found.found);
     const boardNote: string | null = found.note;
     const laterClass: string | null = found.later;
-    const passages = curriculum.slice(0, CURRICULUM_PASSAGES).map((h, i) => ({ n: i + 1, heading: `${h.board}, "${h.book}" (class ${h.grade}), ${h.headingPath.join(" › ") || h.chapter || ""}, page ${h.pageStart}`, text: withoutInjectedLines(stripIdentifiers(h.text.slice(0, 1800), a.lexicon).text) }));
-    citationsByNumber = curriculum.slice(0, CURRICULUM_PASSAGES).map((h, i) => ({ kind: "CURRICULUM", n: i + 1, board: h.board, book: h.book, grade: h.grade, chapter: h.chapter, section: h.section, page: h.pageStart, sourceUrl: h.sourceUrl || null, chunkId: h.chunkId }));
+    // Pass 4: an encyclopedia article (the college sources) is headed by its title and section, with no class or page.
+    const passages = curriculum.slice(0, CURRICULUM_PASSAGES).map((h, i) => ({ n: i + 1, heading: h.attribution ? `${h.board} article "${h.attribution.title}"${h.section ? `, ${h.section}` : ""}` : `${h.board}, "${h.book}" (class ${h.grade}), ${h.headingPath.join(" › ") || h.chapter || ""}, page ${h.pageStart}`, text: withoutInjectedLines(stripIdentifiers(h.text.slice(0, 1800), a.lexicon).text) }));
+    citationsByNumber = curriculum.slice(0, CURRICULUM_PASSAGES).map((h, i) => ({ kind: "CURRICULUM", n: i + 1, board: h.board, book: h.book, grade: h.grade, chapter: h.chapter, section: h.section, page: h.pageStart, sourceUrl: h.sourceUrl || null, chunkId: h.chunkId, attribution: h.attribution ?? null }));
+    // Pass 4: the passages' own facts the reference links read (the heading, whether it is a law passage).
+    lawPassages = new Set(curriculum.slice(0, CURRICULUM_PASSAGES).flatMap((h, i) => (/\blaw\b|legal|constitution/i.test(`${h.subject} ${h.grade} ${h.book}`) ? [i + 1] : [])));
     allowedText = passages.map((p) => `${p.heading}\n${p.text}`).join("\n");
     const band = gradeBandOf(grade, { college, teacher: !policy.assessed });
     // The exam-scope reader (10 Oct 2026): a pupil asking when an exam is or whether a subject is in it gets
@@ -1034,6 +1078,16 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   }
   // A <data> block cited by its number has no source to show: its mark goes, the rows' and the passages' stay.
   if (blockNumbers.length) body = body.replace(/\s?\[(\d{1,3})\]/g, (mark, n: string) => (blockNumbers.includes(Number(n)) ? "" : mark));
+  // PASS 4: THE REFERENCE LINKS beside a Learning answer (references.ts): the operator's enabled sources, searched for the
+  // first cited passage's heading, for the people decision 0002 lets see them; none beside a hint or a continuation.
+  let references: AssistantReference[] = [];
+  if (gate.mode === "TUTOR" && !hint && !a.continuation && deps.referenceSources) {
+    const first = citationsByNumber.filter((c): c is Extract<AssistantCitation, { kind: "CURRICULUM" }> => c.kind === "CURRICULUM" && cited.has(c.n)).sort((x, y) => x.n - y.n)[0];
+    if (first) {
+      const topic = topicOf({ chapter: first.chapter, section: first.section, attributionTitle: first.attribution?.title ?? null });
+      references = referenceLinks({ role: asker.role, college, adult: a.adult === true, topic, law: lawPassages.has(first.n), sources: await deps.referenceSources().catch(() => []) });
+    }
+  }
   return {
     verdict: hint ? "HINT" : "ANSWERED",
     // The platform's sentence as a paragraph of its own, so the answer's first heading still starts a line; pass 2 adds
@@ -1056,7 +1110,23 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     completionTokens: tokens.completion,
     modelCalls: modelCalls + pre.calls,
     scope: chip,
+    references,
   };
+}
+
+/**
+ * THE BOOKS FIRST (pass 4): a college's two searches as one list — the books' passages (NCERT, NIOS, Balbharati) ahead of
+ * the new sources' unless one of those is closer by more than BOOKS_FIRST_MARGIN — CURRICULUM_PASSAGES long. A
+ * syllabus is in the whole corpus too, but it lists a course's topics rather than teaching them, so it takes no margin
+ * over an article that explains the topic. Pure.
+ */
+export function booksFirst(books: CurriculumHit[], extra: CurriculumHit[], margin = BOOKS_FIRST_MARGIN): CurriculumHit[] {
+  const seen = new Set<string>();
+  return [...books.map((h) => ({ h, key: (h.similarity ?? 0) + (h.source === "syllabi" ? 0 : margin) })), ...extra.map((h) => ({ h, key: h.similarity ?? 0 }))]
+    .sort((x, y) => y.key - x.key)
+    .map((x) => x.h)
+    .filter((h) => (seen.has(h.chunkId) ? false : (seen.add(h.chunkId), true)))
+    .slice(0, CURRICULUM_PASSAGES);
 }
 
 /**
@@ -1117,6 +1187,9 @@ export async function previewAnswer(
     toolRuns?: ToolRun[];
     /** A school's names, as `ask` strips them (nameLexicon); none by default. */
     lexicon?: NameEntry[];
+    /** Pass 4: a college's streams (its own sources searched first), and a student who is a recorded adult (the links). */
+    streams?: string[];
+    adult?: boolean;
   },
   deps: AssistantDeps = realDeps(),
 ): Promise<Outcome & { language: AssistantLanguage }> {
@@ -1127,7 +1200,7 @@ export async function previewAnswer(
   try {
     const now = deps.now();
     const dataContext = { role: input.role, membershipId: null, children: [], childId: null, duties: [], now, childNames: [] };
-    const outcome = await answerQuestion({ asker, policy: policyFor(input.role), school, language, original, stripped: stripIdentifiers(original, input.lexicon ?? []).text, lexicon: input.lexicon ?? [], previous: input.assessment?.previous ?? [], deps: { ...deps, runDoors: async () => [], standardAnswer: undefined }, emit: () => {}, conversationId: "preview", gradeOverride: input.grade ?? null, assessmentItems: input.assessment?.items, dataContext, toolRuns: input.toolRuns });
+    const outcome = await answerQuestion({ asker, policy: policyFor(input.role), school, language, original, stripped: stripIdentifiers(original, input.lexicon ?? []).text, lexicon: input.lexicon ?? [], previous: input.assessment?.previous ?? [], deps: { ...deps, runDoors: async () => [], standardAnswer: undefined }, emit: () => {}, conversationId: "preview", gradeOverride: input.grade ?? null, assessmentItems: input.assessment?.items, dataContext, toolRuns: input.toolRuns, streams: input.streams ?? [], adult: input.adult === true });
     return { ...outcome, language };
   } catch (error) {
     if (!(error instanceof ModelUnavailable) && !isModelFailure(error)) throw error;

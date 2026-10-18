@@ -103,6 +103,22 @@ export type AssistantAskPerson = z.infer<typeof assistantAskPersonSchema>;
  * open with `#page=<page>`). HELP: the platform page the help entry names. LINK: one of the person's own
  * rows (a post, a circular, a thread) a data answer cites, with its page on the platform.
  */
+/**
+ * VIDURA PASS 4 (18 Oct 2026): what a passage of a share-alike source carries in its citation, drawn under the source
+ * on the web and the phone (`viduraUi.attributionWikipedia`): the article's title, the revision read and when it was
+ * saved, its permanent address and the licence (CC BY-SA 4.0 asks for all four). Null for the books.
+ */
+export const assistantAttributionSchema = z.object({
+  kind: z.literal("WIKIPEDIA"),
+  title: z.string(),
+  revision: z.number().int(),
+  revisedAt: z.string(),
+  url: z.string(),
+  licence: z.string(),
+  licenceUrl: z.string(),
+});
+export type AssistantAttribution = z.infer<typeof assistantAttributionSchema>;
+
 export const assistantCitationSchema = z.discriminatedUnion("kind", [
   z.object({
     kind: z.literal("CURRICULUM"),
@@ -115,6 +131,8 @@ export const assistantCitationSchema = z.discriminatedUnion("kind", [
     page: z.number().int(),
     sourceUrl: z.string().nullable(),
     chunkId: z.string(),
+    /** Pass 4: the share-alike source's attribution line (a Wikipedia article's); null for a book. */
+    attribution: assistantAttributionSchema.nullable().default(null),
   }),
   z.object({
     kind: z.literal("HELP"),
@@ -141,6 +159,16 @@ export const assistantCitationSchema = z.discriminatedUnion("kind", [
 ]);
 export type AssistantCitation = z.infer<typeof assistantCitationSchema>;
 
+/** One reference link (pass 4): the source's name and kind, the topic searched and the address (https, on the source's host). */
+export const ASSISTANT_REFERENCE_KINDS = ["VIDEO", "COURSE", "LAW", "PRACTICE", "REFERENCE"] as const;
+export const assistantReferenceSchema = z.object({
+  source: z.string(),
+  kind: z.enum(ASSISTANT_REFERENCE_KINDS),
+  topic: z.string(),
+  url: z.string(),
+});
+export type AssistantReference = z.infer<typeof assistantReferenceSchema>;
+
 export const assistantMessageSchema = z.object({
   id: z.string(),
   role: z.enum(["USER", "ASSISTANT"]),
@@ -163,6 +191,12 @@ export const assistantMessageSchema = z.object({
   askPerson: assistantAskPersonSchema.nullable().default(null),
   /** The answer is the platform's standard answer to this question, checked by the operator (pass 3). */
   standard: z.boolean().default(false),
+  /**
+   * Pass 4: links to the operator's allow-listed public sources beside a Learning answer ("Further reading"), built by
+   * the server from the cited passage's heading; only for staff and adult college students, never a pupil (decision
+   * 0002); empty otherwise.
+   */
+  references: z.array(assistantReferenceSchema).default([]),
 });
 export type AssistantMessage = z.infer<typeof assistantMessageSchema>;
 

@@ -3683,6 +3683,7 @@ CREATE TRIGGER "OperatorAccess_close_only"
 --   QuizTopicTranslation
 --   RateLimit
 --   RecruiterProfile
+--   ReferenceSource
 --   Requirement
 --   Session
 --   SessionPayment

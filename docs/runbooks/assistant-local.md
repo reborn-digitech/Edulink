@@ -550,3 +550,74 @@ pid is gone; a test suite that reads the runs with a fake machine must not run b
 skips its run cases while one is active, after a suite run twice ended a live run on 18 October 2026). Stop halts it after the case in hand and
 keeps the scores of what it ran. Each run keeps its scores per set, the refusal gate's verdict and the harness's own
 lines. Doors: `GET` and `POST /api/v1/operator/vidura/evals`, `POST /api/v1/operator/vidura/evals/{jobId}/stop`.
+
+## 12. College knowledge and the reference allow-list (Vidura pass 4, 18 October 2026)
+
+### What the college tutor searches
+
+A college's tutor (a college STUDENT, FACULTY or HOD) searches **the whole corpus as before** — the NCERT books of
+classes 11 and 12, NIOS, Balbharati, the syllabi — and, side by side with it, **the sources only a college reads**:
+the documents whose `ContentDocument.audience` is `COLLEGE` (the Wikipedia subset), its own streams' first
+(`School.streamsJson`), every stream's when those fall short. The two lists are merged by `booksFirst`
+(`src/lib/assistant/service.ts`): a book's passage keeps its place ahead of an article's unless the article is closer by
+more than `BOOKS_FIRST_MARGIN` (0.04); a syllabus takes no margin (it lists a topic, an article explains it). A school's
+search never reads a college source: `searchCurriculum` leaves them out unless asked (`collegeSources: "ONLY"` or
+`"INCLUDE"`), so every search that existed before pass 4 is the same search.
+
+The filter is written as `COALESCE(d."audience", '') <> 'COLLEGE'`, not `"audience" IS NULL`: on 18 October, before the
+table's statistics knew the new column, the planner read IS NULL as 0.5 % of the books, chose a nested loop that ran
+`to_tsvector` over every chunk, and the keyword half of an unscoped search took 43 s instead of 22 ms. `corpus:ingest`
+now runs `ANALYZE` on the two content tables after its extract pass.
+
+### The sources, and the ones left out
+
+```sh
+npm run corpus:fetch -- --source=wikipedia                     # the nine streams' articles, one API request each
+npm run corpus:fetch -- --source=wikipedia --stream=LAW        # one stream
+npm run corpus:fetch -- --source=indiacode,nptel,swayam        # writes down why each is not taken; fetches nothing
+npm run corpus:ingest -- --source=wikipedia                    # cut by section, attribution on every document, embedded
+```
+
+| Source | Taken | Licence as published | Why |
+| --- | --- | --- | --- |
+| Wikipedia (`wikipedia`) | yes: the articles in `scripts/corpus-college.ts` per stream (law, commerce, management, engineering, pharmacy, education, architecture, agriculture, health sciences) | CC BY-SA 4.0 (the API's own rights information) | share-alike allows this use with attribution: every passage's citation carries the article, the revision and its date, the permanent address and the licence (`ContentDocument.attribution`, drawn under the citation on the web and the phone) |
+| India Code (`indiacode`) | **no** | Copyright Policy of 22 June 2026: the legislative texts are the Legislative Department's; commercial use, reproduction and "systematic extraction, scraping, or harvesting" need its prior written permission | the plan called the bare acts public domain; the portal's own terms say otherwise. Linked only (its Hyper Linking Policy needs no permission). To take them: the department's written permission, or counsel's reading of the Copyright Act's section 52(1)(q) |
+| The Constitution from legislative.gov.in | **no** | — | the page is rendered by script, as MUHS and BCI were |
+| NPTEL (`nptel`) | **no** | "Distributed under Creative Commons Attribution-ShareAlike CC BY - NC - SA" (the footer) | Vidura is part of the paid plans; the non-commercial clause does not allow passages of it in a paid product's answers. Linked only |
+| SWAYAM (`swayam`) | **no** | Terms of Use: course materials "for your personal use in connection with those courses and programs only"; courses behind a sign-in | linked only |
+
+Each refusal is a row with `fetched: false` under `storage/corpus/<source>/_refused/index/manifest.json`, the terms in
+their own words. A Wikipedia article is fetched as the plain extract of one revision
+(`action=query&prop=extracts|revisions|info&explaintext`), written as `<slug>.txt` beside its manifest entry; a stub
+under 2,000 characters is not kept, an article over 150,000 is cut at a section; the reference sections ("See also",
+"References", "External links"…) are dropped by the chunker (`chunkPlainText` in `scripts/corpus-chunk.ts`). On
+18 October 2026 the files were fetched into an isolated folder under the session's scratchpad, read as data, then copied
+to `storage/corpus/wikipedia/`. Set `CORPUS_CONTACT` before a run: Wikimedia asks for a contact in the User-Agent (the
+run of 18 October named the repository's address).
+
+The run of 18 October 2026: 435 titles asked, 419 articles kept (law 77, engineering 53, commerce 47, management 45,
+pharmacy 45, health sciences 40, agriculture 39, architecture 37, education 36; an article chosen for two streams is one
+document listing both), 9 stubs and 5 titles with no article, 13.2 MB of text, 12 minutes at one request a second;
+8,608 chunks, extracted in seconds and embedded in 4.6 minutes; the corpus is now 6,328 documents and 144,824 chunks,
+every one with a vector. A college search: 0.7 s for the books, 0.2 s for the college sources.
+
+### The reference allow-list (`/root/vidura-references`)
+
+The operator keeps the public education sources Vidura may link to beside a **Learning** answer (`ReferenceSource`,
+migration `vidura_references`, seeded with NCERT OFFICIAL on YouTube, NPTEL, SWAYAM, Khan Academy India and India Code,
+each with its licence as published). A link is built by the server — never written by the model — from the source's
+https template on its own host with the cited passage's heading in place of `{topic}` (a Wikipedia article's title,
+else the book's chapter), so nothing the person typed leaves the platform. Who sees links: the roles the source names;
+a STUDENT only at a college and only when a recorded date of birth makes them eighteen or older; **never a pupil at a
+school, while decision 0002 stands** (it is not relaxed, and the page says so). A LAW source is linked only beside a law
+passage. Medium is refused as a host. Add, edit, switch off and on are audited (`vidura.reference.*`). Doors: `GET` and
+`POST /api/v1/operator/vidura/references`, `POST /api/v1/operator/vidura/references/{sourceId}`.
+
+### The college knowledge set
+
+`content/assistant-eval/college.json`, ninety questions (ten a stream, eight English, one Hindi, one Marathi), run as
+`npm run assistant:eval -- --sets=college` or from `/root/vidura-evals`. Each is asked as a college STUDENT of its stream
+and scored for the answer (answered, keywords, cited) and its sources (a cited passage from a document the case
+accepts — the stream's articles or a book that genuinely teaches the topic — and every cited Wikipedia passage
+carrying its attribution). On 18 October 2026: 27/90 before the sources were ingested, 72/90 after in the full run of
+the ten sets (70/90 when run alone).

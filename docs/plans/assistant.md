@@ -91,6 +91,11 @@ web panel / phone tab ──► /api/v1/assistant/* (catalog doors, module ASSIS
 | Curriculum, colleges | the syllabus PDFs of the affiliating universities and councils (SPPU, MUHS, MPKV, AICTE's model curriculum, BCI, PCI, NCTE, COA, ICAR), NPTEL and Swayam material, OpenStax and LibreTexts, NDLI's open holdings | the tutor at a college; the reference books the syllabi name are indexed by title and chapter only |
 | Other boards | CISCE, IB, other state boards: the syllabus documents | scope answers; the books are commercial and not collected |
 
+Vidura pass 4 (18 October 2026): the college sources taken are a Wikipedia subset for nine professional streams (CC BY-SA
+4.0, each passage carrying its attribution); NPTEL (CC BY-NC-SA: a paid product's answers are a commercial use), SWAYAM
+(personal use only) and India Code (its Copyright Policy of 22 June 2026 needs the Legislative Department's written
+permission) are linked from the operator's allow-list, never copied. Runbook section 12 has the table.
+
 Folder `storage/corpus/<board or university>/<grade or programme>/<subject>/<file>` with a `manifest.json`
 beside each file (title, edition and year, source URL, licence as published, retrieval date, SHA-256).
 In the storage bucket, never in git; about 2 to 3 GB. Counsel confirms the NCERT and Balbharati terms

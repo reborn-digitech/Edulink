@@ -33,7 +33,7 @@ import { basename, join, relative } from "node:path";
 import { config } from "dotenv";
 import { CORPUS_ROOT, SOURCES, walkManifests, type ManifestEntry, type SourceKey } from "./corpus-lib";
 import { closeOcr, extractPdf, toPng } from "./corpus-pdf";
-import { chunk, editionIn, chapterNameFromTitle, lettersOfTitle, type Structured } from "./corpus-chunk";
+import { chunk, chunkPlainText, editionIn, chapterNameFromTitle, lettersOfTitle, type Structured } from "./corpus-chunk";
 import { chunkPaper, type PaperChunk } from "./corpus-papers-chunk";
 import { refuseUnlessLocalDatabase } from "./local-db-guard.mjs";
 import { requireEmbedConfig } from "../src/lib/assistant-env";
@@ -128,6 +128,12 @@ async function ingestOne(dir: string, e: ManifestEntry): Promise<void> {
     totals.skipped++;
     return;
   }
+  // VIDURA PASS 4 (18 Oct 2026): a plain-text article (the Wikipedia subset, scripts/corpus-college.ts) is cut by its
+  // "== Heading ==" sections, carries its attribution, audience and streams, and has no pages or figures.
+  if (/\.txt$/i.test(e.file)) {
+    await ingestText(path, readFileSync(file, "utf8"), e);
+    return;
+  }
   const bytes = new Uint8Array(readFileSync(file));
   // A past paper (source "papers", 10 Oct 2026): a STYLE document, cut by question, no figures kept
   // (the generator never takes a paper's drawing); its numbers and option letters are short runs kept,
@@ -194,6 +200,7 @@ async function ingestOne(dir: string, e: ManifestEntry): Promise<void> {
     extra: (e.paper ? { ...(e.extra ?? {}), paper: e.paper } : (e.extra ?? {})) as Prisma.InputJsonValue,
     // The tutor never cites a paper (searchCurriculum excludes styleOnly); the quiz generator reads it for style.
     styleOnly: isPaper,
+    ...collegeFields(e),
   };
   await db.$transaction(async (tx) => {
     const doc = await tx.contentDocument.upsert({ where: { path }, create: { path, ...data }, update: data, select: { id: true } });
@@ -225,9 +232,72 @@ async function ingestOne(dir: string, e: ManifestEntry): Promise<void> {
   totals.figures += structured.figures.length;
 }
 
+/** Vidura pass 4: who a document is searched for, its streams, its licence's name and the attribution its passages carry. */
+function collegeFields(e: ManifestEntry) {
+  return {
+    audience: e.audience ?? null,
+    streams: e.streams ?? [],
+    licenceName: e.licence.name ?? null,
+    attribution: e.attribution ? (e.attribution as unknown as Prisma.InputJsonValue) : Prisma.DbNull,
+  };
+}
+
+/** A plain-text article into one document and its chunks (Vidura pass 4). */
+async function ingestText(path: string, text: string, e: ManifestEntry): Promise<void> {
+  const structured = chunkPlainText(text, { title: e.title });
+  const data = {
+    source: e.source,
+    kind: e.kind,
+    board: e.board,
+    gradeOrProgramme: e.gradeOrProgramme,
+    subject: e.subject,
+    title: e.title,
+    language: e.language,
+    edition: e.edition,
+    year: e.year,
+    sourceUrl: e.sourceUrl,
+    licenceUrl: e.licence.url,
+    licenceText: e.licence.text ?? null,
+    retrievedAt: new Date(e.retrievedAt),
+    sha256: e.sha256 ?? "",
+    bytes: e.bytes ?? Buffer.byteLength(text, "utf8"),
+    pageCount: 1,
+    extra: (e.extra ?? {}) as Prisma.InputJsonValue,
+    styleOnly: false,
+    ...collegeFields(e),
+  };
+  await db.$transaction(async (tx) => {
+    const doc = await tx.contentDocument.upsert({ where: { path }, create: { path, ...data }, update: data, select: { id: true } });
+    await tx.contentChunk.deleteMany({ where: { documentId: doc.id } });
+    if (structured.chunks.length) {
+      await tx.contentChunk.createMany({
+        data: structured.chunks.map((c) => ({
+          documentId: doc.id,
+          ordinal: c.ordinal,
+          chapter: c.chapter,
+          section: c.section,
+          headingPath: c.headingPath,
+          pageStart: c.pageStart,
+          pageEnd: c.pageEnd,
+          text: c.text,
+          language: chunkLanguage(e.language, c.text),
+          tokens: c.tokens,
+          figureKeys: [],
+          edition: e.edition,
+          kind: null,
+        })),
+      });
+    }
+  }, { timeout: 120_000 });
+  totals.documents++;
+  totals.pages += 1;
+  totals.chunks += structured.chunks.length;
+}
+
 async function extractPass() {
   const entries = walkManifests(CORPUS_ROOT, sources)
-    .filter(({ entry }) => entry.fetched && /\.pdf$/i.test(entry.file))
+    // A PDF, or (Vidura pass 4) a plain-text article.
+    .filter(({ entry }) => entry.fetched && (/\.pdf$/i.test(entry.file) || (/\.txt$/i.test(entry.file) && entry.source === "wikipedia")))
     // A book's prelims carry its edition and contents, not teaching text: read for the edition only.
     .filter(({ entry }) => entry.extra?.part !== "prelims")
     .filter(({ dir, entry }) => !PREFIX || relative(CORPUS_ROOT, join(dir, entry.file)).startsWith(PREFIX))
@@ -359,7 +429,13 @@ async function main() {
   await refuseUnlessLocalDatabase(db, "corpus:ingest");
   // Checked before any work: the extract pass is long, and an ingest that cannot embed is half a run.
   requireEmbedConfig("corpus:ingest");
-  if (!EMBED_ONLY) await extractPass();
+  if (!EMBED_ONLY) {
+    await extractPass();
+    // Vidura pass 4 (18 Oct 2026): fresh statistics after the documents changed, so the planner reads the books and the
+    // college sources at their real sizes (a stale estimate once turned a 22 ms keyword search into 43 s).
+    await db.$executeRawUnsafe(`ANALYZE "ContentDocument"`);
+    await db.$executeRawUnsafe(`ANALYZE "ContentChunk"`);
+  }
   let embedded: { done: number; minutes: number } | null = null;
   if (!EXTRACT_ONLY) embedded = await embedPass();
   const [counts = { documents: 0n, chunks: 0n, embedded: 0n }] = await db.$queryRaw<{ documents: bigint; chunks: bigint; embedded: bigint }[]>`

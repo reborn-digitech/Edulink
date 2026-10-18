@@ -1,0 +1,1617 @@
+{
+ "about": "The college knowledge set (docs/plans/vidura.md, pass 4; 18 October 2026): ten questions a stream for the nine streams with a corpus (law first, then commerce, management, engineering, pharmacy, education, architecture, agriculture and the health sciences), eight in English, one in Hindi and one in Marathi, each asked as a college STUDENT of that stream (previewAnswer with college and the stream). Scored: answered; correct by keywords (half of `keywords` in English, one of `keywords` or `localKeywords` in Hindi and Marathi, the tutor set's rule); cited (every cited passage exists); THE SOURCE (at least one cited passage from a document `accept` names: \"source:title pattern\", the pattern a regular expression on the document's title, case-insensitive — the stream's Wikipedia articles, or the book that genuinely teaches it); and THE ATTRIBUTION (every cited Wikipedia passage carries its attribution in the citation, title and licence matching its document). A case passes when all five hold.",
+ "cases": [
+  {
+   "id": "co-law-01",
+   "stream": "LAW",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is the basic structure doctrine of the Indian Constitution?",
+   "keywords": [
+    "basic structure",
+    "Kesavananda",
+    "amend",
+    "Parliament"
+   ],
+   "accept": [
+    "wikipedia:Basic structure|Amendment of the Constitution|Constitution of India"
+   ]
+  },
+  {
+   "id": "co-law-02",
+   "stream": "LAW",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "Explain the writ of habeas corpus",
+   "keywords": [
+    "habeas corpus",
+    "detention",
+    "court",
+    "release"
+   ],
+   "accept": [
+    "wikipedia:Habeas corpus|Writ"
+   ]
+  },
+  {
+   "id": "co-law-03",
+   "stream": "LAW",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is vicarious liability in tort law?",
+   "keywords": [
+    "employer",
+    "employee",
+    "liable",
+    "course of employment"
+   ],
+   "accept": [
+    "wikipedia:Vicarious liability|Tort",
+    "nios:Law"
+   ]
+  },
+  {
+   "id": "co-law-04",
+   "stream": "LAW",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What are the essentials of a valid contract under the Indian Contract Act?",
+   "keywords": [
+    "offer",
+    "acceptance",
+    "consideration",
+    "free consent"
+   ],
+   "accept": [
+    "wikipedia:Contract|Offer and acceptance|Consideration|Void contract",
+    "nios:Law|Business"
+   ]
+  },
+  {
+   "id": "co-law-05",
+   "stream": "LAW",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is mens rea?",
+   "keywords": [
+    "guilty mind",
+    "intention",
+    "crime",
+    "actus reus"
+   ],
+   "accept": [
+    "wikipedia:Mens rea|Actus reus|Penal Code|Nyaya Sanhita"
+   ]
+  },
+  {
+   "id": "co-law-06",
+   "stream": "LAW",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "Explain the doctrine of res judicata",
+   "keywords": [
+    "res judicata",
+    "decided",
+    "suit",
+    "same parties"
+   ],
+   "accept": [
+    "wikipedia:Res judicata|Civil Procedure"
+   ]
+  },
+  {
+   "id": "co-law-07",
+   "stream": "LAW",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What does Article 21 of the Constitution of India protect?",
+   "keywords": [
+    "life",
+    "personal liberty",
+    "procedure established by law",
+    "Article 21"
+   ],
+   "accept": [
+    "wikipedia:Article 21|Fundamental rights|Right to Privacy",
+    "nios:Political|Law|Social",
+    "ncert:Constitution|Political"
+   ]
+  },
+  {
+   "id": "co-law-08",
+   "stream": "LAW",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is the rule of strict liability from Rylands v Fletcher?",
+   "keywords": [
+    "strict liability",
+    "escape",
+    "dangerous",
+    "land"
+   ],
+   "accept": [
+    "wikipedia:Rylands|Strict liability|Tort"
+   ]
+  },
+  {
+   "id": "co-law-09",
+   "stream": "LAW",
+   "role": "STUDENT",
+   "language": "hi",
+   "question": "न्यायिक पुनरावलोकन क्या है?",
+   "keywords": [
+    "judicial review",
+    "court"
+   ],
+   "accept": [
+    "wikipedia:Judicial review|Supreme Court|Basic structure",
+    "nios:Political|Law|Social",
+    "ncert:Constitution|Political"
+   ],
+   "localKeywords": [
+    "न्यायिक",
+    "पुनरावलोकन",
+    "न्यायालय",
+    "संविधान"
+   ]
+  },
+  {
+   "id": "co-law-10",
+   "stream": "LAW",
+   "role": "STUDENT",
+   "language": "mr",
+   "question": "जनहित याचिका म्हणजे काय?",
+   "keywords": [
+    "public interest litigation"
+   ],
+   "accept": [
+    "wikipedia:Public interest litigation|Supreme Court"
+   ],
+   "localKeywords": [
+    "जनहित",
+    "याचिका",
+    "न्यायालय"
+   ]
+  },
+  {
+   "id": "co-commerce-01",
+   "stream": "COMMERCE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is double-entry bookkeeping?",
+   "keywords": [
+    "debit",
+    "credit",
+    "two accounts",
+    "double entry"
+   ],
+   "accept": [
+    "wikipedia:Double-entry|Accounting|Journal entry|Ledger",
+    "ncert:Accountancy",
+    "nios:Accountancy",
+    "ncert:Accountancy|Financial Accounting",
+    "balbharati:पुस्तपालन"
+   ]
+  },
+  {
+   "id": "co-commerce-02",
+   "stream": "COMMERCE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "Explain the time value of money",
+   "keywords": [
+    "present value",
+    "future value",
+    "interest",
+    "discount"
+   ],
+   "accept": [
+    "wikipedia:Time value of money|Net present value|Internal rate",
+    "nios:Business"
+   ]
+  },
+  {
+   "id": "co-commerce-03",
+   "stream": "COMMERCE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is working capital?",
+   "keywords": [
+    "current assets",
+    "current liabilities",
+    "working capital",
+    "short-term"
+   ],
+   "accept": [
+    "wikipedia:Working capital",
+    "ncert:Business|Financial|Accountancy",
+    "nios:Business|Accountancy",
+    "balbharati:चिटणिस|पुस्तपालन|वाणिज्य"
+   ]
+  },
+  {
+   "id": "co-commerce-04",
+   "stream": "COMMERCE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "How does the Goods and Services Tax work in India?",
+   "keywords": [
+    "GST",
+    "input tax credit",
+    "CGST",
+    "SGST"
+   ],
+   "accept": [
+    "wikipedia:Goods and Services Tax",
+    "nios:Business"
+   ]
+  },
+  {
+   "id": "co-commerce-05",
+   "stream": "COMMERCE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is depreciation in accounting?",
+   "keywords": [
+    "asset",
+    "useful life",
+    "cost",
+    "depreciation"
+   ],
+   "accept": [
+    "wikipedia:Depreciation",
+    "ncert:Accountancy",
+    "nios:Accountancy",
+    "ncert:Accountancy|Financial Accounting",
+    "balbharati:पुस्तपालन"
+   ]
+  },
+  {
+   "id": "co-commerce-06",
+   "stream": "COMMERCE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "Explain the net present value method of capital budgeting",
+   "keywords": [
+    "cash flows",
+    "discount",
+    "NPV",
+    "investment"
+   ],
+   "accept": [
+    "wikipedia:Net present value|Capital budgeting|Internal rate",
+    "nios:Business"
+   ]
+  },
+  {
+   "id": "co-commerce-07",
+   "stream": "COMMERCE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is a bill of exchange?",
+   "keywords": [
+    "drawer",
+    "drawee",
+    "payee",
+    "order"
+   ],
+   "accept": [
+    "wikipedia:Bill of exchange|Negotiable instrument",
+    "ncert:Accountancy",
+    "nios:Accountancy|Business",
+    "ncert:Accountancy|Financial Accounting",
+    "balbharati:पुस्तपालन"
+   ]
+  },
+  {
+   "id": "co-commerce-08",
+   "stream": "COMMERCE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is the balance of payments?",
+   "keywords": [
+    "current account",
+    "capital account",
+    "exports",
+    "imports"
+   ],
+   "accept": [
+    "wikipedia:Balance of payments",
+    "ncert:Economics|Macro",
+    "nios:Economics",
+    "balbharati:अर्थशास्त्र"
+   ]
+  },
+  {
+   "id": "co-commerce-09",
+   "stream": "COMMERCE",
+   "role": "STUDENT",
+   "language": "hi",
+   "question": "मुद्रास्फीति क्या है?",
+   "keywords": [
+    "inflation",
+    "prices"
+   ],
+   "accept": [
+    "wikipedia:Inflation",
+    "ncert:Economics|Macro",
+    "nios:Economics",
+    "balbharati:अर्थशास्त्र"
+   ],
+   "localKeywords": [
+    "मुद्रास्फीति",
+    "कीमत",
+    "मूल्य"
+   ]
+  },
+  {
+   "id": "co-commerce-10",
+   "stream": "COMMERCE",
+   "role": "STUDENT",
+   "language": "mr",
+   "question": "रोख प्रवाह विवरण म्हणजे काय?",
+   "keywords": [
+    "cash flow"
+   ],
+   "accept": [
+    "wikipedia:Cash flow statement",
+    "ncert:Accountancy|Financial",
+    "nios:Accountancy",
+    "ncert:Accountancy|Financial Accounting",
+    "balbharati:पुस्तपालन"
+   ],
+   "localKeywords": [
+    "रोख",
+    "प्रवाह",
+    "विवरण"
+   ]
+  },
+  {
+   "id": "co-management-01",
+   "stream": "MANAGEMENT",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "Explain Maslow's hierarchy of needs",
+   "keywords": [
+    "physiological",
+    "safety",
+    "esteem",
+    "self-actualization"
+   ],
+   "accept": [
+    "wikipedia:Maslow|Motivation",
+    "nios:Business",
+    "ncert:Business",
+    "nios:Entrepreneurship"
+   ]
+  },
+  {
+   "id": "co-management-02",
+   "stream": "MANAGEMENT",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is SWOT analysis?",
+   "keywords": [
+    "strengths",
+    "weaknesses",
+    "opportunities",
+    "threats"
+   ],
+   "accept": [
+    "wikipedia:SWOT",
+    "nios:Entrepreneurship|Business"
+   ]
+  },
+  {
+   "id": "co-management-03",
+   "stream": "MANAGEMENT",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "Explain Porter's five forces analysis",
+   "keywords": [
+    "rivalry",
+    "buyers",
+    "suppliers",
+    "substitutes"
+   ],
+   "accept": [
+    "wikipedia:Porter"
+   ]
+  },
+  {
+   "id": "co-management-04",
+   "stream": "MANAGEMENT",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is the marketing mix?",
+   "keywords": [
+    "product",
+    "price",
+    "place",
+    "promotion"
+   ],
+   "accept": [
+    "wikipedia:Marketing mix|Marketing",
+    "nios:Business",
+    "ncert:Business",
+    "balbharati:विपणन|वाणिज्य|चिटणिस",
+    "nios:Entrepreneurship"
+   ]
+  },
+  {
+   "id": "co-management-05",
+   "stream": "MANAGEMENT",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is just-in-time manufacturing?",
+   "keywords": [
+    "inventory",
+    "waste",
+    "demand",
+    "Toyota"
+   ],
+   "accept": [
+    "wikipedia:Just-in-time|Lean manufacturing|Inventory|Operations management"
+   ]
+  },
+  {
+   "id": "co-management-06",
+   "stream": "MANAGEMENT",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "Explain the critical path method in project management",
+   "keywords": [
+    "activities",
+    "longest",
+    "duration",
+    "critical path"
+   ],
+   "accept": [
+    "wikipedia:Critical path|Project management|Program evaluation"
+   ]
+  },
+  {
+   "id": "co-management-07",
+   "stream": "MANAGEMENT",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What are Fayol's principles of management?",
+   "keywords": [
+    "division of work",
+    "authority",
+    "unity of command",
+    "Fayol"
+   ],
+   "accept": [
+    "wikipedia:Fayol|Management",
+    "ncert:Business",
+    "nios:Business",
+    "balbharati:वाणिज्य|व्यवस्थापन"
+   ]
+  },
+  {
+   "id": "co-management-08",
+   "stream": "MANAGEMENT",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is Herzberg's two-factor theory?",
+   "keywords": [
+    "hygiene",
+    "motivators",
+    "satisfaction",
+    "Herzberg"
+   ],
+   "accept": [
+    "wikipedia:Two-factor|Motivation",
+    "nios:Business",
+    "ncert:Business"
+   ]
+  },
+  {
+   "id": "co-management-09",
+   "stream": "MANAGEMENT",
+   "role": "STUDENT",
+   "language": "hi",
+   "question": "नेतृत्व क्या है?",
+   "keywords": [
+    "leadership"
+   ],
+   "accept": [
+    "wikipedia:Leadership",
+    "ncert:Business",
+    "nios:Business",
+    "nios:Entrepreneurship"
+   ],
+   "localKeywords": [
+    "नेतृत्व",
+    "अनुयायी",
+    "प्रभाव"
+   ]
+  },
+  {
+   "id": "co-management-10",
+   "stream": "MANAGEMENT",
+   "role": "STUDENT",
+   "language": "mr",
+   "question": "बाजार विभाजन म्हणजे काय?",
+   "keywords": [
+    "market segmentation",
+    "segments"
+   ],
+   "accept": [
+    "wikipedia:Market segmentation|Marketing"
+   ],
+   "localKeywords": [
+    "बाजार",
+    "विभाजन",
+    "ग्राहक"
+   ]
+  },
+  {
+   "id": "co-engineering-01",
+   "stream": "ENGINEERING",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is the bending moment of a beam?",
+   "keywords": [
+    "beam",
+    "moment",
+    "load",
+    "bending"
+   ],
+   "accept": [
+    "wikipedia:Bending moment|Shear and moment|Beam"
+   ]
+  },
+  {
+   "id": "co-engineering-02",
+   "stream": "ENGINEERING",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "Explain Bernoulli's principle",
+   "keywords": [
+    "pressure",
+    "velocity",
+    "fluid",
+    "energy"
+   ],
+   "accept": [
+    "wikipedia:Bernoulli|Fluid mechanics",
+    "ncert:Physics",
+    "nios:Physics"
+   ]
+  },
+  {
+   "id": "co-engineering-03",
+   "stream": "ENGINEERING",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is a stack data structure?",
+   "keywords": [
+    "LIFO",
+    "push",
+    "pop",
+    "stack"
+   ],
+   "accept": [
+    "wikipedia:Stack|Data structure",
+    "ncert:Computer",
+    "nios:Computer"
+   ]
+  },
+  {
+   "id": "co-engineering-04",
+   "stream": "ENGINEERING",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "Explain database normalization",
+   "keywords": [
+    "redundancy",
+    "normal form",
+    "tables",
+    "dependency"
+   ],
+   "accept": [
+    "wikipedia:Database normalization|Database|SQL",
+    "ncert:Computer|Informatics",
+    "nios:Computer"
+   ]
+  },
+  {
+   "id": "co-engineering-05",
+   "stream": "ENGINEERING",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is the OSI model?",
+   "keywords": [
+    "layers",
+    "physical",
+    "transport",
+    "application"
+   ],
+   "accept": [
+    "wikipedia:OSI model|Computer network|Internet protocol",
+    "ncert:Computer|Informatics",
+    "nios:Computer"
+   ]
+  },
+  {
+   "id": "co-engineering-06",
+   "stream": "ENGINEERING",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is a PID controller?",
+   "keywords": [
+    "proportional",
+    "integral",
+    "derivative",
+    "error"
+   ],
+   "accept": [
+    "wikipedia:PID|Control theory"
+   ]
+  },
+  {
+   "id": "co-engineering-07",
+   "stream": "ENGINEERING",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "Explain the Carnot cycle",
+   "keywords": [
+    "isothermal",
+    "adiabatic",
+    "efficiency",
+    "heat engine"
+   ],
+   "accept": [
+    "wikipedia:Carnot|Laws of thermodynamics",
+    "ncert:Physics",
+    "nios:Physics"
+   ]
+  },
+  {
+   "id": "co-engineering-08",
+   "stream": "ENGINEERING",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is the time complexity of an algorithm?",
+   "keywords": [
+    "big O",
+    "input size",
+    "running time",
+    "algorithm"
+   ],
+   "accept": [
+    "wikipedia:Time complexity|Sorting algorithm",
+    "ncert:Computer"
+   ]
+  },
+  {
+   "id": "co-engineering-09",
+   "stream": "ENGINEERING",
+   "role": "STUDENT",
+   "language": "hi",
+   "question": "ट्रांजिस्टर कैसे काम करता है?",
+   "keywords": [
+    "transistor",
+    "current"
+   ],
+   "accept": [
+    "wikipedia:Transistor|Semiconductor",
+    "ncert:Physics",
+    "nios:Physics"
+   ],
+   "localKeywords": [
+    "ट्रांजिस्टर",
+    "धारा",
+    "प्रवर्धन",
+    "अर्धचालक"
+   ]
+  },
+  {
+   "id": "co-engineering-10",
+   "stream": "ENGINEERING",
+   "role": "STUDENT",
+   "language": "mr",
+   "question": "प्रबलित काँक्रीट म्हणजे काय?",
+   "keywords": [
+    "reinforced concrete",
+    "steel"
+   ],
+   "accept": [
+    "wikipedia:Reinforced concrete|Prestressed"
+   ],
+   "localKeywords": [
+    "काँक्रीट",
+    "पोलाद",
+    "सळई"
+   ]
+  },
+  {
+   "id": "co-pharmacy-01",
+   "stream": "PHARMACY",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "Explain the bioavailability of a drug",
+   "keywords": [
+    "absorption",
+    "systemic",
+    "dose",
+    "bioavailability"
+   ],
+   "accept": [
+    "wikipedia:Bioavailability|Pharmacokinetics|Absorption"
+   ]
+  },
+  {
+   "id": "co-pharmacy-02",
+   "stream": "PHARMACY",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is pharmacokinetics?",
+   "keywords": [
+    "absorption",
+    "distribution",
+    "metabolism",
+    "excretion"
+   ],
+   "accept": [
+    "wikipedia:Pharmacokinetics|Distribution|Drug metabolism|Clearance"
+   ]
+  },
+  {
+   "id": "co-pharmacy-03",
+   "stream": "PHARMACY",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is the therapeutic index of a drug?",
+   "keywords": [
+    "toxic",
+    "effective",
+    "dose",
+    "ratio"
+   ],
+   "accept": [
+    "wikipedia:Therapeutic index|Dose"
+   ]
+  },
+  {
+   "id": "co-pharmacy-04",
+   "stream": "PHARMACY",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is the difference between an agonist and an antagonist?",
+   "keywords": [
+    "receptor",
+    "activates",
+    "blocks",
+    "agonist"
+   ],
+   "accept": [
+    "wikipedia:Agonist|Receptor antagonist|Receptor"
+   ]
+  },
+  {
+   "id": "co-pharmacy-05",
+   "stream": "PHARMACY",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is the biological half-life of a drug?",
+   "keywords": [
+    "half",
+    "concentration",
+    "time",
+    "elimination"
+   ],
+   "accept": [
+    "wikipedia:Biological half-life|Clearance|Pharmacokinetics"
+   ]
+  },
+  {
+   "id": "co-pharmacy-06",
+   "stream": "PHARMACY",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "How do beta blockers work?",
+   "keywords": [
+    "adrenaline",
+    "heart",
+    "receptors",
+    "blood pressure"
+   ],
+   "accept": [
+    "wikipedia:Beta blocker"
+   ]
+  },
+  {
+   "id": "co-pharmacy-07",
+   "stream": "PHARMACY",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is pharmacovigilance?",
+   "keywords": [
+    "adverse",
+    "drug",
+    "safety",
+    "monitoring"
+   ],
+   "accept": [
+    "wikipedia:Pharmacovigilance|Adverse drug reaction"
+   ]
+  },
+  {
+   "id": "co-pharmacy-08",
+   "stream": "PHARMACY",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is high-performance liquid chromatography?",
+   "keywords": [
+    "column",
+    "mobile phase",
+    "separation",
+    "pressure"
+   ],
+   "accept": [
+    "wikipedia:High-performance|Chromatography",
+    "ncert:Chemistry"
+   ]
+  },
+  {
+   "id": "co-pharmacy-09",
+   "stream": "PHARMACY",
+   "role": "STUDENT",
+   "language": "hi",
+   "question": "एंटीबायोटिक दवाएँ कैसे काम करती हैं?",
+   "keywords": [
+    "antibiotic",
+    "bacteria"
+   ],
+   "accept": [
+    "wikipedia:Antibiotic",
+    "ncert:Biology",
+    "nios:Biology"
+   ],
+   "localKeywords": [
+    "जीवाणु",
+    "एंटीबायोटिक",
+    "प्रतिजैविक"
+   ]
+  },
+  {
+   "id": "co-pharmacy-10",
+   "stream": "PHARMACY",
+   "role": "STUDENT",
+   "language": "mr",
+   "question": "लस कशी काम करते?",
+   "keywords": [
+    "vaccine",
+    "immune"
+   ],
+   "accept": [
+    "wikipedia:Vaccine",
+    "ncert:Biology",
+    "nios:Biology"
+   ],
+   "localKeywords": [
+    "लस",
+    "प्रतिकार",
+    "प्रतिपिंड",
+    "रोगप्रतिकारक"
+   ]
+  },
+  {
+   "id": "co-education-01",
+   "stream": "EDUCATION",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "Explain Bloom's taxonomy",
+   "keywords": [
+    "cognitive",
+    "knowledge",
+    "evaluation",
+    "taxonomy"
+   ],
+   "accept": [
+    "wikipedia:Bloom"
+   ]
+  },
+  {
+   "id": "co-education-02",
+   "stream": "EDUCATION",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is formative assessment?",
+   "keywords": [
+    "feedback",
+    "during",
+    "learning",
+    "formative"
+   ],
+   "accept": [
+    "wikipedia:Formative|Educational assessment|Summative"
+   ]
+  },
+  {
+   "id": "co-education-03",
+   "stream": "EDUCATION",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "Explain Vygotsky's zone of proximal development",
+   "keywords": [
+    "learner",
+    "help",
+    "more knowledgeable",
+    "zone"
+   ],
+   "accept": [
+    "wikipedia:Zone of proximal|Scaffolding"
+   ]
+  },
+  {
+   "id": "co-education-04",
+   "stream": "EDUCATION",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What are Piaget's stages of cognitive development?",
+   "keywords": [
+    "sensorimotor",
+    "preoperational",
+    "concrete operational",
+    "formal operational"
+   ],
+   "accept": [
+    "wikipedia:Piaget",
+    "ncert:Psychology",
+    "nios:Psychology"
+   ]
+  },
+  {
+   "id": "co-education-05",
+   "stream": "EDUCATION",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is microteaching?",
+   "keywords": [
+    "teaching skill",
+    "short",
+    "feedback",
+    "small group"
+   ],
+   "accept": [
+    "wikipedia:Microteaching"
+   ]
+  },
+  {
+   "id": "co-education-06",
+   "stream": "EDUCATION",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What does the Right to Education Act provide?",
+   "keywords": [
+    "free",
+    "compulsory",
+    "six",
+    "fourteen"
+   ],
+   "accept": [
+    "wikipedia:Right of Children"
+   ]
+  },
+  {
+   "id": "co-education-07",
+   "stream": "EDUCATION",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is inclusive education?",
+   "keywords": [
+    "disabilities",
+    "mainstream",
+    "all children",
+    "inclusion"
+   ],
+   "accept": [
+    "wikipedia:Inclusion"
+   ]
+  },
+  {
+   "id": "co-education-08",
+   "stream": "EDUCATION",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "Explain Gardner's theory of multiple intelligences",
+   "keywords": [
+    "linguistic",
+    "logical",
+    "spatial",
+    "intelligences"
+   ],
+   "accept": [
+    "wikipedia:multiple intelligences",
+    "ncert:Psychology"
+   ]
+  },
+  {
+   "id": "co-education-09",
+   "stream": "EDUCATION",
+   "role": "STUDENT",
+   "language": "hi",
+   "question": "रचनावाद (कंस्ट्रक्टिविज़्म) क्या है?",
+   "keywords": [
+    "constructivism",
+    "knowledge"
+   ],
+   "accept": [
+    "wikipedia:Constructivism"
+   ],
+   "localKeywords": [
+    "रचनावाद",
+    "ज्ञान",
+    "अनुभव",
+    "निर्माण"
+   ]
+  },
+  {
+   "id": "co-education-10",
+   "stream": "EDUCATION",
+   "role": "STUDENT",
+   "language": "mr",
+   "question": "कृती संशोधन म्हणजे काय?",
+   "keywords": [
+    "action research"
+   ],
+   "accept": [
+    "wikipedia:Action research"
+   ],
+   "localKeywords": [
+    "कृती",
+    "संशोधन",
+    "समस्या",
+    "शिक्षक"
+   ]
+  },
+  {
+   "id": "co-architecture-01",
+   "stream": "ARCHITECTURE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "Explain the principles of design in architecture",
+   "keywords": [
+    "balance",
+    "proportion",
+    "rhythm",
+    "design"
+   ],
+   "accept": [
+    "wikipedia:Visual design|Proportion|Architecture|Form follows"
+   ]
+  },
+  {
+   "id": "co-architecture-02",
+   "stream": "ARCHITECTURE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is passive solar building design?",
+   "keywords": [
+    "sun",
+    "heat",
+    "windows",
+    "thermal mass"
+   ],
+   "accept": [
+    "wikipedia:Passive solar|Sustainable|Green building|Daylighting"
+   ]
+  },
+  {
+   "id": "co-architecture-03",
+   "stream": "ARCHITECTURE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What are the classical orders of architecture?",
+   "keywords": [
+    "Doric",
+    "Ionic",
+    "Corinthian",
+    "column"
+   ],
+   "accept": [
+    "wikipedia:Classical order"
+   ]
+  },
+  {
+   "id": "co-architecture-04",
+   "stream": "ARCHITECTURE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is a load-bearing wall?",
+   "keywords": [
+    "load",
+    "wall",
+    "structure",
+    "weight"
+   ],
+   "accept": [
+    "wikipedia:Load-bearing|Masonry"
+   ]
+  },
+  {
+   "id": "co-architecture-05",
+   "stream": "ARCHITECTURE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is Vastu shastra?",
+   "keywords": [
+    "direction",
+    "design",
+    "space",
+    "Vastu"
+   ],
+   "accept": [
+    "wikipedia:Vastu"
+   ]
+  },
+  {
+   "id": "co-architecture-06",
+   "stream": "ARCHITECTURE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What are the features of Mughal architecture?",
+   "keywords": [
+    "dome",
+    "Taj Mahal",
+    "gardens",
+    "red sandstone"
+   ],
+   "accept": [
+    "wikipedia:Mughal",
+    "ncert:History|Themes|Art|Heritage",
+    "nios:History|Culture"
+   ]
+  },
+  {
+   "id": "co-architecture-07",
+   "stream": "ARCHITECTURE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is building information modeling?",
+   "keywords": [
+    "digital",
+    "model",
+    "building",
+    "BIM"
+   ],
+   "accept": [
+    "wikipedia:Building information"
+   ]
+  },
+  {
+   "id": "co-architecture-08",
+   "stream": "ARCHITECTURE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "Explain the golden ratio in architecture",
+   "keywords": [
+    "1.618",
+    "proportion",
+    "ratio",
+    "golden"
+   ],
+   "accept": [
+    "wikipedia:Golden ratio|Proportion"
+   ]
+  },
+  {
+   "id": "co-architecture-09",
+   "stream": "ARCHITECTURE",
+   "role": "STUDENT",
+   "language": "hi",
+   "question": "द्रविड़ मंदिर स्थापत्य की विशेषताएँ क्या हैं?",
+   "keywords": [
+    "gopuram",
+    "vimana"
+   ],
+   "accept": [
+    "wikipedia:Dravidian|Hindu temple",
+    "ncert:Art|Heritage|History",
+    "nios:Culture|History"
+   ],
+   "localKeywords": [
+    "गोपुरम",
+    "विमान",
+    "मंदिर",
+    "द्रविड़"
+   ]
+  },
+  {
+   "id": "co-architecture-10",
+   "stream": "ARCHITECTURE",
+   "role": "STUDENT",
+   "language": "mr",
+   "question": "शाश्वत वास्तुकला म्हणजे काय?",
+   "keywords": [
+    "sustainable",
+    "energy"
+   ],
+   "accept": [
+    "wikipedia:Sustainable|Green building"
+   ],
+   "localKeywords": [
+    "ऊर्जा",
+    "पर्यावरण",
+    "शाश्वत"
+   ]
+  },
+  {
+   "id": "co-agriculture-01",
+   "stream": "AGRICULTURE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is soil fertility?",
+   "keywords": [
+    "nutrients",
+    "soil",
+    "plants",
+    "fertility"
+   ],
+   "accept": [
+    "wikipedia:Soil fertility|Soil|Plant nutrition",
+    "balbharati:.",
+    "nios:Agri|Science|Biology"
+   ]
+  },
+  {
+   "id": "co-agriculture-02",
+   "stream": "AGRICULTURE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "Explain biological nitrogen fixation",
+   "keywords": [
+    "Rhizobium",
+    "legumes",
+    "ammonia",
+    "nitrogen"
+   ],
+   "accept": [
+    "wikipedia:Nitrogen fixation|Biofertilizer",
+    "ncert:Biology",
+    "nios:Biology",
+    "balbharati:."
+   ]
+  },
+  {
+   "id": "co-agriculture-03",
+   "stream": "AGRICULTURE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is crop rotation and why is it practised?",
+   "keywords": [
+    "crops",
+    "soil",
+    "pests",
+    "rotation"
+   ],
+   "accept": [
+    "wikipedia:Crop rotation",
+    "ncert:Science|Geography",
+    "nios:.",
+    "balbharati:."
+   ]
+  },
+  {
+   "id": "co-agriculture-04",
+   "stream": "AGRICULTURE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is integrated pest management?",
+   "keywords": [
+    "pests",
+    "biological",
+    "chemical",
+    "monitoring"
+   ],
+   "accept": [
+    "wikipedia:Integrated pest|Pesticide",
+    "balbharati:."
+   ]
+  },
+  {
+   "id": "co-agriculture-05",
+   "stream": "AGRICULTURE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is drip irrigation?",
+   "keywords": [
+    "water",
+    "roots",
+    "drip",
+    "efficient"
+   ],
+   "accept": [
+    "wikipedia:Drip irrigation|Irrigation",
+    "ncert:.",
+    "balbharati:.",
+    "nios:."
+   ]
+  },
+  {
+   "id": "co-agriculture-06",
+   "stream": "AGRICULTURE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What was the Green Revolution in India?",
+   "keywords": [
+    "high-yielding",
+    "wheat",
+    "fertilisers",
+    "irrigation"
+   ],
+   "accept": [
+    "wikipedia:Green Revolution|Agriculture in India",
+    "ncert:.",
+    "nios:."
+   ]
+  },
+  {
+   "id": "co-agriculture-07",
+   "stream": "AGRICULTURE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is the difference between kharif and rabi crops?",
+   "keywords": [
+    "monsoon",
+    "winter",
+    "rice",
+    "wheat"
+   ],
+   "accept": [
+    "wikipedia:Kharif|Rabi|Agriculture in India",
+    "ncert:.",
+    "balbharati:.",
+    "nios:."
+   ]
+  },
+  {
+   "id": "co-agriculture-08",
+   "stream": "AGRICULTURE",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is vermicomposting?",
+   "keywords": [
+    "earthworms",
+    "organic",
+    "compost",
+    "waste"
+   ],
+   "accept": [
+    "wikipedia:Vermicompost|Organic farming",
+    "ncert:.",
+    "nios:.",
+    "balbharati:."
+   ]
+  },
+  {
+   "id": "co-agriculture-09",
+   "stream": "AGRICULTURE",
+   "role": "STUDENT",
+   "language": "hi",
+   "question": "न्यूनतम समर्थन मूल्य क्या है?",
+   "keywords": [
+    "minimum support price",
+    "government"
+   ],
+   "accept": [
+    "wikipedia:Minimum support|Agricultural economics|Agriculture in India",
+    "ncert:Economics",
+    "nios:Economics"
+   ],
+   "localKeywords": [
+    "न्यूनतम",
+    "समर्थन",
+    "मूल्य",
+    "सरकार",
+    "किसान"
+   ]
+  },
+  {
+   "id": "co-agriculture-10",
+   "stream": "AGRICULTURE",
+   "role": "STUDENT",
+   "language": "mr",
+   "question": "कृषी वनीकरण म्हणजे काय?",
+   "keywords": [
+    "agroforestry",
+    "trees"
+   ],
+   "accept": [
+    "wikipedia:Agroforestry",
+    "balbharati:."
+   ],
+   "localKeywords": [
+    "झाडे",
+    "पिके",
+    "वनीकरण"
+   ]
+  },
+  {
+   "id": "co-health-sciences-01",
+   "stream": "HEALTH_SCIENCES",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is homeostasis?",
+   "keywords": [
+    "internal",
+    "stable",
+    "body",
+    "regulation"
+   ],
+   "accept": [
+    "wikipedia:Homeostasis|Physiology",
+    "ncert:Biology",
+    "nios:Biology"
+   ]
+  },
+  {
+   "id": "co-health-sciences-02",
+   "stream": "HEALTH_SCIENCES",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "How is blood pressure measured and what do the two numbers mean?",
+   "keywords": [
+    "systolic",
+    "diastolic",
+    "mmHg",
+    "arteries"
+   ],
+   "accept": [
+    "wikipedia:Blood pressure|Vital signs|Hypertension",
+    "ncert:Biology",
+    "nios:Biology"
+   ]
+  },
+  {
+   "id": "co-health-sciences-03",
+   "stream": "HEALTH_SCIENCES",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is the role of antibodies in the immune system?",
+   "keywords": [
+    "antigen",
+    "B cells",
+    "pathogens",
+    "immune"
+   ],
+   "accept": [
+    "wikipedia:Antibody|Immune system",
+    "ncert:Biology",
+    "nios:Biology"
+   ]
+  },
+  {
+   "id": "co-health-sciences-04",
+   "stream": "HEALTH_SCIENCES",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What are vital signs?",
+   "keywords": [
+    "temperature",
+    "pulse",
+    "respiration",
+    "blood pressure"
+   ],
+   "accept": [
+    "wikipedia:Vital signs"
+   ]
+  },
+  {
+   "id": "co-health-sciences-05",
+   "stream": "HEALTH_SCIENCES",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is epidemiology?",
+   "keywords": [
+    "disease",
+    "population",
+    "distribution",
+    "causes"
+   ],
+   "accept": [
+    "wikipedia:Epidemiology|Public health"
+   ]
+  },
+  {
+   "id": "co-health-sciences-06",
+   "stream": "HEALTH_SCIENCES",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What is triage in emergency care?",
+   "keywords": [
+    "priority",
+    "patients",
+    "severity",
+    "treatment"
+   ],
+   "accept": [
+    "wikipedia:Triage|First aid"
+   ]
+  },
+  {
+   "id": "co-health-sciences-07",
+   "stream": "HEALTH_SCIENCES",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "Explain the steps of the nursing process",
+   "keywords": [
+    "assessment",
+    "diagnosis",
+    "planning",
+    "evaluation"
+   ],
+   "accept": [
+    "wikipedia:Nursing process"
+   ]
+  },
+  {
+   "id": "co-health-sciences-08",
+   "stream": "HEALTH_SCIENCES",
+   "role": "STUDENT",
+   "language": "en",
+   "question": "What causes tooth decay?",
+   "keywords": [
+    "bacteria",
+    "acid",
+    "sugar",
+    "enamel"
+   ],
+   "accept": [
+    "wikipedia:Tooth decay|Periodontal",
+    "ncert:.",
+    "nios:."
+   ]
+  },
+  {
+   "id": "co-health-sciences-09",
+   "stream": "HEALTH_SCIENCES",
+   "role": "STUDENT",
+   "language": "hi",
+   "question": "रक्ताल्पता (एनीमिया) क्या है?",
+   "keywords": [
+    "anaemia",
+    "haemoglobin",
+    "anemia",
+    "hemoglobin"
+   ],
+   "accept": [
+    "wikipedia:Anemia",
+    "ncert:Biology|Science",
+    "nios:Biology|Science|Home"
+   ],
+   "localKeywords": [
+    "रक्ताल्पता",
+    "हीमोग्लोबिन",
+    "आयरन",
+    "लौह"
+   ]
+  },
+  {
+   "id": "co-health-sciences-10",
+   "stream": "HEALTH_SCIENCES",
+   "role": "STUDENT",
+   "language": "mr",
+   "question": "क्षयरोग कसा पसरतो?",
+   "keywords": [
+    "tuberculosis",
+    "bacteria"
+   ],
+   "accept": [
+    "wikipedia:Tuberculosis",
+    "ncert:Biology|Science",
+    "nios:Biology|Science"
+   ],
+   "localKeywords": [
+    "क्षयरोग",
+    "जीवाणू",
+    "हवा",
+    "खोकला"
+   ]
+  }
+ ]
+}

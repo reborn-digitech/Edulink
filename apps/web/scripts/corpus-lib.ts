@@ -17,11 +17,17 @@ import { join, resolve } from "node:path";
 
 export const CORPUS_ROOT = resolve(process.env.CORPUS_DIR?.trim() || join("storage", "corpus"));
 
-/** "papers" (10 Oct 2026): past entrance, olympiad and board sample papers, a STYLE corpus for quiz levels 5 and 6 (scripts/corpus-papers.ts). */
-export type SourceKey = "ncert" | "balbharati" | "nios" | "syllabi" | "glossaries" | "papers";
-export const SOURCES: SourceKey[] = ["ncert", "balbharati", "nios", "syllabi", "glossaries", "papers"];
+/**
+ * "papers" (10 Oct 2026): past entrance, olympiad and board sample papers, a STYLE corpus for quiz levels 5 and 6 (scripts/corpus-papers.ts).
+ * Vidura pass 4 (18 Oct 2026, scripts/corpus-college.ts): "wikipedia", the subset for the professional streams a college's
+ * tutor reads (CC BY-SA 4.0, every passage carrying its attribution); "indiacode", "nptel" and "swayam", the sources the
+ * plan named whose published terms do not allow this use, each written down as refused with its terms.
+ */
+export type SourceKey = "ncert" | "balbharati" | "nios" | "syllabi" | "glossaries" | "papers" | "wikipedia" | "indiacode" | "nptel" | "swayam";
+export const SOURCES: SourceKey[] = ["ncert", "balbharati", "nios", "syllabi", "glossaries", "papers", "wikipedia", "indiacode", "nptel", "swayam"];
 
-export type ContentKind = "textbook" | "exemplar" | "course" | "glossary" | "syllabus" | PaperKind;
+/** "encyclopedia" (Vidura pass 4): one Wikipedia article, as plain text. */
+export type ContentKind = "textbook" | "exemplar" | "course" | "glossary" | "syllabus" | "encyclopedia" | "law-text" | PaperKind;
 
 /** What a past paper is: a national or state entrance test's, an olympiad's (or its first stage's), a board's sample paper. */
 export type PaperKind = "entrance-paper" | "olympiad-paper" | "board-sample-paper";
@@ -59,7 +65,16 @@ export type Licence = {
   text?: string;
   /** Where the site publishes its terms. */
   url: string;
+  /** The licence by its short name when the site names one ("CC BY-SA 4.0"; Vidura pass 4). */
+  name?: string;
 };
+
+/**
+ * What every passage of a document carries in its citation (Vidura pass 4): a share-alike licence asks for the title,
+ * the authors, the address and the licence. For a Wikipedia article: its title, the revision read, when that revision
+ * was saved, its permanent address and the licence's name and address.
+ */
+export type Attribution = { kind: "WIKIPEDIA"; title: string; revision: number; revisedAt: string; url: string; licence: string; licenceUrl: string };
 
 export type ManifestEntry = {
   file: string;
@@ -87,6 +102,12 @@ export type ManifestEntry = {
   kind: ContentKind;
   /** Source "papers" only: the body, the test, the sitting, the part and the level. */
   paper?: PaperMeta;
+  /** Vidura pass 4: "COLLEGE" for a document only a college's tutor reads; absent for everyone (the books). */
+  audience?: "COLLEGE";
+  /** Vidura pass 4: the college streams (STREAMS) the document was chosen for. */
+  streams?: string[];
+  /** Vidura pass 4: what each of its passages carries in a citation. */
+  attribution?: Attribution;
   /** Chapter number within a book, the site's book code, the HTTP Last-Modified, anything else the site said. */
   extra?: Record<string, string | number | null>;
 };

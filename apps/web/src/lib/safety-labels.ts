@@ -871,6 +871,11 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "vidura.answer.check": "audit.viduraAnswerCheck",
   "vidura.answer.revoke": "audit.viduraAnswerRevoke",
   "vidura.answer.discard": "audit.viduraAnswerDiscard",
+  // Vidura pass 4 (18 Oct 2026): the reference allow-list.
+  "vidura.reference.add": "audit.viduraReferenceAdd",
+  "vidura.reference.edit": "audit.viduraReferenceEdit",
+  "vidura.reference.enable": "audit.viduraReferenceEnable",
+  "vidura.reference.disable": "audit.viduraReferenceDisable",
   "vidura.eval.start": "audit.viduraEvalStart",
   "vidura.eval.stop": "audit.viduraEvalStop",
   "vidura.unanswered.export": "audit.viduraUnansweredExport",

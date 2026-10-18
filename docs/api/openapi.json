@@ -222001,6 +222001,47 @@
                                     },
                                     "chunkId": {
                                       "type": "string"
+                                    },
+                                    "attribution": {
+                                      "type": "object",
+                                      "properties": {
+                                        "kind": {
+                                          "type": "string",
+                                          "enum": [
+                                            "WIKIPEDIA"
+                                          ]
+                                        },
+                                        "title": {
+                                          "type": "string"
+                                        },
+                                        "revision": {
+                                          "type": "integer"
+                                        },
+                                        "revisedAt": {
+                                          "type": "string"
+                                        },
+                                        "url": {
+                                          "type": "string"
+                                        },
+                                        "licence": {
+                                          "type": "string"
+                                        },
+                                        "licenceUrl": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "kind",
+                                        "title",
+                                        "revision",
+                                        "revisedAt",
+                                        "url",
+                                        "licence",
+                                        "licenceUrl"
+                                      ],
+                                      "additionalProperties": false,
+                                      "nullable": true,
+                                      "default": null
                                     }
                                   },
                                   "required": [
@@ -222175,6 +222216,41 @@
                           "standard": {
                             "type": "boolean",
                             "default": false
+                          },
+                          "references": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "source": {
+                                  "type": "string"
+                                },
+                                "kind": {
+                                  "type": "string",
+                                  "enum": [
+                                    "VIDEO",
+                                    "COURSE",
+                                    "LAW",
+                                    "PRACTICE",
+                                    "REFERENCE"
+                                  ]
+                                },
+                                "topic": {
+                                  "type": "string"
+                                },
+                                "url": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "source",
+                                "kind",
+                                "topic",
+                                "url"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "default": []
                           }
                         },
                         "required": [
@@ -222490,6 +222566,47 @@
                                   },
                                   "chunkId": {
                                     "type": "string"
+                                  },
+                                  "attribution": {
+                                    "type": "object",
+                                    "properties": {
+                                      "kind": {
+                                        "type": "string",
+                                        "enum": [
+                                          "WIKIPEDIA"
+                                        ]
+                                      },
+                                      "title": {
+                                        "type": "string"
+                                      },
+                                      "revision": {
+                                        "type": "integer"
+                                      },
+                                      "revisedAt": {
+                                        "type": "string"
+                                      },
+                                      "url": {
+                                        "type": "string"
+                                      },
+                                      "licence": {
+                                        "type": "string"
+                                      },
+                                      "licenceUrl": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "kind",
+                                      "title",
+                                      "revision",
+                                      "revisedAt",
+                                      "url",
+                                      "licence",
+                                      "licenceUrl"
+                                    ],
+                                    "additionalProperties": false,
+                                    "nullable": true,
+                                    "default": null
                                   }
                                 },
                                 "required": [
@@ -222664,6 +222781,41 @@
                         "standard": {
                           "type": "boolean",
                           "default": false
+                        },
+                        "references": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "source": {
+                                "type": "string"
+                              },
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "VIDEO",
+                                  "COURSE",
+                                  "LAW",
+                                  "PRACTICE",
+                                  "REFERENCE"
+                                ]
+                              },
+                              "topic": {
+                                "type": "string"
+                              },
+                              "url": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "source",
+                              "kind",
+                              "topic",
+                              "url"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "default": []
                         }
                       },
                       "required": [
@@ -224463,6 +224615,47 @@
                                     },
                                     "chunkId": {
                                       "type": "string"
+                                    },
+                                    "attribution": {
+                                      "type": "object",
+                                      "properties": {
+                                        "kind": {
+                                          "type": "string",
+                                          "enum": [
+                                            "WIKIPEDIA"
+                                          ]
+                                        },
+                                        "title": {
+                                          "type": "string"
+                                        },
+                                        "revision": {
+                                          "type": "integer"
+                                        },
+                                        "revisedAt": {
+                                          "type": "string"
+                                        },
+                                        "url": {
+                                          "type": "string"
+                                        },
+                                        "licence": {
+                                          "type": "string"
+                                        },
+                                        "licenceUrl": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "kind",
+                                        "title",
+                                        "revision",
+                                        "revisedAt",
+                                        "url",
+                                        "licence",
+                                        "licenceUrl"
+                                      ],
+                                      "additionalProperties": false,
+                                      "nullable": true,
+                                      "default": null
                                     }
                                   },
                                   "required": [
@@ -224828,6 +225021,47 @@
                               },
                               "chunkId": {
                                 "type": "string"
+                              },
+                              "attribution": {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                      "WIKIPEDIA"
+                                    ]
+                                  },
+                                  "title": {
+                                    "type": "string"
+                                  },
+                                  "revision": {
+                                    "type": "integer"
+                                  },
+                                  "revisedAt": {
+                                    "type": "string"
+                                  },
+                                  "url": {
+                                    "type": "string"
+                                  },
+                                  "licence": {
+                                    "type": "string"
+                                  },
+                                  "licenceUrl": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "title",
+                                  "revision",
+                                  "revisedAt",
+                                  "url",
+                                  "licence",
+                                  "licenceUrl"
+                                ],
+                                "additionalProperties": false,
+                                "nullable": true,
+                                "default": null
                               }
                             },
                             "required": [
@@ -225223,6 +225457,47 @@
                                   },
                                   "chunkId": {
                                     "type": "string"
+                                  },
+                                  "attribution": {
+                                    "type": "object",
+                                    "properties": {
+                                      "kind": {
+                                        "type": "string",
+                                        "enum": [
+                                          "WIKIPEDIA"
+                                        ]
+                                      },
+                                      "title": {
+                                        "type": "string"
+                                      },
+                                      "revision": {
+                                        "type": "integer"
+                                      },
+                                      "revisedAt": {
+                                        "type": "string"
+                                      },
+                                      "url": {
+                                        "type": "string"
+                                      },
+                                      "licence": {
+                                        "type": "string"
+                                      },
+                                      "licenceUrl": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "kind",
+                                      "title",
+                                      "revision",
+                                      "revisedAt",
+                                      "url",
+                                      "licence",
+                                      "licenceUrl"
+                                    ],
+                                    "additionalProperties": false,
+                                    "nullable": true,
+                                    "default": null
                                   }
                                 },
                                 "required": [
@@ -225952,11 +226227,12 @@
                                   "language",
                                   "help",
                                   "tutor",
-                                  "hint"
+                                  "hint",
+                                  "college"
                                 ]
                               },
                               "minItems": 1,
-                              "maxItems": 9
+                              "maxItems": 10
                             },
                             "limit": {
                               "type": "integer",
@@ -226288,11 +226564,12 @@
                                   "language",
                                   "help",
                                   "tutor",
-                                  "hint"
+                                  "hint",
+                                  "college"
                                 ]
                               },
                               "minItems": 1,
-                              "maxItems": 9
+                              "maxItems": 10
                             },
                             "limit": {
                               "type": "integer",
@@ -226542,11 +226819,12 @@
                         "language",
                         "help",
                         "tutor",
-                        "hint"
+                        "hint",
+                        "college"
                       ]
                     },
                     "minItems": 1,
-                    "maxItems": 9
+                    "maxItems": 10
                   },
                   "limit": {
                     "type": "integer",
@@ -226615,11 +226893,12 @@
                                   "language",
                                   "help",
                                   "tutor",
-                                  "hint"
+                                  "hint",
+                                  "college"
                                 ]
                               },
                               "minItems": 1,
-                              "maxItems": 9
+                              "maxItems": 10
                             },
                             "limit": {
                               "type": "integer",
@@ -226852,6 +227131,627 @@
         "parameters": [
           {
             "name": "jobId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/operator/vidura/references": {
+      "get": {
+        "summary": "Vidura's reference allow-list: the public education sources linked beside a Learning answer (name, host, kind, licence as published, the roles shown, on or off), each link built from the source's https template and the cited passage's heading; shown to staff and adult college students, never to a pupil while decision 0002 stands",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "sources": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "host": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "VIDEO",
+                              "COURSE",
+                              "LAW",
+                              "PRACTICE",
+                              "REFERENCE"
+                            ]
+                          },
+                          "licence": {
+                            "type": "string"
+                          },
+                          "licenceUrl": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "linkTemplate": {
+                            "type": "string"
+                          },
+                          "shownTo": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "TEACHER",
+                                "FACULTY",
+                                "HOD",
+                                "STUDENT"
+                              ]
+                            }
+                          },
+                          "enabled": {
+                            "type": "boolean"
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "updatedAt": {
+                            "$ref": "#/properties/sources/items/properties/createdAt"
+                          },
+                          "updatedBy": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "host",
+                          "kind",
+                          "licence",
+                          "licenceUrl",
+                          "linkTemplate",
+                          "shownTo",
+                          "enabled",
+                          "createdAt",
+                          "updatedAt",
+                          "updatedBy"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "sources"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Add a reference source, on at once: its host, an https template on that host with {topic}, its licence and the roles shown; Medium is refused; 201; audited",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "host": {
+                          "type": "string"
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "VIDEO",
+                            "COURSE",
+                            "LAW",
+                            "PRACTICE",
+                            "REFERENCE"
+                          ]
+                        },
+                        "licence": {
+                          "type": "string"
+                        },
+                        "licenceUrl": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "linkTemplate": {
+                          "type": "string"
+                        },
+                        "shownTo": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "TEACHER",
+                              "FACULTY",
+                              "HOD",
+                              "STUDENT"
+                            ]
+                          }
+                        },
+                        "enabled": {
+                          "type": "boolean"
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "updatedAt": {
+                          "$ref": "#/properties/source/properties/createdAt"
+                        },
+                        "updatedBy": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "host",
+                        "kind",
+                        "licence",
+                        "licenceUrl",
+                        "linkTemplate",
+                        "shownTo",
+                        "enabled",
+                        "createdAt",
+                        "updatedAt",
+                        "updatedBy"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "source"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 80
+                  },
+                  "host": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 120
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "VIDEO",
+                      "COURSE",
+                      "LAW",
+                      "PRACTICE",
+                      "REFERENCE"
+                    ]
+                  },
+                  "licence": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 800
+                  },
+                  "licenceUrl": {
+                    "type": "string",
+                    "maxLength": 400,
+                    "nullable": true
+                  },
+                  "linkTemplate": {
+                    "type": "string",
+                    "minLength": 10,
+                    "maxLength": 400
+                  },
+                  "shownTo": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "TEACHER",
+                        "FACULTY",
+                        "HOD",
+                        "STUDENT"
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 4
+                  }
+                },
+                "required": [
+                  "name",
+                  "host",
+                  "kind",
+                  "licence",
+                  "linkTemplate",
+                  "shownTo"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/vidura/references/{sourceId}": {
+      "post": {
+        "summary": "Switch a reference source on or off, or edit it (checked again as if new); audited, the same act again changes nothing",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "host": {
+                          "type": "string"
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "VIDEO",
+                            "COURSE",
+                            "LAW",
+                            "PRACTICE",
+                            "REFERENCE"
+                          ]
+                        },
+                        "licence": {
+                          "type": "string"
+                        },
+                        "licenceUrl": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "linkTemplate": {
+                          "type": "string"
+                        },
+                        "shownTo": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "TEACHER",
+                              "FACULTY",
+                              "HOD",
+                              "STUDENT"
+                            ]
+                          }
+                        },
+                        "enabled": {
+                          "type": "boolean"
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "updatedAt": {
+                          "$ref": "#/properties/source/properties/createdAt"
+                        },
+                        "updatedBy": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "host",
+                        "kind",
+                        "licence",
+                        "licenceUrl",
+                        "linkTemplate",
+                        "shownTo",
+                        "enabled",
+                        "createdAt",
+                        "updatedAt",
+                        "updatedBy"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "source"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "action": {
+                        "type": "string",
+                        "enum": [
+                          "ENABLE"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "action": {
+                        "type": "string",
+                        "enum": [
+                          "DISABLE"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "action": {
+                        "type": "string",
+                        "enum": [
+                          "EDIT"
+                        ]
+                      },
+                      "name": {
+                        "type": "string",
+                        "minLength": 2,
+                        "maxLength": 80
+                      },
+                      "host": {
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 120
+                      },
+                      "kind": {
+                        "type": "string",
+                        "enum": [
+                          "VIDEO",
+                          "COURSE",
+                          "LAW",
+                          "PRACTICE",
+                          "REFERENCE"
+                        ]
+                      },
+                      "licence": {
+                        "type": "string",
+                        "minLength": 2,
+                        "maxLength": 800
+                      },
+                      "licenceUrl": {
+                        "type": "string",
+                        "maxLength": 400,
+                        "nullable": true
+                      },
+                      "linkTemplate": {
+                        "type": "string",
+                        "minLength": 10,
+                        "maxLength": 400
+                      },
+                      "shownTo": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "TEACHER",
+                            "FACULTY",
+                            "HOD",
+                            "STUDENT"
+                          ]
+                        },
+                        "minItems": 1,
+                        "maxItems": 4
+                      }
+                    },
+                    "required": [
+                      "action"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "sourceId",
             "in": "path",
             "required": true,
             "schema": {

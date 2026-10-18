@@ -111,7 +111,8 @@ export function citationTarget(c: AssistantCitation, role: string | null): { kin
   if (!role || !BOOK_LINK_ROLES.includes(role)) return null;
   const url = webLinkOrNull(c.sourceUrl);
   if (!url || !url.startsWith("https://")) return null;
-  return { kind: "url", url: url.includes("#") ? url : `${url}#page=${c.page}` };
+  // A PDF opens at the cited page; an article (Vidura pass 4) is its own page.
+  return { kind: "url", url: url.includes("#") || c.attribution ? url : `${url}#page=${c.page}` };
 }
 
 /** A path on the platform, as the app's own screen when it has one, else the web page; never anything off the platform. */
@@ -290,7 +291,7 @@ export function Conversation({
       ))}
       {asking ? (
         <>
-          <Bubble message={{ id: "asking", role: "USER", text: asking, createdAt: new Date().toISOString(), citations: [], verdict: null, mode: null, hint: false, helpful: null, chip: null, cut: false, askPerson: null, standard: false }} conversationId={null} />
+          <Bubble message={{ id: "asking", role: "USER", text: asking, createdAt: new Date().toISOString(), citations: [], verdict: null, mode: null, hint: false, helpful: null, chip: null, cut: false, askPerson: null, standard: false, references: [] }} conversationId={null} />
           <View style={{ padding: th.space[3] }} accessibilityRole="progressbar" accessibilityLabel={t("assistantUi.writing")}>
             <Text variant="sm" tone="muted">
               {t("assistantUi.writing")}
@@ -445,8 +446,29 @@ function Bubble({ message: m, conversationId, onGoOn, onLeave }: { message: Assi
             {t("assistantUi.sources")}
           </Text>
           {m.citations.map((c) => (
-            <Row key={`${c.kind}-${c.n}`} icon={c.kind === "CURRICULUM" ? "bookOpen" : "globe"} title={`[${c.n}] ${citationText(c, t)}`} onPress={citationTarget(c, role) ? () => open(c) : undefined} />
+            <View key={`${c.kind}-${c.n}`}>
+              <Row icon={c.kind === "CURRICULUM" ? "bookOpen" : "globe"} title={`[${c.n}] ${citationText(c, t)}`} onPress={citationTarget(c, role) ? () => open(c) : undefined} />
+              {/* Vidura pass 4: a share-alike passage's attribution, for every reader, its addresses as text. */}
+              {c.kind === "CURRICULUM" && c.attribution ? (
+                <Text variant="xs" tone="muted" testID="vidura-attribution">
+                  {`${attributionText(c.attribution, t)} ${c.attribution.url} · ${c.attribution.licenceUrl}`}
+                </Text>
+              ) : null}
+            </View>
           ))}
+        </View>
+      ) : null}
+      {/* Vidura pass 4: the operator's allow-listed sources beside a Learning answer; the server sends them only to staff and adult college students. */}
+      {m.references.length ? (
+        <View testID="vidura-references" style={{ gap: th.space[1] }}>
+          <Text variant="xs" tone="muted" bold>
+            {t("viduraUi.referencesTitle")}
+          </Text>
+          {m.references
+            .filter((r) => r.url.startsWith("https://"))
+            .map((r) => (
+              <Row key={r.url} icon="globe" title={t("viduraUi.referenceLink", { source: r.source, topic: r.topic })} onPress={() => void Linking.openURL(r.url)} />
+            ))}
         </View>
       ) : null}
       {m.askPerson ? <AskPerson person={m.askPerson} onLeave={onLeave} /> : null}
@@ -506,11 +528,19 @@ function AskPerson({ person, onLeave }: { person: NonNullable<AssistantMessage["
 
 export function citationText(c: AssistantCitation, t: (key: TranslationKey, vars?: Record<string, string | number>) => string): string {
   if (c.kind === "HELP" || c.kind === "LINK") return c.title;
+  // Vidura pass 4: an encyclopedia article has a title and a section, no chapter number and no page.
+  if (c.attribution) return c.section ? t("viduraUi.citationArticle", { title: c.attribution.title, section: c.section }) : t("viduraUi.citationArticleNoSection", { title: c.attribution.title });
   // The board by its short name: "Balbharati (Maharashtra State Bureau of …)" is "Balbharati" (the live walk of 10 Oct).
   const board = c.board.split(" (")[0]!.trim();
   const book = board && !c.book.toLowerCase().includes(board.toLowerCase()) ? `${board} · ${c.book}` : c.book;
   if (!c.chapter) return t("assistantUi.citationNoChapter", { book, page: c.page });
   return c.section ? t("assistantUi.citationSection", { book, chapter: c.chapter, section: c.section, page: c.page }) : t("assistantUi.citation", { book, chapter: c.chapter, page: c.page });
+}
+
+/** Vidura pass 4: the attribution line a share-alike passage carries (CC BY-SA 4.0 asks for title, authors, address and licence). */
+export function attributionText(a: NonNullable<Extract<AssistantCitation, { kind: "CURRICULUM" }>["attribution"]>, t: (key: TranslationKey, vars?: Record<string, string | number>) => string): string {
+  const date = /^\d{4}-\d{2}-\d{2}/.test(a.revisedAt) ? a.revisedAt.slice(0, 10) : a.revisedAt;
+  return t("viduraUi.attributionWikipedia", { title: a.title, revision: a.revision, date, licence: a.licence });
 }
 
 /**

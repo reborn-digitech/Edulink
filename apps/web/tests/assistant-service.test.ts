@@ -104,7 +104,9 @@ function fake(opts: { help?: number; curriculum?: number; label?: string; answer
     vectorRank: 1,
     keywordRank: 1,
     score: 1,
-    citation: { board: "NCERT", book: "Exploration", chapter: null, section: null, page: 16, documentId: "doc-1", chunkId: "chunk-1" },
+    citation: { board: "NCERT", book: "Exploration", chapter: null, section: null, page: 16, documentId: "doc-1", chunkId: "chunk-1", attribution: null },
+    source: "ncert",
+    attribution: null,
   });
   const helpHit = (sim: number): HelpHit => ({ entryId: "help-1", kind: "nav", title: "Attendance", text: "Open /teacher/attendance to mark the register.", pagePath: "/teacher/attendance", door: null, module: null, roles: [], language: "en", sourceFile: "nav", commit: "test", similarity: sim, vectorRank: 1, keywordRank: 1, score: 1 });
   const deps: AssistantDeps = {

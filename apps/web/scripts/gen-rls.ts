@@ -141,6 +141,11 @@ const NO_SCHOOL_POLICY = new Set([
   // and so is the operator who starts it, exactly like QuizGenJob.
   "AssistantEvalJob",
   // ---- end vidura pass 3 ----
+  // ---- vidura pass 4 (18 Oct 2026) ----
+  // The reference allow-list (src/lib/assistant/references.ts): the public education sources Vidura may link to beside
+  // a Learning answer, the same for every school, kept by the operator, who belongs to no school.
+  "ReferenceSource",
+  // ---- end vidura pass 4 ----
   // ---- review-queue (10 Oct 2026) ----
   // One act of review on a bank question by the content team or the operator (src/lib/quiz-review.ts):
   // the bank belongs to no school and neither do its reviewers, exactly like QuizQuestion.

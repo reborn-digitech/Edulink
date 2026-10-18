@@ -185,7 +185,9 @@ function fakeDeps() {
     vectorRank: 1,
     keywordRank: 1,
     score: 1,
-    citation: { board: "NCERT", book: "Ganita Prakash", chapter: null, section: null, page: 140, documentId: "doc-1", chunkId: "chunk-1" },
+    citation: { board: "NCERT", book: "Ganita Prakash", chapter: null, section: null, page: 140, documentId: "doc-1", chunkId: "chunk-1", attribution: null },
+    source: "ncert",
+    attribution: null,
   };
   const helpHit: HelpHit = { entryId: "help-1", kind: "nav", title: "Fees", text: "Open /parent/fees to see what is due.", pagePath: "/parent/fees", door: null, module: null, roles: [], language: "en", sourceFile: "nav", commit: "test", similarity: HELP_THRESHOLD.en + 0.2, vectorRank: 1, keywordRank: 1, score: 1 };
   const deps: AssistantDeps = {

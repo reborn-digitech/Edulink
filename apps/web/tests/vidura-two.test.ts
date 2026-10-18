@@ -60,8 +60,8 @@ function fake(opts: { help?: number; renderedHelp?: number; curriculum?: number;
   const helpHit = (id: string, sim: number, over: Partial<HelpHit> = {}): HelpHit => ({ entryId: id, kind: "nav", title: "Fees", text: "Fees — page /parent/fees (PARENT).", pagePath: "/parent/fees", door: null, module: null, roles: [], language: "en", sourceFile: "nav", commit: "test", similarity: sim, vectorRank: 1, keywordRank: 1, score: 1, ...over });
   const hit = (sim: number): CurriculumHit => ({
     chunkId: "chunk-1", documentId: "doc-1", board: "NCERT", grade: "9", subject: "Science", book: "Exploration", edition: null, chapter: "Chapter 6", section: "6.6", headingPath: ["Chapter 6"],
-    pageStart: 16, pageEnd: 16, text: "For every action there is an equal and opposite reaction.", language: "en", figureKeys: [], sourceUrl: "https://ncert.nic.in/textbook/pdf/iesc106.pdf", similarity: sim, vectorRank: 1, keywordRank: 1, score: 1,
-    citation: { board: "NCERT", book: "Exploration", chapter: null, section: null, page: 16, documentId: "doc-1", chunkId: "chunk-1" },
+    pageStart: 16, pageEnd: 16, text: "For every action there is an equal and opposite reaction.", language: "en", figureKeys: [], sourceUrl: "https://ncert.nic.in/textbook/pdf/iesc106.pdf", source: "ncert", attribution: null, similarity: sim, vectorRank: 1, keywordRank: 1, score: 1,
+    citation: { board: "NCERT", book: "Exploration", chapter: null, section: null, page: 16, documentId: "doc-1", chunkId: "chunk-1", attribution: null },
   });
   const deps: AssistantDeps = {
     embed: async (texts) => texts.map(() => [0, 0, 1]),

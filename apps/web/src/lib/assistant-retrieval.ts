@@ -26,6 +26,12 @@ export type RetrievalContext = {
 
 export type Language = "en" | "hi" | "mr";
 
+/**
+ * What a passage of a share-alike source carries in every citation (Vidura pass 4, 18 Oct 2026): for a Wikipedia
+ * article its title, the revision read, when it was saved, its permanent address and the licence. Null for the books.
+ */
+export type PassageAttribution = { kind: "WIKIPEDIA"; title: string; revision: number; revisedAt: string; url: string; licence: string; licenceUrl: string };
+
 /** How the assistant cites a passage: the board, the book, the chapter and section, the page. */
 export type Citation = {
   board: string;
@@ -35,7 +41,16 @@ export type Citation = {
   page: number;
   documentId: string;
   chunkId: string;
+  attribution: PassageAttribution | null;
 };
+
+/** The stored attribution read back, or null for anything that is not one (pure, for the tests). */
+export function attributionOf(raw: unknown): PassageAttribution | null {
+  const a = raw as Partial<PassageAttribution> | null;
+  if (!a || typeof a !== "object" || a.kind !== "WIKIPEDIA") return null;
+  if (typeof a.title !== "string" || typeof a.revision !== "number" || typeof a.revisedAt !== "string" || typeof a.url !== "string" || typeof a.licence !== "string" || typeof a.licenceUrl !== "string") return null;
+  return { kind: "WIKIPEDIA", title: a.title, revision: a.revision, revisedAt: a.revisedAt, url: a.url, licence: a.licence, licenceUrl: a.licenceUrl };
+}
 
 export type CurriculumHit = {
   chunkId: string;
@@ -54,6 +69,9 @@ export type CurriculumHit = {
   language: string;
   figureKeys: string[];
   sourceUrl: string;
+  /** The corpus source ("ncert", "nios", "wikipedia"…) and, for a share-alike one, the attribution (Vidura pass 4). */
+  source: string;
+  attribution: PassageAttribution | null;
   /** Cosine similarity to the question (null only for a chunk not embedded yet). */
   similarity: number | null;
   vectorRank: number | null;
@@ -155,6 +173,14 @@ export type CurriculumQuery = {
   gradeWindow?: number;
   subject?: string;
   limit?: number;
+  /**
+   * VIDURA PASS 4 (18 Oct 2026): the sources only a college's tutor reads (ContentDocument.audience "COLLEGE": the
+   * Wikipedia subset for the professional streams). Absent or "EXCLUDE": left out, so every search before pass 4 is
+   * exactly what it was; "INCLUDE": with the books; "ONLY": those alone, of `streams` when given.
+   */
+  collegeSources?: "EXCLUDE" | "INCLUDE" | "ONLY";
+  /** With collegeSources: documents chosen for any of these streams (ContentDocument.streams). */
+  streams?: string[];
 };
 
 type ChunkRow = {
@@ -174,11 +200,13 @@ type ChunkRow = {
   language: string;
   figureKeys: string[];
   sourceUrl: string;
+  source: string;
+  attribution: unknown;
   similarity: number | null;
 };
 
 const CHUNK_COLUMNS = Prisma.sql`c."id", c."documentId", d."board", d."gradeOrProgramme" AS "grade", d."subject", d."title" AS "book",
-  c."edition", c."chapter", c."section", c."headingPath", c."pageStart", c."pageEnd", c."text", c."language", c."figureKeys", d."sourceUrl"`;
+  c."edition", c."chapter", c."section", c."headingPath", c."pageStart", c."pageEnd", c."text", c."language", c."figureKeys", d."sourceUrl", d."source", d."attribution"`;
 
 /**
  * The past entrance, olympiad and board sample papers (source "papers", 10 Oct 2026) are a STYLE corpus
@@ -187,8 +215,16 @@ const CHUNK_COLUMNS = Prisma.sql`c."id", c."documentId", d."board", d."gradeOrPr
  */
 export const STYLE_CORPUS_EXCLUDED = Prisma.sql`AND d."styleOnly" = false AND d."source" <> 'papers'`;
 
-function curriculumFilter(q: CurriculumQuery): Prisma.Sql {
+/** The WHERE clauses of a curriculum search (exported for the tests: pass 4's audience rule is read off it). */
+export function curriculumFilter(q: CurriculumQuery): Prisma.Sql {
   const parts: Prisma.Sql[] = [STYLE_CORPUS_EXCLUDED];
+  // Vidura pass 4: a college-only source is searched only when the search asks for it. Written as an expression, not
+  // `"audience" IS NULL`: before the table's statistics knew the new column the planner read IS NULL as 0.5 % of the
+  // books, chose a nested loop that ran to_tsvector over every chunk, and the keyword half took 43 s (18 Oct 2026); an
+  // expression's default reading keeps the full-text index's plan (22 ms) whatever the statistics say.
+  if (q.collegeSources === "ONLY") parts.push(Prisma.sql`AND d."audience" = 'COLLEGE'`);
+  else if (q.collegeSources !== "INCLUDE") parts.push(Prisma.sql`AND COALESCE(d."audience", '') <> 'COLLEGE'`);
+  if (q.collegeSources && q.collegeSources !== "EXCLUDE" && q.streams?.length) parts.push(Prisma.sql`AND (COALESCE(d."audience", '') <> 'COLLEGE' OR d."streams" && ${q.streams}::text[])`);
   if (q.board) parts.push(Prisma.sql`AND d."board" ILIKE ${q.board.replace(/[%_]/g, "") + "%"}`);
   if (q.subject) parts.push(Prisma.sql`AND d."subject" ILIKE ${q.subject.replace(/[%_]/g, "")}`);
   if (q.grade !== undefined && q.grade !== null && `${q.grade}` !== "") {
@@ -239,11 +275,13 @@ export async function searchCurriculum(q: CurriculumQuery, ctx: RetrievalContext
     language: r.language,
     figureKeys: r.figureKeys,
     sourceUrl: r.sourceUrl,
+    source: r.source,
+    attribution: attributionOf(r.attribution),
     similarity: similarity.get(r.id) ?? null,
     vectorRank: ranks[0] ?? null,
     keywordRank: ranks[1] ?? null,
     score,
-    citation: { board: r.board, book: r.book, chapter: r.chapter, section: r.section, page: r.pageStart, documentId: r.documentId, chunkId: r.id },
+    citation: { board: r.board, book: r.book, chapter: r.chapter, section: r.section, page: r.pageStart, documentId: r.documentId, chunkId: r.id, attribution: attributionOf(r.attribution) },
   }));
   return (await rerank(q.query, hits)).slice(0, limit);
 }

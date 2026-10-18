@@ -423,6 +423,19 @@ export function chunk(pages: PageContent[], opts: { perChapterFile: boolean; cha
   const { elements, edition, bodySize, chapter: found } = elementsOf(pages, { perChapterFile: opts.perChapterFile });
   const figures = figuresOf(pages, opts.figureKey);
   const chapterName = opts.chapterLabel ? opts.chapterLabel(found) : found;
+  const chunks = cutChunks(elements, chapterName);
+
+  // A figure belongs to the chunk that carries its caption, else the first chunk covering its page.
+  for (const f of figures) {
+    const byCaption = f.caption ? chunks.find((c) => c.pageStart <= f.page && f.page <= c.pageEnd && c.text.includes(f.caption!.slice(0, 40))) : undefined;
+    const target = byCaption ?? chunks.find((c) => c.pageStart <= f.page && f.page <= c.pageEnd) ?? chunks.filter((c) => c.pageStart <= f.page).at(-1);
+    target?.figureKeys.push(f.key);
+  }
+  return { chunks, figures, edition, bodySize, chapter: chapterName };
+}
+
+/** The elements cut into chunks of about TARGET_CHARS at chapter and section boundaries, never mid-sentence. */
+function cutChunks(elements: Element[], chapterName: string | null): Chunk[] {
   const chunks: Chunk[] = [];
   // Index 0 of `levels` is the chapter; 1–3 sections, subsections.
   const levels: (string | null)[] = [chapterName, null, null, null];
@@ -475,12 +488,41 @@ export function chunk(pages: PageContent[], opts: { perChapterFile: boolean; cha
     }
   }
   flush();
+  return chunks;
+}
 
-  // A figure belongs to the chunk that carries its caption, else the first chunk covering its page.
-  for (const f of figures) {
-    const byCaption = f.caption ? chunks.find((c) => c.pageStart <= f.page && f.page <= c.pageEnd && c.text.includes(f.caption!.slice(0, 40))) : undefined;
-    const target = byCaption ?? chunks.find((c) => c.pageStart <= f.page && f.page <= c.pageEnd) ?? chunks.filter((c) => c.pageStart <= f.page).at(-1);
-    target?.figureKeys.push(f.key);
+/**
+ * VIDURA PASS 4 (18 Oct 2026): a plain-text article (a Wikipedia article as the MediaWiki API's plain extract gives it,
+ * "== Heading ==" lines for its sections) as elements: the article's title is the chapter, "==" a section, "===" and
+ * deeper a subsection; the reference sections at the end ("See also", "References", "External links"…) are dropped
+ * with everything under them, and so is a line of punctuation alone. Every element is "page" 1: an article has none.
+ */
+export const DROPPED_ARTICLE_SECTIONS = /^(see also|references|notes|notes and references|further reading|external links|bibliography|sources|citations|footnotes|explanatory notes|works cited|gallery|literature|reference list|primary sources|secondary sources)$/i;
+
+export function elementsOfPlainText(text: string): Element[] {
+  const out: Element[] = [];
+  let dropLevel: number | null = null;
+  for (const raw of text.replace(/\r\n?/g, "\n").split("\n")) {
+    const line = raw.trim();
+    if (!line) continue;
+    const h = /^(={2,6})\s*(.+?)\s*\1$/.exec(line);
+    if (h) {
+      const level = Math.min(3, h[1]!.length - 1);
+      const title = h[2]!.trim();
+      if (dropLevel !== null && level > dropLevel) continue;
+      dropLevel = DROPPED_ARTICLE_SECTIONS.test(title) ? level : null;
+      if (dropLevel === null) out.push({ type: "heading", level, text: title, page: 1 });
+      continue;
+    }
+    if (dropLevel !== null) continue;
+    if (!/[\p{L}\p{N}]/u.test(line)) continue;
+    out.push({ type: "para", text: line.replace(/\s+/g, " "), page: 1, aside: false });
   }
-  return { chunks, figures, edition, bodySize, chapter: chapterName };
+  return out;
+}
+
+/** A plain-text article cut as a book's chapter is (cutChunks), its title the chapter of every chunk. Pure. */
+export function chunkPlainText(text: string, opts: { title: string }): Structured {
+  const chunks = cutChunks(elementsOfPlainText(text), opts.title);
+  return { chunks, figures: [], edition: null, bodySize: 0, chapter: opts.title };
 }

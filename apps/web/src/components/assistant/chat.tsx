@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { fieldClass } from "@/components/ui/field-class";
 import { cn } from "@/lib/cn";
 import { useLocale, useT, type Translate, type TranslationKey } from "@/lib/i18n";
-import { QUESTION_MAX, announcement, citationHref, citationLabel, firstScreenKeys, isFixedSentence, streamText, suggestionsPath } from "./model";
+import { QUESTION_MAX, announcement, attributionLine, citationHref, citationLabel, firstScreenKeys, isFixedSentence, referenceHref, streamText, suggestionsPath } from "./model";
 import { askQuestion, openConversation, openRoomWith, sendFeedback, type DoorFailure } from "./doors";
 import { useAnswerStream } from "./stream";
 import { useDoor } from "./use-door";
@@ -405,8 +405,35 @@ export function MessageBubble({ message: m, conversationId, role, t, onGoOn }: {
                       {label}
                     </span>
                   )}
+                  {/* Pass 4: a share-alike passage's attribution, for every reader, its addresses as text. */}
+                  {c.kind === "CURRICULUM" && c.attribution ? (
+                    <p className="ms-6 text-xs text-fg-muted" data-testid="vidura-attribution">
+                      {attributionLine(c.attribution, t)} <span className="break-all">{c.attribution.url}</span> · <span className="break-all">{c.attribution.licenceUrl}</span>
+                    </p>
+                  ) : null}
                 </li>
               );
+            })}
+          </ul>
+        </div>
+      ) : null}
+      {/* Pass 4: the operator's allow-listed sources beside a Learning answer; the server sends them only to staff and adult college students. */}
+      {m.references.length > 0 ? (
+        <div className="mt-3 border-t border-border pt-2" data-testid="vidura-references">
+          <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">{t("viduraUi.referencesTitle")}</p>
+          <ul className="mt-1 space-y-0.5">
+            {m.references.map((r) => {
+              const href = referenceHref(r.url);
+              return href ? (
+                <li key={r.url} className="text-sm">
+                  <a href={href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1.5 font-medium text-accent-strong underline underline-offset-4">
+                    <LinkSimpleIcon className="size-4 shrink-0" aria-hidden="true" />
+                    <span>{t("viduraUi.referenceLink", { source: r.source, topic: r.topic })}</span>
+                    <ArrowSquareOutIcon className="size-3.5 shrink-0" aria-hidden="true" />
+                    <span className="sr-only">({t("assistantUi.citationOpens")})</span>
+                  </a>
+                </li>
+              ) : null;
             })}
           </ul>
         </div>

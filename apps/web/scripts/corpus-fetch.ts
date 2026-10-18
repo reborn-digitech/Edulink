@@ -2,6 +2,8 @@
  * The curriculum corpus downloader (docs/plans/assistant.md §3, Phase A; runbook docs/runbooks/assistant-local.md).
  *
  *   npm run corpus:fetch -- --source=ncert|balbharati|nios|syllabi|glossaries|papers|all [--grade=8[,9]] [--first=9,8] [--dry [--list]]
+ *   npm run corpus:fetch -- --source=wikipedia [--stream=LAW,COMMERCE]     (Vidura pass 4, scripts/corpus-college.ts)
+ *   npm run corpus:fetch -- --source=indiacode,nptel,swayam                 (written down as refused, with their terms)
  *
  * WHAT IT COLLECTS. The English NCERT textbooks, classes 1 to 12, chapter by chapter, and the
  * exemplar problems, from ncert.nic.in; the Balbharati English-medium textbooks, standards 1 to 12,
@@ -32,7 +34,7 @@
  */
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
-import { createWriteStream, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync, unlinkSync } from "node:fs";
+import { createWriteStream, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync, unlinkSync, writeFileSync } from "node:fs";
 import http from "node:http";
 import https from "node:https";
 import type { IncomingMessage } from "node:http";
@@ -41,6 +43,7 @@ import { pipeline } from "node:stream/promises";
 import { config } from "dotenv";
 import { CORPUS_ROOT, SOURCES, readFolderManifest, removeManifestEntries, slug, writeManifestEntry, type ContentKind, type Licence, type ManifestEntry, type SourceKey } from "./corpus-lib";
 import { PAPER_BODIES, type PapersNet } from "./corpus-papers";
+import { MIN_ARTICLE_CHARS, REFUSED_SOURCES, WIKIPEDIA_ARTICLES, WIKIPEDIA_RIGHTS_URL, WIKIPEDIA_STREAMS, trimArticle, wikipediaApiUrl, wikipediaEntry, wikipediaFolder, wikipediaLicence, wikipediaPageOf, type WikipediaStream } from "./corpus-college";
 
 config();
 
@@ -62,6 +65,8 @@ const gradeWanted = (g: number) => !GRADES || GRADES.includes(g);
 /** Sort key: a class named in --first comes before the rest, in the order named. */
 const gradeOrder = (g: number) => (FIRST.includes(g) ? FIRST.indexOf(g) : FIRST.length + g);
 const SOURCE_ARG = arg("source") ?? "all";
+/** --stream=LAW,COMMERCE: only those streams' Wikipedia articles (Vidura pass 4). */
+const STREAM_ARG: WikipediaStream[] | null = arg("stream") ? ((arg("stream") ?? "").split(",").map((x) => x.trim().toUpperCase()) as WikipediaStream[]) : null;
 const PAUSE_MS = Number(process.env.CORPUS_PAUSE_MS ?? 1500) || 1500;
 const CONTACT = process.env.CORPUS_CONTACT?.trim() || "contact address not configured (set CORPUS_CONTACT)";
 const USER_AGENT = `Shalaghar-corpus/1.0 (school platform curriculum index; one request at a time; ${CONTACT})`;
@@ -1036,6 +1041,98 @@ async function discoverSppu(): Promise<Item[]> {
   return dedupe(items);
 }
 
+/* ---- Vidura pass 4: the Wikipedia subset for the professional streams --------- */
+
+/**
+ * Every article of the streams asked for, one API request each (politely, one at a time to the one host), written as
+ * plain text with its manifest entry. An article already on disk with the same revision is not asked for again; one
+ * chosen for a second stream is fetched once and its entry lists both streams.
+ */
+async function fetchWikipedia(): Promise<void> {
+  const t = tally("wikipedia");
+  const streams = (STREAM_ARG ?? [...WIKIPEDIA_STREAMS]).filter((s) => (WIKIPEDIA_STREAMS as readonly string[]).includes(s));
+  if (STREAM_ARG && streams.length !== STREAM_ARG.length) throw new Error(`--stream takes ${WIKIPEDIA_STREAMS.join(", ")}`);
+  const rights = await getPage(WIKIPEDIA_RIGHTS_URL, { timeoutMs: 30_000 });
+  const rightsInfo = rights.ok ? ((JSON.parse(rights.text) as { query?: { rightsinfo?: { url?: string; text?: string } } }).query?.rightsinfo ?? null) : null;
+  const licence = wikipediaLicence(rightsInfo);
+  // Every article already written, by its title, wherever it was filed.
+  const known = new Map<string, { dir: string; entry: ManifestEntry }>();
+  const root = join(CORPUS_ROOT, "wikipedia");
+  const visit = (dir: string) => {
+    if (!existsSync(dir)) return;
+    for (const name of readdirSync(dir)) {
+      const full = join(dir, name);
+      if (statSync(full).isDirectory()) visit(full);
+      else if (name === "manifest.json") for (const e of Object.values(readFolderManifest(dir).files)) if (e.fetched) known.set(e.title, { dir, entry: e });
+    }
+  };
+  visit(root);
+  for (const stream of streams) {
+    const titles = WIKIPEDIA_ARTICLES[stream];
+    console.log(`[wikipedia] ${stream}: ${titles.length} articles`);
+    for (const asked of titles) {
+      t.discovered++;
+      if (DRY) continue;
+      const got = await getPage(wikipediaApiUrl(asked), { timeoutMs: 60_000 });
+      if (!got.ok) {
+        t.failed++;
+        refusals.push({ source: "wikipedia", board: "Wikipedia", url: wikipediaApiUrl(asked), error: got.error, folder: "wikipedia" });
+        continue;
+      }
+      let page: ReturnType<typeof wikipediaPageOf> = null;
+      try {
+        page = wikipediaPageOf(JSON.parse(got.text));
+      } catch {
+        page = null;
+      }
+      if (!page) {
+        t.failed++;
+        refusals.push({ source: "wikipedia", board: "Wikipedia", url: `https://en.wikipedia.org/wiki/${encodeURIComponent(asked.replace(/ /g, "_"))}`, error: "no such article (or no text)", folder: "wikipedia" });
+        continue;
+      }
+      const text = trimArticle(page.extract);
+      if (text.length < MIN_ARTICLE_CHARS) {
+        t.optionalMissing++;
+        console.log(`[wikipedia]   ${page.title}: a stub (${text.length} characters), not kept`);
+        continue;
+      }
+      const before = known.get(page.title);
+      if (before && before.entry.extra?.revid === page.revid) {
+        // The same revision, filed already: only the streams may grow.
+        if (!(before.entry.streams ?? []).includes(stream)) {
+          before.entry.streams = [...(before.entry.streams ?? []), stream];
+          writeManifestEntry(before.dir, before.entry);
+        }
+        t.present++;
+        continue;
+      }
+      const dir = before?.dir ?? join(CORPUS_ROOT, wikipediaFolder(stream));
+      const file = before?.entry.file ?? `${slug(page.title, 80)}.txt`;
+      mkdirSync(dir, { recursive: true });
+      const bytes = Buffer.from(text, "utf8");
+      writeFileSync(join(dir, `${file}.part`), bytes);
+      renameSync(join(dir, `${file}.part`), join(dir, file));
+      const entry: ManifestEntry = {
+        ...wikipediaEntry(page, (before?.entry.gradeOrProgramme as WikipediaStream | undefined) ?? stream, licence, file),
+        streams: [...new Set([...(before?.entry.streams ?? []), stream])],
+        retrievedAt: new Date().toISOString(),
+        sha256: createHash("sha256").update(bytes).digest("hex"),
+        bytes: bytes.length,
+        fetched: true,
+      };
+      writeManifestEntry(dir, entry);
+      known.set(page.title, { dir, entry });
+      t.fetched++;
+      t.bytes += bytes.length;
+    }
+  }
+}
+
+/** The sources whose terms do not allow this use: one refusal each, with their own words, nothing fetched. */
+function writeRefusedSources(source: "indiacode" | "nptel" | "swayam"): void {
+  for (const r of REFUSED_SOURCES.filter((x) => x.source === source)) refuse(r.source, r.board, r.source, r.url, r.error, r.licence, r.kind);
+}
+
 /* ---- the run -------------------------------------------------------------- */
 
 async function runSource(source: SourceKey): Promise<void> {
@@ -1069,6 +1166,10 @@ async function runSource(source: SourceKey): Promise<void> {
         await fetchAll("papers", items);
       }),
     );
+  } else if (source === "wikipedia") {
+    await fetchWikipedia();
+  } else if (source === "indiacode" || source === "nptel" || source === "swayam") {
+    writeRefusedSources(source);
   } else {
     const items = source === "ncert" ? await discoverNcert() : source === "balbharati" ? await discoverBalbharati() : source === "nios" ? await discoverNios() : await discoverGlossaries();
     console.log(`[${source}] ${items.length} files listed`);

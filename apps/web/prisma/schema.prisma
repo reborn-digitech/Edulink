@@ -3189,6 +3189,21 @@ model ContentDocument {
   /// the tutor's searchCurriculum never returns it, so it is never cited to a pupil.
   styleOnly        Boolean  @default(false)
   // ---- end papers ----
+  // ---- vidura pass 4 (18 Oct 2026): college knowledge ----
+  /// Who the document is searched for: null for everyone (the books, as before), "COLLEGE" for a source only a college's
+  /// tutor reads (the Wikipedia subset for the professional streams). searchCurriculum leaves COLLEGE documents out
+  /// unless the search asks for them, so a school's search is exactly what it was.
+  audience         String?
+  /// The college streams (packages/contracts STREAMS) a COLLEGE document was chosen for; searched first for a college
+  /// of those streams. Empty for the books.
+  streams          String[] @default([])
+  /// The licence by its short name ("CC BY-SA 4.0"), when the source publishes one by name; licenceUrl and licenceText
+  /// carry the rest.
+  licenceName      String?
+  /// What every passage of this document carries in its citation (a share-alike licence asks for it): for Wikipedia
+  /// { kind: "WIKIPEDIA", title, revision, revisedAt, url, licence }. Null for a document whose licence asks for none.
+  attribution      Json?
+  // ---- end vidura pass 4 ----
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt
 
@@ -3391,6 +3406,36 @@ model AssistantEvalJob {
   @@index([createdAt])
 }
 // ---- end vidura pass 3 ----
+// ---- vidura pass 4 (18 Oct 2026) ----
+/// A PUBLIC EDUCATION SOURCE Vidura may link to beside a Learning answer (docs/plans/vidura.md, the owner's decision 8;
+/// src/lib/assistant/references.ts). The operator manages the allow-list on /root/vidura-references: a source's name,
+/// its host, its kind, its licence as the source publishes it, the roles shown its links and whether it is on. A link
+/// is built by code from `linkTemplate` (https, on `host`) and the cited passage's own heading, never from the person's
+/// words and never written by the model. Shown only to staff and adult college students; never to a pupil while
+/// decision 0002 stands. Outside the school fence: the list is the platform's, the same for every school, and the
+/// operator who keeps it belongs to no school (scripts/gen-rls.ts names it).
+model ReferenceSource {
+  id              String    @id @default(cuid())
+  /// As the source names itself ("NPTEL", "NCERT OFFICIAL"); one row a name.
+  name            String    @unique
+  /// The source's host, lower case, no scheme: "nptel.ac.in"; every link is built on it (two channels may share one).
+  host            String
+  /// VIDEO | COURSE | LAW | PRACTICE | REFERENCE (VIDURA_REFERENCE_KINDS in packages/contracts v1/vidura-ops.ts)
+  kind            String
+  /// The licence or terms as the source publishes them, in its own words or by name; with the address they are at.
+  licence         String
+  licenceUrl      String?
+  /// An https address on `host` with "{topic}" where the cited passage's heading goes (URL-encoded).
+  linkTemplate    String
+  /// The roles shown this source's links (VIDURA_REFERENCE_ROLES); a STUDENT only when an adult at a college.
+  shownTo         String[]  @default([])
+  enabled         Boolean   @default(true)
+  createdByUserId String?
+  createdAt       DateTime  @default(now())
+  updatedByUserId String?
+  updatedAt       DateTime  @updatedAt
+}
+// ---- end vidura pass 4 ----
 
 model HelpRendering {
   id               String    @id @default(cuid())

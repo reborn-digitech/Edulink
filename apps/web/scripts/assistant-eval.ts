@@ -73,12 +73,14 @@ import {
 } from "./assistant-eval-score";
 // The data questions' set (11 Oct 2026).
 import { answerCarries, truthValue, type MetricTruth, type MetricValue } from "./assistant-eval-score";
+// The college knowledge set (Vidura pass 4, 18 Oct 2026).
+import { attributionHolds, sourceAccepted, type CitedDocument } from "./assistant-eval-score";
 
 config();
 
 const ROOT = join(__dirname, "..");
 const SETS_DIR = join(ROOT, "content", "assistant-eval");
-const ALL_SETS = ["refusal", "counsellor", "redteam", "role", "injection", "language", "help", "tutor", "hint"] as const;
+const ALL_SETS = ["refusal", "counsellor", "redteam", "role", "injection", "language", "help", "tutor", "hint", "college"] as const;
 type SetName = (typeof ALL_SETS)[number];
 
 function arg(name: string): string | undefined {
@@ -417,6 +419,69 @@ async function runTutor() {
         return `citation headings: ${shown} shown, garbled ${g} (${pct(g, shown)}), the chapter's name lost ${u} (${pct(u, shown)})`;
       })(),
       ...[...cells].sort().map(([k, v]) => `${k.padEnd(14)} n ${String(v.n).padStart(3)}  answered ${v.answered}  correct ${v.correct}  cited ${v.cited}  in band ${v.inScope}  scale ${v.shape}`),
+    ],
+  });
+}
+
+/**
+ * THE COLLEGE KNOWLEDGE SET (Vidura pass 4, content/assistant-eval/college.json): ten questions a stream, asked as a
+ * college STUDENT of that stream. Scored for the answer (answered, keywords, cited) and for its sources: a cited passage
+ * from a document the case accepts, and every cited Wikipedia passage carrying its attribution.
+ */
+async function runCollege() {
+  type Case = { id: string; stream: string; role: Role; language: AssistantLanguage; question: string; keywords: string[]; localKeywords?: string[]; accept: string[] };
+  const set = loadSet<{ cases: Case[] }>("college");
+  const byStream = new Map<string, { n: number; answered: number; correct: number; cited: number; source: number; attribution: number; pass: number; wiki: number }>();
+  for (const c of pick(set.cases)) {
+    const { out, seconds } = await preview({ role: c.role, college: true, streams: [c.stream], adult: true, question: c.question, language: c.language });
+    const answered = out.verdict === "ANSWERED";
+    const kw = keywordScore(out.text, c.language, c.keywords, c.localKeywords);
+    const curr = out.citations.filter((x) => x.kind === "CURRICULUM") as Extract<AssistantCitation, { kind: "CURRICULUM" }>[];
+    const rowsFound = curr.length ? await db.contentChunk.findMany({ where: { id: { in: curr.map((x) => x.chunkId) } }, select: { id: true, document: { select: { source: true, title: true } } } }) : [];
+    const byId = new Map(rowsFound.map((r) => [r.id, r.document]));
+    const docs: CitedDocument[] = curr.filter((x) => byId.has(x.chunkId)).map((x) => ({ chunkId: x.chunkId, source: byId.get(x.chunkId)!.source, title: byId.get(x.chunkId)!.title, attributionTitle: x.attribution?.title ?? null, attributionLicence: x.attribution?.licence ?? null }));
+    const cited = answered && curr.length > 0 && docs.length === curr.length;
+    const correct = answered && kw.ok;
+    const sourceOk = cited && sourceAccepted(docs, c.accept);
+    const attributionOk = cited && attributionHolds(docs);
+    const pass = correct && cited && sourceOk && attributionOk;
+    const k = byStream.get(c.stream) ?? { n: 0, answered: 0, correct: 0, cited: 0, source: 0, attribution: 0, pass: 0, wiki: 0 };
+    k.n++;
+    k.answered += answered ? 1 : 0;
+    k.correct += correct ? 1 : 0;
+    k.cited += cited ? 1 : 0;
+    k.source += sourceOk ? 1 : 0;
+    k.attribution += attributionOk ? 1 : 0;
+    k.pass += pass ? 1 : 0;
+    k.wiki += docs.some((d) => d.source === "wikipedia") ? 1 : 0;
+    byStream.set(c.stream, k);
+    record({
+      set: "college",
+      id: c.id,
+      pass,
+      verdict: out.verdict,
+      question: c.question,
+      text: out.text,
+      language: out.language,
+      citations: out.citations,
+      seconds,
+      notes: { stream: c.stream, keywords: `${kw.hits}/${kw.of}`, correct, cited, sourceOk, attributionOk, sources: docs.map((d) => `${d.source}:${d.title}`), references: (out.references ?? []).map((r) => r.source), answerLanguage: answerLanguage(out.text) },
+    });
+    if (!pass) console.log(`  FAIL ${c.id} -> ${out.verdict} kw ${kw.hits}/${kw.of} cited ${cited} source ${sourceOk} attribution ${attributionOk} [${docs.map((d) => `${d.source}:${d.title.slice(0, 40)}`).join("; ")}]`);
+  }
+  const tot = [...byStream.values()].reduce((a, v) => ({ n: a.n + v.n, answered: a.answered + v.answered, correct: a.correct + v.correct, cited: a.cited + v.cited, source: a.source + v.source, attribution: a.attribution + v.attribution, pass: a.pass + v.pass, wiki: a.wiki + v.wiki }), { n: 0, answered: 0, correct: 0, cited: 0, source: 0, attribution: 0, pass: 0, wiki: 0 });
+  const byLang = ["en", "hi", "mr"].map((l) => {
+    const xs = rows.filter((r) => r.set === "college" && r.language === l);
+    return `${l} ${xs.filter((r) => r.pass).length}/${xs.length}`;
+  });
+  summaries.push({
+    set: "college",
+    cases: tot.n,
+    pass: tot.pass,
+    lines: [
+      `answered ${pct(tot.answered, tot.n)}, correct (keywords) ${pct(tot.correct, tot.n)}, cited ${pct(tot.cited, tot.n)}, an accepted source ${pct(tot.source, tot.n)}, attribution held ${pct(tot.attribution, tot.n)}, a Wikipedia passage cited ${tot.wiki}/${tot.n}`,
+      `passed by language: ${byLang.join(", ")}`,
+      ...[...byStream].map(([k, v]) => `${k.padEnd(16)} pass ${v.pass}/${v.n}  answered ${v.answered}  correct ${v.correct}  cited ${v.cited}  source ${v.source}  attribution ${v.attribution}  wikipedia ${v.wiki}`),
     ],
   });
 }
@@ -1020,6 +1085,7 @@ async function runSets(sets: SetName[]): Promise<boolean | null> {
     if (name === "help") await runHelp();
     if (name === "tutor") await runTutor();
     if (name === "hint") await runHint();
+    if (name === "college") await runCollege();
     console.log(`   (${((Date.now() - t) / 1000).toFixed(0)} s)`);
   }
   return gate;

@@ -55,6 +55,8 @@ export function firstScreenKeys(status: Pick<AssistantStatus, "tutor" | "optOutP
 /** The citation as the reader sees it: a book with its chapter, section and page, or the platform page a help entry names. */
 export function citationLabel(c: AssistantCitation, t: Translate): string {
   if (c.kind === "HELP" || c.kind === "LINK") return c.title;
+  // Pass 4: an encyclopedia article (the college sources) has a title and a section, no chapter number and no page.
+  if (c.attribution) return c.section ? t("viduraUi.citationArticle", { title: c.attribution.title, section: c.section }) : t("viduraUi.citationArticleNoSection", { title: c.attribution.title });
   // The board by its short name: "Balbharati (Maharashtra State Bureau of …)" is "Balbharati" (the live walk of 10 Oct).
   const board = c.board.split(" (")[0]!.trim();
   const book = board && !c.book.toLowerCase().includes(board.toLowerCase()) ? `${board} · ${c.book}` : c.book;
@@ -89,7 +91,8 @@ export function citationHref(c: AssistantCitation, role: string | null): { href:
     return null;
   }
   if (url.protocol !== "https:") return null;
-  if (c.page > 0 && !url.hash) url.hash = `page=${c.page}`;
+  // A PDF opens at the cited page; an article (pass 4) is its own page.
+  if (c.page > 0 && !url.hash && !c.attribution) url.hash = `page=${c.page}`;
   return { href: url.toString(), external: true };
 }
 
@@ -126,3 +129,22 @@ export function streamReduce(state: StreamState, event: AssistantEvent): StreamS
   return { ...state, done: true };
 }
 export const streamText = (state: StreamState): string => state.pieces.map((p) => p ?? "").join("");
+
+/**
+ * VIDURA PASS 4 (18 Oct 2026): the attribution line a share-alike passage carries (CC BY-SA 4.0 asks for the title, the
+ * authors, the address and the licence): drawn under the citation for every reader, the addresses as text.
+ */
+export function attributionLine(a: NonNullable<Extract<AssistantCitation, { kind: "CURRICULUM" }>["attribution"]>, t: Translate): string {
+  const date = /^\d{4}-\d{2}-\d{2}/.test(a.revisedAt) ? a.revisedAt.slice(0, 10) : a.revisedAt;
+  return t("viduraUi.attributionWikipedia", { title: a.title, revision: a.revision, date, licence: a.licence });
+}
+
+/** A reference link is followed only over https (the server built it on the source's own host; this holds it on the page too). */
+export function referenceHref(url: string): string | null {
+  try {
+    const u = new URL(url);
+    return u.protocol === "https:" ? u.toString() : null;
+  } catch {
+    return null;
+  }
+}

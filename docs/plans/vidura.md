@@ -1,6 +1,6 @@
 # Vidura — the assistant's next shape (plan of 12 October 2026)
 
-Status: pass 1 built on 17 October 2026, pass 2 on 17–18 October 2026 and pass 3 on 18 October 2026 (below); pass 4 planned, not built. The owner's decisions of 11–12 October 2026 and the coordinator's recommendations,
+Status: pass 1 built on 17 October 2026, pass 2 on 17–18 October 2026, pass 3 and pass 4 on 18 October 2026 (below). The owner's decisions of 11–12 October 2026 and the coordinator's recommendations,
 in four passes, each a builder's brief. Run with `/vidura <pass>` (`.claude/commands/vidura.md`). Pass 1 was
 meant for the week of 12 October; passes 2 to 4 after the weekly reset of 17 October. Everything here sits on
 the assistant as built in [assistant.md](assistant.md) (Phases A–D, the exam-scope reader, the data questions,
@@ -133,6 +133,28 @@ The college tutor searching the whole corpus first (NCERT 11–12, NIOS), then p
 Constitution, bare acts from India Code), NPTEL and SWAYAM material, a licensed Wikipedia subset for the
 professional streams, each named as a source; the reference allow-list managed by the operator and shown by
 role under decision 0002. Measured on a new college knowledge set (ten questions a stream).
+
+**Built, 18 October 2026 (pass 4).** The college tutor searches the whole corpus as before (NCERT 11–12, NIOS,
+Balbharati, the syllabi) and, side by side, the sources only a college reads (`ContentDocument.audience` COLLEGE, its own
+streams first): the two merged books first (`booksFirst`, a book's passage ahead unless an article is closer by more than
+0.04; a syllabus takes no margin). A school's search never reads them: `searchCurriculum` leaves them out unless asked,
+written as an expression after the stale-statistics plan for `"audience" IS NULL` made an unscoped keyword search take
+43 s. The sources: **a Wikipedia subset for nine professional streams is in** (law first end to end, then commerce,
+management, engineering, pharmacy, education, architecture, agriculture, health sciences; 419 articles, 8,608 chunks,
+CC BY-SA 4.0, fetched as plain text per revision through the existing pipeline, `scripts/corpus-college.ts`, every
+passage's citation carrying the article, revision, date, permanent address and licence, drawn on the web and the phone).
+**Left out, and why** (each a refusal row in the corpus manifests with its own terms): India Code and the Constitution
+(the portal's Copyright Policy of 22 June 2026 forbids commercial use, reproduction and systematic extraction without the
+Legislative Department's written permission; the plan's "public domain" is not what the portal says;
+legislative.gov.in is rendered by script), NPTEL (CC BY-NC-SA, and Vidura is in the paid plans), SWAYAM (personal use
+only, behind a sign-in). The reference allow-list: `ReferenceSource` (migration `vidura_references`), seeded with NCERT
+OFFICIAL on YouTube, NPTEL, SWAYAM, Khan Academy India and India Code, kept on `/root/vidura-references` (three operator
+doors, audited); links built by code from the source's https template and the cited passage's heading beside a Learning
+answer, shown to staff and to adult college students by a recorded date of birth, never to a pupil (decision 0002 not
+relaxed; the page says so), a law source only beside a law passage, Medium refused. The college knowledge set
+(`content/assistant-eval/college.json`, ninety questions, the tenth set of the harness and the panel): 27/90 before the
+sources → 72/90 after in the full run (70/90 alone), the nine sets held (refusal 180/180). The builder's report has the
+numbers and the decisions.
 
 ## Costs and capacity (for the record)
 - Serving: about 4,000 tokens a question with the gate; three questions a school day per active user ≈ 2.4 M

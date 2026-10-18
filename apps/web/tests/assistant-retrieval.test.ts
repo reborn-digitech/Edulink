@@ -227,7 +227,7 @@ describe.skipIf(!embed.ok || !up)("hybrid search over a fixture corpus (three ch
   it("answers a question with the passage that carries it, and cites board, book, chapter, section and page", async () => {
     const hits = await searchCurriculum({ query: "why does a gun recoil when it is fired?", language: "en", board: "ZZ Fixture", limit: 3 }, ctx());
     expect(hits[0]?.chunkId).toBe(ids["fixture/9/science/force.pdf#1"]);
-    expect(hits[0]?.citation).toEqual({ board: BOARD, book: "ZZ Science for Class 9", chapter: "Chapter 9: Force and Laws of Motion", section: "9.4 Third Law of Motion", page: 122, documentId: hits[0]!.documentId, chunkId: hits[0]!.chunkId });
+    expect(hits[0]?.citation).toEqual({ board: BOARD, book: "ZZ Science for Class 9", chapter: "Chapter 9: Force and Laws of Motion", section: "9.4 Third Law of Motion", page: 122, documentId: hits[0]!.documentId, chunkId: hits[0]!.chunkId, attribution: null });
     // Found by both halves: the vector and the words "gun" and "fired".
     expect(hits[0]?.vectorRank).not.toBeNull();
     expect(hits[0]?.keywordRank).not.toBeNull();

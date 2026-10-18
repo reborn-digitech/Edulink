@@ -26,7 +26,9 @@ jest.mock("expo-router", () => ({ useRouter: () => mockRouter, usePathname: () =
 const STATUS = { available: true, reason: null, help: true, tutor: true, language: "en", dailyCap: 40, usedToday: 0, retentionDays: 30, optOutPath: null, modes: ["USING", "RECORDS", "LEARNING"] };
 const AT = "2026-10-10T04:00:00.000Z";
 const CONVERSATION = { id: "zz-c", language: "en", createdAt: AT, lastAt: AT, title: "ZZ explain Newton's third law", messageCount: 2, expiresAt: "2026-11-09T04:00:00.000Z" };
-const BOOK = { kind: "CURRICULUM", n: 1, board: "NCERT", book: "Science: Exploration", grade: "9", chapter: "6", section: "6.6", page: 87, sourceUrl: "https://ncert.nic.in/textbook/pdf/iesc106.pdf", chunkId: "zz-chunk" } as const;
+const BOOK = { kind: "CURRICULUM", n: 1, board: "NCERT", book: "Science: Exploration", grade: "9", chapter: "6", section: "6.6", page: 87, sourceUrl: "https://ncert.nic.in/textbook/pdf/iesc106.pdf", chunkId: "zz-chunk", attribution: null } as const;
+/** Vidura pass 4: a passage of a Wikipedia article, carrying its attribution. */
+const ARTICLE = { ...BOOK, n: 3, board: "Wikipedia", book: "Tort", grade: "LAW", chapter: "Tort", section: "Negligence", page: 1, sourceUrl: "https://en.wikipedia.org/w/index.php?title=Tort&oldid=1380709161", chunkId: "zz-wiki", attribution: { kind: "WIKIPEDIA", title: "Tort", revision: 1380709161, revisedAt: "2026-10-17T10:55:42Z", url: "https://en.wikipedia.org/w/index.php?title=Tort&oldid=1380709161", licence: "CC BY-SA 4.0", licenceUrl: "https://creativecommons.org/licenses/by-sa/4.0/" } } as const;
 const HELP = { kind: "HELP", n: 2, title: "People", pagePath: "/admin/people", entryId: "zz-help" } as const;
 const message = (over: Record<string, unknown>) => ({ id: "zz-a", role: "ASSISTANT", text: "ZZ answer", createdAt: AT, citations: [], verdict: "ANSWERED", mode: "HELP", hint: false, helpful: null, chip: "USING", cut: false, askPerson: null, ...over });
 const question = (over: Record<string, unknown> = {}) => message({ id: "zz-q", role: "USER", text: "ZZ q", verdict: null, mode: null, chip: null, ...over });
@@ -153,6 +155,30 @@ describe("Vidura's sheet, per role", () => {
     expect(await screen.findByText("ZZ part two")).toBeTruthy();
     expect(calls().filter((c) => c.line === "POST /api/v1/assistant/conversations/zz-c/messages")[1]?.body).toEqual({ text: "Go on", goOn: true });
     expect(screen.queryByRole("button", { name: "Go on" })).toBeNull();
+  });
+
+  it("an article's passage (Vidura pass 4) carries its attribution and opens at the revision for staff; the allow-listed links open the source", async () => {
+    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+    expect(citationTarget(ARTICLE, "FACULTY")).toEqual({ kind: "url", url: ARTICLE.sourceUrl });
+    expect(citationTarget(ARTICLE, "STUDENT")).toBeNull();
+    await mountStaff(
+      sheet(),
+      "FACULTY",
+      answers({
+        "POST /api/v1/assistant/conversations/zz-c/messages": () =>
+          json({ conversationId: "zz-c", question: question({ text: "ZZ what is negligence" }), answer: message({ text: "ZZ a failure to take care [3].", citations: [ARTICLE], mode: "TUTOR", chip: "LEARNING", references: [{ source: "NPTEL", kind: "COURSE", topic: "Tort", url: "https://nptel.ac.in/courses?searchText=Tort" }] }) }),
+      }),
+    );
+    await fireEvent.changeText(await screen.findByLabelText("Your question"), "ZZ what is negligence");
+    await fireEvent.press(screen.getByRole("button", { name: "Ask" }));
+    expect(await screen.findByText("ZZ a failure to take care [3].")).toBeTruthy();
+    expect(screen.getByText("[3] Wikipedia, “Tort”: Negligence")).toBeTruthy();
+    expect(screen.getByTestId("vidura-attribution")).toBeTruthy();
+    expect(screen.getByText(/From the Wikipedia article “Tort” \(revision 1380709161 of 2026-10-17\) by Wikipedia's contributors, under CC BY-SA 4.0\./)).toBeTruthy();
+    expect(screen.getByText("Further reading")).toBeTruthy();
+    await fireEvent.press(screen.getByText("NPTEL: Tort"));
+    expect(open).toHaveBeenCalledWith("https://nptel.ac.in/courses?searchText=Tort");
+    open.mockRestore();
   });
 
   it("a standard answer the platform checked (Vidura pass 3) says so; any other answer does not", async () => {
