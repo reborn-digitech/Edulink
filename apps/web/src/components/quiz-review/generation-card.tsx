@@ -45,6 +45,10 @@ export function GenerationCard({ initial, subjectLabels, college }: { initial: Q
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [limit, setLimit] = useState("");
+  // quiz-topup (19 Oct 2026): the EVERYTHING scope's target a chapter and its class range.
+  const [target, setTarget] = useState("");
+  const [gradeFrom, setGradeFrom] = useState("");
+  const [gradeTo, setGradeTo] = useState("");
   // college-content (12 Oct 2026): the College scope's stream, programme, syllabus and unit range.
   const [stream, setStream] = useState<StreamCode | "">("");
   const [programme, setProgramme] = useState("");
@@ -78,7 +82,7 @@ export function GenerationCard({ initial, subjectLabels, college }: { initial: Q
     }
     const request: QuizGenRequest =
       scope === "EVERYTHING"
-        ? { scope, ...(n(limit) ? { limit: n(limit) } : {}) }
+        ? { scope, ...(n(limit) ? { limit: n(limit) } : {}), ...(n(target) ? { target: n(target) } : {}), ...(n(gradeFrom) ? { gradeFrom: n(gradeFrom) } : {}), ...(n(gradeTo) ? { gradeTo: n(gradeTo) } : {}) }
         : scope === "COLLEGE"
           ? {
               scope,
@@ -169,7 +173,15 @@ export function GenerationCard({ initial, subjectLabels, college }: { initial: Q
               </div>
             </fieldset>
             {scope === "EVERYTHING" ? (
-              <p className="text-sm text-fg-muted">{t("quizJobs.everythingHint")}</p>
+              <>
+                <p className="text-sm text-fg-muted">{t("quizJobs.everythingHint")}</p>
+                {/* quiz-topup (19 Oct 2026): fill every chapter to a number, over passes, in a range of classes. */}
+                <div className="grid gap-3 sm:grid-cols-3">
+<TextField label={t("quizJobs.targetLabel")} inputMode="numeric" type="number" min={1} max={500} value={target} onChange={(e) => setTarget(e.target.value)} hint={t("quizJobs.targetHint")} className="sm:max-w-xs" />
+<TextField label={t("quizJobs.gradeFromLabel")} inputMode="numeric" type="number" min={1} max={12} value={gradeFrom} onChange={(e) => setGradeFrom(e.target.value)} className="sm:max-w-xs" />
+<TextField label={t("quizJobs.gradeToLabel")} inputMode="numeric" type="number" min={1} max={12} value={gradeTo} onChange={(e) => setGradeTo(e.target.value)} className="sm:max-w-xs" />
+                </div>
+              </>
             ) : scope === "COLLEGE" && college ? (
               <>
                 <p className="text-sm text-fg-muted">{t("collegeGen.withCorpus", { list: college.streams.map((s) => `${streamName(s.stream)} (${s.boards.join(", ")})`).join("; ") || "—" })}</p>

@@ -47,6 +47,8 @@ export function planCombos(request: QuizGenRequest, inventory: InventoryRow[]): 
     const board = BOARD_OF[row.source];
     const grade = Number(row.grade);
     if (!board || !Number.isInteger(grade) || grade < 1 || grade > 12) continue;
+    // quiz-topup (19 Oct 2026): the classes the run takes, when the request names them.
+    if (request.scope === "EVERYTHING" && ((request.gradeFrom && grade < request.gradeFrom) || (request.gradeTo && grade > request.gradeTo))) continue;
     let subjectCode: string;
     try {
       subjectCode = subjectCodeOf(row.subject);

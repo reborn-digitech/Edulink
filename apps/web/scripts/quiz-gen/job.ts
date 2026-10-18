@@ -51,6 +51,28 @@ type ChapterRef = Pick<NonNullable<QuizGenProgress["chapter"]>, "board" | "grade
  * One chapter (or college unit) the run will take: what the live line names it, its batch file (a chapter
  * whose file exists is left out: that is how a stopped run resumes), and how it is generated.
  */
+/** quiz-topup (19 Oct 2026): the most passes a target run makes over the plan before it ends on its own. */
+export const MAX_PASSES = 20;
+
+/** Whether a target run goes round again: only with a target, something still below it, and a pass that kept something. */
+export function passContinues(target: number | null, pending: number, kept: number): boolean {
+  return Boolean(target) && pending > 0 && kept > 0;
+}
+
+/**
+ * The served questions a chapter already has: the live items of every topic of that board, class and subject whose
+ * chapter line starts "Chapter <number> " (the loader writes "Chapter N — Name"; two books may carry one number, and
+ * both count). Read through the app connection, which sees every served item.
+ */
+export async function servedCount(db: PrismaClient, ref: Pick<ChapterRef, "board" | "grade" | "subject" | "number">): Promise<number> {
+  const topics = await db.quizTopic.findMany({
+    where: { board: ref.board, classLevel: ref.grade, subject: ref.subject, audience: "SCHOOL", retiredAt: null, chapter: { startsWith: `Chapter ${ref.number} ` } },
+    select: { id: true },
+  });
+  if (topics.length === 0) return 0;
+  return db.quizQuestion.count({ where: { topicId: { in: topics.map((t) => t.id) }, takenDownAt: null } });
+}
+
 type Work = { ref: ChapterRef; label: string; fileName: string; generate: (hooks: ChapterHooks) => Promise<GeneratedChapter> };
 
 /** The run's numbers out of the pipeline's log, for the "last chapter" line. */
@@ -192,11 +214,30 @@ export async function runJob(jobId: string): Promise<void> {
       }
     }
 
-    // 3. the chapters
+    // 3. the chapters. quiz-topup (19 Oct 2026): with a target, the run makes passes over the plan, skipping each chapter
+    // whose served bank already holds the target and generating the rest again (the batch file is rewritten and the
+    // loader drops the duplicates), until every chapter is there, a pass keeps nothing, or twenty passes are done.
+    const target = request.target ?? null;
+    if (target) log(`target: ${target} served question(s) a chapter`);
+    for (let pass = 1; pass <= (target ? MAX_PASSES : 1) && !stop; pass++) {
+    let keptThisPass = 0;
+    let pendingThisPass = 0;
+    if (target) {
+      progress.pass = pass;
+      log(`pass ${pass}`);
+    }
     for await (const work of plan()) {
       if (stop) break;
       const { ref, label, fileName } = work;
-      if (existsSync(join(OUT_DIR, fileName))) {
+      if (target) {
+        const have = await servedCount(appDb, ref);
+        if (have >= target) {
+          progress.chaptersSkipped++;
+          await write();
+          continue;
+        }
+        pendingThisPass++;
+      } else if (existsSync(join(OUT_DIR, fileName))) {
         progress.chaptersSkipped++;
         await write();
         continue;
@@ -231,6 +272,7 @@ export async function runJob(jobId: string): Promise<void> {
         progress.chaptersDone++;
         progress.drafted += last.drafted;
         progress.kept += last.kept;
+        keptThisPass += last.kept;
         progress.loaded += loaded;
         const elapsed = Math.round((Date.now() - runStarted) / 1000);
         progress.keepRate = ratio(progress.kept, progress.drafted);
@@ -245,6 +287,8 @@ export async function runJob(jobId: string): Promise<void> {
         progress.chapter = null;
         await write();
       }
+    }
+    if (!passContinues(target, pendingThisPass, keptThisPass)) break;
     }
     await end(stop ? "STOPPED" : "FINISHED");
   } catch (error) {

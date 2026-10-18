@@ -47,6 +47,14 @@ export const quizGenRequestSchema = z
     chapterTo: z.number().int().min(1).max(40).optional(),
     /** Items asked for per chapter (the generator's --limit); absent is its own default, four a level. */
     limit: z.number().int().min(1).max(60).optional(),
+    // ---- quiz-topup (19 Oct 2026): the EVERYTHING scope filling every chapter to a number ----
+    /** Served questions each chapter should reach: the run repeats passes, skipping chapters already there, until every
+     *  chapter has this many or a pass keeps nothing; absent, one pass that leaves out chapters with a batch file. */
+    target: z.number().int().min(1).max(500).optional(),
+    /** The classes the EVERYTHING scope takes; absent, every class the corpus holds. */
+    gradeFrom: z.number().int().min(1).max(12).optional(),
+    gradeTo: z.number().int().min(1).max(12).optional(),
+    // ---- end quiz-topup ----
     // ---- college-content (12 Oct 2026): the COLLEGE scope ----
     stream: streamSchema.optional(),
     /** The programme as the desk's card lists it from the corpus ("LL.M."). */
@@ -59,6 +67,7 @@ export const quizGenRequestSchema = z
   })
   .strict()
   .superRefine((r, ctx) => {
+    if (r.gradeFrom && r.gradeTo && r.gradeFrom > r.gradeTo) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["gradeTo"], message: "gradeTo" });
     if (r.scope === "CHAPTERS") {
       if (!r.board) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["board"], message: "board" });
       if (!r.grade) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["grade"], message: "grade" });
@@ -109,6 +118,8 @@ const chapterNumbersSchema = chapterRefSchema.extend({
 
 /** The live line, rewritten by the runner after every item. */
 export const quizGenProgressSchema = z.object({
+  /** quiz-topup (19 Oct 2026): which pass over the chapters a target run is on; absent on a one-pass run. */
+  pass: z.number().int().min(1).optional(),
   phase: z.enum(QUIZ_GEN_PHASES),
   /** The chapter running now, and its numbers so far. */
   chapter: chapterNumbersSchema.nullable(),

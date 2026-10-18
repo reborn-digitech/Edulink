@@ -29,7 +29,7 @@ import { GET as serversGet } from "@/app/api/v1/appadmin/quiz-jobs/servers/route
 import { POST as serverStartPost } from "@/app/api/v1/appadmin/quiz-jobs/servers/[server]/start/route";
 import { POST as serverStopPost } from "@/app/api/v1/appadmin/quiz-jobs/servers/[server]/stop/route";
 import { chaptersWanted, planCombos } from "../scripts/quiz-gen/plan";
-import { landChapter } from "../scripts/quiz-gen/job";
+import { passContinues, landChapter } from "../scripts/quiz-gen/job";
 import type { GeneratedTopicFile } from "../scripts/quiz-gen/shape";
 import { isServed } from "@/lib/quiz-served";
 import { runChapter } from "../scripts/quiz-gen/pipeline";
@@ -166,6 +166,12 @@ describe("the request and the plan", () => {
     const plan = planCombos({ scope: "EVERYTHING" }, inventory).map((c) => `${c.boardCode} ${c.grade} ${c.subjectCode}`);
     expect(plan).toEqual(["BALBHARATI 6 MATHS", "NCERT 6 MATHS", "BALBHARATI 6 SCIENCE", "NCERT 6 SCIENCE", "NCERT 10 SCIENCE", "NCERT 3 MATHS", "BALBHARATI 8 HISTORY", "NCERT 11 PHYSICS"]);
     expect(planCombos(CHAPTER, [...inventory, { source: "ncert", grade: "8", subject: "Science" }]).map((c) => `${c.board} ${c.grade} ${c.subject}`)).toEqual(["NCERT 8 Science"]);
+    // quiz-topup (19 Oct 2026): a class range narrows the plan; a target run goes round only while something is below it and the pass kept something.
+    expect(planCombos({ scope: "EVERYTHING", gradeFrom: 6, gradeTo: 10 }, inventory).map((c) => `${c.boardCode} ${c.grade} ${c.subjectCode}`)).toEqual(["BALBHARATI 6 MATHS", "NCERT 6 MATHS", "BALBHARATI 6 SCIENCE", "NCERT 6 SCIENCE", "NCERT 10 SCIENCE", "BALBHARATI 8 HISTORY"]);
+    expect(passContinues(100, 3, 12)).toBe(true);
+    expect(passContinues(100, 0, 12)).toBe(false);
+    expect(passContinues(100, 3, 0)).toBe(false);
+    expect(passContinues(null, 3, 12)).toBe(false);
   });
 
   it("a stop halts a chapter before anything is drafted: the pipeline returns stopped and writes nothing", async () => {
