@@ -6,7 +6,7 @@ learned the hard way and are not negotiable without saying so in the commit.
 ## Tooling
 - pnpm only through `corepack pnpm` (pinned 9.15.x); Node 24 (`.nvmrc`). The web app is `apps/web`, the phone
   `apps/mobile`; run each app's `npm run …` from its own directory.
-- Web `tsc` needs 8 GB heap since the college tables (277 models): `NODE_OPTIONS=--max-old-space-size=8192`, for `tsconfig.json` and `scripts/tsconfig.json`. `next build` no longer type-checks and keeps 4 GB.
+- Web `tsc` needs 8 GB heap since the college tables (277 models): `NODE_OPTIONS=--max-old-space-size=8192`, for `tsconfig.json` and `scripts/tsconfig.json`. `next build` no longer type-checks; its compile needs 8 GB since 18 October 2026 (it ran out at 4 GB), set in the build script.
 - Migrations, seeds and fixtures run through the owner connection: `npm run db:migrate` (not a bare
   `prisma migrate deploy`, which fails with "must be owner" and leaves a failed migration row to
   `migrate resolve --rolled-back`). After `npm run rls:generate` run `npm run db:grants`.
