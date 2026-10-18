@@ -21,8 +21,8 @@ import { audit } from "../audit";
 import { notifyGuardians } from "../notify";
 import { channel, publish, type RealtimeEvent } from "../realtime";
 import { readRetentionConfig } from "../env";
-import { readAssistantConfig } from "../assistant-env";
-import { chatComplete, embedTexts, type ChatMessage, type ChatOptions, type ChatResult } from "../assistant-model";
+import { readAssistantConfig, readGateConfig, type AssistantEndpoint } from "../assistant-env";
+import { chatComplete, embedTexts, endpointUnreachable, type ChatMessage, type ChatOptions, type ChatResult } from "../assistant-model";
 import { helpForPage, searchCurriculum, searchHelp, type CurriculumHit, type CurriculumQuery, type HelpHit, type HelpQuery } from "../assistant-retrieval";
 import { translator, type TranslationKey } from "../i18n/dictionary";
 import { normaliseLocale } from "../i18n/locales";
@@ -55,7 +55,7 @@ import {
 } from "./config";
 import { corpusBoardFor, gradeBandOf, policyFor } from "./policy";
 import { citedNumbers, gateAnswer, gateQuestion, tableVerdict } from "./gate";
-import { stripIdentifiers, restoreSelf, type NameEntry } from "./strip";
+import { answerProblems, stripIdentifiers, restoreSelf, type NameEntry } from "./strip";
 import { withoutInjectedLines } from "./refusals";
 import { NCERT_NOTE, answerKindFor, onPageNote, pageNameNote, helpKind, helpMessages, questionShape, tutorMessages, asksExamScope } from "./prompt";
 import { detectLanguage } from "./language";
@@ -71,6 +71,8 @@ import { summariseDoor } from "./summary";
 import { featuresOf } from "../api-catalog/types";
 import { formatDateKey } from "../dates";
 import { suggestionsFor } from "./suggestions";
+// Vidura pass 3 (18 Oct 2026): the operator's standard answers.
+import { countStandardHit, findStandardAnswer } from "./standard-store";
 import { asksAboutExams, type ToolRun } from "./tools";
 import { COLLEGE_EXAMS_DOOR, EXAMS_SUMMARY_NAME, FAMILY_EXAMS_DOOR, examSummary } from "./exams";
 // The data questions (11 Oct 2026): the person's own doors, routed over the catalog and summed up by code.
@@ -120,10 +122,38 @@ export type AssistantDeps = {
    * null, the question is searched as it is typed.
    */
   render?: (stripped: string, language: AssistantLanguage) => Promise<Rendered | null>;
+  /**
+   * THE GATE'S OWN MODEL (Vidura pass 3, 18 Oct 2026): the two one-word classifier calls (gate.ts), on the small model
+   * when ASSISTANT_GATE_MODEL_URL names one (assistant-env.ts), falling back to the chat model when that server does not
+   * answer at all. Absent, the classifier asks `chat`, as before pass 3.
+   */
+  classify?: (messages: ChatMessage[], opts: ChatOptions) => Promise<ChatResult>;
+  /**
+   * THE STANDARD ANSWERS (pass 3, standard.ts): the operator's checked answer for this role, language and question, if
+   * any. Absent (the evaluation harness, the operator's own trial), every answer is the model's.
+   */
+  standardAnswer?: (q: { role: Role; language: AssistantLanguage; question: string }) => Promise<{ id: string; text: string; citations: AssistantCitation[] } | null>;
 };
 
 /** The model is not configured or not reachable: the answer is MODEL_UNAVAILABLE and nothing is charged. */
 class ModelUnavailable extends Error {}
+
+/**
+ * The gate's classifier port (pass 3): the small model when ASSISTANT_GATE_MODEL_URL names one, and the chat model
+ * when that server does not answer at all (not listening, refusing, still loading), so a small server that is down
+ * never turns every question into the fixed sentence. A slow answer is the classifier's own timeout, as before.
+ */
+export function gateClassifier(gate: AssistantEndpoint | null, chat: () => AssistantEndpoint, call: typeof chatComplete = chatComplete): AssistantDeps["classify"] {
+  if (!gate) return undefined;
+  return async (messages, opts) => {
+    try {
+      return await call(gate, messages, opts);
+    } catch (error) {
+      if (!endpointUnreachable(error)) throw error;
+      return call(chat(), messages, opts);
+    }
+  };
+}
 
 export function realDeps(): AssistantDeps {
   const read = readAssistantConfig();
@@ -132,7 +162,9 @@ export function realDeps(): AssistantDeps {
     if (!config) throw new ModelUnavailable("the assistant's model endpoints are not configured");
     return config;
   };
+  const gate = readGateConfig();
   return {
+    classify: gateClassifier(gate.ok ? gate.config : null, () => need().chat),
     embed: (texts) => embedTexts(need().embed, texts, { timeoutMs: EMBED_TIMEOUT_MS }),
     chat: (messages, opts) => chatComplete(need().chat, messages, opts),
     searchHelp: (q) => searchHelp(q, { db, embed: need().embed }),
@@ -141,6 +173,7 @@ export function realDeps(): AssistantDeps {
     publish: (userId, event) => publish([channel.user(userId)], event),
     now: () => new Date(),
     pageCards: (q) => helpForPage({ ...q, kinds: ["nav"], limit: 2 }, { db }),
+    standardAnswer: findStandardAnswer,
     render: (stripped, language) => renderForSearch(stripped, language, { chat: (messages, opts) => chatComplete(need().chat, messages, opts) }),
   };
 }
@@ -337,7 +370,7 @@ function writeStored(citations: AssistantCitation[], extra: { cut: boolean; dept
   return extra.cut || extra.depth > 0 ? JSON.stringify({ citations, ...extra }) : JSON.stringify(citations);
 }
 
-function messageView(m: { id: string; role: string; text: string; createdAt: Date; citationsJson: string; verdict: string | null; mode: string | null; hint: boolean; helpful: boolean | null }, askPerson: AssistantAskPerson | null = null): AssistantMessage {
+function messageView(m: { id: string; role: string; text: string; createdAt: Date; citationsJson: string; verdict: string | null; mode: string | null; hint: boolean; helpful: boolean | null; cachedAnswerId?: string | null }, askPerson: AssistantAskPerson | null = null): AssistantMessage {
   const stored = readStored(m.citationsJson);
   const verdict = (m.verdict as AssistantVerdict | null) ?? null;
   const assistant = m.role !== "USER";
@@ -354,6 +387,7 @@ function messageView(m: { id: string; role: string; text: string; createdAt: Dat
     chip: assistant ? chipOf(m.mode) : null,
     cut: assistant && stored.cut,
     askPerson: assistant && askPerson && offersAskPerson(verdict, m.text) ? askPerson : null,
+    standard: assistant && !!m.cachedAnswerId,
   };
 }
 
@@ -450,6 +484,12 @@ type Outcome = {
   promptTokens: number;
   completionTokens: number;
   modelCalls: number;
+  /** Pass 3: the mode the gate reached (an answer's chip, a discard's or refusal's where known), for the unanswered report. */
+  scope?: AssistantChip | null;
+  /** Pass 3: the gate's reason codes (NOTHING_FOUND, CLASSIFIER, or the answer gate's), never a word. */
+  reasons?: string[];
+  /** Pass 3: the standard answer served, when one was. */
+  standardId?: string | null;
 };
 
 /**
@@ -547,6 +587,10 @@ export async function ask(
       verdict: outcome.verdict,
       // The chip since Vidura pass 1 (USING, RECORDS, LEARNING); a fixed sentence keeps none.
       mode: outcome.chip,
+      // Pass 3: what the unanswered report counts (the mode reached, the reason codes) and the standard answer served.
+      scope: outcome.scope ?? null,
+      gateReasons: outcome.reasons?.length ? outcome.reasons.join(",") : null,
+      cachedAnswerId: outcome.standardId ?? null,
       hint: outcome.hint,
       matchedAssignmentId: outcome.matchedAssignmentId,
       promptTokens: outcome.promptTokens,
@@ -564,10 +608,12 @@ export async function ask(
     hints: outcome.verdict === "HINT" ? 1 : 0,
     refused: answered || outcome.verdict === "MODEL_UNAVAILABLE" ? 0 : 1,
     counsellorRoutes: routed ? 1 : 0,
+    standardAnswers: outcome.standardId ? 1 : 0,
     modelCalls: outcome.modelCalls,
     promptTokens: outcome.promptTokens,
     completionTokens: outcome.completionTokens,
   });
+  if (outcome.standardId) await countStandardHit(outcome.standardId, now);
   streamPieces(outcome.text).forEach((text, seq) => emit({ type: "assistant.delta", conversationId: conv.id, messageId: answer.id, seq, text }));
   emit({ type: "assistant.done", conversationId: conv.id, messageId: answer.id, verdict: outcome.verdict });
   // "Ask a person" (Vidura pass 1): on a fixed sentence, or an answer saying it is not sure.
@@ -704,15 +750,16 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   // never a passage the model reads: in the pilot those were the closest passages to most help questions,
   // and the answers sent a pupil to /api/v1/family/student/assignments and a driver to /admin/people.
   // Three times the passages are fetched so that enough page passages remain.
-  const searchedHelp = policy.help
-    ? keepClose(
-        mergeRendered(
-          await deps.searchHelp({ query: helpQuery, language, role: asker.role, limit: HELP_PASSAGES * 3 }),
-          renderedQuery ? await deps.searchHelp({ query: renderedQuery, language: "en", role: asker.role, limit: HELP_PASSAGES * 3 }) : [],
-          helpShift,
-        ).filter((h) => !h.pagePath || pageIsRoles(h.pagePath, asker.role)),
-      )
-    : [];
+  // Pass 3 (18 Oct 2026): the help index and the person's doors are searched side by side, not one after another; the
+  // books (below) only when the gate asks for them.
+  const none = Promise.resolve([] as HelpHit[]);
+  const [ownHelp, renderedHelp, ownDoorHits, renderedDoorHits] = await Promise.all([
+    policy.help ? deps.searchHelp({ query: helpQuery, language, role: asker.role, limit: HELP_PASSAGES * 3 }) : none,
+    policy.help && renderedQuery ? deps.searchHelp({ query: renderedQuery, language: "en", role: asker.role, limit: HELP_PASSAGES * 3 }) : none,
+    dataCtx ? searchDoors(deps.searchHelp, { query: helpQuery, language, role: asker.role }) : Promise.resolve([]),
+    dataCtx && renderedQuery ? searchDoors(deps.searchHelp, { query: renderedQuery, language: "en", role: asker.role }) : Promise.resolve([]),
+  ]);
+  const searchedHelp = policy.help ? keepClose(mergeRendered(ownHelp, renderedHelp, helpShift).filter((h) => !h.pagePath || pageIsRoles(h.pagePath, asker.role))) : [];
   const helpScope = [...cards, ...searchedHelp.filter((h) => !cards.some((c) => c.entryId === h.entryId))];
   const help = helpScope.filter((h) => h.pagePath || !h.door).slice(0, HELP_PASSAGES);
   // The books, searched with the English rendering where there is one (on English's scale), and — when that falls short
@@ -760,32 +807,27 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     // The best on the question's language's scale, for the gate.
     return { found, note, later, top: best(found) - (CURRICULUM_THRESHOLD[scale] - CURRICULUM_THRESHOLD[language]) };
   };
-  let books = await searchBooks(curriculumQuery, curriculumScale);
-  // (The rendering's top on the question's scale is below that scale's threshold exactly when it is below English's own.)
-  if (rendered && books.top < CURRICULUM_THRESHOLD[language]) {
-    const asTyped = await searchBooks(a.stripped, language);
-    if (asTyped.top > books.top) books = asTyped;
-  }
-  let curriculum: CurriculumHit[] = books.found;
-  const boardNote: string | null = books.note;
-  const laterClass: string | null = books.later;
-  const curriculumTop = books.top;
-  curriculum = keepClose(curriculum);
+  // THE BOOKS, ONCE AND ONLY WHEN NEEDED (pass 3, 18 Oct 2026): the corpus's exact scan took two to three seconds of
+  // the time to the first word, for a help question too (a role without the tutor searches it only to tell a topic
+  // question from a platform one). The gate asks for it when its answer can change the verdict, and the tutor's answer
+  // reads it; a help question the classifier calls PLATFORM never waits for it. The result is the same search as before.
+  let booksOnce: ReturnType<typeof searchBooks> | null = null;
+  const books = () =>
+    (booksOnce ??= (async () => {
+      let found = await searchBooks(curriculumQuery, curriculumScale);
+      // (The rendering's top on the question's scale is below that scale's threshold exactly when it is below English's own.)
+      if (rendered && found.top < CURRICULUM_THRESHOLD[language]) {
+        const asTyped = await searchBooks(a.stripped, language);
+        if (asTyped.top > found.top) found = asTyped;
+      }
+      return found;
+    })());
 
   // 2b. The person's own doors: ranked over the catalog by their summaries (router.ts); a follow-up reads the
   // conversation's last doors again first.
   // The doors whose data the page shows come first for a question pointing at the page (page awareness).
   const pageDoors = pageHere ? doorsShownOn(pageHere, asker.role).map((d) => ({ door: `GET ${d}`, similarity: PAGE_DOOR_SIMILARITY })) : [];
-  const doorHits = dataCtx
-    ? [
-        ...pageDoors,
-        ...mergeRendered(
-          await searchDoors(deps.searchHelp, { query: helpQuery, language, role: asker.role }),
-          renderedQuery ? await searchDoors(deps.searchHelp, { query: renderedQuery, language: "en", role: asker.role }) : [],
-          doorShift,
-        ),
-      ]
-    : [];
+  const doorHits = dataCtx ? [...pageDoors, ...mergeRendered(ownDoorHits, renderedDoorHits, doorShift)] : [];
   const previousDoors = dataCtx && isFollowUp(a.original) ? (followUpCache.get(a.conversationId)?.doors ?? []) : [];
   // A follow-up is read beside the question before it ("and how many of those are paid" alone is about nothing):
   // the classifier and the help prompt see both, the person's earlier words as stripped as these.
@@ -808,17 +850,23 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
       language,
       policy,
       helpTop: best(helpScope),
-      // On the question's language's scale: a rendered search's best is English's (pass 2).
-      curriculumTop,
+      // On the question's language's scale: a rendered search's best is English's (pass 2); searched only when asked (pass 3).
+      curriculumTop: async () => (await books()).top,
       ownDoor: chosen.some((c) => c.similarity >= DOOR_SCOPE_THRESHOLD) || (a.toolRuns?.length ?? 0) > 0 || aboutData !== null,
       role: asker.role,
       // The person's pick of mode (Vidura pass 1): only between the scopes the gate already allows.
       // A row named by "Explain this" is the person's own record: the platform scope (pass 2).
       prefer: aboutData ? "PLATFORM" : preferFor(a.prefer),
     },
-    { chat: deps.chat },
+    { chat: deps.classify ?? deps.chat },
   );
-  if (!gate.pass) return fixed(gate.verdict, { promptTokens: gate.tokens, modelCalls: gate.modelCalled ? 1 : 0 });
+  if (!gate.pass) {
+    // Pass 3, the unanswered report: below both thresholds, or a platform or topic question with no page or passage
+    // close enough, found nothing; the classifier's REFUSE is its own.
+    const found = gate.verdict === "OUT_OF_SCOPE" ? (gate.label === "REFUSE" ? "CLASSIFIER" : "NOTHING_FOUND") : null;
+    const scope: AssistantChip | null = gate.label === "PLATFORM" ? "USING" : gate.label === "CURRICULUM" ? "LEARNING" : null;
+    return fixed(gate.verdict, { promptTokens: gate.tokens, modelCalls: gate.modelCalled ? 1 : 0, scope, reasons: found ? [found] : [] });
+  }
   let tokens = { prompt: gate.tokens, completion: 0 };
   let modelCalls = 1;
 
@@ -827,10 +875,22 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   if (gate.mode === "TUTOR" && policy.assessed && (a.assessmentItems || asker.membershipId)) {
     const items = a.assessmentItems ?? (await pupilAssessmentItems({ schoolId: asker.schoolId, membershipId: asker.membershipId!, timezone: school.timezone, now: deps.now() }));
     if (items.length) decision = await assess(a, items);
-    if (decision.kind === "CLOSED") return fixed("ASSESSMENT_OPEN", { mode: "TUTOR", promptTokens: tokens.prompt, modelCalls });
+    if (decision.kind === "CLOSED") return fixed("ASSESSMENT_OPEN", { mode: "TUTOR", promptTokens: tokens.prompt, modelCalls, scope: "LEARNING" });
   }
   const hint = decision.kind === "HINT";
   const matchedAssignmentId = decision.kind === "HINT" || decision.kind === "WORKED" ? (decision.item.assignmentId ?? null) : null;
+
+  // 5a. A STANDARD ANSWER (pass 3, standard.ts): a how-to or where-is question the classifier passed as PLATFORM, in the
+  // help scope, whose normal form the operator has checked an answer for, for this role and language, is served that
+  // answer with no answering model. Never for a question pointing at the page, "Explain this", "go on", a follow-up,
+  // or a pick of My records; the checked text is read again by the answer gate's code checks (this school's names, a
+  // link, a placeholder) and the role's pages, and anything they find sends the question on to the model as before.
+  if (gate.mode === "HELP" && deps.standardAnswer && !pageHere && !aboutData && !a.continuation && !previousDoors.length && a.prefer !== "RECORDS" && helpKind(a.original) !== "OTHER") {
+    const standard = await deps.standardAnswer({ role: asker.role, language, question: a.stripped });
+    if (standard && !foreignPaths(standard.text, asker.role).length && !answerProblems(standard.text, a.lexicon, "").length) {
+      return { verdict: "ANSWERED", text: standard.text, mode: "HELP", chip: "USING", cut: false, hint: false, citations: standard.citations, matchedAssignmentId: null, promptTokens: tokens.prompt + pre.tokens, completionTokens: 0, modelCalls: modelCalls + pre.calls, scope: "USING", standardId: standard.id };
+    }
+  }
 
   // 5. The prompt, from the passages and (for help) the person's own doors.
   let messages: ChatMessage[];
@@ -848,6 +908,10 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   /** Pass 2: the question names days that none of the doors read could be narrowed to. */
   let windowUnserved = false;
   if (gate.mode === "TUTOR") {
+    const found = await books();
+    const curriculum: CurriculumHit[] = keepClose(found.found);
+    const boardNote: string | null = found.note;
+    const laterClass: string | null = found.later;
     const passages = curriculum.slice(0, CURRICULUM_PASSAGES).map((h, i) => ({ n: i + 1, heading: `${h.board}, "${h.book}" (class ${h.grade}), ${h.headingPath.join(" › ") || h.chapter || ""}, page ${h.pageStart}`, text: withoutInjectedLines(stripIdentifiers(h.text.slice(0, 1800), a.lexicon).text) }));
     citationsByNumber = curriculum.slice(0, CURRICULUM_PASSAGES).map((h, i) => ({ kind: "CURRICULUM", n: i + 1, board: h.board, book: h.book, grade: h.grade, chapter: h.chapter, section: h.section, page: h.pageStart, sourceUrl: h.sourceUrl || null, chunkId: h.chunkId }));
     allowedText = passages.map((p) => `${p.heading}\n${p.text}`).join("\n");
@@ -891,7 +955,7 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     for (const d of data) d.n = free++;
     blockNumbers = data.map((d) => d.n!);
     // Nothing a person can act on and none of their own data: the sentence, and no answer is written.
-    if (!passages.length && !data.length) return fixed("OUT_OF_SCOPE", { promptTokens: tokens.prompt, modelCalls });
+    if (!passages.length && !data.length) return fixed("OUT_OF_SCOPE", { promptTokens: tokens.prompt, modelCalls, scope: "USING", reasons: ["NOTHING_FOUND"] });
     // "My records" when the answer is the person's own figures: data was read and the question is not a how-to or a
     // where-is that a guide passage answers (the live walk of 17 Oct 2026: "how do I issue a book" wore My records
     // because a door had been read beside the guide). A pick of "My records" keeps it whenever data was read.
@@ -937,13 +1001,13 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   content = restrictAnswerMarkdown(content);
   // Every number a passage or a numbered row of the person's own data carries may be cited, and nothing else.
   const citable = new Set([...citationsByNumber.map((c) => c.n), ...rowLinks.map((l) => l.n), ...blockNumbers]);
-  const checked = await gateAnswer({ answer: content, label: gate.label, passageCount: Math.max(0, ...citable), allowedText, lexicon: a.lexicon, hint, alsoLabel: exams ? "PLATFORM" : undefined, role: asker.role }, { chat: deps.chat });
+  const checked = await gateAnswer({ answer: content, label: gate.label, passageCount: Math.max(0, ...citable), allowedText, lexicon: a.lexicon, hint, alsoLabel: exams ? "PLATFORM" : undefined, role: asker.role }, { chat: deps.classify ?? deps.chat });
   if (checked.tokens) modelCalls += 1;
   tokens.prompt += checked.tokens;
   // The reason codes only, never a word of the question or the answer (Phase D: discards were otherwise invisible to the operator).
   if (!checked.pass) {
     discardLog(gate.mode, checked.reasons);
-    return fixed("ANSWER_DISCARDED", { mode: gate.mode, promptTokens: tokens.prompt, completionTokens: tokens.completion, modelCalls });
+    return fixed("ANSWER_DISCARDED", { mode: gate.mode, promptTokens: tokens.prompt, completionTokens: tokens.completion, modelCalls, scope: chip, reasons: checked.reasons });
   }
   // "Should I study this for the exam" (the exam-scope reader, 10 Oct 2026): the platform owns the sentence that the
   // teacher knows what the paper covers; an answer that still opens with yes or no is discarded, in any of the three languages.
@@ -954,19 +1018,19 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     body = body.replace(/^\s*[^.!?।\n]*[.!?।]?\s*/, "");
     if (!body.trim()) {
       discardLog(gate.mode, ["EXAM_YES_NO"]);
-      return fixed("ANSWER_DISCARDED", { mode: gate.mode, promptTokens: tokens.prompt, completionTokens: tokens.completion, modelCalls });
+      return fixed("ANSWER_DISCARDED", { mode: gate.mode, promptTokens: tokens.prompt, completionTokens: tokens.completion, modelCalls, scope: chip, reasons: ["EXAM_YES_NO"] });
     }
   }
   const cited = new Set(citedNumbers(body));
   // A number between the passages' and the rows' that names nothing (a row cut as an instruction) is an invented citation.
   if ([...cited].some((n) => !citable.has(n))) {
     discardLog(gate.mode, ["CITATION"]);
-    return fixed("ANSWER_DISCARDED", { mode: gate.mode, promptTokens: tokens.prompt, completionTokens: tokens.completion, modelCalls });
+    return fixed("ANSWER_DISCARDED", { mode: gate.mode, promptTokens: tokens.prompt, completionTokens: tokens.completion, modelCalls, scope: chip, reasons: ["CITATION"] });
   }
   // A help answer names only pages the person's role opens, never a program's /api/ door (the prompt asks; this holds it).
   if (gate.mode === "HELP" && foreignPaths(body, asker.role).length) {
     discardLog(gate.mode, ["FOREIGN_PAGE"]);
-    return fixed("ANSWER_DISCARDED", { mode: gate.mode, promptTokens: tokens.prompt, completionTokens: tokens.completion, modelCalls });
+    return fixed("ANSWER_DISCARDED", { mode: gate.mode, promptTokens: tokens.prompt, completionTokens: tokens.completion, modelCalls, scope: chip, reasons: ["FOREIGN_PAGE"] });
   }
   // A <data> block cited by its number has no source to show: its mark goes, the rows' and the passages' stay.
   if (blockNumbers.length) body = body.replace(/\s?\[(\d{1,3})\]/g, (mark, n: string) => (blockNumbers.includes(Number(n)) ? "" : mark));
@@ -991,6 +1055,7 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     promptTokens: tokens.prompt + pre.tokens,
     completionTokens: tokens.completion,
     modelCalls: modelCalls + pre.calls,
+    scope: chip,
   };
 }
 
@@ -1062,7 +1127,7 @@ export async function previewAnswer(
   try {
     const now = deps.now();
     const dataContext = { role: input.role, membershipId: null, children: [], childId: null, duties: [], now, childNames: [] };
-    const outcome = await answerQuestion({ asker, policy: policyFor(input.role), school, language, original, stripped: stripIdentifiers(original, input.lexicon ?? []).text, lexicon: input.lexicon ?? [], previous: input.assessment?.previous ?? [], deps: { ...deps, runDoors: async () => [] }, emit: () => {}, conversationId: "preview", gradeOverride: input.grade ?? null, assessmentItems: input.assessment?.items, dataContext, toolRuns: input.toolRuns });
+    const outcome = await answerQuestion({ asker, policy: policyFor(input.role), school, language, original, stripped: stripIdentifiers(original, input.lexicon ?? []).text, lexicon: input.lexicon ?? [], previous: input.assessment?.previous ?? [], deps: { ...deps, runDoors: async () => [], standardAnswer: undefined }, emit: () => {}, conversationId: "preview", gradeOverride: input.grade ?? null, assessmentItems: input.assessment?.items, dataContext, toolRuns: input.toolRuns });
     return { ...outcome, language };
   } catch (error) {
     if (!(error instanceof ModelUnavailable) && !isModelFailure(error)) throw error;
@@ -1112,6 +1177,7 @@ export async function assistantUsage(ctx: ActiveContext, now = new Date()): Prom
     helplineText: school.helplineText,
     helplineDefault: t("assistantService.helplineDefault"),
     retentionDays: retentionDays(),
+    standardAnswers: totals.standardAnswers,
   };
 }
 

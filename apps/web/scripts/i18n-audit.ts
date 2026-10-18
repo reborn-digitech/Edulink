@@ -95,6 +95,8 @@ const SKIP_EXACT = new Set([
   // seats (17 Oct 2026): a job's name, a code the crontab and /root/jobs key on (its words are root.jobDescSessionsRemind).
   "sessions:remind",
   // end seats
+  // vidura pass 3 (18 Oct 2026): a job's name, a code the crontab and /root/jobs key on (its words are root.jobDescViduraGaps).
+  "vidura:gaps",
 ]);
 
 const PROPS = ["title", "description", "label", "placeholder", "hint", "alt", "aria-label", "empty", "cta"];

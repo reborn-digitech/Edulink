@@ -47,6 +47,11 @@ import { questionShape } from "../src/lib/assistant/prompt";
 import { toolDataForModel, type ToolRun } from "../src/lib/assistant/tools";
 import type { AssessmentItem } from "../src/lib/assistant/assessment-rule";
 import { db } from "../src/lib/db";
+// Vidura pass 3 (18 Oct 2026): a run started from the operator's panel.
+import type { ViduraEvalProgress, ViduraEvalScore } from "@edulink/contracts";
+import { EVAL_MACHINE, evalBeat, evalRunnerRow, finishEval, keepScoresAfterEnd, markEvalRunning, type EvalDb } from "../src/lib/eval-jobs";
+import { MACHINE, modelReady } from "../src/lib/quiz-jobs";
+import { neededServers } from "../src/lib/model-holders";
 import { foreignPaths } from "../src/lib/assistant/pages";
 import {
   answerLanguage,
@@ -83,8 +88,9 @@ function arg(name: string): string | undefined {
 }
 
 const stamp = new Date().toISOString().replace(/[:T]/g, "-").slice(0, 16);
-const OUT = arg("out") ?? join(ROOT, "storage", "assistant-eval", stamp);
-const LIMIT = arg("limit") ? Number(arg("limit")) : Infinity;
+// A run started from the panel (--job=<id>, Vidura pass 3) takes its limit from its row and writes under panel-<stamp>.
+let OUT = arg("out") ?? join(ROOT, "storage", "assistant-eval", stamp);
+let LIMIT = arg("limit") ? Number(arg("limit")) : Infinity;
 const ONLY = arg("only");
 const BASE = arg("base") ?? "http://localhost:3000";
 
@@ -100,9 +106,32 @@ type Preview = Awaited<ReturnType<typeof previewAnswer>>;
 type Row = { set: string; id: string; pass: boolean; verdict: AssistantVerdict; question: string; text: string; language: AssistantLanguage; citations: AssistantCitation[]; seconds: number; notes: Record<string, unknown> };
 
 const rows: Row[] = [];
+/**
+ * THE LIVE LINE (Vidura pass 3, a run from the panel): the set running, its cases done and passed, the run's cases and
+ * seconds; and the panel's Stop, which halts the run after the case in hand (`StopRun` out of `record`).
+ */
+const live = { set: null as SetName | null, setIndex: 0, setsTotal: 0, done: 0, total: null as number | null, passed: 0, casesDone: 0, started: Date.now(), stopAsked: false };
+class StopRun extends Error {}
 function record(row: Row) {
   rows.push(row);
   appendFileSync(join(OUT, `${row.set}.jsonl`), JSON.stringify(row) + "\n");
+  live.done++;
+  live.casesDone++;
+  live.passed += row.pass ? 1 : 0;
+  if (live.stopAsked) throw new StopRun("stopped from the panel");
+}
+
+/** How many cases a set has (with --limit and --only), for the live line; null where the harness cannot say ahead. */
+function setTotal(name: SetName): number | null {
+  try {
+    if (name === "role") {
+      const set = loadSet<{ questions: unknown[]; tutorRoles: string[]; otherRoles: string[] }>("role");
+      return set.questions.length * (set.tutorRoles.length + set.otherRoles.length);
+    }
+    return pick(loadSet<{ cases: { id: string }[] }>(name).cases).length;
+  } catch {
+    return null;
+  }
 }
 
 let deps: AssistantDeps;
@@ -974,18 +1003,13 @@ const door_ = (token: string, method: string, path: string, body?: unknown) => d
 
 /* -------------------------------------------------------------------------- */
 
-async function main() {
-  mkdirSync(OUT, { recursive: true });
-  deps = realDeps();
-  const pilot = arg("pilot") === "true";
-  const metrics = arg("metrics") === "true";
-  const requested = (arg("sets") ?? (pilot ? "refusal" : metrics ? "" : "all")).split(",").map((s) => s.trim());
-  const sets: SetName[] = requested.includes("all") ? [...ALL_SETS] : (requested.filter((s) => (ALL_SETS as readonly string[]).includes(s)) as SetName[]);
-  if (pilot && !sets.includes("refusal")) sets.unshift("refusal");
-  const started = Date.now();
+/** The sets in order, each timed; the refusal set's gate answered (null when it was not run). Pass 3: the live line kept. */
+async function runSets(sets: SetName[]): Promise<boolean | null> {
   let gate: boolean | null = null;
-  for (const name of sets) {
+  live.setsTotal = sets.length;
+  for (const [i, name] of sets.entries()) {
     const t = Date.now();
+    Object.assign(live, { set: name, setIndex: i + 1, done: 0, passed: 0, total: setTotal(name) });
     console.log(`\n== ${name}`);
     if (name === "refusal") gate = await runRefusal();
     if (name === "counsellor") await runCounsellor();
@@ -998,6 +1022,21 @@ async function main() {
     if (name === "hint") await runHint();
     console.log(`   (${((Date.now() - t) / 1000).toFixed(0)} s)`);
   }
+  return gate;
+}
+
+async function main() {
+  const jobId = arg("job");
+  if (jobId) return runAsJob(jobId);
+  mkdirSync(OUT, { recursive: true });
+  deps = realDeps();
+  const pilot = arg("pilot") === "true";
+  const metrics = arg("metrics") === "true";
+  const requested = (arg("sets") ?? (pilot ? "refusal" : metrics ? "" : "all")).split(",").map((s) => s.trim());
+  const sets: SetName[] = requested.includes("all") ? [...ALL_SETS] : (requested.filter((s) => (ALL_SETS as readonly string[]).includes(s)) as SetName[]);
+  if (pilot && !sets.includes("refusal")) sets.unshift("refusal");
+  const started = Date.now();
+  const gate = await runSets(sets);
   if (pilot) {
     if (gate !== true) console.log("\nTHE PILOT DID NOT START: the refusal set is under 100 percent.");
     else {
@@ -1019,6 +1058,92 @@ async function main() {
   if (gate === false) {
     console.log("\nexit 1: the refusal set must pass at 100 percent.");
     process.exitCode = 1;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* A run started from the operator's panel (Vidura pass 3, 18 Oct 2026)       */
+/* -------------------------------------------------------------------------- */
+
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+/** How long the runner waits for the servers its Start brought up. */
+const MODEL_WAIT_MS = 10 * 60_000;
+
+/**
+ * `--job=<id>`: the run the panel's Start spawned (src/lib/eval-jobs.ts). It waits for the servers the run needs,
+ * marks itself RUNNING, runs the sets the row names with the row's limit, rewrites the live line every three seconds
+ * (and reads its row: STOPPING halts it after the case in hand), and ends with the scores kept on the row, through
+ * finishEval, which takes down the servers this run brought up.
+ */
+async function runAsJob(jobId: string): Promise<void> {
+  const jdb = db as unknown as EvalDb;
+  const row = await evalRunnerRow(jdb, jobId);
+  if (!row) {
+    console.log(`no active evaluation run ${jobId}`);
+    return;
+  }
+  LIMIT = row.request.limit ?? Infinity;
+  OUT = join(ROOT, "storage", "assistant-eval", `panel-${stamp}`);
+  mkdirSync(OUT, { recursive: true });
+  let contended = false;
+  const progress = (phase: ViduraEvalProgress["phase"]): ViduraEvalProgress => ({
+    phase,
+    set: live.set,
+    setIndex: live.setIndex,
+    setsTotal: row.request.sets.length,
+    done: live.done,
+    total: live.total,
+    passed: live.passed,
+    casesDone: live.casesDone,
+    seconds: Math.round((Date.now() - live.started) / 1000),
+    contended,
+  });
+  let phase: ViduraEvalProgress["phase"] = "STARTING_MODEL";
+  const beat = async () => {
+    const r = await evalBeat(jdb, jobId, progress(phase));
+    if (r.state !== "QUEUED" && r.state !== "RUNNING") live.stopAsked = true;
+    if (r.contended) contended = true;
+  };
+  const timer = setInterval(() => void beat().catch(() => {}), 3_000);
+  const end = async (state: "FINISHED" | "STOPPED" | "FAILED", error: string | null = null) => {
+    clearInterval(timer);
+    const scores: ViduraEvalScore[] = summaries
+      .filter((x): x is Summary & { set: SetName } => (ALL_SETS as readonly string[]).includes(x.set))
+      .map((x) => ({ set: x.set, cases: x.cases, pass: x.pass, ...(x.gate !== undefined ? { gate: x.gate } : {}), lines: x.lines }));
+    const gate = summaries.find((x) => x.set === "refusal")?.gate ?? null;
+    writeFileSync(join(OUT, "summary.json"), JSON.stringify(summaries, null, 1));
+    // A run ended under the runner (reaped) still keeps the scores of what it ran.
+    if (!(await finishEval(jdb, jobId, state, EVAL_MACHINE, { error, scores, gate, progress: progress("DONE") }))) await keepScoresAfterEnd(jdb, jobId, scores, gate);
+    console.log(`\nthe run ended ${state}${error ? `: ${error}` : ""} (results in ${OUT})`);
+  };
+  try {
+    const waitUntil = Date.now() + MODEL_WAIT_MS;
+    while (!(await modelReady(MACHINE, neededServers("EVAL")))) {
+      await beat();
+      if (live.stopAsked) return await end("STOPPED");
+      if (Date.now() > waitUntil) return await end("FAILED", "the model servers did not come up within ten minutes");
+      await sleep(5_000);
+    }
+    if (live.stopAsked || !(await markEvalRunning(jdb, jobId, OUT))) return await end("STOPPED");
+    phase = "RUNNING";
+    live.started = Date.now();
+    deps = realDeps();
+    await beat();
+    try {
+      await runSets(row.request.sets);
+    } catch (error) {
+      if (!(error instanceof StopRun)) throw error;
+      // The set in hand when Stop was pressed: what it ran, scored as far as it went.
+      if (live.set && !summaries.some((x) => x.set === live.set)) {
+        const done = rows.filter((r) => r.set === live.set);
+        summaries.push({ set: live.set, cases: done.length, pass: done.filter((r) => r.pass).length, lines: [`stopped after ${done.length}${live.total !== null ? ` of ${live.total}` : ""} cases`] });
+      }
+      return await end("STOPPED");
+    }
+    if (row.request.sets.some((x) => ["tutor", "help", "language", "role"].includes(x))) speakerSheets();
+    await end(live.stopAsked ? "STOPPED" : "FINISHED");
+  } catch (error) {
+    await end("FAILED", (error as Error).message ?? String(error));
   }
 }
 

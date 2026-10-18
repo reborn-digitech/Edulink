@@ -48,14 +48,14 @@ import {
   type QuizGenRequest,
   type QuizJobsState,
 } from "@edulink/contracts";
-import { handOverTo, type HandOver } from "./model-holders";
+import { activeRuns, handOverTo, neededServers, type HandOver } from "./model-holders";
 
 /**
  * The tables this file touches; the web passes src/lib/db's client, the runner its own. The crawl's
  * table is read so a run ending beside an active competitions crawl hands it the servers it brought up
  * (src/lib/model-holders.ts, 12 Oct 2026).
  */
-export type JobDb = Pick<PrismaClient, "quizGenJob" | "user" | "competitionCrawlJob">;
+export type JobDb = Pick<PrismaClient, "quizGenJob" | "user" | "competitionCrawlJob" | "assistantEvalJob">;
 
 /** The apps/web directory: scripts/model-serve.sh, the runner's CLI and storage/ live under it. */
 export const APP_ROOT = process.cwd();
@@ -97,6 +97,8 @@ export type JobDeps = {
 const DEFAULTS: Record<ModelServer, { url: string; model: string; urlKey: string; modelKey: string }> = {
   chat: { url: "http://127.0.0.1:8180/v1", model: "qwen3-30b-a3b", urlKey: "ASSISTANT_MODEL_URL", modelKey: "ASSISTANT_MODEL" },
   embed: { url: "http://127.0.0.1:8181/v1", model: "qwen3-embedding-0.6b", urlKey: "ASSISTANT_EMBED_URL", modelKey: "ASSISTANT_EMBED_MODEL" },
+  // Vidura pass 3 (18 Oct 2026): the gate's small model (scripts/model-serve.sh start-small).
+  small: { url: "http://127.0.0.1:8182/v1", model: "qwen3-4b", urlKey: "ASSISTANT_GATE_MODEL_URL", modelKey: "ASSISTANT_GATE_MODEL" },
 };
 
 /** The server's address and name from the assistant's own settings (src/lib/assistant-env.ts), else the script's defaults. */
@@ -186,7 +188,7 @@ export function forgetHealth(): void {
  * answers ok, STARTING while it loads (or while the script's pid is alive and the port not yet open),
  * STOPPED when nothing answers.
  */
-export async function modelServers(deps: JobDeps = MACHINE, opts: { fresh?: boolean } = {}): Promise<ModelServerStatus[]> {
+export async function modelServers(deps: Pick<JobDeps, "now" | "health" | "serverPid" | "pidAlive"> = MACHINE, opts: { fresh?: boolean } = {}): Promise<ModelServerStatus[]> {
   const now = deps.now();
   return Promise.all(
     MODEL_SERVERS.map(async (server) => {
@@ -203,9 +205,9 @@ export async function modelServers(deps: JobDeps = MACHINE, opts: { fresh?: bool
   );
 }
 
-/** Both servers answer ok: the runner may begin. */
-export async function modelReady(deps: JobDeps = MACHINE): Promise<boolean> {
-  return (await modelServers(deps, { fresh: true })).every((s) => s.state === "RUNNING");
+/** The servers a run needs (model-holders.ts `neededServers`: chat and embed, and the small one for an evaluation) answer ok: the runner may begin. */
+export async function modelReady(deps: Pick<JobDeps, "now" | "health" | "serverPid" | "pidAlive"> = MACHINE, needs: readonly ModelServer[] = ["chat", "embed"]): Promise<boolean> {
+  return (await modelServers(deps, { fresh: true })).filter((s) => needs.includes(s.server)).every((s) => s.state === "RUNNING");
 }
 
 /* -------------------------------------------------------------------------- */
@@ -294,13 +296,24 @@ export async function finishJob(db: JobDb, jobId: string, state: "FINISHED" | "S
   const row = await db.quizGenJob.findUnique({ where: { id: jobId }, select: { startedServers: true } });
   if (row) {
     const problems = await serversDownAfter(db, row, deps);
-    if (problems.length) await db.quizGenJob.update({ where: { id: jobId }, data: { error: [error, `stopping the model servers: ${problems.join("; ")}`].filter(Boolean).join(" — ").slice(0, 2000) } });
+    if (problems.length) await db.quizGenJob.update({ where: { id: jobId }, data: { error: [error, stoppingProblems(problems)].filter(Boolean).join(" — ").slice(0, 2000) } });
   }
   return true;
 }
 
+/**
+ * A run's own words for the operator's log line (the row's `error`, shown as it is): kept here once for every kind of
+ * run (the evaluation runs of Vidura pass 3 use them too, src/lib/eval-jobs.ts).
+ */
+export function stoppingProblems(problems: string[]): string {
+  return `stopping the model servers: ${problems.join("; ")}`;
+}
+export function couldNotBegin(error: unknown): string {
+  return `the run could not begin: ${(error as Error).message}`;
+}
+
 /** Why an active row's runner is dead, or null while it lives. */
-export function deadReason(row: Pick<JobRow, "pid" | "state" | "createdAt" | "heartbeatAt">, deps: JobDeps): string | null {
+export function deadReason(row: Pick<JobRow, "pid" | "state" | "createdAt" | "heartbeatAt">, deps: Pick<JobDeps, "now" | "pidAlive">): string | null {
   const now = deps.now().getTime();
   if (row.pid === null) return now - row.createdAt.getTime() > SPAWN_GRACE_MS ? "the runner never started" : null;
   if (!deps.pidAlive(row.pid)) return `the runner's process (pid ${row.pid}) is no longer running`;
@@ -352,7 +365,8 @@ function isUniqueClash(error: unknown): boolean {
  */
 export async function startJob(db: JobDb, who: { userId: string; role: "APP_ADMIN" | "OPERATOR" }, request: QuizGenRequest, deps: JobDeps = MACHINE): Promise<QuizGenJob> {
   await reapJobs(db, deps);
-  const servers = await modelServers(deps, { fresh: true });
+  // Only the servers a generation run needs (the gate's small model is the assistant's, pass 3).
+  const servers = (await modelServers(deps, { fresh: true })).filter((s) => neededServers("QUIZ").includes(s.server));
   const down = servers.filter((s) => s.state === "STOPPED").map((s) => s.server);
   let row: JobRow;
   try {
@@ -377,7 +391,7 @@ export async function startJob(db: JobDb, who: { userId: string; role: "APP_ADMI
     const pid = deps.spawnRunner(row.id);
     row = await db.quizGenJob.update({ where: { id: row.id }, data: { pid, heartbeatAt: deps.now() } });
   } catch (error) {
-    await finishJob(db, row.id, "FAILED", deps, `the run could not begin: ${(error as Error).message}`);
+    await finishJob(db, row.id, "FAILED", deps, couldNotBegin(error));
     throw new JobRefusal("quizJobs.serverFailed", 500);
   }
   return toJob(row, await namesFor(db, [row]));
@@ -451,9 +465,8 @@ export async function startModelServer(server: ModelServer, deps: JobDeps = MACH
  */
 export async function stopModelServer(db: JobDb, server: ModelServer, deps: JobDeps = MACHINE): Promise<ModelServerStatus[]> {
   await reapJobs(db, deps);
-  // A competitions crawl holds the model too (12 Oct 2026): refused while either kind runs.
-  const active = (await db.quizGenJob.count({ where: { active: true, state: { in: ACTIVE } } })) + (await db.competitionCrawlJob.count({ where: { active: true } }));
-  if (active > 0) throw new JobRefusal("quizJobs.stopRunFirst", 409);
+  // A competitions crawl (12 Oct 2026) and an evaluation run (Vidura pass 3) hold the model too: refused while any kind runs.
+  if ((await db.quizGenJob.count({ where: { active: true, state: { in: ACTIVE } } })) + (await activeRuns(db)) > 0) throw new JobRefusal("quizJobs.stopRunFirst", 409);
   const [state] = (await modelServers(deps, { fresh: true })).filter((s) => s.server === server);
   if (state?.state === "STOPPED") return modelServers(deps);
   if (deps.serverPid(server) === null) throw new JobRefusal("quizJobs.notOurs", 422);

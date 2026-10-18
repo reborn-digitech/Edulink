@@ -61,6 +61,17 @@ export function vectorLiteral(v: number[]): string {
   return `[${v.join(",")}]`;
 }
 
+/**
+ * The endpoint did not answer at all (nothing listening, the connection refused, or llama-server still loading its
+ * model, 503): a caller with a second endpoint may ask that one instead (Vidura pass 3: the gate's small model falling
+ * back to the chat model). A timeout or any other answer is not this.
+ */
+export function endpointUnreachable(error: unknown): boolean {
+  if (!(error instanceof Error)) return false;
+  if (error.name === "TimeoutError" || error.name === "AbortError") return false;
+  return /fetch failed|ECONNREFUSED|ECONNRESET|EHOSTUNREACH|socket hang up|endpoint answered 503/i.test(`${error.message} ${String((error as { cause?: unknown }).cause ?? "")}`);
+}
+
 export type ChatMessage = { role: "system" | "user" | "assistant"; content: string };
 export type ChatResult = {
   content: string;
@@ -72,6 +83,11 @@ export type ChatResult = {
   firstTokenLogprob: number | null;
   /** Why the model stopped ("stop", "length" at the token cap), when the endpoint says (Vidura pass 1: "Go on"). */
   finishReason?: string | null;
+  /**
+   * llama-server's own account of the prompt (Vidura pass 3, the time to the first word): the tokens it took from the
+   * slot's cache, the tokens it read afresh and how long that took. Null from a host that does not say.
+   */
+  promptCache?: { cachedTokens: number; readTokens: number; readMs: number } | null;
 };
 
 export type ChatOptions = {
@@ -100,6 +116,9 @@ export async function chatComplete(ep: AssistantEndpoint, messages: ChatMessage[
       stream: false,
       // Qwen3's thinking block is never shown and costs seconds: switched off in the chat template (llama.cpp reads this; a host ignores it).
       chat_template_kwargs: { enable_thinking: false },
+      // The prompt's common start stays in the slot's cache (llama-server's prompt cache, Vidura pass 3): the system
+      // prompts are written stable-first, so a question costs only its own tokens to read. A host ignores it.
+      cache_prompt: true,
       ...(opts.grammar ? { grammar: opts.grammar } : {}),
       ...(opts.logprobs ? { logprobs: true, top_logprobs: 1 } : {}),
     }),
@@ -109,7 +128,7 @@ export async function chatComplete(ep: AssistantEndpoint, messages: ChatMessage[
   const body = (await res.json()) as {
     choices?: { message?: { content?: string }; logprobs?: { content?: { logprob?: number }[] }; finish_reason?: string | null }[];
     usage?: { prompt_tokens?: number; completion_tokens?: number };
-    timings?: { predicted_per_second?: number; prompt_per_second?: number };
+    timings?: { predicted_per_second?: number; prompt_per_second?: number; cache_n?: number; prompt_n?: number; prompt_ms?: number };
   };
   // A thinking model's block, when the server did not extract it: never shown to a person.
   const content = (body.choices?.[0]?.message?.content ?? "").replace(/<think>[\s\S]*?<\/think>/g, "").trim();
@@ -120,5 +139,6 @@ export async function chatComplete(ep: AssistantEndpoint, messages: ChatMessage[
     promptTokensPerSecond: body.timings?.prompt_per_second ?? null,
     firstTokenLogprob: body.choices?.[0]?.logprobs?.content?.[0]?.logprob ?? null,
     finishReason: body.choices?.[0]?.finish_reason ?? null,
+    promptCache: body.timings && typeof body.timings.prompt_n === "number" ? { cachedTokens: body.timings.cache_n ?? 0, readTokens: body.timings.prompt_n, readMs: body.timings.prompt_ms ?? 0 } : null,
   };
 }

@@ -290,7 +290,7 @@ export function Conversation({
       ))}
       {asking ? (
         <>
-          <Bubble message={{ id: "asking", role: "USER", text: asking, createdAt: new Date().toISOString(), citations: [], verdict: null, mode: null, hint: false, helpful: null, chip: null, cut: false, askPerson: null }} conversationId={null} />
+          <Bubble message={{ id: "asking", role: "USER", text: asking, createdAt: new Date().toISOString(), citations: [], verdict: null, mode: null, hint: false, helpful: null, chip: null, cut: false, askPerson: null, standard: false }} conversationId={null} />
           <View style={{ padding: th.space[3] }} accessibilityRole="progressbar" accessibilityLabel={t("assistantUi.writing")}>
             <Text variant="sm" tone="muted">
               {t("assistantUi.writing")}
@@ -411,6 +411,12 @@ function Bubble({ message: m, conversationId, onGoOn, onLeave }: { message: Assi
       {m.chip ? (
         <Text variant="xs" tone="muted" bold testID="vidura-chip" accessibilityLabel={t("viduraUi.chip", { mode: chipName(m.chip, t) })}>
           {chipName(m.chip, t)}
+        </Text>
+      ) : null}
+      {/* Vidura pass 3 (18 Oct 2026): the platform's standard answer, checked by Shalaghar. */}
+      {m.standard ? (
+        <Text variant="xs" bold tone="ok" testID="vidura-standard">
+          {t("viduraUi.standardAnswer")}
         </Text>
       ) : null}
       {m.hint ? (

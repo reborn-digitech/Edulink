@@ -155,6 +155,25 @@ describe("Vidura's sheet, per role", () => {
     expect(screen.queryByRole("button", { name: "Go on" })).toBeNull();
   });
 
+  it("a standard answer the platform checked (Vidura pass 3) says so; any other answer does not", async () => {
+    let n = 0;
+    await mountStaff(
+      sheet(),
+      "TEACHER",
+      answers({
+        "POST /api/v1/assistant/conversations/zz-c/messages": () => {
+          n += 1;
+          return json({ conversationId: "zz-c", question: question({ id: `zz-q${n}`, text: "ZZ how do I apply for leave" }), answer: message({ id: `zz-a${n}`, text: n === 1 ? "ZZ open the leave page" : "ZZ written afresh", standard: n === 1 }) });
+        },
+      }),
+    );
+    await fireEvent.changeText(await screen.findByLabelText("Your question"), "ZZ how do I apply for leave");
+    await fireEvent.press(screen.getByRole("button", { name: "Ask" }));
+    expect(await screen.findByText("ZZ open the leave page")).toBeTruthy();
+    expect(screen.getByTestId("vidura-standard")).toBeTruthy();
+    expect(screen.getByText("Checked answer")).toBeTruthy();
+  });
+
   it("an answer is short by default, whole on request, with its sources and 'was this helpful'", async () => {
     const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
     const { calls } = await mountStaff(

@@ -19,6 +19,7 @@ import { UsageSummary } from "./usage-summary";
 import { TableScroll } from "@/components/ui/table-scroll";
 import { ModelServersCard } from "@/components/quiz-review/model-servers-card";
 import { ViduraReviewCountsCard } from "@/components/vidura-review/counts-card";
+import { ViduraOpsCard } from "@/components/vidura-ops/ops-card";
 import { FeaturesCard } from "./features/card";
 import { CompanyDetailsCard } from "./company-card";
 
@@ -103,6 +104,9 @@ export default async function RootPage({
 
       {/* Vidura pass 2 (17 Oct 2026): the guide's Hindi and Marathi renderings waiting for a speaker. */}
       <ViduraReviewCountsCard href="/root/vidura-review" />
+
+      {/* Vidura pass 3 (18 Oct 2026): standard answers, the unanswered report and the evaluation runs. */}
+      <ViduraOpsCard session={session} />
 
       {/* What each partner is owed this month, recorded only; the partners page has the detail. */}
       {d.partners.length > 0 && (

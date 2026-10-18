@@ -51,7 +51,7 @@ const STUDENT: AssistantStatus = { available: true, reason: null, help: true, tu
 const PARENT: AssistantStatus = { ...STUDENT, tutor: false, optOutPath: "/parent/settings#assistant", modes: ["USING", "RECORDS"] };
 const ADMIN: AssistantStatus = { ...STUDENT, tutor: false, modes: ["USING", "RECORDS"] };
 
-const msg = (over: Partial<AssistantMessage>): AssistantMessage => ({ id: "zz-m", role: "ASSISTANT", text: "ZZ answer", createdAt: "2026-10-10T04:00:00.000Z", citations: [], verdict: "ANSWERED", mode: "HELP", hint: false, helpful: null, chip: "USING", cut: false, askPerson: null, ...over });
+const msg = (over: Partial<AssistantMessage>): AssistantMessage => ({ id: "zz-m", role: "ASSISTANT", text: "ZZ answer", createdAt: "2026-10-10T04:00:00.000Z", citations: [], verdict: "ANSWERED", mode: "HELP", hint: false, helpful: null, chip: "USING", cut: false, askPerson: null, standard: false, ...over });
 const BOOK = { kind: "CURRICULUM" as const, n: 1, board: "NCERT", book: "Science: Exploration", grade: "9", chapter: "6", section: "6.6", page: 87, sourceUrl: "https://ncert.nic.in/textbook/pdf/iesc106.pdf", chunkId: "zz-chunk" };
 const HELP = { kind: "HELP" as const, n: 2, title: "People", pagePath: "/admin/people", entryId: "zz-help" };
 
@@ -294,7 +294,7 @@ describe("the doors the panel calls", () => {
 });
 
 describe("the office's card: counts only and the helpline; the switch is the operator's (16 Oct 2026)", () => {
-  const usage: AssistantUsage = { on: true, platformOn: true, month: "2026-10", questions: 120, answered: 90, hints: 6, refused: 24, counsellorRoutes: 1, helpful: 30, notHelpful: 4, people: 41, tokens: 360000, tokenBudget: 1000000, dailyCapPerPerson: 40, helplineText: null, helplineDefault: "ZZ Tele-MANAS 14416", retentionDays: 30 };
+  const usage: AssistantUsage = { on: true, platformOn: true, month: "2026-10", questions: 120, answered: 90, hints: 6, refused: 24, counsellorRoutes: 1, helpful: 30, notHelpful: 4, people: 41, tokens: 360000, tokenBudget: 1000000, dailyCapPerPerson: 40, helplineText: null, helplineDefault: "ZZ Tele-MANAS 14416", retentionDays: 30, standardAnswers: 3 };
 
   it("shows the month against the budget and every count, with the form for the office", () => {
     expect(budgetPercent(usage)).toBe(36);

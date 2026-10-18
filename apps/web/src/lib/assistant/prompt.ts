@@ -175,6 +175,13 @@ export const HINT_RULES = [
   "Never give the final value, the option letter, the full working or the finished answer. Under 80 words.",
 ];
 
+/**
+ * THE PROMPT CACHE (Vidura pass 3, 18 Oct 2026): the chat server keeps each slot's prompt and reuses the longest common
+ * start (`cache_prompt`, assistant-model.ts), so a question of the same role and language reads its system prompt from
+ * the cache. Opening every prompt with the role-free rules instead was tried and measured on 18 October 2026: the help
+ * set's numbered steps fell from 138 to 108 of 200 and a Marathi tutor answer came back in Hindi, for about 0.1 s of
+ * prompt reading, so the order stays as pass 2 had it.
+ */
 export function tutorMessages(input: TutorPromptInput): ChatMessage[] {
   const system = [
     `You are Vidura, the tutor of Shalaghar, a school platform in India. You are explaining to ${BAND_WORDS[input.band]}.`,

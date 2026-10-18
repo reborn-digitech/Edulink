@@ -71,6 +71,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <Button asChild variant="ghost" size="sm">
               <Link href="/root/vidura-review">{t("viduraReview.nav")}</Link>
             </Button>
+            {/* Vidura pass 3 (18 Oct 2026): standard answers, the unanswered report and the evaluation runs. */}
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/root/vidura-answers">{t("viduraOps.nav")}</Link>
+            </Button>
             {/* competitions-crawler (12 Oct 2026): the platform's competitions, those suggested from the web, and the crawler's sources. */}
             <Button asChild variant="ghost" size="sm">
               <Link href="/root/competitions">{t("appadmin.competitions")}</Link>

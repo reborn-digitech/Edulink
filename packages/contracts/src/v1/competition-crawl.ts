@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { modelServerSchema } from "./quiz-jobs";
+import { modelServerNameSchema, modelServerSchema } from "./quiz-jobs";
 import { streamSchema } from "./streams"; // college-content (12 Oct 2026)
 
 /**
@@ -201,7 +201,7 @@ export const competitionCrawlJobSchema = z.object({
   progress: competitionCrawlProgressSchema.nullable(),
   startedBy: z.string(),
   startedByRole: z.enum(["APP_ADMIN", "OPERATOR"]),
-  startedServers: z.array(z.enum(["chat", "embed"])),
+  startedServers: z.array(modelServerNameSchema),
   error: z.string().nullable(),
   createdAt: iso,
   startedAt: isoOrNull,

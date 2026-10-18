@@ -140,7 +140,7 @@ const page = (title: string, body: string, links: string[] = []) =>
   `<!doctype html><html><head><title>${title}</title><script>var x=1;</script></head><body><nav>Menu</nav><h1>${title}</h1><p>${body}</p>${links.map((l) => `<a href="${l}">${l}</a>`).join(" ")}<p>Plenty of words here so the page is plainly not a script shell; the olympiad is for pupils, entries for 2026.</p></body></html>`;
 
 /** The fake machine for the job: two servers up or down; the script's calls recorded; runners that are pids we say live. */
-function machine(up: Record<ModelServer, boolean>) {
+function machine(up: Partial<Record<ModelServer, boolean>>) {
   const calls: string[] = [];
   const alive = new Set<number>();
   let nextPid = 950_000 + Math.floor(Math.random() * 40_000);
@@ -793,6 +793,8 @@ describe("the crawl job: one at a time, the state machine, the model servers' ru
       ({
         quizGenJob: { findFirst: async () => peer, updateMany: async (a: unknown) => (writes.push(a), { count: stillActive ? 1 : 0 }), count: async () => (peer ? 1 : 0) },
         competitionCrawlJob: { findFirst: async () => peer, updateMany: async (a: unknown) => (writes.push(a), { count: stillActive ? 1 : 0 }), count: async () => 0 },
+        // Vidura pass 3 (18 Oct 2026): an evaluation run is the third kind of holder; none is active here.
+        assistantEvalJob: { findFirst: async () => null, updateMany: async () => ({ count: 0 }), count: async () => 0 },
       }) as unknown as HolderDb;
     expect(await handOverTo(fake({ id: "q1", startedServers: ["embed"] }), "CRAWL")(["chat"])).toEqual([]);
     expect(writes.at(-1)).toEqual({ where: { id: "q1", active: true }, data: { startedServers: ["embed", "chat"] } });
@@ -828,7 +830,8 @@ describe("the doors by role", () => {
     const m = machine({ chat: true, embed: true });
     useCrawlDepsForTests(m.deps);
     await signInAs("CURATOR");
-    expect(competitionCrawlStateSchema.parse(await (await stateGet()).json()).servers.length).toBe(2);
+    // Three servers since Vidura pass 3 (18 Oct 2026): the chat model, the embeddings and the gate's small model.
+    expect(competitionCrawlStateSchema.parse(await (await stateGet()).json()).servers.length).toBe(3);
     const started = await startPost(post("/api/v1/appadmin/competition-crawl", { sourceIds: [sources.crawl] }));
     expect(started.status).toBe(201);
     const { job } = competitionCrawlJobReadSchema.parse(await started.json());

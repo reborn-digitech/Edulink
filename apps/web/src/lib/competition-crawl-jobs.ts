@@ -37,9 +37,9 @@ import {
   MODEL_SERVERS,
 } from "@edulink/contracts";
 import { APP_ROOT, MACHINE, deadReason, forgetHealth, modelServers, type JobDeps } from "./quiz-jobs";
-import { handOverTo } from "./model-holders";
+import { handOverTo, neededServers } from "./model-holders";
 
-export type CrawlJobDb = Pick<PrismaClient, "competitionCrawlJob" | "quizGenJob" | "user">;
+export type CrawlJobDb = Pick<PrismaClient, "competitionCrawlJob" | "quizGenJob" | "assistantEvalJob" | "user">;
 
 const JOB_LOG_DIR = join(APP_ROOT, "storage", "competition-crawl");
 
@@ -187,7 +187,8 @@ const isUniqueClash = (error: unknown) => typeof error === "object" && error !==
 /** START: the slot claimed first, then the servers that were down brought up and recorded, then the runner spawned. */
 export async function startCrawl(db: CrawlJobDb, who: { userId: string; role: "APP_ADMIN" | "OPERATOR" }, request: CompetitionCrawlRequest, deps: JobDeps = CRAWL_MACHINE): Promise<CompetitionCrawlJob> {
   await reapCrawls(db, deps);
-  const servers = await modelServers(deps, { fresh: true });
+  // Only the servers a crawl needs (the gate's small model is the assistant's, Vidura pass 3).
+  const servers = (await modelServers(deps, { fresh: true })).filter((s) => neededServers("CRAWL").includes(s.server));
   const down = servers.filter((s) => s.state === "STOPPED").map((s) => s.server);
   let row: Row;
   try {

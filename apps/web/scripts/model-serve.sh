@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
-# The assistant's two local model servers (docs/runbooks/assistant-local.md).
+# The assistant's local model servers (docs/runbooks/assistant-local.md).
 #
 #   scripts/model-serve.sh embed   # Qwen3-Embedding-0.6B (Q8_0) on 127.0.0.1:${ASSISTANT_EMBED_PORT:-8181}
 #   scripts/model-serve.sh chat    # Qwen3-30B-A3B (Q8_0) on 127.0.0.1:${ASSISTANT_CHAT_PORT:-8180}
-#   scripts/model-serve.sh both    # both, in the background, logs under storage/models/
+#   scripts/model-serve.sh small   # Qwen3-4B (Q8_0) on 127.0.0.1:${ASSISTANT_SMALL_PORT:-8182}: Vidura's gate classifier (pass 3)
+#   scripts/model-serve.sh both    # chat and embed, in the background, logs under storage/models/
 #   scripts/model-serve.sh stop    # stops the servers this script started (by pid file)
 #   scripts/model-serve.sh restart-embed   # the embeddings server alone
-#   scripts/model-serve.sh start-chat | start-embed   # one server, in the background (the bank desk's Start)
-#   scripts/model-serve.sh stop-chat | stop-embed     # one server this script started (the bank desk's Stop)
+#   scripts/model-serve.sh start-chat | start-embed | start-small   # one server, in the background (the desks' Start)
+#   scripts/model-serve.sh stop-chat | stop-embed | stop-small      # one server this script started (the desks' Stop)
 #
-# The bank desk (/root/quiz-review, /appadmin/quiz-review) starts and stops the servers through this
-# script and nothing else (src/lib/quiz-jobs.ts): a generation run brings up only the servers that were
-# down, and takes down only those when it ends.
+# The bank desk (/root/quiz-review, /appadmin/quiz-review) and the evaluation runs (/root/vidura-evals) start and stop
+# the servers through this script and nothing else (src/lib/quiz-jobs.ts, src/lib/eval-jobs.ts): a run brings up
+# only the servers that were down, and takes down only those when it ends (src/lib/model-holders.ts).
 #
 # Both are llama.cpp's llama-server (OpenAI-compatible: /v1/chat/completions, /v1/embeddings). The weights
 # come from the official Qwen repositories on Hugging Face with -hf on first start and are cached in
@@ -27,6 +28,8 @@ CHAT_PORT="${ASSISTANT_CHAT_PORT:-8180}"
 EMBED_PORT="${ASSISTANT_EMBED_PORT:-8181}"
 CHAT_REPO="${ASSISTANT_CHAT_REPO:-Qwen/Qwen3-30B-A3B-GGUF:Q8_0}"
 EMBED_REPO="${ASSISTANT_EMBED_REPO:-Qwen/Qwen3-Embedding-0.6B-GGUF:Q8_0}"
+SMALL_PORT="${ASSISTANT_SMALL_PORT:-8182}"
+SMALL_REPO="${ASSISTANT_SMALL_REPO:-Qwen/Qwen3-4B-GGUF:Q8_0}"
 
 embed() {
   # Last-token pooling is what Qwen3-Embedding is trained for. ONE SLOT, 4k context and micro-batch,
@@ -46,6 +49,17 @@ chat() {
   # (reasoning_content) so the answer text arrives clean.
   exec llama-server -hf "$CHAT_REPO" --alias qwen3-30b-a3b \
     --host 127.0.0.1 --port "$CHAT_PORT" --jinja -c 32768 -np 4 -ngl 99 -fa on \
+    --reasoning-format deepseek --no-webui
+}
+
+small() {
+  # VIDURA'S GATE (pass 3, 18 Oct 2026): the two one-word classifier calls of src/lib/assistant/gate.ts on a model of
+  # their own, so a question is never queued behind four answers being written on the chat server. Four slots of 4k
+  # (the classifier's prompt is about 400 tokens and the text it reads at most 4,000 characters); thinking extracted
+  # as on the chat server, though the classifier asks for none. The system prompt is the same on every call, so each
+  # slot keeps it in its cache (llama-server reuses a slot's common prefix, cache_prompt).
+  exec llama-server -hf "$SMALL_REPO" --alias qwen3-4b \
+    --host 127.0.0.1 --port "$SMALL_PORT" --jinja -c 16384 -np 4 -ngl 99 -fa on \
     --reasoning-format deepseek --no-webui
 }
 
@@ -72,7 +86,7 @@ stop_one() {
 }
 
 stop() {
-  for which in chat embed; do
+  for which in chat embed small; do
     if [[ -f "$RUN_DIR/$which.pid" ]]; then stop_one "$which"; fi
   done
 }
@@ -80,6 +94,7 @@ stop() {
 case "${1:-}" in
   embed) embed ;;
   chat) chat ;;
+  small) small ;;
   both) start_bg embed; start_bg chat ;;
   stop) stop ;;
   restart-embed) kill "$(cat "$RUN_DIR/embed.pid" 2>/dev/null)" 2>/dev/null || true; rm -f "$RUN_DIR/embed.pid"; sleep 2; start_bg embed ;;
@@ -87,5 +102,7 @@ case "${1:-}" in
   start-embed) start_bg embed ;;
   stop-chat) stop_one chat ;;
   stop-embed) stop_one embed ;;
-  *) echo "usage: $0 embed|chat|both|stop|restart-embed|start-chat|start-embed|stop-chat|stop-embed" >&2; exit 2 ;;
+  start-small) start_bg small ;;
+  stop-small) stop_one small ;;
+  *) echo "usage: $0 embed|chat|small|both|stop|restart-embed|start-chat|start-embed|start-small|stop-chat|stop-embed|stop-small" >&2; exit 2 ;;
 esac

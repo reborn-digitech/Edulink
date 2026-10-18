@@ -347,6 +347,12 @@ export function MessageBubble({ message: m, conversationId, role, t, onGoOn }: {
             <span aria-hidden="true">{chipName(m.chip, t)}</span>
           </span>
         ) : null}
+        {/* Vidura pass 3 (18 Oct 2026): the platform's standard answer to this question, checked by Shalaghar. */}
+        {m.standard ? (
+          <span className="inline-flex items-center rounded-full bg-ok-soft px-2.5 py-0.5 text-xs font-semibold text-ok" data-testid="vidura-standard">
+            {t("viduraUi.standardAnswer")}
+          </span>
+        ) : null}
         {m.hint ? (
           <span className="inline-flex items-center gap-1.5 rounded-full bg-warn-soft px-2.5 py-0.5 text-xs font-semibold text-warn" data-testid="assistant-hint">
             <LightbulbIcon weight="fill" className="size-3.5" aria-hidden="true" />

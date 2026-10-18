@@ -222171,6 +222171,10 @@
                             "additionalProperties": false,
                             "nullable": true,
                             "default": null
+                          },
+                          "standard": {
+                            "type": "boolean",
+                            "default": false
                           }
                         },
                         "required": [
@@ -222656,6 +222660,10 @@
                           "additionalProperties": false,
                           "nullable": true,
                           "default": null
+                        },
+                        "standard": {
+                          "type": "boolean",
+                          "default": false
                         }
                       },
                       "required": [
@@ -223184,6 +223192,11 @@
                       "type": "integer",
                       "exclusiveMinimum": true,
                       "minimum": 0
+                    },
+                    "standardAnswers": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "default": 0
                     }
                   },
                   "required": [
@@ -223353,6 +223366,11 @@
                       "type": "integer",
                       "exclusiveMinimum": true,
                       "minimum": 0
+                    },
+                    "standardAnswers": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "default": 0
                     }
                   },
                   "required": [
@@ -224327,6 +224345,2513 @@
         "parameters": [
           {
             "name": "renderingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/operator/vidura/answers": {
+      "get": {
+        "summary": "The standard answers for common how-to questions with their hits across every school, the drafts the operator's own questions got (cleared after seven days) and the revoked ones",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "drafts": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "role": {
+                            "type": "string",
+                            "enum": [
+                              "ADMIN",
+                              "PRINCIPAL",
+                              "TEACHER",
+                              "STUDENT",
+                              "PARENT",
+                              "EXPERT",
+                              "DRIVER",
+                              "LIBRARIAN",
+                              "WARDEN",
+                              "ALUMNUS",
+                              "FACULTY",
+                              "HOD",
+                              "EXAM_CONTROLLER",
+                              "IQAC",
+                              "TPO",
+                              "ACCOUNTS",
+                              "RECRUITER"
+                            ]
+                          },
+                          "language": {
+                            "type": "string",
+                            "enum": [
+                              "en",
+                              "hi",
+                              "mr"
+                            ]
+                          },
+                          "question": {
+                            "type": "string"
+                          },
+                          "questionKey": {
+                            "type": "string"
+                          },
+                          "text": {
+                            "type": "string"
+                          },
+                          "citations": {
+                            "type": "array",
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "kind": {
+                                      "type": "string",
+                                      "enum": [
+                                        "CURRICULUM"
+                                      ]
+                                    },
+                                    "n": {
+                                      "type": "integer",
+                                      "exclusiveMinimum": true,
+                                      "minimum": 0
+                                    },
+                                    "board": {
+                                      "type": "string"
+                                    },
+                                    "book": {
+                                      "type": "string"
+                                    },
+                                    "grade": {
+                                      "type": "string"
+                                    },
+                                    "chapter": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "section": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "page": {
+                                      "type": "integer"
+                                    },
+                                    "sourceUrl": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "chunkId": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "kind",
+                                    "n",
+                                    "board",
+                                    "book",
+                                    "grade",
+                                    "chapter",
+                                    "section",
+                                    "page",
+                                    "sourceUrl",
+                                    "chunkId"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "kind": {
+                                      "type": "string",
+                                      "enum": [
+                                        "HELP"
+                                      ]
+                                    },
+                                    "n": {
+                                      "type": "integer",
+                                      "exclusiveMinimum": true,
+                                      "minimum": 0
+                                    },
+                                    "title": {
+                                      "type": "string"
+                                    },
+                                    "pagePath": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "entryId": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "kind",
+                                    "n",
+                                    "title",
+                                    "pagePath",
+                                    "entryId"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "kind": {
+                                      "type": "string",
+                                      "enum": [
+                                        "LINK"
+                                      ]
+                                    },
+                                    "n": {
+                                      "type": "integer",
+                                      "exclusiveMinimum": true,
+                                      "minimum": 0
+                                    },
+                                    "title": {
+                                      "type": "string"
+                                    },
+                                    "pagePath": {
+                                      "type": "string"
+                                    },
+                                    "rowId": {
+                                      "type": "string",
+                                      "nullable": true
+                                    }
+                                  },
+                                  "required": [
+                                    "kind",
+                                    "n",
+                                    "title",
+                                    "pagePath",
+                                    "rowId"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              ]
+                            }
+                          },
+                          "verdict": {
+                            "type": "string",
+                            "enum": [
+                              "ANSWERED",
+                              "HINT",
+                              "OUT_OF_SCOPE",
+                              "TUTOR_NOT_FOR_ROLE",
+                              "ASSESSMENT_OPEN",
+                              "SELF_HARM",
+                              "ABUSE_DISCLOSURE",
+                              "VIOLENCE",
+                              "SEXUAL",
+                              "DRUGS_ALCOHOL",
+                              "HATE_BULLYING",
+                              "PERSONAL_DATA",
+                              "CONTACT",
+                              "LINKS_APPS",
+                              "MONEY_GIFTS",
+                              "POLITICS_RELIGION",
+                              "MEDICAL_LEGAL",
+                              "PERSONAL_LIFE",
+                              "INJECTION",
+                              "ANSWER_DISCARDED",
+                              "MODEL_UNAVAILABLE"
+                            ]
+                          },
+                          "chip": {
+                            "type": "string",
+                            "enum": [
+                              "USING",
+                              "RECORDS",
+                              "LEARNING"
+                            ],
+                            "nullable": true
+                          },
+                          "state": {
+                            "type": "string",
+                            "enum": [
+                              "DRAFT",
+                              "STANDARD",
+                              "REVOKED"
+                            ]
+                          },
+                          "markable": {
+                            "type": "boolean"
+                          },
+                          "hits": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "lastHitAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "createdAt": {
+                            "$ref": "#/properties/drafts/items/properties/lastHitAt"
+                          },
+                          "checkedAt": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/drafts/items/properties/lastHitAt"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "checkedBy": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "revokedAt": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/drafts/items/properties/lastHitAt"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "revokedBy": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "role",
+                          "language",
+                          "question",
+                          "questionKey",
+                          "text",
+                          "citations",
+                          "verdict",
+                          "chip",
+                          "state",
+                          "markable",
+                          "hits",
+                          "lastHitAt",
+                          "createdAt",
+                          "checkedAt",
+                          "checkedBy",
+                          "revokedAt",
+                          "revokedBy"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "standard": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/drafts/items"
+                      }
+                    },
+                    "revoked": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/drafts/items"
+                      }
+                    },
+                    "servedTotal": {
+                      "$ref": "#/properties/drafts/items/properties/hits"
+                    }
+                  },
+                  "required": [
+                    "drafts",
+                    "standard",
+                    "revoked",
+                    "servedTotal"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Ask Vidura a question as a role, through the same gates and model as everyone (no standard answer served); the answer is kept as a draft to mark as the standard one; 201; audited",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "role": {
+                      "type": "string",
+                      "enum": [
+                        "ADMIN",
+                        "PRINCIPAL",
+                        "TEACHER",
+                        "STUDENT",
+                        "PARENT",
+                        "EXPERT",
+                        "DRIVER",
+                        "LIBRARIAN",
+                        "WARDEN",
+                        "ALUMNUS",
+                        "FACULTY",
+                        "HOD",
+                        "EXAM_CONTROLLER",
+                        "IQAC",
+                        "TPO",
+                        "ACCOUNTS",
+                        "RECRUITER"
+                      ]
+                    },
+                    "language": {
+                      "type": "string",
+                      "enum": [
+                        "en",
+                        "hi",
+                        "mr"
+                      ]
+                    },
+                    "question": {
+                      "type": "string"
+                    },
+                    "questionKey": {
+                      "type": "string"
+                    },
+                    "text": {
+                      "type": "string"
+                    },
+                    "citations": {
+                      "type": "array",
+                      "items": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "CURRICULUM"
+                                ]
+                              },
+                              "n": {
+                                "type": "integer",
+                                "exclusiveMinimum": true,
+                                "minimum": 0
+                              },
+                              "board": {
+                                "type": "string"
+                              },
+                              "book": {
+                                "type": "string"
+                              },
+                              "grade": {
+                                "type": "string"
+                              },
+                              "chapter": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "section": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "page": {
+                                "type": "integer"
+                              },
+                              "sourceUrl": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "chunkId": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "kind",
+                              "n",
+                              "board",
+                              "book",
+                              "grade",
+                              "chapter",
+                              "section",
+                              "page",
+                              "sourceUrl",
+                              "chunkId"
+                            ],
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "HELP"
+                                ]
+                              },
+                              "n": {
+                                "type": "integer",
+                                "exclusiveMinimum": true,
+                                "minimum": 0
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "pagePath": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "entryId": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "kind",
+                              "n",
+                              "title",
+                              "pagePath",
+                              "entryId"
+                            ],
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "LINK"
+                                ]
+                              },
+                              "n": {
+                                "type": "integer",
+                                "exclusiveMinimum": true,
+                                "minimum": 0
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "pagePath": {
+                                "type": "string"
+                              },
+                              "rowId": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "kind",
+                              "n",
+                              "title",
+                              "pagePath",
+                              "rowId"
+                            ],
+                            "additionalProperties": false
+                          }
+                        ]
+                      }
+                    },
+                    "verdict": {
+                      "type": "string",
+                      "enum": [
+                        "ANSWERED",
+                        "HINT",
+                        "OUT_OF_SCOPE",
+                        "TUTOR_NOT_FOR_ROLE",
+                        "ASSESSMENT_OPEN",
+                        "SELF_HARM",
+                        "ABUSE_DISCLOSURE",
+                        "VIOLENCE",
+                        "SEXUAL",
+                        "DRUGS_ALCOHOL",
+                        "HATE_BULLYING",
+                        "PERSONAL_DATA",
+                        "CONTACT",
+                        "LINKS_APPS",
+                        "MONEY_GIFTS",
+                        "POLITICS_RELIGION",
+                        "MEDICAL_LEGAL",
+                        "PERSONAL_LIFE",
+                        "INJECTION",
+                        "ANSWER_DISCARDED",
+                        "MODEL_UNAVAILABLE"
+                      ]
+                    },
+                    "chip": {
+                      "type": "string",
+                      "enum": [
+                        "USING",
+                        "RECORDS",
+                        "LEARNING"
+                      ],
+                      "nullable": true
+                    },
+                    "state": {
+                      "type": "string",
+                      "enum": [
+                        "DRAFT",
+                        "STANDARD",
+                        "REVOKED"
+                      ]
+                    },
+                    "markable": {
+                      "type": "boolean"
+                    },
+                    "hits": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "lastHitAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "createdAt": {
+                      "$ref": "#/properties/lastHitAt"
+                    },
+                    "checkedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/lastHitAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "checkedBy": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "revokedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/lastHitAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "revokedBy": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "role",
+                    "language",
+                    "question",
+                    "questionKey",
+                    "text",
+                    "citations",
+                    "verdict",
+                    "chip",
+                    "state",
+                    "markable",
+                    "hits",
+                    "lastHitAt",
+                    "createdAt",
+                    "checkedAt",
+                    "checkedBy",
+                    "revokedAt",
+                    "revokedBy"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "role": {
+                    "type": "string",
+                    "enum": [
+                      "ADMIN",
+                      "PRINCIPAL",
+                      "TEACHER",
+                      "STUDENT",
+                      "PARENT",
+                      "DRIVER",
+                      "LIBRARIAN",
+                      "WARDEN",
+                      "ALUMNUS",
+                      "FACULTY",
+                      "HOD",
+                      "EXAM_CONTROLLER",
+                      "IQAC",
+                      "TPO",
+                      "ACCOUNTS"
+                    ]
+                  },
+                  "question": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 1200
+                  },
+                  "language": {
+                    "type": "string",
+                    "enum": [
+                      "en",
+                      "hi",
+                      "mr"
+                    ]
+                  }
+                },
+                "required": [
+                  "role",
+                  "question"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/vidura/answers/{answerId}": {
+      "post": {
+        "summary": "Mark a draft as the standard answer (an answered, \"Using Shalaghar\" how-to or where-is answer only; an earlier one to the same question is revoked), revoke a standard answer, or discard a draft; audited, the same act again changes nothing",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "answer": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "role": {
+                          "type": "string",
+                          "enum": [
+                            "ADMIN",
+                            "PRINCIPAL",
+                            "TEACHER",
+                            "STUDENT",
+                            "PARENT",
+                            "EXPERT",
+                            "DRIVER",
+                            "LIBRARIAN",
+                            "WARDEN",
+                            "ALUMNUS",
+                            "FACULTY",
+                            "HOD",
+                            "EXAM_CONTROLLER",
+                            "IQAC",
+                            "TPO",
+                            "ACCOUNTS",
+                            "RECRUITER"
+                          ]
+                        },
+                        "language": {
+                          "type": "string",
+                          "enum": [
+                            "en",
+                            "hi",
+                            "mr"
+                          ]
+                        },
+                        "question": {
+                          "type": "string"
+                        },
+                        "questionKey": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        },
+                        "citations": {
+                          "type": "array",
+                          "items": {
+                            "anyOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                      "CURRICULUM"
+                                    ]
+                                  },
+                                  "n": {
+                                    "type": "integer",
+                                    "exclusiveMinimum": true,
+                                    "minimum": 0
+                                  },
+                                  "board": {
+                                    "type": "string"
+                                  },
+                                  "book": {
+                                    "type": "string"
+                                  },
+                                  "grade": {
+                                    "type": "string"
+                                  },
+                                  "chapter": {
+                                    "type": "string",
+                                    "nullable": true
+                                  },
+                                  "section": {
+                                    "type": "string",
+                                    "nullable": true
+                                  },
+                                  "page": {
+                                    "type": "integer"
+                                  },
+                                  "sourceUrl": {
+                                    "type": "string",
+                                    "nullable": true
+                                  },
+                                  "chunkId": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "n",
+                                  "board",
+                                  "book",
+                                  "grade",
+                                  "chapter",
+                                  "section",
+                                  "page",
+                                  "sourceUrl",
+                                  "chunkId"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                      "HELP"
+                                    ]
+                                  },
+                                  "n": {
+                                    "type": "integer",
+                                    "exclusiveMinimum": true,
+                                    "minimum": 0
+                                  },
+                                  "title": {
+                                    "type": "string"
+                                  },
+                                  "pagePath": {
+                                    "type": "string",
+                                    "nullable": true
+                                  },
+                                  "entryId": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "n",
+                                  "title",
+                                  "pagePath",
+                                  "entryId"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                      "LINK"
+                                    ]
+                                  },
+                                  "n": {
+                                    "type": "integer",
+                                    "exclusiveMinimum": true,
+                                    "minimum": 0
+                                  },
+                                  "title": {
+                                    "type": "string"
+                                  },
+                                  "pagePath": {
+                                    "type": "string"
+                                  },
+                                  "rowId": {
+                                    "type": "string",
+                                    "nullable": true
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "n",
+                                  "title",
+                                  "pagePath",
+                                  "rowId"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ]
+                          }
+                        },
+                        "verdict": {
+                          "type": "string",
+                          "enum": [
+                            "ANSWERED",
+                            "HINT",
+                            "OUT_OF_SCOPE",
+                            "TUTOR_NOT_FOR_ROLE",
+                            "ASSESSMENT_OPEN",
+                            "SELF_HARM",
+                            "ABUSE_DISCLOSURE",
+                            "VIOLENCE",
+                            "SEXUAL",
+                            "DRUGS_ALCOHOL",
+                            "HATE_BULLYING",
+                            "PERSONAL_DATA",
+                            "CONTACT",
+                            "LINKS_APPS",
+                            "MONEY_GIFTS",
+                            "POLITICS_RELIGION",
+                            "MEDICAL_LEGAL",
+                            "PERSONAL_LIFE",
+                            "INJECTION",
+                            "ANSWER_DISCARDED",
+                            "MODEL_UNAVAILABLE"
+                          ]
+                        },
+                        "chip": {
+                          "type": "string",
+                          "enum": [
+                            "USING",
+                            "RECORDS",
+                            "LEARNING"
+                          ],
+                          "nullable": true
+                        },
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "DRAFT",
+                            "STANDARD",
+                            "REVOKED"
+                          ]
+                        },
+                        "markable": {
+                          "type": "boolean"
+                        },
+                        "hits": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "lastHitAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "createdAt": {
+                          "$ref": "#/properties/answer/properties/lastHitAt"
+                        },
+                        "checkedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/answer/properties/lastHitAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "checkedBy": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "revokedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/answer/properties/lastHitAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "revokedBy": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "role",
+                        "language",
+                        "question",
+                        "questionKey",
+                        "text",
+                        "citations",
+                        "verdict",
+                        "chip",
+                        "state",
+                        "markable",
+                        "hits",
+                        "lastHitAt",
+                        "createdAt",
+                        "checkedAt",
+                        "checkedBy",
+                        "revokedAt",
+                        "revokedBy"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "answer"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "CHECK",
+                      "REVOKE",
+                      "DISCARD"
+                    ]
+                  }
+                },
+                "required": [
+                  "action"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "answerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/operator/vidura/unanswered": {
+      "get": {
+        "summary": "The last thirty days of Vidura's refusals and discards by mode, role, school, verdict and reason, counts only (the counsellor routes never), and the stems of questions that found no page or passage, asked by two people or more",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "from": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                    },
+                    "to": {
+                      "$ref": "#/properties/from"
+                    },
+                    "computedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "totals": {
+                      "type": "object",
+                      "properties": {
+                        "questions": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "refused": {
+                          "$ref": "#/properties/totals/properties/questions"
+                        },
+                        "discarded": {
+                          "$ref": "#/properties/totals/properties/questions"
+                        }
+                      },
+                      "required": [
+                        "questions",
+                        "refused",
+                        "discarded"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "byScope": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "questions": {
+                            "$ref": "#/properties/totals/properties/questions"
+                          },
+                          "refused": {
+                            "$ref": "#/properties/totals/properties/questions"
+                          },
+                          "discarded": {
+                            "$ref": "#/properties/totals/properties/questions"
+                          },
+                          "scope": {
+                            "type": "string",
+                            "enum": [
+                              "USING",
+                              "RECORDS",
+                              "LEARNING",
+                              "NONE"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "questions",
+                          "refused",
+                          "discarded",
+                          "scope"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "byRole": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "questions": {
+                            "$ref": "#/properties/totals/properties/questions"
+                          },
+                          "refused": {
+                            "$ref": "#/properties/totals/properties/questions"
+                          },
+                          "discarded": {
+                            "$ref": "#/properties/totals/properties/questions"
+                          },
+                          "role": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "questions",
+                          "refused",
+                          "discarded",
+                          "role"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "bySchool": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "questions": {
+                            "$ref": "#/properties/totals/properties/questions"
+                          },
+                          "refused": {
+                            "$ref": "#/properties/totals/properties/questions"
+                          },
+                          "discarded": {
+                            "$ref": "#/properties/totals/properties/questions"
+                          },
+                          "schoolId": {
+                            "type": "string"
+                          },
+                          "schoolName": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "questions",
+                          "refused",
+                          "discarded",
+                          "schoolId",
+                          "schoolName"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "byVerdict": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "verdict": {
+                            "type": "string",
+                            "enum": [
+                              "ANSWERED",
+                              "HINT",
+                              "OUT_OF_SCOPE",
+                              "TUTOR_NOT_FOR_ROLE",
+                              "ASSESSMENT_OPEN",
+                              "SELF_HARM",
+                              "ABUSE_DISCLOSURE",
+                              "VIOLENCE",
+                              "SEXUAL",
+                              "DRUGS_ALCOHOL",
+                              "HATE_BULLYING",
+                              "PERSONAL_DATA",
+                              "CONTACT",
+                              "LINKS_APPS",
+                              "MONEY_GIFTS",
+                              "POLITICS_RELIGION",
+                              "MEDICAL_LEGAL",
+                              "PERSONAL_LIFE",
+                              "INJECTION",
+                              "ANSWER_DISCARDED",
+                              "MODEL_UNAVAILABLE"
+                            ]
+                          },
+                          "count": {
+                            "$ref": "#/properties/totals/properties/questions"
+                          }
+                        },
+                        "required": [
+                          "verdict",
+                          "count"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "byReason": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "reason": {
+                            "type": "string"
+                          },
+                          "count": {
+                            "$ref": "#/properties/totals/properties/questions"
+                          }
+                        },
+                        "required": [
+                          "reason",
+                          "count"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "stems": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "stem": {
+                            "type": "string"
+                          },
+                          "language": {
+                            "type": "string",
+                            "enum": [
+                              "en",
+                              "hi",
+                              "mr"
+                            ]
+                          },
+                          "role": {
+                            "type": "string",
+                            "enum": [
+                              "ADMIN",
+                              "PRINCIPAL",
+                              "TEACHER",
+                              "STUDENT",
+                              "PARENT",
+                              "EXPERT",
+                              "DRIVER",
+                              "LIBRARIAN",
+                              "WARDEN",
+                              "ALUMNUS",
+                              "FACULTY",
+                              "HOD",
+                              "EXAM_CONTROLLER",
+                              "IQAC",
+                              "TPO",
+                              "ACCOUNTS",
+                              "RECRUITER"
+                            ]
+                          },
+                          "questions": {
+                            "$ref": "#/properties/totals/properties/questions"
+                          },
+                          "people": {
+                            "$ref": "#/properties/totals/properties/questions"
+                          }
+                        },
+                        "required": [
+                          "stem",
+                          "language",
+                          "role",
+                          "questions",
+                          "people"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "minPeople": {
+                      "$ref": "#/properties/totals/properties/questions"
+                    }
+                  },
+                  "required": [
+                    "from",
+                    "to",
+                    "computedAt",
+                    "totals",
+                    "byScope",
+                    "byRole",
+                    "bySchool",
+                    "byVerdict",
+                    "byReason",
+                    "stems",
+                    "minPeople"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/vidura/unanswered/export": {
+      "get": {
+        "summary": "The unanswered report as CSV (text/csv), a section per table; audited",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/vidura/evals": {
+      "get": {
+        "summary": "The evaluation run in hand, or the last, with its live line (the set, the cases done and passed, the seconds); the latest ten runs with their scores; the model servers; whether a generation run or a crawl holds the model",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "current": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "QUEUED",
+                            "RUNNING",
+                            "STOPPING",
+                            "STOPPED",
+                            "FINISHED",
+                            "FAILED"
+                          ]
+                        },
+                        "request": {
+                          "type": "object",
+                          "properties": {
+                            "sets": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "enum": [
+                                  "refusal",
+                                  "counsellor",
+                                  "redteam",
+                                  "role",
+                                  "injection",
+                                  "language",
+                                  "help",
+                                  "tutor",
+                                  "hint"
+                                ]
+                              },
+                              "minItems": 1,
+                              "maxItems": 9
+                            },
+                            "limit": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 1000
+                            }
+                          },
+                          "required": [
+                            "sets"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "progress": {
+                          "type": "object",
+                          "properties": {
+                            "phase": {
+                              "type": "string",
+                              "enum": [
+                                "STARTING_MODEL",
+                                "RUNNING",
+                                "DONE"
+                              ]
+                            },
+                            "set": {
+                              "allOf": [
+                                {
+                                  "$ref": "#/properties/current/properties/request/properties/sets/items"
+                                }
+                              ],
+                              "nullable": true
+                            },
+                            "setIndex": {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            "setsTotal": {
+                              "$ref": "#/properties/current/properties/progress/properties/setIndex"
+                            },
+                            "done": {
+                              "$ref": "#/properties/current/properties/progress/properties/setIndex"
+                            },
+                            "total": {
+                              "allOf": [
+                                {
+                                  "$ref": "#/properties/current/properties/progress/properties/setIndex"
+                                }
+                              ],
+                              "nullable": true
+                            },
+                            "passed": {
+                              "$ref": "#/properties/current/properties/progress/properties/setIndex"
+                            },
+                            "casesDone": {
+                              "$ref": "#/properties/current/properties/progress/properties/setIndex"
+                            },
+                            "seconds": {
+                              "$ref": "#/properties/current/properties/progress/properties/setIndex"
+                            },
+                            "contended": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "phase",
+                            "set",
+                            "setIndex",
+                            "setsTotal",
+                            "done",
+                            "total",
+                            "passed",
+                            "casesDone",
+                            "seconds",
+                            "contended"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "scores": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "set": {
+                                "$ref": "#/properties/current/properties/request/properties/sets/items"
+                              },
+                              "cases": {
+                                "$ref": "#/properties/current/properties/progress/properties/setIndex"
+                              },
+                              "pass": {
+                                "$ref": "#/properties/current/properties/progress/properties/setIndex"
+                              },
+                              "gate": {
+                                "type": "boolean"
+                              },
+                              "lines": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "required": [
+                              "set",
+                              "cases",
+                              "pass",
+                              "lines"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "nullable": true
+                        },
+                        "gate": {
+                          "type": "boolean",
+                          "nullable": true
+                        },
+                        "startedBy": {
+                          "type": "string"
+                        },
+                        "startedServers": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "chat",
+                              "embed",
+                              "small"
+                            ]
+                          }
+                        },
+                        "error": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "startedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/current/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "finishedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/current/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "heartbeatAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/current/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "state",
+                        "request",
+                        "progress",
+                        "scores",
+                        "gate",
+                        "startedBy",
+                        "startedServers",
+                        "error",
+                        "createdAt",
+                        "startedAt",
+                        "finishedAt",
+                        "heartbeatAt"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "recent": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/current"
+                      }
+                    },
+                    "servers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "server": {
+                            "$ref": "#/properties/current/properties/startedServers/items"
+                          },
+                          "state": {
+                            "type": "string",
+                            "enum": [
+                              "RUNNING",
+                              "STARTING",
+                              "STOPPED"
+                            ]
+                          },
+                          "model": {
+                            "type": "string"
+                          },
+                          "port": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "checkedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        },
+                        "required": [
+                          "server",
+                          "state",
+                          "model",
+                          "port",
+                          "checkedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "modelBusy": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "current",
+                    "recent",
+                    "servers",
+                    "modelBusy"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Start the harness on the sets named (at least one) on this machine, bringing up the model servers it needs that are down; 201 with the run, 409 while one runs or while a generation run or a crawl holds the model; audited",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "job": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "QUEUED",
+                            "RUNNING",
+                            "STOPPING",
+                            "STOPPED",
+                            "FINISHED",
+                            "FAILED"
+                          ]
+                        },
+                        "request": {
+                          "type": "object",
+                          "properties": {
+                            "sets": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "enum": [
+                                  "refusal",
+                                  "counsellor",
+                                  "redteam",
+                                  "role",
+                                  "injection",
+                                  "language",
+                                  "help",
+                                  "tutor",
+                                  "hint"
+                                ]
+                              },
+                              "minItems": 1,
+                              "maxItems": 9
+                            },
+                            "limit": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 1000
+                            }
+                          },
+                          "required": [
+                            "sets"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "progress": {
+                          "type": "object",
+                          "properties": {
+                            "phase": {
+                              "type": "string",
+                              "enum": [
+                                "STARTING_MODEL",
+                                "RUNNING",
+                                "DONE"
+                              ]
+                            },
+                            "set": {
+                              "allOf": [
+                                {
+                                  "$ref": "#/properties/job/properties/request/properties/sets/items"
+                                }
+                              ],
+                              "nullable": true
+                            },
+                            "setIndex": {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            "setsTotal": {
+                              "$ref": "#/properties/job/properties/progress/properties/setIndex"
+                            },
+                            "done": {
+                              "$ref": "#/properties/job/properties/progress/properties/setIndex"
+                            },
+                            "total": {
+                              "allOf": [
+                                {
+                                  "$ref": "#/properties/job/properties/progress/properties/setIndex"
+                                }
+                              ],
+                              "nullable": true
+                            },
+                            "passed": {
+                              "$ref": "#/properties/job/properties/progress/properties/setIndex"
+                            },
+                            "casesDone": {
+                              "$ref": "#/properties/job/properties/progress/properties/setIndex"
+                            },
+                            "seconds": {
+                              "$ref": "#/properties/job/properties/progress/properties/setIndex"
+                            },
+                            "contended": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "phase",
+                            "set",
+                            "setIndex",
+                            "setsTotal",
+                            "done",
+                            "total",
+                            "passed",
+                            "casesDone",
+                            "seconds",
+                            "contended"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "scores": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "set": {
+                                "$ref": "#/properties/job/properties/request/properties/sets/items"
+                              },
+                              "cases": {
+                                "$ref": "#/properties/job/properties/progress/properties/setIndex"
+                              },
+                              "pass": {
+                                "$ref": "#/properties/job/properties/progress/properties/setIndex"
+                              },
+                              "gate": {
+                                "type": "boolean"
+                              },
+                              "lines": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "required": [
+                              "set",
+                              "cases",
+                              "pass",
+                              "lines"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "nullable": true
+                        },
+                        "gate": {
+                          "type": "boolean",
+                          "nullable": true
+                        },
+                        "startedBy": {
+                          "type": "string"
+                        },
+                        "startedServers": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "chat",
+                              "embed",
+                              "small"
+                            ]
+                          }
+                        },
+                        "error": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "startedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/job/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "finishedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/job/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "heartbeatAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/job/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "state",
+                        "request",
+                        "progress",
+                        "scores",
+                        "gate",
+                        "startedBy",
+                        "startedServers",
+                        "error",
+                        "createdAt",
+                        "startedAt",
+                        "finishedAt",
+                        "heartbeatAt"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "job"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sets": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "refusal",
+                        "counsellor",
+                        "redteam",
+                        "role",
+                        "injection",
+                        "language",
+                        "help",
+                        "tutor",
+                        "hint"
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 9
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1000
+                  }
+                },
+                "required": [
+                  "sets"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/vidura/evals/{jobId}/stop": {
+      "post": {
+        "summary": "Stop a run: the runner finishes the case in hand, keeps the scores of what it ran, and the model servers it brought up go down with it; an ended run is left as it is; audited",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "job": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "QUEUED",
+                            "RUNNING",
+                            "STOPPING",
+                            "STOPPED",
+                            "FINISHED",
+                            "FAILED"
+                          ]
+                        },
+                        "request": {
+                          "type": "object",
+                          "properties": {
+                            "sets": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "enum": [
+                                  "refusal",
+                                  "counsellor",
+                                  "redteam",
+                                  "role",
+                                  "injection",
+                                  "language",
+                                  "help",
+                                  "tutor",
+                                  "hint"
+                                ]
+                              },
+                              "minItems": 1,
+                              "maxItems": 9
+                            },
+                            "limit": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 1000
+                            }
+                          },
+                          "required": [
+                            "sets"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "progress": {
+                          "type": "object",
+                          "properties": {
+                            "phase": {
+                              "type": "string",
+                              "enum": [
+                                "STARTING_MODEL",
+                                "RUNNING",
+                                "DONE"
+                              ]
+                            },
+                            "set": {
+                              "allOf": [
+                                {
+                                  "$ref": "#/properties/job/properties/request/properties/sets/items"
+                                }
+                              ],
+                              "nullable": true
+                            },
+                            "setIndex": {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            "setsTotal": {
+                              "$ref": "#/properties/job/properties/progress/properties/setIndex"
+                            },
+                            "done": {
+                              "$ref": "#/properties/job/properties/progress/properties/setIndex"
+                            },
+                            "total": {
+                              "allOf": [
+                                {
+                                  "$ref": "#/properties/job/properties/progress/properties/setIndex"
+                                }
+                              ],
+                              "nullable": true
+                            },
+                            "passed": {
+                              "$ref": "#/properties/job/properties/progress/properties/setIndex"
+                            },
+                            "casesDone": {
+                              "$ref": "#/properties/job/properties/progress/properties/setIndex"
+                            },
+                            "seconds": {
+                              "$ref": "#/properties/job/properties/progress/properties/setIndex"
+                            },
+                            "contended": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "phase",
+                            "set",
+                            "setIndex",
+                            "setsTotal",
+                            "done",
+                            "total",
+                            "passed",
+                            "casesDone",
+                            "seconds",
+                            "contended"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "scores": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "set": {
+                                "$ref": "#/properties/job/properties/request/properties/sets/items"
+                              },
+                              "cases": {
+                                "$ref": "#/properties/job/properties/progress/properties/setIndex"
+                              },
+                              "pass": {
+                                "$ref": "#/properties/job/properties/progress/properties/setIndex"
+                              },
+                              "gate": {
+                                "type": "boolean"
+                              },
+                              "lines": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "required": [
+                              "set",
+                              "cases",
+                              "pass",
+                              "lines"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "nullable": true
+                        },
+                        "gate": {
+                          "type": "boolean",
+                          "nullable": true
+                        },
+                        "startedBy": {
+                          "type": "string"
+                        },
+                        "startedServers": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "chat",
+                              "embed",
+                              "small"
+                            ]
+                          }
+                        },
+                        "error": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "startedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/job/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "finishedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/job/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "heartbeatAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/job/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "state",
+                        "request",
+                        "progress",
+                        "scores",
+                        "gate",
+                        "startedBy",
+                        "startedServers",
+                        "error",
+                        "createdAt",
+                        "startedAt",
+                        "finishedAt",
+                        "heartbeatAt"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "job"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "jobId",
             "in": "path",
             "required": true,
             "schema": {
@@ -227802,7 +230327,8 @@
                             "type": "string",
                             "enum": [
                               "chat",
-                              "embed"
+                              "embed",
+                              "small"
                             ]
                           }
                         },
@@ -228299,7 +230825,8 @@
                             "type": "string",
                             "enum": [
                               "chat",
-                              "embed"
+                              "embed",
+                              "small"
                             ]
                           }
                         },
@@ -228534,7 +231061,8 @@
                             "type": "string",
                             "enum": [
                               "chat",
-                              "embed"
+                              "embed",
+                              "small"
                             ]
                           },
                           "state": {
@@ -228646,7 +231174,8 @@
                             "type": "string",
                             "enum": [
                               "chat",
-                              "embed"
+                              "embed",
+                              "small"
                             ]
                           },
                           "state": {
@@ -228768,7 +231297,8 @@
                             "type": "string",
                             "enum": [
                               "chat",
-                              "embed"
+                              "embed",
+                              "small"
                             ]
                           },
                           "state": {
@@ -229211,7 +231741,8 @@
                             "type": "string",
                             "enum": [
                               "chat",
-                              "embed"
+                              "embed",
+                              "small"
                             ]
                           }
                         },
@@ -229886,7 +232417,8 @@
                             "type": "string",
                             "enum": [
                               "chat",
-                              "embed"
+                              "embed",
+                              "small"
                             ]
                           }
                         },
@@ -230198,7 +232730,8 @@
                             "type": "string",
                             "enum": [
                               "chat",
-                              "embed"
+                              "embed",
+                              "small"
                             ]
                           }
                         },
@@ -230254,11 +232787,7 @@
                         "type": "object",
                         "properties": {
                           "server": {
-                            "type": "string",
-                            "enum": [
-                              "chat",
-                              "embed"
-                            ]
+                            "$ref": "#/properties/current/properties/startedServers/items"
                           },
                           "state": {
                             "type": "string",
@@ -230539,7 +233068,8 @@
                             "type": "string",
                             "enum": [
                               "chat",
-                              "embed"
+                              "embed",
+                              "small"
                             ]
                           }
                         },
@@ -231632,7 +234162,8 @@
                             "type": "string",
                             "enum": [
                               "chat",
-                              "embed"
+                              "embed",
+                              "small"
                             ]
                           }
                         },
@@ -231934,7 +234465,8 @@
                             "type": "string",
                             "enum": [
                               "chat",
-                              "embed"
+                              "embed",
+                              "small"
                             ]
                           }
                         },

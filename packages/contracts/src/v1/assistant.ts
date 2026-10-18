@@ -161,6 +161,8 @@ export const assistantMessageSchema = z.object({
   cut: z.boolean().default(false),
   /** Who to ask instead, on a fixed sentence or an answer that says it is not sure (pass 1); null otherwise. */
   askPerson: assistantAskPersonSchema.nullable().default(null),
+  /** The answer is the platform's standard answer to this question, checked by the operator (pass 3). */
+  standard: z.boolean().default(false),
 });
 export type AssistantMessage = z.infer<typeof assistantMessageSchema>;
 
@@ -326,6 +328,8 @@ export const assistantUsageSchema = z.object({
   /** The sentence shown when helplineText is blank. */
   helplineDefault: z.string(),
   retentionDays: z.number().int().positive(),
+  /** Answers served this month from a standard answer the operator checked (Vidura pass 3), within `answered`. */
+  standardAnswers: z.number().int().nonnegative().default(0),
 });
 export type AssistantUsage = z.infer<typeof assistantUsageSchema>;
 

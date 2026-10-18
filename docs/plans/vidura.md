@@ -1,6 +1,6 @@
 # Vidura — the assistant's next shape (plan of 12 October 2026)
 
-Status: pass 1 built on 17 October 2026 and pass 2 on 17–18 October 2026 (below); passes 3 and 4 planned, not built. The owner's decisions of 11–12 October 2026 and the coordinator's recommendations,
+Status: pass 1 built on 17 October 2026, pass 2 on 17–18 October 2026 and pass 3 on 18 October 2026 (below); pass 4 planned, not built. The owner's decisions of 11–12 October 2026 and the coordinator's recommendations,
 in four passes, each a builder's brief. Run with `/vidura <pass>` (`.claude/commands/vidura.md`). Pass 1 was
 meant for the week of 12 October; passes 2 to 4 after the weekly reset of 17 October. Everything here sits on
 the assistant as built in [assistant.md](assistant.md) (Phases A–D, the exam-scope reader, the data questions,
@@ -106,6 +106,27 @@ builder's report has the rest.
 ### Pass 3 — speed and operations (6 to 9 points)
 The small-model gate and prompt caching (time to first word before and after, pasted); cached common
 answers with their count; the unanswered-questions report; evaluation runs from the panel.
+
+**Built, 18 October 2026 (pass 3).** The time to the first word, measured first (`npm run assistant:latency`, twenty
+questions across the three modes and languages, `content/assistant-eval/latency.json`): it was the searches, not the
+model — a help question waited two to ten seconds for the corpus's exact scan, which a role without the tutor runs only
+to tell a topic question from a platform one — so the gate now asks for the books only when they can change the verdict
+(`gate.ts`, the books searched once in `service.ts`, the verdicts the same as before), the help index and the person's
+doors are searched side by side, and every request asks the server to keep its prompt in the cache (`cache_prompt`;
+a stable-first order of the system prompts was tried and dropped when the help set's numbered steps fell 138 → 108). The median first word went from 5.64 s to 1.72 s (Using Shalaghar 5.41 → 1.78, My records
+7.15 → 0.82, Learning 2.91 → 2.19), the searches from 4.35 s to 0.29 s. The small-model gate: Qwen3-4B behind `scripts/model-serve.sh start-small` on :8182
+and `ASSISTANT_GATE_MODEL_URL` (falling back to the chat model when it does not answer) failed the refusal gate, 178/180
+(two Marathi off-topic questions called PLATFORM), and saved 0.07 s; so the classifier stays on the chat model, as the
+brief said, and the variables stay unset. Standard answers (`CachedAnswer`, `standard.ts`, `/root/vidura-answers`): the
+operator asks as a role, marks an answered "Using Shalaghar" how-to as the standard answer, revokes it; a person of that
+role whose question normalises to it is served it after the gate's tables, thresholds and classifier with no answering
+model, "Checked answer" in the drawer and on the phone, counted on the answer and on the office's card. The
+unanswered-questions report (`/root/vidura-unanswered`, CSV): every answer row keeps the mode reached and the gate's
+reason codes, the nightly `vidura:gaps` job counts thirty days per school, role, mode, verdict and reason (never the
+counsellor routes) and keeps the stems of questions that found nothing when two people asked them. Evaluation runs
+from the panel (`AssistantEvalJob`, `eval-jobs.ts`, `/root/vidura-evals`): the nine sets or some, started and stopped
+like a generation run, refused while a generation run or a crawl holds the model, the servers brought up and handed on
+by the holders rule (three kinds now), the live line, the scores kept per run. The builder's report has the numbers.
 
 ### Pass 4 — college knowledge and references (8 to 12 points)
 The college tutor searching the whole corpus first (NCERT 11–12, NIOS), then public-domain legal texts (the

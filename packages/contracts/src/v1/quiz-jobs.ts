@@ -127,8 +127,11 @@ export const quizGenProgressSchema = z.object({
 });
 export type QuizGenProgress = z.infer<typeof quizGenProgressSchema>;
 
-/** The two local model servers (docs/runbooks/assistant-local.md). */
-export const MODEL_SERVERS = ["chat", "embed"] as const;
+/**
+ * The local model servers (docs/runbooks/assistant-local.md): the chat model, the embedding model, and since Vidura pass
+ * 3 (18 Oct 2026) the small model the gate's classifier asks (scripts/model-serve.sh start-small).
+ */
+export const MODEL_SERVERS = ["chat", "embed", "small"] as const;
 export type ModelServer = (typeof MODEL_SERVERS)[number];
 export const modelServerNameSchema = z.enum(MODEL_SERVERS);
 

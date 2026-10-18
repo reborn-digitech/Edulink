@@ -43,7 +43,11 @@ export async function classify(model: ClassifyPort, kind: "question" | "answer",
 }
 
 export type QuestionGate =
-  | { pass: false; verdict: AssistantVerdict; modelCalled: boolean; tokens: number }
+  /**
+   * `label`: the classifier's word when it was asked (pass 3, the unanswered report: a PLATFORM or CURRICULUM question
+   * refused with no page or passage close enough found nothing; a REFUSE was the classifier's).
+   */
+  | { pass: false; verdict: AssistantVerdict; modelCalled: boolean; tokens: number; label?: ClassifierLabel }
   | { pass: true; mode: "HELP" | "TUTOR"; label: "PLATFORM" | "CURRICULUM"; confidence: number | null; tokens: number };
 
 /** The table checks alone: the counsellor routes (SELF_HARM, ABUSE_DISCLOSURE) first, then injection, then the other categories. No retrieval, no model. */
@@ -72,7 +76,13 @@ export async function gateQuestion(
     language: AssistantLanguage;
     policy: RolePolicy;
     helpTop: number;
-    curriculumTop: number;
+    /**
+     * The best curriculum passage's similarity, or the search that finds it (Vidura pass 3, 18 Oct 2026): the gate asks
+     * for it only when its answer can change the verdict — the help scope closed, the classifier saying CURRICULUM, or
+     * the person's pick of Learning. A help question the classifier calls PLATFORM never waits for the corpus's exact
+     * scan (two to three seconds of the time to the first word on 18 October), and the verdicts are the same as before.
+     */
+    curriculumTop: number | (() => Promise<number>);
     /**
      * The question asks for one of this role's own doors by its intent (tools.ts `toolsFor`): a guardian's
      * fees, a pupil's timetable. The door's data is then the answer whatever the help index holds, so it
@@ -95,22 +105,26 @@ export async function gateQuestion(
 ): Promise<QuestionGate> {
   const table = tableVerdict(input.original, input.role ?? null);
   if (table) return { pass: false, verdict: table, modelCalled: false, tokens: 0 };
-  const scopes = scopesFromRetrieval(input);
-  const help = input.policy.help && (scopes.help || input.ownDoor === true);
-  const curriculum = scopes.curriculum;
+  const help = input.policy.help && (input.helpTop >= HELP_THRESHOLD[input.language] || input.ownDoor === true);
+  // The curriculum's scope, read once and only when it can change the verdict (pass 3).
+  let curriculumOpen: boolean | null = typeof input.curriculumTop === "number" ? input.curriculumTop >= CURRICULUM_THRESHOLD[input.language] : null;
+  const curriculum = async (): Promise<boolean> => {
+    if (curriculumOpen === null) curriculumOpen = (await (input.curriculumTop as () => Promise<number>)()) >= CURRICULUM_THRESHOLD[input.language];
+    return curriculumOpen;
+  };
   // Below both thresholds: the sentence saying what the assistant is for, and nothing sent to the model.
-  if (!help && !curriculum) return { pass: false, verdict: "OUT_OF_SCOPE", modelCalled: false, tokens: 0 };
+  if (!help && !(await curriculum())) return { pass: false, verdict: "OUT_OF_SCOPE", modelCalled: false, tokens: 0 };
   const c = await classify(model, "question", input.stripped);
-  if (c.label === "REFUSE") return { pass: false, verdict: "OUT_OF_SCOPE", modelCalled: true, tokens: c.tokens };
+  if (c.label === "REFUSE") return { pass: false, verdict: "OUT_OF_SCOPE", modelCalled: true, tokens: c.tokens, label: "REFUSE" };
   // The person's pick, only where its own scope is open (the retrieval above its threshold, the tutor's role).
-  const label = input.prefer === "CURRICULUM" && curriculum && input.policy.tutor ? "CURRICULUM" : input.prefer === "PLATFORM" && help ? "PLATFORM" : c.label;
+  const label = input.prefer === "CURRICULUM" && input.policy.tutor && (await curriculum()) ? "CURRICULUM" : input.prefer === "PLATFORM" && help ? "PLATFORM" : c.label;
   if (label === "PLATFORM") {
-    if (!help) return { pass: false, verdict: "OUT_OF_SCOPE", modelCalled: true, tokens: c.tokens };
+    if (!help) return { pass: false, verdict: "OUT_OF_SCOPE", modelCalled: true, tokens: c.tokens, label: "PLATFORM" };
     return { pass: true, mode: "HELP", label: "PLATFORM", confidence: c.confidence, tokens: c.tokens };
   }
   // CURRICULUM: only with a curriculum passage close enough, and only for the tutor's roles.
-  if (!curriculum) return { pass: false, verdict: "OUT_OF_SCOPE", modelCalled: true, tokens: c.tokens };
-  if (!input.policy.tutor) return { pass: false, verdict: "TUTOR_NOT_FOR_ROLE", modelCalled: true, tokens: c.tokens };
+  if (!(await curriculum())) return { pass: false, verdict: "OUT_OF_SCOPE", modelCalled: true, tokens: c.tokens, label: "CURRICULUM" };
+  if (!input.policy.tutor) return { pass: false, verdict: "TUTOR_NOT_FOR_ROLE", modelCalled: true, tokens: c.tokens, label: "CURRICULUM" };
   return { pass: true, mode: "TUTOR", label: "CURRICULUM", confidence: c.confidence, tokens: c.tokens };
 }
 

@@ -9,7 +9,7 @@ import { todayKey } from "../dates";
  * count goes up first and the cap is read from what came back — so twenty questions sent at once
  * cannot all pass a cap of ten (the SMS caps' lesson, messaging.ts).
  */
-export type UsageField = "questions" | "answered" | "hints" | "refused" | "counsellorRoutes" | "modelCalls" | "promptTokens" | "completionTokens" | "helpful" | "notHelpful";
+export type UsageField = "questions" | "answered" | "hints" | "refused" | "counsellorRoutes" | "modelCalls" | "promptTokens" | "completionTokens" | "helpful" | "notHelpful" | "standardAnswers";
 
 export function dayKeyFor(timezone: string, now: Date): string {
   return todayKey(timezone, now);
@@ -60,7 +60,7 @@ export async function monthTotals(schoolId: string, month: string) {
   const [sum, people] = await Promise.all([
     db.assistantUsage.aggregate({
       where: { schoolId, dayKey: { startsWith: month } },
-      _sum: { questions: true, answered: true, hints: true, refused: true, counsellorRoutes: true, modelCalls: true, promptTokens: true, completionTokens: true, helpful: true, notHelpful: true },
+      _sum: { questions: true, answered: true, hints: true, refused: true, counsellorRoutes: true, modelCalls: true, promptTokens: true, completionTokens: true, helpful: true, notHelpful: true, standardAnswers: true },
     }),
     db.assistantUsage.groupBy({ by: ["userId"], where: { schoolId, dayKey: { startsWith: month }, questions: { gt: 0 } } }),
   ]);
@@ -76,5 +76,7 @@ export async function monthTotals(schoolId: string, month: string) {
     helpful: s.helpful ?? 0,
     notHelpful: s.notHelpful ?? 0,
     people: people.length,
+    // Vidura pass 3: answers served from the operator's standard answers.
+    standardAnswers: s.standardAnswers ?? 0,
   };
 }

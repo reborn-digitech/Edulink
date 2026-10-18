@@ -533,6 +533,8 @@ model School {
   // The assistant (Phase B, 9 Oct 2026): conversations, their messages, the daily counts, a guardian's opt-out per child.
   assistantConversations AssistantConversation[]
   assistantMessages      AssistantMessage[]
+  // vidura pass 3 (18 Oct 2026): the unanswered report's counts, one school's rows
+  assistantGapCounts     AssistantGapCount[]
   assistantUsage         AssistantUsage[]
   assistantChildSettings AssistantChildSetting[]
   // The clinical coordinator's desk (R-56, the clinical half; 10 Oct 2026): sites, departments, postings, logbook entries.
@@ -3276,6 +3278,120 @@ model HelpEntry {
 /// team reads the queue at /appadmin/vidura-review). help:index writes a HelpEntry per rendered paragraph, never one
 /// for a REJECTED rendering. Outside the school fence like HelpEntry: the guide is the platform's, the same for every
 /// school, and its reviewer is the operator, who belongs to no school (scripts/gen-rls.ts names it).
+// ---- vidura pass 3 (18 Oct 2026) ----
+/// A STANDARD ANSWER for a common how-to question (docs/plans/vidura.md, pass 3; src/lib/assistant/standard.ts). The
+/// operator asks Vidura a question as a role on /root/vidura-answers; the answer that came through both gates is kept
+/// here as a DRAFT (checkedAt null), and "Mark as the standard answer" checks it. A person of that role whose question
+/// normalises to the same key in the same language is then served the checked answer, still through the gate's tables,
+/// thresholds and classifier, without the answering model; revoked, it is never served again. Only a "Using Shalaghar"
+/// answer, which reads no person's records, can be kept. Outside the school fence like HelpEntry: the platform's own
+/// help, the same for every school, checked by the operator, who belongs to no school (scripts/gen-rls.ts names it).
+model CachedAnswer {
+  id               String    @id @default(cuid())
+  /// The role it was asked as, and the only role it is served to.
+  role             String
+  /// en | hi | mr
+  language         String
+  /// The question in its normal form (standard.ts `questionKey`): what a person's question must normalise to.
+  questionKey      String
+  /// The question as the operator typed it.
+  question         String
+  /// The checked answer as it was shown, and its citations (JSON AssistantCitation[]).
+  text             String
+  citationsJson    String    @default("[]")
+  /// The trial's verdict (ANSWERED for a draft that may be checked).
+  verdict          String
+  /// The chip the trial wore: USING only may be checked.
+  chip             String?
+  hitCount         Int       @default(0)
+  lastHitAt        DateTime?
+  createdByUserId  String
+  createdAt        DateTime  @default(now())
+  checkedByUserId  String?
+  checkedAt        DateTime?
+  revokedByUserId  String?
+  revokedAt        DateTime?
+
+  @@index([questionKey, language, role])
+  @@index([createdAt])
+}
+
+/// THE UNANSWERED REPORT'S COUNTS (pass 3), one school's: questions per school day, role, mode, verdict and reason,
+/// counts only, recomputed for the last thirty days by the nightly vidura:gaps job (its one writer) from the
+/// conversations' rows. The school's row like UsageSample, and like it readable by the operator across schools
+/// (SUPERUSER_READABLE in scripts/gen-rls.ts); the counsellor routes are never counted here.
+model AssistantGapCount {
+  id         String   @id @default(cuid())
+  schoolId   String
+  /// YYYY-MM-DD in the school's own calendar.
+  dayKey     String
+  role       String
+  /// USING | RECORDS | LEARNING, or NONE before the gate reached a mode.
+  scope      String
+  verdict    String
+  /// The first reason code, or "" when none (NOTHING_FOUND, CLASSIFIER, CITATION, …).
+  reason     String   @default("")
+  count      Int
+  computedAt DateTime @default(now())
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@unique([schoolId, dayKey, role, scope, verdict, reason])
+  @@index([dayKey])
+}
+
+/// A QUESTION STEM THAT FOUND NOTHING (pass 3): the first words of the stripped question (names, ids and codes already
+/// out, strip.ts) of the questions that found no page or passage in the last thirty days, per language and role, kept
+/// only when at least two people asked it; never a whole question. Rewritten whole by vidura:gaps. Outside the school
+/// fence: counted across every school and naming none, read by the operator alone.
+model AssistantGapStem {
+  id         String   @id @default(cuid())
+  language   String
+  role       String
+  stem       String
+  questions  Int
+  people     Int
+  fromDay    String
+  toDay      String
+  computedAt DateTime @default(now())
+
+  @@index([questions])
+}
+
+/// ONE EVALUATION RUN started from the operator's panel (/root/vidura-evals; src/lib/eval-jobs.ts, its one writer):
+/// the sets asked for, the live line, the scores when it ends, and the pid of the detached runner
+/// (scripts/assistant-eval.ts --job=<id>). One at a time (`active` unique, as QuizGenJob). The model servers it brought
+/// up go down with it unless a generation run or a crawl still holds them (src/lib/model-holders.ts). Nothing in it is a
+/// school's: outside the fence (scripts/gen-rls.ts).
+model AssistantEvalJob {
+  id              String    @id @default(cuid())
+  /// QUEUED | RUNNING | STOPPING | STOPPED | FINISHED | FAILED
+  state           String    @default("QUEUED")
+  active          Boolean?  @unique
+  /// { sets, limit? } (viduraEvalRequestSchema)
+  request         Json
+  /// The live line (viduraEvalProgressSchema), rewritten after every case.
+  progress        Json?
+  /// The sets' scores when the run ends (viduraEvalScoreSchema[]), kept with the run.
+  scores          Json?
+  /// The refusal set held at 100 percent (null when it was not run).
+  gate            Boolean?
+  /// Where the harness wrote its files (storage/assistant-eval/<dir>).
+  outDir          String?
+  pid             Int?
+  startedServers  String[]  @default([])
+  startedByUserId String
+  stopRequestedBy String?
+  error           String?
+  createdAt       DateTime  @default(now())
+  startedAt       DateTime?
+  finishedAt      DateTime?
+  heartbeatAt     DateTime?
+
+  @@index([createdAt])
+}
+// ---- end vidura pass 3 ----
+
 model HelpRendering {
   id               String    @id @default(cuid())
   /// HEADING | PARAGRAPH
@@ -10423,6 +10539,14 @@ model AssistantMessage {
   helpful             Boolean?
   promptTokens        Int      @default(0)
   completionTokens    Int      @default(0)
+  /// Vidura pass 3 (18 Oct 2026): the mode the gate had reached (USING | RECORDS | LEARNING) on every answer row, a
+  /// fixed sentence's too where the gate got that far; null before it. Read by the unanswered report (vidura:gaps).
+  scope               String?
+  /// Vidura pass 3: the gate's reason codes, never a word: NOTHING_FOUND (below both thresholds, or no passage and no
+  /// data) or CLASSIFIER for OUT_OF_SCOPE; the answer gate's codes (CITATION, FOREIGN_PAGE, …) for ANSWER_DISCARDED.
+  gateReasons         String?
+  /// Vidura pass 3: the operator's standard answer this row served (CachedAnswer), when it was one.
+  cachedAnswerId      String?
   createdAt           DateTime @default(now())
 
   conversation AssistantConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
@@ -10452,6 +10576,8 @@ model AssistantUsage {
   completionTokens Int      @default(0)
   helpful          Int      @default(0)
   notHelpful       Int      @default(0)
+  /// Vidura pass 3 (18 Oct 2026): answers served from an operator's standard answer (CachedAnswer), counted on the office's card.
+  standardAnswers  Int      @default(0)
   updatedAt        DateTime @updatedAt
 
   school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)

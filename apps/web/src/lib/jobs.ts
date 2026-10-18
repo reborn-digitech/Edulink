@@ -40,6 +40,8 @@ import { tidySiteEnquiries } from "./site-inbox";
 // end website-two
 // seats (17 Oct 2026): the thirty-minute join reminder for a confirmed (and, when priced, paid) seat.
 import { remindJoins } from "./gig-sessions";
+// vidura pass 3 (18 Oct 2026): the unanswered-questions report's counts.
+import { countGaps } from "./assistant/gaps";
 // end seats
 import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
 
@@ -89,6 +91,9 @@ export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" |
   // seats (17 Oct 2026)
   | "sessions:remind"
   // end seats
+  // vidura pass 3 (18 Oct 2026)
+  | "vidura:gaps"
+  // end vidura pass 3
   ;
 
 /**
@@ -560,6 +565,24 @@ export const JOBS: Record<JobName, JobSpec> = {
     },
   },
   // end seats
+  // vidura pass 3 (18 Oct 2026)
+  "vidura:gaps": {
+    name: "vidura:gaps",
+    // 02:50 daily (clear of 03:30, 03:40, 04:10, 04:20, 04:30, 05:10 and every */n job, after usage:sample at 02:10): the
+    // last thirty days of Vidura's refusals and discards counted per school, day, role, mode, verdict and reason, and the
+    // stems of the questions that found nothing, asked by two people or more (src/lib/assistant/gaps.ts). Counts and
+    // stems only, never a question whole; the operator reads them on /root/vidura-unanswered.
+    schedule: "50 2 * * *",
+    describeKey: "root.jobDescViduraGaps",
+    maxRunMs: HOUR,
+    expectEveryMs: 2 * DAY,
+    narrows: ["schoolIds"],
+    run: async ({ now, scope }) => {
+      const { summary, perSchool } = await countGaps(now, scope?.schoolIds ? { schoolIds: scope.schoolIds } : {});
+      return { summary, perSchool };
+    },
+  },
+  // end vidura pass 3
 };
 
 export const JOB_NAMES = Object.keys(JOBS) as JobName[];

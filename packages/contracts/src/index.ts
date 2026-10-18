@@ -267,6 +267,8 @@ export * from "./v1/council-notices";
 export * from "./v1/assistant";
 // Vidura pass 1 (17 Oct 2026): the answers' restricted Markdown, parsed once for the web and the phone.
 export * from "./v1/assistant-markdown";
+// Vidura pass 3 (18 Oct 2026): standard answers, the unanswered report, evaluation runs from the operator's panel.
+export * from "./v1/vidura-ops";
 // The owner's decisions of 10 Oct 2026 (decisions builder): settle on leaving (R-61 Q2), the previous schools' papers (R-70), the record copy (R-69).
 export * from "./v1/owner-decisions";
 // The generated bank's review queue and the teachers' question gig switched off (review-queue builder, 10 Oct 2026).

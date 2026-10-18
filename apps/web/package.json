@@ -47,6 +47,7 @@
     "help:index": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/help-index.ts",
     "assistant:ask": "tsx --tsconfig scripts/tsconfig.json scripts/assistant-ask.ts",
     "assistant:eval": "tsx --tsconfig scripts/tsconfig.json scripts/assistant-eval.ts",
+    "assistant:latency": "tsx --tsconfig scripts/tsconfig.json scripts/assistant-latency.ts",
     "model:serve": "bash scripts/model-serve.sh",
     "quiz:generate": "tsx --tsconfig scripts/tsconfig.json scripts/quiz2/gen-quiz2.ts",
     "quiz:gen": "tsx --tsconfig scripts/tsconfig.json scripts/quiz-gen/cli.ts",

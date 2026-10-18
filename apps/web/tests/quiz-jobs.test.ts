@@ -50,7 +50,7 @@ const made: string[] = [];
 const LAND_SLUG = `zz-qj-land-${STAMP}`;
 
 /** The fake machine: two servers up or down, the script's calls recorded, runners that are pids we say live. */
-function machine(up: Record<ModelServer, boolean>) {
+function machine(up: Partial<Record<ModelServer, boolean>>) {
   const calls: string[] = [];
   const alive = new Set<number>();
   const started = new Set<ModelServer>();
@@ -301,7 +301,8 @@ describe("the job's state machine", () => {
 
   it("the model servers' own Start and Stop: a stopped server starts; stopping one under an active run is refused; a server the script did not start is refused", async () => {
     const m = machine({ chat: false, embed: true });
-    expect((await modelServers(m.deps, { fresh: true })).map((s) => `${s.server}:${s.state}`)).toEqual(["chat:STOPPED", "embed:RUNNING"]);
+    // The gate's small model is the third line since Vidura pass 3 (18 Oct 2026); a generation run never needs it.
+    expect((await modelServers(m.deps, { fresh: true })).map((s) => `${s.server}:${s.state}`)).toEqual(["chat:STOPPED", "embed:RUNNING", "small:STOPPED"]);
     const afterStart = await startModelServer("chat", m.deps);
     expect(afterStart.find((s) => s.server === "chat")?.state).toBe("RUNNING");
     expect(m.calls).toEqual(["start-chat"]);
@@ -316,8 +317,8 @@ describe("the job's state machine", () => {
     // A server loading, or whose script pid lives while the port is still closed, reads Starting.
     const loading = machine({ chat: false, embed: false });
     const states = await modelServers({ ...loading.deps, health: async (s) => (s === "chat" ? "loading" : "down"), serverPid: (s) => (s === "embed" ? 77 : null), pidAlive: (pid) => pid === 77 }, { fresh: true });
-    expect(states.map((s) => s.state)).toEqual(["STARTING", "STARTING"]);
-    expect(states.map((s) => s.port)).toEqual([8180, 8181]);
+    expect(states.map((s) => s.state)).toEqual(["STARTING", "STARTING", "STOPPED"]);
+    expect(states.map((s) => s.port)).toEqual([8180, 8181, 8182]);
   });
 });
 
@@ -356,7 +357,7 @@ describe("the doors by role", () => {
       for (const whom of ["CURATOR", "OPERATOR"] as const) {
         await signInAs(whom);
         expect((await jobsGet()).status, whom).toBe(200);
-        expect(modelServersSchema.parse(await (await serversGet()).json()).servers).toHaveLength(2);
+        expect(modelServersSchema.parse(await (await serversGet()).json()).servers).toHaveLength(3);
         expect((await jobGet(get(`${P}/zz-no-such`), { params: Promise.resolve({ jobId: "zz-no-such" }) })).status).toBe(404);
         expect((await serverStartPost(post(`${P}/servers/zz/start`), { params: Promise.resolve({ server: "zz" }) })).status).toBe(404);
       }

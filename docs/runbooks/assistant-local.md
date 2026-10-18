@@ -12,7 +12,7 @@ export PATH="/opt/homebrew/opt/node@24/bin:/opt/homebrew/opt/postgresql@16/bin:$
 cd apps/web
 ```
 
-## 1. The two model servers
+## 1. The model servers
 
 `scripts/model-serve.sh` runs llama.cpp's `llama-server` (Homebrew's `llama.cpp`), OpenAI-compatible,
 on 127.0.0.1 only:
@@ -21,6 +21,7 @@ on 127.0.0.1 only:
 | --- | --- | --- | --- | --- |
 | chat | Qwen3-30B-A3B, Q8_0 (`Qwen/Qwen3-30B-A3B-GGUF:Q8_0`) | 32.5 GB | 8180 | about 34 GB |
 | embeddings | Qwen3-Embedding-0.6B, Q8_0 (`Qwen/Qwen3-Embedding-0.6B-GGUF:Q8_0`), 1024 dimensions, last-token pooling, one slot, flash attention off | 0.64 GB | 8181 | about 2.5 GB |
+| small (Vidura's gate, pass 3; not in use, see section 11) | Qwen3-4B, Q8_0 (`Qwen/Qwen3-4B-GGUF:Q8_0`), four slots of 4k | 4.3 GB | 8182 | about 5 GB |
 
 ```sh
 npm run model:serve -- both     # both in the background; logs and pid files in storage/models/
@@ -29,6 +30,7 @@ npm run model:serve -- restart-embed   # the embeddings server alone
 npm run model:serve -- chat     # one in the foreground (or embed)
 npm run model:serve -- start-chat      # one in the background (or start-embed); the bank desk's Start
 npm run model:serve -- stop-chat       # one the script started (or stop-embed); the bank desk's Stop
+npm run model:serve -- start-small     # Vidura's gate model (pass 3), in the background; stop-small stops it
 ```
 
 The bank desk (`/root/quiz-review`, `/appadmin/quiz-review`) starts and stops these servers through the
@@ -469,3 +471,82 @@ sent to the model.
   /api/v1/appadmin/competitions/{id}/edit|dismiss|reviewed`.
 
 They are for the operator and the app admins, with a bearer token.
+
+## 11. Vidura's speed and operations (pass 3, 18 October 2026)
+
+### The time to the first word
+
+Vidura shows nothing unchecked: the answer streams only after the answer gate has passed it, so the person's first word
+arrives with the whole checked answer. `npm run assistant:latency` asks the twenty questions of
+`content/assistant-eval/latency.json` (seven Using Shalaghar, six My records with a door's answer handed in, seven
+Learning; en, hi and mr) through `previewAnswer`, two rounds, and prints per question the first word, the searches,
+the rendering, the two classifier calls, the answer (its tokens) and how much of the answer's prompt the chat server
+took from its cache. Run it on an idle machine.
+
+What the measurement found on 18 October 2026, and what changed:
+
+- **The searches, not the model, were the wait.** A help question waited two to ten seconds for the corpus's exact scan
+  (119,365 chunks), which a role without the tutor runs only to tell a topic question from a platform one, and a pupil's
+  help question ran the class's books, the classes either side, NCERT and every class in turn. The gate now asks for the
+  corpus only when its answer can change the verdict (the help scope closed, the classifier saying CURRICULUM, or a pick
+  of Learning; `gate.ts`, the books searched once in `service.ts`), with the verdicts the same as before (a test runs
+  every label and scope both ways). The help index and the person's doors are searched side by side.
+- **The prompt cache.** Every chat request sends `cache_prompt`, and llama-server keeps each slot's prompt and its
+  host-memory cache (`--cache-ram`, 8 GB by default), so a question of the same role and language reads its system
+  prompt from the cache. Opening every system prompt with the role-free rules, for a longer common start, was tried: the
+  server then took 384 to 1,300 tokens of each answer's prompt from its cache, about 0.1 s, but the help set's numbered
+  steps fell from 138 to 108 of 200 and a Marathi tutor answer came back in Hindi, so the order stays as pass 2 had it.
+- **The two classifier calls** take about 0.1 s each on the chat model with its cache. The plan's small model,
+  Qwen3-4B (`start-small`, `ASSISTANT_GATE_MODEL_URL`), took them to about 0.07 s, but it failed the refusal gate
+  (178/180: two Marathi off-topic questions, "who won yesterday's cricket match" and "play a game with me", called
+  PLATFORM with 0.97 and 0.997), so the classifier stays on the chat model and the variables stay unset. The code to
+  use a small model is in place (with a fall back to the chat model when the small server does not answer at all);
+  try another small model only with the refusal set at 180/180.
+
+Measured back to back on 18 October 2026, the code of pass 2 from a worktree of its commit and pass 3's final code,
+two rounds each, the median of twenty questions:
+
+| | Before (pass 2's code) | After (pass 3) |
+| --- | --- | --- |
+| First word | 5.64 s (5.54 and 5.50 s on two earlier runs) | 1.72 s |
+| Using Shalaghar / My records / Learning | 5.41 / 7.15 / 2.91 s | 1.78 / 0.82 / 2.19 s |
+| Searches | 4.35 s | 0.29 s |
+| The two classifier calls | 0.20 s | 0.25 s (on the small model: 0.14 s, not adopted) |
+
+### Standard answers (`/root/vidura-answers`)
+
+The operator asks Vidura a question as a role ("Ask as"); it goes through `previewAnswer` like anyone's, and the outcome
+is kept as a draft for seven days. An answered "Using Shalaghar" answer to a how-to or where-is question that cites no
+row of anybody's records can be marked as the standard answer (an earlier one for the same question is revoked). A person
+of that role whose question, in that language, reads the same (`standard-store.ts` `questionKey`: one form, no marks, no
+"please", "how can I" and "how to" as "how do I") is served it after the tables, the thresholds and the classifier, with
+no answering model, never for a question pointing at the page, a follow-up, "go on", "Explain this" or a pick of My
+records, and the drawer shows "Checked answer". Each serving counts on the answer (its hits, on the desk) and on the
+school's usage row (the office's card, "Answered from a standard answer"). Revoke takes it out at once. Every act is
+audited (`vidura.answer.try`, `.check`, `.revoke`, `.discard`). Doors: `GET` and `POST /api/v1/operator/vidura/answers`,
+`POST /api/v1/operator/vidura/answers/{answerId}`.
+
+### The unanswered report (`/root/vidura-unanswered`)
+
+Every answer row now keeps the mode the gate reached and its reason codes (never a word): NOTHING_FOUND (below both
+thresholds, or no passage and no data), CLASSIFIER, or the answer gate's codes. The nightly `vidura:gaps` job (02:50)
+counts the last thirty days per school, day, role, mode, verdict and reason into `AssistantGapCount` (the operator reads
+every school's), never the counsellor routes, and keeps the first six words of the questions that found nothing when two
+people or more asked them (`AssistantGapStem`). The page shows the sums by mode, role and school, why questions were
+refused, what the checks found, and the stems; "Download CSV" (`GET /api/v1/operator/vidura/unanswered/export`, audited).
+Run the count by hand with `npm run job -- vidura:gaps`.
+
+### Evaluation runs from the panel (`/root/vidura-evals`)
+
+Choose the sets (all nine by default) and, if you like, at most how many cases a set; Start. Like a generation run
+(section 9): one at a time; refused while a generation run or a crawl holds the model (its scores would measure that
+run: pass 2's discarded run); the servers the run needs that are down (chat and embed, and the small model when the gate
+asks one) are brought up through `scripts/model-serve.sh` and taken down when it ends, or handed to a generation run or
+a crawl still going (`src/lib/model-holders.ts`, three kinds of holder now). The runner is `scripts/assistant-eval.ts
+--job=<id>` (log in `storage/assistant-eval/jobs/<id>.log`, results in `storage/assistant-eval/panel-<stamp>`); it
+rewrites the live line every three seconds (the set, its cases done and passed, the run's cases and minutes) and records
+its own pid when it begins, so the reaper watches the process doing the work. Every read of the card reaps a run whose
+pid is gone; a test suite that reads the runs with a fake machine must not run beside a real run (tests/vidura-three
+skips its run cases while one is active, after a suite run twice ended a live run on 18 October 2026). Stop halts it after the case in hand and
+keeps the scores of what it ran. Each run keeps its scores per set, the refusal gate's verdict and the harness's own
+lines. Doors: `GET` and `POST /api/v1/operator/vidura/evals`, `POST /api/v1/operator/vidura/evals/{jobId}/stop`.

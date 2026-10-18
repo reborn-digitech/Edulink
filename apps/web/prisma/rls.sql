@@ -894,6 +894,23 @@ CREATE POLICY "EarnedBadge_readable" ON "EarnedBadge"
           ))
         );
 
+-- AssistantGapCount
+ALTER TABLE "AssistantGapCount" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "AssistantGapCount" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "AssistantGapCount_tenant_isolation" ON "AssistantGapCount";
+DROP POLICY IF EXISTS "AssistantGapCount_readable" ON "AssistantGapCount";
+CREATE POLICY "AssistantGapCount_tenant_isolation" ON "AssistantGapCount"
+  FOR ALL
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "AssistantGapCount_readable" ON "AssistantGapCount"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR current_setting('app.is_superuser', true) = '1'
+        );
+
 -- QuizAttempt
 ALTER TABLE "QuizAttempt" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "QuizAttempt" FORCE ROW LEVEL SECURITY;
@@ -3619,7 +3636,10 @@ CREATE TRIGGER "OperatorAccess_close_only"
   FOR EACH ROW EXECUTE FUNCTION "OperatorAccess_close_only"();
 
 -- Tables with no school policy, each because it holds no school-owned rows:
+--   AssistantEvalJob
+--   AssistantGapStem
 --   AuthToken
+--   CachedAnswer
 --   CommissionPartner
 --   Company
 --   CompanyRecruiter

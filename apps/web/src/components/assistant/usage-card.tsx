@@ -18,6 +18,8 @@ export const SETTINGS_DOOR = "/api/v1/admin/assistant/settings";
 /** The month's counts as the card lists them: every one a count, never a word anyone typed. */
 export const USAGE_COUNTS: [keyof AssistantUsage, TranslationKey][] = [
   ["questions", "assistantUi.cardQuestions"],
+  // Vidura pass 3 (18 Oct 2026): answered from a standard answer the platform checked, with no model.
+  ["standardAnswers", "assistantUi.cardStandard"],
   ["refused", "assistantUi.cardRefused"],
   ["counsellorRoutes", "assistantUi.cardCounsellor"],
   ["people", "assistantUi.cardPeople"],

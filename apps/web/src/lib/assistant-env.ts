@@ -68,6 +68,27 @@ export function readEmbedConfig(env: Record<string, string | undefined> = proces
   return { ok: true, config: embed };
 }
 
+/**
+ * VIDURA'S GATE ON A SMALL MODEL (pass 3, 18 Oct 2026; docs/plans/vidura.md, "Latency"): the two one-word classifier
+ * calls of src/lib/assistant/gate.ts may go to a model of their own, so a question is never queued behind the answers
+ * being written on the chat server's four slots.
+ *
+ *   ASSISTANT_GATE_MODEL_URL   the small model's API root, OpenAI-compatible:   http://127.0.0.1:8182/v1
+ *   ASSISTANT_GATE_MODEL       the name it answers to:                           qwen3-4b
+ *
+ * Optional: unset (both), the classifier asks the chat model, as before pass 3. One set without the other, or a URL
+ * that is not one, is a problem, said like the others. A key is optional (ASSISTANT_GATE_MODEL_KEY).
+ */
+export function readGateConfig(env: Record<string, string | undefined> = process.env):
+  | { ok: true; config: AssistantEndpoint | null }
+  | { ok: false; problems: AssistantProblem[] } {
+  if (!env.ASSISTANT_GATE_MODEL_URL?.trim() && !env.ASSISTANT_GATE_MODEL?.trim()) return { ok: true, config: null };
+  const problems: AssistantProblem[] = [];
+  const gate = endpoint("ASSISTANT_GATE_MODEL_URL", "ASSISTANT_GATE_MODEL", "ASSISTANT_GATE_MODEL_KEY", env, problems);
+  if (!gate) return { ok: false, problems };
+  return { ok: true, config: gate };
+}
+
 /** For a script: the config, or every problem printed and the process stopped. */
 export function requireEmbedConfig(what: string): AssistantEndpoint {
   const read = readEmbedConfig();

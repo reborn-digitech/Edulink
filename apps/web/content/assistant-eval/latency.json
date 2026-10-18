@@ -1,0 +1,25 @@
+{
+ "about": "Vidura pass 3 (18 October 2026): twenty questions across the three modes and the three languages, for the time to the first word (scripts/assistant-latency.ts). The answer is shown only after the answer gate has passed it, so the first word reaches the person when the whole checked answer does: the time measured is previewAnswer's, from the question to the checked answer, with the time each model call and search took. A My records question carries the door's answer the way the harness hands one in (data), so the same prompt is built without a person's session.",
+ "cases": [
+  { "id": "la-u-01", "mode": "USING", "role": "ADMIN", "question": "how do I record a pupil's departure" },
+  { "id": "la-u-02", "mode": "USING", "role": "TEACHER", "question": "how do I apply for leave" },
+  { "id": "la-u-03", "mode": "USING", "role": "ADMIN", "question": "how do I publish report cards" },
+  { "id": "la-u-04", "mode": "USING", "role": "ADMIN", "question": "मैं अभिभावकों को परिपत्र कैसे भेजूँ?" },
+  { "id": "la-u-05", "mode": "USING", "role": "TEACHER", "question": "छुट्टी के लिए आवेदन कैसे करें?" },
+  { "id": "la-u-06", "mode": "USING", "role": "PARENT", "question": "शुल्काची पावती कुठे मिळेल?" },
+  { "id": "la-u-07", "mode": "USING", "role": "STUDENT", "grade": 8, "question": "माझे वेळापत्रक कुठे पाहायचे?" },
+  { "id": "la-r-01", "mode": "RECORDS", "role": "PARENT", "question": "how much fee is still due for my child?", "tool": "/api/v1/fees/family", "data": { "demands": [{ "head": "Tuition, term 1", "amountPaise": 1250000, "paidPaise": 1250000, "dueDate": "2026-07-15", "status": "PAID" }, { "head": "Tuition, term 2", "amountPaise": 1250000, "paidPaise": 0, "dueDate": "2026-11-15", "status": "DUE" }], "outstandingPaise": 1250000 } },
+  { "id": "la-r-02", "mode": "RECORDS", "role": "STUDENT", "grade": 8, "question": "what homework is due for me?", "tool": "/api/v1/family/student/assignments", "data": { "assignments": [{ "title": "Fractions worksheet", "subject": "Mathematics", "due": "2026-10-20", "status": "OPEN" }, { "title": "Leaf structure diagram", "subject": "Science", "due": "2026-10-22", "status": "OPEN" }, { "title": "Essay on monsoon", "subject": "English", "due": "2026-10-12", "status": "SUBMITTED" }] } },
+  { "id": "la-r-03", "mode": "RECORDS", "role": "TEACHER", "question": "which registers are still to be marked today?", "tool": "/api/v1/teacher/registers", "data": { "date": "2026-10-19", "registers": [{ "className": "Grade 6 · A", "period": 1, "status": "MARKED" }, { "className": "Grade 7 · B", "period": 3, "status": "PENDING" }, { "className": "Grade 8 · A", "period": 5, "status": "PENDING" }] } },
+  { "id": "la-r-04", "mode": "RECORDS", "role": "PARENT", "question": "मेरे बच्चे की कितनी फीस बाकी है?", "tool": "/api/v1/fees/family", "data": { "demands": [{ "head": "Transport, October", "amountPaise": 150000, "paidPaise": 0, "dueDate": "2026-10-25", "status": "DUE" }], "outstandingPaise": 150000 } },
+  { "id": "la-r-05", "mode": "RECORDS", "role": "LIBRARIAN", "question": "how many books are overdue?", "tool": "/api/v1/library/loans", "data": { "loans": { "total": 42, "byStatus": { "ISSUED": 31, "OVERDUE": 7, "RETURNED": 4 } } } },
+  { "id": "la-r-06", "mode": "RECORDS", "role": "PARENT", "question": "माझ्या मुलाची या महिन्याची उपस्थिती किती आहे?", "tool": "/api/v1/family/attendance", "data": { "month": "2026-10", "present": 14, "absent": 1, "late": 2, "schoolDays": 17, "percent": 94 } },
+  { "id": "la-l-01", "mode": "LEARNING", "role": "STUDENT", "grade": 8, "question": "what is photosynthesis?" },
+  { "id": "la-l-02", "mode": "LEARNING", "role": "STUDENT", "grade": 9, "question": "explain Newton's third law" },
+  { "id": "la-l-03", "mode": "LEARNING", "role": "STUDENT", "grade": 10, "question": "why do we see a rainbow after rain?" },
+  { "id": "la-l-04", "mode": "LEARNING", "role": "STUDENT", "grade": 7, "question": "प्रकाश संश्लेषण क्या है?" },
+  { "id": "la-l-05", "mode": "LEARNING", "role": "STUDENT", "grade": 9, "question": "गुरुत्वाकर्षण म्हणजे काय?" },
+  { "id": "la-l-06", "mode": "LEARNING", "role": "TEACHER", "question": "explain the water cycle" },
+  { "id": "la-l-07", "mode": "LEARNING", "role": "STUDENT", "grade": 6, "question": "define a fraction" }
+ ]
+}

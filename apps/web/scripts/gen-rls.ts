@@ -129,6 +129,18 @@ const NO_SCHOOL_POLICY = new Set([
   // operator, who belongs to no school; nothing in it is a school's or a person's.
   "HelpRendering",
   // ---- end vidura pass 2 ----
+  // ---- vidura pass 3 (18 Oct 2026) ----
+  // A standard answer the operator checked for a common how-to question (src/lib/assistant/standard.ts): the platform's
+  // own help, the same for every school, made from a question the operator asked as a role, never from a person's
+  // conversation; a "Using Shalaghar" answer only, which reads nobody's records.
+  "CachedAnswer",
+  // The unanswered report's question stems (vidura:gaps): counted across every school and naming none, kept only when
+  // two people or more asked them; read by the operator alone.
+  "AssistantGapStem",
+  // One evaluation run started from the operator's panel (src/lib/eval-jobs.ts): the harness's sets are the platform's,
+  // and so is the operator who starts it, exactly like QuizGenJob.
+  "AssistantEvalJob",
+  // ---- end vidura pass 3 ----
   // ---- review-queue (10 Oct 2026) ----
   // One act of review on a bank question by the content team or the operator (src/lib/quiz-review.ts):
   // the bank belongs to no school and neither do its reviewers, exactly like QuizQuestion.
@@ -190,6 +202,9 @@ const SUPERUSER_READABLE = new Set([
   // website-builder B (15 Oct 2026): the operator's read-only table of every school's own domain and its state (/root/sites).
   "SchoolSiteDomain",
   // end website-builder B
+  // vidura pass 3 (18 Oct 2026): the unanswered report's counts per school (questions by day, role, mode, verdict and
+  // reason; numbers, never a word anyone typed), written by the vidura:gaps job as the owner.
+  "AssistantGapCount",
 ]);
 
 /**

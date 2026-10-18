@@ -866,6 +866,14 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "vidura.rendering.approve": "audit.viduraRenderingApprove",
   "vidura.rendering.edit": "audit.viduraRenderingEdit",
   "vidura.rendering.reject": "audit.viduraRenderingReject",
+  // Vidura pass 3 (18 Oct 2026): the operator's standard answers, the evaluation runs, the unanswered report's CSV.
+  "vidura.answer.try": "audit.viduraAnswerTry",
+  "vidura.answer.check": "audit.viduraAnswerCheck",
+  "vidura.answer.revoke": "audit.viduraAnswerRevoke",
+  "vidura.answer.discard": "audit.viduraAnswerDiscard",
+  "vidura.eval.start": "audit.viduraEvalStart",
+  "vidura.eval.stop": "audit.viduraEvalStop",
+  "vidura.unanswered.export": "audit.viduraUnansweredExport",
   // expert-registration (15 Oct 2026): an expert's application from the login page and the operator's decision.
   "expert.application.submit": "audit.expertApplicationSubmit",
   "operator.expertApplication.approve": "audit.operatorExpertApplicationApprove",
