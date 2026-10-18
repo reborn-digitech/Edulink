@@ -21,6 +21,8 @@ import { EmptyState } from "@/components/ui/states";
 import { ATTENDANCE_META, ATTENDANCE_STATUSES, type AttendanceStatus } from "@/lib/constants";
 import { getT, getLocale } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
+// Vidura pass 2 (17 Oct 2026): "Explain this to me" beside the month's figure.
+import { ExplainThis } from "@/components/assistant/explain-this";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -191,6 +193,7 @@ export default async function ParentAttendancePage({
           />
         ))}
       </div>
+      {summary.total > 0 ? <ExplainThis about={{ kind: "ATTENDANCE", id: month, childId: selectedId }} label={[childName, monthLabel].join(", ")} /> : null}
 
       <Card>
         <CardHeader

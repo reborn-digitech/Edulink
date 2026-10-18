@@ -141,6 +141,33 @@ One `HelpEntry` per door of the API catalog, per docs paragraph that says how to
 label, quick action and page heading in English, Hindi and Marathi, tagged with the commit. Rebuild
 it after a release; it takes about two minutes.
 
+### The guide in Hindi and Marathi (Vidura pass 2, 17 October 2026)
+
+```sh
+npm run help:index -- --render=hi,mr                    # render what is not yet rendered, then rebuild the index
+npm run help:index -- --render=hi --render-limit=20     # a trial: twenty new renderings, then the rebuild
+npm run help:index -- --render=hi,mr --render-rejected  # render again what the reviewer rejected
+```
+
+`--render` sends every heading and paragraph of `docs/guide/*.md` that has no rendering in that language yet to the
+chat server (four at a time, `--render-parallel=N` for fewer), with the screen's own Hindi or Marathi words for the
+labels the paragraph quotes (a glossary from the dictionaries), and keeps a rendering only in Devanagari with every
+page path of the English (`src/lib/assistant/guide-render.ts`). Each lands in `HelpRendering` as UNREVIEWED and is
+used at once: every rebuild writes a Hindi and a Marathi help entry per guide paragraph rendered, its heading path in
+that language, so a Hindi question meets help written in Hindi and the drawer suggests the guide's own questions in
+Hindi. A unit's identity is a hash of its English, so editing a paragraph of a guide leaves its old rendering unused
+and the next `--render` renders the new words; nothing else needs doing after a guide changes. On 17 October 2026, with
+another project's two model servers loaded beside the chat server, a rendering took about 30 seconds a slot (7 to 15
+tokens a second); render on an otherwise idle machine.
+
+A speaker reads them on the operator's panel, `/root/vidura-review` ("Guide in Hindi and Marathi"): the English beside
+the rendering, Approve, a correction saved with "Save the correction", or Reject. A rejected rendering leaves retrieval
+and the suggestions at once (the searches read its status); a correction is read in its new words at once and its
+vector follows at the next rebuild. Each act is audited (`vidura.rendering.approve`, `.edit`, `.reject`). The content
+team reads the same queue at `/appadmin/vidura-review`; the practice bank's own Hindi and Marathi stay on
+`/appadmin/translations`. The counts waiting are on `/root` and `/appadmin`. Doors: `GET
+/api/v1/appadmin/vidura/renderings` and `POST /api/v1/operator/vidura/renderings/{renderingId}`.
+
 ## 5. Ask
 
 ```sh

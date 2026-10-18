@@ -13,6 +13,9 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { Chips, EXAM_KIND, ExamMarksCards, formatDateKey, formatMilli, hhmm, Note, param, Pill, subjectName, Tabs, type ExamKind } from "./shared";
+// Vidura pass 2 (17 Oct 2026): "Explain this to me" beside each line of a report card.
+import { ExplainThis } from "../shared/vidura";
+import { useRole } from "@/lib/session";
 
 type Tab = "marks" | "upcoming" | "cards";
 type ReportCard = z.infer<typeof familyReportCardSchema>;
@@ -172,6 +175,7 @@ export function FamilyExams() {
  */
 function ReportCardView({ cardId, onBack }: { cardId: string; onBack: () => void }) {
   const t = useT();
+  const role = useRole();
   const th = useTheme();
   const { locale } = useLocale();
   const [pdfBusy, setPdfBusy] = useState(false);
@@ -273,8 +277,11 @@ function ReportCardView({ cardId, onBack }: { cardId: string; onBack: () => void
                   {[t("reportView.percent"), t("reportView.grade"), t("reportView.points")].join(" · ")}
                 </Text>
               </View>
-              {subjects.map((row) => (
-                <Row key={row.subject} title={row.subject} caption={partsText(row.parts, t) || undefined} right={<Text variant="sm" bold tone={row.percent === null ? "muted" : "fg"}>{subjectMark(row, t)}</Text>} />
+              {subjects.map((row, index) => (
+                <View key={row.subject}>
+                  <Row title={row.subject} caption={partsText(row.parts, t) || undefined} right={<Text variant="sm" bold tone={row.percent === null ? "muted" : "fg"}>{subjectMark(row, t)}</Text>} />
+                  {role === "STUDENT" || role === "PARENT" ? <ExplainThis about={{ kind: "REPORT_LINE", id: `${c.id}:s${index}`, ...(role === "PARENT" ? { childId: c.studentMembershipId } : {}) }} label={row.subject} /> : null}
+                </View>
               ))}
             </Card>
           ) : (
@@ -288,8 +295,8 @@ function ReportCardView({ cardId, onBack }: { cardId: string; onBack: () => void
                 </Text>
               </View>
               {c.items.map((item, index) => (
+                <View key={index}>
                 <Row
-                  key={index}
                   title={item.title}
                   caption={[item.subject, item.category].filter(Boolean).join(" · ") || undefined}
                   right={
@@ -299,6 +306,8 @@ function ReportCardView({ cardId, onBack }: { cardId: string; onBack: () => void
                     </Text>
                   }
                 />
+                {role === "STUDENT" || role === "PARENT" ? <ExplainThis about={{ kind: "REPORT_LINE", id: `${c.id}:${index}`, ...(role === "PARENT" ? { childId: c.studentMembershipId } : {}) }} label={item.title} /> : null}
+                </View>
               ))}
             </Card>
           )}

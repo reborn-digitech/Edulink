@@ -13,6 +13,14 @@
  *   - nav entry and quick action (src/lib/nav.ts), and page heading with its introduction, in
  *     English, Hindi and Marathi from the dictionaries, with the page path the nav gives it.
  *
+ * THE GUIDE IN HINDI AND MARATHI (Vidura pass 2, 17 Oct 2026): `--render=hi,mr` first renders every guide heading and
+ * paragraph not yet rendered (src/lib/assistant/guide-render.ts) through the local chat model (ASSISTANT_MODEL_URL),
+ * four at a time, into HelpRendering, marked UNREVIEWED; `--render-limit=N` stops after N new renderings,
+ * `--render-parallel=N` sets how many run at once, and `--render-rejected` renders again what a reviewer rejected.
+ * Every run (with or without --render) then writes a Hindi and a Marathi entry per guide paragraph that has a
+ * rendering not rejected, its heading path in that language where the headings are rendered, carrying the rendering's
+ * id; the speaker reads them on /root/vidura-review.
+ *
  * TAGGED WITH THE COMMIT (`git rev-parse --short HEAD`, "-dirty" when the tree has changes) and
  * rebuilt idempotently: the commit's own rows are deleted and written again, then embedded through
  * ASSISTANT_EMBED_URL, and only then are older commits' rows removed, so the index is never empty
@@ -31,8 +39,9 @@ import { en } from "../src/lib/i18n/en";
 import { hi } from "../src/lib/i18n/hi";
 import { mr } from "../src/lib/i18n/mr";
 import { refuseUnlessLocalDatabase } from "./local-db-guard.mjs";
-import { requireEmbedConfig } from "../src/lib/assistant-env";
-import { embedTexts, vectorLiteral } from "../src/lib/assistant-model";
+import { requireAssistantConfig, requireEmbedConfig } from "../src/lib/assistant-env";
+import { chatComplete, embedTexts, vectorLiteral } from "../src/lib/assistant-model";
+import { RENDER_LANGUAGES, checkGuideRendering, glossaryFor, glossaryIndex, guideUnits, isGuideRow, renderGuideMessages, renderedTitle, sourceKeyOf, type GuideUnit, type RenderLanguage } from "../src/lib/assistant/guide-render";
 // The data questions (11 Oct 2026): a door's entry also names what it answers, read from its response schema.
 import { responseWords } from "../src/lib/assistant/doors";
 import { QUESTION_GIG_FOR_TEACHERS } from "@edulink/contracts";
@@ -40,6 +49,14 @@ import { QUESTION_GIG_FOR_TEACHERS } from "@edulink/contracts";
 config();
 
 const DRY = process.argv.includes("--dry");
+function flag(name: string): string | null {
+  const hit = process.argv.find((a) => a === `--${name}` || a.startsWith(`--${name}=`));
+  return hit ? (hit.includes("=") ? hit.slice(hit.indexOf("=") + 1) : "true") : null;
+}
+const RENDER: RenderLanguage[] = (flag("render") ?? "").split(",").map((l) => l.trim()).filter((l): l is RenderLanguage => (RENDER_LANGUAGES as readonly string[]).includes(l));
+const RENDER_LIMIT = Number(flag("render-limit") ?? Infinity) || Infinity;
+const RENDER_PARALLEL = Math.max(1, Math.min(4, Number(flag("render-parallel") ?? 4) || 4));
+const RENDER_REJECTED = flag("render-rejected") === "true";
 const REPO = resolve(process.cwd(), "..", "..");
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
 
@@ -53,6 +70,8 @@ export type HelpRow = {
   text: string;
   sourceFile: string;
   language: "en" | "hi" | "mr";
+  /** Vidura pass 2: the HelpRendering a Hindi or Marathi guide entry was made from. */
+  renderingId?: string | null;
 };
 
 /* ---- the commit ----------------------------------------------------------- */
@@ -459,8 +478,89 @@ export function buildHelpRows(): HelpRow[] {
   return dedupe([...doorRows(), ...docRows(), ...dictionaryRows()]);
 }
 
+/* ---- 4. the guide in Hindi and Marathi (Vidura pass 2) ------------------- */
+
+/** Renders the guide's units not yet rendered (or rejected, with --render-rejected), four at a time. */
+async function renderGuide(rows: HelpRow[], languages: RenderLanguage[]): Promise<void> {
+  const config = requireAssistantConfig("help:index --render");
+  const units = guideUnits(rows);
+  const glossaries = new Map<RenderLanguage, Map<string, string>>([
+    ["hi", glossaryIndex(en as unknown as Dict, hi as unknown as Dict)],
+    ["mr", glossaryIndex(en as unknown as Dict, mr as unknown as Dict)],
+  ]);
+  for (const language of languages) {
+    const have = await db.helpRendering.findMany({ where: { language }, select: { sourceKey: true, status: true } });
+    const done = new Map(have.map((h) => [h.sourceKey, h.status]));
+    const todo = units.filter((u) => !done.has(u.key) || (RENDER_REJECTED && done.get(u.key) === "REJECTED")).slice(0, RENDER_LIMIT);
+    console.log(`  rendering ${todo.length} of ${units.length} guide units into ${language} (${done.size} already rendered), ${RENDER_PARALLEL} at a time`);
+    const started = Date.now();
+    let made = 0;
+    let failed = 0;
+    let next = 0;
+    const one = async (unit: GuideUnit) => {
+      const messages = renderGuideMessages(unit, language, glossaryFor(unit.text, glossaries.get(language)!));
+      for (let attempt = 1; attempt <= 2; attempt++) {
+        try {
+          const res = await chatComplete(config.chat, messages, { maxTokens: unit.kind === "HEADING" ? 160 : 2400, temperature: attempt === 1 ? 0.2 : 0.5, timeoutMs: 300_000 });
+          const text = res.finishReason === "length" ? null : checkGuideRendering(unit, res.content);
+          if (!text) continue;
+          await db.helpRendering.upsert({
+            where: { sourceKey_language: { sourceKey: unit.key, language } },
+            create: { kind: unit.kind, language, sourceKey: unit.key, sourceText: unit.text, sourceFile: unit.sourceFile, text, modelText: text, model: config.chat.model },
+            update: { text, modelText: text, status: "UNREVIEWED", edited: false, reviewedByUserId: null, reviewedAt: null, model: config.chat.model, sourceText: unit.text, sourceFile: unit.sourceFile },
+          });
+          made++;
+          return;
+        } catch (err) {
+          if (attempt === 2) console.warn(`    ${unit.kind} ${unit.key}: ${(err as Error).message.slice(0, 120)}`);
+        }
+      }
+      failed++;
+    };
+    const worker = async () => {
+      while (next < todo.length) {
+        const unit = todo[next++]!;
+        await one(unit);
+        if ((made + failed) % 50 === 0) console.log(`    ${language}: ${made} rendered, ${failed} left unrendered, ${((Date.now() - started) / 60000).toFixed(1)} min`);
+      }
+    };
+    await Promise.all(Array.from({ length: RENDER_PARALLEL }, worker));
+    console.log(`  ${language}: ${made} rendered, ${failed} left unrendered (the check refused the model's words twice), in ${((Date.now() - started) / 60000).toFixed(1)} min`);
+  }
+}
+
+/**
+ * A Hindi and a Marathi entry per English guide paragraph with a rendering that is not rejected: its roles and page
+ * the English entry's, its heading path rendered where the headings are, the rendering's id beside it.
+ */
+async function renderingRows(rows: HelpRow[]): Promise<HelpRow[]> {
+  const kept = await db.helpRendering.findMany({ where: { status: { not: "REJECTED" } }, select: { id: true, kind: true, language: true, sourceKey: true, text: true } });
+  const out: HelpRow[] = [];
+  for (const language of RENDER_LANGUAGES) {
+    const mine = kept.filter((k) => k.language === language);
+    const headings = new Map(mine.filter((k) => k.kind === "HEADING").map((k) => [k.sourceKey, k.text]));
+    const paragraphs = new Map(mine.filter((k) => k.kind === "PARAGRAPH").map((k) => [k.sourceKey, k]));
+    for (const r of rows) {
+      if (!isGuideRow(r)) continue;
+      const p = paragraphs.get(sourceKeyOf("PARAGRAPH", r.text));
+      if (!p) continue;
+      out.push({ ...r, language, title: renderedTitle(r.title, headings), text: p.text, renderingId: p.id });
+    }
+  }
+  return out;
+}
+
 async function main() {
   const rows = buildHelpRows();
+  if (RENDER.length && !DRY) {
+    await refuseUnlessLocalDatabase(db, "help:index --render");
+    await renderGuide(rows, RENDER);
+  }
+  if (!DRY) {
+    const rendered = await renderingRows(rows);
+    rows.push(...rendered);
+    console.log(`  the guide in Hindi and Marathi: ${rendered.filter((r) => r.language === "hi").length} hi and ${rendered.filter((r) => r.language === "mr").length} mr entries from renderings not rejected`);
+  }
   const commit = commitTag();
   const by = (k: HelpRow["kind"]) => rows.filter((r) => r.kind === k).length;
   console.log(`Help index at ${commit}: ${rows.length} entries — ${by("door")} doors, ${by("doc")} docs paragraphs, ${by("nav")} nav labels, ${by("action")} actions, ${by("dictionary")} page headings (en ${rows.filter((r) => r.language === "en").length}, hi ${rows.filter((r) => r.language === "hi").length}, mr ${rows.filter((r) => r.language === "mr").length})`);
@@ -471,7 +571,7 @@ async function main() {
   const removed = await db.helpEntry.deleteMany({ where: { commit } });
   if (removed.count) console.log(`  replaced ${removed.count} rows already written for ${commit}`);
   for (let i = 0; i < rows.length; i += 500) {
-    await db.helpEntry.createMany({ data: rows.slice(i, i + 500).map((r) => ({ ...r, commit })) });
+    await db.helpEntry.createMany({ data: rows.slice(i, i + 500).map((r) => ({ ...r, renderingId: r.renderingId ?? null, commit })) });
   }
 
   const started = Date.now();

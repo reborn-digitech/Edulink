@@ -6,6 +6,28 @@ import type { Role } from "../constants";
 import type { DataContext } from "./doors";
 import { childNamed } from "./data-privacy";
 import { pageIsRoles } from "./pages";
+import { dateKeyInZone, todayKey } from "../dates";
+import type { CalendarTerm, SchoolCalendar } from "./when";
+
+/**
+ * THE SCHOOL'S CALENDAR FOR THE WINDOW OF DAYS (Vidura pass 2): its today in its own zone, and the terms its office
+ * recorded — a school's terms of the current year (Term), a college's academic terms (AcademicTerm) — each with its
+ * place in the year. None recorded, none: "this term" then names no window.
+ */
+export async function calendarFor(schoolId: string, timezone: string, now: Date): Promise<SchoolCalendar> {
+  const today = todayKey(timezone, now);
+  const [terms, academic] = await Promise.all([
+    db.term.findMany({ where: { schoolId, academicYear: { isCurrent: true } }, select: { id: true, startDate: true, endDate: true }, orderBy: [{ startDate: "asc" }, { position: "asc" }], take: 12 }),
+    db.academicTerm.findMany({ where: { schoolId }, select: { id: true, academicYear: true, startsOn: true, endsOn: true }, orderBy: { startsOn: "asc" }, take: 40 }),
+  ]);
+  const out: CalendarTerm[] = terms.map((t, i) => ({ id: t.id, n: i + 1, from: dateKeyInZone(t.startDate, timezone), to: dateKeyInZone(t.endDate, timezone) }));
+  for (const t of academic) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(t.startsOn) || !/^\d{4}-\d{2}-\d{2}$/.test(t.endsOn)) continue;
+    const n = academic.filter((x) => x.academicYear === t.academicYear && x.startsOn <= t.startsOn).length;
+    out.push({ id: t.id, n, from: t.startsOn, to: t.endsOn });
+  }
+  return { today, terms: out };
+}
 
 /**
  * THE PERSON'S CONTEXT FOR THE DATA QUESTIONS (11 October 2026): what fills a door's parameters — the person's
@@ -14,7 +36,7 @@ import { pageIsRoles } from "./pages";
  * the model; the names are read here only to tell which child a question names). A child at another school is
  * left out: the conversation's name lexicon is that school's, and nothing of another school is stripped.
  */
-export async function dataContextFor(input: { role: Role; userId: string; membershipId: string | null; schoolId: string; question: string; now: Date }): Promise<DataContext & { childNames: string[] }> {
+export async function dataContextFor(input: { role: Role; userId: string; membershipId: string | null; schoolId: string; question: string; now: Date; timezone?: string }): Promise<DataContext & { childNames: string[] }> {
   let duties: string[] = [];
   if (input.membershipId && (input.role === "FACULTY" || input.role === "HOD")) {
     const m = await db.membership.findUnique({ where: { id: input.membershipId }, select: { dutiesJson: true } });
@@ -46,6 +68,7 @@ export async function dataContextFor(input: { role: Role; userId: string; member
     duties,
     modules,
     now: input.now,
+    calendar: await calendarFor(input.schoolId, input.timezone ?? "Asia/Kolkata", input.now),
     childNames: children.flatMap((c) => c.names),
   };
 }

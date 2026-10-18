@@ -9,6 +9,7 @@ import { ASSISTANT_HREF, NAV, NAV_GROUP_KEY, PRIMARY_ACTION, isActive, type NavG
 import { NavIcon } from "./icons";
 import { CommandPalette } from "./command-palette";
 import { ViduraDrawer, useDesk } from "@/components/assistant/drawer";
+import { ViduraExplainContext, type ExplainRequest } from "@/components/assistant/explain-this";
 import { DRAWER_PARAM } from "@/components/assistant/model";
 import { TypingSwitch } from "@/components/typing-switch";
 import { Avatar } from "@/components/ui/avatar";
@@ -86,9 +87,17 @@ export function AppShell({
   const viduraButton = useRef<HTMLButtonElement>(null);
   const [viduraOpen, setViduraOpen] = useState(false);
   const [viduraConversation, setViduraConversation] = useState<string | null>(null);
+  // "Explain this to me" (pass 2): a link on the page asks Vidura about one of its rows, in a new conversation.
+  const [explainRequest, setExplainRequest] = useState<(ExplainRequest & { n: number }) | null>(null);
   const closeVidura = useCallback(() => {
     setViduraOpen(false);
     setViduraConversation(null);
+    setExplainRequest(null);
+  }, []);
+  const explain = useCallback((request: ExplainRequest) => {
+    setViduraConversation(null);
+    setExplainRequest((prior) => ({ ...request, n: (prior?.n ?? 0) + 1 }));
+    setViduraOpen(true);
   }, []);
   const [viduraPath, setViduraPath] = useState(pathname);
   if (viduraPath !== pathname) {
@@ -318,7 +327,8 @@ export function AppShell({
             viduraShown ? "lg:pb-24" : "lg:pb-12",
           )}
         >
-          {children}
+          {/* The page's "Explain this to me" links reach the drawer through this, only where Vidura is the person's. */}
+          <ViduraExplainContext.Provider value={viduraShown && vidura === "open" ? explain : null}>{children}</ViduraExplainContext.Provider>
         </main>
       </div>
 
@@ -452,7 +462,7 @@ export function AppShell({
           >
             <ChatsCircleIcon weight="fill" className="size-7" aria-hidden="true" />
           </button>
-          <ViduraDrawer open={viduraOpen} onClose={closeVidura} role={user.role} page={pathname} initialConversationId={viduraConversation} />
+          <ViduraDrawer open={viduraOpen} onClose={closeVidura} role={user.role} page={pathname} initialConversationId={viduraConversation} explain={explainRequest} />
         </>
       ) : null}
 

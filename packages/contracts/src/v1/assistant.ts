@@ -226,6 +226,21 @@ export const ASSISTANT_QUESTION_MAX = 1200;
  * person's own channel AFTER the answer gate has passed it (nothing unchecked is ever streamed), and
  * comes back whole in this response too, so a client without the stream loses nothing.
  */
+/**
+ * VIDURA PASS 2 (17 Oct 2026): what an "Explain this to me" link carries. `kind` names the row's door: FEE_DEMAND (a
+ * guardian's child's fee demand, `id` the demand's), REPORT_LINE (a report card's line, `id` "<cardId>:<n>" for its
+ * n-th assessment line or "<cardId>:s<n>" for its n-th subject row, from 0), ATTENDANCE (a child's month of the register, or the person's own month at work,
+ * `id` the month "YYYY-MM"). `childId` is a guardian's child. Nothing else of the page is sent.
+ */
+export const ASSISTANT_ABOUT_KINDS = ["FEE_DEMAND", "REPORT_LINE", "ATTENDANCE"] as const;
+export type AssistantAboutKind = (typeof ASSISTANT_ABOUT_KINDS)[number];
+export const assistantAboutSchema = z.object({
+  kind: z.enum(ASSISTANT_ABOUT_KINDS),
+  id: z.string().min(1).max(80).regex(/^[A-Za-z0-9_:-]+$/),
+  childId: cuidish.optional(),
+});
+export type AssistantAbout = z.infer<typeof assistantAboutSchema>;
+
 export const assistantAskSchema = z.object({
   text: z.string().trim().min(1).max(ASSISTANT_QUESTION_MAX),
   /** The language to answer in; omitted, the language the question is typed in, else the conversation's. */
@@ -239,8 +254,15 @@ export const assistantAskSchema = z.object({
   page: z.string().max(200).regex(/^\/(?!\/)[^\s?#]*$/).optional(),
   /** "Go on" (pass 1): continue the conversation's last answer, which stopped at its length cap. */
   goOn: z.boolean().optional(),
+  /**
+   * "EXPLAIN THIS TO ME" (pass 2): the row the person pressed the link beside — a fee demand, a report card's line, an
+   * attendance figure — read again by the service through the person's own door, only as they may read it.
+   */
+  about: assistantAboutSchema.optional(),
 });
 export type AssistantAsk = z.infer<typeof assistantAskSchema>;
+
+
 
 export const assistantAnswerSchema = z.object({
   conversationId: z.string(),
@@ -336,3 +358,56 @@ export const familyAssistantOptOutSavedSchema = z.object({ childId: z.string(), 
 /** GET and POST /api/v1/teacher/assignments/{assignmentId}/assistant — whether a second ask of a matching question gets the worked answer (true, the default) or stays a hint. */
 export const assignmentAssistantSchema = z.object({ assignmentId: z.string(), workedAnswerOnSecondAsk: z.boolean() });
 export const assignmentAssistantSaveSchema = z.object({ workedAnswerOnSecondAsk: z.boolean() });
+
+/* -------------------------------------------------------------------------- */
+/* The guide in Hindi and Marathi: the speaker's review (Vidura pass 2)        */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * VIDURA PASS 2 (17 Oct 2026): a Hindi or Marathi rendering of one heading or paragraph of the user guide, made by the
+ * local model and used at once for retrieval and suggestions; a speaker approves, edits or rejects it on the
+ * operator's panel (/root/vidura-review), the content team reads the same queue (/appadmin/vidura-review).
+ */
+export const VIDURA_RENDERING_STATUSES = ["UNREVIEWED", "APPROVED", "REJECTED"] as const;
+export const viduraRenderingStatusSchema = z.enum(VIDURA_RENDERING_STATUSES);
+export type ViduraRenderingStatus = z.infer<typeof viduraRenderingStatusSchema>;
+export const viduraRenderingSchema = z.object({
+  id: z.string(),
+  kind: z.enum(["HEADING", "PARAGRAPH"]),
+  language: z.enum(["hi", "mr"]),
+  sourceText: z.string(),
+  sourceFile: z.string(),
+  text: z.string(),
+  modelText: z.string(),
+  status: viduraRenderingStatusSchema,
+  edited: z.boolean(),
+  reviewedAt: iso.nullable(),
+  reviewedBy: z.string().nullable(),
+  updatedAt: iso,
+});
+export type ViduraRendering = z.infer<typeof viduraRenderingSchema>;
+const renderingCounts = z.object({ unreviewed: z.number().int(), approved: z.number().int(), rejected: z.number().int() });
+/** GET /api/v1/appadmin/vidura/renderings?language=hi&status=UNREVIEWED&kind=&page= */
+export const viduraRenderingsQuerySchema = z.object({
+  language: z.enum(["hi", "mr"]).default("hi"),
+  status: viduraRenderingStatusSchema.default("UNREVIEWED"),
+  kind: z.enum(["HEADING", "PARAGRAPH"]).optional(),
+  page: z.coerce.number().int().min(1).max(10_000).default(1),
+});
+export type ViduraRenderingsQuery = z.input<typeof viduraRenderingsQuerySchema>;
+export const viduraRenderingsSchema = z.object({
+  items: z.array(viduraRenderingSchema),
+  counts: z.object({ hi: renderingCounts, mr: renderingCounts }),
+  page: z.number().int(),
+  pages: z.number().int(),
+  pageSize: z.number().int(),
+  /** Whether this reader may approve, edit and reject (the operator), or only read (the content team). */
+  mayReview: z.boolean(),
+});
+export type ViduraRenderings = z.infer<typeof viduraRenderingsSchema>;
+/** POST /api/v1/operator/vidura/renderings/{renderingId} — the operator's word on one rendering; `text` with EDIT only. */
+export const viduraRenderingReviewSchema = z.object({
+  action: z.enum(["APPROVE", "EDIT", "REJECT"]),
+  text: z.string().trim().min(1).max(6000).optional(),
+});
+export type ViduraRenderingReview = z.infer<typeof viduraRenderingReviewSchema>;

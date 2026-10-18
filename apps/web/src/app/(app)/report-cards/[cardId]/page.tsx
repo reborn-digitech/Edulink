@@ -15,6 +15,8 @@ import { PrintButton } from "../../reports/[studentMembershipId]/print-button";
 import { SignPaper } from "@/components/certificates/sign-paper";
 import { fontStack } from "@/lib/fonts";
 import { TableScroll } from "@/components/ui/table-scroll";
+// Vidura pass 2 (17 Oct 2026): "Explain this to me" beside each line, for the pupil and their family.
+import { ExplainThis } from "@/components/assistant/explain-this";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -78,6 +80,9 @@ export default async function ReportCardPage({
      the overall is the sum of this column over the sum of its maximums. */
   const showMarksColumn = card.gradingMethod === "exams" && card.subjects.some((s) => s.pointsMilli);
   const coRows = layout.showCoScholastic ? card.coScholastic : [];
+  // The pupil and their family may ask Vidura about a line of the card (the link shows only where Vidura is theirs).
+  const explainer = session.role === "STUDENT" || session.role === "PARENT";
+  const childOf = session.role === "PARENT" ? card.studentMembershipId : undefined;
   // A descriptor still the English default reads in the reader's language (A3-states-18); one the office typed, as typed.
   const scaleLine = scale.bands.map((b) => `${b.label} ${b.minPercent}%${b.descriptor ? ` ${reportCardDefaultLabel(b.descriptor, t)}` : ""}`).join(" · ");
   const cell = "py-2 text-fg print:text-black";
@@ -230,9 +235,12 @@ export default async function ReportCardPage({
                   </tr>
                 </thead>
                 <tbody>
-                  {card.subjects.map((subject) => (
+                  {card.subjects.map((subject, subjectIndex) => (
                     <tr key={subject.subject} className={bodyRow}>
-                      <td className={`${cell} pr-3 font-medium`}>{subject.subject}</td>
+                      <td className={`${cell} pr-3 font-medium`}>
+                        {subject.subject}
+                        {explainer ? <ExplainThis className="flex" about={{ kind: "REPORT_LINE", id: `${card.id}:s${subjectIndex}`, ...(childOf ? { childId: childOf } : {}) }} label={subject.subject} /> : null}
+                      </td>
                       <td className={`${cell} pr-3 text-xs text-fg-muted print:text-black/70`}>
                         {subject.parts.map((part, index) => (
                           <span key={index} className="block whitespace-nowrap tabular-nums">
@@ -287,6 +295,7 @@ export default async function ReportCardPage({
                           {item.category}
                         </span>
                       )}
+                      {explainer ? <ExplainThis className="flex" about={{ kind: "REPORT_LINE", id: `${card.id}:${index}`, ...(childOf ? { childId: childOf } : {}) }} label={reportCardDefaultLabel(item.title, t)} /> : null}
                     </td>
                     <td className="py-2 text-right tabular-nums text-fg print:text-black">
                       {item.scoreMilli === null ? (

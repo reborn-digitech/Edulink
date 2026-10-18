@@ -420,7 +420,8 @@ describe("the service with a fake model", () => {
   it("takes a cited <data> block's mark out of the text and shows no source for it", async () => {
     const out = await previewAnswer({ role: "PARENT", question: "is there a circular I have to acknowledge", toolRuns: [feedRun] }, fakeDeps("One circular waits for your acknowledgement [3].").deps);
     expect(out.verdict).toBe("ANSWERED");
-    expect(out.text).toBe("One circular waits for your acknowledgement.");
+    // Vidura pass 2: the composite answer — the figures, then where to see them, added by code after the check.
+    expect(out.text).toBe("One circular waits for your acknowledgement.\n\nWhere to see it: /bulletin");
     expect(out.citations).toEqual([]);
   });
 

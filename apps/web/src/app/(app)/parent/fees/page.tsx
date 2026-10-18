@@ -20,6 +20,8 @@ import { LeavingOutcomeCard } from "./leaving-outcome";
 import { familyLeavingOutcome } from "@/lib/leaving-settlement";
 import { FEE_CALENDAR_KIND_KEY, FEE_CALENDAR_STATUS_KEY, FEE_DEMAND_STATUS_KEY, FEE_METHOD_KEY, FEE_PAYMENT_STATUS_KEY, calendarTone, demandTone, paymentTone } from "./labels";
 import { TableScroll } from "@/components/ui/table-scroll";
+// Vidura pass 2 (17 Oct 2026): "Explain this to me" beside each fee demand.
+import { ExplainThis } from "@/components/assistant/explain-this";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -145,7 +147,10 @@ export default async function ParentFeesPage({ searchParams }: { searchParams: P
                     <tbody className="divide-y divide-border">
                       {child.demands.map((d) => (
                         <tr key={d.id} className={d.overdue ? "bg-danger-soft/40" : undefined} data-testid="fees-demand" data-demand-id={d.id} data-status={d.status}>
-                          <td className="px-5 py-2.5 font-medium text-fg">{d.label}</td>
+                          <td className="px-5 py-2.5 font-medium text-fg">
+                            {d.label}
+                            <ExplainThis className="flex" about={{ kind: "FEE_DEMAND", id: d.id, childId: child.studentMembershipId }} label={d.label} />
+                          </td>
                           <td className="whitespace-nowrap px-3 py-2.5 text-fg-muted">{dueDate(d.dueDateKey)}</td>
                           <td className="px-3 py-2.5 text-right tabular-nums text-fg-muted">{money(d.grossPaise)}</td>
                           <td className="px-3 py-2.5 text-right tabular-nums text-fg-muted">{d.concessionPaise > 0 ? `−${money(d.concessionPaise)}` : "—"}</td>

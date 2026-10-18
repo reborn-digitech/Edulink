@@ -1,6 +1,6 @@
 # Vidura — the assistant's next shape (plan of 12 October 2026)
 
-Status: pass 1 built on 17 October 2026 (below); passes 2 to 4 planned, not built. The owner's decisions of 11–12 October 2026 and the coordinator's recommendations,
+Status: pass 1 built on 17 October 2026 and pass 2 on 17–18 October 2026 (below); passes 3 and 4 planned, not built. The owner's decisions of 11–12 October 2026 and the coordinator's recommendations,
 in four passes, each a builder's brief. Run with `/vidura <pass>` (`.claude/commands/vidura.md`). Pass 1 was
 meant for the week of 12 October; passes 2 to 4 after the weekly reset of 17 October. Everything here sits on
 the assistant as built in [assistant.md](assistant.md) (Phases A–D, the exam-scope reader, the data questions,
@@ -79,6 +79,29 @@ unreviewed, with the speaker-review queue on the operator's panel; week and day 
 ("next week", "tomorrow", "last month"); composite answers (data, then "where to see it"); "Explain this to
 me" links on the family's and the staff's own pages. Measured: the help set's Hindi and Marathi page-named
 scores (21/30 and 25/29 today) and the metrics set.
+
+**Built, 17–18 October 2026 (pass 2).** Retrieval in the question's language: a Hindi or Marathi question is rendered
+into English by the local model from its stripped words, for the searches only (`lib/assistant/render.ts`, cached per
+normalised question, a failure searching as before), and the help index, the person's doors and the books are searched
+with it beside the question, a rendered hit put on the question's language's scale before the gate reads it; the books
+are searched with the question as typed too when the rendering falls short. The guide in Hindi and Marathi: `npm run
+help:index -- --render=hi,mr` renders every guide heading and paragraph once (`guide-render.ts`, the dictionaries'
+own words for the labels a paragraph quotes, a rendering kept only in Devanagari with every page path), stored
+UNREVIEWED in the new `HelpRendering` table (migration `vidura_renderings`, outside the school fence) and written into
+the index beside the English (`HelpEntry.renderingId`); the drawer's Hindi and Marathi suggestions are the rendered
+guide questions. The speaker's review: `/root/vidura-review` (Approve, Save the correction, Reject, audited; a
+rejection leaves retrieval and the suggestions at once), read-only at `/appadmin/vidura-review`, the counts on both
+homes, linked to the bank's own `/appadmin/translations`. Week and day offsets (`when.ts`): "tomorrow", "next week",
+"last month", "this term", weekdays, in en/hi/mr, in the school's own zone and its recorded terms, fill a door's date,
+week, days, span, month and term parameters, pick and count the rows in the window, and a record kept by no date says
+so in the platform's own sentence. Composite answers: a "My records" answer ends with "Where to see it:" and the page,
+added by code. "Explain this to me" beside a fee demand (`/parent/fees`), a report card's line (`/report-cards/{id}`)
+and an attendance figure (`/parent/attendance`, `/teacher/attendance/me`, `/account/attendance`) on the web and the
+phone, the row read again through the person's own door (`explain.ts`). A short where-is question naming a page by its
+menu label is told so to the classifier ("सोशल मीडिया कहाँ मिलेगा?" was refused with its page card at 0.77). Measured:
+the help set's page named in Hindi 20 → 29 of 30 and in Marathi 24 → 28 of 29 (English 128/141 both times; the page
+named 86.0 → 92.5 %), the refusal set 180/180, the metrics set's 103 Saraswati cases 92 → 93 in process; the
+builder's report has the rest.
 
 ### Pass 3 — speed and operations (6 to 9 points)
 The small-model gate and prompt caching (time to first word before and after, pasted); cached common

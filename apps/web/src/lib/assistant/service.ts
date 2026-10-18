@@ -1,5 +1,6 @@
 import "server-only";
 import type {
+  AssistantAbout,
   AssistantAnswer,
   AssistantAskPerson,
   AssistantChip,
@@ -34,6 +35,8 @@ import {
   ANSWER_TIMEOUT_MS,
   CLOSE_TO_BEST,
   CURRICULUM_THRESHOLD,
+  DOOR_THRESHOLD,
+  HELP_THRESHOLD,
   CURRICULUM_PASSAGES,
   DOOR_SCOPE_THRESHOLD,
   EMBED_TIMEOUT_MS,
@@ -45,6 +48,7 @@ import {
   MAX_ANSWER_TOKENS,
   SAME_QUESTION_THRESHOLD,
   TITLE_CHARS,
+  TOOL_ANSWER_MAX_CHARS,
   dailyQuestionCap,
   killSwitchThrown,
   monthlyTokenBudget,
@@ -53,19 +57,25 @@ import { corpusBoardFor, gradeBandOf, policyFor } from "./policy";
 import { citedNumbers, gateAnswer, gateQuestion, tableVerdict } from "./gate";
 import { stripIdentifiers, restoreSelf, type NameEntry } from "./strip";
 import { withoutInjectedLines } from "./refusals";
-import { NCERT_NOTE, answerKindFor, onPageNote, helpMessages, questionShape, tutorMessages, asksExamScope } from "./prompt";
+import { NCERT_NOTE, answerKindFor, onPageNote, pageNameNote, helpKind, helpMessages, questionShape, tutorMessages, asksExamScope } from "./prompt";
 import { detectLanguage } from "./language";
 import { nameLexicon } from "./lexicon";
 import { foreignPaths, pageIsRoles, ownPathsWithoutHost } from "./pages";
 // Vidura pass 1 (17 Oct 2026): the modes, page awareness, "go on" and "Ask a person".
 import { asksAboutThisPage, asksToGoOn, chipOf, helpChip, jobOf, modesFor, offersAskPerson, preferFor } from "./vidura";
 import { askPersonFor } from "./ask-person";
+// Vidura pass 2 (17 Oct 2026): retrieval in the question's language.
+import { mergeRendered, renderForSearch, type Rendered } from "./render";
+import { aboutCall, aboutName, aboutRow } from "./explain";
+import { summariseDoor } from "./summary";
+import { featuresOf } from "../api-catalog/types";
+import { formatDateKey } from "../dates";
 import { suggestionsFor } from "./suggestions";
 import { asksAboutExams, type ToolRun } from "./tools";
 import { COLLEGE_EXAMS_DOOR, EXAMS_SUMMARY_NAME, FAMILY_EXAMS_DOOR, examSummary } from "./exams";
 // The data questions (11 Oct 2026): the person's own doors, routed over the catalog and summed up by code.
 import { chooseDoors, followUpCache, isFollowUp, runDoors as runDoorsReal, searchDoors, type DataRun, type RunInput } from "./router";
-import { doorTitle, hintsOf, type DataContext, type DoorPath } from "./doors";
+import { doorTitle, hintsOf, readableDoor, type DataContext, type DoorPath } from "./doors";
 import { dataContextFor, doorsShownOn, pageForDoor } from "./data";
 import { asksAnotherPersonsRecord, ownChildrenAsWords } from "./data-privacy";
 import { linkCitations } from "./links";
@@ -105,6 +115,11 @@ export type AssistantDeps = {
   now: () => Date;
   /** The help index's cards for one page (Vidura pass 1, page awareness); absent, a question is read as asked from nowhere. */
   pageCards?: (q: { page: string; language: AssistantLanguage; role: Role }) => Promise<HelpHit[]>;
+  /**
+   * The English rendering of a Hindi or Marathi question, for retrieval only (Vidura pass 2, render.ts); absent or
+   * null, the question is searched as it is typed.
+   */
+  render?: (stripped: string, language: AssistantLanguage) => Promise<Rendered | null>;
 };
 
 /** The model is not configured or not reachable: the answer is MODEL_UNAVAILABLE and nothing is charged. */
@@ -126,6 +141,7 @@ export function realDeps(): AssistantDeps {
     publish: (userId, event) => publish([channel.user(userId)], event),
     now: () => new Date(),
     pageCards: (q) => helpForPage({ ...q, kinds: ["nav"], limit: 2 }, { db }),
+    render: (stripped, language) => renderForSearch(stripped, language, { chat: (messages, opts) => chatComplete(need().chat, messages, opts) }),
   };
 }
 
@@ -443,7 +459,7 @@ type Outcome = {
 export async function ask(
   ctx: ActiveContext,
   conversationId: string,
-  input: { text: string; language?: AssistantLanguage; mode?: AssistantChip; page?: string; goOn?: boolean },
+  input: { text: string; language?: AssistantLanguage; mode?: AssistantChip; page?: string; goOn?: boolean; about?: AssistantAbout },
   deps: AssistantDeps = realDeps(),
 ): Promise<AssistantAnswer> {
   const now = deps.now();
@@ -497,6 +513,7 @@ export async function ask(
       prefer: goOn ? goOn.chip : (input.mode ?? null),
       page: goOn ? null : (input.page ?? null),
       continuation: goOn?.sofar ?? null,
+      about: goOn ? null : (input.about ?? null),
     });
   } catch (error) {
     if (!(error instanceof ModelUnavailable) && !isModelFailure(error)) {
@@ -602,6 +619,8 @@ type AnswerInput = {
   page?: string | null;
   /** "Go on" (Vidura pass 1): the answer so far, which the model continues. */
   continuation?: string | null;
+  /** "Explain this to me" (Vidura pass 2): the row the person pressed the link beside, read again through their own door. */
+  about?: AssistantAbout | null;
 };
 
 /** A door answer the harness handed in, as the runner's run. */
@@ -611,7 +630,9 @@ function harnessRun(r: ToolRun): DataRun {
 
 async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   const { asker, policy, school, language, deps } = a;
-  const fixed = (verdict: AssistantVerdict, extra: Partial<Outcome> = {}): Outcome => ({ verdict, text: fixedSentence(verdict, language, school.helplineText), mode: null, chip: null, cut: false, hint: false, citations: [], matchedAssignmentId: null, promptTokens: 0, completionTokens: 0, modelCalls: 0, ...extra });
+  /** What the rendering for retrieval cost (pass 2), counted into every outcome after it. */
+  const pre = { tokens: 0, calls: 0 };
+  const fixed = (verdict: AssistantVerdict, extra: Partial<Outcome> = {}): Outcome => ({ verdict, text: fixedSentence(verdict, language, school.helplineText), mode: null, chip: null, cut: false, hint: false, citations: [], matchedAssignmentId: null, completionTokens: 0, ...extra, promptTokens: (extra.promptTokens ?? 0) + pre.tokens, modelCalls: (extra.modelCalls ?? 0) + pre.calls });
 
   // 1. The tables, on the person's own words: nothing searched, nothing sent anywhere.
   const table = tableVerdict(a.original, asker.role);
@@ -620,10 +641,30 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   // 1b. The person's own data (the data questions, 11 Oct 2026): their context, and another person's record asked
   // for by name refused before anything is searched (the owner's decision 3: privacy unchanged).
   const now = deps.now();
-  const dataCtx = policy.data ? (a.dataContext ?? (await dataContextFor({ role: asker.role, userId: asker.userId, membershipId: asker.membershipId, schoolId: asker.schoolId, question: a.original, now }))) : null;
+  const dataCtx = policy.data ? (a.dataContext ?? (await dataContextFor({ role: asker.role, userId: asker.userId, membershipId: asker.membershipId, schoolId: asker.schoolId, question: a.original, now, timezone: school.timezone }))) : null;
   if (asksAnotherPersonsRecord(a.original, a.lexicon, dataCtx?.childNames ?? [])) return fixed("PERSONAL_DATA");
   if (dataCtx?.childNames.length) a.stripped = stripIdentifiers(ownChildrenAsWords(a.original, dataCtx.childNames), a.lexicon).text;
-  const hints = hintsOf(a.original, now);
+  // "Explain this" (pass 2) names the child whose row it is: every door of the question reads that child.
+  if (dataCtx && a.about?.childId && dataCtx.children.some((c) => c.id === a.about!.childId)) dataCtx.childId = a.about.childId;
+  // The window of days asked about (pass 2, when.ts), in the school's own calendar.
+  const hints = hintsOf(a.original, now, dataCtx?.calendar);
+
+  // 1e. "EXPLAIN THIS TO ME" (Vidura pass 2, explain.ts): the row the link names, read again through the person's own
+  // door, as the person, and only that row kept; nothing found (another child's, gone, a door the role does not pass)
+  // is no row, and the question is answered as asked.
+  let aboutData: { name: string; json: string } | null = null;
+  if (a.about && dataCtx && !a.toolRuns) {
+    const call = aboutCall(a.about, asker.role, dataCtx.children);
+    const entry = call ? readableDoor(call.door, asker.role, dataCtx.duties) : null;
+    if (call && entry && (!entry.module || !dataCtx.modules || dataCtx.modules.has(entry.module))) {
+      const [run] = await deps.runDoors({ chosen: [{ door: call.door, similarity: 1, calls: [call], module: entry.module ?? null, fromCache: false, features: entry.featureInHandler ? [] : featuresOf(entry) }], ctx: dataCtx, schoolId: asker.schoolId, userId: asker.userId, question: a.original, hints, lexicon: a.lexicon, firstNumber: 900, conversationId: null, now });
+      const row = run?.ok ? aboutRow(a.about, run.raw) : null;
+      if (row) {
+        const summed = summariseDoor(row, { door: call.door, hints, question: a.original, firstNumber: 900, maxChars: TOOL_ANSWER_MAX_CHARS });
+        aboutData = { name: aboutName(a.about), json: withoutInjectedLines(stripIdentifiers(summed.text, a.lexicon).text) };
+      }
+    }
+  }
 
   // 1c. PAGE AWARENESS (Vidura pass 1): a question that points at the page the drawer is beside ("how do I do this?")
   // is read against that page's own help card, given first, and the person's own data shown on it; any other question
@@ -632,6 +673,23 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   const pageHere = a.page && policy.help && deps.pageCards && pageIsRoles(a.page, asker.role) && asksAboutThisPage(a.original) ? a.page : null;
   const cards = pageHere ? (await deps.pageCards!({ page: pageHere, language, role: asker.role })).filter((h) => h.pagePath && pageIsRoles(h.pagePath, asker.role)) : [];
   const helpQuery = cards.length ? `${a.stripped}\n${cards[0]!.title} — ${pageHere}` : a.stripped;
+
+  // 1d. RETRIEVAL IN THE QUESTION'S LANGUAGE (Vidura pass 2, render.ts): a Hindi or Marathi question is rendered into
+  // English by the local model, from its stripped words, and the help index, the doors and the books are searched
+  // with the rendering beside the question; the classifier, the prompt and the answer read the person's own words.
+  // A failed rendering is null and the question is searched as before.
+  const rendered = language !== "en" && deps.render ? await deps.render(a.stripped, language) : null;
+  if (rendered && !rendered.cached) {
+    pre.tokens += rendered.tokens;
+    pre.calls += 1;
+  }
+  const renderedQuery = rendered ? (cards.length ? `${rendered.text}\n${cards[0]!.title} — ${pageHere}` : rendered.text) : null;
+  /** The English rendering's hits put on the question's language's scale (render.ts mergeRendered). */
+  const helpShift = HELP_THRESHOLD.en - HELP_THRESHOLD[language];
+  const doorShift = DOOR_THRESHOLD.en - DOOR_THRESHOLD[language];
+  /** The books are English: with a rendering they are searched with it alone, and their scores read on English's scale. */
+  const curriculumQuery = rendered?.text ?? a.stripped;
+  const curriculumScale: AssistantLanguage = rendered ? "en" : language;
 
   // 2. Retrieval in the scopes the role may use.
   const college = isCollegeKind(school.kind);
@@ -646,54 +704,88 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   // never a passage the model reads: in the pilot those were the closest passages to most help questions,
   // and the answers sent a pupil to /api/v1/family/student/assignments and a driver to /admin/people.
   // Three times the passages are fetched so that enough page passages remain.
-  const searchedHelp = policy.help ? keepClose((await deps.searchHelp({ query: helpQuery, language, role: asker.role, limit: HELP_PASSAGES * 3 })).filter((h) => !h.pagePath || pageIsRoles(h.pagePath, asker.role))) : [];
+  const searchedHelp = policy.help
+    ? keepClose(
+        mergeRendered(
+          await deps.searchHelp({ query: helpQuery, language, role: asker.role, limit: HELP_PASSAGES * 3 }),
+          renderedQuery ? await deps.searchHelp({ query: renderedQuery, language: "en", role: asker.role, limit: HELP_PASSAGES * 3 }) : [],
+          helpShift,
+        ).filter((h) => !h.pagePath || pageIsRoles(h.pagePath, asker.role)),
+      )
+    : [];
   const helpScope = [...cards, ...searchedHelp.filter((h) => !cards.some((c) => c.entryId === h.entryId))];
   const help = helpScope.filter((h) => h.pagePath || !h.door).slice(0, HELP_PASSAGES);
-  let curriculum: CurriculumHit[] = [];
-  let boardNote: string | null = null;
-  let laterClass: string | null = null;
-  if (policy.tutor) {
-    const scoped = policy.gradeScoped && grade !== null && !college;
-    curriculum = await deps.searchCurriculum({ query: a.stripped, language, board, grade: scoped && grade !== null ? grade : undefined, limit: CURRICULUM_PASSAGES });
-    // Nothing close in the class's own books: the classes either side (Phase A's widening).
-    if (scoped && best(curriculum) < GRADE_WIDEN_FLOOR) {
-      const wider = await deps.searchCurriculum({ query: a.stripped, language, board, grade: grade!, gradeWindow: 2, limit: CURRICULUM_PASSAGES });
-      if (best(wider) > best(curriculum)) curriculum = wider;
-    }
-    // A state board's pupil whose own books carry nothing close is answered from NCERT, and told so (§8.7).
-    if (board && board !== "NCERT" && best(curriculum) < GRADE_WIDEN_FLOOR) {
-      const ncert = await deps.searchCurriculum({ query: a.stripped, language, board: "NCERT", grade: policy.gradeScoped && grade !== null ? grade : undefined, gradeWindow: policy.gradeScoped ? 2 : 0, limit: CURRICULUM_PASSAGES });
-      if (best(ncert) > best(curriculum)) {
-        curriculum = ncert;
-        boardNote = NCERT_NOTE;
+  // The books, searched with the English rendering where there is one (on English's scale), and — when that falls short
+  // of English's threshold — with the question as typed too (on its own language's scale), the better of the two kept
+  // (pass 2: a rendering is a help, never a loss: "पानाची रचना स्पष्ट करा" met its book better as typed).
+  const searchBooks = async (query: string, scale: AssistantLanguage) => {
+    let found: CurriculumHit[] = [];
+    let note: string | null = null;
+    let later: string | null = null;
+    if (policy.tutor) {
+      const scoped = policy.gradeScoped && grade !== null && !college;
+      found = await deps.searchCurriculum({ query, language, board, grade: scoped && grade !== null ? grade : undefined, limit: CURRICULUM_PASSAGES });
+      // Nothing close in the class's own books: the classes either side (Phase A's widening).
+      if (scoped && best(found) < GRADE_WIDEN_FLOOR) {
+        const wider = await deps.searchCurriculum({ query, language, board, grade: grade!, gradeWindow: 2, limit: CURRICULUM_PASSAGES });
+        if (best(wider) > best(found)) found = wider;
       }
-    }
-    // Still nothing close in the classes either side: the board's (then NCERT's) book of whichever class
-    // carries the topic, the answer saying in which class it is taught (Phase D, 10 Oct 2026).
-    if (scoped && best(curriculum) < CURRICULUM_THRESHOLD[language]) {
-      for (const b of [...new Set([board ?? "NCERT", "NCERT"])]) {
-        const any = await deps.searchCurriculum({ query: a.stripped, language, board: b, limit: CURRICULUM_PASSAGES });
-        const top = [...any].sort((x, y) => (y.similarity ?? 0) - (x.similarity ?? 0))[0];
-        if (top && best(any) >= CURRICULUM_THRESHOLD[language] && best(any) > best(curriculum)) {
-          curriculum = any;
-          const g = gradeNumber(top.grade);
-          laterClass = g !== null && g !== grade ? String(g) : null;
-          boardNote = b !== board ? NCERT_NOTE : boardNote;
-          break;
+      // A state board's pupil whose own books carry nothing close is answered from NCERT, and told so (§8.7).
+      if (board && board !== "NCERT" && best(found) < GRADE_WIDEN_FLOOR) {
+        const ncert = await deps.searchCurriculum({ query, language, board: "NCERT", grade: policy.gradeScoped && grade !== null ? grade : undefined, gradeWindow: policy.gradeScoped ? 2 : 0, limit: CURRICULUM_PASSAGES });
+        if (best(ncert) > best(found)) {
+          found = ncert;
+          note = NCERT_NOTE;
         }
       }
+      // Still nothing close in the classes either side: the board's (then NCERT's) book of whichever class
+      // carries the topic, the answer saying in which class it is taught (Phase D, 10 Oct 2026).
+      if (scoped && best(found) < CURRICULUM_THRESHOLD[scale]) {
+        for (const b of [...new Set([board ?? "NCERT", "NCERT"])]) {
+          const any = await deps.searchCurriculum({ query, language, board: b, limit: CURRICULUM_PASSAGES });
+          const top = [...any].sort((x, y) => (y.similarity ?? 0) - (x.similarity ?? 0))[0];
+          if (top && best(any) >= CURRICULUM_THRESHOLD[scale] && best(any) > best(found)) {
+            found = any;
+            const g = gradeNumber(top.grade);
+            later = g !== null && g !== grade ? String(g) : null;
+            note = b !== board ? NCERT_NOTE : note;
+            break;
+          }
+        }
+      }
+    } else {
+      // Only to tell a topic question from a platform one; never answered for this role.
+      found = await deps.searchCurriculum({ query, language, limit: 1 });
     }
-  } else {
-    // Only to tell a topic question from a platform one; never answered for this role.
-    curriculum = await deps.searchCurriculum({ query: a.stripped, language, limit: 1 });
+    // The best on the question's language's scale, for the gate.
+    return { found, note, later, top: best(found) - (CURRICULUM_THRESHOLD[scale] - CURRICULUM_THRESHOLD[language]) };
+  };
+  let books = await searchBooks(curriculumQuery, curriculumScale);
+  // (The rendering's top on the question's scale is below that scale's threshold exactly when it is below English's own.)
+  if (rendered && books.top < CURRICULUM_THRESHOLD[language]) {
+    const asTyped = await searchBooks(a.stripped, language);
+    if (asTyped.top > books.top) books = asTyped;
   }
+  let curriculum: CurriculumHit[] = books.found;
+  const boardNote: string | null = books.note;
+  const laterClass: string | null = books.later;
+  const curriculumTop = books.top;
   curriculum = keepClose(curriculum);
 
   // 2b. The person's own doors: ranked over the catalog by their summaries (router.ts); a follow-up reads the
   // conversation's last doors again first.
   // The doors whose data the page shows come first for a question pointing at the page (page awareness).
   const pageDoors = pageHere ? doorsShownOn(pageHere, asker.role).map((d) => ({ door: `GET ${d}`, similarity: PAGE_DOOR_SIMILARITY })) : [];
-  const doorHits = dataCtx ? [...pageDoors, ...(await searchDoors(deps.searchHelp, { query: helpQuery, language, role: asker.role }))] : [];
+  const doorHits = dataCtx
+    ? [
+        ...pageDoors,
+        ...mergeRendered(
+          await searchDoors(deps.searchHelp, { query: helpQuery, language, role: asker.role }),
+          renderedQuery ? await searchDoors(deps.searchHelp, { query: renderedQuery, language: "en", role: asker.role }) : [],
+          doorShift,
+        ),
+      ]
+    : [];
   const previousDoors = dataCtx && isFollowUp(a.original) ? (followUpCache.get(a.conversationId)?.doors ?? []) : [];
   // A follow-up is read beside the question before it ("and how many of those are paid" alone is about nothing):
   // the classifier and the help prompt see both, the person's earlier words as stripped as these.
@@ -703,18 +795,26 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
 
   // 3. The gate before the model.
   const onPage = pageHere && cards.length ? onPageNote(cards[0]!.title, pageHere) : "";
+  // Pass 2: a short where-is or how-to question that names one of the person's own pages by its menu label ("सोशल
+  // मीडिया कहाँ मिलेगा?", "अभ्यासक्रम कुठे पाहायचे?") is told so to the classifier, which otherwise reads "social media"
+  // or "syllabus" as off-topic or as a subject (the help set of 17 Oct 2026: the right page card was found at 0.77 to
+  // 0.83 and the question refused). Only the classifier reads the note; the tables, thresholds and gates are unchanged.
+  const named = onPage ? null : namedPage({ question: a.original, rendered: rendered?.text ?? null, hits: helpScope, role: asker.role, language });
+  const named_ = named ? pageNameNote(named.title, named.path) : "";
   const gate = await gateQuestion(
     {
       original: a.original,
-      stripped: `${previousQuestion ? `${previousQuestion}\n` : ""}${a.stripped}${onPage}`,
+      stripped: `${previousQuestion ? `${previousQuestion}\n` : ""}${a.stripped}${onPage}${named_}`,
       language,
       policy,
       helpTop: best(helpScope),
-      curriculumTop: best(curriculum),
-      ownDoor: chosen.some((c) => c.similarity >= DOOR_SCOPE_THRESHOLD) || (a.toolRuns?.length ?? 0) > 0,
+      // On the question's language's scale: a rendered search's best is English's (pass 2).
+      curriculumTop,
+      ownDoor: chosen.some((c) => c.similarity >= DOOR_SCOPE_THRESHOLD) || (a.toolRuns?.length ?? 0) > 0 || aboutData !== null,
       role: asker.role,
       // The person's pick of mode (Vidura pass 1): only between the scopes the gate already allows.
-      prefer: preferFor(a.prefer),
+      // A row named by "Explain this" is the person's own record: the platform scope (pass 2).
+      prefer: aboutData ? "PLATFORM" : preferFor(a.prefer),
     },
     { chat: deps.chat },
   );
@@ -743,6 +843,10 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   let blockNumbers: number[] = [];
   /** The chip (Vidura pass 1): LEARNING for the tutor; for help, RECORDS when the person's own data was read, else USING. */
   let chip: AssistantChip = gate.mode === "TUTOR" ? "LEARNING" : "USING";
+  /** Pass 2: the page where the person sees the figures (the composite answer's "where to see it"), added by code. */
+  let seePage: string | null = null;
+  /** Pass 2: the question names days that none of the doors read could be narrowed to. */
+  let windowUnserved = false;
   if (gate.mode === "TUTOR") {
     const passages = curriculum.slice(0, CURRICULUM_PASSAGES).map((h, i) => ({ n: i + 1, heading: `${h.board}, "${h.book}" (class ${h.grade}), ${h.headingPath.join(" › ") || h.chapter || ""}, page ${h.pageStart}`, text: withoutInjectedLines(stripIdentifiers(h.text.slice(0, 1800), a.lexicon).text) }));
     citationsByNumber = curriculum.slice(0, CURRICULUM_PASSAGES).map((h, i) => ({ kind: "CURRICULUM", n: i + 1, board: h.board, book: h.book, grade: h.grade, chapter: h.chapter, section: h.section, page: h.pageStart, sourceUrl: h.sourceUrl || null, chunkId: h.chunkId }));
@@ -764,9 +868,10 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     allowedText = passages.map((p) => `${p.heading}\n${p.text}`).join("\n");
     // The person's own doors, read as the person (router.ts); their rows numbered after the passages.
     // "Using Shalaghar" picked by the person (Vidura pass 1): the guides only, the person's own data not read.
+    // "Explain this" (pass 2): the row the link names is the answer's data, and no other door is read beside it.
     const runs = a.toolRuns
       ? a.toolRuns.map(harnessRun)
-      : chosen.length && dataCtx && a.prefer !== "USING"
+      : chosen.length && dataCtx && a.prefer !== "USING" && !aboutData
         ? await deps.runDoors({ chosen, ctx: dataCtx, schoolId: asker.schoolId, userId: asker.userId, question: a.original, hints, lexicon: a.lexicon, firstNumber: passages.length + 1, conversationId: a.conversationId, now })
         : [];
     const childLabel = (r: DataRun) => (r.child ? `child ${r.child.n}${r.child.className ? ` (${r.child.className})` : ""}` : null);
@@ -774,6 +879,10 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     // The exam-scope reader's lines first, so "when is my next exam" is answered from the sittings ahead, not guessed from the marks.
     const summary = examSummary(runs);
     if (summary) data.unshift({ name: EXAMS_SUMMARY_NAME, json: withoutInjectedLines(stripIdentifiers(summary, a.lexicon).text), page: pageForDoor(runs.find((r) => r.ok && r.raw !== undefined && (r.door === FAMILY_EXAMS_DOOR || r.door === COLLEGE_EXAMS_DOOR))?.door ?? FAMILY_EXAMS_DOOR, asker.role) });
+    if (aboutData) data.unshift({ name: aboutData.name, json: aboutData.json, page: null });
+    // Pass 2: a window of days no door read could be narrowed to ("next week" of a record kept by no date).
+    const read = runs.filter((r) => r.ok && r.data);
+    windowUnserved = !aboutData && read.length > 0 && read.every((r) => r.window === "UNSERVED");
     allowedText += `\n${data.map((d) => d.json).join("\n")}`;
     rowLinks = runs.flatMap((r) => r.links);
     // Each <data> block is numbered too, after the rows: the model cites what it read, and a block's number is a
@@ -786,7 +895,11 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     // "My records" when the answer is the person's own figures: data was read and the question is not a how-to or a
     // where-is that a guide passage answers (the live walk of 17 Oct 2026: "how do I issue a book" wore My records
     // because a door had been read beside the guide). A pick of "My records" keeps it whenever data was read.
-    chip = helpChip({ data: data.length, passages: passages.length, prefer: a.prefer ?? null, question: a.original });
+    chip = aboutData ? "RECORDS" : helpChip({ data: data.length, passages: passages.length, prefer: a.prefer ?? null, question: a.original });
+    // THE COMPOSITE ANSWER (pass 2): a data answer, then "where to see it" — the page the person's figures are shown on
+    // (the door's own page, else the closest guide or page card of the person's role), added by code after the check.
+    // Not beside "Explain this" or a question about the page the person is on: they are already there.
+    if (chip === "RECORDS" && !aboutData && !pageHere) seePage = read.map((r) => pageForDoor(r.door, asker.role)).find((p): p is string => !!p) ?? help.find((h) => h.pagePath && pageIsRoles(h.pagePath, asker.role))?.pagePath ?? null;
     messages = helpMessages({
       question: a.stripped,
       language,
@@ -798,6 +911,8 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
       chip,
       pageHere: pageHere && cards.length ? { path: pageHere, title: cards[0]!.title } : null,
       continuation: a.continuation,
+      whereToSee: seePage,
+      about: aboutData !== null,
     });
   }
 
@@ -857,8 +972,15 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   if (blockNumbers.length) body = body.replace(/\s?\[(\d{1,3})\]/g, (mark, n: string) => (blockNumbers.includes(Number(n)) ? "" : mark));
   return {
     verdict: hint ? "HINT" : "ANSWERED",
-    // The platform's sentence as a paragraph of its own, so the answer's first heading still starts a line.
-    text: `${examScope ? `${translator(language)("assistantService.examScopeTeacher")}\n\n` : ""}${restoreSelf(body.trim(), stripIdentifiers(a.original, a.lexicon).replacements, "")}`,
+    // The platform's sentence as a paragraph of its own, so the answer's first heading still starts a line; pass 2 adds
+    // the window no record could be narrowed to before, and "where to see it" after, both by code.
+    text: composeAnswer({
+      body: restoreSelf(body.trim(), stripIdentifiers(a.original, a.lexicon).replacements, ""),
+      language,
+      examScope,
+      window: windowUnserved && !a.continuation ? (hints.window ?? null) : null,
+      seePage: a.continuation ? null : seePage,
+    }),
     mode: gate.mode,
     chip,
     // Stopped at its cap: "Go on" continues it (the length rule's no-uncapped-answers half).
@@ -866,10 +988,40 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     hint,
     citations: [...citationsByNumber.filter((c) => cited.has(c.n)), ...(gate.mode === "HELP" ? linkCitations(rowLinks, cited, asker.role, language) : [])],
     matchedAssignmentId,
-    promptTokens: tokens.prompt,
+    promptTokens: tokens.prompt + pre.tokens,
     completionTokens: tokens.completion,
-    modelCalls,
+    modelCalls: modelCalls + pre.calls,
   };
+}
+
+/**
+ * The person's own page a short where-is or how-to question names by its menu label (pass 2): the closest page card of
+ * the role, above the help threshold, whose label is in the question as typed or in its English rendering. Pure.
+ */
+export function namedPage(input: { question: string; rendered: string | null; hits: Pick<HelpHit, "kind" | "title" | "pagePath" | "similarity">[]; role: Role; language: AssistantLanguage }): { title: string; path: string } | null {
+  if (helpKind(input.question) === "OTHER" || input.question.trim().split(/\s+/).length > 10) return null;
+  const said = `${input.question} ${input.rendered ?? ""}`.toLowerCase();
+  const card = [...input.hits]
+    .filter((h) => h.kind === "nav" && h.pagePath && pageIsRoles(h.pagePath, input.role) && (h.similarity ?? 0) >= HELP_THRESHOLD[input.language])
+    .sort((a, b) => (b.similarity ?? 0) - (a.similarity ?? 0))
+    .find((h) => h.title.trim().length >= 2 && said.includes(h.title.trim().toLowerCase()));
+  return card ? { title: card.title.trim(), path: card.pagePath! } : null;
+}
+
+/**
+ * The answer as the person reads it (pass 2): the platform's own sentences around the model's checked words — the
+ * exam-scope sentence and the window no record could be narrowed to before them, "where to see it" after them (only
+ * when the answer does not already name that page). Pure.
+ */
+export function composeAnswer(input: { body: string; language: AssistantLanguage; examScope: boolean; window: { from: string; to: string } | null; seePage: string | null }): string {
+  const t = translator(input.language);
+  const day = (key: string) => formatDateKey(key, { day: "numeric", month: "long", year: "numeric" }, input.language);
+  const before = [
+    ...(input.examScope ? [t("assistantService.examScopeTeacher")] : []),
+    ...(input.window ? [input.window.from === input.window.to ? t("assistantService.windowNotServedDay", { day: day(input.window.from) }) : t("assistantService.windowNotServedSpan", { from: day(input.window.from), to: day(input.window.to) })] : []),
+  ];
+  const after = input.seePage && !input.body.includes(input.seePage) ? [`${t("viduraUi.whereToSee")} ${input.seePage}`] : [];
+  return [...before, input.body, ...after].join("\n\n");
 }
 
 /** One line per discarded answer on the server's log: the mode and the gate's reason codes, nothing the person typed or the model wrote. */

@@ -9,6 +9,8 @@ import { STAFF_SOURCE_KEY, STAFF_STATUS_KEY, STAFF_STATUS_TONE, minuteToClock } 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
+// Vidura pass 2 (17 Oct 2026): "Explain this to me" beside the month's figure.
+import { ExplainThis } from "@/components/assistant/explain-this";
 import { EmptyState } from "@/components/ui/states";
 import { PageHeader } from "@/components/ui/page-header";
 import { getLocale, getT } from "@/lib/i18n/server";
@@ -115,6 +117,7 @@ export async function MyStaffAttendanceView({ ctx, requestedMonth, base }: { ctx
         <StatTile label={t("staffAttendance.columnAbsent")} value={view.summary.absent} tone={view.summary.absent === 0 ? "neutral" : "danger"} />
         <StatTile label={t("staffAttendance.columnLeave")} value={view.summary.onLeave} />
       </div>
+      <ExplainThis about={{ kind: "ATTENDANCE", id: view.month }} label={monthLabel} />
 
       <Card>
         <CardHeader icon={<CalendarCheckIcon weight="duotone" className="size-5" />} title={monthLabel} description={workingDaysLine} />

@@ -59,7 +59,7 @@ describe("the question box clears as the question is sent (10 October 2026)", ()
   const web = readFileSync(join(process.cwd(), "src", "components", "assistant", "chat.tsx"), "utf8");
   const phone = readFileSync(join(process.cwd(), "..", "mobile", "src", "screens", "shared", "assistant.tsx"), "utf8");
   it("on the web the box is emptied before the door is called and refilled on a failure", () => {
-    expect(web.indexOf('setQuestion("")')).toBeLessThan(web.indexOf("openConversation(locale)"));
+    expect(web.indexOf('setQuestion("")')).toBeLessThan(web.indexOf("openConversation(locale"));
     expect(web.match(/setQuestion\(q\);/g)?.length).toBe(2);
   });
   it("on the phone the same", () => {

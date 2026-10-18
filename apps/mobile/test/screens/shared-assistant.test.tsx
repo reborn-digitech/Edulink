@@ -2,7 +2,7 @@ import { AccessibilityInfo, Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { ASSISTANT_NOT_FOR, MENU } from "@/lib/nav";
 import { FamilyAssistantCard, citationTarget, shortAnswer, shortBlocks, SHORT_ANSWER } from "@/screens/shared/assistant";
-import { ViduraHost, ViduraSheet, viduraAccess } from "@/screens/shared/vidura";
+import { ExplainThis, ViduraHost, ViduraSheet, viduraAccess } from "@/screens/shared/vidura";
 import { WEB_HOME, webPageFor } from "@/lib/links";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -270,6 +270,41 @@ describe("the round button", () => {
     );
     await fireEvent.press(await screen.findByRole("button", { name: "Ask Vidura" }));
     expect(await screen.findByTestId("vidura-sheet")).toBeTruthy();
+  });
+
+  it("'Explain this to me' (pass 2) opens the sheet on a new conversation that asks about the row, at the child's school", async () => {
+    const { calls } = await mountStaff(
+      <ViduraHost access="open" home="/parent">
+        <ExplainThis about={{ kind: "FEE_DEMAND", id: "zz-demand", childId: "zz-child" }} label="ZZ Term 1 fee" />
+      </ViduraHost>,
+      "PARENT",
+      answers({
+        "POST /api/v1/assistant/conversations/zz-c/messages": () => json({ conversationId: "zz-c", question: question({ text: "Explain this fee demand to me." }), answer: message({ text: "ZZ the fee explained", chip: "RECORDS" }) }),
+      }),
+    );
+    await fireEvent.press(await screen.findByRole("button", { name: "Explain this fee demand to me: ZZ Term 1 fee" }));
+    expect(await screen.findByText("ZZ the fee explained")).toBeTruthy();
+    expect(calls().find((c) => c.line === "POST /api/v1/assistant/conversations")?.body).toEqual({ language: "en", childId: "zz-child" });
+    expect(calls().find((c) => c.line === "POST /api/v1/assistant/conversations/zz-c/messages")?.body).toEqual({ text: "Explain this fee demand to me.", page: "/parent", about: { kind: "FEE_DEMAND", id: "zz-demand", childId: "zz-child" } });
+  });
+
+  it("'Explain this to me' is not drawn where Vidura is not the person's, nor where only the plan is missing", async () => {
+    await mountStaff(
+      <ViduraHost access={null} home="/teacher">
+        <ExplainThis about={{ kind: "ATTENDANCE", id: "2026-10" }} label="October 2026" />
+      </ViduraHost>,
+      "TEACHER",
+      answers(),
+    );
+    expect(screen.queryByTestId("vidura-explain")).toBeNull();
+    await mountStaff(
+      <ViduraHost access="plan" home="/teacher">
+        <ExplainThis about={{ kind: "ATTENDANCE", id: "2026-10" }} label="October 2026" />
+      </ViduraHost>,
+      "TEACHER",
+      answers(),
+    );
+    expect(screen.queryByTestId("vidura-explain")).toBeNull();
   });
 
   it("is decided by the operator's switch, the school's module and the plan, never for an expert or a recruiter", () => {

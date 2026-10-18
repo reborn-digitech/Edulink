@@ -3258,10 +3258,51 @@ model HelpEntry {
   /// en | hi | mr
   language   String
   embedding  Unsupported("vector(1024)")?
+  /// Vidura pass 2 (17 Oct 2026): a Hindi or Marathi guide paragraph made from a HelpRendering carries its id, so a
+  /// rendering the reviewer rejects leaves retrieval at once and an edited one is read in its new words before the
+  /// next rebuild (src/lib/assistant-retrieval.ts). Null for every other entry.
+  renderingId String?
   createdAt  DateTime @default(now())
 
   @@index([commit])
   @@index([language])
+  @@index([renderingId])
+}
+
+/// VIDURA PASS 2 (docs/plans/vidura.md, 17 Oct 2026): the Hindi or Marathi rendering of one unit of the user guide
+/// (docs/guide/*.md) — a section heading or a paragraph — made once by the local model (`npm run help:index --
+/// --render=hi,mr`), stored UNREVIEWED and used at once for retrieval and the suggested questions in that language,
+/// then read by a speaker on the operator's panel (/root/vidura-review: Approve, Edit, Reject, audited; the content
+/// team reads the queue at /appadmin/vidura-review). help:index writes a HelpEntry per rendered paragraph, never one
+/// for a REJECTED rendering. Outside the school fence like HelpEntry: the guide is the platform's, the same for every
+/// school, and its reviewer is the operator, who belongs to no school (scripts/gen-rls.ts names it).
+model HelpRendering {
+  id               String    @id @default(cuid())
+  /// HEADING | PARAGRAPH
+  kind             String
+  /// hi | mr
+  language         String
+  /// sha256 of the kind and the English text: the unit's identity across rebuilds and commits.
+  sourceKey        String
+  /// The English as the guide has it, and the file it came from.
+  sourceText       String
+  sourceFile       String
+  /// The rendering in use: the model's, or the reviewer's edit.
+  text             String
+  /// The model's own words, kept beside an edit.
+  modelText        String
+  /// UNREVIEWED | APPROVED | REJECTED
+  status           String    @default("UNREVIEWED")
+  edited           Boolean   @default(false)
+  reviewedByUserId String?
+  reviewedAt       DateTime?
+  /// The model that wrote it (ASSISTANT_MODEL).
+  model            String
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  @@unique([sourceKey, language])
+  @@index([language, status])
 }
 
 /// One question, its answer, and the worked solution behind the reveal.

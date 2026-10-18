@@ -276,7 +276,14 @@ type HelpRow = {
   similarity: number | null;
 };
 
-const HELP_COLUMNS = Prisma.sql`h."id", h."kind", h."title", h."text", h."pagePath", h."door", h."module", h."roles", h."language", h."sourceFile", h."commit"`;
+/**
+ * VIDURA PASS 2 (17 Oct 2026): a Hindi or Marathi guide entry made from a HelpRendering (scripts/help-index.ts) is read
+ * through its rendering: one the reviewer rejected is left out at once, and one they edited is read in its new words
+ * (its vector follows at the next rebuild). Every other entry has no rendering and reads as written.
+ */
+const HELP_COLUMNS = Prisma.sql`h."id", h."kind", h."title", COALESCE(r."text", h."text") AS "text", h."pagePath", h."door", h."module", h."roles", h."language", h."sourceFile", h."commit"`;
+const HELP_FROM = Prisma.sql`FROM "HelpEntry" h LEFT JOIN "HelpRendering" r ON r."id" = h."renderingId"`;
+const NOT_REJECTED = Prisma.sql`AND (r."id" IS NULL OR r."status" <> 'REJECTED')`;
 
 export async function searchHelp(q: HelpQuery, ctx: RetrievalContext): Promise<HelpHit[]> {
   const limit = Math.max(1, Math.min(50, q.limit ?? 8));
@@ -285,15 +292,15 @@ export async function searchHelp(q: HelpQuery, ctx: RetrievalContext): Promise<H
   // language every doc and door is written in.
   // The data questions' router (11 Oct 2026): `kinds` narrows the entries to the catalog's doors.
   const kinds = q.kinds?.length ? Prisma.sql`AND h."kind" IN (${Prisma.join(q.kinds)})` : Prisma.empty;
-  const filter = Prisma.sql`AND (cardinality(h."roles") = 0 OR ${q.role} = ANY(h."roles")) AND h."language" IN (${Prisma.join([...new Set([q.language, "en"])])}) ${kinds}`;
+  const filter = Prisma.sql`AND (cardinality(h."roles") = 0 OR ${q.role} = ANY(h."roles")) AND h."language" IN (${Prisma.join([...new Set([q.language, "en"])])}) ${kinds} ${NOT_REJECTED}`;
   const vector = await queryVector(ctx, "help", q.query);
-  const vectorRows = await ctx.db.$queryRaw<HelpRow[]>(nearest(filter, Prisma.sql`FROM "HelpEntry" h`, HELP_COLUMNS, Prisma.sql`h."embedding"`, vector, pool));
+  const vectorRows = await ctx.db.$queryRaw<HelpRow[]>(nearest(filter, HELP_FROM, HELP_COLUMNS, Prisma.sql`h."embedding"`, vector, pool));
   const words = keywordQuery(q.query);
   let keywordRows: HelpRow[] = [];
   if (words) {
     keywordRows = await ctx.db.$queryRaw<HelpRow[]>`
       SELECT ${HELP_COLUMNS}, 1 - (h."embedding" <=> ${vector}::vector) AS "similarity"
-        FROM "HelpEntry" h, to_tsquery('english'::regconfig, ${words}) qe, to_tsquery('simple'::regconfig, ${words}) qs
+        ${HELP_FROM}, to_tsquery('english'::regconfig, ${words}) qe, to_tsquery('simple'::regconfig, ${words}) qs
        WHERE (${HELP_TSV} @@ qe OR ${HELP_TSV} @@ qs) ${filter}
        ORDER BY greatest(ts_rank_cd(${HELP_TSV}, qe), ts_rank_cd(${HELP_TSV}, qs)) DESC, h."id"
        LIMIT ${pool}`;
@@ -331,8 +338,8 @@ export async function helpForPage(q: { page: string; language: Language; role: s
   const kinds = q.kinds?.length ? Prisma.sql`AND h."kind" IN (${Prisma.join(q.kinds)})` : Prisma.empty;
   const rows = await ctx.db.$queryRaw<(HelpRow & { similarity: null })[]>`
     SELECT ${HELP_COLUMNS}, NULL::float AS "similarity"
-      FROM "HelpEntry" h
-     WHERE h."pagePath" = ${q.page}
+      ${HELP_FROM}
+     WHERE h."pagePath" = ${q.page} ${NOT_REJECTED}
        AND (cardinality(h."roles") = 0 OR ${q.role} = ANY(h."roles"))
        AND h."language" IN (${Prisma.join([...new Set([q.language, "en"])])}) ${kinds}
      ORDER BY (h."language" = ${q.language}) DESC, (h."kind" = 'nav') DESC, h."id"

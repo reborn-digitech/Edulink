@@ -270,6 +270,10 @@ Open `/teacher/profile` ("Me"). Press "Change my look" to pick an avatar, set th
 
 Open `/teacher/library` ("Library"; only when the school has the Library module on). The page shows "On loan" (with due dates), "Reservations" (your place in each queue, with "Leave the queue"), "Fines" (a staff fine is paid at the school office; Shalaghar never takes the money) and "The catalogue". Search by title, author, subject or ISBN and press "Reserve" to join a title's queue; the desk lends and takes back. "Returned lately" lists what you brought back.
 
+## How do I ask Vidura to explain my own attendance figure?
+
+On `/teacher/attendance/me`, under the month's figures, the link "Explain this to me" opens Vidura's drawer on a new conversation about that month: the days present, late, absent and on leave, and what the percentage is out of. Vidura reads your own month again, nobody else's. Ask about days in your own words ("tomorrow", "next week", "last month", "this term"), in English, Hindi or Marathi: they are read in the school's own calendar, and an answer from your records ends with "Where to see it:" and the page that shows them.
+
 ## How do I ask Vidura, and what will it answer?
 
 Vidura is Shalaghar's assistant. Its one way in is the round button at the bottom right of every page, labelled "Ask Vidura" for screen readers; on a phone-width screen it sits above the bottom bar, and above the page's own round quick-action button where one is shown. The button is there only while Shalaghar's operator has Vidura switched on for the platform and for your school; the office does not switch it. As a teacher you also need a plan that includes Vidura; without one the button opens the plan card, with "Subscribe", instead. There is no menu entry for Vidura, and opening `/assistant` takes you back to the page you came from with its drawer open.

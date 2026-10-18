@@ -3645,6 +3645,7 @@ CREATE TRIGGER "OperatorAccess_close_only"
 --   GigSlot
 --   Guardianship
 --   HelpEntry
+--   HelpRendering
 --   JobRun
 --   OutboundEmail
 --   PassInvoice

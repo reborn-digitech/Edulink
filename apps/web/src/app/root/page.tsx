@@ -18,6 +18,7 @@ import { CopyChip } from "./copy-chip";
 import { UsageSummary } from "./usage-summary";
 import { TableScroll } from "@/components/ui/table-scroll";
 import { ModelServersCard } from "@/components/quiz-review/model-servers-card";
+import { ViduraReviewCountsCard } from "@/components/vidura-review/counts-card";
 import { FeaturesCard } from "./features/card";
 import { CompanyDetailsCard } from "./company-card";
 
@@ -99,6 +100,9 @@ export default async function RootPage({
 
       {/* quiz-publish-jobs (11 Oct 2026): the two model servers' state and the way to the generated bank. */}
       <ModelServersCard deskHref="/root/quiz-review" />
+
+      {/* Vidura pass 2 (17 Oct 2026): the guide's Hindi and Marathi renderings waiting for a speaker. */}
+      <ViduraReviewCountsCard href="/root/vidura-review" />
 
       {/* What each partner is owed this month, recorded only; the partners page has the detail. */}
       {d.partners.length > 0 && (

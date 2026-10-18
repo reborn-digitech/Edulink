@@ -15,6 +15,8 @@ import type { ZodTypeAny } from "zod";
 import { ENDPOINTS } from "../api-catalog";
 import { permits, type Endpoint } from "../api-catalog/types";
 import type { Role } from "../constants";
+// Vidura pass 2 (17 Oct 2026): week and day offsets, resolved in the school's own calendar.
+import { daysAhead, timeWindowOf, withinOneWeek, type SchoolCalendar, type TimeWindow } from "./when";
 
 export type DoorPath = `/api/v1/${string}`;
 
@@ -95,6 +97,13 @@ export type QuestionHints = {
   term: number | null;
   /** YYYY-MM: "this month", "last month", a month by its name. */
   month: string | null;
+  /**
+   * The days the question asks about (Vidura pass 2, when.ts): "tomorrow", "next week", "last month", "this term", in
+   * the school's own calendar; null when it names none.
+   */
+  window?: TimeWindow | null;
+  /** The school's today (YYYY-MM-DD in its zone), for a door's days ahead. */
+  today?: string;
 };
 
 const MONTHS: Record<string, number> = {
@@ -115,8 +124,11 @@ export function academicYearStart(now: Date): number {
   return now.getUTCMonth() >= 5 ? now.getUTCFullYear() : now.getUTCFullYear() - 1;
 }
 
-/** What a question names about time and class, for a door's parameters and the rows kept. Pure. */
-export function hintsOf(question: string, now: Date): QuestionHints {
+/**
+ * What a question names about time and class, for a door's parameters and the rows kept. `calendar` is the school's
+ * today and terms (Vidura pass 2); without it, today is the UTC day of `now` and no term is known. Pure.
+ */
+export function hintsOf(question: string, now: Date, calendar?: SchoolCalendar | null): QuestionHints {
   const q = asciiDigits(question.toLowerCase());
   let grade: number | null = null;
   const g = /\b(?:class|grade|std\.?|standard)\s*(\d{1,2})\b|\b(\d{1,2})(?:st|nd|rd|th)\s+(?:class|grade|std|standard)\b|(?:कक्षा|इयत्ता|वर्ग)\s*(\d{1,2})|(\d{1,2})\s*(?:वीं|वी)\s*(?:कक्षा|इयत्ता)/.exec(q);
@@ -156,7 +168,13 @@ export function hintsOf(question: string, now: Date): QuestionHints {
       }
     }
   }
-  return { grade, yearStart, term, month };
+  // Vidura pass 2: the window of days asked about, in the school's own calendar; a month or a term it names fills
+  // those hints where the words above did not.
+  const today = calendar?.today ?? now.toISOString().slice(0, 10);
+  const window = timeWindowOf(question, today, calendar?.terms ?? []);
+  if (window && month === null && window.kind !== "TERM") month = window.from.slice(0, 7);
+  if (window?.kind === "TERM" && term === null && window.termN) term = window.termN;
+  return { grade, yearStart, term, month, window, today };
 }
 
 /* -------------------------------------------------------------------------- */
@@ -175,6 +193,8 @@ export type DataContext = {
   /** The modules the school has on; a door behind another is no candidate. Absent: decided at run time. */
   modules?: ReadonlySet<string>;
   now: Date;
+  /** The school's today and its recorded terms (Vidura pass 2), for "tomorrow", "next week", "this term". */
+  calendar?: SchoolCalendar;
 };
 
 /** Report cards: the listing door's rows give the {cardId} of the one-card door (a pupil's past marks by subject). */
@@ -201,6 +221,8 @@ export type DoorCall = {
   params: Record<string, string>;
   /** Which of a guardian's children this call reads, by its class (never a name); null for the person's own. */
   child: { id: string; className: string | null; n: number } | null;
+  /** The question's window of days filled one of the door's parameters (Vidura pass 2): the door was asked for those days. */
+  windowed?: boolean;
 };
 
 const CHILD_KEYS = new Set(["childId", "child", "student", "studentMembershipId"]);
@@ -233,11 +255,20 @@ export function callsFor(e: Pick<Endpoint, "path" | "request">, ctx: DataContext
   }
 
   const query: Record<string, string> = {};
+  const w = hints.window ?? null;
+  let windowed = false;
   for (const f of fields) {
     if (CHILD_KEYS.has(f.key)) continue;
     let value: string | null = null;
-    if (f.key === "month" && hints.month && accepts(f.schema, hints.month)) value = hints.month;
-    else if (/^(?:year|academicYear)$/.test(f.key) && hints.yearStart !== null) {
+    // Vidura pass 2: the window of days asked about fills a day, a week, the days ahead, a span or a term.
+    const fromWindow = w ? windowValue(f, w, hints.today ?? null) : null;
+    if (fromWindow !== null) {
+      value = fromWindow;
+      windowed = true;
+    } else if (f.key === "month" && hints.month && accepts(f.schema, hints.month)) {
+      value = hints.month;
+      if (w?.kind === "MONTH") windowed = true;
+    } else if (/^(?:year|academicYear)$/.test(f.key) && hints.yearStart !== null) {
       const y = hints.yearStart;
       value = [`${y}-${String((y + 1) % 100).padStart(2, "0")}`, `${y}–${String((y + 1) % 100).padStart(2, "0")}`, String(y)].find((v) => accepts(f.schema, v)) ?? null;
     } else if (/^(?:grade|gradeLevel)$/.test(f.key) && hints.grade !== null && accepts(f.schema, String(hints.grade))) value = String(hints.grade);
@@ -257,8 +288,27 @@ export function callsFor(e: Pick<Endpoint, "path" | "request">, ctx: DataContext
     const q = new URLSearchParams(query);
     if (child && childField) q.set(childField.key, child.id);
     const qs = q.toString();
-    return { door, url: `${path}${qs ? `?${qs}` : ""}`, params, child };
+    return { door, url: `${path}${qs ? `?${qs}` : ""}`, params, child, ...(w ? { windowed } : {}) };
   });
+}
+
+/**
+ * The value the question's window gives one of a door's parameters, or null (Vidura pass 2): a single day fills
+ * `date` and `day`; a window inside one week fills `week` (any day of it); a window ahead fills an agenda's `days`; a
+ * span fills `from` and `to`; a recorded term fills `termId`. Each only where the door's own schema accepts it. Pure.
+ */
+function windowValue(f: QueryField, w: TimeWindow, today: string | null): string | null {
+  const ok = (v: string | null) => (v !== null && accepts(f.schema, v) ? v : null);
+  if ((f.key === "date" || f.key === "day") && w.kind === "DAY") return ok(w.from);
+  if (f.key === "week" && withinOneWeek(w)) return ok(w.from);
+  if (f.key === "days" && today && w.from >= today) {
+    const n = daysAhead(w, today);
+    return n === null ? null : ok(String(n));
+  }
+  if (f.key === "from" && w.kind !== "DAY") return ok(w.from);
+  if (f.key === "to" && w.kind !== "DAY") return ok(w.to);
+  if (f.key === "termId" && w.termId) return ok(w.termId);
+  return null;
 }
 
 /* -------------------------------------------------------------------------- */

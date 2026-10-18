@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AccessibilityInfo, Linking, Pressable, View } from "react-native";
 import { useRouter } from "expo-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
@@ -13,6 +13,7 @@ import {
   inboxConversationOpenedSchema,
   parseAnswer,
   type AnswerBlock,
+  type AssistantAbout,
   type AssistantChip,
   type AssistantCitation,
   type AssistantMessage,
@@ -173,7 +174,24 @@ const chipName = (chip: AssistantChip, t: (key: TranslationKey, vars?: Record<st
  * question and the box. A refusal is Vidura's own line, with no retry, and "Ask a person" when the door names one.
  * `page` is the web page the screen stands for (page awareness); `onLeave` closes the sheet before a link is followed.
  */
-export function Conversation({ status, conversationId, initial, onDeleted, page = null, onLeave }: { status: AssistantStatus; conversationId: string | null; initial: AssistantMessage[]; onDeleted?: () => void; page?: string | null; onLeave?: () => void }) {
+export function Conversation({
+  status,
+  conversationId,
+  initial,
+  onDeleted,
+  page = null,
+  onLeave,
+  autoAsk = null,
+}: {
+  status: AssistantStatus;
+  conversationId: string | null;
+  initial: AssistantMessage[];
+  onDeleted?: () => void;
+  page?: string | null;
+  onLeave?: () => void;
+  /** "Explain this to me" (pass 2): asked once, as soon as the conversation is drawn, with the row it is about. */
+  autoAsk?: { question: string; about: AssistantAbout; n: number } | null;
+}) {
   const t = useT();
   const th = useTheme();
   const { locale } = useLocale();
@@ -196,7 +214,7 @@ export function Conversation({ status, conversationId, initial, onDeleted, page 
     },
   });
 
-  const ask = async (raw: string, goOn = false) => {
+  const ask = async (raw: string, goOn = false, about?: AssistantAbout) => {
     const q = raw.trim().slice(0, ASSISTANT_QUESTION_MAX);
     if (!q || asking) return;
     setProblem(null);
@@ -205,7 +223,8 @@ export function Conversation({ status, conversationId, initial, onDeleted, page 
     setQuestion("");
     let cid = id;
     if (!cid) {
-      const opened = await api().post("/api/v1/assistant/conversations", { language: locale });
+      // A guardian's "Explain this" opens the conversation at that child's school (pass 2).
+      const opened = await api().post("/api/v1/assistant/conversations", { language: locale, ...(about?.childId ? { childId: about.childId } : {}) });
       if (!opened.ok) {
         setAsking(null);
         if (!goOn) setQuestion(q);
@@ -215,7 +234,7 @@ export function Conversation({ status, conversationId, initial, onDeleted, page 
       cid = assistantConversationSchema.parse(opened.data).id;
       setId(cid);
     }
-    const body = { text: q, ...(mode && !goOn ? { mode } : {}), ...(page && !goOn ? { page } : {}), ...(goOn ? { goOn: true } : {}) };
+    const body = { text: q, ...(mode && !goOn ? { mode } : {}), ...(page && !goOn ? { page } : {}), ...(goOn ? { goOn: true } : {}), ...(about ? { about } : {}) };
     const answered = await api().post(`/api/v1/assistant/conversations/${encodeURIComponent(cid)}/messages`, body);
     setAsking(null);
     if (!answered.ok) {
@@ -231,6 +250,15 @@ export function Conversation({ status, conversationId, initial, onDeleted, page 
     AccessibilityInfo.announceForAccessibility(t("assistantUi.announce", { answer: answerPlainText(data.answer.text) }));
     void client.invalidateQueries({ queryKey: [...KEY, "list"] });
   };
+
+  // "Explain this to me" (pass 2): the question is asked once, when this new conversation is drawn.
+  const autoAsked = useRef<number | null>(null);
+  useEffect(() => {
+    if (!autoAsk || autoAsked.current === autoAsk.n || !status.available) return;
+    autoAsked.current = autoAsk.n;
+    void ask(autoAsk.question, false, autoAsk.about);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- asked once per press; `ask` is recreated each render
+  }, [autoAsk, status.available]);
 
   const remove = async () => {
     if (!id) return;

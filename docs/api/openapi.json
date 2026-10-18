@@ -222381,7 +222381,7 @@
     },
     "/api/v1/assistant/conversations/{conversationId}/messages": {
       "post": {
-        "summary": "Ask: the gate before the model, the answer, the gate after it; streamed over /api/v1/events once checked, and whole in the response; with the mode I picked, the page I am on, or \"go on\" for a cut answer",
+        "summary": "Ask: the gate before the model, the answer, the gate after it; streamed over /api/v1/events once checked, and whole in the response; with the mode I picked, the page I am on, \"go on\" for a cut answer, or the row an \"Explain this to me\" link names (read again through my own door)",
         "description": "Roles: ADMIN, PRINCIPAL, TEACHER, STUDENT, PARENT, DRIVER, LIBRARIAN, WARDEN, ALUMNUS, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS. Only while the school has ASSISTANT switched on.",
         "security": [
           {
@@ -222771,6 +222771,35 @@
                   },
                   "goOn": {
                     "type": "boolean"
+                  },
+                  "about": {
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "type": "string",
+                        "enum": [
+                          "FEE_DEMAND",
+                          "REPORT_LINE",
+                          "ATTENDANCE"
+                        ]
+                      },
+                      "id": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 80,
+                        "pattern": "^[A-Za-z0-9_:-]+$"
+                      },
+                      "childId": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 64
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "id"
+                    ],
+                    "additionalProperties": false
                   }
                 },
                 "required": [
@@ -223888,6 +223917,416 @@
         "parameters": [
           {
             "name": "assignmentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/appadmin/vidura/renderings": {
+      "get": {
+        "summary": "The user guide's Hindi and Marathi renderings by language, status and kind, a page at a time, with the counts waiting for a speaker, approved and rejected, and whether this reader may act on them",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "HEADING",
+                              "PARAGRAPH"
+                            ]
+                          },
+                          "language": {
+                            "type": "string",
+                            "enum": [
+                              "hi",
+                              "mr"
+                            ]
+                          },
+                          "sourceText": {
+                            "type": "string"
+                          },
+                          "sourceFile": {
+                            "type": "string"
+                          },
+                          "text": {
+                            "type": "string"
+                          },
+                          "modelText": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "UNREVIEWED",
+                              "APPROVED",
+                              "REJECTED"
+                            ]
+                          },
+                          "edited": {
+                            "type": "boolean"
+                          },
+                          "reviewedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "reviewedBy": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "updatedAt": {
+                            "$ref": "#/properties/items/items/properties/reviewedAt"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "kind",
+                          "language",
+                          "sourceText",
+                          "sourceFile",
+                          "text",
+                          "modelText",
+                          "status",
+                          "edited",
+                          "reviewedAt",
+                          "reviewedBy",
+                          "updatedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "counts": {
+                      "type": "object",
+                      "properties": {
+                        "hi": {
+                          "type": "object",
+                          "properties": {
+                            "unreviewed": {
+                              "type": "integer"
+                            },
+                            "approved": {
+                              "type": "integer"
+                            },
+                            "rejected": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "unreviewed",
+                            "approved",
+                            "rejected"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "mr": {
+                          "$ref": "#/properties/counts/properties/hi"
+                        }
+                      },
+                      "required": [
+                        "hi",
+                        "mr"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "page": {
+                      "type": "integer"
+                    },
+                    "pages": {
+                      "type": "integer"
+                    },
+                    "pageSize": {
+                      "type": "integer"
+                    },
+                    "mayReview": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "items",
+                    "counts",
+                    "page",
+                    "pages",
+                    "pageSize",
+                    "mayReview"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "language": {
+                    "type": "string",
+                    "enum": [
+                      "hi",
+                      "mr"
+                    ],
+                    "default": "hi"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "UNREVIEWED",
+                      "APPROVED",
+                      "REJECTED"
+                    ],
+                    "default": "UNREVIEWED"
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "HEADING",
+                      "PARAGRAPH"
+                    ]
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 10000,
+                    "default": 1
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/vidura/renderings/{renderingId}": {
+      "post": {
+        "summary": "Approve, edit (the speaker's words in use, checked like the model's) or reject one rendering of the guide; a rejected one leaves retrieval and the suggestions at once; audited, and the same act again changes nothing",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "HEADING",
+                        "PARAGRAPH"
+                      ]
+                    },
+                    "language": {
+                      "type": "string",
+                      "enum": [
+                        "hi",
+                        "mr"
+                      ]
+                    },
+                    "sourceText": {
+                      "type": "string"
+                    },
+                    "sourceFile": {
+                      "type": "string"
+                    },
+                    "text": {
+                      "type": "string"
+                    },
+                    "modelText": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "UNREVIEWED",
+                        "APPROVED",
+                        "REJECTED"
+                      ]
+                    },
+                    "edited": {
+                      "type": "boolean"
+                    },
+                    "reviewedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "reviewedBy": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "updatedAt": {
+                      "$ref": "#/properties/reviewedAt"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "kind",
+                    "language",
+                    "sourceText",
+                    "sourceFile",
+                    "text",
+                    "modelText",
+                    "status",
+                    "edited",
+                    "reviewedAt",
+                    "reviewedBy",
+                    "updatedAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "APPROVE",
+                      "EDIT",
+                      "REJECT"
+                    ]
+                  },
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 6000
+                  }
+                },
+                "required": [
+                  "action"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "renderingId",
             "in": "path",
             "required": true,
             "schema": {

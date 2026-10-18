@@ -12,6 +12,8 @@ import { useTheme } from "@/lib/theme";
 import { formatInstant, Pill } from "../family/shared";
 import { formatDateKey } from "../staff/shared";
 import { clock } from "./support";
+// Vidura pass 2 (17 Oct 2026): "Explain this to me" beside the month's figure.
+import { ExplainThis } from "../shared/vidura";
 
 /**
  * My own attendance — the web's /staff/attendance/me for every member of
@@ -112,6 +114,7 @@ export function MyAttendance() {
             <Stat label={t("staffAttendance.columnLeave")} value={d.summary.onLeave} />
             <Stat label={t("staffAttendance.columnPercent")} value={d.summary.percent === null ? "—" : `${Math.round(d.summary.percent)}%`} />
           </View>
+          <ExplainThis about={{ kind: "ATTENDANCE", id: d.month }} label={formatDateKey(`${d.month}-01`, locale, { month: "long", year: "numeric" })} />
           <Text variant="xs" tone="subtle">
             {t("staffAttendance.workingDays", { count: d.summary.workingDays })}
           </Text>

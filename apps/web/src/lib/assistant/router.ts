@@ -10,7 +10,8 @@ import type { HelpHit, HelpQuery } from "../assistant-retrieval";
 import { DATA_MAX_CHARS, DOOR_THRESHOLD, FOLLOW_UP_TTL_MS, MAX_DOORS_PER_QUESTION, TOOL_ANSWER_MAX_CHARS } from "./config";
 import { FOLLOW, FOLLOW_MAX, callsFor, readableDoor, type DataContext, type DoorCall, type DoorPath, type QuestionHints } from "./doors";
 import { DOOR_LOADERS, type DoorHandler } from "./door-loaders";
-import { summariseDoor, numberedRowsIn, rowWords, type RowLink } from "./summary";
+import { carriesDays, summariseDoor, numberedRowsIn, rowWords, type RowLink } from "./summary";
+import { windowWords } from "./when";
 import { stripIdentifiers, type NameEntry } from "./strip";
 import { withoutInjectedLines } from "./refusals";
 import { COMPOSE_PATH, mayOfferCompose } from "./links";
@@ -149,6 +150,12 @@ export type DataRun = {
   /** The numbered rows still in `data`, for the LINK citations. */
   links: RowLink[];
   fromCache: boolean;
+  /**
+   * Vidura pass 2: for a question naming days ("next week"), whether this door was read for them (a parameter took
+   * them, or its rows carry days to pick from) or cannot be narrowed to them (it keeps nothing by date); absent when
+   * the question names no days, and for "today", which every door's answer is about.
+   */
+  window?: "SERVED" | "UNSERVED";
 };
 
 /** Calls one door's handler as the person, inside the request that asked. Throws only on a programming error. */
@@ -225,7 +232,11 @@ export async function runDoors(input: RunInput): Promise<DataRun[]> {
     const kept = numberedRowsIn(text);
     const links = s.links.filter((l) => kept.has(l.n));
     next += s.links.length;
-    return { door: c.door, url: c.url, ok: true, status, data: text, raw, child: c.child, links, fromCache };
+    // The days asked about, named above the door's lines for the model (Vidura pass 2): read for them, or not kept by date.
+    const w = input.hints.window;
+    const window = w && w.label !== "TODAY" ? (c.windowed || carriesDays(raw) ? "SERVED" : "UNSERVED") : undefined;
+    const asked = w && window ? `asked about: ${windowWords(w)}${window === "UNSERVED" ? "; this record is not kept by date and cannot be narrowed to those days" : ""}\n` : "";
+    return { door: c.door, url: c.url, ok: true, status, data: `${asked}${text}`, raw, child: c.child, links, fromCache, ...(window ? { window } : {}) };
   };
 
   // In rank: the first door is always read into the answer (an empty list is the answer to "how many wait"); a door

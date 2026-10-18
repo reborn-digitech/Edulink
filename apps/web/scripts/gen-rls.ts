@@ -123,6 +123,12 @@ const NO_SCHOOL_POLICY = new Set([
   "ContentDocument",
   "ContentChunk",
   "HelpEntry",
+  // ---- vidura pass 2 (17 Oct 2026) ----
+  // A Hindi or Marathi rendering of one unit of the user guide (src/lib/assistant/renderings.ts): the guide is the
+  // platform's, the same for every school, written by help:index on the owner connection and reviewed by the
+  // operator, who belongs to no school; nothing in it is a school's or a person's.
+  "HelpRendering",
+  // ---- end vidura pass 2 ----
   // ---- review-queue (10 Oct 2026) ----
   // One act of review on a bank question by the content team or the operator (src/lib/quiz-review.ts):
   // the bank belongs to no school and neither do its reviewers, exactly like QuizQuestion.

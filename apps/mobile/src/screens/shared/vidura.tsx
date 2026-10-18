@@ -3,7 +3,7 @@ import { KeyboardAvoidingView, Modal, Platform, Pressable, ScrollView, View } fr
 import { usePathname, useRouter } from "expo-router";
 import { SafeAreaInsetsContext } from "react-native-safe-area-context";
 import { useQuery } from "@tanstack/react-query";
-import { assistantConversationDetailSchema, assistantConversationListSchema, assistantStatusSchema, type Me } from "@edulink/contracts";
+import { assistantConversationDetailSchema, assistantConversationListSchema, assistantStatusSchema, type AssistantAbout, type Me } from "@edulink/contracts";
 import { Button, Failed, Icon, Loading, Row, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
@@ -31,13 +31,15 @@ export function viduraAccess(me: Pick<Me, "active" | "modules" | "features" | "l
   return (me.locked ?? []).includes("ASSISTANT") ? "plan" : "open";
 }
 
-type Ctx = { access: ViduraAccess; open: (conversationId?: string | null) => void };
+/** "Explain this to me" (pass 2): the question in the reader's words and the row it is about. */
+export type ExplainRequest = { question: string; about: AssistantAbout };
+type Ctx = { access: ViduraAccess; open: (conversationId?: string | null) => void; explain: (request: ExplainRequest) => void };
 /** The safe area's insets, or none where no provider is drawn (a test's bare tree). */
 function useInsets() {
   return useContext(SafeAreaInsetsContext) ?? { top: 0, bottom: 0, left: 0, right: 0 };
 }
 
-const ViduraContext = createContext<Ctx>({ access: null, open: () => {} });
+const ViduraContext = createContext<Ctx>({ access: null, open: () => {}, explain: () => {} });
 /** The sheet's opener, for the old route and for tests. */
 export const useVidura = () => useContext(ViduraContext);
 
@@ -47,19 +49,27 @@ const KEY = ["assistant"] as const;
 export function ViduraHost({ access, home, children }: { access: ViduraAccess; home: string; children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const [conversationId, setConversationId] = useState<string | null>(null);
+  const [explainRequest, setExplainRequest] = useState<(ExplainRequest & { n: number }) | null>(null);
   const pathname = usePathname();
   const show = useCallback((id?: string | null) => {
     setConversationId(id ?? null);
+    setExplainRequest(null);
     setOpen(true);
   }, []);
-  const ctx = useMemo(() => ({ access, open: show }), [access, show]);
+  // "Explain this to me" (pass 2): a fresh conversation in the sheet that asks about one row of the screen at once.
+  const explain = useCallback((request: ExplainRequest) => {
+    setConversationId(null);
+    setExplainRequest((prior) => ({ ...request, n: (prior?.n ?? 0) + 1 }));
+    setOpen(true);
+  }, []);
+  const ctx = useMemo(() => ({ access, open: show, explain }), [access, show, explain]);
   return (
     <ViduraContext.Provider value={ctx}>
       <View style={{ flex: 1 }}>
         {children}
         {access ? <ViduraButton onPress={() => show(null)} plan={access === "plan"} /> : null}
       </View>
-      {access ? <ViduraSheet visible={open} plan={access === "plan"} conversationId={conversationId} page={webPageFor(pathname, home)} onClose={() => setOpen(false)} /> : null}
+      {access ? <ViduraSheet visible={open} plan={access === "plan"} conversationId={conversationId} page={webPageFor(pathname, home)} explain={explainRequest} onClose={() => setOpen(false)} /> : null}
     </ViduraContext.Provider>
   );
 }
@@ -107,7 +117,22 @@ type View_ = { kind: "chat"; round: number } | { kind: "history" } | { kind: "sa
  * conversations of the last thirty days and Close; the conversation below. `page` is the web page the screen stands
  * for (page awareness), when it has one.
  */
-export function ViduraSheet({ visible, plan, conversationId, page, onClose }: { visible: boolean; plan: boolean; conversationId: string | null; page: string | null; onClose: () => void }) {
+export function ViduraSheet({
+  visible,
+  plan,
+  conversationId,
+  page,
+  onClose,
+  explain = null,
+}: {
+  visible: boolean;
+  plan: boolean;
+  conversationId: string | null;
+  page: string | null;
+  onClose: () => void;
+  /** "Explain this to me" (pass 2): asked at once in a new conversation; `n` tells a second press from the first. */
+  explain?: (ExplainRequest & { n: number }) | null;
+}) {
   const t = useT();
   const th = useTheme();
   const insets = useInsets();
@@ -117,6 +142,11 @@ export function ViduraSheet({ visible, plan, conversationId, page, onClose }: { 
   if (visible && conversationId && wanted !== conversationId) {
     setWanted(conversationId);
     setView({ kind: "saved", id: conversationId });
+  }
+  const [explained, setExplained] = useState<number | null>(null);
+  if (visible && explain && explained !== explain.n) {
+    setExplained(explain.n);
+    setView((v) => ({ kind: "chat", round: (v.kind === "chat" ? v.round : 0) + 1 }));
   }
   const status = useQuery({ queryKey: [...KEY, "status"], enabled: visible && !plan, queryFn: async () => assistantStatusSchema.parse(unwrap(await api().get("/api/v1/assistant"))) });
   return (
@@ -163,7 +193,7 @@ export function ViduraSheet({ visible, plan, conversationId, page, onClose }: { 
                 ) : view.kind === "saved" ? (
                   <Saved key={view.id} id={view.id} status={status.data} page={page} onDeleted={() => setView({ kind: "history" })} onLeave={onClose} />
                 ) : (
-                  <Conversation key={view.round} status={status.data} conversationId={null} initial={[]} page={page} onLeave={onClose} />
+                  <Conversation key={view.round} status={status.data} conversationId={null} initial={[]} page={page} onLeave={onClose} autoAsk={explain && explained === explain.n ? explain : null} />
                 )
               ) : null}
             </ScrollView>
@@ -217,4 +247,35 @@ function Saved({ id, status, page, onDeleted, onLeave }: { id: string; status: N
   if (detail.isPending) return <Loading />;
   if (detail.isError) return isOffline(detail.error) ? <Offline onRetry={() => void detail.refetch()} /> : <Failed error={detail.error} onRetry={() => void detail.refetch()} />;
   return <Conversation status={status} conversationId={id} initial={detail.data.messages} page={page} onDeleted={onDeleted} onLeave={onLeave} />;
+}
+
+const EXPLAIN_QUESTION = { FEE_DEMAND: "viduraUi.explainFeeQuestion", REPORT_LINE: "viduraUi.explainLineQuestion", ATTENDANCE: "viduraUi.explainAttendanceQuestion" } as const;
+const EXPLAIN_LABEL = { FEE_DEMAND: "viduraUi.explainFeeLabel", REPORT_LINE: "viduraUi.explainLineLabel", ATTENDANCE: "viduraUi.explainAttendanceLabel" } as const;
+
+/**
+ * "EXPLAIN THIS TO ME" ON THE PHONE (docs/plans/vidura.md; pass 2, 17 Oct 2026): a small link beside a fee demand, a
+ * report card's line and an attendance figure on the family's and the staff's own screens, opening Vidura's sheet on
+ * a new conversation that asks about that row (`about`; the server reads it again through the person's own door).
+ * Drawn only where Vidura is this person's (`access` "open"), never inside another pressable.
+ */
+export function ExplainThis({ about, label }: { about: AssistantAbout; label: string }) {
+  const t = useT();
+  const th = useTheme();
+  const { access, explain } = useVidura();
+  if (access !== "open") return null;
+  return (
+    <Pressable
+      onPress={() => explain({ question: t(EXPLAIN_QUESTION[about.kind]), about })}
+      accessibilityRole="button"
+      accessibilityLabel={t(EXPLAIN_LABEL[about.kind], { label })}
+      testID="vidura-explain"
+      hitSlop={4}
+      style={({ pressed }) => ({ minHeight: th.tap, flexDirection: "row", alignItems: "center", gap: th.space[1], alignSelf: "flex-start", opacity: pressed ? 0.7 : 1 })}
+    >
+      <Icon name="lightbulb" size={18} color={th.accentStrong} weight="bold" />
+      <Text variant="sm" tone="accent" bold>
+        {t("viduraUi.explainThis")}
+      </Text>
+    </Pressable>
+  );
 }

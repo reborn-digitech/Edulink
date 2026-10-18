@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState, type FormEvent, type KeyboardEvent, type ReactNode } from "react";
 import { ArrowSquareOutIcon, BookOpenTextIcon, ChatsCircleIcon, CompassIcon, LightbulbIcon, LinkSimpleIcon, PaperPlaneRightIcon, ThumbsDownIcon, ThumbsUpIcon, UserCircleIcon, WarningCircleIcon, WifiSlashIcon } from "@phosphor-icons/react";
-import type { AssistantChip, AssistantMessage, AssistantStatus, AssistantSuggestions } from "@edulink/contracts";
+import type { AssistantAbout, AssistantChip, AssistantMessage, AssistantStatus, AssistantSuggestions } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";
 import { fieldClass } from "@/components/ui/field-class";
 import { cn } from "@/lib/cn";
@@ -51,6 +51,7 @@ export function AssistantChat({
   compact = false,
   page = null,
   onConversation,
+  autoAsk = null,
 }: {
   status: AssistantStatus;
   /** The reader's role on the session: whether a book's citation is a link (model.ts BOOK_LINK_ROLES). */
@@ -63,6 +64,8 @@ export function AssistantChat({
   page?: string | null;
   /** Told the conversation's id once the door has opened one. */
   onConversation?: (id: string) => void;
+  /** "Explain this to me" (pass 2): asked once, as soon as the conversation is drawn, with the row it is about. */
+  autoAsk?: { question: string; about: AssistantAbout; n: number } | null;
 }) {
   const t = useT();
   const locale = useLocale();
@@ -93,7 +96,7 @@ export function AssistantChat({
   }, [messages.length, streamed, asking, compact]);
 
   const ask = useCallback(
-    async (text: string, goOn = false) => {
+    async (text: string, goOn = false, about?: AssistantAbout) => {
       const q = text.trim().slice(0, QUESTION_MAX);
       if (!q || asking) return;
       setFailure(null);
@@ -105,7 +108,8 @@ export function AssistantChat({
       setQuestion("");
       let id = conversationId;
       if (!id) {
-        const opened = await openConversation(locale);
+        // A guardian's "Explain this" opens the conversation at that child's school (pass 2).
+        const opened = await openConversation(locale, about?.childId);
         if (!opened.ok) {
           setAsking(null);
           if (!goOn) setQuestion(q);
@@ -116,7 +120,7 @@ export function AssistantChat({
         setConversationId(id);
         onConversation?.(id);
       }
-      const answered = await askQuestion(id, q, { mode: goOn ? undefined : (mode ?? undefined), page: page ?? undefined, goOn: goOn || undefined });
+      const answered = await askQuestion(id, q, { mode: goOn ? undefined : (mode ?? undefined), page: page ?? undefined, goOn: goOn || undefined, about });
       setAsking(null);
       if (!answered.ok) {
         if (!goOn) setQuestion(q);
@@ -131,6 +135,14 @@ export function AssistantChat({
     },
     [asking, conversationId, locale, mode, onConversation, page, stream, t],
   );
+
+  // "Explain this to me" (pass 2): the question is asked once, when this new conversation is drawn.
+  const autoAsked = useRef<number | null>(null);
+  useEffect(() => {
+    if (!autoAsk || autoAsked.current === autoAsk.n || !status.available) return;
+    autoAsked.current = autoAsk.n;
+    void ask(autoAsk.question, false, autoAsk.about);
+  }, [autoAsk, ask, status.available]);
 
   const submit = (event: FormEvent) => {
     event.preventDefault();

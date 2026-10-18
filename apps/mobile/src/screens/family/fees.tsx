@@ -14,6 +14,8 @@ import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
 import { ChildSwitcher, childQuery, Confirm, formatDateKey, formatInstant, Note, openWeb, param, Pill } from "./shared";
 import { demandStatusLabel, methodLabel, money, PAY_TONE, payable, payStatusLabel, receiptPath } from "../shared/fees";
+// Vidura pass 2 (17 Oct 2026): "Explain this to me" beside each fee demand.
+import { ExplainThis } from "../shared/vidura";
 
 /**
  * Fees for the family — the web's /parent/fees: what the school asked for
@@ -174,8 +176,8 @@ function ParentFees() {
                     const on = selected.some((s) => s.id === row.id);
                     const caption = [t("fees.parentDue", { date: formatDateKey(row.dueDateKey, locale) }), row.overdue ? t("fees.overdue") : demandStatusLabel(t, row.status)].join(" · ");
                     return (
+                      <View key={row.id}>
                       <Pressable
-                        key={row.id}
                         accessibilityRole="checkbox"
                         aria-checked={on}
                         accessibilityState={{ checked: on }}
@@ -196,6 +198,8 @@ function ParentFees() {
                           {money(row.outstandingPaise, locale)}
                         </Text>
                       </Pressable>
+                      <ExplainThis about={{ kind: "FEE_DEMAND", id: row.id, childId: child.studentMembershipId }} label={row.label} />
+                      </View>
                     );
                   })}
                   <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", borderTopWidth: 1, borderTopColor: th.border, paddingTop: th.space[2] }}>

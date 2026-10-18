@@ -1,5 +1,6 @@
 import { getT } from "@/lib/i18n/server";
 import { ModelServersCard } from "@/components/quiz-review/model-servers-card";
+import { ViduraReviewCountsCard } from "@/components/vidura-review/counts-card";
 import { CompetitionsDeskPage } from "@/components/competitions-desk/desk-page";
 
 export async function generateMetadata() {
@@ -21,7 +22,13 @@ export default function AppAdminHome({ searchParams }: { searchParams: Promise<R
       base="/appadmin"
       searchParams={searchParams}
       // quiz-publish-jobs (11 Oct 2026): the two model servers' state and the way to the generated bank.
-      top={<ModelServersCard deskHref="/appadmin/quiz-review" />}
+      top={
+        <>
+          <ModelServersCard deskHref="/appadmin/quiz-review" />
+          {/* Vidura pass 2 (17 Oct 2026): the guide's Hindi and Marathi renderings, read here and reviewed by the operator. */}
+          <ViduraReviewCountsCard href="/appadmin/vidura-review" />
+        </>
+      }
     />
   );
 }

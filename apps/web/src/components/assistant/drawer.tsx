@@ -10,6 +10,7 @@ import { AssistantChat, FailureLine } from "./chat";
 import { deleteConversation, readConversation, type DoorFailure } from "./doors";
 import { useDoor } from "./use-door";
 import { ASSISTANT_DOORS } from "./model";
+import type { ExplainRequest } from "./explain-this";
 
 /** A desk's width, where the drawer docks beside the page (Tailwind's lg). */
 export const DESK_QUERY = "(min-width: 1024px)";
@@ -45,7 +46,22 @@ type View = { kind: "chat"; round: number } | { kind: "history" } | { kind: "sav
  * It reads the status door when it opens, so the first screen says what Vidura is for in this person's role and the
  * box is there only when they may ask.
  */
-export function ViduraDrawer({ open, onClose, role, page, initialConversationId = null }: { open: boolean; onClose: () => void; role: string; page: string | null; initialConversationId?: string | null }) {
+export function ViduraDrawer({
+  open,
+  onClose,
+  role,
+  page,
+  initialConversationId = null,
+  explain = null,
+}: {
+  open: boolean;
+  onClose: () => void;
+  role: string;
+  page: string | null;
+  initialConversationId?: string | null;
+  /** "Explain this to me" (pass 2): a new conversation that asks about one row of the page at once; `n` tells a second press from the first. */
+  explain?: (ExplainRequest & { n: number }) | null;
+}) {
   const t = useT();
   const desk = useDesk();
   const { data: status, failure, retry } = useDoor<AssistantStatus>(open ? ASSISTANT_DOORS.status : null);
@@ -63,6 +79,12 @@ export function ViduraDrawer({ open, onClose, role, page, initialConversationId 
   if (open && initialConversationId && wanted !== initialConversationId) {
     setWanted(initialConversationId);
     setView({ kind: "saved", id: initialConversationId, messages: null, failure: null });
+  }
+  // A press of "Explain this to me": a fresh conversation in the drawer, asking at once.
+  const [explained, setExplained] = useState<number | null>(null);
+  if (open && explain && explained !== explain.n) {
+    setExplained(explain.n);
+    setView((v) => ({ kind: "chat", round: (v.kind === "chat" ? v.round : 0) + 1 }));
   }
   const savedId = view.kind === "saved" && view.messages === null && view.failure === null ? view.id : null;
   useEffect(() => {
@@ -151,7 +173,7 @@ export function ViduraDrawer({ open, onClose, role, page, initialConversationId 
               </div>
             )
           ) : (
-            <AssistantChat key={view.round} status={status} role={role} page={page} compact />
+            <AssistantChat key={view.round} status={status} role={role} page={page} compact autoAsk={explain && explained === explain.n ? explain : null} />
           )}
         </div>
       </div>

@@ -51,6 +51,10 @@ export default async function AppAdminLayout({ children }: { children: React.Rea
             <Button asChild variant="ghost" size="sm">
               <Link href="/appadmin/translations">{t("translationReview.nav")}</Link>
             </Button>
+            {/* Vidura pass 2 (17 Oct 2026): the guide's Hindi and Marathi renderings, read only here. */}
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/appadmin/vidura-review">{t("viduraReview.nav")}</Link>
+            </Button>
             <Button asChild variant="ghost" size="sm">
               <Link href="/appadmin/moderation">{t("moderation.nav")}</Link>
             </Button>

@@ -20,6 +20,7 @@
 import type { Role } from "../constants";
 import { TOOL_ANSWER_MAX_CHARS } from "./config";
 import type { QuestionHints } from "./doors";
+import { inWindow, windowWords } from "./when";
 
 export type LinkKind = "POST" | "CIRCULAR" | "CONVERSATION" | "THREAD" | "COMPOSE";
 
@@ -152,10 +153,39 @@ function textOf(row: Obj): string {
     .join(" ");
 }
 
-/** How well a row answers the question: its class, year, term and the question's words. */
+/** A value's day in the product's zone (India), for the window: "2026-10-19", or null when it is no day. */
+function dayOf(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  if (ISO_DAY.test(value)) return value;
+  if (!ISO_INSTANT.test(value)) return null;
+  const d = new Date(value);
+  return Number.isNaN(d.getTime()) ? null : d.toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
+}
+
+/** Does any of the row's own days fall in the question's window (Vidura pass 2)? */
+export function rowInWindow(row: Obj, hints: QuestionHints): boolean {
+  const w = hints.window;
+  if (!w) return false;
+  return Object.values(row).some((v) => {
+    const day = dayOf(v);
+    return day !== null && inWindow(day, w);
+  });
+}
+
+/** Does a door's answer carry any day at all (a date, a day key, an instant), at any depth? Pure. */
+export function carriesDays(raw: unknown, depth = 0): boolean {
+  if (depth > 6) return false;
+  if (dayOf(raw) !== null) return true;
+  if (Array.isArray(raw)) return raw.slice(0, 50).some((v) => carriesDays(v, depth + 1));
+  if (isObj(raw)) return Object.entries(raw).some(([k, v]) => /^(?:date|day|month|week|dateKey|dayKey|monthKey|weekOf)$|[a-z](?:Date|DateKey|Day|DayKey|Month|At|On)$/.test(k) || carriesDays(v, depth + 1));
+  return false;
+}
+
+/** How well a row answers the question: its class, year, term, its days against the window, and the question's words. */
 function rowScore(row: Obj, hints: QuestionHints, words: string[]): number {
   const text = textOf(row);
   let score = 0;
+  if (rowInWindow(row, hints)) score += 5;
   if (hints.grade !== null && new RegExp(`(?:grade|class|std)\\s*${hints.grade}\\b|^${hints.grade}$`).test(text + " " + String(row.gradeLevel ?? row.grade ?? ""))) score += 4;
   if (hints.yearStart !== null && new RegExp(`${hints.yearStart}\\s*[-–/]\\s*(?:20)?${String((hints.yearStart + 1) % 100).padStart(2, "0")}`).test(text)) score += 3;
   if (hints.term !== null && new RegExp(`\\bterm\\s*${hints.term}\\b|\\bsem(?:ester)?\\s*${hints.term}\\b`).test(text)) score += 3;
@@ -220,6 +250,8 @@ function arrayLines(rows: unknown[], path: string, out: Line[], opts: WalkOpts, 
     const values = objs.map((r) => r[k]).filter((v): v is string => typeof v === "string").sort();
     if (values.length > 1) facts.push(`${k} from ${field(k, values[0])![1]} to ${field(k, values.at(-1))![1]}`);
   }
+  // Vidura pass 2: how many of the rows fall in the days the question asks about (counted by code, like the rest).
+  if (opts.hints.window && dateKeys.length) facts.push(`in ${windowWords(opts.hints.window)}: ${objs.filter((r) => rowInWindow(r, opts.hints)).length} ${objs.filter((r) => rowInWindow(r, opts.hints)).length === 1 ? "row" : "rows"}`);
   out.push({ text: `${path}: ${facts.join("; ")}`, row: false });
 
   // The rows: the ones the question picks out first, then in the door's own order.

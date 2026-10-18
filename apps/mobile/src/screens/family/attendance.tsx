@@ -5,6 +5,8 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import { familyParentAttendanceSchema, familyStudentOverviewSchema } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Loading, Row, Screen, Stat, Text } from "@/components";
+// Vidura pass 2 (17 Oct 2026): "Explain this to me" beside the month's figure.
+import { ExplainThis } from "../shared/vidura";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
@@ -75,6 +77,7 @@ function ChildAttendance() {
               <Stat key={status} label={t(ATTENDANCE[status].label)} value={summary.counts[status]} tone={summary.counts[status] === 0 ? "fg" : status === "ABSENT" ? "danger" : status === "LATE" ? "warn" : "fg"} />
             ))}
           </View>
+          {summary.total > 0 ? <ExplainThis about={{ kind: "ATTENDANCE", id: d.month, childId: d.child.studentMembershipId }} label={`${name}, ${monthLabel}`} /> : null}
           {/* With nothing recorded the card's empty state says so once; the two lines above it said it twice more (B-25). */}
           {summary.total > 0 ? (
             <Text variant="xs" tone="muted">

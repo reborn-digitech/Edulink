@@ -129,6 +129,12 @@ Answers are set out with headings, numbered steps, bold for what matters, and a 
 
 When Vidura cannot answer (its one sentence saying what it is for, a refusal, or an answer saying it is not sure), the answer shows "Vidura could not answer this; a person at your school can." and one button: "Ask your class teacher" (your child's class teacher, when the class has one) or else "Ask the school office" (at a college, "Ask the registrar's office"), which opens a message conversation with them. Nothing of your question is copied into the message; you write your own.
 
+## How do I ask Vidura to explain a fee, a report card line or my child's attendance?
+
+Beside each fee demand on `/parent/fees`, beside each line of a report card (opened from `/exams`) and under the month's figures on `/parent/attendance` there is a small link, "Explain this to me". Pressing it opens Vidura's drawer on a new conversation and asks about that one row: for a fee, what was asked, what was taken off, what is paid and what is still due, and by when; for a report card line, the mark, out of what, and what the grade or percentage means; for attendance, the days present, absent and late and what the percentage is out of. Vidura reads the row again from your own pages, only for your own child, and the answer wears "My records". The link is shown only where Vidura is switched on for you.
+
+Ask about days in your own words, in English, Hindi or Marathi: "tomorrow", "next week", "last month" or "this term" are read in your child's school's own calendar. When the record asked about is not kept by date, Vidura says so before the figures. An answer from your child's records ends with "Where to see it:" and the page that shows those figures.
+
 ## At a college
 
 A guardian of a college student sees four more pages. For a student under eighteen they always open; for an adult student they open only for what the student has granted on their "What my family sees" page, and otherwise say "Not shared with you".

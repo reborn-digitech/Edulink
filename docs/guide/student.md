@@ -97,6 +97,10 @@ Open `/mentoring` ("Mentoring"), choose "Who would you like to ask?", say "What 
 
 `/student/library` ("Library"; only when the school has the Library module on) shows "On loan", "Reservations", "Fines" and "The catalogue": search and press "Reserve" to join a queue, or "Leave the queue". `/student/hostel` ("Hostel"; only with the Hostel module) shows your room and bed, "Tonight" (the roll call), "Today's menu" and "Ask for leave": pick the "Kind of leave", "Going to", "Leaving", "Back by" and "Why (optional)", then press "Ask for the leave"; a guardian consents first if you are under eighteen, then the warden decides; "Take the ask back" withdraws it before you go out. `/archive` ("Past years") shows a closed year's attendance, marks, report cards and badges; it never changes again.
 
+## How do I ask Vidura to explain a line of my report card?
+
+On a report card opened from `/exams`, each line has a small link, "Explain this to me". Pressing it opens Vidura's drawer on a new conversation that explains that one line: the mark, out of what, and what the grade or percentage says. Vidura reads the card again from your own pages, so it explains only your own card. The link is shown only where Vidura is switched on for you.
+
 ## How do I ask Vidura, and what will it answer?
 
 Vidura is Shalaghar's assistant. Its one way in is the round button at the bottom right of every page, labelled "Ask Vidura" for screen readers; on a phone-width screen it sits above the bottom bar, and above the page's own round quick-action button where one is shown. The button is there only while Shalaghar's operator has Vidura switched on for the platform and for your school; the office does not switch it. As a pupil you also need a plan that includes Vidura; without one the button opens the plan card, with "Subscribe", instead. Your guardian can turn Vidura off for you in their settings. There is no menu entry for Vidura, and opening `/assistant` takes you back to the page you came from with its drawer open.

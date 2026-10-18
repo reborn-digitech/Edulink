@@ -862,6 +862,10 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "assistant.assignmentSwitch": "audit.assistantAssignmentSwitch",
   "assistant.counsellorRoute": "audit.assistantCounsellorRoute",
   "assistant.notice": "audit.assistantNotice",
+  // Vidura pass 2 (17 Oct 2026): the operator's word on the guide's Hindi and Marathi renderings.
+  "vidura.rendering.approve": "audit.viduraRenderingApprove",
+  "vidura.rendering.edit": "audit.viduraRenderingEdit",
+  "vidura.rendering.reject": "audit.viduraRenderingReject",
   // expert-registration (15 Oct 2026): an expert's application from the login page and the operator's decision.
   "expert.application.submit": "audit.expertApplicationSubmit",
   "operator.expertApplication.approve": "audit.operatorExpertApplicationApprove",
