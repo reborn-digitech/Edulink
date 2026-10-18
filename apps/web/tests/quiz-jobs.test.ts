@@ -29,7 +29,7 @@ import { GET as serversGet } from "@/app/api/v1/appadmin/quiz-jobs/servers/route
 import { POST as serverStartPost } from "@/app/api/v1/appadmin/quiz-jobs/servers/[server]/start/route";
 import { POST as serverStopPost } from "@/app/api/v1/appadmin/quiz-jobs/servers/[server]/stop/route";
 import { chaptersWanted, planCombos } from "../scripts/quiz-gen/plan";
-import { passContinues, landChapter } from "../scripts/quiz-gen/job";
+import { passContinues, landChapter, ownItemErrors } from "../scripts/quiz-gen/job";
 import type { GeneratedTopicFile } from "../scripts/quiz-gen/shape";
 import { isServed } from "@/lib/quiz-served";
 import { chat2Enabled, handOverTo, neededServers, requiredServers, type HolderDb } from "@/lib/model-holders";
@@ -214,10 +214,10 @@ describe("a finished chapter lands in the bank as it goes", () => {
       ],
     } as unknown as GeneratedTopicFile;
     const refused = await landChapter(db, "zz-qj.json", file, () => "ZZ: the bank did not verify");
-    expect(refused).toEqual({ loaded: 0, figuresHeld: 0, problem: "ZZ: the bank did not verify" });
+    expect(refused).toEqual({ loaded: 0, figuresHeld: 0, problem: "set aside in generated/held (ZZ: the bank did not verify)", dropped: 0, held: true });
     expect(await db.quizTopic.count({ where: { slug: LAND_SLUG } })).toBe(0);
     const landed = await landChapter(db, "zz-qj.json", file, () => null);
-    expect(landed).toEqual({ loaded: 1, figuresHeld: 0, problem: null });
+    expect(landed).toEqual({ loaded: 1, figuresHeld: 0, problem: null, dropped: 0, held: false });
     const row = await db.quizQuestion.findFirstOrThrow({ where: { topic: { slug: LAND_SLUG } }, select: { generated: true, takenDownAt: true, needsFigure: true, imageKey: true, reviewedAt: true, translations: { select: { language: true } } } });
     expect(row).toMatchObject({ generated: true, reviewedAt: null });
     expect(isServed(row), "published without review").toBe(true);
@@ -507,6 +507,37 @@ describe("the doors by role", () => {
     for (const d of doors) {
       expect(d.access, d.path).toBe("app-admin");
       if (d.path.includes("{")) expect(String(d.sample), d.path).toMatch(/zz-sweep-no-such/);
+    }
+  });
+});
+
+// quiz-topup (19 Oct 2026): the bank check's refusals of a batch's own items are dropped and the batch asked again; one it still refuses is set aside.
+describe("a batch the bank check refuses", () => {
+  it("names its own items by index, and never another file's", () => {
+    expect(ownItemErrors("1 error:   ✗ generated/ncert-6-maths-5.json[7]: duplicate of a question already in generated/ncert-6-maths-5.json", "ncert-6-maths-5.json")).toEqual([7]);
+    expect(ownItemErrors("✗ generated/ncert-6-maths-5.json[7]: x ✗ generated/ncert-6-maths-5.json[2]: y ✗ generated/ncert-6-maths-15.json[1]: z", "ncert-6-maths-5.json")).toEqual([2, 7]);
+    expect(ownItemErrors("✗ generated/college-engineering-technology-fa2d8ef1-u1.json: has no questions", "ncert-6-maths-5.json")).toEqual([]);
+  });
+  it("drops the refused items and loads the rest; a batch still refused is held and blocks nothing", async () => {
+    const file = { questions: [{ stem: "a" }, { stem: "b" }, { stem: "c" }] } as never;
+    const writes: number[] = [];
+    const held: string[] = [];
+    let calls = 0;
+    const verify = () => (calls++ === 0 ? "✗ generated/zz-batch.json[1]: duplicate of a question already in generated/zz-batch.json" : null);
+    const fs = { write: (_n: string, f: { questions: unknown[] }) => void writes.push(f.questions.length), hold: (n: string) => void held.push(n) };
+    const ownerDb = { } as never;
+    const loader = vi.spyOn(await import("../scripts/quiz-queue-load"), "loadGeneratedBatches").mockResolvedValue({ created: 2, updated: 0, settled: 0, duplicates: 0, topicsMade: 0, boardsSet: 0, figuresDrawn: 0, figuresKept: 0, figuresFailed: [] } as never);
+    try {
+      const r = await landChapter(ownerDb, "zz-batch.json", file, verify, fs);
+      expect(r).toMatchObject({ loaded: 2, dropped: 1, held: false, problem: null });
+      expect(writes).toEqual([2]);
+      expect(held).toEqual([]);
+      const stuck = await landChapter(ownerDb, "zz-batch.json", file, () => "✗ generated/other.json: has no questions", fs);
+      expect(stuck).toMatchObject({ loaded: 0, dropped: 0, held: true });
+      expect(stuck.problem).toMatch(/set aside in generated\/held/);
+      expect(held).toEqual(["zz-batch.json"]);
+    } finally {
+      loader.mockRestore();
     }
   });
 });

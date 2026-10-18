@@ -21,263 +21,47 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-11T08:25:24.302Z",
+  "generatedAt": "2026-10-18T22:44:06.493Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the sum of the digits of the number 123?",
+      "stem": "Which of the following is an example of using numbers to make and discover patterns?",
       "choices": [
-        "1",
-        "2",
-        "3",
-        "6"
+        "To convey information",
+        "To estimate magnitudes",
+        "To pose and solve puzzles",
+        "To measure height and weight"
       ],
-      "answerIndex": 3,
-      "solution": "The sum of the digits of 123 is 1 + 2 + 3 = 6. The other options are incorrect because they do not add up the digits properly. Adding only one digit (1, 2, or 3) gives the wrong answer. The option 3 is also incorrect as it does not account for all three digits.",
+      "answerIndex": 2,
+      "solution": "Using numbers to pose and solve puzzles involves recognizing and creating patterns through numerical relationships. This directly relates to making and discovering patterns, which is the focus of the question. Conveying information, estimating magnitudes, and measuring height and weight do not primarily involve identifying or generating numerical patterns.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "संख्या 123 के अंकों का योग क्या है?",
+          "stem": "निम्नलिखित में से कौन-सा संख्याओं के उपयोग का उदाहरण है जिससे पैटर्न बनाए और खोजे जा सकें?",
           "choices": [
-            "1",
-            "2",
-            "3",
-            "6"
+            "सूचना प्रसारित करना",
+            "आकार का अनुमान लगाना",
+            "पहेलियाँ बनाना और हल करना",
+            "ऊंचाई और वजन का मापन करना"
           ],
-          "solution": "123 के अंकों का योग 1 + 2 + 3 = 6 है। अन्य विकल्प गलत हैं क्योंकि वे अंकों को सही तरह से जोड़ते नहीं हैं। केवल एक अंक (1, 2, या 3) को जोड़ने से गलत उत्तर प्राप्त होता है। 3 विकल्प भी गलत है क्योंकि यह तीनों अंकों को ध्यान में नहीं रखता।",
+          "solution": "संख्याओं का उपयोग पहेलियाँ बनाना और हल करना संख्यात्मक संबंधों के माध्यम से पैटर्न की पहचान और निर्माण करने में सहायता करता है। यह प्रश्न के केंद्र में बनाए और खोजे गए पैटर्न के सीधे संबंध में आता है। सूचना प्रसारित करना, आकार का अनुमान लगाना और ऊंचाई और वजन का मापन करना मुख्य रूप से संख्यात्मक पैटर्न की पहचान या उत्पादन में शामिल नहीं होता।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position, and the distractors are still incorrect.",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for mathematical concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "संख्या 123 च्या अंकांची बेरीज किती आहे?",
+          "stem": "खालीलपैकी कोणते संख्या वापरून आणि पॅटर्न शोधण्याचे उदाहरण आहे?",
           "choices": [
-            "1",
-            "2",
-            "3",
-            "6"
+            "माहिती प्रसारित करणे",
+            "मोठेपणाचे अंदाज घेणे",
+            "पहाट्या विचारणे आणि सोडवणे",
+            "उंची आणि वजन मोजणे"
           ],
-          "solution": "123 च्या अंकांची बेरीज 1 + 2 + 3 = 6 आहे. इतर विकल्प चुकीचे आहेत कारण ते अंकांची बेरीज योग्यरित्या करत नाहीत. फक्त एक अंक (1, 2 किंवा 3) जोडल्याने चुकीचा उत्तर मिळतो. 3 चा विकल्प देखील चुकीचा आहे कारण तो तीन अंकांचा विचार करत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "adds only one digit",
-        "adds only one digit",
-        "adds only one digit",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 6, which is the sum of 1 + 2 + 3. The author's key is correct, and the reasoning for the distractors is valid as they all represent the mistake of adding only one digit.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 18,
-          "pageStart": 25,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 19,
-          "pageStart": 27,
-          "pageEnd": 29,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 20,
-          "pageStart": 29,
-          "pageEnd": 30,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T08:25:24.302Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "Which of the following numbers is a palindrome?",
-      "choices": [
-        "666",
-        "668",
-        "686",
-        "866"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 666 because it reads the same from left to right and right to left. The other options do not have this property.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सी संख्या एक पैलिंड्रोम है?",
-          "choices": [
-            "666",
-            "668",
-            "686",
-            "866"
-          ],
-          "solution": "सही उत्तर 666 है क्योंकि यह बाएं से दाएं और दाएं से बाएं दोनों ओर से एक ही प्रकार पढ़ती है। अन्य विकल्प इस गुणधर्म के साथ नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with correct terminology and logical structure.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता संख्या एक पॅलिंड्रोम आहे?",
-          "choices": [
-            "666",
-            "668",
-            "686",
-            "866"
-          ],
-          "solution": "बरोबर उत्तर 666 आहे कारण ते डावीकडून उजवीकडे आणि उजवीकडून डावीकडे एकसारखे वाचते. इतर विकल्पांमध्ये ही वैशिष्ट्ये नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the order of digits",
-        "Confuses the order of digits",
-        "Confuses the order of digits"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 666, which is a palindrome. The other options are not palindromes, and the author's reasoning that they confuse the order of digits is a valid misconception for students.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.5 Pretty Palindromic Patterns"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 6,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.6 The Magic Number of Kaprekar"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.7 Clock and Calendar Numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.8 Mental Math"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.9 Playing with Number Patterns"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T08:25:24.302Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the rule for forming 3-digit palindromes using the digits 1, 2, 3?",
-      "choices": [
-        "The first and third digits must be the same",
-        "The first and second digits must be the same",
-        "The second and third digits must be the same",
-        "All digits must be different"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is that the first and third digits must be the same because a 3-digit palindrome reads the same from both ends. The other options do not follow the definition of a palindrome.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "3-अंकीय पैलिंड्रोम के निर्माण के नियम क्या हैं जिनमें अंक 1, 2, 3 का उपयोग किया जाता है?",
-          "choices": [
-            "पहला और तीसरा अंक एक ही होना चाहिए",
-            "पहला और दूसरा अंक एक ही होना चाहिए",
-            "दूसरा और तीसरा अंक एक ही होना चाहिए",
-            "सभी अंक अलग-अलग होने चाहिए"
-          ],
-          "solution": "सही उत्तर यह है कि पहला और तीसरा अंक एक ही होना चाहिए क्योंकि 3-अंकीय पैलिंड्रोम दोनों छोरों से एक ही प्रकार पढ़ा जाता है। अन्य विकल्प पैलिंड्रोम के परिभाषा के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi terminology for mathematical concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "3-अंकी द्विचर तयार करण्याचे नियम कोणता आहे जेणेकरून अंक 1, 2, 3 वापरले जातात?",
-          "choices": [
-            "पहिला आणि तिसरा अंक समान असावा",
-            "पहिला आणि दुसरा अंक समान असावा",
-            "दुसरा आणि तिसरा अंक समान असावा",
-            "सर्व अंक वेगळे असावेत"
-          ],
-          "solution": "योग्य उत्तर पहिला आणि तिसरा अंक समान असावा कारण 3-अंकी द्विचर दोन्ही बाजूंनी समान वाचतो. इतर विकल्प पैलू विशिष्टतेच्या नियमांचे अनुसरण करत नाहीत.",
+          "solution": "संख्या वापरून पहाट्या विचारणे आणि सोडवणे हे संख्यात्मक संबंधांमार्फत पॅटर्न ओळखण्याच्या आणि तयार करण्याच्या प्रक्रियेशी संबंधित आहे. हे सीधा पॅटर्न तयार करण्याच्या आणि शोधण्याच्या विषयाशी संबंधित आहे, जे प्रश्नाच्या केंद्रबिंदूशी संबंधित आहे. माहिती प्रसारित करणे, मोठेपणाचे अंदाज घेणे आणि उंची आणि वजन मोजणे हे मुख्यतः संख्यात्मक पॅटर्न ओळखण्याच्या किंवा तयार करण्याच्या प्रक्रियेशी संबंधित नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
           "flag": null
@@ -288,246 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses the purpose of numbers",
+        "Thinks numbers are only for communication",
         null,
-        "Confuses the structure of a palindrome",
-        "Confuses the structure of a palindrome",
-        "Confuses the structure of a palindrome"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies that a 3-digit palindrome must have the first and third digits the same. The reasoning for the distractors is valid as they all reflect common misconceptions about palindrome structure.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.5 Pretty Palindromic Patterns"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 6,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.6 The Magic Number of Kaprekar"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.7 Clock and Calendar Numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.8 Mental Math"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.9 Playing with Number Patterns"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T08:25:24.302Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "If a 5-digit number is a palindrome and is odd, which digit must be odd?",
-      "choices": [
-        "The first digit",
-        "The second digit",
-        "The third digit",
-        "The fourth digit"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is the first digit because it is the same as the fifth digit, and the number must be odd. The other options are not necessarily odd.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक 5 अंकीय संख्या पैलिंड्रोम है और विषम है, तो कौन सा अंक अवश्य विषम होना चाहिए?",
-          "choices": [
-            "पहला अंक",
-            "दूसरा अंक",
-            "तीसरा अंक",
-            "चौथा अंक"
-          ],
-          "solution": "सही उत्तर पहला अंक है क्योंकि यह पांचवें अंक के समान होता है, और संख्या विषम होनी चाहिए। अन्य विकल्प आवश्यक रूप से विषम नहीं होते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "5-अंकी संख्या एक पैलंड्रोम आहे आणि ती विषम आहे, तर कोणता अंक निश्चितपणे विषम असेल?",
-          "choices": [
-            "पहिला अंक",
-            "दुसरा अंक",
-            "तिसरा अंक",
-            "चौथा अंक"
-          ],
-          "solution": "बरोबर उत्तर पहिला अंक आहे कारण तो पाचव्या अंकासारखा असतो आणि संख्या विषम असावी लागते. इतर विकल्प आवश्यकता नसतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the logical structure, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the position of the digits",
-        "Confuses the position of the digits",
-        "Confuses the position of the digits"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. A 5-digit palindrome has the form ABCBA, so the first and fifth digits are the same. For the number to be odd, the last digit (and thus the first) must be odd. The other digits can be even or odd.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.5 Pretty Palindromic Patterns"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 6,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.6 The Magic Number of Kaprekar"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.7 Clock and Calendar Numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.8 Mental Math"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.9 Playing with Number Patterns"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T08:25:24.302Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "In the Collatz sequence, what happens when the number is odd?",
-      "choices": [
-        "It is multiplied by 2",
-        "It is divided by 2",
-        "It is multiplied by 3 and 1 is added",
-        "It is subtracted by 1"
-      ],
-      "answerIndex": 2,
-      "solution": "When the number is odd in the Collatz sequence, it is multiplied by 3 and 1 is added. This is the correct operation for odd numbers. Multiplying by 2 or dividing by 2 applies to even numbers, and subtracting 1 does not follow the defined rule for odd numbers.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "कॉल्टज अनुक्रम में, जब संख्या विषम होती है तो क्या होता है?",
-          "choices": [
-            "इसे 2 से गुणा किया जाता है",
-            "इसे 2 से भाग किया जाता है",
-            "इसे 3 से गुणा किया जाता है और 1 जोड़ा जाता है",
-            "इसमें से 1 घटा दिया जाता है"
-          ],
-          "solution": "कॉल्टज अनुक्रम में जब संख्या विषम होती है तो इसे 3 से गुणा किया जाता है और 1 जोड़ा जाता है। यह विषम संख्याओं के लिए सही संक्रिया है। 2 से गुणा करना या 2 से भाग करना सम संख्याओं के लिए लागू होता है, और 1 घटाना विषम संख्याओं के लिए परिभाषित नियम के अनुसार नहीं होता है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कॉल्ट्झ अनुक्रमात, संख्या विषम असताना काय होते?",
-          "choices": [
-            "ती 2 ने गुणली जाते",
-            "ती 2 ने भागली जाते",
-            "ती 3 ने गुणली जाते आणि 1 मिळवली जाते",
-            "ती 1 ने वजा केली जाते"
-          ],
-          "solution": "कॉल्ट्झ अनुक्रमात संख्या विषम असताना, ती 3 ने गुणली जाते आणि 1 मिळवली जाते. ही विषम संख्यांसाठी योग्य क्रियाकलाप आहे. 2 ने गुणणे किंवा 2 ने भागणे सम संख्यांसाठी लागू होते, आणि 1 ने वजा करणे विषम संख्यांसाठी निश्चित केलेल्या नियमानुसार नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the rule for even numbers",
-        "Confuses the rule for even numbers",
-        null,
-        "Incorrectly states the operation for odd numbers"
+        "Misunderstands the concept of pattern making"
       ],
       "solverAnswers": [
         2,
@@ -537,244 +85,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is option 2, as the Collatz conjecture states that when a number is odd, it is multiplied by 3 and 1 is added. The other options represent common misconceptions or misunderstandings of the rule.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 10,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.9 Playing with Number Patterns",
-            "3.10AnUnsolvedMystery—theCollatzConjecture!"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 11,
-          "pageStart": 15,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.11 Simple Estimation"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 12,
-          "pageStart": 17,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.11 Simple Estimation"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 13,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.12 Games and Winning Strategies"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 14,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.12 Games and Winning Strategies"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T08:25:24.302Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If the 't' digit in a 5-digit palindrome is double the 'u' digit, and the 'h' digit is double the 't' digit, what is the number?",
-      "choices": [
-        "12421",
-        "14241",
-        "21412",
-        "24142"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 14241 because the 't' digit (4) is double the 'u' digit (2), and the 'h' digit (2) is double the 't' digit (4). The other options do not satisfy this condition.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 5 अंकीय पैलिंड्रोम में 't' अंक 'u' अंक का दोगुना है, और 'h' अंक 't' अंक का दोगुना है, तो संख्या क्या है?",
-          "choices": [
-            "12421",
-            "14241",
-            "21412",
-            "24142"
-          ],
-          "solution": "सही उत्तर 14241 है क्योंकि 't' अंक (4) 'u' अंक (2) का दोगुना है, और 'h' अंक (2) 't' अंक (4) का दोगुना है। अन्य विकल्प इस शर्त को पूरा नहीं करते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर 5-अंकी एका पॅलिंड्रोममध्ये 't' अंक 'u' अंकाच्या दुप्पट असेल, आणि 'h' अंक 't' अंकाच्या दुप्पट असेल, तर तो संख्या कोणती आहे?",
-          "choices": [
-            "12421",
-            "14241",
-            "21412",
-            "24142"
-          ],
-          "solution": "बरोबर उत्तर 14241 आहे कारण 't' अंक (4) हा 'u' अंक (2) च्या दुप्पट आहे, आणि 'h' अंक (2) हा 't' अंक (4) च्या दुप्पट आहे. इतर विकल्प हा अट पूर्ण करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the positions of the digits",
-        null,
-        "Confuses the relationships between the digits",
-        "Confuses the relationships between the digits"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct, and the reasoning aligns with the conditions given in the question. The correct answer is 14241, where 't' = 4, 'u' = 2, and 'h' = 2, satisfying the relationships described.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.5 Pretty Palindromic Patterns"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 6,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.6 The Magic Number of Kaprekar"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.7 Clock and Calendar Numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.8 Mental Math"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.9 Playing with Number Patterns"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T08:25:24.302Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "What is the smallest number whose digits add up to 14?",
-      "choices": [
-        "59",
-        "68",
-        "77",
-        "86"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 59 because 5 + 9 = 14, and no smaller number has digits that add up to 14. 68, 77, and 86 are all larger than 59 and also have digits that add up to 14.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "14 के अंकों के योग के लिए सबसे छोटी संख्या क्या है?",
-          "choices": [
-            "59",
-            "68",
-            "77",
-            "86"
-          ],
-          "solution": "सही उत्तर 59 है क्योंकि 5 + 9 = 14, और 14 के अंकों के योग के साथ कोई छोटी संख्या नहीं है। 68, 77 और 86 सभी 59 से बड़े हैं और 14 के अंकों के योग के साथ हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate and maintains the meaning, structure, and intent of the original English question. All technical terms are appropriately translated.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "14 च्या अंकांच्या बेरजेसह लहानतम संख्या कोणती आहे?",
-          "choices": [
-            "59",
-            "68",
-            "77",
-            "86"
-          ],
-          "solution": "बरोबर उत्तर 59 आहे कारण 5 + 9 = 14, आणि 14 च्या अंकांच्या बेरजेसह लहानतम संख्या 59 आहे. 68, 77 आणि 86 ही 59 पेक्षा मोठी आहेत आणि त्यांच्या अंकांची बेरीज 14 आहे.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate and maintains the original meaning, with appropriate terminology used in a Marathi-medium context.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Chooses a larger number with the same digit sum",
-        "Fails to find the smallest possible number",
-        "Selects a number that is not valid"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 59, as it is the smallest number whose digits (5 + 9 = 14) add up to 14. The other options are larger numbers with the same digit sum, or not valid.",
+      "critique": "The question is well-constructed. Option 2 ('To pose and solve puzzles') is the only one that directly relates to using numbers to make and discover patterns. The other options are either too general (conveying information) or too specific (measuring height and weight), and the author's reasoning for the distractors is valid.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
@@ -808,49 +119,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T08:25:24.302Z",
+      "generatedAt": "2026-10-18T22:44:06.493Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "What is the sum of the smallest and largest 5-digit palindromes?",
+      "difficulty": 1,
+      "stem": "What is the term used to describe the skill of thinking about and formulating set procedures to use numbers for different purposes?",
       "choices": [
-        "10001",
-        "99999",
-        "109999",
-        "110000"
+        "Data Analysis",
+        "Numerical Reasoning",
+        "Computational Thinking",
+        "Mathematical Logic"
       ],
-      "answerIndex": 3,
-      "solution": "The smallest 5-digit palindrome is 10001 and the largest is 99999. Their sum is 10001 + 99999 = 110,000. '10001' and '99999' are the individual numbers, not the sum. '109999' is incorrect due to a miscalculation.",
-      "checkExpr": "10001+99999",
+      "answerIndex": 2,
+      "solution": "Computational Thinking is the correct term because it refers to the ability to use logical steps and procedures involving numbers for problem-solving. Data Analysis focuses on interpreting data, Numerical Reasoning is about working with numbers in specific contexts, and Mathematical Logic deals with formal reasoning structures, none of which fully capture the procedural and systematic approach of computational thinking.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "सबसे छोटी और सबसे बड़ी 5 अंकों वाली पैलिंड्रोम का योग क्या है?",
+          "stem": "संख्याओं का उपयोग विभिन्न उद्देश्यों के लिए सेट प्रक्रियाओं के विचार करने और विकसित करने के कौशल के लिए क्या शब्द प्रयोग किया जाता है?",
           "choices": [
-            "10001",
-            "99999",
-            "109999",
-            "110000"
+            "डेटा विश्लेषण",
+            "संख्यात्मक तर्क",
+            "गणितीय चिंतन",
+            "गणितीय तर्क"
           ],
-          "solution": "सबसे छोटी 5 अंकों वाली पैलिंड्रोम 10001 है और सबसे बड़ी 99999 है। उनका योग 10001 + 99999 = 110,000 है। '10001' और '99999' अलग-अलग संख्याएं हैं, न कि योग। '109999' गणना में त्रुटि के कारण गलत है।",
+          "solution": "गणितीय चिंतन सही शब्द है क्योंकि यह संख्याओं के साथ तार्किक कदमों और प्रक्रियाओं के उपयोग की क्षमता को संदर्भित करता है। डेटा विश्लेषण डेटा के अर्थ को समझने पर केंद्रित है, संख्यात्मक तर्क विशिष्ट संदर्भों में संख्याओं के साथ काम करने पर केंद्रित है, और गणितीय तर्क औपचारिक तर्क संरचनाओं से संबंधित है, जो भी गणितीय चिंतन के प्रक्रियात्मक और प्रणालीगत दृष्टिकोण को पूरी तरह से नहीं दर्शाते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
-          "flag": null
+          "critique": "The Hindi translation has a critical error: option (3) is translated as 'गणितीय चिंतन' (Mathematical Thinking) instead of 'गणितीय चिंतन' (Computational Thinking). Option (4) is incorrectly repeated as 'गणितीय तर्क' (Mathematical Logic), which should be 'गणितीय चिंतन' (Computational Thinking). This makes the correct answer (2) 'संख्यात्मक तर्क' (Numerical Reasoning) incorrect, and the solution also refers to the wrong term. The translation is not accurate and contains errors in both options and the solution.",
+          "flag": "translation critique: not one answer at the same position; a distractor no longer wrong; terms not the board's"
         },
         "mr": {
-          "stem": "5 अंकी लघुतम आणि महातम पैलंड्रोमची बेरीज किती आहे?",
+          "stem": "संख्यांचा वापर करून विविध उद्देशांसाठी सेट प्रक्रिया विचार करण्याच्या कौशल्याला कोणते शब्द वापरला जातो?",
           "choices": [
-            "10001",
-            "99999",
-            "109999",
-            "110000"
+            "डेटा विश्लेषण",
+            "संख्यात्मक तर्क",
+            "गणक विचार",
+            "गणितीय तर्क"
           ],
-          "solution": "5 अंकी लघुतम पैलंड्रोम 10001 आहे आणि महातम 99999 आहे. त्यांची बेरीज 10001 + 99999 = 110,000 आहे. '10001' आणि '99999' ही विशिष्ट संख्या आहेत, बेरीज नाही. '109999' चूकीच्या गणनेमुळे अयोग्य आहे.",
+          "solution": "गणक विचार हा योग्य शब्द आहे कारण तो समस्या सोडविण्यासाठी संख्यांच्या तर्कसंगत चरणांचा वापर करण्याच्या क्षमतेला संदर्भित करतो. डेटा विश्लेषण डेटाचे विश्लेषण करते, संख्यात्मक तर्क संख्यांच्या विशिष्ट संदर्भांमध्ये काम करण्यास संदर्भित करते आणि गणितीय तर्क रूढीगत तर्क संरचनांच्या विषयाला संदर्भित करते, जे गणक विचाराच्या प्रक्रियात्मक आणि प्रणालीत्मक दृष्टिकोनाला पूर्णपणे समाविष्ट करत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
         }
       },
@@ -859,26 +170,26 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "lists the smallest palindrome",
-        "lists the largest palindrome",
-        "incorrect addition",
-        null
+        "Confuses general math terms with specific terminology",
+        "Mistakenly identifies a broader concept",
+        null,
+        "Incorrectly refers to a different skill"
       ],
       "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The smallest 5-digit palindrome is 10001, and the largest is 99999. Their sum is 110000, which matches the correct answer. The other options are either individual numbers or the result of a miscalculation.",
+      "levelFlag": null,
+      "critique": "The correct answer is 'Computational Thinking' as per the author's key. The solution is sound and aligns with the reasoning provided. The distractors are all plausible but incorrect, and the reasons given for their wrongness reflect common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 18,
-          "pageStart": 25,
-          "pageEnd": 27,
+          "ordinal": 15,
+          "pageStart": 19,
+          "pageEnd": 21,
           "headingPath": [
             "Chapter 3: Number Play",
             "S u m m a r y"
@@ -886,9 +197,9 @@
         },
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 19,
-          "pageStart": 27,
-          "pageEnd": 29,
+          "ordinal": 16,
+          "pageStart": 22,
+          "pageEnd": 23,
           "headingPath": [
             "Chapter 3: Number Play",
             "S u m m a r y"
@@ -896,9 +207,9 @@
         },
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 20,
-          "pageStart": 29,
-          "pageEnd": 30,
+          "ordinal": 17,
+          "pageStart": 23,
+          "pageEnd": 25,
           "headingPath": [
             "Chapter 3: Number Play",
             "S u m m a r y"
@@ -906,49 +217,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T08:25:24.302Z",
+      "generatedAt": "2026-10-18T22:44:06.493Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "In the game where players take turns adding 1, 2, or 3 to reach 21, which number should a player aim to say to ensure a win?",
+      "difficulty": 3,
+      "stem": "If you start with 14, what will be the next number in the sequence according to the Collatz conjecture?",
       "choices": [
-        "17",
-        "18",
-        "19",
-        "20"
+        "7",
+        "28",
+        "15",
+        "13"
       ],
       "answerIndex": 0,
-      "solution": "To win the game, a player should aim to say 17. This is because 17 + 4 = 21, and by saying 17, the player can control the game so that the opponent is forced to reach a number from which they cannot win. The other options do not follow this strategy and would not guarantee a win.",
+      "solution": "Since 14 is even, the next number is half of it, which is 7. The first option is correct. The second option incorrectly multiplies by 2. The third option incorrectly adds 1. The fourth option is not a result of applying the rule.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "21 तक पहुंचने के खेल में जहां खिलाड़ी बारी-बारी से 1, 2 या 3 जोड़ते हैं, खिलाड़ी को जीतने के लिए कौन सी संख्या कहनी चाहिए?",
+          "stem": "यदि आप 14 से शुरू करते हैं, तो कॉल्टज़ अनुमान के अनुसार अगली संख्या क्या होगी?",
           "choices": [
-            "17",
-            "18",
-            "19",
-            "20"
+            "7",
+            "28",
+            "15",
+            "13"
           ],
-          "solution": "जीतने के लिए, एक खिलाड़ी को 17 कहना चाहिए। इसका कारण 17 + 4 = 21 है, और 17 कहकर खिलाड़ी खेल को इस प्रकार नियंत्रित कर सकता है कि विरोधी को ऐसी संख्या पर पहुंचना पड़े जहां वे जीत नहीं सकते। अन्य विकल्प इस रणनीति का अनुसरण नहीं करते और जीत की गारंटी नहीं देते।",
+          "solution": "चूंकि 14 सम है, अगली संख्या इसके आधे के बराबर होगी, जो 7 है। पहला विकल्प सही है। दूसरा विकल्प गलती से 2 से गुणा कर देता है। तीसरा विकल्प गलती से 1 जोड़ देता है। चौथा विकल्प नियम के लागू करने के परिणाम नहीं है।",
           "imageAlt": null,
-          "critique": "Translation accurately preserves meaning, technical terms are appropriate for Hindi curriculum, and the correct answer remains in the same position.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "21 पाहता खेळात खेळाडूंनी वैकल्पिकपणे 1, 2 किंवा 3 जोडून 21 पाहता जाण्याचा प्रयत्न करावा, तर विजय मिळविण्यासाठी खेळाडूने कोणता नंबर बोलावा?",
+          "stem": "14 वरून सुरुवात केली तर कॉल्ट्झ अनुमानानुसार अनुक्रमात अगदी नंतरचा संख्या काय असेल?",
           "choices": [
-            "17",
-            "18",
-            "19",
-            "20"
+            "7",
+            "28",
+            "15",
+            "13"
           ],
-          "solution": "विजय मिळविण्यासाठी, खेळाडूने 17 बोलावा. हे कारण 17 + 4 = 21 आहे आणि 17 बोलून खेळाडू खेळाची नियंत्रण करू शकतो जेणेकरून विरोधक एक असा नंबर पाहता जाण्यास भाग पाडला जाईल जेथून ते विजय मिळवू शकत नाहीत. इतर विकल्प ही रणनीती अनुसरत नाहीत आणि विजय खात्री करू शकत नाहीत.",
+          "solution": "14 सम असल्याने, अगदी नंतरची संख्या तिच्या अर्ध्याच्या असेल, जो 7 आहे. पहिला विकल्प बरोबर आहे. दुसरा विकल्प गैररीत्या 2 ने गुणले आहे. तिसरा विकल्प गैररीत्या 1 मिळवले आहे. चौथा विकल्प नियम लागू करून मिळालेला नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for game strategy.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for the Collatz conjecture.",
           "flag": null
         }
       },
@@ -958,9 +269,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "A student might think that aiming for 18 allows them to control the game by forcing the opponent into a losing position, not realizing that 17 is the true winning number.",
-        "If a player says 18, the opponent can say 21 on the next turn and win",
-        "If a player says 19, the opponent can say 21 on the next turn and win\",\"If a player says 20, the opponent can say 21 on the next turn and win\"]}]}]}}"
+        "Student multiplies by 2 instead of dividing by 2 for even numbers",
+        "Confuses the operation for even numbers",
+        "Confuses the operation for odd numbers"
       ],
       "solverAnswers": [
         0,
@@ -969,8 +280,8 @@
         0,
         0
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The key is to force the opponent to face a number that is 1 more than a multiple of 4 (i.e., 17, 13, 9, 5, 1). This ensures that no matter what the opponent adds (1, 2, or 3), the player can always add the complementary number to reach the next multiple of 4. 17 is the correct answer.",
+      "levelFlag": null,
+      "critique": "The solution correctly applies the Collatz conjecture rule for even numbers (divide by 2), leading to the correct answer 7. The author's reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
@@ -1025,7 +336,291 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T08:25:24.302Z",
+      "generatedAt": "2026-10-18T22:44:06.493Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the sum of the largest and smallest 5-digit palindromes is 110,000, what is the difference between them?",
+      "choices": [
+        "89,998",
+        "99,999",
+        "100,000",
+        "110,000"
+      ],
+      "answerIndex": 0,
+      "solution": "The largest 5-digit palindrome is 99999 and the smallest is 10001. Adding them gives 110,000, and subtracting them gives 99999 - 10001 = 89,998. The other options do not match the correct subtraction of these two numbers.",
+      "checkExpr": "99999-10001",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि सबसे बड़े और सबसे छोटे 5 अंकों वाले पैलिंड्रोम के योग 110,000 है, तो उनके बीच अंतर क्या है?",
+          "choices": [
+            "89,998",
+            "99,999",
+            "100,000",
+            "110,000"
+          ],
+          "solution": "सबसे बड़ा 5 अंकों वाला पैलिंड्रोम 99999 है और सबसे छोटा 10001 है। उनको जोड़ने पर 110,000 प्राप्त होता है, और उनको घटाने पर 99999 - 10001 = 89,998 प्राप्त होता है। अन्य विकल्प इन दो संख्याओं के सही घटाव के बराबर नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position (option 1).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सर्वात मोठ्या आणि सर्वात लहान 5-अंकी पॅलिंड्रॉमच्या बेरजेचे 110,000 असल्यास, त्यांच्यातील फरक किती आहे?",
+          "choices": [
+            "89,998",
+            "99,999",
+            "100,000",
+            "110,000"
+          ],
+          "solution": "सर्वात मोठा 5-अंकी पॅलिंड्रॉम 99999 आहे आणि सर्वात लहान 10001 आहे. जोडल्यास 110,000 मिळते आणि वजा केल्यास 99999 - 10001 = 89,998 मिळते. इतर विकल्पांमध्ये या दोन संख्यांच्या बेरजेचे निश्चित नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer is in the same position (option 1) and the distractors remain incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Chooses the sum instead of the difference",
+        "Chooses the largest palindrome directly",
+        "Chooses the sum of the palindromes"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 89,998, which is the difference between the largest (99999) and smallest (10001) 5-digit palindromes. The author's solution is correct and matches the key.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 18,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 19,
+          "pageStart": 27,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 20,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "S u m m a r y"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-18T22:44:06.493Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a number is chosen such that it is a 5-digit number and its digits are all the same, which of the following could it be?",
+      "choices": [
+        "12345",
+        "11111",
+        "12321",
+        "11223"
+      ],
+      "answerIndex": 1,
+      "solution": "A 5-digit number with all digits the same is a palindrome. The only option that satisfies this condition is 11111. The other options are not palindromes or do not have all digits the same.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक संख्या इस प्रकार चुनी गई है कि यह एक 5 अंकीय संख्या है और इसके अंक सभी एक ही हैं, निम्नलिखित में से कौन-सा इसका विकल्प हो सकता है?",
+          "choices": [
+            "12345",
+            "11111",
+            "12321",
+            "11223"
+          ],
+          "solution": "एक 5 अंकीय संख्या जिसके सभी अंक एक ही होते हैं, एक पैलिंड्रोम होती है। इस स्थिति को संतुष्ट करने वाला केवल विकल्प 11111 है। अन्य विकल्प पैलिंड्रोम नहीं हैं या उनमें सभी अंक एक ही नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक संख्या अशी निवडली गेली की ती 5 अंकी असेल आणि तिचे सर्व अंक समान असतील, तर खालीलपैकी कोणती असू शकते?",
+          "choices": [
+            "12345",
+            "11111",
+            "12321",
+            "11223"
+          ],
+          "solution": "5 अंकी संख्या जिचे सर्व अंक समान असतात ती एक पॅलिंड्रोम आहे. हा अट पूर्ण करणारी एकमेव विकल्प 11111 आहे. इतर विकल्प पॅलिंड्रोम नाहीत किंवा सर्व अंक समान नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts like 'palindrome' (पॅलिंड्रोम).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a non-palindromic number",
+        null,
+        "Chooses a number with varying digits",
+        "Chooses a number that is not a palindrome"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 11111, which is a 5-digit number with all digits the same. The solution correctly identifies this and explains that the other options are not palindromes or do not have all digits the same.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 18,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 19,
+          "pageStart": 27,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 20,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "S u m m a r y"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-18T22:44:06.493Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is the Collatz conjecture correct for all starting numbers that are powers of 2?",
+      "choices": [
+        "Because dividing by 2 repeatedly always results in 1",
+        "Because the numbers are even and never reach an odd number",
+        "Because the sequence always ends in 2",
+        "Because the sequence always ends in a cycle"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct option is because dividing by 2 repeatedly always results in 1, which is how the Collatz conjecture operates for powers of 2. The other options are incorrect because even numbers can lead to odd numbers, the sequence for powers of 2 always ends in 1, not 2, and the conjecture does not enter a cycle for these numbers.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सभी पावर ऑफ 2 के शुरू करने वाली संख्याओं के लिए कॉलट्ज़ अनुमान क्यों सही है?",
+          "choices": [
+            "क्योंकि 2 से विभाजित करने से हमेशा 1 प्राप्त होता है",
+            "क्योंकि संख्याएँ सम होती हैं और कभी-भी विषम संख्या तक नहीं पहुँचती हैं",
+            "क्योंकि अनुक्रम हमेशा 2 में समाप्त होता है",
+            "क्योंकि अनुक्रम हमेशा एक चक्र में समाप्त होता है"
+          ],
+          "solution": "सही विकल्प यह है क्योंकि 2 से विभाजित करने से हमेशा 1 प्राप्त होता है, जो कॉलट्ज़ अनुमान के लिए पावर ऑफ 2 के लिए काम करता है। अन्य विकल्प गलत हैं क्योंकि सम संख्याएँ विषम संख्या तक पहुँच सकती हैं, पावर ऑफ 2 के लिए अनुक्रम हमेशा 1 में समाप्त होता है, न कि 2 में, और इन संख्याओं के लिए अनुमान एक चक्र में प्रवेश नहीं करता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शाळा मधील सर्व सुरुवातीच्या संख्या ज्या 2 च्या घातांमध्ये आहेत त्यांसाठी कॉल्ट्झ अनुमान का बरोबर आहे?",
+          "choices": [
+            "कारण 2 ने भागल्याने नेहमी 1 मिळतो",
+            "कारण संख्या सम असतात आणि कधीही विषम संख्येकडे जात नाहीत",
+            "कारण अनुक्रम नेहमी 2 वर संपतो",
+            "कारण अनुक्रम नेहमी एका चक्रात संपतो"
+          ],
+          "solution": "योग्य विकल्प हा आहे की 2 ने भागल्याने नेहमी 1 मिळतो, हे कॉल्ट्झ अनुमानाचे कार्यपद्धती आहे. इतर विकल्प चुकीचे आहेत कारण सम संख्या विषम संख्येकडे जाऊ शकतात, 2 च्या घातांमधील अनुक्रम नेहमी 1 वर संपतो, 2 वर नाही, आणि अनुमानाचा या संख्यांसाठी चक्रात प्रवेश होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believing that powers of 2 will never become odd, so the sequence will always divide by 2 and never enter the odd part of the Collatz process",
+        "A pupil might think the sequence stops at 2 instead of reaching 1",
+        "Believes that the Collatz conjecture's behavior for powers of 2 is due to entering a cycle, not reaching 1 directly"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as dividing a power of 2 by 2 repeatedly will always reach 1. The other options reflect common misconceptions about the Collatz conjecture.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 21,
+          "pageStart": 30,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 22,
+          "pageStart": 32,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "S u m m a r y"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-18T22:44:06.493Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -22,7 +22,7 @@
  */
 import { PrismaClient } from "@prisma/client";
 import { config } from "dotenv";
-import { existsSync } from "node:fs";
+import { existsSync, mkdirSync, renameSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { execFileSync } from "node:child_process";
 import type { QuizGenProgress, QuizGenStage } from "@edulink/contracts";
@@ -107,11 +107,50 @@ export async function landChapter(
   fileName: string,
   file: GeneratedTopicFile,
   verify: () => string | null = verifyBank,
-): Promise<{ loaded: number; figuresHeld: number; problem: string | null }> {
-  const problem = verify();
-  if (problem) return { loaded: 0, figuresHeld: 0, problem };
+  fs: { write: (name: string, file: GeneratedTopicFile) => void; hold: (name: string) => void } = { write: writeBatch, hold: holdBatch },
+): Promise<{ loaded: number; figuresHeld: number; problem: string | null; dropped: number; held: boolean }> {
+  let problem = verify();
+  let dropped = 0;
+  // quiz-topup (19 Oct 2026): the bank check refusing items of THIS batch (a within-batch duplicate the pipeline's
+  // similarity rule let through, on 19 October) drops those items and asks once more; a batch the check still refuses
+  // is set aside in generated/held/, which the check does not read, so it cannot block every chapter after it, as an
+  // empty college batch and then this duplicate did.
+  if (problem) {
+    const own = ownItemErrors(problem, fileName);
+    if (own.length > 0) {
+      const keep = file.questions.filter((_, i) => !own.includes(i));
+      dropped = file.questions.length - keep.length;
+      file = { ...file, questions: keep };
+      fs.write(fileName, file);
+      problem = verify();
+    }
+  }
+  if (problem) {
+    fs.hold(fileName);
+    return { loaded: 0, figuresHeld: 0, problem: `set aside in generated/held (${problem})`, dropped, held: true };
+  }
   const result = await loadGeneratedBatches(ownerDb, [{ file: fileName, batch: file as unknown as QueueBatch }]);
-  return { loaded: result.created + result.updated, figuresHeld: result.figuresFailed.length, problem: null };
+  return { loaded: result.created + result.updated, figuresHeld: result.figuresFailed.length, problem: null, dropped, held: false };
+}
+
+/** The item indexes a verify report names in this batch alone ("generated/<file>[7]: …"); another file's errors are not this chapter's to drop. */
+export function ownItemErrors(report: string, fileName: string): number[] {
+  const re = new RegExp(`generated/${fileName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\[(\\d+)\\]`, "g");
+  const out = new Set<number>();
+  for (const m of report.matchAll(re)) out.add(Number(m[1]));
+  return [...out].sort((a, b) => a - b);
+}
+
+function writeBatch(name: string, file: GeneratedTopicFile): void {
+  writeFileSync(join(OUT_DIR, name), JSON.stringify(file, null, 2) + "\n");
+}
+
+function holdBatch(name: string): void {
+  const src = join(OUT_DIR, name);
+  if (!existsSync(src)) return;
+  const held = join(OUT_DIR, "held");
+  mkdirSync(held, { recursive: true });
+  renameSync(src, join(held, name));
 }
 
 export async function runJob(jobId: string): Promise<void> {
@@ -252,8 +291,9 @@ export async function runJob(jobId: string): Promise<void> {
     for await (const work of plan()) {
       if (stop) break;
       const { ref, label, fileName } = work;
+      let have = 0;
       if (target) {
-        const have = await servedCount(appDb, ref);
+        have = await servedCount(appDb, ref);
         if (have >= target) {
           progress.chaptersSkipped++;
           await write();
@@ -282,7 +322,9 @@ export async function runJob(jobId: string): Promise<void> {
             void write();
           },
           },
-          target ? pass : undefined,
+          // The drafting seeds follow what the chapter already holds, so a run restarted on a half-filled chapter, or
+          // a later pass, drafts differently from the asking that filled it (0, the first asking, keeps the old seeds).
+          target ? have : undefined,
         );
         if (r.stopped || !r.file || !r.fileName) break;
 
@@ -291,7 +333,8 @@ export async function runJob(jobId: string): Promise<void> {
         await write();
         const landed = await landChapter(ownerDb, r.fileName, r.file);
         const loaded = landed.loaded;
-        if (landed.problem) progress.chaptersFailed.push({ label, reason: `written but not loaded (npm run quiz:queue loads it once the bank verifies): ${landed.problem}` });
+        if (landed.dropped) log(`${landed.dropped} item(s) the bank check refused were dropped from the batch`);
+        if (landed.problem) progress.chaptersFailed.push({ label, reason: landed.problem });
         else log(`loaded ${loaded} item(s) into the bank (${landed.figuresHeld} figure(s) failed and held)`);
         const last = chapterNumbers(ref, r.runLog, loaded);
         progress.last = last;

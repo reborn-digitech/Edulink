@@ -1,0 +1,697 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-18T22:34:14.919Z",
+  "finishedAt": "2026-10-18T22:44:05.716Z",
+  "seconds": 591,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp102.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Lines and angLes",
+    "edition": "Reprint 2026-27",
+    "chunks": 27,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Mathematics, sample question paper, 2022-23]\n20. Assertion (A): The acute angle between the line 𝑟̅ = 𝚤̂ + 𝚥̂ + 2𝑘 ෠ + 𝜆(𝚤̂ − 𝚥̂) and the x-axis\nగ\nis ସ\nReason(R): The acute angle 𝜃 between the lines\n𝑟̅ = 𝑥 𝚤̂ + 𝑦 𝚥̂ + 𝑧 𝑘 ଵ ଵ ଵ ෠ + 𝜆൫𝑎 ଵ 𝚤̂ + 𝑏 𝚥̂ + 𝑐 𝑘 and ଵ ଵ ෠൯\n𝑟̅ = 𝑥 𝚤̂ + 𝑦 𝚥̂ + 𝑧 𝑘 ଶ ଶ ଶ ෠ + 𝜇൫𝑎 ଶ 𝚤̂ + 𝑏 𝚥̂ + 𝑐 𝑘 is given by 𝑐𝑜𝑠𝜃 = ଶ ଶ ෠൯ |௔ ௔ ା௕ ௕ ା௖ ௖ | భ మ భ మ భ మ\nට௔ భ మ ା௕ భ మ ା௖ భ మ ට௔ మ మ ା௕ మ మ ା௖ మ మ",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n11. If two tangents inclined at an angle of 60ᵒ are drawn to a circle of radius 3cm, then the 1\nlength of each tangent is equal to\n3√3 (b) 3cm (c) 6cm (d) 3√3cm\n(a) 2 cm",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n3. The lines representing the given pair of linear equations are non-intersecting. Which of the 1\nfollowing statements is true?\n௔ଵ ௕ଵ ௖ଵ\n(a) ௔ଶ = ௕ଶ = ௖ଶ\n௔ଵ ௕ଵ ௖ଵ\n(b) ௔ଶ = ௕ଶ ≠ ௖ଶ\n௔ଵ ௕ଵ ௖ଵ\n(c) ௔ଶ ≠ ௕ଶ = ௖ଶ\n௔ଵ ௕ଵ ௖ଵ\n(d) ௔ଶ ≠ ௕ଶ ≠ ௖ଶ",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n4. Graphically, the pair of equations given by\n6x – 3y + 10 = 0\n2x – y + 9 = 0\nrepresents two lines which are\n(a) intersecting at exactly one point.\n(c) coincident.\n(c) 5 (d) –5\n(b) parallel.\n(d) intersecting at exactly two points."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 162474,
+      "in": 38,
+      "out": 36,
+      "rejects": 3,
+      "promptTokens": 49509,
+      "completionTokens": 9128
+    },
+    "critique": {
+      "calls": 49,
+      "ms": 292259,
+      "in": 36,
+      "out": 30,
+      "rejects": 6,
+      "promptTokens": 22106,
+      "completionTokens": 8427
+    },
+    "solver": {
+      "calls": 234,
+      "ms": 103633,
+      "in": 30,
+      "out": 25,
+      "rejects": 5,
+      "promptTokens": 43306,
+      "completionTokens": 2435
+    },
+    "form": {
+      "calls": 16,
+      "ms": 89500,
+      "in": 25,
+      "out": 18,
+      "rejects": 7,
+      "promptTokens": 11135,
+      "completionTokens": 2569
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 19,
+      "ms": 3080,
+      "in": 18,
+      "out": 15,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 61,
+      "ms": 431805,
+      "in": 30,
+      "out": 30,
+      "rejects": 0,
+      "promptTokens": 31898,
+      "completionTokens": 14251
+    }
+  },
+  "kept": 15,
+  "keptByLevel": {
+    "1": 2,
+    "2": 4,
+    "3": 3,
+    "4": 1,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct way to denote a line segment between points A and B?",
+      "ms": {
+        "draft": 3162,
+        "critique": 4829,
+        "solver": 2059
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for a precise location in geometry that has no length, breadth, or height?",
+      "ms": {
+        "draft": 3162,
+        "critique": 4424,
+        "solver": 10979,
+        "form": 4351
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many angles can be named using three non-collinear points A, B, and C?",
+      "ms": {
+        "draft": 3162,
+        "critique": 6918
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, which of the following points is the vertex of the angle?",
+      "ms": {
+        "draft": 3162,
+        "critique": 6482,
+        "solver": 1080,
+        "form": 3806
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the angle that is formed when the arms of the angle lie in a straight line?",
+      "ms": {
+        "draft": 4662,
+        "critique": 5699,
+        "solver": 11538,
+        "form": 2202
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the figure, if the arms of an angle are placed over a transparent circle such that the vertex coincides with the centre, what can we determine about the angle?",
+      "ms": {
+        "draft": 4662,
+        "critique": 6109,
+        "solver": 1318
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If two rotating arms are placed over a slit, which of the following will allow the arms to pass through the slit?",
+      "ms": {
+        "draft": 4662,
+        "critique": 7809,
+        "solver": 1468
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a semicircle is folded again, what is the measure of the new folded part?",
+      "ms": {
+        "draft": 3409,
+        "critique": 7075
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the measure of a straight angle?",
+      "ms": {
+        "draft": 4224,
+        "critique": 4979
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student measures an angle and gets 135°, which part of the protractor did they most likely use?",
+      "ms": {
+        "draft": 3409,
+        "critique": 8760,
+        "solver": 12513,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Fig. 2.23, what is the measure of ∠TER if ∠REB is a straight angle and ∠TER is 80°?",
+      "ms": {
+        "draft": 4224,
+        "critique": 7130
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the Ashoka Chakra has 24 spokes, what is the angle between two adjacent spokes?",
+      "ms": {
+        "draft": 4224,
+        "critique": 5880
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the figure, what is the measure of ∠AOB if it is divided into eight equal parts?",
+      "ms": {
+        "draft": 5913,
+        "critique": 6890,
+        "solver": 1696
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the angle between two spokes of the Ashoka Chakra is 15°, what is the largest acute angle formed between two spokes?",
+      "ms": {
+        "draft": 5913,
+        "critique": 5811,
+        "solver": 1226
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the vertex of the angle ∠POM?",
+      "ms": {
+        "draft": 2803,
+        "critique": 7093
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If an angle is such that doubling its measure gives an acute angle, tripling its measure gives an acute angle, and quadrupling its measure gives an acute angle, but multiplying its measure by 5 gives an obtuse angle, what is the possible measure of the angle?",
+      "ms": {
+        "draft": 5913,
+        "critique": 6233,
+        "solver": 11514,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements is true about two angles that can be superimposed on each other?",
+      "ms": {
+        "draft": 6745,
+        "critique": 4995,
+        "solver": 7615,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the measure of an angle formed by folding a semicircle in half?",
+      "ms": {
+        "draft": 6508,
+        "critique": 5570,
+        "solver": 10986,
+        "form": 2282
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many lines can be drawn through two distinct points on a sheet of paper?",
+      "ms": {
+        "draft": 3162,
+        "critique": 4424,
+        "solver": 751,
+        "form": 3248
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the measure of a right angle?",
+      "ms": {
+        "draft": 5913,
+        "critique": 5634,
+        "solver": 1038,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If an angle is measured to be 120°, what type of angle is it?",
+      "ms": {
+        "draft": 3497,
+        "critique": 5641,
+        "solver": 1301,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total number of degrees in a full circle?",
+      "ms": {
+        "draft": 3409,
+        "critique": 5830,
+        "solver": 9979,
+        "form": 2731,
+        "translation": 23233
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a portion of a line starting at a point and going in one direction indefinitely?",
+      "ms": {
+        "draft": 2803,
+        "critique": 4397,
+        "solver": 1692,
+        "form": 0,
+        "translation": 29227
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the measure of a semicircle?",
+      "ms": {
+        "draft": 3409,
+        "critique": 7083,
+        "solver": 1702,
+        "form": 4120,
+        "translation": 25079
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an acute angle?",
+      "ms": {
+        "draft": 4224,
+        "critique": 5033,
+        "solver": 1796,
+        "form": 0,
+        "translation": 21683
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What type of angle is formed when two lines intersect and the sum of the adjacent angles is 180°?",
+      "ms": {
+        "draft": 5913,
+        "critique": 6028,
+        "solver": 1613,
+        "form": 0,
+        "translation": 28444
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a way to compare two angles?",
+      "ms": {
+        "draft": 4662,
+        "critique": 6096,
+        "solver": 11858,
+        "form": 2990,
+        "translation": 37659
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a circle is folded into four equal parts, what is the measure of each part?",
+      "ms": {
+        "draft": 3409,
+        "critique": 7000,
+        "solver": 13407,
+        "form": 1,
+        "translation": 31007
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an angle measures 135°, what type of angle is it?",
+      "ms": {
+        "draft": 4224,
+        "critique": 4463,
+        "solver": 1116,
+        "form": 0,
+        "translation": 28656
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a straight angle is formed by half of a full turn, what fraction of a full turn forms a right angle?",
+      "ms": {
+        "draft": 4662,
+        "critique": 7301,
+        "solver": 13062,
+        "form": 2521,
+        "translation": 31913
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What type of angle is formed when the arms of an angle are in opposite directions?",
+      "ms": {
+        "draft": 3497,
+        "critique": 7209,
+        "solver": 1606,
+        "form": 0,
+        "translation": 23203
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the angle formed by two rays is increased, what happens to the size of the angle?",
+      "ms": {
+        "draft": 3162,
+        "critique": 6495,
+        "solver": 11305,
+        "form": 4031,
+        "translation": 43493
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What is the measure of the angle formed when a full circle is folded into 8 equal parts?",
+      "ms": {
+        "draft": 3409,
+        "critique": 6590,
+        "solver": 12721,
+        "form": 0,
+        "translation": 28984
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If two angles are supplementary and one of them is 110°, what is the measure of the other angle?",
+      "ms": {
+        "draft": 4224,
+        "critique": 6568,
+        "solver": 5807,
+        "form": 1,
+        "translation": 22951
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a full turn is divided into 360 equal parts, what is the measure of one part?",
+      "ms": {
+        "draft": 5011,
+        "critique": 7095,
+        "solver": 1266,
+        "form": 3526,
+        "translation": 14489
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a straight angle is divided into two equal parts by a line, what is each part called?",
+      "ms": {
+        "draft": 4662,
+        "critique": 6377,
+        "solver": 1243,
+        "form": 3936,
+        "translation": 37033
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"What is the measure of a right angle in degrees?\",\"options\":[\"180°\",\"90°\",\"45°\",\"360°\""
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a correct way to denote a line segment between points A and B?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term for a precise location in geometry that has no length, breadth, or height?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "How many angles can be named using three non-collinear points A, B, and C?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given figure, which of the following points is the vertex of the angle?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label arm"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the angle that is formed when the arms of the angle lie in a straight line?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the figure, if the arms of an angle are placed over a transparent circle such that the vertex coincides with the centre, what can we determine about the angle?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If two rotating arms are placed over a slit, which of the following will allow the arms to pass through the slit?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If a semicircle is folded again, what is the measure of the new folded part?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the measure of a straight angle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a student measures an angle and gets 135°, which part of the protractor did they most likely use?",
+      "reason": "options 0 and 2 are the same (\"Between 90° and 180°\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In Fig. 2.23, what is the measure of ∠TER if ∠REB is a straight angle and ∠TER is 80°?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound; option 0 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the Ashoka Chakra has 24 spokes, what is the angle between two adjacent spokes?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "How many lines can be drawn through a single point?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the measure of an angle formed by folding a quarter circle in half?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the figure, what is the measure of ∠AOB if it is divided into eight equal parts?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the angle between two spokes of the Ashoka Chakra is 15°, what is the largest acute angle formed between two spokes?",
+      "reason": "the solver picked option 1 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the vertex of the angle ∠POM?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If an angle is such that doubling its measure gives an acute angle, tripling its measure gives an acute angle, and quadrupling its measure gives an acute angle, but multiplying its measure by 5 gives an obtuse angle, what is the possible measure of the angle?",
+      "reason": "figure: figure spec refused: spec.frame.unit: Invalid enum value. Expected 'cm' | 'units', received 'deg'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements is true about two angles that can be superimposed on each other?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the measure of an angle formed by folding a semicircle in half?",
+      "reason": "figure: figure spec refused: spec.arcs.0: Unrecognized key(s) in object: 'label'"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "How many lines can be drawn through two distinct points on a sheet of paper?",
+      "reason": "near-duplicate of served question cmv3k5ssb001hgnjuiduwj7yh (cosine 0.901 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the measure of a right angle?",
+      "reason": "near-duplicate of served question cmv3k5ssa001bgnjukr5t5o1v (cosine 0.910 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "If an angle is measured to be 120°, what type of angle is it?",
+      "reason": "near-duplicate of batch item \"If an angle measures 135°, what type of angle is i…\" (cosine 0.939 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

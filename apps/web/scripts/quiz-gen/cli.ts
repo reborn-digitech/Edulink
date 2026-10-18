@@ -54,7 +54,7 @@ export function fileNameFor(chapter: Pick<SelectedChapter, "board" | "classLevel
   return `${chapter.board.toLowerCase()}-${chapter.classLevel}-${chapter.subjectCode.toLowerCase()}-${chapter.chapterNumber}`;
 }
 
-/** quiz-topup (19 Oct 2026): `variant` is the target run's pass number, mixed into the drafting seeds so a chapter asked again gets new drafts rather than the same ones the bank already holds. */
+/** quiz-topup (19 Oct 2026): `variant` is what the chapter already holds when a target run asks again (0 on the first asking), mixed into the drafting seeds so the asking that tops a chapter up drafts differently from the one that filled it. */
 export type GenerateArgs = { board: string; grade: number; subject: string; book?: string; limit: number; perLevel: number; variant?: number };
 
 /** quiz-publish-jobs (11 Oct 2026): the generation job's hooks into one chapter (scripts/quiz-gen/job.ts). */
