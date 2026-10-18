@@ -94,8 +94,18 @@ const DOOR_PAGES: Record<string, Partial<Record<Role, `/${string}`>>> = {
   "/api/v1/shared/bulletin": { STUDENT: "/bulletin", PARENT: "/bulletin", TEACHER: "/bulletin", ADMIN: "/bulletin", PRINCIPAL: "/bulletin" },
 };
 
+/**
+ * Doors whose data a page also draws, named as that page beside their data (F-1, 18 Oct 2026: a guardian's "this
+ * term" fee question read the plans and the payment calendar, both drawn on /parent/fees, and was given no "where to
+ * see it"); not read for a question pointing at the page, which reads the page's own door (doorsShownOn).
+ */
+const ALSO_SHOWN_ON: Record<string, Partial<Record<Role, `/${string}`>>> = {
+  "/api/v1/family/fees/plans": { PARENT: "/parent/fees" },
+  "/api/v1/family/fees/calendar": { PARENT: "/parent/fees" },
+};
+
 export function pageForDoor(door: string, role: Role): string | null {
-  const page = DOOR_PAGES[door]?.[role] ?? null;
+  const page = DOOR_PAGES[door]?.[role] ?? ALSO_SHOWN_ON[door]?.[role] ?? null;
   return page && pageIsRoles(page, role) ? page : null;
 }
 

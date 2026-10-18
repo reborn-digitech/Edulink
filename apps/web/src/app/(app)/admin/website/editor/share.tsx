@@ -12,7 +12,9 @@ import type { EditorShare } from "./types";
 /**
  * SHARE FOR REVIEW (website-two, 16 October 2026), on the editor's header: a link a principal or a colleague opens with
  * no account to read the draft, read-only, for up to seven days; shown once when it is made (only its hash is kept),
- * revocable; a new link revokes the one before.
+ * revocable; a new link revokes the one before. On a phone the header's buttons wrap and this one sits near the left,
+ * so the panel opens from its left edge there and from its right edge from `sm` up (at 390 px it began 189 px off the
+ * screen; loose-ends walk, 18 Oct 2026).
  */
 export function ShareButton({ shares, when }: { shares: EditorShare[]; when: (iso: string) => string }) {
   const t = useT();
@@ -55,7 +57,7 @@ export function ShareButton({ shares, when }: { shares: EditorShare[]; when: (is
         {current ? t("siteEditor.shareOpenUntil", { when: when(current.expiresAt) }) : t("siteEditor.share")}
       </Button>
       {open ? (
-        <div id={`${id}-share`} className="absolute right-0 z-20 mt-2 w-[min(22rem,calc(100vw-2rem))] space-y-3 rounded-[var(--radius-md)] border border-border bg-surface p-3 shadow-lg">
+        <div id={`${id}-share`} className="absolute left-0 z-20 mt-2 w-[min(22rem,calc(100vw-2rem))] sm:left-auto sm:right-0 space-y-3 rounded-[var(--radius-md)] border border-border bg-surface p-3 shadow-lg">
           <p className="text-sm text-fg">{t("siteEditor.shareIntro")}</p>
           {made ? (
             <div className="space-y-2" data-testid="site-share-made">

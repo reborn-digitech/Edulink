@@ -193,6 +193,47 @@ function rowScore(row: Obj, hints: QuestionHints, words: string[]): number {
   return score;
 }
 
+/** An amount still owed: outstanding, due, balance, pending, unpaid. */
+const DUE_KEY = /^(?:outstanding|due|balance|pending|unpaid|remaining)(?:Amount)?[Pp]aise$/;
+/** The statuses of a row that is still owed (a demand, an instalment of the payment calendar). */
+const OWING = new Set(["OPEN", "DUE", "DUE_SOON", "OVERDUE", "UPCOMING", "PART", "PARTIAL", "PENDING", "UNPAID"]);
+
+/** A list of dues (demands, instalments) rather than of payments: a row carries what is owed, or an owing status. */
+function isDues(rows: Obj[]): boolean {
+  return rows.some((r) => Object.keys(r).some((k) => DUE_KEY.test(k) && typeof r[k] === "number") || (typeof r.status === "string" && OWING.has(r.status)));
+}
+
+/** Does this row still owe something: its own outstanding figure, else its status? */
+function owes(row: Obj): boolean {
+  const due = Object.keys(row).filter((k) => DUE_KEY.test(k) && typeof row[k] === "number");
+  if (due.length) return due.some((k) => (row[k] as number) > 0);
+  return typeof row.status === "string" ? OWING.has(row.status) : true;
+}
+
+/**
+ * Amounts in paise that a door names without saying so (its contract's `paise`): renamed before the walk so they are
+ * read as rupees like every other (F-1: the payment calendar's "amount: 1500000" was put before the model as it was).
+ */
+const PAISE_FIELDS: Record<string, readonly string[]> = {
+  "/api/v1/family/fees/calendar": ["amount"],
+  "/api/v1/fees/overview": ["current", "d30", "d90", "d90plus"],
+};
+
+function withPaiseNames(value: unknown, keys: readonly string[], depth = 0): unknown {
+  if (depth > 6) return value;
+  if (Array.isArray(value)) return value.map((v) => withPaiseNames(v, keys, depth + 1));
+  if (!isObj(value)) return value;
+  return Object.fromEntries(Object.entries(value).map(([k, v]) => (keys.includes(k) && typeof v === "number" ? [`${k}Paise`, v] : [k, withPaiseNames(v, keys, depth + 1)])));
+}
+
+/**
+ * F-1 (18 Oct 2026): the fixed sentence for a window in which the rows show nothing due — read by the model, so it
+ * answers "nothing" rather than computing a figure from the totals of every row. Pure.
+ */
+export function windowNothingDue(words: string): string {
+  return `nothing is due in ${words} (the rows in ${words} total ₹0 still to pay, and the totals on the other lines count every row, not only ${words}'s)`;
+}
+
 /* ---- the walk -------------------------------------------------------------- */
 
 type Line = { text: string; row: boolean; link?: Omit<RowLink, "n"> };
@@ -251,7 +292,17 @@ function arrayLines(rows: unknown[], path: string, out: Line[], opts: WalkOpts, 
     if (values.length > 1) facts.push(`${k} from ${field(k, values[0])![1]} to ${field(k, values.at(-1))![1]}`);
   }
   // Vidura pass 2: how many of the rows fall in the days the question asks about (counted by code, like the rest).
-  if (opts.hints.window && dateKeys.length) facts.push(`in ${windowWords(opts.hints.window)}: ${objs.filter((r) => rowInWindow(r, opts.hints)).length} ${objs.filter((r) => rowInWindow(r, opts.hints)).length === 1 ? "row" : "rows"}`);
+  if (opts.hints.window && dateKeys.length) {
+    const words = windowWords(opts.hints.window);
+    const inside = objs.filter((r) => rowInWindow(r, opts.hints));
+    facts.push(`in ${words}: ${inside.length} ${inside.length === 1 ? "row" : "rows"}`);
+    // F-1 (18 Oct 2026): the window's own totals, made by code like the others, so the model never adds them up; and
+    // a window in which the rows show nothing due said so in a fixed sentence ("this term" of a paid Term 1 was
+    // answered ₹16,000 while the fee door's total, for every term, was ₹12,500).
+    const short = words.split(",")[0]!;
+    for (const k of paiseKeys) facts.push(`total ${field(k, 0)![0]} in ${short}: ${rupees(inside.reduce((s, r) => s + (typeof r[k] === "number" ? (r[k] as number) : 0), 0))}`);
+    if (paiseKeys.length && isDues(objs) && !inside.some(owes)) facts.push(windowNothingDue(short));
+  }
   out.push({ text: `${path}: ${facts.join("; ")}`, row: false });
 
   // The rows: the ones the question picks out first, then in the door's own order.
@@ -313,7 +364,8 @@ export type DoorSummary = { text: string; links: RowLink[] };
  */
 export function summariseDoor(raw: unknown, opts: { door: string; hints: QuestionHints; question: string; firstNumber: number; maxChars?: number }): DoorSummary {
   const max = opts.maxChars ?? TOOL_ANSWER_MAX_CHARS;
-  const data = unwrapDoor(raw);
+  const paiseFields = PAISE_FIELDS[opts.door];
+  const data = paiseFields ? withPaiseNames(unwrapDoor(raw), paiseFields) : unwrapDoor(raw);
   const words = rowWords(opts.question);
   let lines: Line[] = [];
   for (const rowsPerArray of [5, 3, 1, 0]) {

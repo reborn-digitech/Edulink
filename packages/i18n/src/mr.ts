@@ -17083,6 +17083,7 @@ export const mr: Dictionary = {
     refuseNotTeacher: "या असाइनमेंटच्या वर्गाचे शिक्षकच त्यासाठी विदुरचा नियम बदलू शकतात.",
     windowNotServedDay: "इथल्या तुमच्या नोंदी तारखेनुसार ठेवलेल्या नाहीत, त्यामुळे हे {day} पुरते मर्यादित करता येत नाही; सध्या त्यांत हे आहे.",
     windowNotServedSpan: "इथल्या तुमच्या नोंदी तारखेनुसार ठेवलेल्या नाहीत, त्यामुळे हे {from} ते {to} पुरते मर्यादित करता येत नाही; सध्या त्यांत हे आहे.",
+    recordsFigure: "तुमच्या नोंदींवरून मला याचे उत्तर देता आले नाही.",
   },
   // The college family pages and the transfer gaps (family-gaps builder, 10 Oct 2026): DS-1 to DS-3, R-68.
   familyGaps: {
@@ -18594,6 +18595,7 @@ export const mr: Dictionary = {
     enquiryFormIntro: "प्रवेश आणि संपर्क पानांवर एक अर्ज. चौकशी इथल्याच इनबॉक्समध्ये येते.",
     enquiryFieldsLabel: "हेही विचारा",
     enquiryFieldsAlways: "नाव, फोन किंवा ईमेल, आणि प्रश्न नेहमी विचारले जातात.",
+    enquiryRetentionOffice: "प्रत्येक प्रश्न बंद झाल्यानंतर किंवा शेवटच्या उत्तरानंतर 180 दिवस ठेवला जातो, मग पुसून टाकला जातो.",
     fieldGrade: "कोणत्या वर्गाबद्दल",
     fieldEmail: "ईमेल पत्ता",
     fieldVisit: "त्यांना शाळा पाहायला यायचे आहे का",
@@ -19113,6 +19115,7 @@ export const mr: Dictionary = {
     cardBody: "प्रमाण उत्तरे, उत्तर न मिळालेले प्रश्न आणि मूल्यमापन फेऱ्या.",
     cardOpen: "उघडा",
     cardStandard: "{count} प्रमाण उत्तरे, {served} वेळा दिली",
+    cardStandardOne: "1 प्रमाण उत्तर, {served} वेळा दिले",
     cardGaps: "मागील तीस दिवस: {questions} प्रश्नांपैकी {refused} नाकारले आणि {discarded} काढून टाकले",
     cardEval: "मागील मूल्यमापन फेरी: {state}, {when}",
     cardEvalGateHolds: "मागील मूल्यमापन फेरी: {state}, {when}; नकाराचे दार टिकले",
@@ -19233,6 +19236,7 @@ export const mr: Dictionary = {
       EMPTY: "रिकामे उत्तर",
       HINT_TOO_LONG: "खूप लांब सूचक मदत",
       EXAM_YES_NO: "परीक्षेबद्दल होय किंवा नाही",
+      FIGURE: "नोंदींमध्ये नसलेला आकडा",
     },
   },
   viduraReview: {

@@ -17089,6 +17089,7 @@ export const hi: Dictionary = {
     refuseNotTeacher: "इस असाइनमेंट की कक्षा का शिक्षक ही इसके लिए विदुर का नियम बदल सकता है।",
     windowNotServedDay: "यहाँ आपके रिकॉर्ड तारीख़ के हिसाब से नहीं रखे जाते, इसलिए इसे {day} तक सीमित नहीं किया जा सकता; अभी उनमें यह है।",
     windowNotServedSpan: "यहाँ आपके रिकॉर्ड तारीख़ के हिसाब से नहीं रखे जाते, इसलिए इसे {from} से {to} तक सीमित नहीं किया जा सकता; अभी उनमें यह है।",
+    recordsFigure: "मैं आपके रिकॉर्ड से इसका उत्तर नहीं दे सका।",
   },
   // The college family pages and the transfer gaps (family-gaps builder, 10 Oct 2026): DS-1 to DS-3, R-68.
   familyGaps: {
@@ -18600,6 +18601,7 @@ export const hi: Dictionary = {
     enquiryFormIntro: "प्रवेश और संपर्क पृष्ठों पर एक फ़ॉर्म। पूछताछ यहीं के इनबॉक्स में आती है।",
     enquiryFieldsLabel: "यह भी पूछें",
     enquiryFieldsAlways: "नाम, फ़ोन या ईमेल, और प्रश्न हमेशा पूछे जाते हैं।",
+    enquiryRetentionOffice: "हर प्रश्न बंद होने या आख़िरी उत्तर के 180 दिन बाद तक रखा जाता है, फिर मिटा दिया जाता है।",
     fieldGrade: "किस कक्षा के बारे में",
     fieldEmail: "ईमेल पता",
     fieldVisit: "क्या वे विद्यालय देखने आना चाहेंगे",
@@ -19119,6 +19121,7 @@ export const hi: Dictionary = {
     cardBody: "मानक उत्तर, बिना उत्तर के सवाल और मूल्यांकन रन।",
     cardOpen: "खोलें",
     cardStandard: "{count} मानक उत्तर, {served} बार दिए गए",
+    cardStandardOne: "1 मानक उत्तर, {served} बार दिया गया",
     cardGaps: "पिछले तीस दिन: {questions} सवालों में से {refused} मना किए और {discarded} हटाए गए",
     cardEval: "पिछला मूल्यांकन रन: {state}, {when}",
     cardEvalGateHolds: "पिछला मूल्यांकन रन: {state}, {when}; मना करने का द्वार टिका रहा",
@@ -19239,6 +19242,7 @@ export const hi: Dictionary = {
       EMPTY: "खाली उत्तर",
       HINT_TOO_LONG: "बहुत लंबा संकेत",
       EXAM_YES_NO: "परीक्षा के बारे में हाँ या नहीं",
+      FIGURE: "रिकॉर्ड में न होने वाला आँकड़ा",
     },
   },
   viduraReview: {

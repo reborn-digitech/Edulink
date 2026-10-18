@@ -57,6 +57,9 @@ export function templateProblem(template: string, host: string): "TEMPLATE" | nu
   return url.protocol === "https:" && url.hostname === host && !url.username && !url.password && !url.port ? null : "TEMPLATE";
 }
 
+/** A NIOS course's own name used as a running head: "Secondary Course …", "Senior Secondary Course … (318)". */
+const COURSE_HEAD = /^\s*(?:senior\s+)?secondary\s+course\b/i;
+
 /**
  * The topic a link searches for: the cited passage's own heading — a Wikipedia article's title, else the book's
  * chapter, else its section — without its number ("Chapter 3:", "4.2", "Lesson 11."), at most eight words. Null when
@@ -65,6 +68,10 @@ export function templateProblem(template: string, host: string): "TEMPLATE" | nu
 export function topicOf(c: { chapter: string | null; section: string | null; attributionTitle?: string | null }): string | null {
   for (const raw of [c.attributionTitle ?? null, c.chapter, c.section]) {
     if (!raw) continue;
+    // A NIOS book's running head is its course ("Senior Secondary Course ECONOMICS (318)"), which the chunker reads as
+    // the chapter: a search for it finds nothing on NPTEL or SWAYAM, so the section is the topic there (the loose-ends
+    // walk of 18 Oct 2026 met "NPTEL: Senior Secondary Course ECONOMICS (318)" beside a passage headed DEMAND).
+    if (COURSE_HEAD.test(raw)) continue;
     const cleaned = raw
       .replace(/^\s*(chapter|lesson|unit|module|part)\s*[\dIVXLC]+\s*[:.\-–—]?\s*/i, "")
       .replace(/^\s*\d{1,2}(\.\d{1,2}){0,3}\.?\s+/, "")

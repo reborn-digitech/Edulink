@@ -70,6 +70,7 @@ import { askPersonFor } from "./ask-person";
 import { mergeRendered, renderForSearch, type Rendered } from "./render";
 import { aboutCall, aboutName, aboutRow } from "./explain";
 import { summariseDoor } from "./summary";
+import { figureSet, unsupportedFigures, type FigureSet } from "./figures";
 import { featuresOf } from "../api-catalog/types";
 import { formatDateKey } from "../dates";
 import { suggestionsFor } from "./suggestions";
@@ -948,6 +949,8 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   let windowUnserved = false;
   /** Pass 4: the numbers of the passages from a law book or article (a law source's links only beside those). */
   let lawPassages = new Set<number>();
+  /** F-1 (18 Oct 2026): the figures the doors' data carries, which a "My records" answer may state, and no others. */
+  let recordFigures: FigureSet | null = null;
   if (gate.mode === "TUTOR") {
     const found = await books();
     const curriculum: CurriculumHit[] = keepClose(found.found);
@@ -992,6 +995,8 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     const read = runs.filter((r) => r.ok && r.data);
     windowUnserved = !aboutData && read.length > 0 && read.every((r) => r.window === "UNSERVED");
     allowedText += `\n${data.map((d) => d.json).join("\n")}`;
+    // The rows as the doors returned them and the summaries' own totals (code's), normalised once into a set.
+    recordFigures = data.length ? figureSet([...data.map((d) => d.json), ...data.map((d) => d.child ?? "")], runs.filter((r) => r.ok).map((r) => r.raw)) : null;
     rowLinks = runs.flatMap((r) => r.links);
     // Each <data> block is numbered too, after the rows: the model cites what it read, and a block's number is a
     // real thing retrieved (the gate's rule), shown as no source of its own (the mark is taken out of the text).
@@ -1043,6 +1048,16 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
   // Restricted Markdown (Vidura's decision 6): narrowed to headings, lists, bold and tables BEFORE the check, so the
   // gate reads exactly what is shown (a Markdown link to a host keeps its words; the host goes, as any link would).
   content = restrictAnswerMarkdown(content);
+  // F-1 (18 Oct 2026): a "My records" answer states only figures its data carries — every amount, date and count —
+  // checked by code before the classifier is asked; one that states another is discarded, and the person is told the
+  // records could not answer it, with where to see them and "Ask a person".
+  if (chip === "RECORDS" && recordFigures && unsupportedFigures(content, recordFigures, a.original).length) {
+    discardLog("RECORDS", ["FIGURE"]);
+    return {
+      ...fixed("ANSWER_DISCARDED", { mode: gate.mode, promptTokens: tokens.prompt, completionTokens: tokens.completion, modelCalls, scope: chip, reasons: ["FIGURE"] }),
+      text: composeAnswer({ body: translator(language)("assistantService.recordsFigure"), language, examScope: false, window: null, seePage: a.continuation ? null : seePage }),
+    };
+  }
   // Every number a passage or a numbered row of the person's own data carries may be cited, and nothing else.
   const citable = new Set([...citationsByNumber.map((c) => c.n), ...rowLinks.map((l) => l.n), ...blockNumbers]);
   const checked = await gateAnswer({ answer: content, label: gate.label, passageCount: Math.max(0, ...citable), allowedText, lexicon: a.lexicon, hint, alsoLabel: exams ? "PLATFORM" : undefined, role: asker.role }, { chat: deps.classify ?? deps.chat });

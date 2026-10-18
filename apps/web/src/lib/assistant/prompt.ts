@@ -265,7 +265,7 @@ export const DATA_RULES = [
   "Never quote a post or a message at length: say what it is about in a few words, its date and who posted it by role.",
   "Never write an address, a phone number or a link.",
   // Vidura pass 2 (17 Oct 2026): the window of days.
-  "A <data> line \"asked about: …\" names the days the question asks about (\"next week, Monday 19 October 2026 to Sunday 25 October 2026\"): answer for those days only, from the rows that fall in them and the line that counts them (\"in next week, …: 3 rows\"); when the line says the record cannot be narrowed to those days, say what it holds without claiming it is for those days.",
+  "A <data> line \"asked about: …\" names the days the question asks about (\"next week, Monday 19 October 2026 to Sunday 25 October 2026\"): answer for those days only, from the rows that fall in them, the line that counts them (\"in next week, …: 3 rows\") and the totals made for them (\"total outstanding in rupees in this term: ₹0\"); when a line says nothing is due in them, say that nothing is due for those days; when the line says the record cannot be narrowed to those days, say what it holds without claiming it is for those days.",
 ];
 
 export function helpMessages(input: HelpPromptInput): ChatMessage[] {

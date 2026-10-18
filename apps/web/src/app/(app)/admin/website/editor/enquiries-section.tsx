@@ -49,7 +49,8 @@ export function EnquiriesSection({ inbox, when }: { inbox: { enquiries: SiteEnqu
             ))}
           </ul>
         )}
-        <p className="text-xs text-fg-muted">{t("siteWeb.enquiryRetention")}</p>
+        {/* The office's own sentence: the site's "We keep your question…" is the enquirer's (loose ends, 18 Oct 2026). */}
+        <p className="text-xs text-fg-muted">{t("siteEditor.enquiryRetentionOffice")}</p>
       </CardBody>
     </Card>
   );

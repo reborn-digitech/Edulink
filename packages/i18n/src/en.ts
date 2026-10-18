@@ -17557,6 +17557,8 @@ export const en = {
     refuseNotTeacher: "Only a teacher of this assignment's class can change Vidura's rule for it.",
     windowNotServedDay: "Your records here are not kept by date, so this cannot be narrowed to {day}; this is what they hold now.",
     windowNotServedSpan: "Your records here are not kept by date, so this cannot be narrowed to {from} – {to}; this is what they hold now.",
+    // F-1 (18 Oct 2026): a "My records" answer stated a figure its data did not hold, and was discarded.
+    recordsFigure: "I could not answer that from your records.",
   },
   // The college family pages and the transfer gaps (family-gaps builder, 10 Oct 2026): DS-1 to DS-3, R-68.
   familyGaps: {
@@ -19070,6 +19072,7 @@ export const en = {
     enquiryFormIntro: "A form on the Admissions and Contact pages. The enquiries arrive in the inbox here.",
     enquiryFieldsLabel: "Ask also for",
     enquiryFieldsAlways: "The name, a phone or email, and the question are always asked.",
+    enquiryRetentionOffice: "Each question is kept for 180 days after it is closed or last answered, and then deleted.",
     fieldGrade: "The class asked about",
     fieldEmail: "An email address",
     fieldVisit: "Whether they would like to visit",
@@ -19591,6 +19594,7 @@ export const en = {
     cardBody: "Standard answers, unanswered questions and evaluation runs.",
     cardOpen: "Open",
     cardStandard: "{count} standard answers, served {served} times",
+    cardStandardOne: "1 standard answer, served {served} times",
     cardGaps: "Last thirty days: {refused} refused and {discarded} discarded of {questions} questions",
     cardEval: "Last evaluation run: {state}, {when}",
     cardEvalGateHolds: "Last evaluation run: {state}, {when}; the refusal gate held",
@@ -19711,6 +19715,7 @@ export const en = {
       EMPTY: "An empty answer",
       HINT_TOO_LONG: "A hint too long",
       EXAM_YES_NO: "Yes or no about an exam",
+      FIGURE: "A figure not in the records",
     },
   },
   viduraReview: {

@@ -203,7 +203,8 @@ function RunScores({ job }: { job: ViduraEvalJob }) {
               </tbody>
             </table>
           </TableScroll>
-        ) : (
+        ) : isActive(job) ? null : (
+          // Only once the run has ended: while it runs, the live line above says how far it is (loose ends, 18 Oct 2026).
           <p className="text-sm text-fg-muted">{t("viduraOps.noScores")}</p>
         )}
       </CardBody>

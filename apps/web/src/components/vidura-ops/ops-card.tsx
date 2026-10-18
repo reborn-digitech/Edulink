@@ -33,7 +33,7 @@ export async function ViduraOpsCard({ session }: { session: ActiveContext }) {
         <ul className="space-y-1 text-sm text-fg-muted">
           <li>
             <Link className="underline" href="/root/vidura-answers">
-              {t("viduraOps.cardStandard", { count: answers.standard.length, served: answers.servedTotal })}
+              {t(answers.standard.length === 1 ? "viduraOps.cardStandardOne" : "viduraOps.cardStandard", { count: answers.standard.length, served: answers.servedTotal })}
             </Link>
           </li>
           <li>

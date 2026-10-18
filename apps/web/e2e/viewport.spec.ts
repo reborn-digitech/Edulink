@@ -55,27 +55,32 @@ for (const { name, actor, path } of PAGES) {
       for (const locale of ["en", "hi"] as const) {
         test(`${name} · ${vpName} · ${theme} · ${locale}`, async ({ browser, baseURL }, testInfo) => {
           await preferLocale(actor.email, locale);
-          const context = await contextFor(browser, actor.cookie, { viewport, theme, locale }, baseURL!);
-          const page = await context.newPage();
-          const response = await page.goto(path(), { waitUntil: "networkidle" });
-          expect(response?.status()).toBe(200);
+          // Put back in a finally (loose ends, 18 Oct 2026): a cell that failed its screenshot left the admin and the
+          // e2e teacher reading Hindi everywhere after the run, and the page sweep then read Hindi on their pages.
+          try {
+            const context = await contextFor(browser, actor.cookie, { viewport, theme, locale }, baseURL!);
+            const page = await context.newPage();
+            const response = await page.goto(path(), { waitUntil: "networkidle" });
+            expect(response?.status()).toBe(200);
 
-          expect(await overflow(page), "the page scrolls sideways").toBeLessThanOrEqual(0);
+            expect(await overflow(page), "the page scrolls sideways").toBeLessThanOrEqual(0);
 
-          const small = await smallTargets(page);
-          expect(small, "interactive elements under 44px").toEqual([]);
+            const small = await smallTargets(page);
+            expect(small, "interactive elements under 44px").toEqual([]);
 
-          // The register shows the school calendar's word on the day — a
-          // holiday's warning, a Sunday's, an exam or event — above the class.
-          // The baselines are of a day with none (run 36909003458 met Gandhi
-          // Jayanti's banner and five per cent of the picture moved), so such a
-          // day is compared under its own name where a baseline for it exists,
-          // and said so where none does; the two checks above ran either way.
-          const notice = name === "register" ? await page.getByTestId("register-day-notice").getAttribute("data-kind", { timeout: 1_000 }).catch(() => null) : null;
-          if (notice) await screenshotWhereBaselined(page, `${name}-${vpName}-${theme}-${locale}-${notice}.png`, testInfo);
-          else await expect(page).toHaveScreenshot(`${name}-${vpName}-${theme}-${locale}.png`, { fullPage: false });
-          await context.close();
-          await preferLocale(actor.email, "en");
+            // The register shows the school calendar's word on the day — a
+            // holiday's warning, a Sunday's, an exam or event — above the class.
+            // The baselines are of a day with none (run 36909003458 met Gandhi
+            // Jayanti's banner and five per cent of the picture moved), so such a
+            // day is compared under its own name where a baseline for it exists,
+            // and said so where none does; the two checks above ran either way.
+            const notice = name === "register" ? await page.getByTestId("register-day-notice").getAttribute("data-kind", { timeout: 1_000 }).catch(() => null) : null;
+            if (notice) await screenshotWhereBaselined(page, `${name}-${vpName}-${theme}-${locale}-${notice}.png`, testInfo);
+            else await expect(page).toHaveScreenshot(`${name}-${vpName}-${theme}-${locale}.png`, { fullPage: false });
+            await context.close();
+          } finally {
+            await preferLocale(actor.email, "en");
+          }
         });
       }
     }

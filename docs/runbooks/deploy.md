@@ -326,8 +326,22 @@ Terms of use are not linked from the site until the owner provides them; there
 is no placeholder page.
 <!-- end company-site -->
 
+**Passes are not on sale until these are set** (loose ends, 18 Oct 2026). `/account/plan` offers a plan with "Pay"
+only when the gateway is not off and none of the required company details above is missing (`saleOpen` in
+`src/lib/pass-orders.ts`): the tax invoice must be able to name its seller. Without them every offer reads
+NOT_ON_SALE, for every role, with no other sign on the person's page, which is how the development server stood on
+18 October (no `COMPANY_*` set): the checkout panel could not be opened there. Set the company's secrets before
+making a plan active, and check `/account/plan` as a teacher once after.
+
 ## Open items before the first real school
 
+- **Raw SQL and the clock** (loose ends, 18 Oct 2026; settled the same day). Migration `20261018062120_vidura_references`
+  stamped its five rows with `CURRENT_TIMESTAMP`, which a `timestamp without time zone` column takes as the session's
+  wall time; the database's zone is Asia/Kolkata here and on Fly, so the sources showed as added five and a half hours
+  ahead. Migration `20261018134500_reference_source_seed_clock` moves any seeded row dated more than an hour after its
+  seed migration's own `finished_at` back to UTC, so a database that seeded in UTC is untouched. The rule that stays:
+  Prisma writes UTC, and every raw SQL insert into a Prisma `DateTime` writes `now() AT TIME ZONE 'utc'`, and every
+  policy or query that compares one reads `now() AT TIME ZONE 'utc'` (see the review-link policy of 16 Oct).
 - **Cloudflare in front**, with the rate limits in `rate-limit.ts` as the
   second line, not the first. Proxied only with `TRUST_CLOUDFLARE=1` set on
   Fly, or every caller behind one Cloudflare edge shares one login limit; the

@@ -20,7 +20,7 @@ export async function generateMetadata() {
 }
 
 /** The reason codes the report names in words; another code is shown as it is (it is a code, not a sentence). */
-const REASONS = ["NOTHING_FOUND", "CLASSIFIER", "SCOPE", "CITATION", "FOREIGN_PAGE", "CATEGORY", "INJECTION", "LINK", "EMAIL", "PHONE", "ADDRESS", "PLACEHOLDER", "NAME", "EMPTY", "HINT_TOO_LONG", "EXAM_YES_NO"] as const;
+const REASONS = ["NOTHING_FOUND", "CLASSIFIER", "SCOPE", "CITATION", "FOREIGN_PAGE", "CATEGORY", "INJECTION", "LINK", "EMAIL", "PHONE", "ADDRESS", "PLACEHOLDER", "NAME", "EMPTY", "HINT_TOO_LONG", "EXAM_YES_NO", "FIGURE"] as const;
 
 /**
  * THE UNANSWERED-QUESTIONS REPORT (Vidura pass 3, 18 Oct 2026): the last thirty days of refusals and discards by mode,

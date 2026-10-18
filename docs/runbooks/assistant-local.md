@@ -621,3 +621,40 @@ and scored for the answer (answered, keywords, cited) and its sources (a cited p
 accepts — the stream's articles or a book that genuinely teaches the topic — and every cited Wikipedia passage
 carrying its attribution). On 18 October 2026: 27/90 before the sources were ingested, 72/90 after in the full run of
 the ten sets (70/90 when run alone).
+
+## 13. What the loose-ends walk of 18 October 2026 taught
+
+- **Walking Vidura in a browser without a password.** Mint a session for a ZZ person (`npm run zz:token -- --tag=walk
+  TEACHER zz.teacher1@zz.test`; `STUDENT zz.cstudent02@zz.test` is an adult college student by a recorded date of
+  birth, the one a reference link is shown to) and carry it as the `edulink_session` cookie: Playwright's
+  `context.addCookies` (as `e2e/actors.ts` does), or, in a signed-out tab on `localhost:3000`, `document.cookie =
+  "edulink_session=<token>; path=/"` (no httpOnly cookie of that name exists yet on a signed-out tab, and the
+  development server reads the plain name). `npm run zz:token -- --purge --tag=walk` ends them. A walk that runs
+  beside the API sweep loses what it wrote at a fixture school: the sweep's clean-up deletes every row the fixture
+  schools gained during its run (a review link made on 18 October went that way).
+- **Restart the development server after a change under `src/lib/assistant/`.** Turbopack went on serving the old
+  `references.ts` after the topic rule below changed; the tests prove the rule, the live drawer shows it after a
+  restart.
+- **A reference link's topic** is the cited passage's Wikipedia title, else its chapter, else its section. A NIOS
+  book's running head is its course ("Senior Secondary Course ECONOMICS (318)", 7,066 of 144,824 chunks), which the
+  chunker files as the chapter; such a chapter is now passed over for the section (`topicOf`), so the links beside a
+  passage headed DEMAND search for "DEMAND", not for the course.
+- **A My records answer about a window of days can state a figure no door gave.** Asked "How much fee is still due for
+  my child this term?", the ZZ guardian was told ₹16,000 twice; the fee door holds ₹12,500 outstanding (Term 2, due
+  15 December, outside the school's Term 1 that "this term" names), and the same question without "this term" was
+  answered ₹12,500 with "Where to see it: /parent/fees". The answer check (`answerProblems` in `strip.ts`) looks for
+  links, contacts, addresses and names, not figures. Until a figure check exists, put window questions with money in
+  the metrics set and read their answers.
+- **The evaluation panel's Start and Stop were pressed** on `/root/vidura-evals`: three refusal cases, 3 of 3 and "the
+  refusal gate held"; thirty help cases stopped after sixteen, kept as 14 of 16 with the run marked Stopped. While a run
+  is going, its row in "Runs and their scores" no longer says the run ended before a set was scored.
+- **A standard answer** marked on `/root/vidura-answers` as a teacher's "How do I mark today's attendance for my
+  class?" was served in the drawer with "Checked answer" in three seconds, and the desk counted the serving.
+- **The guide's renderings want a speaker before they are trusted**: a spot read of the accounts guide found "How do I
+  follow a refund outside the slab?" rendered as "how do I check a bank account", "run the payroll" as "run the
+  payment", "Outstanding" as "excellent" (उत्कृष्ट), "Defaulters" as "low attendance", and Vidura made feminine and
+  spelled विदूरा. Unreviewed renderings are searched and offered as Hindi suggestions at once (pass 2's decision).
+- **The development server restarts its worker by itself** ("Server is approaching the used memory threshold,
+  restarting…"; once in the six chunks of 18 October, at 16:14, an hour into the run); the chunk it fell in still
+  finished with nothing unexpected. `/api/health`'s `uptimeSeconds` is the worker's, so a small number there after a
+  long run is this, not a stop.
