@@ -7,7 +7,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
 import { requireUser } from "@/lib/tenancy";
 import { FEATURE_META } from "@/lib/feature-meta";
-import { planForCard, PLAN_NAME_KEY, PLAN_WHO_KEY } from "@/lib/person-plans";
+import { planForCard, PLAN_NAME_KEY, PLAN_WHO_KEY, PLAN_ZONE, planLastDay } from "@/lib/person-plans";
 import { myPassOrders, passOverview } from "@/lib/pass-orders";
 import { formatInZone } from "@/lib/dates";
 import { getLocale, getT } from "@/lib/i18n/server";
@@ -36,9 +36,9 @@ export default async function YourPlanPage({ searchParams }: { searchParams: Pro
   const overview = await passOverview(ctx);
   const orders = await myPassOrders(ctx);
   const cards = await Promise.all(PERSON_PLANS.map((code) => planForCard(code)));
-  const day = (iso: string | Date) => formatInZone(new Date(iso), "Asia/Kolkata", { dateStyle: "medium" }, locale);
-  // A window's end is an instant; the last day held is the day before it when it ends at midnight.
-  const lastDay = (iso: string) => day(new Date(new Date(iso).getTime() - 1));
+  const day = (iso: string | Date) => formatInZone(new Date(iso), PLAN_ZONE, { dateStyle: "medium" }, locale);
+  // A window's end is an instant; the last day held is the day before it when it ends at midnight (the account page's reading too).
+  const lastDay = (iso: string) => day(planLastDay(iso));
   const money = (paise: number) => formatPaise(paise, locale, { always: true });
   const highlighted = (o: PassOffer) => (params.child ? o.holder.studentMembershipId === params.child : asked.success && asked.data === o.plan);
 

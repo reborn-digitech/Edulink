@@ -9,6 +9,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Button } from "@/components/ui/button";
 import { Card, CardBody } from "@/components/ui/card";
 import { getT } from "@/lib/i18n/server";
+import { ViduraOpsNav } from "@/components/vidura-ops/ops-nav";
 import { RenderingCard } from "./review-card";
 
 /**
@@ -37,6 +38,8 @@ export async function ViduraReviewPage({ session, base, searchParams }: { sessio
   return (
     <div className="space-y-5">
       <PageHeader title={t("viduraReview.title")} description={list.mayReview ? t("viduraReview.intro") : t("viduraReview.introReadOnly")} />
+      {/* F-12 (18 Oct 2026): the operator's copy carries the strip of Vidura's desks the other operator pages share; the app admin's does not (those desks are the operator's). */}
+      {base === "/root/vidura-review" ? <ViduraOpsNav current="/root/vidura-review" t={t} /> : null}
       <Card>
         <CardBody className="flex flex-wrap items-center justify-between gap-3 text-sm text-fg-muted">
           <span>{t("viduraReview.quizDesk")}</span>

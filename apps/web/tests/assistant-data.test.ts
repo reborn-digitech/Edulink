@@ -429,7 +429,9 @@ describe("the service with a fake model", () => {
     const f = fakeDeps("There is a circular to acknowledge: Annual day, posted on 22 September 2026 [2].");
     const out = await previewAnswer({ role: "PARENT", question: "is there a circular I have to acknowledge", toolRuns: [feedRun] }, f.deps);
     expect(out.verdict).toBe("ANSWERED");
-    expect(out.citations).toEqual([{ kind: "LINK", n: 2, title: "Circular from your school, 22 Sept 2026", pagePath: "/bulletin/post-ack", rowId: "post-ack" }]);
+    // F-13 (18 Oct 2026): the prompt's row [2] is the answer's only source, so it is shown as [1], mark and source alike.
+    expect(out.citations).toEqual([{ kind: "LINK", n: 1, title: "Circular from your school, 22 Sept 2026", pagePath: "/bulletin/post-ack", rowId: "post-ack" }]);
+    expect(out.text).toContain("22 September 2026 [1].");
     expect(out.text).not.toMatch(/https?:|\/bulletin\/post-ack/);
     expect(f.prompts[0]).toContain(DATA_RULES[0]);
     expect(f.prompts[0]).toContain("- [2] ");

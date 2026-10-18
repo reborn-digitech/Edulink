@@ -9237,6 +9237,7 @@ export const en = {
     calendarTitle: "Payment calendar",
     calendarIntro: "Every due date this year, with the reminders you will get.",
     calendarEmpty: "No dates yet. Once {name} is on a plan, the instalments appear here.",
+    calendarTotal: "The year's instalments and other dues come to {amount} in all; a reminder repeats its due and is not added again.",
     calendarReminder: "Reminder",
     calendarInstalment: "Instalment",
     calendarDue: "Due",

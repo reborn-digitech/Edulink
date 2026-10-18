@@ -8781,6 +8781,7 @@ export const mr: Dictionary = {
     calendarTitle: "पेमेंट कॅलेंडर",
     calendarIntro: "या वर्षीची प्रत्येक देय तारीख, तुम्हाला मिळणाऱ्या स्मरणपत्रांसह.",
     calendarEmpty: "अजून कोणतीही तारीख नाही. {name} एखाद्या योजनेवर आल्यावर हप्ते इथे दिसतील.",
+    calendarTotal: "या वर्षाचे हप्ते आणि इतर देय रकमा मिळून {amount} आहेत; स्मरणपत्र त्याच्या देय रकमेची पुनरावृत्ती करते आणि ती पुन्हा जोडली जात नाही.",
     calendarReminder: "स्मरण",
     calendarInstalment: "हप्ता",
     calendarDue: "देय",

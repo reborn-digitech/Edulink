@@ -24506,6 +24506,9 @@
                         ],
                         "additionalProperties": false
                       }
+                    },
+                    "totalPaise": {
+                      "$ref": "#/properties/rows/items/properties/amount"
                     }
                   },
                   "required": [

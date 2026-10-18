@@ -30,7 +30,7 @@ import { BIRTHDAY_ZONE } from "./adulthood";
 import { familyChildren } from "./family-child";
 import { companyDetails, financialYearOf, type CompanyDetails, type InvoiceParty } from "./gig-payments";
 import { createPassOrderAtGateway, GigGatewayError, platformAccount, refundSeat, transport, verifySeatCheckout } from "./gig-gateway";
-import { activePlans, grantPassFromOrder, myPlans, PLAN_NAME_KEY, PLAN_TABLE, planForCard, planHeldUntil, passWindows, restorePassEntitlements, revokePassEntitlements, windowsEndingBetween } from "./person-plans";
+import { activePlans, grantPassFromOrder, myPlans, PLAN_NAME_KEY, PLAN_TABLE, planForCard, planHeldUntil, planLastDay, passWindows, restorePassEntitlements, revokePassEntitlements, windowsEndingBetween } from "./person-plans";
 import type { ActiveContext } from "./session";
 
 /**
@@ -443,7 +443,7 @@ export async function markPassPaid(input: { orderId: string; gatewayPaymentId: s
   if (!settled) return { outcome: "already", order: (await viewsOf([after]))[0]! };
   await audit({ schoolId: null, actorUserId: o.payerUserId, action: "pass.order.paid", targetType: "PassOrder", targetId: o.id, meta: { plan: o.planCode, period: o.period, holderUserId: o.userId, totalPaise: o.totalPaise, gatewayPaymentId: input.gatewayPaymentId, validFrom: settled.window.validFrom.toISOString(), validTo: settled.window.validTo.toISOString(), invoiceNumber: settled.invoice?.number ?? null } });
   const plan = o.planCode as PlanCode;
-  const until = noticeDate(dateKeyInZone(settled.window.validTo, ZONE), "plain");
+  const until = noticeDate(dateKeyInZone(planLastDay(settled.window.validTo), ZONE), "plain");
   await tell(o.userId, { titleKey: PAID_KEY[plan], titleVars: { date: until }, url: "/account/plan", meta: { passOrderId: o.id } });
   if (o.payerUserId !== o.userId) {
     const holder = await db.user.findUnique({ where: { id: o.userId }, select: { name: true, preferredName: true } });

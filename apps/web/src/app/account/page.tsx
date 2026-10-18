@@ -36,7 +36,7 @@ import { LanguageForm } from "./language-form";
 import { EmailForm } from "./email-form";
 import { MobileForm } from "./mobile-form";
 import { DeviceList } from "./device-list";
-import { myPlans, PLAN_NAME_KEY } from "@/lib/person-plans"; // plans (16 Oct 2026)
+import { myPlans, PLAN_NAME_KEY, PLAN_ZONE, planLastDay } from "@/lib/person-plans"; // plans (16 Oct 2026)
 import { TotpCard } from "./totp-card";
 import { twoFactorStatus } from "@/lib/two-factor";
 import { ROLE_META, type Role } from "@/lib/constants";
@@ -98,7 +98,7 @@ export default async function AccountPage({
   // plans (16 Oct 2026): "Your plan" — each plan sold per person this account holds now, and the day it runs to.
   const held = await myPlans(session.user.id);
   const planLine = held.length
-    ? held.map((h) => t("plans.yourPlanUntil", { name: t(PLAN_NAME_KEY[h.plan]), date: formatInZone(h.validTo, "Asia/Kolkata", { dateStyle: "medium" }, prefs.locale ?? "en") })).join(" · ")
+    ? held.map((h) => t("plans.yourPlanUntil", { name: t(PLAN_NAME_KEY[h.plan]), date: formatInZone(planLastDay(h.validTo), PLAN_ZONE, { dateStyle: "medium" }, prefs.locale ?? "en") })).join(" · ")
     : t("plans.yourPlanNone");
 
   return (

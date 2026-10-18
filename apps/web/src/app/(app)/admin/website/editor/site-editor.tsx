@@ -316,7 +316,11 @@ export function SiteEditor(props: EditorProps) {
         </p>
       ) : null}
 
-      <div className="grid gap-4 lg:grid-cols-[15rem_minmax(0,1fr)] xl:grid-cols-[15rem_minmax(0,1fr)_minmax(0,1.1fr)]">
+      {/* F-11 (18 Oct 2026): the columns follow the editor's own width, not the window's, so a docked Vidura drawer cannot
+          squeeze them: three only when the form keeps 30rem (480 px) and the preview gives way first (at 1280 px: 240, 480,
+          224); below that the rail and the form, the preview under them; one column on a phone. */}
+      <div className="@container">
+        <div className="grid gap-4 @min-[44rem]:grid-cols-[15rem_minmax(0,1fr)] @min-[60rem]:grid-cols-[15rem_minmax(30rem,1fr)_minmax(0,1.1fr)]" data-testid="site-editor-grid">
         {/* The rail */}
         <nav aria-label={t("siteEditor.railLabel")} className="space-y-4">
           <RailGroup title={t("siteEditor.railSite")}>
@@ -368,12 +372,12 @@ export function SiteEditor(props: EditorProps) {
         </nav>
 
         {/* The chosen part */}
-        <div className="min-w-0 space-y-4" onBlurCapture={onBlurCapture}>
+        <div className="min-w-0 space-y-4" onBlurCapture={onBlurCapture} data-testid="site-editor-form">
           {body}
         </div>
 
         {/* The preview */}
-        <section aria-label={t("website.previewTitle")} className="min-w-0 space-y-2 lg:col-span-2 xl:col-span-1">
+        <section aria-label={t("website.previewTitle")} className="min-w-0 space-y-2 @min-[44rem]:col-span-2 @min-[60rem]:col-span-1" data-testid="site-editor-preview">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div role="group" aria-label={t("website.previewWidth")} className="flex gap-1">
               {(["phone", "tablet", "desktop"] as const).map((w) => (
@@ -399,6 +403,7 @@ export function SiteEditor(props: EditorProps) {
             <iframe title={t("website.previewFrameTitle")} srcDoc={html} sandbox="allow-same-origin" className={cn("mx-auto block h-[75vh] w-full rounded-[var(--radius-sm)] border border-border bg-white", WIDTH_CLASS[width])} />
           </div>
         </section>
+        </div>
       </div>
     </div>
   );

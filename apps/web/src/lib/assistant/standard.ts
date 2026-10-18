@@ -11,6 +11,7 @@ import { helpKind } from "./prompt";
 import { previewAnswer, realDeps, type AssistantDeps } from "./service";
 import { detectLanguage } from "./language";
 import { citationsOf, questionKey } from "./standard-store";
+import { guideSection } from "../assistant-retrieval";
 
 export { questionKey, findStandardAnswer, countStandardHit } from "./standard-store";
 
@@ -120,7 +121,10 @@ export async function tryStandardAnswer(ctx: ActiveContext, input: ViduraAnswerT
   await db.cachedAnswer.deleteMany({ where: { checkedAt: null, revokedAt: null, createdAt: { lt: staleBefore(now) } } });
   const question = input.question.trim();
   const language = input.language ?? detectLanguage(question) ?? "en";
-  const out = await previewAnswer({ role: input.role as Role, question, language }, { ...deps, standardAnswer: undefined });
+  // F-14 (18 Oct 2026): the answer kept and served to many is written from the guide's whole sections, each step in its
+  // place, not from a lone step the index cut out of its list (which came back as "Pick the class: Chips at the top
+  // switch between …", a label its sentence does not explain, placed after a step it comes before).
+  const out = await previewAnswer({ role: input.role as Role, question, language }, { ...deps, standardAnswer: undefined, helpSection: deps.helpSection ?? ((hit) => guideSection(hit, { db })) });
   const row = await db.cachedAnswer.create({
     data: {
       role: input.role,

@@ -188,7 +188,16 @@ export function buildCalendar(input: { instalments: { id: string; label: string;
   return rows.sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : order[a.kind] - order[b.kind]));
 }
 
-export type FamilyCalendar = { student: { studentMembershipId: string; name: string }; year: { id: string; name: string } | null; todayKey: string; rows: CalendarRow[] };
+/**
+ * The year's total, each due once (18 Oct 2026): the instalments and the other dues. A reminder row repeats what its due
+ * still owes on the day it will be sent, so adding the rows as they stand counted a due once more for every reminder
+ * (₹77,500 for ZZ Northgate's ₹27,500, Term 2 counted five times). Pure.
+ */
+export function calendarTotalPaise(rows: readonly CalendarRow[]): number {
+  return rows.reduce((sum, r) => sum + (r.kind === "REMINDER" ? 0 : r.amount), 0);
+}
+
+export type FamilyCalendar = { student: { studentMembershipId: string; name: string }; year: { id: string; name: string } | null; todayKey: string; rows: CalendarRow[]; totalPaise: number };
 
 export async function paymentCalendar(ctx: ActiveContext, studentMembershipId?: string | null): Promise<FamilyCalendar> {
   const { link } = await childOf(ctx, studentMembershipId);
@@ -197,7 +206,7 @@ export async function paymentCalendar(ctx: ActiveContext, studentMembershipId?: 
   const today = todayKey(link.student.school.timezone);
   return forSchool(schoolId, async () => {
     const year = await currentAcademicYear(schoolId);
-    if (!year) return { student, year: null, todayKey: today, rows: [] };
+    if (!year) return { student, year: null, todayKey: today, rows: [], totalPaise: 0 };
     const [plan, demands] = await Promise.all([
       db.studentFeePlan.findUnique({ where: { studentMembershipId_academicYearId: { studentMembershipId: student.studentMembershipId, academicYearId: year.id } }, select: { structure: { select: { instalments: { orderBy: { sortOrder: "asc" }, include: { lines: { select: { amountPaise: true } } } } } } } }),
       db.feeDemand.findMany({ where: { schoolId, studentMembershipId: student.studentMembershipId, academicYearId: year.id }, orderBy: [{ dueDate: "asc" }, { createdAt: "asc" }] }),
@@ -208,7 +217,7 @@ export async function paymentCalendar(ctx: ActiveContext, studentMembershipId?: 
       demandInstalment: new Map(demands.map((d) => [d.id, d.instalmentId])),
       today,
     });
-    return { student, year: { id: year.id, name: year.name }, todayKey: today, rows };
+    return { student, year: { id: year.id, name: year.name }, todayKey: today, rows, totalPaise: calendarTotalPaise(rows) };
   });
 }
 

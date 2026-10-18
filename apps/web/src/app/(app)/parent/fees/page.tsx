@@ -207,6 +207,11 @@ export default async function ParentFeesPage({ searchParams }: { searchParams: P
                     ))}
                   </ol>
                 )}
+                {calendar.rows.length > 0 && (
+                  <p className="border-t border-border px-5 py-3 text-sm text-fg" data-testid="fees-calendar-total">
+                    {t("fees.calendarTotal", { amount: money(calendar.totalPaise) })}
+                  </p>
+                )}
               </CardBody>
             </Card>
           )}

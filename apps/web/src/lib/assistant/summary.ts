@@ -219,6 +219,16 @@ const PAISE_FIELDS: Record<string, readonly string[]> = {
   "/api/v1/fees/overview": ["current", "d30", "d90", "d90plus"],
 };
 
+/**
+ * Rows that repeat another row's amount, left out of the code-made totals (18 Oct 2026): the payment calendar's
+ * reminders each carry what their due still owes on the day they are sent, so summing every row counted a due once
+ * more per reminder (₹77,500 for ZZ Northgate's ₹27,500). The rows themselves are still shown and counted as rows.
+ * fees-family.ts calendarTotalPaise is the same rule for the door's own total.
+ */
+const REPEAT_ROWS: Record<string, (row: Obj) => boolean> = {
+  "/api/v1/family/fees/calendar": (row) => row.kind === "REMINDER",
+};
+
 function withPaiseNames(value: unknown, keys: readonly string[], depth = 0): unknown {
   if (depth > 6) return value;
   if (Array.isArray(value)) return value.map((v) => withPaiseNames(v, keys, depth + 1));
@@ -285,7 +295,9 @@ function arrayLines(rows: unknown[], path: string, out: Line[], opts: WalkOpts, 
     }
   }
   const paiseKeys = [...new Set(objs.flatMap((r) => Object.keys(r).filter((k) => /[Pp]aise$/.test(k) && typeof r[k] === "number")))];
-  for (const k of paiseKeys) facts.push(`total ${field(k, 0)![0]}: ${rupees(objs.reduce((s, r) => s + (typeof r[k] === "number" ? (r[k] as number) : 0), 0))}`);
+  const repeat = REPEAT_ROWS[opts.door];
+  const counted = repeat ? objs.filter((r) => !repeat(r)) : objs;
+  for (const k of paiseKeys) facts.push(`total ${field(k, 0)![0]}: ${rupees(counted.reduce((s, r) => s + (typeof r[k] === "number" ? (r[k] as number) : 0), 0))}`);
   const dateKeys = [...new Set(objs.flatMap((r) => Object.keys(r).filter((k) => typeof r[k] === "string" && (ISO_INSTANT.test(r[k] as string) || ISO_DAY.test(r[k] as string)))))];
   for (const k of dateKeys.slice(0, 2)) {
     const values = objs.map((r) => r[k]).filter((v): v is string => typeof v === "string").sort();
@@ -300,8 +312,9 @@ function arrayLines(rows: unknown[], path: string, out: Line[], opts: WalkOpts, 
     // a window in which the rows show nothing due said so in a fixed sentence ("this term" of a paid Term 1 was
     // answered ₹16,000 while the fee door's total, for every term, was ₹12,500).
     const short = words.split(",")[0]!;
-    for (const k of paiseKeys) facts.push(`total ${field(k, 0)![0]} in ${short}: ${rupees(inside.reduce((s, r) => s + (typeof r[k] === "number" ? (r[k] as number) : 0), 0))}`);
-    if (paiseKeys.length && isDues(objs) && !inside.some(owes)) facts.push(windowNothingDue(short));
+    const insideCounted = repeat ? inside.filter((r) => !repeat(r)) : inside;
+    for (const k of paiseKeys) facts.push(`total ${field(k, 0)![0]} in ${short}: ${rupees(insideCounted.reduce((s, r) => s + (typeof r[k] === "number" ? (r[k] as number) : 0), 0))}`);
+    if (paiseKeys.length && isDues(objs) && !insideCounted.some(owes)) facts.push(windowNothingDue(short));
   }
   out.push({ text: `${path}: ${facts.join("; ")}`, row: false });
 

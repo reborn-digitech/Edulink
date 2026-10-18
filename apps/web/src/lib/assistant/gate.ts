@@ -136,6 +136,26 @@ export function citedNumbers(answer: string): number[] {
 }
 
 /**
+ * F-13 (18 Oct 2026): THE MARKS AND THE SOURCES RUN 1, 2, 3. The prompt numbers every passage and row; the answer cites
+ * some of them ([1], [4], [5]) and a cited row may still be dropped from the sources (another role's page, a link the
+ * role may not compose). The marks whose source is kept are renumbered in the order they first appear, the sources
+ * list given the same numbers and that order, and a mark whose source was dropped goes with it — so the shown answer
+ * never skips a number nor points at nothing. Pure; generic over the citation shape, which keeps its other fields.
+ */
+export function renumberCitations<C extends { n: number }>(body: string, kept: readonly C[], opts: { keepNumbers?: boolean } = {}): { body: string; citations: C[] } {
+  const byN = new Map(kept.map((c) => [c.n, c]));
+  const next = new Map<number, number>();
+  // keepNumbers: a part "Go on" may continue keeps the prompt's numbers, which the continuation's prompt numbers the same way; only its orphan marks go.
+  for (const n of citedNumbers(body)) if (byN.has(n) && !next.has(n)) next.set(n, opts.keepNumbers ? n : next.size + 1);
+  const text = body.replace(/(\s?)\[(\d{1,2})\]/g, (_mark, space: string, raw: string) => {
+    const to = next.get(Number(raw));
+    return to === undefined ? "" : `${space}[${to}]`;
+  });
+  const citations = [...next.entries()].map(([from, to]) => ({ ...byN.get(from)!, n: to }));
+  return { body: text, citations };
+}
+
+/**
  * Everything after the answer. `passageCount` is how many passages the prompt numbered; `allowedText`
  * the passages' own text (a name the book prints is the book's); `label` the question's scope.
  */

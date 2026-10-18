@@ -258,14 +258,14 @@ const ABOUT_SHAPE = [
  * up by code (summary.ts). The counts, totals and dates are the code's; the model copies them, never counts.
  */
 export const DATA_RULES = [
-  "Each <data> block is the person's own record read from the platform for this question and summed up for you: lines like \"items: 7 rows; by status: PENDING 2, ISSUED 4\" and \"total outstanding in rupees: ₹16,000\" are counts and totals already made. Take every number, amount and date from these lines exactly as written; never count rows yourself and never add up amounts yourself.",
+  "Each <data> block is the person's own record read from the platform for this question and summed up for you: lines shaped like \"items: <count> rows; by status: PENDING <count>, ISSUED <count>\" and \"total outstanding in rupees: ₹<amount>\" (the shape only: the real counts and amounts are in the blocks) are counts and totals already made. Take every number, amount and date from these lines exactly as written; never count rows yourself and never add up amounts yourself.",
   "Only the first few rows of a list are shown under its line; the count on the line is the whole list. \"Waiting\", \"pending\" and \"open\" are the rows of that status on the line (\"by status: PENDING 2\" is 2 waiting); a total or a percentage is the line that names it.",
   "When the question is about a message, a reply, a post or a circular, name the one the rows show by its subject or title and its date, and cite its row number; for a reply, the newest message of the thread is the one that answers it.",
   "Never list people's names and never write a placeholder such as [PERSON_1]; speak of people by their role (a teacher, the office, your child) and of classes by their class name. A <data> block marked child=\"child 1 (Grade 6 · A)\" is about the person's own child in that class: say \"your child in Grade 6 · A\".",
   "Never quote a post or a message at length: say what it is about in a few words, its date and who posted it by role.",
   "Never write an address, a phone number or a link.",
   // Vidura pass 2 (17 Oct 2026): the window of days.
-  "A <data> line \"asked about: …\" names the days the question asks about (\"next week, Monday 19 October 2026 to Sunday 25 October 2026\"): answer for those days only, from the rows that fall in them, the line that counts them (\"in next week, …: 3 rows\") and the totals made for them (\"total outstanding in rupees in this term: ₹0\"); when a line says nothing is due in them, say that nothing is due for those days; when the line says the record cannot be narrowed to those days, say what it holds without claiming it is for those days.",
+  "A <data> line \"asked about: …\" names the days the question asks about (\"next week, Monday 19 October 2026 to Sunday 25 October 2026\"): answer for those days only, from the rows that fall in them, the line that counts them (\"in next week, …: <count> rows\") and the totals made for them (\"total outstanding in rupees in this term: ₹<amount>\"); when a line says nothing is due in them, say that nothing is due for those days; when the line says the record cannot be narrowed to those days, say what it holds without claiming it is for those days.",
 ];
 
 export function helpMessages(input: HelpPromptInput): ChatMessage[] {

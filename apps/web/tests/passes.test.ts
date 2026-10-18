@@ -20,7 +20,8 @@ import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { PLAN_FEATURES, PLATFORM_FEATURES, passOverviewSchema, passOrderSchema } from "@edulink/contracts";
 import { setFeaturesForTests, mayUse } from "@/lib/platform-features";
-import { planLockFor, setActivePlansForTests } from "@/lib/person-plans";
+import { myPlans, planLastDay, planLockFor, PLAN_ZONE, setActivePlansForTests } from "@/lib/person-plans";
+import { dateKeyInZone } from "@/lib/dates";
 import {
   askGuardianForPass,
   confirmPassCheckout,
@@ -284,6 +285,19 @@ describe("renewal, numbering and the invoice", () => {
     const rows = await rowsOf(second.order.id);
     expect(rows.every((r) => r.validFrom.getTime() >= end.getTime())).toBe(true);
     expect(second.order.validFrom).toBe(rows.reduce((a, r) => (r.validFrom > a ? r.validFrom : a), new Date(0)).toISOString());
+  });
+
+  it("F-10: the holder's own plan line and the guardian's 'Held until' are one date, a paid month to come included", async () => {
+    // The minor already holds a month bought by the guardian above; the guardian buys the next one now.
+    const next = await paidPass(guardian(), { plan: "STUDENT", period: "MONTH", studentMembershipId: member.minor });
+    const end = new Date(next.order.validTo!);
+    const own = (await passOverview(minor())).held.find((h) => h.plan === "STUDENT");
+    const offer = (await passOverview(guardian())).offers.find((o) => o.holder.userId === id.minor);
+    expect(own?.validTo).toBe(end.toISOString());
+    expect(offer?.holdsUntil).toBe(end.toISOString());
+    expect((await myPlans(id.minor!)).find((h) => h.plan === "STUDENT")?.validTo.toISOString()).toBe(end.toISOString());
+    // The day shown is the last day held, in India: the day before an end at Indian midnight.
+    expect(dateKeyInZone(planLastDay(new Date("2027-11-15T18:30:00.000Z")), PLAN_ZONE)).toBe("2027-11-15");
   });
 
   it("numbers every invoice in its own PASS series without a gap, and renders the PDF", async () => {

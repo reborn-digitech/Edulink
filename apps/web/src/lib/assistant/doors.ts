@@ -209,6 +209,18 @@ export const FOLLOW: Record<string, { from: DoorPath; rows: (raw: unknown) => { 
   },
 };
 
+/**
+ * THE LEDGER BESIDE THE FEE SCHEDULE (18 Oct 2026, the figure pass's open item): a question naming a window ("this
+ * term", "next month") ranks the guardian's fee plans and payment calendar — the schedule, every instalment by its
+ * date — above the fee door, which is the ledger: what each term's demand still owes. Whenever a schedule door is a
+ * candidate for such a question, the ledger door is read too, first, so an amount still due comes from the ledger.
+ * A door relation like FOLLOW, not a keyword table: the schedule doors are found by the same similarity as before.
+ */
+export const LEDGER_FOR: Record<string, DoorPath> = {
+  "/api/v1/family/fees/plans": "/api/v1/fees/family",
+  "/api/v1/family/fees/calendar": "/api/v1/fees/family",
+};
+
 /** At most this many of a listing's rows are opened for one question (a pupil's cards: this year's and last year's). */
 export const FOLLOW_MAX = 3;
 

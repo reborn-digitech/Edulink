@@ -367,6 +367,23 @@ export async function searchHelp(q: HelpQuery, ctx: RetrievalContext): Promise<H
 }
 
 /**
+ * F-14 (18 Oct 2026): A GUIDE PASSAGE'S WHOLE SECTION. The index keeps each numbered step of a guide as its own entry
+ * (scripts/help-index.ts, "one step, one entry") under the section's title; this reads the section's entries back in
+ * the order they were written (the ids are made in file order), rejected renderings left out and edited ones read in
+ * their new words, as searchHelp reads them. Null for anything but a guide entry, or a section of one entry.
+ */
+export async function guideSection(hit: Pick<HelpHit, "kind" | "title" | "sourceFile" | "language">, ctx: Pick<RetrievalContext, "db">): Promise<{ key: string; text: string } | null> {
+  if (hit.kind !== "doc") return null;
+  const rows = await ctx.db.$queryRaw<{ text: string }[]>`
+    SELECT COALESCE(r."text", h."text") AS "text" ${HELP_FROM}
+     WHERE h."kind" = 'doc' AND h."sourceFile" = ${hit.sourceFile} AND h."title" = ${hit.title} AND h."language" = ${hit.language} ${NOT_REJECTED}
+     ORDER BY h."id"
+     LIMIT 40`;
+  if (rows.length < 2) return null;
+  return { key: `${hit.sourceFile}|${hit.language}|${hit.title}`, text: rows.map((r) => r.text.trim()).join("\n") };
+}
+
+/**
  * THE HELP INDEX'S ENTRIES FOR ONE PAGE, no search (Vidura pass 1, 17 Oct 2026: page awareness and the suggested
  * questions): the entries naming `page` — its page cards first — for the role (or every role) in the language asked,
  * English beside it. Each carries a similarity of null: it was found by its page, not by closeness.

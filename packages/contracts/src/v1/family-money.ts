@@ -63,6 +63,8 @@ export const familyFeeCalendarSchema = z.object({
   year: yearRef,
   todayKey: dateKey,
   rows: z.array(familyFeeCalendarRowSchema),
+  /** The year's instalments and other dues, each once; the reminder rows repeat a due's amount and are not counted (18 Oct 2026). Absent from a server before then. */
+  totalPaise: paise.optional(),
 });
 export type FamilyFeeCalendar = z.infer<typeof familyFeeCalendarSchema>;
 

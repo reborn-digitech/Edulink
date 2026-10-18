@@ -8,7 +8,7 @@ import { HEAVY_READ_BUDGET } from "../api-v1";
 import type { Role } from "../constants";
 import type { HelpHit, HelpQuery } from "../assistant-retrieval";
 import { DATA_MAX_CHARS, DOOR_THRESHOLD, FOLLOW_UP_TTL_MS, MAX_DOORS_PER_QUESTION, TOOL_ANSWER_MAX_CHARS } from "./config";
-import { FOLLOW, FOLLOW_MAX, callsFor, readableDoor, type DataContext, type DoorCall, type DoorPath, type QuestionHints } from "./doors";
+import { FOLLOW, FOLLOW_MAX, LEDGER_FOR, callsFor, readableDoor, type DataContext, type DoorCall, type DoorPath, type QuestionHints } from "./doors";
 import { DOOR_LOADERS, type DoorHandler } from "./door-loaders";
 import { carriesDays, summariseDoor, numberedRowsIn, rowWords, type RowLink } from "./summary";
 import { windowWords } from "./when";
@@ -118,6 +118,8 @@ export function chooseDoors(input: { hits: Pick<HelpHit, "door" | "similarity">[
   const ranked = input.hits
     .filter((h) => h.door?.startsWith("GET ") && (h.similarity ?? 0) >= DOOR_THRESHOLD[input.language])
     .sort((a, b) => (b.similarity ?? 0) - (a.similarity ?? 0));
+  // A question naming a window about the fee schedule (LEDGER_FOR): the ledger first, whatever its rank among the doors.
+  if (input.hints.term !== null || input.hints.window) for (const h of ranked) if (LEDGER_FOR[h.door!.slice(4)]) add(LEDGER_FOR[h.door!.slice(4)]!, h.similarity ?? 0, false);
   // A question naming a class, a year or a term about a listing the person can open row by row (their report
   // cards): the rows themselves are read (FOLLOW), first, since the listing carries no marks by subject.
   if (named) for (const [door, f] of Object.entries(FOLLOW)) if (ranked.some((h) => h.door === `GET ${f.from}` || h.door === `GET ${door}`)) add(door, 1, false);

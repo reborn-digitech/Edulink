@@ -56,7 +56,7 @@ import {
   monthlyTokenBudget,
 } from "./config";
 import { corpusBoardFor, gradeBandOf, policyFor } from "./policy";
-import { citedNumbers, gateAnswer, gateQuestion, tableVerdict } from "./gate";
+import { citedNumbers, gateAnswer, gateQuestion, renumberCitations, tableVerdict } from "./gate";
 import { answerProblems, stripIdentifiers, restoreSelf, type NameEntry } from "./strip";
 import { withoutInjectedLines } from "./refusals";
 import { NCERT_NOTE, answerKindFor, onPageNote, pageNameNote, helpKind, helpMessages, questionShape, tutorMessages, asksExamScope } from "./prompt";
@@ -144,7 +144,33 @@ export type AssistantDeps = {
    * answer. Absent, no link is offered.
    */
   referenceSources?: () => Promise<ReferenceSourceRow[]>;
+  /**
+   * F-14 (18 Oct 2026): THE GUIDE'S WHOLE SECTION for a guide passage (standard.ts guideSection). The help index keeps
+   * each numbered step of a guide as an entry of its own with its number dropped, so a lone step ("Pick the class.
+   * Chips at the top switch between …") reached the model without its order or its neighbours and was written up under
+   * a label it does not explain. Given (the operator's trial of a standard answer, the one answer kept and served to
+   * many), a guide passage is replaced by its section's entries in order, and a second passage of the same section is
+   * left out. Absent (every other answer), the passages are the index's entries as before.
+   */
+  helpSection?: (hit: HelpHit) => Promise<{ key: string; text: string } | null>;
 };
+
+/** F-14: each guide passage as its whole section (deps.helpSection), a section given once, in the hits' order. */
+export async function wholeSections(hits: HelpHit[], section: NonNullable<AssistantDeps["helpSection"]>): Promise<HelpHit[]> {
+  const seen = new Set<string>();
+  const out: HelpHit[] = [];
+  for (const h of hits) {
+    const whole = h.kind === "doc" ? await section(h) : null;
+    if (!whole) {
+      out.push(h);
+      continue;
+    }
+    if (seen.has(whole.key)) continue;
+    seen.add(whole.key);
+    out.push({ ...h, text: whole.text });
+  }
+  return out;
+}
 
 /** The model is not configured or not reachable: the answer is MODEL_UNAVAILABLE and nothing is charged. */
 class ModelUnavailable extends Error {}
@@ -974,8 +1000,9 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     }
     messages = tutorMessages({ question: a.stripped, language, band, shape: questionShape(a.original), passages, hint, boardNote, laterClass, exams, continuation: a.continuation });
   } else {
-    const passages = help.slice(0, HELP_PASSAGES).map((h, i) => ({ n: i + 1, heading: `${h.title}${h.pagePath ? ` — page ${h.pagePath}` : ""}`, text: withoutInjectedLines(stripIdentifiers(h.text.slice(0, 1200), a.lexicon).text) }));
-    citationsByNumber = help.slice(0, HELP_PASSAGES).map((h, i) => ({ kind: "HELP", n: i + 1, title: h.title, pagePath: h.pagePath, entryId: h.entryId }));
+    const shownHelp = deps.helpSection ? await wholeSections(help.slice(0, HELP_PASSAGES), deps.helpSection) : help;
+    const passages = shownHelp.slice(0, HELP_PASSAGES).map((h, i) => ({ n: i + 1, heading: `${h.title}${h.pagePath ? ` — page ${h.pagePath}` : ""}`, text: withoutInjectedLines(stripIdentifiers(h.text.slice(0, deps.helpSection ? 2400 : 1200), a.lexicon).text) }));
+    citationsByNumber = shownHelp.slice(0, HELP_PASSAGES).map((h, i) => ({ kind: "HELP", n: i + 1, title: h.title, pagePath: h.pagePath, entryId: h.entryId }));
     allowedText = passages.map((p) => `${p.heading}\n${p.text}`).join("\n");
     // The person's own doors, read as the person (router.ts); their rows numbered after the passages.
     // "Using Shalaghar" picked by the person (Vidura pass 1): the guides only, the person's own data not read.
@@ -1103,6 +1130,10 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
       references = referenceLinks({ role: asker.role, college, adult: a.adult === true, topic, law: lawPassages.has(first.n), sources: await deps.referenceSources().catch(() => []) });
     }
   }
+  // F-13: the marks and the sources list renumbered together (1, 2, 3 in the order cited), a mark whose row was dropped
+  // from the sources removed; an answer stopped at its cap keeps the prompt's numbers for "Go on".
+  const shown = renumberCitations(body, [...citationsByNumber.filter((c) => cited.has(c.n)), ...(gate.mode === "HELP" ? linkCitations(rowLinks, cited, asker.role, language) : [])], { keepNumbers: result.finishReason === "length" });
+  body = shown.body;
   return {
     verdict: hint ? "HINT" : "ANSWERED",
     // The platform's sentence as a paragraph of its own, so the answer's first heading still starts a line; pass 2 adds
@@ -1119,7 +1150,7 @@ async function answerQuestion(a: AnswerInput): Promise<Outcome> {
     // Stopped at its cap: "Go on" continues it (the length rule's no-uncapped-answers half).
     cut: result.finishReason === "length",
     hint,
-    citations: [...citationsByNumber.filter((c) => cited.has(c.n)), ...(gate.mode === "HELP" ? linkCitations(rowLinks, cited, asker.role, language) : [])],
+    citations: shown.citations,
     matchedAssignmentId,
     promptTokens: tokens.prompt + pre.tokens,
     completionTokens: tokens.completion,

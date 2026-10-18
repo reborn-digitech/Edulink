@@ -153,19 +153,31 @@ export async function planForCard(code: PlanCode): Promise<{ code: PlanCode; pri
   return { code, pricePaise: row?.pricePaise ?? 0, yearlyPricePaise: row?.yearlyPricePaise ?? 0, features: row ? featuresOfRow(row) : [...PLAN_FEATURES[code]] };
 }
 
-/** The account page's "Your plan": each plan the person holds now, with the day it runs to (the latest window). */
+/**
+ * The account page's "Your plan": each plan the person holds now, with the day it runs to. F-10 (18 Oct 2026): the end
+ * is planHeldUntil's — the latest unrevoked window still running, a pass already paid for that starts when the current
+ * window ends included — so the holder's own line and the guardian's "Held until" (passOverview's holdsUntil) are one
+ * reading; it used to stop at the first window's end and showed a month less than the guardian saw.
+ */
 export async function myPlans(userId: string, now: Date = new Date()): Promise<{ plan: PlanCode; validTo: Date }[]> {
   const rows = await db.entitlement.findMany({
     where: { userId, revokedAt: null, validFrom: { lte: now }, validTo: { gt: now }, planCode: { not: null } },
-    select: { planCode: true, validTo: true },
+    select: { planCode: true },
   });
-  const latest = new Map<PlanCode, Date>();
-  for (const r of rows) {
-    if (!r.planCode || !isPlan(r.planCode)) continue;
-    const was = latest.get(r.planCode);
-    if (!was || r.validTo > was) latest.set(r.planCode, r.validTo);
+  const heldNow = new Set(rows.flatMap((r) => (r.planCode && isPlan(r.planCode) ? [r.planCode] : [])));
+  const out: { plan: PlanCode; validTo: Date }[] = [];
+  for (const plan of PERSON_PLANS) {
+    if (!heldNow.has(plan)) continue;
+    const until = await planHeldUntil(userId, plan, now);
+    if (until) out.push({ plan, validTo: until });
   }
-  return PERSON_PLANS.filter((p) => latest.has(p)).map((plan) => ({ plan, validTo: latest.get(plan)! }));
+  return out;
+}
+
+/** A plan window's end is an instant (midnight after its last day, or the moment it was bought); the day shown is the last day held, in India. */
+export const PLAN_ZONE = "Asia/Kolkata";
+export function planLastDay(validTo: Date | string): Date {
+  return new Date(new Date(validTo).getTime() - 1);
 }
 
 /* -------------------------------------------------------------------------- */

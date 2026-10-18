@@ -8787,6 +8787,7 @@ export const hi: Dictionary = {
     calendarTitle: "भुगतान कैलेंडर",
     calendarIntro: "इस वर्ष की हर देय तिथि, उन स्मरण-सूचनाओं के साथ जो आपको मिलेंगी।",
     calendarEmpty: "अभी कोई तिथि नहीं। {name} के किसी योजना पर आते ही किस्तें यहाँ दिखेंगी।",
+    calendarTotal: "इस वर्ष की किस्तें और अन्य देय राशियाँ कुल {amount} हैं; स्मरण-सूचना अपनी देय राशि दोहराती है और दोबारा नहीं जोड़ी जाती।",
     calendarReminder: "स्मरण",
     calendarInstalment: "किस्त",
     calendarDue: "देय",
