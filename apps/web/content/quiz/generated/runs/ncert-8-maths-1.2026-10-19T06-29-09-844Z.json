@@ -1,0 +1,696 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T06:29:09.844Z",
+  "finishedAt": "2026-10-19T06:38:12.617Z",
+  "seconds": 543,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash Part-I",
+    "bookCode": "hegp1",
+    "document": "ncert/8/mathematics/hegp101.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — A Square and a Cube",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2026-27]\n9. (D) 5 Total outcomes = 96 1\n48 Perfect square numbers – 4, 9, 16, 25, 36, 49, 64, 81\nperfect cubes are 8, 27, 64,\ncommon number is 64\nNumber of favourable outcomes = 10\n10 5\nP(either a perfect square or a perfect cube) = 96 = 48",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2026-27]\n11. (B) 160 cm 2 Side of cube = 4 cm 1\nDimensions of resulting cuboid: length = 8 cm, breadth = 4 cm, height\n= 4 cm.\nTotal surface area = 2 (8 × 4 + 4 × 4 + 8 × 4) = 160 cm 2",
+      "[PRMO 2017 — question paper]\n12. In a class, the total numbers of boys and girls are in the ratio 4 : 3. On one day it\nwas found that 8 boys and 14 girls were absent from the class, and that the number of\nboys was the square of the number of girls. What is the total number of students in the\nclass?",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 135865,
+      "in": 39,
+      "out": 37,
+      "rejects": 2,
+      "promptTokens": 36861,
+      "completionTokens": 7606
+    },
+    "critique": {
+      "calls": 55,
+      "ms": 382738,
+      "in": 37,
+      "out": 27,
+      "rejects": 10,
+      "promptTokens": 24207,
+      "completionTokens": 9952
+    },
+    "solver": {
+      "calls": 265,
+      "ms": 166509,
+      "in": 27,
+      "out": 22,
+      "rejects": 5,
+      "promptTokens": 64598,
+      "completionTokens": 3309
+    },
+    "form": {
+      "calls": 10,
+      "ms": 37805,
+      "in": 22,
+      "out": 17,
+      "rejects": 5,
+      "promptTokens": 2470,
+      "completionTokens": 883
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 3090,
+      "in": 17,
+      "out": 16,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 65,
+      "ms": 432564,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 32255,
+      "completionTokens": 13078
+    }
+  },
+  "kept": 16,
+  "keptByLevel": {
+    "1": 3,
+    "2": 4,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 7,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Which of the following numbers is not a perfect square based on the units digit?",
+      "ms": {
+        "draft": 3162,
+        "critique": 6884
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a locker is toggled exactly 4 times, which of the following numbers could be the locker number?",
+      "ms": {
+        "draft": 3162,
+        "critique": 7451
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Khoisnam is asked to find the code which consists of the first five locker numbers that were touched exactly twice. Which of the following is the correct code?",
+      "ms": {
+        "draft": 3162,
+        "critique": 6803,
+        "solver": 1164
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers is a perfect square?",
+      "ms": {
+        "draft": 3162,
+        "critique": 7874,
+        "solver": 12363,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a perfect square?",
+      "ms": {
+        "draft": 3162,
+        "critique": 8297
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following numbers have the digit 6 in the units place?",
+      "ms": {
+        "draft": 4227,
+        "critique": 6537,
+        "solver": 11943,
+        "form": 3844
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Using the prime factorisation method, is 1156 a perfect square?",
+      "ms": {
+        "draft": 4227,
+        "critique": 8368
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What do you notice about the number of zeros at the end of a number and the number of zeros at the end of its square?",
+      "ms": {
+        "draft": 4227,
+        "critique": 5156
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following numbers is a perfect square?",
+      "ms": {
+        "draft": 2691,
+        "critique": 5816,
+        "solver": 18332
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the smallest square number that is divisible by 4, 9, and 10?",
+      "ms": {
+        "draft": 3824,
+        "critique": 6569
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many numbers lie between the squares of 16 and 17?",
+      "ms": {
+        "draft": 3824,
+        "critique": 6179
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the cube root of 10648?",
+      "ms": {
+        "draft": 3824,
+        "critique": 8281
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A number is a perfect square and also a perfect cube. What is the smallest such number?",
+      "ms": {
+        "draft": 3824,
+        "critique": 7370
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the smallest number by which 9408 must be multiplied to make it a perfect square?",
+      "ms": {
+        "draft": 3148,
+        "critique": 7243,
+        "solver": 17785
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many numbers lie between the squares of 16 and 17?",
+      "ms": {
+        "draft": 3148,
+        "critique": 8977
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the total surface area of a cuboid formed by joining two cubes of side 4 cm?",
+      "ms": {
+        "draft": 3148,
+        "critique": 7212,
+        "solver": 1709
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number is a perfect cube, which of the following must be true?",
+      "ms": {
+        "draft": 4154,
+        "critique": 7904,
+        "solver": 1285,
+        "form": 3953
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that the term 'mula' was used in ancient India to denote the mathematical concept of a root. How does this relate to the concept of square and cube roots?",
+      "ms": {
+        "draft": 4154,
+        "critique": 8331,
+        "solver": 1101,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage states that the differences between consecutive perfect cubes, when calculated successively, eventually become the same. What does this indicate?",
+      "ms": {
+        "draft": 4154,
+        "critique": 6420,
+        "solver": 17112,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A number is said to be a perfect cube if its prime factors can be grouped into three identical sets. If the prime factorisation of a number is 2^6 × 3^3, what is the cube root of the number?",
+      "ms": {
+        "draft": 4154,
+        "critique": 8635,
+        "solver": 15926
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following numbers is a perfect cube?",
+      "ms": {
+        "draft": 4587,
+        "critique": 5757,
+        "solver": 1740,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the square root of 441?",
+      "ms": {
+        "draft": 3148,
+        "critique": 6454,
+        "solver": 17422,
+        "form": 4024,
+        "translation": 24129
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following numbers is a perfect cube?",
+      "ms": {
+        "draft": 2691,
+        "critique": 7062,
+        "solver": 16682,
+        "form": 0,
+        "translation": 20921
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the square of 12?",
+      "ms": {
+        "draft": 2691,
+        "critique": 7759,
+        "solver": 20572,
+        "form": 0,
+        "translation": 17942
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements is true about the prime factorisation of a cube number?",
+      "ms": {
+        "draft": 4154,
+        "critique": 8615,
+        "solver": 11144,
+        "form": 3082,
+        "translation": 34666
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about perfect cubes?",
+      "ms": {
+        "draft": 4154,
+        "critique": 6816,
+        "solver": 1646,
+        "form": 3916,
+        "translation": 27862
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers is the smallest square number divisible by 4, 9, and 10?",
+      "ms": {
+        "draft": 3148,
+        "critique": 6641,
+        "solver": 14696,
+        "form": 3139,
+        "translation": 27733
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the square root of 256?",
+      "ms": {
+        "draft": 2691,
+        "critique": 6902,
+        "solver": 15963,
+        "form": 0,
+        "translation": 20480
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the cube root of 216?",
+      "ms": {
+        "draft": 16200,
+        "critique": 6189,
+        "solver": 15920,
+        "form": 0,
+        "translation": 19335
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number contains 3 zeros at the end, how many zeros will its square have at the end?",
+      "ms": {
+        "draft": 4227,
+        "critique": 7620,
+        "solver": 10923,
+        "form": 4960,
+        "translation": 34554
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the prime factorisation of a number is 2³ × 3³, what is the number?",
+      "ms": {
+        "draft": 16200,
+        "critique": 6089,
+        "solver": 1615,
+        "form": 0,
+        "translation": 20549
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the square root of 64?",
+      "ms": {
+        "draft": 4227,
+        "critique": 9055,
+        "solver": 11405,
+        "form": 3231,
+        "translation": 22847
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A number is a perfect cube. Its prime factorisation has 3 factors of 2 and 3 factors of 3. What is the number?",
+      "ms": {
+        "draft": 16200,
+        "critique": 5734,
+        "solver": 1731,
+        "form": 0,
+        "translation": 27487
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If 35 = 1225, what is 36?",
+      "ms": {
+        "draft": 4227,
+        "critique": 7887,
+        "solver": 10729,
+        "form": 7289,
+        "translation": 27907
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a locker number is a perfect square, which of the following is true about its factors?",
+      "ms": {
+        "draft": 3162,
+        "critique": 6723,
+        "solver": 14699,
+        "form": 0,
+        "translation": 45205
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a number is a perfect cube and ends with the digit 8, what can be said about the number?",
+      "ms": {
+        "draft": 16200,
+        "critique": 5896,
+        "solver": 1063,
+        "form": 0,
+        "translation": 35168
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the cube root of 1331?",
+      "ms": {
+        "draft": 3148,
+        "critique": 6360,
+        "solver": 15286,
+        "form": 3053,
+        "translation": 21810
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the cube of 5?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is the cube root of 64?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following numbers is not a perfect square based on the units digit?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a locker is toggled exactly 4 times, which of the following numbers could be the locker number?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Khoisnam is asked to find the code which consists of the first five locker numbers that were touched exactly twice. Which of the following is the correct code?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following numbers is a perfect square?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a perfect square?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following numbers have the digit 6 in the units place?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Using the prime factorisation method, is 1156 a perfect square?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What do you notice about the number of zeros at the end of a number and the number of zeros at the end of its square?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following numbers is a perfect square?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the smallest square number that is divisible by 4, 9, and 10?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "How many numbers lie between the squares of 16 and 17?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the cube root of 10648?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A number is a perfect square and also a perfect cube. What is the smallest such number?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound; option 0 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the smallest number by which 9408 must be multiplied to make it a perfect square?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How many numbers lie between the squares of 16 and 17?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the total surface area of a cuboid formed by joining two cubes of side 4 cm?",
+      "reason": "the solver picked option 1 3 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a number is a perfect cube, which of the following must be true?",
+      "reason": "options 0 and 1 say the same thing (\"Its prime factors can be divided into two identical groups\" / \"Its prime factors can be divided into three identical groups\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that the term 'mula' was used in ancient India to denote the mathematical concept of a root. How does this relate to the concept of square and cube roots?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage states that the differences between consecutive perfect cubes, when calculated successively, eventually become the same. What does this indicate?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A number is said to be a perfect cube if its prime factors can be grouped into three identical sets. If the prime factorisation of a number is 2^6 × 3^3, what is the cube root of the number?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following numbers is a perfect cube?",
+      "reason": "near-duplicate of batch item \"Which of the following numbers is a perfect cube?…\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

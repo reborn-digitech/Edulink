@@ -1,0 +1,681 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T04:34:37.401Z",
+  "finishedAt": "2026-10-19T04:44:16.285Z",
+  "seconds": 579,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "gecu1",
+    "document": "ncert/7/science/gecu102.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 2 — Exploring Substances: Acidic, Basic, and Neutral",
+    "edition": "Reprint 2026-27",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2022-23]\n6. Anita added a drop each of diluted acetic acid and diluted hydrochloric acid on pH paper 1\nand compared the colors. Which of the following is the correct conclusion?\n(a) pH of acetic acid is more than that of hydrochloric acid.\n(b) pH of acetic acid is less than that of hydrochloric acid.\n(c) Acetic acid dissociates completely in aqueous solution.\n(d) Acetic acid is a strong acid",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n4. An aqueous solution ‘A’ turns the phenolphthalein solution pink. On addition of\nan aqueous solution ‘B’ to ‘A’, the pink colour disappears. Which of the following 1\nstatement is true for the solutions ‘A’ and ‘B’.\nA. A is strongly basic and B is a weak base.\nB. A is strongly acidic and B is a weak acid.\nC. A has a pH greater than 7 and B has a pH less than 7.\nD. A has a pH less than 7 and B has a pH greater than 7.",
+      "[INJSO 2016 — question paper]\n21. Anand wanted to prepare a salt solution of pH 1.0. For that he used solutions of a\nstrong monovalent base and acid. He tried different combinations to obtain the\nrequired solution. Can you help him to decide which one is the most correct\ncombination of statements given below?\nI. 100ml of (M/10) acid and 100ml of (M/10) alkali.\nII. 55ml of (M/10) acid and 45ml of (M/10) alkali.\nIII. 10ml of (M/10) acid and 90ml of (M/10) alkali.\nIV. 75ml of (M/5) acid and 25ml of (M/5) alkali\na) I and III b) II and IV\nc) Only II d) Only IV",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n21. Which of the following substances when dissolved in equal volume of water,\nwill have the highest pH value? 1\nA. Sulphuric acid\nB. Acetic acid\nC. Magnesium hydroxide\nD. Sodium hydroxide"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 137459,
+      "in": 36,
+      "out": 35,
+      "rejects": 1,
+      "promptTokens": 30969,
+      "completionTokens": 7630
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 331218,
+      "in": 35,
+      "out": 28,
+      "rejects": 7,
+      "promptTokens": 22974,
+      "completionTokens": 9146
+    },
+    "solver": {
+      "calls": 249,
+      "ms": 140148,
+      "in": 28,
+      "out": 24,
+      "rejects": 4,
+      "promptTokens": 46703,
+      "completionTokens": 2673
+    },
+    "form": {
+      "calls": 10,
+      "ms": 27211,
+      "in": 24,
+      "out": 13,
+      "rejects": 11,
+      "promptTokens": 2362,
+      "completionTokens": 656
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 14,
+      "ms": 1984,
+      "in": 13,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 51,
+      "ms": 463132,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 28035,
+      "completionTokens": 13828
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following statements is correct about substances that turn red litmus paper blue?",
+      "ms": {
+        "draft": 3109,
+        "critique": 6609,
+        "solver": 11647,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a neutral substance according to the passage?",
+      "ms": {
+        "draft": 3109,
+        "critique": 6610,
+        "solver": 12633
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is most likely to be a basic substance?",
+      "ms": {
+        "draft": 3109,
+        "critique": 6468,
+        "solver": 1509,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following substances, when dissolved in water, will have the highest pH value?",
+      "ms": {
+        "draft": 3109,
+        "critique": 6185,
+        "solver": 12859,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an experiment, a student uses litmus paper to determine the nature of a sample. The blue litmus paper does not change colour, but the red litmus paper turns blue. What can be concluded about the sample?",
+      "ms": {
+        "draft": 3109,
+        "critique": 6040,
+        "solver": 12114,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In Activity 2.3, what is the purpose of covering the glass tumbler with a lid and waiting for 5–10 minutes?",
+      "ms": {
+        "draft": 5276,
+        "critique": 6236,
+        "solver": 2520
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements is correct about the red rose extract based on the activity described in the passage?",
+      "ms": {
+        "draft": 5276,
+        "critique": 6789,
+        "solver": 13093,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the observations in Table 2.3, which of the following substances would turn the red rose extract green?",
+      "ms": {
+        "draft": 5276,
+        "critique": 7275,
+        "solver": 13879,
+        "form": 2805
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Solution A turns blue litmus red, solution B turns turmeric red, and solution C turns red rose extract green. What is the nature of solutions A, B, and C?",
+      "ms": {
+        "draft": 3561,
+        "critique": 8182
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A liquid sample turns red litmus blue, blue litmus red, and does not change the colour of turmeric. What is the nature of the liquid?",
+      "ms": {
+        "draft": 3561,
+        "critique": 7465
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A solution turns red litmus paper blue. Which of the following would reverse this change?",
+      "ms": {
+        "draft": 3561,
+        "critique": 6380,
+        "solver": 11590
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Solution A turns blue litmus red, solution B turns turmeric red, and solution C turns red rose extract green. What is the correct sequence for the nature of solutions A, B, and C?",
+      "ms": {
+        "draft": 13521,
+        "critique": 5660,
+        "solver": 2034
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given figures, which of the following correctly labels the nature of the solutions in the containers?",
+      "ms": {
+        "draft": 13521,
+        "critique": 7958
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student tested a solution with red rose extract and found it turned green. The same solution was tested with turmeric and showed no change. What is the nature of the solution?",
+      "ms": {
+        "draft": 13521,
+        "critique": 7376
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A liquid sample was tested using red litmus, blue litmus, and turmeric. Red litmus showed no change, blue litmus turned red, and turmeric showed no change. What is the nature of the liquid?",
+      "ms": {
+        "draft": 13521,
+        "critique": 8047
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "A solution turns the red litmus paper to blue. Which of the following solutions, when added in excess, would reverse this change?",
+      "ms": {
+        "draft": 13521,
+        "critique": 4791,
+        "solver": 15622,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens when an acidic solution is mixed with a basic solution?",
+      "ms": {
+        "draft": 3398,
+        "critique": 8442
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Manya is blindfolded and given two unknown solutions to test. Which indicator should she use, and why?",
+      "ms": {
+        "draft": 13521,
+        "critique": 6931,
+        "solver": 12289,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following would be the best remedy for a person who has been bitten by an ant?",
+      "ms": {
+        "draft": 3398,
+        "critique": 6334
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a neutralisation reaction?",
+      "ms": {
+        "draft": 3398,
+        "critique": 7533,
+        "solver": 12075,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student adds a drop of lemon juice to a test tube and then adds blue litmus solution. What is the most likely colour change observed?",
+      "ms": {
+        "draft": 3398,
+        "critique": 7698,
+        "solver": 11514,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the role of red rose extract in the experiments described in the passage?",
+      "ms": {
+        "draft": 4726,
+        "critique": 3367,
+        "solver": 489,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A farmer finds that the soil in his field is too acidic. What would be the most suitable solution to improve the soil quality?",
+      "ms": {
+        "draft": 3398,
+        "critique": 6443,
+        "solver": 11829,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the extract prepared from red rose petals that can act as an acid-base indicator?",
+      "ms": {
+        "draft": 5276,
+        "critique": 8008,
+        "solver": 11413,
+        "form": 4059,
+        "translation": 43277
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an olfactory indicator?",
+      "ms": {
+        "draft": 11732,
+        "critique": 5923,
+        "solver": 1789,
+        "form": 3197,
+        "translation": 25799
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What happens when an acidic solution is mixed with a basic solution?",
+      "ms": {
+        "draft": 11732,
+        "critique": 5679,
+        "solver": 1140,
+        "form": 2931,
+        "translation": 39727
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of using baking soda to treat an ant bite?",
+      "ms": {
+        "draft": 11732,
+        "critique": 5042,
+        "solver": 1535,
+        "form": 3493,
+        "translation": 37519
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a substance turns blue litmus paper red, what can we conclude about its nature?",
+      "ms": {
+        "draft": 3109,
+        "critique": 6626,
+        "solver": 14216,
+        "form": 0,
+        "translation": 37061
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A farmer finds that his soil is too acidic for plants to grow well. What can he do to improve the soil?",
+      "ms": {
+        "draft": 11732,
+        "critique": 5073,
+        "solver": 1590,
+        "form": 2662,
+        "translation": 66723
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment described, blue litmus solution changes colour when added to lemon juice. What does this indicate?",
+      "ms": {
+        "draft": 11732,
+        "critique": 6026,
+        "solver": 1459,
+        "form": 2802,
+        "translation": 38037
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In a neutralisation reaction, what is the most likely product formed when an acid reacts with a base?",
+      "ms": {
+        "draft": 3398,
+        "critique": 8015,
+        "solver": 12091,
+        "form": 0,
+        "translation": 19044
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a student adds 50 drops of a neutral solution to the red rose extract, what would be the expected colour change?",
+      "ms": {
+        "draft": 5276,
+        "critique": 8164,
+        "solver": 14371,
+        "form": 1466,
+        "translation": 30495
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following substances, when dissolved in water, will have the highest pH value?",
+      "ms": {
+        "draft": 11732,
+        "critique": 5078,
+        "solver": 1799,
+        "form": 4567,
+        "translation": 39270
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A liquid sample turns blue litmus red and does not change the colour of turmeric. What can be concluded about the liquid?",
+      "ms": {
+        "draft": 3561,
+        "critique": 6187,
+        "solver": 1030,
+        "form": 0,
+        "translation": 36802
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a student uses the red rose extract to test two unknown substances and observes that one turns red and the other does not change, which of the following conclusions is most accurate?",
+      "ms": {
+        "draft": 5276,
+        "critique": 8470,
+        "solver": 11830,
+        "form": 3199,
+        "translation": 43798
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which indicator would be most suitable for a blind person to determine if a solution is acidic or basic?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following statements is correct about substances that turn red litmus paper blue?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a neutral substance according to the passage?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is most likely to be a basic substance?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following substances, when dissolved in water, will have the highest pH value?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In an experiment, a student uses litmus paper to determine the nature of a sample. The blue litmus paper does not change colour, but the red litmus paper turns blue. What can be concluded about the sample?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In Activity 2.3, what is the purpose of covering the glass tumbler with a lid and waiting for 5–10 minutes?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following statements is correct about the red rose extract based on the activity described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 3 say the same thing (\"It changes colour in acidic solutions only\" / \"3: It changes colour in acidic solutions only\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the observations in Table 2.3, which of the following substances would turn the red rose extract green?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Solution A turns blue litmus red, solution B turns turmeric red, and solution C turns red rose extract green. What is the nature of solutions A, B, and C?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A liquid sample turns red litmus blue, blue litmus red, and does not change the colour of turmeric. What is the nature of the liquid?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A solution turns red litmus paper blue. Which of the following would reverse this change?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Solution A turns blue litmus red, solution B turns turmeric red, and solution C turns red rose extract green. What is the correct sequence for the nature of solutions A, B, and C?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the given figures, which of the following correctly labels the nature of the solutions in the containers?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A student tested a solution with red rose extract and found it turned green. The same solution was tested with turmeric and showed no change. What is the nature of the solution?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A liquid sample was tested using red litmus, blue litmus, and turmeric. Red litmus showed no change, blue litmus turned red, and turmeric showed no change. What is the nature of the liquid?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "A solution turns the red litmus paper to blue. Which of the following solutions, when added in excess, would reverse this change?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What happens when an acidic solution is mixed with a basic solution?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Manya is blindfolded and given two unknown solutions to test. Which indicator should she use, and why?",
+      "reason": "options 2 and 3 say the same thing (\"Blue litmus, because it changes color in acidic solutions\" / \"Red litmus, because it changes color in acidic solutions\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following would be the best remedy for a person who has been bitten by an ant?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a neutralisation reaction?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student adds a drop of lemon juice to a test tube and then adds blue litmus solution. What is the most likely colour change observed?",
+      "reason": "options 1 and 2 say the same thing (\"Blue to red\" / \"Red to blue\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best describes the role of red rose extract in the experiments described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A farmer finds that the soil in his field is too acidic. What would be the most suitable solution to improve the soil quality?",
+      "reason": "near-duplicate of batch item \"A farmer finds that his soil is too acidic for pla…\" (cosine 0.948 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,794 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T13:26:21.049Z",
+  "finishedAt": "2026-10-19T13:40:12.858Z",
+  "seconds": 832,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu112.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 12 — How Nature Works in Harmony",
+    "edition": "Reprint 2026-27",
+    "chunks": 20,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n20. Assertion: Biodegradable substances result in the formation of compost and natural 1\nreplenishment.\nReason: It is due to breakdown of complex inorganic substances into simple organic\nsubstances.",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n12. About 100 acres of forest land was declared as Natural reserve park. The 2\nfollowing organisms were predominant in the Natural reserve park:\nrabbit, frog, grass, fish, fox, water insects, zebra, peacock, snake, trees, bird,\nowl, insects, tiger, vulture, duck.\nCreate a food web comprising two separate food chains with different\nproducers by using the above data.",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n8. A. Both A and R are true, and R is the correct explanation of A. 1",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n11. C. Posture and balance."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 298873,
+      "in": 41,
+      "out": 41,
+      "rejects": 0,
+      "promptTokens": 39905,
+      "completionTokens": 12337
+    },
+    "critique": {
+      "calls": 60,
+      "ms": 550599,
+      "in": 41,
+      "out": 36,
+      "rejects": 5,
+      "promptTokens": 29931,
+      "completionTokens": 10453
+    },
+    "solver": {
+      "calls": 300,
+      "ms": 226153,
+      "in": 36,
+      "out": 34,
+      "rejects": 2,
+      "promptTokens": 53875,
+      "completionTokens": 3178
+    },
+    "form": {
+      "calls": 10,
+      "ms": 52480,
+      "in": 34,
+      "out": 12,
+      "rejects": 22,
+      "promptTokens": 4443,
+      "completionTokens": 935
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 31,
+      "ms": 5776,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 51,
+      "ms": 708822,
+      "in": 22,
+      "out": 22,
+      "rejects": 1,
+      "promptTokens": 28120,
+      "completionTokens": 13954
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 4,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main purpose of wildlife corridors?",
+      "ms": {
+        "draft": 8378,
+        "critique": 7484,
+        "solver": 17674,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes a food chain?",
+      "ms": {
+        "draft": 8378,
+        "critique": 12143
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, why is biodiversity important in a habitat?",
+      "ms": {
+        "draft": 8378,
+        "critique": 10911,
+        "solver": 1823
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the meaning of 'biotic components' in a habitat?",
+      "ms": {
+        "draft": 8378,
+        "critique": 10744
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main purpose of the study described in the passage?",
+      "ms": {
+        "draft": 11170,
+        "critique": 9662,
+        "solver": 3459,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a biotic interaction in the passage?",
+      "ms": {
+        "draft": 11170,
+        "critique": 10825,
+        "solver": 17849,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does Fig. 12.4 show about the interactions in an ecosystem?",
+      "ms": {
+        "draft": 11170,
+        "critique": 11272,
+        "solver": 17380,
+        "form": 7546
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, what would happen if there were no fish in the pond?",
+      "ms": {
+        "draft": 11170,
+        "critique": 10260,
+        "solver": 17710,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what would be the effect of overfishing on the ecosystem?",
+      "ms": {
+        "draft": 11170,
+        "critique": 9628
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a grassland ecosystem, which of the following is a correct example of a food chain?",
+      "ms": {
+        "draft": 5817,
+        "critique": 9596,
+        "solver": 2754,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the relationship between fish, dragonflies, and pollinators as described in the passage?",
+      "ms": {
+        "draft": 11170,
+        "critique": 10553,
+        "solver": 22433,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram in Fig. 12.10a, which organism is at the highest trophic level?",
+      "ms": {
+        "draft": 5817,
+        "critique": 8810,
+        "solver": 17130,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes a food web in an ecosystem and notes that one organism is eaten by multiple others. Which concept does this observation best illustrate?",
+      "ms": {
+        "draft": 5817,
+        "critique": 10120,
+        "solver": 16417,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a forest ecosystem is disturbed and the number of decomposers decreases, what would be the most likely long-term impact on the ecosystem?",
+      "ms": {
+        "draft": 5817,
+        "critique": 8903,
+        "solver": 17184,
+        "form": 4386
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following organisms is an example of an omnivore?",
+      "ms": {
+        "draft": 5817,
+        "critique": 9061,
+        "solver": 16554,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is an example of mutualism?",
+      "ms": {
+        "draft": 7331,
+        "critique": 8482,
+        "solver": 2710,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which organisation declared the Sundarbans a World Heritage Site?",
+      "ms": {
+        "draft": 6044,
+        "critique": 8100
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about an ecosystem?",
+      "ms": {
+        "draft": 8576,
+        "critique": 10291,
+        "solver": 17288,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram in Fig. 12.19, which of the following is true about the relationship between a population and a community?",
+      "ms": {
+        "draft": 8576,
+        "critique": 10246,
+        "solver": 18798,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of decomposers in an ecosystem?",
+      "ms": {
+        "draft": 8576,
+        "critique": 7109
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements about ecosystems is true?",
+      "ms": {
+        "draft": 8576,
+        "critique": 9574,
+        "solver": 17901,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a food chain, if frogs disappear, what will happen to the population of grasshoppers and snakes?",
+      "ms": {
+        "draft": 8576,
+        "critique": 9816,
+        "solver": 26329
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main function of protected areas like national parks and wildlife sanctuaries?",
+      "ms": {
+        "draft": 4598,
+        "critique": 9108,
+        "solver": 2415,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A farmer observes that the number of pests in his field has increased after using synthetic pesticides. What could be the reason for this?",
+      "ms": {
+        "draft": 4598,
+        "critique": 7659,
+        "solver": 1813,
+        "form": 3590
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the Green Revolution is considered unsustainable?",
+      "ms": {
+        "draft": 4598,
+        "critique": 8950,
+        "solver": 2309,
+        "form": 3955
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main consequence of a decline in frog populations according to the passage?",
+      "ms": {
+        "draft": 7138,
+        "critique": 8217,
+        "solver": 1489,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a food chain in an ecosystem?",
+      "ms": {
+        "draft": 7138,
+        "critique": 11335,
+        "solver": 2557,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the role of migratory birds in an ecosystem?",
+      "ms": {
+        "draft": 7138,
+        "critique": 10993,
+        "solver": 2117,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of mutualism in an ecosystem?",
+      "ms": {
+        "draft": 7138,
+        "critique": 9342,
+        "solver": 2808,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of a decomposer in an ecosystem?",
+      "ms": {
+        "draft": 3890,
+        "critique": 6620,
+        "solver": 966,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of relationship is described when one organism benefits and the other is not affected?",
+      "ms": {
+        "draft": 7331,
+        "critique": 9797,
+        "solver": 2487,
+        "form": 3752,
+        "translation": 69234
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a reason why the Sundarbans are considered a World Heritage Site?",
+      "ms": {
+        "draft": 4598,
+        "critique": 11894,
+        "solver": 23058,
+        "form": 5213,
+        "translation": 81402
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a biotic component of an ecosystem?",
+      "ms": {
+        "draft": 3985,
+        "critique": 3654,
+        "solver": 1017,
+        "form": 0,
+        "translation": 35446
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a biotic component in a habitat?",
+      "ms": {
+        "draft": 8378,
+        "critique": 8678,
+        "solver": 17670,
+        "form": 0,
+        "translation": 83676
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a producer in an ecosystem?",
+      "ms": {
+        "draft": 5817,
+        "critique": 9333,
+        "solver": 16775,
+        "form": 0,
+        "translation": 54545
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens if a habitat has only one type of living organism?",
+      "ms": {
+        "draft": 8378,
+        "critique": 9094,
+        "solver": 17642,
+        "form": 3654,
+        "translation": 66239
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens if the number of frogs in an ecosystem decreases due to overharvesting?",
+      "ms": {
+        "draft": 7331,
+        "critique": 9302,
+        "solver": 1897,
+        "form": 4054,
+        "translation": 99297
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a farmer wants to reduce the use of synthetic fertilisers, which of the following practices should they adopt?",
+      "ms": {
+        "draft": 4598,
+        "critique": 10191,
+        "solver": 17140,
+        "form": 4645,
+        "translation": 67775
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if all decomposers suddenly disappeared from a forest ecosystem?",
+      "ms": {
+        "draft": 8576,
+        "critique": 9587,
+        "solver": 17222,
+        "form": 0,
+        "translation": 66557
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a food chain, which of the following is a producer?",
+      "ms": {
+        "draft": 3890,
+        "critique": 8357,
+        "solver": 2358,
+        "form": 0,
+        "translation": 42266
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a food web, how many organisms can a single organism be connected to through feeding relationships?",
+      "ms": {
+        "draft": 3890,
+        "critique": 8045,
+        "solver": 1173,
+        "form": 0,
+        "translation": 35678
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main purpose of wildlife corridors?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following best describes a food chain?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Based on the passage, why is biodiversity important in a habitat?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the meaning of 'biotic components' in a habitat?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main purpose of the study described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This is a detail from the study but not the main purpose. Th…\"); distractor 2's reason is not a one-line misconception (\"This is a detail from the study but not the main purpose. Th…\"); distractor 3's reason is not a one-line misconception (\"This is a detail from the study but not the main purpose. Th…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of a biotic interaction in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"This is an example of an abiotic effect on a biotic componen…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does Fig. 12.4 show about the interactions in an ecosystem?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"This is a general statement not shown in the figure or the p…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, what would happen if there were no fish in the pond?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This is incorrect because the passage states that fish eat d…\"); distractor 1's reason is not a one-line misconception (\"This is incorrect because the passage states that more drago…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, what would be the effect of overfishing on the ecosystem?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a grassland ecosystem, which of the following is a correct example of a food chain?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct order of energy flow in a food chain is not followed…\"); distractor 3's reason is not a one-line misconception (\"Fungi are decomposers, not part of a typical food chain as d…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the relationship between fish, dragonflies, and pollinators as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram in Fig. 12.10a, which organism is at the highest trophic level?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observes a food web in an ecosystem and notes that one organism is eaten by multiple others. Which concept does this observation best illustrate?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a forest ecosystem is disturbed and the number of decomposers decreases, what would be the most likely long-term impact on the ecosystem?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following organisms is an example of an omnivore?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is an example of mutualism?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which organisation declared the Sundarbans a World Heritage Site?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about an ecosystem?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram in Fig. 12.19, which of the following is true about the relationship between a population and a community?",
+      "reason": "options 0 and 1 say the same thing (\"A population includes more organisms than a community\" / \"A community includes more organisms than a population\"); options 2 and 3 say the same thing (\"A population is a part of a community\" / \"3: A community is a part of a population\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main function of decomposers in an ecosystem?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements about ecosystems is true?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a food chain, if frogs disappear, what will happen to the population of grasshoppers and snakes?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main function of protected areas like national parks and wildlife sanctuaries?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A farmer observes that the number of pests in his field has increased after using synthetic pesticides. What could be the reason for this?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Chooses a detail not mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"Chooses a detail not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why the Green Revolution is considered unsustainable?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Chooses a detail not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main consequence of a decline in frog populations according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's message…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of a food chain in an ecosystem?",
+      "reason": "options 1 and 2 say the same thing (\"Frogs → Insects → Plants → Birds\" / \"Insects → Plants → Frogs → Birds\"); options 1 and 3 say the same thing (\"Frogs → Insects → Plants → Birds\" / \"Birds → Frogs → Insects → Plants\"); options 2 and 3 say the same thing (\"Insects → Plants → Frogs → Birds\" / \"Birds → Frogs → Insects → Plants\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the role of migratory birds in an ecosystem?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misinterprets the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of mutualism in an ecosystem?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'bee'"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Which of the following is an example of a decomposer in an ecosystem?",
+      "reason": "near-duplicate of served question cmvf4yw0b0374god80bqy3ock (cosine 0.909 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

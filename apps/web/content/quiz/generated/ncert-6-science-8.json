@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-11T21:04:31.811Z",
+  "generatedAt": "2026-10-19T02:21:34.007Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following is an example of the cooling effect caused by evaporation?",
+      "stem": "Which of the following is an example of a liquid state of water?",
       "choices": [
-        "Keeping vegetables in a refrigerator",
-        "Using a fan to cool down a room",
-        "Sprinkling water on the floor during summer",
-        "Wearing a sweater in winter"
+        "Ice",
+        "Water vapour",
+        "Dew",
+        "Snow"
       ],
       "answerIndex": 2,
-      "solution": "Sprinkling water on the floor during summer causes cooling because the water evaporates, taking heat from the surroundings. The other options do not involve evaporation. A refrigerator uses a cooling system, a fan circulates air, and a sweater traps heat.",
+      "solution": "Dew is an example of a liquid state of water because it consists of water droplets that have condensed from water vapour. Ice and snow are solid forms of water, while water vapour is a gas. Dew forms when water vapour cools and changes into liquid, making it the correct answer.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा वाष्पीकरण के कारण शीतलन प्रभाव का उदाहरण है?",
+          "stem": "निम्नलिखित में से कौन जल के द्रव अवस्था का उदाहरण है?",
           "choices": [
-            "सब्जियां रेफ्रिजरेटर में रखना",
-            "एक कूलर के साथ कमरा ठंडा करना",
-            "गर्मी में फर्श पर पानी छिड़कना",
-            "सर्दी में एक टॉपी पहनना"
+            "बर्फ",
+            "जल वाष्प",
+            "कोहरा",
+            "हिम"
           ],
-          "solution": "गर्मी में फर्श पर पानी छिड़कने से शीतलन होता है क्योंकि पानी वाष्पीकृत हो जाता है और आसपास के ताप को ले लेता है। अन्य विकल्प वाष्पीकरण में शामिल नहीं हैं। एक रेफ्रिजरेटर एक शीतलन प्रणाली का उपयोग करता है, एक कूलर हवा के परिसंचरण को बढ़ाता है और एक टॉपी ताप को बंद कर लेता है।",
+          "solution": "कोहरा जल के द्रव अवस्था का उदाहरण है क्योंकि यह जल वाष्प से संघनित जल के बूंदों से बना होता है। बर्फ और हिम जल के ठोस रूप हैं, जबकि जल वाष्प गैस है। कोहरा जब जल वाष्प ठंडा होकर द्रव में बदल जाता है, इसलिए यह सही उत्तर है।",
           "imageAlt": null,
-          "critique": "Translation is accurate, technical terms are appropriate for Hindi-medium curriculum, and the logic of the solution matches the original.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for states of matter.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते वाफीकरणामुळे होणारा थंडीचा प्रभाव आहे?",
+          "stem": "खालीलपैकी कोणते पाण्याच्या द्रव अवस्थेचे उदाहरण आहे?",
           "choices": [
-            "भाज्या फ्रिजमध्ये ठेवणे",
-            "एका खोलीत थंडी घालण्यासाठी फॅन वापरणे",
-            "उन्हाळ्यात फरशीवर पाणी फवारणे",
-            "शिवाळ्यात एका शर्ट घालणे"
+            "हिम",
+            "पाण्याचा वाफ",
+            "कडक",
+            "हिम"
           ],
-          "solution": "उन्हाळ्यात फरशीवर पाणी फवारल्यास थंडी होते कारण पाणी वाफीकरण करते आणि आजूबाजूच्या उष्णतेचा वापर करते. इतर विकल्पांमध्ये वाफीकरण नाही. फ्रिजमध्ये थंडी व्यवस्था वापरली जाते, फॅन हवा वाहते आणि शर्ट उष्णता रोखते.",
+          "solution": "कडक हे पाण्याच्या द्रव अवस्थेचे उदाहरण आहे कारण त्यामध्ये जमा झालेल्या पाण्याच्या थेंबांमधून बनलेले असते. हिम आणि हिम घन अवस्थेचे आहेत, तर पाण्याचा वाफ वायु अवस्थेचा आहे. कडक हा पाण्याच्या वाफ थंड होऊन द्रव अवस्थेमध्ये बदलतो, त्यामुळे तो योग्य उत्तर आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms.",
+          "critique": "The translation is accurate and maintains the original meaning. 'कडक' (dew) is correctly identified as the liquid state of water, and the explanation aligns with the English version.",
           "flag": null
         }
       },
@@ -72,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the mechanism of cooling with other methods",
-        "Does not relate cooling to evaporation",
+        "Refers to solid form of water",
+        "Refers to gaseous form of water",
         null,
-        "Does not understand the role of evaporation in cooling"
+        "Refers to solid form of water"
       ],
       "solverAnswers": [
         2,
@@ -85,1114 +85,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 2, as sprinkling water on the floor during summer causes cooling through evaporation. The other options do not involve evaporation as the primary cooling mechanism, and the author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 10,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.6 cooling Effect"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 11,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.7 How Do clouds Give us Rain?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.7 How Do clouds Give us Rain?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T21:04:31.811Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the process called when water turns into water vapour?",
-      "choices": [
-        "Condensation",
-        "Evaporation",
-        "Freezing",
-        "Melting"
-      ],
-      "answerIndex": 1,
-      "solution": "The process of water turning into water vapour is called evaporation. Condensation is the opposite process, where water vapour turns into liquid. Freezing and melting involve changes between solid and liquid states.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "जब पानी वाष्प में बदल जाता है तो इस प्रक्रिया को क्या कहते हैं?",
-          "choices": [
-            "संघनन",
-            "वाष्पीकरण",
-            "जमना",
-            "पिघलना"
-          ],
-          "solution": "जब पानी वाष्प में बदलता है तो इस प्रक्रिया को वाष्पीकरण कहते हैं। संघनन वह प्रक्रिया है जिसमें वाष्प द्रव में बदल जाती है। जमना और पिघलना ठोस और द्रव अवस्था के बीच परिवर्तन के साथ जुड़े हुए हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "पाणी वाफेमध्ये बदलत असताना त्या प्रक्रियेला काय म्हणतात?",
-          "choices": [
-            "घनीकरण",
-            "वाष्पीकरण",
-            "हिमीकरण",
-            "पाक करणे"
-          ],
-          "solution": "पाणी वाफेमध्ये बदलत असताना त्या प्रक्रियेला वाष्पीकरण म्हणतात. घनीकरण ही वाफेपासून पाण्यामध्ये बदलणारी विरुद्ध प्रक्रिया आहे. हिमीकरण आणि पाक करणे ही घन आणि द्रव अवस्थांमधील बदलाशी संबंधित आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and uses standard Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses condensation with evaporation",
-        null,
-        "Confuses evaporation with the process of water turning into ice",
-        "Confuses evaporation with a phase change involving solid to liquid"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and tests recall of basic phase change terminology. The correct answer is 'evaporation,' and the author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 10,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.6 cooling Effect"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 11,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.7 How Do clouds Give us Rain?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.7 How Do clouds Give us Rain?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T21:04:31.811Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is an example of evaporation?",
-      "choices": [
-        "Water freezing into ice",
-        "Ice melting into water",
-        "Water turning into vapour",
-        "Vapour forming into clouds"
-      ],
-      "answerIndex": 2,
-      "solution": "Evaporation is the process where water turns into vapour. The correct option is the one that describes this. The other options describe freezing, melting, or condensation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन वाष्पीकरण का उदाहरण है?",
-          "choices": [
-            "पानी बर्फ में जम जाता है",
-            "बर्फ पानी में पिघल जाता है",
-            "पानी वाष्प में बदल जाता है",
-            "वाष्प बादलों में बदल जाता है"
-          ],
-          "solution": "वाष्पीकरण वह प्रक्रिया है जिसमें पानी वाष्प में बदल जाता है। सही विकल्प इसे वर्णित करता है। अन्य विकल्प जमना, पिघलना या द्रवीकरण का वर्णन करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and maintains the correct answer and distractors.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते वाष्पीभवनाचे उदाहरण आहे?",
-          "choices": [
-            "पाणी बर्फात जमते",
-            "बर्फ पाण्यात वितळते",
-            "पाणी वाफेत बदलते",
-            "वाफा ढगांमध्ये बदलते"
-          ],
-          "solution": "वाष्पीभवन हे प्रक्रिया आहे जेव्हा पाणी वाफेत बदलते. याचे वर्णन करणारी योग्य विकल्प निवडावी. इतर विकल्प जमने, वितळणे किंवा घनीभवन दर्शवतात.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Describes freezing, not evaporation",
-        "Describes melting, not evaporation",
-        null,
-        "Describes condensation, not evaporation"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the correct answer is unambiguous. The author's solution and reasoning are accurate and align with scientific definitions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 13,
-          "pageStart": 19,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.7 How Do clouds Give us Rain?",
-            "Let us enhance our learning"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T21:04:31.811Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is the process of converting a solid into a liquid state?",
-      "choices": [
-        "Melting",
-        "Freezing",
-        "Evaporation",
-        "Condensation"
-      ],
-      "answerIndex": 0,
-      "solution": "The process of converting a solid into a liquid state is called melting. Freezing is the reverse process, where a liquid turns into a solid. Evaporation is the change from liquid to gas, and condensation is the change from gas to liquid.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सी प्रक्रिया ठोस के द्रव अवस्था में परिवर्तन करने की है?",
-          "choices": [
-            "पिघलना",
-            "हिमीकरण",
-            "वाष्पीकरण",
-            "तरलीकरण"
-          ],
-          "solution": "ठोस के द्रव अवस्था में परिवर्तन की प्रक्रिया पिघलना कहलाती है। हिमीकरण वह प्रक्रिया है जिसमें द्रव ठोस में बदल जाता है। वाष्पीकरण द्रव से गैस में परिवर्तन है और तरलीकरण गैस से द्रव में परिवर्तन है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard scientific terminology as found in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते घटना घन पदार्थाच्या द्रव अवस्थेमध्ये बदलण्याची आहे?",
-          "choices": [
-            "गोठणे",
-            "जमणे",
-            "वाफीकरण",
-            "घनीकरण"
-          ],
-          "solution": "घन पदार्थाच्या द्रव अवस्थेमध्ये बदलण्याची घटना गोठणे म्हणतात. जमणे ही उलटी घटना आहे, जेथे द्रव घन अवस्थेमध्ये बदलतो. वाफीकरण ही द्रवापासून वाफेमध्ये बदल आहे आणि घनीकरण ही वाफेपासून द्रवामध्ये बदल आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, with appropriate Marathi terms for scientific processes. The correct answer is in the same position (option 1), and the distractors remain incorrect.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses freezing with melting",
-        "Does not understand the difference between evaporation and melting",
-        "Does not understand the difference between condensation and melting"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the solution correctly identifies melting as the process of converting a solid to a liquid. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 7,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.4 How can We change the States of Water?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.5 How can Water be Evaporated Faster or",
-            "Slower?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 9,
-          "pageStart": 12,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.5 How can Water be Evaporated Faster or",
-            "Slower?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T21:04:31.811Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is the process of converting a liquid into a solid state?",
-      "choices": [
-        "Melting",
-        "Freezing",
-        "Evaporation",
-        "Condensation"
-      ],
-      "answerIndex": 1,
-      "solution": "The process of converting a liquid into a solid state is called freezing. Melting is the reverse process, where a solid turns into a liquid. Evaporation is the change from liquid to gas, and condensation is the change from gas to liquid.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सी द्रव के ठोस अवस्था में परिवर्तन की प्रक्रिया है?",
-          "choices": [
-            "गलन",
-            "हिमीकरण",
-            "वाष्पीकरण",
-            "तरलीकरण"
-          ],
-          "solution": "द्रव के ठोस अवस्था में परिवर्तन की प्रक्रिया हिमीकरण कहलाती है। गलन वह प्रक्रिया है जिसमें ठोस द्रव में बदल जाता है। वाष्पीकरण द्रव से गैस में परिवर्तन है और तरलीकरण गैस से द्रव में परिवर्तन है।",
-          "imageAlt": null,
-          "critique": "All terms are standard Hindi scientific terms used in textbooks. The translation is accurate and maintains the original meaning.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता प्रक्रिया द्रवाच्या घनाकारात रूपांतरित करण्याचा असतो?",
-          "choices": [
-            "गलन",
-            "हिमीकरण",
-            "वाष्पीकरण",
-            "घनीकरण"
-          ],
-          "solution": "द्रवाच्या घनाकारात रूपांतरित करण्याची प्रक्रिया हिमीकरण म्हणतात. गलन ही विलंबित प्रक्रिया असते, जेव्हा घन पदार्थ द्रवात रूपांतरित होतो. वाष्पीकरण ही द्रवापासून वायूत बदल असते, आणि घनीकरण ही वायूपासून द्रवात बदल असते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses melting with freezing",
-        null,
-        "Does not understand the difference between evaporation and freezing",
-        "Does not understand the difference between condensation and freezing"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and matches the key. Freezing is indeed the process of converting a liquid into a solid. The reasons for the wrong options are valid misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 7,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.4 How can We change the States of Water?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.5 How can Water be Evaporated Faster or",
-            "Slower?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 9,
-          "pageStart": 12,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.5 How can Water be Evaporated Faster or",
-            "Slower?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T21:04:31.811Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If water is left in a freezer, what will happen to it?",
-      "choices": [
-        "It will turn into gas",
-        "It will turn into ice",
-        "It will remain liquid",
-        "It will evaporate"
-      ],
-      "answerIndex": 1,
-      "solution": "When water is left in a freezer, it loses heat and its molecules slow down, causing it to solidify into ice. 'Turn into gas' and 'evaporate' involve heating, not cooling. 'Remain liquid' is incorrect because freezing occurs at low temperatures.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि पानी को फ्रिज में छोड़ दिया जाए, तो इसके साथ क्या होगा?",
-          "choices": [
-            "यह गैस में बदल जाएगा",
-            "यह बर्फ में बदल जाएगा",
-            "यह तरल रहेगा",
-            "यह वाष्पित हो जाएगा"
-          ],
-          "solution": "जब पानी को फ्रिज में छोड़ दिया जाता है, तो यह ऊष्मा खो देता है और इसके अणु धीमे हो जाते हैं, जिसके कारण यह बर्फ में जम जाता है। 'गैस में बदल जाएगा' और 'वाष्पित हो जाएगा' गर्मी के साथ होते हैं, न कि ठंड के साथ। 'तरल रहेगा' गलत है क्योंकि कम तापमान पर हिमीकरण होता है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर पाणी फ्रिजमध्ये सोडले गेले, तर त्याचा काय फायदा होईल?",
-          "choices": [
-            "ते वाफेमध्ये बदलेल",
-            "ते बर्फामध्ये बदलेल",
-            "ते द्रव रूपात राहील",
-            "ते वाफीभूत होईल"
-          ],
-          "solution": "जेव्हा पाणी फ्रिजमध्ये सोडले जाते, तेव्हा ते ऊष्मा गमावते आणि त्याचे अणू धीमे होतात, ज्यामुळे ते बर्फामध्ये घनीभूत होते. 'वाफेमध्ये बदलेल' आणि 'वाफीभूत होईल' हे उष्मा घेण्याच्या प्रक्रियेशी संबंधित आहेत, नाहीतर थंडी घेण्याच्या. 'द्रव रूपात राहील' हे चुकीचे आहे कारण थंड तापमानावर घनीभवन होते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific meaning. 'फ्रिज' is used instead of 'फ्रीजर' which is more common in Marathi. 'बर्फ' is the correct term for 'ice' in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses freezing with evaporation or sublimation",
-        null,
-        "Misunderstands the effect of freezing on water",
-        "Confuses freezing with evaporation"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the correct answer is 1. The author's reasoning aligns with scientific understanding, and the distractors reflect common misconceptions about phase changes.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.1 Investigating Water’s Disappearing Act"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.2 Another Mystery"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T21:04:31.811Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Why does the space around natural grass feel cooler than the space around plastic grass?",
-      "choices": [
-        "Because plastic grass absorbs more heat",
-        "Because natural grass absorbs more heat",
-        "Because water from natural grass evaporates and cools the area",
-        "Because plastic grass is heavier"
-      ],
-      "answerIndex": 2,
-      "solution": "Natural grass contains water that evaporates, which cools the surrounding area. The correct option is the one that explains this. The other options are not related to evaporation or cooling.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "प्राकृतिक घास के आसपास की जगह प्लास्टिक घास के आसपास की जगह की तुलना में ठंडी क्यों महसूस होती है?",
-          "choices": [
-            "क्योंकि प्लास्टिक घास अधिक गर्मी अवशोषित करता है",
-            "क्योंकि प्राकृतिक घास अधिक गर्मी अवशोषित करता है",
-            "क्योंकि प्राकृतिक घास से पानी वाष्पित होता है जो क्षेत्र को ठंडा करता है",
-            "क्योंकि प्लास्टिक घास भारी होता है"
-          ],
-          "solution": "प्राकृतिक घास में पानी होता है जो वाष्पित होता है, जो आसपास के क्षेत्र को ठंडा करता है। सही विकल्प इसकी व्याख्या करता है। अन्य विकल्प वाष्पीकरण या ठंडक से संबंधित नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "प्राकृतिक घासाच्या आजूबाजूला असलेला जागा प्लास्टिक घासाच्या आजूबाजूला असलेल्या जागेपेक्षा थंड का वाटते?",
-          "choices": [
-            "कारण प्लास्टिक घास जास्त उष्णता शोषतो",
-            "कारण प्राकृतिक घास जास्त उष्णता शोषतो",
-            "कारण प्राकृतिक घासामधून पाणी वाफ बनून जाते आणि जागा थंड करते",
-            "कारण प्लास्टिक घास भारी असतो"
-          ],
-          "solution": "प्राकृतिक घासामध्ये पाणी असते जे वाफ बनून जाते, जे आजूबाजूची जागा थंड करते. याचा व्याख्यान देणारा विकल्प योग्य आहे. इतर विकल्प वाफ बनण्याशी किंवा थंडीशी संबंधित नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "students may confuse absorption with heat retention",
-        "students may confuse evaporation with heat absorption",
-        null,
-        "Student believes weight affects temperature perception"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2, as evaporation of water from natural grass leads to cooling. The other options reflect common misconceptions about heat absorption and weight.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 13,
-          "pageStart": 19,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.7 How Do clouds Give us Rain?",
-            "Let us enhance our learning"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T21:04:31.811Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If you want to dry your clothes faster on a rainy day, which of the following should you do?",
-      "choices": [
-        "Keep them in a closed room",
-        "Keep them in the shade",
-        "Use a fan to increase air movement",
-        "Put them in a cold environment"
-      ],
-      "answerIndex": 2,
-      "solution": "Using a fan to increase air movement helps in faster evaporation, which in turn helps clothes dry faster. On a rainy day, the air is already humid, so increasing air movement helps in speeding up the evaporation process. Keeping clothes in a closed room or in the shade would not help, and putting them in a cold environment would slow down evaporation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि आप बरसात के दिन अपने कपड़ों को तेजी से सुखाना चाहते हैं, तो निम्नलिखित में से क्या आपको करना चाहिए?",
-          "choices": [
-            "उन्हें बंद कमरे में रखें",
-            "उन्हें छाया में रखें",
-            "हवा के आवागमन को बढ़ाने के लिए एक पंखा उपयोग करें",
-            "उन्हें ठंडे वातावरण में रखें"
-          ],
-          "solution": "हवा के आवागमन को बढ़ाने के लिए पंखा उपयोग करना वाष्पीकरण की गति बढ़ाता है, जो कपड़ों को तेजी से सुखाने में मदद करता है। बरसात के दिन हवा पहले से ही नम होती है, इसलिए हवा के आवागमन को बढ़ाना वाष्पीकरण प्रक्रिया को तेज करता है। कपड़ों को बंद कमरे में या छाया में रखना मदद नहीं करता, और उन्हें ठंडे वातावरण में रखना वाष्पीकरण को धीमा कर देता है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi technical terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर तुम्हाला वादळी दिवसात तुमचे कपडे जलद शुष्क करायचे असतील, तर खालीलपैकी काय करावे लागेल?",
-          "choices": [
-            "त्यांना बंद खोलीत ठेवा",
-            "त्यांना छायेत ठेवा",
-            "वाफा वापरून हवेच्या गतीत वाढ करा",
-            "त्यांना थंड वातावरणात ठेवा"
-          ],
-          "solution": "वाफा वापरून हवेच्या गतीत वाढ करणे वाफा वाढविण्यास मदत करते, जे त्वरित कपडे शुष्क करण्यास मदत करते. वादळी दिवसात हवा आधिक्याने आर्द्र असते, त्यामुळे हवेच्या गतीत वाढ करणे वाफा वाढविण्याच्या प्रक्रियेला वेगवान करते. कपडे बंद खोलीत किंवा छायेत ठेवल्याने मदत होत नाही, आणि थंड वातावरणात कपडे ठेवल्याने वाफा वाढविण्याची प्रक्रिया धीमी होते.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains option 2, and the distractors are still incorrect.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Believes that reducing air movement helps drying by trapping moisture",
-        "Believes that shade reduces moisture in the air, not realizing it only reduces heat and sunlight",
-        null,
-        "Does not understand the effect of temperature on evaporation"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies that increasing air movement via a fan accelerates evaporation, which is the key to drying clothes faster. The reasoning for the distractors aligns with common misconceptions about humidity, shade, and temperature.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 7,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.4 How can We change the States of Water?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.5 How can Water be Evaporated Faster or",
-            "Slower?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 9,
-          "pageStart": 12,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.5 How can Water be Evaporated Faster or",
-            "Slower?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T21:04:31.811Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In Activity 8.7, what was the condition that was kept the same while comparing the evaporation of water in a bottle cap and a plate?",
-      "choices": [
-        "Amount of water",
-        "Exposure to air",
-        "Temperature of the environment",
-        "Humidity of the air"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is Amount of water because keeping the same amount ensures that differences in evaporation are due to other factors like surface area. Exposure to air, temperature, and humidity are not controlled in this comparison and could vary, making them incorrect choices.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "क्रियाकलाप 8.7 में, पानी के बोतल के ढक्कन और प्लेट में वाष्पीकरण की तुलना करते समय कौन सी स्थिति एक समान रखी गई थी?",
-          "choices": [
-            "पानी की मात्रा",
-            "हवा में खुला रहना",
-            "वातावरण का तापमान",
-            "हवा की आर्द्रता"
-          ],
-          "solution": "सही उत्तर पानी की मात्रा है क्योंकि एक ही मात्रा बनाए रखने से वाष्पीकरण में अंतर अन्य कारकों जैसे सतह क्षेत्र के कारण होता है। हवा में खुला रहना, वातावरण का तापमान और हवा की आर्द्रता इस तुलना में नियंत्रित नहीं किए गए हैं और वे बदल सकते हैं, इसलिए ये गलत विकल्प हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "क्रियाकलाप 8.7 मध्ये, बोतलेच्या छिद्रातील पाणी आणि प्लेटमधील पाणी तुलना करताना कोणती अवस्था समान ठेवली गेली होती?",
-          "choices": [
-            "पाण्याची मात्रा",
-            "हवेशी संपर्क",
-            "वातावरणाची तापमान",
-            "हवेची आर्द्रता"
-          ],
-          "solution": "योग्य उत्तर पाण्याची मात्रा आहे कारण समान मात्रा ठेवणे अन्य कारकांमुळे होणार्‍या वाष्पीकरणातील फरकांची खात्री करते जसे की पृष्ठभागाचे क्षेत्रफळ. हवेशी संपर्क, वातावरणाचे तापमान आणि हवेची आर्द्रता हे या तुलनेत नियंत्रित करण्यात आलेले नाहीत आणि ते बदलू शकतात, ज्यामुळे ते चुकीचे निवडी बनतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the kept condition with exposure to air",
-        "Confuses the kept condition with temperature",
-        "Confuses the kept condition with humidity"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        2,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0 (Amount of water), as the author's solution correctly identifies that the same amount of water was used in both the bottle cap and the plate. The other options represent common misconceptions about what was kept constant in the experiment.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 7,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.4 How can We change the States of Water?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.5 How can Water be Evaporated Faster or",
-            "Slower?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 9,
-          "pageStart": 12,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.5 How can Water be Evaporated Faster or",
-            "Slower?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T21:04:31.811Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a pot-in-pot cooler is used in a dry environment, what would happen to the cooling effect?",
-      "choices": [
-        "It would increase",
-        "It would decrease",
-        "It would remain the same",
-        "It would stop completely"
-      ],
-      "answerIndex": 0,
-      "solution": "In a dry environment, the rate of evaporation increases, which enhances the cooling effect. The cooler will work more efficiently. In humid conditions, evaporation is slower, reducing the cooling effect.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक पोट-इन-पोट कूलर का उपयोग शुष्क वातावरण में किया जाता है, तो शीतलन प्रभाव पर क्या प्रभाव पड़ेगा?",
-          "choices": [
-            "इसके शीतलन प्रभाव में वृद्धि होगी",
-            "इसके शीतलन प्रभाव में कमी होगी",
-            "इसका शीतलन प्रभाव एक ही रहेगा",
-            "इसका शीतलन प्रभाव पूरी तरह बंद हो जाएगा"
-          ],
-          "solution": "शुष्क वातावरण में वाष्पीकरण की दर बढ़ जाती है, जो शीतलन प्रभाव को बढ़ाता है। कूलर अधिक कुशलता से काम करेगा। आर्द्र स्थितियों में, वाष्पीकरण धीमा होता है, जो शीतलन प्रभाव को कम कर देता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer is in the same position (option 1) and the distractors remain incorrect.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एखाद्या शुष्क वातावरणात पॉट-इन-पॉट कूलर वापरला जाईल, तर शीतलन प्रभावावर काय परिणाम होईल?",
-          "choices": [
-            "तो वाढेल",
-            "तो कमी होईल",
-            "तो एकसारखा राहील",
-            "तो पूर्णपणे थांबेल"
-          ],
-          "solution": "शुष्क वातावरणात, वाफीकरणाचा दर वाढतो, जो शीतलन प्रभावाला वाढवतो. कूलर अधिक दक्षतेने कार्य करेल. आर्द्र अवस्थांमध्ये, वाफीकरण धीमे होते, जे शीतलन प्रभावाला कमी करते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Student thinks that dry environments reduce evaporation, thus reducing cooling",
-        "Student believes that environmental conditions do not affect the cooling process of evaporation",
-        "Thinks dry air reduces evaporation"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly explains that increased evaporation in dry environments enhances the cooling effect, aligning with the correct answer. All distractors reflect common misconceptions about evaporation and cooling.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 10,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.6 cooling Effect"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 11,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.7 How Do clouds Give us Rain?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.7 How Do clouds Give us Rain?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T21:04:31.811Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If you wet one hand with water and leave the other dry, then blow air across both, which hand feels cooler and why?",
-      "choices": [
-        "The dry hand feels cooler because it is less sensitive",
-        "The wet hand feels cooler because evaporation takes heat away",
-        "The dry hand feels cooler because air is dry",
-        "The wet hand feels cooler because water is cold"
-      ],
-      "answerIndex": 1,
-      "solution": "The wet hand feels cooler because evaporation of water takes heat from the skin, causing a cooling effect. The other options do not correctly explain the science behind it.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "अगर आप एक हाथ को पानी से गीला कर दें और दूसरा हाथ सूखा छोड़ दें, फिर दोनों पर हवा बहाएं, तो कौन सा हाथ ठंडा महसूस करेगा और क्यों?",
-          "choices": [
-            "सूखा हाथ ठंडा महसूस करेगा क्योंकि यह कम संवेदनशील है",
-            "गीला हाथ ठंडा महसूस करेगा क्योंकि वाष्पीकरण ऊष्मा को ले जाता है",
-            "सूखा हाथ ठंडा महसूस करेगा क्योंकि हवा सूखी है",
-            "गीला हाथ ठंडा महसूस करेगा क्योंकि पानी ठंडा है"
-          ],
-          "solution": "गीला हाथ ठंडा महसूस करेगा क्योंकि पानी के वाष्पीकरण से त्वचा से ऊष्मा ले ली जाती है, जिससे ठंडक का अनुभव होता है। अन्य विकल्प विज्ञान की व्याख्या सही नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "Hindi translation matches English meaning, but answer is incorrect (key says 1 but correct answer is 2).",
-          "flag": "translation critique: not one answer at the same position"
-        },
-        "mr": {
-          "stem": "जर तुम्ही एक हात पाण्याने ओला कराल आणि दुसरा हात शुष्क ठेवाल, नंतर दोन्ही वर वायू वाहून द्याल, तर कोणता हात थंड वाटेल आणि का?",
-          "choices": [
-            "शुष्क हात थंड वाटेल कारण तो कमी संवेदनशील असतो",
-            "ओला हात थंड वाटेल कारण वाष्पीकरण उष्णता घेतो",
-            "शुष्क हात थंड वाटेल कारण वायू शुष्क असतो",
-            "ओला हात थंड वाटेल कारण पाणी थंड असते"
-          ],
-          "solution": "ओला हात थंड वाटेल कारण पाण्याचा वाष्पीकरण त्वचेवरून उष्णता घेतो, ज्यामुळे थंड परिणाम होतो. इतर विकल्प विज्ञानाच्या या घटनेचे योग्य स्पष्टीकरण देत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the scientific terminology, and preserves the logic of the question and answer.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "This is a misconception about sensitivity",
-        null,
-        "This is not the reason for the cooling effect",
-        "This is not the primary cause of the cooling effect"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is option 1, as evaporation of water from the skin removes heat, causing a cooling effect. The other options reflect common misconceptions about sensitivity, air dryness, or the temperature of water.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 13,
-          "pageStart": 19,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.7 How Do clouds Give us Rain?",
-            "Let us enhance our learning"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T21:04:31.811Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why is it important to understand evaporation in daily life?",
-      "choices": [
-        "It helps in cooking food faster",
-        "It helps in drying clothes and reducing water usage",
-        "It helps in making ice cubes",
-        "It helps in cooling the environment"
-      ],
-      "answerIndex": 1,
-      "solution": "Understanding evaporation helps in drying clothes and reducing water usage, as it explains how water turns into vapour. The correct option is the one that describes this. The other options are not directly related to the practical use of evaporation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "दैनिक जीवन में वाष्पीकरण के बारे में समझना क्यों महत्वपूर्ण है?",
-          "choices": [
-            "यह खाना तेजी से पकाने में सहायता करता है",
-            "यह कपड़े सुखाने और पानी के उपयोग को कम करने में सहायता करता है",
-            "यह बर्फ के टुकड़े बनाने में सहायता करता है",
-            "यह वातावरण को ठंडा करने में सहायता करता है"
-          ],
-          "solution": "वाष्पीकरण के बारे में समझ कपड़े सुखाने और पानी के उपयोग को कम करने में सहायता करती है, क्योंकि यह बताती है कि पानी वाष्प में कैसे बदल जाता है। सही विकल्प इसका वर्णन करता है। अन्य विकल्प वाष्पीकरण के व्यावहारिक उपयोग से सीधे संबंधित नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "दैनिक जीवनात वाष्पीकरण समजणे का महत्वाचे आहे?",
-          "choices": [
-            "ते खाद्य पदार्थ जलद शिजवण्यास मदत करते",
-            "ते कपडे शुष्क करण्यात आणि पाणी वापर कमी करण्यात मदत करते",
-            "ते बर्फाच्या घटकांच्या तयारीस मदत करते",
-            "ते वातावरण थंड करण्यास मदत करते"
-          ],
-          "solution": "वाष्पीकरणाची समज शुष्क कपडे आणि पाणी वापर कमी करण्यास मदत करते, कारण ते पाणी वाफेमध्ये बदलते याचे स्पष्टीकरण देते. या विवरणाचा वर्णन करणारा विकल्प योग्य आहे. इतर विकल्प वाष्पीकरणाच्या व्यावहारिक उपयोगाशी सीधा संबंध नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Incorrectly links evaporation to cooking",
-        null,
-        "Incorrectly links evaporation to making ice",
-        "Incorrectly links evaporation to cooling the environment"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as evaporation is directly involved in drying clothes. The other options are either incorrect or not directly related to the process of evaporation.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu108.pdf",
-          "ordinal": 13,
-          "pageStart": 19,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 8: A Journey through States of Water",
-            "8.7 How Do clouds Give us Rain?",
-            "Let us enhance our learning"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T21:04:31.811Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why are dew drops more commonly seen in the morning?",
-      "choices": [
-        "Because it is cooler in the morning",
-        "Because the air is drier in the morning",
-        "Because the temperature is lower in the morning",
-        "Because the sun is not yet up in the morning"
-      ],
-      "answerIndex": 2,
-      "solution": "Dew drops are more commonly seen in the morning because the temperature is lower, causing water vapour in the air to condense on cool surfaces. The correct answer is 'Because the temperature is lower in the morning'. A student might think it is cooler in the morning, which is related but not the direct reason. Another might think the air is drier, which is not the case. A student might also think the sun is not up, which is not the main reason for dew formation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "सुबह में ज्यादातर धूप के बूंद क्यों दिखाई देते हैं?",
-          "choices": [
-            "क्योंकि सुबह में ठंडा होता है",
-            "क्योंकि सुबह में हवा शुष्क होती है",
-            "क्योंकि सुबह में तापमान कम होता है",
-            "क्योंकि सुबह में सूर्य अभी तक नहीं उगा होता"
-          ],
-          "solution": "सुबह में धूप के बूंद अक्सर दिखाई देते हैं क्योंकि तापमान कम होता है, जिसके कारण हवा में जल वाष्प ठंडी सतह पर द्रवित हो जाती है। सही उत्तर 'क्योंकि सुबह में तापमान कम होता है' है। एक छात्र सोच सकता है कि सुबह में ठंडा होता है, जो संबंधित है लेकिन सीधा कारण नहीं है। एक अन्य छात्र हवा शुष्क होने के कारण सोच सकता है, जो सही नहीं है। एक छात्र सूर्य के न उगे होने के कारण भी सोच सकता है, जो धूप बनने का मुख्य कारण नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology and logical structure.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कधी रात्रीच्या वेळी ओली थुंबा जास्त दिसतात?",
-          "choices": [
-            "कारण दिवसाच्या सुरुवातीला हवा थंड असते",
-            "कारण दिवसाच्या सुरुवातीला हवा शुष्क असते",
-            "कारण दिवसाच्या सुरुवातीला तापमान कमी असते",
-            "कारण दिवसाच्या सुरुवातीला सूर्य अजून उगवलेला नसतो"
-          ],
-          "solution": "ओली थुंबा जास्त दिवसाच्या सुरुवातीला दिसतात कारण तापमान कमी असते, ज्यामुळे हवेतील पाण्याच्या वाफेचे थंड सतहींवर घनीभवन होते. योग्य उत्तर 'कारण दिवसाच्या सुरुवातीला तापमान कमी असते' आहे. एखादा विद्यार्थी असे विचार करू शकतो की दिवसाच्या सुरुवातीला हवा थंड असते, जे जवळचे आहे पण सीधा कारण नाही. एखादा विद्यार्थी हवा शुष्क असते असे विचार करू शकतो, जे खरे नाही. एखादा विद्यार्थी सूर्य अजून उगवलेला नसतो असे विचार करू शकतो, जे ओली थुंबा तयार होण्याचे मुख्य कारण नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the original English question and solution, with appropriate terminology used in a Marathi educational context.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "confuses temperature with coolness",
-        "misunderstands the role of humidity",
-        null,
-        "does not consider the effect of temperature on condensation"
-      ],
-      "solverAnswers": [
-        0,
-        2,
-        2,
-        0,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2, as lower temperature in the morning leads to condensation of water vapor, forming dew. The author's reasoning is sound, and the misconceptions listed for the other options are valid.",
+      "critique": "The question is clear and the solution correctly identifies dew as the liquid state of water. The reasoning for the distractors is accurate and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/science/fecu108.pdf",
@@ -1236,7 +129,731 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T21:04:31.811Z",
+      "generatedAt": "2026-10-19T02:21:34.007Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What happens to water when it is cooled below 0°C?",
+      "choices": [
+        "It remains in liquid state",
+        "It turns into a gas",
+        "It becomes a solid",
+        "It evaporates"
+      ],
+      "answerIndex": 2,
+      "solution": "Water turns into a solid when cooled below 0°C. The correct option is 'It becomes a solid'. The other options are incorrect because water does not remain liquid at such low temperatures, it does not turn into a gas, and it does not evaporate when cooled.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "0°C से नीचे ठंडा करने पर पानी क्या हो जाता है?",
+          "choices": [
+            "यह तरल अवस्था में रहता है",
+            "यह गैस में बदल जाता है",
+            "यह ठोस में बदल जाता है",
+            "यह वाष्पित हो जाता है"
+          ],
+          "solution": "0°C से नीचे ठंडा करने पर पानी ठोस में बदल जाता है। सही विकल्प 'यह ठोस में बदल जाता है' है। अन्य विकल्प गलत हैं क्योंकि ऐसे निम्न तापमान पर पानी तरल अवस्था में नहीं रहता है, यह गैस में नहीं बदलता है और इसे ठंडा करने पर वाष्पित नहीं होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जेव्हा पाणी 0°C पेक्षा कमी तापमानावर ठेवले जाते तेव्हा काय होते?",
+          "choices": [
+            "ते द्रवाच्या अवस्थेत राहते",
+            "ते वायूत बदलते",
+            "ते घनाच्या अवस्थेत बदलते",
+            "ते वाफ बनते"
+          ],
+          "solution": "0°C पेक्षा कमी तापमानावर पाणी घनाच्या अवस्थेत बदलते. योग्य विकल्प 'ते घनाच्या अवस्थेत बदलते' आहे. इतर विकल्प चुकीचे आहेत कारण अशा खूप कमी तापमानावर पाणी द्रवाच्या अवस्थेत राहत नाही, ते वायूत बदलत नाही आणि ते थंड केल्यावर वाफ बनत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses freezing with boiling",
+        "thinks cooling increases evaporation",
+        null,
+        "does not understand the concept of freezing point"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is 2. The reasoning provided by the author for the distractors aligns with common misconceptions students might have about phase changes.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.2 Another Mystery"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.2 Another Mystery"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.3 What are the Different States of Water?"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.3 What are the Different States of Water?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:21:34.007Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the process called when water vapour changes into liquid water?",
+      "choices": [
+        "Evaporation",
+        "Condensation",
+        "Sublimation",
+        "Freezing"
+      ],
+      "answerIndex": 1,
+      "solution": "The process of water vapour changing into liquid water is called condensation. The correct option is 'Condensation'. The other options are incorrect because evaporation is the process of liquid turning into vapour, sublimation is solid to gas, and freezing is liquid to solid.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जब जल वाष्प तरल जल में बदलता है तो इस प्रक्रिया को क्या कहते हैं?",
+          "choices": [
+            "वाष्पीकरण",
+            "तरलीकरण",
+            "उत्क्षेपण",
+            "हिमीकरण"
+          ],
+          "solution": "जल वाष्प के तरल जल में बदलने की प्रक्रिया को तरलीकरण कहते हैं। सही विकल्प 'तरलीकरण' है। अन्य विकल्प गलत हैं क्योंकि वाष्पीकरण तरल के वाष्प में बदलने की प्रक्रिया है, उत्क्षेपण ठोस के गैस में बदलने की प्रक्रिया है और हिमीकरण तरल के ठोस में बदलने की प्रक्रिया है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the English original in meaning, terminology, and structure. 'तरलीकरण' is the correct term for 'condensation' in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पाण्याच्या वाफेचे द्रव पाण्यात बदलण्याच्या प्रक्रियेला काय म्हणतात?",
+          "choices": [
+            "वाष्पीकरण",
+            "घनीकरण",
+            "उत्तेजन",
+            "ठिसू जाणे"
+          ],
+          "solution": "पाण्याच्या वाफेचे द्रव पाण्यात बदलण्याच्या प्रक्रियेला घनीकरण म्हणतात. योग्य विकल्प 'घनीकरण' आहे. इतर विकल्प चुकीचे आहेत कारण वाष्पीकरण ही द्रव पाण्याचे वाफेत बदलण्याची प्रक्रिया आहे, उत्तेजन ही घन पदार्थाचे वाफेत बदलण्याची प्रक्रिया आहे आणि ठिसू जाणे ही द्रव पाण्याचे घन पदार्थात बदलण्याची प्रक्रिया आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses condensation with evaporation",
+        null,
+        "thinks sublimation is the process",
+        "does not understand the concept of freezing"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is correctly identified. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.2 Another Mystery"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.2 Another Mystery"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.3 What are the Different States of Water?"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.3 What are the Different States of Water?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:21:34.007Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If you leave a glass of water in a hot environment, what will happen to the water over time?",
+      "choices": [
+        "It will freeze",
+        "It will remain the same",
+        "It will evaporate",
+        "It will turn into ice"
+      ],
+      "answerIndex": 2,
+      "solution": "Water molecules gain energy in a hot environment, causing them to move faster and escape into the air as vapor, which is evaporation. Freezing and turning into ice require a decrease in temperature, not an increase. The water will not remain the same because heat accelerates the evaporation process.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि आप एक ग्लास पानी को गर्म वातावरण में छोड़ दें, तो समय के साथ पानी क्या हो जाएगा?",
+          "choices": [
+            "यह जम जाएगा",
+            "यह वैसा ही रहेगा",
+            "यह वाष्पित हो जाएगा",
+            "यह बर्फ में बदल जाएगा"
+          ],
+          "solution": "गर्म वातावरण में पानी के अणु ऊर्जा प्राप्त करते हैं, जिसके कारण वे तेजी से चलने लगते हैं और हवा में वाष्प के रूप में भापित हो जाते हैं, जो वाष्पीकरण है। जमना और बर्फ में बदलना तापमान में कमी की आवश्यकता होती है, न कि वृद्धि की। पानी वैसा ही नहीं रहेगा क्योंकि गर्मी वाष्पीकरण प्रक्रिया को तेज कर देती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर तुम्ही एका ग्लास पाण्याला उबदार वातावरणात ठेवला, तर वेळेनुसार पाणी काय होईल?",
+          "choices": [
+            "ते थांबेल",
+            "ते एकसारखे राहील",
+            "ते बाष्पीभूत होईल",
+            "ते बर्फात बदलेल"
+          ],
+          "solution": "उबदार वातावरणात पाण्याचे अणू ऊर्जा मिळते, ज्यामुळे ते वायू म्हणून हवेत बाहेर पडतात, जे बाष्पीभवन आहे. थांबणे आणि बर्फात बदलणे हे तापमानात कमी झाल्यामुळे होते, नाहीतर वाढीमुळे. पाणी एकसारखे राहणार नाही कारण उबदार वातावरणात बाष्पीभवन प्रक्रिया वेगवान होते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses evaporation with freezing",
+        "incorrectly assumes no change",
+        null,
+        "confuses evaporation with sublimation"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (It will evaporate). The author's key is incorrect. The solution correctly identifies that evaporation increases in a hot environment, but the key incorrectly states the answer is 2, which is not the correct choice. The correct answer should be 2, but the author's key is correct in that the answer is 2. However, the solution and key are contradictory.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.1 Investigating Water’s Disappearing Act"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.2 Another Mystery"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:21:34.007Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following best explains why water droplets form on the outer surface of a cold glass tumbler?",
+      "choices": [
+        "Water seeps through the glass",
+        "Water vapour condenses on the cold surface",
+        "Water evaporates from the glass",
+        "Water boils on the surface"
+      ],
+      "answerIndex": 1,
+      "solution": "Water vapour from the air condenses on the cold surface of the glass, forming droplets. The correct option is 'Water vapour condenses on the cold surface'. The other options are incorrect because water does not seep through the glass, it does not evaporate on the surface, and it does not boil on the surface.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक ठंडे ग्लास टम्बलर की बाहरी सतह पर जल की बूंदें बनने के कारण का सबसे अच्छा स्पष्टीकरण है?",
+          "choices": [
+            "जल कांच में से गुजर जाता है",
+            "हवा में जल वाष्प ठंडी सतह पर द्रवित हो जाती है",
+            "जल ग्लास से वाष्पित हो जाता है",
+            "जल सतह पर उबल जाता है"
+          ],
+          "solution": "हवा में जल वाष्प ग्लास की ठंडी सतह पर द्रवित हो जाती है, जिससे बूंदें बनती हैं। सही विकल्प 'हवा में जल वाष्प ठंडी सतह पर द्रवित हो जाती है' है। अन्य विकल्प गलत हैं क्योंकि जल कांच में से नहीं गुजरता, यह सतह पर वाष्पित नहीं होता और यह सतह पर उबल नहीं जाता।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning with appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक ठांबा ग्लास ट्यूम्बलरच्या बाह्य सतहवर पाण्याच्या थेंबांच्या निर्मितीच्या कारणाचे सर्वात चांगले स्पष्टीकरण देते?",
+          "choices": [
+            "पाणी ग्लासमधून फुटते",
+            "ठांबा सतहवर जेव्हा जलवाष्प संघनित होते",
+            "पाणी ग्लासमधून बाष्पीभवन होते",
+            "पाणी सतहवर फुटते"
+          ],
+          "solution": "हवेतील जलवाष्प ठांबा सतहवर संघनित होऊन थेंब बनते. योग्य पर्याय 'जलवाष्प ठांबा सतहवर संघनित होते' आहे. इतर पर्याय अयोग्य आहेत कारण पाणी ग्लासमधून फुटत नाही, ते सतहवर बाष्पीभवन होत नाही आणि ते सतहवर फुटत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific terminology used in Marathi textbooks, and preserves the logical structure of the question and answer.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "thinks water can pass through glass",
+        null,
+        "confuses evaporation with condensation",
+        "does not understand the process of boiling"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 1, as water vapor condensing on a cold surface is the scientifically accurate explanation. The other options reflect common misconceptions about the states of water.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.2 Another Mystery"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.2 Another Mystery"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.3 What are the Different States of Water?"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.3 What are the Different States of Water?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:21:34.007Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a pot-in-pot cooler is used in a very humid environment, what would happen to its cooling effect?",
+      "choices": [
+        "It would increase",
+        "It would decrease",
+        "It would stay the same",
+        "It would stop completely"
+      ],
+      "answerIndex": 1,
+      "solution": "In a very humid environment, the air is already saturated with water vapor, which slows down the evaporation of water from the cooler. Since evaporation is the main process that causes cooling, less evaporation means less cooling. Therefore, the cooling effect would decrease. Other options are incorrect because they suggest no change or an increase in cooling, which contradicts the relationship between humidity and evaporation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक पोट-इन-पोट कूलर का उपयोग बहुत आर्द्र वातावरण में किया जाता है, तो इसके शीतलन प्रभाव पर क्या प्रभाव पड़ेगा?",
+          "choices": [
+            "इसका शीतलन प्रभाव बढ़ जाएगा",
+            "इसका शीतलन प्रभाव घट जाएगा",
+            "इसका शीतलन प्रभाव एक समान रहेगा",
+            "इसका शीतलन प्रभाव पूरी तरह बंद हो जाएगा"
+          ],
+          "solution": "बहुत आर्द्र वातावरण में, हवा पहले से ही जल वाष्प से संतृप्त होती है, जो कूलर से पानी के वाष्पीकरण को धीमा कर देती है। चूंकि वाष्पीकरण ही शीतलन के कारण होता है, इसलिए कम वाष्पीकरण का अर्थ है कम शीतलन। इसलिए शीतलन प्रभाव घट जाएगा। अन्य विकल्प गलत हैं क्योंकि वे शीतलन में कोई परिवर्तन या वृद्धि का सुझाव देते हैं, जो आर्द्रता और वाष्पीकरण के बीच संबंध के विरोध में हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका खालील भांड्याच्या शीतलकाचा खूप आर्द्र वातावरणात वापर केला गेला, तर त्याचा शीतलन प्रभाव काय होईल?",
+          "choices": [
+            "तो वाढेल",
+            "तो कमी होईल",
+            "तो बरोबर राहील",
+            "तो पूर्णपणे थांबेल"
+          ],
+          "solution": "खूप आर्द्र वातावरणात, हवेत प already संतृप्त पाणी वाफ असते, जी शीतलकापासून पाणी वाफीकरणाला वेग घटवते. वाफीकरण हे शीतलनाच्या मुख्य प्रक्रियेचे कारण आहे, ज्यामुळे कमी वाफीकरणामुळे कमी शीतलन होते. म्हणून, शीतलन प्रभाव कमी होईल. इतर विकल्प अयोग्य आहेत कारण ते शीतलनमध्ये कोणताही बदल किंवा वाढ दर्शवतात, जे आर्द्रता आणि वाफीकरण यांच्या संबंधाशी विरोधात आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Student thinks higher humidity increases evaporation rate",
+        null,
+        "Students might think that humidity doesn't affect evaporation because they confuse the role of humidity with temperature.",
+        "Students may think that high humidity prevents evaporation entirely, so they assume the cooling effect would stop, not realizing that evaporation still occurs, just less efficiently."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly explains that in a humid environment, evaporation slows down, which reduces the cooling effect of the pot-in-pot cooler. The reasoning aligns with the scientific principle that higher humidity inhibits evaporation, and the author's key is correct.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 10,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.6 cooling Effect"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.7 How Do clouds Give us Rain?"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 12,
+          "pageStart": 16,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.7 How Do clouds Give us Rain?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:21:34.007Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a glass tumbler is filled with water at 0°C and kept in a freezer at -10°C, what will happen?",
+      "choices": [
+        "The water will freeze and release heat",
+        "The water will boil and release heat",
+        "The water will evaporate and lose mass",
+        "The water will remain in liquid state"
+      ],
+      "answerIndex": 0,
+      "solution": "The water will freeze and release heat as it undergoes a phase change. The correct option is 'The water will freeze and release heat'. The other options are incorrect because water does not boil at -10°C, it does not evaporate in a freezer, and it does not remain in liquid state at such low temperatures.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक कांच के गिलास को 0°C पर पानी से भरा जाता है और इसे -10°C वाले फ्रिज में रखा जाता है, तो क्या होगा?",
+          "choices": [
+            "पानी जम जाएगा और ऊष्मा छोड़ेगा",
+            "पानी उबल जाएगा और ऊष्मा छोड़ेगा",
+            "पानी वाष्पित हो जाएगा और द्रव्यमान खो देगा",
+            "पानी द्रव अवस्था में रहेगा"
+          ],
+          "solution": "पानी अवस्था परिवर्तन के दौरान जम जाएगा और ऊष्मा छोड़ेगा। सही विकल्प 'पानी जम जाएगा और ऊष्मा छोड़ेगा' है। अन्य विकल्प गलत हैं क्योंकि पानी -10°C पर उबलता नहीं है, फ्रिज में पानी वाष्पित नहीं होता है, और ऐसे निम्न तापमान पर पानी द्रव अवस्था में नहीं रहता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक ग्लास टम्बलर 0°C वर पाणी भरलेले असेल आणि ते -10°C वर ठेवलेल्या फ्रिजमध्ये ठेवले जाईल, तर काय होईल?",
+          "choices": [
+            "पाणी जमीन जाईल आणि ऊष्मा बाहेर काढेल",
+            "पाणी उकळेल आणि ऊष्मा बाहेर काढेल",
+            "पाणी वाफ बनेल आणि वजन कमी करेल",
+            "पाणी द्रव अवस्थेत राहील"
+          ],
+          "solution": "पाणी जमीन जाईल आणि त्याच्या घटनात्मक परिवर्तनादरम्यान ऊष्मा बाहेर काढेल. योग्य पर्याय 'पाणी जमीन जाईल आणि ऊष्मा बाहेर काढेल' आहे. इतर पर्याय अयोग्य आहेत कारण पाणी -10°C वर उकळत नाही, फ्रिजमध्ये पाणी वाफ बनत नाही आणि अशा खूप कमी तापमानावर पाणी द्रव अवस्थेत राहत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student believes that cold environments can cause boiling due to confusion between temperature and phase changes",
+        "Student believes water evaporates at any temperature, even when frozen",
+        "does not understand the effect of temperature on water"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as water at 0°C in a -10°C freezer will freeze and release heat. The other options are incorrect, and the author's reasons for the distractors align with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.2 Another Mystery"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.2 Another Mystery"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.3 What are the Different States of Water?"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.3 What are the Different States of Water?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:21:34.007Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why does the water in a puddle disappear on a hot day?",
+      "choices": [
+        "It is absorbed by the soil",
+        "It is converted into ice",
+        "It evaporates into the air",
+        "It seeps through the ground"
+      ],
+      "answerIndex": 2,
+      "solution": "Water in a puddle disappears on a hot day because it turns into a gas and rises into the air through a process called evaporation. This happens when heat provides energy to water molecules, allowing them to break free from the liquid and enter the atmosphere. The other options are incorrect because water does not turn into ice in warm conditions, nor does it simply get absorbed by the soil or seep through the ground in this context.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक गर्म दिन पर पानी के चिंगारी में क्यों गायब हो जाता है?",
+          "choices": [
+            "यह मिट्टी द्वारा अवशोषित कर लिया जाता है",
+            "यह बर्फ में परिवर्तित हो जाता है",
+            "यह हवा में वाष्पित हो जाता है",
+            "यह जमीन में रिस जाता है"
+          ],
+          "solution": "एक गर्म दिन पर पानी के चिंगारी में गायब हो जाता है क्योंकि यह एक गैस में बदल जाता है और वाष्पीकरण की प्रक्रिया के माध्यम से हवा में ऊपर जाता है। गर्मी पानी के अणुओं को ऊर्जा प्रदान करती है, जिससे वे तरल से बाहर निकलकर वातावरण में प्रवेश कर सकते हैं। अन्य विकल्प गलत हैं क्योंकि गर्म स्थिति में पानी बर्फ में नहीं बदलता है, न ही इस संदर्भ में पानी मिट्टी द्वारा आसानी से अवशोषित कर लिया जाता है या जमीन में रिस जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, maintaining the intended scientific concepts and the correct answer position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "उष्ण दिवसावर पानी चिखलातून का नाहीसा होते?",
+          "choices": [
+            "ते मातीमध्ये शोषले जाते",
+            "ते बर्फामध्ये बदलते",
+            "ते हवेत वाफ म्हणून वायूत बदलते",
+            "ते जमिनीतून शिरते"
+          ],
+          "solution": "पानी चिखलातून उष्ण दिवसावर नाहीसा होते कारण ते वायूत बदलते आणि हवेत जाते. हे उष्णतेमुळे होते जे पाण्याच्या अणूंना ऊर्जा प्रदान करते आणि त्यांना तरल पदार्थापासून मुक्त करते आणि हवामानात प्रवेश करते. इतर विकल्प चुकीचे आहेत कारण उष्ण परिस्थितीत पाणी बर्फामध्ये बदलत नाही, आणि या संदर्भात पाणी मातीमध्ये शोषले जात नाही किंवा जमिनीतून शिरत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses evaporation with absorption",
+        "confuses evaporation with freezing",
+        null,
+        "confuses evaporation with seepage"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2 (It evaporates into the air). The author's solution is sound and matches the correct reasoning. The distractors reflect common misconceptions about evaporation, such as confusing it with absorption, freezing, or seepage.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.1 Investigating Water’s Disappearing Act"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu108.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 8: A Journey through States of Water",
+            "8.2 Another Mystery"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T02:21:34.007Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

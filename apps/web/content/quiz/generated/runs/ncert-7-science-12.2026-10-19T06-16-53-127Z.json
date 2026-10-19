@@ -1,0 +1,787 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T06:16:53.127Z",
+  "finishedAt": "2026-10-19T06:29:08.923Z",
+  "seconds": 736,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "gecu1",
+    "document": "ncert/7/science/gecu112.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 12 — Earth, Moon, and the Sun",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2023 — question paper]\n11. Angular size of an object is the angle subtended by that object for that distance and size.\nFrom the surface of the Earth, the Sun and the Moon appear to be of the same size, because\nboth subtend nearly the same angle at the surface of the Earth.\nIf someone observes the Moon from the equator of the Earth, it takes nearly 2 minutes for\nthe full disc of the Moon to sink below the horizon. Angular size of the Earth, when observed\nfrom the Moon is nearly ...\nA. 0.5 ◦ B. 1 ◦ C. 1.5 ◦ D. 2 ◦",
+      "[INJSO 2014 — question paper]\n3. Which of the following cannot be visible from our moon?\nI) Annular eclipse of the Sun.\nII) Partial eclipse of the Earth.\nIII) Total eclipse of the Sun.\na) I and II b) II and III\nc) I and IV d) Only II",
+      "[INJSO 2023 — solutions or answer key]\n11. Angular size of an object is the angle subtended by that object for that distance and size.\nFrom the surface of the Earth, the Sun and the Moon appear to be of the same size, because\nboth subtend nearly the same angle at the surface of the Earth.\nIf someone observes the Moon from the equator of the Earth, it takes nearly 2 minutes for\nthe full disc of the Moon to sink below the horizon. Angular size of the Earth, when observed\nfrom the Moon is nearly ...\nA. 0.5 ◦ B. 1 ◦ C. 1.5 ◦ D. 2 ◦\nSolution:\nAs we need to get approximate answer, we can neglect radii of the Earth and the Moon\nin comparison with the distance r between the two. From the Earth, the circumference of\n2πr is covered in 24 h",
+      "[INJSO 2013 — question paper]\n72. Considering Earth and the Sun to be spherical object, the amount of radiant energy\nreceived by the Earth per second is nearly\nA. 1360 W.\nB. 1.75 X 10 17 W.\nC. 3.5 X 10 17 W.\nD. 7 X 10 17 W."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 232122,
+      "in": 42,
+      "out": 39,
+      "rejects": 4,
+      "promptTokens": 40637,
+      "completionTokens": 12907
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 308777,
+      "in": 39,
+      "out": 33,
+      "rejects": 6,
+      "promptTokens": 23022,
+      "completionTokens": 8435
+    },
+    "solver": {
+      "calls": 224,
+      "ms": 109505,
+      "in": 33,
+      "out": 28,
+      "rejects": 5,
+      "promptTokens": 39386,
+      "completionTokens": 2229
+    },
+    "form": {
+      "calls": 25,
+      "ms": 145855,
+      "in": 28,
+      "out": 12,
+      "rejects": 16,
+      "promptTokens": 25627,
+      "completionTokens": 3806
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 3070,
+      "in": 12,
+      "out": 9,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 411121,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 22460,
+      "completionTokens": 12055
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 3
+  },
+  "flagged": 3,
+  "needsFigure": 3,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Why does the Sun appear to move across the sky from East to West?",
+      "ms": {
+        "draft": 12943,
+        "critique": 6587,
+        "solver": 1751,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram showing the Earth's rotation, which part of the Earth receives sunlight during the day?",
+      "ms": {
+        "draft": 12943,
+        "critique": 6564,
+        "solver": 1123,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the Earth stopped rotating, what would happen to the day-night cycle?",
+      "ms": {
+        "draft": 12943,
+        "critique": 9709,
+        "solver": 1708
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is standing on the Equator and the Earth rotates from West to East, in which direction will the Sun appear to move?",
+      "ms": {
+        "draft": 12943,
+        "critique": 7210,
+        "solver": 16428,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "From the passage, which of the following best explains why the stars appear to move around the Pole Star?",
+      "ms": {
+        "draft": 3795,
+        "critique": 6284,
+        "solver": 1752,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the motion of the Earth around its axis?",
+      "ms": {
+        "draft": 12943,
+        "critique": 6382,
+        "solver": 1677,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What does the passage say about the Earth's motion?",
+      "ms": {
+        "draft": 3795,
+        "critique": 6617,
+        "solver": 1784,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student observes the Big Dipper from Pune on the night of 1–2 April and then again after two hours, what would they notice?",
+      "ms": {
+        "draft": 3795,
+        "critique": 7460,
+        "solver": 1480,
+        "form": 3418
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the passage say about the Earth's rotation?",
+      "ms": {
+        "draft": 3795,
+        "critique": 7480,
+        "solver": 1971
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person observes the Moon from the equator of the Earth, how long does it take for the full disc of the Moon to sink below the horizon?",
+      "ms": {
+        "draft": 6116,
+        "critique": 7462,
+        "solver": 1672
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the Sun not completely blocked by the Moon during a solar eclipse?",
+      "ms": {
+        "draft": 6116,
+        "critique": 6010,
+        "solver": 1798
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the Moon takes about 2 minutes to set below the horizon from the Earth, what is the approximate angular size of the Earth as seen from the Moon?",
+      "ms": {
+        "draft": 5891,
+        "critique": 9681
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "During a lunar eclipse, why does the Moon appear red?",
+      "ms": {
+        "draft": 5891,
+        "critique": 7447,
+        "solver": 1755,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "During a solar eclipse, why does the Moon appear to cover the Sun even though it is much smaller?",
+      "ms": {
+        "draft": 5891,
+        "critique": 5945,
+        "solver": 10988,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "During a total lunar eclipse, which of the following blocks the sunlight from reaching the Moon?",
+      "ms": {
+        "draft": 4108,
+        "critique": 5797,
+        "solver": 4426,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens during a lunar eclipse?",
+      "ms": {
+        "draft": 6917,
+        "critique": 6348,
+        "solver": 12001,
+        "form": 2718
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the Moon takes nearly 2 minutes to sink below the horizon from the equator, what is the angular size of the Earth as seen from the Moon?",
+      "ms": {
+        "draft": 6917,
+        "critique": 7115,
+        "solver": 1511
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best explains why the Northern Hemisphere experiences more intense sunlight in June?",
+      "ms": {
+        "draft": 7541,
+        "critique": 9752
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a reason for the occurrence of seasons?",
+      "ms": {
+        "draft": 6917,
+        "critique": 6587,
+        "solver": 1324,
+        "form": 4085
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the Earth's axis were not tilted, which of the following would be the most likely outcome?",
+      "ms": {
+        "draft": 7541,
+        "critique": 5858
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person is at the equator, which of the following would they experience?",
+      "ms": {
+        "draft": 7541,
+        "critique": 7041
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage say about the duration of daylight at the North Pole in June?",
+      "ms": {
+        "draft": 7541,
+        "critique": 6929
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the length of daylight in the Northern Hemisphere in June?",
+      "ms": {
+        "draft": 7541,
+        "critique": 6712,
+        "solver": 14740,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage state that the Earth being closest to the Sun in January is not the reason for the seasons?",
+      "ms": {
+        "draft": 7541,
+        "critique": 7359,
+        "solver": 11137,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If an observer on Earth sees the Moon take 2 minutes to sink below the horizon, what is the approximate angular size of the Earth as seen from the Moon?",
+      "ms": {
+        "draft": 5282,
+        "critique": 7118
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which celestial object is used as a reference point to determine the direction of the Pole Star?",
+      "ms": {
+        "draft": 5282,
+        "critique": 6977,
+        "solver": 2022,
+        "form": 3874
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person is standing on the Equator and observes the Sun, in which direction will the Sun appear to move?",
+      "ms": {
+        "draft": 4524,
+        "critique": 6685,
+        "solver": 1201,
+        "form": 1585
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the Earth's axis were not tilted, which of the following would happen?",
+      "ms": {
+        "draft": 6917,
+        "critique": 4864,
+        "solver": 1080,
+        "form": 4243
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following causes day and night on Earth?",
+      "ms": {
+        "draft": 6917,
+        "critique": 5194,
+        "solver": 1776,
+        "form": 4508
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What causes the day-night cycle on Earth?",
+      "ms": {
+        "draft": 4524,
+        "critique": 6869,
+        "solver": 10067,
+        "form": 1339
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following causes day and night on Earth?",
+      "ms": {
+        "draft": 4108,
+        "critique": 7376,
+        "solver": 1489,
+        "form": 0,
+        "translation": 35146
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the Foucault pendulum?",
+      "ms": {
+        "draft": 3795,
+        "critique": 6245,
+        "solver": 1648,
+        "form": 3997,
+        "translation": 45505
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for the occurrence of seasons on Earth?",
+      "ms": {
+        "draft": 6116,
+        "critique": 6216,
+        "solver": 1464,
+        "form": 2822,
+        "translation": 48514
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What causes the apparent movement of stars in the night sky?",
+      "ms": {
+        "draft": 5282,
+        "critique": 4945,
+        "solver": 1372,
+        "form": 4068,
+        "translation": 32780
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the Earth's axis were not tilted, which of the following would happen?",
+      "ms": {
+        "draft": 6116,
+        "critique": 6251,
+        "solver": 1639,
+        "form": 3682,
+        "translation": 56795
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given figure, what causes the longer day in the Northern Hemisphere in June?",
+      "ms": {
+        "draft": 6116,
+        "critique": 6612,
+        "solver": 11372,
+        "form": 3565,
+        "translation": 54361
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do we see the same stars in the night sky every night?",
+      "ms": {
+        "draft": 12943,
+        "critique": 6677,
+        "solver": 1058,
+        "form": 0,
+        "translation": 47409
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why can a total solar eclipse be seen only from a small part of the Earth?",
+      "ms": {
+        "draft": 6917,
+        "critique": 7205,
+        "solver": 14525,
+        "form": 0,
+        "translation": 38530
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do different stars appear in the night sky over the course of a year?",
+      "ms": {
+        "draft": 3795,
+        "critique": 5820,
+        "solver": 1516,
+        "form": 3089,
+        "translation": 46621
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What happens to the North Pole in December?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "In which of the following situations would a solar eclipse be visible from a specific location on Earth?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "If the apparent sizes of the Sun and the Moon are the same from Earth, but the Sun is much larger, what can be concluded about their distances from Earth?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why does the Sun appear to move across the sky from East to West?",
+      "reason": "options 1 and 2 say the same thing (\"Because the Earth is rotating from West to East\" / \"Because the Earth is rotating from East to West\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram showing the Earth's rotation, which part of the Earth receives sunlight during the day?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels Sun, Earth, Moon, sunlight"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the Earth stopped rotating, what would happen to the day-night cycle?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person is standing on the Equator and the Earth rotates from West to East, in which direction will the Sun appear to move?",
+      "reason": "options 0 and 1 say the same thing (\"North to South\" / \"South to North\"); options 2 and 3 say the same thing (\"East to West\" / \"West to East\"); option 3 repeats the stem's wording (\"West to East\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "From the passage, which of the following best explains why the stars appear to move around the Pole Star?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following best describes the motion of the Earth around its axis?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels Sun, Earth, Moon, sunlight"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What does the passage say about the Earth's motion?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student observes the Big Dipper from Pune on the night of 1–2 April and then again after two hours, what would they notice?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What does the passage say about the Earth's rotation?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a person observes the Moon from the equator of the Earth, how long does it take for the full disc of the Moon to sink below the horizon?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is the Sun not completely blocked by the Moon during a solar eclipse?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the Moon takes about 2 minutes to set below the horizon from the Earth, what is the approximate angular size of the Earth as seen from the Moon?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "During a lunar eclipse, why does the Moon appear red?",
+      "reason": "the key is far longer than every distractor (90 vs 52 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "During a solar eclipse, why does the Moon appear to cover the Sun even though it is much smaller?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels Sun, Earth, Moon, shadow, SolarEclipse"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "During a total lunar eclipse, which of the following blocks the sunlight from reaching the Moon?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":4,\"stem\":\"During a solar eclipse, why does the Moon appear to cover the entire Sun from Earth?\","
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens during a lunar eclipse?",
+      "reason": "options 0 and 1 say the same thing (\"The Earth comes between the Sun and the Moon\" / \"The Moon comes between the Sun and the Earth\"); options 0 and 2 say the same thing (\"The Earth comes between the Sun and the Moon\" / \"The Sun comes between the Earth and the Moon\"); options 0 and 3 say the same thing (\"The Earth comes between the Sun and the Moon\" / \"The Earth comes between the Moon and the Sun\"); options 1 and 2 say the same thing (\"The Moon comes between the Sun and the Earth\" / \"The Sun comes between the Earth and the Moon\"); options 1 and 3 say the same thing (\"The Moon comes between the Sun and the Earth\" / \"The Earth comes between the Moon and the Sun\"); options 2 and 3 say the same thing (\"The Sun comes between the Earth and the Moon\" / \"The Earth comes between the Moon and the Sun\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the Moon takes nearly 2 minutes to sink below the horizon from the equator, what is the angular size of the Earth as seen from the Moon?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best explains why the Northern Hemisphere experiences more intense sunlight in June?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a reason for the occurrence of seasons?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels sun, earth, moon"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the Earth's axis were not tilted, which of the following would be the most likely outcome?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a person is at the equator, which of the following would they experience?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What does the passage say about the duration of daylight at the North Pole in June?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the length of daylight in the Northern Hemisphere in June?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 3 say the same thing (\"It is the same as in the Southern Hemisphere\" / \"3: It is the same as in the Southern Hemisphere\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage state that the Earth being closest to the Sun in January is not the reason for the seasons?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Incorrectly assumes the Earth is not affected by the Sun's g…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If an observer on Earth sees the Moon take 2 minutes to sink below the horizon, what is the approximate angular size of the Earth as seen from the Moon?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which celestial object is used as a reference point to determine the direction of the Pole Star?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'star'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a person is standing on the Equator and observes the Sun, in which direction will the Sun appear to move?",
+      "reason": "options 0 and 1 say the same thing (\"From East to West\" / \"From West to East\"); options 2 and 3 say the same thing (\"From North to South\" / \"From South to North\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "If the Earth's axis were not tilted, which of the following would happen?",
+      "reason": "near-duplicate of batch item \"If the Earth's axis were not tilted, which of the …\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following causes day and night on Earth?",
+      "reason": "near-duplicate of batch item \"Which of the following causes day and night on Ear…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What causes the day-night cycle on Earth?",
+      "reason": "near-duplicate of batch item \"Which of the following causes day and night on Ear…\" (cosine 0.903 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

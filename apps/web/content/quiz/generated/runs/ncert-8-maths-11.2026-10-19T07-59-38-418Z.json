@@ -1,0 +1,669 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T07:59:38.418Z",
+  "finishedAt": "2026-10-19T08:09:07.735Z",
+  "seconds": 569,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "hemh1",
+    "document": "ncert/8/mathematics/hemh111.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — Chapter 11",
+    "edition": "Reprint 2024-25",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n11. Use of calculators is not allowed.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n11. Use of calculators is not allowed.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 133827,
+      "in": 34,
+      "out": 33,
+      "rejects": 2,
+      "promptTokens": 29857,
+      "completionTokens": 7520
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 332667,
+      "in": 33,
+      "out": 28,
+      "rejects": 5,
+      "promptTokens": 21053,
+      "completionTokens": 8413
+    },
+    "solver": {
+      "calls": 244,
+      "ms": 150187,
+      "in": 28,
+      "out": 18,
+      "rejects": 10,
+      "promptTokens": 54868,
+      "completionTokens": 3055
+    },
+    "form": {
+      "calls": 3,
+      "ms": 9588,
+      "in": 18,
+      "out": 14,
+      "rejects": 4,
+      "promptTokens": 827,
+      "completionTokens": 269
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 4207,
+      "in": 14,
+      "out": 8,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 300746,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 18357,
+      "completionTokens": 8422
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the main idea behind the examples given in the passage?",
+      "ms": {
+        "draft": 4025,
+        "critique": 6415,
+        "solver": 1612,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the relationship between the length of cloth and its cost, according to the passage?",
+      "ms": {
+        "draft": 4025,
+        "critique": 8244,
+        "solver": 13121,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the cost of 5 metres of cloth is 210, what is the cost of 2 metres of cloth?",
+      "ms": {
+        "draft": 4025,
+        "critique": 7244,
+        "solver": 21250
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a train travels 75 km in 60 minutes, how far will it travel in 20 minutes?",
+      "ms": {
+        "draft": 4025,
+        "critique": 9667,
+        "solver": 16922
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the cost of 5 metres of cloth is 210, how many metres of cloth can be bought for 546?",
+      "ms": {
+        "draft": 4025,
+        "critique": 5061,
+        "solver": 2037
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct example of inverse proportion?",
+      "ms": {
+        "draft": 12945,
+        "critique": 6342,
+        "solver": 15706
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the definition of inverse proportion?",
+      "ms": {
+        "draft": 12945,
+        "critique": 5443,
+        "solver": 1700,
+        "form": 3281
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the angle between a pair of consecutive spokes is 40°, how many spokes would there be?",
+      "ms": {
+        "draft": 4525,
+        "critique": 7887
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A farmer has 20 animals and enough food for 6 days. If 10 more animals are added, how long will the food last?",
+      "ms": {
+        "draft": 4525,
+        "critique": 7649
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A car travels 60 km/h and takes 2 hours to reach a destination. How long will it take if the speed is 80 km/h?",
+      "ms": {
+        "draft": 4525,
+        "critique": 4737
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 24 children get 5 sweets each, how many sweets would each child get if the number of children is reduced by 4?",
+      "ms": {
+        "draft": 2702,
+        "critique": 7023,
+        "solver": 1198
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the angle between a pair of consecutive spokes is 40°, how many spokes are there on the wheel?",
+      "ms": {
+        "draft": 2702,
+        "critique": 9399,
+        "solver": 2033
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the angle between a pair of consecutive spokes if a wheel has 15 spokes?",
+      "ms": {
+        "draft": 2702,
+        "critique": 6891,
+        "solver": 15870
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a farmer has 20 animals and the food lasts for 6 days, how long will the food last if there are 10 more animals?",
+      "ms": {
+        "draft": 2702,
+        "critique": 6868,
+        "solver": 17101
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 6 pipes can fill a tank in 80 minutes, how long will it take 5 pipes to fill the same tank?",
+      "ms": {
+        "draft": 3878,
+        "critique": 7503,
+        "solver": 16558,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the price of a book increases, how does the number of books that can be bought with a fixed amount of money change?",
+      "ms": {
+        "draft": 3878,
+        "critique": 7364
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the length of a cloth increases, its cost also increases in the same ratio. What type of proportion is this?",
+      "ms": {
+        "draft": 4502,
+        "critique": 6837
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of inverse proportion?",
+      "ms": {
+        "draft": 3878,
+        "critique": 7862,
+        "solver": 18154
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the cost of 1 kg of sugar is 36, what would be the cost of 3 kg of sugar?",
+      "ms": {
+        "draft": 5401,
+        "critique": 7990,
+        "solver": 9704
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of inverse proportion?",
+      "ms": {
+        "draft": 2702,
+        "critique": 6628,
+        "solver": 1287,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "If the number of winners increases, how does the prize money given to an individual winner change?",
+      "ms": {
+        "draft": 2702,
+        "critique": 7051,
+        "solver": 2964,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following scenarios best describes inverse proportion?",
+      "ms": {
+        "draft": 3878,
+        "critique": 5268,
+        "solver": 1200,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a hostel, 100 students have food for 20 days. If 25 more students join, how many days will the food last?",
+      "ms": {
+        "draft": 3878,
+        "critique": 9136,
+        "solver": 15372,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 15 workers can build a wall in 48 hours, how many workers are required to build the same wall in 30 hours?",
+      "ms": {
+        "draft": 3878,
+        "critique": 7225,
+        "solver": 16079,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The scale of a map is 1:30000000. Two cities are 4 cm apart on the map. What is the actual distance between them?",
+      "ms": {
+        "draft": 4502,
+        "critique": 7854,
+        "solver": 10587,
+        "form": 2974
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of inverse proportion?",
+      "ms": {
+        "draft": 4525,
+        "critique": 5063,
+        "solver": 1059,
+        "form": 0,
+        "translation": 49266
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the number of winners increases, what happens to the prize money given to each winner?",
+      "ms": {
+        "draft": 4525,
+        "critique": 8588,
+        "solver": 11417,
+        "form": 0,
+        "translation": 35356
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 6 pipes can fill a tank in 80 minutes, how long will it take 5 pipes to fill the same tank?",
+      "ms": {
+        "draft": 12945,
+        "critique": 7609,
+        "solver": 11392,
+        "form": 0,
+        "translation": 33547
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a box of sweets is divided among 24 children, each gets 5 sweets. How many sweets would each child get if there were 20 children?",
+      "ms": {
+        "draft": 4525,
+        "critique": 7624,
+        "solver": 11153,
+        "form": 0,
+        "translation": 21362
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In a hostel, 100 students have food for 20 days. If 25 more students join, how many days will the food last?",
+      "ms": {
+        "draft": 12945,
+        "critique": 8336,
+        "solver": 1648,
+        "form": 0,
+        "translation": 30633
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A map has a scale of 1:30,000,000. If two cities are 4 cm apart on the map, what is the actual distance between them?",
+      "ms": {
+        "draft": 4025,
+        "critique": 8407,
+        "solver": 1449,
+        "form": 0,
+        "translation": 38038
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If 15 workers can build a wall in 48 hours, how many workers are needed to build the same wall in 30 hours?",
+      "ms": {
+        "draft": 12945,
+        "critique": 5365,
+        "solver": 1775,
+        "form": 0,
+        "translation": 31958
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the price of a book increases from 40 to 50, the number of books that can be bought with 6000 decreases from 150 to 120. What is the relationship between the price of a book and the number of books that can be bought?",
+      "ms": {
+        "draft": 12945,
+        "critique": 6585,
+        "solver": 2167,
+        "form": 4054,
+        "translation": 56852
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What is the term used when two quantities change in the same "
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main idea behind the examples given in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the relationship between the length of cloth and its cost, according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 3 say the same thing (\"They are inversely proportional\" / \"They are sometimes inversely proportional\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the cost of 5 metres of cloth is 210, what is the cost of 2 metres of cloth?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a train travels 75 km in 60 minutes, how far will it travel in 20 minutes?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the cost of 5 metres of cloth is 210, how many metres of cloth can be bought for 546?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a correct example of inverse proportion?",
+      "reason": "after redrafting distractors 0, 1, 2: the critic finds option 0 correct, the key is 3; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the definition of inverse proportion?",
+      "reason": "the key is far longer than every distractor (60 vs 37 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the angle between a pair of consecutive spokes is 40°, how many spokes would there be?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A farmer has 20 animals and enough food for 6 days. If 10 more animals are added, how long will the food last?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A car travels 60 km/h and takes 2 hours to reach a destination. How long will it take if the speed is 80 km/h?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "A train moves at a uniform speed of 75 km/hour. How far will it travel in 20 minutes?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 24 children get 5 sweets each, how many sweets would each child get if the number of children is reduced by 4?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If the angle between a pair of consecutive spokes is 40°, how many spokes are there on the wheel?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the angle between a pair of consecutive spokes if a wheel has 15 spokes?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a farmer has 20 animals and the food lasts for 6 days, how long will the food last if there are 10 more animals?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 6 pipes can fill a tank in 80 minutes, how long will it take 5 pipes to fill the same tank?",
+      "reason": "options 1 and 3 are the same (\"100 minutes\"); options 1 and 3 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the price of a book increases, how does the number of books that can be bought with a fixed amount of money change?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If the length of a cloth increases, its cost also increases in the same ratio. What type of proportion is this?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the definition of inverse proportion?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the cost of 1 kg of sugar is 36, what would be the cost of 3 kg of sugar?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is an example of inverse proportion?",
+      "reason": "near-duplicate of batch item \"Which of the following is an example of inverse pr…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "If the number of winners increases, how does the prize money given to an individual winner change?",
+      "reason": "near-duplicate of batch item \"If the number of winners increases, what happens t…\" (cosine 0.973 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following scenarios best describes inverse proportion?",
+      "reason": "near-duplicate of batch item \"Which of the following is an example of inverse pr…\" (cosine 0.942 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In a hostel, 100 students have food for 20 days. If 25 more students join, how many days will the food last?",
+      "reason": "near-duplicate of batch item \"In a hostel, 100 students have food for 20 days. I…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If 15 workers can build a wall in 48 hours, how many workers are required to build the same wall in 30 hours?",
+      "reason": "near-duplicate of batch item \"If 15 workers can build a wall in 48 hours, how ma…\" (cosine 0.998 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "The scale of a map is 1:30000000. Two cities are 4 cm apart on the map. What is the actual distance between them?",
+      "reason": "near-duplicate of batch item \"A map has a scale of 1:30,000,000. If two cities a…\" (cosine 0.965 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

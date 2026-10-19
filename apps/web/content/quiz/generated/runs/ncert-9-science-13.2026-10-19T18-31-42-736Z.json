@@ -1,0 +1,803 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T18:31:42.736Z",
+  "finishedAt": "2026-10-19T18:45:47.617Z",
+  "seconds": 845,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc113.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 13 — Earth as a System: Energy, Matter, and Life",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 29,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\n9. Assertion (A): In an ecosystem, 1% of energy is available for transfer from one 1\ntrophic level to the next.\nReason (R): An average of 10% of the food eaten by organisms is available for\nflow in the form of chemical energy.",
+      "[INJSO 2015 — question paper]\n25. Study the following ray diagram in which: ‘A’ represents atmosphere, ‘B’ represents\ngreen plants, ‘C’ represents decomposers and ‘D’ represents animals.\nB C\nA D\nThe above ray diagram represents\na) Energy flow through the given ecosystem.\nb) Interconnections among different food chains in the given ecosystem.\nc) Movement of carbon among A, B, C and D.\nd) Movement of nitrogen among A, B, C and D",
+      "[INJSO 2019 — question paper]\n33. (9 MARKS) Consider a self-sustaining ecosystem consisting of three components X, Y\nand Z set up in a laboratory for several weeks. During a 26-day observation period, it was\ndisturbed by human intervention on a particular day. The population size of the three\ncomponents during this period is tabulated below.\nDay Population size\nComponent X Component Y Component Z\n1 10\n4 11\n7 15\n10 14\n13 14\n17 0\n20 0\n23 0\n26 0\n40 200\n42 220\n54 210\n53 190\n43 220\n120 100\n130 30\n30 30\n15 150\n(A) Assign the correct component alphabet to each of the following:\ni. Primary producer _____\nii. Herbivore _____\niii. Carnivore _____\n(1.5 MARKS)\n(1.5 MARKS)\n(1.5 MARKS)\n(B) The average biomass of a producer is 0.0060 g",
+      "[INJSO 2020 — question paper]\n24. An ecological pyramid is a diagrammatic representation of the relationship between various\norganisms in an ecosystem. These pyramids can be drawn to represent the organic material\n(biomass), or number, or energy at each trophic level.\nWe list here four different ecosystems (i to iv) and five different ecological pyramids (P to T).\nMatch the ecosystems with the correct pyramids.\nEcosystems:\ni. Number pyramid of an ecosystem consisting of grasses, snails and mice.\nii. Number pyramid of an ecosystem consisting of a tree, caterpillars and mynas.\niii. Biomass pyramid of an ecosystem consisting of a tree, caterpillars and mynas.\niv. Number pyramid of an ecosystem consisting of a rose bush, aph"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 289798,
+      "in": 44,
+      "out": 40,
+      "rejects": 5,
+      "promptTokens": 53790,
+      "completionTokens": 14068
+    },
+    "critique": {
+      "calls": 46,
+      "ms": 344977,
+      "in": 40,
+      "out": 33,
+      "rejects": 7,
+      "promptTokens": 23890,
+      "completionTokens": 8053
+    },
+    "solver": {
+      "calls": 198,
+      "ms": 104462,
+      "in": 33,
+      "out": 31,
+      "rejects": 2,
+      "promptTokens": 35810,
+      "completionTokens": 1847
+    },
+    "form": {
+      "calls": 11,
+      "ms": 52529,
+      "in": 31,
+      "out": 12,
+      "rejects": 19,
+      "promptTokens": 8476,
+      "completionTokens": 1395
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 4370,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 47,
+      "ms": 624021,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 32296,
+      "completionTokens": 17644
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 2,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a part of the Earth's spheres as described in the passage?",
+      "ms": {
+        "draft": 3998,
+        "critique": 5511,
+        "solver": 1600,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a valid conclusion from the passage about the interaction of Earth's systems?",
+      "ms": {
+        "draft": 3998,
+        "critique": 8103,
+        "solver": 1622,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main source of energy on Earth according to the passage?",
+      "ms": {
+        "draft": 3998,
+        "critique": 7553,
+        "solver": 2219,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the ozone layer were to disappear completely, which of the following would most likely happen?",
+      "ms": {
+        "draft": 3998,
+        "critique": 7586,
+        "solver": 1280,
+        "form": 3954
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A solar panel installed in a desert area receives an insolation of 1 kWm. What is the total energy received by a 2 m area in 3 hours?",
+      "ms": {
+        "draft": 5187,
+        "critique": 10677
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student conducts an experiment to measure the albedo of different surfaces. The student finds that dark soil has a lower albedo than light soil. Which of the following explains this observation?",
+      "ms": {
+        "draft": 5187,
+        "critique": 7375,
+        "solver": 1658,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of solar radiation and warming of the Earth, which of the following statements is correct?",
+      "ms": {
+        "draft": 5187,
+        "critique": 8113,
+        "solver": 1665,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the role of the atmosphere in regulating Earth's temperature?",
+      "ms": {
+        "draft": 4421,
+        "critique": 6940,
+        "solver": 1545,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the formation of the sub-tropical high pressure belts?",
+      "ms": {
+        "draft": 8959,
+        "critique": 8161,
+        "solver": 1642,
+        "form": 3301
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that the ozone layer absorbs harmful UV radiation. Which of the following would be the most significant consequence if the ozone layer were to completely disappear?",
+      "ms": {
+        "draft": 4421,
+        "critique": 6220,
+        "solver": 14761,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of wind circulation (Fig. 13.9a), which of the following best explains the movement of air from the equator to the sub-tropical high pressure belts?",
+      "ms": {
+        "draft": 8959,
+        "critique": 7982,
+        "solver": 1698,
+        "form": 3119
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The Earth’s rotation causes planetary winds to follow curved paths instead of moving directly from high to low pressure regions. Which of the following is the most likely reason for this phenomenon?",
+      "ms": {
+        "draft": 8959,
+        "critique": 7124,
+        "solver": 1917,
+        "form": 3054
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a part of the water cycle as described in the passage?",
+      "ms": {
+        "draft": 11989,
+        "critique": 7638,
+        "solver": 1633,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a process that restores oxygen to the atmosphere?",
+      "ms": {
+        "draft": 4872,
+        "critique": 7971
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which phenomenon is described as the movement of water across a semipermeable membrane from an area of lower solute concentration to an area of higher solute concentration?",
+      "ms": {
+        "draft": 6675,
+        "critique": 5649
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the Earth's rotation were to stop abruptly, what would be the most significant impact on the movement of planetary winds and ocean currents?",
+      "ms": {
+        "draft": 8959,
+        "critique": 8177,
+        "solver": 11500,
+        "form": 1451
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a cell is placed in a solution with a higher concentration of salt than its cell sap, what will happen to the cell?",
+      "ms": {
+        "draft": 9315,
+        "critique": 7746,
+        "solver": 1663,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the process of osmosis?",
+      "ms": {
+        "draft": 9315,
+        "critique": 8976,
+        "solver": 3105,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of osmosis as described in the passage?",
+      "ms": {
+        "draft": 9315,
+        "critique": 8509,
+        "solver": 18433,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a cell is placed in a solution and its volume remains constant, what can be said about the solution?",
+      "ms": {
+        "draft": 9315,
+        "critique": 7498,
+        "solver": 1218,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student places a plant cell in a solution and notices that the cell becomes flaccid. What can be inferred about the solution?",
+      "ms": {
+        "draft": 9315,
+        "critique": 7634,
+        "solver": 17204,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which of the following situations would osmosis NOT occur?",
+      "ms": {
+        "draft": 9315,
+        "critique": 10109,
+        "solver": 17757
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the role of biogeochemical cycles in an ecosystem?",
+      "ms": {
+        "draft": 6758,
+        "critique": 8703
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for the formation of mountain and valley breezes?",
+      "ms": {
+        "draft": 6758,
+        "critique": 8433
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following processes restores oxygen to the atmosphere?",
+      "ms": {
+        "draft": 4463,
+        "critique": 7388
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the Earth were a flat disc instead of a sphere, how would the patterns of solar radiation and temperature differ from what we observe today?",
+      "ms": {
+        "draft": 6758,
+        "critique": 8395,
+        "solver": 1748
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a city experiences an urban heat island effect, what would be the most likely impact on its surrounding environment?",
+      "ms": {
+        "draft": 6758,
+        "critique": 8547,
+        "solver": 1387,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process is responsible for the formation of clouds in the water cycle?",
+      "ms": {
+        "draft": 11161,
+        "critique": 6636
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the amount of solar energy received per unit area at the top of the Earth’s atmosphere?",
+      "ms": {
+        "draft": 5187,
+        "critique": 7536,
+        "solver": 1583,
+        "form": 0,
+        "translation": 42387
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the primary source of energy for the Earth’s climate and weather systems?",
+      "ms": {
+        "draft": 5187,
+        "critique": 6830,
+        "solver": 1973,
+        "form": 0,
+        "translation": 33990
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best explains why cities are warmer than rural areas during summer?",
+      "ms": {
+        "draft": 4421,
+        "critique": 7384,
+        "solver": 1782,
+        "form": 0,
+        "translation": 60159
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If there is less snowfall in the winter, what effect might this have on the ecosystem?",
+      "ms": {
+        "draft": 3998,
+        "critique": 5512,
+        "solver": 2308,
+        "form": 3680,
+        "translation": 43475
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is primarily responsible for the warming of the Earth?",
+      "ms": {
+        "draft": 6758,
+        "critique": 6827,
+        "solver": 1552,
+        "form": 0,
+        "translation": 56463
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a city replaces its concrete roads with more green spaces, what would be the most likely effect on its temperature?",
+      "ms": {
+        "draft": 4421,
+        "critique": 5892,
+        "solver": 1803,
+        "form": 1,
+        "translation": 52467
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains how the Sun's energy affects the Earth's systems?",
+      "ms": {
+        "draft": 3998,
+        "critique": 6742,
+        "solver": 2016,
+        "form": 3169,
+        "translation": 52640
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the main cause of eutrophication in water bodies?",
+      "ms": {
+        "draft": 4463,
+        "critique": 7753,
+        "solver": 13735,
+        "form": 0,
+        "translation": 78224
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In an ecosystem, the energy flow from the Sun to the Earth’s surface is similar to the energy flow in a food chain. Which of the following statements best explains this analogy?",
+      "ms": {
+        "draft": 5187,
+        "critique": 7699,
+        "solver": 2090,
+        "form": 0,
+        "translation": 81365
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A scientist studying an urban heat island observes that the temperature in the city center is consistently higher than in nearby rural areas. What is the most likely explanation for this observation?",
+      "ms": {
+        "draft": 4421,
+        "critique": 8218,
+        "solver": 2261,
+        "form": 3734,
+        "translation": 65810
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains the formation of the sub-polar low pressure belts?",
+      "ms": {
+        "draft": 7687,
+        "critique": 6561,
+        "solver": 1107,
+        "form": 0,
+        "translation": 64231
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In an ecosystem, if photosynthesis were to stop completely, what would be the most immediate effect?",
+      "ms": {
+        "draft": 4463,
+        "critique": 6033,
+        "solver": 2564,
+        "form": 0,
+        "translation": 40862
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a function of the atmosphere as described in the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "How do ocean currents help in maintaining the Earth’s climate?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 6, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which of the following best describes the role of biogeochemi"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is NOT a part of the Earth's spheres as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a valid conclusion from the passage about the interaction of Earth's systems?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main source of energy on Earth according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the ozone layer were to disappear completely, which of the following would most likely happen?",
+      "reason": "options 0 and 2 say the same thing (\"More infrared radiation would reach the Earth's surface\" / \"More ultraviolet radiation would reach the Earth's surface\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A solar panel installed in a desert area receives an insolation of 1 kWm. What is the total energy received by a 2 m area in 3 hours?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student conducts an experiment to measure the albedo of different surfaces. The student finds that dark soil has a lower albedo than light soil. Which of the following explains this observation?",
+      "reason": "options 0 and 2 say the same thing (\"Dark soil is warmer because it absorbs more energy\" / \"Dark soil is warmer because it reflects more energy\"); options 0 and 3 say the same thing (\"Dark soil is warmer because it absorbs more energy\" / \"Dark soil is cooler because it absorbs more energy\"); options 1 and 2 say the same thing (\"Dark soil is cooler because it reflects more energy\" / \"Dark soil is warmer because it reflects more energy\"); options 1 and 3 say the same thing (\"Dark soil is cooler because it reflects more energy\" / \"Dark soil is cooler because it absorbs more energy\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram of solar radiation and warming of the Earth, which of the following statements is correct?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label sun"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the role of the atmosphere in regulating Earth's temperature?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following best describes the formation of the sub-tropical high pressure belts?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly assumes air rises near the poles and sinks at 30…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that the ozone layer absorbs harmful UV radiation. Which of the following would be the most significant consequence if the ozone layer were to completely disappear?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram of wind circulation (Fig. 13.9a), which of the following best explains the movement of air from the equator to the sub-tropical high pressure belts?",
+      "reason": "options 0 and 1 say the same thing (\"Air rises at the equator, moves poleward at high altitudes, and sinks at 30° latitude.\" / \"Air sinks at the equator, moves equatorward at high altitudes, and rises at 30° latitude.\"); options 0 and 2 say the same thing (\"Air rises at the equator, moves poleward at high altitudes, and sinks at 30° latitude.\" / \"Air rises at the equator, moves equatorward at high altitudes, and sinks at 30° latitude.\"); options 0 and 3 say the same thing (\"Air rises at the equator, moves poleward at high altitudes, and sinks at 30° latitude.\" / \"Air sinks at the equator, moves poleward at high altitudes, and rises at 30° latitude.\"); options 1 and 2 say the same thing (\"Air sinks at the equator, moves equatorward at high altitudes, and rises at 30° latitude.\" / \"Air rises at the equator, moves equatorward at high altitudes, and sinks at 30° latitude.\"); options 1 and 3 say the same thing (\"Air sinks at the equator, moves equatorward at high altitudes, and rises at 30° latitude.\" / \"Air sinks at the equator, moves poleward at high altitudes, and rises at 30° latitude.\"); options 2 and 3 say the same thing (\"Air rises at the equator, moves equatorward at high altitudes, and sinks at 30° latitude.\" / \"Air sinks at the equator, moves poleward at high altitudes, and rises at 30° latitude.\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes air moves equatorward and sinks at 30° l…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The Earth’s rotation causes planetary winds to follow curved paths instead of moving directly from high to low pressure regions. Which of the following is the most likely reason for this phenomenon?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Misattributes the deflection of wind to the Earth's magnetic…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that mountains are the primary cause of …\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a part of the water cycle as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a process that restores oxygen to the atmosphere?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which phenomenon is described as the movement of water across a semipermeable membrane from an area of lower solute concentration to an area of higher solute concentration?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the Earth's rotation were to stop abruptly, what would be the most significant impact on the movement of planetary winds and ocean currents?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly believes that the Earth's rotation is the only f…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "How would a rise in atmospheric temperature affect the cryosphere, hydrosphere, and biosphere?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which part of the carbon cycle involves the conversion of atmospheric carbon dioxide into glucose by plants?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a cell is placed in a solution with a higher concentration of salt than its cell sap, what will happen to the cell?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misunderstands the effect of a hypertonic solution on a cell…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the process of osmosis?",
+      "reason": "options 0 and 1 say the same thing (\"Movement of solute particles from high to low concentration\" / \"Movement of solvent particles from high to low concentration\"); distractor 3's reason is not a one-line misconception (\"Omits the role of the semi-permeable membrane in osmosis, wh…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of osmosis as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Describes a different biological process entirely, not osmos…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a cell is placed in a solution and its volume remains constant, what can be said about the solution?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Misunderstands the effect of a hypertonic solution on a cell…\"); distractor 1's reason is not a one-line misconception (\"Misunderstands the effect of a hypotonic solution on a cell,…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes the solution is a concentrated salt solu…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student places a plant cell in a solution and notices that the cell becomes flaccid. What can be inferred about the solution?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Misunderstands the effect of a hypotonic solution on a plant…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes the solution is isotonic, which would no…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In which of the following situations would osmosis NOT occur?",
+      "reason": "after redrafting distractors 0, 3: the critic finds option 3 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the role of biogeochemical cycles in an ecosystem?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the main reason for the formation of mountain and valley breezes?",
+      "reason": "the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following processes restores oxygen to the atmosphere?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the Earth were a flat disc instead of a sphere, how would the patterns of solar radiation and temperature differ from what we observe today?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a city experiences an urban heat island effect, what would be the most likely impact on its surrounding environment?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'city'"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which process is responsible for the formation of clouds in the water cycle?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "translation",
+      "level": 4,
+      "stem": "What is the main cause of eutrophication in water bodies?",
+      "reason": "mr: the model's answer was not JSON (finish: length): {\n  \"stem\": \"जल वाहिन्यांमध्ये एउट्रोफिकेशनचे मुख्य कारण काय आहे?\",\n  \"options\": [\n    \"अतिरिक्त कार्बन डायऑक्साइड\",\n   "
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

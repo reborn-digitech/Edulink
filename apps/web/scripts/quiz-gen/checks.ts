@@ -355,13 +355,18 @@ export function chapterNumberOf(chapter: string): number | null {
   return m ? Number(m[1]) : null;
 }
 
-/** The chapter's name without its label: "Chapter 4: — Electricity: Magnetic and Heating Effects" → "Electricity: Magnetic and Heating Effects". */
+/**
+ * The chapter's name without its label: "Chapter 4: — Electricity: Magnetic and Heating Effects" → "Electricity:
+ * Magnetic and Heating Effects". A bare heading ("Chapter 4", "Unit 3", "Lesson 2", "7.") names nothing: "" (chapter-
+ * titles, 19 Oct 2026; selectChapter's "Chapter N" is the last resort, and the run log says so).
+ */
 export function chapterNameOf(chapter: string): string {
-  return chapter
+  const name = chapter
     .trim()
-    .replace(/^(?:chapter|unit)?\s*\d{1,2}\s*[:.]?\s*[—–-]?\s*/i, "")
+    .replace(/^(?:chapter|unit|lesson)?\s*\d{1,2}\s*[:.]?\s*[—–-]?\s*/i, "")
     .replace(/\s+/g, " ")
     .trim();
+  return /^(?:chapter|unit|lesson)?\s*\d{0,2}\s*[:.]?$/i.test(name) ? "" : name;
 }
 
 

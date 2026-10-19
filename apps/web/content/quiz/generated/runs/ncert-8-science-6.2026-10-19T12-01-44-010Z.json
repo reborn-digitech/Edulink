@@ -1,0 +1,804 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T12:01:44.010Z",
+  "finishedAt": "2026-10-19T12:14:40.219Z",
+  "seconds": 776,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu106.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 6 — Pressure, Winds, Storms, and Cyclones",
+    "edition": "Reprint 2026-27",
+    "chunks": 17,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2013 — question paper]\n62. The atmospheric pressure on the earth’s surface is P N/m . A table of area 2 m is a 2 2\ntilted at 45 to the horizontal. The force on the top surface of the table due to the 0\natmosphere is (in newtons):\nA. 2 P √ a\nB. √ 2P a\nC. 2 2P √ a\nD. P / 2 a",
+      "[INJSO 2013 — solutions or answer key]\n62. The atmospheric pressure on the earth’s surface is P N/m . A table of area 2 m is a 2 2\ntilted at 45 to the horizontal. The force on the top surface of the table due to the 0\natmosphere is (in newtons):\nA. 2 P √ a\nB. √ 2P a\nC. 2 2P √ a\nD. P / 2 a",
+      "[INJSO 2013 — question paper]\n51. Estimate the order of magnitude of the pressure in N/m exerted on the Earth by an 2\naverage adult human being when standing bare feet on both legs.\nA. 10 3\nB. 10 5\nC. 10 7\nD. 10 9",
+      "[NSEJS 2020 — answer key]\n2. External pressure will increase with depth:\nF = PA = hρg A\nHence, h = F/ρ g A = 2.5 / (9.8 X 1.05 X10 X 3.14 X (0.5 X 10 ) ) = 3.09 m ~ 3m 3 -2 2"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 256669,
+      "in": 42,
+      "out": 41,
+      "rejects": 1,
+      "promptTokens": 40671,
+      "completionTokens": 10883
+    },
+    "critique": {
+      "calls": 57,
+      "ms": 486093,
+      "in": 41,
+      "out": 31,
+      "rejects": 10,
+      "promptTokens": 26923,
+      "completionTokens": 9867
+    },
+    "solver": {
+      "calls": 256,
+      "ms": 186749,
+      "in": 31,
+      "out": 27,
+      "rejects": 4,
+      "promptTokens": 49549,
+      "completionTokens": 2805
+    },
+    "form": {
+      "calls": 13,
+      "ms": 71669,
+      "in": 27,
+      "out": 12,
+      "rejects": 15,
+      "promptTokens": 8849,
+      "completionTokens": 1432
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 27,
+      "ms": 4933,
+      "in": 12,
+      "out": 9,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 36,
+      "ms": 520211,
+      "in": 18,
+      "out": 17,
+      "rejects": 1,
+      "promptTokens": 21356,
+      "completionTokens": 10811
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Why are water tanks placed at a height?",
+      "ms": {
+        "draft": 5441,
+        "critique": 6510
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of pressure?",
+      "ms": {
+        "draft": 5441,
+        "critique": 7284
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What can be concluded from the activity with the two pipes of different diameters?",
+      "ms": {
+        "draft": 5441,
+        "critique": 9547
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the direction in which liquids exert pressure?",
+      "ms": {
+        "draft": 9435,
+        "critique": 10875,
+        "solver": 16837,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a dam is built in a river, why is its base made broader than the top?",
+      "ms": {
+        "draft": 9435,
+        "critique": 10722,
+        "solver": 16905,
+        "form": 3891
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the height of a water column is doubled, what happens to the pressure at the bottom of the container?",
+      "ms": {
+        "draft": 5441,
+        "critique": 7485,
+        "solver": 16732,
+        "form": 4188
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the activity described in the passage, what happens to the bulge of a balloon when the height of the water column is increased?",
+      "ms": {
+        "draft": 9435,
+        "critique": 10806
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the same experiment with the paper plate and chart paper were conducted at a higher altitude, what would happen to the force needed to lift the paper plate?",
+      "ms": {
+        "draft": 9435,
+        "critique": 9770
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best explains why the air flows from the inflated balloon to the uninflated balloon in the activity?",
+      "ms": {
+        "draft": 16051,
+        "critique": 10796
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student performed an experiment by placing a folded chart paper over an inverted paper plate and lifting it with a stick. What would happen if the same experiment were done with an unfolded chart paper?",
+      "ms": {
+        "draft": 9435,
+        "critique": 9699,
+        "solver": 15651,
+        "form": 3034
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage say about the pressure exerted by air on objects?",
+      "ms": {
+        "draft": 9435,
+        "critique": 11149,
+        "solver": 14726
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the experiment with the two balloons, what happens when the pressure in both balloons becomes equal?",
+      "ms": {
+        "draft": 16051,
+        "critique": 9455,
+        "solver": 15583,
+        "form": 3281
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a house has a weak roof and a high-speed wind blows over it, what is the most likely consequence?",
+      "ms": {
+        "draft": 16051,
+        "critique": 10404,
+        "solver": 15441
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for the formation of sea breeze and land breeze?",
+      "ms": {
+        "draft": 16051,
+        "critique": 10883,
+        "solver": 21716,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason for the formation of wind?",
+      "ms": {
+        "draft": 4374,
+        "critique": 7926,
+        "solver": 13825,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A table of area 2 m² is tilted at 45° to the horizontal. If the atmospheric pressure is P N/m², what is the force on the top surface of the table due to the atmosphere?",
+      "ms": {
+        "draft": 7233,
+        "critique": 9840
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the primary purpose of a lightning conductor?",
+      "ms": {
+        "draft": 4374,
+        "critique": 9377,
+        "solver": 2306,
+        "form": 4468
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the correct reason for the formation of a thunderstorm?",
+      "ms": {
+        "draft": 5973,
+        "critique": 6591,
+        "solver": 1905
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why are holes made in banners and hoardings?",
+      "ms": {
+        "draft": 5973,
+        "critique": 7175,
+        "solver": 19548
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens when you blow over a strip of paper that is hanging freely?",
+      "ms": {
+        "draft": 5973,
+        "critique": 7406,
+        "solver": 16695,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a correct statement about pressure?",
+      "ms": {
+        "draft": 5755,
+        "critique": 8623,
+        "solver": 2273,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A water tank is placed on the roof of a building at a height 'H'. To get water with more pressure on the ground floor, what should be done?",
+      "ms": {
+        "draft": 5755,
+        "critique": 10949,
+        "solver": 19045,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A boy is lying horizontally on a loose sand bed, and another boy is standing vertically on the same sand bed. In which case does the boy sink more in sand?",
+      "ms": {
+        "draft": 5755,
+        "critique": 10155,
+        "solver": 2647,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Two vessels, A and B, contain water up to the same level. P and P is the pressure at the bottom of the vessels. F and F is the force exerted by the water at the bottom of the vessels A and B. What is the relationship between the pressures and forces?",
+      "ms": {
+        "draft": 5755,
+        "critique": 10742,
+        "solver": 23232,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is created when warm air rises and cooler air replaces it?",
+      "ms": {
+        "draft": 6026,
+        "critique": 7373
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the air when it rises and expands?",
+      "ms": {
+        "draft": 6026,
+        "critique": 8528
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the atmospheric pressure at the surface is P N/m² and a table of area 2 m² is tilted at 45°, what is the force on the top surface of the table due to the atmosphere?",
+      "ms": {
+        "draft": 6026,
+        "critique": 7832
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the main reason a cyclone weakens when it reaches land?",
+      "ms": {
+        "draft": 6026,
+        "critique": 6801,
+        "solver": 1427,
+        "form": 2996
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains why the balloons in Fig. 6.13 move towards each other when air is blown between them?",
+      "ms": {
+        "draft": 12350,
+        "critique": 6360,
+        "solver": 1256,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two identical balloons are connected by a straw and one is inflated, why do they eventually reach the same size?",
+      "ms": {
+        "draft": 16051,
+        "critique": 10696,
+        "solver": 19223,
+        "form": 3197
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the SI unit of pressure?",
+      "ms": {
+        "draft": 5052,
+        "critique": 9020,
+        "solver": 7633,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of pressure?",
+      "ms": {
+        "draft": 5755,
+        "critique": 8072,
+        "solver": 1875,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the region in the centre of a cyclone where the wind is calm?",
+      "ms": {
+        "draft": 4374,
+        "critique": 8460,
+        "solver": 1533,
+        "form": 3701,
+        "translation": 50621
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the air when it rises and expands in the atmosphere?",
+      "ms": {
+        "draft": 4374,
+        "critique": 7654,
+        "solver": 2437,
+        "form": 3026,
+        "translation": 53770
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the pressure exerted by a liquid?",
+      "ms": {
+        "draft": 5755,
+        "critique": 10536,
+        "solver": 1760,
+        "form": 0,
+        "translation": 56870
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A force of 100 N is applied on a cardboard of area 2 m². What is the pressure applied on the cardboard?",
+      "ms": {
+        "draft": 5441,
+        "critique": 6510,
+        "solver": 1744,
+        "form": 0,
+        "translation": 53590
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason for the formation of a cyclone?",
+      "ms": {
+        "draft": 5973,
+        "critique": 8419,
+        "solver": 1854,
+        "form": 0,
+        "translation": 52415
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person is standing on both legs, and the total area of the soles of the feet is 0.2 m², and their weight is 600 N, what is the pressure exerted on the ground?",
+      "ms": {
+        "draft": 5441,
+        "critique": 7821,
+        "solver": 1934,
+        "form": 0,
+        "translation": 58080
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the atmospheric pressure is 100,000 Pa, what is the force exerted on a surface of area 2 m²?",
+      "ms": {
+        "draft": 5973,
+        "critique": 10593,
+        "solver": 2269,
+        "form": 0,
+        "translation": 56424
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is true about the pressure exerted by a liquid?",
+      "ms": {
+        "draft": 5973,
+        "critique": 8287,
+        "solver": 2476,
+        "form": 0,
+        "translation": 80423
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If two identical balloons are connected by a straw and one is inflated, why do they eventually reach the same size?",
+      "ms": {
+        "draft": 16051,
+        "critique": 6609,
+        "solver": 21531,
+        "form": 3426,
+        "translation": 70500
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following statements is true about the pressure exerted by liquids?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why are water tanks placed at a height?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the SI unit of pressure?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What can be concluded from the activity with the two pipes of different diameters?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the direction in which liquids exert pressure?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a dam is built in a river, why is its base made broader than the top?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Thinks the base is made broader to increase surface area, bu…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the height of a water column is doubled, what happens to the pressure at the bottom of the container?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'water'"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the activity described in the passage, what happens to the bulge of a balloon when the height of the water column is increased?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the same experiment with the paper plate and chart paper were conducted at a higher altitude, what would happen to the force needed to lift the paper plate?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best explains why the air flows from the inflated balloon to the uninflated balloon in the activity?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student performed an experiment by placing a folded chart paper over an inverted paper plate and lifting it with a stick. What would happen if the same experiment were done with an unfolded chart paper?",
+      "reason": "options 0 and 1 say the same thing (\"The effort needed to lift the paper plate would decrease\" / \"The effort needed to lift the paper plate would increase\"); distractor 0's reason is not a one-line misconception (\"Thinks the effort decreases with more area, but the passage …\"); distractor 2's reason is not a one-line misconception (\"Thinks the paper plate cannot be lifted, but the passage say…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What does the passage say about the pressure exerted by air on objects?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In the experiment with the two balloons, what happens when the pressure in both balloons becomes equal?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct reasoning\",\"Incorrect assumption about pressure\"]},{…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a house has a weak roof and a high-speed wind blows over it, what is the most likely consequence?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for the formation of sea breeze and land breeze?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main reason for the formation of wind?",
+      "reason": "the key is far longer than every distractor (53 vs 29 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A table of area 2 m² is tilted at 45° to the horizontal. If the atmospheric pressure is P N/m², what is the force on the top surface of the table due to the atmosphere?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the primary purpose of a lightning conductor?",
+      "reason": "the key is far longer than every distractor (63 vs 35 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is the correct reason for the formation of a thunderstorm?",
+      "reason": "the solver picked option 3 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Why are holes made in banners and hoardings?",
+      "reason": "after redrafting distractors 1, 2, 3: the critic finds option 2 correct, the key is 0"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens when you blow over a strip of paper that is hanging freely?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels top, bottom"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a correct statement about pressure?",
+      "reason": "options 0 and 1 say the same thing (\"It is measured in newton per square metre\" / \"It is measured in newton per metre\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A water tank is placed on the roof of a building at a height 'H'. To get water with more pressure on the ground floor, what should be done?",
+      "reason": "options 2 and 3 say the same thing (\"Replace the tank with another that can hold more water\" / \"Replace the tank with another that can hold less water\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A boy is lying horizontally on a loose sand bed, and another boy is standing vertically on the same sand bed. In which case does the boy sink more in sand?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.cellWall: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Two vessels, A and B, contain water up to the same level. P and P is the pressure at the bottom of the vessels. F and F is the force exerted by the water at the bottom of the vessels A and B. What is the relationship between the pressures and forces?",
+      "reason": "options 0 and 1 are the same (\"P = P , F = F\"); options 0 and 3 are the same (\"P = P , F = F\"); options 1 and 3 are the same (\"P = P , F < F\"); option 0 repeats the stem's wording (\"P = P , F = F\"); option 1 repeats the stem's wording (\"P = P , F < F\"); option 3 repeats the stem's wording (\"P > P , F < F\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is created when warm air rises and cooler air replaces it?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What happens to the air when it rises and expands?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the atmospheric pressure at the surface is P N/m² and a table of area 2 m² is tilted at 45°, what is the force on the top surface of the table due to the atmosphere?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the main reason a cyclone weakens when it reaches land?",
+      "reason": "figure is set without imageAlt"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best explains why the balloons in Fig. 6.13 move towards each other when air is blown between them?",
+      "reason": "options 0 and 1 say the same thing (\"Air moves from a low pressure region to a high pressure region\" / \"Air moves from a high pressure region to a low pressure region\"); options 0 and 3 say the same thing (\"Air moves from a low pressure region to a high pressure region\" / \"Air moves from a high temperature region to a low temperature region\"); options 1 and 3 say the same thing (\"Air moves from a high pressure region to a low pressure region\" / \"Air moves from a high temperature region to a low temperature region\"); distractor 2's reason is not a one-line misconception (\"Correct concept, but not the answer…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the role of pressure in air movement, thinkin…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If two identical balloons are connected by a straw and one is inflated, why do they eventually reach the same size?",
+      "reason": "near-duplicate of batch item \"If two identical balloons are connected by a straw…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is the SI unit of pressure?",
+      "reason": "near-duplicate of served question cmvf0cf3002kwgod8x0brvzw4 (cosine 0.934 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the SI unit of pressure?",
+      "reason": "near-duplicate of served question cmvf0cf3002kwgod8x0brvzw4 (cosine 0.907 ≥ 0.9)"
+    },
+    {
+      "stage": "translation",
+      "level": 6,
+      "stem": "Which of the following is true about the pressure exerted by a liquid?",
+      "reason": "mr: the model's answer was not JSON (finish: length): {\n  \"sameMeaning\": true,\n  \"oneAnswer\": false,\n  \"distractorsStillWrong\": false,\n  \"termsAreTheBoards\": false,\n  \"note\":"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

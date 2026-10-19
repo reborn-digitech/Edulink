@@ -1,0 +1,611 @@
+{
+  "subject": "MATHS",
+  "classLevel": 8,
+  "chapter": "Chapter 8 — Xpressions and",
+  "name": "Xpressions and",
+  "slug": "maths-8-xpressions-and",
+  "summary": "This chapter explains algebraic expressions and identities, including how to add, subtract, and multiply them.",
+  "position": 8,
+  "source": "generated against NCERT Mathematics, Class 8, chapter 8 (Reprint 2024-25)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अभिव्यक्तियाँ और सर्वसमिकाएँ।",
+      "summary": "इस अध्याय में बीजीय अभिव्यक्तियों और सर्वसमिकाओं की चर्चा की गई है, जिसमें उनके जोड़, घटाव और गुणा करने के तरीके शामिल हैं।"
+    },
+    "mr": {
+      "name": "अभिव्यक्ती आणि समीकरणे.",
+      "summary": "ही अध्याय बीजगणितीय अभिव्यक्ती आणि समीकरणांचे विवेचन करतो, ज्यामध्ये त्यांच्या बेरजा, बायचा आणि गुणाकार करण्याचे पद्धती शामिल आहेत."
+    }
+  },
+  "board": "NCERT",
+  "book": "Mathematics",
+  "edition": "Reprint 2024-25",
+  "generatedAt": "2026-10-19T07:37:21.969Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is a type of expression that has exactly one term?",
+      "choices": [
+        "Trinomial",
+        "Binomial",
+        "Polynomial",
+        "Monomial"
+      ],
+      "answerIndex": 3,
+      "solution": "A monomial is an expression that consists of exactly one term. Trinomial refers to an expression with three terms, binomial refers to an expression with two terms, and polynomial is a general term for expressions with one or more terms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक व्यंजक के प्रकार है जिसमें ठीक एक पद होता है?",
+          "choices": [
+            "त्रिपद",
+            "द्विपद",
+            "बहुपद",
+            "एकपद"
+          ],
+          "solution": "एकपद एक व्यंजक है जो ठीक एक पद से बना होता है। त्रिपद तीन पदों वाले व्यंजक के लिए होता है, द्विपद दो पदों वाले व्यंजक के लिए होता है, और बहुपद एक या अधिक पदों वाले व्यंजकों के लिए एक सामान्य शब्द है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Hindi mathematics textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक व्यंजक आहे ज्याचे ठिक एक अवयव आहे?",
+          "choices": [
+            "त्रिपदी",
+            "द्विपदी",
+            "बहुपदी",
+            "एकपदी"
+          ],
+          "solution": "एकपदी हा एक व्यंजक आहे जो ठिक एक अवयव असतो. त्रिपदी हा तीन अवयव असलेल्या व्यंजकाला म्हणतात, द्विपदी हा दोन अवयव असलेल्या व्यंजकाला म्हणतात आणि बहुपदी हा एक किंवा अधिक अवयव असलेल्या व्यंजकाच्या सामान्य शब्दाने वर्णन करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi mathematical terminology used (एकपदी, द्विपदी, त्रिपदी, बहुपदी). The meaning and structure match the original English question.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses trinomial with one term",
+        "Confuses binomial with one term",
+        "Uses the general term polynomial instead of the specific term monomial",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that a monomial has exactly one term, and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hemh108.pdf",
+          "ordinal": 7,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: Xpressions and",
+            "and Identities",
+            "WHAT HAVE WE DISCUSSED?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2024-25",
+      "generatedAt": "2026-10-19T07:37:21.969Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a correct statement about like terms?",
+      "choices": [
+        "Like terms have different variables",
+        "Like terms have the same variables and powers",
+        "Like terms have different coefficients",
+        "Like terms cannot be combined"
+      ],
+      "answerIndex": 1,
+      "solution": "Like terms are terms that have the same variables raised to the same powers, which allows them to be combined through addition or subtraction. The other options are incorrect because like terms can have different coefficients, and they are meant to be combined, not kept separate.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक सही कथन है जैसा कि एक समान पदों के बारे में कहा जाता है?",
+          "choices": [
+            "एक समान पद अलग-अलग चर रखते हैं",
+            "एक समान पद एक ही चर और घात रखते हैं",
+            "एक समान पद अलग-अलग गुणांक रखते हैं",
+            "एक समान पदों को संयोजित नहीं किया जा सकता"
+          ],
+          "solution": "एक समान पद वे पद होते हैं जिनमें एक ही चर और उसकी एक ही घात होती है, जिसके कारण उन्हें जोड़ या घटाकर संयोजित किया जा सकता है। अन्य विकल्प गलत हैं क्योंकि एक समान पद अलग-अलग गुणांक रख सकते हैं, और वे संयोजित किए जाने के लिए होते हैं, न कि अलग रखे जाने के लिए।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता एक आउट टर्म्स बद्दल बरोबर विधान आहे?",
+          "choices": [
+            "आउट टर्म्स वेगळे चल असतात",
+            "आउट टर्म्स एकसारखे चल आणि घात असतात",
+            "आउट टर्म्स वेगळे गुणक असतात",
+            "आउट टर्म्स एकत्र करता येत नाहीत"
+          ],
+          "solution": "आउट टर्म्स म्हणजे एकसारखे चल आणि घात असलेले टर्म्स आहेत, ज्यांना जोडणे किंवा वजा करणे शक्य आहे. इतर विधाने चुकीची आहेत कारण आउट टर्म्स वेगळे गुणक असू शकतात आणि त्यांना एकत्र करण्याचा उद्देश असतो, न केवळ वेगळे ठेवण्याचा.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. 'आउट टर्म्स' is a direct transliteration, which is acceptable in this context as no standard Marathi term exists for 'like terms'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly states that like terms have different variables",
+        null,
+        "Confuses the definition of like terms with that of unlike terms",
+        "Incorrectly suggests that like terms cannot be combined"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as like terms must have the same variables and exponents. The other options reflect common misconceptions about like terms.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hemh108.pdf",
+          "ordinal": 7,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: Xpressions and",
+            "and Identities",
+            "WHAT HAVE WE DISCUSSED?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2024-25",
+      "generatedAt": "2026-10-19T07:37:21.969Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the result of multiplying the monomial 2x by the binomial (3x + 4)?",
+      "choices": [
+        "6x + 4",
+        "6x + 8",
+        "6x^2 + 8x",
+        "6x^2 + 4"
+      ],
+      "answerIndex": 2,
+      "solution": "When multiplying a monomial by a binomial, each term of the binomial is multiplied by the monomial. 2x * 3x = 6x^2 and 2x * 4 = 8x. The correct answer is 6x^2 + 8x. The other options do not correctly apply the distributive property.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "2x एक पद के गुणन के परिणाम क्या है (3x + 4) द्विपद के साथ?",
+          "choices": [
+            "6x + 4",
+            "6x + 8",
+            "6x^2 + 8x",
+            "6x^2 + 4"
+          ],
+          "solution": "एक पद के गुणन के साथ एक द्विपद के गुणन में, द्विपद के प्रत्येक पद को पद से गुणा किया जाता है। 2x * 3x = 6x^2 और 2x * 4 = 8x। सही उत्तर 6x^2 + 8x है। अन्य विकल्प वितरण गुण के सही अनुप्रयोग के बिना हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "2x हा एकपदी व त्याला (3x + 4) हा द्विपदी गुणाकार केल्यास निकाल काय होईल?",
+          "choices": [
+            "6x + 4",
+            "6x + 8",
+            "6x^2 + 8x",
+            "6x^2 + 4"
+          ],
+          "solution": "एकपदी व द्विपदी गुणाकार करताना द्विपदीच्या प्रत्येक पदाला एकपदीने गुणाकार केला जातो. 2x * 3x = 6x^2 आणि 2x * 4 = 8x. योग्य उत्तर 6x^2 + 8x आहे. इतर उत्तरे वितरक गुणधर्माच्या चुकीच्या अनुसरणामुळे चुकीचे आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "only multiplies 2x by 3x but not by 4",
+        "multiplies 2x by 4 but not by 3x",
+        null,
+        "Student forgets to multiply the second term of the binomial by the monomial."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly applies the distributive property, multiplying 2x by both terms of the binomial. All distractors represent common misconceptions, such as forgetting to multiply one term or both.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hemh108.pdf",
+          "ordinal": 7,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: Xpressions and",
+            "and Identities",
+            "WHAT HAVE WE DISCUSSED?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2024-25",
+      "generatedAt": "2026-10-19T07:37:21.969Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the product of (a + b)(a + b)?",
+      "choices": [
+        "a^2 + 2ab + b^2",
+        "a^2 + ab + b^2",
+        "a^2 + ab + 2b^2",
+        "a^2 + 2ab + 2b^2"
+      ],
+      "answerIndex": 0,
+      "solution": "The product of (a + b)(a + b) is calculated as (a + b)^2, which expands to a^2 + 2ab + b^2. The correct answer is a^2 + 2ab + b^2. The other options have incorrect coefficients for ab or b^2.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "(a + b)(a + b) का गुणन क्या है?",
+          "choices": [
+            "a^2 + 2ab + b^2",
+            "a^2 + ab + b^2",
+            "a^2 + ab + 2b^2",
+            "a^2 + 2ab + 2b^2"
+          ],
+          "solution": "(a + b)(a + b) का गुणन (a + b)^2 के रूप में गणना की जाती है, जो a^2 + 2ab + b^2 के रूप में विस्तारित होता है। सही उत्तर a^2 + 2ab + b^2 है। अन्य विकल्पों में ab या b^2 के गुणांक गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "(a + b)(a + b) चा गुणाकार किती आहे?",
+          "choices": [
+            "a^2 + 2ab + b^2",
+            "a^2 + ab + b^2",
+            "a^2 + ab + 2b^2",
+            "a^2 + 2ab + 2b^2"
+          ],
+          "solution": "(a + b)(a + b) चा गुणाकार (a + b)^2 असा गणला जातो, जो a^2 + 2ab + b^2 च्या रूपात विस्तारित केला जातो. योग्य उत्तर a^2 + 2ab + b^2 आहे. इतर विकल्पांमध्ये ab किंवा b^2 च्या गुणकांमध्ये चूक आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for algebraic expressions.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Incorrectly calculates the coefficient of ab",
+        "Incorrectly calculates the coefficient of b^2",
+        "Incorrectly calculates the coefficient of ab and b^2"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and matches the key. The expansion of (a + b)^2 is indeed a^2 + 2ab + b^2, and the author's reasoning for the distractors is valid.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hemh108.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 8: Xpressions and",
+            "and Identities"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hemh108.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Xpressions and",
+            "and Identities"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hemh108.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Xpressions and",
+            "and Identities"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hemh108.pdf",
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: Xpressions and",
+            "and Identities"
+          ]
+        }
+      ],
+      "edition": "Reprint 2024-25",
+      "generatedAt": "2026-10-19T07:37:21.969Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is the result of multiplying a monomial by a monomial?",
+      "choices": [
+        "A binomial",
+        "A trinomial",
+        "A polynomial",
+        "A monomial"
+      ],
+      "answerIndex": 3,
+      "solution": "Multiplying a monomial by a monomial results in a monomial because the product of two single-term expressions remains a single term. A binomial and a trinomial each have more than one term, which cannot result from multiplying two monomials. A polynomial is a broader category that includes expressions with multiple terms, so it is not the most specific correct answer.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक एकपदी के एक एकपदी से गुणन के परिणाम है?",
+          "choices": [
+            "एक द्विपद",
+            "एक त्रिपद",
+            "एक बहुपद",
+            "एक एकपद"
+          ],
+          "solution": "एक एकपदी के एक एकपदी से गुणन करने पर एक एकपदी प्राप्त होती है क्योंकि दो एकल पद व्यंजकों का गुणनफल एकल पद रहता है। एक द्विपद और एक त्रिपद में प्रत्येक में एक से अधिक पद होते हैं, जो कि दो एकपदी के गुणन से नहीं प्राप्त हो सकते। एक बहुपद एक व्यापक श्रेणी है जो एक से अधिक पद वाले व्यंजकों को शामिल करती है, इसलिए यह सबसे विशिष्ट सही उत्तर नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक एकपदी व एकपदी च्या गुणाकाराचे फलित आहे?",
+          "choices": [
+            "एक द्विपद",
+            "एक त्रिपद",
+            "एक बहुपद",
+            "एक एकपद"
+          ],
+          "solution": "एकपदी व एकपदी च्या गुणाकाराने एक एकपद मिळतो कारण दोन एकल-पद व्यंजकांचा गुणाकार एकल-पद राहतो. द्विपद आणि त्रिपद दोन्ही एकापेक्षा जास्त पद असलेले असतात, जे दोन एकपदींच्या गुणाकाराने मिळू शकत नाहीत. बहुपद हा अधिक व्यापक श्रेणी आहे जी जास्त पद असलेल्या व्यंजकांना समाविष्ट करते, त्यामुळे ते सर्वात विशिष्ट योग्य उत्तर नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses monomial multiplication with binomial multiplication",
+        "Confuses monomial multiplication with trinomial multiplication",
+        "Uses the general term polynomial instead of the specific term monomial",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Multiplying two monomials results in another monomial, as the product of two terms with variables and coefficients remains a single term. The author's reasoning for the distractors is valid, as students might confuse the result with other types of expressions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hemh108.pdf",
+          "ordinal": 7,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: Xpressions and",
+            "and Identities",
+            "WHAT HAVE WE DISCUSSED?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2024-25",
+      "generatedAt": "2026-10-19T07:37:21.969Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a polynomial is multiplied by a binomial, how many terms will the product have if there are 3 terms in the polynomial and 2 terms in the binomial?",
+      "choices": [
+        "3",
+        "5",
+        "6",
+        "8"
+      ],
+      "answerIndex": 2,
+      "solution": "When a polynomial is multiplied by a binomial, each term in the polynomial is multiplied by each term in the binomial. This results in 3 × 2 = 6 terms before combining like terms. The correct answer is 6 because every term in the polynomial interacts with every term in the binomial. The other options do not account for all possible products.",
+      "checkExpr": "3*2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक बहुपद को द्विपद से गुणा किया जाता है, तो गुणनफल में कितने पद होंगे यदि बहुपद में 3 पद हैं और द्विपद में 2 पद हैं?",
+          "choices": [
+            "3",
+            "5",
+            "6",
+            "8"
+          ],
+          "solution": "जब एक बहुपद को द्विपद से गुणा किया जाता है, तो बहुपद के प्रत्येक पद को द्विपद के प्रत्येक पद से गुणा किया जाता है। इससे 3 × 2 = 6 पद प्राप्त होते हैं जब तक कि समान पदों को जोड़ा नहीं जाता। सही उत्तर 6 है क्योंकि बहुपद का प्रत्येक पद द्विपद के प्रत्येक पद से अंतःक्रिया करता है। अन्य विकल्प सभी संभावित गुणनफलों को ध्यान में नहीं रखते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर बहुपदीला द्विपदीने गुणले जाते, तर गुणाकारात किती वर्ण असतील जर बहुपदीत 3 वर्ण असतील आणि द्विपदीत 2 वर्ण असतील?",
+          "choices": [
+            "3",
+            "5",
+            "6",
+            "8"
+          ],
+          "solution": "जर बहुपदीला द्विपदीने गुणले जाते, तर बहुपदीतील प्रत्येक वर्ण द्विपदीतील प्रत्येक वर्णाने गुणला जातो. हे 3 × 2 = 6 वर्णांच्या परिणामाच्या रूपात होते जेव्हा समान पदांचे जोडले जात नाही. योग्य उत्तर 6 आहे कारण बहुपदीतील प्रत्येक वर्ण द्विपदीतील प्रत्येक वर्णाने गुणला जातो. इतर उत्तरे सर्व संभाव्य गुणाकारांचा विचार करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the mathematical meaning. 'वर्ण' is correctly used for 'terms' in the mathematical context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Adds the number of terms instead of multiplying them",
+        "Adds the number of terms and subtracts one",
+        null,
+        "Adds the number of terms and multiplies by two"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Multiplying each term of a 3-term polynomial by each term of a 2-term binomial yields 3 × 2 = 6 terms before combining like terms. The author's reasoning and the key are accurate.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hemh108.pdf",
+          "ordinal": 7,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: Xpressions and",
+            "and Identities",
+            "WHAT HAVE WE DISCUSSED?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2024-25",
+      "generatedAt": "2026-10-19T07:37:21.969Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is the result of combining like terms in the expression 3x + 5x - 2x?",
+      "choices": [
+        "6x",
+        "8x",
+        "10x",
+        "12x"
+      ],
+      "answerIndex": 0,
+      "solution": "Combining like terms involves adding or subtracting their coefficients. Here, 3x + 5x - 2x equals (3 + 5 - 2)x = 6x. This is an application of the rule that like terms can be combined by their coefficients. The other options incorrectly calculate the sum of the coefficients.",
+      "checkExpr": "3+5-2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अभिव्यक्ति 3x + 5x - 2x में समान पदों को जोड़ने पर परिणाम क्या होता है?",
+          "choices": [
+            "6x",
+            "8x",
+            "10x",
+            "12x"
+          ],
+          "solution": "समान पदों को जोड़ना उनके गुणांकों को जोड़ना या घटाना होता है। यहां 3x + 5x - 2x बराबर (3 + 5 - 2)x = 6x होता है। यह समान पदों के गुणांकों द्वारा जोड़े जा सकने के नियम का एक अनुप्रयोग है। अन्य विकल्प गुणांकों के योग की गलत गणना करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the solution aligns with the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "3x + 5x - 2x या व्यंजकातील समान पदांचे जोडल्याने काय परिणाम होतो?",
+          "choices": [
+            "6x",
+            "8x",
+            "10x",
+            "12x"
+          ],
+          "solution": "समान पदांचे जोडणे हे त्यांच्या गुणकांचे जोडणे किंवा वजाकरणे असते. येथे, 3x + 5x - 2x हे (3 + 5 - 2)x = 6x च्या बरोबर आहे. हे समान पदांच्या गुणकांनुसार जोडल्याच्या नियमाचे अनुसरण आहे. इतर विकल्प गुणकांच्या बेरजेच्या चुकीच्या गणनेमुळे असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Adds 3 + 5 but forgets to subtract 2",
+        "Adds 3 + 5 + 2",
+        "Multiplies the coefficients instead of adding them"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward and the solution is correct. The author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hemh108.pdf",
+          "ordinal": 7,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: Xpressions and",
+            "and Identities",
+            "WHAT HAVE WE DISCUSSED?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2024-25",
+      "generatedAt": "2026-10-19T07:37:21.969Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

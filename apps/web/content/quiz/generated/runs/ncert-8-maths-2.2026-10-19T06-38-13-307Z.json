@@ -1,0 +1,859 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T06:38:13.307Z",
+  "finishedAt": "2026-10-19T06:47:02.558Z",
+  "seconds": 529,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash Part-I",
+    "bookCode": "hegp1",
+    "document": "ncert/8/mathematics/hegp102.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Power Play",
+    "edition": "Reprint 2026-27",
+    "chunks": 26,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n8. (B) ଷଵ\nଷ଺\nProbability of getting sum 8 is ଷ଺ ହ\nProbability of not getting sum 8 is ଷଵ ଷ଺",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n14. B) 3 8",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n8. (d) RHS"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 224243,
+      "in": 46,
+      "out": 44,
+      "rejects": 2,
+      "promptTokens": 50349,
+      "completionTokens": 12205
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 367158,
+      "in": 44,
+      "out": 36,
+      "rejects": 8,
+      "promptTokens": 25624,
+      "completionTokens": 9805
+    },
+    "solver": {
+      "calls": 252,
+      "ms": 139997,
+      "in": 36,
+      "out": 24,
+      "rejects": 12,
+      "promptTokens": 51948,
+      "completionTokens": 2844
+    },
+    "form": {
+      "calls": 9,
+      "ms": 33855,
+      "in": 24,
+      "out": 8,
+      "rejects": 16,
+      "promptTokens": 2470,
+      "completionTokens": 909
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 3118,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 314961,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 19801,
+      "completionTokens": 9301
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 3,
+    "2": 0,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "If the thickness of a paper after 10 folds is 1.024 cm, what is the thickness after 20 folds?",
+      "ms": {
+        "draft": 7535,
+        "critique": 8852,
+        "solver": 2837
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the table, what is the value of the thickness after 17 folds?",
+      "ms": {
+        "draft": 7535,
+        "critique": 7623,
+        "solver": 1469
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the thickness of a paper after 46 folds if the initial thickness is 0.001 cm?",
+      "ms": {
+        "draft": 7535,
+        "critique": 7707,
+        "solver": 16291,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the thickness of a paper after 10 folds is 1.024 cm, what is the thickness after 30 folds?",
+      "ms": {
+        "draft": 7535,
+        "critique": 7823,
+        "solver": 1615
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is equivalent to 2^5 × 2^3?",
+      "ms": {
+        "draft": 5324,
+        "critique": 5780,
+        "solver": 1454,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the passage, what does the expression 3^4 represent in the context of the 'Stones that Shine' problem?",
+      "ms": {
+        "draft": 7535,
+        "critique": 7521,
+        "solver": 1753,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 2^4 is halved twice, what is the result?",
+      "ms": {
+        "draft": 5324,
+        "critique": 8753
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a 5-digit lock has 10 options for each digit and a 6-digit lock has 26 options for each digit (A-Z), how many more passwords does the 6-digit lock have compared to the 5-digit lock?",
+      "ms": {
+        "draft": 5324,
+        "critique": 7134,
+        "solver": 2727,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 2^a × 3^b = (2 × 3)^c, what is the relationship between a, b, and c?",
+      "ms": {
+        "draft": 5324,
+        "critique": 8303
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of 5^0?",
+      "ms": {
+        "draft": 5324,
+        "critique": 5354,
+        "solver": 1648,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a pond doubles its lotus count every day and is full on day 30, how many lotuses were there on day 28?",
+      "ms": {
+        "draft": 5324,
+        "critique": 8719,
+        "solver": 11996,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In scientific notation, which part of the number is most important?",
+      "ms": {
+        "draft": 3998,
+        "critique": 6231,
+        "solver": 1380
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the scientific notation for the number 5900?",
+      "ms": {
+        "draft": 3998,
+        "critique": 6762
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following distances is the smallest?",
+      "ms": {
+        "draft": 3998,
+        "critique": 5882,
+        "solver": 1728,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Roxie’s weight is 45 kg and the cost of 1 kg of jaggery is ₹70. What is the worth of the donated jaggery in scientific notation?",
+      "ms": {
+        "draft": 3998,
+        "critique": 6761,
+        "solver": 1442
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that the most important part of a number in scientific notation is the exponent. Why is this the case?",
+      "ms": {
+        "draft": 3998,
+        "critique": 6917,
+        "solver": 1675
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person walks non-stop and covers the distance around the Earth (40,000 km) in their lifetime, and they walk 10 km per day, how many years would it take them to walk around the Earth once, assuming they walk 365 days a year?",
+      "ms": {
+        "draft": 5136,
+        "critique": 8559,
+        "solver": 1403
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a ladder is built to reach the moon and each step is 20 cm high, and the distance between the Earth and the Moon is 384,400 km, how many steps would the ladder have?",
+      "ms": {
+        "draft": 5136,
+        "critique": 8373,
+        "solver": 1989
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the estimated number of stars in the observable universe?",
+      "ms": {
+        "draft": 3873,
+        "critique": 6533
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct representation of the number 10 in scientific notation?",
+      "ms": {
+        "draft": 5971,
+        "critique": 4016
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following are equivalent to 2 × 3?",
+      "ms": {
+        "draft": 3958,
+        "critique": 8327
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a dairy needs to produce 8.5 billion milk packets and use digits 0–9 for unique IDs, how many digits are needed at minimum?",
+      "ms": {
+        "draft": 3958,
+        "critique": 7525,
+        "solver": 1195,
+        "form": 7290
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many total alphanumeric codes are possible for a 5-character passcode if each character can be a letter or a digit?",
+      "ms": {
+        "draft": 3958,
+        "critique": 9787,
+        "solver": 1447,
+        "form": 3041
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of (1.2) if (12) = 144?",
+      "ms": {
+        "draft": 3958,
+        "critique": 7949,
+        "solver": 17843,
+        "form": 4220
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a digital locker passcode has 5 characters and uses both digits and letters, how many combinations are possible if the first character must be a letter?",
+      "ms": {
+        "draft": 3958,
+        "critique": 6841,
+        "solver": 14392,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which expression represents the thickness of a sheet of paper after it is folded 10 times, if the initial thickness is represented by v?",
+      "ms": {
+        "draft": 3423,
+        "critique": 6341,
+        "solver": 1460,
+        "form": 4715
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of (– 2) ?",
+      "ms": {
+        "draft": 3423,
+        "critique": 6612,
+        "solver": 1114
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number is both a square and a cube, which of the following must be true?",
+      "ms": {
+        "draft": 3958,
+        "critique": 7582,
+        "solver": 18527,
+        "form": 4022
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a flock of starlings contains 10,000 birds, how many flocks could there be in the world, given that the total number of starlings is 1.3 × 10 ?",
+      "ms": {
+        "draft": 3423,
+        "critique": 5575
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of 2 × 10 ?",
+      "ms": {
+        "draft": 3423,
+        "critique": 7790
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a number is expressed as 10 raised to the power of 12, what is the name of this number in the Indian system of numeration?",
+      "ms": {
+        "draft": 5044,
+        "critique": 7158,
+        "solver": 1119
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a digital locker has an alphanumeric passcode of length 5, and each character can be a letter (26) or a digit (10), how many different passcodes are possible?",
+      "ms": {
+        "draft": 5044,
+        "critique": 7817,
+        "solver": 1992,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is both a 4th power and a 6th power?",
+      "ms": {
+        "draft": 3423,
+        "critique": 7255,
+        "solver": 15589,
+        "form": 3362
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the scientific notation for the estimated number of stars in the observable universe?",
+      "ms": {
+        "draft": 4205,
+        "critique": 5792,
+        "solver": 1409
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the standard form of the number 308100000?",
+      "ms": {
+        "draft": 5044,
+        "critique": 7345,
+        "solver": 1850,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person is 4840 days old, how many hours old are they? (Assume 1 day = 24 hours)",
+      "ms": {
+        "draft": 4205,
+        "critique": 5860,
+        "solver": 12560
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the expression 2^10 represent in the context of the thickness of a folded paper?",
+      "ms": {
+        "draft": 7535,
+        "critique": 7081,
+        "solver": 15648,
+        "form": 0,
+        "translation": 38882
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of (– 1) ?",
+      "ms": {
+        "draft": 3423,
+        "critique": 8643,
+        "solver": 1660,
+        "form": 2645,
+        "translation": 28185
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe writing numbers as the product of a number between 1 and 10 and a power of 10?",
+      "ms": {
+        "draft": 3998,
+        "critique": 5501,
+        "solver": 1786,
+        "form": 4485,
+        "translation": 52727
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Estu wants to donate notebooks worth his weight every year. If the average weight of a notebook is 0.5 kg and Estu weighs 40 kg, how many notebooks can he donate in a year?",
+      "ms": {
+        "draft": 5136,
+        "critique": 6616,
+        "solver": 12736,
+        "form": 0,
+        "translation": 51736
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 100 lakhs is equal to 1 crore, then how many lakhs are there in 10 crores?",
+      "ms": {
+        "draft": 5044,
+        "critique": 6520,
+        "solver": 2107,
+        "form": 0,
+        "translation": 30328
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a person walks 400 km in a pādayātra, and walks 10 km every day, how many days would it take them to complete the journey?",
+      "ms": {
+        "draft": 5136,
+        "critique": 7065,
+        "solver": 1464,
+        "form": 0,
+        "translation": 42354
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a person walks 400 km in a pādayātra, and walks 5 km per hour, how many hours would they take to complete the journey?",
+      "ms": {
+        "draft": 5456,
+        "critique": 5656,
+        "solver": 10620,
+        "form": 1251,
+        "translation": 27923
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a number is both a square and a cube, which of the following must be true about the number?",
+      "ms": {
+        "draft": 5044,
+        "critique": 6855,
+        "solver": 1051,
+        "form": 0,
+        "translation": 38802
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Roxie wants to do annadāna (offering grains or meals) worth her weight every year. If the average weight of a meal is 0.25 kg and Roxie weighs 50 kg, how many meals can she offer in a year?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If the thickness of a paper after 10 folds is 1.024 cm, what is the thickness after 20 folds?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the table, what is the value of the thickness after 17 folds?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the thickness of a paper after 46 folds if the initial thickness is 0.001 cm?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"0.001*2^46\" = 70368744177.664, but the key says 700000"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the thickness of a paper after 10 folds is 1.024 cm, what is the thickness after 30 folds?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is equivalent to 2^5 × 2^3?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"2^8\" = 256, but the key says 2"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the passage, what does the expression 3^4 represent in the context of the 'Stones that Shine' problem?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If 2^4 is halved twice, what is the result?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a 5-digit lock has 10 options for each digit and a 6-digit lock has 26 options for each digit (A-Z), how many more passwords does the 6-digit lock have compared to the 5-digit lock?",
+      "reason": "options 0 and 1 say the same thing (\"26^6 - 10^5\" / \"10^5 - 26^6\"); options 0 and 2 say the same thing (\"26^6 - 10^5\" / \"10^5 × 26^6\"); options 0 and 3 say the same thing (\"26^6 - 10^5\" / \"26^6 ÷ 10^5\"); options 1 and 2 say the same thing (\"10^5 - 26^6\" / \"10^5 × 26^6\"); options 1 and 3 say the same thing (\"10^5 - 26^6\" / \"26^6 ÷ 10^5\"); options 2 and 3 say the same thing (\"10^5 × 26^6\" / \"26^6 ÷ 10^5\"); ARITHMETIC MISMATCH — checkExpr \"26^6 - 10^5\" = 308815776, but the key says 26"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If 2^a × 3^b = (2 × 3)^c, what is the relationship between a, b, and c?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the value of 5^0?",
+      "reason": "checkExpr \"1\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a pond doubles its lotus count every day and is full on day 30, how many lotuses were there on day 28?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"2^2\" = 4, but the key says 2"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "In scientific notation, which part of the number is most important?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the scientific notation for the number 5900?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following distances is the smallest?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"None of the above\"); options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Roxie’s weight is 45 kg and the cost of 1 kg of jaggery is ₹70. What is the worth of the donated jaggery in scientific notation?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The passage states that the most important part of a number in scientific notation is the exponent. Why is this the case?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a person walks non-stop and covers the distance around the Earth (40,000 km) in their lifetime, and they walk 10 km per day, how many years would it take them to walk around the Earth once, assuming they walk 365 days a year?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a ladder is built to reach the moon and each step is 20 cm high, and the distance between the Earth and the Moon is 384,400 km, how many steps would the ladder have?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the estimated number of stars in the observable universe?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the correct representation of the number 10 in scientific notation?",
+      "reason": "the critic finds option 0 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "How many seconds is 10 seconds in scientific notation?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following are equivalent to 2 × 3?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a dairy needs to produce 8.5 billion milk packets and use digits 0–9 for unique IDs, how many digits are needed at minimum?",
+      "reason": "checkExpr \"10\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "How many total alphanumeric codes are possible for a 5-character passcode if each character can be a letter or a digit?",
+      "reason": "options mix numbers and words (3 of 4 are numbers); ARITHMETIC MISMATCH — checkExpr \"36^5\" = 60466176, but the key says 36"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the value of (1.2) if (12) = 144?",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals); checkExpr \"1.44\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a digital locker passcode has 5 characters and uses both digits and letters, how many combinations are possible if the first character must be a letter?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"26*36^4\" = 43670016, but the key says 26"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which expression represents the thickness of a sheet of paper after it is folded 10 times, if the initial thickness is represented by v?",
+      "reason": "options 1 and 2 are the same (\"2 × 10 × v\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the value of (– 2) ?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a number is both a square and a cube, which of the following must be true?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"A student might think that since a number that is both a squ…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a flock of starlings contains 10,000 birds, how many flocks could there be in the world, given that the total number of starlings is 1.3 × 10 ?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the value of 2 × 10 ?",
+      "reason": "the critic finds option 0 correct, the key is 2; the solution's working is not sound; option 0 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a number is expressed as 10 raised to the power of 12, what is the name of this number in the Indian system of numeration?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a digital locker has an alphanumeric passcode of length 5, and each character can be a letter (26) or a digit (10), how many different passcodes are possible?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"36^5\" = 60466176, but the key says 36"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is both a 4th power and a 6th power?",
+      "reason": "options 2 and 3 are the same (\"2^24\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the scientific notation for the estimated number of stars in the observable universe?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the standard form of the number 308100000?",
+      "reason": "options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a person is 4840 days old, how many hours old are they? (Assume 1 day = 24 hours)",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

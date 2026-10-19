@@ -1,0 +1,787 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T01:24:01.186Z",
+  "finishedAt": "2026-10-19T01:34:07.509Z",
+  "seconds": 606,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "fecu1",
+    "document": "ncert/6/science/fecu102.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 2 — Diversity in the Living World",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2022-23]\n35. (a) Why is it not possible to reconstruct the whole organism from a fragment in 5\ncomplex multicellular organisms?\n(b) Sexual maturation of reproductive tissues and organs are necessary link for\nreproduction. Elucidate.\nOR\n(a) How are variations useful for species if there is drastic alteration in the niches?\n(b) Explain how the uterus and placenta provide necessary conditions for proper\ngrowth and development of the embryo after implantation?",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n35. (a) The reason is that many multi-cellular organisms are not simply a random 5\ncollection of cells. Specialised cells are organised as tissues, and tissues are\norganised into organs, which then have to be placed at definite positions in the\nbody. Therefore, cell-by-cell division would be impractical. (2 marks)\n(b) Sexual maturation of reproductive tissues is a necessary link for reproduction\nbecause of the need for specialised cell called germ-cells to participate in\nsexual reproduction. The body of the individual organism has to grow to its\nadult size, the rate of general body growth begins to slow down, reproductive\ntissues begin to mature. (1½ marks)\nA whole new set of changes in the ",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n1. C. Cuscuta, ticks, lice, leeches and tapeworm; as all of these are parasites. 1",
+      "[INJSO 2012 — question paper]\n9. Students of botany class expressed that their class is very boring. Next day Smita madam brought\na few botanical samples. She asked the class to group the plants according to some criteria. They\nclassified the plants and tabulated their observations as in the table below. Looking at this\ninformation, she asked them to find out the correct set belonging to Pteridophyta & Algae\nrespectively.\nCriteria I II\nSeed production Not seen Not seen\nVascular tissues Absent Present\nFlowers Absent Absent\nCones Absent Present\nTissue differentiation Absent Present\nIII IV V\nSeen Seen Not seen\nPresent Present Absent\nAbsent Present Absent\nPresent Absent Absent\nPresent Present Absent\nHabit Amphibious Terrestr"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 165326,
+      "in": 45,
+      "out": 39,
+      "rejects": 6,
+      "promptTokens": 47638,
+      "completionTokens": 8693
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 351430,
+      "in": 39,
+      "out": 34,
+      "rejects": 5,
+      "promptTokens": 23401,
+      "completionTokens": 9242
+    },
+    "solver": {
+      "calls": 267,
+      "ms": 143672,
+      "in": 34,
+      "out": 30,
+      "rejects": 4,
+      "promptTokens": 45850,
+      "completionTokens": 2763
+    },
+    "form": {
+      "calls": 16,
+      "ms": 50516,
+      "in": 30,
+      "out": 15,
+      "rejects": 15,
+      "promptTokens": 5588,
+      "completionTokens": 1212
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 2878,
+      "in": 15,
+      "out": 12,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 519869,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 28125,
+      "completionTokens": 14292
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of diversity in nature, as described in the passage?",
+      "ms": {
+        "draft": 3339,
+        "critique": 6799,
+        "solver": 2055,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the role of plants in an ecosystem?",
+      "ms": {
+        "draft": 3339,
+        "critique": 6398,
+        "solver": 13564,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following would be an appropriate activity to understand diversity in living organisms, based on the passage?",
+      "ms": {
+        "draft": 3339,
+        "critique": 7209,
+        "solver": 13959
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the purpose of the nature walk?",
+      "ms": {
+        "draft": 3339,
+        "critique": 8427,
+        "solver": 14018
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the passage encourages students to observe and record different plants and animals?",
+      "ms": {
+        "draft": 3339,
+        "critique": 6720,
+        "solver": 14037,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student observes a new plant and animal during a nature walk, what should they do according to the passage?",
+      "ms": {
+        "draft": 3339,
+        "critique": 7201,
+        "solver": 15850,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a plant with a hard, thick, brown stem and branches that start higher up on the stem?",
+      "ms": {
+        "draft": 4374,
+        "critique": 6346,
+        "solver": 11630,
+        "form": 4258
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following plants is described as having a soft, green stem that is not hard?",
+      "ms": {
+        "draft": 4374,
+        "critique": 6505,
+        "solver": 11199,
+        "form": 4536
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following plants is described as having a net-like pattern of veins on both sides of a thick middle vein?",
+      "ms": {
+        "draft": 4374,
+        "critique": 6696,
+        "solver": 10646,
+        "form": 5056
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is the correct grouping for the plants shown in Figure 2.3?",
+      "ms": {
+        "draft": 4374,
+        "critique": 5893,
+        "solver": 1651,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of root system is found in grass plants?",
+      "ms": {
+        "draft": 14261,
+        "critique": 5478,
+        "solver": 1778,
+        "form": 4166
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following plants would most likely have a taproot system?",
+      "ms": {
+        "draft": 14261,
+        "critique": 8359,
+        "solver": 1461,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an animal that lives in a desert?",
+      "ms": {
+        "draft": 3438,
+        "critique": 4818
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why do deodar trees have conical shapes and sloping branches?",
+      "ms": {
+        "draft": 3438,
+        "critique": 8034
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes that rhododendrons in the mountains of Nilgiris have smaller leaves compared to those in Sikkim. What could explain this difference?",
+      "ms": {
+        "draft": 3438,
+        "critique": 7904
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student labels a plant with webbed feet, which of the following is most likely to be incorrect?",
+      "ms": {
+        "draft": 3523,
+        "critique": 5650
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of monocot plants?",
+      "ms": {
+        "draft": 3608,
+        "critique": 5630,
+        "solver": 1405
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a terrestrial habitat?",
+      "ms": {
+        "draft": 3608,
+        "critique": 6926,
+        "solver": 11123,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of dicot plants?",
+      "ms": {
+        "draft": 3608,
+        "critique": 7446,
+        "solver": 1463
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an aquatic habitat?",
+      "ms": {
+        "draft": 3608,
+        "critique": 7296,
+        "solver": 10672,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why do camels in the cold desert have two humps?",
+      "ms": {
+        "draft": 3144,
+        "critique": 7599,
+        "solver": 991,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes the habitat of a rhododendron?",
+      "ms": {
+        "draft": 3144,
+        "critique": 7257,
+        "solver": 15773,
+        "form": 2010
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a characteristic of plants with fibrous roots?",
+      "ms": {
+        "draft": 4110,
+        "critique": 8329,
+        "solver": 11272,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is a correct way to group plants?",
+      "ms": {
+        "draft": 10677,
+        "critique": 4139
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant has parallel venation in its leaves, what type of root system does it usually have?",
+      "ms": {
+        "draft": 14261,
+        "critique": 8436,
+        "solver": 1508,
+        "form": 3154
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a feature of dicot plants?",
+      "ms": {
+        "draft": 2793,
+        "critique": 6113,
+        "solver": 1309,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a feature of dicot plants?",
+      "ms": {
+        "draft": 3523,
+        "critique": 5276,
+        "solver": 1001,
+        "form": 4065
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a terrestrial habitat?",
+      "ms": {
+        "draft": 2928,
+        "critique": 5285,
+        "solver": 1328,
+        "form": 1449,
+        "translation": 26003
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a plant that is not a seed producer?",
+      "ms": {
+        "draft": 3523,
+        "critique": 5339,
+        "solver": 1705,
+        "form": 2692,
+        "translation": 43801
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an animal that moves using fins?",
+      "ms": {
+        "draft": 3144,
+        "critique": 7498,
+        "solver": 11970,
+        "form": 2667,
+        "translation": 31891
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student groups plants based on the presence or absence of flowers, which of the following groups would they most likely include a rose in?",
+      "ms": {
+        "draft": 4374,
+        "critique": 5602,
+        "solver": 14744,
+        "form": 1963,
+        "translation": 39720
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following features helps a camel to walk on sand without sinking?",
+      "ms": {
+        "draft": 3438,
+        "critique": 7477,
+        "solver": 1727,
+        "form": 2917,
+        "translation": 40825
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student observes a plant with no vascular tissues and no flowers. Which classification is most likely?",
+      "ms": {
+        "draft": 3523,
+        "critique": 7045,
+        "solver": 1496,
+        "form": 1,
+        "translation": 37524
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is true about dicot plants?",
+      "ms": {
+        "draft": 4110,
+        "critique": 6105,
+        "solver": 1473,
+        "form": 0,
+        "translation": 35328
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student collects plants and finds some that lack flowers and vascular tissues. Which of these is most likely to be a threat to biodiversity?",
+      "ms": {
+        "draft": 3523,
+        "critique": 7028,
+        "solver": 1305,
+        "form": 1,
+        "translation": 40482
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes a plant with reticulate leaf venation and fibrous roots. What can be concluded about the plant?",
+      "ms": {
+        "draft": 14261,
+        "critique": 9047,
+        "solver": 2095,
+        "form": 2979,
+        "translation": 44376
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student observes a plant with no vascular tissues and no flowers. Which of these is the best way to protect such a plant?",
+      "ms": {
+        "draft": 3523,
+        "critique": 6580,
+        "solver": 2169,
+        "form": 0,
+        "translation": 44874
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A plant has parallel leaf venation and a taproot system. What might be the reason for this discrepancy?",
+      "ms": {
+        "draft": 14261,
+        "critique": 6548,
+        "solver": 15080,
+        "form": 4048,
+        "translation": 67492
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why biodiversity varies from region to region?",
+      "ms": {
+        "draft": 3438,
+        "critique": 7086,
+        "solver": 1415,
+        "form": 2501,
+        "translation": 119161
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following plants is described as having a main root and small side roots?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is an example of an aquatic habitat?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is an example of an amphibian?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "Which of the following is a feature of monocot plants?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of diversity in nature, as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 2 say the same thing (\"Different plants having similar features\" / \"Different plants having different features\"); distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's emphasis on diversity…\"); distractor 3's reason is not a one-line misconception (\"Correct option, no reason needed (skipped in distractor list…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the role of plants in an ecosystem?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's message…\"); distractor 3's reason is not a one-line misconception (\"Believes plants are independent of animals, which is not sup…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following would be an appropriate activity to understand diversity in living organisms, based on the passage?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the purpose of the nature walk?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why the passage encourages students to observe and record different plants and animals?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student observes a new plant and animal during a nature walk, what should they do according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Believes in destructive methods, which is not supported by t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a plant with a hard, thick, brown stem and branches that start higher up on the stem?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following plants is described as having a soft, green stem that is not hard?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following plants is described as having a net-like pattern of veins on both sides of a thick middle vein?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is the correct grouping for the plants shown in Figure 2.3?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Mango - Tree, Rose - Shrub, Tomato - Herb\" / \"Mango - Shrub, Rose - Tree, Tomato - Herb\"); options 0 and 2 say the same thing (\"Mango - Tree, Rose - Shrub, Tomato - Herb\" / \"Mango - Herb, Rose - Shrub, Tomato - Tree\"); options 0 and 3 say the same thing (\"Mango - Tree, Rose - Shrub, Tomato - Herb\" / \"Mango - Tree, Rose - Herb, Tomato - Shrub\"); options 1 and 2 say the same thing (\"Mango - Shrub, Rose - Tree, Tomato - Herb\" / \"Mango - Herb, Rose - Shrub, Tomato - Tree\"); options 1 and 3 say the same thing (\"Mango - Shrub, Rose - Tree, Tomato - Herb\" / \"Mango - Tree, Rose - Herb, Tomato - Shrub\"); options 2 and 3 say the same thing (\"Mango - Herb, Rose - Shrub, Tomato - Tree\" / \"Mango - Tree, Rose - Herb, Tomato - Shrub\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which type of root system is found in grass plants?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label fibrous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following plants would most likely have a taproot system?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of an animal that lives in a desert?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, why do deodar trees have conical shapes and sloping branches?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student observes that rhododendrons in the mountains of Nilgiris have smaller leaves compared to those in Sikkim. What could explain this difference?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term used to describe the variety of plants and animals in a region?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is an example of an animal that lives in a hot desert?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a student labels a plant with webbed feet, which of the following is most likely to be incorrect?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a feature of monocot plants?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a terrestrial habitat?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a feature of dicot plants?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of an aquatic habitat?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, why do camels in the cold desert have two humps?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best describes the habitat of a rhododendron?",
+      "reason": "options 0 and 1 are the same (\"The desert\"); options 0 and 3 are the same (\"The desert\"); options 1 and 3 are the same (\"The desert\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a characteristic of plants with fibrous roots?",
+      "reason": "options 1 and 3 are the same (\"They have a single cotyledon\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is a correct way to group plants?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a plant has parallel venation in its leaves, what type of root system does it usually have?",
+      "reason": "near-duplicate of served question cmv47zhzn002bgnbaf0gxhc7i (cosine 0.931 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Which of the following is a feature of dicot plants?",
+      "reason": "near-duplicate of served question cmv47zhwa001zgnbap8osun2l (cosine 0.900 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a feature of dicot plants?",
+      "reason": "near-duplicate of served question cmv47zhwa001zgnbap8osun2l (cosine 0.900 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

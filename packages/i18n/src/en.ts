@@ -7192,6 +7192,7 @@ export const en = {
     passRefundFailed: "The gateway could not refund a pass; it stands again",
     passAskGuardian: "A pupil asked a guardian for a plan",
     // end plans-pay
+    operatorQuizTopicRename: "A practice chapter was renamed to its textbook title",
     substitutionsAcknowledge: "Took on a cover",
     substitutionsDecline: "Declined a cover",
     syllabusTemplateSave: "Kept a lesson plan as a template",

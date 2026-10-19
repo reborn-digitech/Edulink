@@ -1,0 +1,766 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T11:08:39.157Z",
+  "finishedAt": "2026-10-19T11:22:40.422Z",
+  "seconds": 841,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu102.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 2 — The Invisible Living World: Beyond Our Naked Eye",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2026-27]\n2. C. R 1\nFor visually impaired students\nB. The leaf kept in darkness will show the presence of starch",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n1. C. Cuscuta, ticks, lice, leeches and tapeworm; as all of these are parasites. 1",
+      "[INJSO 2017 — question paper]\n13. A group of biology students on excursion to Goa beaches collected the following animal samples.\nWhile they were putting the animals in the jar with sea water, they noticed that one of the animal’s\n1/3 body part was missing. The injured animal (with only 2/3 of its body) was brought to the lab and rd rd\nwas allowed to grow in the laboratory in appropriate condition. To their surprise the lost body part of\nthe animal had regenerated. Which of the above animal would have been collected?\na) Planaria b) Hermit crab c) Sepia d) Sea anemone",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 252983,
+      "in": 42,
+      "out": 40,
+      "rejects": 2,
+      "promptTokens": 41744,
+      "completionTokens": 10138
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 503320,
+      "in": 40,
+      "out": 33,
+      "rejects": 7,
+      "promptTokens": 23754,
+      "completionTokens": 9016
+    },
+    "solver": {
+      "calls": 246,
+      "ms": 177294,
+      "in": 33,
+      "out": 28,
+      "rejects": 5,
+      "promptTokens": 42631,
+      "completionTokens": 2542
+    },
+    "form": {
+      "calls": 18,
+      "ms": 96534,
+      "in": 28,
+      "out": 14,
+      "rejects": 14,
+      "promptTokens": 8135,
+      "completionTokens": 1754
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 4752,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 57,
+      "ms": 717982,
+      "in": 28,
+      "out": 28,
+      "rejects": 0,
+      "promptTokens": 30705,
+      "completionTokens": 15141
+    }
+  },
+  "kept": 14,
+  "keptByLevel": {
+    "1": 1,
+    "2": 4,
+    "3": 1,
+    "4": 2,
+    "5": 3,
+    "6": 3
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Who is considered the Father of Microbiology according to the passage?",
+      "ms": {
+        "draft": 7565,
+        "critique": 8570
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the basic unit of life according to the passage?",
+      "ms": {
+        "draft": 7565,
+        "critique": 10107,
+        "solver": 1930,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can we conclude about the structure of plant cells?",
+      "ms": {
+        "draft": 7565,
+        "critique": 13162,
+        "solver": 1626,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage compare the structure of an onion peel to?",
+      "ms": {
+        "draft": 7565,
+        "critique": 10624,
+        "solver": 18869,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is NOT a part of a typical animal cell as shown in the passage?",
+      "ms": {
+        "draft": 3925,
+        "critique": 10194
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main function of the cell membrane in a cell?",
+      "ms": {
+        "draft": 3925,
+        "critique": 12350
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a key difference between plant and animal cells as described in the passage?",
+      "ms": {
+        "draft": 3925,
+        "critique": 10787,
+        "solver": 21613,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a microorganism that has a green pigment?",
+      "ms": {
+        "draft": 5175,
+        "critique": 9691,
+        "solver": 15507,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process is responsible for turning fruit and vegetable peels into manure?",
+      "ms": {
+        "draft": 6248,
+        "critique": 8423
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In which of the following places are microorganisms most likely to be found?",
+      "ms": {
+        "draft": 5175,
+        "critique": 9218,
+        "solver": 16025
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the activity described, what is the role of yeast in the dough?",
+      "ms": {
+        "draft": 6248,
+        "critique": 9045
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do microorganisms play a key role in the environment according to the passage?",
+      "ms": {
+        "draft": 6248,
+        "critique": 10225
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a function of Rhizobium bacteria in the root nodules of legumes?",
+      "ms": {
+        "draft": 5251,
+        "critique": 9421,
+        "solver": 2007,
+        "form": 4733
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student added lime water to a test tube and then attached the balloon from test tube B to it. What is the student most likely trying to find out?",
+      "ms": {
+        "draft": 10382,
+        "critique": 10815,
+        "solver": 1468,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed that the balloon attached to test tube B was inflated after 3-4 hours. What is the most likely reason for this?",
+      "ms": {
+        "draft": 10382,
+        "critique": 9498,
+        "solver": 20381,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a reason why farmers grow legumes in rotation with other crops?",
+      "ms": {
+        "draft": 5251,
+        "critique": 10535,
+        "solver": 19898,
+        "form": 2490
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the experiment with the two pits in Snehal’s garden test?",
+      "ms": {
+        "draft": 4698,
+        "critique": 8852,
+        "solver": 2731
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main function of Rhizobium bacteria found in root nodules of legumes?",
+      "ms": {
+        "draft": 8921,
+        "critique": 10930,
+        "solver": 2351,
+        "form": 4111
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if yeast was not added to the sugar solution in the experiment described?",
+      "ms": {
+        "draft": 4698,
+        "critique": 10906,
+        "solver": 17411,
+        "form": 3447
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about microalgae?",
+      "ms": {
+        "draft": 8921,
+        "critique": 10452,
+        "solver": 3034,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a unicellular microorganism?",
+      "ms": {
+        "draft": 8921,
+        "critique": 11017,
+        "solver": 1654,
+        "form": 5630
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a student observed that curd formed in one bowl but not in another. What could be the most likely reason for this observation?",
+      "ms": {
+        "draft": 8921,
+        "critique": 12434,
+        "solver": 2784
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the role of microorganisms in the environment?",
+      "ms": {
+        "draft": 3846,
+        "critique": 12313,
+        "solver": 2396,
+        "form": 2929
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a microorganism?",
+      "ms": {
+        "draft": 3846,
+        "critique": 10531,
+        "solver": 19958
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that Spirulina is a superfood. Which of the following best supports this claim?",
+      "ms": {
+        "draft": 8921,
+        "critique": 10049,
+        "solver": 26047
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name given to organisms that are so small they cannot be seen with the naked eye?",
+      "ms": {
+        "draft": 80894,
+        "critique": 8056
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the name of the book published by Robert Hooke?",
+      "ms": {
+        "draft": 7565,
+        "critique": 10699,
+        "solver": 15179,
+        "form": 5576,
+        "translation": 54085
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of glycerin when mounting a slide of onion peel?",
+      "ms": {
+        "draft": 7565,
+        "critique": 10875,
+        "solver": 17243,
+        "form": 2482,
+        "translation": 54846
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a benefit of microorganisms in the environment?",
+      "ms": {
+        "draft": 4698,
+        "critique": 8459,
+        "solver": 1579,
+        "form": 5329,
+        "translation": 64109
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the role of microorganisms in the growth of leguminous plants?",
+      "ms": {
+        "draft": 4698,
+        "critique": 10910,
+        "solver": 1943,
+        "form": 4442,
+        "translation": 60361
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the yolk in an ostrich egg?",
+      "ms": {
+        "draft": 5175,
+        "critique": 10043,
+        "solver": 1974,
+        "form": 0,
+        "translation": 37469
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the primary purpose of the cytoplasm in a cell?",
+      "ms": {
+        "draft": 3925,
+        "critique": 11231,
+        "solver": 1908,
+        "form": 3606,
+        "translation": 61222
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What would happen if microorganisms did not exist on Earth?",
+      "ms": {
+        "draft": 3846,
+        "critique": 8648,
+        "solver": 2053,
+        "form": 3779,
+        "translation": 52297
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the purpose of using a microscope to observe microorganisms?",
+      "ms": {
+        "draft": 5175,
+        "critique": 8697,
+        "solver": 2133,
+        "form": 0,
+        "translation": 41187
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a microorganism used in food preservation?",
+      "ms": {
+        "draft": 6248,
+        "critique": 10212,
+        "solver": 14381,
+        "form": 0,
+        "translation": 37528
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a unicellular microorganism that can make its own food?",
+      "ms": {
+        "draft": 5251,
+        "critique": 10880,
+        "solver": 1562,
+        "form": 6056,
+        "translation": 53802
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a microorganism used in the food industry?",
+      "ms": {
+        "draft": 4698,
+        "critique": 10004,
+        "solver": 2501,
+        "form": 5455,
+        "translation": 49611
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is yeast used in making bread?",
+      "ms": {
+        "draft": 3846,
+        "critique": 8773,
+        "solver": 1992,
+        "form": 1860,
+        "translation": 41568
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What can be concluded from the observation that curd becomes more sour when left out for a day?",
+      "ms": {
+        "draft": 4698,
+        "critique": 8478,
+        "solver": 1743,
+        "form": 3018,
+        "translation": 55109
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are viruses not considered as living organisms?",
+      "ms": {
+        "draft": 5175,
+        "critique": 9172,
+        "solver": 2386,
+        "form": 0,
+        "translation": 48279
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a function of the nucleus in a cell?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the role of the vacuole in a plant cell?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Who is considered the Father of Microbiology according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the basic unit of life according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed for distractor\",\"Confuses c…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can we conclude about the structure of plant cells?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"difficulty\":5,\"stem\": \"Which of the following is NOT a funct…\"); distractor 3's reason is not a one-line misconception (\"difficulty\":6,\"stem\": \"What would happen if a student used a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage compare the structure of an onion peel to?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is NOT a part of a typical animal cell as shown in the passage?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the main function of the cell membrane in a cell?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a key difference between plant and animal cells as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a microorganism that has a green pigment?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which process is responsible for turning fruit and vegetable peels into manure?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In which of the following places are microorganisms most likely to be found?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the activity described, what is the role of yeast in the dough?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why do microorganisms play a key role in the environment according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a function of Rhizobium bacteria in the root nodules of legumes?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misreads the passage's description of nitrogen fixation…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student added lime water to a test tube and then attached the balloon from test tube B to it. What is the student most likely trying to find out?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.mouth: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observed that the balloon attached to test tube B was inflated after 3-4 hours. What is the most likely reason for this?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is a reason why farmers grow legumes in rotation with other crops?",
+      "reason": "options 2 and 3 are the same (\"To reduce the number of pests in the soil\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What does the experiment with the two pits in Snehal’s garden test?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main function of Rhizobium bacteria found in root nodules of legumes?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks Rhizobium is involved in digestion like other bacteri…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What would happen if yeast was not added to the sugar solution in the experiment described?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.liquid: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about microalgae?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Contradicts the passage, which says they are used as health …\"); distractor 1's reason is not a one-line misconception (\"Misinterprets the passage, which says they can be unicellula…\"); distractor 3's reason is not a one-line misconception (\"Thinks the passage says they are not affected by pollution, …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a unicellular microorganism?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks algae are always unicellular, but the passage says th…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In an experiment, a student observed that curd formed in one bowl but not in another. What could be the most likely reason for this observation?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the role of microorganisms in the environment?",
+      "reason": "the key is far longer than every distractor (42 vs 19 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT a microorganism?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The passage mentions that Spirulina is a superfood. Which of the following best supports this claim?",
+      "reason": "after redraft: the solver picked option 0 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name given to organisms that are so small they cannot be seen with the naked eye?",
+      "reason": "option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -21,263 +21,47 @@
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-11T19:43:53.835Z",
+  "generatedAt": "2026-10-19T01:42:32.305Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is the purpose of a magnetic compass?",
+      "difficulty": 3,
+      "stem": "If a magnet is brought near a compass needle, what is the most likely effect on the compass needle?",
       "choices": [
-        "To measure the weight of a magnet",
-        "To measure the temperature of a magnet",
-        "To determine the direction of magnetic field",
-        "To determine the strength of a magnet"
-      ],
-      "answerIndex": 2,
-      "solution": "A magnetic compass is used to determine the direction of the magnetic field. The needle of the compass aligns itself with the Earth's magnetic field, pointing towards the North. The other options are incorrect because a compass does not measure weight, temperature, or strength of a magnet.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "चुंबकीय सुई का उद्देश्य क्या है?",
-          "choices": [
-            "एक चुंबक के भार को मापना",
-            "एक चुंबक के तापमान को मापना",
-            "चुंबकीय क्षेत्र की दिशा निर्धारित करना",
-            "चुंबक की तीव्रता निर्धारित करना"
-          ],
-          "solution": "एक चुंबकीय सुई का उपयोग चुंबकीय क्षेत्र की दिशा निर्धारित करने के लिए किया जाता है। सुई अपने आपको पृथ्वी के चुंबकीय क्षेत्र के साथ संरेखित कर लेती है, जो उत्तर की ओर इंगित करती है। अन्य विकल्प गलत हैं क्योंकि सुई चुंबक के भार, तापमान या तीव्रता को मापती नहीं है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi technical terms used.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "चुंबकीय कम्पासचा उद्देश काय आहे?",
-          "choices": [
-            "चुंबकाचा वजन मोजणे",
-            "चुंबकाचे तापमान मोजणे",
-            "चुंबकीय क्षेत्राची दिशा ठरवणे",
-            "चुंबकाची तीव्रता ठरवणे"
-          ],
-          "solution": "चुंबकीय कम्पास चुंबकीय क्षेत्राची दिशा ठरवण्यासाठी वापरला जातो. कम्पासची सुई भूमितीय चुंबकीय क्षेत्राशी जुळते आणि उत्तर दिशेकडे दाखवते. इतर विकल्प अयोग्य आहेत कारण कम्पास चुंबकाचे वजन, तापमान किंवा तीव्रता मोजत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the function of a compass with a scale",
-        "Confuses the function of a compass with a thermometer",
-        null,
-        "Incorrectly assumes a compass measures strength of magnetism instead of direction of field"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and matches the key. The reasoning for the distractors reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.3 Finding Directions"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.4 Attraction and Repulsion between Magnets"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.4 Attraction and Repulsion between Magnets"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 7,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.5 Fun with Magnets"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T19:43:53.835Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "How can an iron needle be turned into a magnet?",
-      "choices": [
-        "By heating it",
-        "By cooling it",
-        "By rubbing it with a magnet",
-        "By dropping it"
-      ],
-      "answerIndex": 2,
-      "solution": "An iron needle can be turned into a magnet by rubbing it with a magnet. This process, called magnetization, aligns the magnetic domains in the iron, making it a temporary magnet. The other options are incorrect because heating, cooling, and dropping the needle do not magnetize it.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक लोहे की सुई को चुंबक कैसे बनाया जा सकता है?",
-          "choices": [
-            "इसे गर्म करके",
-            "इसे ठंडा करके",
-            "इसे एक चुंबक के साथ रगड़कर",
-            "इसे गिरा कर"
-          ],
-          "solution": "एक लोहे की सुई को चुंबक बनाया जा सकता है जब इसे एक चुंबक के साथ रगड़ा जाता है। इस प्रक्रिया को चुंबकीकरण कहते हैं, जो लोहे में चुंबकीय क्षेत्र के क्षेत्र को समायोजित करता है, जिससे यह अस्थायी चुंबक बन जाता है। अन्य विकल्प गलत हैं क्योंकि लोहे की सुई को गर्म करना, ठंडा करना या गिराना इसे चुंबक नहीं बनाता।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "लोहाची सुई कशी चुंबक बनवायची?",
-          "choices": [
-            "तिला गरम करून",
-            "तिला थंड करून",
-            "तिला चुंबकाने घासून",
-            "तिला फेकून"
-          ],
-          "solution": "लोहाची सुई चुंबक बनविण्यासाठी तिला चुंबकाने घासावे. हा प्रक्रिया, चुंबकीयन असे म्हणतात, ज्यामुळे लोहातील चुंबकीय क्षेत्र एकाच दिशेने असतात, जेणेकरून ती अस्थायी चुंबक बनते. इतर विकल्प अयोग्य आहेत कारण लोहाची सुई गरम करणे, थंड करणे आणि फेकणे तिला चुंबक बनवत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'चुंबकीयन' for 'magnetization'.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Incorrectly assumes heating magnetizes an object",
-        "Incorrectly assumes cooling magnetizes an object",
-        null,
-        "Believes physical impact like dropping can magnetize an object"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. Rubbing an iron needle with a magnet is a valid method of magnetization. The other options are correctly identified as misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.3 Finding Directions"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.4 Attraction and Repulsion between Magnets"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.4 Attraction and Repulsion between Magnets"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 7,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.5 Fun with Magnets"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T19:43:53.835Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What happens when two like poles of a magnet are brought close to each other?",
-      "choices": [
-        "They attract each other",
-        "They repel each other",
-        "They become stronger",
-        "They become weaker"
+        "It stops moving completely",
+        "It rotates to align with the magnetic field",
+        "It becomes a magnet itself",
+        "It loses its magnetic properties"
       ],
       "answerIndex": 1,
-      "solution": "When two like poles of a magnet are brought close to each other, they repel each other. This is a fundamental property of magnets. The other options are incorrect because like poles do not attract, and they do not change strength based on proximity.",
+      "solution": "The correct answer is that the compass needle rotates to align with the magnetic field. A compass needle is a small magnet, and magnets align themselves with external magnetic fields. The other options are incorrect because a compass needle does not stop moving entirely, nor does it lose its magnetic properties or become a magnet on its own.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "जब चुंबक के दो समान ध्रुव एक दूसरे के करीब लाए जाते हैं तो क्या होता है?",
+          "stem": "यदि एक चुंबक एक सुई दिशासूचक के पास ले जाया जाता है, तो सुई दिशासूचक पर सबसे संभावित प्रभाव क्या होगा?",
           "choices": [
-            "वे एक दूसरे को आकर्षित करते हैं",
-            "वे एक दूसरे को प्रतिकर्षित करते हैं",
-            "वे मजबूत हो जाते हैं",
-            "वे कमजोर हो जाते हैं"
+            "यह पूरी तरह से गति रोक देता है",
+            "यह चुंबकीय क्षेत्र के साथ संरेखित होने के लिए घूम जाता है",
+            "यह खुद एक चुंबक बन जाता है",
+            "यह अपने चुंबकीय गुण खो देता है"
           ],
-          "solution": "जब चुंबक के दो समान ध्रुव एक दूसरे के करीब लाए जाते हैं तो वे एक दूसरे को प्रतिकर्षित करते हैं। यह चुंबक का एक मूल गुण है। अन्य विकल्प गलत हैं क्योंकि समान ध्रुव आकर्षित नहीं करते हैं और उनकी ताकत निकटता पर निर्भर नहीं करती है।",
+          "solution": "सही उत्तर यह है कि सुई दिशासूचक चुंबकीय क्षेत्र के साथ संरेखित होने के लिए घूम जाता है। एक सुई दिशासूचक एक छोटा चुंबक होता है, और चुंबक बाहरी चुंबकीय क्षेत्र के साथ अपने आप को संरेखित करते हैं। अन्य विकल्प गलत हैं क्योंकि सुई दिशासूचक पूरी तरह से गति नहीं रोकता है, न ही यह अपने चुंबकीय गुण खो देता है या खुद एक चुंबक बन जाता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (2) in both versions. The solution is consistent and uses standard Hindi scientific terms.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "चुंबकाचे दोन समान ध्रुव एकमेकांजवळ आणले असतां काय होते?",
+          "stem": "जर एखादा चुंबक चुंबकीय सुई जवळ आणला जातो, तर चुंबकीय सुईवर सर्वात जास्त शक्यतो असा परिणाम काय असेल?",
           "choices": [
-            "ते एकमेकांना आकर्षित करतात",
-            "ते एकमेकांना प्रतिकर्षित करतात",
-            "ते शक्तिशाली होतात",
-            "ते कमजोर होतात"
+            "ती पूर्णपणे चालत नाही",
+            "ती चुंबकीय क्षेत्राशी सुसंगत होऊन फिरते",
+            "ती स्वतः एक चुंबक बनते",
+            "ती चुंबकीय गुण गमावते"
           ],
-          "solution": "जेव्हा चुंबकाचे दोन समान ध्रुव एकमेकांजवळ आणले जातात, तेव्हा ते एकमेकांना प्रतिकर्षित करतात. हे चुंबकांचे मूलभूत गुणधर्म आहे. इतर विकल्प अयोग्य आहेत कारण समान ध्रुव आकर्षित होत नाहीत आणि त्यांची शक्ती जवळ असल्यामुळे बदलत नाही.",
+          "solution": "बरोबर उत्तर हे असे आहे की चुंबकीय सुई चुंबकीय क्षेत्राशी सुसंगत होऊन फिरते. चुंबकीय सुई लहान चुंबक असते, आणि चुंबक बाह्य चुंबकीय क्षेत्राशी सुसंगत होतात. इतर विकल्प चुकीचे आहेत कारण चुंबकीय सुई पूर्णपणे चालत नाही, आणि ती आपले चुंबकीय गुण गमावत नाही किंवा स्वतः एक चुंबक बनत नाही.",
           "imageAlt": null,
           "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi textbooks.",
           "flag": null
@@ -288,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses like poles with opposite poles",
+        "Thinks the needle stops when it senses a magnetic field",
         null,
-        "Believes like poles increase strength",
-        "Believes like poles decrease strength"
+        "Confuses the compass needle's function with that of a regular magnet",
+        "Misunderstands the relationship between magnets and compasses"
       ],
       "solverAnswers": [
         1,
@@ -301,7 +85,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 1, as like poles repel. The author's reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The correct answer is 1, as a compass needle aligns with the magnetic field of an external magnet. The other options represent common misconceptions about how compasses and magnets interact.",
       "sources": [
         {
           "document": "ncert/6/science/fecu104.pdf",
@@ -345,633 +129,54 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T19:43:53.835Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the function of the dial in a magnetic compass?",
-      "choices": [
-        "To hold the needle in place",
-        "To measure the speed of movement",
-        "To show the direction",
-        "To store the magnet"
-      ],
-      "answerIndex": 2,
-      "solution": "The dial in a magnetic compass is used to show the direction. It has markings for North, South, East, and West. The other options are incorrect because the dial does not hold the needle, measure speed, or store the magnet.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "चुंबकीय संकेतदर्शक में डायल का कार्य क्या है?",
-          "choices": [
-            "सुई को स्थिर रखना",
-            "गति की गति मापना",
-            "दिशा दिखाना",
-            "चुंबक को संग्रहित करना"
-          ],
-          "solution": "चुंबकीय संकेतदर्शक में डायल का उपयोग दिशा दिखाने के लिए किया जाता है। इसमें उत्तर, दक्षिण, पूर्व और पश्चिम के लिए चिह्न होते हैं। अन्य विकल्प गलत हैं क्योंकि डायल सुई को स्थिर नहीं रखता, गति को मापता नहीं है या चुंबक को संग्रहित नहीं करता।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "मॅग्नेटिक कॉम्पासमधील डायलचे कार्य काय आहे?",
-          "choices": [
-            "सुईला ठेवण्यासाठी",
-            "गती मोजण्यासाठी",
-            "दिशा दाखवण्यासाठी",
-            "चुंबक जमा करण्यासाठी"
-          ],
-          "solution": "मॅग्नेटिक कॉम्पासमधील डायल दिशा दाखवण्यासाठी वापरला जातो. त्यावर उत्तर, दक्षिण, पूर्व आणि पश्चिम यासाठी चिन्हे असतात. इतर विकल्प चुकीचे आहेत कारण डायल सुई ठेवत नाही, गती मोजत नाही किंवा चुंबक जमा करत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the function of the dial with a holder",
-        "Incorrectly assumes the dial measures speed",
-        null,
-        "Believes the dial stores the magnet"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2, as the dial in a compass shows direction. The other options represent common misconceptions about the function of the dial.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.3 Finding Directions"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.4 Attraction and Repulsion between Magnets"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.4 Attraction and Repulsion between Magnets"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 7,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.5 Fun with Magnets"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T19:43:53.835Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What property of a magnet allows it to attract iron objects?",
-      "choices": [
-        "It has a single pole",
-        "It has a magnetic field",
-        "It is made of plastic",
-        "It is light in weight"
-      ],
-      "answerIndex": 1,
-      "solution": "A magnet has a magnetic field around it, which allows it to attract magnetic materials like iron. The other options are incorrect as magnets have two poles, are not made of plastic, and weight is not the reason for attraction.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक चुंबक के कौन से गुण के कारण यह लोहे के वस्तुओं को आकर्षित करता है?",
-          "choices": [
-            "इसमें एक ध्रुव होता है",
-            "इसके चारों ओर चुंबकीय क्षेत्र होता है",
-            "इसे प्लास्टिक से बनाया जाता है",
-            "इसका वजन हल्का होता है"
-          ],
-          "solution": "एक चुंबक के चारों ओर चुंबकीय क्षेत्र होता है, जो लोहे जैसे चुंबकीय पदार्थों को आकर्षित करने में सक्षम बनाता है। अन्य विकल्प गलत हैं क्योंकि चुंबक के दो ध्रुव होते हैं, ये प्लास्टिक से नहीं बनाए जाते हैं और आकर्षण का कारण वजन नहीं होता है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका चुंबकाची कोणती वैशिष्ट्ये लोह वस्तू आकर्षित करण्यास परवानगी देते?",
-          "choices": [
-            "त्याचा एक ध्रुव असतो",
-            "त्याचे चुंबकीय क्षेत्र असते",
-            "तो प्लास्टिक बनलेला असतो",
-            "तो हलका वजन असतो"
-          ],
-          "solution": "चुंबकाच्या आजूबाजूला चुंबकीय क्षेत्र असते, जे लोह असलेल्या चुंबकीय द्रव्यांना आकर्षित करते. इतर विकल्प चुकीचे आहेत कारण चुंबकाला दोन ध्रुव असतात, ते प्लास्टिक बनलेले नसतात आणि वजन आकर्षणाचे कारण नसते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Believes magnets have a single pole",
-        null,
-        "Confuses material with magnetic property",
-        "Ignores the role of magnetic field in attraction"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as a magnetic field is what allows a magnet to attract iron. The other options are all incorrect and represent common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.1 Magnetic and Non-magnetic Materials"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.2 Poles of Magnet"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.3 Finding Directions"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T19:43:53.835Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a non-magnetic material?",
-      "choices": [
-        "Iron",
-        "Copper",
-        "Aluminium",
-        "Wood"
-      ],
-      "answerIndex": 3,
-      "solution": "Wood is a non-magnetic material because it does not interact with magnetic fields. Iron, copper, and aluminium are all metals that can be attracted to magnets. Non-magnetic materials like wood do not have the ability to be magnetized or to attract to magnets.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा अचुंबकीय पदार्थ है?",
-          "choices": [
-            "लोहा",
-            "तांबा",
-            "एल्यूमीनियम",
-            "लकड़ी"
-          ],
-          "solution": "लकड़ी एक अचुंबकीय पदार्थ है क्योंकि यह चुंबकीय क्षेत्रों से अन्योन्य क्रिया नहीं करता है। लोहा, तांबा और एल्यूमीनियम सभी धातुएं हैं जो चुंबक से आकर्षित हो सकती हैं। अचुंबकीय पदार्थ जैसे लकड़ी के पास चुंबकीय बनाने या चुंबक से आकर्षित होने की क्षमता नहीं होती।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते अचुंबकीय पदार्थ आहे?",
-          "choices": [
-            "लोह",
-            "तांबे",
-            "अल्युमिनियम",
-            "लाकडे"
-          ],
-          "solution": "लाकडे अचुंबकीय पदार्थ आहे कारण ते चुंबकीय क्षेत्राशी अनुक्रिया करत नाही. लोह, तांबे आणि अल्युमिनियम हे सर्व धातू आहेत ज्यांना चुंबकाशी आकर्षित केले जाऊ शकते. अचुंबकीय पदार्थ जसे की लाकडे चुंबकीय बनविण्याची क्षमता किंवा चुंबकाशी आकर्षित होण्याची क्षमता नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for scientific concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses magnetic materials with non-magnetic ones",
-        "Confuses magnetic materials with non-magnetic ones",
-        "Confuses magnetic materials with non-magnetic ones",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 3 (Wood), as it is a non-magnetic material. The author's solution is accurate, and the reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 8,
-          "pageStart": 13,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.5 Fun with Magnets",
-            "Keywords"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 9,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.5 Fun with Magnets",
-            "Let us enhance our learning"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 10,
-          "pageStart": 15,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.5 Fun with Magnets",
-            "Learning further"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 11,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.5 Fun with Magnets",
-            "Learning further"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T19:43:53.835Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "A student suspends a bar magnet freely and observes that it aligns itself along the north-south direction. What does this show about the magnet?",
-      "choices": [
-        "It is made of a non-magnetic material",
-        "It has a single pole",
-        "It is a natural magnet",
-        "It behaves like Earth's magnet"
-      ],
-      "answerIndex": 3,
-      "solution": "A freely suspended magnet aligns along the north-south direction because Earth itself acts like a giant magnet. This shows that the magnet behaves like Earth's magnet. The other options are incorrect because magnets are made of magnetic materials, they have two poles, and they can be artificial or natural.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक छात्र एक बार चुंबक को मुक्त रूप से लटकाता है और देखता है कि यह उत्तर-दक्षिण दिशा के साथ संरेखित हो जाता है। इससे चुंबक के बारे में क्या पता चलता है?",
-          "choices": [
-            "यह अचुंबकीय सामग्री से बना है",
-            "इसमें एक ध्रुव है",
-            "यह एक प्राकृतिक चुंबक है",
-            "यह पृथ्वी के चुंबक की तरह व्यवहार करता है"
-          ],
-          "solution": "मुक्त रूप से लटकाए गए चुंबक का उत्तर-दक्षिण दिशा के साथ संरेखण पृथ्वी के चुंबक की तरह व्यवहार करता है क्योंकि पृथ्वी स्वयं एक बड़ा चुंबक है। इससे यह दर्शाता है कि चुंबक पृथ्वी के चुंबक की तरह व्यवहार करता है। अन्य विकल्प गलत हैं क्योंकि चुंबक चुंबकीय सामग्री से बने होते हैं, उनमें दो ध्रुव होते हैं, और वे कृत्रिम या प्राकृतिक हो सकते हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थ्याने एका बार चुंबकला स्वतंत्ररित्या लटकवले आणि तो उत्तर-दक्षिण दिशेने आला असल्याचे निरीक्षण केले. हे चुंबकाबद्दल काय दर्शवते?",
-          "choices": [
-            "तो अचुंबकीय पदार्थापासून बनलेला आहे",
-            "त्याला एक ध्रुव आहे",
-            "तो प्राकृतिक चुंबक आहे",
-            "तो पृथ्वीच्या चुंबकाप्रमाणे वागतो"
-          ],
-          "solution": "स्वतंत्ररित्या लटकवलेला चुंबक उत्तर-दक्षिण दिशेने आला कारण पृथ्वी स्वतः एक मोठा चुंबक आहे. हे दर्शवते की चुंबक पृथ्वीच्या चुंबकाप्रमाणे वागतो. इतर विकल्प अयोग्य आहेत कारण चुंबक मैदानी पदार्थांपासून बनलेले असतात, त्यांना दोन ध्रुव असतात आणि ते कृत्रिम किंवा प्राकृतिक असू शकतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for magnetic concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses magnet properties with non-magnetic materials",
-        "Believes magnets can have a single pole",
-        "Assumes only natural magnets align with Earth's field",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies that the magnet aligns with Earth's magnetic field, showing it behaves like Earth's magnet. The reasoning for the distractors reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.1 Magnetic and Non-magnetic Materials"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.2 Poles of Magnet"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.3 Finding Directions"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T19:43:53.835Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "A student brings the North pole of a bar magnet close to the North pole of a compass needle. What will happen?",
-      "choices": [
-        "The compass needle will be attracted to the bar magnet",
-        "The compass needle will be repelled by the bar magnet",
-        "2: The compass needle will rotate 90 degrees",
-        "3: The compass needle will rotate 180 degrees"
-      ],
-      "answerIndex": 1,
-      "solution": "Like poles repel each other. Since both the bar magnet and the compass needle have North poles, they will repel. The other options are incorrect because unlike poles attract, not repel, and the compass needle will not rotate 180 degrees or remain unaffected in this case.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक छात्र बार चुंबक के उत्तर ध्रुव को कम्पास सुई के उत्तर ध्रुव के पास ले जाता है। क्या होगा?",
-          "choices": [
-            "कम्पास सुई बार चुंबक को आकर्षित करेगी",
-            "कम्पास सुई बार चुंबक से प्रतिकर्षित होगी",
-            "कम्पास सुई 90 डिग्री घूम जाएगी",
-            "कम्पास सुई 180 डिग्री घूम जाएगी"
-          ],
-          "solution": "समान ध्रुव एक दूसरे को प्रतिकर्षित करते हैं। चूंकि बार चुंबक और कम्पास सुई दोनों के उत्तर ध्रुव हैं, इसलिए वे एक दूसरे को प्रतिकर्षित करेंगे। अन्य विकल्प गलत हैं क्योंकि असमान ध्रुव आकर्षित करते हैं, न कि प्रतिकर्षित, और इस स्थिति में कम्पास सुई 180 डिग्री घूम नहीं सकती या अप्रभावित रह सकती है।",
-          "imageAlt": "दो बार चुंबक जिनके उत्तर ध्रुव एक दूसरे के सामने हैं",
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology used in a Hindi-medium science context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थीने बार मॅग्नेटच्या उत्तर ध्रुवाला कॉम्पास सुईच्या उत्तर ध्रुवाजवळ आणले. काय होईल?",
-          "choices": [
-            "कॉम्पास सुई बार मॅग्नेटकडे आकर्षिली जाईल",
-            "कॉम्पास सुई बार मॅग्नेटपासून दूर केली जाईल",
-            "कॉम्पास सुई 90 अंश फिरेल",
-            "कॉम्पास सुई 180 अंश फिरेल"
-          ],
-          "solution": "समान ध्रुव एकमेकांना दूर करतात. बार मॅग्नेट आणि कॉम्पास सुई दोन्ही उत्तर ध्रुव असल्याने, ते एकमेकांना दूर करतील. इतर विकल्प अयोग्य आहेत कारण विरुद्ध ध्रुव एकमेकांना आकर्षित करतात, नाही की दूर करतात, आणि या परिस्थितीत कॉम्पास सुई 180 अंश फिरणार नाही किंवा अस्पष्ट राहील.",
-          "imageAlt": "दोन बार मॅग्नेट ज्यांचे उत्तर ध्रुव एकमेकांना जवळ आहेत",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "Two bar magnets with their North poles facing each other",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "barMagnet",
-              "x": 40,
-              "y": 30,
-              "size": 20,
-              "labels": [
-                "north",
-                "south"
-              ],
-              "text": {
-                "north": "N"
-              }
-            },
-            {
-              "part": "barMagnet",
-              "x": 60,
-              "y": 30,
-              "size": 20,
-              "labels": [
-                "north",
-                "south"
-              ],
-              "text": {
-                "north": "N"
-              }
-            }
-          ]
-        },
-        "labels": {
-          "N": {
-            "en": "North pole"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "Confuses like poles with unlike poles",
-        null,
-        "A student might think that like a compass needle aligning with Earth's magnetic field, it would turn perpendicular when exposed to another magnet",
-        "Student believes opposite poles attract but doesn't understand that like poles repel, so thinks the needle will flip completely"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies that like poles repel, and the reasoning for the distractors aligns with common misconceptions about magnetic interactions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.3 Finding Directions"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.4 Attraction and Repulsion between Magnets"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.4 Attraction and Repulsion between Magnets"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu104.pdf",
-          "ordinal": 7,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 4: Exploring Magnets",
-            "4.5 Fun with Magnets"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T19:43:53.835Z",
+      "generatedAt": "2026-10-19T01:42:32.305Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "In an experiment, a student spreads iron filings on a paper and places a bar magnet over them. After tapping the paper, the iron filings arrange themselves in a pattern. What does this pattern represent?",
+      "stem": "In Activity 4.2, why do iron filings stick more at the ends of a bar magnet?",
       "choices": [
-        "The shape of the magnet",
-        "The magnetic field around the magnet",
-        "The weight of the magnet",
-        "The temperature of the magnet"
+        "Because the middle of the magnet is heavier",
+        "Because the ends of the magnet have the strongest magnetic field",
+        "Because the middle of the magnet is not magnetic",
+        "Because the filings are attracted to the center"
       ],
       "answerIndex": 1,
-      "solution": "The pattern formed by iron filings around a magnet shows the magnetic field lines. This is because the filings align along the direction of the magnetic field. The other options are incorrect as the pattern does not represent the shape, weight, or temperature of the magnet.",
+      "solution": "The ends of a magnet have the strongest magnetic field, which attracts more iron filings. The middle of the magnet has a weaker field, and the filings are not attracted more to the center. The weight of the magnet or its lack of magnetism in the middle are not related to how the filings are attracted.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक प्रयोग में, एक छात्र कागज पर लोहे के चूरे फैलाता है और उसके ऊपर एक बार चुंबक रखता है। कागज को थपथपाने के बाद, लोहे के चूरे एक पैटर्न में व्यवस्थित हो जाते हैं। यह पैटर्न क्या दर्शाता है?",
+          "stem": "क्रियाकलाप 4.2 में, एक बार चुंबक के सिरों पर लौह चूर्ण अधिक क्यों चिपक जाता है?",
           "choices": [
-            "चुंबक का आकार",
-            "चुंबक के चारों ओर चुंबकीय क्षेत्र",
-            "चुंबक का भार",
-            "चुंबक का तापमान"
+            "क्योंकि चुंबक के मध्य भाग भारी होता है",
+            "क्योंकि चुंबक के सिरों पर सबसे मजबूत चुंबकीय क्षेत्र होता है",
+            "क्योंकि चुंबक के मध्य भाग चुंबकीय नहीं होता है",
+            "क्योंकि चूर्ण केंद्र की ओर आकर्षित होता है"
           ],
-          "solution": "चुंबक के चारों ओर लोहे के चूरे द्वारा बना पैटर्न चुंबकीय क्षेत्र रेखाओं को दर्शाता है। इसका कारण यह है कि चूरे चुंबकीय क्षेत्र की दिशा के साथ संरेखित हो जाते हैं। अन्य विकल्प गलत हैं क्योंकि पैटर्न चुंबक के आकार, भार या तापमान का प्रतिनिधित्व नहीं करता है।",
-          "imageAlt": "एक बार चुंबक जिसके उत्तर और दक्षिण ध्रुव चिह्नित हैं",
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology.",
+          "solution": "चुंबक के सिरों पर सबसे मजबूत चुंबकीय क्षेत्र होता है, जो अधिक लौह चूर्ण को आकर्षित करता है। चुंबक के मध्य भाग में क्षेत्र कमजोर होता है, और चूर्ण केंद्र की ओर अधिक आकर्षित नहीं होता है। चुंबक के भार या इसके मध्य भाग में चुंबकीय न होना चूर्ण के आकर्षण से संबंधित नहीं है।",
+          "imageAlt": "एक बार चुंबक जिसके उत्तर और दक्षिण ध्रुव N और S चिह्नित किए गए हैं।",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated and maintain their original logical status as correct or incorrect. The technical terms used are standard in Hindi science textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एका प्रयोगात, एका विद्यार्थ्याने कागदावर लोहाचे चूर्ण फैलावले आणि त्यावर एका बार चुंबक ठेवला. कागदाला टोकल्यानंतर, लोहाचे चूर्ण एका पॅटर्नमध्ये व्यवस्थित होतात. हा पॅटर्न काय दर्शवतो?",
+          "stem": "क्रियाकलाप 4.2 मध्ये, एका बार चुंबकाच्या टोकांवर लोहाचे चूर्ण अधिक चिकटतात का? कारण काय?",
           "choices": [
-            "चुंबकाचा आकार",
-            "चुंबकाच्या आजूबाजूचे चुंबकीय क्षेत्र",
-            "चुंबकाचा वजन",
-            "चुंबकाचा तापमान"
+            "कारण चुंबकाच्या मध्यभागात वजन जास्त असते",
+            "कारण चुंबकाच्या टोकांवर सर्वात जास्त चुंबकीय क्षेत्र असते",
+            "कारण चुंबकाच्या मध्यभागात चुंबकत्व नसते",
+            "कारण चूर्ण त्याच्या केंद्राकडे आकर्षित होतात"
           ],
-          "solution": "चुंबकाच्या आजूबाजूला लोहाचे चूर्ण तयार करणारा पॅटर्न चुंबकीय क्षेत्राच्या रेषा दर्शवतो. हे कारण असे आहे की चूर्ण चुंबकीय क्षेत्राच्या दिशेनुसार व्यवस्थित होतात. इतर विकल्प चुकीचे आहेत कारण पॅटर्न चुंबकाच्या आकार, वजन किंवा तापमानाचे प्रतिनिधित्व करत नाही.",
-          "imageAlt": "एका बार चुंबकावर उत्तर आणि दक्षिण ध्रुव निर्दिष्ट केले आहेत",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "solution": "चुंबकाच्या टोकांवर सर्वात जास्त चुंबकीय क्षेत्र असते, जो लोहाचे चूर्ण अधिक आकर्षित करतो. चुंबकाच्या मध्यभागात चुंबकीय क्षेत्र कमी असतो, आणि चूर्ण केंद्राकडे अधिक आकर्षित होत नाहीत. चुंबकाचे वजन किंवा मध्यभागात चुंबकत्व नसणे हे चूर्णांच्या आकर्षणाशी संबंधित नाही.",
+          "imageAlt": "एका बार चुंबकावर उत्तर आणि दक्षिण ध्रुव निर्दिष्ट केलेले आहेत ज्यांना N आणि S असे निर्दिष्ट केले आहे.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "A bar magnet with its north and south poles labeled",
+      "imageAlt": "A bar magnet with its North and South poles labeled as N and S.",
       "figure": {
         "kind": "diagram",
         "spec": {
@@ -991,28 +196,23 @@
               }
             }
           ],
-          "arrows": [],
-          "texts": []
+          "arrows": []
         },
         "labels": {
-          "north": {
-            "en": "North Pole",
-            "hi": "उत्तर ध्रुव",
-            "mr": "उत्तर ध्रुव"
+          "N": {
+            "en": "North Pole"
           },
-          "south": {
-            "en": "South Pole",
-            "hi": "दक्षिण ध्रुव",
-            "mr": "दक्षिण ध्रुव"
+          "S": {
+            "en": "South Pole"
           }
         }
       },
       "needsFigure": true,
       "distractorReason": [
-        "Thinks the pattern shows the shape of the magnet",
+        "Students often confuse magnetic strength with physical weight or mass",
         null,
-        "Confuses magnetic field with weight",
-        "Ignores the role of the magnetic field in the pattern"
+        "Incorrectly assumes the middle is not magnetic",
+        "Misinterprets the direction of attraction"
       ],
       "solverAnswers": [
         1,
@@ -1022,7 +222,7 @@
         1
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed and the solution correctly identifies the magnetic field as the correct answer. The distractors reflect common misconceptions.",
+      "critique": "The correct answer is 1, as the poles of a magnet have the strongest magnetic field. The other options reflect common misconceptions about magnetism, such as confusing weight with magnetic strength, assuming the middle is not magnetic, or misunderstanding the direction of attraction.",
       "sources": [
         {
           "document": "ncert/6/science/fecu104.pdf",
@@ -1065,49 +265,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T19:43:53.835Z",
+      "generatedAt": "2026-10-19T01:42:32.305Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "A student places a bar magnet and a piece of iron near each other. The bar magnet attracts the iron. What can be concluded about the iron?",
+      "stem": "Which of the following can be used to determine if an object is a magnet?",
       "choices": [
-        "It is a magnet",
-        "It is non-magnetic",
-        "It is a conductor",
-        "It is a non-conductor"
+        "It attracts all materials",
+        "It can be broken into two parts with single poles",
+        "It aligns itself in the north-south direction when suspended freely",
+        "It repels all other magnets"
       ],
-      "answerIndex": 1,
-      "solution": "Since the bar magnet attracts the iron, it shows that iron is a magnetic material. Non-magnetic materials are not attracted by magnets. The other options are incorrect as the iron is not necessarily a conductor or non-conductor, and it is not a magnet itself.",
+      "answerIndex": 2,
+      "solution": "The correct option is that it aligns itself in the north-south direction when suspended freely, as this is a fundamental property of magnets due to Earth's magnetic field. The other options are incorrect because magnets do not attract all materials, cannot be broken into single poles, and do not repel all other magnets.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक छात्र एक बार चुंबक और एक लोहे के टुकड़े को एक दूसरे के पास रखता है। बार चुंबक लोहे को आकर्षित करता है। लोहे के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "stem": "निम्नलिखित में से कौन-सा एक वस्तु के चुंबक होने का निर्धारण करने के लिए प्रयोग किया जा सकता है?",
           "choices": [
-            "यह एक चुंबक है",
-            "यह अचुंबकीय है",
-            "यह चालक है",
-            "यह अचालक है"
+            "यह सभी सामग्रियों को आकर्षित करता है",
+            "यह एकल ध्रुवों के साथ दो भागों में टूट सकता है",
+            "जब इसे स्वतंत्र रूप से लटकाया जाता है तो यह उत्तर-दक्षिण दिशा में अपने आप को संरेखित करता है",
+            "यह सभी अन्य चुंबकों को प्रतिकर्षित करता है"
           ],
-          "solution": "चूंकि बार चुंबक लोहे को आकर्षित करता है, इसका अर्थ है कि लोहा चुंबकीय सामग्री है। अचुंबकीय सामग्री चुंबक द्वारा आकर्षित नहीं की जाती है। अन्य विकल्प गलत हैं क्योंकि लोहा आवश्यक रूप से चालक या अचालक नहीं है, और यह खुद एक चुंबक नहीं है।",
+          "solution": "सही विकल्प यह है कि जब इसे स्वतंत्र रूप से लटकाया जाता है तो यह उत्तर-दक्षिण दिशा में अपने आप को संरेखित करता है, क्योंकि यह चुंबकों का एक मूलभूत गुण है जो पृथ्वी के चुंबकीय क्षेत्र के कारण होता है। अन्य विकल्प गलत हैं क्योंकि चुंबक सभी सामग्रियों को आकर्षित नहीं करते हैं, एकल ध्रुवों के साथ दो भागों में नहीं टूट सकते हैं, और सभी अन्य चुंबकों को प्रतिकर्षित नहीं करते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for magnetic properties.",
           "flag": null
         },
         "mr": {
-          "stem": "एका विद्यार्थ्याने बार मॅग्नेट आणि लोखंडाचा एक तुकडा एकमेकांच्या जवळ ठेवला. बार मॅग्नेट लोखंडाला आकर्षित करतो. लोखंडाबद्दल काय निष्कर्ष काढता येईल?",
+          "stem": "खालीलपैकी कोणते वस्तू चुंबक आहे की नाही ते ठरवण्यासाठी वापरता येऊ शकते?",
           "choices": [
-            "ते मॅग्नेट आहे",
-            "ते अमॅग्नेटिक आहे",
-            "ते विद्युत चालक आहे",
-            "ते विद्युत अचालक आहे"
+            "ते सर्व पदार्थ आकर्षित करते",
+            "ते एका ध्रुवासह दोन भागांमध्ये तुटू शकते",
+            "ते मुक्तपणे लटकवल्यास उत्तर-दक्षिण दिशेत आपोआप आलेले असते",
+            "ते सर्व इतर चुंबकांना प्रतिकर्षित करते"
           ],
-          "solution": "बार मॅग्नेट लोखंडाला आकर्षित करतो, हे दर्शवते की लोखंड हे चुंबकीय पदार्थ आहे. अमॅग्नेटिक पदार्थांना मॅग्नेट्स आकर्षित करत नाहीत. इतर विकल्प चुकीचे आहेत कारण लोखंड हे आवश्यकतेनुसार चालक किंवा अचालक नसू शकतो आणि ते स्वतः मॅग्नेट नसतो.",
+          "solution": "सही विकल्प हा आहे की ते मुक्तपणे लटकवल्यास उत्तर-दक्षिण दिशेत आपोआप आलेले असते, कारण हे चुंबकाचे मूलभूत गुणधर्म असतो जे पृथ्वीच्या चुंबकीय क्षेत्रामुळे होते. इतर विकल्प चुकीचे आहेत कारण चुंबक सर्व पदार्थ आकर्षित करत नाहीत, एका ध्रुवासह दोन भागांमध्ये तुटू शकत नाहीत आणि सर्व इतर चुंबकांना प्रतिकर्षित करत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
           "flag": null
         }
       },
@@ -1116,10 +316,117 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Believes all attracted objects are magnets",
+        "Misunderstands the behavior of magnets",
+        "Incorrectly assumes magnets can have single poles",
         null,
-        "Student thinks that only conductors are attracted to magnets",
-        "Confuses magnetic properties with conductivity"
+        "Confuses magnet behavior with other properties"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as a freely suspended magnet aligns with the Earth's magnetic field. The other options are incorrect: magnets do not attract all materials (only ferromagnetic ones), cannot be split into single poles, and do not repel all other magnets (they attract opposite poles).",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu104.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 4: Exploring Magnets"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu104.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: Exploring Magnets",
+            "4.1 Magnetic and Non-magnetic Materials"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu104.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 4: Exploring Magnets",
+            "4.2 Poles of Magnet"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu104.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Exploring Magnets",
+            "4.3 Finding Directions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T01:42:32.305Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a bar magnet is broken into two pieces, what happens?",
+      "choices": [
+        "Each piece becomes a single pole",
+        "Each piece has both poles",
+        "Only one piece becomes a magnet",
+        "The magnet loses its magnetic properties"
+      ],
+      "answerIndex": 1,
+      "solution": "When a bar magnet is broken into two pieces, each piece retains both poles because magnets cannot exist with only one pole. This is a fundamental property of magnetic materials. The other options are incorrect because they suggest that breaking the magnet would result in a single pole or loss of magnetism, which does not occur.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक बार चुंबक को दो टुकड़ों में तोड़ दिया जाए, तो क्या होता है?",
+          "choices": [
+            "प्रत्येक टुकड़ा एक ध्रुव बन जाता है",
+            "प्रत्येक टुकड़ा दोनों ध्रुवों वाला हो जाता है",
+            "केवल एक टुकड़ा चुंबक बन जाता है",
+            "चुंबक अपने चुंबकीय गुण खो देता है"
+          ],
+          "solution": "जब एक बार चुंबक को दो टुकड़ों में तोड़ दिया जाता है, तो प्रत्येक टुकड़ा दोनों ध्रुवों के साथ बना रहता है क्योंकि चुंबक केवल एक ध्रुव के साथ अस्तित्व में नहीं रह सकते। यह चुंबकीय पदार्थों का एक मूलभूत गुण है। अन्य विकल्प गलत हैं क्योंकि वे यह सुझाव देते हैं कि चुंबक को तोड़ने से केवल एक ध्रुव बन जाएगा या चुंबकत्व की हानि हो जाएगी, जो वास्तव में नहीं होता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक बार चुंबक दोन भागांमध्ये तुटला, तर काय होते?",
+          "choices": [
+            "प्रत्येक भाग एक ध्रुव बनतो",
+            "प्रत्येक भागाला दोन ध्रुव असतात",
+            "मात्र एक भाग चुंबक बनतो",
+            "चुंबक आपल्या चुंबकीय गुणांचा गमावतो"
+          ],
+          "solution": "जेव्हा बार चुंबक दोन भागांमध्ये तुटतो तेव्हा प्रत्येक भाग दोन्ही ध्रुव रखतो कारण चुंबक एकाच ध्रुवासह असू शकत नाहीत. हे चुंबकीय वस्तूंचे मूलभूत गुणधर्म आहे. इतर विकल्प चुकीचे आहेत कारण ते सूचित करतात की चुंबक तुटल्याने एक ध्रुव मिळेल किंवा चुंबकत्व गमावले जाईल, जे घडत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for magnetic concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the nature of magnetic poles",
+        null,
+        "Believes that breaking a magnet creates single poles",
+        "Incorrectly assumes that breaking a magnet destroys its magnetic properties"
       ],
       "solverAnswers": [
         1,
@@ -1128,8 +435,8 @@
         1,
         1
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as the attraction of a magnet to iron indicates that iron is magnetic, not non-magnetic. The other options are incorrect, and the author's reasoning for the wrong options reflects common misconceptions.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed and the correct answer is logically sound. The distractors reflect common misconceptions about magnets, and the author's reasoning aligns with scientific understanding.",
       "sources": [
         {
           "document": "ncert/6/science/fecu104.pdf",
@@ -1172,49 +479,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T19:43:53.835Z",
+      "generatedAt": "2026-10-19T01:42:32.305Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "Two identical steel pieces A and B are placed close to each other, and there is attraction between them. Which of the following can help us identify which one is a magnet?",
+      "difficulty": 6,
+      "stem": "In a science experiment, a student uses a bar magnet and a compass. The student observes that the compass needle does not move when a piece of wood is placed between the magnet and the compass. What does this observation suggest?",
       "choices": [
-        "Place them close to a compass needle",
-        "Place them in a magnetic field and observe if they repel",
-        "Place them in a non-magnetic material",
-        "Place them in a magnetic field and observe their movement"
+        "Magnetic forces can only act through air",
+        "Magnetic forces can act through non-magnetic materials",
+        "Magnetic forces are blocked by all materials",
+        "Magnetic forces are strongest in vacuum"
       ],
-      "answerIndex": 0,
-      "solution": "If one of the steel pieces is a magnet, it will affect a compass needle. The other options do not help identify which one is a magnet. The presence of attraction alone cannot distinguish between a magnet and a non-magnet, but using a compass helps identify the magnet.",
+      "answerIndex": 1,
+      "solution": "The correct answer is that magnetic forces can act through non-magnetic materials. The compass needle not moving when wood is placed between the magnet and the compass shows that the magnetic field can pass through non-magnetic objects. Magnetic forces are not blocked by all materials, nor do they only act through air, and they are not stronger in a vacuum than in other materials.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "दो समान स्टील के टुकड़े A और B एक दूसरे के पास रखे गए हैं, और उनके बीच आकर्षण है। निम्नलिखित में से कौन-सा हमें यह पहचानने में सहायता कर सकता है कि कौन-सा चुंबक है?",
+          "stem": "एक विज्ञान प्रयोग में, एक छात्र एक बार चुंबक और एक सुई चुंबक का उपयोग करता है। छात्र देखता है कि लकड़ी के टुकड़े को चुंबक और सुई चुंबक के बीच रखे जाने पर सुई चुंबक की सुई गति नहीं करती। यह अवलोकन क्या सुझाव देता है?",
           "choices": [
-            "उन्हें एक सुई के पास रखें",
-            "उन्हें एक चुंबकीय क्षेत्र में रखें और देखें कि क्या वे प्रतिकर्षित होते हैं",
-            "उन्हें एक अचुंबकीय सामग्री में रखें",
-            "उन्हें एक चुंबकीय क्षेत्र में रखें और उनके गति का अवलोकन करें"
+            "चुंबकीय बल केवल हवा में कार्य कर सकते हैं",
+            "चुंबकीय बल गैर-चुंबकीय सामग्री में भी कार्य कर सकते हैं",
+            "चुंबकीय बल सभी सामग्री द्वारा रोक दिए जाते हैं",
+            "चुंबकीय बल निर्वात में सबसे मजबूत होते हैं"
           ],
-          "solution": "अगर स्टील के टुकड़ों में से एक चुंबक है, तो यह सुई के निकट आकर्षित करेगा। अन्य विकल्प चुंबक की पहचान में सहायता नहीं करते। आकर्षण की उपस्थिति अकेले चुंबक और अचुंबक के बीच अंतर नहीं बता सकती, लेकिन सुई के उपयोग से चुंबक की पहचान की जा सकती है।",
+          "solution": "सही उत्तर यह है कि चुंबकीय बल गैर-चुंबकीय सामग्री में भी कार्य कर सकते हैं। चुंबक और सुई चुंबक के बीच लकड़ी रखे जाने पर सुई चुंबक की सुई गति न करना दर्शाता है कि चुंबकीय क्षेत्र गैर-चुंबकीय वस्तुओं में से गुजर सकता है। चुंबकीय बल सभी सामग्री द्वारा रोक नहीं जाते हैं, न ही वे केवल हवा में कार्य करते हैं, और वे निर्वात में अन्य सामग्री की तुलना में मजबूत नहीं होते हैं।",
           "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains option (1).",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एकसारखे इस्पाताचे दोन टुकडे A आणि B एकमेकांच्या जवळ ठेवले गेले आहेत आणि त्यांच्यात आकर्षण आहे. खालीलपैकी कोणते आम्हाला कोणता टुकडा चुंबक आहे हे ओळखण्यात मदत करू शकते?",
+          "stem": "एका विज्ञान प्रयोगात, एका विद्यार्थ्याने बार मॅग्नेट आणि दिशासूचक वापरला. विद्यार्थी अवलोकन करतो की लक्ष्य दिशासूचक तीर वाल्व जेव्हा चौकटीच्या आत ठेवलेल्या लाकडाच्या टुकड्यामुळे मॅग्नेट आणि दिशासूचक दरम्यान न बदलता राहतो. हे अवलोकन काय सूचित करते?",
           "choices": [
-            "त्यांना एका कम्पास दुनियाच्या जवळ ठेवा",
-            "त्यांना एका चुंबकीय क्षेत्रात ठेवा आणि त्यांनी विरोध करावे की नाही ते पाहा",
-            "त्यांना एका अचुंबकीय पदार्थात ठेवा",
-            "त्यांना एका चुंबकीय क्षेत्रात ठेवा आणि त्यांच्या गतीचे निरीक्षण करा"
+            "चुंबकीय बल केवळ हवेतून कार्य करू शकतात",
+            "चुंबकीय बल अचुंबकीय पदार्थांतून कार्य करू शकतात",
+            "चुंबकीय बल सर्व पदार्थांद्वारे अडवले जातात",
+            "चुंबकीय बल निर्वातात सर्वात जास्त असतात"
           ],
-          "solution": "जर इस्पाताच्या टुकड्यांपैकी एक चुंबक असेल तर तो कम्पास दुनियाला प्रभावित करेल. इतर पर्याय चुंबक ओळखण्यात मदत करत नाहीत. फक्त आकर्षण असल्याने चुंबक आणि अचुंबक ओळखता येत नाही, परंतु कम्पास वापरून चुंबक ओळखता येतो.",
+          "solution": "बरोबर उत्तर हे आहे की चुंबकीय बल अचुंबकीय पदार्थांतून कार्य करू शकतात. चुंबक आणि दिशासूचक दरम्यान लाकडाच्या टुकड्यामुळे दिशासूचक तीर न बदलणे दर्शवते की चुंबकीय क्षेत्र अचुंबकीय वस्तूंमधून जाऊ शकते. चुंबकीय बल सर्व पदार्थांद्वारे अडवले जात नाहीत, आणि हवेतून केवळ कार्य करत नाहीत, आणि निर्वातात इतर पदार्थांच्या तुलनेत जास्त जोराचे नसतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -1223,20 +530,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Thinks magnetic forces are limited to air",
         null,
-        "Believes that only magnets repel each other, not considering attraction or non-magnet behavior",
-        "Believing that non-magnetic materials can distinguish between magnets and non-magnets",
-        "Believes that only magnets respond to magnetic fields, not ferromagnetic materials"
+        "Misunderstands that magnetic forces can pass through non-magnetic materials",
+        "Confuses the behavior of magnetic forces with that of other types of forces"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. A compass needle is affected by a magnet but not by a non-magnet, making option 0 the correct choice. The other options are flawed because attraction can occur between a magnet and a non-magnet, non-magnetic materials do not distinguish between magnets and non-magnets, and all ferromagnetic materials respond to magnetic fields.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the observation shows that magnetic forces can act through non-magnetic materials like wood. The other options represent common misconceptions about magnetic forces.",
       "sources": [
         {
           "document": "ncert/6/science/fecu104.pdf",
@@ -1280,7 +587,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T19:43:53.835Z",
+      "generatedAt": "2026-10-19T01:42:32.305Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

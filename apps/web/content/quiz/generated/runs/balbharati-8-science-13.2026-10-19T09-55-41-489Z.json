@@ -1,0 +1,617 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T09:55:41.489Z",
+  "finishedAt": "2026-10-19T10:04:36.101Z",
+  "seconds": 535,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 13 — Chemical Change and Chemical Bond",
+    "edition": "First Edition 2018",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n21. to 26 are very short answer questions\n21 Dil. HCl is added to Zn granules.” How will you prove that chemical change has taken place 2\nhere? Support your response with two arguments.",
+      "[INJSO 2012 — question paper]\n35. All chemical reactions with dissociation can be of following type/s :\ni. reversible ii. irreversible iii. endothermic iv. exothermic\na) i, ii, iii b) ii, iii, iv c) i, iii, iv d) i,ii,iv",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n29. Student to attempt either option A or B. 5\nA.\n(a) x = 3, y = 6\n(b) Propene\n(c)\n(d) Propanol\n(e) C 3 H 6 + H 2 Ni C 3 H 8\nCH 2 =CH-CH 3 + H 2 CH 3 -CH 2 -CH 3\nOR\nB.\n(a) Ionic bond\n(b) Q 2 P\n(c) Basic, metallic oxides are basic in nature.\n(d) 2C 2 H 5 OH +2Q  2C 2 H 5 OQ + H 2\n(e) CP 2\nFor visually impaired students\nA.\n(a) x = 3, y = 6\n(b) Propene\n(c) Unsaturated hydrocarbon\n(d) Propanol\n(e) C 3 H 6 + H 2 Ni C 3 H 8\nOR\nB.\n(a) Covalent bond\n(b) Ionic bond\n(c) CaO, due to presence of free ions in molten state.\n(d) CaO is solid while CO 2 is a gas.\n(e) 4",
+      "[INJSO 2021 — question paper]\n9. When water changes phase from liquid to vapor, some bonds are broken. The correct statement relating\nto this change is:\nA. New bonds are formed between nearby H/H and O/O while H–O bonds break.\nB. Hydrogen bonds between H 2 O molecules are broken.\nC. Covalent bonds existing within the H 2 O molecules are broken.\nD. Ionic bonds existing between H ions and OH ions are broken. + "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 133683,
+      "in": 32,
+      "out": 31,
+      "rejects": 1,
+      "promptTokens": 25135,
+      "completionTokens": 6222
+    },
+    "critique": {
+      "calls": 38,
+      "ms": 309445,
+      "in": 31,
+      "out": 21,
+      "rejects": 10,
+      "promptTokens": 16390,
+      "completionTokens": 6631
+    },
+    "solver": {
+      "calls": 152,
+      "ms": 91702,
+      "in": 21,
+      "out": 21,
+      "rejects": 0,
+      "promptTokens": 23964,
+      "completionTokens": 1574
+    },
+    "form": {
+      "calls": 15,
+      "ms": 56853,
+      "in": 21,
+      "out": 11,
+      "rejects": 10,
+      "promptTokens": 3630,
+      "completionTokens": 1086
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 3388,
+      "in": 11,
+      "out": 10,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 495828,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 22894,
+      "completionTokens": 11656
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 2,
+    "4": 0,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the main characteristic of a chemical change?",
+      "ms": {
+        "draft": 4594,
+        "critique": 9214
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the correct order of the parts of a chemical equation?",
+      "ms": {
+        "draft": 4594,
+        "critique": 9939
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a chemical change?",
+      "ms": {
+        "draft": 4594,
+        "critique": 8956,
+        "solver": 15091,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a chemical change that occurs in our body?",
+      "ms": {
+        "draft": 4594,
+        "critique": 8499
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of a reversible chemical change?",
+      "ms": {
+        "draft": 4594,
+        "critique": 8541
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about ionic bonds?",
+      "ms": {
+        "draft": 3768,
+        "critique": 8081,
+        "solver": 1195,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of chemical change is the combustion of fuel?",
+      "ms": {
+        "draft": 3768,
+        "critique": 7720,
+        "solver": 14466,
+        "form": 3897
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a product of the reaction between sodium and chlorine?",
+      "ms": {
+        "draft": 14482,
+        "critique": 8173,
+        "solver": 14128,
+        "form": 3792
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main characteristic of a chemical change?",
+      "ms": {
+        "draft": 3273,
+        "critique": 7867
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of bond is formed between hydrogen and chlorine atoms in a hydrogen chloride molecule?",
+      "ms": {
+        "draft": 3273,
+        "critique": 8151
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a chemical change?",
+      "ms": {
+        "draft": 3273,
+        "critique": 8905
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes that when a solution of sodium chloride is mixed with a solution of silver nitrate, a white precipitate is formed. What type of chemical change is this an example of?",
+      "ms": {
+        "draft": 3273,
+        "critique": 7928
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a reactant in the process of respiration?",
+      "ms": {
+        "draft": 3273,
+        "critique": 9337
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a chemical reaction, the mass of the products is equal to the mass of the reactants. What principle does this statement illustrate?",
+      "ms": {
+        "draft": 3273,
+        "critique": 9572
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason noble gases do not form chemical bonds?",
+      "ms": {
+        "draft": 3818,
+        "critique": 8022,
+        "solver": 1917,
+        "form": 5266
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, how many covalent bonds are formed in the H₂O molecule?",
+      "ms": {
+        "draft": 3818,
+        "critique": 7354,
+        "solver": 2063,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the bond formed between a cation and an anion due to electrostatic attraction?",
+      "ms": {
+        "draft": 3818,
+        "critique": 8407,
+        "solver": 17594,
+        "form": 5189
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of a chemical change?",
+      "ms": {
+        "draft": 6620,
+        "critique": 9620,
+        "solver": 1736,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a characteristic observation during a chemical change?",
+      "ms": {
+        "draft": 6620,
+        "critique": 9242,
+        "solver": 18732,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the reaction between lemon juice and baking soda, what is the correct word equation?",
+      "ms": {
+        "draft": 6620,
+        "critique": 10222,
+        "solver": 11814,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when lemon juice is added to baking soda?",
+      "ms": {
+        "draft": 14482,
+        "critique": 7834,
+        "solver": 1499,
+        "form": 5743
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of bond is formed between hydrogen and chlorine atoms in the HCl molecule?",
+      "ms": {
+        "draft": 14482,
+        "critique": 7130,
+        "solver": 1635,
+        "form": 2810,
+        "translation": 44187
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason noble gases do not form chemical bonds?",
+      "ms": {
+        "draft": 3768,
+        "critique": 6610,
+        "solver": 1449,
+        "form": 4921,
+        "translation": 54166
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the formation of sodium chloride, what happens to the sodium atom?",
+      "ms": {
+        "draft": 3818,
+        "critique": 7614,
+        "solver": 2605,
+        "form": 4773,
+        "translation": 26538
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a chemical change?",
+      "ms": {
+        "draft": 14482,
+        "critique": 9372,
+        "solver": 2214,
+        "form": 5175,
+        "translation": 55161
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when baking soda is added to lemon juice?",
+      "ms": {
+        "draft": 4594,
+        "critique": 8550,
+        "solver": 14317,
+        "form": 4065,
+        "translation": 46717
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of an ionic bond?",
+      "ms": {
+        "draft": 3768,
+        "critique": 8830,
+        "solver": 2035,
+        "form": 3459,
+        "translation": 45575
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the reaction of calcium carbonate with hydrochloric acid, which of the following is a product?",
+      "ms": {
+        "draft": 3768,
+        "critique": 7976,
+        "solver": 2131,
+        "form": 3494,
+        "translation": 52744
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a reversible chemical change?",
+      "ms": {
+        "draft": 14482,
+        "critique": 7030,
+        "solver": 1695,
+        "form": 4367,
+        "translation": 52451
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does sodium form a cation during the formation of sodium chloride?",
+      "ms": {
+        "draft": 3768,
+        "critique": 7998,
+        "solver": 1739,
+        "form": 4346,
+        "translation": 56602
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a result of the sharing of electrons between atoms?",
+      "ms": {
+        "draft": 14482,
+        "critique": 6041,
+        "solver": 2566,
+        "form": 3173,
+        "translation": 57036
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main characteristic of a chemical change?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the correct order of the parts of a chemical equation?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a chemical change?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is a chemical change that occurs in our body?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following is an example of a reversible chemical change?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about ionic bonds?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 say the same thing (\"They are formed by the attraction between neutral atoms\" / \"They are formed by the attraction between non-metal atoms\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which type of chemical change is the combustion of fuel?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a product of the reaction between sodium and chlorine?",
+      "reason": "options 1 and 2 are the same (\"Hydrogen chloride\")"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the valency of an ion equal to?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main characteristic of a chemical change?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which type of bond is formed between hydrogen and chlorine atoms in a hydrogen chloride molecule?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is an example of a chemical change?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student observes that when a solution of sodium chloride is mixed with a solution of silver nitrate, a white precipitate is formed. What type of chemical change is this an example of?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a reactant in the process of respiration?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In a chemical reaction, the mass of the products is equal to the mass of the reactants. What principle does this statement illustrate?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main reason noble gases do not form chemical bonds?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's explanation of noble gases' reac…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, how many covalent bonds are formed in the H₂O molecule?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term for the bond formed between a cation and an anion due to electrostatic attraction?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is an example of a chemical change?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is 'Ripening of a mango', which is a chemical…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a characteristic observation during a chemical change?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the reaction between lemon juice and baking soda, what is the correct word equation?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses sodium bicarbonate with sodium chloride and uses wa…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What happens when lemon juice is added to baking soda?",
+      "reason": "near-duplicate of batch item \"What happens when baking soda is added to lemon ju…\" (cosine 0.976 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

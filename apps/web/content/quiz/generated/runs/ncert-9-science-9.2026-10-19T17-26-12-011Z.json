@@ -1,0 +1,763 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T17:26:12.011Z",
+  "finishedAt": "2026-10-19T17:45:04.877Z",
+  "seconds": 1133,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc109.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 9 — Atomic Foundations of Matter",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 27,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2009 — question paper]\n37. Which conclusion was a direct result of the gold foil experiment?\n| a) An atom is mostly empty space with a dense, positively charged nucleus.\nb) An atom is composed of at least three types of subatomic particles.\n¢) An electron has a positive charge and is located inside the nucleus.\nd) An electron has properties of both waves and particles.",
+      "[INJSO 2021 — question paper]\nElement Atomic Mass Atomic Number\nH 1.01 1\nC 12.01 6\nN 14.00 7\nO 15.99 8\nF 18.99 9\nNa 22.99 11\nMg 24.30 12\nAl 26.98 13\nS 32.06 16\npH value 0 3\nColour of pH paper Red Orange\nNature of the solution Acidic\nElement Atomic Mass Atomic Number\nCl 35.45 17\nK 39.09 19\nCa 40.07 20\nMn 54.93 25\nFe 55.84 26\nZn 65.38 30\nAg 107.87 47\nI 126.90 53\nBa 137.33 56\n6 7 10 12 14\nYellow Green Blue Violet Indigo\nNeutral Basic",
+      "[INJSO 2020 — solutions or answer key]\n30. (16 marks) The year 2019 was proclaimed by UNESCO as the International Year of the\nPeriodic Table (IYPT 2019), marking the 150 th anniversary of the Mendeleev periodic table,\nwhich is an iconic representation and a vital tool to all who learn and work in science. In\nthis question, some elements have had their symbols replaced by greek letters α, β, γ, etc.,\nbut not in order. All such elements in this question have atomic number of 20 or less. In\naddition, two more elements in the periodic table have been assigned codes X and Q.\nUse the information about their properties, as given below, to assign each element to its\ncorrect greek / roman alphabet code.\n(a) Elements α, β and γ are unreact",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n25. Carbon forms millions of compounds because it has small atomic size, 2\ntherefore, it forms strong and stable C–C bonds, showing extensive\ncatenation. Silicon, being larger in size, forms weaker Si–Si bonds and\ncannot show catenation to the same extent, so it forms fewer compounds."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 278490,
+      "in": 40,
+      "out": 40,
+      "rejects": 1,
+      "promptTokens": 41866,
+      "completionTokens": 9535
+    },
+    "critique": {
+      "calls": 46,
+      "ms": 484299,
+      "in": 40,
+      "out": 36,
+      "rejects": 4,
+      "promptTokens": 21156,
+      "completionTokens": 7981
+    },
+    "solver": {
+      "calls": 220,
+      "ms": 161322,
+      "in": 36,
+      "out": 33,
+      "rejects": 3,
+      "promptTokens": 34702,
+      "completionTokens": 2076
+    },
+    "form": {
+      "calls": 17,
+      "ms": 88142,
+      "in": 33,
+      "out": 15,
+      "rejects": 18,
+      "promptTokens": 4422,
+      "completionTokens": 1313
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 4387,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 61,
+      "ms": 1002791,
+      "in": 30,
+      "out": 30,
+      "rejects": 0,
+      "promptTokens": 35730,
+      "completionTokens": 17655
+    }
+  },
+  "kept": 15,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 2,
+    "4": 3,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the mass during a physical change?",
+      "ms": {
+        "draft": 6139,
+        "critique": 10577
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a chemical reaction produces gas and the container is sealed, what will happen to the mass?",
+      "ms": {
+        "draft": 6139,
+        "critique": 11821
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the mass of the system in a chemical change if no gas escapes?",
+      "ms": {
+        "draft": 6139,
+        "critique": 11688,
+        "solver": 16699,
+        "form": 5807
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for the difference in the properties of elements when they form a compound?",
+      "ms": {
+        "draft": 6139,
+        "critique": 12461
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a reaction, 12 g of carbon combines with 32 g of oxygen to form 44 g of carbon dioxide. How much carbon dioxide is formed if 2.4 g of carbon reacts completely?",
+      "ms": {
+        "draft": 6470,
+        "critique": 9329,
+        "solver": 2956
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the Law of Conservation of Mass state?",
+      "ms": {
+        "draft": 6470,
+        "critique": 7929,
+        "solver": 1950,
+        "form": 5608
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes a molecule?",
+      "ms": {
+        "draft": 9693,
+        "critique": 9742,
+        "solver": 2162,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the Law of Definite Proportions?",
+      "ms": {
+        "draft": 9693,
+        "critique": 11796,
+        "solver": 2460,
+        "form": 5927
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 2 g of hydrogen combines with 16 g of oxygen to form 18 g of water, which of the following statements is true?",
+      "ms": {
+        "draft": 9693,
+        "critique": 12241,
+        "solver": 3834,
+        "form": 6509
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is most likely to be true based on the information in the passage?",
+      "ms": {
+        "draft": 9693,
+        "critique": 13628
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why a hydrogen molecule is formed?",
+      "ms": {
+        "draft": 9693,
+        "critique": 11687,
+        "solver": 2524,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what is a covalent bond?",
+      "ms": {
+        "draft": 9693,
+        "critique": 9747,
+        "solver": 2798,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of bond is formed between hydrogen and chlorine in a hydrogen chloride molecule?",
+      "ms": {
+        "draft": 6678,
+        "critique": 9485,
+        "solver": 4466,
+        "form": 4047
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the electronic configurations of hydrogen and chlorine, how many electrons does each atom need to complete their stable configurations?",
+      "ms": {
+        "draft": 6678,
+        "critique": 11464,
+        "solver": 2783,
+        "form": 5281
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is true about the formation of sodium chloride (NaCl)?",
+      "ms": {
+        "draft": 10113,
+        "critique": 11898,
+        "solver": 17293,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many chloride ions combine with one magnesium ion to form magnesium chloride?",
+      "ms": {
+        "draft": 10113,
+        "critique": 11120,
+        "solver": 13069,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the law that states that mass cannot be created or destroyed in a chemical reaction?",
+      "ms": {
+        "draft": 6278,
+        "critique": 7533,
+        "solver": 2266,
+        "form": 8132
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the Law of Definite Proportions state about a compound?",
+      "ms": {
+        "draft": 6278,
+        "critique": 7845,
+        "solver": 3291,
+        "form": 7572
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the formula unit mass of potassium chloride (KCl)?",
+      "ms": {
+        "draft": 6278,
+        "critique": 9509,
+        "solver": 20543,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If element X has six electrons in its outer shell, why does it form a diatomic molecule?",
+      "ms": {
+        "draft": 6278,
+        "critique": 10767,
+        "solver": 3441
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the electrical conductivity of ionic compounds in the solid state?",
+      "ms": {
+        "draft": 5149,
+        "critique": 11466,
+        "solver": 2406,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student observes that a compound does not conduct electricity in the solid state but conducts electricity when melted. What can be concluded about the nature of this compound?",
+      "ms": {
+        "draft": 5149,
+        "critique": 10655,
+        "solver": 2685,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to Dalton's Atomic Theory, which of the following is true about atoms?",
+      "ms": {
+        "draft": 48480,
+        "critique": 13121,
+        "solver": 3359,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 2 g of hydrogen combines with 16 g of oxygen to form 18 g of water, what does this demonstrate?",
+      "ms": {
+        "draft": 48480,
+        "critique": 11423,
+        "solver": 1616,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is trying to write the formula of a compound formed between magnesium and sulfate. Which of the following is the correct formula?",
+      "ms": {
+        "draft": 6869,
+        "critique": 13637,
+        "solver": 20991
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the correct name for a molecule formed by two hydrogen atoms and one oxygen atom?",
+      "ms": {
+        "draft": 6678,
+        "critique": 11838,
+        "solver": 2031,
+        "form": 4387,
+        "translation": 57223
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following correctly represents the formation of an ionic bond?",
+      "ms": {
+        "draft": 6678,
+        "critique": 11521,
+        "solver": 2688,
+        "form": 4851,
+        "translation": 72389
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which scientist proposed the Law of Conservation of Mass?",
+      "ms": {
+        "draft": 6470,
+        "critique": 8990,
+        "solver": 3339,
+        "form": 6037,
+        "translation": 74696
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct way to name an ionic compound?",
+      "ms": {
+        "draft": 6869,
+        "critique": 10866,
+        "solver": 2126,
+        "form": 0,
+        "translation": 56188
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the simplest whole number ratio of ions in an ionic compound?",
+      "ms": {
+        "draft": 5149,
+        "critique": 11141,
+        "solver": 2313,
+        "form": 5441,
+        "translation": 75608
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following ions would combine with a sodium ion to form a neutral compound?",
+      "ms": {
+        "draft": 6869,
+        "critique": 10448,
+        "solver": 27174,
+        "form": 0,
+        "translation": 34930
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following compounds is most likely to conduct electricity when dissolved in water?",
+      "ms": {
+        "draft": 5149,
+        "critique": 10792,
+        "solver": 2996,
+        "form": 0,
+        "translation": 58352
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the first experimental setup, why was there a difference in mass before and after the reaction?",
+      "ms": {
+        "draft": 6139,
+        "critique": 9297,
+        "solver": 2714,
+        "form": 6161,
+        "translation": 75675
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If element A has one electron in its third shell and element B has six electrons in its second shell, what kind of ion would A form?",
+      "ms": {
+        "draft": 6278,
+        "critique": 10701,
+        "solver": 2513,
+        "form": 6285,
+        "translation": 78403
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In a chemical reaction, the mass of reactants is 6.92 g. The mass of products is 6.92 g. What does this indicate?",
+      "ms": {
+        "draft": 6470,
+        "critique": 8931,
+        "solver": 2665,
+        "form": 3330,
+        "translation": 70194
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a compound is soluble in water but does not conduct electricity, what can be concluded about its bonding?",
+      "ms": {
+        "draft": 5149,
+        "critique": 11628,
+        "solver": 1791,
+        "form": 0,
+        "translation": 66370
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student burns 10 g of ethanol in an open beaker, and no residue is left. Does this violate the Law of Conservation of Mass?",
+      "ms": {
+        "draft": 6470,
+        "critique": 10443,
+        "solver": 2176,
+        "form": 6290,
+        "translation": 77468
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does water not have the same properties as hydrogen and oxygen even though its mass is equal to the sum of their masses?",
+      "ms": {
+        "draft": 6139,
+        "critique": 9930,
+        "solver": 2172,
+        "form": 5431,
+        "translation": 86670
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following combinations gives the correct number of ions for an ionic compound where the total positive charge is 6+ and the total negative charge is 6–?",
+      "ms": {
+        "draft": 6278,
+        "critique": 12759,
+        "solver": 2231,
+        "form": 0,
+        "translation": 57349
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A compound consists of 40% sulfur and 60% oxygen by mass. In a sample containing 20 g of sulfur, how much oxygen is required to satisfy the Law of Constant Proportions?",
+      "ms": {
+        "draft": 6470,
+        "critique": 12267,
+        "solver": 2714,
+        "form": 0,
+        "translation": 54863
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is true about the mass during a physical change?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a chemical reaction produces gas and the container is sealed, what will happen to the mass?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens to the mass of the system in a chemical change if no gas escapes?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main reason for the difference in the properties of elements when they form a compound?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In a reaction, 12 g of carbon combines with 32 g of oxygen to form 44 g of carbon dioxide. How much carbon dioxide is formed if 2.4 g of carbon reacts completely?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the Law of Conservation of Mass state?",
+      "reason": "options 0 and 1 say the same thing (\"Matter can be created or destroyed in a chemical reaction.\" / \"Matter cannot be created or destroyed in a chemical reaction.\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes a molecule?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, as per the passage, defining a molecule as a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the Law of Definite Proportions?",
+      "reason": "options 0 and 1 say the same thing (\"The mass of the products is always less than the mass of the reactants in a chemical reaction.\" / \"The mass of the reactants is always less than the mass of the products in a chemical reaction.\"); distractor 3's reason is not a one-line misconception (\"Correct answer, as per the passage and the law itself, stati…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 2 g of hydrogen combines with 16 g of oxygen to form 18 g of water, which of the following statements is true?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Incorrectly assumes that the reaction does not follow any la…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following statements is most likely to be true based on the information in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why a hydrogen molecule is formed?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 2 say the same thing (\"Because hydrogen atoms share electrons to achieve a stable configuration.\" / \"Because hydrogen atoms transfer electrons to achieve a stable configuration.\"); distractor 0's reason is not a one-line misconception (\"Incorrectly assumes that hydrogen atoms can exist independen…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, what is a covalent bond?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"A bond formed by the transfer of electrons between atoms.\" / \"A bond formed by the sharing of electrons between atoms.\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which type of bond is formed between hydrogen and chlorine in a hydrogen chloride molecule?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Overlooks the specific type of bond described in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the electronic configurations of hydrogen and chlorine, how many electrons does each atom need to complete their stable configurations?",
+      "reason": "options 0 and 1 say the same thing (\"Hydrogen needs 1, chlorine needs 1\" / \"Hydrogen needs 1, chlorine needs 7\"); options 0 and 2 say the same thing (\"Hydrogen needs 1, chlorine needs 1\" / \"Hydrogen needs 2, chlorine needs 1\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following statements is true about the formation of sodium chloride (NaCl)?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "How many chloride ions combine with one magnesium ion to form magnesium chloride?",
+      "reason": "checkExpr \"2\" is a bare literal"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 3, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"Which of the following best describes how a hydrogen chloride"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the law that states that mass cannot be created or destroyed in a chemical reaction?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses with the general term 'Law of Chemical Combination'…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the Law of Definite Proportions state about a compound?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Thinks the law applies only to laboratory-formed compounds, …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the formula unit mass of potassium chloride (KCl)?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If element X has six electrons in its outer shell, why does it form a diatomic molecule?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the electrical conductivity of ionic compounds in the solid state?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student observes that a compound does not conduct electricity in the solid state but conducts electricity when melted. What can be concluded about the nature of this compound?",
+      "reason": "options 0 and 3 say the same thing (\"It is a covalent compound\" / \"It is a network covalent compound\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to Dalton's Atomic Theory, which of the following is true about atoms?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, so no reason given for it being wrong here.…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 2 g of hydrogen combines with 16 g of oxygen to form 18 g of water, what does this demonstrate?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, so no reason given for it being wrong here.…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student is trying to write the formula of a compound formed between magnesium and sulfate. Which of the following is the correct formula?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

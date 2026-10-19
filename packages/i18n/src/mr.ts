@@ -6808,6 +6808,7 @@ export const mr: Dictionary = {
     passRefundFailed: "गेटवे पासचे पैसे परत करू शकला नाही; पास पुन्हा चालू आहे",
     passAskGuardian: "एका विद्यार्थ्याने पालकांकडे योजना मागितली",
     // end plans-pay
+    operatorQuizTopicRename: "सराव प्रकरणाचे नाव पाठ्यपुस्तकातील शीर्षकाप्रमाणे बदलले",
     substitutionsAcknowledge: "एक कव्हर स्वीकारला",
     substitutionsDecline: "एक कव्हर नाकारला",
     syllabusTemplateSave: "एक पाठ योजना साचा म्हणून ठेवली",

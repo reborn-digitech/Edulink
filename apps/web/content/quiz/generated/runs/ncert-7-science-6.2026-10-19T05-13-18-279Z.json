@@ -1,0 +1,790 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T05:13:18.279Z",
+  "finishedAt": "2026-10-19T05:20:36.222Z",
+  "seconds": 438,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "gecu1",
+    "document": "ncert/7/science/gecu106.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 6 — Adolescence: A Stage of Growth and Change",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2022-23]\n35. (a) The reason is that many multi-cellular organisms are not simply a random 5\ncollection of cells. Specialised cells are organised as tissues, and tissues are\norganised into organs, which then have to be placed at definite positions in the\nbody. Therefore, cell-by-cell division would be impractical. (2 marks)\n(b) Sexual maturation of reproductive tissues is a necessary link for reproduction\nbecause of the need for specialised cell called germ-cells to participate in\nsexual reproduction. The body of the individual organism has to grow to its\nadult size, the rate of general body growth begins to slow down, reproductive\ntissues begin to mature. (1½ marks)\nA whole new set of changes in the ",
+      "[CBSE Class X Science, sample question paper, 2026-27]\n12. What changes are observed in the uterus subsequent to implantation of the 2\nyoung embryo in a human female?",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n7. (c) Addition of hydrogen in presence of catalyst changes A to C 1",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n22. State the post-fertilisation changes that lead to fruit formation in plants. 2"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 139295,
+      "in": 41,
+      "out": 41,
+      "rejects": 0,
+      "promptTokens": 33143,
+      "completionTokens": 7843
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 266209,
+      "in": 41,
+      "out": 32,
+      "rejects": 9,
+      "promptTokens": 18658,
+      "completionTokens": 7455
+    },
+    "solver": {
+      "calls": 181,
+      "ms": 82012,
+      "in": 32,
+      "out": 29,
+      "rejects": 3,
+      "promptTokens": 25073,
+      "completionTokens": 1617
+    },
+    "form": {
+      "calls": 19,
+      "ms": 56818,
+      "in": 29,
+      "out": 10,
+      "rejects": 19,
+      "promptTokens": 6305,
+      "completionTokens": 1425
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 17,
+      "ms": 2447,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 445056,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 25967,
+      "completionTokens": 13418
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 2,
+    "2": 4,
+    "3": 3,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "According to the passage, which of these is not directly involved in the process of reproduction?",
+      "ms": {
+        "draft": 2928,
+        "critique": 5930
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the passage suggest about the timing of changes during adolescence?",
+      "ms": {
+        "draft": 2928,
+        "critique": 5404,
+        "solver": 1014,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What can be inferred from the passage about the importance of adolescence?",
+      "ms": {
+        "draft": 2928,
+        "critique": 4681,
+        "solver": 2038,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary purpose of maintaining personal hygiene during adolescence?",
+      "ms": {
+        "draft": 4061,
+        "critique": 6028,
+        "solver": 1700,
+        "form": 2619
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a sign of good reproductive health in girls?",
+      "ms": {
+        "draft": 4061,
+        "critique": 6557,
+        "solver": 1133,
+        "form": 3385
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a girl experiences a menstrual cycle of 35 days, what does this indicate about her reproductive health?",
+      "ms": {
+        "draft": 4061,
+        "critique": 5126,
+        "solver": 2343,
+        "form": 2617
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the significance of the menstrual cycle?",
+      "ms": {
+        "draft": 4061,
+        "critique": 6601,
+        "solver": 1067,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is it important to maintain proper hygiene during menstruation?",
+      "ms": {
+        "draft": 4061,
+        "critique": 6376,
+        "solver": 2281,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A girl experiences irregular menstrual cycles and feels pain during her period. What should she do?",
+      "ms": {
+        "draft": 4061,
+        "critique": 6804,
+        "solver": 1854,
+        "form": 3272
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student is tempted to try smoking by their peers, what should they do according to the passage?",
+      "ms": {
+        "draft": 4238,
+        "critique": 7781,
+        "solver": 1857,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a way to stay physically and mentally healthy during adolescence?",
+      "ms": {
+        "draft": 4238,
+        "critique": 7802,
+        "solver": 16917
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following best explains why adolescents should avoid substance abuse?",
+      "ms": {
+        "draft": 4238,
+        "critique": 7111,
+        "solver": 14446,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important for adolescents to understand the changes that occur during this stage of life?",
+      "ms": {
+        "draft": 4238,
+        "critique": 6036,
+        "solver": 1395,
+        "form": 3687
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the Rashtriya Kishor Swasthya Karyakram (RKSK)?",
+      "ms": {
+        "draft": 4238,
+        "critique": 6271,
+        "solver": 1374,
+        "form": 3782
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason for the development of pimples in adolescents?",
+      "ms": {
+        "draft": 2961,
+        "critique": 7003,
+        "solver": 1182,
+        "form": 3227
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of adolescence?",
+      "ms": {
+        "draft": 2961,
+        "critique": 6263,
+        "solver": 11834,
+        "form": 2649
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a secondary sexual characteristic in boys?",
+      "ms": {
+        "draft": 2961,
+        "critique": 7147,
+        "solver": 1360
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the main purpose of the passage?",
+      "ms": {
+        "draft": 2961,
+        "critique": 5783,
+        "solver": 2113,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains why adolescents need to maintain good hygiene?",
+      "ms": {
+        "draft": 2961,
+        "critique": 6048,
+        "solver": 1518,
+        "form": 1834
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains why adolescents should avoid addictive substances?",
+      "ms": {
+        "draft": 2686,
+        "critique": 5075,
+        "solver": 1779,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is one of the main reasons adolescents are encouraged to participate in physical activities?",
+      "ms": {
+        "draft": 3262,
+        "critique": 7421
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to learn about menstrual hygiene, which initiative would they most likely benefit from?",
+      "ms": {
+        "draft": 3262,
+        "critique": 7863
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the role of peers during adolescence?",
+      "ms": {
+        "draft": 3262,
+        "critique": 6349
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a direct consequence of using addictive substances during adolescence?",
+      "ms": {
+        "draft": 3262,
+        "critique": 6739
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important for adolescents to say 'NO' to addictive substances the first time they are offered?",
+      "ms": {
+        "draft": 3262,
+        "critique": 7666
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason given in the passage for why menstruation is important?",
+      "ms": {
+        "draft": 3252,
+        "critique": 6188,
+        "solver": 983,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is one way to manage iron deficiency in the body?",
+      "ms": {
+        "draft": 3252,
+        "critique": 6199,
+        "solver": 1692,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a secondary sexual characteristic mentioned in the passage?",
+      "ms": {
+        "draft": 3898,
+        "critique": 7108
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements best explains why menstruation is considered a natural process?",
+      "ms": {
+        "draft": 3252,
+        "critique": 7401,
+        "solver": 950
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what is the main purpose of secondary sexual characteristics?",
+      "ms": {
+        "draft": 3898,
+        "critique": 6460
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the timing of adolescent changes?",
+      "ms": {
+        "draft": 3898,
+        "critique": 3548
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of these is a change that occurs during adolescence?",
+      "ms": {
+        "draft": 2928,
+        "critique": 4753,
+        "solver": 1627,
+        "form": 2604,
+        "translation": 28333
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a natural process that occurs in adolescent girls?",
+      "ms": {
+        "draft": 3252,
+        "critique": 7010,
+        "solver": 1312,
+        "form": 3097,
+        "translation": 39527
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the changes that help distinguish males from females during adolescence?",
+      "ms": {
+        "draft": 2928,
+        "critique": 4356,
+        "solver": 988,
+        "form": 4388,
+        "translation": 48300
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a secondary sexual characteristic in boys?",
+      "ms": {
+        "draft": 2686,
+        "critique": 4800,
+        "solver": 842,
+        "form": 0,
+        "translation": 75764
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for emotional and behavioural changes during adolescence?",
+      "ms": {
+        "draft": 2686,
+        "critique": 5047,
+        "solver": 2171,
+        "form": 2347,
+        "translation": 35819
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about menstruation?",
+      "ms": {
+        "draft": 2686,
+        "critique": 4823,
+        "solver": 1679,
+        "form": 4083,
+        "translation": 44682
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the body of a human during adolescence?",
+      "ms": {
+        "draft": 2928,
+        "critique": 4724,
+        "solver": 886,
+        "form": 3134,
+        "translation": 33121
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is most likely to help an adolescent manage physical and emotional changes?",
+      "ms": {
+        "draft": 2686,
+        "critique": 7228,
+        "solver": 1349,
+        "form": 2477,
+        "translation": 48315
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What should you do if you are being cyberbullied online?",
+      "ms": {
+        "draft": 4238,
+        "critique": 6599,
+        "solver": 1392,
+        "form": 4177,
+        "translation": 41273
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If an adolescent experiences mood swings, what should they do to manage these changes?",
+      "ms": {
+        "draft": 2686,
+        "critique": 5527,
+        "solver": 1368,
+        "form": 1902,
+        "translation": 44876
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, which of these is not directly involved in the process of reproduction?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What does the passage suggest about the timing of changes during adolescence?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What can be inferred from the passage about the importance of adolescence?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary purpose of maintaining personal hygiene during adolescence?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"focuses on appearance rather than health as stated in the pa…\"); distractor 2's reason is not a one-line misconception (\"refers to social expectations without direct mention in the …\"); distractor 3's reason is not a one-line misconception (\"misinterprets the role of hygiene in emotional changes, whic…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a sign of good reproductive health in girls?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"refers to a common skin issue during puberty without specifi…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a girl experiences a menstrual cycle of 35 days, what does this indicate about her reproductive health?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"implies illness without any evidence from the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the significance of the menstrual cycle?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"refers to emotional maturity not directly linked to the mens…\"); distractor 2's reason is not a one-line misconception (\"focuses on physical strength without specific mention in the…\"); distractor 3's reason is not a one-line misconception (\"relates to social acceptance, which is not discussed in the …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why is it important to maintain proper hygiene during menstruation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"focuses on social stigma without direct mention in the passa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A girl experiences irregular menstrual cycles and feels pain during her period. What should she do?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"implies avoiding healthy habits, which contradicts the passa…\"); distractor 3's reason is not a one-line misconception (\"recommends reducing physical activity, which is not mentione…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student is tempted to try smoking by their peers, what should they do according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a way to stay physically and mentally healthy during adolescence?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following best explains why adolescents should avoid substance abuse?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misunderstands the passage's focus on health…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is it important for adolescents to understand the changes that occur during this stage of life?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Not the main focus of the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of the Rashtriya Kishor Swasthya Karyakram (RKSK)?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.smallIntestine: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main reason for the development of pimples in adolescents?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Misunderstands the passage's content…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of adolescence?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's content…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a secondary sexual characteristic in boys?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the main purpose of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best explains why adolescents need to maintain good hygiene?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Misunderstands the passage's content…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains why adolescents should avoid addictive substances?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is one of the main reasons adolescents are encouraged to participate in physical activities?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a student wants to learn about menstrual hygiene, which initiative would they most likely benefit from?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What does the passage suggest about the role of peers during adolescence?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is a direct consequence of using addictive substances during adolescence?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is it important for adolescents to say 'NO' to addictive substances the first time they are offered?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main reason given in the passage for why menstruation is important?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is one way to manage iron deficiency in the body?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a secondary sexual characteristic mentioned in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following statements best explains why menstruation is considered a natural process?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "According to the passage, what is the main purpose of secondary sexual characteristics?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What does the passage suggest about the timing of adolescent changes?",
+      "reason": "option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

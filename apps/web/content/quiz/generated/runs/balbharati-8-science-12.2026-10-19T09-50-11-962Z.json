@@ -1,0 +1,419 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T09:50:11.962Z",
+  "finishedAt": "2026-10-19T09:55:40.734Z",
+  "seconds": 329,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 12 — Introduction to Acid & Base",
+    "edition": "First Edition 2018",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2022-23]\n6. Anita added a drop each of diluted acetic acid and diluted hydrochloric acid on pH paper 1\nand compared the colors. Which of the following is the correct conclusion?\n(a) pH of acetic acid is more than that of hydrochloric acid.\n(b) pH of acetic acid is less than that of hydrochloric acid.\n(c) Acetic acid dissociates completely in aqueous solution.\n(d) Acetic acid is a strong acid",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n4. An aqueous solution ‘A’ turns the phenolphthalein solution pink. On addition of\nan aqueous solution ‘B’ to ‘A’, the pink colour disappears. Which of the following 1\nstatement is true for the solutions ‘A’ and ‘B’.\nA. A is strongly basic and B is a weak base.\nB. A is strongly acidic and B is a weak acid.\nC. A has a pH greater than 7 and B has a pH less than 7.\nD. A has a pH less than 7 and B has a pH greater than 7.",
+      "[INJSO 2016 — question paper]\n21. Anand wanted to prepare a salt solution of pH 1.0. For that he used solutions of a\nstrong monovalent base and acid. He tried different combinations to obtain the\nrequired solution. Can you help him to decide which one is the most correct\ncombination of statements given below?\nI. 100ml of (M/10) acid and 100ml of (M/10) alkali.\nII. 55ml of (M/10) acid and 45ml of (M/10) alkali.\nIII. 10ml of (M/10) acid and 90ml of (M/10) alkali.\nIV. 75ml of (M/5) acid and 25ml of (M/5) alkali\na) I and III b) II and IV\nc) Only II d) Only IV",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n21. Which of the following substances when dissolved in equal volume of water,\nwill have the highest pH value? 1\nA. Sulphuric acid\nB. Acetic acid\nC. Magnesium hydroxide\nD. Sodium hydroxide"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 82444,
+      "in": 21,
+      "out": 19,
+      "rejects": 2,
+      "promptTokens": 18304,
+      "completionTokens": 3657
+    },
+    "critique": {
+      "calls": 22,
+      "ms": 158180,
+      "in": 19,
+      "out": 19,
+      "rejects": 0,
+      "promptTokens": 9283,
+      "completionTokens": 3720
+    },
+    "solver": {
+      "calls": 114,
+      "ms": 64863,
+      "in": 19,
+      "out": 16,
+      "rejects": 3,
+      "promptTokens": 15476,
+      "completionTokens": 1036
+    },
+    "form": {
+      "calls": 8,
+      "ms": 25093,
+      "in": 16,
+      "out": 14,
+      "rejects": 2,
+      "promptTokens": 1742,
+      "completionTokens": 523
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 3451,
+      "in": 14,
+      "out": 11,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 444465,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 22449,
+      "completionTokens": 10674
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 3,
+    "2": 3,
+    "3": 1,
+    "4": 2,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which indicator turns red in an acidic solution?",
+      "ms": {
+        "draft": 3010,
+        "critique": 5293,
+        "solver": 672
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of acids?",
+      "ms": {
+        "draft": 5553,
+        "critique": 7375,
+        "solver": 2330,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student tested a solution with phenolphthalein and observed it turned pink. After adding another solution, the pink color disappeared. What can be inferred about the two solutions?",
+      "ms": {
+        "draft": 5553,
+        "critique": 7413,
+        "solver": 1637,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student tested a solution with red litmus paper and observed no change. What can be inferred about the solution?",
+      "ms": {
+        "draft": 5553,
+        "critique": 6424,
+        "solver": 18226
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following substances, when dissolved in water, would have the highest pH value?",
+      "ms": {
+        "draft": 5553,
+        "critique": 9440,
+        "solver": 18287
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a natural acid?",
+      "ms": {
+        "draft": 3010,
+        "critique": 6974,
+        "solver": 2013,
+        "form": 2793
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a natural acid?",
+      "ms": {
+        "draft": 5553,
+        "critique": 6425,
+        "solver": 1975,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a natural acid?",
+      "ms": {
+        "draft": 4440,
+        "critique": 6778,
+        "solver": 905,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a natural acid?",
+      "ms": {
+        "draft": 3143,
+        "critique": 5878,
+        "solver": 2001,
+        "form": 3953,
+        "translation": 46718
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a base?",
+      "ms": {
+        "draft": 3143,
+        "critique": 5675,
+        "solver": 1290,
+        "form": 4206,
+        "translation": 35012
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of acids?",
+      "ms": {
+        "draft": 3010,
+        "critique": 7513,
+        "solver": 2238,
+        "form": 2658,
+        "translation": 36515
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following indicators turns pink in a basic solution?",
+      "ms": {
+        "draft": 3143,
+        "critique": 6144,
+        "solver": 2774,
+        "form": 3497,
+        "translation": 45586
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to blue litmus paper when it is dipped in an acid?",
+      "ms": {
+        "draft": 3143,
+        "critique": 8249,
+        "solver": 2021,
+        "form": 4218,
+        "translation": 38106
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a natural acid present in fruits?",
+      "ms": {
+        "draft": 3010,
+        "critique": 6675,
+        "solver": 1302,
+        "form": 4281,
+        "translation": 52146
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a solution turns methyl orange pink, what type of solution is it?",
+      "ms": {
+        "draft": 3143,
+        "critique": 7334,
+        "solver": 1455,
+        "form": 4611,
+        "translation": 39275
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens when an acidic solution is mixed with a basic solution?",
+      "ms": {
+        "draft": 3143,
+        "critique": 7406,
+        "solver": 2711,
+        "form": 0,
+        "translation": 36121
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct observation when a few drops of lemon juice are added to turmeric indicator paper?",
+      "ms": {
+        "draft": 4440,
+        "critique": 10403,
+        "solver": 12793,
+        "form": 0,
+        "translation": 41063
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student adds a few drops of a solution to a phenolphthalein indicator. The solution turns pink. What can be concluded about the solution?",
+      "ms": {
+        "draft": 4440,
+        "critique": 7385,
+        "solver": 1813,
+        "form": 0,
+        "translation": 40703
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student added a few drops of a solution to a blue litmus paper, and the paper turned red. What is the nature of the solution?",
+      "ms": {
+        "draft": 4440,
+        "critique": 7119,
+        "solver": 2217,
+        "form": 0,
+        "translation": 27738
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the main constituent of an acid?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is a use of acids?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which indicator turns red in an acidic solution?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a property of acids?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misunderstands the texture of acids and bases as similar to …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student tested a solution with phenolphthalein and observed it turned pink. After adding another solution, the pink color disappeared. What can be inferred about the two solutions?",
+      "reason": "options 0 and 1 say the same thing (\"The first solution is acidic and the second is basic\" / \"The first solution is basic and the second is acidic\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A student tested a solution with red litmus paper and observed no change. What can be inferred about the solution?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following substances, when dissolved in water, would have the highest pH value?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is an example of a natural acid?",
+      "reason": "near-duplicate of batch item \"Which of the following is a natural acid?…\" (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following is a natural acid?",
+      "reason": "near-duplicate of batch item \"Which of the following is a natural acid?…\" (cosine 0.932 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following is a natural acid?",
+      "reason": "near-duplicate of batch item \"Which of the following is a natural acid?…\" (cosine 0.918 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

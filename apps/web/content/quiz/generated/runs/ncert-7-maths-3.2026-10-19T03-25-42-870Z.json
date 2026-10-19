@@ -1,0 +1,902 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T03:25:42.870Z",
+  "finishedAt": "2026-10-19T03:35:14.391Z",
+  "seconds": 572,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "gegp1",
+    "document": "ncert/7/mathematics/gegp103.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 3 — A Peek Beyond the Point",
+    "edition": "Reprint 2026-27",
+    "chunks": 21,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n7. (A) 9 th (B) 10 th (C) 11 th (D) 12 th 1\nIf the point P (5, 2) divides the line segment joining A( 8, 5) and B( 4, 𝒚) in the",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 22 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n7. C) 140 𝑂"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 223800,
+      "in": 51,
+      "out": 44,
+      "rejects": 7,
+      "promptTokens": 58437,
+      "completionTokens": 11649
+    },
+    "critique": {
+      "calls": 62,
+      "ms": 432013,
+      "in": 44,
+      "out": 41,
+      "rejects": 3,
+      "promptTokens": 29471,
+      "completionTokens": 10894
+    },
+    "solver": {
+      "calls": 325,
+      "ms": 187668,
+      "in": 41,
+      "out": 32,
+      "rejects": 9,
+      "promptTokens": 68849,
+      "completionTokens": 3694
+    },
+    "form": {
+      "calls": 13,
+      "ms": 47822,
+      "in": 32,
+      "out": 9,
+      "rejects": 23,
+      "promptTokens": 3564,
+      "completionTokens": 1209
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 3201,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 318039,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 19649,
+      "completionTokens": 8606
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 3
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What does 2 cm mean according to the passage?",
+      "ms": {
+        "draft": 3631,
+        "critique": 5094,
+        "solver": 1554
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the length of the first screw as written in the passage?",
+      "ms": {
+        "draft": 3631,
+        "critique": 5998,
+        "solver": 13718,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a pencil’s length is 3 units and 4 one-tenths, how can this be expressed in one-tenths?",
+      "ms": {
+        "draft": 3631,
+        "critique": 6820,
+        "solver": 15926
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a screw is measured as 2 cm and 7 one-tenths, and another screw is measured as 3 cm and 2 one-tenths, what is the total length of both screws?",
+      "ms": {
+        "draft": 3631,
+        "critique": 8895,
+        "solver": 12022,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct way to write 4 units and 2 tenths in decimal notation?",
+      "ms": {
+        "draft": 4761,
+        "critique": 8045,
+        "solver": 1432,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the length of a folded paper is 4 cm and 4 one-tenths and 5 one-hundredths, how is this written in decimal form?",
+      "ms": {
+        "draft": 3631,
+        "critique": 6976,
+        "solver": 13232,
+        "form": 4318
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the length of a wire is given as 1 and 14 one-hundredths, what is the total number of one-hundredths in this measurement?",
+      "ms": {
+        "draft": 3631,
+        "critique": 8424,
+        "solver": 11209,
+        "form": 3401
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of 234 tenths in decimal form?",
+      "ms": {
+        "draft": 4761,
+        "critique": 7428,
+        "solver": 17093,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, how many hundredths make up one unit?",
+      "ms": {
+        "draft": 4761,
+        "critique": 8671,
+        "solver": 14020,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 25.6 is written as 25 + 0.6, what is the value of 0.6 in terms of hundredths?",
+      "ms": {
+        "draft": 4761,
+        "critique": 7998,
+        "solver": 18141,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage explains that the decimal system is based on the number 10 due to its role in the Indian place value system. Which of the following best explains why we use 10 as the base for the decimal system?",
+      "ms": {
+        "draft": 4761,
+        "critique": 7119,
+        "solver": 14095,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many centimeters is 12 mm?",
+      "ms": {
+        "draft": 5591,
+        "critique": 6511,
+        "solver": 1835,
+        "form": 3773
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct decimal representation of 7 tens and 5 tenths?",
+      "ms": {
+        "draft": 4761,
+        "critique": 7593,
+        "solver": 10500,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the number line, what decimal number does the box labeled 'a' denote?",
+      "ms": {
+        "draft": 5591,
+        "critique": 6137
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many meters is 36 cm?",
+      "ms": {
+        "draft": 5591,
+        "critique": 5742,
+        "solver": 2471,
+        "form": 4827
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which decimal number is the largest: 6.456 or 6.465?",
+      "ms": {
+        "draft": 5591,
+        "critique": 8096,
+        "solver": 1393,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is 0.9 cm in millimeters?",
+      "ms": {
+        "draft": 5591,
+        "critique": 6580,
+        "solver": 17484,
+        "form": 4228
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which decimal number is closest to 1.09?",
+      "ms": {
+        "draft": 4054,
+        "critique": 8486
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which decimal number is greater? (a) 1.23 or 1.32",
+      "ms": {
+        "draft": 4054,
+        "critique": 7120,
+        "solver": 12212,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does 5.5 overs mean in cricket?",
+      "ms": {
+        "draft": 3798,
+        "critique": 6313,
+        "solver": 1839,
+        "form": 3111
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Pinto supplies 3.79 L, 4.2 L, and 4.25 L of milk to a dairy in the first three days. In 6 days, he supplies 25 liters of milk. What is the total quantity of milk supplied in the last three days?",
+      "ms": {
+        "draft": 4210,
+        "critique": 8850,
+        "solver": 2791
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the pattern 5.5, 6.4, 6.39, 7.29, 7.28, 8.18, 8.17, ____, ____, what are the next two numbers?",
+      "ms": {
+        "draft": 4210,
+        "critique": 7260,
+        "solver": 17673
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Tinku weighed 35.75 kg in January and 34.50 kg in February. Has he gained or lost weight, and by how much?",
+      "ms": {
+        "draft": 4210,
+        "critique": 8174,
+        "solver": 17601
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which is greater: 90 thousandths or one-hundredth?",
+      "ms": {
+        "draft": 4210,
+        "critique": 7677,
+        "solver": 1899,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the decimal form of '2 ones, 3 tenths and 5 hundredths'?",
+      "ms": {
+        "draft": 3764,
+        "critique": 6508,
+        "solver": 1171,
+        "form": 5108
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the decimal form of '4 ones and 6 hundredths'?",
+      "ms": {
+        "draft": 3764,
+        "critique": 7094,
+        "solver": 1448,
+        "form": 4070
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the largest decimal number: 0.2, 0.20, 0.200?",
+      "ms": {
+        "draft": 3764,
+        "critique": 5698,
+        "solver": 1850,
+        "form": 2872
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the total weight of the items Mahi bought if she purchased 0.25 kg of beans, 0.3 kg of carrots, 0.5 kg of potatoes, 0.2 kg of capsicums, and 0.05 kg of ginger?",
+      "ms": {
+        "draft": 3721,
+        "critique": 6017,
+        "solver": 1327
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a decimal number has 4 digits after the decimal point, how many thousandths does it contain?",
+      "ms": {
+        "draft": 3721,
+        "critique": 6116,
+        "solver": 1760
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a milk dairy, Pinto supplies 3.79 L, 4.2 L, and 4.25 L of milk in the first three days. If he supplies 25 L of milk in 6 days, how much milk did he supply in the last three days?",
+      "ms": {
+        "draft": 3721,
+        "critique": 8668
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following numbers is closest to 1.09?",
+      "ms": {
+        "draft": 4597,
+        "critique": 6733,
+        "solver": 1731,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the total quantity of cloth needed is 6.2 meters and Priya requires 2.7 meters, how much more cloth does Shylaja require?",
+      "ms": {
+        "draft": 4597,
+        "critique": 8445,
+        "solver": 15459
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many centimeters is 70 mm?",
+      "ms": {
+        "draft": 4560,
+        "critique": 6981,
+        "solver": 13756,
+        "form": 3503
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the value of 234 tenths in decimal form?",
+      "ms": {
+        "draft": 7051,
+        "critique": 7259,
+        "solver": 1395,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many meters is 36 cm?",
+      "ms": {
+        "draft": 4560,
+        "critique": 8396,
+        "solver": 13648
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many millimeters make 1 kilometer?",
+      "ms": {
+        "draft": 3721,
+        "critique": 5337,
+        "solver": 1734,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the purpose of a decimal point in the Indian place value system?",
+      "ms": {
+        "draft": 3798,
+        "critique": 5446,
+        "solver": 1281,
+        "form": 3439,
+        "translation": 48477
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many millimeters make 1 kilometer?",
+      "ms": {
+        "draft": 4210,
+        "critique": 7080,
+        "solver": 1456,
+        "form": 0,
+        "translation": 32289
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of comparing two decimal numbers by place value?",
+      "ms": {
+        "draft": 4597,
+        "critique": 6633,
+        "solver": 1801,
+        "form": 1,
+        "translation": 44658
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a decimal number has more digits, will it always be greater than a decimal number with fewer digits?",
+      "ms": {
+        "draft": 3798,
+        "critique": 6937,
+        "solver": 905,
+        "form": 3263,
+        "translation": 56215
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Indian Railways charges 45 paise per passenger for insurance. If 1 lakh passengers opt for it, what is the total insurance fee collected?",
+      "ms": {
+        "draft": 4210,
+        "critique": 7460,
+        "solver": 1436,
+        "form": 0,
+        "translation": 33555
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following sequences is formed by adding 0.4 to each term?",
+      "ms": {
+        "draft": 4597,
+        "critique": 6613,
+        "solver": 1670,
+        "form": 0,
+        "translation": 28996
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following sequences shows an increment of +0.05?",
+      "ms": {
+        "draft": 7235,
+        "critique": 5492,
+        "solver": 1085,
+        "form": 0,
+        "translation": 31364
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following decimals are equal: 4.5, 4.05, 0.405, 4.050, 4.50, 4.005, 04.50?",
+      "ms": {
+        "draft": 5591,
+        "critique": 6908,
+        "solver": 18461,
+        "form": 3206,
+        "translation": 38520
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the total quantity of cloth needed if Priya requires 2.7 m and Shylaja requires 3.5 m?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "What is the difference between 3.5 m and 2.7 m?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which of the following sequences continues with the next three terms: 4.4, 4.8, 5.2, 5.6, 6.0, …?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does 2 cm mean according to the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the length of the first screw as written in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Adds extra tenths incorrectly to the measurement that is alr…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a pencil’s length is 3 units and 4 one-tenths, how can this be expressed in one-tenths?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a screw is measured as 2 cm and 7 one-tenths, and another screw is measured as 3 cm and 2 one-tenths, what is the total length of both screws?",
+      "reason": "options 0 and 2 say the same thing (\"5 cm and 9 one-tenths\" / \"5 cm and 5 one-tenths\"); options 1 and 2 say the same thing (\"5 cm and 8 one-tenths\" / \"5 cm and 5 one-tenths\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the correct way to write 4 units and 2 tenths in decimal notation?",
+      "reason": "options are written to different precisions (1 and 2 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the length of a folded paper is 4 cm and 4 one-tenths and 5 one-hundredths, how is this written in decimal form?",
+      "reason": "options 1 and 2 are the same (\"4.405 cm\"); options are written to different precisions (2 and 3 decimals); options 1 and 2 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the length of a wire is given as 1 and 14 one-hundredths, what is the total number of one-hundredths in this measurement?",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the value of 234 tenths in decimal form?",
+      "reason": "options 1 and 2 are the same (\"2.34\"); options are written to different precisions (1 and 2 decimals); options 1 and 2 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, how many hundredths make up one unit?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If 25.6 is written as 25 + 0.6, what is the value of 0.6 in terms of hundredths?",
+      "reason": "options 0 and 1 are the same (\"60 hundredths\"); options 0 and 1 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage explains that the decimal system is based on the number 10 due to its role in the Indian place value system. Which of the following best explains why we use 10 as the base for the decimal system?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"A student might think that 10 is used because it has many fa…\"); distractor 2's reason is not a one-line misconception (\"makes a general statement not supported by the passage…\"); distractor 3's reason is not a one-line misconception (\"refers to the metric system, which is not discussed in the p…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "How many centimeters is 12 mm?",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the correct decimal representation of 7 tens and 5 tenths?",
+      "reason": "options 1 and 2 are the same (\"7.05\"); options are written to different precisions (1 and 2 decimals); options 1 and 2 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the number line, what decimal number does the box labeled 'a' denote?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How many meters is 36 cm?",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which decimal number is the largest: 6.456 or 6.465?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is 0.9 cm in millimeters?",
+      "reason": "options 2 and 3 are the same (\"90 mm\"); options are written to different precisions (0 and 1 decimals); options 2 and 3 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which decimal number is closest to 1.09?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which decimal number is greater? (a) 1.23 or 1.32",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does 5.5 overs mean in cricket?",
+      "reason": "options 0 and 1 say the same thing (\"5 overs and 5 balls\" / \"5 overs and 3 balls\"); options 0 and 2 say the same thing (\"5 overs and 5 balls\" / \"5 overs and 6 balls\"); options 0 and 3 say the same thing (\"5 overs and 5 balls\" / \"5 overs and 4 balls\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the decimal form of '1 hundred, 1 one and 1 hundredth'?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the decimal form of '105 tenths'?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the decimal form of '234 hundredths'?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the difference in weight between Tinku's weight in January and February if he weighed 35.75 kg in January and 34.50 kg in February?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Pinto supplies 3.79 L, 4.2 L, and 4.25 L of milk to a dairy in the first three days. In 6 days, he supplies 25 liters of milk. What is the total quantity of milk supplied in the last three days?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the pattern 5.5, 6.4, 6.39, 7.29, 7.28, 8.18, 8.17, ____, ____, what are the next two numbers?",
+      "reason": "distractors 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Tinku weighed 35.75 kg in January and 34.50 kg in February. Has he gained or lost weight, and by how much?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which is greater: 90 thousandths or one-hundredth?",
+      "reason": "option 3 is a catch-all (\"None of the above\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the decimal form of '2 ones, 3 tenths and 5 hundredths'?",
+      "reason": "options are written to different precisions (2 and 3 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the decimal form of '4 ones and 6 hundredths'?",
+      "reason": "options are written to different precisions (1 and 2 and 3 decimals); options 1 and 2 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the largest decimal number: 0.2, 0.20, 0.200?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the total weight of the items Mahi bought if she purchased 0.25 kg of beans, 0.3 kg of carrots, 0.5 kg of potatoes, 0.2 kg of capsicums, and 0.05 kg of ginger?",
+      "reason": "the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a decimal number has 4 digits after the decimal point, how many thousandths does it contain?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a milk dairy, Pinto supplies 3.79 L, 4.2 L, and 4.25 L of milk in the first three days. If he supplies 25 L of milk in 6 days, how much milk did he supply in the last three days?",
+      "reason": "the critic finds option 0 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following numbers is closest to 1.09?",
+      "reason": "options are written to different precisions (1 and 2 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the total quantity of cloth needed is 6.2 meters and Priya requires 2.7 meters, how much more cloth does Shylaja require?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "How many centimeters is 70 mm?",
+      "reason": "options 2 and 3 are the same (\"700 cm\"); options are written to different precisions (0 and 1 decimals); options 2 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the value of 234 tenths in decimal form?",
+      "reason": "options are written to different precisions (1 and 2 and 3 decimals); options 1 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "How many meters is 36 cm?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "How many millimeters make 1 kilometer?",
+      "reason": "near-duplicate of batch item \"How many millimeters make 1 kilometer?…\" (cosine 0.984 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

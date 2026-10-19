@@ -1,0 +1,447 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T04:29:56.483Z",
+  "finishedAt": "2026-10-19T04:34:36.600Z",
+  "seconds": 280,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "gecu1",
+    "document": "ncert/7/science/gecu101.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 1 — The Ever-Evolving World of Science",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2025-26]\n7. C. Use of plastic as packaging material. 1",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n7. B. Cooking of food",
+      "[CBSE Class X Science, sample question paper, 2026-27]\nthe inference he draws on the basis of his experiment be correct? Justify\nyour answer.",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n7. C. Secondary Consumer"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 55623,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 11484,
+      "completionTokens": 3203
+    },
+    "critique": {
+      "calls": 22,
+      "ms": 129102,
+      "in": 18,
+      "out": 17,
+      "rejects": 1,
+      "promptTokens": 9321,
+      "completionTokens": 3705
+    },
+    "solver": {
+      "calls": 117,
+      "ms": 66888,
+      "in": 17,
+      "out": 13,
+      "rejects": 4,
+      "promptTokens": 20943,
+      "completionTokens": 1324
+    },
+    "form": {
+      "calls": 1,
+      "ms": 2919,
+      "in": 13,
+      "out": 0,
+      "rejects": 13,
+      "promptTokens": 278,
+      "completionTokens": 90
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 3239,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 163,
+      "completionTokens": 226
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the main purpose of the book 'Curiosity' as described in the passage?",
+      "ms": {
+        "draft": 2609,
+        "critique": 4814,
+        "solver": 1255,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the nature of science?",
+      "ms": {
+        "draft": 2609,
+        "critique": 5053,
+        "solver": 1702,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of an irreversible change mentioned in the passage?",
+      "ms": {
+        "draft": 2609,
+        "critique": 5290,
+        "solver": 2567
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the key message about the process of learning science according to the passage?",
+      "ms": {
+        "draft": 2609,
+        "critique": 4797,
+        "solver": 1353,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, what can be inferred about the role of imagination in learning science?",
+      "ms": {
+        "draft": 2609,
+        "critique": 6169,
+        "solver": 1877,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage imply about the relationship between different branches of science?",
+      "ms": {
+        "draft": 2609,
+        "critique": 7212,
+        "solver": 2581,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the role of questions in science?",
+      "ms": {
+        "draft": 12017,
+        "critique": 5951,
+        "solver": 1044,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 12017,
+        "critique": 6919,
+        "solver": 1520
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is given the answer 'Just add some milk,' which of the following would be the best question to match it?",
+      "ms": {
+        "draft": 12017,
+        "critique": 5448,
+        "solver": 18365,
+        "form": 2919
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following scenarios best illustrates the idea of asking interesting questions?",
+      "ms": {
+        "draft": 12017,
+        "critique": 7350,
+        "solver": 15185,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given the answer '42' and is asked to come up with a question. Which of the following questions is most likely to be a creative and appropriate one?",
+      "ms": {
+        "draft": 12017,
+        "critique": 6894,
+        "solver": 16709
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage emphasize the importance of asking creative questions in science?",
+      "ms": {
+        "draft": 12017,
+        "critique": 4348,
+        "solver": 554,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a way the passage describes science?",
+      "ms": {
+        "draft": 3090,
+        "critique": 5332
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is an example of a change that cannot be reversed?",
+      "ms": {
+        "draft": 3090,
+        "critique": 5097,
+        "solver": 1242
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains why the chapter starts with the idea of exploration?",
+      "ms": {
+        "draft": 3090,
+        "critique": 9048,
+        "solver": 1222,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student performs an experiment to see if a material glows when connected to a battery, what can they infer about the material based on the passage?",
+      "ms": {
+        "draft": 3090,
+        "critique": 8492,
+        "solver": 1796,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you were to design an experiment to test if a material conducts electricity, which of the following would be the best approach based on the passage?",
+      "ms": {
+        "draft": 3090,
+        "critique": 5577,
+        "solver": 14051,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what is the most important goal of the science curriculum in Grade 7?",
+      "ms": {
+        "draft": 3090,
+        "critique": 5014,
+        "solver": 619,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of the book 'Curiosity' as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the nature of science?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is an example of an irreversible change mentioned in the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the key message about the process of learning science according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, what can be inferred about the role of imagination in learning science?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage imply about the relationship between different branches of science?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the role of questions in science?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"contradicts the passage's message…\"); distractor 3's reason is not a one-line misconception (\"misses the importance of questions in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student is given the answer 'Just add some milk,' which of the following would be the best question to match it?",
+      "reason": "options 1 and 3 are the same (\"What is the answer to life, the universe, and everything?\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following scenarios best illustrates the idea of asking interesting questions?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student is given the answer '42' and is asked to come up with a question. Which of the following questions is most likely to be a creative and appropriate one?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage emphasize the importance of asking creative questions in science?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"contradicts the passage's message…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What is the main idea of the passage?\",\n      \"options\": [\n  "
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is NOT a way the passage describes science?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, which of the following is an example of a change that cannot be reversed?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains why the chapter starts with the idea of exploration?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"thinks the passage focuses on material properties…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student performs an experiment to see if a material glows when connected to a battery, what can they infer about the material based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If you were to design an experiment to test if a material conducts electricity, which of the following would be the best approach based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, what is the most important goal of the science curriculum in Grade 7?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

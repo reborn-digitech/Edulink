@@ -1,0 +1,481 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T08:22:53.628Z",
+  "finishedAt": "2026-10-19T08:28:53.167Z",
+  "seconds": 360,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 1 — Living World and Classification of Microbes",
+    "edition": "First Edition 2018",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2025-26]\n1. C. Cuscuta, ticks, lice, leeches and tapeworm; as all of these are parasites. 1",
+      "[INJSO 2023 — question paper]\n3. Some microbes produce diffusible\nmetabolites that can be used by\nother microbes for their growth.\nThree such microorganisms were\ntested for their nutritional growth\nrequirements (under +/- light,\nscheme below) either on minimal\nsalt media (lacking any organic\nsources of carbon and nitrogen)\nOR on complete or rich media con-\ntaining salts with organic carbon\nand nitrogen.\nBased on the growth patterns\nshown after 24hrs, pick the correct\noption:\nA. P - Autotrophs, Q - Heterotroph, R - Heterotroph\nB. P – Photoautotroph, Q – Chemoheterotroph, R - Chemoautotroph\nC. P - Chemoautotrophs, Q - Chemoautotrophs, R – Heterotroph\nD. P - Photoautotroph, Q - Chemoheterotroph, R - Saprophyte",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n1. Select the group in which all organisms have the same mode of nutrition. 1\nA. Cuscuta, yeast, legumes, leeches and tapeworm\nB. Cactus, ticks, lice, leeches and cow\nC. Cuscuta, ticks, lice, leeches and tapeworm\nD. Cactus, grass, lice, lion and tapeworm",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n10. D. Longer small intestine."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 76033,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 16934,
+      "completionTokens": 4322
+    },
+    "critique": {
+      "calls": 26,
+      "ms": 156581,
+      "in": 24,
+      "out": 21,
+      "rejects": 3,
+      "promptTokens": 11024,
+      "completionTokens": 4534
+    },
+    "solver": {
+      "calls": 119,
+      "ms": 54038,
+      "in": 21,
+      "out": 18,
+      "rejects": 3,
+      "promptTokens": 17137,
+      "completionTokens": 1052
+    },
+    "form": {
+      "calls": 16,
+      "ms": 47844,
+      "in": 18,
+      "out": 13,
+      "rejects": 5,
+      "promptTokens": 3886,
+      "completionTokens": 1231
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 14,
+      "ms": 2189,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 53,
+      "ms": 547054,
+      "in": 26,
+      "out": 26,
+      "rejects": 0,
+      "promptTokens": 30476,
+      "completionTokens": 15193
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 4,
+    "6": 2
+  },
+  "flagged": 7,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is not a characteristic of organisms in Kingdom Monera?",
+      "ms": {
+        "draft": 3379,
+        "critique": 5056
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student observes a microorganism that is unicellular, has a nucleus, and can move using cilia. Which kingdom does this organism belong to?",
+      "ms": {
+        "draft": 3379,
+        "critique": 5360
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of fungi?",
+      "ms": {
+        "draft": 3379,
+        "critique": 6103
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the classification of microorganisms?",
+      "ms": {
+        "draft": 3379,
+        "critique": 5459,
+        "solver": 1489,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student is given a microorganism that is unicellular, has a nucleus, and is heterotrophic. The student is also told that the organism cannot perform photosynthesis. Which of the following is most likely to be the correct classification?",
+      "ms": {
+        "draft": 3379,
+        "critique": 5678,
+        "solver": 1967
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a correct classification of microbes according to the Whittaker method?",
+      "ms": {
+        "draft": 3157,
+        "critique": 7984,
+        "solver": 1061
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following correctly matches a microbe with its mode of nutrition?",
+      "ms": {
+        "draft": 2795,
+        "critique": 6119,
+        "solver": 1012,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of organisms in Kingdom Monera?",
+      "ms": {
+        "draft": 3341,
+        "critique": 9528,
+        "solver": 1403,
+        "form": 4140
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following correctly matches the mode of nutrition with the organism?",
+      "ms": {
+        "draft": 3341,
+        "critique": 6912,
+        "solver": 1487
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a heterotrophic organism?",
+      "ms": {
+        "draft": 3341,
+        "critique": 6354,
+        "solver": 11014,
+        "form": 3738
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a feature of fungi?",
+      "ms": {
+        "draft": 3341,
+        "critique": 7472,
+        "solver": 1921,
+        "form": 3407
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a free-living microbe?",
+      "ms": {
+        "draft": 3157,
+        "critique": 6977,
+        "solver": 1248,
+        "form": 3814,
+        "translation": 42718
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a unicellular eukaryotic organism?",
+      "ms": {
+        "draft": 2795,
+        "critique": 4565,
+        "solver": 1191,
+        "form": 3643,
+        "translation": 36858
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of fungi?",
+      "ms": {
+        "draft": 3157,
+        "critique": 5452,
+        "solver": 1919,
+        "form": 2460,
+        "translation": 39604
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of fungi?",
+      "ms": {
+        "draft": 2795,
+        "critique": 5597,
+        "solver": 1693,
+        "form": 3092,
+        "translation": 41110
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a parasitic microbe?",
+      "ms": {
+        "draft": 3157,
+        "critique": 6203,
+        "solver": 1788,
+        "form": 2357,
+        "translation": 37705
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student observed an organism that had chloroplasts and lived in water. Which group does this organism most likely belong to?",
+      "ms": {
+        "draft": 2795,
+        "critique": 4946,
+        "solver": 1491,
+        "form": 3434,
+        "translation": 42723
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct statement about viruses?",
+      "ms": {
+        "draft": 3157,
+        "critique": 6319,
+        "solver": 1412,
+        "form": 3673,
+        "translation": 45459
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of an autotrophic microbe?",
+      "ms": {
+        "draft": 3157,
+        "critique": 6396,
+        "solver": 1839,
+        "form": 3053,
+        "translation": 34268
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A researcher found a microorganism that can only reproduce inside a host cell. It contains DNA or RNA and is surrounded by a protein coat. Which of the following is this microorganism most likely to be?",
+      "ms": {
+        "draft": 2795,
+        "critique": 5679,
+        "solver": 15689,
+        "form": 3066,
+        "translation": 54809
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a sample and told that the microorganism in it is unicellular, has a nucleus, and is heterotrophic. Which of the following is most likely to be the correct classification?",
+      "ms": {
+        "draft": 3379,
+        "critique": 5807,
+        "solver": 1637,
+        "form": 3516,
+        "translation": 49208
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following organisms is a parasite?",
+      "ms": {
+        "draft": 3341,
+        "critique": 5870,
+        "solver": 1133,
+        "form": 3113,
+        "translation": 25709
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student classified an organism as a eukaryote and noted that it absorbs food from dead organic matter. It also reproduces by budding. Which of the following could this organism be?",
+      "ms": {
+        "draft": 2795,
+        "critique": 5481,
+        "solver": 2869,
+        "form": 3746,
+        "translation": 49160
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a correct classification of organisms based on their cell structure?",
+      "ms": {
+        "draft": 3341,
+        "critique": 5597,
+        "solver": 975,
+        "form": 2574,
+        "translation": 43981
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is not a characteristic of organisms in Kingdom Monera?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A student observes a microorganism that is unicellular, has a nucleus, and can move using cilia. Which kingdom does this organism belong to?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of fungi?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the classification of microorganisms?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A student is given a microorganism that is unicellular, has a nucleus, and is heterotrophic. The student is also told that the organism cannot perform photosynthesis. Which of the following is most likely to be the correct classification?",
+      "reason": "the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is a correct classification of microbes according to the Whittaker method?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following correctly matches a microbe with its mode of nutrition?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of organisms in Kingdom Monera?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, but it is the only…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following correctly matches the mode of nutrition with the organism?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a heterotrophic organism?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a feature of fungi?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer is not the longest option, but it is the only…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,514 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T13:58:02.549Z",
+  "finishedAt": "2026-10-19T14:04:55.006Z",
+  "seconds": 412,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Manjari PART-II",
+    "bookCode": "iemh2",
+    "document": "ncert/9/mathematics/iemh201.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Chapter 1",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n9. C) 30",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 135369,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 15972,
+      "completionTokens": 6355
+    },
+    "critique": {
+      "calls": 34,
+      "ms": 273701,
+      "in": 24,
+      "out": 17,
+      "rejects": 7,
+      "promptTokens": 15173,
+      "completionTokens": 6032
+    },
+    "solver": {
+      "calls": 152,
+      "ms": 115341,
+      "in": 17,
+      "out": 10,
+      "rejects": 7,
+      "promptTokens": 33032,
+      "completionTokens": 1844
+    },
+    "form": {
+      "calls": 4,
+      "ms": 12653,
+      "in": 10,
+      "out": 4,
+      "rejects": 6,
+      "promptTokens": 997,
+      "completionTokens": 254
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 11,
+      "ms": 2622,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 173360,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9385,
+      "completionTokens": 4519
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the name of a statement that is either true or false?",
+      "ms": {
+        "draft": 4111,
+        "critique": 8531
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a counterexample?",
+      "ms": {
+        "draft": 4111,
+        "critique": 9169
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the form of the statement 'If two angles of a triangle are equal, then the sides opposite the equal angles have equal lengths'?",
+      "ms": {
+        "draft": 4111,
+        "critique": 12019
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage conclude about the converse of the Baudhāyana–Pythagoras theorem?",
+      "ms": {
+        "draft": 4111,
+        "critique": 8923
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a real-life example where a proposition is true but its converse is false?",
+      "ms": {
+        "draft": 5753,
+        "critique": 9933,
+        "solver": 1914,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number is a multiple of 6, then it is a multiple of 3. Is the converse of this statement true?",
+      "ms": {
+        "draft": 4111,
+        "critique": 7990,
+        "solver": 16091,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the discussion about factors conclude about the relationship between a number being a perfect square and having an odd number of factors?",
+      "ms": {
+        "draft": 4111,
+        "critique": 9550,
+        "solver": 18197,
+        "form": 5726
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a triangle ABC, the angle bisectors of angles B and C meet at the incentre I. If AB = AC, which of the following is true?",
+      "ms": {
+        "draft": 5753,
+        "critique": 8609
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following numbers is a counterexample to the statement 'If a number is of the form 4n + 1, then it is prime'?",
+      "ms": {
+        "draft": 5753,
+        "critique": 7424,
+        "solver": 1861
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a counterexample to the proposition 'If a number is divisible by 8, then it is divisible by both 2 and 4'?",
+      "ms": {
+        "draft": 5753,
+        "critique": 9842,
+        "solver": 19015
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number n is the square of a prime number, then it has exactly three factors. Which of the following numbers has exactly three factors?",
+      "ms": {
+        "draft": 5753,
+        "critique": 6029
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the converse of the proposition 'If two lines are parallel, then the corresponding angles formed by a transversal are equal'?",
+      "ms": {
+        "draft": 7991,
+        "critique": 5905,
+        "solver": 1695,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A proposition is true but its converse is false. Which of the following is the best example of such a situation in mathematics?",
+      "ms": {
+        "draft": 7991,
+        "critique": 7940,
+        "solver": 3297
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the definition of a proposition?",
+      "ms": {
+        "draft": 15494,
+        "critique": 9268
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If n is divisible by 60, then it is divisible by both 5 and 12. Which of the following is a correct counterexample to the converse of this statement?",
+      "ms": {
+        "draft": 7991,
+        "critique": 8795,
+        "solver": 17731
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the diagram, the angle bisectors of angles B and C in triangle ABC meet at point I. If AB = AC, which of the following is true?",
+      "ms": {
+        "draft": 7991,
+        "critique": 9392,
+        "solver": 22128
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number is a multiple of 6, which of the following must also be true?",
+      "ms": {
+        "draft": 15494,
+        "critique": 9411,
+        "solver": 21045
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements is true about the converse of a proposition?",
+      "ms": {
+        "draft": 15494,
+        "critique": 9461,
+        "solver": 14085,
+        "form": 4464
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a triangle has two equal angles, which of the following must be true?",
+      "ms": {
+        "draft": 15494,
+        "critique": 6878,
+        "solver": 14021
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is the correct reason for why a perfect square has an odd number of factors?",
+      "ms": {
+        "draft": 15494,
+        "critique": 6646,
+        "solver": 7548,
+        "form": 1360
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a counterexample?",
+      "ms": {
+        "draft": 15494,
+        "critique": 8966,
+        "solver": 14705,
+        "form": 1964,
+        "translation": 32322
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a proposition that is true but its converse is false?",
+      "ms": {
+        "draft": 7991,
+        "critique": 6905,
+        "solver": 2744,
+        "form": 0,
+        "translation": 58592
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a quadrilateral has equal diagonals, which of the following is a possible type of quadrilateral?",
+      "ms": {
+        "draft": 5753,
+        "critique": 9396,
+        "solver": 2401,
+        "form": 0,
+        "translation": 31847
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If x = y, then x + a = y + a. Which of the following is an example that illustrates the validity of this proposition?",
+      "ms": {
+        "draft": 7991,
+        "critique": 6271,
+        "solver": 2486,
+        "form": 0,
+        "translation": 46011
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of a statement that is either true or false?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is an example of a counterexample?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the form of the statement 'If two angles of a triangle are equal, then the sides opposite the equal angles have equal lengths'?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What does the passage conclude about the converse of the Baudhāyana–Pythagoras theorem?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a real-life example where a proposition is true but its converse is false?",
+      "reason": "options 2 and 3 say the same thing (\"If a number is even, then it is divisible by 2.\" / \"If a number is divisible by 4, then it is even.\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a number is a multiple of 6, then it is a multiple of 3. Is the converse of this statement true?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly applies conditions not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the discussion about factors conclude about the relationship between a number being a perfect square and having an odd number of factors?",
+      "reason": "options 0 and 1 say the same thing (\"They are both false\" / \"1: They are both false\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a triangle ABC, the angle bisectors of angles B and C meet at the incentre I. If AB = AC, which of the following is true?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following numbers is a counterexample to the statement 'If a number is of the form 4n + 1, then it is prime'?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a counterexample to the proposition 'If a number is divisible by 8, then it is divisible by both 2 and 4'?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a number n is the square of a prime number, then it has exactly three factors. Which of the following numbers has exactly three factors?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the converse of the proposition 'If two lines are parallel, then the corresponding angles formed by a transversal are equal'?",
+      "reason": "options 0 and 1 say the same thing (\"If the corresponding angles formed by a transversal are equal, then the two lines are parallel.\" / \"If two lines are not parallel, then the corresponding angles formed by a transversal are not equal.\"); options 0 and 2 say the same thing (\"If the corresponding angles formed by a transversal are equal, then the two lines are parallel.\" / \"If two lines are parallel, then the corresponding angles formed by a transversal are not equal.\"); options 0 and 3 say the same thing (\"If the corresponding angles formed by a transversal are equal, then the two lines are parallel.\" / \"If the corresponding angles formed by a transversal are not equal, then the two lines are not parallel.\"); options 1 and 2 say the same thing (\"If two lines are not parallel, then the corresponding angles formed by a transversal are not equal.\" / \"If two lines are parallel, then the corresponding angles formed by a transversal are not equal.\"); options 1 and 3 say the same thing (\"If two lines are not parallel, then the corresponding angles formed by a transversal are not equal.\" / \"If the corresponding angles formed by a transversal are not equal, then the two lines are not parallel.\"); options 2 and 3 say the same thing (\"If two lines are parallel, then the corresponding angles formed by a transversal are not equal.\" / \"If the corresponding angles formed by a transversal are not equal, then the two lines are not parallel.\"); option 0 repeats the stem's wording (\"If the corresponding angles formed by a transversal are equal, then the two lines are parallel.\"); option 2 repeats the stem's wording (\"If two lines are parallel, then the corresponding angles formed by a transversal are not equal.\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A proposition is true but its converse is false. Which of the following is the best example of such a situation in mathematics?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the definition of a proposition?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If n is divisible by 60, then it is divisible by both 5 and 12. Which of the following is a correct counterexample to the converse of this statement?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the diagram, the angle bisectors of angles B and C in triangle ABC meet at point I. If AB = AC, which of the following is true?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a number is a multiple of 6, which of the following must also be true?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following statements is true about the converse of a proposition?",
+      "reason": "options 0 and 1 say the same thing (\"The converse of a proposition is always true if the proposition is true\" / \"The converse of a proposition is always false if the proposition is true\"); options 0 and 3 say the same thing (\"The converse of a proposition is always true if the proposition is true\" / \"3: The converse of a proposition is always true if the proposition is false\"); options 1 and 3 say the same thing (\"The converse of a proposition is always false if the proposition is true\" / \"3: The converse of a proposition is always true if the proposition is false\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a triangle has two equal angles, which of the following must be true?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is the correct reason for why a perfect square has an odd number of factors?",
+      "reason": "options 2 and 3 say the same thing (\"Because the square root of a perfect square is a perfect cube\" / \"Because the square root of a perfect square is a fraction\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

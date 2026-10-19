@@ -1,0 +1,1351 @@
+{
+  "subject": "MATHS",
+  "classLevel": 8,
+  "chapter": "Chapter 5 — Number Play",
+  "name": "Number Play",
+  "slug": "maths-8-number-play",
+  "summary": "This chapter explores number patterns, divisibility rules, and puzzles involving digits.",
+  "position": 5,
+  "source": "generated against NCERT Mathematics, Class 8, chapter 5 (Reprint 2026-27)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 5 - नंबर खेल",
+      "summary": "यह अध्याय संख्या पैटर्न, विभाज्यता के नियम और अंकों के पहेलियों का अध्ययन करता है।"
+    },
+    "mr": {
+      "name": "अध्याय 5 - नंबर खेळ",
+      "summary": "हा अध्याय संख्या वर्णन, विभाज्यता नियम आणि अंकांच्या पहेल्यांचा अभ्यास करतो."
+    }
+  },
+  "board": "NCERT",
+  "book": "Ganita Prakash Part-I",
+  "edition": "Reprint 2026-27",
+  "generatedAt": "2026-10-19T07:05:46.435Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the digital root of a multiple of 9?",
+      "choices": [
+        "8",
+        "9",
+        "7",
+        "6"
+      ],
+      "answerIndex": 1,
+      "solution": "The digital root of a multiple of 9 is always 9. This is because the sum of the digits of any multiple of 9 is also a multiple of 9, and repeating the process gives 9. The other options are incorrect because they do not match the known property of multiples of 9.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "9 के गुणज की डिजिटल मूल क्या है?",
+          "choices": [
+            "8",
+            "9",
+            "7",
+            "6"
+          ],
+          "solution": "9 के गुणज की डिजिटल मूल हमेशा 9 होती है। इसका कारण यह है कि किसी भी 9 के गुणज के अंकों का योग भी 9 का गुणज होता है, और इस प्रक्रिया को दोहराने पर 9 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे 9 के गुणज के ज्ञात गुण के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate mathematical terminology used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "9 च्या गुणकाचा डिजिटल मूल्य किती आहे?",
+          "choices": [
+            "8",
+            "9",
+            "7",
+            "6"
+          ],
+          "solution": "9 च्या गुणकाचा डिजिटल मूल्य नेहमी 9 असतो. कारण 9 च्या कोणत्याही गुणकाच्या अंकांची बेरीज देखील 9 चा गुणक असते, आणि प्रक्रिया पुन्हा दुहेरी केल्यास 9 मिळतो. इतर विकल्प चुकीचे आहेत कारण ते 9 च्या गुणकांच्या ओळखीच्या गुणधर्माशी मेळ बसत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a number less than 9",
+        null,
+        "Chooses a number that is not 9",
+        "Chooses a random digit"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The digital root of any multiple of 9 is always 9, as the sum of its digits will also be a multiple of 9, and repeating the process leads to 9. The author's reasoning for the wrong options is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 12,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.2 Checking Divisibility Quickly"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 13,
+          "pageStart": 20,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.2 Checking Divisibility Quickly"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 14,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.3 Digits in Disguise"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 15,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.3 Digits in Disguise"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T07:05:46.435Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the digital root of a number that is exactly divisible by 9?",
+      "choices": [
+        "1",
+        "9",
+        "0",
+        "3"
+      ],
+      "answerIndex": 1,
+      "solution": "The digital root of a number exactly divisible by 9 is 9 because the digital root is the iterative sum of its digits until a single digit remains, and any multiple of 9 will reduce to 9. Choosing 1 would be incorrect because it does not result from summing the digits of a multiple of 9. Choosing 0 would be incorrect because no non-zero multiple of 9 has a digital root of 0. Choosing 3 would be incorrect because it does not correspond to the digital root of any number divisible by 9.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "9 से पूर्णतः विभाज्य एक संख्या का डिजिटल मूल क्या है?",
+          "choices": [
+            "1",
+            "9",
+            "0",
+            "3"
+          ],
+          "solution": "9 से पूर्णतः विभाज्य किसी संख्या का डिजिटल मूल 9 होता है क्योंकि डिजिटल मूल एक अकेले अंक तक अपने अंकों के योग के आवर्ती योग के रूप में होता है और कोई भी 9 का गुणज 9 तक कम हो जाता है। 1 चुनना गलत होगा क्योंकि 9 के गुणज के अंकों के योग से यह प्राप्त नहीं होता है। 0 चुनना गलत होगा क्योंकि कोई भी शून्येतर 9 के गुणज का डिजिटल मूल 0 नहीं होता है। 3 चुनना गलत होगा क्योंकि इसका कोई भी 9 से विभाज्य संख्या के डिजिटल मूल के साथ संबंध नहीं होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "9 ने भाग जाणारी संख्येचे डिजिटल मूल्य किती आहे?",
+          "choices": [
+            "1",
+            "9",
+            "0",
+            "3"
+          ],
+          "solution": "9 ने भाग जाणारी संख्येचे डिजिटल मूल्य 9 आहे कारण डिजिटल मूल्य हे त्या संख्येच्या अंकांच्या एकूण बेरजेचे पुनरावृत्ती अंकांच्या एकक अंकापर्यंत असते आणि 9 चा गुणाकार करून मिळालेल्या संख्येचे डिजिटल मूल्य 9 असते. 1 निवडणे चूक असेल कारण 9 चा गुणाकार करून मिळालेल्या संख्येच्या अंकांच्या बेरजेमुळे 1 मिळत नाही. 0 निवडणे चूक असेल कारण 0 चे डिजिटल मूल्य असलेला कोणताही शून्येतर गुणाकार 9 ने भाग जाणारी संख्या नाही. 3 निवडणे चूक असेल कारण 9 ने भाग जाणारी कोणतीही संख्या 3 चे डिजिटल मूल्य नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology used for 'digital root' (डिजिटल मूल्य) and correct mathematical meaning preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the digital root of 9 with that of 1",
+        null,
+        "thinks the digital root of a multiple of 9 is 0",
+        "thinks the digital root of a multiple of 9 is 3"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 9, which corresponds to index 1. The author's solution is correct, and the misconceptions listed for the distractors are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 20,
+          "pageStart": 29,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 21,
+          "pageStart": 31,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 22,
+          "pageStart": 32,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T07:05:46.435Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following expressions will always result in an even number?",
+      "choices": [
+        "43 + 37",
+        "13k – 5k",
+        "2a + 2b",
+        "3g + 5h"
+      ],
+      "answerIndex": 2,
+      "solution": "The expression 2a + 2b will always result in an even number because both 2a and 2b are even numbers for any integer values of a and b. Adding two even numbers results in an even number. The other options may result in odd numbers depending on the values of the variables. For example, 43 + 37 is even, but 13k – 5k could be odd if k is odd, and 3g + 5h could be odd if both g and h are odd.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्न में से कौन-सा व्यंजक हमेशा एक सम संख्या परिणाम देगा?",
+          "choices": [
+            "43 + 37",
+            "13k – 5k",
+            "2a + 2b",
+            "3g + 5h"
+          ],
+          "solution": "व्यंजक 2a + 2b हमेशा एक सम संख्या परिणाम देगा क्योंकि a और b के किसी भी पूर्णांक मान के लिए 2a और 2b दोनों सम संख्याएं होती हैं। दो सम संख्याओं को जोड़ने पर एक सम संख्या प्राप्त होती है। अन्य विकल्प चर के मान पर निर्भर करके विषम संख्या भी परिणाम दे सकते हैं। उदाहरण के लिए, 43 + 37 सम है, लेकिन 13k – 5k विषम हो सकता है यदि k विषम है, और 3g + 5h विषम हो सकता है यदि g और h दोनों विषम हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता व्यंजक नेहमी सम नंबर निर्माण करेल?",
+          "choices": [
+            "43 + 37",
+            "13k – 5k",
+            "2a + 2b",
+            "3g + 5h"
+          ],
+          "solution": "2a + 2b व्यंजक नेहमी सम नंबर निर्माण करेल कारण a आणि b च्या कोणत्याही पूर्णांक मूल्यासाठी 2a आणि 2b सम नंबर असतात. दोन सम नंबर जोडल्याने सम नंबर मिळतो. इतर विकल्पांमध्ये चलांच्या मूल्यावर अवलंबून विषम नंबर मिळू शकतो. उदाहरणार्थ, 43 + 37 सम असतो, परंतु 13k – 5k जर k विषम असेल तर विषम असू शकतो, आणि 3g + 5h जर g आणि h दोन्ही विषम असतील तर विषम असू शकतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses addition of odd numbers with evenness",
+        "thinks subtraction of multiples of k always gives even",
+        null,
+        "misunderstands the structure of the expression as odd and even components"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (2a + 2b), as both terms are even for any integer values of a and b, and the sum of two even numbers is always even. The other options can result in odd numbers depending on variable values. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.1 Is This a Multiple Of?"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.1 Is This a Multiple Of?"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.1 Is This a Multiple Of?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T07:05:46.435Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of an algebraic expression that always results in an even number?",
+      "choices": [
+        "2n + 1",
+        "3n + 2",
+        "4n + 1",
+        "5n + 2"
+      ],
+      "answerIndex": 1,
+      "solution": "The expression 3n + 2 always results in an even number. This is because 3n is either even or odd, and adding 2 (an even number) to it keeps the result even. The other expressions can result in both even and odd numbers, depending on the value of n.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा बीजगणितीय व्यंजक का उदाहरण है जो हमेशा सम संख्या परिणाम देता है?",
+          "choices": [
+            "2n + 1",
+            "3n + 2",
+            "4n + 1",
+            "5n + 2"
+          ],
+          "solution": "व्यंजक 3n + 2 हमेशा सम संख्या परिणाम देता है। इसका कारण यह है कि 3n या तो सम या विषम हो सकता है, और इसमें 2 (एक सम संख्या) जोड़ने से परिणाम सम रहता है। अन्य व्यंजकों में n के मान के आधार पर सम और विषम संख्या दोनों परिणाम हो सकते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते बीजगणितीय व्यंजक नेहमी सम नंबर निर्माण करते?",
+          "choices": [
+            "2n + 1",
+            "3n + 2",
+            "4n + 1",
+            "5n + 2"
+          ],
+          "solution": "3n + 2 नेहमी सम नंबर निर्माण करते. हे कारण 3n किंवा सम असू शकते किंवा विषम असू शकते आणि 2 (सम संख्या) त्यावर जोडल्यास निकाल सम राहतो. इतर व्यंजकांमध्ये n च्या मूल्यावर अवलंबून सम आणि विषम दोन्ही संख्या निर्माण होऊ शकतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes that 2n + 1 is always even, which is incorrect",
+        null,
+        "Confuses the expression that results in an even number with another one",
+        "Misunderstands how the coefficients and constants affect the parity of the result"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1 (3n + 2), as it always results in an even number regardless of the value of n. The author's reasoning is sound, and the misconceptions listed for the wrong options are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.1 Is This a Multiple Of?"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.1 Is This a Multiple Of?"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.1 Is This a Multiple Of?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T07:05:46.435Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "The sum of four consecutive numbers is 34. What are these numbers?",
+      "choices": [
+        "6, 7, 8, 9",
+        "7, 8, 9, 10",
+        "6, 7, 8, 13",
+        "8, 9, 10, 11"
+      ],
+      "answerIndex": 1,
+      "solution": "The sum of four consecutive numbers can be written as x + (x + 1) + (x + 2) + (x + 3) = 4x + 6. Setting this equal to 34 gives x = 7. Therefore, the numbers are 7, 8, 9, and 10. The other options do not satisfy the equation 4x + 6 = 34.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चार क्रमागत संख्याओं का योग 34 है। ये संख्याएँ क्या हैं?",
+          "choices": [
+            "6, 7, 8, 9",
+            "7, 8, 9, 10",
+            "6, 7, 8, 13",
+            "8, 9, 10, 11"
+          ],
+          "solution": "चार क्रमागत संख्याओं का योग x + (x + 1) + (x + 2) + (x + 3) = 4x + 6 लिखा जा सकता है। इसे 34 के बराबर रखने पर x = 7 प्राप्त होता है। अतः संख्याएँ 7, 8, 9 और 10 हैं। अन्य विकल्प 4x + 6 = 34 के समीकरण को संतुष्ट नहीं करते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चार क्रमवार संख्यांची बेरीज 34 आहे. या संख्या कोणत्या आहेत?",
+          "choices": [
+            "6, 7, 8, 9",
+            "7, 8, 9, 10",
+            "6, 7, 8, 13",
+            "8, 9, 10, 11"
+          ],
+          "solution": "चार क्रमवार संख्यांची बेरीज x + (x + 1) + (x + 2) + (x + 3) = 4x + 6 असू शकते. याचे 34 बरोबर ठेवल्यास x = 7 मिळते. म्हणून, संख्या 7, 8, 9 आणि 10 आहेत. इतर पर्याय 4x + 6 = 34 या समीकरणाला पूर्ण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains option (2) and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes the first number is 6.",
+        null,
+        "A student might incorrectly add the numbers without ensuring they are consecutive, or misplace one number in the sequence.",
+        "Student adds 1 to each number instead of checking the correct sequence."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The equation 4x + 6 = 34 leads to x = 7, and the numbers 7, 8, 9, 10 are correct. The other options are invalid as they do not satisfy the equation or the condition of being consecutive.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 16,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 17,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 18,
+          "pageStart": 26,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 19,
+          "pageStart": 27,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T07:05:46.435Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If the digital root of an 8-digit number is 5, what will be the digital root of 10 more than that number?",
+      "choices": [
+        "5",
+        "6",
+        "15",
+        "1"
+      ],
+      "answerIndex": 1,
+      "solution": "The digital root of a number increases by 1 when 10 is added to it. So, if the digital root is 5, adding 10 will make the digital root 6. Choosing 5 is incorrect because it assumes the digital root does not change. Choosing 15 is incorrect because it is not a valid digital root (digital roots are between 1 and 9). Choosing 1 is incorrect because it does not follow the rule of adding 1 to the digital root when 10 is added.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक 8 अंकों वाली संख्या का डिजिटल मूल 5 है, तो उस संख्या से 10 अधिक का डिजिटल मूल क्या होगा?",
+          "choices": [
+            "5",
+            "6",
+            "15",
+            "1"
+          ],
+          "solution": "जब किसी संख्या में 10 जोड़ा जाता है तो उसका डिजिटल मूल 1 बढ़ जाता है। इसलिए, यदि डिजिटल मूल 5 है, तो 10 जोड़ने पर डिजिटल मूल 6 हो जाएगा। 5 चुनना गलत है क्योंकि यह मान लेता है कि डिजिटल मूल बदल नहीं जाता। 15 चुनना गलत है क्योंकि यह एक वैध डिजिटल मूल नहीं है (डिजिटल मूल 1 और 9 के बीच होता है)। 1 चुनना गलत है क्योंकि यह 10 जोड़े जाने पर डिजिटल मूल में 1 बढ़ाने के नियम का अनुसरण नहीं करता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms for a Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "8 अंकी संख्येचा डिजिटल मूल्य 5 असल्यास, त्या संख्येपेक्षा 10 अधिक असलेल्या संख्येचा डिजिटल मूल्य काय असेल?",
+          "choices": [
+            "5",
+            "6",
+            "15",
+            "1"
+          ],
+          "solution": "एका संख्येचा डिजिटल मूल्य 10 जोडल्यास 1 ने वाढतो. म्हणून, जर डिजिटल मूल्य 5 असेल, तर 10 जोडल्याने डिजिटल मूल्य 6 होईल. 5 निवडणे चूक असेल कारण ते डिजिटल मूल्य बदलत नाही असा अंदाज घेते. 15 निवडणे चूक असेल कारण डिजिटल मूल्य 1 ते 9 दरम्यान असते. 1 निवडणे चूक असेल कारण 10 जोडल्याने डिजिटल मूल्य 1 ने वाढतो हा नियम पाळला जात नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for 'digital root' (डिजिटल मूल्य).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "fails to recognize that adding 10 increases the digital root by 1",
+        null,
+        "chooses an arbitrary number without understanding the rule",
+        "confuses the concept of digital root with actual numerical addition"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Adding 10 to a number increases its digital root by 1, unless the number ends in 9, which would cause a carryover. However, the digital root of 5 + 1 = 6 is correct. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 20,
+          "pageStart": 29,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 21,
+          "pageStart": 31,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 22,
+          "pageStart": 32,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T07:05:46.435Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is always true when a number is divisible by 8?",
+      "choices": [
+        "The number is also divisible by 6",
+        "The number is also divisible by 12",
+        "The number is also divisible by 2",
+        "The number is also divisible by 10"
+      ],
+      "answerIndex": 2,
+      "solution": "If a number is divisible by 8, it is also divisible by 2 because 8 is a multiple of 2. The number may or may not be divisible by 6 or 12, depending on its value. Similarly, it may not be divisible by 10. Hence, the only statement that is always true is that the number is divisible by 2.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन-सा कथन हमेशा सत्य होता है जब कोई संख्या 8 से विभाज्य होती है?",
+          "choices": [
+            "संख्या 6 से भी विभाज्य होती है",
+            "संख्या 12 से भी विभाज्य होती है",
+            "संख्या 2 से भी विभाज्य होती है",
+            "संख्या 10 से भी विभाज्य होती है"
+          ],
+          "solution": "यदि कोई संख्या 8 से विभाज्य है, तो वह 2 से भी विभाज्य होती है क्योंकि 8, 2 का गुणज है। संख्या 6 या 12 से विभाज्य हो सकती है या नहीं, जो इसके मान पर निर्भर करता है। इसी प्रकार, यह 10 से विभाज्य नहीं हो सकती। अतः हमेशा सत्य कथन यह है कि संख्या 2 से विभाज्य होती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question, with appropriate mathematical terminology and logical structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते नेहमी खरे असते जेव्हा एक संख्या 8 ने भाग जाते?",
+          "choices": [
+            "संख्या 6 ने भाग जाते",
+            "संख्या 12 ने भाग जाते",
+            "संख्या 2 ने भाग जाते",
+            "संख्या 10 ने भाग जाते"
+          ],
+          "solution": "जेव्हा एक संख्या 8 ने भाग जाते, तेव्हा ती 2 ने भाग जाते कारण 8 ही 2 ची बहुकल्पी आहे. संख्या 6 किंवा 12 ने भाग जाऊ शकते किंवा नाही, ती तिच्या मूल्यावर अवलंबून असते. समानपणे, ती 10 ने भाग जाऊ शकत नाही. म्हणून, नेहमी खरे असणारे केवळ विधान म्हणजे संख्या 2 ने भाग जाते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the logical structure, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes that divisibility by 8 guarantees divisibility by 6, which is not always true",
+        "Assumes that divisibility by 8 guarantees divisibility by 12, which is not always true",
+        null,
+        "Confuses divisibility rules for 8 with those for 10, thinking that if a number is divisible by 8, it must also be divisible by 10"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Divisibility by 8 implies divisibility by 2, as 8 is a multiple of 2. The other options are incorrect because divisibility by 8 does not guarantee divisibility by 6, 12, or 10.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.1 Is This a Multiple Of?"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.1 Is This a Multiple Of?"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.1 Is This a Multiple Of?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T07:05:46.435Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following expressions correctly represents numbers that are 3 more than a multiple of 5?",
+      "choices": [
+        "3k + 5",
+        "5k - 2",
+        "5k + 3",
+        "5k + 2"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct expression is 5k + 3 because it represents numbers that are 3 more than a multiple of 5. When you add 3 to a multiple of 5, such as 5k, you get exactly this form. The other options do not match this condition: 3k + 5 is not a multiple of 5 plus 3, 5k - 2 is 2 less than a multiple of 5, and 5k + 2 is 2 more than a multiple of 5.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्न में से कौन-सा व्यंजक 5 के गुणज से 3 अधिक संख्याओं के सही रूप को दर्शाता है?",
+          "choices": [
+            "3k + 5",
+            "5k - 2",
+            "5k + 3",
+            "5k + 2"
+          ],
+          "solution": "सही व्यंजक 5k + 3 है क्योंकि यह 5 के गुणज से 3 अधिक संख्याओं को दर्शाता है। जब आप 5k के गुणज में 3 जोड़ते हैं, तो आपको ठीक इस रूप में परिणाम मिलता है। अन्य विकल्प इस स्थिति के अनुरूप नहीं हैं: 3k + 5, 5 के गुणज में 3 जोड़ने के बराबर नहीं है, 5k - 2, 5 के गुणज से 2 कम है, और 5k + 2, 5 के गुणज से 2 अधिक है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains mathematical meaning, and uses standard Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता व्यंजक 5 च्या गुणकापेक्षा 3 ने जास्त संख्यांचे योग्य प्रतिनिधित्व करतो?",
+          "choices": [
+            "3k + 5",
+            "5k - 2",
+            "5k + 3",
+            "5k + 2"
+          ],
+          "solution": "योग्य व्यंजक 5k + 3 आहे कारण तो 5 च्या गुणकापेक्षा 3 ने जास्त संख्यांचे प्रतिनिधित्व करतो. जेव्हा आपण 5k ला 3 मिळवतो, तेव्हा आपल्याला त्या रूपाची मिळते. इतर व्यंजक या अटीशी जुमानत नाहीत: 3k + 5 हे 5 च्या गुणकापेक्षा 3 ने जास्त नाही, 5k - 2 हे 5 च्या गुणकापेक्षा 2 ने कमी आहे आणि 5k + 2 हे 5 च्या गुणकापेक्षा 2 ने जास्त आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the multiplier with the remainder",
+        "confuses the remainder with the multiplier",
+        null,
+        "incorrectly assumes the remainder is 2 instead of 3"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 5k + 3, as it represents numbers that are 3 more than a multiple of 5. The author's reasoning is sound and matches the correct interpretation of the question.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.1 Is This a Multiple Of?"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.1 Is This a Multiple Of?"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 8,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.2 Checking Divisibility Quickly"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T07:05:46.435Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is the smallest number that leaves a remainder of 2 when divided by 3, a remainder of 3 when divided by 4, and a remainder of 4 when divided by 5?",
+      "choices": [
+        "59",
+        "60",
+        "61",
+        "62"
+      ],
+      "answerIndex": 0,
+      "solution": "The number must be one less than a multiple of 3, 4, and 5. The LCM of 3, 4, and 5 is 60, so the smallest such number is 60 − 1 = 59. The other options are either not one less than a multiple of all three numbers or are not the smallest.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "3 से भाग देने पर 2 शेष देने वाली सबसे छोटी संख्या कौन सी है, 4 से भाग देने पर 3 शेष देने वाली है और 5 से भाग देने पर 4 शेष देने वाली है?",
+          "choices": [
+            "59",
+            "60",
+            "61",
+            "62"
+          ],
+          "solution": "संख्या 3, 4 और 5 के गुणज से एक कम होनी चाहिए। 3, 4 और 5 का ल.स. 60 है, इसलिए ऐसी सबसे छोटी संख्या 60 − 1 = 59 है। अन्य विकल्प या तो सभी तीन संख्याओं के गुणज से एक कम नहीं हैं या सबसे छोटी नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate use of Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "3, 4 आणि 5 ने भागल्यास शेष 2, 3 आणि 4 येणारा सर्वात लहान संख्या काय असेल?",
+          "choices": [
+            "59",
+            "60",
+            "61",
+            "62"
+          ],
+          "solution": "संख्या 3, 4 आणि 5 च्या गुणकापासून एक कमी असावी. 3, 4 आणि 5 चा ल.सा.अ. 60 आहे, म्हणून सर्वात लहान संख्या 60 − 1 = 59 असेल. इतर विकल्प कमी गुणकापासून नसतात किंवा सर्वात लहान नसतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "A student might think the number must be a multiple of 3, 4, and 5, and choose the least common multiple, 60, without adjusting for the remainders.",
+        "Fails to recognize that the number must be one less than the LCM.",
+        "Incorrectly assumes that the number is the LCM itself, without subtracting 1, which is necessary to satisfy the remainder conditions."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the reasoning that the number must be one less than the LCM of 3, 4, and 5, which is 60. Hence, 59 is the correct answer.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 16,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 17,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 18,
+          "pageStart": 26,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 19,
+          "pageStart": 27,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T07:05:46.435Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a number has a digital root of 3, what is the remainder when the number is divided by 9?",
+      "choices": [
+        "0",
+        "3",
+        "6",
+        "9"
+      ],
+      "answerIndex": 1,
+      "solution": "The remainder when a number is divided by 9 is the same as its digital root, unless the digital root is 9, in which case the remainder is 0. So, if the digital root is 3, the remainder will also be 3. Choosing 0 is incorrect because it applies to numbers with a digital root of 9. Choosing 6 or 9 is incorrect because it does not match the rule for a digital root of 3.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी संख्या की डिजिटल मूल (digital root) 3 है, तो संख्या के 9 से विभाजित होने पर शेष क्या होगा?",
+          "choices": [
+            "0",
+            "3",
+            "6",
+            "9"
+          ],
+          "solution": "जब किसी संख्या को 9 से विभाजित किया जाता है तो शेष संख्या के डिजिटल मूल के समान होता है, जब तक कि डिजिटल मूल 9 न हो, जिस स्थिति में शेष 0 होता है। इसलिए, यदि डिजिटल मूल 3 है, तो शेष भी 3 होगा। 0 चुनना गलत है क्योंकि यह 9 के डिजिटल मूल वाली संख्याओं के लिए है। 6 या 9 चुनना गलत है क्योंकि यह 3 के डिजिटल मूल के नियम के अनुरूप नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका संख्येचा डिजिटल मूल्य 3 असल्यास, त्या संख्येला 9 ने भागल्यास उर्वरक किती असेल?",
+          "choices": [
+            "0",
+            "3",
+            "6",
+            "9"
+          ],
+          "solution": "एका संख्येला 9 ने भागल्यास उर्वरक मूल्य तिच्या डिजिटल मूल्याच्या बरोबर असतो, जर डिजिटल मूल्य 9 असेल तर उर्वरक 0 असतो. म्हणून, जर डिजिटल मूल्य 3 असेल तर उर्वरक देखील 3 असेल. 0 निवडणे चूक आहे कारण ते 9 डिजिटल मूल्य असलेल्या संख्यांसाठी लागू होते. 6 किंवा 9 निवडणे चूक आहे कारण ते 3 डिजिटल मूल्यासाठी नियमाशी जुळत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the remainder for numbers with digital root 9",
+        null,
+        "chooses an arbitrary number without understanding the rule",
+        "confuses the concept of digital root with other properties"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the mathematical principle that the remainder when a number is divided by 9 is equal to its digital root, unless the digital root is 9, in which case the remainder is 0. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 20,
+          "pageStart": 29,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 21,
+          "pageStart": 31,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 22,
+          "pageStart": 32,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T07:05:46.435Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following algebraic expressions can represent all numbers that leave a remainder of 3 when divided by 5?",
+      "choices": [
+        "5n + 3",
+        "5n - 3",
+        "3n + 5",
+        "3n - 5"
+      ],
+      "answerIndex": 0,
+      "solution": "The expression 5n + 3 represents all numbers that leave a remainder of 3 when divided by 5. This is because when 5n is divided by 5, it leaves a remainder of 0, and adding 3 results in a remainder of 3. The other expressions do not consistently produce numbers with this remainder.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा बीजगणितीय व्यंजक सभी संख्याओं का प्रतिनिधित्व कर सकता है जो 5 से विभाजित होने पर शेष 3 छोड़ती है?",
+          "choices": [
+            "5n + 3",
+            "5n - 3",
+            "3n + 5",
+            "3n - 5"
+          ],
+          "solution": "व्यंजक 5n + 3 सभी संख्याओं का प्रतिनिधित्व करता है जो 5 से विभाजित होने पर शेष 3 छोड़ती है। इसका कारण यह है कि जब 5n को 5 से विभाजित किया जाता है, तो शेष 0 रहता है, और 3 जोड़ने से शेष 3 हो जाता है। अन्य व्यंजक इस शेष को नियमित रूप से उत्पन्न नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते बीजगणितीय व्यंजक 5 ने भागल्यास उर्वर 3 असलेल्या सर्व संख्यांना दर्शवू शकते?",
+          "choices": [
+            "5n + 3",
+            "5n - 3",
+            "3n + 5",
+            "3n - 5"
+          ],
+          "solution": "5n + 3 व्यंजक 5 ने भागल्यास उर्वर 3 असलेल्या सर्व संख्यांना दर्शवतो. कारण 5n ला 5 ने भागल्यास उर्वर 0 असतो आणि 3 जोडल्याने उर्वर 3 असतो. इतर व्यंजकांनी या उर्वर असलेल्या संख्या नियमितपणे उत्पन्न करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the correct form of the expression with a different one",
+        "Fails to understand that subtracting 3 from a multiple of 5 would not produce the required remainder",
+        "Misunderstands the relationship between the variable and the constant in the expression"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 5n + 3, as it represents numbers that leave a remainder of 3 when divided by 5. The other options fail to consistently produce such numbers, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.1 Is This a Multiple Of?"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.1 Is This a Multiple Of?"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.1 Is This a Multiple Of?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T07:05:46.435Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a number is a multiple of 11, and when doubled, it is also a multiple of 11, which of the following is the correct explanation?",
+      "choices": [
+        "Doubling a multiple of 11 does not change its divisibility by 11.",
+        "Doubling a multiple of 11 makes it not divisible by 11.",
+        "A multiple of 11 can never be doubled to remain a multiple of 11.",
+        "A multiple of 11 can be doubled to remain a multiple of 11 only when it is 0."
+      ],
+      "answerIndex": 0,
+      "solution": "If a number is a multiple of 11, it can be expressed as 11 times some integer. When doubled, it becomes 22 times that integer, which is still divisible by 11. Therefore, doubling a multiple of 11 does not change its divisibility by 11. The other options incorrectly suggest that doubling affects divisibility or that it only works in specific cases.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई संख्या 11 का गुणज है, और दोगुना करने पर भी यह 11 का गुणज है, निम्नलिखित में से कौन-सा सही स्पष्टीकरण है?",
+          "choices": [
+            "11 के गुणज को दोगुना करने से इसकी 11 से विभाज्यता में कोई परिवर्तन नहीं होता।",
+            "11 के गुणज को दोगुना करने से इसकी 11 से विभाज्यता नहीं रहती।",
+            "11 के गुणज को कभी भी दोगुना करके 11 का गुणज नहीं रखा जा सकता।",
+            "11 के गुणज को दोगुना करके 11 का गुणज रखा जा सकता है केवल जब यह 0 हो।"
+          ],
+          "solution": "यदि कोई संख्या 11 का गुणज है, तो इसे किसी पूर्णांक के 11 गुना के रूप में व्यक्त किया जा सकता है। जब इसे दोगुना किया जाता है, तो यह उस पूर्णांक के 22 गुना हो जाता है, जो अभी भी 11 से विभाज्य होता है। इसलिए, 11 के गुणज को दोगुना करने से इसकी 11 से विभाज्यता में कोई परिवर्तन नहीं होता। अन्य विकल्प गलत रूप से बताते हैं कि दोगुना करना विभाज्यता को प्रभावित करता है या यह केवल विशिष्ट मामलों में काम करता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology common in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका संख्या चा 11 चा गुणक असल्यास, आणि त्याचा दुप्पट केल्यास तोही 11 चा गुणक असतो, खालीलपैकी कोणते योग्य स्पष्टीकरण आहे?",
+          "choices": [
+            "11 चा गुणक दुप्पट केल्यास त्याच्या 11 ने भाग जाण्याची क्षमता बदलत नाही.",
+            "11 चा गुणक दुप्पट केल्यास तो 11 ने भाग जात नाही.",
+            "11 चा गुणक असलेली संख्या कधीही दुप्पट केल्यास 11 चा गुणक राहत नाही.",
+            "11 चा गुणक असलेली संख्या 0 असल्यास तिचा दुप्पट केल्यास ती 11 चा गुणक राहते."
+          ],
+          "solution": "जर एका संख्या चा 11 चा गुणक असेल तर ती 11 च्या कोणत्याही पूर्णांकाच्या गुणाकाराच्या रूपात व्यक्त केली जाऊ शकते. जेव्हा तिचा दुप्पट केला जातो तेव्हा तो 22 च्या पूर्णांकाच्या गुणाकाराच्या रूपात असतो, जो 11 ने भाग जातो. म्हणून, 11 चा गुणक दुप्पट केल्यास त्याच्या 11 ने भाग जाण्याची क्षमता बदलत नाही. इतर विकल्प चुकीच्या प्रकारे भाग जाण्याच्या क्षमतेवर प्रभाव दर्शवतात किंवा ते केवळ विशिष्ट परिस्थितीत घडत असल्याचा गैरसमज दर्शवतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Misunderstands the concept of multiples and their properties",
+        "Chooses an incorrect statement about divisibility",
+        "Chooses an incorrect and overly restrictive statement about multiples of 11"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is mathematically sound and correctly identifies option 0 as the correct answer. The reasoning aligns with the properties of multiples of 11.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 23,
+          "pageStart": 34,
+          "pageEnd": 35,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 24,
+          "pageStart": 35,
+          "pageEnd": 36,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 25,
+          "pageStart": 36,
+          "pageEnd": 37,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "SUMMARY",
+            "Navakankari"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T07:05:46.435Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a number is divisible by both 9 and 4, which of the following must it also be divisible by?",
+      "choices": [
+        "12",
+        "16",
+        "18",
+        "36"
+      ],
+      "answerIndex": 3,
+      "solution": "If a number is divisible by both 9 and 4, it must be divisible by their least common multiple, which is 36. This is because 9 and 4 have no common factors other than 1, so their LCM is 9 × 4 = 36. The number may or may not be divisible by 12, 16, or 18, depending on its value, but it must be divisible by 36.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई संख्या 9 और 4 दोनों द्वारा विभाज्य है, तो निम्नलिखित में से किसके द्वारा यह आवश्यक रूप से विभाज्य होगी?",
+          "choices": [
+            "12",
+            "16",
+            "18",
+            "36"
+          ],
+          "solution": "यदि कोई संख्या 9 और 4 दोनों द्वारा विभाज्य है, तो यह उनके लघुत्तम समापवर्तक द्वारा आवश्यक रूप से विभाज्य होगी, जो 36 है। ऐसा इसलिए है क्योंकि 9 और 4 के अपवर्तक अन्यथा 1 के अलावा कोई भी सामान्य अपवर्तक नहीं है, इसलिए उनका ल.स. 9 × 4 = 36 है। संख्या 12, 16 या 18 द्वारा विभाज्य हो सकती है या नहीं, इस पर उसके मान के आधार पर निर्भर करता है, लेकिन यह आवश्यक रूप से 36 द्वारा विभाज्य होगी।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक संख्या 9 आणि 4 ने भागली जाऊ शकत असेल, तर खालीलपैकी कोणत्याही एकाने तिला भागले जाणे आवश्यक असेल?",
+          "choices": [
+            "12",
+            "16",
+            "18",
+            "36"
+          ],
+          "solution": "जर एक संख्या 9 आणि 4 ने भागली जाऊ शकत असेल, तर ती त्यांच्या लहानतम सामाईक गुणिजाने भागली जाणे आवश्यक असेल, जो 36 आहे. कारण 9 आणि 4 चा एकमेव सामाईक अपवर्तक 1 आहे, म्हणून त्यांचा एलसीएम 9 × 4 = 36 आहे. संख्या 12, 16 किंवा 18 ने भागली जाऊ शकत नाही, जे तिच्या मूल्यावर अवलंबून असते, परंतु ती निश्चितपणे 36 ने भागली जाणे आवश्यक असेल.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes that the LCM of 9 and 4 is 12, which is incorrect",
+        "Assumes that the LCM of 9 and 4 is 16, which is incorrect",
+        "Assumes that the LCM of 9 and 4 is 18, which is incorrect",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. A number divisible by both 9 and 4 must be divisible by their LCM, which is 36. The other options are not guaranteed.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.1 Is This a Multiple Of?"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.1 Is This a Multiple Of?"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp105.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Number Play",
+            "5.1 Is This a Multiple Of?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T07:05:46.435Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

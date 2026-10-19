@@ -1,0 +1,663 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T07:37:21.969Z",
+  "finishedAt": "2026-10-19T07:44:40.501Z",
+  "seconds": 439,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "hemh1",
+    "document": "ncert/8/mathematics/hemh108.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Xpressions and",
+    "edition": "Reprint 2024-25",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n14. B) 3 8",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n8. (d) RHS",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n5. (d) 0,8"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 162589,
+      "in": 34,
+      "out": 32,
+      "rejects": 2,
+      "promptTokens": 28407,
+      "completionTokens": 8923
+    },
+    "critique": {
+      "calls": 41,
+      "ms": 261998,
+      "in": 32,
+      "out": 28,
+      "rejects": 4,
+      "promptTokens": 19292,
+      "completionTokens": 7039
+    },
+    "solver": {
+      "calls": 198,
+      "ms": 104779,
+      "in": 28,
+      "out": 23,
+      "rejects": 5,
+      "promptTokens": 39506,
+      "completionTokens": 1997
+    },
+    "form": {
+      "calls": 10,
+      "ms": 26816,
+      "in": 23,
+      "out": 9,
+      "rejects": 14,
+      "promptTokens": 2517,
+      "completionTokens": 652
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 3952,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 225134,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 14758,
+      "completionTokens": 6735
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an algebraic expression?",
+      "ms": {
+        "draft": 4260,
+        "critique": 7596
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the sum of the expressions: 7xy + 5yz – 3zx, 4yz + 9zx – 4y, – 3xz + 5x – 2xy?",
+      "ms": {
+        "draft": 4260,
+        "critique": 5970,
+        "solver": 14950
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a monomial?",
+      "ms": {
+        "draft": 4260,
+        "critique": 6973,
+        "solver": 11650,
+        "form": 2931
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the product of 4x and 5y?",
+      "ms": {
+        "draft": 4260,
+        "critique": 7735,
+        "solver": 13095,
+        "form": 4896
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the product of 4xy × 5x y × 6x y?",
+      "ms": {
+        "draft": 6328,
+        "critique": 7152,
+        "solver": 1536,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the volume of a rectangular box with length 2ax, breadth 3by, and height 5cz?",
+      "ms": {
+        "draft": 4260,
+        "critique": 5763,
+        "solver": 14157,
+        "form": 3952
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the price of bananas per dozen is (p - 2) and the number of dozens needed is (z - 4), what is the total cost?",
+      "ms": {
+        "draft": 4260,
+        "critique": 5670,
+        "solver": 17229,
+        "form": 1958
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the product of (x – 4) and (2x + 3)?",
+      "ms": {
+        "draft": 6328,
+        "critique": 6953,
+        "solver": 1807,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the product of (a + 7) and (b – 5)?",
+      "ms": {
+        "draft": 6328,
+        "critique": 7306,
+        "solver": 1335,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the product of (x + 7y) and (7x – y)?",
+      "ms": {
+        "draft": 6328,
+        "critique": 6232,
+        "solver": 1779,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a polynomial?",
+      "ms": {
+        "draft": 3858,
+        "critique": 6197
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the expression (2x + 3)(x - 4) is expanded, what is the coefficient of x?",
+      "ms": {
+        "draft": 3858,
+        "critique": 6228
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the product of 4xy, 5x, and 6y?",
+      "ms": {
+        "draft": 5360,
+        "critique": 6068,
+        "solver": 1915,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the product of (a + 7) and (b – 5)?",
+      "ms": {
+        "draft": 5360,
+        "critique": 7168,
+        "solver": 911,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the area of a rectangle is given as (5x + 3)(2x - 1), what is the area in expanded form?",
+      "ms": {
+        "draft": 3858,
+        "critique": 8310,
+        "solver": 15258
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the simplified form of (a + b)(2a – 3b + c) – (2a – 3b)c?",
+      "ms": {
+        "draft": 5360,
+        "critique": 7188,
+        "solver": 1759,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the simplified form of (x + y)(2x + y) + (x + 2y)(x – y)?",
+      "ms": {
+        "draft": 5360,
+        "critique": 7939
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the volume of a rectangular box with length 5a, breadth 3a, and height 7a?",
+      "ms": {
+        "draft": 5360,
+        "critique": 8277,
+        "solver": 17109,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the result of adding 7x - 4x + 5 and 9x - 10?",
+      "ms": {
+        "draft": 16284,
+        "critique": 6334,
+        "solver": 1215
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the sum of the algebraic expressions 7xy + 5yz - 3zx, 4yz + 9zx - 4y, and -3xz + 5x - 2xy?",
+      "ms": {
+        "draft": 16284,
+        "critique": 5452,
+        "solver": 1918,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of subtracting 5x - 4y + 6y - 3 from 7x - 4xy + 8y + 5x - 3y?",
+      "ms": {
+        "draft": 16284,
+        "critique": 5624,
+        "solver": 1816
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the result of multiplying 4x and 5y?",
+      "ms": {
+        "draft": 16284,
+        "critique": 6388,
+        "solver": 965,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the volume of a rectangular box with length 2ax, breadth 3by, and height 5cz?",
+      "ms": {
+        "draft": 16284,
+        "critique": 5902,
+        "solver": 1398
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for expressions that have exactly one term?",
+      "ms": {
+        "draft": 3858,
+        "critique": 4727,
+        "solver": 1736,
+        "form": 3306
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of like terms?",
+      "ms": {
+        "draft": 3858,
+        "critique": 5595,
+        "solver": 10975,
+        "form": 2359
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of expression that has exactly one term?",
+      "ms": {
+        "draft": 3599,
+        "critique": 6357,
+        "solver": 1750,
+        "form": 2274,
+        "translation": 31458
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about like terms?",
+      "ms": {
+        "draft": 3599,
+        "critique": 7126,
+        "solver": 1566,
+        "form": 2686,
+        "translation": 41149
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of multiplying the monomial 2x by the binomial (3x + 4)?",
+      "ms": {
+        "draft": 3858,
+        "critique": 4702,
+        "solver": 10461,
+        "form": 0,
+        "translation": 26603
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the product of (a + b)(a + b)?",
+      "ms": {
+        "draft": 5360,
+        "critique": 6086,
+        "solver": 1771,
+        "form": 0,
+        "translation": 17079
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the result of multiplying a monomial by a monomial?",
+      "ms": {
+        "draft": 3599,
+        "critique": 7198,
+        "solver": 1402,
+        "form": 2861,
+        "translation": 39301
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a polynomial is multiplied by a binomial, how many terms will the product have if there are 3 terms in the polynomial and 2 terms in the binomial?",
+      "ms": {
+        "draft": 3599,
+        "critique": 6670,
+        "solver": 845,
+        "form": 2213,
+        "translation": 34876
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the result of combining like terms in the expression 3x + 5x - 2x?",
+      "ms": {
+        "draft": 3599,
+        "critique": 5008,
+        "solver": 749,
+        "form": 0,
+        "translation": 29478
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the product of (x – 5) (x + 5) + 25?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the product of (a + b) (a + b)?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of an algebraic expression?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the sum of the expressions: 7xy + 5yz – 3zx, 4yz + 9zx – 4y, – 3xz + 5x – 2xy?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a monomial?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the product of 4x and 5y?",
+      "reason": "options 1 and 3 are the same (\"20x + 20y\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the product of 4xy × 5x y × 6x y?",
+      "reason": "options 1 and 2 say the same thing (\"120 x^3 y^3\" / \"120 x^3 y\"); options 1 and 3 say the same thing (\"120 x^3 y^3\" / \"120 x y^3\"); options 2 and 3 say the same thing (\"120 x^3 y\" / \"120 x y^3\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the volume of a rectangular box with length 2ax, breadth 3by, and height 5cz?",
+      "reason": "options are in more than one unit (abcxyz, abxyz, abcx, abxy); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the price of bananas per dozen is (p - 2) and the number of dozens needed is (z - 4), what is the total cost?",
+      "reason": "option 0 repeats the stem's wording (\"(p - 2)(z - 4)\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the product of (x – 4) and (2x + 3)?",
+      "reason": "options 0 and 1 say the same thing (\"2x^2 – 5x – 12\" / \"2x^2 + 5x – 12\"); options 0 and 2 say the same thing (\"2x^2 – 5x – 12\" / \"2x^2 – 5x + 12\"); options 0 and 3 say the same thing (\"2x^2 – 5x – 12\" / \"2x^2 + 5x + 12\"); options 1 and 2 say the same thing (\"2x^2 + 5x – 12\" / \"2x^2 – 5x + 12\"); options 1 and 3 say the same thing (\"2x^2 + 5x – 12\" / \"2x^2 + 5x + 12\"); options 2 and 3 say the same thing (\"2x^2 – 5x + 12\" / \"2x^2 + 5x + 12\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the product of (a + 7) and (b – 5)?",
+      "reason": "options 0 and 1 say the same thing (\"ab – 5a + 7b – 35\" / \"ab + 5a + 7b – 35\"); options 0 and 2 say the same thing (\"ab – 5a + 7b – 35\" / \"ab – 5a – 7b – 35\"); options 0 and 3 say the same thing (\"ab – 5a + 7b – 35\" / \"ab + 5a – 7b – 35\"); options 1 and 2 say the same thing (\"ab + 5a + 7b – 35\" / \"ab – 5a – 7b – 35\"); options 1 and 3 say the same thing (\"ab + 5a + 7b – 35\" / \"ab + 5a – 7b – 35\"); options 2 and 3 say the same thing (\"ab – 5a – 7b – 35\" / \"ab + 5a – 7b – 35\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the product of (x + 7y) and (7x – y)?",
+      "reason": "options 0 and 1 say the same thing (\"7x^2 + 48xy – 7y^2\" / \"7x^2 – 48xy – 7y^2\"); options 0 and 2 say the same thing (\"7x^2 + 48xy – 7y^2\" / \"7x^2 + 48xy + 7y^2\"); options 0 and 3 say the same thing (\"7x^2 + 48xy – 7y^2\" / \"7x^2 – 48xy + 7y^2\"); options 1 and 2 say the same thing (\"7x^2 – 48xy – 7y^2\" / \"7x^2 + 48xy + 7y^2\"); options 1 and 3 say the same thing (\"7x^2 – 48xy – 7y^2\" / \"7x^2 – 48xy + 7y^2\"); options 2 and 3 say the same thing (\"7x^2 + 48xy + 7y^2\" / \"7x^2 – 48xy + 7y^2\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a polynomial?",
+      "reason": "option 0 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the expression (2x + 3)(x - 4) is expanded, what is the coefficient of x?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the product of 4xy, 5x, and 6y?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the product of (a + 7) and (b – 5)?",
+      "reason": "options 0 and 1 say the same thing (\"ab – 5a + 7b – 35\" / \"ab + 5a – 7b + 35\"); options 0 and 2 say the same thing (\"ab – 5a + 7b – 35\" / \"ab – 5a – 7b + 35\"); options 0 and 3 say the same thing (\"ab – 5a + 7b – 35\" / \"ab + 5a + 7b – 35\"); options 1 and 2 say the same thing (\"ab + 5a – 7b + 35\" / \"ab – 5a – 7b + 35\"); options 1 and 3 say the same thing (\"ab + 5a – 7b + 35\" / \"ab + 5a + 7b – 35\"); options 2 and 3 say the same thing (\"ab – 5a – 7b + 35\" / \"ab + 5a + 7b – 35\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the area of a rectangle is given as (5x + 3)(2x - 1), what is the area in expanded form?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the simplified form of (a + b)(2a – 3b + c) – (2a – 3b)c?",
+      "reason": "options 0 and 1 say the same thing (\"2a^2 – ab – 3b^2 + bc + ac\" / \"2a^2 + ab – 3b^2 + bc + ac\"); options 0 and 2 say the same thing (\"2a^2 – ab – 3b^2 + bc + ac\" / \"2a^2 – ab – 3b^2 + bc – ac\"); options 0 and 3 say the same thing (\"2a^2 – ab – 3b^2 + bc + ac\" / \"2a^2 – ab – 3b^2 – bc + ac\"); options 1 and 2 say the same thing (\"2a^2 + ab – 3b^2 + bc + ac\" / \"2a^2 – ab – 3b^2 + bc – ac\"); options 1 and 3 say the same thing (\"2a^2 + ab – 3b^2 + bc + ac\" / \"2a^2 – ab – 3b^2 – bc + ac\"); options 2 and 3 say the same thing (\"2a^2 – ab – 3b^2 + bc – ac\" / \"2a^2 – ab – 3b^2 – bc + ac\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What is the simplified form of (x + y)(2x + y) + (x + 2y)(x – y)?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the volume of a rectangular box with length 5a, breadth 3a, and height 7a?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the result of adding 7x - 4x + 5 and 9x - 10?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the sum of the algebraic expressions 7xy + 5yz - 3zx, 4yz + 9zx - 4y, and -3xz + 5x - 2xy?",
+      "reason": "options 0 and 1 say the same thing (\"5xy + 9yz + 3zx + 5x - 4y\" / \"5xy - 9yz + 3zx + 5x - 4y\"); options 0 and 2 say the same thing (\"5xy + 9yz + 3zx + 5x - 4y\" / \"5xy + 9yz - 3zx + 5x - 4y\"); options 0 and 3 say the same thing (\"5xy + 9yz + 3zx + 5x - 4y\" / \"5xy + 9yz + 3zx - 5x - 4y\"); options 1 and 2 say the same thing (\"5xy - 9yz + 3zx + 5x - 4y\" / \"5xy + 9yz - 3zx + 5x - 4y\"); options 1 and 3 say the same thing (\"5xy - 9yz + 3zx + 5x - 4y\" / \"5xy + 9yz + 3zx - 5x - 4y\"); options 2 and 3 say the same thing (\"5xy + 9yz - 3zx + 5x - 4y\" / \"5xy + 9yz + 3zx - 5x - 4y\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the result of subtracting 5x - 4y + 6y - 3 from 7x - 4xy + 8y + 5x - 3y?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the result of multiplying 4x and 5y?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the volume of a rectangular box with length 2ax, breadth 3by, and height 5cz?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term for expressions that have exactly one term?",
+      "reason": "near-duplicate of batch item \"Which of the following is a type of expression tha…\" (cosine 0.960 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of like terms?",
+      "reason": "near-duplicate of served question cmvexmur2026zgod80rars6tl (cosine 0.924 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

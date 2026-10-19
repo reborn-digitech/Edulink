@@ -21,452 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-18T22:51:44.383Z",
+  "generatedAt": "2026-10-19T00:08:14.302Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is the main purpose of using the same width for bars in a bar graph?",
-      "choices": [
-        "To make the graph more visually appealing",
-        "To compare the heights of the bars accurately",
-        "To make the bars look wider",
-        "To represent different categories"
-      ],
-      "answerIndex": 1,
-      "solution": "The main purpose of using the same width for bars in a bar graph is to compare the heights of the bars accurately. This ensures that the visual representation reflects the actual data without distortion. The other options are incorrect because they either misinterpret the purpose or suggest misleading practices.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक बार ग्राफ में बार की चौड़ाई को एक ही क्यों रखा जाता है?",
-          "choices": [
-            "ग्राफ को अधिक आकर्षक बनाने के लिए",
-            "बार की ऊंचाई की तुलना सटीक रूप से करने के लिए",
-            "बार को चौड़ा दिखाने के लिए",
-            "विभिन्न श्रेणियों का प्रतिनिधित्व करने के लिए"
-          ],
-          "solution": "बार ग्राफ में बार की चौड़ाई को एक ही रखने का मुख्य उद्देश्य बार की ऊंचाई की तुलना सटीक रूप से करना होता है। इससे वास्तविक डेटा के बिना विकृति के दृश्य प्रतिनिधित्व सुनिश्चित होता है। अन्य विकल्प गलत हैं क्योंकि वे उद्देश्य की गलत व्याख्या करते हैं या भ्रामक व्यवहार की ओर इशारा करते हैं।",
-          "imageAlt": null,
-          "critique": "Translation accurately preserves meaning, technical terms are appropriate for Hindi curriculum, and the correct answer remains in the same position.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "बार ग्राफमध्ये समान रुंदी वापरण्याचा मुख्य उद्देश काय आहे?",
-          "choices": [
-            "ग्राफ अधिक दृश्यपट बनविण्यासाठी",
-            "बारच्या उंचींची योग्यरित्या तुलना करण्यासाठी",
-            "बार अधिक रुंद दिसावेत यासाठी",
-            "वेगवेगळ्या श्रेणींचे प्रतिनिधित्व करण्यासाठी"
-          ],
-          "solution": "बार ग्राफमध्ये समान रुंदी वापरण्याचा मुख्य उद्देश बारच्या उंचींची योग्यरित्या तुलना करण्यासाठी आहे. हे व्हिज्युअल प्रतिनिधित्व खात्री करते की खरी डेटा विकृती शिवाय प्रतिबिंबित होते. इतर विकल्प चुकीच्या उद्देशांचे व्याख्यान किंवा भ्रामक प्रथा सुचवतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for statistical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "confuses visual appeal with accuracy",
-        null,
-        "misunderstands the purpose of bar graph design",
-        "incorrectly focuses on the width rather than the height for comparison"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies that equal bar width ensures accurate comparison of heights, and the reasons for the other options align with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 17,
-          "pageStart": 31,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "Infographics"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 18,
-          "pageStart": 32,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 19,
-          "pageStart": 34,
-          "pageEnd": 36,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T22:51:44.383Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What does the term 'frequency distribution table' refer to?",
-      "choices": [
-        "A table that shows the total number of items",
-        "A table that shows the number of times each item occurs",
-        "A table that shows the average of items",
-        "A table that shows the range of items"
-      ],
-      "answerIndex": 1,
-      "solution": "A frequency distribution table shows how often each item appears in a dataset. The other options describe different statistical measures but do not define a frequency distribution table.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "शब्द 'बारंबारता वितरण सारणी' क्या संदर्भित करता है?",
-          "choices": [
-            "एक सारणी जो वस्तुओं की कुल संख्या दिखाती है",
-            "एक सारणी जो प्रत्येक वस्तु के बार बार होने की संख्या दिखाती है",
-            "एक सारणी जो वस्तुओं के औसत को दिखाती है",
-            "एक सारणी जो वस्तुओं की सीमा को दिखाती है"
-          ],
-          "solution": "एक बारंबारता वितरण सारणी डेटा सेट में प्रत्येक वस्तु के बार बार होने की बारंबारता दिखाती है। अन्य विकल्प अलग-अलग सांख्यिकी माप को दर्शाते हैं लेकिन बारंबारता वितरण सारणी की परिभाषा नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate statistical terminology as used in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "शब्द 'बारंबारता वितरण टेबल' चा अर्थ काय आहे?",
-          "choices": [
-            "वस्तूंची एकूण संख्या दर्शविणारा टेबल",
-            "प्रत्येक वस्तूच्या वारंवारतेचे टेबल",
-            "वस्तूंच्या सरासरीचे टेबल",
-            "वस्तूंच्या श्रेणीचे टेबल"
-          ],
-          "solution": "बारंबारता वितरण टेबल डेटासेटमध्ये प्रत्येक वस्तू किती वेळा आलेली आहे ते दर्शवतो. इतर विकल्पांमध्ये वेगवेगळ्या सांख्यिकी मापदंडांचे वर्णन आहे पण बारंबारता वितरण टेबल वर्णन करत नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate statistical terminology commonly used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses frequency with total count",
-        null,
-        "Misunderstands the concept of average",
-        "Confuses frequency with range"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 1, which accurately defines a frequency distribution table. The other options represent common misconceptions about statistical terms.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 20,
-          "pageStart": 36,
-          "pageEnd": 39,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 21,
-          "pageStart": 39,
-          "pageEnd": 41,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 22,
-          "pageStart": 41,
-          "pageEnd": 42,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T22:51:44.383Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the main purpose of a pictograph?",
-      "choices": [
-        "To display data through numbers only",
-        "To represent data through pictures of objects",
-        "To show the exact value of each data point",
-        "To record data in a table format"
-      ],
-      "answerIndex": 1,
-      "solution": "A pictograph represents data through pictures of objects, which helps in quickly understanding the data. The other options are incorrect because they either contradict the definition or describe other methods of data representation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक पिक्टोग्राफ का मुख्य उद्देश्य क्या है?",
-          "choices": [
-            "केवल संख्याओं के माध्यम से डेटा प्रदर्शित करना",
-            "वस्तुओं के चित्रों के माध्यम से डेटा प्रस्तुत करना",
-            "प्रत्येक डेटा बिंदु का शुद्ध मूल्य दिखाना",
-            "एक तालिका के रूप में डेटा दर्ज करना"
-          ],
-          "solution": "एक पिक्टोग्राफ वस्तुओं के चित्रों के माध्यम से डेटा प्रस्तुत करता है, जो डेटा की तेजी से समझ में आने में मदद करता है। अन्य विकल्प गलत हैं क्योंकि वे परिभाषा के विरोध में हैं या अन्य डेटा प्रस्तुति के तरीकों का वर्णन करते हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated for Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "पिक्टोग्राफचा मुख्य उद्देश काय आहे?",
-          "choices": [
-            "माहिती फक्त संख्यांमार्फत दाखवणे",
-            "वस्तूंच्या चित्रांमार्फत माहिती दर्शवणे",
-            "प्रत्येक माहिती बिंदूची अचूक किंमत दाखवणे",
-            "टेबलच्या प्रकारामार्फत माहिती नोंदवणे"
-          ],
-          "solution": "एक पिक्टोग्राफ वस्तूंच्या चित्रांमार्फत माहिती दर्शवतो, जेणेकरून माहिती जलदपणे समजली जाऊ शकते. इतर विकल्प असे आहेत की ते व्याख्येशी विरोधात आहेत किंवा इतर माहिती दर्शविण्याच्या पद्धतींचे वर्णन करतात.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology. The correct answer remains option (2), and the distractors are still incorrect.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses pictographs with numerical data display",
-        null,
-        "Misunderstands the visual nature of pictographs",
-        "Thinks pictographs show exact values instead of visual representation of data quantities, which is not accurate for pictographs with a scale or key, as they show approximate values based on symbols and keys."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as a pictograph uses pictures to represent data. The other options misrepresent the purpose of pictographs, and the author's reasons for the wrong options align with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.2 Pictographs"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.2 Pictographs",
-            "Drawing a Pictograph"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 6,
-          "pageStart": 10,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.2 Pictographs",
-            "Drawing a Pictograph"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T22:51:44.383Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "If a bar graph has a scale where 1 unit length represents 4 tickets, and the bar for Vidisha is 6 unit lengths, how many tickets were sold for Vidisha?",
-      "choices": [
-        "20",
-        "24",
-        "28",
-        "32"
-      ],
-      "answerIndex": 1,
-      "solution": "If 1 unit length represents 4 tickets, then 6 unit lengths represent 6 * 4 = 24 tickets. The other options are incorrect calculations or misinterpretations of the scale.",
-      "checkExpr": "6*4",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक बार ग्राफ में 1 इकाई लंबाई 4 टिकटों के अनुरूप होती है, और विदिशा के लिए बार 6 इकाई लंबाई का होता है, तो विदिशा के लिए कितने टिकट बेचे गए?",
-          "choices": [
-            "20",
-            "24",
-            "28",
-            "32"
-          ],
-          "solution": "यदि 1 इकाई लंबाई 4 टिकटों के अनुरूप होती है, तो 6 इकाई लंबाई 6 * 4 = 24 टिकटों के अनुरूप होती है। अन्य विकल्प गलत गणना या पैमाने के गलत अर्थात्पन के कारण गलत हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for mathematical concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एका बार ग्राफमध्ये 1 युनिट लांबी 4 टिकिटे दर्शवते, आणि विदिशाच्या बारमध्ये 6 युनिट लांबी असेल, तर विदिशासाठी किती टिकिटे विकली गेली?",
-          "choices": [
-            "20",
-            "24",
-            "28",
-            "32"
-          ],
-          "solution": "जर 1 युनिट लांबी 4 टिकिटे दर्शवते, तर 6 युनिट लांबी 6 * 4 = 24 टिकिटे दर्शवते. इतर विकल्प अपयशी गणना किंवा पैलूच्या चुकीच्या व्याख्येमुळे अयोग्य आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Incorrectly multiplies 5 by 4",
-        null,
-        "Adds 6 and 4 instead of multiplying",
-        "Subtracts 4 from 6"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct calculation is 6 * 4 = 24. The author's reasoning for the wrong options aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 20,
-          "pageStart": 36,
-          "pageEnd": 39,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 21,
-          "pageStart": 39,
-          "pageEnd": 41,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 22,
-          "pageStart": 41,
-          "pageEnd": 42,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T22:51:44.383Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
       "difficulty": 3,
-      "stem": "If a pictograph uses the symbol to represent 5 students, how many symbols are needed to show 25 students?",
+      "stem": "How did Shri Nilesh collect data about the students' sweet preferences?",
       "choices": [
-        "5",
-        "6",
-        "4",
-        "7"
+        "By asking each student to tell him their preference and using tally marks",
+        "By counting the number of students in the class",
+        "By asking the teacher to tell him",
+        "By looking at the list of names of students"
       ],
       "answerIndex": 0,
-      "solution": "If 1 symbol represents 5 students, then 25 students would need 25 ÷ 5 = 5 symbols. The other options are incorrect because they do not match the calculation based on the given scale.",
-      "checkExpr": "25/5",
+      "solution": "The correct method involved directly interacting with students to gather their preferences, which is done by asking each student and using tally marks to record their responses. Counting the number of students does not capture their preferences, asking the teacher does not get the students' own choices, and looking at a list of names provides no information about their preferences.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक पिक्टोग्राफ में प्रतीक का प्रयोग 5 छात्रों के प्रतिनिधित्व करने के लिए किया जाता है, तो 25 छात्रों को दिखाने के लिए कितने प्रतीक की आवश्यकता होगी?",
+          "stem": "श्री नीलेश ने छात्रों के मिठाई पसंद के बारे में डेटा कैसे एकत्र किया?",
           "choices": [
-            "5",
-            "6",
-            "4",
-            "7"
+            "प्रत्येक छात्र से अपनी पसंद बताने के लिए कहकर और टैली मार्क का उपयोग करके",
+            "कक्षा में छात्रों की संख्या गिनकर",
+            "अध्यापक से उन्हें बताने के लिए कहकर",
+            "छात्रों के नामों की सूची देखकर"
           ],
-          "solution": "यदि 1 प्रतीक 5 छात्रों के प्रतिनिधित्व करता है, तो 25 छात्रों के लिए 25 ÷ 5 = 5 प्रतीक की आवश्यकता होगी। अन्य विकल्प गलत हैं क्योंकि वे दिए गए पैमाने के आधार पर गणना से मेल नहीं खाते।",
+          "solution": "सही विधि में छात्रों से सीधे संपर्क करके उनकी पसंद एकत्र करना शामिल था, जो प्रत्येक छात्र से पूछकर और उनके उत्तरों को टैली मार्क के साथ दर्ज करके किया जाता है। कक्षा में छात्रों की संख्या गिनना उनकी पसंद नहीं दर्ज करता है, अध्यापक से पूछना छात्रों के स्वयं के चयन नहीं देता है और नामों की सूची देखना उनकी पसंद के बारे में कोई जानकारी प्रदान नहीं करता है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi terminology for mathematical concepts.",
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriately used in Hindi, and the correct answer remains in the same position.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एक चित्रसंकेत 5 विद्यार्थ्यांना दर्शवित असेल, तर 25 विद्यार्थ्यांचे दर्शन करून देण्यासाठी किती चिन्हांची आवश्यकता असेल?",
+          "stem": "श्री नीलेशने विद्यार्थ्यांच्या मिठाई पसंतीबद्दल डेटा कशा प्रकारे एकत्रित केला?",
           "choices": [
-            "5",
-            "6",
-            "4",
-            "7"
+            "प्रत्येक विद्यार्थीला त्यांची पसंती सांगण्यास विचारून त्यांच्या उत्तरांची नोंद करण्यासाठी ताली मार्क वापरणे",
+            "वर्गातील विद्यार्थ्यांची संख्या गणणे",
+            "शिक्षकाला त्यांची पसंती सांगण्यास विचारून घेणे",
+            "विद्यार्थ्यांच्या नावांचा यादी पाहणे"
           ],
-          "solution": "जर 1 चिन्ह 5 विद्यार्थ्यांना दर्शवित असेल, तर 25 विद्यार्थ्यांसाठी 25 ÷ 5 = 5 चिन्हांची आवश्यकता असेल. इतर विकल्प चूक आहेत कारण ते दिलेल्या पैलूनुसार केलेल्या गणनेशी जुळत नाहीत.",
+          "solution": "योग्य पद्धतीमध्ये विद्यार्थ्यांशी सीधा संपर्क साधून त्यांच्या पसंती एकत्रित करणे आवश्यक होते, जे प्रत्येक विद्यार्थीला विचारून त्यांच्या उत्तरांची नोंद करण्यासाठी ताली मार्क वापरणे असे होते. विद्यार्थ्यांची संख्या गणणे त्यांच्या पसंती नोंदवत नाही, शिक्षकाला विचारून घेणे विद्यार्थ्यांच्या स्वतःच्या निवडी नोंदवत नाही आणि नावांची यादी पाहणे त्यांच्या पसंतीबद्दल कोणतीही माहिती देत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for data collection methods.",
           "flag": null
         }
       },
@@ -476,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Student divides 25 by 5 and adds 1, thinking that the number of symbols must be one more than the quotient.",
-        "Adds an extra symbol by mistake",
-        "Subtracts 1 from the correct answer due to miscalculation"
+        "Student thinks data collection is just about counting people, not gathering specific information",
+        "Believes the teacher already knows the answer without collecting from students",
+        "Assuming that the list of names directly shows preferences without any data collection"
       ],
       "solverAnswers": [
         0,
@@ -488,286 +85,92 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 5, as 25 ÷ 5 = 5. The author's reasoning for the distractors aligns with common misconceptions, such as adding 1, adding an extra symbol, or subtracting 1.",
+      "critique": "The correct answer is 0, as it matches the method described in the passage. The other options are invalid because they do not involve direct data collection from students.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 8,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
           "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.2 Pictographs"
+            "Chapter 4: Data Handling and Presentation"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 10,
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 3,
           "headingPath": [
             "Chapter 4: Data Handling and Presentation",
-            "4.2 Pictographs",
-            "Drawing a Pictograph"
+            "4.1 Collecting and Organising Data"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 6,
-          "pageStart": 10,
-          "pageEnd": 12,
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
           "headingPath": [
             "Chapter 4: Data Handling and Presentation",
-            "4.2 Pictographs",
-            "Drawing a Pictograph"
+            "4.1 Collecting and Organising Data"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp104.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Data Handling and Presentation",
+            "4.1 Collecting and Organising Data"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T22:51:44.383Z",
+      "generatedAt": "2026-10-19T00:08:14.302Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "In the frequency distribution table of wickets taken by Jaspreet Bumrah, if 3 matches had 4 wickets each, how many total wickets were taken in these matches?",
+      "difficulty": 3,
+      "stem": "If a pictograph uses the symbol to represent 10 students, how many symbols would represent 70 students?",
       "choices": [
-        "10",
-        "12",
-        "14",
-        "16"
-      ],
-      "answerIndex": 1,
-      "solution": "If 3 matches had 4 wickets each, the total wickets taken in these matches is 3 * 4 = 12. The other options are incorrect calculations or misinterpretations of the data.",
-      "checkExpr": "3*4",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "जसप्रीत बुमराह द्वारा लिए गए विकेटों के बारंबारता बंटन सारणी में, यदि 3 मैचों में प्रत्येक मैच में 4 विकेट लिए गए, तो इन मैचों में कुल कितने विकेट लिए गए?",
-          "choices": [
-            "10",
-            "12",
-            "14",
-            "16"
-          ],
-          "solution": "यदि 3 मैचों में प्रत्येक मैच में 4 विकेट लिए गए, तो इन मैचों में लिए गए कुल विकेट 3 * 4 = 12 हैं। अन्य विकल्प गलत गणना या डेटा के गलत अर्थात्करण हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जसप्रीत बुमराह द्वारा लिए गए विकेटच्या बारंबारता वितरण टेबलमध्ये, जर 3 सामन्यांमध्ये प्रत्येकी 4 विकेट असतील, तर या सामन्यांमध्ये एकूण किती विकेट घेण्यात आल्या असतील?",
-          "choices": [
-            "10",
-            "12",
-            "14",
-            "16"
-          ],
-          "solution": "जर 3 सामन्यांमध्ये प्रत्येकी 4 विकेट असतील, तर या सामन्यांमध्ये घेण्यात आलेल्या एकूण विकेट 3 * 4 = 12 असतील. इतर विकल्प चुकीच्या गणना किंवा डेटाच्या चुकीच्या अटकळी आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Adds 3 and 4 instead of multiplying",
-        null,
-        "Confuses the number of matches",
-        "Confuses the number of wickets per match"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is straightforward, and the correct answer is 12. The author's solution is correct, and the reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 20,
-          "pageStart": 36,
-          "pageEnd": 39,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 21,
-          "pageStart": 39,
-          "pageEnd": 41,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 22,
-          "pageStart": 41,
-          "pageEnd": 42,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T22:51:44.383Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a pictograph uses the symbol to represent 10 students, and there are 2 full symbols and a half symbol for a category, how many students are represented?",
-      "choices": [
-        "20",
-        "25",
-        "30",
-        "15"
-      ],
-      "answerIndex": 1,
-      "solution": "If 1 full symbol represents 10 students, then 2 full symbols represent 20 students, and a half symbol represents 5 students, so the total is 25 students. The other options are incorrect because they do not match the calculation based on the scale provided.",
-      "checkExpr": "2*10 + 5",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक पिक्टोग्राफ में प्रतीक का उपयोग 10 छात्रों के प्रतिनिधित्व के लिए किया जाता है, और किसी श्रेणी के लिए 2 पूर्ण प्रतीक और एक आधा प्रतीक हैं, तो कितने छात्र प्रतिनिधित्व करते हैं?",
-          "choices": [
-            "20",
-            "25",
-            "30",
-            "15"
-          ],
-          "solution": "यदि 1 पूर्ण प्रतीक 10 छात्रों के प्रतिनिधित्व करता है, तो 2 पूर्ण प्रतीक 20 छात्रों के प्रतिनिधित्व करते हैं, और एक आधा प्रतीक 5 छात्रों के प्रतिनिधित्व करता है, तो कुल 25 छात्र होते हैं। अन्य विकल्प गलत हैं क्योंकि वे प्रदत्त पैमाने के आधार पर गणना नहीं मेल खाते।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for a textbook context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एक चित्रालेख 10 विद्यार्थ्यांना दर्शविणारा प्रतीक वापरत असेल आणि एका श्रेणीसाठी 2 पूर्ण प्रतीक आणि अर्धा प्रतीक असेल, तर किती विद्यार्थी दर्शविले जातात?",
-          "choices": [
-            "20",
-            "25",
-            "30",
-            "15"
-          ],
-          "solution": "जर 1 पूर्ण प्रतीक 10 विद्यार्थ्यांना दर्शवित असेल, तर 2 पूर्ण प्रतीक 20 विद्यार्थ्यांना दर्शवितात आणि अर्धा प्रतीक 5 विद्यार्थ्यांना दर्शवितो, म्हणून एकूण 25 विद्यार्थी असतात. इतर विकल्प अयोग्य आहेत कारण ते प्रदत्त मापदंडावर आधारित गणनेशी जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Calculates only the full symbols",
-        null,
-        "Student incorrectly adds 10 for each full symbol and 10 for the half symbol, instead of 5.",
-        "Misinterprets the half symbol as 10 instead of 5"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and matches the reasoning. The correct answer is 25, and the author's explanation of the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.2 Pictographs"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.2 Pictographs",
-            "Drawing a Pictograph"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 6,
-          "pageStart": 10,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.2 Pictographs",
-            "Drawing a Pictograph"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T22:51:44.383Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why is a bar graph with vertical bars more appropriate for representing the heights of mountains?",
-      "choices": [
-        "Because it is easier to draw",
-        "Because it is easier to compare the heights of the bars",
-        "Because it is more intuitive and suggestive to represent heights upwards from the ground",
-        "Because it saves space on the graph"
+        "5",
+        "6",
+        "7",
+        "8"
       ],
       "answerIndex": 2,
-      "solution": "The correct option is because it is more intuitive and suggestive to represent heights upwards from the ground, as vertical bars naturally align with the concept of height increasing in an upward direction. Other options, like ease of drawing or saving space, are not related to the fundamental purpose of accurately representing height. Comparing heights is a result of the visual alignment, not the primary reason for using vertical bars.",
-      "checkExpr": null,
+      "solution": "If one symbol represents 10 students, then 70 students would be represented by 7 symbols (70 ÷ 10 = 7). The other options are incorrect because they do not match the calculation.",
+      "checkExpr": "70/10",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक बार ग्राफ जिसमें ऊर्ध्वाधर बार होते हैं, पहाड़ों की ऊंचाइयों के प्रतिनिधित्व के लिए क्यों अधिक उपयुक्त है?",
+          "stem": "यदि एक पिक्टोग्राफ में प्रतीक का उपयोग 10 छात्रों को दर्शाने के लिए किया जाता है, तो 70 छात्रों को कितने प्रतीक द्वारा दर्शाया जाएगा?",
           "choices": [
-            "क्योंकि यह बनाने में आसान है",
-            "क्योंकि बार की ऊंचाइयों की तुलना करना आसान है",
-            "क्योंकि ऊंचाई के प्रतिनिधित्व के लिए ऊपर की ओर जाना अधिक स्वाभाविक और संकेतात्मक है",
-            "क्योंकि ग्राफ पर स्थान बचाता है"
+            "5",
+            "6",
+            "7",
+            "8"
           ],
-          "solution": "सही विकल्प यह है कि ऊंचाई के प्रतिनिधित्व के लिए ऊपर की ओर जाना अधिक स्वाभाविक और संकेतात्मक है, क्योंकि ऊर्ध्वाधर बार ऊंचाई के बढ़ने के अवधारणा के साथ प्राकृतिक रूप से संरेखित होते हैं। अन्य विकल्प, जैसे बनाने में आसानी या स्थान बचाना, ऊंचाई के सही प्रतिनिधित्व के मूल उद्देश्य से संबंधित नहीं हैं। ऊंचाई की तुलना दृश्य संरेखण का परिणाम है, न कि ऊर्ध्वाधर बार के उपयोग का मुख्य कारण।",
+          "solution": "यदि एक प्रतीक 10 छात्रों को दर्शाता है, तो 70 छात्रों को 7 प्रतीकों द्वारा दर्शाया जाएगा (70 ÷ 10 = 7)। अन्य विकल्प गलत हैं क्योंकि वे गणना के साथ मेल नहीं खाते।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for statistical concepts.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "उंची असलेल्या पहाडांचे निरूपण करण्यासाठी उभे बार ग्राफ का अधिक उपयुक्त आहे?",
+          "stem": "जर एक चित्रालेख 10 विद्यार्थ्यांना दर्शविणारा प्रतीक वापरत असेल, तर 70 विद्यार्थ्यांना किती प्रतीक दर्शवितील?",
           "choices": [
-            "कारण ते चित्रण करणे सोपे आहे",
-            "कारण बार उंचींची तुलना करणे सोपे आहे",
-            "कारण उंची जमिनीपासून वर वाढत असल्याचे अधिक तार्किक आणि सूचक असते",
-            "कारण ग्राफवर जागा बचत होते"
+            "5",
+            "6",
+            "7",
+            "8"
           ],
-          "solution": "सही विकल्प हा आहे की उंची जमिनीपासून वर वाढत असल्याचे अधिक तार्किक आणि सूचक असते, कारण उभे बार उंची वाढत असल्याच्या अवधारणेशी स्वाभाविकपणे जुळतात. चित्रण करण्याच्या सोपेपणाच्या किंवा जागेच्या बचतीच्या इतर विकल्पांना उंची योग्यपणे निरूपित करण्याच्या मूलभूत उद्देशाशी संबंध नाही. उंचींची तुलना दृश्य अभिमुखतेचा परिणाम आहे, परंतु उभे बार वापरण्याचा प्राथमिक कारण नाही.",
+          "solution": "जर एक प्रतीक 10 विद्यार्थ्यांना दर्शवित असेल, तर 70 विद्यार्थ्यांना 7 प्रतीक दर्शवितील (70 ÷ 10 = 7). इतर विकल्प चुकीचे आहेत कारण ते गणनेशी जुळत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology. The structure and logic of the question and solution are preserved.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for mathematical concepts.",
           "flag": null
         }
       },
@@ -776,10 +179,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses a detail with the main reason",
-        "Students may think that vertical bars are easier to compare because they are aligned vertically, not realizing that horizontal bars can also be compared effectively",
+        "Student divides 70 by 10 but subtracts 1 by mistake",
+        "Confuses 70 divided by 10 with 70 minus 10",
         null,
-        "Mistakes a detail for the main reason"
+        "Believes 70 divided by 10 is 7, but adds 1 by mistake"
       ],
       "solverAnswers": [
         2,
@@ -788,52 +191,339 @@
         2,
         2
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as it reflects the intuitive and visual alignment of height with upward direction. The author's reasoning is sound, and the distractors are based on plausible misconceptions.",
+      "levelFlag": null,
+      "critique": "The correct answer is 7, which corresponds to option 2. The solution is sound and matches the correct calculation. The author's reasoning for the distractors reflects plausible student misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 13,
-          "pageStart": 25,
-          "pageEnd": 27,
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 8,
           "headingPath": [
             "Chapter 4: Data Handling and Presentation",
-            "4.4 Drawing a Bar Graph"
+            "4.2 Pictographs"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 14,
-          "pageStart": 27,
-          "pageEnd": 27,
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
           "headingPath": [
             "Chapter 4: Data Handling and Presentation",
-            "4.4 Drawing a Bar Graph"
+            "4.2 Pictographs",
+            "Drawing a Pictograph"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 15,
-          "pageStart": 28,
-          "pageEnd": 29,
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 12,
           "headingPath": [
             "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 16,
-          "pageStart": 29,
-          "pageEnd": 30,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations"
+            "4.2 Pictographs",
+            "Drawing a Pictograph"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T22:51:44.383Z",
+      "generatedAt": "2026-10-19T00:08:14.302Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a teacher wants to know the most popular subject in the class, what is the first step they should take?",
+      "choices": [
+        "Ask each student to write down their favourite subject",
+        "Count the number of students who like each subject",
+        "Ask the students to vote in a secret ballot",
+        "Look at the list of subjects in the textbook"
+      ],
+      "answerIndex": 0,
+      "solution": "To determine the most popular subject, the teacher must collect data directly from the students by asking them to state their favourite subject. This is the correct and necessary first step. The other options do not involve collecting direct data from the students, which is essential to find the most popular subject.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक शिक्षक कक्षा में सबसे लोकप्रिय विषय जानना चाहता है, तो वह पहला कदम क्या उठाना चाहिए?",
+          "choices": [
+            "प्रत्येक छात्र को अपना पसंदीदा विषय लिखने के लिए कहें",
+            "प्रत्येक विषय के पसंद करने वाले छात्रों की संख्या गिनें",
+            "छात्रों को एक गोपनीय मतदान में वोट करने के लिए कहें",
+            "पाठ्यपुस्तक में विषयों की सूची देखें"
+          ],
+          "solution": "सबसे लोकप्रिय विषय निर्धारित करने के लिए, शिक्षक को छात्रों से सीधे डेटा एकत्र करना आवश्यक है जिसमें उन्हें अपना पसंदीदा विषय बताना होता है। यह सही और आवश्यक पहला कदम है। अन्य विकल्प छात्रों से सीधे डेटा एकत्र करने में शामिल नहीं हैं, जो सबसे लोकप्रिय विषय ज्ञात करने के लिए आवश्यक है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. The correct answer remains option (1) and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका शिक्षकाला वर्गातील सर्वात लोकप्रिय विषय जाणून घेण्याची इच्छा असल्यास, त्यांनी कोणता पहिला टप्पा घ्यावा?",
+          "choices": [
+            "प्रत्येक विद्यार्थ्याला त्यांचा आवडता विषय लिहून द्यावा",
+            "प्रत्येक विषयाला आवडणाऱ्या विद्यार्थ्यांची संख्या गणून बघावी",
+            "विद्यार्थ्यांना गुप्त मतदानासाठी विचारावे",
+            "पाठ्यपुस्तकातील विषयांची यादी पाहावी"
+          ],
+          "solution": "सर्वात लोकप्रिय विषय ठरवण्यासाठी, शिक्षकाने विद्यार्थ्यांकडून सीधा डेटा एकत्रित करावा लागेल, ज्यासाठी त्यांनी विद्यार्थ्यांना आवडता विषय निवडण्यास सांगावे लागेल. हा योग्य आणि आवश्यक पहिला टप्पा आहे. इतर पर्याय विद्यार्थ्यांकडून सीधा डेटा एकत्रित करत नाहीत, जे सर्वात लोकप्रिय विषय शोधण्यासाठी आवश्यक आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology. The correct answer remains option (1) and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "A student might think that counting the number of students who like each subject is the first step, not realizing that gathering the data comes before counting.",
+        "A student might think that anonymity is necessary before collecting data",
+        "A student might think that the most popular subject is already determined by the curriculum or textbook, not by asking students."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as collecting data directly from students is the first step in determining the most popular subject. The reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp104.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 4: Data Handling and Presentation"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp104.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 4: Data Handling and Presentation",
+            "4.1 Collecting and Organising Data"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp104.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 4: Data Handling and Presentation",
+            "4.1 Collecting and Organising Data"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp104.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Data Handling and Presentation",
+            "4.1 Collecting and Organising Data"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T00:08:14.302Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a bar graph is used to represent the number of tigers in India between 2006 and 2022 in 4-year intervals, which of the following is the most appropriate type of bar graph to use?",
+      "choices": [
+        "Vertical bar graph",
+        "Horizontal bar graph",
+        "Pie chart",
+        "Line graph"
+      ],
+      "answerIndex": 0,
+      "solution": "A vertical bar graph is the most appropriate because it allows for easy comparison of the number of tigers in different years by the height of the bars. Horizontal bar graphs are better for comparing categories with long labels, pie charts show proportions, and line graphs are used to show trends over time, not direct comparisons between discrete data points.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 2006 और 2022 के बीच भारत में बाघों की संख्या को 4-वर्ष के अंतराल में दर्शाने के लिए एक बार ग्राफ का उपयोग किया जाता है, तो निम्नलिखित में से कौन सा बार ग्राफ का सबसे उपयुक्त प्रकार है?",
+          "choices": [
+            "ऊर्ध्वाधर बार ग्राफ",
+            "क्षैतिज बार ग्राफ",
+            "पाई चार्ट",
+            "रेखा ग्राफ"
+          ],
+          "solution": "ऊर्ध्वाधर बार ग्राफ सबसे उपयुक्त है क्योंकि यह वर्षों में बाघों की संख्या की तुलना करने के लिए बार की ऊंचाई द्वारा सुविधाजनक बनाता है। क्षैतिज बार ग्राफ लंबे लेबल वाले वर्गों की तुलना के लिए अच्छा होता है, पाई चार्ट अनुपात दिखाता है, और रेखा ग्राफ समय के साथ तर्क को दिखाने के लिए उपयोग किया जाता है, न कि अलग-अलग डेटा बिंदुओं की सीधी तुलना के लिए।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "2006 आणि 2022 दरम्यान भारतातील बाघांच्या संख्येचे चार वर्षांच्या अंतरावर असलेल्या बार ग्राफमध्ये दर्शविण्यासाठी, खालीलपैकी कोणता बार ग्राफ सर्वात उपयुक्त प्रकार आहे?",
+          "choices": [
+            "उभा बार ग्राफ",
+            "क्षैतिज बार ग्राफ",
+            "पाई चार्ट",
+            "रेषा ग्राफ"
+          ],
+          "solution": "उभा बार ग्राफ सर्वात उपयुक्त आहे कारण तो वर्षांच्या विविध वर्षांमध्ये बाघांच्या संख्येची तुलना बारच्या उंचीद्वारे सोप्या पद्धतीने करतो. क्षैतिज बार ग्राफ लांब लेबल असलेल्या वर्गांची तुलना करण्यासाठी उपयुक्त आहेत, पाई चार्ट अंश दर्शवतात आणि रेषा ग्राफ विचलनांच्या वर्तनाचे दर्शन करतात, निर्दिष्ट डेटा बिंदूंमध्ये सीधा तुलना करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for graphical representations.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student thinks time should be on the y-axis, so horizontal bars are needed for time-based data",
+        "Chooses a type of graph that is not suitable for comparing data across different years",
+        "Chooses a type of graph that is not suitable for comparing data across different years"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-posed, and the correct answer is 0 (vertical bar graph). The reasoning is sound, and the author's explanations for the distractors are valid misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp104.pdf",
+          "ordinal": 23,
+          "pageStart": 42,
+          "pageEnd": 43,
+          "headingPath": [
+            "Chapter 4: Data Handling and Presentation",
+            "4.5 Artistic and Aesthetic Considerations",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp104.pdf",
+          "ordinal": 24,
+          "pageStart": 43,
+          "pageEnd": 44,
+          "headingPath": [
+            "Chapter 4: Data Handling and Presentation",
+            "4.5 Artistic and Aesthetic Considerations",
+            "S u m m a r y"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T00:08:14.302Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the scale is 1 unit length = 10 crores, what does a bar of length 8 units represent?",
+      "choices": [
+        "8 crores",
+        "80 crores",
+        "800 crores",
+        "8000 crores"
+      ],
+      "answerIndex": 1,
+      "solution": "Since 1 unit length equals 10 crores, multiplying 8 units by 10 crores gives 80 crores. The option 8 crores is too small, 800 crores is ten times too large, and 8000 crores is a hundred times too large.",
+      "checkExpr": "8*10",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि पैमाना 1 इकाई लंबाई = 10 करोड़ है, तो 8 इकाई की लंबाई वाला एक बार किसे दर्शाता है?",
+          "choices": [
+            "8 करोड़",
+            "80 करोड़",
+            "800 करोड़",
+            "8000 करोड़"
+          ],
+          "solution": "चूंकि 1 इकाई लंबाई 10 करोड़ के बराबर है, इसलिए 8 इकाई को 10 करोड़ से गुणा करने पर 80 करोड़ प्राप्त होता है। 8 करोड़ बहुत छोटा है, 800 करोड़ दस गुना बड़ा है और 8000 करोड़ सौ गुना बड़ा है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi numerical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर अंकनाचा विस्तार 1 एकक लांबी = 10 कोटी असेल, तर 8 एकक लांबीचा बार काय प्रतिनिधित्व करतो?",
+          "choices": [
+            "8 कोटी",
+            "80 कोटी",
+            "800 कोटी",
+            "8000 कोटी"
+          ],
+          "solution": "कारण 1 एकक लांबी 10 कोटी बरोबर असते, 8 एकक लांबीला 10 कोटी ने गुणल्यास 80 कोटी मिळतात. 8 कोटी खूप लहान आहे, 800 कोटी हा दहा पट जास्त आहे आणि 8000 कोटी हा शेकडा पट जास्त आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi numerical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "uses the wrong scale",
+        null,
+        "multiplies by 100",
+        "multiplies by 1000"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 80 crores. The solution is sound and matches the reasoning provided by the author.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp104.pdf",
+          "ordinal": 7,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 4: Data Handling and Presentation",
+            "4.3 Bar Graphs"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp104.pdf",
+          "ordinal": 8,
+          "pageStart": 14,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 4: Data Handling and Presentation",
+            "4.3 Bar Graphs"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp104.pdf",
+          "ordinal": 9,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 4: Data Handling and Presentation",
+            "4.4 Drawing a Bar Graph"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T00:08:14.302Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

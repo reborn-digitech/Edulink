@@ -1,0 +1,1368 @@
+{
+  "subject": "MATHS",
+  "classLevel": 7,
+  "chapter": "Chapter 6 — Number Play",
+  "name": "Number Play",
+  "slug": "maths-7-number-play",
+  "summary": "This chapter explores number patterns, parity, grids, Fibonacci sequence, and number representations.",
+  "position": 6,
+  "source": "generated against NCERT Mathematics, Class 7, chapter 6 (Reprint 2026-27)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 6 — संख्या के खेल",
+      "summary": "इस अध्याय में संख्या पैटर्न, सम-असमता, ग्रिड्स, फिबोनाकी अनुक्रम और संख्या प्रस्तुतियों का अध्ययन किया गया है।"
+    },
+    "mr": {
+      "name": "अध्याय 6 - संख्यांचे खेळ",
+      "summary": "हा अध्याय संख्या पॅटर्न, सम-असमता, ग्रिड्स, फिबोनाकी अनुक्रम आणि संख्या प्रतिनिधित्वांचा अभ्यास करतो."
+    }
+  },
+  "board": "NCERT",
+  "book": "Ganita Prakash",
+  "edition": "Reprint 2026-27",
+  "generatedAt": "2026-10-19T03:59:05.274Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the parity of the number 135 × 654?",
+      "choices": [
+        "even",
+        "odd",
+        "both",
+        "none"
+      ],
+      "answerIndex": 0,
+      "solution": "The product of two numbers is even if at least one of them is even. 654 is an even number, so the product 135 × 654 is even. A student who thinks both numbers must be even to get an even product might choose 'odd'. A student who misunderstands the concept might choose 'both' or 'none'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "संख्या 135 × 654 की समगुणिता क्या है?",
+          "choices": [
+            "सम",
+            "विषम",
+            "दोनों",
+            "कोई नहीं"
+          ],
+          "solution": "दो संख्याओं का गुणनफल सम होता है यदि कम से कम एक संख्या सम हो। 654 एक सम संख्या है, इसलिए गुणनफल 135 × 654 सम है। एक छात्र जो दोनों संख्याओं के सम होने पर ही गुणनफल सम होता है, ऐसा सोचता है तो 'विषम' चुन सकता है। एक छात्र जो अवधारणा को गलत समझता है वह 'दोनों' या 'कोई नहीं' चुन सकता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology for mathematical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "संख्या 135 × 654 ची समानता काय आहे?",
+          "choices": [
+            "सम",
+            "विषम",
+            "दोन्ही",
+            "कोणतेही नाही"
+          ],
+          "solution": "दोन संख्यांचा गुणाकार सम असतो जर त्यापैकी कमीत कमी एक सम असेल. 654 ही सम संख्या आहे, म्हणून 135 × 654 चा गुणाकार सम असेल. जो विद्यार्थी दोन्ही संख्या सम असल्यास गुणाकार सम असतो असे समजेल तो 'विषम' निवडू शकतो. अवगत असलेला विद्यार्थी 'दोन्ही' किंवा 'कोणतेही नाही' निवडू शकतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "thinks both numbers must be even to get an even product",
+        "confuses the definition of parity",
+        "does not understand the concept of even and odd numbers"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that 654 is even, so the product must be even. The reasoning aligns with the mathematical principle that any product involving an even number is even.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.2 Picking Parity"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.3 Some Explorations in Grids"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.3 Some Explorations in Grids"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T03:59:05.274Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the next number in the Virahāṅka sequence after 55?",
+      "choices": [
+        "34",
+        "55",
+        "89",
+        "144"
+      ],
+      "answerIndex": 2,
+      "solution": "The Virahāṅka sequence follows the rule of adding the two previous numbers to get the next. So, after 55, the next number is 34 + 55 = 89. The other options are either previous numbers or incorrect additions.",
+      "checkExpr": "34+55",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "विरहांक अनुक्रम में 55 के बाद अगली संख्या क्या है?",
+          "choices": [
+            "34",
+            "55",
+            "89",
+            "144"
+          ],
+          "solution": "विरहांक अनुक्रम में पिछली दो संख्याओं को जोड़कर अगली संख्या प्राप्त की जाती है। अतः 55 के बाद अगली संख्या 34 + 55 = 89 है। अन्य विकल्प पहले की संख्याएँ हैं या गलत जोड़ हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately preserves the meaning, structure, and technical terms of the original English question. The solution and options are correctly translated and maintain their logical relationships.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "विरहांक अनुक्रमात 55 नंतर अनुक्रमातील अगला संख्या कोणती असेल?",
+          "choices": [
+            "34",
+            "55",
+            "89",
+            "144"
+          ],
+          "solution": "विरहांक अनुक्रमाचा नियम आहे की दोन आधीच्या संख्यांची बेरीज घेऊन अगली संख्या मिळते. म्हणून, 55 नंतर अगली संख्या 34 + 55 = 89 असते. इतर विकल्प आधीच्या संख्यांपैकी असतात किंवा चूकीच्या बेरजेने मिळतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for the mathematical concept.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the previous number with the next",
+        "repeats the last number in the sequence",
+        null,
+        "incorrectly adds 55 + 55 instead of 34 + 55"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the next number in the Virahāṅka sequence (also known as the Fibonacci sequence) as 89, by adding 34 and 55. The reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
+            "Fibonacci Numbers!"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
+            "Fibonacci Numbers!"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 11,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
+            "Fibonacci Numbers!"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 12,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.5 Digits in Disguise"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T03:59:05.274Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the next number in the sequence: 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ____?",
+      "choices": [
+        "144",
+        "123",
+        "377",
+        "550"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is '144' because the sequence follows the rule of adding the two previous numbers, and 55 + 89 = 144. '233' is the next number after 144, '377' is the one after that, and '550' is not part of the sequence.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अनुक्रम: 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ____ में अगली संख्या क्या है?",
+          "choices": [
+            "144",
+            "123",
+            "377",
+            "550"
+          ],
+          "solution": "सही उत्तर '144' है क्योंकि अनुक्रम में दो पिछली संख्याओं को जोड़ा जाता है, और 55 + 89 = 144। '233' अगली संख्या है, '377' उसके बाद की है, और '550' अनुक्रम का हिस्सा नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अनुक्रमातील अगला संख्या काय आहे: 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ____?",
+          "choices": [
+            "144",
+            "123",
+            "377",
+            "550"
+          ],
+          "solution": "बरोबर उत्तर '144' आहे कारण अनुक्रमाचा नियम दोन आधीच्या संख्यांच्या बेरजेवर आधारित आहे, आणि 55 + 89 = 144. '233' हे 144 नंतरचे अगले संख्या आहे, '377' हे त्यानंतरचे अगले संख्या आहे, आणि '550' हा अनुक्रमाचा भाग नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The solution and options are correctly aligned with the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "A student might incorrectly add the last two numbers (55 + 89 = 144) but mistakenly write 123 instead of 144 due to a simple arithmetic error.",
+        "Confuses the Fibonacci sequence with a different recursive pattern, such as multiplying previous terms",
+        "Incorrectly assumes the pattern is not a Fibonacci sequence"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The sequence is the Fibonacci sequence, where each number is the sum of the two preceding ones. The correct next number is 144 (55 + 89). The author's reasoning is sound and the distractors reflect plausible student errors.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 16,
+          "pageStart": 24,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 17,
+          "pageStart": 27,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 18,
+          "pageStart": 30,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 19,
+          "pageStart": 32,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T03:59:05.274Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the formula to find the nth odd number?",
+      "choices": [
+        "2n + 1",
+        "2n - 1",
+        "n + 1",
+        "n - 1"
+      ],
+      "answerIndex": 1,
+      "solution": "The formula for the nth odd number is 2n - 1. This is derived from the fact that the nth even number is 2n, and the nth odd number is one less than the nth even number. A student who confuses the formula for even and odd numbers might choose '2n + 1'. A student who forgets the subtraction might choose 'n + 1'. A student who misremembers the formula might choose 'n - 1'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "nवाँ विषम संख्या ज्ञात करने का सूत्र क्या है?",
+          "choices": [
+            "2n + 1",
+            "2n - 1",
+            "n + 1",
+            "n - 1"
+          ],
+          "solution": "nवाँ विषम संख्या का सूत्र 2n - 1 होता है। इसका अर्थ है कि nवाँ सम संख्या 2n होता है, और nवाँ विषम संख्या nवाँ सम संख्या से एक कम होता है। एक छात्र जो सम और विषम संख्या के सूत्र को गलत कर देता है, '2n + 1' चुन सकता है। एक छात्र जो घटाव भूल जाता है, 'n + 1' चुन सकता है। एक छात्र जो सूत्र को गलत याद कर लेता है, 'n - 1' चुन सकता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "nवा विषम संख्या शोधण्याचे सूत्र काय आहे?",
+          "choices": [
+            "2n + 1",
+            "2n - 1",
+            "n + 1",
+            "n - 1"
+          ],
+          "solution": "nव्या विषम संख्येचे सूत्र 2n - 1 आहे. हे त्यामुळे विचारले जाते कारण n व्या सम संख्या 2n आहे आणि n व्या विषम संख्या ही n व्या सम संख्येपेक्षा एक कमी असते. सम आणि विषम संख्यांचे सूत्र चुकून घेणारा विद्यार्थी '2n + 1' निवडू शकतो. सूत्रातील वजाबाकी विसरलेला विद्यार्थी 'n + 1' निवडू शकतो. सूत्राचे चुकीचे आठवण असलेला विद्यार्थी 'n - 1' निवडू शकतो.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the formula for even and odd numbers",
+        null,
+        "forgets the subtraction in the formula",
+        "misremembers the formula for odd numbers"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct formula for the nth odd number is 2n - 1. The author's reasoning is sound and aligns with the correct solution.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.2 Picking Parity"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.3 Some Explorations in Grids"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.3 Some Explorations in Grids"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T03:59:05.274Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following expressions always has even parity?",
+      "choices": [
+        "3n + 1",
+        "4n + 2",
+        "5n + 3",
+        "7n + 4"
+      ],
+      "answerIndex": 1,
+      "solution": "The expression 4n + 2 always has even parity because 4n is always even, and adding 2 keeps the result even. A student who misidentifies the pattern might choose '3n + 1'. A student who misjudges the effect of coefficients might choose '5n + 3'. A student who confuses the pattern might choose '7n + 4'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा व्यंजक हमेशा सम समानता रखता है?",
+          "choices": [
+            "3n + 1",
+            "4n + 2",
+            "5n + 3",
+            "7n + 4"
+          ],
+          "solution": "व्यंजक 4n + 2 हमेशा सम समानता रखता है क्योंकि 4n हमेशा सम होता है, और 2 जोड़ने से परिणाम सम रहता है। एक छात्र जो पैटर्न की पहचान गलत कर दे, '3n + 1' चुन सकता है। एक छात्र जो गुणांक के प्रभाव की गलत अंदाजा लगा दे, '5n + 3' चुन सकता है। एक छात्र जो पैटर्न को गलत समझ ले, '7n + 4' चुन सकता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता व्यंजक नेहमी सम विषमता असतो?",
+          "choices": [
+            "3n + 1",
+            "4n + 2",
+            "5n + 3",
+            "7n + 4"
+          ],
+          "solution": "4n + 2 व्यंजक नेहमी सम विषमता असतो कारण 4n नेहमी सम असतो आणि 2 जोडल्याने निकाल सम राहतो. एक विद्यार्थी जो वर्तनाचा अंदाज चुकवतो तो '3n + 1' निवडू शकतो. एक विद्यार्थी जो गुणकांच्या प्रभावाचा चुकीचा अंदाज घेतो तो '5n + 3' निवडू शकतो. एक विद्यार्थी जो वर्तनाचा अंदाज चुकवतो तो '7n + 4' निवडू शकतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "misidentifies the pattern of even numbers",
+        null,
+        "misjudges the effect of coefficients on parity",
+        "confuses the pattern of even and odd numbers"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. 4n is always even, and adding 2 (an even number) keeps the result even. The other options can be odd or even depending on n.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.2 Picking Parity"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.3 Some Explorations in Grids"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.3 Some Explorations in Grids"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T03:59:05.274Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If each number in a 3 × 3 magic square is increased by 1, what happens to the magic sum?",
+      "choices": [
+        "It remains the same",
+        "It increases by 3",
+        "It increases by 6",
+        "It doubles"
+      ],
+      "answerIndex": 1,
+      "solution": "If each number in a 3 × 3 magic square is increased by 1, the magic sum increases by 3 because each row, column, and diagonal contains 3 numbers, and adding 1 to each increases the total by 3. The other options are incorrect because increasing each number by 1 does not result in a total increase of 6 or a doubling of the sum, and the sum cannot remain the same if all numbers are increased.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 3 × 3 जादूई वर्ग में प्रत्येक संख्या में 1 बढ़ा दिया जाए, तो जादूई योग क्या होता है?",
+          "choices": [
+            "यह समान रहता है",
+            "यह 3 से बढ़ जाता है",
+            "यह 6 से बढ़ जाता है",
+            "यह दोगुना हो जाता है"
+          ],
+          "solution": "यदि 3 × 3 जादूई वर्ग में प्रत्येक संख्या में 1 बढ़ा दिया जाए, तो जादूई योग 3 से बढ़ जाता है क्योंकि प्रत्येक पंक्ति, स्तंभ और विकर्ण में 3 संख्याएं होती हैं, और प्रत्येक में 1 जोड़ने से कुल योग 3 बढ़ जाता है। अन्य विकल्प गलत हैं क्योंकि प्रत्येक संख्या में 1 बढ़ाने से योग में 6 से बढ़ना या योग का दोगुना होना संभव नहीं है, और यदि सभी संख्याएं बढ़ जाएं तो योग समान नहीं रह सकता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for a math textbook.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "3 × 3 चौकटीतील प्रत्येक संख्या 1 ने वाढवली गेली असता, जादूचा बेरीज काय होतो?",
+          "choices": [
+            "तो त्याच राहतो",
+            "तो 3 ने वाढतो",
+            "तो 6 ने वाढतो",
+            "तो दुप्पट होतो"
+          ],
+          "solution": "जर 3 × 3 जादूच्या चौकटीतील प्रत्येक संख्या 1 ने वाढली गेली असेल, तर जादूची बेरीज 3 ने वाढते कारण प्रत्येक ओळ, स्तंभ आणि विकर्णात 3 संख्या असतात आणि प्रत्येकाला 1 जोडल्याने एकूण बेरीज 3 ने वाढते. इतर विकल्प अयोग्य आहेत कारण प्रत्येक संख्या 1 ने वाढवल्याने बेरीज 6 ने वाढत नाही किंवा बेरीज दुप्पट होत नाही, आणि सर्व संख्या वाढल्याने बेरीज त्याच राहू शकत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for 'magic square' and 'magic sum'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Fails to account for the number of elements in a row, column, or diagonal",
+        null,
+        "Student thinks adding 1 to each of 3 numbers adds 3, but doubles it to 6",
+        "Fails to account for the number of elements in a row, column, or diagonal"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Increasing each number in a 3×3 magic square by 1 adds 1 to each of the 3 numbers in a row, column, or diagonal, resulting in an increase of 3 in the magic sum. The reasoning aligns with the mathematical logic.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.3 Some Explorations in Grids"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.3 Some Explorations in Grids"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
+            "Fibonacci Numbers!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T03:59:05.274Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a 3 × 3 magic square, what is the sum of each row, column, and diagonal?",
+      "choices": [
+        "15",
+        "20",
+        "25",
+        "30"
+      ],
+      "answerIndex": 0,
+      "solution": "In a 3 × 3 magic square using numbers 1 to 9, the sum of each row, column, and diagonal is 15. This is because the total of all numbers is 45, and there are 3 rows, so each row must add up to 15. A student who miscalculates the total might choose '20'. A student who miscounts the number of rows might choose '25'. A student who makes an arithmetic error might choose '30'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "3 × 3 जादूई वर्ग में प्रत्येक पंक्ति, स्तंभ और विकर्ण का योग क्या है?",
+          "choices": [
+            "15",
+            "20",
+            "25",
+            "30"
+          ],
+          "solution": "1 से 9 तक के संख्याओं का उपयोग करके 3 × 3 जादूई वर्ग में प्रत्येक पंक्ति, स्तंभ और विकर्ण का योग 15 होता है। इसके कारण सभी संख्याओं का कुल योग 45 होता है, और 3 पंक्तियां होती हैं, इसलिए प्रत्येक पंक्ति का योग 15 होना चाहिए। एक छात्र जो कुल योग की गणना गलत करता है, '20' चुन सकता है। एक छात्र जो पंक्तियों की संख्या गलत गिनता है, '25' चुन सकता है। एक छात्र जो अंकगणितीय त्रुटि करता है, '30' चुन सकता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer remaining in the same position. The distractors remain incorrect and distinct.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "3 × 3 चौकटीत जादूची चौकट असल्यास, प्रत्येक ओळ, स्तंभ आणि विकर्णाची बेरीज किती असते?",
+          "choices": [
+            "15",
+            "20",
+            "25",
+            "30"
+          ],
+          "solution": "1 ते 9 पर्यंत अंकांचा वापर करून 3 × 3 जादूची चौकट असल्यास, प्रत्येक ओळ, स्तंभ आणि विकर्णाची बेरीज 15 असते. हे कारण असे आहे की सर्व अंकांची एकूण बेरीज 45 असते आणि तीन ओळी असल्यामुळे प्रत्येक ओळची बेरीज 15 असते. एखादा विद्यार्थी एकूण बेरीज चुकून काढल्यास '20' निवडू शकतो. एखादा विद्यार्थी ओळींची संख्या चुकून गणल्यास '25' निवडू शकतो. एखादा विद्यार्थी अंकगणिती चूक केल्यास '30' निवडू शकतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "miscalculates the total sum of numbers 1 to 9",
+        "miscounts the number of rows in the magic square",
+        "makes an arithmetic error in the calculation"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The sum of numbers 1 to 9 is 45, and since a 3x3 magic square has 3 rows, each row must sum to 15. The reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.2 Picking Parity"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.3 Some Explorations in Grids"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.3 Some Explorations in Grids"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T03:59:05.274Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Using the generalised form of a magic square, what is the magic sum if the center number is 25?",
+      "choices": [
+        "75",
+        "50",
+        "25",
+        "100"
+      ],
+      "answerIndex": 0,
+      "solution": "In a 3 × 3 magic square, the magic sum is always three times the center number. If the center number is 25, multiplying it by 3 gives 75. The other options do not follow this mathematical relationship. 50 is too low, 25 is the center number itself, and 100 is too high.",
+      "checkExpr": "3*25",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जामितिक रूप से एक मैजिक स्क्वायर के सामान्य रूप का उपयोग करके, केंद्र संख्या 25 होने पर मैजिक योग क्या है?",
+          "choices": [
+            "75",
+            "50",
+            "25",
+            "100"
+          ],
+          "solution": "3 × 3 मैजिक स्क्वायर में, मैजिक योग हमेशा केंद्र संख्या के तीन गुना होता है। यदि केंद्र संख्या 25 है, तो इसे 3 से गुणा करने पर 75 प्राप्त होता है। अन्य विकल्प इस गणितीय संबंध का अनुसरण नहीं करते। 50 बहुत कम है, 25 केंद्र संख्या स्वयं है, और 100 बहुत अधिक है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the structure matches the English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सामान्यीकृत रूपात जादूचा चौरस वापरून, केंद्रीय संख्या 25 असल्यास जादूचा बेरीज किती असेल?",
+          "choices": [
+            "75",
+            "50",
+            "25",
+            "100"
+          ],
+          "solution": "3 × 3 जादूच्या चौरसात, जादूची बेरीज केंद्रीय संख्येच्या तीन पट असते. जर केंद्रीय संख्या 25 असेल तर तिचे 3 ने गुणाकार करून 75 मिळते. इतर विकल्प या गणितीय संबंधाचे अनुसरण करत नाहीत. 50 खूप कमी आहे, 25 ही केंद्रीय संख्या आहे आणि 100 खूप जास्त आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology. The solution and options are correctly aligned with the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Fails to multiply the center number by 3",
+        "Confuses the center number with the magic sum",
+        "Confuses the center number with the magic sum"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The magic sum of a 3×3 magic square is indeed three times the center number, so 3 × 25 = 75. The reasoning for the distractors is also valid, as they reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.3 Some Explorations in Grids"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.3 Some Explorations in Grids"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
+            "Fibonacci Numbers!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T03:59:05.274Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the Virahāṅka sequence, what is the parity of the 8th number if the sequence starts with 1, 2, 3, 5, 8, 13, 21, 34, ...?",
+      "choices": [
+        "odd",
+        "even",
+        "both",
+        "neither"
+      ],
+      "answerIndex": 1,
+      "solution": "The 8th number in the sequence is 34, which is an even number. The other options are incorrect because 34 is not odd, nor is it both or neither. The sequence alternates in a pattern of odd and even numbers, but 34 is specifically even.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "विरहांक अनुक्रम में, यदि अनुक्रम 1, 2, 3, 5, 8, 13, 21, 34, ... से शुरू होता है, तो आठवां संख्या की समगुणता क्या है?",
+          "choices": [
+            "विषम",
+            "सम",
+            "दोनों",
+            "कोई नहीं"
+          ],
+          "solution": "अनुक्रम में आठवां संख्या 34 है, जो एक सम संख्या है। अन्य विकल्प गलत हैं क्योंकि 34 विषम नहीं है, न ही दोनों या कोई नहीं है। अनुक्रम में विषम और सम संख्याओं के एक पैटर्न में बदलाव होता है, लेकिन 34 विशेष रूप से सम है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology for mathematical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "विरहांक अनुक्रमात, जर अनुक्रम 1, 2, 3, 5, 8, 13, 21, 34, ... असेल तर 8वा संख्येची सम संख्या किंवा विषम संख्या असेल?",
+          "choices": [
+            "विषम",
+            "सम",
+            "दोन्ही",
+            "कोणतेही नाही"
+          ],
+          "solution": "अनुक्रमातील 8वी संख्या 34 आहे, जी सम संख्या आहे. इतर विकल्प अयोग्य आहेत कारण 34 विषम नाही, दोन्ही किंवा कोणतेही नाही नाही. अनुक्रमात सम आणि विषम संख्यांचा एक पॅटर्न असतो, परंतु 34 विशिष्टपणे सम आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "mistakenly assumes the number is odd",
+        null,
+        "confuses the pattern of parities",
+        "incorrectly thinks the number can be both"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The 8th number in the sequence is 34, which is even. The solution correctly identifies this and dismisses the other options. The reasoning about the pattern is slightly misleading, as the sequence does not strictly alternate in parity, but the conclusion is still valid.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
+            "Fibonacci Numbers!"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
+            "Fibonacci Numbers!"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 11,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
+            "Fibonacci Numbers!"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 12,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.5 Digits in Disguise"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T03:59:05.274Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A light bulb is ON. Dorjee toggles its switch 77 times. Will the bulb be on or off?",
+      "choices": [
+        "on",
+        "off",
+        "cannot be determined",
+        "depends on the bulb"
+      ],
+      "answerIndex": 1,
+      "solution": "Toggling a switch an odd number of times changes the state of the bulb. Since 77 is odd, the bulb will be off. The other options are incorrect because the state of the bulb can be determined based on the number of toggles, and the bulb’s type does not affect the logic.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बल्ब जल रहा है। डोर्जी इसके स्विच को 77 बार टॉगल करता है। क्या बल्ब जलेगा या बंद हो जाएगा?",
+          "choices": [
+            "जलेगा",
+            "बंद हो जाएगा",
+            "निर्धारित नहीं किया जा सकता",
+            "बल्ब पर निर्भर करता है"
+          ],
+          "solution": "स्विच को विषम संख्या में टॉगल करने से बल्ब की स्थिति बदल जाती है। चूंकि 77 विषम है, इसलिए बल्ब बंद हो जाएगा। अन्य विकल्प गलत हैं क्योंकि बल्ब की स्थिति टॉगल की संख्या के आधार पर निर्धारित की जा सकती है, और बल्ब के प्रकार का तार्किक निर्णय पर कोई प्रभाव नहीं पड़ता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक बल्ब ऑन आहे. डोर्जी त्याच्या स्विचला 77 वेळा टॉगल करतो. बल्ब ऑन किंवा ऑफ असेल?",
+          "choices": [
+            "ऑन",
+            "ऑफ",
+            "निश्चित करता येणार नाही",
+            "बल्ब वर अवलंबून असते"
+          ],
+          "solution": "स्विचला विषम संख्येने टॉगल करणे बल्बच्या स्थितीत बदल करते. 77 ही विषम संख्या आहे, म्हणून बल्ब ऑफ असेल. इतर विकल्प अयोग्य आहेत कारण बल्बच्या स्थितीला टॉगलच्या संख्येवरून निश्चित करता येऊ शकते आणि बल्बच्या प्रकाराचा त्यावर परिणाम होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the logical structure, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "incorrectly assumes that odd toggles keep the bulb on",
+        null,
+        "does not understand that toggles change the state",
+        "thinks the bulb type affects the result"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that toggling an odd number of times changes the state from on to off. The reasoning aligns with the correct logic and the author's key.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
+            "Fibonacci Numbers!"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
+            "Fibonacci Numbers!"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 11,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
+            "Fibonacci Numbers!"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 12,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.5 Digits in Disguise"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T03:59:05.274Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is the 100th odd number?",
+      "choices": [
+        "199",
+        "200",
+        "201",
+        "202"
+      ],
+      "answerIndex": 0,
+      "solution": "The 100th odd number is 199. This is found by calculating the 100th even number (2 × 100 = 200) and subtracting 1. A student who forgets to subtract 1 might choose '200'. A student who adds 1 instead of subtracting might choose '201'. A student who miscalculates the even number might choose '202'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "100वां विषम संख्या क्या है?",
+          "choices": [
+            "199",
+            "200",
+            "201",
+            "202"
+          ],
+          "solution": "100वां विषम संख्या 199 है। इसे 100वां सम संख्या (2 × 100 = 200) निकालकर और 1 घटाकर निकाला जाता है। एक छात्र जो 1 घटाना भूल जाए तो '200' चुन सकता है। एक छात्र जो 1 घटाने के बजाय 1 जोड़ दे तो '201' चुन सकता है। एक छात्र जो सम संख्या गलती से निकाल ले तो '202' चुन सकता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "100वा अयोग्य संख्या कोणती आहे?",
+          "choices": [
+            "199",
+            "200",
+            "201",
+            "202"
+          ],
+          "solution": "100वा अयोग्य संख्या 199 आहे. ही 100वी जोड संख्या शोधून (2 × 100 = 200) आणि 1 वजा करून मिळते. 1 वजा करण्याचा विसर केल्यास विद्यार्थी '200' निवडू शकतो. 1 जोडण्याचा चूक केल्यास विद्यार्थी '201' निवडू शकतो. जोड संख्या चुकून गणल्यास विद्यार्थी '202' निवडू शकतो.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "forgets to subtract 1 from the even number",
+        "adds 1 instead of subtracting 1",
+        "miscalculates the even number"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The 100th odd number is indeed 199, calculated as 2 × 100 − 1. The reasoning for the distractors matches common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.2 Picking Parity"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.3 Some Explorations in Grids"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.3 Some Explorations in Grids"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T03:59:05.274Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a magic square is created using the numbers 2 to 10, what is the magic sum?",
+      "choices": [
+        "24",
+        "27",
+        "18",
+        "30"
+      ],
+      "answerIndex": 1,
+      "solution": "The magic sum for a 3 × 3 magic square is calculated by adding all the numbers and dividing by 3. The sum of numbers from 2 to 10 is 54, and 54 divided by 3 equals 27. The other options do not result from this calculation. 24 is too low, 18 is too small, and 30 is too high.",
+      "checkExpr": "3*9",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 2 से 10 तक की संख्याओं का उपयोग करके एक जादुई वर्ग बनाया जाता है, तो जादुई योग क्या है?",
+          "choices": [
+            "24",
+            "27",
+            "18",
+            "30"
+          ],
+          "solution": "3 × 3 जादुई वर्ग के लिए जादुई योग सभी संख्याओं को जोड़कर और 3 से विभाजित करके गणना की जाती है। 2 से 10 तक की संख्याओं का योग 54 है, और 54 को 3 से विभाजित करने पर 27 प्राप्त होता है। अन्य विकल्प इस गणना से प्राप्त नहीं होते हैं। 24 बहुत कम है, 18 बहुत छोटा है, और 30 बहुत अधिक है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology for a Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर 2 ते 10 च्या संख्यांचा वापर करून एक जादूचा चौरस तयार केला जातो, तर जादूचा बेरीज किती असेल?",
+          "choices": [
+            "24",
+            "27",
+            "18",
+            "30"
+          ],
+          "solution": "3 × 3 जादूचा चौरसासाठी जादूची बेरीज तीन ने भागलेल्या सर्व संख्यांच्या बेरजेने काढली जाते. 2 ते 10 पर्यंत संख्यांची बेरीज 54 आहे, आणि 54 ला 3 ने भागल्यास 27 मिळतो. इतर विकल्प या गणनेने मिळत नाहीत. 24 खूप कमी आहे, 18 खूप लहान आहे आणि 30 खूप जास्त आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Fails to identify the center number correctly",
+        null,
+        "Confuses the center number with the magic sum",
+        "Fails to identify the center number correctly"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the center number as 6 and multiplies by 3 to get the magic sum of 27. The reasoning is sound and matches the mathematical properties of a 3×3 magic square.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.3 Some Explorations in Grids"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.3 Some Explorations in Grids"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
+            "Fibonacci Numbers!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T03:59:05.274Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In the cryptarithm, HMM + K2 = K2, what is the value of M?",
+      "choices": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "answerIndex": 0,
+      "solution": "In the cryptarithm, HMM + K2 = K2, it is clear that HMM must be 0, as adding it to K2 gives the same result. Therefore, M must be 0. The other options are incorrect because they do not satisfy the condition that adding HMM to K2 does not change the value.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्रिप्टारिथम में, HMM + K2 = K2, M का मान क्या है?",
+          "choices": [
+            "0",
+            "1",
+            "2",
+            "3"
+          ],
+          "solution": "क्रिप्टारिथम में, HMM + K2 = K2, यह स्पष्ट है कि HMM शून्य होना चाहिए, क्योंकि इसे K2 में जोड़ने से परिणाम समान रहता है। इसलिए, M शून्य होना चाहिए। अन्य विकल्प गलत हैं क्योंकि वे K2 में HMM जोड़ने से मान में परिवर्तन नहीं होने की शर्त को पूरा नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position, and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "क्रिप्टारिथ्ममध्ये, HMM + K2 = K2, M ची किंमत काय आहे?",
+          "choices": [
+            "0",
+            "1",
+            "2",
+            "3"
+          ],
+          "solution": "क्रिप्टारिथ्ममध्ये, HMM + K2 = K2, त्यामुळे HMM ची किंमत 0 असावी, कारण K2 ला जोडल्यास त्याच निकाल मिळतो. म्हणून M ची किंमत 0 असावी. इतर विकल्प अयोग्य आहेत कारण ते K2 ला जोडल्यास निकाल बदलत नाहीत अशी शर्त पूर्ण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the logical structure, and uses appropriate Marathi terminology for cryptarithms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "chooses a non-zero value for M",
+        "mistakenly assumes M is 1",
+        "thinks M is 2 based on the units digit alone"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct: HMM must be 0 for the equation to hold, so M must be 0. The reasoning is sound and matches the key.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
+            "Fibonacci Numbers!"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
+            "Fibonacci Numbers!"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 11,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
+            "Fibonacci Numbers!"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 12,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.5 Digits in Disguise"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T03:59:05.274Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

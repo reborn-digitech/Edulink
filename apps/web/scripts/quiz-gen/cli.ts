@@ -192,7 +192,7 @@ async function main() {
   const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_URL });
   try {
     if (arg("list") === "true") {
-      for (const c of await listChapters(db, { board, grade, subject, book: arg("book") })) console.log(`  ${String(c.number).padStart(2)}  ${c.name}  [${c.bookCode ?? "?"} "${c.book}"]`);
+      for (const c of await listChapters(db, { board, grade, subject, book: arg("book") })) console.log(`  ${String(c.number).padStart(2)}  ${c.name || "(no title in the corpus)"}  [${c.bookCode ?? "?"} "${c.book}"]`);
       return;
     }
     const limit = Number(arg("limit") ?? 0);

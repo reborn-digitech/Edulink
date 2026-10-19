@@ -1,0 +1,847 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T18:21:04.538Z",
+  "finishedAt": "2026-10-19T18:31:41.625Z",
+  "seconds": 637,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc112.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 12 — Patterns in Life: Diversity and Classification",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 32,
+    "groups": 9
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2022-23]\n35. (a) Why is it not possible to reconstruct the whole organism from a fragment in 5\ncomplex multicellular organisms?\n(b) Sexual maturation of reproductive tissues and organs are necessary link for\nreproduction. Elucidate.\nOR\n(a) How are variations useful for species if there is drastic alteration in the niches?\n(b) Explain how the uterus and placenta provide necessary conditions for proper\ngrowth and development of the embryo after implantation?",
+      "[INJSO 2012 — question paper]\n9. Students of botany class expressed that their class is very boring. Next day Smita madam brought\na few botanical samples. She asked the class to group the plants according to some criteria. They\nclassified the plants and tabulated their observations as in the table below. Looking at this\ninformation, she asked them to find out the correct set belonging to Pteridophyta & Algae\nrespectively.\nCriteria I II\nSeed production Not seen Not seen\nVascular tissues Absent Present\nFlowers Absent Absent\nCones Absent Present\nTissue differentiation Absent Present\nIII IV V\nSeen Seen Not seen\nPresent Present Absent\nAbsent Present Absent\nPresent Absent Absent\nPresent Present Absent\nHabit Amphibious Terrestr",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n35. (a) The reason is that many multi-cellular organisms are not simply a random 5\ncollection of cells. Specialised cells are organised as tissues, and tissues are\norganised into organs, which then have to be placed at definite positions in the\nbody. Therefore, cell-by-cell division would be impractical. (2 marks)\n(b) Sexual maturation of reproductive tissues is a necessary link for reproduction\nbecause of the need for specialised cell called germ-cells to participate in\nsexual reproduction. The body of the individual organism has to grow to its\nadult size, the rate of general body growth begins to slow down, reproductive\ntissues begin to mature. (1½ marks)\nA whole new set of changes in the ",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n12. D. sex is not genetically determined in snails. 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 14,
+      "ms": 207065,
+      "in": 46,
+      "out": 44,
+      "rejects": 2,
+      "promptTokens": 59282,
+      "completionTokens": 10369
+    },
+    "critique": {
+      "calls": 59,
+      "ms": 396704,
+      "in": 44,
+      "out": 38,
+      "rejects": 6,
+      "promptTokens": 26203,
+      "completionTokens": 10386
+    },
+    "solver": {
+      "calls": 285,
+      "ms": 170990,
+      "in": 38,
+      "out": 30,
+      "rejects": 8,
+      "promptTokens": 54163,
+      "completionTokens": 3161
+    },
+    "form": {
+      "calls": 12,
+      "ms": 52494,
+      "in": 30,
+      "out": 12,
+      "rejects": 18,
+      "promptTokens": 6922,
+      "completionTokens": 1355
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 4086,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 625305,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 30727,
+      "completionTokens": 15897
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 0,
+    "5": 3,
+    "6": 3
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the main purpose of classifying organisms, according to the passage?",
+      "ms": {
+        "draft": 3571,
+        "critique": 6197,
+        "solver": 1435,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Based on the passage, which of the following is an example of an endemic species?",
+      "ms": {
+        "draft": 3571,
+        "critique": 6700,
+        "solver": 1508,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage says that biodiversity is essential for life on Earth. Which of the following best explains why?",
+      "ms": {
+        "draft": 3571,
+        "critique": 8600,
+        "solver": 1123,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that classification helps scientists understand evolutionary relationships. Which of the following is the best reason for this?",
+      "ms": {
+        "draft": 3571,
+        "critique": 8270,
+        "solver": 1860,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, how does classification help in farming?",
+      "ms": {
+        "draft": 3571,
+        "critique": 6727,
+        "solver": 14272,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the role of biodiversity in ecosystems?",
+      "ms": {
+        "draft": 3571,
+        "critique": 6473,
+        "solver": 14851,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram in the passage, which of the following is true about the five kingdom classification system?",
+      "ms": {
+        "draft": 4708,
+        "critique": 5338,
+        "solver": 1692,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a purpose of biological classification?",
+      "ms": {
+        "draft": 4708,
+        "critique": 5970,
+        "solver": 16606
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a key purpose of biological classification according to the passage?",
+      "ms": {
+        "draft": 4708,
+        "critique": 5068,
+        "solver": 1409,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A new organism is discovered that is unicellular, has a true nucleus, and is heterotrophic. Based on the classification criteria in the passage, in which kingdom would this organism be placed?",
+      "ms": {
+        "draft": 4708,
+        "critique": 6520,
+        "solver": 1958,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a characteristic of fungi?",
+      "ms": {
+        "draft": 3753,
+        "critique": 6719,
+        "solver": 18888
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason that a single-celled organism can carry out all its life processes?",
+      "ms": {
+        "draft": 3753,
+        "critique": 7594,
+        "solver": 12935,
+        "form": 3753
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why can't a single-celled organism be divided into different tissues like multicellular organisms?",
+      "ms": {
+        "draft": 3753,
+        "critique": 5661,
+        "solver": 1367,
+        "form": 4855
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which group of plants has root-like structures called rhizoids?",
+      "ms": {
+        "draft": 4917,
+        "critique": 7508
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements about lichens is true based on the passage?",
+      "ms": {
+        "draft": 4917,
+        "critique": 7312,
+        "solver": 1766,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a characteristic feature of ferns?",
+      "ms": {
+        "draft": 4917,
+        "critique": 5856,
+        "solver": 11041,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which plant group has a body that resembles a thallus and can easily absorb water and nutrients?",
+      "ms": {
+        "draft": 5299,
+        "critique": 7165
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a reason why ferns are considered the 'amphibians' of the plant kingdom?",
+      "ms": {
+        "draft": 4917,
+        "critique": 7756,
+        "solver": 14471
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which group of animals has a single opening for food intake and waste removal?",
+      "ms": {
+        "draft": 4323,
+        "critique": 6027
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of vertebrates?",
+      "ms": {
+        "draft": 4420,
+        "critique": 4248,
+        "solver": 554
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which group in the classification hierarchy has fewer members but more features in common?",
+      "ms": {
+        "draft": 3622,
+        "critique": 5356
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which characteristic would help identify an organism as Protista?",
+      "ms": {
+        "draft": 3622,
+        "critique": 6589
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which organism is most likely to belong to the Kingdom Fungi?",
+      "ms": {
+        "draft": 3622,
+        "critique": 7585
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If classification were based only on habitat, which organisms might be incorrectly grouped together?",
+      "ms": {
+        "draft": 3622,
+        "critique": 8494,
+        "solver": 1597
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why are viruses not placed in any of the five kingdoms?",
+      "ms": {
+        "draft": 3722,
+        "critique": 5423,
+        "solver": 1328
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which organism would be placed in the Kingdom Monera?",
+      "ms": {
+        "draft": 3622,
+        "critique": 7797,
+        "solver": 19562
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what does the term 'species' refer to?",
+      "ms": {
+        "draft": 4218,
+        "critique": 6804,
+        "solver": 16401
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on Fig. 12.17, what is the correct order of classification from the broadest to the most specific?",
+      "ms": {
+        "draft": 4218,
+        "critique": 9193,
+        "solver": 1418,
+        "form": 4277
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of sponges?",
+      "ms": {
+        "draft": 7662,
+        "critique": 5572,
+        "solver": 1587,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a feature of cnidarians?",
+      "ms": {
+        "draft": 7662,
+        "critique": 5737,
+        "solver": 1998,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which plant group has vascular tissues for transporting water and food?",
+      "ms": {
+        "draft": 4547,
+        "critique": 7670,
+        "solver": 13303,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of a unicellular fungus?",
+      "ms": {
+        "draft": 11883,
+        "critique": 7563,
+        "solver": 1468,
+        "form": 2802
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary purpose of the hierarchical classification of organisms?",
+      "ms": {
+        "draft": 4218,
+        "critique": 8207,
+        "solver": 1922,
+        "form": 2961,
+        "translation": 59945
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a key feature used to classify organisms into the animal kingdom?",
+      "ms": {
+        "draft": 3722,
+        "critique": 6690,
+        "solver": 1955,
+        "form": 0,
+        "translation": 48905
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a classification based on the ecological role of an organism?",
+      "ms": {
+        "draft": 3722,
+        "critique": 7190,
+        "solver": 1882,
+        "form": 0,
+        "translation": 51959
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What key characteristic would help identify a unicellular organism as fungi?",
+      "ms": {
+        "draft": 3622,
+        "critique": 6842,
+        "solver": 15467,
+        "form": 0,
+        "translation": 44579
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a scientist discovers a new organism that has a true nucleus and is unicellular, in which kingdom would it most likely be classified?",
+      "ms": {
+        "draft": 4708,
+        "critique": 6426,
+        "solver": 1913,
+        "form": 3419,
+        "translation": 41203
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why are fungi important in the ecosystem?",
+      "ms": {
+        "draft": 3753,
+        "critique": 7189,
+        "solver": 15169,
+        "form": 3921,
+        "translation": 55088
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a new organism is discovered that has a well-defined nucleus and multiple cilia, which kingdom would it most likely belong to?",
+      "ms": {
+        "draft": 3722,
+        "critique": 7077,
+        "solver": 1658,
+        "form": 0,
+        "translation": 57722
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a list of characteristics of an organism and asked to classify it. The organism has a cell wall, is multicellular, and obtains food through photosynthesis. In which kingdom would it be classified?",
+      "ms": {
+        "draft": 4708,
+        "critique": 6218,
+        "solver": 1576,
+        "form": 4926,
+        "translation": 53923
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct comparison between bacteria and fungi?",
+      "ms": {
+        "draft": 3753,
+        "critique": 5260,
+        "solver": 1709,
+        "form": 2719,
+        "translation": 43829
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following plant groups shows a body structure that allows direct exchange of gases, nutrients, and water with the surroundings?",
+      "ms": {
+        "draft": 6489,
+        "critique": 7132,
+        "solver": 14135,
+        "form": 0,
+        "translation": 46073
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do scientists use binomial nomenclature to name organisms?",
+      "ms": {
+        "draft": 4218,
+        "critique": 7995,
+        "solver": 13876,
+        "form": 2381,
+        "translation": 51925
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are pteridophytes and bryophytes placed in different groups despite both lacking flowers and seeds?",
+      "ms": {
+        "draft": 3722,
+        "critique": 6777,
+        "solver": 15449,
+        "form": 0,
+        "translation": 64336
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following plant groups do not produce seeds?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of classifying organisms, according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Does not match the passage's explanation…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Based on the passage, which of the following is an example of an endemic species?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The passage says that biodiversity is essential for life on Earth. Which of the following best explains why?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Is not explicitly stated in the passage…\"); distractor 3's reason is not a one-line misconception (\"Is a general statement not directly supported by the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that classification helps scientists understand evolutionary relationships. Which of the following is the best reason for this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, how does classification help in farming?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about the role of biodiversity in ecosystems?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram in the passage, which of the following is true about the five kingdom classification system?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a purpose of biological classification?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a key purpose of biological classification according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A new organism is discovered that is unicellular, has a true nucleus, and is heterotrophic. Based on the classification criteria in the passage, in which kingdom would this organism be placed?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT a characteristic of fungi?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main reason that a single-celled organism can carry out all its life processes?",
+      "reason": "options 1 and 2 are the same (\"It has a simpler structure and all functions are carried out by the same cell\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why can't a single-celled organism be divided into different tissues like multicellular organisms?",
+      "reason": "the key is far longer than every distractor (52 vs 19 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which group of plants has root-like structures called rhizoids?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements about lichens is true based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (64 vs 37 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a characteristic feature of ferns?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which plant group has a body that resembles a thallus and can easily absorb water and nutrients?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is a reason why ferns are considered the 'amphibians' of the plant kingdom?",
+      "reason": "after redrafting distractors 1, 2, 3: the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which group of animals has a single opening for food intake and waste removal?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of vertebrates?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is one advantage of the Pteridophyta group for survival?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which group in the classification hierarchy has fewer members but more features in common?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which characteristic would help identify an organism as Protista?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which organism is most likely to belong to the Kingdom Fungi?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If classification were based only on habitat, which organisms might be incorrectly grouped together?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, why are viruses not placed in any of the five kingdoms?",
+      "reason": "the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which organism would be placed in the Kingdom Monera?",
+      "reason": "distractors 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, what does the term 'species' refer to?",
+      "reason": "after redrafting distractors 1, 2, 3: the critic finds option 3 correct, the key is 0"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on Fig. 12.17, what is the correct order of classification from the broadest to the most specific?",
+      "reason": "options 0 and 1 say the same thing (\"Kingdom, Phylum, Class, Order, Family, Genus, Species\" / \"Phylum, Kingdom, Class, Order, Family, Species, Genus\"); options 0 and 2 say the same thing (\"Kingdom, Phylum, Class, Order, Family, Genus, Species\" / \"Species, Genus, Family, Order, Class, Phylum, Kingdom\"); options 0 and 3 say the same thing (\"Kingdom, Phylum, Class, Order, Family, Genus, Species\" / \"Order, Family, Genus, Species, Kingdom, Phylum, Class\"); options 1 and 2 say the same thing (\"Phylum, Kingdom, Class, Order, Family, Species, Genus\" / \"Species, Genus, Family, Order, Class, Phylum, Kingdom\"); options 1 and 3 say the same thing (\"Phylum, Kingdom, Class, Order, Family, Species, Genus\" / \"Order, Family, Genus, Species, Kingdom, Phylum, Class\"); options 2 and 3 say the same thing (\"Species, Genus, Family, Order, Class, Phylum, Kingdom\" / \"Order, Family, Genus, Species, Kingdom, Phylum, Class\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of sponges?",
+      "reason": "the key is far longer than every distractor (60 vs 34 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a feature of cnidarians?",
+      "reason": "the key is far longer than every distractor (60 vs 34 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which plant group has vascular tissues for transporting water and food?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is an example of a unicellular fungus?",
+      "reason": "figure: figure spec refused: spec.parts: plantCell has no label \"cell\" (it has cellWall, membrane, nucleus, vacuole, chloroplast, cytoplasm)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

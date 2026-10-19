@@ -1,0 +1,766 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T08:09:08.446Z",
+  "finishedAt": "2026-10-19T08:18:41.671Z",
+  "seconds": 573,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "hemh1",
+    "document": "ncert/8/mathematics/hemh112.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 12 — Actorisation",
+    "edition": "Reprint 2024-25",
+    "chunks": 11,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n14. B) 3 8",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n8. (d) RHS",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 179213,
+      "in": 39,
+      "out": 39,
+      "rejects": 0,
+      "promptTokens": 37767,
+      "completionTokens": 9868
+    },
+    "critique": {
+      "calls": 51,
+      "ms": 351234,
+      "in": 39,
+      "out": 33,
+      "rejects": 6,
+      "promptTokens": 24286,
+      "completionTokens": 8853
+    },
+    "solver": {
+      "calls": 242,
+      "ms": 133601,
+      "in": 33,
+      "out": 26,
+      "rejects": 7,
+      "promptTokens": 49611,
+      "completionTokens": 2551
+    },
+    "form": {
+      "calls": 12,
+      "ms": 41876,
+      "in": 26,
+      "out": 9,
+      "rejects": 17,
+      "promptTokens": 3313,
+      "completionTokens": 1080
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 4282,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 300715,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 18842,
+      "completionTokens": 8489
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 2,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Factorise the expression 5xy + 10x.",
+      "ms": {
+        "draft": 14755,
+        "critique": 7159
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the irreducible form of the algebraic expression 12x?",
+      "ms": {
+        "draft": 14755,
+        "critique": 7141,
+        "solver": 889,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the factorised form of the expression 2xy + 2y + 3x + 3?",
+      "ms": {
+        "draft": 14755,
+        "critique": 9214,
+        "solver": 1308
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the process of writing an algebraic expression as a product of its factors called?",
+      "ms": {
+        "draft": 14755,
+        "critique": 7141,
+        "solver": 12070,
+        "form": 2980
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Factorise the expression 10x^2 – 18x^3 + 14x^4.",
+      "ms": {
+        "draft": 14755,
+        "critique": 8509,
+        "solver": 14101,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Factorise the expression 6xy – 4y + 6 – 9x.",
+      "ms": {
+        "draft": 14755,
+        "critique": 8447,
+        "solver": 11920,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a factor of the expression 6xy - 4y + 6 - 9x?",
+      "ms": {
+        "draft": 4613,
+        "critique": 6474,
+        "solver": 1621
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of dividing 7x y z by 14xyz?",
+      "ms": {
+        "draft": 4425,
+        "critique": 6654
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the result of dividing (4y + 5y + 6y) by 2y?",
+      "ms": {
+        "draft": 4425,
+        "critique": 6592
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the result of dividing 9x y (3z – 24) by 27xy(z – 8)?",
+      "ms": {
+        "draft": 4425,
+        "critique": 6740
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the result of dividing 5pq(p – q) by 2p(p + q)?",
+      "ms": {
+        "draft": 4425,
+        "critique": 6459
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Factorise the expression m⁴ - 256.",
+      "ms": {
+        "draft": 4613,
+        "critique": 9153,
+        "solver": 17324,
+        "form": 5611
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What method is used to factorise an expression when all terms do not have a common factor?",
+      "ms": {
+        "draft": 5117,
+        "critique": 6230,
+        "solver": 1635,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following expressions can be factorised using the identity x^2 + (a + b)x + ab = (x + a)(x + b)?",
+      "ms": {
+        "draft": 5117,
+        "critique": 7568
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an irreducible factor?",
+      "ms": {
+        "draft": 5117,
+        "critique": 7030,
+        "solver": 11719,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following expressions can be factorised using the identity a^2 - b^2 = (a + b)(a - b)?",
+      "ms": {
+        "draft": 5117,
+        "critique": 4166,
+        "solver": 553,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an irreducible factor?",
+      "ms": {
+        "draft": 3835,
+        "critique": 4840,
+        "solver": 1385
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which method is used to factorise an expression by writing each term as a product of irreducible factors?",
+      "ms": {
+        "draft": 3835,
+        "critique": 5381,
+        "solver": 1458,
+        "form": 4020
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following expressions can be factorised using the identity a^2 - b^2 = (a + b)(a - b)?",
+      "ms": {
+        "draft": 3835,
+        "critique": 8334,
+        "solver": 1502,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a polynomial is divided by another polynomial and the remainder is not zero, what can be said about the division?",
+      "ms": {
+        "draft": 3835,
+        "critique": 6967,
+        "solver": 1272
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of dividing 6x by 2x?",
+      "ms": {
+        "draft": 14066,
+        "critique": 7660,
+        "solver": 1456
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the result of dividing (4y + 5y + 6y) by 2y?",
+      "ms": {
+        "draft": 14066,
+        "critique": 8366,
+        "solver": 1389
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is the correct method to divide a polynomial by a monomial?",
+      "ms": {
+        "draft": 3835,
+        "critique": 6923,
+        "solver": 11823,
+        "form": 3070
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the result of dividing 24(x yz + xy z + xyz ) by 8xyz?",
+      "ms": {
+        "draft": 14066,
+        "critique": 7023,
+        "solver": 1592,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the first step in factorisation according to the passage?",
+      "ms": {
+        "draft": 4202,
+        "critique": 5531,
+        "solver": 1134,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of dividing –36y by 9y?",
+      "ms": {
+        "draft": 14066,
+        "critique": 6409,
+        "solver": 1742,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the factorisation of 6xy – 4y – 9x + 6?",
+      "ms": {
+        "draft": 4202,
+        "critique": 6598,
+        "solver": 1853,
+        "form": 3630
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Factorise 3m² + 9m + 6.",
+      "ms": {
+        "draft": 4202,
+        "critique": 7768,
+        "solver": 14809
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an irreducible factor form of an algebraic expression?",
+      "ms": {
+        "draft": 5661,
+        "critique": 5995,
+        "solver": 1084,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Factorise the expression m⁴ – 256 using identities.",
+      "ms": {
+        "draft": 4202,
+        "critique": 10387,
+        "solver": 12084,
+        "form": 1973
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the correct way to divide algebraic expressions?",
+      "ms": {
+        "draft": 4425,
+        "critique": 6980,
+        "solver": 13059,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the first step in factorising an algebraic expression?",
+      "ms": {
+        "draft": 4613,
+        "critique": 7542,
+        "solver": 1760,
+        "form": 2800,
+        "translation": 46904
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct method to divide algebraic expressions?",
+      "ms": {
+        "draft": 4425,
+        "critique": 5817,
+        "solver": 2373,
+        "form": 0,
+        "translation": 38488
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What should be done if all terms in an expression do not have a common factor?",
+      "ms": {
+        "draft": 3835,
+        "critique": 5872,
+        "solver": 2108,
+        "form": 3453,
+        "translation": 47359
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which identity is used to factorise the expression x² + 8x + 16?",
+      "ms": {
+        "draft": 4613,
+        "critique": 6087,
+        "solver": 14782,
+        "form": 3117,
+        "translation": 33486
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which expression is a perfect square trinomial?",
+      "ms": {
+        "draft": 4202,
+        "critique": 8430,
+        "solver": 18599,
+        "form": 2956,
+        "translation": 28942
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Factorise the expression 4y² - 12y + 9.",
+      "ms": {
+        "draft": 4613,
+        "critique": 7702,
+        "solver": 1663,
+        "form": 5617,
+        "translation": 30017
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following expressions can be factorised using the identity (x + a)(x + b) = x² + (a + b)x + ab?",
+      "ms": {
+        "draft": 4613,
+        "critique": 7717,
+        "solver": 18907,
+        "form": 5007,
+        "translation": 37093
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the result of dividing 96abc(3a – 12) (5b – 30) by 144(a – 4) (b – 6)?",
+      "ms": {
+        "draft": 14066,
+        "critique": 6935,
+        "solver": 1839,
+        "form": 0,
+        "translation": 34189
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Factorise the expression 5xy + 10x.",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the irreducible form of the algebraic expression 12x?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Correct answer, no reason for this distractor as it is the c…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the factorised form of the expression 2xy + 2y + 3x + 3?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the process of writing an algebraic expression as a product of its factors called?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Factorise the expression 10x^2 – 18x^3 + 14x^4.",
+      "reason": "options 0 and 1 say the same thing (\"2x^2(5 – 9x + 7x^2)\" / \"2x(5 – 9x + 7x^2)\"); options 0 and 2 say the same thing (\"2x^2(5 – 9x + 7x^2)\" / \"2x^2(5 – 9x^2 + 7x^4)\"); options 0 and 3 say the same thing (\"2x^2(5 – 9x + 7x^2)\" / \"2x(5 – 9x^2 + 7x^4)\"); options 1 and 2 say the same thing (\"2x(5 – 9x + 7x^2)\" / \"2x^2(5 – 9x^2 + 7x^4)\"); options 1 and 3 say the same thing (\"2x(5 – 9x + 7x^2)\" / \"2x(5 – 9x^2 + 7x^4)\"); options 2 and 3 say the same thing (\"2x^2(5 – 9x^2 + 7x^4)\" / \"2x(5 – 9x^2 + 7x^4)\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Factorise the expression 6xy – 4y + 6 – 9x.",
+      "reason": "options 0 and 1 say the same thing (\"(3x – 2)(2y – 3)\" / \"(3x + 2)(2y – 3)\"); options 0 and 2 say the same thing (\"(3x – 2)(2y – 3)\" / \"(3x – 2)(2y + 3)\"); options 0 and 3 say the same thing (\"(3x – 2)(2y – 3)\" / \"(3x + 2)(2y + 3)\"); options 1 and 2 say the same thing (\"(3x + 2)(2y – 3)\" / \"(3x – 2)(2y + 3)\"); options 1 and 3 say the same thing (\"(3x + 2)(2y – 3)\" / \"(3x + 2)(2y + 3)\"); options 2 and 3 say the same thing (\"(3x – 2)(2y + 3)\" / \"(3x + 2)(2y + 3)\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is a factor of the expression 6xy - 4y + 6 - 9x?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the result of dividing 7x y z by 14xyz?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the result of dividing (4y + 5y + 6y) by 2y?",
+      "reason": "the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the result of dividing 9x y (3z – 24) by 27xy(z – 8)?",
+      "reason": "option 1 is not wrong; option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What is the result of dividing 5pq(p – q) by 2p(p + q)?",
+      "reason": "option 1 is not wrong; option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Factorise the expression m⁴ - 256.",
+      "reason": "options 1 and 2 say the same thing (\"(m - 4)(m + 4)(m² + 16)\" / \"(m - 4)(m + 4)(m - 16)\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What method is used to factorise an expression when all terms do not have a common factor?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"correct answer is not the longest option, but is the correct…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following expressions can be factorised using the identity x^2 + (a + b)x + ab = (x + a)(x + b)?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of an irreducible factor?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"correct answer is not the longest option, but is the correct…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following expressions can be factorised using the identity a^2 - b^2 = (a + b)(a - b)?",
+      "reason": "options 0 and 2 say the same thing (\"x^2 - 9\" / \"x^2 - 6x + 9\"); options 2 and 3 say the same thing (\"x^2 - 6x + 9\" / \"x^2 + 6x + 9\"); distractor 3's reason is not a one-line misconception (\"correct answer is not the longest option, but is the correct…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of an irreducible factor?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which method is used to factorise an expression by writing each term as a product of irreducible factors?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Mentions a method used for specific types of expressions onl…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following expressions can be factorised using the identity a^2 - b^2 = (a + b)(a - b)?",
+      "reason": "options 1 and 3 say the same thing (\"x^2 - 9\" / \"x^2 - 6x + 9\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a polynomial is divided by another polynomial and the remainder is not zero, what can be said about the division?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the result of dividing 6x by 2x?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the result of dividing (4y + 5y + 6y) by 2y?",
+      "reason": "the solver picked option 0 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is the correct method to divide a polynomial by a monomial?",
+      "reason": "options 0 and 1 say the same thing (\"Divide the monomial by each term of the polynomial\" / \"Divide each term of the polynomial by the monomial\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the result of dividing 24(x yz + xy z + xyz ) by 8xyz?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the first step in factorisation according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the result of dividing –36y by 9y?",
+      "reason": "options are in more than one unit (none, y); options 0 and 2 are the same number; options 1 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the factorisation of 6xy – 4y – 9x + 6?",
+      "reason": "options 0 and 1 say the same thing (\"(3x + 2)(2y – 3)\" / \"(3x – 2)(2y + 3)\"); options 0 and 2 say the same thing (\"(3x + 2)(2y – 3)\" / \"(3x – 2)(2y – 3)\"); options 0 and 3 say the same thing (\"(3x + 2)(2y – 3)\" / \"(3x + 2)(2y + 3)\"); options 1 and 2 say the same thing (\"(3x – 2)(2y + 3)\" / \"(3x – 2)(2y – 3)\"); options 1 and 3 say the same thing (\"(3x – 2)(2y + 3)\" / \"(3x + 2)(2y + 3)\"); options 2 and 3 say the same thing (\"(3x – 2)(2y – 3)\" / \"(3x + 2)(2y + 3)\"); distractor 3's reason is not a one-line misconception (\"Incorrect sign in the first factor and the second factor are…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Factorise 3m² + 9m + 6.",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of an irreducible factor form of an algebraic expression?",
+      "reason": "options 2 and 3 say the same thing (\"5 × x × y × z\" / \"5 × x × y × z × w\"); options are in more than one unit (× x × y, × (xy), × x × y × z, × x × y × z × w); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Factorise the expression m⁴ – 256 using identities.",
+      "reason": "options 0 and 2 say the same thing (\"(m² – 16)(m² + 16)\" / \"(m² – 16)(m² + 16)(m² + 16)\"); options 1 and 3 say the same thing (\"(m – 4)(m + 4)(m² + 16)\" / \"(m – 4)(m + 4)(m² – 16)\"); distractor 3's reason is not a one-line misconception (\"This option incorrectly combines terms without following the…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the correct way to divide algebraic expressions?",
+      "reason": "near-duplicate of batch item \"Which of the following is the correct method to di…\" (cosine 0.970 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,514 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T07:54:36.123Z",
+  "finishedAt": "2026-10-19T07:59:37.689Z",
+  "seconds": 302,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "hemh1",
+    "document": "ncert/8/mathematics/hemh110.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 10 — Chapter 10",
+    "edition": "Reprint 2024-25",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n10. (c) 8cm",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n10. B) isosceles and similar",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n8. (d) RHS",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 98984,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 19600,
+      "completionTokens": 5432
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 202119,
+      "in": 23,
+      "out": 21,
+      "rejects": 2,
+      "promptTokens": 14337,
+      "completionTokens": 5428
+    },
+    "solver": {
+      "calls": 162,
+      "ms": 105685,
+      "in": 21,
+      "out": 17,
+      "rejects": 4,
+      "promptTokens": 41409,
+      "completionTokens": 1916
+    },
+    "form": {
+      "calls": 4,
+      "ms": 10649,
+      "in": 17,
+      "out": 4,
+      "rejects": 13,
+      "promptTokens": 999,
+      "completionTokens": 340
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 4012,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 81762,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6034,
+      "completionTokens": 2566
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the value of 10 raised to the power of -2?",
+      "ms": {
+        "draft": 3922,
+        "critique": 5657,
+        "solver": 19160,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Express 0.000007 m in standard form using exponents.",
+      "ms": {
+        "draft": 3922,
+        "critique": 8566,
+        "solver": 1469,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of (–5)^-3 × (–5)^-4?",
+      "ms": {
+        "draft": 3922,
+        "critique": 9768,
+        "solver": 18434
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 5^m ÷ 5^6 = 5^1, what is the value of m?",
+      "ms": {
+        "draft": 3922,
+        "critique": 9089,
+        "solver": 18471
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the standard form of the number 0.000007?",
+      "ms": {
+        "draft": 4318,
+        "critique": 6163,
+        "solver": 1751,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the usual form of 7.54 × 10^−4?",
+      "ms": {
+        "draft": 4318,
+        "critique": 8745,
+        "solver": 1645,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the total mass of the Earth and the Moon, given their masses are 5.97 × 10^24 kg and 7.35 × 10^22 kg respectively?",
+      "ms": {
+        "draft": 4318,
+        "critique": 8676,
+        "solver": 1390,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the standard form of the number 0.00001275?",
+      "ms": {
+        "draft": 4318,
+        "critique": 7343,
+        "solver": 15261,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the distance between the Sun and the Moon, given the distance between the Sun and Earth is 1.496 × 10^8 m and the distance between the Earth and Moon is 3.84 × 10^5 m?",
+      "ms": {
+        "draft": 4318,
+        "critique": 5734,
+        "solver": 797,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the standard form of 0.00001275?",
+      "ms": {
+        "draft": 13075,
+        "critique": 6560
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the standard form of 0.000007?",
+      "ms": {
+        "draft": 13075,
+        "critique": 7237
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the distance between the Sun and the Moon if the distance between the Sun and Earth is 1.496 × 10^8 m and the distance between the Earth and Moon is 3.84 × 10^5 m?",
+      "ms": {
+        "draft": 13075,
+        "critique": 5672,
+        "solver": 1345
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the usual form of 7.54 × 10^-4?",
+      "ms": {
+        "draft": 13075,
+        "critique": 7915,
+        "solver": 13464,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the total mass of the Earth and the Moon if the mass of the Earth is 5.97 × 10^24 kg and the mass of the Moon is 7.35 × 10^22 kg?",
+      "ms": {
+        "draft": 13075,
+        "critique": 8771,
+        "solver": 13084,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of 3^0?",
+      "ms": {
+        "draft": 4437,
+        "critique": 6170,
+        "solver": 1744,
+        "form": 2923
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the standard form of 0.000007 m?",
+      "ms": {
+        "draft": 4437,
+        "critique": 5388,
+        "solver": 2085,
+        "form": 2988
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of 10 raised to the power of -2?",
+      "ms": {
+        "draft": 4437,
+        "critique": 6941,
+        "solver": 1152,
+        "form": 5090
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the value of (–2)^3 × (–2)^4?",
+      "ms": {
+        "draft": 4437,
+        "critique": 7250,
+        "solver": 816
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 5^m ÷ 5^6 = 5^1, what is the value of m?",
+      "ms": {
+        "draft": 4437,
+        "critique": 4278,
+        "solver": 9460,
+        "form": 1330
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the usual form of 3.52 × 10^5?",
+      "ms": {
+        "draft": 13075,
+        "critique": 6785,
+        "solver": 13070,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the multiplicative inverse of 3^2?",
+      "ms": {
+        "draft": 3922,
+        "critique": 5916,
+        "solver": 1823,
+        "form": 0,
+        "translation": 26487
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the usual form of 3.52 × 10^5?",
+      "ms": {
+        "draft": 4318,
+        "critique": 5706,
+        "solver": 1304,
+        "form": 0,
+        "translation": 22101
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Simplify (–4) × (–4) using the laws of exponents.",
+      "ms": {
+        "draft": 3922,
+        "critique": 6186,
+        "solver": 3149,
+        "form": 1,
+        "translation": 28673
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the value of 10 raised to the power of -2?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Express 0.000007 m in standard form using exponents.",
+      "reason": "options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the value of (–5)^-3 × (–5)^-4?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 5^m ÷ 5^6 = 5^1, what is the value of m?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the standard form of the number 0.000007?",
+      "reason": "options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the usual form of 7.54 × 10^−4?",
+      "reason": "options are written to different precisions (3 and 4 and 5 and 6 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the total mass of the Earth and the Moon, given their masses are 5.97 × 10^24 kg and 7.35 × 10^22 kg respectively?",
+      "reason": "option 1 repeats the stem's wording (\"5.97 × 10^22 kg\"); option 2 repeats the stem's wording (\"7.35 × 10^24 kg\"); options are written to different precisions (2 and 4 and 5 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the standard form of the number 0.00001275?",
+      "reason": "options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the distance between the Sun and the Moon, given the distance between the Sun and Earth is 1.496 × 10^8 m and the distance between the Earth and Moon is 3.84 × 10^5 m?",
+      "reason": "option 1 repeats the stem's wording (\"1.496 × 10^5 m\"); option 2 repeats the stem's wording (\"3.84 × 10^8 m\"); option 3 repeats the stem's wording (\"1.496 × 10^8 m\"); options are written to different precisions (2 and 3 and 5 decimals); options 1 and 3 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the standard form of 0.00001275?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the standard form of 0.000007?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the distance between the Sun and the Moon if the distance between the Sun and Earth is 1.496 × 10^8 m and the distance between the Earth and Moon is 3.84 × 10^5 m?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the usual form of 7.54 × 10^-4?",
+      "reason": "options are written to different precisions (3 and 4 and 5 and 6 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the total mass of the Earth and the Moon if the mass of the Earth is 5.97 × 10^24 kg and the mass of the Moon is 7.35 × 10^22 kg?",
+      "reason": "options are written to different precisions (2 and 3 and 4 decimals); options 0 and 2 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the value of 3^0?",
+      "reason": "checkExpr \"1\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the standard form of 0.000007 m?",
+      "reason": "options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number; ARITHMETIC MISMATCH — checkExpr \"7*10^-6\" = 0.000007, but the key says 7"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the value of 10 raised to the power of -2?",
+      "reason": "options are written to different precisions (0 and 2 decimals); checkExpr \"0.01\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the value of (–2)^3 × (–2)^4?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If 5^m ÷ 5^6 = 5^1, what is the value of m?",
+      "reason": "options mix numbers and words (2 of 4 are numbers); checkExpr \"7\" is a bare literal"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the usual form of 3.52 × 10^5?",
+      "reason": "near-duplicate of batch item \"Which of the following is the usual form of 3.52 ×…\" (cosine 0.986 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

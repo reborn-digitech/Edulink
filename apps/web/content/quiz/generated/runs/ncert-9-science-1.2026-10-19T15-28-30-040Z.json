@@ -1,0 +1,870 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T15:28:30.040Z",
+  "finishedAt": "2026-10-19T15:36:32.463Z",
+  "seconds": 482,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc101.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 1 — Exploration: Entering the World of Secondary Science",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 10,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\nthe inference he draws on the basis of his experiment be correct? Justify\nyour answer.",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n19. B. Both A and R are true, and R is not the correct explanation of A 1",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n24. B. Both A and R are true, and R is not the correct explanation of A. 1",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n20. (a) Both A and R are true and R is the correct explanation of A 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 177504,
+      "in": 45,
+      "out": 44,
+      "rejects": 1,
+      "promptTokens": 29549,
+      "completionTokens": 10314
+    },
+    "critique": {
+      "calls": 61,
+      "ms": 397753,
+      "in": 44,
+      "out": 36,
+      "rejects": 8,
+      "promptTokens": 27047,
+      "completionTokens": 10439
+    },
+    "solver": {
+      "calls": 296,
+      "ms": 161548,
+      "in": 36,
+      "out": 21,
+      "rejects": 15,
+      "promptTokens": 51420,
+      "completionTokens": 3236
+    },
+    "form": {
+      "calls": 6,
+      "ms": 13015,
+      "in": 21,
+      "out": 4,
+      "rejects": 17,
+      "promptTokens": 1519,
+      "completionTokens": 359
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 15,
+      "ms": 2377,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 139960,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8931,
+      "completionTokens": 4565
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 0,
+    "4": 1,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What does the passage say about models in science?",
+      "ms": {
+        "draft": 4201,
+        "critique": 6499,
+        "solver": 12538
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you are studying the motion of a falling object, which of the following details could you ignore?",
+      "ms": {
+        "draft": 4201,
+        "critique": 7292,
+        "solver": 15873,
+        "form": 2552
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage say about the purpose of the magnifying glass and compass on the textbook cover?",
+      "ms": {
+        "draft": 4201,
+        "critique": 7627,
+        "solver": 13442
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student wants to model the time it takes to ride a bicycle from school to home. According to the passage, which of the following details would be useful to ignore?",
+      "ms": {
+        "draft": 4201,
+        "critique": 6887,
+        "solver": 17314
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why are models in science useful?",
+      "ms": {
+        "draft": 4201,
+        "critique": 8490,
+        "solver": 11162,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the passage say is the purpose of mathematics in science?",
+      "ms": {
+        "draft": 12320,
+        "critique": 6404,
+        "solver": 1416,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a scientific law according to the passage?",
+      "ms": {
+        "draft": 12320,
+        "critique": 6145,
+        "solver": 1948
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about standard units in science?",
+      "ms": {
+        "draft": 12320,
+        "critique": 6595,
+        "solver": 1681,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the speed of light denoted by the symbol 'c'?",
+      "ms": {
+        "draft": 12320,
+        "critique": 6584,
+        "solver": 1619
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student uses the density of fuel in pounds per litre instead of kilograms per litre, what might be the result?",
+      "ms": {
+        "draft": 12320,
+        "critique": 6496,
+        "solver": 16198
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason given in the passage for why scientific theories may fail?",
+      "ms": {
+        "draft": 3869,
+        "critique": 6489
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest is a helpful strategy when solving a scientific problem?",
+      "ms": {
+        "draft": 3869,
+        "critique": 6514
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a family eats 100 g of rice per day, how many kilograms of rice would they need for a month?",
+      "ms": {
+        "draft": 3869,
+        "critique": 7109
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the main purpose of the example about breathing in 10,000 litres of air per day?",
+      "ms": {
+        "draft": 3869,
+        "critique": 7162
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the connection between science and other subjects?",
+      "ms": {
+        "draft": 3869,
+        "critique": 6609,
+        "solver": 1316,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage say that scientific theories are not final?",
+      "ms": {
+        "draft": 3869,
+        "critique": 5837,
+        "solver": 11212,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the purpose of the passage?",
+      "ms": {
+        "draft": 3246,
+        "critique": 5487,
+        "solver": 14254
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT mentioned as a science branch that helps understand how a mask works?",
+      "ms": {
+        "draft": 3246,
+        "critique": 6960,
+        "solver": 13841
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to study the filtration efficiency of masks, which of the following would they most likely use?",
+      "ms": {
+        "draft": 3246,
+        "critique": 5678,
+        "solver": 1607
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a factor in determining how well a mask works?",
+      "ms": {
+        "draft": 3246,
+        "critique": 6999,
+        "solver": 1551,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following is the primary reason for studying multiple branches of science to understand masks?",
+      "ms": {
+        "draft": 3246,
+        "critique": 6227,
+        "solver": 1946,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a new type of mask is developed that uses advanced filtration technology, which branch of science would be most relevant to evaluate its efficiency?",
+      "ms": {
+        "draft": 4788,
+        "critique": 5105
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which branch of science is involved in understanding the size and behavior of viruses?",
+      "ms": {
+        "draft": 4788,
+        "critique": 5423
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of using a mask as described in the passage?",
+      "ms": {
+        "draft": 4788,
+        "critique": 5840
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student claims that masks are only useful for filtering out large particles. Based on the passage, what inference can be made about the student's claim?",
+      "ms": {
+        "draft": 4788,
+        "critique": 5875
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a mask is designed to block both large and small particles, which scientific principle would be most critical in ensuring that it is effective against viruses?",
+      "ms": {
+        "draft": 4788,
+        "critique": 5243,
+        "solver": 1222
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage mentions that understanding how a mask works requires knowledge from multiple branches of science. Which of the following combinations is NOT mentioned in the passage?",
+      "ms": {
+        "draft": 4788,
+        "critique": 6645,
+        "solver": 1728
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is stated in the passage as a reason why scientific theories may fail?",
+      "ms": {
+        "draft": 4274,
+        "critique": 6022,
+        "solver": 13500,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the reliability of weather forecasts?",
+      "ms": {
+        "draft": 4274,
+        "critique": 7478,
+        "solver": 12069,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an average adult needs 2000 kcal per day from rice, how many days would 100 g of cooked rice last for one person, assuming 100 g provides 130 kcal?",
+      "ms": {
+        "draft": 4274,
+        "critique": 6107,
+        "solver": 16845
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a claim states that eating food during an eclipse is harmful, what does the passage suggest as a way to disprove it?",
+      "ms": {
+        "draft": 4274,
+        "critique": 6749,
+        "solver": 12664
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the purpose of making rough estimates in science?",
+      "ms": {
+        "draft": 4274,
+        "critique": 7607,
+        "solver": 13873
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is science considered a human activity?",
+      "ms": {
+        "draft": 4274,
+        "critique": 7201,
+        "solver": 16087,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of using mathematics in science, according to the passage?",
+      "ms": {
+        "draft": 3360,
+        "critique": 7767,
+        "solver": 1193,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a scientific law?",
+      "ms": {
+        "draft": 3360,
+        "critique": 7089,
+        "solver": 1795
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about how science helps us understand the world?",
+      "ms": {
+        "draft": 4230,
+        "critique": 6392,
+        "solver": 1539,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a scientist predicts that a chemical reaction will produce a certain amount of carbon dioxide, what does this show about the science behind the prediction?",
+      "ms": {
+        "draft": 3360,
+        "critique": 7398,
+        "solver": 1358,
+        "form": 3728
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the use of models in science?",
+      "ms": {
+        "draft": 4230,
+        "critique": 5011,
+        "solver": 1300,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would be the most important detail to include when modeling a cricket shot?",
+      "ms": {
+        "draft": 4230,
+        "critique": 6742,
+        "solver": 1819,
+        "form": 3623
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the main purpose of using models in science according to the passage?",
+      "ms": {
+        "draft": 4230,
+        "critique": 4424,
+        "solver": 542,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a symbol used to represent force in science?",
+      "ms": {
+        "draft": 4201,
+        "critique": 6835,
+        "solver": 13235,
+        "form": 0,
+        "translation": 23211
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why is the speed of light denoted by the symbol 'c'?",
+      "ms": {
+        "draft": 3360,
+        "critique": 7790,
+        "solver": 11164,
+        "form": 2313,
+        "translation": 29800
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "How can a prediction about rain be made more scientifically testable?",
+      "ms": {
+        "draft": 12320,
+        "critique": 7870,
+        "solver": 1726,
+        "form": 2198,
+        "translation": 45297
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a student wants to study how masks block viruses, which of the following would they most likely focus on?",
+      "ms": {
+        "draft": 3246,
+        "critique": 7558,
+        "solver": 1697,
+        "form": 865,
+        "translation": 37007
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the passage say about models in science?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If you are studying the motion of a falling object, which of the following details could you ignore?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What does the passage say about the purpose of the magnifying glass and compass on the textbook cover?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student wants to model the time it takes to ride a bicycle from school to home. According to the passage, which of the following details would be useful to ignore?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why are models in science useful?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the passage say is the purpose of mathematics in science?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"correct answer is based on the passage's statement about thi…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a scientific law according to the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about standard units in science?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"while they avoid confusion, the passage specifically mention…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is the speed of light denoted by the symbol 'c'?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student uses the density of fuel in pounds per litre instead of kilograms per litre, what might be the result?",
+      "reason": "after redraft: the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main reason given in the passage for why scientific theories may fail?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage suggest is a helpful strategy when solving a scientific problem?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a family eats 100 g of rice per day, how many kilograms of rice would they need for a month?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the main purpose of the example about breathing in 10,000 litres of air per day?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the connection between science and other subjects?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Contradicts the passage's statement about science's role in …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage say that scientific theories are not final?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's view of scientific theories as a…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following best describes the purpose of the passage?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT mentioned as a science branch that helps understand how a mask works?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student wants to study the filtration efficiency of masks, which of the following would they most likely use?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a factor in determining how well a mask works?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following is the primary reason for studying multiple branches of science to understand masks?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the main reason for using standard units like the kilogram everywhere?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a new type of mask is developed that uses advanced filtration technology, which branch of science would be most relevant to evaluate its efficiency?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, which branch of science is involved in understanding the size and behavior of viruses?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main purpose of using a mask as described in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student claims that masks are only useful for filtering out large particles. Based on the passage, what inference can be made about the student's claim?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a mask is designed to block both large and small particles, which scientific principle would be most critical in ensuring that it is effective against viruses?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The passage mentions that understanding how a mask works requires knowledge from multiple branches of science. Which of the following combinations is NOT mentioned in the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is stated in the passage as a reason why scientific theories may fail?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"confuses the passage's idea of evidence-based reasoning with…\"); distractor 1's reason is not a one-line misconception (\"contradicts the passage's statement that theories are open t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about the reliability of weather forecasts?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (82 vs 48 characters); distractor 2's reason is not a one-line misconception (\"contradicts the passage's explanation of how forecasts work…\"); distractor 3's reason is not a one-line misconception (\"not mentioned in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If an average adult needs 2000 kcal per day from rice, how many days would 100 g of cooked rice last for one person, assuming 100 g provides 130 kcal?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a claim states that eating food during an eclipse is harmful, what does the passage suggest as a way to disprove it?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what is the purpose of making rough estimates in science?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why is science considered a human activity?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of using mathematics in science, according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, not a distractor, so no reason needed for th…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a scientific law?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about how science helps us understand the world?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"confuses the passage's emphasis on knowledge with what we kn…\"); distractor 2's reason is not a one-line misconception (\"misunderstands the passage's point about the process of know…\"); distractor 3's reason is not a one-line misconception (\"overgeneralizes the idea of ignoring details to all details\"…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a scientist predicts that a chemical reaction will produce a certain amount of carbon dioxide, what does this show about the science behind the prediction?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, not a distractor, so no reason needed for th…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the use of models in science?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"contradicts the passage's explanation of models…\"); distractor 2's reason is not a one-line misconception (\"ignores the passage's emphasis on simplicity and focus…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What would be the most important detail to include when modeling a cricket shot?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"ignores the key factors mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"overlooks the importance of the ball's motion\",\"confuses the…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the main purpose of using models in science according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"misunderstands the purpose of models as making things more c…\"); distractor 3 has no reason"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

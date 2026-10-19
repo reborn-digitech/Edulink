@@ -1,0 +1,786 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T14:55:22.251Z",
+  "finishedAt": "2026-10-19T15:07:04.243Z",
+  "seconds": 702,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Manjari PART-II",
+    "bookCode": "iemh2",
+    "document": "ncert/9/mathematics/iemh206.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 6 — Chapter 6",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 17,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n9. C) 30",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 210155,
+      "in": 41,
+      "out": 40,
+      "rejects": 2,
+      "promptTokens": 45387,
+      "completionTokens": 11383
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 362415,
+      "in": 40,
+      "out": 30,
+      "rejects": 10,
+      "promptTokens": 25392,
+      "completionTokens": 9189
+    },
+    "solver": {
+      "calls": 224,
+      "ms": 118273,
+      "in": 30,
+      "out": 25,
+      "rejects": 5,
+      "promptTokens": 42744,
+      "completionTokens": 2303
+    },
+    "form": {
+      "calls": 11,
+      "ms": 50078,
+      "in": 25,
+      "out": 9,
+      "rejects": 16,
+      "promptTokens": 6523,
+      "completionTokens": 1582
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 14,
+      "ms": 3002,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 36,
+      "ms": 351436,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 21125,
+      "completionTokens": 9713
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "A cuboid has a total surface area of 280 cm² and a volume of 240 cm³. If its length is 10 cm and width is 6 cm, what is its height?",
+      "ms": {
+        "draft": 4242,
+        "critique": 6603,
+        "solver": 1512
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A cuboid has a total surface area of 280 cm² and a volume of 240 cm³. If its length is 10 cm and width is 6 cm, what is its height?",
+      "ms": {
+        "draft": 4242,
+        "critique": 8248,
+        "solver": 1241
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A cuboid has length 10 cm, width 5 cm, and height 4 cm. What is the total surface area of the cuboid?",
+      "ms": {
+        "draft": 4242,
+        "critique": 9096,
+        "solver": 14729,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the radius of a cylinder is doubled and the height is halved, what happens to the curved surface area?",
+      "ms": {
+        "draft": 4116,
+        "critique": 7861
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the curved surface area of a cylinder?",
+      "ms": {
+        "draft": 4116,
+        "critique": 7069,
+        "solver": 1503,
+        "form": 3903
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the volume of a cylinder with a radius of 3 cm and a height of 7 cm?",
+      "ms": {
+        "draft": 4116,
+        "critique": 8294
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A cylinder is melted and recast into a cone of the same height. What is the ratio of the radius of the cylinder to the radius of the cone?",
+      "ms": {
+        "draft": 4116,
+        "critique": 6027,
+        "solver": 2260,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the volume of a cone?",
+      "ms": {
+        "draft": 4285,
+        "critique": 8428,
+        "solver": 1765,
+        "form": 2824
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A solid cube of side 12 cm is melted and recast into a cylinder of radius 2 cm. What is the height of the cylinder?",
+      "ms": {
+        "draft": 4116,
+        "critique": 6571,
+        "solver": 12723
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a cone has a height of 12 cm and a base radius of 5 cm, what is its volume?",
+      "ms": {
+        "draft": 4285,
+        "critique": 7064,
+        "solver": 1829,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cone is formed by rotating a right triangle with sides 5 cm, 12 cm, and 13 cm about the side of 12 cm. What is the volume of the cone?",
+      "ms": {
+        "draft": 4285,
+        "critique": 7675,
+        "solver": 1256
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A cone has a volume of 1570 cm³ and a height of 15 cm. What is the radius of its base?",
+      "ms": {
+        "draft": 4285,
+        "critique": 6955,
+        "solver": 1770,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the surface area of a sphere with radius r?",
+      "ms": {
+        "draft": 6509,
+        "critique": 7390,
+        "solver": 15954
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the description of the rectangular map projection, what is a limitation of this method?",
+      "ms": {
+        "draft": 6509,
+        "critique": 7009,
+        "solver": 12705,
+        "form": 3968
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the surface area of a sphere?",
+      "ms": {
+        "draft": 6509,
+        "critique": 8461,
+        "solver": 14604,
+        "form": 4453
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A spherical object has a surface area of 154 cm². What is its radius?",
+      "ms": {
+        "draft": 6509,
+        "critique": 6638,
+        "solver": 1467,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A hemispherical bowl has a radius of 3.5 cm. What is the volume of water it can contain?",
+      "ms": {
+        "draft": 6509,
+        "critique": 5128,
+        "solver": 12123,
+        "form": 2674
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A square pyramid is fitted inside a cylinder. The square base of the pyramid lies on the base of the cylinder, and its corners are on the boundary of the cylinder. The apex of the pyramid lies on the top of the cylinder. What is the ratio of the volume of the pyramid to the volume of the cylinder?",
+      "ms": {
+        "draft": 6809,
+        "critique": 8757
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A cylinder has radius r and height h. What is the change in volume when the radius is increased by 1 unit?",
+      "ms": {
+        "draft": 6809,
+        "critique": 7413,
+        "solver": 2593,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A ball of chapati dough of radius 6 cm is prepared. Estimate how many chapatis can be made from it?",
+      "ms": {
+        "draft": 6809,
+        "critique": 7184
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cylindrical glass has a radius of 4 cm and a height of 25 cm. It contains water up to a height of 16 cm. A crow wants to drink water from this glass, and the water must be at a height of 20 cm. How many marbles of radius 1 cm should the crow drop into the glass to make the water reach the required height?",
+      "ms": {
+        "draft": 6809,
+        "critique": 9990
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A cuboid has length l, width w, and height h. What is the change in volume when the length is increased by 1 unit?",
+      "ms": {
+        "draft": 6809,
+        "critique": 7125,
+        "solver": 12230,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of a guesstimate?",
+      "ms": {
+        "draft": 4745,
+        "critique": 5458
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a guesstimate question?",
+      "ms": {
+        "draft": 4745,
+        "critique": 6397
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In Example 6, what is the estimated volume of a tennis ball with a radius of 3 cm?",
+      "ms": {
+        "draft": 4745,
+        "critique": 6931
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A coconut is cut in half. Estimate the volume of the edible coconut flesh by taking the necessary measurements. If the radius of the coconut is 5 cm, what is the volume of the edible flesh?",
+      "ms": {
+        "draft": 6809,
+        "critique": 6114,
+        "solver": 2156,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the surface area of a sphere with radius r?",
+      "ms": {
+        "draft": 3764,
+        "critique": 7680
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the volume of a hemisphere of radius r?",
+      "ms": {
+        "draft": 3764,
+        "critique": 7767
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the volume of a cone with base radius 5 cm and height 12 cm?",
+      "ms": {
+        "draft": 9110,
+        "critique": 7213,
+        "solver": 1374,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the radius of a sphere is increased by 10%, by approximately what percentage does its volume increase?",
+      "ms": {
+        "draft": 3764,
+        "critique": 7818,
+        "solver": 13573,
+        "form": 3150
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the volume of a pyramid with a square base of side 6 cm and height 8 cm?",
+      "ms": {
+        "draft": 9110,
+        "critique": 7879,
+        "solver": 11366,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which 3D shape has a surface area of 4πr²?",
+      "ms": {
+        "draft": 29833,
+        "critique": 5585,
+        "solver": 10907,
+        "form": 2322,
+        "translation": 48279
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the shape of the cross-section of a cylinder if the slice is parallel to its base?",
+      "ms": {
+        "draft": 4116,
+        "critique": 5605,
+        "solver": 1272,
+        "form": 4148,
+        "translation": 41703
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In Example 5, what is the formula used to calculate the volume of pani in the cylindrical vessel?",
+      "ms": {
+        "draft": 4745,
+        "critique": 7226,
+        "solver": 11255,
+        "form": 0,
+        "translation": 35522
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When a right-angled triangle is rotated about one of its perpendicular sides, what solid is formed?",
+      "ms": {
+        "draft": 4285,
+        "critique": 7169,
+        "solver": 12266,
+        "form": 2379,
+        "translation": 40586
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A cube has a side length of 8 cm. What is its volume?",
+      "ms": {
+        "draft": 4242,
+        "critique": 7386,
+        "solver": 1910,
+        "form": 0,
+        "translation": 32041
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the volume of a cube with a side of 5 cm?",
+      "ms": {
+        "draft": 4242,
+        "critique": 6882,
+        "solver": 1962,
+        "form": 0,
+        "translation": 31753
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cuboid and a cube have the same volume. The cube has a side length of 6 cm. The cuboid has a length of 9 cm and width of 6 cm. What is the height of the cuboid?",
+      "ms": {
+        "draft": 4242,
+        "critique": 8186,
+        "solver": 1713,
+        "form": 0,
+        "translation": 35552
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the total surface area of a cube with side length 5 cm?",
+      "ms": {
+        "draft": 4794,
+        "critique": 6983,
+        "solver": 974,
+        "form": 0,
+        "translation": 34804
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "The curved surface area of a cylinder is given by the formula CSA = 2πrh. If the radius of a cylinder is halved and its height is doubled, what happens to the curved surface area?",
+      "ms": {
+        "draft": 5682,
+        "critique": 6890,
+        "solver": 1373,
+        "form": 0,
+        "translation": 51197
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 4, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What is the main purpose of guesstimate questions?\",\n      \"o"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the formula for the volume of a right circular cone?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A cuboid has a total surface area of 280 cm² and a volume of 240 cm³. If its length is 10 cm and width is 6 cm, what is its height?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A cuboid has a total surface area of 280 cm² and a volume of 240 cm³. If its length is 10 cm and width is 6 cm, what is its height?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A cuboid has length 10 cm, width 5 cm, and height 4 cm. What is the total surface area of the cuboid?",
+      "reason": "options 1 and 3 are the same (\"200 cm²\"); options 1 and 3 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the radius of a cylinder is doubled and the height is halved, what happens to the curved surface area?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula for the curved surface area of a cylinder?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the volume of a cylinder with a radius of 3 cm and a height of 7 cm?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A cylinder is melted and recast into a cone of the same height. What is the ratio of the radius of the cylinder to the radius of the cone?",
+      "reason": "options 2 and 3 are the same (\"2:1\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the volume of a cone?",
+      "reason": "options 0 and 1 say the same thing (\"V = area of base × height\" / \"V = 2 × area of base × height\"); options 0 and 2 are the same (\"V = area of base × height\"); options 0 and 3 say the same thing (\"V = area of base × height\" / \"V = 3 × area of base × height\"); options 1 and 2 say the same thing (\"V = 2 × area of base × height\" / \"V = × area of base × height\"); options 2 and 3 say the same thing (\"V = × area of base × height\" / \"V = 3 × area of base × height\"); distractor 3's reason is not a one-line misconception (\"correct option is not the longest and is concise and precise…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A solid cube of side 12 cm is melted and recast into a cylinder of radius 2 cm. What is the height of the cylinder?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a cone has a height of 12 cm and a base radius of 5 cm, what is its volume?",
+      "reason": "checkExpr \"(1/3)*pi*5^2*12\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A cone is formed by rotating a right triangle with sides 5 cm, 12 cm, and 13 cm about the side of 12 cm. What is the volume of the cone?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A cone has a volume of 1570 cm³ and a height of 15 cm. What is the radius of its base?",
+      "reason": "checkExpr \"sqrt((3*1570)/(pi*15))\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the formula for the surface area of a sphere with radius r?",
+      "reason": "after redrafting distractors 0, 1, 3: the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the description of the rectangular map projection, what is a limitation of this method?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misinterprets the text, thinking it does not show the entire…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the surface area of a sphere?",
+      "reason": "options 0 and 2 say the same thing (\"It is equal to the volume of a cylinder with radius r and height 2r\" / \"It is equal to the volume of a cone with radius r and height r\"); options 1 and 3 say the same thing (\"It is equal to the curved surface area of a cylinder with radius r and height 2r\" / \"It is equal to the total surface area of a cylinder with radius r and height 2r\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A spherical object has a surface area of 154 cm². What is its radius?",
+      "reason": "options are written to different precisions (0 and 1 decimals); checkExpr \"sqrt(154/(4*7))\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A hemispherical bowl has a radius of 3.5 cm. What is the volume of water it can contain?",
+      "reason": "options are written to different precisions (0 and 1 decimals); ARITHMETIC MISMATCH — checkExpr \"(2/3)*7*(3.5)^3\" = 200.08333333333331, but the key says 89.8"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A square pyramid is fitted inside a cylinder. The square base of the pyramid lies on the base of the cylinder, and its corners are on the boundary of the cylinder. The apex of the pyramid lies on the top of the cylinder. What is the ratio of the volume of the pyramid to the volume of the cylinder?",
+      "reason": "the critic finds option 1 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A cylinder has radius r and height h. What is the change in volume when the radius is increased by 1 unit?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A ball of chapati dough of radius 6 cm is prepared. Estimate how many chapatis can be made from it?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A cylindrical glass has a radius of 4 cm and a height of 25 cm. It contains water up to a height of 16 cm. A crow wants to drink water from this glass, and the water must be at a height of 20 cm. How many marbles of radius 1 cm should the crow drop into the glass to make the water reach the required height?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A cuboid has length l, width w, and height h. What is the change in volume when the length is increased by 1 unit?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main purpose of a guesstimate?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a guesstimate question?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "In Example 6, what is the estimated volume of a tennis ball with a radius of 3 cm?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A coconut is cut in half. Estimate the volume of the edible coconut flesh by taking the necessary measurements. If the radius of the coconut is 5 cm, what is the volume of the edible flesh?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'labels'"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the surface area of a sphere with radius r?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the volume of a hemisphere of radius r?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the volume of a cone with base radius 5 cm and height 12 cm?",
+      "reason": "checkExpr \"(1/3)*pi*5^2*12\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the radius of a sphere is increased by 10%, by approximately what percentage does its volume increase?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the volume of a pyramid with a square base of side 6 cm and height 8 cm?",
+      "reason": "figure: figure spec refused: spec.segments.0.label: label key: letters, digits, _ and ', or a number"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+    "topic words not written: the model's answer was not JSON (finish: length): {\n  \"summary\": \"This chapter explains the properties and calculations of volumes and surface areas of 3D shapes like cub"
+  ]
+}

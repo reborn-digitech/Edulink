@@ -1,0 +1,635 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T08:43:54.665Z",
+  "finishedAt": "2026-10-19T08:49:58.431Z",
+  "seconds": 364,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 4 — Current Electricity and Magnetism",
+    "edition": "First Edition 2018",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2022-23]\n32. (a) When iron filings are placed in a magnetic field around a bar magnet, they 3\nbehave like tiny magnets. The magnetic force experienced by these tiny magnets\nmake them rotate and align themselves along the direction of field lines. (1 mark)\n(b)The physical property indicated by this arrangement is the magnetic field\nproduced by the bar magnet. (1 mark)\n(c) Magnetic field lines never intersect, magnetic field lines are closed curves.\n(1mark)\nOR\n(a) The deflection in the compass needle increases as Magnetic field of the current\ncarrying conductor is directly proportional to current flowing through it.\n(1.5marks)\n(b) The deflection in the needle decreases as the magnetic field is inversel",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n33. A. Magnetic field strength is inversely proportional to the distance from the 3\ncurrent carrying wire. Hence when Mona moved the compass away from\nthe current carrying wire, the magnetic effect was less on it and hence the\ndeflection was less. (1)\nB. Magnetic field strength is directly proportional to the current in the wire. So,\nMona could increase the current in the circuit to observe a greater\ndeflection in the compass needle. (1)\nC. The battery suggests that the current is going from top of the plane to the\nbottom of the plane. Using the right hand thumb rule we can say that the\nmagnetic field will be clockwise. (1)\n- - - - - - - - - - - -\nFor visually impaired students\nA. Magnetic f",
+      "[CBSE Class X Science, sample question paper, 2026-27]\n38. A school has installed an automatic electromagnetic door-locking system at the 4\nmain entrance. The locking mechanism uses a solenoid controlled by a switch at\nthe security desk. When electricity flows through the solenoid, it creates a\nmagnetic field strong enough to pull an iron bolt, unlocking the door.\nAs soon as the switch is turned off, the magnetic field disappears, and a spring\npushes the bolt back, locking the door.\nA. Why is an iron core kept inside the solenoid in this locking mechanism?\nB. How can we determine the magnetic poles in this solenoid?\nAttempt either subpart (C) or (D).\nC. If the current in the solenoid is increased from 1 A to 2 A, explain how the\nmagnetic effect ",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n14. A copper wire is held between the poles of a magnet. 1\nThe current in the wire can be reversed. The pole of the magnet can also be changed\nover. In how many of the four directions shown can the force act on the wire?\n(a) 1\n(b) 2\n(c) 3\n(d) 4"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 135392,
+      "in": 32,
+      "out": 31,
+      "rejects": 1,
+      "promptTokens": 25475,
+      "completionTokens": 7226
+    },
+    "critique": {
+      "calls": 34,
+      "ms": 216186,
+      "in": 31,
+      "out": 21,
+      "rejects": 10,
+      "promptTokens": 14880,
+      "completionTokens": 5748
+    },
+    "solver": {
+      "calls": 127,
+      "ms": 57252,
+      "in": 21,
+      "out": 19,
+      "rejects": 2,
+      "promptTokens": 19769,
+      "completionTokens": 1217
+    },
+    "form": {
+      "calls": 5,
+      "ms": 94682,
+      "in": 19,
+      "out": 6,
+      "rejects": 13,
+      "promptTokens": 10469,
+      "completionTokens": 2099
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 2372,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 270306,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14715,
+      "completionTokens": 7659
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "In a dry cell, what is the role of the electrolyte?",
+      "ms": {
+        "draft": 3094,
+        "critique": 5656
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a dry cell is used in a circuit, in which direction do the electrons flow?",
+      "ms": {
+        "draft": 3094,
+        "critique": 5681
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of an electric cell in an electrical circuit?",
+      "ms": {
+        "draft": 3094,
+        "critique": 6275
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the SI unit of electric current?",
+      "ms": {
+        "draft": 3094,
+        "critique": 5113
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the current in a circuit is increased, what will happen to the magnetic field produced by the wire?",
+      "ms": {
+        "draft": 3094,
+        "critique": 6014
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is a lead-acid cell considered rechargeable?",
+      "ms": {
+        "draft": 3094,
+        "critique": 6016
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the electromagnet in the bell designed to lose its magnetism when the current is stopped?",
+      "ms": {
+        "draft": 4342,
+        "critique": 6477,
+        "solver": 1681,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of the electromagnet in an electric bell?",
+      "ms": {
+        "draft": 4342,
+        "critique": 5470,
+        "solver": 2094,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an electric circuit, electrons flow from a point of potential to the point of potential.",
+      "ms": {
+        "draft": 3536,
+        "critique": 7790
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the potential difference of a battery formed by connecting three electric cells of 1.5 V each in series?",
+      "ms": {
+        "draft": 3536,
+        "critique": 6288,
+        "solver": 1307,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An electric current flowing in a wire creates what around the wire?",
+      "ms": {
+        "draft": 3536,
+        "critique": 7364,
+        "solver": 1537,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the correct way to connect three dry cells to form a battery?",
+      "ms": {
+        "draft": 3536,
+        "critique": 5968,
+        "solver": 831,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an electric circuit, a battery and a bulb have been connected, but the bulb is not glowing. What test would you perform to find the reason?",
+      "ms": {
+        "draft": 3536,
+        "critique": 7447,
+        "solver": 6983
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In an electric circuit, electrons flow from a point of ______ to a point of ______.",
+      "ms": {
+        "draft": 3840,
+        "critique": 6403
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an electric circuit, a battery and a bulb have been connected. If the bulb is not glowing, which of the following could be the reason?",
+      "ms": {
+        "draft": 3840,
+        "critique": 6431
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total potential difference of a battery formed by connecting three electric cells, each of 1.5 V?",
+      "ms": {
+        "draft": 3840,
+        "critique": 7518,
+        "solver": 1495,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A battery is formed by joining 3 dry cells. Which of the following diagrams shows the correct way to connect them?",
+      "ms": {
+        "draft": 3840,
+        "critique": 5261,
+        "solver": 16156
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An electric current flowing in a wire creates a magnetic field around the wire. Which of the following diagrams correctly shows the direction of the magnetic field lines around the wire?",
+      "ms": {
+        "draft": 3840,
+        "critique": 8333,
+        "solver": 1844,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main purpose of the electromagnet in the electric bell depicted in Fig 4.8?",
+      "ms": {
+        "draft": 6605,
+        "critique": 6249,
+        "solver": 1957,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the magnetic field of the electromagnet when the plug key is opened in the electric bell circuit?",
+      "ms": {
+        "draft": 6605,
+        "critique": 6487,
+        "solver": 1278,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the electric bell circuit, what causes the striker to hit the gong repeatedly?",
+      "ms": {
+        "draft": 6605,
+        "critique": 7482,
+        "solver": 1865,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the main difference between a cell and a battery as explained in the passage?",
+      "ms": {
+        "draft": 6605,
+        "critique": 6564,
+        "solver": 1880,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In an electric circuit, what causes the flow of electric current?",
+      "ms": {
+        "draft": 4257,
+        "critique": 7051
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of the contact screw in the electric bell circuit?",
+      "ms": {
+        "draft": 6605,
+        "critique": 9447,
+        "solver": 1678,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does a dry cell have a longer shelf life compared to a wet cell?",
+      "ms": {
+        "draft": 4257,
+        "critique": 6699,
+        "solver": 868,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of an electric circuit?",
+      "ms": {
+        "draft": 4342,
+        "critique": 5778,
+        "solver": 13009,
+        "form": 0,
+        "translation": 42383
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the plug key in an electric circuit?",
+      "ms": {
+        "draft": 4342,
+        "critique": 5837,
+        "solver": 1400,
+        "form": 0,
+        "translation": 39476
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the magnetic needle in the experiment when the plug key is closed?",
+      "ms": {
+        "draft": 4342,
+        "critique": 5138,
+        "solver": 1158,
+        "form": 0,
+        "translation": 42763
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of the electrolyte in a dry cell?",
+      "ms": {
+        "draft": 4257,
+        "critique": 6757,
+        "solver": 726,
+        "form": 0,
+        "translation": 42694
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the current in the electromagnet of the bell is increased, what effect will it have on the sound produced?",
+      "ms": {
+        "draft": 4342,
+        "critique": 8453,
+        "solver": 1607,
+        "form": 0,
+        "translation": 47027
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A school has installed an automatic electromagnetic door-locking system at the main entrance. The locking mechanism uses a solenoid controlled by a switch. When the switch is turned on, the solenoid creates a magnetic field that pulls an iron bolt, unlocking the door. If the current in the solenoid is increased from 1 A to 2 A, what happens to the magnetic field?",
+      "ms": {
+        "draft": 3840,
+        "critique": 7780,
+        "solver": 1821,
+        "form": 0,
+        "translation": 51108
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a dry cell, what is the role of the electrolyte?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a dry cell is used in a circuit, in which direction do the electrons flow?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main function of an electric cell in an electrical circuit?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the SI unit of electric current?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the current in a circuit is increased, what will happen to the magnetic field produced by the wire?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is a lead-acid cell considered rechargeable?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the electromagnet in the bell designed to lose its magnetism when the current is stopped?",
+      "reason": "the key is far longer than every distractor (58 vs 32 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the role of the electromagnet in an electric bell?",
+      "reason": "figure: figure spec refused: spec.parts.3.x: Number must be less than or equal to 100"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In an electric circuit, electrons flow from a point of potential to the point of potential.",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the potential difference of a battery formed by connecting three electric cells of 1.5 V each in series?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "An electric current flowing in a wire creates what around the wire?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the correct way to connect three dry cells to form a battery?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In an electric circuit, a battery and a bulb have been connected, but the bulb is not glowing. What test would you perform to find the reason?",
+      "reason": "after redraft: the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the SI unit of electric current?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "In an electric circuit, electrons flow from a point of ______ to a point of ______.",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In an electric circuit, a battery and a bulb have been connected. If the bulb is not glowing, which of the following could be the reason?",
+      "reason": "the critic finds option 3 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the total potential difference of a battery formed by connecting three electric cells, each of 1.5 V?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A battery is formed by joining 3 dry cells. Which of the following diagrams shows the correct way to connect them?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "An electric current flowing in a wire creates a magnetic field around the wire. Which of the following diagrams correctly shows the direction of the magnetic field lines around the wire?",
+      "reason": "figure: figure spec refused: spec.parts: barMagnet has no label \"current direction\" (it has north, south, fieldLine)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main purpose of the electromagnet in the electric bell depicted in Fig 4.8?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks the electromagnet stores energy like a battery or cap…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens to the magnetic field of the electromagnet when the plug key is opened in the electric bell circuit?",
+      "reason": "figure: figure spec refused: spec.parts.1.text.north: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the electric bell circuit, what causes the striker to hit the gong repeatedly?",
+      "reason": "figure: figure spec refused: spec.parts.2.type: Invalid enum value. Expected 'wire' | 'cell' | 'battery' | 'resistor' | 'rheostat' | 'bulb' | 'switchOpen' | 'switchClosed' | 'ammeter' | 'voltmeter' | 'galvanometer' | 'fuse', received 'electromagnet'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the main difference between a cell and a battery as explained in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Thinks a battery is used only in cars, but the passage does …\"); distractor 3's reason is not a one-line misconception (\"Believes a battery has higher voltage than a cell, but the p…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In an electric circuit, what causes the flow of electric current?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the role of the contact screw in the electric bell circuit?",
+      "reason": "figure: figure spec refused: spec.parts: Array must contain at most 6 element(s)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does a dry cell have a longer shelf life compared to a wet cell?",
+      "reason": "the key is far longer than every distractor (53 vs 23 characters)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

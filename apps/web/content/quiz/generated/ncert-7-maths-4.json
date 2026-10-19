@@ -1,0 +1,541 @@
+{
+  "subject": "MATHS",
+  "classLevel": 7,
+  "chapter": "Chapter 4 — Expressions Using Letter-Numbers",
+  "name": "Expressions Using Letter-Numbers",
+  "slug": "maths-7-expressions-using-letter-numbers",
+  "summary": "This chapter introduces how to form and simplify algebraic expressions using letters to represent numbers.",
+  "position": 4,
+  "source": "generated against NCERT Mathematics, Class 7, chapter 4 (Reprint 2026-27)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अक्षर-संख्याओं का उपयोग करके अभिव्यक्तियाँ",
+      "summary": "इस अध्याय में अक्षरों के उपयोग से बीजगणितीय अभिव्यक्तियाँ बनाने और सरल करने का परिचय दिया गया है।"
+    },
+    "mr": {
+      "name": "अक्षर-संख्यांच्या वापरून व्यंजक",
+      "summary": "ही अध्याय अक्षरांच्या वापरून बीजगणितीय व्यंजक तयार करण्याच्या आणि सोपे करण्याच्या पद्धतींचा अभ्यास करते."
+    }
+  },
+  "board": "NCERT",
+  "book": "Ganita Prakash",
+  "edition": "Reprint 2026-27",
+  "generatedAt": "2026-10-19T03:35:15.092Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the algebraic expression for the time taken to travel from Yahapur to Vahapur if the time between stations is t and the train stops for 2 minutes at each of the three stations?",
+      "choices": [
+        "3t + 2",
+        "3t + 6",
+        "t + 6",
+        "3t + 2 + 2"
+      ],
+      "answerIndex": 1,
+      "solution": "The train travels between three stations, taking t minutes per segment, so 3t minutes for travel. It stops for 2 minutes at each of three stations, which is 3 × 2 = 6 minutes. Total time is 3t + 6. The option '3t + 2' adds only 2 minutes, 't + 6' misses the multiplication by 3, and '3t + 2 + 2' adds 2 minutes twice.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यहापूर से वहापूर तक यात्रा करने में लगा समय बीजगणितीय अभिव्यक्ति क्या है यदि स्टेशनों के बीच समय t है और ट्रेन तीन स्टेशनों में प्रत्येक पर 2 मिनट रुकती है?",
+          "choices": [
+            "3t + 2",
+            "3t + 6",
+            "t + 6",
+            "3t + 2 + 2"
+          ],
+          "solution": "ट्रेन तीन स्टेशनों के बीच यात्रा करती है, प्रत्येक खंड में t मिनट लेती है, अतः यात्रा के लिए 3t मिनट होते हैं। यह तीन स्टेशनों में प्रत्येक पर 2 मिनट रुकती है, जो 3 × 2 = 6 मिनट होते हैं। कुल समय 3t + 6 होता है। विकल्प '3t + 2' में केवल 2 मिनट जोड़े गए हैं, 't + 6' में 3 से गुणा करना छूट गया है, और '3t + 2 + 2' में 2 मिनट दो बार जोड़ दिए गए हैं।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and solution are correctly translated, with the correct answer remaining in position 1. Distractors remain incorrect and distinct.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "याहापूर ते वहापूर वाटेवर जाण्यासाठी लागणारा वेळ असा बीजगणिती व्यंजक काय असेल, जर रेल्वेच्या स्टेशनमधील वेळ t असेल आणि ती तीन स्टेशनांमध्ये प्रत्येकी 2 मिनिटे थांबत असेल?",
+          "choices": [
+            "3t + 2",
+            "3t + 6",
+            "t + 6",
+            "3t + 2 + 2"
+          ],
+          "solution": "रेल्वे तीन स्टेशनांमध्ये जाते, जेथे प्रत्येक खंडासाठी t मिनिटे लागतात, म्हणून चालत जाण्यासाठी 3t मिनिटे लागतात. ती तीन स्टेशनांमध्ये प्रत्येकी 2 मिनिटे थांबत असल्याने, ते 3 × 2 = 6 मिनिटे असतात. एकूण वेळ 3t + 6 असते. '3t + 2' मध्ये केवळ 2 मिनिटे जोडली गेली आहेत, 't + 6' मध्ये 3 ने गुणणे नाही, आणि '3t + 2 + 2' मध्ये 2 मिनिटे दोनदा जोडली गेली आहेत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses total stop time with 2 minutes",
+        null,
+        "misses multiplication of t by 3",
+        "adds only 2 minutes for stops instead of 6"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3t + 6. The solution correctly accounts for 3 segments of travel time (3t) and 3 stops of 2 minutes each (6 minutes). The distractors reflect common misconceptions, such as adding only 2 minutes for stops or missing the multiplication by 3.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 15,
+          "pageStart": 22,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 16,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 17,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 18,
+          "pageStart": 27,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T03:35:15.092Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If the expression 8x – (2x – 3) + 12 is simplified, what is the result?",
+      "choices": [
+        "6x + 15",
+        "6x + 3",
+        "8x + 15",
+        "8x + 9"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 6x + 15. This is obtained by first simplifying the parentheses: 8x - 2x + 3 + 12 = 6x + 15. The other options either fail to distribute the negative sign or add the constants incorrectly.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि व्यंजक 8x – (2x – 3) + 12 को सरल किया जाए, तो परिणाम क्या होगा?",
+          "choices": [
+            "6x + 15",
+            "6x + 3",
+            "8x + 15",
+            "8x + 9"
+          ],
+          "solution": "सही उत्तर 6x + 15 है। यह पहले कोष्ठक को सरल करके प्राप्त किया जाता है: 8x - 2x + 3 + 12 = 6x + 15। अन्य विकल्प या ऋणात्मक चिह्न को वितरित नहीं करते या अचर संख्याओं को गलत ढंग से जोड़ते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "8x – (2x – 3) + 12 व्यंजक सोपा केल्यास, निकाल काय असेल?",
+          "choices": [
+            "6x + 15",
+            "6x + 3",
+            "8x + 15",
+            "8x + 9"
+          ],
+          "solution": "योग्य उत्तर 6x + 15 आहे. हे व्यंजक अवगंमनाच्या कोष्टकाचे सोपे करून मिळते: 8x - 2x + 3 + 12 = 6x + 15. इतर उत्तरे नकारात्मक चिन्ह वितरित करण्याच्या चूक किंवा स्थिरांच्या चूक बेरजेमुळे असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student forgets to distribute the negative sign properly across the parentheses",
+        "fails to distribute the negative sign",
+        "fails to distribute the negative sign and adds the constants incorrectly"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The expression simplifies to 6x + 15 by distributing the negative sign and combining like terms. The author's reasoning for the distractors is valid and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 22,
+          "pageStart": 36,
+          "pageEnd": 38,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 23,
+          "pageStart": 38,
+          "pageEnd": 40,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 24,
+          "pageStart": 41,
+          "pageEnd": 41,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T03:35:15.092Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the expression 2l + 2b, what does l represent?",
+      "choices": [
+        "Breadth",
+        "Length",
+        "Perimeter",
+        "Area"
+      ],
+      "answerIndex": 1,
+      "solution": "In the expression 2l + 2b, l represents the length of the rectangle. Breadth is represented by b, perimeter is the result of the expression, and area is not part of the expression. The correct answer is length.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "2l + 2b व्यंजक में l क्या प्रतिनिधित्व करता है?",
+          "choices": [
+            "चौड़ाई",
+            "लंबाई",
+            "परिमाप",
+            "क्षेत्रफल"
+          ],
+          "solution": "2l + 2b व्यंजक में l आयत की लंबाई को प्रतिनिधित्व करता है। चौड़ाई को b द्वारा प्रतिनिधित्व किया जाता है, परिमाप व्यंजक के परिणाम होता है, और क्षेत्रफल व्यंजक में शामिल नहीं होता है। सही उत्तर लंबाई है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "2l + 2b या व्यंजकात l काय प्रतिनिधित्व करतो?",
+          "choices": [
+            "प्रस्थ",
+            "लांबी",
+            "परिमाण",
+            "क्षेत्रफळ"
+          ],
+          "solution": "2l + 2b या व्यंजकात l चौकोनाच्या लांबीला प्रतिनिधित्व करतो. प्रस्थ b द्वारे प्रतिनिधित्व केला जातो, परिमाण हा व्यंजकाचा निकाल असतो आणि क्षेत्रफळ हा व्यंजकात नसतो. योग्य उत्तर लांबी आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses breadth with length",
+        null,
+        "Thinks the expression represents perimeter",
+        "Does not understand the variables used in the expression"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-posed and the solution is correct. The expression 2l + 2b is the formula for the perimeter of a rectangle, where l is length and b is breadth. The correct answer is 1 (Length).",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.1 The Notion of Letter-Numbers"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.3 Omission of the Multiplication Symbol in",
+            "Algebraic Expressions"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.4 Simplification of Algebraic Expressions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T03:35:15.092Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student buys x notebooks and y pens. If each notebook costs ₹5 and each pen costs ₹3, what is the total cost in terms of x and y?",
+      "choices": [
+        "5x + 3y",
+        "3x + 5y",
+        "5x – 3y",
+        "3x – 5y"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 5x + 3y. This is calculated by multiplying the number of notebooks by the cost per notebook (5x) and the number of pens by the cost per pen (3y), then adding them together. The other options incorrectly assign the costs to the variables.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र x नोटबुक और y पेन खरीदता है। यदि प्रत्येक नोटबुक की कीमत ₹5 है और प्रत्येक पेन की कीमत ₹3 है, तो x और y के पदों में कुल लागत क्या है?",
+          "choices": [
+            "5x + 3y",
+            "3x + 5y",
+            "5x – 3y",
+            "3x – 5y"
+          ],
+          "solution": "सही उत्तर 5x + 3y है। इसे प्रत्येक नोटबुक की संख्या को प्रति नोटबुक की कीमत (5x) से गुणा करके और पेन की संख्या को प्रति पेन की कीमत (3y) से गुणा करके गणना की जाती है, फिर उन्हें एक साथ जोड़ दिया जाता है। अन्य विकल्प गलत ढंग से लागत को चर के साथ जोड़ देते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक विद्यार्थी x नोटबुक आणि y कलम खरेदी करतो. जर प्रत्येक नोटबुकची किंमत ₹5 आहे आणि प्रत्येक कलमची किंमत ₹3 आहे, तर x आणि y च्या आधारे एकूण खर्च काय असेल?",
+          "choices": [
+            "5x + 3y",
+            "3x + 5y",
+            "5x – 3y",
+            "3x – 5y"
+          ],
+          "solution": "बरोबर उत्तर 5x + 3y आहे. हे नोटबुकच्या संख्येला नोटबुकच्या किंमतीने (5x) आणि कलमांच्या संख्येला कलमांच्या किंमतीने (3y) गुणून जोडून मिळते. इतर उत्तरांमध्ये किंमती चुकून चलकांवर लावल्या गेल्या आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical expressions.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "assigns the costs to the wrong variables",
+        "assigns the costs to the wrong variables and subtracts instead of adds",
+        "subtracts instead of adds"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward and the solution is correct. The correct expression is 5x + 3y, as each notebook costs ₹5 and each pen costs ₹3. The other options either swap the costs or use subtraction instead of addition, which are common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 22,
+          "pageStart": 36,
+          "pageEnd": 38,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 23,
+          "pageStart": 38,
+          "pageEnd": 40,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 24,
+          "pageStart": 41,
+          "pageEnd": 41,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T03:35:15.092Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a rope is folded r times and then cut, the number of pieces formed is given by the expression r + 2. What is the number of pieces formed if the rope is folded 10 times?",
+      "choices": [
+        "10",
+        "12",
+        "14",
+        "16"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 12. According to the expression r + 2, when r = 10, the number of pieces is 10 + 2 = 12. The other options either use the value of r directly or add incorrectly.",
+      "checkExpr": "10+2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक रस्सी को r बार मोड़ा जाता है और फिर काटा जाता है, तो बने हुए टुकड़ों की संख्या व्यंजक r + 2 द्वारा दी जाती है। यदि रस्सी को 10 बार मोड़ा जाए तो बने हुए टुकड़ों की संख्या क्या होगी?",
+          "choices": [
+            "10",
+            "12",
+            "14",
+            "16"
+          ],
+          "solution": "सही उत्तर 12 है। व्यंजक r + 2 के अनुसार, जब r = 10 होता है, तो टुकड़ों की संख्या 10 + 2 = 12 होती है। अन्य विकल्प या तो r के मान का सीधे उपयोग करते हैं या गलत तरीके से जोड़ देते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक रस्ता r वेळा मोडला गेला आणि नंतर कापला गेला, तर तयार होणाऱ्या टुकरा संख्या r + 2 च्या व्यंजकाने दर्शविली जाते. जर रस्ता 10 वेळा मोडला गेला तर टुकरा संख्या किती असेल?",
+          "choices": [
+            "10",
+            "12",
+            "14",
+            "16"
+          ],
+          "solution": "योग्य उत्तर 12 आहे. व्यंजक r + 2 नुसार, r = 10 असताना टुकरा संख्या 10 + 2 = 12 असते. इतर उत्तरे र च्या मूल्याचा वापर करतात किंवा बेरीज चुकीची करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "uses the value of r directly",
+        null,
+        "adds 10 and 2 incorrectly",
+        "uses the value of r directly and adds incorrectly"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and matches the key. The expression r + 2 is applied properly, and the reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 22,
+          "pageStart": 36,
+          "pageEnd": 38,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 23,
+          "pageStart": 38,
+          "pageEnd": 40,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 24,
+          "pageStart": 41,
+          "pageEnd": 41,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T03:35:15.092Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

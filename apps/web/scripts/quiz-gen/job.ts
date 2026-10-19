@@ -260,7 +260,7 @@ export async function runJob(jobId: string): Promise<void> {
       );
       log(`${combos.length} book(s) to work through`);
       for (const combo of combos) {
-        const chapters = await listChapters(appDb, { board: combo.board, grade: combo.grade, subject: combo.subject });
+        const chapters = await listChapters(appDb, { board: combo.board, grade: combo.grade, subject: combo.subject }, log);
         // Two books may carry one number (NCERT class 8 science: "Curiosity" and the 2024 "Science"); the first name given wins.
         const names = new Map<number, string>();
         for (const c of chapters) if (c.name && !names.get(c.number)) names.set(c.number, c.name);

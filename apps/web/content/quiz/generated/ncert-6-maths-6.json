@@ -21,652 +21,47 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-18T23:09:29.227Z",
+  "generatedAt": "2026-10-19T00:30:11.357Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the formula for the area of a square?",
+      "stem": "What is the formula for the perimeter of an equilateral triangle?",
       "choices": [
-        "Area = length × width",
-        "Area = 2 × (length + width)",
-        "Area = side × side",
-        "Area = 4 × side"
+        "Perimeter = 2 × length of one side",
+        "Perimeter = 3 × length of one side",
+        "Perimeter = 4 × length of one side",
+        "Perimeter = 5 × length of one side"
       ],
-      "answerIndex": 2,
-      "solution": "The correct formula for the area of a square is side × side. The other options are incorrect because they use the formula for the perimeter of a rectangle, the perimeter of a square, or an incorrect formula.",
+      "answerIndex": 1,
+      "solution": "The perimeter of a shape is the total length around it. An equilateral triangle has three sides of equal length, so the perimeter is found by multiplying the length of one side by three. Options with 2, 4, or 5 are incorrect because they do not match the number of sides in a triangle.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक वर्ग के क्षेत्रफल का सूत्र क्या है?",
+          "stem": "एक समबाहु त्रिभुज के परिमाप का सूत्र क्या है?",
           "choices": [
-            "क्षेत्रफल = लंबाई × चौड़ाई",
-            "क्षेत्रफल = 2 × (लंबाई + चौड़ाई)",
-            "क्षेत्रफल = भुजा × भुजा",
-            "क्षेत्रफल = 4 × भुजा"
+            "परिमाप = 2 × एक भुजा की लंबाई",
+            "परिमाप = 3 × एक भुजा की लंबाई",
+            "परिमाप = 4 × एक भुजा की लंबाई",
+            "परिमाप = 5 × एक भुजा की लंबाई"
           ],
-          "solution": "एक वर्ग के क्षेत्रफल का सही सूत्र भुजा × भुजा है। अन्य विकल्प गलत हैं क्योंकि वे आयत के परिमाप के सूत्र, वर्ग के परिमाप के सूत्र या गलत सूत्र का उपयोग करते हैं।",
+          "solution": "किसी आकृति का परिमाप उसके चारों ओर की कुल लंबाई होती है। एक समबाहु त्रिभुज में तीन भुजाएं होती हैं जिनकी लंबाई समान होती है, इसलिए परिमाप एक भुजा की लंबाई को तीन से गुणा करके ज्ञात किया जाता है। 2, 4 या 5 के साथ वाले विकल्प गलत हैं क्योंकि वे त्रिभुज में भुजाओं की संख्या के साथ मेल नहीं खाते।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "चौरसाच्या क्षेत्रफळाचे सूत्र काय आहे?",
+          "stem": "एकसारख्या त्रिकोणाच्या परिमाणाचे सूत्र काय आहे?",
           "choices": [
-            "क्षेत्रफळ = लांबी × रुंदी",
-            "क्षेत्रफळ = 2 × (लांबी + रुंदी)",
-            "क्षेत्रफळ = बाजू × बाजू",
-            "क्षेत्रफळ = 4 × बाजू"
+            "परिमाण = 2 × एका बाजूची लांबी",
+            "परिमाण = 3 × एका बाजूची लांबी",
+            "परिमाण = 4 × एका बाजूची लांबी",
+            "परिमाण = 5 × एका बाजूची लांबी"
           ],
-          "solution": "चौरसाच्या क्षेत्रफळाचे बरोबर सूत्र बाजू × बाजू आहे. इतर विकल्प चूकीचे आहेत कारण ते आयताच्या परिमाणाचे सूत्र, चौरसाच्या परिमाणाचे सूत्र किंवा चूकीचे सूत्र वापरतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "uses the formula for the area of a rectangle",
-        "uses the formula for the perimeter of a square",
-        null,
-        "uses an incorrect formula"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2 (Area = side × side). The other options are common misconceptions: option 0 is the area of a rectangle, option 1 is the perimeter of a square, and option 3 is an incorrect formula for area.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 10,
-          "pageStart": 19,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "6.3 Area of a Triangle"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 11,
-          "pageStart": 21,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "6.3 Area of a Triangle"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 12,
-          "pageStart": 22,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 13,
-          "pageStart": 23,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:09:29.227Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the unit used to measure area in the chapter?",
-      "choices": [
-        "Circle",
-        "Square",
-        "Triangle",
-        "Rectangle"
-      ],
-      "answerIndex": 1,
-      "solution": "The unit used to measure area is the square because it can be arranged without gaps, providing an accurate measurement. Circles and triangles do not fit together perfectly, leading to inaccuracies. Rectangles, while they can fit together, are not the standard unit for area measurement.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "अध्याय में क्षेत्रफल मापने के लिए कौन-सी इकाई प्रयोग की जाती है?",
-          "choices": [
-            "वृत्त",
-            "वर्ग",
-            "त्रिभुज",
-            "आयत"
-          ],
-          "solution": "क्षेत्रफल मापने के लिए इकाई वर्ग है क्योंकि इसे अंतररिक्त रूप से व्यवस्थित किया जा सकता है, जो एक सटीक माप प्रदान करता है। वृत्त और त्रिभुज एक-दूसरे के साथ पूरी तरह से फिट नहीं होते, जिसके कारण अनिश्चितता उत्पन्न होती है। आयत के साथ भी व्यवस्थित किया जा सकता है, लेकिन यह क्षेत्रफल मापने की मानक इकाई नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains in the same position. The distractors remain incorrect, and the technical terms used are standard in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "पाठात क्षेत्रफळ मोजण्यासाठी वापरल्या जाणार्‍या एककाचे नाव काय आहे?",
-          "choices": [
-            "वर्तुळ",
-            "चौरस",
-            "त्रिकोण",
-            "आयत"
-          ],
-          "solution": "क्षेत्रफळ मोजण्यासाठी वापरल्या जाणारे एकक चौरस आहे कारण ते खालील अंतराशिवाय ठेवता येते, ज्यामुळे अचूक मोजणी होते. वर्तुळे आणि त्रिकोण एकमेकांना पूर्णपणे जुळत नाहीत, ज्यामुळे अचूकता नसते. आयत एकमेकांना जुळतात, परंतु ते क्षेत्रफळ मोजण्यासाठी मानक एकक नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses area measurement with other shapes",
-        null,
-        "Does not understand the reason for using squares",
-        "Thinks triangles are the standard unit for area measurement"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is flawed because none of the options are units of measurement. The correct answer should be 'square unit' or 'square meter,' not 'Square' as an option. The author's key and solution are based on a misunderstanding of what constitutes a unit of measurement.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 7,
-          "pageStart": 12,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "6.2 Area"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 8,
-          "pageStart": 14,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "6.3 Area of a Triangle"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 9,
-          "pageStart": 16,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "6.3 Area of a Triangle"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:09:29.227Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "A rectangle has a length of 10 cm and a width of 5 cm. What is its perimeter?",
-      "choices": [
-        "15 cm",
-        "30 cm",
-        "50 cm",
-        "25 cm"
-      ],
-      "answerIndex": 1,
-      "solution": "The perimeter of a rectangle is calculated as 2 × (length + width). For a rectangle with a length of 10 cm and width of 5 cm, the perimeter is 2 × (10 + 5) = 30 cm. The other options are incorrect because they do not use the correct formula or make calculation errors.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक आयत की लंबाई 10 सेमी और चौड़ाई 5 सेमी है। इसका परिमाप क्या है?",
-          "choices": [
-            "15 सेमी",
-            "30 सेमी",
-            "50 सेमी",
-            "25 सेमी"
-          ],
-          "solution": "आयत का परिमाप 2 × (लंबाई + चौड़ाई) के रूप में गणना किया जाता है। 10 सेमी लंबाई और 5 सेमी चौड़ाई वाले आयत के लिए, परिमाप 2 × (10 + 5) = 30 सेमी है। अन्य विकल्प गलत हैं क्योंकि वे सही सूत्र का उपयोग नहीं करते हैं या गणना त्रुटियां करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका आयताची लांबी 10 सेमी आहे आणि रुंदी 5 सेमी आहे. त्याचा फेरी मोजो.",
-          "choices": [
-            "15 सेमी",
-            "30 सेमी",
-            "50 सेमी",
-            "25 सेमी"
-          ],
-          "solution": "एका आयताची फेरी 2 × (लांबी + रुंदी) असे गणित केले जाते. 10 सेमी लांबी आणि 5 सेमी रुंदी असलेल्या आयताची फेरी 2 × (10 + 5) = 30 सेमी असेल. इतर विकल्प चुकीच्या सूत्राचा वापर किंवा गणना चूकीमुळे चुकीले आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "adds the length and width instead of doubling the sum",
-        null,
-        "multiplies length and width instead of calculating the perimeter",
-        "uses only the length in the calculation"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and matches the key. The correct formula for the perimeter of a rectangle is 2 × (length + width), which gives 30 cm. The other options represent common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 10,
-          "pageStart": 19,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "6.3 Area of a Triangle"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 11,
-          "pageStart": 21,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "6.3 Area of a Triangle"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 12,
-          "pageStart": 22,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 13,
-          "pageStart": 23,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:09:29.227Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the area of a rectangle with length 5 m and width 10 m?",
-      "choices": [
-        "50 sq. m",
-        "15 sq. m",
-        "5 sq. m",
-        "10 sq. m"
-      ],
-      "answerIndex": 0,
-      "solution": "The area of a rectangle is calculated by multiplying its length and width. So, 5 m × 10 m = 50 sq. m. The other options are incorrect because they either add the values instead of multiplying or use one of the values as the answer without considering the other.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "5 मीटर लंबाई और 10 मीटर चौड़ाई वाले आयत का क्षेत्रफल क्या है?",
-          "choices": [
-            "50 वर्ग मीटर",
-            "15 वर्ग मीटर",
-            "5 वर्ग मीटर",
-            "10 वर्ग मीटर"
-          ],
-          "solution": "एक आयत का क्षेत्रफल इसकी लंबाई और चौड़ाई के गुणनफल से निकाला जाता है। इसलिए, 5 मीटर × 10 मीटर = 50 वर्ग मीटर। अन्य विकल्प गलत हैं क्योंकि वे गुणा के बजाय मानों को जोड़ देते हैं या एक मान को उत्तर के रूप में ले लेते हैं बिना दूसरे को ध्यान में रखे।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका चौरसाचे क्षेत्रफळ किती असेल ज्याची लांबी 5 मी आणि रुंदी 10 मी आहे?",
-          "choices": [
-            "50 चौ. मी",
-            "15 चौ. मी",
-            "5 चौ. मी",
-            "10 चौ. मी"
-          ],
-          "solution": "एका चौरसाचे क्षेत्रफळ त्याच्या लांबी आणि रुंदी गुणिले मिळते. म्हणून, 5 मी × 10 मी = 50 चौ. मी. इतर विकल्प अचूक नाहीत कारण ते क्षेत्रफळ गुणाकार करीत नाहीत तर जोडतात किंवा एका मूल्याचा उत्तर म्हणून वापरतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for 'area' and 'square meters'.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "confuses multiplication with addition",
-        "does not understand the formula for area",
-        "thinks width is the only factor in area calculation"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and matches the key. The reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 14,
-          "pageStart": 25,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 15,
-          "pageStart": 27,
-          "pageEnd": 29,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 16,
-          "pageStart": 29,
-          "pageEnd": 29,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:09:29.227Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which shape is best for measuring area and why?",
-      "choices": [
-        "Circle, because it is round",
-        "Square, because it can be packed tightly without gaps",
-        "Triangle, because it can be split into smaller parts",
-        "Rectangle, because it is a common shape"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is Square, because it can be packed tightly without gaps. This allows for accurate measurement of area without leaving spaces between shapes. Circles are not ideal because they leave gaps when packed, triangles can be harder to arrange consistently, and rectangles, while useful, are not as efficient as squares for this specific purpose.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "कौन-सी आकृति क्षेत्रफल के मापने के लिए सबसे अच्छी है और क्यों?",
-          "choices": [
-            "वृत्त, क्योंकि यह गोल है",
-            "वर्ग, क्योंकि इसे बिना अंतराल के घना रखा जा सकता है",
-            "त्रिभुज, क्योंकि इसे छोटे भागों में विभाजित किया जा सकता है",
-            "आयत, क्योंकि यह एक सामान्य आकृति है"
-          ],
-          "solution": "सही उत्तर वर्ग है, क्योंकि इसे बिना अंतराल के घना रखा जा सकता है। इससे क्षेत्रफल के मापन में सटीकता बनी रहती है आकृतियों के बीच अंतराल नहीं रहते। वृत्त अच्छी नहीं होती क्योंकि जब इन्हें घना रखा जाता है तो अंतराल रह जाते हैं, त्रिभुज नियमित रूप से व्यवस्थित करना कठिन होता है, और आयत उपयोगी होते हैं, लेकिन इस विशिष्ट उद्देश्य के लिए वर्ग की तुलना में कम प्रभावी होते हैं।",
-          "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning, with appropriate Hindi technical terms and correct answer position.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कोणती आकृती क्षेत्रफळ मोजण्यासाठी उत्तम आहे आणि कारण काय आहे?",
-          "choices": [
-            "वर्तुळ, कारण ते गोल आहे",
-            "चौरस, कारण ते खालील फरशी विना घटक घेऊ शकते",
-            "त्रिकोण, कारण ते लहान भागांमध्ये विभाजित केले जाऊ शकते",
-            "आयत, कारण ते सामान्य आकृती आहे"
-          ],
-          "solution": "बरोबर उत्तर चौरस आहे, कारण ते खालील फरशी विना घटक घेऊ शकते. हे क्षेत्रफळ मोजण्यासाठी अचूकतेसाठी घटक विना जागा राखते. वर्तुळ अयोग्य आहेत कारण ते जेव्हा घटक घेतले जातात तेव्हा जागा राहते, त्रिकोण एकसारखे ठेवणे कठीण असते आणि आयत, तरी उपयुक्त असले तरी या विशिष्ट उद्देशासाठी चौरस पेक्षा अधिक दक्ष नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for shapes and concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Does not understand the packing property of squares",
-        null,
-        "students think triangles are easier to divide for area calculation",
-        "Does not know the reasoning behind square usage"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed, and the correct answer aligns with the explanation provided. The reasoning for the distractors reflects common misconceptions students might have.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 7,
-          "pageStart": 12,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "6.2 Area"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 8,
-          "pageStart": 14,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "6.3 Area of a Triangle"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 9,
-          "pageStart": 16,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "6.3 Area of a Triangle"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:09:29.227Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What is the perimeter of a triangle with sides 4 cm, 5 cm, and 7 cm?",
-      "choices": [
-        "14 cm",
-        "15 cm",
-        "16 cm",
-        "17 cm"
-      ],
-      "answerIndex": 2,
-      "solution": "The perimeter of a triangle is calculated as the sum of all its sides. So, 4 cm + 5 cm + 7 cm = 16 cm. The option '14 cm' is the sum of two sides. '15 cm' is incorrect because it doesn't follow the formula. '17 cm' is a random number not derived from the formula.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक त्रिभुज का परिमाप क्या है जिसकी भुजाएं 4 सेमी, 5 सेमी और 7 सेमी हैं?",
-          "choices": [
-            "14 सेमी",
-            "15 सेमी",
-            "16 सेमी",
-            "17 सेमी"
-          ],
-          "solution": "एक त्रिभुज का परिमाप सभी भुजाओं के योग के रूप में गणना की जाती है। इसलिए, 4 सेमी + 5 सेमी + 7 सेमी = 16 सेमी। विकल्प '14 सेमी' दो भुजाओं के योग है। '15 सेमी' गलत है क्योंकि यह सूत्र का अनुसरण नहीं करता है। '17 सेमी' एक यादृच्छिक संख्या है जो सूत्र से निकाली नहीं गई है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for mathematical concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "त्रिकोणाच्या बाजू 4 सेमी, 5 सेमी आणि 7 सेमी असल्यास त्याचा परिमाण किती असेल?",
-          "choices": [
-            "14 सेमी",
-            "15 सेमी",
-            "16 सेमी",
-            "17 सेमी"
-          ],
-          "solution": "त्रिकोणाचा परिमाण त्याच्या सर्व बाजूंच्या बेरजेने गणला जातो. म्हणून, 4 सेमी + 5 सेमी + 7 सेमी = 16 सेमी. '14 सेमी' ही दोन बाजूंची बेरीज आहे. '15 सेमी' अयोग्य आहे कारण तो सूत्राच्या अनुसार नाही. '17 सेमी' हा एक अयोग्य संख्या आहे जी सूत्रापासून विचलित आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "sum of two sides",
-        "incorrect calculation",
-        null,
-        "random guess"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 16 cm, as the perimeter of a triangle is the sum of its sides. The distractors are reasonable misconceptions: adding only two sides, incorrect addition, and a random guess.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 1,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:09:29.227Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "If the perimeter of a rectangle is 14 cm and its breadth is 2 cm, what is the length?",
-      "choices": [
-        "5 cm",
-        "6 cm",
-        "7 cm",
-        "8 cm"
-      ],
-      "answerIndex": 0,
-      "solution": "The perimeter of a rectangle is 2 × (length + breadth). Given the perimeter is 14 cm and breadth is 2 cm, we have 14 = 2 × (length + 2). Solving, length + 2 = 7, so length = 5 cm. The option '6 cm' is incorrect because it doesn't follow the formula. '7 cm' is the sum of length and breadth. '8 cm' is a random number not derived from the formula.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक आयत का परिमाप 14 सेमी है और इसकी चौड़ाई 2 सेमी है, तो लंबाई क्या है?",
-          "choices": [
-            "5 सेमी",
-            "6 सेमी",
-            "7 सेमी",
-            "8 सेमी"
-          ],
-          "solution": "आयत का परिमाप 2 × (लंबाई + चौड़ाई) होता है। दिया गया है कि परिमाप 14 सेमी है और चौड़ाई 2 सेमी है, तो हमें 14 = 2 × (लंबाई + 2) प्राप्त होता है। हल करने पर, लंबाई + 2 = 7, अतः लंबाई = 5 सेमी। विकल्प '6 सेमी' गलत है क्योंकि यह सूत्र का अनुसरण नहीं करता है। '7 सेमी' लंबाई और चौड़ाई का योग है। '8 सेमी' एक यादृच्छिक संख्या है जो सूत्र से निकाली नहीं गई है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका चौकोनाचा परिमाण 14 सेमी आहे आणि त्याची रुंदी 2 सेमी आहे, तर त्याची लांबी किती असेल?",
-          "choices": [
-            "5 सेमी",
-            "6 सेमी",
-            "7 सेमी",
-            "8 सेमी"
-          ],
-          "solution": "चौकोनाचा परिमाण 2 × (लांबी + रुंदी) असतो. परिमाण 14 सेमी आणि रुंदी 2 सेमी दिली आहे, म्हणून 14 = 2 × (लांबी + 2) असे लिहता येईल. उकलल्यास, लांबी + 2 = 7, म्हणून लांबी = 5 सेमी. '6 सेमी' अयोग्य आहे कारण ते सूत्राचे अनुसरण करत नाही. '7 सेमी' ही लांबी आणि रुंदीची बेरीज आहे. '8 सेमी' हा अयोग्य संख्या आहे जी सूत्रापासून विचलित आहे.",
+          "solution": "एखाद्या आकृतीचे परिमाण तिच्या आजूबाजूच्या एकूण लांबीचे मोजमाप आहे. एकसारख्या त्रिकोणाला तीन बाजू असतात ज्यांची लांबी समान असते, म्हणून परिमाण एका बाजूची लांबी तीन ने गुणून मिळते. 2, 4 किंवा 5 असलेले विकल्प चुकीचे आहेत कारण ते त्रिकोणाच्या बाजूंच्या संख्येशी जुळत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -677,105 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "confuses the number of sides in a triangle",
         null,
-        "incorrect calculation",
-        "sum of length and breadth",
-        "random guess"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the perimeter formula for a rectangle and arrives at the correct answer. The reasoning for the distractors is valid and reflects common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 1,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:09:29.227Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "If the perimeter of a square is 20 cm, what is the length of one side?",
-      "choices": [
-        "10 cm",
-        "5 cm",
-        "6 cm",
-        "7 cm"
-      ],
-      "answerIndex": 1,
-      "solution": "The perimeter of a square is 4 × side length. So, 20 cm ÷ 4 = 5 cm. The option '4 cm' is incorrect because it doesn't divide evenly. '6 cm' and '7 cm' are random numbers not derived from the formula.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक वर्ग का परिमाप 20 सेमी है, तो एक भुजा की लंबाई क्या है?",
-          "choices": [
-            "10 सेमी",
-            "5 सेमी",
-            "6 सेमी",
-            "7 सेमी"
-          ],
-          "solution": "एक वर्ग का परिमाप 4 × भुजा की लंबाई होता है। अतः 20 सेमी ÷ 4 = 5 सेमी। विकल्प '4 सेमी' गलत है क्योंकि यह समान रूप से विभाजित नहीं होता है। '6 सेमी' और '7 सेमी' सूत्र से व्युत्पन्न यादृच्छिक संख्याएं हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains the same meaning, and uses standard Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका चौरसाचा परिमाण 20 सेमी असल्यास एका बाजूची लांबी किती असेल?",
-          "choices": [
-            "10 सेमी",
-            "5 सेमी",
-            "6 सेमी",
-            "7 सेमी"
-          ],
-          "solution": "चौरसाचा परिमाण 4 × बाजूची लांबी असतो. म्हणून, 20 सेमी ÷ 4 = 5 सेमी. '4 सेमी' अपूर्णांक नसल्यामुळे चूक आहे. '6 सेमी' आणि '7 सेमी' हे सूत्रापासून मिळालेले नसलेले अंक आहेत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Student divides the perimeter by 2 instead of 4, thinking the square has only two sides",
-        null,
-        "random guess",
-        "random guess"
+        "confuses the formula for a square",
+        "confuses the formula for a pentagon"
       ],
       "solverAnswers": [
         1,
@@ -784,198 +84,8 @@
         1,
         1
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The perimeter of a square is 4 times the side length, so dividing 20 by 4 gives 5 cm. The reasoning for the distractors is reasonable and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 1,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:09:29.227Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "If a wire of length 16 cm is bent into a square, what is the length of each side?",
-      "choices": [
-        "4 cm",
-        "5 cm",
-        "6 cm",
-        "7 cm"
-      ],
-      "answerIndex": 0,
-      "solution": "The perimeter of the square is 16 cm, and the perimeter of a square is 4 × side length. So, 16 cm ÷ 4 = 4 cm. The option '5 cm' is incorrect because it doesn't divide evenly. '6 cm' and '7 cm' are random numbers not derived from the formula.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 16 सेमी लंबाई के एक तार को एक वर्ग में मोड़ा जाए, तो प्रत्येक भुजा की लंबाई क्या होगी?",
-          "choices": [
-            "4 सेमी",
-            "5 सेमी",
-            "6 सेमी",
-            "7 सेमी"
-          ],
-          "solution": "वर्ग का परिमाप 16 सेमी है, और वर्ग का परिमाप 4 × भुजा की लंबाई होता है। इसलिए, 16 सेमी ÷ 4 = 4 सेमी। विकल्प '5 सेमी' गलत है क्योंकि यह समान रूप से विभाजित नहीं होता है। '6 सेमी' और '7 सेमी' सूत्र से व्युत्पन्न यादृच्छिक संख्याएं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "16 सेमी लांबीच्या तारेला चौरस बनवल्यास प्रत्येक बाजूची लांबी किती असेल?",
-          "choices": [
-            "4 सेमी",
-            "5 सेमी",
-            "6 सेमी",
-            "7 सेमी"
-          ],
-          "solution": "चौरसाचा परिमाण 16 सेमी आहे, आणि चौरसाचा परिमाण 4 × बाजूची लांबी असते. म्हणून, 16 सेमी ÷ 4 = 4 सेमी. '5 सेमी' अयोग्य आहे कारण ते समान भागात विभाजित होत नाही. '6 सेमी' आणि '7 सेमी' हे सूत्रापासून विकसित झालेले अयोग्य संख्या आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "incorrect division",
-        "random guess",
-        "random guess"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and straightforward. The perimeter of a square is 4 × side length, so 16 ÷ 4 = 4 cm. The reasoning for the wrong options is reasonable and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 1,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:09:29.227Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If the perimeter of a circle is equal to that of a square, then what is the ratio of their areas?",
-      "choices": [
-        "22:7",
-        "14:11",
-        "7:22",
-        "11:14"
-      ],
-      "answerIndex": 1,
-      "solution": "Let the radius of the circle be r and the side of the square be a. The perimeter of the circle is 2πr, and the perimeter of the square is 4a. If they are equal, then 2πr = 4a, so a = πr/2. The area of the circle is πr², and the area of the square is a² = (πr/2)² = π²r²/4. The ratio of the areas is πr² / (π²r²/4) = 4/π. Using π ≈ 22/7, the ratio becomes 4/(22/7) = 28/22 = 14/11. The option '14:11' is correct. The option '22:7' is incorrect because it is the ratio of the circumference to the diameter, not the areas. The option '7:22' is incorrect because it is the reciprocal of the correct ratio. The option '11:14' is incorrect because it is also the reciprocal of the correct ratio.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक वृत्त की परिमिति एक वर्ग के समान है, तो उनके क्षेत्रफलों का अनुपात क्या है?",
-          "choices": [
-            "22:7",
-            "14:11",
-            "7:22",
-            "11:14"
-          ],
-          "solution": "मान लीजिए वृत्त की त्रिज्या r है और वर्ग की भुजा a है। वृत्त की परिमिति 2πr है, और वर्ग की परिमिति 4a है। यदि वे समान हैं, तो 2πr = 4a, अतः a = πr/2। वृत्त का क्षेत्रफल πr² है, और वर्ग का क्षेत्रफल a² = (πr/2)² = π²r²/4 है। क्षेत्रफलों का अनुपात πr² / (π²r²/4) = 4/π है। π ≈ 22/7 का उपयोग करके, अनुपात 4/(22/7) = 28/22 = 14/11 हो जाता है। विकल्प '14:11' सही है। विकल्प '22:7' गलत है क्योंकि यह परिधि और व्यास का अनुपात है, न कि क्षेत्रफलों का। विकल्प '7:22' गलत है क्योंकि यह सही अनुपात का व्युत्क्रम है। विकल्प '11:14' गलत है क्योंकि यह भी सही अनुपात का व्युत्क्रम है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका वर्तुळाच्या परिमाणाचे मूल्य एका चौरसाच्या परिमाणाच्या मूल्यास समान असेल, तर त्यांच्या क्षेत्रफळांचे गुणोत्तर काय असेल?",
-          "choices": [
-            "22:7",
-            "14:11",
-            "7:22",
-            "11:14"
-          ],
-          "solution": "मानू एका वर्तुळाच्या त्रिज्येचे मूल्य r आहे आणि चौरसाच्या बाजूचे मूल्य a आहे. वर्तुळाचे परिमाण 2πr असते आणि चौरसाचे परिमाण 4a असते. जर ते समान असतील, तर 2πr = 4a, म्हणून a = πr/2. वर्तुळाचे क्षेत्रफळ πr² असते आणि चौरसाचे क्षेत्रफळ a² = (πr/2)² = π²r²/4 असते. क्षेत्रफळांचे गुणोत्तर πr² / (π²r²/4) = 4/π असते. π ≈ 22/7 वापरून, गुणोत्तर 4/(22/7) = 28/22 = 14/11 असते. '14:11' विकल्प बरोबर आहे. '22:7' विकल्प चूक आहे कारण तो परिघ आणि व्यासाचे गुणोत्तर आहे, क्षेत्रफळांचे नाही. '7:22' विकल्प चूक आहे कारण तो बरोबर गुणोत्तराचा व्यस्त आहे. '11:14' विकल्प चूक आहे कारण तो बरोबर गुणोत्तराचा व्यस्त आहे.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "uses the ratio of circumference to diameter",
-        null,
-        "uses the reciprocal of the correct ratio",
-        "uses the reciprocal of the correct ratio"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is mathematically sound and correctly derives the ratio of the areas as 14:11. The reasoning for the distractors is also valid and reflects common misconceptions.",
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as an equilateral triangle has 3 equal sides. The author's reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp106.pdf",
@@ -1017,49 +127,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:09:29.227Z",
+      "generatedAt": "2026-10-19T00:30:11.357Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "If a rectangle is divided into two triangles by a diagonal, what is the relationship between the area of the rectangle and the area of the triangles?",
+      "difficulty": 1,
+      "stem": "What is the area of a rectangle with length 5 units and width 3 units?",
       "choices": [
-        "The area of the rectangle is double the area of each triangle",
-        "The area of the rectangle is equal to the area of each triangle",
-        "The area of the rectangle is half the area of each triangle",
-        "The area of the rectangle is unrelated to the area of the triangles"
+        "15 sq units",
+        "8 sq units",
+        "10 sq units",
+        "5 sq units"
       ],
       "answerIndex": 0,
-      "solution": "When a rectangle is divided into two triangles by a diagonal, each triangle has half the area of the rectangle because the diagonal splits the rectangle into two equal parts. Therefore, the area of the rectangle is double the area of each triangle. The other options contradict this geometric principle.",
-      "checkExpr": null,
+      "solution": "The area of a rectangle is calculated as length multiplied by width. So, 5 units × 3 units = 15 sq units. The other options are incorrect because they either add the dimensions (8) or use incorrect multiplication (10 or 5).",
+      "checkExpr": "5*3",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक आयत को एक विकर्ण द्वारा दो त्रिभुजों में विभाजित किया जाता है, तो आयत के क्षेत्रफल और त्रिभुजों के क्षेत्रफल के बीच संबंध क्या है?",
+          "stem": "5 इकाई लंबाई और 3 इकाई चौड़ाई वाले आयत का क्षेत्रफल क्या है?",
           "choices": [
-            "आयत का क्षेत्रफल प्रत्येक त्रिभुज के क्षेत्रफल का दोगुना होता है",
-            "आयत का क्षेत्रफल प्रत्येक त्रिभुज के क्षेत्रफल के बराबर होता है",
-            "आयत का क्षेत्रफल प्रत्येक त्रिभुज के क्षेत्रफल के आधा होता है",
-            "आयत का क्षेत्रफल प्रत्येक त्रिभुज के क्षेत्रफल से असंबंधित होता है"
+            "15 वर्ग इकाई",
+            "8 वर्ग इकाई",
+            "10 वर्ग इकाई",
+            "5 वर्ग इकाई"
           ],
-          "solution": "जब एक आयत को एक विकर्ण द्वारा दो त्रिभुजों में विभाजित किया जाता है, तो प्रत्येक त्रिभुज का क्षेत्रफल आयत के क्षेत्रफल का आधा होता है क्योंकि विकर्ण आयत को दो समान भागों में विभाजित करता है। इसलिए, आयत का क्षेत्रफल प्रत्येक त्रिभुज के क्षेत्रफल का दोगुना होता है। अन्य विकल्प इस ज्यामितीय सिद्धांत के विरोधी हैं।",
+          "solution": "एक आयत का क्षेत्रफल लंबाई के चौड़ाई से गुणा करके निकाला जाता है। इसलिए, 5 इकाई × 3 इकाई = 15 वर्ग इकाई। अन्य विकल्प गलत हैं क्योंकि वे आयामों को जोड़ देते हैं (8) या गलत गुणा करते हैं (10 या 5)।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses standard Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जर आयताच्या एका विकर्णाने दोन त्रिकोणांमध्ये विभागले जाते, तर आयताच्या क्षेत्रफळाचे त्रिकोणांच्या क्षेत्रफळाशी काय संबंध असतो?",
+          "stem": "एका चौरसाचे क्षेत्रफळ किती असेल ज्याची लांबी 5 एकके आहे आणि रुंदी 3 एकके आहे?",
           "choices": [
-            "आयताचे क्षेत्रफळ प्रत्येक त्रिकोणाच्या क्षेत्रफळाच्या दुप्पट असते",
-            "आयताचे क्षेत्रफळ प्रत्येक त्रिकोणाच्या क्षेत्रफळासारखे असते",
-            "आयताचे क्षेत्रफळ प्रत्येक त्रिकोणाच्या क्षेत्रफळाच्या अर्धे असते",
-            "आयताचे क्षेत्रफळ त्रिकोणांच्या क्षेत्रफळाशी असंबंधित असते"
+            "15 चौ. एकके",
+            "8 चौ. एकके",
+            "10 चौ. एकके",
+            "5 चौ. एकके"
           ],
-          "solution": "जर आयताच्या विकर्णाने दोन त्रिकोणांमध्ये विभागले जाते, तर प्रत्येक त्रिकोणाचे क्षेत्रफळ आयताच्या क्षेत्रफळाच्या अर्धे असते कारण विकर्ण आयताला दोन समान भागांमध्ये विभागतो. त्यामुळे आयताचे क्षेत्रफळ प्रत्येक त्रिकोणाच्या क्षेत्रफळाच्या दुप्पट असते. इतर विकल्प या भूमितीय नियमाला विरोध करतात.",
+          "solution": "चौरसाचे क्षेत्रफळ लांबीच्या रुंदीने गुणून काढले जाते. म्हणून, 5 एकके × 3 एकके = 15 चौ. एकके. इतर विकल्प अचूक नाहीत कारण ते आकारमान जोडतात (8) किंवा चुकीच्या गुणाकाराने वापरतात (10 किंवा 5).",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         }
       },
@@ -1069,9 +179,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Thinks the area of the rectangle is equal to each triangle",
-        "Confuses the relationship between the rectangle and the triangles",
-        "Does not understand the role of the diagonal in dividing the area"
+        "confuses multiplication with addition",
+        "does not multiply correctly",
+        "does not multiply correctly"
       ],
       "solverAnswers": [
         0,
@@ -1080,8 +190,8 @@
         0,
         0
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the mathematical understanding that a diagonal divides a rectangle into two congruent triangles, each with half the area of the rectangle.",
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests recall of the formula for the area of a rectangle. The correct answer is 15 sq units, and the author's reasoning for the distractors is valid.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp106.pdf",
@@ -1115,7 +225,809 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:09:29.227Z",
+      "generatedAt": "2026-10-19T00:30:11.357Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the perimeter of an equilateral triangle with a side length of 5 units?",
+      "choices": [
+        "15 units",
+        "5 units",
+        "10 units",
+        "25 units"
+      ],
+      "answerIndex": 0,
+      "solution": "The perimeter of an equilateral triangle is calculated as 3 times the length of one side. Since the side length is 5 units, the perimeter is 3 × 5 = 15 units. The other options are incorrect because they do not follow the formula for the perimeter of an equilateral triangle.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक समबाहु त्रिभुज का परिमाप क्या है जिसकी भुजा की लंबाई 5 इकाई है?",
+          "choices": [
+            "15 इकाई",
+            "5 इकाई",
+            "10 इकाई",
+            "25 इकाई"
+          ],
+          "solution": "एक समबाहु त्रिभुज का परिमाप एक भुजा की लंबाई के 3 गुना के रूप में गणना की जाती है। चूंकि भुजा की लंबाई 5 इकाई है, परिमाप 3 × 5 = 15 इकाई है। अन्य विकल्प गलत हैं क्योंकि वे समबाहु त्रिभुज के परिमाप के सूत्र का अनुसरण नहीं करते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are standard in Hindi textbooks, and the structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एकसारख्या त्रिकोणाचा परिमाण किती असेल ज्याच्या बाजूची लांबी 5 एकक आहे?",
+          "choices": [
+            "15 एकक",
+            "5 एकक",
+            "10 एकक",
+            "25 एकक"
+          ],
+          "solution": "एकसारख्या त्रिकोणाचा परिमाण 1 बाजूच्या लांबीच्या 3 पट असतो. जर बाजूची लांबी 5 एकक असेल तर परिमाण 3 × 5 = 15 एकक असेल. इतर निवडा चुकीच्या असतात कारण ते एकसारख्या त्रिकोणाच्या परिमाणाच्या सूत्राचे अनुसरण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the formula with just the side length",
+        "Thinks the perimeter is double the side length",
+        "Multiplies the side length by 5 instead of 3"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and the solution is correct. The correct answer is 15 units, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "6.2 Area"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "6.2 Area"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T00:30:11.357Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the perimeter of a regular polygon with 6 sides, each of length 4 units?",
+      "choices": [
+        "24 units",
+        "6 units",
+        "10 units",
+        "4 units"
+      ],
+      "answerIndex": 0,
+      "solution": "The perimeter of a regular polygon is calculated as the number of sides multiplied by the length of one side. For a regular polygon with 6 sides of 4 units each, the perimeter is 6 × 4 = 24 units. The other options are incorrect because they do not follow this formula.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक सामान्य बहुभुज का परिमाप क्या है जिसकी 6 भुजाएं हैं, प्रत्येक की लंबाई 4 इकाई है?",
+          "choices": [
+            "24 इकाई",
+            "6 इकाई",
+            "10 इकाई",
+            "4 इकाई"
+          ],
+          "solution": "एक सामान्य बहुभुज का परिमाप भुजाओं की संख्या को एक भुजा की लंबाई से गुणा करके निकाला जाता है। 6 भुजाओं वाले एक सामान्य बहुभुज का परिमाप जिसकी प्रत्येक भुजा 4 इकाई है, 6 × 4 = 24 इकाई है। अन्य विकल्प गलत हैं क्योंकि वे इस सूत्र का अनुसरण नहीं करते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "साधारण बहुभुजाची परिमिती काढा ज्याच्या 6 बाजू असून प्रत्येकाची लांबी 4 एकक आहे?",
+          "choices": [
+            "24 एकक",
+            "6 एकक",
+            "10 एकक",
+            "4 एकक"
+          ],
+          "solution": "साधारण बहुभुजाची परिमिती बाजूंच्या संख्येच्या लांबीने गुणून काढली जाते. 6 बाजू असलेल्या साधारण बहुभुजाची परिमिती 6 × 4 = 24 एकक असते. इतर विकल्प चुकीचे आहेत कारण ते या सूत्राचे अनुसरण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the number of sides with the side length",
+        "Thinks the perimeter is the same as the side length",
+        "Adds the number of sides and the side length instead of multiplying them"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and the solution is correct. The correct answer is 24 units, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "6.2 Area"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "6.2 Area"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T00:30:11.357Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A rectangular tablecloth is 3 m long and 2 m wide. What is the length of lace required to put around it?",
+      "choices": [
+        "6 m",
+        "8 m",
+        "10 m",
+        "12 m"
+      ],
+      "answerIndex": 2,
+      "solution": "The length of lace required is the perimeter of the rectangle. The formula for the perimeter of a rectangle is 2 × (length + breadth). Substituting the values, we get 2 × (3 m + 2 m) = 2 × 5 m = 10 m. Other options use incorrect calculations or values.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक आयताकार टेबल कवर 3 मीटर लंबा और 2 मीटर चौड़ा है। इसके चारों ओर लगाने के लिए लैस की लंबाई क्या होगी?",
+          "choices": [
+            "6 मीटर",
+            "8 मीटर",
+            "10 मीटर",
+            "12 मीटर"
+          ],
+          "solution": "लैस की लंबाई आयत के परिमाप के बराबर होती है। आयत के परिमाप का सूत्र 2 × (लंबाई + चौड़ाई) है। मान रखने पर, हमें 2 × (3 मीटर + 2 मीटर) = 2 × 5 मीटर = 10 मीटर मिलता है। अन्य विकल्प गलत गणना या मान का उपयोग करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi terminology for mathematical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक आयताकृती टेबलक्लॉथ 3 मीटर लांब आणि 2 मीटर रुंद आहे. त्याच्या चारही बाजूंना लेस बसवण्यासाठी किती लांबीचा लेस लागेल?",
+          "choices": [
+            "6 मीटर",
+            "8 मीटर",
+            "10 मीटर",
+            "12 मीटर"
+          ],
+          "solution": "लेस बसवण्यासाठी लागणारी लांबी ही आयताच्या परिमाणासारखी असते. आयताच्या परिमाणाचे सूत्र 2 × (लांबी + रुंदी) आहे. मूल्यांची बदली करून, आम्ही 2 × (3 मीटर + 2 मीटर) = 2 × 5 मीटर = 10 मीटर मिळतो. इतर विकल्पांमध्ये चुकीची गणना किंवा मूल्य वापरले गेले आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geometry.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Adds length and breadth and forgets to multiply by 2",
+        "Multiplies length and breadth instead of adding them",
+        null,
+        "Adds length and breadth and multiplies by 3 instead of 2"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly calculates the perimeter of the rectangle as 2 × (3 + 2) = 10 m. The author's reasoning for the distractors is accurate and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T00:30:11.357Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A rectangular paper chit of dimension 6 cm × 4 cm is cut into two equal pieces. If the two pieces are arranged to form a figure with a perimeter of 22 cm, what is the new arrangement?",
+      "choices": [
+        "A square",
+        "A longer rectangle",
+        "A smaller rectangle",
+        "A triangle"
+      ],
+      "answerIndex": 1,
+      "solution": "When the 6 cm × 4 cm rectangle is cut into two equal pieces and rearranged to form a figure with a perimeter of 22 cm, the new arrangement must be a longer rectangle. The original perimeter was 20 cm, but rearranging the pieces increases the perimeter. The other options do not fit the given perimeter of 22 cm.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "6 सेमी × 4 सेमी विमा के एक आयताकार कागज के चिट को दो समान भागों में काटा जाता है। यदि दोनों भागों को 22 सेमी परिमाप वाले एक आकृति बनाने के लिए व्यवस्थित किया जाता है, तो नई व्यवस्था क्या है?",
+          "choices": [
+            "एक वर्ग",
+            "एक लंबा आयत",
+            "एक छोटा आयत",
+            "एक त्रिभुज"
+          ],
+          "solution": "जब 6 सेमी × 4 सेमी आयत को दो समान भागों में काटा जाता है और इसे 22 सेमी परिमाप वाले एक आकृति बनाने के लिए व्यवस्थित किया जाता है, तो नई व्यवस्था एक लंबा आयत होनी चाहिए। मूल परिमाप 20 सेमी था, लेकिन भागों को फिर से व्यवस्थित करने से परिमाप बढ़ जाता है। अन्य विकल्प 22 सेमी परिमाप के साथ मेल नहीं खाते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology appropriate for a Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "6 सेमी × 4 सेमी असलेल्या आयताकृती कागदाच्या चिटीला दोन समान भागांमध्ये कापले जाते. जर दोन भागांना एका आकृती तयार करण्यासाठी ठेवले जात असेल ज्याचा परिमाण 22 सेमी असेल, तर नवीन व्यवस्था कशी असेल?",
+          "choices": [
+            "एक चौरस",
+            "एक लांब आयत",
+            "एक लहान आयत",
+            "एक त्रिकोण"
+          ],
+          "solution": "6 सेमी × 4 सेमी असलेल्या आयताला दोन समान भागांमध्ये कापले जाते आणि त्यांना एका आकृती तयार करण्यासाठी ठेवले जात असेल ज्याचा परिमाण 22 सेमी असेल, तर नवीन व्यवस्था लांब आयत असेल. मूळ परिमाण 20 सेमी होते, परंतु भागांची पुनर्व्यवस्था परिमाण वाढवते. इतर विकल्पांमध्ये 22 सेमी चे परिमाण असत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer (option 2) is in the same position as in the English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "A student might incorrectly assume that cutting a rectangle in half and rearranging it can form a square without considering side lengths and perimeter changes.",
+        null,
+        "Student thinks cutting and rearranging reduces the size of the figure",
+        "A student might think that cutting and rearranging a rectangle can form a triangle without considering the actual side lengths and how they contribute to the perimeter."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 1 (a longer rectangle). Cutting the 6×4 rectangle into two equal pieces and rearranging them can indeed form a longer rectangle with a perimeter of 22 cm. The other options are invalid due to geometric constraints and misconceptions about how cutting and rearranging affects perimeter.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "6.2 Area"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "6.2 Area"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T00:30:11.357Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A wire is bent into a rectangle with side lengths 5 cm and 3 cm. If the wire is straightened and bent into a square, what is the length of each side of the square?",
+      "choices": [
+        "4 cm",
+        "5 cm",
+        "6 cm",
+        "8 cm"
+      ],
+      "answerIndex": 0,
+      "solution": "The perimeter of the rectangle is 2 × (5 cm + 3 cm) = 16 cm. This becomes the perimeter of the square. Since the perimeter of a square is 4 × side, the side length is 16 cm ÷ 4 = 4 cm. Other options incorrectly use the rectangle's side lengths or divide by a different number.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक तार को 5 सेमी और 3 सेमी लंबाई वाले आयत के रूप में मोड़ा गया है। यदि तार को सीधा करके एक वर्ग में मोड़ा जाए, तो वर्ग की प्रत्येक भुजा की लंबाई क्या होगी?",
+          "choices": [
+            "4 सेमी",
+            "5 सेमी",
+            "6 सेमी",
+            "8 सेमी"
+          ],
+          "solution": "आयत का परिमाप 2 × (5 सेमी + 3 सेमी) = 16 सेमी है। यह वर्ग का परिमाप बन जाता है। चूंकि एक वर्ग का परिमाप 4 × भुजा होता है, इसलिए भुजा की लंबाई 16 सेमी ÷ 4 = 4 सेमी है। अन्य विकल्प आयत की भुजा की लंबाई गलत ढंग से उपयोग करते हैं या अलग-अलग संख्या से विभाजित करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक तार 5 सेमी आणि 3 सेमी बाजूंच्या आयतात मोडलेली आहे. जर तार सीधी केली आणि चौरसात मोडली गेली तर चौरसाच्या प्रत्येक बाजूची लांबी किती असेल?",
+          "choices": [
+            "4 सेमी",
+            "5 सेमी",
+            "6 सेमी",
+            "8 सेमी"
+          ],
+          "solution": "आयताचा परिमाण 2 × (5 सेमी + 3 सेमी) = 16 सेमी आहे. हे चौरसाचे परिमाण बनते. चौरसाचे परिमाण 4 × बाजू असल्यामुळे बाजूची लांबी 16 सेमी ÷ 4 = 4 सेमी आहे. इतर विकल्प चौरसाच्या बाजूंच्या लांबी वापरतात किंवा वेगळ्या संख्येने भागतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes the side of the square is the same as the longer side of the rectangle",
+        "Confuses the perimeter of the rectangle with the area and divides by 2 instead of 4",
+        "Divides the perimeter by 2 instead of 4"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly calculates the perimeter of the rectangle and uses it to find the side of the square. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T00:30:11.357Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A square has a side length of 7 units. What is its perimeter?",
+      "choices": [
+        "28 units",
+        "49 units",
+        "14 units",
+        "7 units"
+      ],
+      "answerIndex": 0,
+      "solution": "The perimeter of a square is calculated by multiplying the side length by 4. So, 7 units × 4 = 28 units. The other options are incorrect because they square the side length (49), add the side length twice (14), or take the side length as the perimeter (7).",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक वर्ग की भुजा की लंबाई 7 इकाई है। इसका परिमाप क्या है?",
+          "choices": [
+            "28 इकाई",
+            "49 इकाई",
+            "14 इकाई",
+            "7 इकाई"
+          ],
+          "solution": "एक वर्ग का परिमाप भुजा की लंबाई को 4 से गुणा करके निकाला जाता है। अतः 7 इकाई × 4 = 28 इकाई। अन्य विकल्प गलत हैं क्योंकि वे भुजा की लंबाई का वर्ग करते हैं (49), भुजा की लंबाई को दो बार जोड़ते हैं (14), या भुजा की लंबाई को परिमाप मान लेते हैं (7)।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका चौरसाच्या बाजूची लांबी 7 एकके आहे. त्याचा परिमाण किती आहे?",
+          "choices": [
+            "28 एकके",
+            "49 एकके",
+            "14 एकके",
+            "7 एकके"
+          ],
+          "solution": "चौरसाचा परिमाण बाजूच्या लांबीला 4 ने गुणून काढला जातो. म्हणून, 7 एकके × 4 = 28 एकके. इतर विकल्प चूक आहेत कारण ते बाजूच्या लांबीचा वर्ग (49) करतात, बाजूच्या लांबीला दोनदा जोडतात (14) किंवा बाजूच्या लांबीला परिमाण म्हणून घेतात (7).",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "squares the side length",
+        "adds the side length twice",
+        "takes the side length as perimeter"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward, and the solution is correct. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 7,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "6.2 Area"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 8,
+          "pageStart": 14,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "6.3 Area of a Triangle"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 9,
+          "pageStart": 16,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "6.3 Area of a Triangle"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T00:30:11.357Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A figure is made using 9 unit squares. What is the minimum possible perimeter of the figure?",
+      "choices": [
+        "12 units",
+        "14 units",
+        "16 units",
+        "18 units"
+      ],
+      "answerIndex": 0,
+      "solution": "The minimum possible perimeter of a figure made using 9 unit squares is 12 units. This occurs when the squares are arranged in a 3x3 square. Other arrangements result in a larger perimeter. The other options are incorrect because they represent perimeters for different arrangements of the squares, not the minimum possible perimeter.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "9 इकाई वर्गों का उपयोग करके एक आकृति बनाई जाती है। आकृति की न्यूनतम संभावित परिमाप क्या है?",
+          "choices": [
+            "12 इकाई",
+            "14 इकाई",
+            "16 इकाई",
+            "18 इकाई"
+          ],
+          "solution": "9 इकाई वर्गों का उपयोग करके बनी आकृति का न्यूनतम संभावित परिमाप 12 इकाई होता है। जब वर्गों को 3x3 वर्ग में व्यवस्थित किया जाता है तो यह संभव होता है। अन्य व्यवस्थाएं बड़े परिमाप के कारण होती हैं। अन्य विकल्प गलत हैं क्योंकि वे वर्गों के अलग-अलग व्यवस्थाओं के परिमाप का प्रतिनिधित्व करते हैं, न्यूनतम संभावित परिमाप का नहीं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "9 एकक चौरस वापरून एक आकृती तयार केली जाते. आकृतीचा न्यूनतम शक्य परिमाण किती असू शकतो?",
+          "choices": [
+            "12 एकक",
+            "14 एकक",
+            "16 एकक",
+            "18 एकक"
+          ],
+          "solution": "9 एकक चौरस वापरून तयार केलेल्या आकृतीचा न्यूनतम शक्य परिमाण 12 एकक असतो. जेव्हा चौरस 3x3 चौरस असतात तेव्हा होते. इतर व्यवस्थांमुळे परिमाण जास्त होते. इतर विकल्प चौरसांच्या वेगळ्या व्यवस्थांमुळे असलेल्या परिमाणांना दर्शवतात, न्यूनतम शक्य परिमाणाला नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "arranges the squares in a 2x4 rectangle with one square attached",
+        "arranges the squares in a 2x5 rectangle with one square missing",
+        "arranges the squares in a 3x3 rectangle with an extra square attached"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 12 units, achieved by arranging the 9 squares in a 3x3 square. The other options represent incorrect configurations that result in larger perimeters. The author's reasoning for the distractors is based on plausible but incorrect arrangements.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 7,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "6.2 Area"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 8,
+          "pageStart": 14,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "6.3 Area of a Triangle"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 9,
+          "pageStart": 16,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "6.3 Area of a Triangle"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T00:30:11.357Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A rectangle has an area of 24 sq cm. If its length is 8 cm, what is its width?",
+      "choices": [
+        "3 cm",
+        "8 cm",
+        "12 cm",
+        "4 cm"
+      ],
+      "answerIndex": 0,
+      "solution": "The area of a rectangle is length × width. To find the width, divide the area by the length. So, 24 ÷ 8 = 3 cm. The other options are incorrect because they either repeat the length (8 cm) or use incorrect division (12 cm or 4 cm).",
+      "checkExpr": "24/8",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक आयत का क्षेत्रफल 24 वर्ग सेमी है। यदि इसकी लंबाई 8 सेमी है, तो इसकी चौड़ाई क्या है?",
+          "choices": [
+            "3 सेमी",
+            "8 सेमी",
+            "12 सेमी",
+            "4 सेमी"
+          ],
+          "solution": "आयत का क्षेत्रफल लंबाई × चौड़ाई होता है। चौड़ाई ज्ञात करने के लिए क्षेत्रफल को लंबाई से विभाजित करते हैं। अतः, 24 ÷ 8 = 3 सेमी। अन्य विकल्प गलत हैं क्योंकि वे लंबाई (8 सेमी) को दोहराते हैं या गलत विभाजन का उपयोग करते हैं (12 सेमी या 4 सेमी)।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology as taught in Hindi-medium schools.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका आयताचे क्षेत्रफळ 24 चौ. सेमी आहे. जर त्याची लांबी 8 सेमी असेल तर त्याची रुंदी किती असेल?",
+          "choices": [
+            "3 सेमी",
+            "8 सेमी",
+            "12 सेमी",
+            "4 सेमी"
+          ],
+          "solution": "आयताचे क्षेत्रफळ लांबी × रुंदी असते. रुंदी शोधण्यासाठी क्षेत्रफळला लांबीने भागा. म्हणून, 24 ÷ 8 = 3 सेमी. इतर विकल्प चूक आहेत कारण ते लांबी (8 सेमी) पुन्हा देतात किंवा चूक भागाकार करतात (12 सेमी किंवा 4 सेमी).",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for 'area', 'length', and 'width'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "repeats the length",
+        "does not divide correctly",
+        "does not divide correctly"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and matches the key. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 7,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "6.2 Area"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 8,
+          "pageStart": 14,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "6.3 Area of a Triangle"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 9,
+          "pageStart": 16,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "6.3 Area of a Triangle"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T00:30:11.357Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

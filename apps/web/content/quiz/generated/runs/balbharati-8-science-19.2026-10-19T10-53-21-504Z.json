@@ -1,0 +1,653 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T10:53:21.504Z",
+  "finishedAt": "2026-10-19T11:01:46.732Z",
+  "seconds": 505,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 19 — Life Cycle of Stars",
+    "edition": "First Edition 2018",
+    "chunks": 11,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2023-24]\nMarking Scheme (2023-24)\nClass-X\nScience (Subject Code – 086) b\nQ. No. Answer Marks\nSection–A\n1 b) Barium sulphate\n2 b) Colourless\n3 d) NaHCO 3\n4 a) Sodium\n6 d) 11 (2,8,1)\n7 c) 14\n8 b) Mushroom\n9 a) tongue\n10 c) Vegetative propagation\n11 c) Growth hormones under the influence of the enzymes coded by a gene. 1\n12 c) lack of oxygen and formation of lactic acid. 1\n13 d) behind the mirror and its position varies according to the object distance. 1\n14 c) scattering of light.\n15 c) CFCs, Ozone\n16 a) Broken down by biological processes\n17 d) Assertion is false but Reason is true\n18 a) Both A and R are true and R is the correct explanation of A. 1\n19 d) Assertion is false but Reason is true 1\n20 c) ",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n35. (a) The reason is that many multi-cellular organisms are not simply a random 5\ncollection of cells. Specialised cells are organised as tissues, and tissues are\norganised into organs, which then have to be placed at definite positions in the\nbody. Therefore, cell-by-cell division would be impractical. (2 marks)\n(b) Sexual maturation of reproductive tissues is a necessary link for reproduction\nbecause of the need for specialised cell called germ-cells to participate in\nsexual reproduction. The body of the individual organism has to grow to its\nadult size, the rate of general body growth begins to slow down, reproductive\ntissues begin to mature. (1½ marks)\nA whole new set of changes in the ",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells",
+      "[INJSO 2013 — solutions or answer key]\n11. The life cycle of plants shows two distinct phases: a diploid (sporophytic) phase\nand haploid (gametophytic) phase which alternate with each other. The generalized\npattern can be represented as in the following diagram:\nAfreen studied the life cycles of 3 different plants: I, II, III, and made the following\nobservations.\nPlant I: Shows dominant gametophyte, sporophyte semi-parasitic on parent gameto-\nphyte.\nPlant II: Shows reduced gametophyte, dominant sporophyte. Both phases are inde-\npendent.\nPlant III: Shows reduced gametophyte, dominant sporophyte. Gametophyte is pro-\nduced within the sporophyte and not as separate generation.\nBased on the information provided, which of the following"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 176648,
+      "in": 35,
+      "out": 33,
+      "rejects": 2,
+      "promptTokens": 30702,
+      "completionTokens": 7399
+    },
+    "critique": {
+      "calls": 34,
+      "ms": 270628,
+      "in": 33,
+      "out": 20,
+      "rejects": 13,
+      "promptTokens": 14552,
+      "completionTokens": 5682
+    },
+    "solver": {
+      "calls": 106,
+      "ms": 57303,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 12966,
+      "completionTokens": 878
+    },
+    "form": {
+      "calls": 7,
+      "ms": 26991,
+      "in": 20,
+      "out": 10,
+      "rejects": 10,
+      "promptTokens": 1694,
+      "completionTokens": 478
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 4544,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 552771,
+      "in": 20,
+      "out": 20,
+      "rejects": 2,
+      "promptTokens": 23038,
+      "completionTokens": 11200
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 4,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What happens to a star when its fuel is completely exhausted?",
+      "ms": {
+        "draft": 6557,
+        "critique": 8558,
+        "solver": 1842,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is true about the end stages of stars?",
+      "ms": {
+        "draft": 6557,
+        "critique": 8814,
+        "solver": 2289,
+        "form": 4938
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes the process of a star's evolution?",
+      "ms": {
+        "draft": 6557,
+        "critique": 7750,
+        "solver": 1778,
+        "form": 3900
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a neutron star?",
+      "ms": {
+        "draft": 5578,
+        "critique": 8739
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a star with a mass of 20 M explodes as a supernova, what will be its final end stage?",
+      "ms": {
+        "draft": 5578,
+        "critique": 8695
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do higher mass stars evolve faster than lower mass stars?",
+      "ms": {
+        "draft": 6557,
+        "critique": 9326,
+        "solver": 2659,
+        "form": 4618
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason a black hole cannot be seen?",
+      "ms": {
+        "draft": 5578,
+        "critique": 9254
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a star is observed to be visible during the day after a supernova explosion, what can be inferred about the explosion?",
+      "ms": {
+        "draft": 5578,
+        "critique": 8507
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the density of a neutron star higher than that of a white dwarf?",
+      "ms": {
+        "draft": 5578,
+        "critique": 8559
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is NOT mentioned in the passage?",
+      "ms": {
+        "draft": 4464,
+        "critique": 7153
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a student wants to access e-learning materials, which of the following is a correct method?",
+      "ms": {
+        "draft": 4464,
+        "critique": 7153
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the passage?",
+      "ms": {
+        "draft": 4464,
+        "critique": 8053
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What can be inferred about the structure of the passage?",
+      "ms": {
+        "draft": 4464,
+        "critique": 7387
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student finds the passage confusing, which of the following would be the most appropriate next step?",
+      "ms": {
+        "draft": 4464,
+        "critique": 8047
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a possible end stage of the Sun according to the passage?",
+      "ms": {
+        "draft": 4624,
+        "critique": 7485,
+        "solver": 2406,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a star has a mass greater than 25 times the Sun's mass, what will be its end stage according to the passage?",
+      "ms": {
+        "draft": 4624,
+        "critique": 8072,
+        "solver": 1835,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is true about the end stages of stars?",
+      "ms": {
+        "draft": 4624,
+        "critique": 8105,
+        "solver": 2646,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A star is observed to be so massive that it collapses completely and nothing, not even light, can escape from it. What is this object called according to the passage?",
+      "ms": {
+        "draft": 4624,
+        "critique": 8492,
+        "solver": 2407,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A star is stable when the gravitational force and gas pressure are balanced. What would happen to a star if its gas pressure suddenly disappeared?",
+      "ms": {
+        "draft": 5638,
+        "critique": 8603
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is the density of a neutron star higher than that of a white dwarf?",
+      "ms": {
+        "draft": 4624,
+        "critique": 9505,
+        "solver": 1368,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is true about a star's evolution?",
+      "ms": {
+        "draft": 5638,
+        "critique": 7845,
+        "solver": 2273,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a star is found to have a mass less than 8 times that of the Sun, which of the following end stages is it most likely to reach?",
+      "ms": {
+        "draft": 5638,
+        "critique": 8446
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage explains that when a star's fuel is exhausted, its temperature decreases and the gas pressure drops. What is the primary reason for the star to stop evolving after this point?",
+      "ms": {
+        "draft": 5638,
+        "critique": 7714
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of galaxy?",
+      "ms": {
+        "draft": 3870,
+        "critique": 6725,
+        "solver": 3238,
+        "form": 2271,
+        "translation": 42854
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of our galaxy?",
+      "ms": {
+        "draft": 3870,
+        "critique": 6242,
+        "solver": 1411,
+        "form": 6091,
+        "translation": 51153
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary fuel in the Sun?",
+      "ms": {
+        "draft": 3870,
+        "critique": 6272,
+        "solver": 2642,
+        "form": 4251,
+        "translation": 48909
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit used to measure the mass of stars?",
+      "ms": {
+        "draft": 3870,
+        "critique": 8584,
+        "solver": 2094,
+        "form": 5872,
+        "translation": 53724
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What causes a star to remain stable?",
+      "ms": {
+        "draft": 6557,
+        "critique": 9421,
+        "solver": 13982,
+        "form": 0,
+        "translation": 75735
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a stage in the life cycle of a star?",
+      "ms": {
+        "draft": 4951,
+        "critique": 9087,
+        "solver": 2069,
+        "form": 0,
+        "translation": 55389
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to a star after it exhausts its nuclear fuel?",
+      "ms": {
+        "draft": 4951,
+        "critique": 9406,
+        "solver": 1334,
+        "form": 1,
+        "translation": 58255
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is true about the life cycle of a star?",
+      "ms": {
+        "draft": 4951,
+        "critique": 8424,
+        "solver": 2619,
+        "form": 1,
+        "translation": 57552
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A star is observed to have a very high temperature but low luminosity. What could this indicate about its life stage?",
+      "ms": {
+        "draft": 4951,
+        "critique": 6653,
+        "solver": 1121,
+        "form": 0,
+        "translation": 60868
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A star's life cycle is determined primarily by its mass. Which of the following best explains this?",
+      "ms": {
+        "draft": 4951,
+        "critique": 6161,
+        "solver": 1514,
+        "form": 1,
+        "translation": 42137
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is a property of stars?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is the nearest star to Earth?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens to a star when its fuel is completely exhausted?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"A pupil might think that a star expands when it runs out of …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is true about the end stages of stars?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"A pupil might think that all stars end as black holes, but t…\"); distractor 2's reason is not a one-line misconception (\"A pupil might think that higher mass stars end as red giants…\"); distractor 3's reason is not a one-line misconception (\"A pupil might think that lower mass stars end as neutron sta…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best describes the process of a star's evolution?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"A pupil might think that a star's evolution is a rapid proce…\"); distractor 2's reason is not a one-line misconception (\"A pupil might think that the evolution is random, but the pa…\"); distractor 3's reason is not a one-line misconception (\"A pupil might think that only high-mass stars evolve, but th…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a neutron star?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a star with a mass of 20 M explodes as a supernova, what will be its final end stage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why do higher mass stars evolve faster than lower mass stars?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"A pupil might think that higher mass stars have more fuel, b…\"); distractor 2's reason is not a one-line misconception (\"A pupil might think that higher mass stars are hotter and la…\"); distractor 3's reason is not a one-line misconception (\"A pupil might think that higher mass stars are more stable, …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the main reason a black hole cannot be seen?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a star is observed to be visible during the day after a supernova explosion, what can be inferred about the explosion?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is the density of a neutron star higher than that of a white dwarf?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is NOT mentioned in the passage?",
+      "reason": "the critic finds option 0 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound; option 0 is not wrong; option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If a student wants to access e-learning materials, which of the following is a correct method?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main purpose of the passage?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What can be inferred about the structure of the passage?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a student finds the passage confusing, which of the following would be the most appropriate next step?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a possible end stage of the Sun according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a star has a mass greater than 25 times the Sun's mass, what will be its end stage according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is true about the end stages of stars?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A star is observed to be so massive that it collapses completely and nothing, not even light, can escape from it. What is this object called according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A star is stable when the gravitational force and gas pressure are balanced. What would happen to a star if its gas pressure suddenly disappeared?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why is the density of a neutron star higher than that of a white dwarf?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is true about a star's evolution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a star is found to have a mass less than 8 times that of the Sun, which of the following end stages is it most likely to reach?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The passage explains that when a star's fuel is exhausted, its temperature decreases and the gas pressure drops. What is the primary reason for the star to stop evolving after this point?",
+      "reason": "option 3 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

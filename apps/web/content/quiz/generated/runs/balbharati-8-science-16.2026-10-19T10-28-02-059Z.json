@@ -1,0 +1,476 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T10:28:02.059Z",
+  "finishedAt": "2026-10-19T10:36:44.209Z",
+  "seconds": 522,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 16 — Reflection of Light",
+    "edition": "First Edition 2018",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n14. When light enters the atmosphere it strikes on extremely fine particles, which deflect the 1\nrays of light in all possible directions, This is due to -\na) reflection of light\nb) atmospheric refraction\nc) scattering of light\nd) dispersion of light",
+      "[INJSO 2018 — question paper]\n8. A ray of light passes through a thick glass sheet with some angle of incidence as shown. The refractive\nindex of glass is ______.\na) Exactly d/DC.\nb) Approximately d/DC.\nc) Approximately d/AD.\nd) Approximately AD/AC.",
+      "[INJSO 2012 — question paper]\n34. White light is incident on one of the refracting faces of a prism. Inside the prism,\ni. at normal incidence, the blue light slows down more than red light\nii. at normal incidence, blue light refracts same as red light\niii. for oblique incidence, blue light bends more than red light\niv. for oblique incidence, blue light slows down more than the red light\nWhich of the above statements are correct?\na) i & iv\nb) i, iii & iv\nc) ii, iii & iv\nd) i, ii, iii & iv",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n31. (i) Explain why the refractive index of any material with respect to air is always greater 1. 1+1+1\n(ii) In the figure below a light ray travels from air into the semi-circular plastic block. Give\na reason why the ray does not deviate at the semi-circular boundary of the plastic\nblock.\n(iii)Complete the ray diagram of the above scenario when the light ray comes out of the\nplastic block from the top flat end."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 122820,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 18078,
+      "completionTokens": 5485
+    },
+    "critique": {
+      "calls": 32,
+      "ms": 248010,
+      "in": 23,
+      "out": 20,
+      "rejects": 3,
+      "promptTokens": 14663,
+      "completionTokens": 5432
+    },
+    "solver": {
+      "calls": 160,
+      "ms": 117542,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 30611,
+      "completionTokens": 1689
+    },
+    "form": {
+      "calls": 11,
+      "ms": 73459,
+      "in": 20,
+      "out": 11,
+      "rejects": 9,
+      "promptTokens": 9946,
+      "completionTokens": 1730
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 3990,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 661178,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 27896,
+      "completionTokens": 14715
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 2,
+    "4": 1,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "In an experiment, a light ray is incident on a mirror at an angle of 30 degrees. What will be the angle of reflection?",
+      "ms": {
+        "draft": 4615,
+        "critique": 5648
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the definition of reflection of light?",
+      "ms": {
+        "draft": 4615,
+        "critique": 7278,
+        "solver": 20237,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In figure 16.4 (a), three parallel rays are incident on a smooth surface. What can be concluded about the reflected rays?",
+      "ms": {
+        "draft": 4615,
+        "critique": 10307,
+        "solver": 12762,
+        "form": 4190
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the perpendicular line drawn to the mirror at the point of incidence?",
+      "ms": {
+        "draft": 4080,
+        "critique": 8645
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A ray of light is incident on a surface at an angle of 45 degrees. After reflection, it travels in a direction that is symmetrical with respect to the normal. What does this indicate?",
+      "ms": {
+        "draft": 4615,
+        "critique": 10567,
+        "solver": 16916,
+        "form": 3666
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the angle of incidence is 30 degrees, what is the angle of reflection?",
+      "ms": {
+        "draft": 4080,
+        "critique": 6812,
+        "solver": 2196,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a periscope, what is the angle between the two mirrors?",
+      "ms": {
+        "draft": 4080,
+        "critique": 7838,
+        "solver": 2495,
+        "form": 4318
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason we can see the image of the Moon in water?",
+      "ms": {
+        "draft": 4742,
+        "critique": 8129,
+        "solver": 2317,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the angle between the incident ray and the reflected ray is 120 degrees, what is the angle of incidence?",
+      "ms": {
+        "draft": 4742,
+        "critique": 10719
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is true about regular reflection of light?",
+      "ms": {
+        "draft": 8440,
+        "critique": 7993,
+        "solver": 16305,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a light ray is reflected from a rough surface, which of the following is true?",
+      "ms": {
+        "draft": 8440,
+        "critique": 7719,
+        "solver": 17162,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a law of reflection?",
+      "ms": {
+        "draft": 8440,
+        "critique": 7249,
+        "solver": 16668,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason we can see objects around us?",
+      "ms": {
+        "draft": 4615,
+        "critique": 6100,
+        "solver": 1910,
+        "form": 6683,
+        "translation": 58303
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What type of reflection occurs when light reflects from a smooth surface?",
+      "ms": {
+        "draft": 4080,
+        "critique": 7014,
+        "solver": 2103,
+        "form": 4342,
+        "translation": 47476
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the left and right sides of an image when seen in a mirror?",
+      "ms": {
+        "draft": 4742,
+        "critique": 6197,
+        "solver": 2661,
+        "form": 0,
+        "translation": 54545
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when light rays fall on a smooth surface?",
+      "ms": {
+        "draft": 8440,
+        "critique": 9219,
+        "solver": 15196,
+        "form": 1,
+        "translation": 53883
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a light ray hits a mirror at an angle of 35 degrees with the mirror surface, what is the angle of reflection?",
+      "ms": {
+        "draft": 4742,
+        "critique": 8554,
+        "solver": 3153,
+        "form": 0,
+        "translation": 62248
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a periscope, how do the two mirrors help in viewing objects that are not directly in line of sight?",
+      "ms": {
+        "draft": 4742,
+        "critique": 7875,
+        "solver": 1331,
+        "form": 0,
+        "translation": 74822
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a situation where light rays are incident on a rough surface, what is the most likely effect on the reflected rays?",
+      "ms": {
+        "draft": 4615,
+        "critique": 8947,
+        "solver": 18165,
+        "form": 1,
+        "translation": 56079
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a ray of light is incident perpendicular to a mirror, what is the angle of reflection?",
+      "ms": {
+        "draft": 8440,
+        "critique": 8673,
+        "solver": 20174,
+        "form": 0,
+        "translation": 59880
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What happens to the image when a stone is thrown into a still water surface?",
+      "ms": {
+        "draft": 4080,
+        "critique": 6667,
+        "solver": 1512,
+        "form": 4704,
+        "translation": 62438
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why can we not see objects in a dark room?",
+      "ms": {
+        "draft": 4080,
+        "critique": 7751,
+        "solver": 1873,
+        "form": 3090,
+        "translation": 53877
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do the images in a kaleidoscope not repeat themselves easily?",
+      "ms": {
+        "draft": 4742,
+        "critique": 7421,
+        "solver": 1598,
+        "form": 0,
+        "translation": 73284
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In an experiment, a light ray is incident on a mirror at an angle of 30 degrees. What will be the angle of reflection?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the definition of reflection of light?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In figure 16.4 (a), three parallel rays are incident on a smooth surface. What can be concluded about the reflected rays?",
+      "reason": "figure: figure spec refused: spec.parts.1.text.direction: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the perpendicular line drawn to the mirror at the point of incidence?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A ray of light is incident on a surface at an angle of 45 degrees. After reflection, it travels in a direction that is symmetrical with respect to the normal. What does this indicate?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the angle of incidence is 30 degrees, what is the angle of reflection?",
+      "reason": "checkExpr \"30\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a periscope, what is the angle between the two mirrors?",
+      "reason": "figure: figure spec refused: spec.parts: planeMirror has no label \"angle\" (it has mirror, incidentRay, reflectedRay, normal)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main reason we can see the image of the Moon in water?",
+      "reason": "the key is far longer than every distractor (60 vs 28 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the angle between the incident ray and the reflected ray is 120 degrees, what is the angle of incidence?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is true about regular reflection of light?",
+      "reason": "options 0 and 2 say the same thing (\"The reflected rays are not parallel to one another.\" / \"The reflected rays are parallel to one another.\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a light ray is reflected from a rough surface, which of the following is true?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a law of reflection?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

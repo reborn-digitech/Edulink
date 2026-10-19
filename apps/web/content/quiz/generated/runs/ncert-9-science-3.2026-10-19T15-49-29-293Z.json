@@ -1,0 +1,749 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T15:49:29.293Z",
+  "finishedAt": "2026-10-19T16:03:26.946Z",
+  "seconds": 838,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc103.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 3 — Tissues in Action",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 27,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2026-27]\n11. The actions on which we do not have any thinking control are controlled by 2\nthe mid-brain and hind-brain. These are called involuntary actions.\nExamples (any two) blood pressure, salivation and vomiting\nOR\nThe information of touch is communicated by electrical-chemical means\nfrom cell to cell. Plant cells change shape by changing the amount of water\nin them, resulting in swelling or shrinking, thus changing shapes and\ncausing movement.\n12  Uterine lining thickens and is richly supplied with blood vessels to 2\nnourish the embryo.\n Placental connection is developed between the uterus and embryo.\n13  When a nerve impulse reaches the muscle, the muscle cells will move 3\nby changing their",
+      "[CBSE Class X Science, marking scheme, 2024-25]\nC. Growth of pollen tubes towards the ovule is an example of\nchemotropism whereas bending of shoots towards sunlight is an\nexample of phototropism. (1)\nD.\ni) Although both plants and animals show electrical–chemical means to\nconvey the information from cell to cell but unlike nerve cells in\nanimals there is no specialized tissue in plants for conduction of\ninformation. (0.5)\nii) In animal cells, change in shape occurs because of the specialized\nproteins found in muscle cells; plant cells change shape by changing\nthe amount of water in them. (0.5)",
+      "[NSEJS 2016 — question paper]\n23. Which of the following does NOT contain living cells?\na) Bone tissue\nb) Xylem sieve tubes\nc) Phloem\nd) Epidermis",
+      "[INJSO 2014 — question paper]\n34. Stem cells in animals are plueropotent cells as they possess the potential of giving\nrise to many types of cell lineage. Presence of stem cell in a differentiated tissue\ngives it potential to regenerate. From the combination of tissues presented below,\npredict the best combination of tissues containing maximum and minimum\namount of stem cells respectively.\na) Brain and kidney b) Kidney and brain\nc) Brain and liver d) Liver and brain"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 246341,
+      "in": 40,
+      "out": 39,
+      "rejects": 2,
+      "promptTokens": 43062,
+      "completionTokens": 9306
+    },
+    "critique": {
+      "calls": 46,
+      "ms": 436511,
+      "in": 39,
+      "out": 22,
+      "rejects": 17,
+      "promptTokens": 20297,
+      "completionTokens": 7915
+    },
+    "solver": {
+      "calls": 151,
+      "ms": 107022,
+      "in": 22,
+      "out": 18,
+      "rejects": 4,
+      "promptTokens": 26604,
+      "completionTokens": 1516
+    },
+    "form": {
+      "calls": 18,
+      "ms": 112614,
+      "in": 18,
+      "out": 10,
+      "rejects": 8,
+      "promptTokens": 11575,
+      "completionTokens": 1976
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 3290,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 590801,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 23226,
+      "completionTokens": 11939
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which type of tissue is responsible for the growth of roots and shoots in plants?",
+      "ms": {
+        "draft": 6904,
+        "critique": 10069
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the growth of roots if the tips are cut?",
+      "ms": {
+        "draft": 6904,
+        "critique": 11627
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the experiment in Fig. 3.1 demonstrate?",
+      "ms": {
+        "draft": 6904,
+        "critique": 11094,
+        "solver": 1690
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the significance of the apical meristems in plants?",
+      "ms": {
+        "draft": 6904,
+        "critique": 8623
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of tissue is responsible for the movement of water and minerals in plants?",
+      "ms": {
+        "draft": 6904,
+        "critique": 7607
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do plants have meristematic tissue at the tips of their roots and shoots?",
+      "ms": {
+        "draft": 6904,
+        "critique": 9240
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to a plant's stem if the tip is cut?",
+      "ms": {
+        "draft": 6486,
+        "critique": 7898,
+        "solver": 1652,
+        "form": 6474
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a function of the epidermis in plants?",
+      "ms": {
+        "draft": 6486,
+        "critique": 10417,
+        "solver": 17422
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the function of intercalary meristem in plants?",
+      "ms": {
+        "draft": 6486,
+        "critique": 11174
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which type of plant tissue is mainly responsible for the transport of water and minerals from the roots to the rest of the plant?",
+      "ms": {
+        "draft": 6590,
+        "critique": 11732
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which plant tissue system includes parenchyma, collenchyma, and sclerenchyma?",
+      "ms": {
+        "draft": 6590,
+        "critique": 10998
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant's xylem cells were to become non-functional, what would be the most immediate effect on the plant?",
+      "ms": {
+        "draft": 6590,
+        "critique": 10407
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that the xylem contains both living and dead cells. Which of the following best explains how this combination allows the xylem to function effectively?",
+      "ms": {
+        "draft": 6590,
+        "critique": 9317,
+        "solver": 2932,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the musculoskeletal system is responsible for transmitting the force of muscle contraction to the bone?",
+      "ms": {
+        "draft": 5589,
+        "critique": 9554
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is NOT a function of epithelial tissue?",
+      "ms": {
+        "draft": 4488,
+        "critique": 10601,
+        "solver": 19794
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a tree's bark is removed, which function of the tree is most directly affected?",
+      "ms": {
+        "draft": 6618,
+        "critique": 7272
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which tissue in plants is responsible for providing strength and is found in coconut husk fibers?",
+      "ms": {
+        "draft": 6618,
+        "critique": 7885
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student claims that meristematic cells are found only at the root and shoot apices. What question would best help evaluate the correctness of this claim?",
+      "ms": {
+        "draft": 6618,
+        "critique": 11166,
+        "solver": 2435
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of plant tissue is responsible for the flexibility of a young mango sapling’s stem?",
+      "ms": {
+        "draft": 6618,
+        "critique": 10317
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the relationship between the diameter of a teak tree and the number of annual rings formed?",
+      "ms": {
+        "draft": 6618,
+        "critique": 6874,
+        "solver": 16057,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, cuttings of a plant are used for propagation. Type B cuttings sprout and grow into new plants, but type A cuttings do not. What could be the most likely reason?",
+      "ms": {
+        "draft": 6618,
+        "critique": 12752,
+        "solver": 17703,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant is unable to transport food from leaves to roots, which tissue is most likely malfunctioning?",
+      "ms": {
+        "draft": 5322,
+        "critique": 10963
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for the swelling seen in crown gall disease?",
+      "ms": {
+        "draft": 5322,
+        "critique": 9696,
+        "solver": 2929,
+        "form": 3583
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a function of phloem tissue in a plant?",
+      "ms": {
+        "draft": 5322,
+        "critique": 10521,
+        "solver": 17145,
+        "form": 5417
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are epithelial tissues that line an animal’s internal organs usually only one or a few cells thick?",
+      "ms": {
+        "draft": 5322,
+        "critique": 9534,
+        "solver": 2941,
+        "form": 4486
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main function of meristematic tissues?",
+      "ms": {
+        "draft": 5322,
+        "critique": 9640
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which system in the human body helps us stand upright, move, maintain posture, and protect delicate organs?",
+      "ms": {
+        "draft": 6206,
+        "critique": 8132
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is NOT a function of the musculoskeletal system according to the passage?",
+      "ms": {
+        "draft": 6206,
+        "critique": 9071
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What type of joint allows movement similar to a door hinge, like in the elbow and knee?",
+      "ms": {
+        "draft": 6206,
+        "critique": 8450,
+        "solver": 2490,
+        "form": 3508
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of tissue connects muscles to bones?",
+      "ms": {
+        "draft": 4488,
+        "critique": 9415,
+        "solver": 1755,
+        "form": 4413,
+        "translation": 55555
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of tissue connects and supports other tissues in the body?",
+      "ms": {
+        "draft": 5586,
+        "critique": 9322,
+        "solver": 2656,
+        "form": 4952,
+        "translation": 58763
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which plant tissue is responsible for the girth of the stem?",
+      "ms": {
+        "draft": 6813,
+        "critique": 7759,
+        "solver": 731,
+        "form": 0,
+        "translation": 53182
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of cartilage in the body?",
+      "ms": {
+        "draft": 4488,
+        "critique": 9705,
+        "solver": 2061,
+        "form": 4852,
+        "translation": 50041
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the epidermal tissue in plants?",
+      "ms": {
+        "draft": 6590,
+        "critique": 10693,
+        "solver": 15211,
+        "form": 3831,
+        "translation": 57883
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A plant's stem increases in girth due to the activity of which type of meristem?",
+      "ms": {
+        "draft": 6486,
+        "critique": 7895,
+        "solver": 21622,
+        "form": 5729,
+        "translation": 63296
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a function of epithelial tissue?",
+      "ms": {
+        "draft": 5586,
+        "critique": 10908,
+        "solver": 1258,
+        "form": 2738,
+        "translation": 38284
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why does a fresh twig bend but a dry twig break?",
+      "ms": {
+        "draft": 6486,
+        "critique": 10710,
+        "solver": 2718,
+        "form": 4832,
+        "translation": 90707
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following tissues is most likely to have stem cells?",
+      "ms": {
+        "draft": 4488,
+        "critique": 10820,
+        "solver": 2578,
+        "form": 3588,
+        "translation": 62308
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do meristematic cells lack vacuoles?",
+      "ms": {
+        "draft": 6486,
+        "critique": 9105,
+        "solver": 2550,
+        "form": 3324,
+        "translation": 54500
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which plant tissue is described as having thick lignified walls and being primarily composed of dead cells?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 5, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"Which property of meristematic tissue cells allows them to divide repeatedly?\",\"option"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which type of tissue is responsible for the growth of roots and shoots in plants?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What happens to the growth of roots if the tips are cut?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What does the experiment in Fig. 3.1 demonstrate?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the significance of the apical meristems in plants?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which type of tissue is responsible for the movement of water and minerals in plants?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why do plants have meristematic tissue at the tips of their roots and shoots?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens to a plant's stem if the tip is cut?",
+      "reason": "options 0 and 2 say the same thing (\"It stops growing in length and new branches arise\" / \"It stops growing in length and no new branches arise\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is not a function of the epidermis in plants?",
+      "reason": "after redrafting distractors 0, 1: the critic finds option 0 correct, the key is 3"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the function of intercalary meristem in plants?",
+      "reason": "the critic finds option 3 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which type of plant tissue is mainly responsible for the transport of water and minerals from the roots to the rest of the plant?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, which plant tissue system includes parenchyma, collenchyma, and sclerenchyma?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a plant's xylem cells were to become non-functional, what would be the most immediate effect on the plant?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that the xylem contains both living and dead cells. Which of the following best explains how this combination allows the xylem to function effectively?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Living cells provide structural support, while dead cells transport water\" / \"Dead cells provide structural support, while living cells transport water\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of the musculoskeletal system is responsible for transmitting the force of muscle contraction to the bone?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is NOT a function of epithelial tissue?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a tree's bark is removed, which function of the tree is most directly affected?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which tissue in plants is responsible for providing strength and is found in coconut husk fibers?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A student claims that meristematic cells are found only at the root and shoot apices. What question would best help evaluate the correctness of this claim?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which type of plant tissue is responsible for the flexibility of a young mango sapling’s stem?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the relationship between the diameter of a teak tree and the number of annual rings formed?",
+      "reason": "figure: figure spec refused: spec.x.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In an experiment, cuttings of a plant are used for propagation. Type B cuttings sprout and grow into new plants, but type A cuttings do not. What could be the most likely reason?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a plant is unable to transport food from leaves to roots, which tissue is most likely malfunctioning?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main reason for the swelling seen in crown gall disease?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a function of phloem tissue in a plant?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why are epithelial tissues that line an animal’s internal organs usually only one or a few cells thick?",
+      "reason": "the key is far longer than every distractor (48 vs 27 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the main function of meristematic tissues?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which system in the human body helps us stand upright, move, maintain posture, and protect delicate organs?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is NOT a function of the musculoskeletal system according to the passage?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What type of joint allows movement similar to a door hinge, like in the elbow and knee?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

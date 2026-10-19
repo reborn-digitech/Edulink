@@ -64,7 +64,7 @@ async function main() {
   const r = await loadGeneratedBatches(db, batches, { dry: DRY });
 
   console.log(
-    `\n${DRY ? "Would load" : "Loaded"} ${files.length} batch(es) into the bank — ${r.created} new, ${r.updated} items refreshed, ${r.settled} edited or taken down on the desk (or stamped earlier) left alone, ${r.duplicates} duplicates of authored questions skipped, ${r.topicsMade} chapter(s) made, ${r.boardsSet} chapter board(s) set; figures ${r.figuresDrawn} ${DRY ? "would be drawn" : "drawn"}, ${r.figuresKept} kept, ${r.figuresFailed.length} failed.\n`,
+    `\n${DRY ? "Would load" : "Loaded"} ${files.length} batch(es) into the bank — ${r.created} new, ${r.updated} items refreshed, ${r.settled} edited or taken down on the desk (or stamped earlier) left alone, ${r.duplicates} duplicates of authored questions skipped, ${r.topicsMade} chapter(s) made, ${r.topicsAdopted ?? 0} "Chapter N" chapter(s) taken over, ${r.boardsSet} chapter board(s) set; figures ${r.figuresDrawn} ${DRY ? "would be drawn" : "drawn"}, ${r.figuresKept} kept, ${r.figuresFailed.length} failed.\n`,
   );
   for (const f of r.figuresFailed) console.log(`  figure failed — ${f.file}: "${f.stem.slice(0, 70)}": ${f.reason}`);
 }

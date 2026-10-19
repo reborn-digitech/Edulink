@@ -233,11 +233,12 @@ export function recoverChapterTitle(found: string | null, runningHeads: readonly
     .join(" ");
 }
 
-export function elementsOf(pages: PageContent[], opts: { perChapterFile: boolean }): { elements: Element[]; edition: string | null; bodySize: number; chapter: string | null } {
-  const body = bodySizeOf(pages);
-  const edition = editionIn(pages.flatMap((p) => p.runs.map((r) => r.text)));
-
-  // Running heads and feet: the same line (digits ignored) on a quarter of the pages or more.
+/**
+ * Running heads and feet: the same line (digits ignored) on a quarter of the pages or more, in a file of six
+ * pages or more. `boilerplate` holds their normalised keys (dropped from the text), `runningHeads` the lines as
+ * printed: one of them is often the chapter's own name (recoverChapterTitle; scripts/corpus-titles.ts). Pure.
+ */
+export function runningHeadsOf(pages: PageContent[]): { boilerplate: Set<string>; runningHeads: string[] } {
   const seenOn = new Map<string, Set<number>>();
   const asPrinted = new Map<string, string>();
   for (const p of pages) for (const r of p.runs) {
@@ -250,8 +251,20 @@ export function elementsOf(pages: PageContent[], opts: { perChapterFile: boolean
   }
   const repeatFloor = Math.max(3, Math.ceil(pages.length * 0.25));
   const boilerplate = new Set([...seenOn].filter(([, s]) => pages.length >= 6 && s.size >= repeatFloor).map(([k]) => k));
-  // The running heads as printed: one of them is the chapter's own name (recoverChapterTitle).
-  const runningHeads = [...boilerplate].map((k) => asPrinted.get(k) ?? "").filter(Boolean);
+  return { boilerplate, runningHeads: [...boilerplate].map((k) => asPrinted.get(k) ?? "").filter(Boolean) };
+}
+
+/** The body size of a run of pages: the font size most characters are set in. Pure. */
+export function bodySizeOfPages(pages: PageContent[]): number {
+  return bodySizeOf(pages);
+}
+
+export function elementsOf(pages: PageContent[], opts: { perChapterFile: boolean }): { elements: Element[]; edition: string | null; bodySize: number; chapter: string | null } {
+  const body = bodySizeOf(pages);
+  const edition = editionIn(pages.flatMap((p) => p.runs.map((r) => r.text)));
+
+  // Running heads and feet; the running heads as printed: one of them is the chapter's own name (recoverChapterTitle).
+  const { boilerplate, runningHeads } = runningHeadsOf(pages);
   const keep = (r: Run) =>
     r.size >= body * 0.62 && !/^[\s\d.,|\-–—()ivx]+$/i.test(r.text) && !boilerplate.has(normalise(r.text)) && !/^reprint\s*\d{4}/i.test(r.text);
 

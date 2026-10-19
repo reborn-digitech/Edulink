@@ -1,0 +1,725 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-18T23:51:00.309Z",
+  "finishedAt": "2026-10-18T23:59:52.565Z",
+  "seconds": 532,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp102.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Lines and angLes",
+    "edition": "Reprint 2026-27",
+    "chunks": 27,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Mathematics, sample question paper, 2022-23]\n20. Assertion (A): The acute angle between the line 𝑟̅ = 𝚤̂ + 𝚥̂ + 2𝑘 ෠ + 𝜆(𝚤̂ − 𝚥̂) and the x-axis\nగ\nis ସ\nReason(R): The acute angle 𝜃 between the lines\n𝑟̅ = 𝑥 𝚤̂ + 𝑦 𝚥̂ + 𝑧 𝑘 ଵ ଵ ଵ ෠ + 𝜆൫𝑎 ଵ 𝚤̂ + 𝑏 𝚥̂ + 𝑐 𝑘 and ଵ ଵ ෠൯\n𝑟̅ = 𝑥 𝚤̂ + 𝑦 𝚥̂ + 𝑧 𝑘 ଶ ଶ ଶ ෠ + 𝜇൫𝑎 ଶ 𝚤̂ + 𝑏 𝚥̂ + 𝑐 𝑘 is given by 𝑐𝑜𝑠𝜃 = ଶ ଶ ෠൯ |௔ ௔ ା௕ ௕ ା௖ ௖ | భ మ భ మ భ మ\nට௔ భ మ ା௕ భ మ ା௖ భ మ ට௔ మ మ ା௕ మ మ ା௖ మ మ",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n11. If two tangents inclined at an angle of 60ᵒ are drawn to a circle of radius 3cm, then the 1\nlength of each tangent is equal to\n3√3 (b) 3cm (c) 6cm (d) 3√3cm\n(a) 2 cm",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n3. The lines representing the given pair of linear equations are non-intersecting. Which of the 1\nfollowing statements is true?\n௔ଵ ௕ଵ ௖ଵ\n(a) ௔ଶ = ௕ଶ = ௖ଶ\n௔ଵ ௕ଵ ௖ଵ\n(b) ௔ଶ = ௕ଶ ≠ ௖ଶ\n௔ଵ ௕ଵ ௖ଵ\n(c) ௔ଶ ≠ ௕ଶ = ௖ଶ\n௔ଵ ௕ଵ ௖ଵ\n(d) ௔ଶ ≠ ௕ଶ ≠ ௖ଶ",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n4. Graphically, the pair of equations given by\n6x – 3y + 10 = 0\n2x – y + 9 = 0\nrepresents two lines which are\n(a) intersecting at exactly one point.\n(c) coincident.\n(c) 5 (d) –5\n(b) parallel.\n(d) intersecting at exactly two points."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 182940,
+      "in": 39,
+      "out": 37,
+      "rejects": 2,
+      "promptTokens": 43962,
+      "completionTokens": 10029
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 282641,
+      "in": 37,
+      "out": 32,
+      "rejects": 5,
+      "promptTokens": 20856,
+      "completionTokens": 7848
+    },
+    "solver": {
+      "calls": 209,
+      "ms": 95838,
+      "in": 32,
+      "out": 21,
+      "rejects": 11,
+      "promptTokens": 36437,
+      "completionTokens": 2126
+    },
+    "form": {
+      "calls": 13,
+      "ms": 51551,
+      "in": 21,
+      "out": 15,
+      "rejects": 6,
+      "promptTokens": 7194,
+      "completionTokens": 1473
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 4710,
+      "in": 15,
+      "out": 11,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 409257,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 24705,
+      "completionTokens": 11321
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 1,
+    "4": 2,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 3,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "In the given diagram, which points lie on exactly two line segments?",
+      "ms": {
+        "draft": 4335,
+        "critique": 5435,
+        "solver": 1214
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A ray is defined as a portion of a line that starts at one point and extends indefinitely in one direction. Which of the following is a correct representation of a ray?",
+      "ms": {
+        "draft": 4335,
+        "critique": 7930,
+        "solver": 2970,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main factor that determines whether a rotating arm can pass through a slit?",
+      "ms": {
+        "draft": 5277,
+        "critique": 7721,
+        "solver": 1346
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for an angle that is formed when the arms of the angle lie in a straight line?",
+      "ms": {
+        "draft": 5277,
+        "critique": 6421,
+        "solver": 10495,
+        "form": 4158
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, what is the relationship between a straight angle and a right angle?",
+      "ms": {
+        "draft": 5277,
+        "critique": 7474,
+        "solver": 1349,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct way to compare two angles without using superimposition?",
+      "ms": {
+        "draft": 5277,
+        "critique": 5898,
+        "solver": 12257
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a rotating arm makes an angle of 90°, which of the following is true?",
+      "ms": {
+        "draft": 5277,
+        "critique": 6788,
+        "solver": 13738,
+        "form": 2101
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a straight angle is divided into two equal parts, what is the measure of each part?",
+      "ms": {
+        "draft": 5277,
+        "critique": 7710,
+        "solver": 15603
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a full circle is divided into 360 parts, which of the following statements explains why 360 is a convenient number for this division?",
+      "ms": {
+        "draft": 3497,
+        "critique": 6293,
+        "solver": 1627,
+        "form": 3767
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the measure of a half-circle in degrees?",
+      "ms": {
+        "draft": 4812,
+        "critique": 5035
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Fig. 2.15, after folding the semicircle in half, what is the measure of the angle formed?",
+      "ms": {
+        "draft": 4812,
+        "critique": 5410
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student measures an angle and finds that it is 135°, which of the following could be the angle formed after one more fold of the semicircle?",
+      "ms": {
+        "draft": 4812,
+        "critique": 6772
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct way to name an angle with vertex I and arms IT and IN?",
+      "ms": {
+        "draft": 3940,
+        "critique": 5812,
+        "solver": 1291
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a straight angle is divided into 8 equal parts, what is the measure of each part?",
+      "ms": {
+        "draft": 11024,
+        "critique": 5343,
+        "solver": 2475,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, ∠POQ = 35°, ∠QOR = 60°, and ∠ROS = 30°. What is the measure of ∠POS?",
+      "ms": {
+        "draft": 11024,
+        "critique": 7957,
+        "solver": 1130
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a clock, what is the angle between the hour and minute hands at 2 o'clock?",
+      "ms": {
+        "draft": 11024,
+        "critique": 9887,
+        "solver": 1756
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a protractor is used to measure an angle, and the unmarked angle is 100°, what is the measure of the marked angle?",
+      "ms": {
+        "draft": 11024,
+        "critique": 9196,
+        "solver": 1713
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, which points lie on exactly one line segment?",
+      "ms": {
+        "draft": 6444,
+        "critique": 6517,
+        "solver": 1097
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct representation of a ray?",
+      "ms": {
+        "draft": 6444,
+        "critique": 7328,
+        "solver": 1837
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student draws a ray starting at point O and passing through point A. The student also draws a ray starting at point A and passing through point O. How many different rays have been drawn?",
+      "ms": {
+        "draft": 6444,
+        "critique": 6896
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the figure, point O is the vertex of an angle. If the rays OP and OM form the angle ∠POM, and the size of the angle is 120°, what is the size of the angle ∠MOP?",
+      "ms": {
+        "draft": 6444,
+        "critique": 8556
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the measure of the angle formed by folding a semicircle in half twice?",
+      "ms": {
+        "draft": 10944,
+        "critique": 5119,
+        "solver": 575
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many lines can be drawn through two distinct points?",
+      "ms": {
+        "draft": 4335,
+        "critique": 4609,
+        "solver": 1480,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an angle is divided into 360 equal parts, what is the measure of each part?",
+      "ms": {
+        "draft": 3497,
+        "critique": 6819,
+        "solver": 13342,
+        "form": 3335
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an acute angle?",
+      "ms": {
+        "draft": 11024,
+        "critique": 4611,
+        "solver": 1303,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the measure of a right angle?",
+      "ms": {
+        "draft": 11024,
+        "critique": 5027,
+        "solver": 1997,
+        "form": 3527
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is a point in geometry?",
+      "ms": {
+        "draft": 4335,
+        "critique": 6866,
+        "solver": 1399,
+        "form": 0,
+        "translation": 44281
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the measure of a right angle in degrees?",
+      "ms": {
+        "draft": 3497,
+        "critique": 8325,
+        "solver": 932,
+        "form": 3031,
+        "translation": 29936
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct way to name an angle?",
+      "ms": {
+        "draft": 4335,
+        "critique": 5770,
+        "solver": 14564,
+        "form": 0,
+        "translation": 44313
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an obtuse angle?",
+      "ms": {
+        "draft": 3497,
+        "critique": 6704,
+        "solver": 1363,
+        "form": 3624,
+        "translation": 29097
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a protractor is placed with the center on the vertex of an angle and one arm aligned with the 0° mark, what does the other arm show?",
+      "ms": {
+        "draft": 4812,
+        "critique": 5336,
+        "solver": 1310,
+        "form": 2611,
+        "translation": 41962
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a protractor has two sets of numbers, what is the purpose of the second set?",
+      "ms": {
+        "draft": 3497,
+        "critique": 6549,
+        "solver": 1025,
+        "form": 3287,
+        "translation": 39276
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the measure of an angle that is smaller than a right angle but greater than 0°?",
+      "ms": {
+        "draft": 4947,
+        "critique": 7410,
+        "solver": 1265,
+        "form": 0,
+        "translation": 27777
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A protractor is used to measure angles. If the angle between two lines is formed by one line at 20° and another at 55°, what is the measure of the angle between them?",
+      "ms": {
+        "draft": 3497,
+        "critique": 7330,
+        "solver": 1313,
+        "form": 3879,
+        "translation": 38267
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If ∠TER = 80°, and ∠REB is a straight angle, what is the measure of ∠BET?",
+      "ms": {
+        "draft": 4947,
+        "critique": 7499,
+        "solver": 1466,
+        "form": 0,
+        "translation": 24091
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the diagram, ∠ABC is formed by two rays BA and BC. If the angle is 90°, what can be said about the rays BA and BC?",
+      "ms": {
+        "draft": 4335,
+        "critique": 7204,
+        "solver": 1084,
+        "form": 0,
+        "translation": 45028
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the angle formed by the hands of a clock at 1 o'clock is 30°, what will be the angle formed at 2 o'clock?",
+      "ms": {
+        "draft": 4812,
+        "critique": 5361,
+        "solver": 8485,
+        "form": 1535,
+        "translation": 39555
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the measure of a full circle in degrees?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the given diagram, which points lie on exactly two line segments?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A ray is defined as a portion of a line that starts at one point and extends indefinitely in one direction. Which of the following is a correct representation of a ray?",
+      "reason": "the key is far longer than every distractor (41 vs 17 characters); option lengths are unalike (8 to 41 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main factor that determines whether a rotating arm can pass through a slit?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used for an angle that is formed when the arms of the angle lie in a straight line?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, what is the relationship between a straight angle and a right angle?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Confuses the relationship between straight and right angles,…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is a correct way to compare two angles without using superimposition?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a rotating arm makes an angle of 90°, which of the following is true?",
+      "reason": "options 0 and 1 say the same thing (\"It can pass through a slit with an angle of 45°\" / \"It can pass through a slit with an angle of 120°\"); options 0 and 2 say the same thing (\"It can pass through a slit with an angle of 45°\" / \"It can pass through a slit with an angle of 90°\"); options 1 and 2 say the same thing (\"It can pass through a slit with an angle of 120°\" / \"It can pass through a slit with an angle of 90°\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a straight angle is divided into two equal parts, what is the measure of each part?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a full circle is divided into 360 parts, which of the following statements explains why 360 is a convenient number for this division?",
+      "reason": "the key is far longer than every distractor (59 vs 23 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the measure of a half-circle in degrees?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In Fig. 2.15, after folding the semicircle in half, what is the measure of the angle formed?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a student measures an angle and finds that it is 135°, which of the following could be the angle formed after one more fold of the semicircle?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is the correct way to name an angle with vertex I and arms IT and IN?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which of the following is an example of an obtuse angle?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If a straight angle is divided into 8 equal parts, what is the measure of each part?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the given figure, ∠POQ = 35°, ∠QOR = 60°, and ∠ROS = 30°. What is the measure of ∠POS?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In a clock, what is the angle between the hour and minute hands at 2 o'clock?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a protractor is used to measure an angle, and the unmarked angle is 100°, what is the measure of the marked angle?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the given figure, which points lie on exactly one line segment?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a correct representation of a ray?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student draws a ray starting at point O and passing through point A. The student also draws a ray starting at point A and passing through point O. How many different rays have been drawn?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In the figure, point O is the vertex of an angle. If the rays OP and OM form the angle ∠POM, and the size of the angle is 120°, what is the size of the angle ∠MOP?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the measure of the angle formed by folding a semicircle in half twice?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "How many lines can be drawn through two distinct points?",
+      "reason": "near-duplicate of served question cmv3k5ssb001hgnjuiduwj7yh (cosine 0.956 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If an angle is divided into 360 equal parts, what is the measure of each part?",
+      "reason": "near-duplicate of served question cmv3k5ssg001tgnjudausav5v (cosine 0.917 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is an example of an acute angle?",
+      "reason": "near-duplicate of served question cmveex2dl0027gowchg9dqtph (cosine 0.938 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the measure of a right angle?",
+      "reason": "near-duplicate of served question cmv3k5ssa001bgnjukr5t5o1v (cosine 0.910 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,789 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T16:51:50.223Z",
+  "finishedAt": "2026-10-19T17:06:51.806Z",
+  "seconds": 902,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc107.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 7 — Work, Energy, and Simple Machines",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 32,
+    "groups": 9
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2009 — question paper]\n1. Which one of the following expressions has the same units as power?\na) Force x distance\nb) Work x time\n¢) Force x acceleration\nd) Force x velocity",
+      "[INJSO 2010 — question paper]\n46. A trolley runs from point P to Q along a track, as shown in the figure. At point Q,\nits potential energy is 50 kJ less than at point P. At point P, the trolley has kinetic energy\n5 kJ. Between P and Q, the work done against friction is 10 kJ. What is the kinetic energy\nat point Q?\na) 35 kJ b) 45 kJ c) 55 kJ d) 65 kJ",
+      "[INJSO 2012 — question paper]\n1. A load is to be moved using a wheelbarrow. The total mass of the load and wheelbarrow is 60 kg.\nThe magnitude of gravitational acceleration is 10 ms 2 .\nWhat is the work done if the handle is raised by 50 cm?\na) 35.0 J\nb) 17.5 J\nc) 175 J\nd) 350 J",
+      "[INJSO 2012 — question paper]\n45. The diagram shows a lift system in which the elevator (mass m 1 ) is partly counterbalanced by a\nheavy weight (mass m 2 ).\nAt what rate does the motor provide energy to the system when the elevator is rising at a steady\nspeed v ? (g = acceleration of free fall) (consider the pulley as frictionless at the pivot)\na) (m 1 + m 2 )gv\nb) ½ (m 1 + m 2 )gv\nc) (m 1 m 2 )gv /(m 1 + m 2 )\nd) (m 1 – m 2 )gv"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 285927,
+      "in": 43,
+      "out": 40,
+      "rejects": 3,
+      "promptTokens": 50473,
+      "completionTokens": 9763
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 548672,
+      "in": 40,
+      "out": 30,
+      "rejects": 10,
+      "promptTokens": 23128,
+      "completionTokens": 8888
+    },
+    "solver": {
+      "calls": 217,
+      "ms": 172385,
+      "in": 30,
+      "out": 23,
+      "rejects": 7,
+      "promptTokens": 41022,
+      "completionTokens": 2194
+    },
+    "form": {
+      "calls": 18,
+      "ms": 161856,
+      "in": 23,
+      "out": 10,
+      "rejects": 13,
+      "promptTokens": 18589,
+      "completionTokens": 2316
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 19,
+      "ms": 4023,
+      "in": 10,
+      "out": 9,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 631145,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 22416,
+      "completionTokens": 11201
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 3,
+    "4": 2,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "A trolley moves from point P to Q, and its potential energy decreases by 50 kJ. At point P, the trolley has 5 kJ of kinetic energy, and 10 kJ of work is done against friction. What is the kinetic energy at point Q?",
+      "ms": {
+        "draft": 8692,
+        "critique": 15779
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A 60 kg load is lifted using a wheelbarrow. The handle is raised by 50 cm. What is the work done in lifting the load?",
+      "ms": {
+        "draft": 8692,
+        "critique": 11338
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of work and energy?",
+      "ms": {
+        "draft": 7005,
+        "critique": 8907,
+        "solver": 3586,
+        "form": 4035
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When is the work done by a force on an object said to be positive?",
+      "ms": {
+        "draft": 7005,
+        "critique": 8463,
+        "solver": 2641,
+        "form": 4757
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the work done by a force if the displacement is perpendicular to the force?",
+      "ms": {
+        "draft": 7005,
+        "critique": 9841,
+        "solver": 2280,
+        "form": 6397
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A trolley moves from point P to Q, and its potential energy decreases by 50 kJ. It has 5 kJ of kinetic energy at P, and 10 kJ of work is done against friction. What is its kinetic energy at Q?",
+      "ms": {
+        "draft": 7005,
+        "critique": 16601
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "When you pedal a bicycle on a flat road, your muscles supply energy. In what forms does this muscular energy appear as you ride?",
+      "ms": {
+        "draft": 6453,
+        "critique": 10555,
+        "solver": 2204
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a carrom shot, a striker hits a white coin, which then hits a black coin. What type of work does the striker do on the white coin?",
+      "ms": {
+        "draft": 7005,
+        "critique": 11793,
+        "solver": 19644,
+        "form": 5280
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A trolley moves from point P to Q. Its potential energy decreases by 50 kJ, and the work done against friction is 10 kJ. If the kinetic energy at P is 5 kJ, what is its kinetic energy at Q?",
+      "ms": {
+        "draft": 6453,
+        "critique": 18253,
+        "solver": 2792
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the energy stored in a system of objects due to their relative positions called?",
+      "ms": {
+        "draft": 5593,
+        "critique": 10567
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A jet aircraft of mass 15000 kg lands on the deck of an aircraft carrier. It is stopped by a wire that applies a backward force of 367500 N over 100 m. What was its velocity just before the wire caught the hook?",
+      "ms": {
+        "draft": 6453,
+        "critique": 11203,
+        "solver": 24859
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of potential energy?",
+      "ms": {
+        "draft": 32563,
+        "critique": 12034
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In which scenario is the potential energy of an object the highest?",
+      "ms": {
+        "draft": 5593,
+        "critique": 11573,
+        "solver": 19998,
+        "form": 4718
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A ball of mass 1 kg is lifted to a height of 10 m. What is the potential energy of the ball? (Take g = 10 m/s²)",
+      "ms": {
+        "draft": 5593,
+        "critique": 12119,
+        "solver": 19563
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what happens to the mechanical energy of an object when it falls freely under gravity?",
+      "ms": {
+        "draft": 32563,
+        "critique": 10695
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A truck of mass 10000 kg is moving with a kinetic energy of 2000000 J. It enters an escape ramp and comes to rest. If the ramp is inclined at an angle, and the total work done by the ramp on the truck is -50000 N × d, what is the minimum length of the ramp (d) required to stop the truck?",
+      "ms": {
+        "draft": 10838,
+        "critique": 12077
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the energy stored in a stretched rubber band when it is released?",
+      "ms": {
+        "draft": 6470,
+        "critique": 9825,
+        "solver": 2782,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student stretches a rubber band to twice its original length. What happens to the elastic potential energy stored in the rubber band?",
+      "ms": {
+        "draft": 6470,
+        "critique": 9874,
+        "solver": 4078,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the energy stored in a stretched rubber band called?",
+      "ms": {
+        "draft": 6470,
+        "critique": 9488,
+        "solver": 2007,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the experiment described, the refill shoots out when the rubber band is released. Which of the following is the main reason for this motion?",
+      "ms": {
+        "draft": 6470,
+        "critique": 8526,
+        "solver": 2937,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A rubber band is stretched to a certain length and released, causing a refill to shoot out. If the same rubber band is stretched to a greater length, how does the distance travelled by the refill change?",
+      "ms": {
+        "draft": 6470,
+        "critique": 8297,
+        "solver": 2533,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment described in the passage, a rubber band is stretched and released to show the conversion of energy. Which of the following is the main form of energy conversion observed?",
+      "ms": {
+        "draft": 6470,
+        "critique": 12070,
+        "solver": 19468,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of work and energy according to the passage?",
+      "ms": {
+        "draft": 5227,
+        "critique": 11592,
+        "solver": 1884,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about a lever?",
+      "ms": {
+        "draft": 5227,
+        "critique": 11962
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the height of an inclined plane is 30 cm and its length is 50 cm, what is the mechanical advantage of the plane?",
+      "ms": {
+        "draft": 6212,
+        "critique": 11559,
+        "solver": 2703
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a simple machine that helps move a heavy load to a higher or lower level?",
+      "ms": {
+        "draft": 6212,
+        "critique": 11098,
+        "solver": 24052,
+        "form": 5319
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A 15 kg child sits on a seat 2 m from the fulcrum of a seesaw. Where should a 30 kg child sit to balance the seesaw?",
+      "ms": {
+        "draft": 5227,
+        "critique": 12135,
+        "solver": 29944
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the SI unit of power?",
+      "ms": {
+        "draft": 7311,
+        "critique": 10258
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A load is to be moved using a pulley system. The mechanical advantage of the system is 2. If the effort required is 50 N, what is the load being lifted?",
+      "ms": {
+        "draft": 7311,
+        "critique": 9484
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A car of mass 1000 kg starts from rest and reaches a speed of 20 m/s in 10 seconds. What is the average power of the engine?",
+      "ms": {
+        "draft": 7311,
+        "critique": 10955,
+        "solver": 7866
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A force of 10 N acts on an object and displaces it 3 m. What is the work done?",
+      "ms": {
+        "draft": 8692,
+        "critique": 12017,
+        "solver": 2031,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of energy is stored in a stretched rubber band or a bent bow?",
+      "ms": {
+        "draft": 5593,
+        "critique": 13864,
+        "solver": 19179,
+        "form": 5166,
+        "translation": 63428
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of a lever?",
+      "ms": {
+        "draft": 5227,
+        "critique": 10831,
+        "solver": 2505,
+        "form": 5264,
+        "translation": 54082
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A person lifts three 5 kg bags of wheat to a height of 1 m each. What is the work done by the person in lifting all three bags?",
+      "ms": {
+        "draft": 8692,
+        "critique": 11290,
+        "solver": 3754,
+        "form": 0,
+        "translation": 87478
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A force of 30 N is applied on an object, and it moves 2 m in the direction of the force. What is the work done?",
+      "ms": {
+        "draft": 8692,
+        "critique": 8919,
+        "solver": 2439,
+        "form": 1,
+        "translation": 68936
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A goalkeeper stops a ball by applying a force of 200 N, and the ball moves 15 cm in the opposite direction. What is the work done by the goalkeeper on the ball?",
+      "ms": {
+        "draft": 7005,
+        "critique": 11017,
+        "solver": 20808,
+        "form": 5892,
+        "translation": 69918
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A constant force of 10 N acts on an object, and it is displaced 2 m in the direction of the force. What is the work done on the object?",
+      "ms": {
+        "draft": 8692,
+        "critique": 10762,
+        "solver": 1967,
+        "form": 0,
+        "translation": 66627
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "According to the work-energy theorem, what happens to the work done by a force on an object?",
+      "ms": {
+        "draft": 6453,
+        "critique": 11982,
+        "solver": 2740,
+        "form": 0,
+        "translation": 87037
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A person uses an inclined plane to lift a box to a height of 2 m. The length of the inclined plane is 5 m. What is the mechanical advantage of the inclined plane?",
+      "ms": {
+        "draft": 8915,
+        "critique": 8686,
+        "solver": 1758,
+        "form": 1,
+        "translation": 66842
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A person uses an inclined plane to raise an object over a 30 cm high step. If the length of the plane is increased, what happens to the force required to raise the object?",
+      "ms": {
+        "draft": 6212,
+        "critique": 11199,
+        "solver": 3426,
+        "form": 3726,
+        "translation": 58343
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the SI unit of kinetic energy?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If the velocity of a vehicle doubles, what happens to its kinetic energy?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the formula for the potential energy of an object at a height h?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A trolley moves from point P to Q, and its potential energy decreases by 50 kJ. At point P, the trolley has 5 kJ of kinetic energy, and 10 kJ of work is done against friction. What is the kinetic energy at point Q?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A 60 kg load is lifted using a wheelbarrow. The handle is raised by 50 cm. What is the work done in lifting the load?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the SI unit of work and energy?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, but the third one …\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "When is the work done by a force on an object said to be positive?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer is not the longest option, but the second one…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens to the work done by a force if the displacement is perpendicular to the force?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, but the third one …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A trolley moves from point P to Q, and its potential energy decreases by 50 kJ. It has 5 kJ of kinetic energy at P, and 10 kJ of work is done against friction. What is its kinetic energy at Q?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "When you pedal a bicycle on a flat road, your muscles supply energy. In what forms does this muscular energy appear as you ride?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a carrom shot, a striker hits a white coin, which then hits a black coin. What type of work does the striker do on the white coin?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer is not the longest option, but the first one …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A trolley moves from point P to Q. Its potential energy decreases by 50 kJ, and the work done against friction is 10 kJ. If the kinetic energy at P is 5 kJ, what is its kinetic energy at Q?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the energy stored in a system of objects due to their relative positions called?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A jet aircraft of mass 15000 kg lands on the deck of an aircraft carrier. It is stopped by a wire that applies a backward force of 367500 N over 100 m. What was its velocity just before the wire caught the hook?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the unit of potential energy?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In which scenario is the potential energy of an object the highest?",
+      "reason": "options 1 and 2 say the same thing (\"When the object is lifted to a height of 1 m\" / \"When the object is lifted to a height of 2 m\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A ball of mass 1 kg is lifted to a height of 10 m. What is the potential energy of the ball? (Take g = 10 m/s²)",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, what happens to the mechanical energy of an object when it falls freely under gravity?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A truck of mass 10000 kg is moving with a kinetic energy of 2000000 J. It enters an escape ramp and comes to rest. If the ramp is inclined at an angle, and the total work done by the ramp on the truck is -50000 N × d, what is the minimum length of the ramp (d) required to stop the truck?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens to the energy stored in a stretched rubber band when it is released?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.barMagnet: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student stretches a rubber band to twice its original length. What happens to the elastic potential energy stored in the rubber band?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'rubberBand'"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the energy stored in a stretched rubber band called?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.north: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the experiment described, the refill shoots out when the rubber band is released. Which of the following is the main reason for this motion?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.north: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A rubber band is stretched to a certain length and released, causing a refill to shoot out. If the same rubber band is stretched to a greater length, how does the distance travelled by the refill change?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the experiment described in the passage, a rubber band is stretched and released to show the conversion of energy. Which of the following is the main form of energy conversion observed?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options 0 and 3 say the same thing (\"Elastic potential to thermal\" / \"Thermal to elastic potential\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the unit of work and energy according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about a lever?",
+      "reason": "the critic finds option 2 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the height of an inclined plane is 30 cm and its length is 50 cm, what is the mechanical advantage of the plane?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a simple machine that helps move a heavy load to a higher or lower level?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A 15 kg child sits on a seat 2 m from the fulcrum of a seesaw. Where should a 30 kg child sit to balance the seesaw?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the SI unit of power?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A load is to be moved using a pulley system. The mechanical advantage of the system is 2. If the effort required is 50 N, what is the load being lifted?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A car of mass 1000 kg starts from rest and reaches a speed of 20 m/s in 10 seconds. What is the average power of the engine?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A force of 10 N acts on an object and displaces it 3 m. What is the work done?",
+      "reason": "near-duplicate of batch item \"A constant force of 10 N acts on an object, and it…\" (cosine 0.939 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

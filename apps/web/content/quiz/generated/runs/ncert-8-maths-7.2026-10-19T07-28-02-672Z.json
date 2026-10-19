@@ -1,0 +1,841 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T07:28:02.672Z",
+  "finishedAt": "2026-10-19T07:37:21.198Z",
+  "seconds": 559,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash Part-I",
+    "bookCode": "hegp1",
+    "document": "ncert/8/mathematics/hegp107.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — Proportional Reasoning-1",
+    "edition": "Reprint 2026-27",
+    "chunks": 21,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n9. In the given figure, DE ∥ BC, AE = a units, EC =b units, DE =x units and BC = y 1\nunits. Which of the following is true?\n(a) x= 𝑎+𝑏 𝑎𝑦 (b) y= 𝑎+𝑏 𝑎𝑥 (c) x= 𝑎+𝑏 𝑎𝑦 (d) 𝑦 𝑥 = 𝑎 𝑏",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n8. (b) 5 : 1",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n8. 1\nratio 3 : 1, then the value of 𝒚 is\n(A) 4 (B) 3 (C) 2 (D) 1\nA letter from the word INDEPENDENCE is selected at random. What is the",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n33. If a line is drawn parallel to one side of a triangle to intersect the other two sides 5\nin distinct points, then prove that the other two sides are divided in the same\nratio."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 213974,
+      "in": 46,
+      "out": 44,
+      "rejects": 2,
+      "promptTokens": 53316,
+      "completionTokens": 11500
+    },
+    "critique": {
+      "calls": 60,
+      "ms": 432329,
+      "in": 44,
+      "out": 33,
+      "rejects": 11,
+      "promptTokens": 29254,
+      "completionTokens": 10922
+    },
+    "solver": {
+      "calls": 273,
+      "ms": 160055,
+      "in": 33,
+      "out": 19,
+      "rejects": 14,
+      "promptTokens": 58717,
+      "completionTokens": 3155
+    },
+    "form": {
+      "calls": 8,
+      "ms": 38700,
+      "in": 19,
+      "out": 11,
+      "rejects": 8,
+      "promptTokens": 4005,
+      "completionTokens": 992
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 3837,
+      "in": 11,
+      "out": 10,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 340818,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 22737,
+      "completionTokens": 10345
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following statements is true about proportional ratios?",
+      "ms": {
+        "draft": 5017,
+        "critique": 6984
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given table, which images have proportional ratios of width to height?",
+      "ms": {
+        "draft": 5017,
+        "critique": 8066
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Nitin and Hari were building a compound wall. Nitin built a longer side of 60 ft using 3 bags of cement, and Hari built a shorter side of 40 ft using 2 bags of cement. Are the ratios of the length of the wall to the number of bags of cement used by Nitin and Hari proportional?",
+      "ms": {
+        "draft": 5017,
+        "critique": 7764,
+        "solver": 1337
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the ratio of the number of glasses of lemonade to the number of spoons of sugar is 6 : 10, how many spoons of sugar should be used to make 18 glasses of lemonade to maintain the same sweetness?",
+      "ms": {
+        "draft": 5017,
+        "critique": 9371,
+        "solver": 1808
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the ratio of width to height of a rectangular image is 60 : 40, which of the following is a simplified form of this ratio?",
+      "ms": {
+        "draft": 5017,
+        "critique": 8947,
+        "solver": 15644
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the ratio of width to height of an image is 60 : 40, and the width is reduced to 30 mm, what should the new height be to maintain the same ratio?",
+      "ms": {
+        "draft": 5017,
+        "critique": 8881
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the ratio of Neelima’s age to her mother’s age when Neelima is 3 years old?",
+      "ms": {
+        "draft": 3693,
+        "critique": 7084,
+        "solver": 1708
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, it is mentioned that when Neelima is 3 years old, her mother’s age is 10 times her age. What is the ratio of their ages when Neelima is 12 years old?",
+      "ms": {
+        "draft": 3693,
+        "critique": 5801,
+        "solver": 16191
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the ratio of coffee decoction to milk in a cup of coffee is 15 : 35, and a customer wants a stronger coffee, which of the following ratios would represent a stronger coffee?",
+      "ms": {
+        "draft": 3693,
+        "critique": 8500,
+        "solver": 16419
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the passage, it is mentioned that the cook makes 15 kg of rice for 120 students. If only 80 students come, how many kilograms of rice should be made?",
+      "ms": {
+        "draft": 3693,
+        "critique": 7066,
+        "solver": 16787,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a:b::c:d, which of the following is true?",
+      "ms": {
+        "draft": 4720,
+        "critique": 9020,
+        "solver": 12400,
+        "form": 2768
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A car travels 90 km in 150 minutes. How far will it travel in 4 hours if it continues at the same speed?",
+      "ms": {
+        "draft": 4720,
+        "critique": 10059,
+        "solver": 14695,
+        "form": 6061
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Two ratios are proportional if their terms are equal when cross multiplied. Which of the following shows this property?",
+      "ms": {
+        "draft": 4720,
+        "critique": 7530,
+        "solver": 12750
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Puneeth’s father travels from Lucknow to Kanpur in 2 hours at 50 km/h. If he increases his speed to 75 km/h, how long will it take him?",
+      "ms": {
+        "draft": 4720,
+        "critique": 6777
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A mason requires 1450 bricks to build a 10-foot wall. How many bricks would be needed to build a 15-foot wall, assuming the same height and thickness?",
+      "ms": {
+        "draft": 4720,
+        "critique": 6848,
+        "solver": 16431,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the simplest form of the ratio when 12 counters are divided equally between two people?",
+      "ms": {
+        "draft": 4380,
+        "critique": 7901,
+        "solver": 1096
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the ratio of counters between two people is 3 : 1 and there are 12 counters in total, how many counters does the second person get?",
+      "ms": {
+        "draft": 4380,
+        "critique": 7258,
+        "solver": 1996
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A farmer sells 200 g of tea for ₹200, and a large estate sells 1 kg of tea for ₹800. Are the weight-to-price ratios proportional?",
+      "ms": {
+        "draft": 4720,
+        "critique": 6761,
+        "solver": 12188,
+        "form": 5037
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a mixture, acid and water are in the ratio 1 : 5. If the total volume is 240 mL, how much acid is in the mixture?",
+      "ms": {
+        "draft": 4380,
+        "critique": 6406
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the simplest form of the ratio of grey bricks to coloured bricks in the pattern shown in the passage?",
+      "ms": {
+        "draft": 4685,
+        "critique": 4075,
+        "solver": 744
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A farmer needs to apply 10 tonnes of cow manure for 1 acre of land. How much manure is needed for a 200 ft by 500 ft plot?",
+      "ms": {
+        "draft": 5902,
+        "critique": 7633,
+        "solver": 13900
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a tap fills a 500 mL mug in 15 seconds, how long will it take to fill a 10 L bucket?",
+      "ms": {
+        "draft": 5902,
+        "critique": 9822
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A ₹10 coin is made of copper and nickel in a 3:1 ratio. If the mass of the coin is 7.74 grams, what is the mass of nickel in the coin?",
+      "ms": {
+        "draft": 5902,
+        "critique": 7363
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A tractor ploughs 4 times faster than a pair of oxen. How much time will a tractor take to plough 20 acres if a pair of oxen takes 6 hours to plough 1 acre?",
+      "ms": {
+        "draft": 5902,
+        "critique": 9693
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the ratio of grey bricks to coloured bricks in the first pattern shown in the passage?",
+      "ms": {
+        "draft": 4044,
+        "critique": 7225,
+        "solver": 1785
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 1 litre of water has a mass of 1 kg, what is the mass of 1 litre of gold, given that the ratio of the mass of gold to water is 37 : 2?",
+      "ms": {
+        "draft": 4044,
+        "critique": 6081,
+        "solver": 1509,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the ratio of grey bricks to coloured bricks in the second pattern shown in the passage?",
+      "ms": {
+        "draft": 4044,
+        "critique": 7364,
+        "solver": 1885
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If 3 buses can carry 162 people, how many buses are needed for 204 people?",
+      "ms": {
+        "draft": 4659,
+        "critique": 8801
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the area of Delhi is 1,484 sq. km and the area of Mumbai is 550 sq. km, and their populations are 30 million and 20 million respectively, which city is more crowded?",
+      "ms": {
+        "draft": 4659,
+        "critique": 7307
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When a quantity is divided in the ratio m : n, what is the total number of groups into which the quantity is divided?",
+      "ms": {
+        "draft": 4062,
+        "critique": 5558,
+        "solver": 1516,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 2 palas of saffron costs niskas, how much saffron can be bought for 9 niskas?",
+      "ms": {
+        "draft": 4659,
+        "critique": 9295
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A mixture of 40 kg contains sand and cement in the ratio of 3 : 1. How much cement should be added to the mixture to make the ratio of sand to cement 5 : 2?",
+      "ms": {
+        "draft": 4062,
+        "critique": 7984,
+        "solver": 2297
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a proportion a:b::c:d, which of the following is correct?",
+      "ms": {
+        "draft": 4876,
+        "critique": 6395,
+        "solver": 14077,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the simplest form of the ratio of 600 mL of orange juice to 900 mL of apple juice?",
+      "ms": {
+        "draft": 4659,
+        "critique": 5815,
+        "solver": 1279,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the ratio of orange juice to apple juice if Anagh mixes 600 mL of orange juice with 900 mL of apple juice?",
+      "ms": {
+        "draft": 4941,
+        "critique": 5796,
+        "solver": 1051,
+        "form": 0,
+        "translation": 36054
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the ratio of teachers to students in a school with 5 teachers and 170 students?",
+      "ms": {
+        "draft": 3693,
+        "critique": 7089,
+        "solver": 1491,
+        "form": 2337,
+        "translation": 32497
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the ratio of copper to nickel in a ₹10 coin?",
+      "ms": {
+        "draft": 5902,
+        "critique": 7319,
+        "solver": 13223,
+        "form": 3571,
+        "translation": 28124
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a tractor can plough 1 acre of land in 1.5 hours, how long will it take to plough 20 acres of land?",
+      "ms": {
+        "draft": 5902,
+        "critique": 7967,
+        "solver": 14446,
+        "form": 3653,
+        "translation": 38708
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the ratio of coffee decoction to milk in a cup of coffee is 15 : 35, what is the simplified form of this ratio?",
+      "ms": {
+        "draft": 3693,
+        "critique": 7984,
+        "solver": 19343,
+        "form": 2132,
+        "translation": 35230
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a mixture, sand and cement are in the ratio 3 : 1. If the total weight of the mixture is 40 kg, how much cement is in the mixture?",
+      "ms": {
+        "draft": 4380,
+        "critique": 5943,
+        "solver": 1692,
+        "form": 0,
+        "translation": 29562
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In a class, the ratio of boys to girls is 3 : 4. If the total number of students is 42, how many girls are there?",
+      "ms": {
+        "draft": 4044,
+        "critique": 5886,
+        "solver": 1439,
+        "form": 0,
+        "translation": 28428
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If 42 counters are to be shared between two people in the ratio 4 : 3, how many counters will each person get?",
+      "ms": {
+        "draft": 4062,
+        "critique": 6540,
+        "solver": 17723,
+        "form": 0,
+        "translation": 31650
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a line is drawn parallel to one side of a triangle, it divides the other two sides in the same ratio. If in a triangle, a line is drawn such that the segments on one side are 5 cm and 10 cm, and on the other side are 3 cm and x cm, what is the value of x?",
+      "ms": {
+        "draft": 4044,
+        "critique": 5685,
+        "solver": 1947,
+        "form": 0,
+        "translation": 42917
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the ratio of the number of students to the amount of rice in a school is 120 : 15, and the number of students reduces to 80, what should be the new amount of rice required to maintain proportionality?",
+      "ms": {
+        "draft": 6220,
+        "critique": 8178,
+        "solver": 7143,
+        "form": 1,
+        "translation": 32913
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following statements is true about proportional ratios?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given table, which images have proportional ratios of width to height?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Nitin and Hari were building a compound wall. Nitin built a longer side of 60 ft using 3 bags of cement, and Hari built a shorter side of 40 ft using 2 bags of cement. Are the ratios of the length of the wall to the number of bags of cement used by Nitin and Hari proportional?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the ratio of the number of glasses of lemonade to the number of spoons of sugar is 6 : 10, how many spoons of sugar should be used to make 18 glasses of lemonade to maintain the same sweetness?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the ratio of width to height of a rectangular image is 60 : 40, which of the following is a simplified form of this ratio?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the ratio of width to height of an image is 60 : 40, and the width is reduced to 30 mm, what should the new height be to maintain the same ratio?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the ratio of Neelima’s age to her mother’s age when Neelima is 3 years old?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the passage, it is mentioned that when Neelima is 3 years old, her mother’s age is 10 times her age. What is the ratio of their ages when Neelima is 12 years old?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the ratio of coffee decoction to milk in a cup of coffee is 15 : 35, and a customer wants a stronger coffee, which of the following ratios would represent a stronger coffee?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the passage, it is mentioned that the cook makes 15 kg of rice for 120 students. If only 80 students come, how many kilograms of rice should be made?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 2 are the same (\"10 kg\"); options 0 and 2 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If a:b::c:d, which of the following is true?",
+      "reason": "options 0 and 1 say the same thing (\"a + b = c + d\" / \"a × d = b × c\"); options 0 and 2 say the same thing (\"a + b = c + d\" / \"a × c = b × d\"); options 0 and 3 say the same thing (\"a + b = c + d\" / \"a + d = b + c\"); options 1 and 2 say the same thing (\"a × d = b × c\" / \"a × c = b × d\"); options 1 and 3 are the same (\"a × d = b × c\"); options 2 and 3 say the same thing (\"a × c = b × d\" / \"a + d = b + c\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A car travels 90 km in 150 minutes. How far will it travel in 4 hours if it continues at the same speed?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrect multiplication of 240 by 90 and division by 150, l…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Two ratios are proportional if their terms are equal when cross multiplied. Which of the following shows this property?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Puneeth’s father travels from Lucknow to Kanpur in 2 hours at 50 km/h. If he increases his speed to 75 km/h, how long will it take him?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A mason requires 1450 bricks to build a 10-foot wall. How many bricks would be needed to build a 15-foot wall, assuming the same height and thickness?",
+      "reason": "options 2 and 3 are the same (\"2200\"); options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the simplest form of the ratio when 12 counters are divided equally between two people?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If the ratio of counters between two people is 3 : 1 and there are 12 counters in total, how many counters does the second person get?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A farmer sells 200 g of tea for ₹200, and a large estate sells 1 kg of tea for ₹800. Are the weight-to-price ratios proportional?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In a mixture, acid and water are in the ratio 1 : 5. If the total volume is 240 mL, how much acid is in the mixture?",
+      "reason": "the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the simplest form of the ratio of grey bricks to coloured bricks in the pattern shown in the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If 600 mL of orange juice is mixed with 900 mL of apple juice, what is the simplest form of the ratio of orange juice to apple juice?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "If a crane of height 155 cm has its neck and the rest of its body in the ratio 4:6, what is the height of its neck?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A farmer needs to apply 10 tonnes of cow manure for 1 acre of land. How much manure is needed for a 200 ft by 500 ft plot?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If a tap fills a 500 mL mug in 15 seconds, how long will it take to fill a 10 L bucket?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A ₹10 coin is made of copper and nickel in a 3:1 ratio. If the mass of the coin is 7.74 grams, what is the mass of nickel in the coin?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A tractor ploughs 4 times faster than a pair of oxen. How much time will a tractor take to plough 20 acres if a pair of oxen takes 6 hours to plough 1 acre?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the ratio of grey bricks to coloured bricks in the first pattern shown in the passage?",
+      "reason": "the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 1 litre of water has a mass of 1 kg, what is the mass of 1 litre of gold, given that the ratio of the mass of gold to water is 37 : 2?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the ratio of grey bricks to coloured bricks in the second pattern shown in the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If 3 buses can carry 162 people, how many buses are needed for 204 people?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If the area of Delhi is 1,484 sq. km and the area of Mumbai is 550 sq. km, and their populations are 30 million and 20 million respectively, which city is more crowded?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "When a quantity is divided in the ratio m : n, what is the total number of groups into which the quantity is divided?",
+      "reason": "options 2 and 3 are the same (\"m + n\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If 2 palas of saffron costs niskas, how much saffron can be bought for 9 niskas?",
+      "reason": "the critic finds option 1 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A mixture of 40 kg contains sand and cement in the ratio of 3 : 1. How much cement should be added to the mixture to make the ratio of sand to cement 5 : 2?",
+      "reason": "the solver picked option 2 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a proportion a:b::c:d, which of the following is correct?",
+      "reason": "options 0 and 1 say the same thing (\"a + b = c + d\" / \"a × d = b × c\"); options 0 and 2 say the same thing (\"a + b = c + d\" / \"2: a + b = c + d\"); options 0 and 3 say the same thing (\"a + b = c + d\" / \"a + c = b + d\"); options 1 and 2 say the same thing (\"a × d = b × c\" / \"2: a + b = c + d\"); options 1 and 3 say the same thing (\"a × d = b × c\" / \"a + c = b + d\"); options 2 and 3 say the same thing (\"2: a + b = c + d\" / \"a + c = b + d\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the simplest form of the ratio of 600 mL of orange juice to 900 mL of apple juice?",
+      "reason": "near-duplicate of batch item \"What is the ratio of orange juice to apple juice i…\" (cosine 0.901 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,523 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T08:18:42.418Z",
+  "finishedAt": "2026-10-19T08:22:52.971Z",
+  "seconds": 251,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "hemh1",
+    "document": "ncert/8/mathematics/hemh113.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — Ntroduction to",
+    "edition": "Reprint 2024-25",
+    "chunks": 10,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not\nstated.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n14. B) 3 8"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 112781,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 17778,
+      "completionTokens": 6407
+    },
+    "critique": {
+      "calls": 27,
+      "ms": 170240,
+      "in": 24,
+      "out": 19,
+      "rejects": 5,
+      "promptTokens": 12742,
+      "completionTokens": 4691
+    },
+    "solver": {
+      "calls": 115,
+      "ms": 54200,
+      "in": 19,
+      "out": 12,
+      "rejects": 7,
+      "promptTokens": 18231,
+      "completionTokens": 1065
+    },
+    "form": {
+      "calls": 8,
+      "ms": 32079,
+      "in": 12,
+      "out": 3,
+      "rejects": 9,
+      "promptTokens": 3799,
+      "completionTokens": 705
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 4285,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 113537,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6745,
+      "completionTokens": 3349
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the purpose of a graph according to the passage?",
+      "ms": {
+        "draft": 3404,
+        "critique": 6311,
+        "solver": 1480,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the graph of the car's journey, how long did the car stop during its travel?",
+      "ms": {
+        "draft": 3404,
+        "critique": 7079,
+        "solver": 1752
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Based on the graph of the patient's temperature, what was the temperature at 1:30 p.m.?",
+      "ms": {
+        "draft": 3404,
+        "critique": 8831
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the graph showing the growth of two plants, in which week did Plant A grow the most?",
+      "ms": {
+        "draft": 3404,
+        "critique": 4719,
+        "solver": 1137
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Based on the graph of the patient's temperature, during which period did the temperature show an upward trend?",
+      "ms": {
+        "draft": 3404,
+        "critique": 6119
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the graph showing the sales figures of a company, in which year was the difference between the sales the greatest compared to the previous year?",
+      "ms": {
+        "draft": 3404,
+        "critique": 6215,
+        "solver": 1844
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a situation where one quantity affects another?",
+      "ms": {
+        "draft": 6868,
+        "critique": 7594
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the example of a courier-person cycling from a town to a merchant, what can be determined from the graph that shows distance from the town over time?",
+      "ms": {
+        "draft": 6868,
+        "critique": 7087,
+        "solver": 1291,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a courier-person cycles at a constant speed, which graph would best represent the relationship between time and distance?",
+      "ms": {
+        "draft": 6868,
+        "critique": 8195,
+        "solver": 2115,
+        "form": 2275
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a graph of petrol quantity versus cost is drawn, what is the significance of the graph passing through the origin?",
+      "ms": {
+        "draft": 6868,
+        "critique": 7096,
+        "solver": 1746,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the example of a bank giving 10% simple interest on deposits, what can be inferred about the relationship between the sum deposited and the simple interest earned?",
+      "ms": {
+        "draft": 6868,
+        "critique": 6912,
+        "solver": 1401,
+        "form": 2536
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a dependent variable in a real-life scenario?",
+      "ms": {
+        "draft": 6868,
+        "critique": 6435,
+        "solver": 558
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the relationship between the quantity of electricity used and the electric bill?",
+      "ms": {
+        "draft": 5616,
+        "critique": 5140
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the graph of the courier-person's journey, how far is the merchant's place from the town?",
+      "ms": {
+        "draft": 5616,
+        "critique": 5693
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the graph of the quantity of petrol and its cost pass through the origin?",
+      "ms": {
+        "draft": 5616,
+        "critique": 7025,
+        "solver": 2103,
+        "form": 4227
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a graph is drawn to represent the relationship between the number of litres of petrol and the cost, what is the scale that should be used for the horizontal axis?",
+      "ms": {
+        "draft": 5616,
+        "critique": 6750,
+        "solver": 18095
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of a graph according to the passage?",
+      "ms": {
+        "draft": 2908,
+        "critique": 6497,
+        "solver": 1261,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the vertical axis (y-axis) of a graph usually represent?",
+      "ms": {
+        "draft": 2908,
+        "critique": 6258,
+        "solver": 1997,
+        "form": 3246
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a line graph shows the temperature of a patient every hour, what would the horizontal axis likely represent?",
+      "ms": {
+        "draft": 2908,
+        "critique": 6796,
+        "solver": 1718,
+        "form": 2265
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the graph in the passage, when did the car reach City Q?",
+      "ms": {
+        "draft": 2908,
+        "critique": 5854,
+        "solver": 1466
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the car had not stopped between 11 a.m. and 12 p.m., what would the graph have shown?",
+      "ms": {
+        "draft": 2908,
+        "critique": 6706,
+        "solver": 891
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of direct variation?",
+      "ms": {
+        "draft": 5616,
+        "critique": 8314,
+        "solver": 11599,
+        "form": 2877,
+        "translation": 41795
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 250 is the sum deposited in a bank that gives 10% simple interest, what is the annual interest?",
+      "ms": {
+        "draft": 5616,
+        "critique": 5532,
+        "solver": 10295,
+        "form": 4933,
+        "translation": 28871
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the temperature of the patient was recorded every hour, what does a steep upward trend in the graph suggest?",
+      "ms": {
+        "draft": 2908,
+        "critique": 4314,
+        "solver": 733,
+        "form": 0,
+        "translation": 38720
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of a graph according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the graph of the car's journey, how long did the car stop during its travel?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Based on the graph of the patient's temperature, what was the temperature at 1:30 p.m.?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Based on the graph showing the growth of two plants, in which week did Plant A grow the most?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Based on the graph of the patient's temperature, during which period did the temperature show an upward trend?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Based on the graph showing the sales figures of a company, in which year was the difference between the sales the greatest compared to the previous year?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a situation where one quantity affects another?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the example of a courier-person cycling from a town to a merchant, what can be determined from the graph that shows distance from the town over time?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer is not the longest option and is the most acc…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a courier-person cycles at a constant speed, which graph would best represent the relationship between time and distance?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, and is the most ac…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a graph of petrol quantity versus cost is drawn, what is the significance of the graph passing through the origin?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer is not the longest option and is the most acc…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the example of a bank giving 10% simple interest on deposits, what can be inferred about the relationship between the sum deposited and the simple interest earned?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer is not the longest option and is the most acc…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a dependent variable in a real-life scenario?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the relationship between the quantity of electricity used and the electric bill?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the graph of the courier-person's journey, how far is the merchant's place from the town?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the graph of the quantity of petrol and its cost pass through the origin?",
+      "reason": "figure: figure spec refused: spec.y.max: Number must be less than or equal to 1000"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a graph is drawn to represent the relationship between the number of litres of petrol and the cost, what is the scale that should be used for the horizontal axis?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of a graph according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Does not understand the purpose of graphs as per the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the vertical axis (y-axis) of a graph usually represent?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not read the passage carefully…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a line graph shows the temperature of a patient every hour, what would the horizontal axis likely represent?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not read the passage carefully…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the graph in the passage, when did the car reach City Q?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the car had not stopped between 11 a.m. and 12 p.m., what would the graph have shown?",
+      "reason": "the solver picked option 0 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

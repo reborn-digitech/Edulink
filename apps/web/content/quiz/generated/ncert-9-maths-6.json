@@ -1,0 +1,900 @@
+{
+  "subject": "MATHS",
+  "classLevel": 9,
+  "chapter": "Chapter 6 — Chapter 6",
+  "name": "Chapter 6",
+  "slug": "maths-9-chapter-6",
+  "summary": "",
+  "position": 6,
+  "source": "generated against NCERT Mathematics, Class 9, chapter 6 (2026 edition (the site's Last-Modified))",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {},
+  "board": "NCERT",
+  "book": "Ganita Manjari PART-II",
+  "edition": "2026 edition (the site's Last-Modified)",
+  "generatedAt": "2026-10-19T14:55:22.251Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Which 3D shape has a surface area of 4πr²?",
+      "choices": [
+        "Cuboid",
+        "Right Circular Cylinder",
+        "Right Circular Cone",
+        "Sphere"
+      ],
+      "answerIndex": 3,
+      "solution": "The surface area of a sphere is calculated as 4πr², which matches the given value. A cuboid's surface area depends on its length, width, and height, and is calculated as 2(wl + lh + wh). A cylinder's surface area includes the areas of the two circular bases and the curved surface, calculated as 2πr(h + r). A cone's surface area includes the base and the lateral surface, calculated as πr(l + r).",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कौन-सा 3D आकृति 4πr² के पृष्ठीय क्षेत्रफल के साथ होती है?",
+          "choices": [
+            "घनाभ",
+            "सम वृत्तीय बेलन",
+            "सम वृत्तीय शंकु",
+            "गोला"
+          ],
+          "solution": "गोले का पृष्ठीय क्षेत्रफल 4πr² के रूप में गणना की जाती है, जो दिए गए मान के साथ मेल खाती है। घनाभ का पृष्ठीय क्षेत्रफल इसकी लंबाई, चौड़ाई और ऊंचाई पर निर्भर करता है, और इसे 2(wl + lh + wh) के रूप में गणना की जाती है। बेलन का पृष्ठीय क्षेत्रफल दो वृत्ताकार आधारों और वक्र सतह के क्षेत्रफल को शामिल करता है, जिसे 2πr(h + r) के रूप में गणना की जाती है। शंकु का पृष्ठीय क्षेत्रफल आधार और पार्श्व सतह के क्षेत्रफल को शामिल करता है, जिसे πr(l + r) के रूप में गणना की जाती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणता 3D आकृतीचे पृष्ठभाग क्षेत्र 4πr² असते?",
+          "choices": [
+            "चौकोनी ठोकर",
+            "लंब वर्तुळाकार वर्तुळाकार बेलेन",
+            "लंब वर्तुळाकार शंकू",
+            "गोला"
+          ],
+          "solution": "गोलाचे पृष्ठभाग क्षेत्र 4πr² असते, जे दिलेल्या मूल्याशी जुळते. चौकोनी ठोकरचे पृष्ठभाग क्षेत्र त्याच्या लांबी, रुंदी आणि उंचीवर अवलंबून असते आणि 2(wl + lh + wh) असते. बेलेनचे पृष्ठभाग क्षेत्र दोन वर्तुळाकार बेस आणि वक्र पृष्ठभागाच्या क्षेत्रांचा समावेश करते, जे 2πr(h + r) असते. शंकूचे पृष्ठभाग क्षेत्र बेस आणि बाजूच्या पृष्ठभागाच्या क्षेत्रांचा समावेश करते, जे πr(l + r) असते.",
+          "imageAlt": null,
+          "critique": "Translation accurately preserves mathematical meaning and terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses surface area formula of sphere with that of a cuboid",
+        "Confuses surface area formula of sphere with that of a cylinder",
+        "Confuses the surface area formula of a cone with that of a sphere",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the key. The surface area of a sphere is indeed 4πr², and the other options have different formulas as stated.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 15,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 6",
+            "End-of-c"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 16,
+          "pageStart": 24,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 6",
+            "End-of-c"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T14:55:22.251Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the shape of the cross-section of a cylinder if the slice is parallel to its base?",
+      "choices": [
+        "Triangle",
+        "Rectangle",
+        "Circle",
+        "Oval"
+      ],
+      "answerIndex": 2,
+      "solution": "A cylinder has two circular bases. When a slice is made parallel to the base, the resulting cross-section retains the same shape as the base, which is a circle. A rectangle would result from a slice perpendicular to the base, a triangle is not a possible cross-section for a cylinder, and an oval is not a precise geometric shape for this scenario.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बेलन के काटे गए अनुभाग का आकार क्या होता है यदि काटा गया भाग इसके आधार के समांतर हो?",
+          "choices": [
+            "त्रिभुज",
+            "आयत",
+            "वृत्त",
+            "अंडाकार"
+          ],
+          "solution": "एक बेलन के दो वृत्ताकार आधार होते हैं। जब आधार के समांतर काटा जाता है, तो परिणामी अनुभाग आधार के समान आकार रखता है, जो एक वृत्त है। आधार के लंबवत काटे जाने पर आयत प्राप्त होता है, एक त्रिभुज बेलन के लिए संभावित अनुभाग नहीं है, और अंडाकार इस परिस्थिति के लिए एक सटीक ज्यामितीय आकृति नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate geometric terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वृत्ताकार बेसला समांतर असलेल्या छेदाचा छेदाचा आकार काय असतो?",
+          "choices": [
+            "त्रिकोण",
+            "आयत",
+            "वृत्त",
+            "अंडाकृती"
+          ],
+          "solution": "एका वृत्ताकार बेसला समांतर असलेल्या छेदाचा छेदाचा आकार काय असतो? एका वृत्ताकार बेसला समांतर असलेल्या छेदाचा छेदाचा आकार काय असतो? एका वृत्ताकार बेसला समांतर असलेल्या छेदाचा छेदाचा आकार काय असतो? एका वृत्ताकार बेसला समांतर असलेल्या छेदाचा छेदाचा आकार काय असतो? एका वृत्ताकार बेसला समांतर असलेल्या छेदाचा छेदाचा आकार काय असतो?",
+          "imageAlt": null,
+          "critique": "The Marathi stem and options are accurate translations of the English version. The solution is incorrectly repeated multiple times, which may be a formatting error. The correct answer (option 2) is in the same position as in the English version. All distractors remain incorrect in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the orientation of the slice",
+        "misunderstands the term 'circular'",
+        null,
+        "not familiar with the concept of cross-section"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (Circle), as a cross-section parallel to the base of a cylinder is indeed a circle. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6",
+            "14.2 Right Circular Cylinder"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 6",
+            "14.2 Right Circular Cylinder"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 6",
+            "14.3 Cones"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T14:55:22.251Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "In Example 5, what is the formula used to calculate the volume of pani in the cylindrical vessel?",
+      "choices": [
+        "V = πr²h",
+        "V = 4/3 πr³",
+        "V = πr²",
+        "V = 2πr"
+      ],
+      "answerIndex": 0,
+      "solution": "The volume of a cylinder is calculated using the formula V = πr²h, where r is the radius and h is the height. This is the correct formula for the volume of pani in the cylindrical vessel. The other options are formulas for the volume of a sphere, the area of a circle, and the circumference of a circle respectively.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "उदाहरण 5 में, बेलनाकार बर्तन में पानी के आयतन की गणना करने के लिए प्रयुक्त सूत्र क्या है?",
+          "choices": [
+            "V = πr²h",
+            "V = 4/3 πr³",
+            "V = πr²",
+            "V = 2πr"
+          ],
+          "solution": "एक बेलन के आयतन की गणना सूत्र V = πr²h द्वारा की जाती है, जहां r त्रिज्या है और h ऊंचाई है। यह बेलनाकार बर्तन में पानी के आयतन के लिए सही सूत्र है। अन्य विकल्प क्रमशः गोले के आयतन, वृत्त के क्षेत्रफल और वृत्त की परिधि के सूत्र हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "उदाहरण 5 मध्ये, वृत्ताकार वास्तुमध्ये पाणी गणना करण्यासाठी वापरलेला सूत्र काय आहे?",
+          "choices": [
+            "V = πr²h",
+            "V = 4/3 πr³",
+            "V = πr²",
+            "V = 2πr"
+          ],
+          "solution": "एका वृत्ताकार वास्तुचा आयतन V = πr²h सूत्राने गणला जातो, जेथे r त्रिज्या आहे आणि h उंची आहे. हा वृत्ताकार वास्तुमध्ये पाणी गणनेसाठी योग्य सूत्र आहे. इतर विकल्प शाफेरचा आयतन, वर्तुळाचे क्षेत्रफळ आणि वर्तुळाचा परिघ यांच्या सूत्रांचे आहेत क्रमाने.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for geometric concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the formula for the volume of a sphere with that of a cylinder",
+        "Confuses the volume of a sphere with a cylinder",
+        "Confuses the area of a circle with the volume of a cylinder"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is clearly V = πr²h, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 12,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 6",
+            "14.6 Areas and Volumes Around Us"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 13,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 6",
+            "14.6 Areas and Volumes Around Us"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 14,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 6",
+            "End-of-c"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T14:55:22.251Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "When a right-angled triangle is rotated about one of its perpendicular sides, what solid is formed?",
+      "choices": [
+        "A sphere",
+        "A cylinder",
+        "A cone",
+        "A pyramid"
+      ],
+      "answerIndex": 2,
+      "solution": "When a right-angled triangle is rotated about one of its perpendicular sides, the resulting solid has a circular base and a single vertex, which defines a cone. A sphere would require a semicircle to rotate, a cylinder requires a rectangle, and a pyramid has a polygonal base, not a circular one.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जब एक समकोण त्रिभुज अपने लंब भुजा में से एक के चारों ओर घूमता है, तो कौन सा ठोस बनता है?",
+          "choices": [
+            "एक गोला",
+            "एक बेलन",
+            "एक शंकु",
+            "एक पिरामिड"
+          ],
+          "solution": "जब एक समकोण त्रिभुज अपने लंब भुजा में से एक के चारों ओर घूमता है, तो परिणामी ठोस के एक वृत्ताकार आधार और एक शीर्ष होता है, जो शंकु की परिभाषा है। एक गोला एक अर्धवृत्त के घूर्णन से बनता है, एक बेलन एक आयत के घूर्णन से बनता है, और एक पिरामिड में एक बहुभुज आधार होता है, न कि एक वृत्ताकार आधार।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जेव्हा एक समकोन त्रिकोण त्याच्या एका लंब बाजूबरोबर फिरतो, तेव्हा कोणता घन तयार होतो?",
+          "choices": [
+            "एक गोल",
+            "एक बेलेन",
+            "एक शंकू",
+            "एक पिरामिड"
+          ],
+          "solution": "जेव्हा एक समकोन त्रिकोण त्याच्या एका लंब बाजूबरोबर फिरतो, तेव्हा निर्माण झालेला घन एक वर्तुळाकार आधार आणि एक शिरोबिंदू असतो, जो शंकू दर्शवतो. एक गोल तयार करण्यासाठी अर्धवर्तुळाची आवश्यकता असते, बेलेन तयार करण्यासाठी चौरसाची आवश्यकता असते आणि पिरामिडचा आधार वर्तुळाकार नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for geometric shapes.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the shape formed by rotating a semicircle",
+        "confuses the shape formed by rotating a rectangle",
+        null,
+        "Student confuses cone with pyramid due to similar pointed shape"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Rotating a right-angled triangle about one of its perpendicular sides forms a cone, as the hypotenuse traces the slant height and the other side forms the radius of the base.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 6",
+            "14.3 Cones"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 6",
+            "14.3 Cones"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 8,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 6",
+            "14.4 Pyramidal Shapes"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T14:55:22.251Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A cube has a side length of 8 cm. What is its volume?",
+      "choices": [
+        "512 cm³",
+        "64 cm³",
+        "256 cm³",
+        "128 cm³"
+      ],
+      "answerIndex": 0,
+      "solution": "The volume of a cube is calculated using the formula a³, where a is the side length. Substituting a = 8 cm, we get 8³ = 512 cm³. The option '512 cm³' is correct. The other options result from incorrect calculations, such as squaring the side length instead of cubing it, or using a different side length.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक घन की भुजा की लंबाई 8 सेमी है। इसका आयतन क्या है?",
+          "choices": [
+            "512 सेमी³",
+            "64 सेमी³",
+            "256 सेमी³",
+            "128 सेमी³"
+          ],
+          "solution": "एक घन का आयतन सूत्र a³ के उपयोग से गणना की जाती है, जहां a भुजा की लंबाई है। a = 8 सेमी रखने पर, हमें 8³ = 512 सेमी³ प्राप्त होता है। विकल्प '512 सेमी³' सही है। अन्य विकल्प गलत गणनाओं से प्राप्त होते हैं, जैसे भुजा की लंबाई का वर्ग बनाना बजाय घन के लेना, या अलग-अलग भुजा की लंबाई का उपयोग करना।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका घनाच्या बाजूची लांबी 8 सेमी आहे. त्याचा घनफल किती आहे?",
+          "choices": [
+            "512 सेमी³",
+            "64 सेमी³",
+            "256 सेमी³",
+            "128 सेमी³"
+          ],
+          "solution": "एका घनाचा घनफल वर्गसमीकरण a³ वापरून गणला जातो, जेथे a ही बाजूची लांबी आहे. a = 8 सेमी ठेवल्यास, आपल्याला 8³ = 512 सेमी³ मिळतो. विकल्प '512 सेमी³' बरोबर आहे. इतर विकल्प चुकीच्या गणनेमुळे येतात, जसे की बाजूच्या लांबीचा वर्ग करणे बरोबर घन करण्याऐवजी किंवा वेगळ्या बाजूच्या लांबीचा वापर करणे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "uses a² instead of a³",
+        "uses a different side length",
+        "miscalculates the cube of 8"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 512 cm³, as the volume of a cube is calculated by cubing the side length. The other options represent common errors, such as squaring instead of cubing, using a different side length, or miscalculating the cube.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6",
+            "14.1 Cuboids and Cubes"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 6",
+            "14.1 Cuboids and Cubes",
+            "Think and Reflect"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 6",
+            "14.1 Cuboids and Cubes",
+            "Think and Reflect"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T14:55:22.251Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the volume of a cube with a side of 5 cm?",
+      "choices": [
+        "125 cm³",
+        "150 cm³",
+        "175 cm³",
+        "200 cm³"
+      ],
+      "answerIndex": 0,
+      "solution": "The volume of a cube is calculated using the formula a³, where a is the side length. Substituting a = 5 cm, we get 5³ = 125 cm³. The option '125 cm³' is correct. The other options result from incorrect calculations, such as multiplying the side length by 3 instead of cubing it, or adding the side lengths instead of using the formula.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "5 सेमी के किनारे वाले घन का आयतन क्या है?",
+          "choices": [
+            "125 सेमी³",
+            "150 सेमी³",
+            "175 सेमी³",
+            "200 सेमी³"
+          ],
+          "solution": "एक घन का आयतन सूत्र a³ के उपयोग से गणना की जाती है, जहां a किनारे की लंबाई है। a = 5 सेमी रखने पर, हमें 5³ = 125 सेमी³ प्राप्त होता है। विकल्प '125 सेमी³' सही है। अन्य विकल्प गलत गणनाओं से प्राप्त होते हैं, जैसे कि किनारे की लंबाई को 3 से गुणा कर देना या किनारे की लंबाई को जोड़ देना।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "5 सेमी बाजू असलेल्या घनाचा घनफल किती असेल?",
+          "choices": [
+            "125 सेमी³",
+            "150 सेमी³",
+            "175 सेमी³",
+            "200 सेमी³"
+          ],
+          "solution": "घनाचा घनफल गणितीय सूत्र a³ वापरून गणला जातो, जेथे a ही बाजूची लांबी आहे. a = 5 सेमी ठेवल्यास, आपल्याला 5³ = 125 सेमी³ मिळतो. पर्याय '125 सेमी³' बरोबर आहे. इतर पर्याय अयोग्य गणनांमुळे येतात, जसे की बाजूच्या लांबीला 3 ने गुणून घन घेण्याऐवजी, किंवा बाजूच्या लांबी जोडण्याऐवजी सूत्र वापरले जात नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "multiplies the side length by 3 instead of cubing it",
+        "adds the side lengths instead of using the formula",
+        "miscalculates the cube of 5"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the key. The correct answer is 125 cm³, calculated as 5³. The distractors reflect common misconceptions such as multiplying by 3, adding, or miscalculating the cube.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6",
+            "14.1 Cuboids and Cubes"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 6",
+            "14.1 Cuboids and Cubes",
+            "Think and Reflect"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 6",
+            "14.1 Cuboids and Cubes",
+            "Think and Reflect"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T14:55:22.251Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A cuboid and a cube have the same volume. The cube has a side length of 6 cm. The cuboid has a length of 9 cm and width of 6 cm. What is the height of the cuboid?",
+      "choices": [
+        "4 cm",
+        "5 cm",
+        "6 cm",
+        "7 cm"
+      ],
+      "answerIndex": 0,
+      "solution": "The volume of the cube is 6³ = 216 cm³. The volume of the cuboid is l × w × h = 9 × 6 × h = 54h. Setting 54h = 216 gives h = 4 cm. The option '4 cm' is correct. The other options result from incorrect calculations, such as using the surface area instead of the volume, or miscalculating the product of length and width.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक घनाभ और एक घन के समान आयतन हैं। घन की भुजा की लंबाई 6 सेमी है। घनाभ की लंबाई 9 सेमी और चौड़ाई 6 सेमी है। घनाभ की ऊंचाई क्या है?",
+          "choices": [
+            "4 सेमी",
+            "5 सेमी",
+            "6 सेमी",
+            "7 सेमी"
+          ],
+          "solution": "घन का आयतन 6³ = 216 सेमी³ है। घनाभ का आयतन l × w × h = 9 × 6 × h = 54h है। 54h = 216 रखने पर h = 4 सेमी प्राप्त होता है। विकल्प '4 सेमी' सही है। अन्य विकल्प गलत गणनाओं से प्राप्त होते हैं, जैसे आयतन के स्थान पर पृष्ठीय क्षेत्रफल का उपयोग करना, या लंबाई और चौड़ाई के गुणन की गलत गणना करना।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक घनाचा आणि घनकृतीचा एकसारखा घनफळ आहे. घनाच्या बाजूची लांबी 6 सेमी आहे. घनकृतीची लांबी 9 सेमी आणि रुंदी 6 सेमी आहे. घनकृतीची उंची किती आहे?",
+          "choices": [
+            "4 सेमी",
+            "5 सेमी",
+            "6 सेमी",
+            "7 सेमी"
+          ],
+          "solution": "घनाचे घनफळ 6³ = 216 सेमी³ आहे. घनकृतीचे घनफळ l × w × h = 9 × 6 × h = 54h आहे. 54h = 216 असेल तर h = 4 सेमी. विकल्प '4 सेमी' बरोबर आहे. इतर विकल्प चुकीच्या गणना, जसे की घनफळऐवजी पृष्ठफळ वापरणे, किंवा लांबी आणि रुंदीचा गुणाकार चुकून काढणे यामुळे मिळतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for geometry.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "uses surface area instead of volume",
+        "miscalculates the product of length and width",
+        "uses a different value for the cube's side length"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and logically leads to the correct answer. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6",
+            "14.1 Cuboids and Cubes"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 6",
+            "14.1 Cuboids and Cubes",
+            "Think and Reflect"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 6",
+            "14.1 Cuboids and Cubes",
+            "Think and Reflect"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T14:55:22.251Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is the total surface area of a cube with side length 5 cm?",
+      "choices": [
+        "125 cm²",
+        "150 cm²",
+        "250 cm²",
+        "300 cm²"
+      ],
+      "answerIndex": 1,
+      "solution": "The total surface area of a cube is given by 6a², where a is the side length. For a cube with side length 5 cm, the surface area is 6 × 5² = 6 × 25 = 150 cm². The other options incorrectly calculate the surface area by either using the volume formula, ignoring the multiplication by 6, or using an incorrect side length.",
+      "checkExpr": "6*5*5",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "5 सेमी भुजा लंबाई वाले घन का कुल पृष्ठीय क्षेत्रफल क्या है?",
+          "choices": [
+            "125 वर्ग सेमी",
+            "150 वर्ग सेमी",
+            "250 वर्ग सेमी",
+            "300 वर्ग सेमी"
+          ],
+          "solution": "एक घन का कुल पृष्ठीय क्षेत्रफल 6a² द्वारा दिया जाता है, जहां a भुजा की लंबाई है। 5 सेमी भुजा लंबाई वाले घन के लिए, पृष्ठीय क्षेत्रफल 6 × 5² = 6 × 25 = 150 वर्ग सेमी है। अन्य विकल्प या तो आयतन के सूत्र का उपयोग करके गलत रूप से पृष्ठीय क्षेत्रफल की गणना करते हैं, या 6 से गुणा करना भूल जाते हैं, या गलत भुजा लंबाई का उपयोग करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the correct answer position, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका घनाच्या 5 सेमी बाजूच्या एकूण पृष्ठभागाचे क्षेत्रफळ किती असेल?",
+          "choices": [
+            "125 सेमी²",
+            "150 सेमी²",
+            "250 सेमी²",
+            "300 सेमी²"
+          ],
+          "solution": "एका घनाच्या एकूण पृष्ठभागाचे क्षेत्रफळ 6a² ने दर्शविले जाते, जेथे a ही बाजूची लांबी असते. 5 सेमी बाजूच्या घनासाठी, पृष्ठभागाचे क्षेत्रफळ 6 × 5² = 6 × 25 = 150 सेमी² असेल. इतर विकल्प बाजूच्या लांबी चुकीच्या वापर किंवा 6 ने गुणण्याच्या चूक किंवा आयतनाच्या सूत्राचा वापर करून चुकीचे परिणाम दर्शवतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses surface area with volume",
+        null,
+        "does not multiply by 6",
+        "uses an incorrect formula for surface area"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 150 cm², as the surface area of a cube is 6a². The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6",
+            "14.1 Cuboids and Cubes"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 6",
+            "14.1 Cuboids and Cubes",
+            "Think and Reflect"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 6",
+            "14.1 Cuboids and Cubes",
+            "Think and Reflect"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T14:55:22.251Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "The curved surface area of a cylinder is given by the formula CSA = 2πrh. If the radius of a cylinder is halved and its height is doubled, what happens to the curved surface area?",
+      "choices": [
+        "It is doubled",
+        "It is halved",
+        "It remains the same",
+        "It is quartered"
+      ],
+      "answerIndex": 2,
+      "solution": "The curved surface area of a cylinder is directly proportional to both its radius and height. If the radius is halved and the height is doubled, the product of radius and height remains the same, so the curved surface area remains unchanged. The option that says 'It is doubled' incorrectly assumes that only the height affects the area. The option that says 'It is halved' incorrectly assumes that only the radius affects the area. The option that says 'It is quartered' incorrectly multiplies the changes in radius and height.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बेलन के वक्र पृष्ठ क्षेत्रफल का सूत्र दिया गया है, CSA = 2πrh। यदि बेलन की त्रिज्या आधी कर दी जाती है और ऊंचाई दुगुनी कर दी जाती है, तो वक्र पृष्ठ क्षेत्रफल पर क्या प्रभाव पड़ता है?",
+          "choices": [
+            "यह दुगुना हो जाता है",
+            "यह आधा हो जाता है",
+            "यह वही रहता है",
+            "यह चौथाई हो जाता है"
+          ],
+          "solution": "एक बेलन का वक्र पृष्ठ क्षेत्रफल इसकी त्रिज्या और ऊंचाई दोनों के सीधे आनुपातिक होता है। यदि त्रिज्या आधी कर दी जाती है और ऊंचाई दुगुनी कर दी जाती है, तो त्रिज्या और ऊंचाई का गुणनफल समान रहता है, इसलिए वक्र पृष्ठ क्षेत्रफल अपरिवर्तित रहता है। 'यह दुगुना हो जाता है' कहने वाला विकल्प गलत ढंग से ऊंचाई के ही प्रभाव को मान लेता है। 'यह आधा हो जाता है' कहने वाला विकल्प गलत ढंग से त्रिज्या के ही प्रभाव को मान लेता है। 'यह चौथाई हो जाता है' कहने वाला विकल्प गलत ढंग से त्रिज्या और ऊंचाई में हुए परिवर्तनों के गुणनफल को मान लेता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका बेलेनच्या वक्रपृष्ठाचे क्षेत्रफळ वापरलेल्या सूत्राने CSA = 2πrh द्वारे दिले जाते. जर बेलेनच्या त्रिज्या अर्धी केली जाते आणि त्याच उंची दुप्पट केली जाते, तर वक्रपृष्ठाचे क्षेत्रफळ काय होते?",
+          "choices": [
+            "ते दुप्पट होते",
+            "ते अर्धे होते",
+            "ते अपरिवर्तित राहते",
+            "ते चौथाई होते"
+          ],
+          "solution": "एका बेलेनच्या वक्रपृष्ठाचे क्षेत्रफळ त्याच्या त्रिज्या आणि उंचीशी आनुपातिक असते. जर त्रिज्या अर्धी केली जाते आणि उंची दुप्पट केली जाते, तर त्रिज्या आणि उंचीचा गुणाकार अपरिवर्तित राहतो, म्हणून वक्रपृष्ठाचे क्षेत्रफळ अपरिवर्तित राहते. 'ते दुप्पट होते' असे विधान चूक आहे कारण ते फक्त उंचीच्या प्रभावाचा विचार करते. 'ते अर्धे होते' असे विधान चूक आहे कारण ते फक्त त्रिज्येच्या प्रभावाचा विचार करते. 'ते चौथाई होते' असे विधान चूक आहे कारण ते त्रिज्या आणि उंचीच्या बदलांचा गुणाकार करते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "assumes only height affects the area",
+        "assumes only radius affects the area",
+        null,
+        "incorrectly multiplies the changes in radius and height"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the product of radius and height remains constant when radius is halved and height is doubled, so the curved surface area remains the same. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6",
+            "14.2 Right Circular Cylinder"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 6",
+            "14.2 Right Circular Cylinder"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh206.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 6",
+            "14.3 Cones"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-19T14:55:22.251Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

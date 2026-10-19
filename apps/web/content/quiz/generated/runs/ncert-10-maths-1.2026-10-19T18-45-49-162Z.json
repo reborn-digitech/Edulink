@@ -1,0 +1,694 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T18:45:49.162Z",
+  "finishedAt": "2026-10-19T18:52:56.334Z",
+  "seconds": 427,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "jemh1",
+    "document": "ncert/10/mathematics/jemh101.pdf",
+    "classLevel": 10,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — EAL UMBERS",
+    "edition": "Reprint 2026-27",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n11. Use of calculators is not allowed.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n10. Use of calculators is not allowed.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n10. Use of calculators is not allowed.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n10. Use of calculators is not allowed.\n(Section A)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 123753,
+      "in": 35,
+      "out": 35,
+      "rejects": 0,
+      "promptTokens": 25150,
+      "completionTokens": 6625
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 338916,
+      "in": 35,
+      "out": 27,
+      "rejects": 8,
+      "promptTokens": 22049,
+      "completionTokens": 8878
+    },
+    "solver": {
+      "calls": 241,
+      "ms": 167267,
+      "in": 27,
+      "out": 19,
+      "rejects": 8,
+      "promptTokens": 57122,
+      "completionTokens": 2840
+    },
+    "form": {
+      "calls": 5,
+      "ms": 17477,
+      "in": 19,
+      "out": 8,
+      "rejects": 11,
+      "promptTokens": 1324,
+      "completionTokens": 437
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 14,
+      "ms": 3202,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 316368,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 16464,
+      "completionTokens": 8102
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 0,
+    "4": 2,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What does the Fundamental Theorem of Arithmetic state about composite numbers?",
+      "ms": {
+        "draft": 3726,
+        "critique": 5189,
+        "solver": 1779,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following numbers has a decimal expansion that terminates?",
+      "ms": {
+        "draft": 3726,
+        "critique": 10994
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A number has a prime factorisation of 2³ × 3² × 7. What can be said about its decimal expansion?",
+      "ms": {
+        "draft": 3726,
+        "critique": 8717,
+        "solver": 1748
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number is factorised into primes as 2 × 3 × 3 × 5, which of the following is the correct prime factorisation in standard form?",
+      "ms": {
+        "draft": 3726,
+        "critique": 6940,
+        "solver": 14262,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which mathematical theorem ensures that the prime factorisation of a number is unique?",
+      "ms": {
+        "draft": 3635,
+        "critique": 6100
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the product of the HCF and LCM of two positive integers a and b?",
+      "ms": {
+        "draft": 3635,
+        "critique": 5985
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following numbers is guaranteed to be irrational based on the proof in the passage?",
+      "ms": {
+        "draft": 3635,
+        "critique": 5702,
+        "solver": 1981,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the HCF of 96 and 404 is 4, what is their LCM?",
+      "ms": {
+        "draft": 3635,
+        "critique": 6123,
+        "solver": 17077
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Sonia takes 18 minutes to drive around a circular path, and Ravi takes 12 minutes. After how many minutes will they meet again at the starting point?",
+      "ms": {
+        "draft": 3635,
+        "critique": 7572,
+        "solver": 15626,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number is divisible by a prime number p, then which of the following is true?",
+      "ms": {
+        "draft": 3635,
+        "critique": 8669,
+        "solver": 13606,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an irrational number?",
+      "ms": {
+        "draft": 2869,
+        "critique": 6524,
+        "solver": 2235,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a number is expressed as 3√2, what type of number is it?",
+      "ms": {
+        "draft": 2869,
+        "critique": 5734,
+        "solver": 2449,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number can be written in the form p/q, where p and q are integers and q ≠ 0, what type of number is it?",
+      "ms": {
+        "draft": 2869,
+        "critique": 8139,
+        "solver": 12300,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the sum of a rational and an irrational number is taken, what type of number is the result?",
+      "ms": {
+        "draft": 2869,
+        "critique": 7313,
+        "solver": 15725,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number is expressed as 5 + √2, what type of number is it?",
+      "ms": {
+        "draft": 2869,
+        "critique": 6780,
+        "solver": 11964,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the product of a non-zero rational number and an irrational number is rational, what conclusion can be drawn?",
+      "ms": {
+        "draft": 2869,
+        "critique": 7732,
+        "solver": 14125
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a and b are coprime integers, and a is divisible by 3, which of the following must also be true?",
+      "ms": {
+        "draft": 3005,
+        "critique": 8304
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 3 is irrational, which of the following statements is true?",
+      "ms": {
+        "draft": 3005,
+        "critique": 6785,
+        "solver": 1874
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 3 is irrational, which of the following is also irrational?",
+      "ms": {
+        "draft": 3005,
+        "critique": 9857
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 3 is irrational and 5 is rational, which of the following is definitely irrational?",
+      "ms": {
+        "draft": 3005,
+        "critique": 6091,
+        "solver": 1405
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 3 is irrational, and 5 is rational, which of the following must be irrational?",
+      "ms": {
+        "draft": 3005,
+        "critique": 6806,
+        "solver": 2246
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a and b are coprime integers, and a is divisible by 3, which of the following is true?",
+      "ms": {
+        "draft": 3005,
+        "critique": 8755
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the HCF of 96 and 404 is 4, what is their LCM?",
+      "ms": {
+        "draft": 4018,
+        "critique": 8260,
+        "solver": 14605
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the relationship between the HCF and LCM of two positive integers according to the passage?",
+      "ms": {
+        "draft": 4018,
+        "critique": 5788,
+        "solver": 18948,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Sonia takes 18 minutes to drive one round of a sports field, and Ravi takes 12 minutes. After how many minutes will they meet again at the starting point?",
+      "ms": {
+        "draft": 4018,
+        "critique": 6588,
+        "solver": 20127
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following numbers can be factorised as a product of primes according to the Fundamental Theorem of Arithmetic?",
+      "ms": {
+        "draft": 4048,
+        "critique": 9160
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number is factorised into primes as 2^3 × 3^2 × 5, what is the total number of prime factors, counting multiplicity?",
+      "ms": {
+        "draft": 4048,
+        "critique": 5771
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the theorem that states that every composite number can be expressed as a product of primes?",
+      "ms": {
+        "draft": 4048,
+        "critique": 8009,
+        "solver": 1854,
+        "form": 3549
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the theorem that states every composite number can be expressed as a product of primes in a unique way?",
+      "ms": {
+        "draft": 3726,
+        "critique": 6713,
+        "solver": 1883,
+        "form": 0,
+        "translation": 42785
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the method of finding HCF and LCM of two numbers by breaking them into prime factors called?",
+      "ms": {
+        "draft": 4018,
+        "critique": 6189,
+        "solver": 18258,
+        "form": 4257,
+        "translation": 62878
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the Fundamental Theorem of Arithmetic?",
+      "ms": {
+        "draft": 4048,
+        "critique": 6888,
+        "solver": 1432,
+        "form": 4123,
+        "translation": 51090
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The prime factorisation of a number is given as 2³ × 3² × 5. What is the number?",
+      "ms": {
+        "draft": 3726,
+        "critique": 6182,
+        "solver": 1926,
+        "form": 0,
+        "translation": 28335
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the HCF of 6, 72, and 120 using the prime factorisation method?",
+      "ms": {
+        "draft": 4018,
+        "critique": 7620,
+        "solver": 15325,
+        "form": 3807,
+        "translation": 39870
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "According to the Fundamental Theorem of Arithmetic, why is the prime factorisation of a number considered unique?",
+      "ms": {
+        "draft": 4048,
+        "critique": 4393,
+        "solver": 7452,
+        "form": 0,
+        "translation": 45244
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the number 7 × 11 × 13 + 13 a composite number?",
+      "ms": {
+        "draft": 4018,
+        "critique": 7897,
+        "solver": 17223,
+        "form": 3754,
+        "translation": 42594
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the Fundamental Theorem of Arithmetic state about composite numbers?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Refers to prime numbers, not composite numbers, which are on…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following numbers has a decimal expansion that terminates?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A number has a prime factorisation of 2³ × 3² × 7. What can be said about its decimal expansion?",
+      "reason": "the solver picked option 0 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a number is factorised into primes as 2 × 3 × 3 × 5, which of the following is the correct prime factorisation in standard form?",
+      "reason": "options 0 and 1 say the same thing (\"2 × 3 × 5\" / \"2 × 3 × 5 × 5\"); option 1 repeats the stem's wording (\"2 × 3 × 5 × 5\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which mathematical theorem ensures that the prime factorisation of a number is unique?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the product of the HCF and LCM of two positive integers a and b?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following numbers is guaranteed to be irrational based on the proof in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the HCF of 96 and 404 is 4, what is their LCM?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Sonia takes 18 minutes to drive around a circular path, and Ravi takes 12 minutes. After how many minutes will they meet again at the starting point?",
+      "reason": "options mix numbers and words (3 of 4 are numbers); checkExpr \"LCM(18,12)\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a number is divisible by a prime number p, then which of the following is true?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of an irrational number?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a number is expressed as 3√2, what type of number is it?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer is not the longest option, so this is a distr…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a number can be written in the form p/q, where p and q are integers and q ≠ 0, what type of number is it?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the sum of a rational and an irrational number is taken, what type of number is the result?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a number is expressed as 5 + √2, what type of number is it?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the product of a non-zero rational number and an irrational number is rational, what conclusion can be drawn?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a and b are coprime integers, and a is divisible by 3, which of the following must also be true?",
+      "reason": "the critic finds option 3 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 3 is irrational, which of the following statements is true?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If 3 is irrational, which of the following is also irrational?",
+      "reason": "the critic finds option 3 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 3 is irrational and 5 is rational, which of the following is definitely irrational?",
+      "reason": "the solver picked option 0 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 3 is irrational, and 5 is rational, which of the following must be irrational?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a and b are coprime integers, and a is divisible by 3, which of the following is true?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the HCF of 96 and 404 is 4, what is their LCM?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the relationship between the HCF and LCM of two positive integers according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Sonia takes 18 minutes to drive one round of a sports field, and Ravi takes 12 minutes. After how many minutes will they meet again at the starting point?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following numbers can be factorised as a product of primes according to the Fundamental Theorem of Arithmetic?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a number is factorised into primes as 2^3 × 3^2 × 5, what is the total number of prime factors, counting multiplicity?",
+      "reason": "the critic finds option 2 correct, the key is 3; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the theorem that states that every composite number can be expressed as a product of primes?",
+      "reason": "near-duplicate of batch item \"What is the name of the theorem that states every …\" (cosine 0.973 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

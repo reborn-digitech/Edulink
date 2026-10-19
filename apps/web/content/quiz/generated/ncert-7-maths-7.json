@@ -1,0 +1,730 @@
+{
+  "subject": "MATHS",
+  "classLevel": 7,
+  "chapter": "Chapter 7 — A Tale of Three Intersecting Lines",
+  "name": "A Tale of Three Intersecting Lines",
+  "slug": "maths-7-a-tale-of-three-intersecting-lines",
+  "summary": "This chapter explains different types of triangles and how to construct them using given sides and angles.",
+  "position": 7,
+  "source": "generated against NCERT Mathematics, Class 7, chapter 7 (Reprint 2026-27)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "तीन प्रकार की रेखाओं का कहानी",
+      "summary": "इस अध्याय में विभिन्न प्रकार के त्रिभुजों और दिए गए भुजाओं और कोणों के उपयोग से त्रिभुज के निर्माण के बारे में समझाया गया है।"
+    },
+    "mr": {
+      "name": "तीन छेदक रेखांच्या कथा",
+      "summary": "हा अध्याय विविध प्रकारच्या त्रिकोणांच्या आणि दिलेल्या बाजू आणि कोनांच्या वापराने त्रिकोण तयार करण्याच्या विषयी समज देतो."
+    }
+  },
+  "board": "NCERT",
+  "book": "Ganita Prakash",
+  "edition": "Reprint 2026-27",
+  "generatedAt": "2026-10-19T04:06:48.327Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": true,
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Which of the following sets of lengths cannot form a triangle?",
+      "choices": [
+        "3 cm, 4 cm, 8 cm",
+        "2 cm, 3 cm, 6 cm",
+        "2: 5 cm, 5 cm, 9 cm",
+        "3: 10 cm, 10 cm, 19 cm"
+      ],
+      "answerIndex": 1,
+      "solution": "For a triangle to exist, the sum of any two sides must be greater than the third side. In the set 2 cm, 3 cm, 6 cm, 2 + 3 = 5, which is less than 6, so a triangle cannot be formed. The other sets satisfy the triangle inequality rule.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा लंबाई का सेट एक त्रिभुज नहीं बना सकता है?",
+          "choices": [
+            "3 सेमी, 4 सेमी, 8 सेमी",
+            "2 सेमी, 3 सेमी, 6 सेमी",
+            "5 सेमी, 5 सेमी, 9 सेमी",
+            "10 सेमी, 10 सेमी, 19 सेमी"
+          ],
+          "solution": "एक त्रिभुज के अस्तित्व के लिए, किन्हीं दो भुजाओं के योग को तीसरी भुजा से अधिक होना चाहिए। 2 सेमी, 3 सेमी, 6 सेमी के सेट में, 2 + 3 = 5, जो 6 से कम है, इसलिए एक त्रिभुज नहीं बनाया जा सकता है। अन्य सेट त्रिभुज असमानता नियम के अनुरूप हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology for mathematical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणत्या लांबीच्या विधानामुळे त्रिकोण तयार होऊ शकत नाही?",
+          "choices": [
+            "3 सेमी, 4 सेमी, 8 सेमी",
+            "2 सेमी, 3 सेमी, 6 सेमी",
+            "5 सेमी, 5 सेमी, 9 सेमी",
+            "10 सेमी, 10 सेमी, 19 सेमी"
+          ],
+          "solution": "त्रिकोण असण्यासाठी, कोणत्याही दोन बाजूंची बेरीज तिसरी बाजूपेक्षा मोठी असावी. 2 सेमी, 3 सेमी, 6 सेमी या सेटमध्ये, 2 + 3 = 5, जे 6 पेक्षा लहान आहे, म्हणून त्रिकोण तयार होऊ शकत नाही. इतर सेट त्रिकोणाच्या अस्तित्वाच्या नियमांचे पालन करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the triangle inequality rule by adding two sides and comparing to the third, but incorrectly uses the sum as the condition for non-existence",
+        null,
+        "Believes that as long as two sides are equal, the third side can be anything, ignoring the triangle inequality rule",
+        "Student incorrectly thinks the sum of two sides must be greater than the third, but applies it only to the two smaller sides"
+      ],
+      "solverAnswers": [
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1 (2 cm, 3 cm, 6 cm) because 2 + 3 = 5 < 6, violating the triangle inequality. The author's solution is correct and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 17,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.5 Types of Triangles",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 18,
+          "pageStart": 30,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.5 Types of Triangles",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 19,
+          "pageStart": 32,
+          "pageEnd": 34,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.5 Types of Triangles",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T04:06:48.327Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the term used to describe the perpendicular line segment from a vertex of a triangle to its opposite side?",
+      "choices": [
+        "Base",
+        "Height",
+        "Median",
+        "Altitude"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct term is 'altitude' because it refers to the perpendicular line segment from a vertex of a triangle to its opposite side. 'Base' is a side of the triangle, not a line segment drawn from a vertex. 'Height' is a measurement, not the specific name of the line segment. 'Median' connects a vertex to the midpoint of the opposite side, which is not necessarily perpendicular.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक त्रिभुज के शीर्ष से इसकी विपरीत भुजा पर लंब रेखाखंड के लिए क्या शब्द प्रयोग किया जाता है?",
+          "choices": [
+            "आधार",
+            "ऊंचाई",
+            "माध्यिका",
+            "ऊंचाई"
+          ],
+          "solution": "सही शब्द 'ऊंचाई' है क्योंकि यह एक त्रिभुज के शीर्ष से इसकी विपरीत भुजा पर लंब रेखाखंड को संदर्भित करता है। 'आधार' त्रिभुज की एक भुजा है, शीर्ष से खींचा गया रेखाखंड नहीं। 'ऊंचाई' एक माप है, विशिष्ट रूप से रेखाखंड का नाम नहीं। 'माध्यिका' एक शीर्ष को विपरीत भुजा के मध्य बिंदु से जोड़ती है, जो आवश्यक रूप से लंब नहीं होती।",
+          "imageAlt": null,
+          "critique": "Hindi translation has a duplicate option (4) as 'ऊंचाई' which is same as option (2), violating 'oneAnswer' and 'distractorsStillWrong'.",
+          "flag": "translation critique: not one answer at the same position; a distractor no longer wrong"
+        },
+        "mr": {
+          "stem": "त्रिकोणाच्या एका शिरोबिंदूपासून त्याच्या विरुद्ध बाजूवरील लंब रेखेचा शब्द काय आहे?",
+          "choices": [
+            "आधार",
+            "उंची",
+            "मध्यग्राहक",
+            "ऊंची"
+          ],
+          "solution": "सही शब्द 'ऊंची' आहे कारण तो त्रिकोणाच्या एका शिरोबिंदूपासून त्याच्या विरुद्ध बाजूवरील लंब रेखेचा शब्द आहे. 'आधार' ही त्रिकोणाची बाजू आहे, शिरोबिंदूपासून रेखा नाही. 'उंची' ही मापन आहे, विशिष्ट रेखेचा शब्द नाही. 'मध्यग्राहक' एका शिरोबिंदूला विरुद्ध बाजूच्या मध्यबिंदूशी जोडतो, जो आवश्यकता नसलेला लंब नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning. 'ऊंची' is the correct term for 'altitude' in Marathi geometry, and the distractors are appropriately translated and retain their incorrect meanings.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses altitude with base",
+        "Uses general term instead of specific geometric term",
+        "Confuses median with altitude",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-posed and the correct answer is clearly 'Altitude'. The author's reasoning is accurate and aligns with standard geometric definitions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 14,
+          "pageStart": 22,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.4 Constructions Related to Altitudes of Triangles"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 15,
+          "pageStart": 24,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.5 Types of Triangles"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 16,
+          "pageStart": 26,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.5 Types of Triangles",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T04:06:48.327Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is true about the sum of the angles of a triangle?",
+      "choices": [
+        "It is 90°",
+        "It is 180°",
+        "It is 270°",
+        "It is 360°"
+      ],
+      "answerIndex": 1,
+      "solution": "The sum of the angles of a triangle is always 180°, which is a fundamental property of triangles in Euclidean geometry. This is true regardless of the type of triangle, whether it is equilateral, isosceles, or scalene. The other options do not align with this geometric principle.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा त्रिभुज के कोणों के योग के बारे में सही है?",
+          "choices": [
+            "यह 90° है",
+            "यह 180° है",
+            "यह 270° है",
+            "यह 360° है"
+          ],
+          "solution": "त्रिभुज के कोणों का योग हमेशा 180° होता है, जो यूक्लिडियन ज्यामिति में त्रिभुजों का एक मौलिक गुण है। यह त्रिभुज के प्रकार पर निर्भर नहीं करता है, चाहे वह समबाहु, समद्विबाहु या विषमबाहु हो। अन्य विकल्प इस ज्यामितीय सिद्धांत के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते त्रिकोणाच्या कोनांच्या बेरजेबद्दल खरे आहे?",
+          "choices": [
+            "ते 90° आहे",
+            "ते 180° आहे",
+            "ते 270° आहे",
+            "ते 360° आहे"
+          ],
+          "solution": "त्रिकोणाच्या कोनांची बेरजा नेहमी 180° असते, हे युक्लिडियन ज्यामितीतील एक मूलभूत गुणधर्म आहे. हे त्रिकोणाच्या प्रकारावर अवलंबून राहत नाही, जसे की समभुज, समद्विभुज किंवा विषमभुज. इतर विकल्प ह्या ज्यामितीय तत्वाशी सुसंगत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrect angle sum for a triangle",
+        null,
+        "Incorrect angle sum for a triangle",
+        "Incorrect angle sum for a triangle"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward and the correct answer is clearly 180°, which is a well-established geometric fact. The distractors are all incorrect angle sums, which are common misconceptions among students.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 14,
+          "pageStart": 22,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.4 Constructions Related to Altitudes of Triangles"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 15,
+          "pageStart": 24,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.5 Types of Triangles"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 16,
+          "pageStart": 26,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.5 Types of Triangles",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T04:06:48.327Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a triangle, if two sides are 5 cm and 6 cm, which of the following can be the length of the third side?",
+      "choices": [
+        "1 cm",
+        "11 cm",
+        "12 cm",
+        "10 cm"
+      ],
+      "answerIndex": 3,
+      "solution": "For a triangle, the sum of any two sides must be greater than the third side. The third side must be less than 5 + 6 = 11 cm and greater than 6 - 5 = 1 cm. So, 10 cm is a valid length. The other options either violate the triangle inequality or are not within the valid range.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक त्रिभुज में, यदि दो भुजाएं 5 सेमी और 6 सेमी हैं, तो निम्नलिखित में से कौन-सी भुजा की लंबाई हो सकती है?",
+          "choices": [
+            "1 सेमी",
+            "11 सेमी",
+            "12 सेमी",
+            "10 सेमी"
+          ],
+          "solution": "एक त्रिभुज के लिए, किन्हीं दो भुजाओं का योग तीसरी भुजा से अधिक होना चाहिए। तीसरी भुजा 5 + 6 = 11 सेमी से कम होनी चाहिए और 6 - 5 = 1 सेमी से अधिक होनी चाहिए। इसलिए, 10 सेमी एक वैध लंबाई है। अन्य विकल्प त्रिभुज के असमानता नियम के विरुद्ध हैं या वैध रेंज में नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "त्रिकोणात, जर दोन बाजू 5 सेंमी आणि 6 सेंमी असतील, तर खालीलपैकी कोणती बाजू तिसरी बाजू असू शकते?",
+          "choices": [
+            "1 सेंमी",
+            "11 सेंमी",
+            "12 सेंमी",
+            "10 सेंमी"
+          ],
+          "solution": "त्रिकोणासाठी, कोणत्याही दोन बाजूंची बेरीज तिसरी बाजूपेक्षा मोठी असावी. तिसरी बाजू 5 + 6 = 11 सेंमी पेक्षा लहान असावी आणि 6 - 5 = 1 सेंमी पेक्षा मोठी असावी. म्हणून, 10 सेंमी एक वैध लांबी आहे. इतर विकल्प त्रिकोणाच्या असमानतेचे उल्लंघन करतात किंवा वैध श्रेणीत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Too small to satisfy the triangle inequality",
+        "Equal to the sum of the other two sides",
+        "Too large to satisfy the triangle inequality",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the triangle inequality theorem, and the reasoning for each distractor aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 17,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.5 Types of Triangles",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 18,
+          "pageStart": 30,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.5 Types of Triangles",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 19,
+          "pageStart": 32,
+          "pageEnd": 34,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.5 Types of Triangles",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T04:06:48.327Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the construction of a triangle with two sides and the included angle, what is the next step after drawing the base?",
+      "choices": [
+        "Draw the included angle at one end of the base.",
+        "Measure the included angle.",
+        "Mark a point on the base.",
+        "Draw the other side from the opposite end."
+      ],
+      "answerIndex": 0,
+      "solution": "After drawing the base, the next step is to construct the included angle at one end of the base. This is crucial for ensuring the correct angle between the two sides. The other options describe either earlier or later steps in the process.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक त्रिभुज के निर्माण में दो भुजाओं और उनके अंतर्गत कोण के साथ, आधार खींचने के बाद अगला चरण क्या है?",
+          "choices": [
+            "आधार के एक सिरे पर अंतर्गत कोण खींचें।",
+            "अंतर्गत कोण को मापें।",
+            "आधार पर एक बिंदु चिह्नित करें।",
+            "विपरीत सिरे से अन्य भुजा खींचें।"
+          ],
+          "solution": "आधार खींचने के बाद, अगला चरण आधार के एक सिरे पर अंतर्गत कोण का निर्माण करना है। यह दोनों भुजाओं के बीच सही कोण सुनिश्चित करने के लिए महत्वपूर्ण है। अन्य विकल्प या तो पहले या बाद में किए जाने वाले चरणों का वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate technical terms in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "त्रिकोणाच्या रचनेमध्ये दोन बाजू आणि अंतर्गत कोन यांच्या आधारे, आधार आखून झाल्यानंतर खालीलपैकी कोणता पुढील टप्पा असेल?",
+          "choices": [
+            "आधाराच्या एका छेदावर अंतर्गत कोन आखा.",
+            "अंतर्गत कोन मोजा.",
+            "आधारावर एक बिंदू निर्दिष्ट करा.",
+            "विरुद्ध छेदापासून इतर बाजू आखा."
+          ],
+          "solution": "आधार आखून झाल्यानंतर, आधाराच्या एका छेदावर अंतर्गत कोन बनवणे हा पुढील टप्पा असतो. हे दोन बाजूंमधील योग्य कोन खात्री करण्यासाठी महत्वाचे आहे. इतर विकल्प या प्रक्रियेमध्ये अधिक आधी किंवा नंतरच्या टप्प्यांचे वर्णन करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for geometry.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the sequence of steps in triangle construction",
+        "describes a step that is not directly related to the included angle",
+        "misses the key action of constructing the angle"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the next logical step after drawing the base is to construct the included angle at one end. The other options either describe earlier or later steps or are unrelated to the construction process.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.2 Constructing a Triangle When its Sides are",
+            "Given"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 8,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.2 Constructing a Triangle When its Sides are",
+            "Given"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 9,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.3 Construction of Triangles When Some Sides",
+            "and Angles are Given"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T04:06:48.327Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a triangle, if two sides are of equal length, which of the following is true?",
+      "choices": [
+        "It is an equilateral triangle",
+        "It is an isosceles triangle",
+        "It is a scalene triangle",
+        "It is a right-angled triangle"
+      ],
+      "answerIndex": 1,
+      "solution": "A triangle with two sides of equal length is classified as an isosceles triangle. This is because the definition of an isosceles triangle is having exactly two sides of equal length. An equilateral triangle has all three sides equal, a scalene triangle has all sides of different lengths, and a right-angled triangle is defined by having one 90-degree angle, not by the equality of its sides.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक त्रिभुज में, यदि दो भुजाएं समान लंबाई की हों, तो निम्नलिखित में से कौन सा सत्य है?",
+          "choices": [
+            "यह एक समबाहु त्रिभुज है",
+            "यह एक समद्विबाहु त्रिभुज है",
+            "यह एक विषमबाहु त्रिभुज है",
+            "यह एक समकोण त्रिभुज है"
+          ],
+          "solution": "दो भुजाएं समान लंबाई के एक त्रिभुज को समद्विबाहु त्रिभुज के रूप में वर्गीकृत किया जाता है। इसका कारण यह है कि समद्विबाहु त्रिभुज की परिभाषा ठीक दो भुजाओं के समान लंबाई होने के रूप में है। एक समबाहु त्रिभुज में तीनों भुजाएं समान होती हैं, एक विषमबाहु त्रिभुज में सभी भुजाएं अलग-अलग लंबाई की होती हैं, और एक समकोण त्रिभुज की परिभाषा एक 90 डिग्री के कोण होने के कारण होती है, भुजाओं के समान होने के कारण नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, but the key is incorrect (should be 2, not 1).",
+          "flag": "translation critique: not one answer at the same position"
+        },
+        "mr": {
+          "stem": "त्रिकोणात, जर दोन बाजू समान लांबीच्या असतील, तर खालीलपैकी कोणते खरे आहे?",
+          "choices": [
+            "ते समभुज त्रिकोण आहे",
+            "ते समद्विबाहू त्रिकोण आहे",
+            "ते विषमभुज त्रिकोण आहे",
+            "ते समकोनी त्रिकोण आहे"
+          ],
+          "solution": "दोन बाजू समान लांबीच्या असलेला त्रिकोण समद्विबाहू त्रिकोण म्हणून वर्गीकृत केला जातो. कारण समद्विबाहू त्रिकोणची व्याख्या अशी आहे की त्याच्या तीन बाजूंपैकी तीन बाजूंपैकी तीन बाजूंपैकी दोन बाजू समान लांबीच्या असतात. समभुज त्रिकोणाच्या तीनही बाजू समान असतात, विषमभुज त्रिकोणाच्या बाजू सर्वसमान नसतात आणि समकोनी त्रिकोण हा एक 90 अंशाचा कोन असलेला त्रिकोण आहे, बाजूंच्या समानतेवर आधारित नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses standard terminology as taught in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Describes a triangle with all sides equal",
+        null,
+        "Describes a triangle with all sides different",
+        "Confuses right-angled triangle with side-length classification"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct, and the reasoning aligns with standard geometric definitions. The correct answer is 'It is an isosceles triangle.'",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 14,
+          "pageStart": 22,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.4 Constructions Related to Altitudes of Triangles"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 15,
+          "pageStart": 24,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.5 Types of Triangles"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 16,
+          "pageStart": 26,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.5 Types of Triangles",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T04:06:48.327Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a triangle has side lengths 10 cm, 15 cm, and 30 cm, which of the following statements is true?",
+      "choices": [
+        "It satisfies the triangle inequality",
+        "It does not satisfy the triangle inequality",
+        "It is an equilateral triangle",
+        "It is an isosceles triangle"
+      ],
+      "answerIndex": 1,
+      "solution": "The triangle with side lengths 10 cm, 15 cm, and 30 cm does not satisfy the triangle inequality because 30 cm is not less than the sum of 10 cm and 15 cm (30 cm = 10 cm + 15 cm). This means the triangle cannot exist. The other options are incorrect because the sides are not equal, and it is not an isosceles triangle.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक त्रिभुज की भुजा लंबाई 10 सेमी, 15 सेमी, और 30 सेमी है, तो निम्नलिखित में से कौन सा कथन सत्य है?",
+          "choices": [
+            "यह त्रिभुज की असमानता को संतुष्ट करता है",
+            "यह त्रिभुज की असमानता को संतुष्ट नहीं करता है",
+            "यह एक समबाहु त्रिभुज है",
+            "यह एक समद्विबाहु त्रिभुज है"
+          ],
+          "solution": "10 सेमी, 15 सेमी, और 30 सेमी की भुजा लंबाई वाला त्रिभुज त्रिभुज की असमानता को संतुष्ट नहीं करता क्योंकि 30 सेमी, 10 सेमी और 15 सेमी के योग से कम नहीं है (30 सेमी = 10 सेमी + 15 सेमी)। इसका अर्थ है कि त्रिभुज असंभव है। अन्य विकल्प गलत हैं क्योंकि भुजाएं समान नहीं हैं और यह समद्विबाहु त्रिभुज नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are standard in Hindi textbooks, and the correct answer remains in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका त्रिकोणाच्या बाजूंच्या लांबी 10 सें.मी., 15 सें.मी. आणि 30 सें.मी. असतील, तर खालीलपैकी कोणता विधान खरा आहे?",
+          "choices": [
+            "त्याने त्रिकोणाच्या असमानतेचे पूर्ण केले आहे",
+            "त्याने त्रिकोणाच्या असमानतेचे पूर्ण केले नाही",
+            "ते समभुज त्रिकोण आहे",
+            "ते समद्विबाहू त्रिकोण आहे"
+          ],
+          "solution": "10 सें.मी., 15 सें.मी. आणि 30 सें.मी. बाजूंच्या लांबीचा त्रिकोण त्रिकोणाच्या असमानतेचे पूर्ण करत नाही कारण 30 सें.मी. 10 सें.मी. आणि 15 सें.मी. च्या बेरजेपेक्षा कमी नाही (30 सें.मी. = 10 सें.मी. + 15 सें.मी.). हे अर्थ असा आहे की त्रिकोण असू शकत नाही. इतर विधाने खोटी आहेत कारण बाजू असमान आहेत आणि ते समद्विबाहू त्रिकोण नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for geometry.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly believes the triangle satisfies the triangle inequality",
+        null,
+        "Confuses the triangle with an equilateral one, which has all sides equal",
+        "Confuses the triangle with an isosceles one, which has two equal sides"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the triangle inequality is not satisfied, as 30 is not less than 10 + 15. The other options are clearly incorrect, and the reasons for the distractors align with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.2 Constructing a Triangle When its Sides are",
+            "Given"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.2 Constructing a Triangle When its Sides are",
+            "Given"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.2 Constructing a Triangle When its Sides are",
+            "Given"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T04:06:48.327Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

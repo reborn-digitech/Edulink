@@ -6812,6 +6812,7 @@ export const hi: Dictionary = {
     passRefundFailed: "गेटवे पास का पैसा नहीं लौटा सका; पास फिर से चालू है",
     passAskGuardian: "किसी विद्यार्थी ने अभिभावक से योजना माँगी",
     // end plans-pay
+    operatorQuizTopicRename: "अभ्यास अध्याय का नाम पाठ्यपुस्तक के शीर्षक पर बदला गया",
     substitutionsAcknowledge: "एक कवर स्वीकार किया",
     substitutionsDecline: "एक कवर अस्वीकार किया",
     syllabusTemplateSave: "एक पाठ योजना को टेम्पलेट के रूप में रखा",

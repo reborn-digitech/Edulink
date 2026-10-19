@@ -1,0 +1,901 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T03:07:31.105Z",
+  "finishedAt": "2026-10-19T03:15:54.422Z",
+  "seconds": 503,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "gegp1",
+    "document": "ncert/7/mathematics/gegp101.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Large Numbers Around Us",
+    "edition": "Reprint 2026-27",
+    "chunks": 23,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 22 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝜋 = 22 7 wherever required if not stated.",
+      "[PRMO 2018 — question paper]\n19. Let N = 6 + 66 + 666 + · · · + 666 · · · 66, where there are hundred 6’s in the last term in the\nsum. How many times does the digit 7 occur in the number N?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 227469,
+      "in": 50,
+      "out": 45,
+      "rejects": 5,
+      "promptTokens": 46818,
+      "completionTokens": 12008
+    },
+    "critique": {
+      "calls": 56,
+      "ms": 407189,
+      "in": 45,
+      "out": 39,
+      "rejects": 6,
+      "promptTokens": 26609,
+      "completionTokens": 10550
+    },
+    "solver": {
+      "calls": 272,
+      "ms": 148632,
+      "in": 39,
+      "out": 19,
+      "rejects": 20,
+      "promptTokens": 53020,
+      "completionTokens": 3050
+    },
+    "form": {
+      "calls": 2,
+      "ms": 8010,
+      "in": 19,
+      "out": 8,
+      "rejects": 11,
+      "promptTokens": 550,
+      "completionTokens": 184
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 15,
+      "ms": 2924,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 199965,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 13494,
+      "completionTokens": 5974
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a person eats 3 varieties of rice every day, how many days will it take to eat 1 lakh varieties?",
+      "ms": {
+        "draft": 5372,
+        "critique": 5781,
+        "solver": 1239
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many times should the +1000 button be pressed on the 'Thoughtful Thousands' calculator to show 90,000?",
+      "ms": {
+        "draft": 5372,
+        "critique": 10334,
+        "solver": 1604
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the smallest 5-digit number?",
+      "ms": {
+        "draft": 5372,
+        "critique": 6248,
+        "solver": 15786
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person eats 2 varieties of rice every day, how many years would it take to eat 1 lakh varieties?",
+      "ms": {
+        "draft": 5372,
+        "critique": 8423
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the largest 3-digit number that can be made with exactly 30 button presses on the Systematic Sippy calculator?",
+      "ms": {
+        "draft": 4806,
+        "critique": 8050
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is the correct way to write 1 crore in numerical form?",
+      "ms": {
+        "draft": 4806,
+        "critique": 8655,
+        "solver": 1731,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the number 9876501234 is written in the Indian system, how many commas are used?",
+      "ms": {
+        "draft": 4806,
+        "critique": 8371,
+        "solver": 1840
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If you press the +10,00,000 button ten times on the Systematic Sippy calculator, what number will appear?",
+      "ms": {
+        "draft": 4806,
+        "critique": 8039,
+        "solver": 1146
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the population of Chintamani in 2024 is 1,06,000 and in 2011 it was 75,000, by how many people did the population increase?",
+      "ms": {
+        "draft": 5372,
+        "critique": 8147,
+        "solver": 21446
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following numbers has the same number of zeroes in both the Indian and American systems?",
+      "ms": {
+        "draft": 4806,
+        "critique": 6808,
+        "solver": 1787,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the exact value of 4,63,128 + 4,19,682?",
+      "ms": {
+        "draft": 4352,
+        "critique": 7440,
+        "solver": 1463
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which estimate is closer to the difference between 14,63,128 and 4,90,020?",
+      "ms": {
+        "draft": 4352,
+        "critique": 8476,
+        "solver": 1528
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the approximate increase in the population of Pune from 2001 to 2011?",
+      "ms": {
+        "draft": 4352,
+        "critique": 8684
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which city’s population increased the most between 2001 and 2011?",
+      "ms": {
+        "draft": 4352,
+        "critique": 7363,
+        "solver": 1282
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which number, when multiplied by Patna’s 2001 population, gives a number close to Mumbai’s 2011 population?",
+      "ms": {
+        "draft": 4352,
+        "critique": 6107,
+        "solver": 1764
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total number of people that can be accommodated in 1 lakh buses if each bus can carry 50 people?",
+      "ms": {
+        "draft": 4404,
+        "critique": 8261,
+        "solver": 1547,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Can multiplying a 4-digit number with a 2-digit number give a 5-digit number?",
+      "ms": {
+        "draft": 4352,
+        "critique": 8242,
+        "solver": 14394,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of 1 lakh × 50?",
+      "ms": {
+        "draft": 4404,
+        "critique": 10285,
+        "solver": 12024,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If you travel 100 kilometers every day, how far would you travel in 10 years?",
+      "ms": {
+        "draft": 4404,
+        "critique": 6097,
+        "solver": 1406
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 250 babies are born every minute, how many babies will be born in a day?",
+      "ms": {
+        "draft": 4404,
+        "critique": 7307,
+        "solver": 15289,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a calculator has only the ‘+10,000’ and ‘+100’ buttons, how many times should the ‘+10,000’ button be pressed to reach 92,100?",
+      "ms": {
+        "draft": 4404,
+        "critique": 7559,
+        "solver": 12855,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the largest 10-digit number that can be formed using all the digits from 0 to 9 exactly once, with the first digit not being 0?",
+      "ms": {
+        "draft": 4084,
+        "critique": 7367,
+        "solver": 2448,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the 1000th digit when all numbers from 1 to 1000 are written in sequence?",
+      "ms": {
+        "draft": 4084,
+        "critique": 8128
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a calculator has only '+10,000' and '+100' buttons, how many button clicks are needed to reach 70,25,700?",
+      "ms": {
+        "draft": 4084,
+        "critique": 7083,
+        "solver": 1335
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the smallest number of button clicks required to form the number 66666?",
+      "ms": {
+        "draft": 4439,
+        "critique": 6807,
+        "solver": 1705
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers has the same number of zeros as a thousand lakh?",
+      "ms": {
+        "draft": 4439,
+        "critique": 7592
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the sum of the digits of the number 40629?",
+      "ms": {
+        "draft": 4439,
+        "critique": 6401,
+        "solver": 1581
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following numbers has a population that is approximately 7 times that of Patna?",
+      "ms": {
+        "draft": 4439,
+        "critique": 6234,
+        "solver": 1645
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many sticks are needed to make the number 5108 using the toothpick digit method?",
+      "ms": {
+        "draft": 4990,
+        "critique": 10583
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the maximum number of digits that can be in the product of a 3-digit number and a 2-digit number?",
+      "ms": {
+        "draft": 4439,
+        "critique": 6965,
+        "solver": 16505
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the smallest number that can be made using exactly 24 sticks or lines according to the passage?",
+      "ms": {
+        "draft": 4990,
+        "critique": 8531,
+        "solver": 1422
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total number of people that can be accommodated in 1 lakh buses if each bus can carry 50 people?",
+      "ms": {
+        "draft": 3700,
+        "critique": 6769,
+        "solver": 1211,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the smallest 3-digit number that can be made using 30 button presses, according to the passage?",
+      "ms": {
+        "draft": 4990,
+        "critique": 5550,
+        "solver": 15566
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the smallest possible product of two 2-digit numbers?",
+      "ms": {
+        "draft": 4515,
+        "critique": 6420,
+        "solver": 2604,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many zeroes does a thousand lakh have?",
+      "ms": {
+        "draft": 5254,
+        "critique": 6994,
+        "solver": 1712
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a single sheet of paper weighs 5 grams, what is the total weight of one lakh sheets of paper?",
+      "ms": {
+        "draft": 3700,
+        "critique": 7314,
+        "solver": 15372
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a calculator has only ‘+10,000’ and ‘+100’ buttons, how many button clicks are needed to reach 92,100?",
+      "ms": {
+        "draft": 3700,
+        "critique": 6938,
+        "solver": 15686,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a single sheet of paper weighs 5 grams, what is the total weight of one lakh sheets of paper?",
+      "ms": {
+        "draft": 4084,
+        "critique": 7013,
+        "solver": 1849,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many times does the digit 7 occur in the number N = 6 + 66 + 666 + ... + 666...66, where there are 100 6's in the last term?",
+      "ms": {
+        "draft": 4990,
+        "critique": 7171,
+        "solver": 1678,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which number is read as 'One Lakh' in the Indian place value system?",
+      "ms": {
+        "draft": 5372,
+        "critique": 6747,
+        "solver": 12895,
+        "form": 3716,
+        "translation": 33256
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many lakhs make a billion?",
+      "ms": {
+        "draft": 4084,
+        "critique": 6664,
+        "solver": 1184,
+        "form": 0,
+        "translation": 20461
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the number name of 9,87,65,01,234 in the Indian system?",
+      "ms": {
+        "draft": 4806,
+        "critique": 7624,
+        "solver": 1982,
+        "form": 0,
+        "translation": 47605
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a single sheet of paper weighs 5 grams, how much would 1 lakh sheets of paper weigh?",
+      "ms": {
+        "draft": 4404,
+        "critique": 7465,
+        "solver": 965,
+        "form": 1,
+        "translation": 30738
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many times does the digit 7 occur in the number N = 6 + 66 + 666 + · · · + 666 · · · 66, where there are hundred 6’s in the last term?",
+      "ms": {
+        "draft": 4439,
+        "critique": 6029,
+        "solver": 2038,
+        "form": 4294,
+        "translation": 26499
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a grey-headed albatross can travel 900–1000 km in a day, how many days would it take to complete a 12,000 km trip?",
+      "ms": {
+        "draft": 4084,
+        "critique": 8265,
+        "solver": 1499,
+        "form": 0,
+        "translation": 36245
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a person eats 3 varieties of rice every day, how many days will it take to eat 1 lakh varieties?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How many times should the +1000 button be pressed on the 'Thoughtful Thousands' calculator to show 90,000?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is the smallest 5-digit number?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a person eats 2 varieties of rice every day, how many years would it take to eat 1 lakh varieties?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the largest 3-digit number that can be made with exactly 30 button presses on the Systematic Sippy calculator?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is the correct way to write 1 crore in numerical form?",
+      "reason": "options 0 and 1 are the same number; options 0 and 3 are the same number; options 1 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the number 9876501234 is written in the Indian system, how many commas are used?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If you press the +10,00,000 button ten times on the Systematic Sippy calculator, what number will appear?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the population of Chintamani in 2024 is 1,06,000 and in 2011 it was 75,000, by how many people did the population increase?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following numbers has the same number of zeroes in both the Indian and American systems?",
+      "reason": "options are in more than one unit (crore, lakh, thousand, million); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the exact value of 4,63,128 + 4,19,682?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which estimate is closer to the difference between 14,63,128 and 4,90,020?",
+      "reason": "the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the approximate increase in the population of Pune from 2001 to 2011?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which city’s population increased the most between 2001 and 2011?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which number, when multiplied by Patna’s 2001 population, gives a number close to Mumbai’s 2011 population?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the total number of people that can be accommodated in 1 lakh buses if each bus can carry 50 people?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"100000*50\" = 5000000, but the key says 500000"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Can multiplying a 4-digit number with a 2-digit number give a 5-digit number?",
+      "reason": "option lengths are unalike (3 to 41 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the value of 1 lakh × 50?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"100000*50\" = 5000000, but the key says 500000"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If you travel 100 kilometers every day, how far would you travel in 10 years?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If 250 babies are born every minute, how many babies will be born in a day?",
+      "reason": "options 0 and 1 are the same (\"3,60,000\"); options 2 and 3 are the same (\"1,44,000\"); options 0 and 1 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a calculator has only the ‘+10,000’ and ‘+100’ buttons, how many times should the ‘+10,000’ button be pressed to reach 92,100?",
+      "reason": "options 0 and 1 are the same (\"9\"); options 0 and 1 are the same number; checkExpr \"9\" is a bare literal"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If the population of Chintamani was 75,000 in 2011 and 1,06,000 in 2024, by how much did the population increase?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "How many hundreds are required to make one lakh?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the total weight of 100 million bacteria in a single gram of healthy soil?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "If 250 babies are born every minute, how many babies are born in a day?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 6,
+      "stem": "What is the largest possible product of two 2-digit numbers?",
+      "reason": "level 6 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the largest 10-digit number that can be formed using all the digits from 0 to 9 exactly once, with the first digit not being 0?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Assumes the second last digit must be 0 and the last digit m…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the 1000th digit when all numbers from 1 to 1000 are written in sequence?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a calculator has only '+10,000' and '+100' buttons, how many button clicks are needed to reach 70,25,700?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the smallest number of button clicks required to form the number 66666?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following numbers has the same number of zeros as a thousand lakh?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the sum of the digits of the number 40629?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following numbers has a population that is approximately 7 times that of Patna?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "How many sticks are needed to make the number 5108 using the toothpick digit method?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the maximum number of digits that can be in the product of a 3-digit number and a 2-digit number?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the smallest number that can be made using exactly 24 sticks or lines according to the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the total number of people that can be accommodated in 1 lakh buses if each bus can carry 50 people?",
+      "reason": "options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the smallest 3-digit number that can be made using 30 button presses, according to the passage?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the smallest possible product of two 2-digit numbers?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"correct calculation but misinterprets the question as asking…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "How many zeroes does a thousand lakh have?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If a single sheet of paper weighs 5 grams, what is the total weight of one lakh sheets of paper?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a calculator has only ‘+10,000’ and ‘+100’ buttons, how many button clicks are needed to reach 92,100?",
+      "reason": "options 1 and 2 are the same (\"9210\"); options 1 and 3 are the same (\"9210\"); options 2 and 3 are the same (\"9210\"); options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a single sheet of paper weighs 5 grams, what is the total weight of one lakh sheets of paper?",
+      "reason": "near-duplicate of batch item \"If a single sheet of paper weighs 5 grams, how muc…\" (cosine 0.966 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "How many times does the digit 7 occur in the number N = 6 + 66 + 666 + ... + 666...66, where there are 100 6's in the last term?",
+      "reason": "near-duplicate of batch item \"How many times does the digit 7 occur in the numbe…\" (cosine 0.971 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

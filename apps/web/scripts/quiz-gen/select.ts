@@ -147,8 +147,16 @@ function lastModifiedOf(doc: DocRow): number {
   return Number.isFinite(t) ? t : 0;
 }
 
-/** The chapters a board's book offers for a class and subject: number and name, for `--all-chapters` and for the usage message. */
-export async function listChapters(db: PrismaClient, args: { board: string; grade: number; subject: string; book?: string }): Promise<{ number: number; name: string; bookCode: string | null; book: string }[]> {
+/**
+ * The chapters a board's book offers for a class and subject: number and name, for `--all-chapters` and for the usage
+ * message. A chapter whose heading carries no title has the name "" and is reported through `log` (chapter-titles,
+ * 19 Oct 2026: npm run corpus:titles mends most; the rest are listed in its decisions file).
+ */
+export async function listChapters(
+  db: PrismaClient,
+  args: { board: string; grade: number; subject: string; book?: string },
+  log: (line: string) => void = () => {},
+): Promise<{ number: number; name: string; bookCode: string | null; book: string }[]> {
   const { source } = boardSource(args.board);
   const docs = await books(db, source, args.grade, args.subject);
   const out: { number: number; name: string; bookCode: string | null; book: string }[] = [];
@@ -160,6 +168,7 @@ export async function listChapters(db: PrismaClient, args: { board: string; grad
       if (!n) continue;
       const heads = await db.contentChunk.findMany({ where: { documentId: d.id }, orderBy: { ordinal: "asc" }, select: { chapter: true, headingPath: true } });
       const name = chapterNameOf(firstLabel(heads));
+      if (!name) log(`  ${args.board} class ${args.grade} ${args.subject}, chapter ${n} ("${d.title}", ${d.path}) has no title in the corpus`);
       out.push({ number: n, name, bookCode: code, book: d.title });
     }
   } else {
@@ -173,7 +182,9 @@ export async function listChapters(db: PrismaClient, args: { board: string; grad
         const n = chapterNumberOf(label);
         if (n === null || seen.has(n)) continue;
         seen.add(n);
-        out.push({ number: n, name: chapterNameOf(label), bookCode: code, book: d.title });
+        const name = chapterNameOf(label);
+        if (!name) log(`  ${args.board} class ${args.grade} ${args.subject}, chapter ${n} ("${d.title}", ${d.path}) has no title in the corpus`);
+        out.push({ number: n, name, bookCode: code, book: d.title });
       }
     }
   }
@@ -216,7 +227,10 @@ export async function selectChapter(db: PrismaClient, args: { board: string; gra
   }
   if (!chunks.length) throw new Error(`${doc.path} has no chunks; run the corpus ingest first`);
 
-  const chapterName = chapterNameOf(chapterLabel) || `Chapter ${args.chapter}`;
+  // "Chapter N" is the last resort, for a heading that carries no title even after npm run corpus:titles; said in the log.
+  const titled = chapterNameOf(chapterLabel);
+  if (!titled) log(`  ${doc.path} has no chapter title in the corpus: the chapter is named "Chapter ${args.chapter}"`);
+  const chapterName = titled || `Chapter ${args.chapter}`;
   const keys = [...new Set(chunks.flatMap((c) => c.figureKeys))];
   const figures = readFigures(doc.path, keys);
   const headings = [...new Set(chunks.flatMap((c) => c.headingPath.slice(1)))];

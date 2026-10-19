@@ -1,0 +1,755 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T12:46:48.376Z",
+  "finishedAt": "2026-10-19T12:58:35.039Z",
+  "seconds": 707,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu109.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 9 — The Amazing World of Solutes, Solvents, and Solutions",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2020 — question paper]\n8. A U-shaped tube with a semipermeable membrane is filled with 2 L of water as shown in\nfigure I. When 0.1 mol of compound X is completely dissolved in the right arm of the tube,\nthe level of X (aq) solution rises as shown in the figure II. Assume that the rise in the solution\nlevel is proportional to the number of solute particles in an aqueous solution.\nI 0.1 mol of X II\nh\nH O 2 (l) H O 2 (l) H O 2 (l) X (aq)\nSemipermeable membrane Semipermeable membrane\nThe height h would be the highest when X is\nA. MgCl 2 B. CH COOH 3 C. NH NO 4 3 D. Cane Sugar",
+      "[INJSO 2022 — question paper]\n2. A student took a sandy soil sample from a desert area, put it in a bucket and poured tap water on it. After\nsome time, the soil settled down in the bucket. She wanted to know if the sample had any soluble\nsubstances in it. Comparison of which of these properties between supernatant bucket water and the\noriginal tap water will most likely answer her question definitively.\nA. pH B. density C. temperature D. light scattering in identical containers",
+      "[INJSO 2022 — solutions or answer key]\n2. B. If some soluble components from soil dissolve in water, then density of water is most likely to change. Other\nparameters may or may not change significantly.",
+      "[CBSE Class X Science, sample question paper, 2026-27]\n27. Give reason for the following : 3\nA. A solution of sports electrolyte drink conducts electricity, but coconut oil does\nnot.\nB. Milkiness disappears when excess of carbon dioxide is passed through lime\nwater.\nC. An iron bridge near the sea rusts much faster than an iron bridge located in a\ndry hilly region."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 229647,
+      "in": 41,
+      "out": 38,
+      "rejects": 3,
+      "promptTokens": 44575,
+      "completionTokens": 8904
+    },
+    "critique": {
+      "calls": 46,
+      "ms": 416818,
+      "in": 38,
+      "out": 36,
+      "rejects": 2,
+      "promptTokens": 20374,
+      "completionTokens": 7856
+    },
+    "solver": {
+      "calls": 232,
+      "ms": 162715,
+      "in": 36,
+      "out": 30,
+      "rejects": 6,
+      "promptTokens": 42056,
+      "completionTokens": 2424
+    },
+    "form": {
+      "calls": 15,
+      "ms": 72858,
+      "in": 30,
+      "out": 15,
+      "rejects": 15,
+      "promptTokens": 7324,
+      "completionTokens": 1376
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 29,
+      "ms": 5277,
+      "in": 15,
+      "out": 12,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 51,
+      "ms": 711112,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 29629,
+      "completionTokens": 14738
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 1,
+    "4": 0,
+    "5": 3,
+    "6": 3
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is a solution?",
+      "ms": {
+        "draft": 3850,
+        "critique": 7936
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what happens when a solution becomes saturated?",
+      "ms": {
+        "draft": 3850,
+        "critique": 6639,
+        "solver": 2434,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of an unsaturated solution?",
+      "ms": {
+        "draft": 3850,
+        "critique": 8441,
+        "solver": 2038
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is water considered a good solvent?",
+      "ms": {
+        "draft": 3850,
+        "critique": 11453
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following can be used to determine if a soil sample contains soluble substances?",
+      "ms": {
+        "draft": 3850,
+        "critique": 9045,
+        "solver": 2744
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student dissolves sugar in water and observes that after a certain point, no more sugar dissolves. Which of the following is most likely true?",
+      "ms": {
+        "draft": 3850,
+        "critique": 10079,
+        "solver": 22652,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a substance has a density of 2.7 g/cm³, how many times denser is it than water?",
+      "ms": {
+        "draft": 5387,
+        "critique": 10593,
+        "solver": 2355,
+        "form": 6721
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be said about the solubility of a substance in water?",
+      "ms": {
+        "draft": 5387,
+        "critique": 10122,
+        "solver": 2888,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the solubility of a gas in water decreases with temperature, what would happen to the amount of dissolved oxygen in water when it warms up?",
+      "ms": {
+        "draft": 5387,
+        "critique": 8885,
+        "solver": 2282,
+        "form": 3493
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the smallest volume that a 100 mL measuring cylinder can measure?",
+      "ms": {
+        "draft": 3833,
+        "critique": 8545,
+        "solver": 2388,
+        "form": 3668
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an object is submerged in a measuring cylinder containing 50 mL of water and the water level rises to 55 mL, what is the volume of the object?",
+      "ms": {
+        "draft": 5658,
+        "critique": 8913,
+        "solver": 2412,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why does a bamboo raft float on water?",
+      "ms": {
+        "draft": 5658,
+        "critique": 9168,
+        "solver": 2016,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of a solution?",
+      "ms": {
+        "draft": 4635,
+        "critique": 8115,
+        "solver": 1918,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is NOT a factor that affects the density of a substance according to the passage?",
+      "ms": {
+        "draft": 5658,
+        "critique": 7751,
+        "solver": 10440
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student dissolves 10 g of salt in 100 mL of water. What will happen if they try to dissolve another 10 g of salt?",
+      "ms": {
+        "draft": 5678,
+        "critique": 8512,
+        "solver": 1666,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a correct definition of a solution?",
+      "ms": {
+        "draft": 5678,
+        "critique": 8778,
+        "solver": 23141,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student places a piece of ice in a glass of water and notices that the ice floats. What can be concluded about ice and water?",
+      "ms": {
+        "draft": 5678,
+        "critique": 12539,
+        "solver": 17474,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an experiment, a student observes that the water level in a glass tube rises when a test tube is placed in hot water. What does this indicate about the density of water?",
+      "ms": {
+        "draft": 5678,
+        "critique": 10339,
+        "solver": 19623,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student measures the volume of a stone using a measuring cylinder. Initially, the water level is at 50 mL. After putting the stone in the cylinder, the water level rises to 55 mL. What is the volume of the stone?",
+      "ms": {
+        "draft": 6963,
+        "critique": 9648,
+        "solver": 20364
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does ice float on water?",
+      "ms": {
+        "draft": 6963,
+        "critique": 9345,
+        "solver": 2281
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student measures the density of a solid object. The mass of the object is 16.4 g and the volume is 5 cm³. What is the density of the object?",
+      "ms": {
+        "draft": 6963,
+        "critique": 9094,
+        "solver": 2292
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A hot air balloon rises because of the principle of density. What happens to the density of air when it is heated?",
+      "ms": {
+        "draft": 6963,
+        "critique": 9154,
+        "solver": 1932,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the correct way to measure the mass of a solid object using a digital weighing balance?",
+      "ms": {
+        "draft": 8722,
+        "critique": 10670,
+        "solver": 17466,
+        "form": 1893
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a uniform mixture?",
+      "ms": {
+        "draft": 5387,
+        "critique": 11583,
+        "solver": 1783,
+        "form": 5378
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a non-uniform mixture?",
+      "ms": {
+        "draft": 5387,
+        "critique": 11606,
+        "solver": 1946,
+        "form": 4481
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student conducts an experiment to find out if soil from a desert contains soluble substances. She pours tap water into a bucket with the soil and then lets it settle. To determine if any soluble substances are present, which property of the water should she compare between the original tap water and the supernatant water?",
+      "ms": {
+        "draft": 6963,
+        "critique": 10942,
+        "solver": 1801,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why are measuring cylinders designed to be narrow and tall instead of wider and short like a beaker?",
+      "ms": {
+        "draft": 5658,
+        "critique": 9499,
+        "solver": 2498,
+        "form": 0,
+        "translation": 65644
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the quantity of matter present in an object called?",
+      "ms": {
+        "draft": 3833,
+        "critique": 9760,
+        "solver": 2433,
+        "form": 3058,
+        "translation": 40981
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit used to measure the mass of an object in the chapter?",
+      "ms": {
+        "draft": 8722,
+        "critique": 8386,
+        "solver": 1831,
+        "form": 2596,
+        "translation": 44726
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the substance that dissolves in a solution?",
+      "ms": {
+        "draft": 5678,
+        "critique": 8778,
+        "solver": 17579,
+        "form": 0,
+        "translation": 54519
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which instrument is used to measure the mass of an object?",
+      "ms": {
+        "draft": 3833,
+        "critique": 9676,
+        "solver": 2004,
+        "form": 2910,
+        "translation": 41939
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a packet of oil is labelled with a volume of 1 litre but a weight of 910 grams, what does this indicate about the density of the oil compared to water?",
+      "ms": {
+        "draft": 3833,
+        "critique": 9002,
+        "solver": 1969,
+        "form": 4755,
+        "translation": 57931
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes that a piece of wood floats in water. What could be the reason for this?",
+      "ms": {
+        "draft": 5387,
+        "critique": 8695,
+        "solver": 1691,
+        "form": 5504,
+        "translation": 56165
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student dissolves as much baking soda as possible in 100 mL of water at 20 °C, resulting in a saturated solution. If the same amount of baking soda is dissolved in 100 mL of water at 70 °C, what will happen?",
+      "ms": {
+        "draft": 6969,
+        "critique": 10299,
+        "solver": 1675,
+        "form": 0,
+        "translation": 81447
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student wants to determine if a sandy soil sample has any soluble substances. Which property should she compare between the supernatant water and the original tap water?",
+      "ms": {
+        "draft": 3833,
+        "critique": 9522,
+        "solver": 2406,
+        "form": 3404,
+        "translation": 51926
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student prepares a solution by dissolving a solid in water. After adding a certain amount of solid, no more dissolves and the extra settles at the bottom. What can be said about the solution?",
+      "ms": {
+        "draft": 6256,
+        "critique": 8273,
+        "solver": 1157,
+        "form": 1,
+        "translation": 63187
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student observes that a wooden block floats in water, while a metal block of the same size sinks. She concludes that the wooden block is lighter. What is the correct explanation for why the wooden block floats?",
+      "ms": {
+        "draft": 6969,
+        "critique": 9597,
+        "solver": 2759,
+        "form": 0,
+        "translation": 84342
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is a 100 mL measuring cylinder the best choice to measure 70 mL of water?",
+      "ms": {
+        "draft": 3833,
+        "critique": 9867,
+        "solver": 1522,
+        "form": 6254,
+        "translation": 60591
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is a solution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what happens when a solution becomes saturated?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is an example of an unsaturated solution?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is water considered a good solvent?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following can be used to determine if a soil sample contains soluble substances?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student dissolves sugar in water and observes that after a certain point, no more sugar dissolves. Which of the following is most likely true?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a substance has a density of 2.7 g/cm³, how many times denser is it than water?",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals); checkExpr \"2.7\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be said about the solubility of a substance in water?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the solubility of a gas in water decreases with temperature, what would happen to the amount of dissolved oxygen in water when it warms up?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'oxygen'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the smallest volume that a 100 mL measuring cylinder can measure?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If an object is submerged in a measuring cylinder containing 50 mL of water and the water level rises to 55 mL, what is the volume of the object?",
+      "reason": "checkExpr \"5\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, why does a bamboo raft float on water?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a property of a solution?",
+      "reason": "options 0 and 1 are the same (\"It is a heterogeneous mixture\"); options 0 and 2 are the same (\"It is a heterogeneous mixture\"); options 1 and 2 are the same (\"It is a heterogeneous mixture\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is NOT a factor that affects the density of a substance according to the passage?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is an example of a saturated solution?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which instrument is used to measure the mass of an object according to the passage?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What does the passage say about the accuracy of measuring cylinders?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student dissolves 10 g of salt in 100 mL of water. What will happen if they try to dissolve another 10 g of salt?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"correct option is the only one that describes what happens w…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a correct definition of a solution?",
+      "reason": "options 1 and 2 say the same thing (\"A mixture of two or more substances that is not uniform in composition\" / \"A mixture of two or more substances that is uniform in composition\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student places a piece of ice in a glass of water and notices that the ice floats. What can be concluded about ice and water?",
+      "reason": "options 0 and 1 say the same thing (\"Ice is denser than water\" / \"Water is denser than ice\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In an experiment, a student observes that the water level in a glass tube rises when a test tube is placed in hot water. What does this indicate about the density of water?",
+      "reason": "options 0 and 2 say the same thing (\"The density of water increases with temperature\" / \"2: The density of water increases with temperature\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A student measures the volume of a stone using a measuring cylinder. Initially, the water level is at 50 mL. After putting the stone in the cylinder, the water level rises to 55 mL. What is the volume of the stone?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why does ice float on water?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A student measures the density of a solid object. The mass of the object is 16.4 g and the volume is 5 cm³. What is the density of the object?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A hot air balloon rises because of the principle of density. What happens to the density of air when it is heated?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.north: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the correct way to measure the mass of a solid object using a digital weighing balance?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of a uniform mixture?",
+      "reason": "near-duplicate of served question cmvf90s8303m2god8su34clq1 (cosine 0.902 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of a non-uniform mixture?",
+      "reason": "near-duplicate of served question cmvf90s8e03mkgod8z8e4bbbu (cosine 0.908 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A student conducts an experiment to find out if soil from a desert contains soluble substances. She pours tap water into a bucket with the soil and then lets it settle. To determine if any soluble substances are present, which property of the water should she compare between the original tap water and the supernatant water?",
+      "reason": "near-duplicate of batch item \"A student wants to determine if a sandy soil sampl…\" (cosine 0.937 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,732 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T14:04:55.751Z",
+  "finishedAt": "2026-10-19T14:18:05.668Z",
+  "seconds": 790,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Manjari PART-II",
+    "bookCode": "iemh2",
+    "document": "ncert/9/mathematics/iemh202.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Chapter 2",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 21,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n12. (d) 9π cm 2",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 22 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n9. C) 30",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝜋 = 22 7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 212854,
+      "in": 39,
+      "out": 39,
+      "rejects": 1,
+      "promptTokens": 38385,
+      "completionTokens": 10138
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 346077,
+      "in": 39,
+      "out": 23,
+      "rejects": 16,
+      "promptTokens": 21469,
+      "completionTokens": 7989
+    },
+    "solver": {
+      "calls": 150,
+      "ms": 85364,
+      "in": 23,
+      "out": 16,
+      "rejects": 7,
+      "promptTokens": 32023,
+      "completionTokens": 1615
+    },
+    "form": {
+      "calls": 1,
+      "ms": 3536,
+      "in": 16,
+      "out": 13,
+      "rejects": 3,
+      "promptTokens": 301,
+      "completionTokens": 89
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 2697,
+      "in": 13,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 631804,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 30573,
+      "completionTokens": 14660
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 1,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "In the example of mixing lemonade, if 200 mL of 10% jaggery lemonade is mixed with 300 mL of 20% jaggery lemonade, what is the concentration of jaggery in the mixture?",
+      "ms": {
+        "draft": 5815,
+        "critique": 11492
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the example of the badminton academy, why did Method 1 not give the correct average height?",
+      "ms": {
+        "draft": 5815,
+        "critique": 6950,
+        "solver": 19694
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A goldsmith melts three pieces of gold: 9 units at 12 varṇa, 5 units at 10 varṇa, and 17 units at 11 varṇa. What is the purity in varṇa of the combined gold?",
+      "ms": {
+        "draft": 5925,
+        "critique": 10398
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the average rainfall per day in May, June, and July is 3.5 mm, 10 mm, and 8.7 mm respectively, which expression gives the combined average?",
+      "ms": {
+        "draft": 5925,
+        "critique": 8557,
+        "solver": 2484,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Savitri scored 35 out of 50 in internal tests, 44 out of 60 in the project, and 80 out of 100 in the final exam. The annual score is calculated with weights 3 : 4 : 5. Which expression gives her annual score as a percentage?",
+      "ms": {
+        "draft": 5925,
+        "critique": 8793,
+        "solver": 1834,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the percentage of profit on the total sales if a stationery shop owner made `8000 with a 30% profit and `1000 with a 50% profit?",
+      "ms": {
+        "draft": 5672,
+        "critique": 9520
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the average daily distance travelled by a white stork over 21 days if it travelled 44.5 km per day for 20 days and 55 km on the 21st day?",
+      "ms": {
+        "draft": 5672,
+        "critique": 8448
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the concentration of salt in a mixture made by combining 600 mL of a 5% salt solution with 300 mL of an 8% sugar solution?",
+      "ms": {
+        "draft": 5672,
+        "critique": 9038
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a pani (spiced water) stall has 10 litres of pani with a spice level of 8%, how much water should be added to reduce the spice level to 2/3 of the original concentration?",
+      "ms": {
+        "draft": 5672,
+        "critique": 7947,
+        "solver": 2125,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the final mark of Rashi if the marks for strength, flexibility, and agility are combined in the ratio 4:5:6 and she scored 60, 65, and 70 respectively?",
+      "ms": {
+        "draft": 5672,
+        "critique": 10257
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In which case can we be sure that Fatima’s garden has more flowers in summer than Naveen’s garden?",
+      "ms": {
+        "draft": 5692,
+        "critique": 11218
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements is true about a 100% stacked bar chart?",
+      "ms": {
+        "draft": 5692,
+        "critique": 9170,
+        "solver": 2268
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the run rate after 20 overs if the team scored 12 runs in the last over and had a run rate of 6 after 19 overs?",
+      "ms": {
+        "draft": 5884,
+        "critique": 9210
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the average price of a nylon shuttlecock if Yusuf's data includes 40(N), 108(N), 165(F), 116(F), and 105(N)?",
+      "ms": {
+        "draft": 5884,
+        "critique": 7815
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for a chart that shows the proportions of different categories within a total?",
+      "ms": {
+        "draft": 3937,
+        "critique": 7511
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of a 100% stacked bar chart?",
+      "ms": {
+        "draft": 15232,
+        "critique": 5411
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of chart is used to compare proportions of data rather than absolute values?",
+      "ms": {
+        "draft": 15232,
+        "critique": 5759
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the weights of a weighted average are increased by a constant value, what happens to the weighted average?",
+      "ms": {
+        "draft": 15232,
+        "critique": 8237
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a farm, the cows made up 60%, the sheep 25%, and the chickens 15% of the animal population last year. If the population of all three animals decreased, which of the following is possible?",
+      "ms": {
+        "draft": 15232,
+        "critique": 6486,
+        "solver": 1320
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The weighted average of x1, x2, x3, ..., xn with weights w1, w2, w3, ..., wn is given by (w1x1 + w2x2 + ... + wnxn) / (w1 + w2 + ... + wn). If all the weights are increased by a constant value, say 1, what happens to the weighted average?",
+      "ms": {
+        "draft": 15232,
+        "critique": 7907
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the run rate after 20 overs if the team scored 12 runs in the last over and the run rate after 19 overs was 6?",
+      "ms": {
+        "draft": 5659,
+        "critique": 9870
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a pool is divided into 5 sections with lengths 4, 5, 6, 7, and 8 hastas and depths of 9, 7, 7, 3, and 2 hastas, what is the mean depth of the pool?",
+      "ms": {
+        "draft": 5659,
+        "critique": 7664,
+        "solver": 2281
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Shreyas holds 25 shares of a company at an average price of ₹150. He buys 10 shares at ₹30 each. What is the average price per share for him after the purchase?",
+      "ms": {
+        "draft": 5659,
+        "critique": 11190
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What can we not infer from a 100% stacked bar chart?",
+      "ms": {
+        "draft": 4337,
+        "critique": 7500,
+        "solver": 1507
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following statements is true?",
+      "ms": {
+        "draft": 4337,
+        "critique": 5975,
+        "solver": 1438
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If in Case 1, Fatima’s garden had 42 flowers and Naveen’s garden also had 42 flowers, but Fatima’s garden had 50% of flowers in summer and Naveen’s had 40%, which garden had more flowers in summer?",
+      "ms": {
+        "draft": 4337,
+        "critique": 6347,
+        "solver": 5449
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does a 100% stacked bar chart show?",
+      "ms": {
+        "draft": 4337,
+        "critique": 7631,
+        "solver": 1365,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does a 100% stacked bar chart show?",
+      "ms": {
+        "draft": 5692,
+        "critique": 8614,
+        "solver": 1757,
+        "form": 0,
+        "translation": 65684
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the correct expression for the combined average price of a shuttlecock if each friend calculated the average of the prices they gathered?",
+      "ms": {
+        "draft": 5659,
+        "critique": 6637,
+        "solver": 19659,
+        "form": 0,
+        "translation": 37529
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the weighted mean of n values with respective weights?",
+      "ms": {
+        "draft": 5925,
+        "critique": 9042,
+        "solver": 17915,
+        "form": 0,
+        "translation": 47629
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the cycling example, why does Method 1 give the correct answer?",
+      "ms": {
+        "draft": 5815,
+        "critique": 5957,
+        "solver": 1580,
+        "form": 0,
+        "translation": 52431
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the correct formula for the weighted average of three collections with averages a, b, c and sizes p, q, r respectively?",
+      "ms": {
+        "draft": 5815,
+        "critique": 8514,
+        "solver": 1728,
+        "form": 0,
+        "translation": 39483
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Rehmat scored 60% in internal tests, 64% in the project, and 73% in the final exam. The annual score is calculated with weights 3 : 2 : 5. What is her annual score?",
+      "ms": {
+        "draft": 5925,
+        "critique": 7163,
+        "solver": 1637,
+        "form": 1,
+        "translation": 40555
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the lemonade example, why is the concentration of jaggery in the mixture closer to 10% when mixing 500 mL of 10% and 200 mL of 20% lemonade?",
+      "ms": {
+        "draft": 5815,
+        "critique": 6164,
+        "solver": 2045,
+        "form": 1,
+        "translation": 121959
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student collected the data of monthly expenses of their family for three months and represented the data in a 100% stacked bar chart. Which of the following can they conclude from the chart?",
+      "ms": {
+        "draft": 15232,
+        "critique": 6586,
+        "solver": 2403,
+        "form": 3536,
+        "translation": 74039
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A farmer mixes three equal quantities of fertilisers, each containing nitrogen. What is the fraction of nitrogen in the mixture?",
+      "ms": {
+        "draft": 5925,
+        "critique": 8977,
+        "solver": 1648,
+        "form": 0,
+        "translation": 45916
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the brass example, if Batch A has 70% copper, Batch B has 50% copper, and Batch C has 45% copper, and the final mixture has 55% copper, what can we conclude about the weight of Batch C?",
+      "ms": {
+        "draft": 5815,
+        "critique": 10098,
+        "solver": 15251,
+        "form": 0,
+        "translation": 60395
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If all the weights in a weighted average are doubled, what happens to the weighted average?",
+      "ms": {
+        "draft": 5659,
+        "critique": 7460,
+        "solver": 1750,
+        "form": 0,
+        "translation": 42881
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the weights of data points in a weighted average are increased by a constant value, what happens to the weighted average?",
+      "ms": {
+        "draft": 3937,
+        "critique": 5191,
+        "solver": 725,
+        "form": 0,
+        "translation": 59802
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 3, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"What is the main purpose of a stacked bar chart?\",\"options\":[\"To compare the totals of"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In the example of mixing lemonade, if 200 mL of 10% jaggery lemonade is mixed with 300 mL of 20% jaggery lemonade, what is the concentration of jaggery in the mixture?",
+      "reason": "the critic finds option 2 correct, the key is 0"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "In the example of the badminton academy, why did Method 1 not give the correct average height?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A goldsmith melts three pieces of gold: 9 units at 12 varṇa, 5 units at 10 varṇa, and 17 units at 11 varṇa. What is the purity in varṇa of the combined gold?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the average rainfall per day in May, June, and July is 3.5 mm, 10 mm, and 8.7 mm respectively, which expression gives the combined average?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"(3.5 + 10 + 8.7)/3\" = 7.3999999999999995, but the key says 3.5"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Savitri scored 35 out of 50 in internal tests, 44 out of 60 in the project, and 80 out of 100 in the final exam. The annual score is calculated with weights 3 : 4 : 5. Which expression gives her annual score as a percentage?",
+      "reason": "options 0 and 1 say the same thing (\"(35×3 + 44×4 + 80×5)/(3 + 4 + 5) × 100\" / \"(35×3 + 44×4 + 80×5)/(3 + 4 + 5)\"); options 2 and 3 say the same thing (\"(35/50 × 3 + 44/60 × 4 + 80/100 × 5)/(3 + 4 + 5) × 100\" / \"(35/50 × 3 + 44/60 × 4 + 80/100 × 5)/(3 + 4 + 5)\"); ARITHMETIC MISMATCH — checkExpr \"((35/50)*3 + (44/60)*4 + (80/100)*5)/(3 + 4 + 5)*100\" = 75.27777777777777, but the key says 0.7"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the percentage of profit on the total sales if a stationery shop owner made `8000 with a 30% profit and `1000 with a 50% profit?",
+      "reason": "the critic finds option 2 correct, the key is 1"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the average daily distance travelled by a white stork over 21 days if it travelled 44.5 km per day for 20 days and 55 km on the 21st day?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the concentration of salt in a mixture made by combining 600 mL of a 5% salt solution with 300 mL of an 8% sugar solution?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a pani (spiced water) stall has 10 litres of pani with a spice level of 8%, how much water should be added to reduce the spice level to 2/3 of the original concentration?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"(8*10)/(2/3*8) - 10\" = 5, but the key says 15"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the final mark of Rashi if the marks for strength, flexibility, and agility are combined in the ratio 4:5:6 and she scored 60, 65, and 70 respectively?",
+      "reason": "the critic finds option 1 correct, the key is 2; option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In which case can we be sure that Fatima’s garden has more flowers in summer than Naveen’s garden?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following statements is true about a 100% stacked bar chart?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the run rate after 20 overs if the team scored 12 runs in the last over and had a run rate of 6 after 19 overs?",
+      "reason": "the critic finds option 0 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound; option 0 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the average price of a nylon shuttlecock if Yusuf's data includes 40(N), 108(N), 165(F), 116(F), and 105(N)?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for a chart that shows the proportions of different categories within a total?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main purpose of a 100% stacked bar chart?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which type of chart is used to compare proportions of data rather than absolute values?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the weights of a weighted average are increased by a constant value, what happens to the weighted average?",
+      "reason": "the critic finds option 3 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a farm, the cows made up 60%, the sheep 25%, and the chickens 15% of the animal population last year. If the population of all three animals decreased, which of the following is possible?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The weighted average of x1, x2, x3, ..., xn with weights w1, w2, w3, ..., wn is given by (w1x1 + w2x2 + ... + wnxn) / (w1 + w2 + ... + wn). If all the weights are increased by a constant value, say 1, what happens to the weighted average?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound; option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the run rate after 20 overs if the team scored 12 runs in the last over and the run rate after 19 overs was 6?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a pool is divided into 5 sections with lengths 4, 5, 6, 7, and 8 hastas and depths of 9, 7, 7, 3, and 2 hastas, what is the mean depth of the pool?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Shreyas holds 25 shares of a company at an average price of ₹150. He buys 10 shares at ₹30 each. What is the average price per share for him after the purchase?",
+      "reason": "the critic finds option 2 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What can we not infer from a 100% stacked bar chart?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following statements is true?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If in Case 1, Fatima’s garden had 42 flowers and Naveen’s garden also had 42 flowers, but Fatima’s garden had 50% of flowers in summer and Naveen’s had 40%, which garden had more flowers in summer?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What does a 100% stacked bar chart show?",
+      "reason": "near-duplicate of batch item \"What does a 100% stacked bar chart show?…\" (cosine 0.982 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

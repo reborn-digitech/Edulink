@@ -1,0 +1,668 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-18T23:45:45.978Z",
+  "finishedAt": "2026-10-18T23:50:59.626Z",
+  "seconds": 314,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp101.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Patterns in Mathematics",
+    "edition": "Reprint 2026-27",
+    "chunks": 11,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n6. C 𝑎 10 = 𝑎 + (10 − 1)𝑑 = 𝑝 + 9𝑞\n(C) 𝒑 + 𝟗𝒒",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n36. Ms. Sheela visited a store near her house and found that the glass jars are arranged\none above the other in a specific pattern.\nOn the top layer there are 3 jars. In the next layer there are 6 jars. In the 3rd layer from\nthe top there are 9 jars and so on till the 8th layer.\nOn the basis of the above situation answer the following questions.\n(i) Write an A.P whose terms represent the number of jars in different layers starting\nfrom top . Also, find the common difference. 1\n(ii) Is it possible to arrange 34 jars in a layer if this pattern is continued? Justify your\nanswer. 1\n(iii) (A) If there are ‘n’ number of rows in a layer then find the expression for finding the 2\ntotal number of jar"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 120948,
+      "in": 34,
+      "out": 33,
+      "rejects": 1,
+      "promptTokens": 27516,
+      "completionTokens": 7728
+    },
+    "critique": {
+      "calls": 42,
+      "ms": 248040,
+      "in": 33,
+      "out": 21,
+      "rejects": 12,
+      "promptTokens": 19873,
+      "completionTokens": 7615
+    },
+    "solver": {
+      "calls": 164,
+      "ms": 79805,
+      "in": 21,
+      "out": 15,
+      "rejects": 6,
+      "promptTokens": 34984,
+      "completionTokens": 1958
+    },
+    "form": {
+      "calls": 10,
+      "ms": 28716,
+      "in": 15,
+      "out": 5,
+      "rejects": 10,
+      "promptTokens": 2809,
+      "completionTokens": 956
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 3830,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 154879,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11551,
+      "completionTokens": 5167
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a number sequence mentioned in the passage?",
+      "ms": {
+        "draft": 3257,
+        "critique": 4633,
+        "solver": 1235,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a sequence that can be visualised using pictures?",
+      "ms": {
+        "draft": 3257,
+        "critique": 4834,
+        "solver": 1918,
+        "form": 1904
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage mentions that 36 is both a triangular number and a square number. Which of the following pictures best represents this?",
+      "ms": {
+        "draft": 3257,
+        "critique": 6003,
+        "solver": 979
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage describes a pattern where the sum of the first n odd numbers is equal to n squared. What is the sum of the first 10 odd numbers?",
+      "ms": {
+        "draft": 3257,
+        "critique": 5634,
+        "solver": 1944,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a shape sequence that is related to a number sequence?",
+      "ms": {
+        "draft": 3420,
+        "critique": 5101,
+        "solver": 1096,
+        "form": 4095
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many line segments are there in the third shape of the Koch Snowflake sequence?",
+      "ms": {
+        "draft": 3420,
+        "critique": 4722,
+        "solver": 847
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which sequence is formed by the number of sides in the sequence of Regular Polygons?",
+      "ms": {
+        "draft": 3420,
+        "critique": 6667,
+        "solver": 9891,
+        "form": 4372
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the number of jars in each layer of a glass jar arrangement follows the pattern 3, 6, 9, 12, ..., what will be the total number of jars in 8 layers?",
+      "ms": {
+        "draft": 3420,
+        "critique": 6585
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which sequence is formed by adding counting numbers up and down, such as 1, 1 + 2 + 1, 1 + 2 + 3 + 2 + 1, …?",
+      "ms": {
+        "draft": 5111,
+        "critique": 8115
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What sequence is formed when you add the triangular numbers 1, 3, 6, 10, 15, … and the next triangular number?",
+      "ms": {
+        "draft": 5111,
+        "critique": 6641,
+        "solver": 1127
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the sum of the first n triangular numbers is given by the formula n(n + 1)(n + 2)/6, what is the sum of the first 3 triangular numbers?",
+      "ms": {
+        "draft": 3420,
+        "critique": 5734,
+        "solver": 14168
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you start with 1 and keep multiplying by 2, what sequence do you get?",
+      "ms": {
+        "draft": 5111,
+        "critique": 6150,
+        "solver": 1189,
+        "form": 4109
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What happens when you add the triangular numbers 1, 3, 6, 10, 15, … by multiplying each by 6 and adding 1?",
+      "ms": {
+        "draft": 5111,
+        "critique": 4825
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the sum of the first 10 odd numbers?",
+      "ms": {
+        "draft": 5111,
+        "critique": 6621,
+        "solver": 9043
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If you add 1 to each term in the sequence 1, 3, 7, 15, 31, …, what sequence do you get?",
+      "ms": {
+        "draft": 5111,
+        "critique": 6314,
+        "solver": 7288,
+        "form": 2134
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the sequence 1, 4, 9, 16, 25, ...?",
+      "ms": {
+        "draft": 2742,
+        "critique": 5775
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the sequence 1, 3, 6, 10, 15, ...?",
+      "ms": {
+        "draft": 2742,
+        "critique": 6382
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the sequence 1, 8, 27, 64, 125, ...?",
+      "ms": {
+        "draft": 2742,
+        "critique": 7487
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the sum of the first 10 odd numbers?",
+      "ms": {
+        "draft": 2742,
+        "critique": 5980
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which sequence is formed by adding counting numbers up and down, like 1, 1 + 2 + 1, 1 + 2 + 3 + 2 + 1, ...?",
+      "ms": {
+        "draft": 2742,
+        "critique": 7560
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which sequence is formed by adding the triangular numbers up?",
+      "ms": {
+        "draft": 2742,
+        "critique": 6665
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a shape sequence has 10 shapes, and the number of sides increases by 1 for each shape, what is the total number of sides in all shapes combined?",
+      "ms": {
+        "draft": 3479,
+        "critique": 7163
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the Koch Snowflake sequence, the number of line segments follows the pattern 3, 12, 48, ... What is the next number in the sequence?",
+      "ms": {
+        "draft": 3479,
+        "critique": 7768
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A sequence of shapes is created where each shape has 3 more sides than the previous one. The first shape has 3 sides. What is the total number of sides in the first 10 shapes?",
+      "ms": {
+        "draft": 3479,
+        "critique": 6072
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which number sequence is formed by counting the number of sides in the sequence of regular polygons?",
+      "ms": {
+        "draft": 3479,
+        "critique": 7975,
+        "solver": 9652,
+        "form": 3075
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 3224,
+        "critique": 6200,
+        "solver": 852,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the sequence of Stacked Squares, the number of small squares in each shape follows a pattern. If the first shape has 1 square, the second has 4, and the third has 9, what is the total number of squares in the first 10 shapes?",
+      "ms": {
+        "draft": 3479,
+        "critique": 5179,
+        "solver": 11914,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is the pattern of adding odd numbers to get square numbers significant?",
+      "ms": {
+        "draft": 3224,
+        "critique": 6745,
+        "solver": 10678
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the pattern of triangular numbers?",
+      "ms": {
+        "draft": 3257,
+        "critique": 4405,
+        "solver": 980,
+        "form": 2622,
+        "translation": 38432
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the pattern of the number sequence 1, 3, 5, 7, 9, ... continues, what will be the 10th term?",
+      "ms": {
+        "draft": 3257,
+        "critique": 7169,
+        "solver": 13787,
+        "form": 0,
+        "translation": 26968
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the number sequence formed by counting the number of little squares in each shape of the Stacked Squares sequence?",
+      "ms": {
+        "draft": 3420,
+        "critique": 5218,
+        "solver": 1593,
+        "form": 3855,
+        "translation": 40633
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a number sequence that is also a square number?",
+      "ms": {
+        "draft": 3224,
+        "critique": 7046,
+        "solver": 1996,
+        "form": 2696,
+        "translation": 26406
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the pattern of the sequence 1, 3, 6, 10, 15 continues, what is the next number in the sequence?",
+      "ms": {
+        "draft": 3224,
+        "critique": 6256,
+        "solver": 14074,
+        "form": 1825,
+        "translation": 18695
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a number sequence mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a sequence that can be visualised using pictures?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The passage mentions that 36 is both a triangular number and a square number. Which of the following pictures best represents this?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The passage describes a pattern where the sum of the first n odd numbers is equal to n squared. What is the sum of the first 10 odd numbers?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a shape sequence that is related to a number sequence?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How many line segments are there in the third shape of the Koch Snowflake sequence?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which sequence is formed by the number of sides in the sequence of Regular Polygons?",
+      "reason": "options 2 and 3 say the same thing (\"Counting numbers starting from 3\" / \"3: Counting numbers starting from 4\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the number of jars in each layer of a glass jar arrangement follows the pattern 3, 6, 9, 12, ..., what will be the total number of jars in 8 layers?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which sequence is formed by adding counting numbers up and down, such as 1, 1 + 2 + 1, 1 + 2 + 3 + 2 + 1, …?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What sequence is formed when you add the triangular numbers 1, 3, 6, 10, 15, … and the next triangular number?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the sum of the first n triangular numbers is given by the formula n(n + 1)(n + 2)/6, what is the sum of the first 3 triangular numbers?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If you start with 1 and keep multiplying by 2, what sequence do you get?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses the pattern with triangular numbers, which are form…\"); distractor 1's reason is not a one-line misconception (\"Confuses the pattern with square numbers, which are formed b…\"); distractor 2's reason is not a one-line misconception (\"Confuses the pattern with cubic numbers, which are formed by…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What happens when you add the triangular numbers 1, 3, 6, 10, 15, … by multiplying each by 6 and adding 1?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the sum of the first 10 odd numbers?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If you add 1 to each term in the sequence 1, 3, 7, 15, 31, …, what sequence do you get?",
+      "reason": "options 0 and 2 say the same thing (\"2, 4, 8, 16, 32, ...\" / \"2: 2, 4, 8, 16, 32, ...\"); option 1 repeats the stem's wording (\"1, 3, 7, 15, 31, ...\")"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the rule for forming the sequence of regular polygons in the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the sequence 1, 4, 9, 16, 25, ...?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the sequence 1, 3, 6, 10, 15, ...?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the sequence 1, 8, 27, 64, 125, ...?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the sum of the first 10 odd numbers?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which sequence is formed by adding counting numbers up and down, like 1, 1 + 2 + 1, 1 + 2 + 3 + 2 + 1, ...?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which sequence is formed by adding the triangular numbers up?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a shape sequence has 10 shapes, and the number of sides increases by 1 for each shape, what is the total number of sides in all shapes combined?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the Koch Snowflake sequence, the number of line segments follows the pattern 3, 12, 48, ... What is the next number in the sequence?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A sequence of shapes is created where each shape has 3 more sides than the previous one. The first shape has 3 sides. What is the total number of sides in the first 10 shapes?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which number sequence is formed by counting the number of sides in the sequence of regular polygons?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Confuses the main idea of the passage with a narrow definiti…\"); distractor 3's reason is not a one-line misconception (\"Fails to recognize the practical applications of mathematics…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the sequence of Stacked Squares, the number of small squares in each shape follows a pattern. If the first shape has 1 square, the second has 4, and the third has 9, what is the total number of squares in the first 10 shapes?",
+      "reason": "checkExpr \"385\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "According to the passage, why is the pattern of adding odd numbers to get square numbers significant?",
+      "reason": "after redrafting distractors 1, 2, 3: the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

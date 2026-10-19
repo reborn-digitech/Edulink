@@ -928,6 +928,8 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "pass.refund.failed": "audit.passRefundFailed",
   "pass.ask.guardian": "audit.passAskGuardian",
   // end plans-pay
+  // chapter-titles (19 Oct 2026): a practice chapter named "Chapter N" or a garbled heading renamed to its recovered title (scripts/corpus-titles.ts --topics).
+  "operator.quizTopic.rename": "audit.operatorQuizTopicRename",
 };
 
 export function actionKey(action: string): TranslationKey | null {

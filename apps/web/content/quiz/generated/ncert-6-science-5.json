@@ -10,60 +10,60 @@
   "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
   "translations": {
     "hi": {
-      "name": "लंबाई और गति का मापन। इस अध्याय में मानक इकाइयों के उपयोग से लंबाई के मापन और विभिन्न प्रकार की गति का वर्णन किया गया है।",
-      "summary": "इस अध्याय में मानक इकाइयों के उपयोग से लंबाई के मापन और विभिन्न प्रकार की गति का वर्णन किया गया है।"
+      "name": "लंबाई और गति का मापन। इस अध्याय में मानक इकाइयों के उपयोग से लंबाई के मापन और विभिन्न प्रकार की गति के वर्णन के बारे में बताया गया है।",
+      "summary": "इस अध्याय में मानक इकाइयों के उपयोग से लंबाई के मापन और विभिन्न प्रकार की गति के वर्णन के बारे में बताया गया है।"
     },
     "mr": {
-      "name": "लांबी आणि गतीचे मोजणे. या अध्यायात मानक एककांच्या वापरामुळे लांबी मोजणे आणि विविध प्रकारच्या गतींचे वर्णन केले आहे.",
-      "summary": "या अध्यायात मानक एककांच्या वापरामुळे लांबी मोजणे आणि विविध प्रकारच्या गतींचे वर्णन केले आहे."
+      "name": "लांबी आणि गतीचे मोजणे. हा अध्याय मानक एककांच्या वापराने लांबी मोजण्याच्या आणि विविध प्रकारच्या गतींच्या वर्णनाबद्दल सांगतो.",
+      "summary": "हा अध्याय मानक एककांच्या वापराने लांबी मोजण्याच्या आणि विविध प्रकारच्या गतींच्या वर्णनाबद्दल सांगतो."
     }
   },
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-11T19:55:36.691Z",
+  "generatedAt": "2026-10-19T01:50:23.939Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following is a unit of length?",
+      "stem": "Which unit is most suitable for measuring the thickness of a single page of a notebook?",
       "choices": [
-        "Kilogram",
-        "Second",
+        "Kilometre",
         "Metre",
-        "Newton"
+        "Centimetre",
+        "Millimetre"
       ],
-      "answerIndex": 2,
-      "solution": "Metre is the standard unit of length in the SI system. Kilogram is a unit of mass, second is a unit of time, and newton is a unit of force.",
+      "answerIndex": 3,
+      "solution": "The thickness of a single page of a notebook is very small, so millimetres are the most suitable unit. Kilometre and metre are too large, and centimetre is also not precise enough for such a small measurement.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन लंबाई का इकाई है?",
+          "stem": "एक नोटबुक के एक पृष्ठ की मोटाई मापने के लिए कौन सी इकाई सबसे उपयुक्त है?",
           "choices": [
-            "किलोग्राम",
-            "सेकंड",
+            "किलोमीटर",
             "मीटर",
-            "न्यूटन"
+            "सेंटीमीटर",
+            "मिलीमीटर"
           ],
-          "solution": "मीटर एसआई प्रणाली में मानक लंबाई की इकाई है। किलोग्राम द्रव्यमान की इकाई है, सेकंड समय की इकाई है और न्यूटन बल की इकाई है।",
+          "solution": "एक नोटबुक के एक पृष्ठ की मोटाई बहुत छोटी होती है, इसलिए मिलीमीटर सबसे उपयुक्त इकाई है। किलोमीटर और मीटर बहुत बड़ी इकाइयां हैं, और सेंटीमीटर भी इतनी छोटी माप के लिए पर्याप्त निश्चित नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi scientific terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terms for units of measurement.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते लांबीचे एकक आहे?",
+          "stem": "एका नोटबुकच्या एका पानाच्या मोठेपणाचे मोजण्यासाठी कोणता एकक सर्वात उपयुक्त आहे?",
           "choices": [
-            "किलोग्राम",
-            "सेकंद",
+            "किलोमीटर",
             "मीटर",
-            "न्यूटन"
+            "सेंटीमीटर",
+            "मिलीमीटर"
           ],
-          "solution": "मीटर हे एसआय प्रणालीमधील लांबीचे मानक एकक आहे. किलोग्राम हे द्रव्यमानाचे एकक आहे, सेकंद हे काळाचे एकक आहे आणि न्यूटन हे बलाचे एकक आहे.",
+          "solution": "एका नोटबुकच्या एका पानाच्या मोठेपणाचे खूप लहान असते, म्हणून मिलीमीटर हे सर्वात उपयुक्त एकक आहे. किलोमीटर आणि मीटर खूप मोठे असतात, आणि सेंटीमीटर देखील अशा लहान मोजणीसाठी पर्याप्त अचूक नसते.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for units of measurement.",
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains in the same position. The distractors remain incorrect, and the technical terms used are standard in Marathi textbooks.",
           "flag": null
         }
       },
@@ -72,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Chooses a unit of mass",
-        "Chooses a unit of time",
-        null,
-        "Confuses force unit with length unit"
+        "Confuses large units with small measurements",
+        "Confuses large units with small measurements",
+        "Chooses a unit that is not precise enough for small measurements",
+        null
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        3,
+        3,
+        3,
+        3,
+        3
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed, with clear and accurate explanations for each distractor. The correct answer is clearly the SI unit of length.",
+      "critique": "The solution correctly identifies millimetre as the most suitable unit for measuring the thickness of a single page. The reasoning aligns with the physical scale of the measurement and the precision required.",
       "sources": [
         {
           "document": "ncert/6/science/fecu105.pdf",
@@ -111,47 +111,47 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T19:55:36.691Z",
+      "generatedAt": "2026-10-19T01:50:23.939Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 1,
-      "stem": "Which of the following is an example of a flexible measuring device?",
+      "stem": "Which of the following is an example of circular motion?",
       "choices": [
-        "A 15 cm scale",
-        "A metre scale",
-        "A tape measure",
-        "A ruler"
+        "A ball rolling on the ground",
+        "A pendulum swinging back and forth",
+        "A car moving on a straight road",
+        "A merry-go-round rotating"
       ],
-      "answerIndex": 2,
-      "solution": "The correct answer is a tape measure because it is made of a flexible material that can bend and conform to different shapes. A 15 cm scale, a metre scale, and a ruler are all rigid and cannot be bent, making them unsuitable for measuring curved or irregular surfaces.",
+      "answerIndex": 3,
+      "solution": "A merry-go-round rotating is an example of circular motion, where the objects move in a circular path. A ball rolling on the ground is linear motion, a pendulum swinging is oscillatory motion, and a car moving on a straight road is linear motion.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन एक लचीले मापन यंत्र का उदाहरण है?",
+          "stem": "निम्नलिखित में से कौन-सा वृत्तीय गति का उदाहरण है?",
           "choices": [
-            "15 सेमी का पैमाना",
-            "एक मीटर पैमाना",
-            "एक टेप मापनी",
-            "एक छात्र पैमाना"
+            "जमीन पर लुढ़कती गेंद",
+            "आगे-पीछे झूलता लोलक",
+            "सीधी सड़क पर चलती कार",
+            "घूमता घूमता घोड़ा"
           ],
-          "solution": "सही उत्तर टेप मापनी है क्योंकि यह एक लचीले सामग्री से बनी होती है जो विभिन्न आकृतियों में मुड़ सकती है। 15 सेमी का पैमाना, एक मीटर पैमाना और एक छात्र पैमाना सभी कठोर होते हैं और मुड़ नहीं सकते, जिसके कारण वे वक्र या अनियमित सतहों के मापन के लिए उपयुक्त नहीं होते।",
+          "solution": "घूमता घोड़ा घूमता घोड़ा वृत्तीय गति का उदाहरण है, जहां वस्तुएं वृत्ताकार पथ पर गति करती हैं। जमीन पर लुढ़कती गेंद रेखीय गति है, लोलक झूलता है जो दोलनी गति है, और सीधी सड़क पर चलती कार रेखीय गति है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The term 'छात्र पैमाना' (student scale) is a bit unusual but not incorrect. 'टेप मापनी' is the standard term for 'tape measure'.",
+          "critique": "Hindi translation accurately conveys the original meaning with appropriate terminology. Option 4 is correctly identified as the answer. All distractors remain incorrect as in the original.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते एक लचका वापराचे उदाहरण आहे?",
+          "stem": "खालीलपैकी कोणते वृत्तीय गतीचे उदाहरण आहे?",
           "choices": [
-            "15 सेमी अंकला",
-            "एक मीटर अंकला",
-            "टेप मोजणारा",
-            "एक रुळ"
+            "जमिनीवर फिरणारा गोला",
+            "आगळी-मागी झूकणारा दोलक",
+            "सरळ मार्गावर चालणारा कार",
+            "फिरणारा मरी-गो-राउंड"
           ],
-          "solution": "बरोबर उत्तर टेप मोजणारा आहे कारण तो लचका सामग्रीत बनलेला असतो जो विविध आकृतींना अनुसरू शकतो. 15 सेमी अंकला, एक मीटर अंकला आणि रुळ सर्व अचल असतात आणि त्यांना मोडता येत नाही, ज्यामुळे ते वक्र किंवा अनियमित सतहींचे मोजण्यास अयोग्य ठरतात.",
+          "solution": "मरी-गो-राउंड फिरणे ही वृत्तीय गतीचे उदाहरण आहे, जेथे वस्तू वृत्ताकार मार्गावर गती करतात. जमिनीवर फिरणारा गोला रेषीय गती आहे, दोलक झूकणे दोलन गती आहे आणि सरळ मार्गावर चालणारा कार रेषीय गती आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
@@ -162,356 +162,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses rigid and flexible devices",
-        "Confuses rigid and flexible devices",
-        null,
-        "Believes that all straight measuring tools are the same and do not recognize flexibility as a key feature"
+        "Describes linear motion",
+        "Describes oscillatory motion",
+        "Describes linear motion",
+        null
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        3,
+        3,
+        3,
+        3,
+        3
       ],
       "levelFlag": null,
-      "critique": "The solution is correct. A tape measure is indeed flexible, while the other options are rigid. The author's reasoning aligns with the correct understanding of the question.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu105.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 5: Measurement of Length and Motion",
-            "5.3 Correct Way of Measuring Length"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu105.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 5: Measurement of Length and Motion",
-            "5.3 Correct Way of Measuring Length"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu105.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 5: Measurement of Length and Motion",
-            "5.4 Measuring the Length of a Curved Line"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu105.pdf",
-          "ordinal": 7,
-          "pageStart": 9,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 5: Measurement of Length and Motion",
-            "5.5 Describing Position"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu105.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 5: Measurement of Length and Motion",
-            "5.5 Describing Position"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T19:55:36.691Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "An object is said to be in motion if its position changes with respect to a reference point with time. What is the term used to describe the point or object that is used to determine if an object is in motion or at rest?",
-      "choices": [
-        "Reference point",
-        "Fixed point",
-        "Motion point",
-        "Rest point"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 'Reference point' because it is the standard scientific term used to describe the point or object used to determine if an object is in motion or at rest. 'Fixed point' is not a standard term in this context, 'Motion point' and 'Rest point' are not recognized terms for this concept in physics.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "किसी वस्तु को गति में कहा जाता है यदि उसकी स्थिति समय के साथ एक संदर्भ बिंदु के सापेक्ष बदल जाती है। वस्तु के गति या विराम में होने का निर्धारण करने के लिए उपयोग किए जाने वाले बिंदु या वस्तु के लिए उपयोग किया जाने वाला शब्द क्या है?",
-          "choices": [
-            "संदर्भ बिंदु",
-            "स्थिर बिंदु",
-            "गति बिंदु",
-            "विराम बिंदु"
-          ],
-          "solution": "सही उत्तर 'संदर्भ बिंदु' है क्योंकि यह विज्ञान में गति या विराम में होने का निर्धारण करने के लिए उपयोग किए जाने वाले बिंदु या वस्तु के लिए मानक वैज्ञानिक शब्द है। 'स्थिर बिंदु' इस संदर्भ में एक मानक शब्द नहीं है, 'गति बिंदु' और 'विराम बिंदु' भौतिकी में इस अवधारणा के लिए मान्य शब्द नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक वस्तु गतीत असते जेव्हा तिचे स्थान वेळानुसार संदर्भ बिंदूशी बदलते. वस्तु गतीत असलेली किंवा विरामात असलेली आहे की नाही हे ठरवण्यासाठी वापरल्या जाणार्‍या बिंदू किंवा वस्तुचे नाव काय आहे?",
-          "choices": [
-            "संदर्भ बिंदू",
-            "निश्चित बिंदू",
-            "गती बिंदू",
-            "विराम बिंदू"
-          ],
-          "solution": "हे बरोबर उत्तर 'संदर्भ बिंदू' आहे कारण ते वस्तु गतीत असलेली किंवा विरामात असलेली आहे की नाही हे ठरवण्यासाठी वापरल्या जाणार्‍या बिंदू किंवा वस्तुचे मानक वैज्ञानिक शब्द आहे. 'निश्चित बिंदू' हा या संदर्भात मानक शब्द नाही, 'गती बिंदू' आणि 'विराम बिंदू' हे भौतिकीत या संकल्पनेसाठी ओळखले जाणारे शब्द नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses 'reference point' with 'fixed point'",
-        "Confuses 'reference point' with 'motion point'",
-        "Confuses 'reference point' with 'rest point'"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed and the correct answer is clearly supported by the definition provided. The distractors are plausible but incorrect, and the author's reasoning for why they are wrong aligns with common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu105.pdf",
-          "ordinal": 9,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 5: Measurement of Length and Motion",
-            "5.6 Moving Things"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu105.pdf",
-          "ordinal": 10,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 5: Measurement of Length and Motion",
-            "5.7 Types of Motion"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu105.pdf",
-          "ordinal": 11,
-          "pageStart": 14,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 5: Measurement of Length and Motion",
-            "5.7 Types of Motion"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu105.pdf",
-          "ordinal": 12,
-          "pageStart": 18,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 5: Measurement of Length and Motion",
-            "5.7 Types of Motion",
-            "Summary"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T19:55:36.691Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What type of motion is described as movement along a straight path?",
-      "choices": [
-        "Circular motion",
-        "Oscillatory motion",
-        "Linear motion",
-        "Periodic motion"
-      ],
-      "answerIndex": 2,
-      "solution": "The correct answer is linear motion because it refers to movement along a straight path. Circular motion involves movement in a circle, oscillatory motion involves back-and-forth movement, and periodic motion refers to any motion that repeats at regular intervals, none of which describe movement along a straight line.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "किस प्रकार की गति को सीधी पथ के साथ गति के रूप में वर्णित किया जाता है?",
-          "choices": [
-            "वृत्तीय गति",
-            "दोलनी गति",
-            "रैखिक गति",
-            "आवर्ती गति"
-          ],
-          "solution": "सही उत्तर रैखिक गति है क्योंकि यह सीधी पथ के साथ गति को संदर्भित करती है। वृत्तीय गति में वृत्त में गति होती है, दोलनी गति में आगे-पीछे गति होती है, और आवर्ती गति का अर्थ किसी भी गति से होता है जो नियमित अंतराल पर दोहराई जाती है, जिनमें से कोई भी सीधी रेखा के साथ गति का वर्णन नहीं करती।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कोणत्या गतीचे वर्णन सरळ मार्गावरील गती म्हणून केले जाते?",
-          "choices": [
-            "वर्तुळाकार गती",
-            "दोलनी गती",
-            "रेषीय गती",
-            "आवर्ती गती"
-          ],
-          "solution": "बरोबर उत्तर रेषीय गती आहे कारण ती सरळ मार्गावरील गतीला संदर्भित करते. वर्तुळाकार गती वर्तुळातील गतीला संदर्भित करते, दोलनी गती आगळ्या-वळगळ्या गतीला संदर्भित करते आणि आवर्ती गती कोणतीही नियमित अंतरावर पुनरावृत्ती होणाऱ्या गतीला संदर्भित करते, ज्यापैकी कोणतीही सरळ रेषेवरील गतीला संदर्भित करत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Describes circular movement",
-        "Describes back-and-forth movement",
-        null,
-        "Describes repeated movement"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the correct answer is logically derived from the definition of linear motion. The distractors are all valid types of motion that are distinct from linear motion, and the author's reasons for rejecting them align with common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu105.pdf",
-          "ordinal": 9,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 5: Measurement of Length and Motion",
-            "5.6 Moving Things"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu105.pdf",
-          "ordinal": 10,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 5: Measurement of Length and Motion",
-            "5.7 Types of Motion"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu105.pdf",
-          "ordinal": 11,
-          "pageStart": 14,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 5: Measurement of Length and Motion",
-            "5.7 Types of Motion"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu105.pdf",
-          "ordinal": 12,
-          "pageStart": 18,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 5: Measurement of Length and Motion",
-            "5.7 Types of Motion",
-            "Summary"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T19:55:36.691Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If the length of a leaf is measured with a 15-cm scale and the measurement is 12.5 cm, what unit should be used to express this length?",
-      "choices": [
-        "mm",
-        "cm",
-        "m",
-        "km"
-      ],
-      "answerIndex": 1,
-      "solution": "The length of a leaf is usually small, so centimeters are the most appropriate unit. The measurement of 12.5 cm is already in centimeters, so no conversion is needed.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक पत्ती की लंबाई 15 सेमी के पैमाने से मापी जाती है और माप 12.5 सेमी है, तो इस लंबाई को व्यक्त करने के लिए कौन-सी इकाई का उपयोग किया जाना चाहिए?",
-          "choices": [
-            "मिमी",
-            "सेमी",
-            "मी",
-            "किमी"
-          ],
-          "solution": "एक पत्ती की लंबाई सामान्यतः छोटी होती है, इसलिए सेंटीमीटर सबसे उपयुक्त इकाई है। 12.5 सेमी की माप पहले से ही सेंटीमीटर में है, इसलिए कोई रूपांतरण की आवश्यकता नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Indian educational terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "पानाची लांबी 15-सेंमी नाप वापरून मोजली गेली आणि मोजण्याचा निकाल 12.5 सेंमी आहे, तर ही लांबी व्यक्त करण्यासाठी कोणता एकक वापरावा?",
-          "choices": [
-            "मि.मी.",
-            "सेंमी.",
-            "मी.",
-            "किमी."
-          ],
-          "solution": "पानाची लांबी सामान्यतः लहान असते, म्हणून सेंमी हे सर्वात उपयुक्त एकक आहे. 12.5 सेंमी ची मोजणी आधीच सेंमी मध्ये आहे, म्हणून बदल करण्याची आवश्यकता नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate use of Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses millimeters with centimeters due to similar prefixes",
-        null,
-        "Confuses centimeters with meters, thinking that larger units are always used for measurements",
-        "Chooses a larger unit for a small measurement"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is clearly cm, and the reasoning aligns with the typical misconceptions students might have about unit selection.",
+      "critique": "The correct answer is 3, as a merry-go-round rotating is a clear example of circular motion. The other options are correctly identified as linear or oscillatory motion. The reasoning is sound and matches the misconceptions students might have.",
       "sources": [
         {
           "document": "ncert/6/science/fecu105.pdf",
@@ -537,49 +201,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T19:55:36.691Z",
+      "generatedAt": "2026-10-19T01:50:23.939Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "A child is playing on a swing. What type of motion is the child experiencing?",
+      "difficulty": 1,
+      "stem": "Which of the following is the SI unit of length?",
       "choices": [
-        "Linear motion",
-        "Circular motion",
-        "Oscillatory motion",
-        "Periodic motion"
+        "millimetre",
+        "centimetre",
+        "kilometre",
+        "metre"
       ],
-      "answerIndex": 2,
-      "solution": "The correct answer is 'Oscillatory motion' because the child on a swing moves back and forth around a fixed point, which is the defining characteristic of oscillatory motion. Linear motion involves movement in a straight line, circular motion involves movement in a circle, and while periodic motion refers to motion that repeats, it is a broader category that includes oscillatory motion but is not as specific.",
+      "answerIndex": 3,
+      "solution": "The SI unit of length is defined as the metre, which is the standard unit used in scientific measurements. Millimetre, centimetre, and kilometre are all derived units of length but are not the base SI unit. The metre is universally accepted as the fundamental unit for length in the International System of Units.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक बच्चा एक झूले पर खेल रहा है। बच्चा किस प्रकार की गति का अनुभव कर रहा है?",
+          "stem": "निम्नलिखित में से कौन-सा लंबाई का एसआई मात्रक है?",
           "choices": [
-            "रैखिक गति",
-            "वृत्तीय गति",
-            "दोलनी गति",
-            "आवर्ती गति"
+            "मिलीमीटर",
+            "सेंटीमीटर",
+            "किलोमीटर",
+            "मीटर"
           ],
-          "solution": "सही उत्तर 'दोलनी गति' है क्योंकि झूले पर बच्चा एक निश्चित बिंदु के आसपास आगे-पीछे गति करता है, जो दोलनी गति की परिभाषा है। रैखिक गति सीधी रेखा में गति को कहते हैं, वृत्तीय गति वृत्त में गति को कहते हैं, और आवर्ती गति का अर्थ गति होता है जो दोहराई जाती है, लेकिन यह एक व्यापक श्रेणी है जो दोलनी गति को भी शामिल करती है लेकिन दोलनी गति की तुलना में कम विशिष्ट नहीं होती।",
+          "solution": "लंबाई का एसआई मात्रक मीटर के रूप में परिभाषित किया गया है, जो वैज्ञानिक मापन में उपयोग किया जाने वाला मानक मात्रक है। मिलीमीटर, सेंटीमीटर और किलोमीटर लंबाई के सभी व्युत्पन्न मात्रक हैं लेकिन आधार एसआई मात्रक नहीं हैं। मीटर अंतरराष्ट्रीय मात्रक प्रणाली में लंबाई के आधार मात्रक के रूप में वैश्विक रूप से स्वीकृत है।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for physical concepts.",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi technical terms used.",
           "flag": null
         },
         "mr": {
-          "stem": "एका मुलाने झोक्यावर खेळत असताना, मुलाला कोणत्या प्रकारचा गती अनुभव होत आहे?",
+          "stem": "खालीलपैकी कोणते लांबीचे SI एकक आहे?",
           "choices": [
-            "रेषीय गती",
-            "वृत्तीय गती",
-            "दोलनी गती",
-            "आवर्ती गती"
+            "मिलीमीटर",
+            "सेंटीमीटर",
+            "किलोमीटर",
+            "मीटर"
           ],
-          "solution": "बरोबर उत्तर 'दोलनी गती' आहे कारण झोक्यावर असलेले मुले फिक्स बिंदूच्या आजूबाजूने आगलबगल करत असतात, जे दोलनी गतीचे वैशिष्ट्य आहे. रेषीय गतीमध्ये सीधा रेखा चालना असते, वृत्तीय गतीमध्ये वर्तुळाकार गती असते आणि आवर्ती गती असलेल्या गतीमध्ये गती पुनरावृत्ती होते, परंतु ती दोलनी गतीच्या तुलनेत सामान्य असते.",
+          "solution": "लांबीचे SI एकक मीटर म्हणून व्यवस्थित केले गेले आहे, जे वैज्ञानिक मोजणीसाठी वापरले जाणारे मानक एकक आहे. मिलीमीटर, सेंटीमीटर आणि किलोमीटर या सर्व लांबीचे व्युत्पन्न एकक आहेत परंतु ते मूलभूत SI एकक नाहीत. मीटर आंतरराष्ट्रीय एकक प्रणालीमध्ये लांबीसाठी मूलभूत एकक म्हणून स्वीकृत आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for SI units.",
           "flag": null
         }
       },
@@ -588,20 +252,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Describes straight-line movement",
-        "Describes circular movement",
-        null,
-        "Describes repeated movement"
+        "confuses SI units with other units",
+        "confuses SI units with other units",
+        "confuses SI units with other units",
+        null
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        3,
+        3,
+        3,
+        3,
+        3
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 'Oscillatory motion' as a swing moves back and forth about a fixed point. The other options are incorrect: linear motion is straight-line, circular motion is around a circle, and periodic motion, while related, is a broader category that includes oscillatory motion but is not as specific.",
+      "critique": "The correct answer is 'metre' as it is the SI unit of length. The other options are metric units but not the SI unit. The author's reasoning is accurate and aligns with the correct solution.",
       "sources": [
         {
           "document": "ncert/6/science/fecu105.pdf",
@@ -646,49 +310,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T19:55:36.691Z",
+      "generatedAt": "2026-10-19T01:50:23.939Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If a student measures the length of a table using their handspan and finds it to be 13 handspans, what can be concluded about the measurement?",
+      "difficulty": 1,
+      "stem": "What is the motion called when an object moves along a straight line?",
       "choices": [
-        "The measurement is accurate and consistent",
-        "The measurement is not reliable due to different handspan sizes",
-        "The measurement is only valid for that student",
-        "The measurement is the same for all students"
+        "circular motion",
+        "oscillatory motion",
+        "linear motion",
+        "periodic motion"
       ],
-      "answerIndex": 1,
-      "solution": "Using handspan as a measurement tool can lead to inconsistent results because individuals have different hand sizes, making the measurement unreliable. The correct answer is that the measurement is not reliable due to different handspan sizes. Other options are incorrect because the measurement's accuracy and consistency depend on the unit used, and it would not be the same for all students.",
+      "answerIndex": 2,
+      "solution": "Linear motion refers to the movement of an object along a straight path. Circular motion involves movement in a circle, oscillatory motion is a back-and-forth movement, and periodic motion repeats at regular intervals. Therefore, the correct answer is linear motion.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि कोई छात्र एक मेज की लंबाई अपने हाथ के फैलाव से मापता है और इसे 13 हाथ के फैलाव पाता है, तो माप के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "stem": "जब कोई वस्तु सीधी रेखा के साथ गति करती है तो इस गति को क्या कहते हैं?",
           "choices": [
-            "माप सटीक और संगत है",
-            "माप विभिन्न हाथ के फैलाव के कारण अविश्वसनीय है",
-            "माप केवल उस छात्र के लिए वैध है",
-            "माप सभी छात्रों के लिए एक समान है"
+            "वृत्तीय गति",
+            "दोलनी गति",
+            "रैखिक गति",
+            "आवर्ती गति"
           ],
-          "solution": "हाथ के फैलाव के रूप में माप के उपयोग से असंगत परिणाम हो सकते हैं क्योंकि व्यक्तियों के हाथ के फैलाव अलग-अलग होते हैं, जिसके कारण माप अविश्वसनीय हो जाता है। सही उत्तर यह है कि माप विभिन्न हाथ के फैलाव के कारण अविश्वसनीय है। अन्य विकल्प गलत हैं क्योंकि माप की सटीकता और संगतता इकाई के आधार पर होती है, और यह सभी छात्रों के लिए एक समान नहीं होगा।",
+          "solution": "रैखिक गति किसी वस्तु के सीधी रेखा के साथ गति को कहते हैं। वृत्तीय गति वृत्त में गति को दर्शाती है, दोलनी गति पीछे-आगे गति को दर्शाती है और आवर्ती गति नियमित अंतराल पर दोहराई जाती है। इसलिए सही उत्तर रैखिक गति है।",
           "imageAlt": null,
-          "critique": "The translation accurately reflects the original meaning, maintains the correct answer position, keeps distractors invalid, and uses appropriate Hindi terminology.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are standard in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एका विद्यार्थ्याने एका मेजाची लांबी त्याच्या हाताच्या अंतराने मोजली आणि ती 13 हातांच्या अंतरांची आढळली, तर त्या मोजणीबद्दल काय निष्कर्ष काढता येईल?",
+          "stem": "एक वस्तु सीध्या रेषेने चालत असताना त्याच्या गतीला काय म्हणतात?",
           "choices": [
-            "मोजणी अचूक आणि संगत आहे",
-            "मोजणी अविश्वसनीय आहे कारण हातांच्या अंतराच्या आकारात फरक असतो",
-            "मोजणी फक्त त्या विद्यार्थ्यासाठी वैध आहे",
-            "मोजणी सर्व विद्यार्थ्यांसाठी समान आहे"
+            "वर्तुळाकार गती",
+            "दोलन गती",
+            "रेषीय गती",
+            "आवर्त गती"
           ],
-          "solution": "हाताच्या अंतराच्या मापन यंत्राचा वापर करून असंगत परिणाम मिळू शकतात, कारण व्यक्तींच्या हातांच्या अंतराच्या आकारात फरक असतो, ज्यामुळे मोजणी अविश्वसनीय होते. योग्य उत्तर हे आहे की मोजणी अविश्वसनीय आहे कारण हातांच्या अंतराच्या आकारात फरक असतो. इतर विकल्प अयोग्य आहेत कारण मोजणीची अचूकता आणि संगतता वापरलेल्या एककावर अवलंबून असते, आणि ती सर्व विद्यार्थ्यांसाठी समान नसते.",
+          "solution": "रेषीय गती ही एका वस्तूच्या सीध्या मार्गाने चालनेची गती आहे. वर्तुळाकार गती ही वर्तुळात चालनेची गती आहे, दोलन गती ही आगाडी-पाठीमागे चालनेची गती आहे आणि आवर्त गती ही नियमित अंतरावर दोहरली जाणारी गती आहे. त्यामुळे योग्य उत्तर रेषीय गती आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms as found in standard textbooks.",
           "flag": null
         }
       },
@@ -697,10 +361,161 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Believes handspan can be a reliable unit",
+        "describes circular motion",
+        "describes oscillatory motion",
         null,
-        "Believes handspan is only valid for one person",
-        "Believes all students have the same handspan"
+        "describes periodic motion"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests recall of basic motion types. The correct answer is 'linear motion' and the author's reasoning is accurate.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu105.pdf",
+          "ordinal": 9,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Measurement of Length and Motion",
+            "5.6 Moving Things"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu105.pdf",
+          "ordinal": 10,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 5: Measurement of Length and Motion",
+            "5.7 Types of Motion"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu105.pdf",
+          "ordinal": 11,
+          "pageStart": 14,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 5: Measurement of Length and Motion",
+            "5.7 Types of Motion"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu105.pdf",
+          "ordinal": 12,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 5: Measurement of Length and Motion",
+            "5.7 Types of Motion",
+            "Summary"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T01:50:23.939Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of oscillatory motion?",
+      "choices": [
+        "A car moving on a straight road",
+        "A pendulum swinging",
+        "A ball rolling on the ground",
+        "A person walking"
+      ],
+      "answerIndex": 1,
+      "solution": "Oscillatory motion is the motion of an object moving back and forth around a central point. A pendulum swinging is an example of this. A car moving on a straight road, a ball rolling on the ground, and a person walking are examples of linear motion.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा दोलनी गति का उदाहरण है?",
+          "choices": [
+            "एक सीधी सड़क पर चल रहा कार",
+            "एक लोलक दोलन कर रहा है",
+            "जमीन पर लुढ़क रहा एक गेंद",
+            "चल रहा एक व्यक्ति"
+          ],
+          "solution": "दोलनी गति एक वस्तु की गति होती है जो एक केंद्रीय बिंदु के आसपास आगे-पीछे जाती है। लोलक दोलन कर रहा है, इसका एक उदाहरण है। एक सीधी सड़क पर चल रहा कार, जमीन पर लुढ़क रहा एक गेंद और एक व्यक्ति चल रहा है, इनका एक रेखीय गति का उदाहरण है।",
+          "imageAlt": "एक लोलक आगे-पीछे दोलन कर रहा है",
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Hindi science education.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते दोलनी गतीचे उदाहरण आहे?",
+          "choices": [
+            "एका सरळ मार्गावर चालणारी कार",
+            "एका दोलकाचा झुलत असलेला भाग",
+            "जमिनीवर फिरणारा गोला",
+            "चालणारा माणूस"
+          ],
+          "solution": "दोलनी गती ही एका केंद्रीय बिंदूच्या आजूबाजून जाणार्या वस्तूची गती आहे. दोलकाचा झुलत असलेला भाग हे त्याचे उदाहरण आहे. एका सरळ मार्गावर चालणारी कार, जमिनीवर फिरणारा गोला आणि चालणारा माणूस रेखीय गतीचे उदाहरण आहेत.",
+          "imageAlt": "एका दोलकाचा झुलत असलेला भाग आगळा-वागळा हलत आहे",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for physics concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A pendulum swinging back and forth",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "pendulum",
+              "x": 50,
+              "y": 30,
+              "size": 30,
+              "labels": [
+                "bob",
+                "string"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": [
+                50,
+                20
+              ],
+              "to": [
+                50,
+                40
+              ],
+              "label": "bob",
+              "curved": false
+            }
+          ]
+        },
+        "labels": {
+          "bob": {
+            "en": "pendulum bob",
+            "hi": "लोलक का बॉब",
+            "mr": "दोलकाचा भाग"
+          },
+          "string": {
+            "en": "string",
+            "hi": "रस्सी",
+            "mr": "माळा"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses linear motion with oscillatory motion",
+        null,
+        "Thinks of motion in a straight line as oscillatory",
+        "Mistakes walking as oscillatory motion"
       ],
       "solverAnswers": [
         1,
@@ -709,93 +524,76 @@
         1,
         1
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as handspan varies between individuals, making the measurement unreliable. The author's reasoning aligns with this, and the misconceptions listed for the other options are plausible for students.",
+      "levelFlag": null,
+      "critique": "The question correctly identifies the pendulum as an example of oscillatory motion. The solution is accurate, and the reasons for the incorrect options align with common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/science/fecu105.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 1,
+          "ordinal": 13,
+          "pageStart": 20,
+          "pageEnd": 22,
           "headingPath": [
-            "Chapter 5: Measurement of Length and Motion"
+            "Chapter 5: Measurement of Length and Motion",
+            "5.7 Types of Motion",
+            "Let us enhance our learning"
           ]
         },
         {
           "document": "ncert/6/science/fecu105.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
+          "ordinal": 14,
+          "pageStart": 22,
+          "pageEnd": 22,
           "headingPath": [
             "Chapter 5: Measurement of Length and Motion",
-            "5.1 How do we Measure?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu105.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 5: Measurement of Length and Motion",
-            "5.2 Standard Units"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu105.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 5: Measurement of Length and Motion",
-            "5.2 Standard Units"
+            "5.7 Types of Motion",
+            "Learning further"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T19:55:36.691Z",
+      "generatedAt": "2026-10-19T01:50:23.939Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Which of the following is true about reference points in measuring distances?",
+      "difficulty": 3,
+      "stem": "If the zero mark on a scale is broken, which of the following steps should be followed to measure the length of an object?",
       "choices": [
-        "A reference point is a fixed object used to describe the position of an object",
-        "A reference point is the same for all observers",
-        "A reference point is not needed when measuring distances",
-        "A reference point can be any object, regardless of its position"
+        "Use the broken end directly to measure",
+        "Use any full mark on the scale and subtract its value from the other end",
+        "Measure the object by guessing the length",
+        "Measure the object using a different scale with a clear zero mark"
       ],
-      "answerIndex": 0,
-      "solution": "A reference point is a fixed object used to describe the position of an object. It is not the same for all observers, and it is essential for measuring distances accurately. A reference point is always needed to describe the position of an object in relation to it. The position of the reference point affects how distances are measured.",
+      "answerIndex": 1,
+      "solution": "The correct answer is 'Use any full mark on the scale and subtract its value from the other end'. If the zero mark is broken, you can use another full mark on the scale, say 1.0 cm, and then subtract that from the reading at the other end to get the correct length. Using the broken end directly or guessing the length would lead to incorrect measurements. Using a different scale is not necessary if the current scale can be used properly.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा दूरी मापने में संदर्भ बिंदु के बारे में सही है?",
+          "stem": "यदि पैमाने पर शून्य चिह्न टूट गया है, तो एक वस्तु की लंबाई मापने के लिए निम्नलिखित में से कौन सी चरण का पालन करना चाहिए?",
           "choices": [
-            "एक संदर्भ बिंदु एक निश्चित वस्तु है जिसका उपयोग वस्तु की स्थिति का वर्णन करने के लिए किया जाता है",
-            "सभी अवलोककों के लिए एक संदर्भ बिंदु एक ही होता है",
-            "दूरी मापते समय एक संदर्भ बिंदु की आवश्यकता नहीं होती है",
-            "एक संदर्भ बिंदु किसी भी वस्तु हो सकती है, चाहे उसकी स्थिति कुछ भी हो"
+            "टूटे हुए छोर का सीधे मापन के लिए उपयोग करें",
+            "पैमाने पर किसी भी पूर्ण चिह्न का उपयोग करें और दूसरे छोर पर मान को घटाएं",
+            "लंबाई का अनुमान लगाकर वस्तु को मापें",
+            "एक अलग पैमाने का उपयोग करें जिसमें स्पष्ट शून्य चिह्न हो"
           ],
-          "solution": "एक संदर्भ बिंदु एक निश्चित वस्तु है जिसका उपयोग वस्तु की स्थिति का वर्णन करने के लिए किया जाता है। यह सभी अवलोककों के लिए एक ही नहीं होता है, और दूरी को सटीक रूप से मापने के लिए यह आवश्यक होता है। एक संदर्भ बिंदु हमेशा वस्तु की स्थिति को इसके संदर्भ में वर्णित करने के लिए आवश्यक होता है। संदर्भ बिंदु की स्थिति दूरी के मापने के तरीके पर प्रभाव डालती है।",
+          "solution": "सही उत्तर 'पैमाने पर किसी भी पूर्ण चिह्न का उपयोग करें और दूसरे छोर पर मान को घटाएं' है। यदि शून्य चिह्न टूट गया है, तो आप पैमाने पर किसी अन्य पूर्ण चिह्न, जैसे 1.0 सेमी, का उपयोग कर सकते हैं, और दूसरे छोर पर पढ़े गए मान से इसके मान को घटा दें ताकि सही लंबाई प्राप्त हो सके। टूटे हुए छोर का सीधे उपयोग करना या लंबाई का अनुमान लगाना गलत माप के कारण हो सकता है। यदि वर्तमान पैमाने का सही तरीके से उपयोग किया जा सकता है, तो एक अलग पैमाने का उपयोग आवश्यक नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as used in Hindi textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते अंतर मोजण्यासाठी संदर्भ बिंदू बद्दल खरे आहे?",
+          "stem": "जर एखाद्या मापदंडाचा शून्य चिन्ह बिघडलेला असेल, तर वस्तूची लांबी मोजण्यासाठी खालीलपैकी कोणता पाया अनुसरावा?",
           "choices": [
-            "एक संदर्भ बिंदू म्हणजे एक निश्चित वस्तू जी वस्तूच्या स्थितीचे वर्णन करण्यासाठी वापरली जाते",
-            "एक संदर्भ बिंदू सर्व निरीक्षकांसाठी एकसारखा असतो",
-            "अंतर मोजताना संदर्भ बिंदू आवश्यक नसतो",
-            "एक संदर्भ बिंदू कोणतीही वस्तू असू शकते, तिच्या स्थितीच्या निर्देशानुसार"
+            "बिघडलेल्या टोकाचा वापर करून मोजावा",
+            "मापदंडावर कोणत्याही पूर्ण चिन्हाचा वापर करून दुसऱ्या टोकाच्या मूल्यातून वजा करावी",
+            "लांबीचे अंदाज लावून वस्तू मोजावी",
+            "शून्य चिन्ह असलेल्या दुसऱ्या मापदंडाचा वापर करून वस्तू मोजावी"
           ],
-          "solution": "एक संदर्भ बिंदू म्हणजे एक निश्चित वस्तू जी वस्तूच्या स्थितीचे वर्णन करण्यासाठी वापरली जाते. तो सर्व निरीक्षकांसाठी एकसारखा नसतो, आणि अंतरांचे खरे मोजमाप करण्यासाठी तो आवश्यक असतो. संदर्भ बिंदू वस्तूच्या स्थितीचे त्याच्या संदर्भात वर्णन करण्यासाठी नेहमी आवश्यक असतो. संदर्भ बिंदूची स्थिती अंतरांच्या मोजमापावर प्रभाव टाकते.",
+          "solution": "बरोबर उत्तर 'मापदंडावर कोणत्याही पूर्ण चिन्हाचा वापर करून दुसऱ्या टोकाच्या मूल्यातून वजा करावी' आहे. जर शून्य चिन्ह बिघडलेले असेल तर आपण मापदंडावर दुसरे कोणतेही पूर्ण चिन्ह, उदाहरणार्थ 1.0 सेमी, वापरू शकतो आणि दुसऱ्या टोकाच्या वाचनातून त्याचे मूल्य वजा करून योग्य लांबी मिळवता येईल. बिघडलेल्या टोकाचा वापर करणे किंवा अंदाज लावणे अचूक मोजण्याला नेमके करू शकत नाही. जर वर्तमान मापदंडाचा योग्य प्रकारे वापर करता येत असेल तर दुसऱ्या मापदंडाचा वापर आवश्यक नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for physics concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
         }
       },
@@ -804,20 +602,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Incorrectly assumes the broken end can be used directly",
         null,
-        "Thinks a reference point is the same for all observers",
-        "Believes a reference point is not needed",
-        "Thinks any object can be a reference point without considering its position"
+        "Assumes guessing is an acceptable method",
+        "Believes a different scale is always needed even when the current one can be used properly."
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as a reference point is indeed a fixed object used to describe the position of an object. The other options reflect common misconceptions about reference points.",
+      "levelFlag": null,
+      "critique": "The correct approach is to use a full mark on the scale and subtract its value from the other end. The reasoning in the author's solution is sound and matches the correct method. All distractors represent common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/science/fecu105.pdf",
@@ -871,49 +669,344 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T19:55:36.691Z",
+      "generatedAt": "2026-10-19T01:50:23.939Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Two objects are moving. One object moves in a straight line, and the other moves in a circular path. Which of the following statements is true about their motion?",
+      "difficulty": 4,
+      "stem": "A student measures the length and breadth of a leaf using a 15-cm scale, as shown in the figure. Which of the following is the best way to record the observations?",
       "choices": [
-        "Both have the same type of motion",
-        "Both are periodic",
-        "The first is linear motion and the second is circular motion",
-        "The first is oscillatory motion and the second is linear motion"
+        "In centimeters",
+        "In millimeters",
+        "In meters",
+        "In kilometers"
       ],
-      "answerIndex": 2,
-      "solution": "The correct answer is 'The first is linear motion and the second is circular motion' because linear motion refers to movement along a straight path, while circular motion refers to movement along a circular path. The other options incorrectly categorize the types of motion or mix them up.",
+      "answerIndex": 0,
+      "solution": "A 15-cm scale is best used to measure in centimeters. Millimeters can be used, but centimeters are more practical for leaves. Meters and kilometers are not suitable for such small measurements.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "दो वस्तुएं गतिमान हैं। एक वस्तु सीधी रेखा में गति करती है, जबकि दूसरी वृत्ताकार पथ में गति करती है। उनकी गति के बारे में निम्नलिखित में से कौन-सा कथन सत्य है?",
+          "stem": "एक छात्र एक 15-सेमी के पैमाने का उपयोग करके एक पत्ती की लंबाई और चौड़ाई को मापता है, जैसा कि चित्र में दिखाया गया है। निम्नलिखित में से कौन सा अवलोकनों को दर्ज करने का सबसे अच्छा तरीका है?",
           "choices": [
-            "दोनों के प्रकार की गति समान है",
-            "दोनों आवर्ती हैं",
-            "पहली गति सीधी गति है और दूसरी वृत्ताकार गति है",
-            "पहली दोलन गति है और दूसरी सीधी गति है"
+            "सेंटीमीटर में",
+            "मिलीमीटर में",
+            "मीटर में",
+            "किलोमीटर में"
           ],
-          "solution": "सही उत्तर 'पहली सीधी गति है और दूसरी वृत्ताकार गति है' है क्योंकि सीधी गति एक सीधी पथ के साथ गति को संदर्भित करती है, जबकि वृत्ताकार गति एक वृत्ताकार पथ के साथ गति को संदर्भित करती है। अन्य विकल्प गति के प्रकार को गलत ढंग से वर्गीकृत करते हैं या उन्हें मिला देते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question, with appropriate terminology and logical structure.",
+          "solution": "15-सेमी के पैमाने का उपयोग सेंटीमीटर में मापने के लिए सबसे अच्छा है। मिलीमीटर का उपयोग किया जा सकता है, लेकिन पत्तियों के लिए सेंटीमीटर अधिक व्यावहारिक हैं। मीटर और किलोमीटर ऐसी छोटी माप के लिए उपयुक्त नहीं हैं।",
+          "imageAlt": "एक पत्ती जिसमें इसकी लंबाई और चौड़ाई को दर्शाने वाली त стрेल दिखाई दे रही हैं",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
           "flag": null
         },
         "mr": {
-          "stem": "दोन वस्तू गतीमान आहेत. एक वस्तू सरळ रेषेत गतीमान आहे, आणि दुसरी वर्तुळाकार मार्गावर गतीमान आहे. त्यांच्या गतीबद्दल खालीलपैकी कोणता विधान खरा आहे?",
+          "stem": "एका विद्यार्थीने एका पानाच्या लांबी आणि रुंदीचे निरीक्षण एका 15-सेंमी स्केल वापरून केले, जसे आकृतीमध्ये दर्शविले आहे. खालीलपैकी कोणता पद्धतीने निरीक्षण नोंदवणे सर्वोत्तम आहे?",
           "choices": [
-            "दोन्ही एकसारख्या प्रकारच्या गतीत आहेत",
-            "दोन्ही आवर्ती आहेत",
-            "पहिली रेषीय गतीत आहे आणि दुसरी वर्तुळाकार गतीत आहे",
-            "पहिली दोलनी गतीत आहे आणि दुसरी रेषीय गतीत आहे"
+            "सेंमी मध्ये",
+            "मिमी मध्ये",
+            "मीटर मध्ये",
+            "किमी मध्ये"
           ],
-          "solution": "बरोबर उत्तर 'पहिली रेषीय गतीत आहे आणि दुसरी वर्तुळाकार गतीत आहे' आहे कारण रेषीय गती म्हणजे सरळ मार्गावर गती, आणि वर्तुळाकार गती म्हणजे वर्तुळाकार मार्गावर गती. इतर विकल्प गतीच्या प्रकारांची चुकीची वर्गीकरण करतात किंवा त्यांना मिसळतात.",
+          "solution": "15-सेंमी स्केल च्या वापरासाठी सेंमी चांगला आहे. मिमी वापरता येऊ शकतात, परंतु पानांसाठी सेंमी अधिक उपयुक्त आहे. मीटर आणि किमी अशा लहान मापनासाठी अनुकूल नाहीत.",
+          "imageAlt": "एक पान ज्यावर त्याच्या लांबी आणि रुंदीच्या बाबतीत बाण दर्शविले आहेत",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A leaf with arrows indicating its length and breadth",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "leaf",
+              "x": 50,
+              "y": 30,
+              "size": 30,
+              "labels": [
+                "lamina",
+                "petiole"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": [
+                30,
+                30
+              ],
+              "to": [
+                70,
+                30
+              ],
+              "label": "length",
+              "curved": false
+            },
+            {
+              "from": [
+                50,
+                20
+              ],
+              "to": [
+                50,
+                40
+              ],
+              "label": "breadth",
+              "curved": false
+            }
+          ]
+        },
+        "labels": {
+          "length": {
+            "en": "length of leaf",
+            "hi": "पत्ती की लंबाई",
+            "mr": "पानाची लांबी"
+          },
+          "breadth": {
+            "en": "breadth of leaf",
+            "hi": "पत्ती की चौड़ाई",
+            "mr": "पानाची रुंदी"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "Thinks smaller units are always better",
+        "Mistakes large units for accurate measurements",
+        "Assumes kilometers are used for small objects"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0 (In centimeters). A 15-cm scale is most practical for measuring small objects like leaves, and centimeters provide a suitable level of precision. Millimeters are possible but less practical, while meters and kilometers are far too large for such a small measurement.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu105.pdf",
+          "ordinal": 13,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 5: Measurement of Length and Motion",
+            "5.7 Types of Motion",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu105.pdf",
+          "ordinal": 14,
+          "pageStart": 22,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 5: Measurement of Length and Motion",
+            "5.7 Types of Motion",
+            "Learning further"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T01:50:23.939Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In Fig. 5.5, the correct position of the eye while reading a scale is shown. What is the main reason for this position?",
+      "choices": [
+        "To avoid parallax error",
+        "To ensure the scale is placed correctly",
+        "To measure the length accurately",
+        "To see the markings clearly"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'To avoid parallax error'. The eye should be directly above the scale to avoid parallax error, which occurs when the eye is not aligned with the scale's markings. Ensuring the scale is placed correctly is a separate step. Measuring the length accurately is the outcome, not the main reason. Seeing the markings clearly is a benefit but not the primary purpose of this position.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चित्र 5.5 में, पैमाने को पढ़ते समय आंख के सही स्थान को दर्शाया गया है। इस स्थिति के मुख्य कारण क्या है?",
+          "choices": [
+            "अपवर्तन त्रुटि बचने के लिए",
+            "पैमाने के सही स्थान पर रखने के लिए",
+            "लंबाई को सटीक मापने के लिए",
+            "चिह्नों को स्पष्ट रूप से देखने के लिए"
+          ],
+          "solution": "सही उत्तर 'अपवर्तन त्रुटि बचने के लिए' है। आंख को पैमाने के ठीक ऊपर होना चाहिए ताकि अपवर्तन त्रुटि बचाई जा सके, जो तब होती है जब आंख पैमाने के चिह्नों के साथ समानांतर नहीं होती। पैमाने के सही स्थान पर रखना अलग कदम है। लंबाई को सटीक मापना परिणाम है, न कि मुख्य कारण। चिह्नों को स्पष्ट रूप से देखना एक लाभ है लेकिन इस स्थिति का प्रमुख उद्देश्य नहीं है।",
+          "imageAlt": "पैमाने को पढ़ते समय अपवर्तन त्रुटि बचाने के लिए आंख के सही स्थान को दर्शाने वाला आरेख",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms like 'अपवर्तन त्रुटि' (parallax error) which is the standard term used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चित्र 5.5 मध्ये, निरीक्षणासाठी अंकन वाचण्याच्या बरोबर डोळ्याच्या ठिकाणाचे बरोबर असलेले दर्शविले आहे. हा ठिकाण ठरविण्याचा मुख्य कारण काय आहे?",
+          "choices": [
+            "पॅरलॅक्स चूक टाळण्यासाठी",
+            "अंकन बरोबर ठेवले जाईल याची खात्री करण्यासाठी",
+            "लांबी बरोबर नोंदविण्यासाठी",
+            "चिन्हे स्पष्टपणे दिसतील यासाठी"
+          ],
+          "solution": "बरोबर उत्तर 'पॅरलॅक्स चूक टाळण्यासाठी' आहे. डोळ्याला अंकनाच्या बरोबर वर असावे लागते, जेणेकरून पॅरलॅक्स चूक होऊ नये, जी डोळ्याला अंकनाच्या चिन्हांच्या बरोबर नसल्यास होते. अंकन बरोबर ठेवण्याची खात्री करणे हे वेगळे पाऊल आहे. लांबी बरोबर नोंदविणे हे परिणाम आहे, मुख्य कारण नाही. चिन्हे स्पष्टपणे दिसतील याचा फायदा आहे, पण हा ठिकाण ठरविण्याचा मुख्य उद्देश नाही.",
+          "imageAlt": "अंकन वाचताना पॅरलॅक्स चूक टाळण्यासाठी डोळ्याच्या बरोबर ठिकाणाचे चित्र",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'पॅरलॅक्स चूक' (parallax error) which is commonly used in Marathi science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "Diagram showing the correct position of the eye for reading a scale to avoid parallax error",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "planeMirror",
+              "x": 50,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "incidentRay",
+                "reflectedRay",
+                "normal"
+              ],
+              "text": {
+                "incidentRay": "A",
+                "reflectedRay": "B",
+                "normal": "C"
+              }
+            }
+          ]
+        },
+        "labels": {
+          "A": {
+            "en": "Incident ray"
+          },
+          "B": {
+            "en": "Reflected ray"
+          },
+          "C": {
+            "en": "Normal"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "Confuses the purpose of correct eye position with scale placement",
+        "Misunderstands the purpose of accurate measurement",
+        "Believes clear visibility is the main reason for the eye position."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions. The solution correctly identifies the main reason for the eye position as avoiding parallax error.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu105.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 5: Measurement of Length and Motion",
+            "5.3 Correct Way of Measuring Length"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu105.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 5: Measurement of Length and Motion",
+            "5.3 Correct Way of Measuring Length"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu105.pdf",
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Measurement of Length and Motion",
+            "5.4 Measuring the Length of a Curved Line"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu105.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Measurement of Length and Motion",
+            "5.5 Describing Position"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu105.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Measurement of Length and Motion",
+            "5.5 Describing Position"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T01:50:23.939Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a race, a runner covers 100 m in 10 seconds. What is the average speed of the runner?",
+      "choices": [
+        "1 m/s",
+        "10 m/s",
+        "100 m/s",
+        "50 m/s"
+      ],
+      "answerIndex": 1,
+      "solution": "Average speed is calculated by dividing the total distance by the total time. So, 100 m divided by 10 s gives 10 m/s. 1 m/s is too slow, 100 m/s is too fast, and 50 m/s is also unrealistic for a human runner.",
+      "checkExpr": "100/10",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक दौड़ में, एक धावक 10 सेकंड में 100 मीटर की दूरी तय करता है। धावक की औसत गति क्या है?",
+          "choices": [
+            "1 मी/से",
+            "10 मी/से",
+            "100 मी/से",
+            "50 मी/से"
+          ],
+          "solution": "औसत गति की गणना कुल दूरी को कुल समय से विभाजित करके की जाती है। अतः, 100 मी को 10 से से विभाजित करने पर 10 मी/से प्राप्त होता है। 1 मी/से बहुत धीमी गति है, 100 मी/से बहुत तेज है और 50 मी/से मानव धावक के लिए असंभव है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for motion types.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi terminology for physics concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका धावण्याच्या स्पर्धेत, एका धावकाने 10 सेकंदात 100 मीटर धावले. धावकाचा सरासरी वेग किती आहे?",
+          "choices": [
+            "1 मी/से",
+            "10 मी/से",
+            "100 मी/से",
+            "50 मी/से"
+          ],
+          "solution": "सरासरी वेग एकूण अंतराला एकूण वेळेने भागल्याने मिळतो. म्हणून, 100 मी भागिले 10 से याचा फलितार्थ 10 मी/से आहे. 1 मी/से खूप धीमा आहे, 100 मी/से खूप वेगवान आहे आणि 50 मी/से हा माणसासाठी असंभाव्य आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi terminology for physics concepts.",
           "flag": null
         }
       },
@@ -922,65 +1015,197 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the types of motion",
-        "Incorrectly identifies periodic motion",
+        "Divides distance by 100 instead of time",
         null,
-        "Confuses oscillatory and linear motion"
+        "Fails to divide correctly",
+        "Confuses distance with speed"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is clearly option 2, as it accurately describes the motion types as defined. The other options reflect common misconceptions about motion types.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 10 m/s, calculated by dividing 100 m by 10 s. The author's reasoning for the distractors is plausible and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/science/fecu105.pdf",
-          "ordinal": 9,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 5: Measurement of Length and Motion",
-            "5.6 Moving Things"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu105.pdf",
-          "ordinal": 10,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 5: Measurement of Length and Motion",
-            "5.7 Types of Motion"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu105.pdf",
-          "ordinal": 11,
-          "pageStart": 14,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 5: Measurement of Length and Motion",
-            "5.7 Types of Motion"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu105.pdf",
-          "ordinal": 12,
-          "pageStart": 18,
-          "pageEnd": 20,
+          "ordinal": 13,
+          "pageStart": 20,
+          "pageEnd": 22,
           "headingPath": [
             "Chapter 5: Measurement of Length and Motion",
             "5.7 Types of Motion",
-            "Summary"
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu105.pdf",
+          "ordinal": 14,
+          "pageStart": 22,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 5: Measurement of Length and Motion",
+            "5.7 Types of Motion",
+            "Learning further"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-11T19:55:36.691Z",
+      "generatedAt": "2026-10-19T01:50:23.939Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a person is measuring the length of a curved line using a thread, what is the correct sequence of steps?",
+      "choices": [
+        "Measure the thread with a scale directly",
+        "Tie the thread to the curved line and measure it with a scale",
+        "Wrap the thread around the curved line and measure it",
+        "Mark the thread at both ends and measure it with a scale"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is 'Mark the thread at both ends and measure it with a scale'. To measure a curved line, the thread is laid along the curve, marked at both ends, and then straightened to measure its length with a scale. Measuring the thread directly or wrapping it around the curve would not give an accurate measurement. Tying the thread is not the correct procedure.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति एक वक्र रेखा की लंबाई को एक रस्सी के साथ माप रहा है, तो सही क्रम क्या है?",
+          "choices": [
+            "रस्सी को सीधे पैमाने से मापें",
+            "रस्सी को वक्र रेखा से बांधें और उसे पैमाने से मापें",
+            "रस्सी को वक्र रेखा के चारों ओर लपेटें और मापें",
+            "रस्सी के दोनों सिरों पर निशान लगाएं और उसे पैमाने से मापें"
+          ],
+          "solution": "सही उत्तर 'रस्सी के दोनों सिरों पर निशान लगाएं और उसे पैमाने से मापें' है। एक वक्र रेखा को मापने के लिए, रस्सी को वक्र के साथ रखा जाता है, दोनों सिरों पर निशान लगाया जाता है, और फिर उसे सीधा करके पैमाने से मापा जाता है। रस्सी को सीधे मापना या उसे वक्र के चारों ओर लपेटना सटीक माप नहीं देगा। रस्सी को बांधना सही प्रक्रिया नहीं है।",
+          "imageAlt": "पैमाने को पढ़ने के लिए आंख के सही स्थान को दर्शाने वाला चित्र",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms commonly found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखादा व्यक्ती एका वक्र रेषेच्या लांबीचे मोजण्यासाठी तारा वापरत असेल, तर योग्य पायांची क्रमानुसार विनंती काय आहे?",
+          "choices": [
+            "तारा लांबी थेट मोजा",
+            "तारा वक्र रेषेला बांधून मोजा",
+            "तारा वक्र रेषेच्या आजूबाजूला घाला आणि मोजा",
+            "ताराच्या दोन्ही बाजूंना चिन्ह द्या आणि मोजा"
+          ],
+          "solution": "योग्य उत्तर 'ताराच्या दोन्ही बाजूंना चिन्ह द्या आणि मोजा' आहे. वक्र रेषेची लांबी मोजण्यासाठी, तारा वक्रावर ठेवली जाते, दोन्ही बाजूंना चिन्ह दिले जाते आणि नंतर तारा सरळ करून मोजली जाते. थेट तारा मोजणे किंवा तारा वक्राच्या आजूबाजूला घालणे अचूक मोजण्यासाठी योग्य नसते. तारा बांधणे हा योग्य प्रक्रिया नसते.",
+          "imageAlt": "मोजणी वाटेच्या चुकीच्या अंतराच्या टाळण्यासाठी योग्य डोळ्याच्या स्थितीचे चित्र",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer is in the same position (option 3) and the distractors remain incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "Diagram showing the correct position of the eye for reading a scale to avoid parallax error",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "planeMirror",
+              "x": 50,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "incidentRay",
+                "reflectedRay",
+                "normal"
+              ],
+              "text": {
+                "incidentRay": "A",
+                "reflectedRay": "B",
+                "normal": "C"
+              }
+            }
+          ]
+        },
+        "labels": {
+          "A": {
+            "en": "Incident ray"
+          },
+          "B": {
+            "en": "Reflected ray"
+          },
+          "C": {
+            "en": "Normal"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Assumes the thread can be measured directly without marking",
+        "Misunderstands the process of measuring curved lines",
+        "Believes wrapping the thread is the correct method.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as the process of measuring a curved line with a thread involves marking the thread at both ends and then measuring it straight. The author's solution and reasoning are accurate and align with the correct method.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu105.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 5: Measurement of Length and Motion",
+            "5.3 Correct Way of Measuring Length"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu105.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 5: Measurement of Length and Motion",
+            "5.3 Correct Way of Measuring Length"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu105.pdf",
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Measurement of Length and Motion",
+            "5.4 Measuring the Length of a Curved Line"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu105.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Measurement of Length and Motion",
+            "5.5 Describing Position"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu105.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Measurement of Length and Motion",
+            "5.5 Describing Position"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T01:50:23.939Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

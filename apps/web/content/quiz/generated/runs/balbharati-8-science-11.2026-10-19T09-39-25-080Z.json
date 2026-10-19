@@ -1,0 +1,612 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T09:39:25.080Z",
+  "finishedAt": "2026-10-19T09:50:11.170Z",
+  "seconds": 646,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 11 — Human Body and Organ System",
+    "edition": "First Edition 2018",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n11. Students to attempt either option A or B. 2\nA. How many chambers are there in the heart of the following organisms?\nHow is mixing of oxygenated and deoxygenated blood prevented in their\nbody?\n(i) Fishes\n(ii) Humans\nOR\nB. Explain the mechanism by which the water is transported in plants?",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n23. What is the purpose of making urine in the human body? Name the organs that stores and 2\nreleases the urine.\nOR\nWhy do arteries have thick and elastic walls whereas veins have valves?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 141731,
+      "in": 33,
+      "out": 31,
+      "rejects": 2,
+      "promptTokens": 25764,
+      "completionTokens": 6629
+    },
+    "critique": {
+      "calls": 35,
+      "ms": 266323,
+      "in": 31,
+      "out": 25,
+      "rejects": 6,
+      "promptTokens": 15017,
+      "completionTokens": 5992
+    },
+    "solver": {
+      "calls": 151,
+      "ms": 79934,
+      "in": 25,
+      "out": 25,
+      "rejects": 0,
+      "promptTokens": 21294,
+      "completionTokens": 1377
+    },
+    "form": {
+      "calls": 23,
+      "ms": 93425,
+      "in": 25,
+      "out": 16,
+      "rejects": 9,
+      "promptTokens": 7584,
+      "completionTokens": 2135
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 19,
+      "ms": 3318,
+      "in": 16,
+      "out": 15,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 61,
+      "ms": 700000,
+      "in": 30,
+      "out": 29,
+      "rejects": 1,
+      "promptTokens": 34302,
+      "completionTokens": 17187
+    }
+  },
+  "kept": 15,
+  "keptByLevel": {
+    "1": 3,
+    "2": 3,
+    "3": 3,
+    "4": 1,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which system is responsible for the exchange of gases in the human body?",
+      "ms": {
+        "draft": 4181,
+        "critique": 6227
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the respiratory system?",
+      "ms": {
+        "draft": 4181,
+        "critique": 7035
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why is it important for the respiratory system to have alveoli?",
+      "ms": {
+        "draft": 4181,
+        "critique": 6227,
+        "solver": 1710,
+        "form": 2380
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the diaphragm during inhalation?",
+      "ms": {
+        "draft": 4181,
+        "critique": 8603
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of external respiration?",
+      "ms": {
+        "draft": 4181,
+        "critique": 7796
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why are arteries described as having thick walls?",
+      "ms": {
+        "draft": 3658,
+        "critique": 8287,
+        "solver": 2494,
+        "form": 3353
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the function of blood?",
+      "ms": {
+        "draft": 3658,
+        "critique": 8257,
+        "solver": 1655,
+        "form": 4263
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a person has AB blood group, which of the following blood groups can they receive blood from?",
+      "ms": {
+        "draft": 16649,
+        "critique": 7487,
+        "solver": 1275,
+        "form": 3147
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a function of the heart?",
+      "ms": {
+        "draft": 4078,
+        "critique": 8436,
+        "solver": 2255,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the pH of oxygenated blood alkaline according to the passage?",
+      "ms": {
+        "draft": 4078,
+        "critique": 7747,
+        "solver": 3362,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person's heart beats 72 times per minute, how much blood is pumped in one minute?",
+      "ms": {
+        "draft": 5677,
+        "critique": 9104
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the function of blood?",
+      "ms": {
+        "draft": 5677,
+        "critique": 9728,
+        "solver": 12581,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person has a blood pressure of 140/90 mm Hg, what condition does this indicate?",
+      "ms": {
+        "draft": 4078,
+        "critique": 8052,
+        "solver": 19373,
+        "form": 5873
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student wants to find the pulse rate of a person. Which of the following body parts would they most likely feel the pulse?",
+      "ms": {
+        "draft": 5677,
+        "critique": 10860
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of the heart, which blood vessel carries oxygenated blood from the heart to the rest of the body?",
+      "ms": {
+        "draft": 5677,
+        "critique": 8671,
+        "solver": 2319,
+        "form": 4115
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which blood group is known as the universal donor?",
+      "ms": {
+        "draft": 16649,
+        "critique": 6310,
+        "solver": 2298,
+        "form": 3216
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which blood group is known as the universal recipient?",
+      "ms": {
+        "draft": 16649,
+        "critique": 5834,
+        "solver": 1331,
+        "form": 4062,
+        "translation": 40739
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which blood group can donate blood to any other blood group?",
+      "ms": {
+        "draft": 4078,
+        "critique": 5177,
+        "solver": 1499,
+        "form": 4198,
+        "translation": 40948
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which organ system is responsible for the exchange of gases in the body?",
+      "ms": {
+        "draft": 4341,
+        "critique": 7618,
+        "solver": 2210,
+        "form": 3542,
+        "translation": 44895
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a reason for blood donation being considered as the best donation?",
+      "ms": {
+        "draft": 4078,
+        "critique": 6292,
+        "solver": 2200,
+        "form": 2739,
+        "translation": 42420
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of white blood cells?",
+      "ms": {
+        "draft": 3658,
+        "critique": 7990,
+        "solver": 2181,
+        "form": 2780,
+        "translation": 53224
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main component of plasma?",
+      "ms": {
+        "draft": 3658,
+        "critique": 7838,
+        "solver": 1568,
+        "form": 2344,
+        "translation": 39384
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A person with blood group A can receive blood from which of the following blood groups?",
+      "ms": {
+        "draft": 16649,
+        "critique": 7465,
+        "solver": 1661,
+        "form": 3636,
+        "translation": 44012
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has blood group AB, which of the following blood groups can they receive blood from?",
+      "ms": {
+        "draft": 4078,
+        "critique": 5464,
+        "solver": 1918,
+        "form": 4605,
+        "translation": 133105
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of an organ system?",
+      "ms": {
+        "draft": 3658,
+        "critique": 7544,
+        "solver": 1376,
+        "form": 3992,
+        "translation": 44172
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the respiratory system is responsible for filtering air before it reaches the lungs?",
+      "ms": {
+        "draft": 4341,
+        "critique": 8070,
+        "solver": 1937,
+        "form": 3733,
+        "translation": 37219
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A person with A blood group has been involved in an accident and needs a blood transfusion. Which of the following blood groups can be given to them?",
+      "ms": {
+        "draft": 16649,
+        "critique": 7187,
+        "solver": 2038,
+        "form": 2195,
+        "translation": 46373
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why is it important for the diaphragm to move up and down during breathing?",
+      "ms": {
+        "draft": 4341,
+        "critique": 7256,
+        "solver": 1502,
+        "form": 3075,
+        "translation": 50775
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the respiratory system considered vital for energy production in the body?",
+      "ms": {
+        "draft": 4181,
+        "critique": 8010,
+        "solver": 13767,
+        "form": 2956,
+        "translation": 66928
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a correct statement about the structure of the human heart?",
+      "ms": {
+        "draft": 4341,
+        "critique": 7920,
+        "solver": 1715,
+        "form": 1536,
+        "translation": 65895
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why arteries have thick and elastic walls?",
+      "ms": {
+        "draft": 5677,
+        "critique": 9246,
+        "solver": 13338,
+        "form": 3501,
+        "translation": 54208
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is true about the structure of arteries?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which system is responsible for the exchange of gases in the human body?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a function of the respiratory system?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why is it important for the respiratory system to have alveoli?",
+      "reason": "the key is far longer than every distractor (45 vs 23 characters); distractor 2's reason is not a one-line misconception (\"Correct answer…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What happens to the diaphragm during inhalation?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is an example of external respiration?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why are arteries described as having thick walls?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"It is not mentioned in the passage as the reason for thick w…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is true about the function of blood?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"It ignores the other functions of blood mentioned in the pas…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a person has AB blood group, which of the following blood groups can they receive blood from?",
+      "reason": "options 2 and 3 say the same thing (\"A, B, and AB\" / \"A, B, AB, and O\")"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is not a function of blood?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a function of the heart?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the pH of oxygenated blood alkaline according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person's heart beats 72 times per minute, how much blood is pumped in one minute?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is true about the function of blood?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a person has a blood pressure of 140/90 mm Hg, what condition does this indicate?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student wants to find the pulse rate of a person. Which of the following body parts would they most likely feel the pulse?",
+      "reason": "the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram of the heart, which blood vessel carries oxygenated blood from the heart to the rest of the body?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'heart'"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which blood group is known as the universal donor?",
+      "reason": "near-duplicate of batch item \"Which blood group is known as the universal recipi…\" (cosine 0.905 ≥ 0.9)"
+    },
+    {
+      "stage": "translation",
+      "level": 3,
+      "stem": "If a person has blood group AB, which of the following blood groups can they receive blood from?",
+      "reason": "hi: the model's answer was not JSON (finish: length): {\n  \"stem\": \"यदि किसी व्यक्ति का रक्त समूह AB है, तो निम्नलिखित में से किस रक्त समूह से वे रक्त प्राप्त कर सकते हैं?\",\n "
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}
