@@ -6813,6 +6813,8 @@ export const hi: Dictionary = {
     passAskGuardian: "किसी विद्यार्थी ने अभिभावक से योजना माँगी",
     // end plans-pay
     operatorQuizTopicRename: "अभ्यास अध्याय का नाम पाठ्यपुस्तक के शीर्षक पर बदला गया",
+    operatorQuizTopicMerge: "जनरेटर ने जो अभ्यास अध्याय बिगड़े शीर्षक के नीचे बनाया था, उसे असली अध्याय में मिलाया गया: उसके प्रश्न वहाँ ले जाए गए और नकल हटाई गई।",
+    operatorQuizTopicRenumber: "अभ्यास अध्याय को उसकी किताब में छपे क्रमांक पर रखा गया; नाम और लिंक वही रहे।",
     substitutionsAcknowledge: "एक कवर स्वीकार किया",
     substitutionsDecline: "एक कवर अस्वीकार किया",
     syllabusTemplateSave: "एक पाठ योजना को टेम्पलेट के रूप में रखा",

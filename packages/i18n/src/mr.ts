@@ -6809,6 +6809,8 @@ export const mr: Dictionary = {
     passAskGuardian: "एका विद्यार्थ्याने पालकांकडे योजना मागितली",
     // end plans-pay
     operatorQuizTopicRename: "सराव प्रकरणाचे नाव पाठ्यपुस्तकातील शीर्षकाप्रमाणे बदलले",
+    operatorQuizTopicMerge: "जनरेटरने बिघडलेल्या शीर्षकाखाली बनवलेले सराव प्रकरण खऱ्या प्रकरणात विलीन केले: त्याचे प्रश्न तिथे हलवले आणि नक्कल निवृत्त केली.",
+    operatorQuizTopicRenumber: "सराव प्रकरणाला त्याच्या पुस्तकात छापलेला क्रमांक दिला; नाव आणि दुवा तेच राहिले.",
     substitutionsAcknowledge: "एक कव्हर स्वीकारला",
     substitutionsDecline: "एक कव्हर नाकारला",
     syllabusTemplateSave: "एक पाठ योजना साचा म्हणून ठेवली",

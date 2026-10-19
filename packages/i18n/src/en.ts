@@ -7193,6 +7193,8 @@ export const en = {
     passAskGuardian: "A pupil asked a guardian for a plan",
     // end plans-pay
     operatorQuizTopicRename: "A practice chapter was renamed to its textbook title",
+    operatorQuizTopicMerge: "Merged a practice chapter the generator had made under a garbled heading into the real chapter: its questions moved, the duplicate retired.",
+    operatorQuizTopicRenumber: "Renumbered a practice chapter to the number its book prints, its name and link unchanged.",
     substitutionsAcknowledge: "Took on a cover",
     substitutionsDecline: "Declined a cover",
     syllabusTemplateSave: "Kept a lesson plan as a template",
