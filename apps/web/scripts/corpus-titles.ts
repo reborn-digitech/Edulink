@@ -56,6 +56,13 @@
  * school; meta.via = "scripts/corpus-titles.ts", the old and new name and chapter, the document). A chapter whose new
  * name another chapter of its class, subject and number already carries is left and listed: its questions belong
  * in the other, which is a decision, not a rename.
+ *
+ * THE CASE RULE (the owner's ask of 20 October 2026; src/lib/chapter-title-case.ts). A word whose letters after the
+ * first carry exactly one capital, not set wholly in capitals, is lowered after its first letter ("Lines and angLes" →
+ * "Lines and angles"), known forms ("pH", "DNA", "SI", "kWh", "NumPy") and words of three letters or fewer kept; a
+ * lower-case word run into a capitalised one is parted ("theirCharacteristics" → "their Characteristics"). The corpus
+ * pass applies it to every title it chooses (mend); --topics also renames every SCHOOL practice chapter whose name or
+ * chapter line the rule changes, with the same audit row (meta.rule = "case") and the same refusal of a twin's name.
  */
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { randomUUID } from "node:crypto";
@@ -66,6 +73,8 @@ import { CORPUS_ROOT } from "./corpus-lib";
 import { refuseUnlessLocalDatabase } from "./local-db-guard.mjs";
 import { bodySizeOfPages, cleanHeading, lettersOfTitle, recoverChapterTitle, runningHeadsOf } from "./corpus-chunk";
 import type { PageContent } from "./corpus-pdf";
+// bank-desk (20 Oct 2026): the case rule for a capital inside a word ("Lines and angLes"), shared with the desk's display.
+import { fixTitleCase } from "../src/lib/chapter-title-case";
 
 /* ===========================================================================
    Pure: the reading of a title from pages, and its plausibility.
@@ -483,7 +492,8 @@ export function mend(text: string, runningHeads: readonly string[], vocab: Vocab
   const base = squash(recovered).length >= squash(cleaned).length ? recovered : cleaned;
   const garbledCase = smallCapsGarble(base);
   const restored = restoreDropCaps(garbledCase ? base.toLowerCase() : base, vocab, dictionary);
-  return { text: titleCase(tidy(restored.text), garbledCase), repaired: restored.repaired };
+  // The case rule last (bank-desk, 20 Oct 2026): a lone capital inside a word is a drop capital out of place.
+  return { text: fixTitleCase(titleCase(tidy(restored.text), garbledCase)), repaired: restored.repaired };
 }
 
 export type Choice = {
@@ -908,11 +918,42 @@ async function topicsPass(db: PrismaClient): Promise<void> {
       VALUES (${randomUUID()}, NULL, NULL, ${"operator.quizTopic.rename"}, ${"QuizTopic"}, ${t.id}, ${meta}, NULL, ${new Date().toISOString()}::timestamp)`;
     renamed++;
   }
-  console.log(`\n${dry ? "Would rename" : "Renamed"} ${dry ? "the chapters above" : `${renamed} practice chapter(s)`}; slugs unchanged, Hindi and Marathi names left for a speaker.`);
+  // THE CASE RULE (bank-desk, 20 Oct 2026): every chapter's name and line under fixTitleCase, a twin's name refused.
+  const caseRenamed = await caseRulePass(db, topics, dry, left);
+  console.log(`\n${dry ? "Would rename" : "Renamed"} ${dry ? "the chapters above" : `${renamed} practice chapter(s) by the corpus and ${caseRenamed} by the case rule`}; slugs unchanged, Hindi and Marathi names left for a speaker.`);
   if (left.length) {
     console.log(`Left (${left.length}):`);
     for (const l of left) console.log(`  ${l}`);
   }
+}
+
+type TopicRow = { id: string; slug: string; board: string | null; classLevel: number; subject: string; chapter: string; name: string; retiredAt: Date | null };
+
+/** The case rule's renames, from the names as they stand now (a corpus rename above may have changed one). */
+export async function caseRulePass(db: PrismaClient, listed: readonly TopicRow[], dry: boolean, left: string[]): Promise<number> {
+  const { chapterNumberOf } = await import("./quiz-gen/checks");
+  const topics = await db.quizTopic.findMany({ where: { id: { in: listed.map((t) => t.id) } }, select: { id: true, slug: true, board: true, classLevel: true, subject: true, chapter: true, name: true, retiredAt: true } });
+  let renamed = 0;
+  for (const t of topics) {
+    const name = fixTitleCase(t.name);
+    const chapter = fixTitleCase(t.chapter);
+    if (name === t.name && chapter === t.chapter) continue;
+    const n = chapterNumberOf(t.chapter);
+    const twin = topics.find((o) => o.id !== t.id && !o.retiredAt && o.board === t.board && o.classLevel === t.classLevel && o.subject === t.subject && squash(o.name) === squash(name) && chapterNumberOf(o.chapter) === n && o.name === name);
+    if (twin) {
+      left.push(`${t.slug}: "${name}" is already ${twin.slug}'s name; its questions belong there (not renamed by the case rule)`);
+      continue;
+    }
+    console.log(`${t.slug}: "${t.name}" → "${name}" (${chapter}; the case rule)`);
+    if (dry) continue;
+    await db.quizTopic.update({ where: { id: t.id }, data: { name, chapter } });
+    const meta = JSON.stringify({ via: "scripts/corpus-titles.ts", rule: "case", slug: t.slug, from: { name: t.name, chapter: t.chapter }, to: { name, chapter } });
+    await db.$executeRaw`
+      INSERT INTO "AuditLog" ("id", "schoolId", "actorUserId", "action", "targetType", "targetId", "meta", "ip", "createdAt")
+      VALUES (${randomUUID()}, NULL, NULL, ${"operator.quizTopic.rename"}, ${"QuizTopic"}, ${t.id}, ${meta}, NULL, ${new Date().toISOString()}::timestamp)`;
+    renamed++;
+  }
+  return renamed;
 }
 
 async function main() {

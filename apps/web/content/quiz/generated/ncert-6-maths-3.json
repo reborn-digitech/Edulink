@@ -21,47 +21,47 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-18T23:59:53.715Z",
+  "generatedAt": "2026-10-19T19:54:26.707Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following is an example of using numbers to make patterns?",
+      "stem": "What is the total number of hours Sheetal has spent in school if she studies 6 hours a day for 200 days a year for 8 years?",
       "choices": [
-        "To measure the height of a building",
-        "To solve a puzzle involving numbers",
-        "To count the number of objects",
-        "To estimate the weight of an object"
+        "9,000",
+        "12,000",
+        "9,600",
+        "13,000"
       ],
-      "answerIndex": 1,
-      "solution": "Using numbers to solve a puzzle involving numbers is an example of making patterns. The other options involve using numbers for different purposes like measuring, counting, or estimating, which are not directly about making patterns.",
-      "checkExpr": null,
+      "answerIndex": 2,
+      "solution": "The total number of hours is calculated as 6 hours/day * 200 days/year * 8 years = 9,600 hours. The option '13,000' is incorrect because it is much higher than the actual calculated value.",
+      "checkExpr": "6*200*8",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन सा संख्याओं के उपयोग से पैटर्न बनाने का उदाहरण है?",
+          "stem": "Sheetal द्वारा 8 साल तक 200 दिन प्रति वर्ष एक दिन में 6 घंटे के अनुसार स्कूल में बिताए गए कुल घंटों की संख्या क्या है?",
           "choices": [
-            "एक इमारत की ऊंचाई को मापना",
-            "संख्याओं के साथ पहेली हल करना",
-            "वस्तुओं की संख्या की गणना करना",
-            "एक वस्तु के वजन का अनुमान लगाना"
+            "9,000",
+            "12,000",
+            "9,600",
+            "13,000"
           ],
-          "solution": "संख्याओं के साथ पहेली हल करना संख्याओं के उपयोग से पैटर्न बनाने का एक उदाहरण है। अन्य विकल्पों में मापन, गणना या अनुमान लगाने जैसे उद्देश्यों के लिए संख्याओं का उपयोग शामिल है, जो सीधे पैटर्न बनाने से संबंधित नहीं हैं।",
+          "solution": "कुल घंटों की संख्या 6 घंटे/दिन * 200 दिन/वर्ष * 8 वर्ष = 9,600 घंटे के रूप में गणना की जाती है। विकल्प '13,000' गलत है क्योंकि यह वास्तविक गणना मूल्य से बहुत अधिक है।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for mathematical concepts.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते संख्यांचा वापर पॅटर्न तयार करण्यासाठी करते?",
+          "stem": "शीतलने शाळेत किती एकूण तास घालवले असतील, जर ती एका दिवसाला 6 तास शिक्षण घेत असेल आणि 200 दिवस वर्षात आणि 8 वर्षे असेल?",
           "choices": [
-            "एका इमारतीची उंची मोजणे",
-            "संख्यांचा वापर करून पहाडा सोडवणे",
-            "वस्तूंची संख्या गणणे",
-            "एका वस्तूचा वजन अंदाज करणे"
+            "9,000",
+            "12,000",
+            "9,600",
+            "13,000"
           ],
-          "solution": "संख्यांचा वापर करून पहाडा सोडवणे हे पॅटर्न तयार करण्याचे उदाहरण आहे. इतर विकल्पांमध्ये संख्यांचा वापर मोजणे, गणणे किंवा अंदाज करण्यासाठी केला जातो, जे पॅटर्न तयार करण्याशी सीधा संबंध नाही.",
+          "solution": "एकूण तास 6 तास/दिवस * 200 दिवस/वर्ष * 8 वर्ष = 9,600 तास असतील. '13,000' विकल्प चुकीचा आहे कारण तो खात्रीनाक गणनेपेक्षा जास्त आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
           "flag": null
@@ -72,108 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the purpose of making patterns with other uses of numbers",
+        "Student multiplies 6 hours by 200 days but forgets to multiply by 8 years, resulting in 1,200 hours per year instead of 1,200 x 8 = 9,600.",
+        "multiplies 6 by 200 but forgets to multiply by 8",
         null,
-        "Misunderstands the concept of counting",
-        "Misinterprets the role of estimation in number use"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as solving a puzzle involving numbers directly relates to creating or identifying patterns. The other options involve basic numerical applications like measurement, counting, and estimation, which do not inherently involve pattern-making.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 15,
-          "pageStart": 19,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 16,
-          "pageStart": 22,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 17,
-          "pageStart": 23,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:59:53.715Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "Which of the following numbers is a palindrome?",
-      "choices": [
-        "643",
-        "466",
-        "575",
-        "321"
-      ],
-      "answerIndex": 2,
-      "solution": "The number 575 reads the same from left to right and from right to left, making it a palindrome. The other options do not satisfy this condition.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सी संख्या एक पैलिंड्रोम है?",
-          "choices": [
-            "643",
-            "466",
-            "575",
-            "321"
-          ],
-          "solution": "संख्या 575 बाएं से दाएं और दाएं से बाएं दोनों ओर से एक ही पढ़ती है, जिसके कारण यह एक पैलिंड्रोम है। अन्य विकल्प इस शर्त को पूरा नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The term 'पैलिंड्रोम' is the standard term used in Hindi mathematics textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता संख्या एक पॅलिंड्रोम आहे?",
-          "choices": [
-            "643",
-            "466",
-            "575",
-            "321"
-          ],
-          "solution": "संख्या 575 बाजूपासून बाजूपर्यंत आणि उलट वाचते, ज्यामुळे ती एक पॅलिंड्रोम बनते. इतर विकल्प या अटीला अनुरूप नाहीत.",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi terminology for 'palindrome' (पॅलिंड्रोम).",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the order of digits",
-        "Misreads the number",
-        null,
-        "Confuses palindrome with a number that has a repeating digit pattern"
+        "confuses the multiplication steps"
       ],
       "solverAnswers": [
         2,
@@ -183,7 +85,193 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies 575 as the palindrome. The reasoning for the distractors is plausible and reflects common misconceptions.",
+      "critique": "The correct calculation is 6 * 200 * 8 = 9,600, which matches the key. The distractors reflect common errors like forgetting to multiply by 8 or miscalculating the steps.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 21,
+          "pageStart": 30,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 22,
+          "pageStart": 32,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "S u m m a r y"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T19:54:26.707Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a 5-digit palindrome?",
+      "choices": [
+        "12321",
+        "12345",
+        "12332",
+        "12343"
+      ],
+      "answerIndex": 0,
+      "solution": "A 5-digit palindrome reads the same forwards and backwards. Among the options, 12321 is the only one that satisfies this condition. The other options do not have the same digits mirrored around the center.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक 5 अंकीय पैलिंड्रोम है?",
+          "choices": [
+            "12321",
+            "12345",
+            "12332",
+            "12343"
+          ],
+          "solution": "एक 5 अंकीय पैलिंड्रोम आगे और पीछे से एक ही पढ़ता है। विकल्पों में, 12321 इस शर्त को पूरा करने वाला एकमात्र विकल्प है। अन्य विकल्प केंद्र के चारों ओर दर्पण में एक ही अंक नहीं रखते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते 5 अंकी पॅलिंड्रोम आहे?",
+          "choices": [
+            "12321",
+            "12345",
+            "12332",
+            "12343"
+          ],
+          "solution": "5 अंकी पॅलिंड्रोम अगदी आधी आणि शेवटच्या बाजूने एकसारखे वाचते. निवडक पैकी, 12321 हे फक्त एक असे आहे जे या अटीला अनुरूप आहे. इतर निवडक या अटीला अनुरूप नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for 'palindrome'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the pattern of a palindrome",
+        "Chooses a sequence of increasing digits",
+        "Fails to mirror the digits correctly"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 12321, which is a 5-digit palindrome. The other options do not satisfy the condition of reading the same forwards and backwards. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 18,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 19,
+          "pageStart": 27,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp103.pdf",
+          "ordinal": 20,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 3: Number Play",
+            "S u m m a r y"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T19:54:26.707Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a palindrome?",
+      "choices": [
+        "12345",
+        "12321",
+        "121212",
+        "12121"
+      ],
+      "answerIndex": 1,
+      "solution": "A palindrome reads the same from left to right and from right to left. The number 12321 meets this condition, while the others do not. 12345 is not a palindrome because it does not read the same backwards. 121212 is not a palindrome because it does not read the same when reversed. 12121 is not a palindrome because it reads differently when reversed.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक पैलिंड्रोम है?",
+          "choices": [
+            "12345",
+            "12321",
+            "121212",
+            "12121"
+          ],
+          "solution": "एक पैलिंड्रोम बाएं से दाएं और दाएं से बाएं दोनों तरफ से एक ही तरह पढ़ता है। संख्या 12321 इस शर्त को पूरा करती है, जबकि अन्य सभी नहीं करते। 12345 एक पैलिंड्रोम नहीं है क्योंकि यह पीछे से एक ही तरह नहीं पढ़ता। 121212 एक पैलिंड्रोम नहीं है क्योंकि यह उलटा करने पर एक ही तरह नहीं पढ़ता। 12121 एक पैलिंड्रोम नहीं है क्योंकि यह उलटा करने पर अलग-अलग पढ़ता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक पॅलिंड्रोम आहे?",
+          "choices": [
+            "12345",
+            "12321",
+            "121212",
+            "12121"
+          ],
+          "solution": "एक पॅलिंड्रोम बाजूने व उलट बाजूने एकसारखे वाचते. संख्या 12321 ही या शर्तीला अनुरूप आहे, तर इतर नाहीत. 12345 हे पॅलिंड्रोम नाही कारण ते उलट वाचत नाही. 121212 हे पॅलिंड्रोम नाही कारण ते उलट वाचत नाही. 12121 हे पॅलिंड्रोम नाही कारण ते उलट वाचत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for 'palindrome' (पॅलिंड्रोम).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the pattern of a palindrome",
+        null,
+        "Fails to recognize the symmetry",
+        "Misinterprets the structure of a palindrome"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1 (12321), which is a palindrome. The solution correctly identifies this and explains why the other options are not palindromes. The reasons for the wrong options are valid misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
@@ -237,285 +325,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:59:53.715Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "How many times does the digit '7' occur between 1 and 100?",
-      "choices": [
-        "10",
-        "15",
-        "19",
-        "20"
-      ],
-      "answerIndex": 3,
-      "solution": "The digit '7' occurs 20 times between 1 and 100. This includes the numbers 7, 17, 27, 37, 47, 57, 67, 70–79 (10 times), 87, and 97. The other options are incorrect because they do not account for all occurrences of the digit '7'.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "1 और 100 के बीच अंक '7' कितनी बार आता है?",
-          "choices": [
-            "10",
-            "15",
-            "19",
-            "20"
-          ],
-          "solution": "अंक '7' 1 और 100 के बीच 20 बार आता है। इसमें 7, 17, 27, 37, 47, 57, 67, 70–79 (10 बार), 87 और 97 शामिल हैं। अन्य विकल्प गलत हैं क्योंकि वे अंक '7' के सभी उदाहरणों को ध्यान में नहीं रखते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "1 आणि 100 दरम्यान अंक '7' किती वेळा येतो?",
-          "choices": [
-            "10",
-            "15",
-            "19",
-            "20"
-          ],
-          "solution": "अंक '7' 1 आणि 100 दरम्यान 20 वेळा येतो. हे 7, 17, 27, 37, 47, 57, 67, 70–79 (10 वेळा), 87 आणि 97 या संख्यांमध्ये समाविष्ट आहे. इतर विकल्प अंक '7' च्या सर्व उदयांचा विचार करत नाहीत म्हणून चूक आहेत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Counts only the numbers ending in 7",
-        "Includes only the numbers from 70–79",
-        "Incorrectly assumes the digit '7' appears 19 times, missing one occurrence",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 20, as the digit '7' appears in the units place 10 times (7, 17, ..., 97) and in the tens place 10 times (70-79). The author's solution is accurate and the reasoning for the distractors aligns with common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 3: Number Play"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 1,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.2 Supercells"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.2 Supercells"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.3 Patterns of Numbers on the Number Line"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.4 Playing with Digits"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:59:53.715Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "Roshan estimates the cost of making fruit custard for 5 people to be ₹100. If the actual cost is ₹120, what is the difference between his estimate and the actual cost?",
-      "choices": [
-        "₹20",
-        "₹10",
-        "₹30",
-        "₹12"
-      ],
-      "answerIndex": 0,
-      "solution": "The difference between the estimate (₹100) and the actual cost (₹120) is ₹20. This is a straightforward subtraction. The other options are incorrect calculations or guesses.",
-      "checkExpr": "120-100",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "रोशन ने 5 लोगों के लिए फल कस्टर्ड बनाने के लागत का अनुमान ₹100 रखा। यदि वास्तविक लागत ₹120 है, तो उसके अनुमान और वास्तविक लागत के बीच अंतर क्या है?",
-          "choices": [
-            "₹20",
-            "₹10",
-            "₹30",
-            "₹12"
-          ],
-          "solution": "अनुमान (₹100) और वास्तविक लागत (₹120) के बीच अंतर ₹20 है। यह एक सीधा घटाव है। अन्य विकल्प गलत गणना या अनुमान हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for cost, estimate, and subtraction.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "रोशन फळांच्या कस्टर्डसाठी 5 लोकांसाठी खर्च ₹100 असा अंदाज घेतो. जर खरा खर्च ₹120 असेल, तर त्याच्या अंदाज आणि खर्या खर्चात किती फरक आहे?",
-          "choices": [
-            "₹20",
-            "₹10",
-            "₹30",
-            "₹12"
-          ],
-          "solution": "अंदाज (₹100) आणि खरा खर्च (₹120) चा फरक ₹20 आहे. हे सरळ वजाबाकी आहे. इतर विकल्प चुकीच्या गणना किंवा अंदाजावर आधारित आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for financial terms like 'खर्च' (cost) and 'अंदाज' (estimate).",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Believes the difference is the smaller number between the estimate and actual cost",
-        "Mistakenly adds the estimate and actual cost instead of subtracting them",
-        "Confuses the actual cost with the percentage error"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is straightforward. The correct answer is ₹20, found by subtracting the estimate (₹100) from the actual cost (₹120). The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 10,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.9 Playing with Number Patterns",
-            "3.10AnUnsolvedMystery—theCollatzConjecture!"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 11,
-          "pageStart": 15,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.11 Simple Estimation"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 12,
-          "pageStart": 17,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.11 Simple Estimation"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 13,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.12 Games and Winning Strategies"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 14,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 3: Number Play",
-            "3.12 Games and Winning Strategies"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:59:53.715Z",
+      "generatedAt": "2026-10-19T19:54:26.707Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "If you start with a number and follow the Collatz rule (if the number is even, take half of it; if it is odd, multiply by 3 and add 1), which of the following numbers would reach 1 in the fewest steps?",
+      "stem": "If you reverse and add the number 2020, what is the result after one step?",
       "choices": [
-        "16",
-        "15",
-        "14",
-        "13"
+        "4040",
+        "2222",
+        "4020",
+        "2020"
       ],
-      "answerIndex": 0,
-      "solution": "The number 16 is even, so it becomes 8, then 4, then 2, then 1. This takes 4 steps. The other numbers take more steps to reach 1. For example, 15 becomes 46, then 23, then 70, then 35, and so on. 14 becomes 7, then 22, then 11, then 34, and so on. 13 becomes 40, then 20, then 10, then 5, and so on.",
-      "checkExpr": null,
+      "answerIndex": 1,
+      "solution": "Reversing 2020 gives 0202, which is 202. Adding 2020 and 202 gives 2222. 4040 is the result of reversing and adding 2020 twice. 4020 is the result of a wrong addition. 2020 is the original number, not the result of the operation.",
+      "checkExpr": "2020+202",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि आप किसी संख्या से शुरू करते हैं और कॉल्टज नियम (यदि संख्या सम है, तो इसका आधा लें; यदि यह विषम है, तो 3 से गुणा करें और 1 जोड़ें) का अनुसरण करते हैं, तो निम्नलिखित में से कौन सी संख्या 1 तक पहुंचने में सबसे कम चरण लेगी?",
+          "stem": "यदि आप 2020 की संख्या को उल्टा करके जोड़ें, तो एक चरण के बाद परिणाम क्या होगा?",
           "choices": [
-            "16",
-            "15",
-            "14",
-            "13"
+            "4040",
+            "2222",
+            "4020",
+            "2020"
           ],
-          "solution": "संख्या 16 सम है, इसलिए यह 8 में बदल जाती है, फिर 4 में, फिर 2 में, फिर 1 में। इसमें 4 चरण लगते हैं। अन्य संख्याएं 1 तक पहुंचने में अधिक चरण लेती हैं। उदाहरण के लिए, 15, 46 में बदल जाता है, फिर 23 में, फिर 70 में, फिर 35 में, और इसी तरह आगे। 14, 7 में बदल जाता है, फिर 22 में, फिर 11 में, फिर 34 में, और इसी तरह आगे। 13, 40 में बदल जाता है, फिर 20 में, फिर 10 में, फिर 5 में, और इसी तरह आगे।",
+          "solution": "2020 को उल्टा करने पर 0202 प्राप्त होता है, जो 202 है। 2020 और 202 को जोड़ने पर 2222 प्राप्त होता है। 4040 का परिणाम 2020 को दो बार उल्टा करके जोड़ने पर प्राप्त होता है। 4020 गलत जोड़ का परिणाम है। 2020 मूल संख्या है, न कि ऑपरेशन का परिणाम।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जर तुम्ही एका संख्येपासून सुरुवात करता आणि कॉल्ट्झ नियम (जर संख्या सम असेल, तर तिच्या अर्ध्याचा घेणे; जर ती विषम असेल तर 3 ने गुणून 1 मिळवणे) अनुसरता, तर खालीलपैकी कोणती संख्या 1 पर्यंत जाण्यासाठी सर्वात कमी टप्प्यांमध्ये पोहोचेल?",
+          "stem": "2020 ची अदलाबदल करून त्यास जोडल्यास एका चरणानंतर निकाल काय असेल?",
           "choices": [
-            "16",
-            "15",
-            "14",
-            "13"
+            "4040",
+            "2222",
+            "4020",
+            "2020"
           ],
-          "solution": "संख्या 16 सम आहे, म्हणून ती 8 बनते, नंतर 4, नंतर 2, नंतर 1. हे 4 टप्प्यांमध्ये होते. इतर संख्यांना 1 पर्यंत पोहोचण्यास अधिक टप्पे लागतात. उदाहरणार्थ, 15 हा 46 बनतो, नंतर 23, नंतर 70, नंतर 35, आणि अशाप्रकारे चालू राहतो. 14 हा 7 बनतो, नंतर 22, नंतर 11, नंतर 34, आणि अशाप्रकारे चालू राहतो. 13 हा 40 बनतो, नंतर 20, नंतर 10, नंतर 5, आणि अशाप्रकारे चालू राहतो.",
+          "solution": "2020 ची अदलाबदल करण्यास 0202 मिळतो, जो 202 आहे. 2020 आणि 202 ची बेरीज 2222 आहे. 4040 हा 2020 ची अदलाबदल करून जोडण्याच्या दुसऱ्या चरणाचा निकाल आहे. 4020 हा चुकीच्या बेरीजेचा निकाल आहे. 2020 हा मूळ संख्या आहे, जो ऑपरेशनाचा निकाल नाही.",
           "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. Technical terms like 'Collatz rule' are translated appropriately, and the solution clearly shows why 16 is the correct answer.",
+          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology used for mathematical operations.",
           "flag": null
         }
       },
@@ -524,75 +376,74 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Adds the number to itself",
         null,
-        "Believes that odd numbers always take fewer steps to reach 1",
-        "Believes the Collatz sequence for 14 reaches 1 in fewer steps than it actually does due to miscalculating the number of steps.",
-        "Student thinks the Collatz sequence always decreases by 1 each step"
+        "Adds the reversed number incorrectly",
+        "Fails to reverse the number properly"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and matches the author's key. The reasoning for the correct answer is sound, and the misconceptions listed for the wrong options are plausible and relevant to common student errors.",
+      "critique": "The solution is correct. Reversing 2020 gives 0202, which is 202. Adding 2020 and 202 gives 2222, which matches the key. The distractors reflect plausible misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 10,
-          "pageStart": 14,
-          "pageEnd": 15,
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 8,
           "headingPath": [
             "Chapter 3: Number Play",
-            "3.9 Playing with Number Patterns",
-            "3.10AnUnsolvedMystery—theCollatzConjecture!"
+            "3.5 Pretty Palindromic Patterns"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 11,
-          "pageStart": 15,
-          "pageEnd": 17,
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 9,
           "headingPath": [
             "Chapter 3: Number Play",
-            "3.11 Simple Estimation"
+            "3.6 The Magic Number of Kaprekar"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 12,
-          "pageStart": 17,
-          "pageEnd": 17,
+          "ordinal": 7,
+          "pageStart": 10,
+          "pageEnd": 11,
           "headingPath": [
             "Chapter 3: Number Play",
-            "3.11 Simple Estimation"
+            "3.7 Clock and Calendar Numbers"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 13,
-          "pageStart": 17,
-          "pageEnd": 18,
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 13,
           "headingPath": [
             "Chapter 3: Number Play",
-            "3.12 Games and Winning Strategies"
+            "3.8 Mental Math"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp103.pdf",
-          "ordinal": 14,
-          "pageStart": 18,
-          "pageEnd": 19,
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 13,
           "headingPath": [
             "Chapter 3: Number Play",
-            "3.12 Games and Winning Strategies"
+            "3.9 Playing with Number Patterns"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:59:53.715Z",
+      "generatedAt": "2026-10-19T19:54:26.707Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

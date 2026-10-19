@@ -230758,6 +230758,766 @@
         ]
       }
     },
+    "/api/v1/appadmin/quiz-review/matrix": {
+      "get": {
+        "summary": "The practice bank by class and subject (?board= NCERT or BALBHARATI, absent both): for classes 3 to 12 and each subject the generator has a code for, the questions served, the chapters and how many have reached the target (the running generation's, else 100); a college row per stream when the bank has college chapters",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "board": {
+                      "type": "string",
+                      "enum": [
+                        "NCERT",
+                        "BALBHARATI"
+                      ],
+                      "nullable": true
+                    },
+                    "target": {
+                      "type": "integer",
+                      "exclusiveMinimum": true,
+                      "minimum": 0
+                    },
+                    "targetFromRun": {
+                      "type": "boolean"
+                    },
+                    "subjects": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "grade": {
+                            "type": "integer"
+                          },
+                          "cells": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "subject": {
+                                  "type": "string"
+                                },
+                                "served": {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                "chapters": {
+                                  "$ref": "#/properties/rows/items/properties/cells/items/properties/served"
+                                },
+                                "atTarget": {
+                                  "$ref": "#/properties/rows/items/properties/cells/items/properties/served"
+                                }
+                              },
+                              "required": [
+                                "subject",
+                                "served",
+                                "chapters",
+                                "atTarget"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "served": {
+                            "$ref": "#/properties/rows/items/properties/cells/items/properties/served"
+                          },
+                          "chapters": {
+                            "$ref": "#/properties/rows/items/properties/cells/items/properties/served"
+                          },
+                          "atTarget": {
+                            "$ref": "#/properties/rows/items/properties/cells/items/properties/served"
+                          }
+                        },
+                        "required": [
+                          "grade",
+                          "cells",
+                          "served",
+                          "chapters",
+                          "atTarget"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "college": {
+                      "type": "object",
+                      "properties": {
+                        "subjects": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "rows": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "stream": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "cells": {
+                                "type": "array",
+                                "items": {
+                                  "$ref": "#/properties/rows/items/properties/cells/items"
+                                }
+                              },
+                              "served": {
+                                "$ref": "#/properties/rows/items/properties/cells/items/properties/served"
+                              },
+                              "chapters": {
+                                "$ref": "#/properties/rows/items/properties/cells/items/properties/served"
+                              },
+                              "atTarget": {
+                                "$ref": "#/properties/rows/items/properties/cells/items/properties/served"
+                              }
+                            },
+                            "required": [
+                              "stream",
+                              "cells",
+                              "served",
+                              "chapters",
+                              "atTarget"
+                            ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "required": [
+                        "subjects",
+                        "rows"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "board",
+                    "target",
+                    "targetFromRun",
+                    "subjects",
+                    "rows",
+                    "college"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "board": {
+                    "type": "string",
+                    "enum": [
+                      "NCERT",
+                      "BALBHARATI"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/appadmin/quiz-review/chapters": {
+      "get": {
+        "summary": "The practice bank's chapters grouped by class, subject and board in their book's order (?board=&grade=&subject=), each with its served questions by level, what is taken down or held, and whether the generator, the authored bank or both made them",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "target": {
+                      "type": "integer",
+                      "exclusiveMinimum": true,
+                      "minimum": 0
+                    },
+                    "groups": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "grade": {
+                            "type": "integer"
+                          },
+                          "subject": {
+                            "type": "string"
+                          },
+                          "board": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "served": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "chapters": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "topicId": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 64
+                                },
+                                "slug": {
+                                  "type": "string"
+                                },
+                                "board": {
+                                  "type": "string",
+                                  "nullable": true
+                                },
+                                "grade": {
+                                  "type": "integer"
+                                },
+                                "subject": {
+                                  "type": "string"
+                                },
+                                "chapter": {
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "number": {
+                                  "type": "integer",
+                                  "nullable": true
+                                },
+                                "levels": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/properties/groups/items/properties/served"
+                                  },
+                                  "minItems": 6,
+                                  "maxItems": 6
+                                },
+                                "total": {
+                                  "$ref": "#/properties/groups/items/properties/served"
+                                },
+                                "down": {
+                                  "$ref": "#/properties/groups/items/properties/served"
+                                },
+                                "held": {
+                                  "$ref": "#/properties/groups/items/properties/served"
+                                },
+                                "maker": {
+                                  "type": "string",
+                                  "enum": [
+                                    "GENERATED",
+                                    "AUTHORED",
+                                    "MIXED"
+                                  ],
+                                  "nullable": true
+                                }
+                              },
+                              "required": [
+                                "topicId",
+                                "slug",
+                                "board",
+                                "grade",
+                                "subject",
+                                "chapter",
+                                "name",
+                                "number",
+                                "levels",
+                                "total",
+                                "down",
+                                "held",
+                                "maker"
+                              ],
+                              "additionalProperties": false
+                            }
+                          }
+                        },
+                        "required": [
+                          "grade",
+                          "subject",
+                          "board",
+                          "served",
+                          "chapters"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "target",
+                    "groups"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "board": {
+                    "type": "string",
+                    "enum": [
+                      "NCERT",
+                      "BALBHARATI"
+                    ]
+                  },
+                  "grade": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 13
+                  },
+                  "subject": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 40
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/appadmin/quiz-review/chapters/{slug}": {
+      "get": {
+        "summary": "One chapter's questions, fifty a page (?page=), served unless ?state= asks for the taken-down or held ones, in English, Hindi or Marathi (?lang=): each with its level, options and key, solution, figure, who made it and when, and a note where the language's words are missing, stale or were taken down as wrong",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "topic": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "slug": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "chapter": {
+                          "type": "string"
+                        },
+                        "subject": {
+                          "type": "string"
+                        },
+                        "grade": {
+                          "type": "integer"
+                        },
+                        "board": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "slug",
+                        "name",
+                        "chapter",
+                        "subject",
+                        "grade",
+                        "board"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "language": {
+                      "type": "string",
+                      "enum": [
+                        "en",
+                        "hi",
+                        "mr"
+                      ]
+                    },
+                    "state": {
+                      "type": "string",
+                      "enum": [
+                        "SERVED",
+                        "DOWN",
+                        "HELD"
+                      ]
+                    },
+                    "counts": {
+                      "type": "object",
+                      "properties": {
+                        "served": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "down": {
+                          "$ref": "#/properties/counts/properties/served"
+                        },
+                        "held": {
+                          "$ref": "#/properties/counts/properties/served"
+                        }
+                      },
+                      "required": [
+                        "served",
+                        "down",
+                        "held"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "page": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "pages": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "total": {
+                      "$ref": "#/properties/counts/properties/served"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/properties/topic/properties/id"
+                          },
+                          "generated": {
+                            "type": "boolean"
+                          },
+                          "difficulty": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 6
+                          },
+                          "language": {
+                            "type": "string",
+                            "enum": [
+                              "en",
+                              "hi",
+                              "mr"
+                            ]
+                          },
+                          "stem": {
+                            "type": "string"
+                          },
+                          "choices": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "answerIndex": {
+                            "type": "integer"
+                          },
+                          "solution": {
+                            "type": "string"
+                          },
+                          "notes": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "MISSING",
+                                "BAD_TRANSLATION",
+                                "STALE"
+                              ]
+                            }
+                          },
+                          "imageKey": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "imageAlt": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "needsFigure": {
+                            "type": "boolean"
+                          },
+                          "madeAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "source": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string",
+                            "enum": [
+                              "SERVED",
+                              "DOWN",
+                              "HELD"
+                            ]
+                          },
+                          "takenDownReason": {
+                            "type": "string",
+                            "enum": [
+                              "WRONG_KEY",
+                              "AMBIGUOUS",
+                              "WEAK_DISTRACTORS",
+                              "WRONG_LEVEL",
+                              "OFF_SYLLABUS",
+                              "FACTUAL_ERROR",
+                              "DUPLICATE",
+                              "FIGURE_PROBLEM",
+                              "POOR_WORDING",
+                              "BAD_TRANSLATION"
+                            ],
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "generated",
+                          "difficulty",
+                          "language",
+                          "stem",
+                          "choices",
+                          "answerIndex",
+                          "solution",
+                          "notes",
+                          "imageKey",
+                          "imageAlt",
+                          "needsFigure",
+                          "madeAt",
+                          "source",
+                          "state",
+                          "takenDownReason"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "topic",
+                    "language",
+                    "state",
+                    "counts",
+                    "page",
+                    "pages",
+                    "total",
+                    "items"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "lang": {
+                    "type": "string",
+                    "enum": [
+                      "en",
+                      "hi",
+                      "mr"
+                    ]
+                  },
+                  "state": {
+                    "type": "string",
+                    "enum": [
+                      "SERVED",
+                      "DOWN",
+                      "HELD"
+                    ]
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1000
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
     "/api/v1/appadmin/quiz-review/{questionId}/put-back": {
       "post": {
         "summary": "Put a taken-down item back: served again at once (unless its figure is still to be drawn); putting it back again changes nothing",

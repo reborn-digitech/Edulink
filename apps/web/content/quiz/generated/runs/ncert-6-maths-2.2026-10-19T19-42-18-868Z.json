@@ -1,0 +1,762 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-19T19:42:18.868Z",
+  "finishedAt": "2026-10-19T19:54:25.641Z",
+  "seconds": 727,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp102.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Lines and angLes",
+    "edition": "Reprint 2026-27",
+    "chunks": 27,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Mathematics, sample question paper, 2022-23]\n20. Assertion (A): The acute angle between the line 𝑟̅ = 𝚤̂ + 𝚥̂ + 2𝑘 ෠ + 𝜆(𝚤̂ − 𝚥̂) and the x-axis\nగ\nis ସ\nReason(R): The acute angle 𝜃 between the lines\n𝑟̅ = 𝑥 𝚤̂ + 𝑦 𝚥̂ + 𝑧 𝑘 ଵ ଵ ଵ ෠ + 𝜆൫𝑎 ଵ 𝚤̂ + 𝑏 𝚥̂ + 𝑐 𝑘 and ଵ ଵ ෠൯\n𝑟̅ = 𝑥 𝚤̂ + 𝑦 𝚥̂ + 𝑧 𝑘 ଶ ଶ ଶ ෠ + 𝜇൫𝑎 ଶ 𝚤̂ + 𝑏 𝚥̂ + 𝑐 𝑘 is given by 𝑐𝑜𝑠𝜃 = ଶ ଶ ෠൯ |௔ ௔ ା௕ ௕ ା௖ ௖ | భ మ భ మ భ మ\nට௔ భ మ ା௕ భ మ ା௖ భ మ ට௔ మ మ ା௕ మ మ ା௖ మ మ",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n11. If two tangents inclined at an angle of 60ᵒ are drawn to a circle of radius 3cm, then the 1\nlength of each tangent is equal to\n3√3 (b) 3cm (c) 6cm (d) 3√3cm\n(a) 2 cm",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n3. The lines representing the given pair of linear equations are non-intersecting. Which of the 1\nfollowing statements is true?\n௔ଵ ௕ଵ ௖ଵ\n(a) ௔ଶ = ௕ଶ = ௖ଶ\n௔ଵ ௕ଵ ௖ଵ\n(b) ௔ଶ = ௕ଶ ≠ ௖ଶ\n௔ଵ ௕ଵ ௖ଵ\n(c) ௔ଶ ≠ ௕ଶ = ௖ଶ\n௔ଵ ௕ଵ ௖ଵ\n(d) ௔ଶ ≠ ௕ଶ ≠ ௖ଶ",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n4. Graphically, the pair of equations given by\n6x – 3y + 10 = 0\n2x – y + 9 = 0\nrepresents two lines which are\n(a) intersecting at exactly one point.\n(c) coincident.\n(c) 5 (d) –5\n(b) parallel.\n(d) intersecting at exactly two points."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 205670,
+      "in": 44,
+      "out": 39,
+      "rejects": 5,
+      "promptTokens": 53576,
+      "completionTokens": 9736
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 332654,
+      "in": 39,
+      "out": 29,
+      "rejects": 10,
+      "promptTokens": 21481,
+      "completionTokens": 8199
+    },
+    "solver": {
+      "calls": 210,
+      "ms": 117418,
+      "in": 29,
+      "out": 26,
+      "rejects": 3,
+      "promptTokens": 42163,
+      "completionTokens": 2313
+    },
+    "form": {
+      "calls": 18,
+      "ms": 143395,
+      "in": 26,
+      "out": 14,
+      "rejects": 12,
+      "promptTokens": 15346,
+      "completionTokens": 3186
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 30,
+      "ms": 5503,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 63,
+      "ms": 521002,
+      "in": 28,
+      "out": 28,
+      "rejects": 2,
+      "promptTokens": 34240,
+      "completionTokens": 16189
+    }
+  },
+  "kept": 14,
+  "keptByLevel": {
+    "1": 2,
+    "2": 4,
+    "3": 3,
+    "4": 1,
+    "5": 3,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "If two rays form an angle of 60 degrees, how many such angles can be formed with the same vertex and one arm fixed?",
+      "ms": {
+        "draft": 4299,
+        "critique": 6689,
+        "solver": 24055
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a ray OA is extended beyond A to a point B, which of the following is correct?",
+      "ms": {
+        "draft": 4299,
+        "critique": 8872,
+        "solver": 2128,
+        "form": 5321
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, how is a straight angle defined?",
+      "ms": {
+        "draft": 3256,
+        "critique": 7482,
+        "solver": 1630,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a straight angle is formed by half of a full turn, what fraction of a full turn forms a right angle?",
+      "ms": {
+        "draft": 3256,
+        "critique": 8080,
+        "solver": 1743,
+        "form": 3951
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the measure of an angle that is one-third of a full turn?",
+      "ms": {
+        "draft": 15022,
+        "critique": 7704
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a protractor is used to measure an angle and the angle spans from the 30° mark to the 120° mark on the outer scale, what is the measure of the angle?",
+      "ms": {
+        "draft": 15022,
+        "critique": 8062
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a straight angle is divided into two equal parts, what is the measure of each part?",
+      "ms": {
+        "draft": 15022,
+        "critique": 9148,
+        "solver": 17555,
+        "form": 2784
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why was the number 360 chosen to divide a full circle?",
+      "ms": {
+        "draft": 15022,
+        "critique": 7100
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the measure of a straight angle?",
+      "ms": {
+        "draft": 15022,
+        "critique": 7719
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the measure of half a circle?",
+      "ms": {
+        "draft": 5078,
+        "critique": 7318
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Fig. 2.15, what is the measure of the angle formed when a semicircle is folded into a quarter circle?",
+      "ms": {
+        "draft": 5078,
+        "critique": 7490
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a protractor is used incorrectly, what is the most likely mistake?",
+      "ms": {
+        "draft": 5078,
+        "critique": 7244
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the passage, it is stated that the sum of the angles in a triangle is 360°. What is the correct sum of the angles in a triangle?",
+      "ms": {
+        "draft": 5078,
+        "critique": 7212,
+        "solver": 1508,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct way to draw a 30° angle using a protractor?",
+      "ms": {
+        "draft": 11929,
+        "critique": 7934,
+        "solver": 1106,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student measures an angle and reads the protractor incorrectly, what could be the cause?",
+      "ms": {
+        "draft": 5078,
+        "critique": 8327,
+        "solver": 9278
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the measure of each angle formed when a straight angle is divided into 8 equal parts?",
+      "ms": {
+        "draft": 5214,
+        "critique": 5247,
+        "solver": 16883,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, ∠POQ = 35°, ∠QOR = 60°, and ∠ROS = 30°. What is the measure of ∠POR?",
+      "ms": {
+        "draft": 5214,
+        "critique": 5246,
+        "solver": 1498,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for a location on a plane?",
+      "ms": {
+        "draft": 4143,
+        "critique": 6111
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Fig. 2.4, which points are on exactly one line segment?",
+      "ms": {
+        "draft": 4143,
+        "critique": 7517,
+        "solver": 1488
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A toy has slanting slabs attached to its sides. The angle of each slab is 60°. If the toy is rotated such that the angle between the slabs is doubled, what is the new angle?",
+      "ms": {
+        "draft": 5214,
+        "critique": 6994,
+        "solver": 11194,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the measure of a straight angle?",
+      "ms": {
+        "draft": 6707,
+        "critique": 8332
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the measure of a full turn in degrees?",
+      "ms": {
+        "draft": 3605,
+        "critique": 5648
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a diagram, if a ray divides an angle into two equal parts, what is the ray called?",
+      "ms": {
+        "draft": 4143,
+        "critique": 5929,
+        "solver": 1493,
+        "form": 2825
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a correct statement about angles?",
+      "ms": {
+        "draft": 58764,
+        "critique": 7196,
+        "solver": 843,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If two angles add up to a straight angle and one is 120°, what is the measure of the other angle?",
+      "ms": {
+        "draft": 4511,
+        "critique": 6439,
+        "solver": 10294,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of angle that has a measure less than 90°?",
+      "ms": {
+        "draft": 5214,
+        "critique": 4644,
+        "solver": 1055,
+        "form": 0,
+        "translation": 26056
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the point where two arms of an angle meet?",
+      "ms": {
+        "draft": 3256,
+        "critique": 6585,
+        "solver": 1344,
+        "form": 2346,
+        "translation": 28990
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a model for a line?",
+      "ms": {
+        "draft": 4299,
+        "critique": 6664,
+        "solver": 2899,
+        "form": 0,
+        "translation": 39573
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a model for a ray?",
+      "ms": {
+        "draft": 4299,
+        "critique": 7080,
+        "solver": 2165,
+        "form": 0,
+        "translation": 42549
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct definition of a right angle?",
+      "ms": {
+        "draft": 15022,
+        "critique": 9047,
+        "solver": 17691,
+        "form": 3416,
+        "translation": 49998
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is used to compare two angles by placing one over the other?",
+      "ms": {
+        "draft": 3256,
+        "critique": 7799,
+        "solver": 1538,
+        "form": 2459,
+        "translation": 32948
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many lines can be drawn passing through a single point?",
+      "ms": {
+        "draft": 4299,
+        "critique": 5908,
+        "solver": 1276,
+        "form": 5263,
+        "translation": 30419
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many lines can be drawn through a single point?",
+      "ms": {
+        "draft": 4143,
+        "critique": 7210,
+        "solver": 1427,
+        "form": 2497,
+        "translation": 26205
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two angles are superimposed and their arms overlap completely, what can be said about the angles?",
+      "ms": {
+        "draft": 3256,
+        "critique": 8511,
+        "solver": 1981,
+        "form": 3582,
+        "translation": 59508
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Fig. 2.8, which of the following is the vertex of the angle?",
+      "ms": {
+        "draft": 4299,
+        "critique": 6188,
+        "solver": 13397,
+        "form": 0,
+        "translation": 34698
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If two angles are formed by the same vertex and their sum is 180°, what type of angle pair is this?",
+      "ms": {
+        "draft": 4143,
+        "critique": 5905,
+        "solver": 1693,
+        "form": 4248,
+        "translation": 44399
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a clock, what is the angle between the hour and minute hands at 3:00?",
+      "ms": {
+        "draft": 5214,
+        "critique": 10816,
+        "solver": 1808,
+        "form": 1,
+        "translation": 34351
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a transparent circular paper is placed on an angle with its center on the vertex, and the arms of the angle intersect the circle at points A and B, what can this method be used for?",
+      "ms": {
+        "draft": 3256,
+        "critique": 7009,
+        "solver": 1531,
+        "form": 3076,
+        "translation": 43599
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "How many degrees are in an angle that is one-sixth of a full turn?",
+      "ms": {
+        "draft": 4511,
+        "critique": 5182,
+        "solver": 11412,
+        "form": 0,
+        "translation": 22750
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If two rays form an angle of 60 degrees, how many such angles can be formed with the same vertex and one arm fixed?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a ray OA is extended beyond A to a point B, which of the following is correct?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels OA, AB"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, how is a straight angle defined?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a straight angle is formed by half of a full turn, what fraction of a full turn forms a right angle?",
+      "reason": "checkExpr is set but the key \"One-fourth\" states no number"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what is the measure of an angle that is one-third of a full turn?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a protractor is used to measure an angle and the angle spans from the 30° mark to the 120° mark on the outer scale, what is the measure of the angle?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a straight angle is divided into two equal parts, what is the measure of each part?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, why was the number 360 chosen to divide a full circle?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the measure of a straight angle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the measure of half a circle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In Fig. 2.15, what is the measure of the angle formed when a semicircle is folded into a quarter circle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a protractor is used incorrectly, what is the most likely mistake?",
+      "reason": "option 0 is not wrong; option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the passage, it is stated that the sum of the angles in a triangle is 360°. What is the correct sum of the angles in a triangle?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the correct way to draw a 30° angle using a protractor?",
+      "reason": "options 0 and 1 say the same thing (\"Place the protractor's centre on the vertex and align one arm with the 0° mark, then mark the other arm at 30°\" / \"Place the protractor's centre on the vertex and align one arm with the 90° mark, then mark the other arm at 30°\"); options 0 and 2 say the same thing (\"Place the protractor's centre on the vertex and align one arm with the 0° mark, then mark the other arm at 30°\" / \"Place the protractor's centre on the vertex and align one arm with the 180° mark, then mark the other arm at 30°\"); options 0 and 3 say the same thing (\"Place the protractor's centre on the vertex and align one arm with the 0° mark, then mark the other arm at 30°\" / \"Place the protractor's centre on the vertex and align one arm with the 360° mark, then mark the other arm at 30°\"); options 1 and 2 say the same thing (\"Place the protractor's centre on the vertex and align one arm with the 90° mark, then mark the other arm at 30°\" / \"Place the protractor's centre on the vertex and align one arm with the 180° mark, then mark the other arm at 30°\"); options 1 and 3 say the same thing (\"Place the protractor's centre on the vertex and align one arm with the 90° mark, then mark the other arm at 30°\" / \"Place the protractor's centre on the vertex and align one arm with the 360° mark, then mark the other arm at 30°\"); options 2 and 3 say the same thing (\"Place the protractor's centre on the vertex and align one arm with the 180° mark, then mark the other arm at 30°\" / \"Place the protractor's centre on the vertex and align one arm with the 360° mark, then mark the other arm at 30°\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student measures an angle and reads the protractor incorrectly, what could be the cause?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the measure of a right angle?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is an acute angle?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is an obtuse angle?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the measure of a quarter turn in degrees?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the measure of a half turn in degrees?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the measure of each angle formed when a straight angle is divided into 8 equal parts?",
+      "reason": "options 0 and 2 are the same (\"22.5°\"); options 1 and 3 are the same (\"360°\"); options are written to different precisions (0 and 1 decimals); options 0 and 2 are the same number; options 1 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given figure, ∠POQ = 35°, ∠QOR = 60°, and ∠ROS = 30°. What is the measure of ∠POR?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels OP, OQ, OR, OS"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for a location on a plane?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In Fig. 2.4, which points are on exactly one line segment?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A toy has slanting slabs attached to its sides. The angle of each slab is 60°. If the toy is rotated such that the angle between the slabs is doubled, what is the new angle?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.incidentRay: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the measure of a straight angle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the measure of a full turn in degrees?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a diagram, if a ray divides an angle into two equal parts, what is the ray called?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'ray'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is a correct statement about angles?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer: focuses on the rotation between arms, not th…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If two angles add up to a straight angle and one is 120°, what is the measure of the other angle?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,19 +1,18 @@
-import Link from "next/link";
-import { COLLEGE_CLASS_LEVEL, isCollegeClassLevel, QUIZ_BANK_STATES, QUIZ_GEN_SUBJECTS, quizReviewQuerySchema, type QuizReviewQuery } from "@edulink/contracts";
+import { COLLEGE_CLASS_LEVEL, QUIZ_BANK_STATES, QUIZ_GEN_SUBJECTS, quizBankChaptersQuerySchema, quizReviewQuerySchema, type QuizReviewQuery } from "@edulink/contracts";
 import { requireAppAdmin } from "@/lib/tenancy";
 import { listQueue, nextItem } from "@/lib/quiz-review";
 import { SUBJECT_KEY, type QuizSubject } from "@/lib/quiz";
 import { getT } from "@/lib/i18n/server";
 import { Badge } from "@/components/ui/badge";
+import { bankChapters, bankMatrix } from "@/lib/bank-desk";
+import { BankChapterGroups, BankMatrixCard, bankSubjectLabel } from "./bank-views";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { DataToolbar } from "@/components/ui/data-toolbar";
 import { PageHeader } from "@/components/ui/page-header";
-import { TableScroll } from "@/components/ui/table-scroll";
 import { ReviewDesk } from "./desk";
 import { GenerationCard } from "./generation-card";
 import { deskJobs } from "@/lib/quiz-jobs-desk";
 import { deskCollegeSyllabi } from "@/lib/quiz-college"; // college-content (12 Oct 2026)
-import { quizBoardKey } from "@/lib/quiz-board";
 
 type Params = Record<string, string | string[] | undefined>;
 
@@ -24,6 +23,11 @@ function filtersOf(sp: Params): Omit<QuizReviewQuery, "skip"> {
   return parsed.success ? parsed.data : {};
 }
 
+/** The page's own parameters as they came, for the links that change some of them. */
+function flatOf(sp: Params): Record<string, string | undefined> {
+  return Object.fromEntries(Object.entries(sp).map(([k, v]) => [k, Array.isArray(v) ? v[0] : v]));
+}
+
 /**
  * The generated bank's desk, one page for the content team (/appadmin/quiz-review) and the operator
  * (/root/quiz-review), as the owner decided on 11 October 2026 (it was the review queue): the bank's
@@ -31,22 +35,34 @@ function filtersOf(sp: Params): Omit<QuizReviewQuery, "skip"> {
  * the filters, the desk with one item (Edit, Take down, Put back, Skip), the generation card (Start,
  * Stop, the live line, the model servers), the items by chapter and level in the plan's order, and who
  * changed what.
+ *
+ * Since 20 October 2026 (bank-desk, the owner's ask) the page reads the whole bank by class and subject under the
+ * generation card: a matrix of classes by subjects with a board switch, then every chapter grouped by class and subject
+ * in its book's order (each opening its own page of questions in three languages, chapter/[slug]), then the one-at-a-time
+ * desk. The board, class and subject in the URL narrow all three.
  */
 export async function QuizReviewQueuePage({ base, searchParams }: { base: string; searchParams: Promise<Params> }) {
   const session = await requireAppAdmin();
   const t = await getT();
-  const query = filtersOf(await searchParams);
-  const [list, first, jobs, college] = await Promise.all([listQueue(session, query), nextItem(session, query), deskJobs(session), deskCollegeSyllabi(session)]);
-  const subjectLabel = (s: string) => (s in SUBJECT_KEY ? t(SUBJECT_KEY[s as QuizSubject]) : s);
+  const raw = await searchParams;
+  const current = flatOf(raw);
+  const query = filtersOf(raw);
+  const parsedPick = quizBankChaptersQuerySchema.safeParse({ board: current.board, grade: current.grade, subject: current.subject });
+  const pick = parsedPick.success ? parsedPick.data : {};
+  const [list, first, jobs, college, matrix, chapters] = await Promise.all([
+    listQueue(session, query),
+    nextItem(session, query),
+    deskJobs(session),
+    deskCollegeSyllabi(session),
+    bankMatrix(session, { board: pick.board }),
+    bankChapters(session, pick),
+  ]);
+  const subjectLabel = (s: string) => (s in SUBJECT_KEY ? t(SUBJECT_KEY[s as QuizSubject]) : bankSubjectLabel(s, t));
   const subjectLabels = Object.fromEntries([...new Set([...list.subjects, ...list.groups.map((g) => g.subject), ...(first.item ? [first.item.topic.subject] : [])])].map((s) => [s, subjectLabel(s)]));
   const all = { value: "", label: t("quizReview.all") };
   const genSubjects = Object.fromEntries(QUIZ_GEN_SUBJECTS.map((s) => [s, subjectLabel(s)]));
-  // quiz-board (11 Oct 2026): the board is a code (QUIZ_BOARDS); its name in the reader's language.
-  const boardLabel = (b: string) => (quizBoardKey(b) ? t(quizBoardKey(b)!) : b);
-  const chapterHref = (topicId: string, board: string | null) => {
-    const q = new URLSearchParams({ topic: topicId, ...(board ? { board } : {}) });
-    return `${base}?${q.toString()}`;
-  };
+  const pickSubjects = [...new Set([...QUIZ_GEN_SUBJECTS, ...matrix.college.subjects, ...list.subjects])];
+  const keep = (keys: string[]) => Object.fromEntries(keys.filter((k) => current[k]).map((k) => [k, current[k]!]));
 
   return (
     <div className="space-y-5">
@@ -58,82 +74,52 @@ export async function QuizReviewQueuePage({ base, searchParams }: { base: string
         <StatTile label={t("quizReview.takenDown")} value={list.takenDown} tone={list.takenDown > 0 ? "danger" : "neutral"} />
         <StatTile label={t("quizReview.held")} value={list.held} tone={list.held > 0 ? "warn" : "neutral"} />
       </div>
-      <p className="text-sm text-fg-muted">
-        {t("quizReview.filtered", { count: list.filtered })} · {t("quizReview.mineToday")}: {list.mine.today} · {t("quizReview.mineTotal")}: {list.mine.total}
-      </p>
-
-      <DataToolbar
-        facets={[
-          { key: "board", label: t("quizReview.boardFacet"), value: query.board ?? "", options: [all, ...list.boards.map((b) => ({ value: b, label: boardLabel(b) }))], clears: ["topic"] },
-          {
-            key: "grade",
-            label: t("quizReview.gradeFacet"),
-            value: query.grade ? String(query.grade) : "",
-            as: "select",
-            options: [all, ...Array.from({ length: 12 }, (_, i) => ({ value: String(i + 1), label: t("quizReview.gradeOption", { grade: i + 1 }) })), { value: String(COLLEGE_CLASS_LEVEL), label: t("practice.collegeLevel") }],
-            clears: ["topic"],
-          },
-          { key: "subject", label: t("quizReview.subjectFacet"), value: query.subject ?? "", as: "select", options: [all, ...list.subjects.map((s) => ({ value: s, label: subjectLabel(s) }))], clears: ["topic"] },
-          { key: "level", label: t("quizReview.levelFacet"), value: query.level ? String(query.level) : "", as: "select", options: [all, ...[1, 2, 3, 4, 5, 6].map((l) => ({ value: String(l), label: t("quizReview.levelOption", { level: l }) }))] },
-          { key: "state", label: t("quizReview.stateFacet"), value: query.state ?? "", options: [all, ...QUIZ_BANK_STATES.map((st) => ({ value: st, label: t(`quizReview.state${st}`) }))] },
-        ]}
-        extra={query.topic ? { topic: query.topic } : {}}
-        labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
-      />
-
-      {/* Keyed by the filters: a new filter is a fresh desk on the new queue's first item. */}
-      <ReviewDesk key={JSON.stringify(query)} initial={first} query={query} subjectLabels={subjectLabels} />
-
       <GenerationCard initial={jobs} subjectLabels={genSubjects} college={college} />
 
-      {list.groups.length > 0 && (
-        <Card>
-          <CardHeader title={t("quizReview.byChapter")} description={t("quizReview.byChapterHint")} />
-          <CardBody>
-            <TableScroll>
-              <table className="w-full text-sm">
-                <thead className="text-left text-xs uppercase tracking-wide text-fg-muted">
-                  <tr>
-                    <th className="py-2 pr-3 font-medium">{t("quizReview.chapterCol")}</th>
-                    {[1, 2, 3, 4, 5, 6].map((l) => (
-                      <th key={l} className="px-1 py-2 text-right font-medium">
-                        {t("quizReview.levelOption", { level: l })}
-                      </th>
-                    ))}
-                    <th className="py-2 pl-3 text-right font-medium">{t("quizReview.itemsCol")}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {list.groups.map((g) => (
-                    <tr key={`${g.topicId}|${g.board ?? ""}`} className="border-t border-border">
-                      <td className="py-2 pr-3">
-                        <Link href={chapterHref(g.topicId, g.board)} className="inline-flex min-h-11 flex-col justify-center text-accent-strong underline-offset-4 hover:underline">
-                          <span>{g.name}</span>
-                          <span className="text-xs text-fg-muted">
-                            {[g.board ? boardLabel(g.board) : null, subjectLabel(g.subject), (isCollegeClassLevel(g.grade) ? t("practice.collegeLevel") : t("quizReview.gradeOption", { grade: g.grade }))].filter(Boolean).join(" · ")}
-                          </span>
-                        </Link>
-                        {g.first && (
-                          <Badge tone="accent" size="sm" className="ml-2">
-                            {t("quizReview.firstBand")}
-                          </Badge>
-                        )}
-                        {(g.down > 0 || g.held > 0) && <span className="block text-xs text-warn">{t("quizReview.chapterNote", { down: g.down, held: g.held })}</span>}
-                      </td>
-                      {g.levels.map((n, i) => (
-                        <td key={i} className="px-1 py-2 text-right tabular-nums">
-                          {n || ""}
-                        </td>
-                      ))}
-                      <td className="py-2 pl-3 text-right font-semibold tabular-nums">{g.total}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </TableScroll>
-          </CardBody>
-        </Card>
-      )}
+      <BankMatrixCard matrix={matrix} base={base} current={current} t={t} />
+
+      <Card id="chapters" className="scroll-mt-20">
+        <CardHeader title={t("bankDesk.chaptersTitle")} description={t("bankDesk.chaptersHint")} />
+        <CardBody className="space-y-4">
+          <DataToolbar
+            facets={[
+              {
+                key: "grade",
+                label: t("quizReview.gradeFacet"),
+                value: pick.grade ? String(pick.grade) : "",
+                as: "select",
+                options: [all, ...Array.from({ length: 10 }, (_, i) => ({ value: String(i + 3), label: t("quizReview.gradeOption", { grade: i + 3 }) })), { value: String(COLLEGE_CLASS_LEVEL), label: t("practice.collegeLevel") }],
+              },
+              { key: "subject", label: t("quizReview.subjectFacet"), value: pick.subject ?? "", as: "select", options: [all, ...pickSubjects.map((s) => ({ value: s, label: subjectLabel(s) }))] },
+            ]}
+            extra={keep(["board", "level", "state"])}
+            labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+          />
+          <BankChapterGroups data={chapters} base={base} t={t} />
+        </CardBody>
+      </Card>
+
+      <section className="space-y-3" aria-labelledby="bank-walk">
+        <div>
+          <h2 id="bank-walk" className="text-base font-semibold">
+            {t("bankDesk.walkTitle")}
+          </h2>
+          <p className="text-sm text-fg-muted">{t("bankDesk.walkHint")}</p>
+          <p className="text-sm text-fg-muted">
+            {t("quizReview.filtered", { count: list.filtered })} · {t("quizReview.mineToday")}: {list.mine.today} · {t("quizReview.mineTotal")}: {list.mine.total}
+          </p>
+        </div>
+        <DataToolbar
+          facets={[
+            { key: "level", label: t("quizReview.levelFacet"), value: query.level ? String(query.level) : "", as: "select", options: [all, ...[1, 2, 3, 4, 5, 6].map((l) => ({ value: String(l), label: t("quizReview.levelOption", { level: l }) }))] },
+            { key: "state", label: t("quizReview.stateFacet"), value: query.state ?? "", options: [all, ...QUIZ_BANK_STATES.map((st) => ({ value: st, label: t(`quizReview.state${st}`) }))] },
+          ]}
+          extra={keep(["board", "grade", "subject", "topic"])}
+          labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+        />
+        {/* Keyed by the filters: a new filter is a fresh desk on the new queue's first item. */}
+        <ReviewDesk key={JSON.stringify(query)} initial={first} query={query} subjectLabels={subjectLabels} />
+      </section>
 
       {list.reviewers.length > 0 && (
         <Card>

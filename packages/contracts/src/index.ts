@@ -282,6 +282,9 @@ export * from "./v1/quiz-board";
 // ---- quiz-publish-jobs (generation started and stopped from the bank desk, the model servers' state, 11 Oct 2026).
 export * from "./v1/quiz-jobs";
 // ---- end quiz-publish-jobs ----
+// ---- bank-desk (the bank desk by class and subject, a chapter's questions in three languages, 20 Oct 2026).
+export * from "./v1/quiz-bank-desk";
+// ---- end bank-desk ----
 // ---- competitions-crawler (competitions suggested from the organisers' own sites, 12 Oct 2026).
 export * from "./v1/competition-crawl";
 // ---- end competitions-crawler ----

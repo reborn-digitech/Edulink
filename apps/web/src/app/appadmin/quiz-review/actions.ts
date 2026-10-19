@@ -32,8 +32,9 @@ async function failure(error: unknown): Promise<Failure> {
 }
 
 function touched() {
-  revalidatePath("/appadmin/quiz-review");
-  revalidatePath("/root/quiz-review");
+  // "layout": the desk and its chapter pages under it (bank-desk, 20 Oct 2026).
+  revalidatePath("/appadmin/quiz-review", "layout");
+  revalidatePath("/root/quiz-review", "layout");
 }
 
 export async function nextItemAction(query: QuizReviewQuery): Promise<Moved> {
@@ -73,6 +74,29 @@ export async function putBackAction(questionId: string): Promise<Refreshed> {
   try {
     const session = await requireApiUser();
     const result = await putBackItem(session, questionId);
+    if (!result.ok) return { ok: false, error: (await getT())(result.errorKey) };
+    touched();
+    return { ok: true, item: await getItem(session, questionId) };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/* ---- a chapter's page (bank-desk, 20 Oct 2026): one item read in full for its Edit, and Take down in place ---- */
+
+export async function itemAction(questionId: string): Promise<Refreshed> {
+  try {
+    const session = await requireApiUser();
+    return { ok: true, item: await getItem(session, questionId) };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function takeDownHereAction(questionId: string, reason: QuizTakeDownReason): Promise<Refreshed> {
+  try {
+    const session = await requireApiUser();
+    const result = await takeDownItem(session, questionId, reason);
     if (!result.ok) return { ok: false, error: (await getT())(result.errorKey) };
     touched();
     return { ok: true, item: await getItem(session, questionId) };
