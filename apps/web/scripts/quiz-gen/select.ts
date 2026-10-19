@@ -227,10 +227,23 @@ export async function selectChapter(db: PrismaClient, args: { board: string; gra
   }
   if (!chunks.length) throw new Error(`${doc.path} has no chunks; run the corpus ingest first`);
 
-  // "Chapter N" is the last resort, for a heading that carries no title even after npm run corpus:titles; said in the log.
-  const titled = chapterNameOf(chapterLabel);
-  if (!titled) log(`  ${doc.path} has no chapter title in the corpus: the chapter is named "Chapter ${args.chapter}"`);
-  const chapterName = titled || `Chapter ${args.chapter}`;
+  // A heading that carries no title even after npm run corpus:titles (20 Oct 2026, the owner's rule: a chapter is never
+  // shown as "Chapter N"): the bank's own title for that chapter is used when the bank already has one — the authored
+  // bank names every NCERT chapter it covers — and otherwise the chapter is not drafted at all, with the reason.
+  let chapterName = chapterNameOf(chapterLabel);
+  if (!chapterName) {
+    const known = await db.quizTopic.findFirst({
+      where: { audience: "SCHOOL", retiredAt: null, board, classLevel: args.grade, subject: subjectCodeOf(args.subject), chapter: { startsWith: `Chapter ${args.chapter} ` }, NOT: { name: "" } },
+      orderBy: { position: "asc" },
+      select: { name: true, slug: true },
+    });
+    if (known && !/^chapter\s*\d+$/i.test(known.name)) {
+      chapterName = known.name;
+      log(`  ${doc.path} has no chapter title in the corpus: the bank's own title for chapter ${args.chapter} is used ("${known.name}", ${known.slug})`);
+    } else {
+      throw new Error(`${doc.path} has no chapter title in the corpus and the bank has none for chapter ${args.chapter}: not drafted (npm run corpus:titles, or set the heading by hand)`);
+    }
+  }
   const keys = [...new Set(chunks.flatMap((c) => c.figureKeys))];
   const figures = readFigures(doc.path, keys);
   const headings = [...new Set(chunks.flatMap((c) => c.headingPath.slice(1)))];

@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-18T23:51:00.309Z",
+  "generatedAt": "2026-10-19T19:19:08.460Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is a point in geometry?",
+      "stem": "What is the measure of a full circle in degrees?",
       "choices": [
-        "A line with two endpoints",
-        "A location with no size",
-        "A line extending in both directions",
-        "A ray starting at a point"
+        "180°",
+        "90°",
+        "360°",
+        "45°"
       ],
-      "answerIndex": 1,
-      "solution": "A point in geometry is a location with no size, length, or breadth. It is used to represent a specific position. A line with two endpoints is a line segment. A line extends infinitely in both directions. A ray starts at a point and extends infinitely in one direction.",
+      "answerIndex": 2,
+      "solution": "A full circle measures 360° because it represents a complete rotation around a point. The other options, 180°, 90°, and 45°, represent fractions of a circle, not the whole.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "ज्यामिति में एक बिंदु क्या है?",
+          "stem": "एक पूर्ण वृत्त का माप डिग्री में क्या होता है?",
           "choices": [
-            "दो अंत बिंदुओं वाली रेखा",
-            "कोई आकार न रखने वाली स्थिति",
-            "दोनों दिशाओं में विस्तारित रेखा",
-            "एक बिंदु से शुरू होने वाली किरण"
+            "180°",
+            "90°",
+            "360°",
+            "45°"
           ],
-          "solution": "ज्यामिति में एक बिंदु को कोई आकार, लंबाई या चौड़ाई न रखने वाली स्थिति माना जाता है। इसका उपयोग एक विशिष्ट स्थिति को दर्शाने के लिए किया जाता है। दो अंत बिंदुओं वाली रेखा एक रेखा खंड है। एक रेखा दोनों दिशाओं में अनंत रूप से विस्तारित होती है। एक किरण एक बिंदु से शुरू होती है और एक दिशा में अनंत रूप से विस्तारित होती है।",
+          "solution": "एक पूर्ण वृत्त 360° के बराबर होता है क्योंकि यह एक बिंदु के चारों ओर पूर्ण घूर्णन का प्रतिनिधित्व करता है। अन्य विकल्प, 180°, 90° और 45°, वृत्त के अंश होते हैं, पूर्ण नहीं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard geometric terminology in Hindi.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "ज्यामितीमध्ये बिंदू काय आहे?",
+          "stem": "एका पूर्ण वर्तुळाचे माप किती अंश असते?",
           "choices": [
-            "दोन अंत बिंदू असलेली रेषा",
-            "कोणताही आकार नसलेले स्थान",
-            "दोन्ही दिशांमध्ये विस्तारलेली रेषा",
-            "एका बिंदूपासून सुरू होणारा किरण"
+            "180°",
+            "90°",
+            "360°",
+            "45°"
           ],
-          "solution": "ज्यामितीमध्ये बिंदू हे कोणताही आकार, लांबी किंवा रुंदी नसलेले स्थान आहे. त्याचा उपयोग विशिष्ट स्थान दर्शविण्यासाठी केला जातो. दोन अंत बिंदू असलेली रेषा रेषाखंड आहे. रेषा दोन्ही दिशांमध्ये अनंतपर्यंत विस्तारते. किरण एका बिंदूपासून सुरू होऊन एका दिशेने अनंतपर्यंत विस्तारतो.",
+          "solution": "एका पूर्ण वर्तुळाचे माप 360° असते कारण ते एका बिंदू भोवती पूर्ण फिरते. इतर विकल्प, 180°, 90° आणि 45°, वर्तुळाच्या भागांचे प्रतिनिधित्व करतात, पूर्ण नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for geometric concepts.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains in the same position (option 3), and the distractors are still incorrect.",
           "flag": null
         }
       },
@@ -72,350 +72,94 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses point with line segment",
+        "Confuses a full circle with half a circle",
+        "Confuses a full circle with a quarter of a circle",
         null,
-        "Confuses point with line",
-        "Confuses point with ray"
+        "Confuses the measure of a quarter circle with a full circle"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 1, as a point in geometry is defined as a location with no size. The other options correctly confuse the point with a line segment, line, and ray, which are all valid misconceptions for students at this level.",
+      "critique": "The question is straightforward and tests basic recall. The correct answer is 360°, and the author's reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
+          "ordinal": 13,
+          "pageStart": 25,
+          "pageEnd": 28,
           "headingPath": [
             "Chapter 2: Lines and angLes",
-            "2.1 Point"
+            "2.9 Measuring Angles"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 2,
+          "ordinal": 14,
+          "pageStart": 28,
+          "pageEnd": 33,
           "headingPath": [
             "Chapter 2: Lines and angLes",
-            "2.2 Line Segment"
+            "2.9 Measuring Angles"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 2,
-          "pageStart": 2,
-          "pageEnd": 2,
+          "ordinal": 15,
+          "pageStart": 33,
+          "pageEnd": 34,
           "headingPath": [
             "Chapter 2: Lines and angLes",
-            "2.3 Line"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 3,
-          "pageStart": 3,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.4 Ray"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.5 Angle"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.5 Angle"
+            "2.9 Measuring Angles"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:51:00.309Z",
+      "generatedAt": "2026-10-19T19:19:08.460Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 1,
-      "stem": "What is the measure of a right angle in degrees?",
+      "stem": "What is the name of the figure formed by two rays starting from a common point?",
       "choices": [
-        "90°",
-        "180°",
-        "360°",
-        "45°"
+        "Line segment",
+        "Line",
+        "Ray",
+        "Angle"
       ],
-      "answerIndex": 0,
-      "solution": "A right angle is a fundamental geometric concept that measures exactly 90 degrees. This is a standard definition in geometry, where a right angle is formed when two lines are perpendicular to each other. The other options are incorrect because 180° is a straight angle, 360° is a full rotation, and 45° is an acute angle.",
+      "answerIndex": 3,
+      "solution": "An angle is formed when two rays share a common endpoint, which is called the vertex. A line segment is a finite portion of a line, a line extends infinitely in both directions, and a ray extends infinitely in one direction from a point. Therefore, the correct answer is 'Angle'.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक समकोण का माप डिग्री में क्या होता है?",
+          "stem": "दो किरणों द्वारा एक सामान्य बिंदु से बने आकृति का नाम क्या है?",
           "choices": [
-            "90°",
-            "180°",
-            "360°",
-            "45°"
+            "रेखाखंड",
+            "रेखा",
+            "किरण",
+            "कोण"
           ],
-          "solution": "एक समकोण एक मूलभूत ज्यामितीय अवधारणा है जो ठीक 90 डिग्री के बराबर होता है। यह ज्यामिति में एक मानक परिभाषा है, जहां एक समकोण तब बनता है जब दो रेखाएं एक दूसरे के लंबवत होती हैं। अन्य विकल्प गलत हैं क्योंकि 180° एक सीधा कोण है, 360° एक पूर्ण घूर्णन है, और 45° एक न्यून कोण है।",
+          "solution": "जब दो किरणें एक सामान्य अंत बिंदु साझा करती हैं, तो कोण बनता है, जिसे शीर्ष कहा जाता है। एक रेखाखंड एक रेखा का परिमित भाग होता है, रेखा दोनों दिशाओं में अनंत रूप से फैली रहती है, और किरण एक बिंदु से एक दिशा में अनंत रूप से फैली रहती है। इसलिए, सही उत्तर 'कोण' है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate geometric terminology as taught in Hindi-medium textbooks.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for mathematical concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "एका समकोनाचे अंशात किती माप असते?",
+          "stem": "एका सामान्य बिंदूपासून प्रारंभ होणाऱ्या दोन किरणांद्वारे तयार होणाऱ्या आकृतीचे नाव काय आहे?",
           "choices": [
-            "90°",
-            "180°",
-            "360°",
-            "45°"
+            "रेखाखंड",
+            "रेषा",
+            "किरण",
+            "कोन"
           ],
-          "solution": "समकोन हा भूमितीचा मूलभूत अवयव असून त्याचे अंशात तपशील 90 अंश असते. हे भूमितीतील मानक नियम आहे, जेव्हा दोन रेषा एकमेकांना लंब असतात तेव्हा समकोन तयार होतो. इतर विकल्प चुकीचे आहेत कारण 180° हा एका थरगट खुणेचा कोन आहे, 360° हा पूर्ण फिरत असलेला कोन आहे आणि 45° हा एक लघु कोन आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi geometry terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses right angle with straight angle",
-        "Confuses right angle with full turn",
-        "Confuses right angle with acute angle"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and tests recall of basic geometry. The correct answer is clearly 90°, and the author's reasoning for the distractors aligns with common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 10,
-          "pageStart": 18,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.8 Special Types of Angles"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 11,
-          "pageStart": 20,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.9 Measuring Angles"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 12,
-          "pageStart": 22,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.9 Measuring Angles"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:51:00.309Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a correct way to name an angle?",
-      "choices": [
-        "∠ABC",
-        "∠BA",
-        "∠A",
-        "∠BAC"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct way to name an angle is by using the vertex as the middle letter, with one point on each arm. ∠ABC is correct because B is the vertex, and A and C are on the arms. ∠AB is incorrect because it has only two letters, missing the vertex. ∠A is incorrect because it lacks the arms. ∠BAC is incorrect because the vertex should be the middle letter, not the first.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा कोण के नामकरण का सही तरीका है?",
-          "choices": [
-            "∠ABC",
-            "∠BA",
-            "∠A",
-            "∠BAC"
-          ],
-          "solution": "कोण के नामकरण का सही तरीका शीर्ष अक्षर के रूप में बीच के अक्षर का उपयोग करना होता है, जिसके एक किनारे पर एक बिंदु होता है। ∠ABC सही है क्योंकि B शीर्ष है, और A और C किनारों पर हैं। ∠AB गलत है क्योंकि इसमें केवल दो अक्षर हैं, शीर्ष की कमी है। ∠A गलत है क्योंकि इसमें किनारों की कमी है। ∠BAC गलत है क्योंकि शीर्ष के रूप में बीच के अक्षर का उपयोग करना चाहिए, न कि पहला।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the solution aligns with the original. The technical terms like 'शीर्ष' (vertex) and 'किनारे' (arms) are appropriate for a Hindi-medium math curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणाचे नाव देण्याचा योग्य प्रकार कोणता आहे?",
-          "choices": [
-            "∠ABC",
-            "∠BA",
-            "∠A",
-            "∠BAC"
-          ],
-          "solution": "कोणाचे नाव देण्याचा योग्य प्रकार हा शिरोबिंदू च्या मध्यम अक्षराचा वापर करून असतो, ज्याच्या दुसऱ्या बाजूला एक बिंदू असतो. ∠ABC हा योग्य आहे कारण B हा शिरोबिंदू आहे आणि A आणि C हे बाजूंवर आहेत. ∠AB अयोग्य आहे कारण त्यामध्ये केवळ दोन अक्षरे आहेत, शिरोबिंदू अभावाने. ∠A अयोग्य आहे कारण त्यामध्ये बाजू अभावाने. ∠BAC अयोग्य आहे कारण शिरोबिंदू मध्यम अक्षर असावा, नाहीतर पहिला अक्षर असावा.",
-          "imageAlt": null,
-          "critique": "The translation accurately conveys the original meaning with appropriate Marathi geometry terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the order of points in an angle name, thinking the vertex is not necessary",
-        "students often think a single letter is sufficient to name an angle, not realizing it needs at least three points to show the vertex and sides",
-        "Fails to include the arms of the angle"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. ∠ABC is the only valid angle name, as it follows the standard convention of placing the vertex as the middle letter. The other options are invalid for the reasons stated.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.1 Point"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.2 Line Segment"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 2,
-          "pageStart": 2,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.3 Line"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 3,
-          "pageStart": 3,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.4 Ray"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.5 Angle"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.5 Angle"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:51:00.309Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is an example of an obtuse angle?",
-      "choices": [
-        "30°",
-        "90°",
-        "120°",
-        "180°"
-      ],
-      "answerIndex": 2,
-      "solution": "An obtuse angle is defined as an angle that is greater than 90° but less than 180°. Among the options, 120° falls within this range, making it an obtuse angle. The other options are incorrect because 30° is an acute angle, 90° is a right angle, and 180° is a straight angle.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक अधिक कोण का उदाहरण है?",
-          "choices": [
-            "30°",
-            "90°",
-            "120°",
-            "180°"
-          ],
-          "solution": "एक अधिक कोण को 90° से अधिक लेकिन 180° से कम कोण के रूप में परिभाषित किया जाता है। विकल्पों में, 120° इस श्रेणी में आता है, जिसके कारण यह एक अधिक कोण है। अन्य विकल्प गलत हैं क्योंकि 30° एक न्यून कोण है, 90° एक समकोण है, और 180° एक सीधा कोण है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All technical terms (e.g., अधिक कोण, न्यून कोण, समकोण, सीधा कोण) are standard in Hindi mathematics textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते अधिक कोनाचे उदाहरण आहे?",
-          "choices": [
-            "30°",
-            "90°",
-            "120°",
-            "180°"
-          ],
-          "solution": "अधिक कोन म्हणजे 90° पेक्षा जास्त पण 180° पेक्षा कमी असलेला कोन आहे. विकल्पांमध्ये 120° हा या श्रेणीत येतो, ज्यामुळे तो अधिक कोन बनतो. इतर विकल्प चुकीचे आहेत कारण 30° एक तीक्ष्ण कोन आहे, 90° एक समकोन आहे आणि 180° एक सरळ कोन आहे.",
+          "solution": "दोन किरण एका सामान्य अंत बिंदूला शेअर केल्यास कोन तयार होतो, ज्याला शीर्ष म्हणतात. रेखाखंड ही रेषेचा एक मर्यादित भाग आहे, रेषा दोन्ही दिशांमध्ये अनंतपर्यंत जाते आणि किरण एका बिंदूपासून एका दिशेने अनंतपर्यंत जातो. म्हणूनच, योग्य उत्तर 'कोन' आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
           "flag": null
@@ -426,10 +170,108 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Chooses an acute angle",
-        "Chooses a right angle",
+        "Confuses line segment with angle",
+        "Confuses line with angle",
+        "Confuses ray with angle",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-posed and the solution is correct. The correct answer is 'Angle', as it is formed by two rays with a common endpoint. The distractors are all common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 20,
+          "pageStart": 42,
+          "pageEnd": 43,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 21,
+          "pageStart": 43,
+          "pageEnd": 46,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 22,
+          "pageStart": 46,
+          "pageEnd": 48,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "S u m m a r y"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T19:19:08.460Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a model for a line segment?",
+      "choices": [
+        "A ray extending infinitely in one direction",
+        "A line extending infinitely in both directions",
+        "A part of a line with two endpoints",
+        "A single point"
+      ],
+      "answerIndex": 2,
+      "solution": "A line segment is defined as a part of a line that has two distinct endpoints and a finite length. A ray extends infinitely in one direction and a line extends infinitely in both, so they do not fit the definition. A single point has no length and is not a segment. The correct model is a part of a line with two endpoints.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक रेखा खंड के लिए मॉडल है?",
+          "choices": [
+            "एक किरण जो एक दिशा में अनंत रूप से फैली हुई है",
+            "एक रेखा जो दोनों दिशाओं में अनंत रूप से फैली हुई है",
+            "एक रेखा का एक हिस्सा जिसके दो अंत बिंदु हैं",
+            "एक बिंदु"
+          ],
+          "solution": "एक रेखा खंड की परिभाषा एक रेखा के एक हिस्से के रूप में है जिसके दो अलग-अलग अंत बिंदु हैं और एक सीमित लंबाई है। एक किरण एक दिशा में अनंत रूप से फैली हुई है और एक रेखा दोनों दिशाओं में अनंत रूप से फैली हुई है, इसलिए वे परिभाषा के अनुरूप नहीं हैं। एक बिंदु के पास कोई लंबाई नहीं है और यह एक खंड नहीं है। सही मॉडल दो अंत बिंदुओं वाले एक रेखा का एक हिस्सा है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (3).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी एक रेषाखंडाचे मॉडेल कोणते आहे?",
+          "choices": [
+            "एका दिशेने अनंतपर्यंत विस्तारलेली किरण",
+            "दोन्ही दिशांनी अनंतपर्यंत विस्तारलेली रेषा",
+            "दोन अंतबिंदूंसह रेषेचा भाग",
+            "एक बिंदू"
+          ],
+          "solution": "रेषाखंड म्हणजे दोन विशिष्ट अंतबिंदूंसह असलेला रेषेचा भाग आहे आणि त्याची एक निश्चित लांबी असते. किरण एका दिशेने अनंतपर्यंत विस्तारते आणि रेषा दोन्ही दिशांनी अनंतपर्यंत विस्तारते, म्हणून ते परिभाषेस अनुरूप नाहीत. एक बिंदूला कोणतीही लांबी नसते आणि तो रेषाखंड नसतो. योग्य मॉडेल हा रेषेचा भाग आहे ज्याचे दोन अंतबिंदू आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses a ray with a line segment",
+        "Confuses a line with a line segment",
         null,
-        "Chooses a straight angle"
+        "Confuses a point with a line segment"
       ],
       "solverAnswers": [
         2,
@@ -439,742 +281,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies 120° as the only angle that fits the definition of an obtuse angle (greater than 90° but less than 180°). The reasons for the other options are accurate and reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 10,
-          "pageStart": 18,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.8 Special Types of Angles"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 11,
-          "pageStart": 20,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.9 Measuring Angles"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 12,
-          "pageStart": 22,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.9 Measuring Angles"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:51:00.309Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a protractor is placed with the center on the vertex of an angle and one arm aligned with the 0° mark, what does the other arm show?",
-      "choices": [
-        "The measure of the angle in degrees",
-        "The length of the arm",
-        "The number of sides of the shape",
-        "The type of angle"
-      ],
-      "answerIndex": 0,
-      "solution": "When a protractor is placed with the center on the vertex of an angle and one arm aligned with the 0° mark, the other arm points to the measure of the angle in degrees. The length of the arm, the number of sides of the shape, and the type of angle are not directly indicated by the position of the protractor's arm.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक डिग्री मापक को कोण के शीर्ष पर केंद्र रखकर एक किनारा 0° चिह्न के साथ संरेखित किया जाए, तो दूसरा किनारा क्या दर्शाता है?",
-          "choices": [
-            "कोण का माप डिग्री में",
-            "किनारे की लंबाई",
-            "आकृति की भुजाओं की संख्या",
-            "कोण के प्रकार"
-          ],
-          "solution": "जब एक डिग्री मापक को कोण के शीर्ष पर केंद्र रखकर एक किनारा 0° चिह्न के साथ संरेखित किया जाता है, तो दूसरा किनारा कोण के माप डिग्री में दर्शाता है। डिग्री मापक के किनारे की स्थिति द्वारा किनारे की लंबाई, आकृति की भुजाओं की संख्या और कोण के प्रकार सीधे नहीं दर्शाए जाते हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर प्रोट्रॅक्टर एखाद्या कोनाच्या शिरोबिंदूवर बिंदू ठेवून आणि एका बाजूला 0° चिन्हावर असेल, तर दुसरी बाजू काय दर्शवते?",
-          "choices": [
-            "कोनाचे माप डिग्रीमध्ये",
-            "बाजूची लांबी",
-            "आकृतीच्या बाजूंची संख्या",
-            "कोनाचा प्रकार"
-          ],
-          "solution": "जेव्हा प्रोट्रॅक्टर एखाद्या कोनाच्या शिरोबिंदूवर बिंदू ठेवून आणि एका बाजूला 0° चिन्हावर असेल, तेव्हा दुसरी बाजू कोनाचे माप डिग्रीमध्ये दर्शवते. प्रोट्रॅक्टरच्या बाजूच्या स्थानामुळे बाजूची लांबी, आकृतीच्या बाजूंची संख्या आणि कोनाचा प्रकार थेट दर्शवले जात नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for geometry.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the purpose of a protractor",
-        "Misunderstands how a protractor is used",
-        "Ignores the role of the protractor in measuring angles and focuses on other properties of shapes and angles"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed and the solution is correct. The correct answer is clearly 0, and the author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 13,
-          "pageStart": 25,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.9 Measuring Angles"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 14,
-          "pageStart": 28,
-          "pageEnd": 33,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.9 Measuring Angles"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 15,
-          "pageStart": 33,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.9 Measuring Angles"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:51:00.309Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "If a protractor has two sets of numbers, what is the purpose of the second set?",
-      "choices": [
-        "To measure angles in radians",
-        "To measure angles from both directions",
-        "To show the diameter of the protractor",
-        "To show the circumference of the protractor"
-      ],
-      "answerIndex": 1,
-      "solution": "The second set of numbers on a protractor allows angles to be measured from both directions, which is essential when the angle is oriented differently. Protractors are designed to measure angles in degrees, not radians, and the numbers on a protractor do not represent the diameter or circumference of the tool.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक डिग्री मापक में दो सेट संख्याएं होती हैं, तो दूसरे सेट का उद्देश्य क्या होता है?",
-          "choices": [
-            "कोणों को रेडियन में मापना",
-            "दोनों दिशाओं से कोण मापना",
-            "डिग्री मापक के व्यास को दिखाना",
-            "डिग्री मापक की परिधि को दिखाना"
-          ],
-          "solution": "डिग्री मापक पर दूसरे सेट संख्याओं के कारण कोणों को दोनों दिशाओं से मापा जा सकता है, जो कि तब आवश्यक होता है जब कोण अलग दिशा में होता है। डिग्री मापक कोणों को डिग्री में मापने के लिए डिज़ाइन किए जाते हैं, न कि रेडियन में, और डिग्री मापक पर संख्याएं उपकरण के व्यास या परिधि को नहीं दिखाती हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately preserves the meaning, technical terms, and structure of the original English question.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर प्रोट्रॅक्टरला दोन विभागलेली संख्या असतील, तर दुसर्‍या विभागाचा उद्देश काय असतो?",
-          "choices": [
-            "कोनांचे रेडियनमध्ये मोजणे",
-            "दोन्ही दिशांमधून कोन मोजणे",
-            "प्रोट्रॅक्टरच्या व्यासाचे दर्शविणे",
-            "प्रोट्रॅक्टरच्या परिघाचे दर्शविणे"
-          ],
-          "solution": "प्रोट्रॅक्टरवरील दुसर्‍या विभागामुळे कोनांचे दोन्ही दिशांमधून मोजणे शक्य होते, जे कोनाच्या विन्यासानुसार आवश्यक असते. प्रोट्रॅक्टर रेडियनमध्ये कोन मोजण्यासाठी डिझाइन केलेले नसते आणि प्रोट्रॅक्टरवरील संख्या यंत्राच्या व्यासाचे किंवा परिघाचे दर्शवित नसतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for geometry.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses protractor with a radian measure tool",
-        null,
-        "Confuses the purpose of the numbers",
-        "Misunderstands the function of the protractor"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that the second set of numbers on a protractor allows for measuring angles from both directions, which aligns with the correct answer. The reasoning for the other options is also valid, as they reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 10,
-          "pageStart": 18,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.8 Special Types of Angles"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 11,
-          "pageStart": 20,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.9 Measuring Angles"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 12,
-          "pageStart": 22,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.9 Measuring Angles"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:51:00.309Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What is the measure of an angle that is smaller than a right angle but greater than 0°?",
-      "choices": [
-        "45°",
-        "90°",
-        "180°",
-        "360°"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 45°, as it is smaller than 90° (a right angle) and greater than 0°. 90° is a right angle, 180° is a straight angle, and 360° is a full rotation, so they do not fit the description of an acute angle. A pupil might confuse a right angle with an acute angle or mix up the definitions of different angles.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "कोण का माप क्या होगा जो एक समकोण से छोटा हो लेकिन 0° से बड़ा हो?",
-          "choices": [
-            "45°",
-            "90°",
-            "180°",
-            "360°"
-          ],
-          "solution": "सही उत्तर 45° है, क्योंकि यह 90° (एक समकोण) से छोटा है और 0° से बड़ा है। 90° एक समकोण है, 180° एक सीधा कोण है और 360° एक पूर्ण घूर्णन है, इसलिए वे एक न्यून कोण के वर्णन के अनुरूप नहीं हैं। एक छात्र समकोण को न्यून कोण से भ्रमित कर सकता है या विभिन्न कोणों के परिभाषाओं को गलत तरीके से मिला सकता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology as taught in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका कोनाचे माप किती असेल जो एका समकोनापेक्षा लहान असेल पण 0° पेक्षा मोठा असेल?",
-          "choices": [
-            "45°",
-            "90°",
-            "180°",
-            "360°"
-          ],
-          "solution": "सही उत्तर 45° आहे, कारण ते 90° (समकोन) पेक्षा लहान आहे आणि 0° पेक्षा मोठे आहे. 90° समकोन आहे, 180° सरळ कोन आहे आणि 360° पूर्ण फिरतो, म्हणून ते तीन वर्णनांमध्ये बरोबर नाहीत. एका विद्यार्थी ने समकोन आणि तीव्र कोन च्या वर्णनांमध्ये गोंधळ करू शकतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for angles.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses acute angle with right angle",
-        "Confuses acute angle with straight angle",
-        "Confuses acute angle with full rotation"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question correctly identifies 45° as an acute angle, and the author's reasoning aligns with standard geometric definitions. The distractors are valid misconceptions about angle types.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 16,
-          "pageStart": 34,
-          "pageEnd": 37,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.10 Drawing Angles"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 17,
-          "pageStart": 37,
-          "pageEnd": 38,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.10 Drawing Angles"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 18,
-          "pageStart": 38,
-          "pageEnd": 41,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.11 Types of Angles and their Measures"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 19,
-          "pageStart": 42,
-          "pageEnd": 42,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.11 Types of Angles and their Measures"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:51:00.309Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A protractor is used to measure angles. If the angle between two lines is formed by one line at 20° and another at 55°, what is the measure of the angle between them?",
-      "choices": [
-        "20°",
-        "35°",
-        "55°",
-        "75°"
-      ],
-      "answerIndex": 1,
-      "solution": "The angle between two lines can be found by subtracting the smaller angle from the larger one when they are measured from the same point. Here, 55° - 20° = 35°, which is the correct measure. 20° and 55° are the individual positions of the lines, not the angle between them, and 75° is not the result of the correct subtraction.",
-      "checkExpr": "55-20",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक प्रोट्रैक्टर का उपयोग कोणों के मापन के लिए किया जाता है। यदि दो रेखाओं के बीच कोण एक रेखा 20° पर और दूसरी 55° पर बनता है, तो उनके बीच कोण का माप क्या है?",
-          "choices": [
-            "20°",
-            "35°",
-            "55°",
-            "75°"
-          ],
-          "solution": "दो रेखाओं के बीच कोण तब ज्ञात किया जा सकता है जब वे एक ही बिंदु से मापे जाएं, छोटे कोण को बड़े कोण से घटाकर। यहां, 55° - 20° = 35°, जो सही माप है। 20° और 55° रेखाओं की अलग-अलग स्थिति हैं, न कि उनके बीच का कोण, और 75° सही घटाव के परिणाम नहीं है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for geometry.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक प्रोट्रॅक्टर खुणा मोजण्यासाठी वापरला जातो. जर दोन रेषांमधील कोन एका रेषा 20° आणि दुसरी 55° या बिंदूवर तयार होत असेल, तर त्यांच्यातील कोनाचे माप किती असेल?",
-          "choices": [
-            "20°",
-            "35°",
-            "55°",
-            "75°"
-          ],
-          "solution": "दोन रेषांमधील कोन त्यांच्या एकाच बिंदूपासून मोजलेल्या लहान कोनाचे मोजमाप वजा करून मिळतो. इथे, 55° - 20° = 35°, हे बरोबर माप आहे. 20° आणि 55° हे रेषांचे विशिष्ट स्थान आहेत, त्यांच्यातील कोन नाहीत, आणि 75° हा बरोबर वजा करून मिळालेला नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Marathi-medium textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Chooses the smaller angle",
-        null,
-        "Chooses the larger angle",
-        "Adds the angles instead of subtracting them"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The angle between two lines measured at 20° and 55° is indeed 55° - 20° = 35°. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 10,
-          "pageStart": 18,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.8 Special Types of Angles"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 11,
-          "pageStart": 20,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.9 Measuring Angles"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 12,
-          "pageStart": 22,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.9 Measuring Angles"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:51:00.309Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If ∠TER = 80°, and ∠REB is a straight angle, what is the measure of ∠BET?",
-      "choices": [
-        "80°",
-        "100°",
-        "180°",
-        "90°"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 100°, as ∠REB is a straight angle (180°) and ∠TER is 80°. The remaining angle, ∠BET, is 180° - 80° = 100°. A pupil might mistakenly assume that ∠BET is equal to ∠TER or confuse the straight angle with a right angle.",
-      "checkExpr": "180-80",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि ∠TER = 80° है, और ∠REB एक सीधा कोण है, तो ∠BET का माप क्या है?",
-          "choices": [
-            "80°",
-            "100°",
-            "180°",
-            "90°"
-          ],
-          "solution": "सही उत्तर 100° है, क्योंकि ∠REB एक सीधा कोण (180°) है और ∠TER 80° है। शेष कोण, ∠BET, 180° - 80° = 100° है। एक छात्र ∠BET को ∠TER के बराबर मान सकता है या सीधा कोण को समकोण से भ्रमित कर सकता है।",
-          "imageAlt": "एक आरेख जिसमें ∠TER = 80° और ∠REB एक सीधा कोण है",
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi geometry terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर ∠TER = 80°, आणि ∠REB एक सरळ कोन असेल, तर ∠BET चे माप किती असेल?",
-          "choices": [
-            "80°",
-            "100°",
-            "180°",
-            "90°"
-          ],
-          "solution": "बरोबर उत्तर 100° आहे, कारण ∠REB हा सरळ कोन (180°) आहे आणि ∠TER 80° आहे. उरलेला कोन ∠BET हा 180° - 80° = 100° असेल. एखादा विद्यार्थी ∠BET हा ∠TER बरोबर मानू शकतो किंवा सरळ कोन आणि समकोन यांच्यात गोंधळू शकतो.",
-          "imageAlt": "कोन TER = 80° आणि कोन REB हा सरळ कोन दर्शविणारा आकृती",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi geometric terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A diagram showing angle TER = 80° and angle REB as a straight angle",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "planeMirror",
-              "x": 50,
-              "y": 30,
-              "size": 20,
-              "labels": [
-                "incidentRay",
-                "reflectedRay",
-                "normal"
-              ],
-              "text": {
-                "incidentRay": "TER",
-                "reflectedRay": "BET",
-                "normal": "REB"
-              }
-            }
-          ],
-          "arrows": [
-            {
-              "from": [
-                50,
-                30
-              ],
-              "to": [
-                70,
-                30
-              ],
-              "label": "REB"
-            }
-          ],
-          "texts": [
-            {
-              "x": 40,
-              "y": 25,
-              "label": "TER"
-            },
-            {
-              "x": 60,
-              "y": 35,
-              "label": "BET"
-            }
-          ]
-        },
-        "labels": {
-          "TER": {
-            "en": "TER",
-            "hi": "TER",
-            "mr": "TER"
-          },
-          "BET": {
-            "en": "BET",
-            "hi": "BET",
-            "mr": "BET"
-          },
-          "REB": {
-            "en": "REB",
-            "hi": "REB",
-            "mr": "REB"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "Confuses ∠BET with ∠TER",
-        null,
-        "Fails to subtract ∠TER from ∠REB",
-        "Confuses straight angle with right angle"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. ∠REB is a straight angle (180°), and ∠TER is 80°, so ∠BET = 180° - 80° = 100°. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 16,
-          "pageStart": 34,
-          "pageEnd": 37,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.10 Drawing Angles"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 17,
-          "pageStart": 37,
-          "pageEnd": 38,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.10 Drawing Angles"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 18,
-          "pageStart": 38,
-          "pageEnd": 41,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.11 Types of Angles and their Measures"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp102.pdf",
-          "ordinal": 19,
-          "pageStart": 42,
-          "pageEnd": 42,
-          "headingPath": [
-            "Chapter 2: Lines and angLes",
-            "2.11 Types of Angles and their Measures"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:51:00.309Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "In the diagram, ∠ABC is formed by two rays BA and BC. If the angle is 90°, what can be said about the rays BA and BC?",
-      "choices": [
-        "They are parallel",
-        "They are perpendicular",
-        "They form a straight line",
-        "They form an acute angle"
-      ],
-      "answerIndex": 1,
-      "solution": "If ∠ABC is 90°, the rays BA and BC are perpendicular. Perpendicular rays form a right angle (90°). Parallel rays never meet and form 0° or 180° angles. A straight line forms 180°, and an acute angle is less than 90°.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "आरेख में, ∠ABC दो किरणों BA और BC द्वारा बनाया गया है। यदि कोण 90° है, तो क्या कहा जा सकता है कि किरणें BA और BC के बारे में?",
-          "choices": [
-            "वे समांतर हैं",
-            "वे लंबवत हैं",
-            "वे एक सीधी रेखा बनाते हैं",
-            "वे एक न्यून कोण बनाते हैं"
-          ],
-          "solution": "यदि ∠ABC 90° है, तो किरणें BA और BC लंबवत होती हैं। लंबवत किरणें समकोण (90°) बनाती हैं। समांतर किरणें कभी मिलती नहीं हैं और 0° या 180° कोण बनाती हैं। एक सीधी रेखा 180° कोण बनाती है, और एक न्यून कोण 90° से कम होता है।",
-          "imageAlt": "एक आरेख जिसमें दो किरणें BA और BC बिंदु B पर समकोण बनाती हैं।",
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for geometry concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आकृतीत, ∠ABC दोन किरणां BA आणि BC द्वारे तयार केला गेला आहे. जर कोन 90° असेल, तर BA आणि BC किरणांबद्दल काय म्हणाल जाऊ शकते?",
-          "choices": [
-            "ते समांतर आहेत",
-            "ते लंब आहेत",
-            "ते एका सरळ रेषेचा भाग आहेत",
-            "ते एक तीव्र कोन तयार करतात"
-          ],
-          "solution": "जर ∠ABC 90° असेल, तर किरण BA आणि BC लंब असतात. लंब किरणांनी एक समकोन (90°) तयार केला जातो. समांतर किरण एकमेकांना भेटत नाहीत आणि 0° किंवा 180° कोन तयार करतात. एका सरळ रेषेने 180° कोन तयार केला जातो, आणि तीव्र कोन 90° पेक्षा कमी असतो.",
-          "imageAlt": "एक आकृती जी बिंदू B वर एक समकोन तयार करणारी दोन किरणां BA आणि BC दर्शवते.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A diagram showing two rays BA and BC forming a right angle at point B.",
-      "figure": {
-        "kind": "geometry",
-        "spec": {
-          "frame": {
-            "xMin": 0,
-            "xMax": 10,
-            "yMin": 0,
-            "yMax": 10,
-            "unit": "units"
-          },
-          "points": [
-            {
-              "id": "B",
-              "x": 5,
-              "y": 5,
-              "label": "B"
-            },
-            {
-              "id": "A",
-              "x": 2,
-              "y": 5,
-              "label": "A"
-            },
-            {
-              "id": "C",
-              "x": 5,
-              "y": 8,
-              "label": "C"
-            }
-          ],
-          "segments": [
-            {
-              "from": "B",
-              "to": "A",
-              "kind": "ray"
-            },
-            {
-              "from": "B",
-              "to": "C",
-              "kind": "ray"
-            }
-          ],
-          "angles": [
-            {
-              "vertex": "B",
-              "from": "A",
-              "to": "C",
-              "mark": "right",
-              "measure": 90
-            }
-          ]
-        },
-        "labels": {
-          "B": {
-            "en": "B"
-          },
-          "A": {
-            "en": "A"
-          },
-          "C": {
-            "en": "C"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "Confuses perpendicular with parallel",
-        null,
-        "Fails to recognize the definition of a right angle",
-        "Confuses straight line with right angle"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed. The correct answer is clearly 1 (perpendicular), and the author's reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The correct answer is option 2, as a line segment is defined as a part of a line with two endpoints. The other options represent different geometric entities (ray, line, point) and are correctly identified as misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp102.pdf",
@@ -1238,100 +345,189 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:51:00.309Z",
+      "generatedAt": "2026-10-19T19:19:08.460Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "If the angle formed by the hands of a clock at 1 o'clock is 30°, what will be the angle formed at 2 o'clock?",
+      "difficulty": 3,
+      "stem": "Which of the following is a model for a ray?",
       "choices": [
-        "60°",
-        "90°",
-        "120°",
-        "180°"
+        "Line segment AB",
+        "Line AB",
+        "Ray OA",
+        "Point A"
       ],
-      "answerIndex": 0,
-      "solution": "At 1 o'clock, the angle between the clock hands is 30°, and each hour the angle increases by 30° because the hour hand moves 30° per hour. Therefore, at 2 o'clock, the angle will be 60°. 90° occurs at 3 o'clock, 120° at 4 o'clock, and 180° at 6 o'clock, so those are incorrect.",
+      "answerIndex": 2,
+      "solution": "A ray is a part of a line that starts at a point and extends infinitely in one direction. Ray OA represents this concept because it has a starting point (O) and continues indefinitely in the direction of A. A line segment AB has two endpoints, a line AB extends infinitely in both directions, and a point A has no length or direction. The correct answer is Ray OA.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "1 बजे घड़ी के सुईयों द्वारा बने कोण के 30° होने पर 2 बजे कितना कोण बनेगा?",
+          "stem": "निम्नलिखित में से कौन एक किरण के लिए मॉडल है?",
           "choices": [
-            "60°",
-            "90°",
-            "120°",
-            "180°"
+            "रेखा खंड AB",
+            "रेखा AB",
+            "किरण OA",
+            "बिंदु A"
           ],
-          "solution": "1 बजे घड़ी के सुईयों के बीच कोण 30° होता है और प्रत्येक घंटा में कोण 30° बढ़ता है क्योंकि घंटा सुई 30° प्रति घंटा आगे बढ़ती है। अतः 2 बजे कोण 60° होगा। 90° 3 बजे, 120° 4 बजे और 180° 6 बजे होता है, इसलिए ये गलत हैं।",
-          "imageAlt": "एक आरेख जो 1 बजे और 2 बजे के सूर्य, पृथ्वी और चंद्रमा की स्थिति को दर्शाता है, जो घड़ी की सुईयों के बीच कोण का प्रतिनिधित्व करता है।",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for clock angles.",
+          "solution": "एक किरण एक रेखा का एक भाग है जो एक बिंदु से शुरू होता है और एक दिशा में अनंत रूप से फैलता है। किरण OA इस अवधारणा का प्रतिनिधित्व करती है क्योंकि इसका एक शुरुआती बिंदु (O) होता है और यह A की दिशा में अनंत रूप से फैलती है। रेखा खंड AB के दो अंत बिंदु होते हैं, रेखा AB दोनों दिशाओं में अनंत रूप से फैलती है और बिंदु A के पास कोई लंबाई या दिशा नहीं होती। सही उत्तर किरण OA है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "1 वाजता घड्याच्या हातांमध्ये तयार होणारा कोन 30° असेल, तर 2 वाजता कोन किती असेल?",
+          "stem": "खालीलपैकी कोणते एक रशचे मॉडेल आहे?",
           "choices": [
-            "60°",
-            "90°",
-            "120°",
-            "180°"
+            "रेखा खंड AB",
+            "रेखा AB",
+            "रश OA",
+            "बिंदू A"
           ],
-          "solution": "1 वाजता घड्याच्या हातांमध्ये तयार होणारा कोन 30° असतो आणि दर तासाला कोन 30° ने वाढतो कारण तासाचा हात एका तासाला 30° चालतो. म्हणून 2 वाजता कोन 60° असेल. 90° 3 वाजता, 120° 4 वाजता आणि 180° 6 वाजता असतो, म्हणून ते चुकीचे आहेत.",
-          "imageAlt": "1 वाजता आणि 2 वाजता वेळी सूर्य, पृथ्वी आणि चंद्रच्या स्थितीचा आरेख, घड्याच्या हातांमधील कोन दर्शविणारा.",
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for clock angles.",
+          "solution": "रश एक रेखेचा भाग आहे जो एका बिंदूतून सुरू होतो आणि एका दिशेने अनंतपर्यंत विस्तारतो. रश OA हा या अवधारणेचे प्रतिनिधित्व करतो कारण त्याला सुरुवातीचा बिंदू (O) असतो आणि A च्या दिशेने अनंतपर्यंत विस्तारतो. रेखा खंड AB ला दोन अंत बिंदू असतात, रेखा AB दोन्ही दिशांनी अनंतपर्यंत विस्तारते आणि बिंदू A ला लांबी किंवा दिशा नसते. योग्य उत्तर रश OA आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "A diagram showing the positions of the sun, earth, and moon at 1 o'clock and 2 o'clock, representing the angle between the hands of a clock.",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "sunEarthMoon",
-              "x": 50,
-              "y": 31.25,
-              "size": 40,
-              "labels": [
-                "sun",
-                "earth",
-                "moon"
-              ],
-              "text": {
-                "sun": "12",
-                "earth": "1",
-                "moon": "2"
-              }
-            }
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses a line segment with a ray",
+        "Confuses a line with a ray",
+        null,
+        "Confuses a point with a ray"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'Ray OA' as it matches the definition of a ray. The other options are common misconceptions about geometric figures.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.1 Point"
           ]
         },
-        "labels": {
-          "sun": {
-            "en": "12",
-            "hi": "12",
-            "mr": "12"
-          },
-          "earth": {
-            "en": "1",
-            "hi": "1",
-            "mr": "1"
-          },
-          "moon": {
-            "en": "2",
-            "hi": "2",
-            "mr": "2"
-          }
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.2 Line Segment"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.3 Line"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.4 Ray"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.5 Angle"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.5 Angle"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T19:19:08.460Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a semicircle is folded into two equal parts, what is the measure of each part?",
+      "choices": [
+        "90°",
+        "180°",
+        "360°",
+        "45°"
+      ],
+      "answerIndex": 0,
+      "solution": "A semicircle is half of a full circle, which measures 180°. When folded into two equal parts, each part is a quarter of the full circle, which is 90°. The other options do not represent a quarter of a full circle.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक अर्धवृत्त को दो समान भागों में मोड़ा जाए, तो प्रत्येक भाग का माप क्या होगा?",
+          "choices": [
+            "90°",
+            "180°",
+            "360°",
+            "45°"
+          ],
+          "solution": "एक अर्धवृत्त एक पूर्ण वृत्त के आधा होता है, जिसका माप 180° होता है। जब इसे दो समान भागों में मोड़ा जाता है, तो प्रत्येक भाग पूर्ण वृत्त का चौथाई होता है, जिसका माप 90° होता है। अन्य विकल्प पूर्ण वृत्त के चौथाई के रूप में प्रस्तुत नहीं होते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. The solution and options are correctly translated and maintain the same logical relationships.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अर्धवृत्त दोन समान भागांमध्ये मोडले गेल्यास, प्रत्येक भागाचा माप किती असेल?",
+          "choices": [
+            "90°",
+            "180°",
+            "360°",
+            "45°"
+          ],
+          "solution": "अर्धवृत्त एका पूर्ण वृत्ताच्या अर्ध्याचे असते, जे 180° चे असते. जेव्हा ते दोन समान भागांमध्ये मोडले जाते, तेव्हा प्रत्येक भाग पूर्ण वृत्ताच्या चौथांश असतो, जो 90° चा असतो. इतर विकल्प पूर्ण वृत्ताच्या चौथांश नसतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
         }
       },
-      "needsFigure": true,
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
       "distractorReason": [
         null,
-        "Believes the angle increases by 30° each hour, so 1 o'clock is 30°, 2 o'clock is 60°, and 3 o'clock is 90°",
-        "Thinking that each hour represents 60° instead of 30°, so 2 hours would be 120°",
-        "A pupil might think that the angle doubles every hour, not realizing that the hour hand moves gradually."
+        "Believes folding a semicircle divides it into two equal parts, each still being a semicircle",
+        "Confuses a semicircle with a full circle",
+        "Confuses a semicircle with a full circle and adds an extra step in calculation"
       ],
       "solverAnswers": [
         0,
@@ -1340,8 +536,8 @@
         0,
         0
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 60°, as the angle between clock hands increases by 30° per hour. The author's reasoning is sound, and the misconceptions listed for the distractors are plausible.",
+      "levelFlag": null,
+      "critique": "The solution is correct. A semicircle is 180°, and folding it into two equal parts results in 90°, which matches the key. The distractors reflect common misconceptions about the relationship between semicircles and full circles.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp102.pdf",
@@ -1375,7 +571,623 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-18T23:51:00.309Z",
+      "generatedAt": "2026-10-19T19:19:08.460Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the given figure, which of the following is a ray that starts at T?",
+      "choices": [
+        "TA",
+        "NB",
+        "TB",
+        "TN"
+      ],
+      "answerIndex": 0,
+      "solution": "TA is a ray that starts at T, as it originates from T and extends infinitely in one direction. NB does not start at T, TB starts at T but is not the correct answer based on the figure, and TN also starts at T but is not the intended correct choice. The correct answer is TA because it is the ray that begins at T and is explicitly shown in the diagram.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दिए गए चित्र में, निम्नलिखित में से कौन-सी एक तिर्यक रेखा है जो T से शुरू होती है?",
+          "choices": [
+            "TA",
+            "NB",
+            "TB",
+            "TN"
+          ],
+          "solution": "TA, T से शुरू होने वाली एक तिर्यक रेखा है, क्योंकि यह T से उत्पन्न होती है और एक दिशा में अनंत तक फैलती है। NB, T से शुरू नहीं होता है, TB, T से शुरू होता है लेकिन चित्र के आधार पर सही उत्तर नहीं है, और TN, T से शुरू होता है लेकिन इच्छित सही चयन नहीं है। सही उत्तर TA है क्योंकि यह T से शुरू होने वाली तिर्यक रेखा है और चित्र में स्पष्ट रूप से दिखाई गई है।",
+          "imageAlt": "एक चित्र जिसमें T से शुरू होने वाली चार तिर्यक रेखाएं और N से शुरू होने वाली एक तिर्यक रेखा है।",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, options, and solution. 'तिर्यक रेखा' is a standard term for 'ray' in Hindi math textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आकृतीमध्ये, खालीलपैकी कोणता किरण T वरून सुरू होतो?",
+          "choices": [
+            "TA",
+            "NB",
+            "TB",
+            "TN"
+          ],
+          "solution": "TA हा किरण T वरून सुरू होतो, कारण तो T पासून उद्गम होतो आणि एका दिशेने अनंतपर्यंत विस्तारतो. NB T वरून सुरू होत नाही, TB T वरून सुरू होतो परंतु आकृतीवर तो योग्य उत्तर नाही, आणि TN देखील T वरून सुरू होतो परंतु तो अपेक्षित योग्य निवड नाही. योग्य उत्तर TA आहे कारण तो T वरून सुरू होतो आणि आकृतीमध्ये स्पष्टपणे दर्शविला गेला आहे.",
+          "imageAlt": "आकृतीमध्ये T वरून चार किरण आणि N वरून एक किरण दर्शविले आहेत.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A figure showing four rays starting at T and one ray starting at N.",
+      "figure": {
+        "kind": "geometry",
+        "spec": {
+          "frame": {
+            "xMin": 0,
+            "xMax": 10,
+            "yMin": 0,
+            "yMax": 7,
+            "unit": "cm"
+          },
+          "points": [
+            {
+              "id": "T",
+              "x": 1,
+              "y": 1,
+              "label": "T"
+            },
+            {
+              "id": "A",
+              "x": 3,
+              "y": 1,
+              "label": "A"
+            },
+            {
+              "id": "B",
+              "x": 5,
+              "y": 1,
+              "label": "B"
+            },
+            {
+              "id": "N",
+              "x": 7,
+              "y": 1,
+              "label": "N"
+            },
+            {
+              "id": "C",
+              "x": 9,
+              "y": 1,
+              "label": "C"
+            }
+          ],
+          "segments": [
+            {
+              "from": "T",
+              "to": "A",
+              "kind": "ray"
+            },
+            {
+              "from": "T",
+              "to": "B",
+              "kind": "ray"
+            },
+            {
+              "from": "T",
+              "to": "N",
+              "kind": "ray"
+            },
+            {
+              "from": "N",
+              "to": "C",
+              "kind": "ray"
+            }
+          ]
+        },
+        "labels": {}
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "Confuses a ray starting at T with one that does not",
+        "Incorrectly identifies a ray that does not start at T",
+        "Confuses a ray starting at T with one that starts at N"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is TA, as it is explicitly stated that TA starts at T. The other options either start at different points or are not rays. The author's reasoning aligns with the correct interpretation.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 20,
+          "pageStart": 42,
+          "pageEnd": 43,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 21,
+          "pageStart": 43,
+          "pageEnd": 46,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 22,
+          "pageStart": 46,
+          "pageEnd": 48,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "S u m m a r y"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T19:19:08.460Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the angle between two rays is formed by rotating one ray 60° around the vertex, what type of angle is it?",
+      "choices": [
+        "Acute angle",
+        "Right angle",
+        "Obtuse angle",
+        "Straight angle"
+      ],
+      "answerIndex": 0,
+      "solution": "An angle is formed by the rotation of one ray around the vertex. A 60° rotation results in an angle that is less than 90°, which is the definition of an acute angle. A right angle is exactly 90°, an obtuse angle is between 90° and 180°, and a straight angle is exactly 180°. Therefore, the correct answer is an acute angle.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि दो किरणों के बीच कोण शीर्ष के चारों ओर एक किरण के 60° घुमाने से बनता है, तो यह किस प्रकार का कोण है?",
+          "choices": [
+            "न्यून कोण",
+            "समकोण",
+            "अधिक कोण",
+            "सरल कोण"
+          ],
+          "solution": "कोण शीर्ष के चारों ओर एक किरण के घुमाने से बनता है। 60° के घुमाव से एक कोण बनता है जो 90° से कम होता है, जो न्यून कोण के निर्वचन के अनुरूप है। समकोण ठीक 90° होता है, अधिक कोण 90° और 180° के बीच होता है, और सरल कोण ठीक 180° होता है। इसलिए सही उत्तर एक न्यून कोण है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology for angles.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर दोन किरणांमधील कोन शिरोबिंदू वरून एका किरणाच्या 60° फिरविण्यामुळे तयार होत असेल, तर तो कोन कोणत्या प्रकारचा असेल?",
+          "choices": [
+            "तीव्र कोन",
+            "समकोन",
+            "अधिक कोन",
+            "सरळ कोन"
+          ],
+          "solution": "कोन शिरोबिंदू वरून एका किरणाच्या फिरविण्यामुळे तयार होतो. 60° फिरविण्यामुळे तयार होणारा कोन 90° पेक्षा कमी असतो, जो तीव्र कोनाचा अर्थ आहे. समकोन 90° च्या बरोबर असतो, अधिक कोन 90° आणि 180° च्या दरम्यान असतो आणि सरळ कोन 180° च्या बरोबर असतो. त्यामुळे योग्य उत्तर तीव्र कोन आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses a right angle with a 60° angle",
+        "Confuses an obtuse angle with a 60° angle",
+        "Confuses a straight angle with a 60° angle"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. A 60° rotation forms an acute angle, which is less than 90°. The author's reasoning is sound, and the distractors reflect common misconceptions about angle types.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.1 Point"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.2 Line Segment"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.3 Line"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.4 Ray"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.5 Angle"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.5 Angle"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T19:19:08.460Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student measures an angle using a protractor and gets 135°. What is the measure of the angle that is supplementary to this angle?",
+      "choices": [
+        "45°",
+        "90°",
+        "135°",
+        "225°"
+      ],
+      "answerIndex": 0,
+      "solution": "The supplementary angle to 135° is 45°, because 180° - 135° = 45°. The other options do not match this calculation. 90° is a right angle, 180° is a straight angle, and 225° is more than a straight angle.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र एक कोण को प्रोट्रैक्टर के उपयोग से मापता है और 135° प्राप्त करता है। इस कोण के पूरक कोण का माप क्या है?",
+          "choices": [
+            "45°",
+            "90°",
+            "135°",
+            "225°"
+          ],
+          "solution": "135° का पूरक कोण 45° है, क्योंकि 180° - 135° = 45°। अन्य विकल्प इस गणना के अनुरूप नहीं हैं। 90° एक समकोण है, 180° एक सीधा कोण है और 225° एक सीधा कोण से अधिक है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने प्रोट्रॅक्टर वापरून कोन मोजला आणि त्याचा माप 135° आला. या कोनाच्या पूरक कोनाचा माप किती असेल?",
+          "choices": [
+            "45°",
+            "90°",
+            "135°",
+            "225°"
+          ],
+          "solution": "135° चा पूरक कोन 45° असतो, कारण 180° - 135° = 45°. इतर विकल्प या गणनेशी जुळत नाहीत. 90° एक समकोन असतो, 180° एक सरळ कोन असतो आणि 225° सरळ कोनापेक्षा जास्त असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for angles.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses supplementary angles with complementary angles",
+        "Confuses supplementary angles with congruent angles",
+        "Confuses supplementary angle with reflex angle by adding 135° to 360° instead of subtracting from 180°"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that supplementary angles add up to 180°, so 180° - 135° = 45°. The author's reasoning for the distractors is accurate and reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 13,
+          "pageStart": 25,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.9 Measuring Angles"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 14,
+          "pageStart": 28,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.9 Measuring Angles"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 15,
+          "pageStart": 33,
+          "pageEnd": 34,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.9 Measuring Angles"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T19:19:08.460Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If two rays share a common starting point and form an angle of 180°, what can be said about the two rays?",
+      "choices": [
+        "They are perpendicular",
+        "They are collinear",
+        "They form a right angle",
+        "They form a reflex angle"
+      ],
+      "answerIndex": 1,
+      "solution": "A 180° angle is formed when two rays point in exactly opposite directions, forming a straight line. This means the rays are collinear, as they lie on the same straight line. Perpendicular rays form a 90° angle, a right angle is 90°, and a reflex angle is greater than 180° but less than 360°.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि दो किरणें एक सामान्य प्रारंभिक बिंदु साझा करती हैं और 180° का कोण बनाती हैं, तो दोनों किरणों के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "वे लंबवत हैं",
+            "वे सरल रेखीय हैं",
+            "वे समकोण बनाते हैं",
+            "वे अधिक कोण बनाते हैं"
+          ],
+          "solution": "180° का कोण तब बनता है जब दो किरणें ठीक विपरीत दिशाओं में दिखाती हैं, एक सीधी रेखा बनाती हैं। इसका अर्थ है कि किरणें सरल रेखीय हैं, क्योंकि वे एक ही सीधी रेखा पर होती हैं। लंबवत किरणें 90° का कोण बनाती हैं, समकोण 90° होता है और अधिक कोण 180° से अधिक लेकिन 360° से कम होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question, with appropriate terminology used in a Hindi-medium educational context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर दोन किरण एक सामान्य सुरुवाती बिंदू शेअर करतात आणि 180° कोन तयार करतात, तर दोन किरणांबद्दल काय म्हणायला शकता?",
+          "choices": [
+            "ते लंब आहेत",
+            "ते संरेखीय आहेत",
+            "ते समकोन तयार करतात",
+            "ते अतिकोन तयार करतात"
+          ],
+          "solution": "180° कोन तयार होतो जेव्हा दोन किरण ठीक विरुद्ध दिशेने दाखवतात, एका सरळ रेषेने तयार होतो. हे म्हणजे किरण संरेखीय आहेत, कारण ते एका सरळ रेषेवर असतात. लंब किरण 90° कोन तयार करतात, समकोन 90° असतो आणि अतिकोन 180° पेक्षा जास्त पण 360° पेक्षा कमी असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses a right angle with a 180° angle",
+        null,
+        "Confuses a right angle with a 180° angle",
+        "Confuses a reflex angle with a 180° angle"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is 'They are collinear' because a 180° angle is a straight angle, and the rays forming it lie on the same line. The distractors reflect common misconceptions about angle types.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.1 Point"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.2 Line Segment"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.3 Line"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.4 Ray"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.5 Angle"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.5 Angle"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T19:19:08.460Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a triangle, the sum of the angles is 180°. If one angle measures 60° and another measures 70°, what is the measure of the third angle?",
+      "choices": [
+        "50°",
+        "60°",
+        "70°",
+        "80°"
+      ],
+      "answerIndex": 0,
+      "solution": "The sum of the angles in a triangle is 180°. If two angles are 60° and 70°, the third angle is 180° - 60° - 70° = 50°. The other options do not match this calculation. 60° and 70° are already given, and 80° is not the correct result of the subtraction.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक त्रिभुज में कोणों का योग 180° होता है। यदि एक कोण 60° मापता है और दूसरा 70° मापता है, तो तीसरे कोण का माप क्या है?",
+          "choices": [
+            "50°",
+            "60°",
+            "70°",
+            "80°"
+          ],
+          "solution": "एक त्रिभुज में कोणों का योग 180° होता है। यदि दो कोण 60° और 70° हैं, तो तीसरा कोण 180° - 60° - 70° = 50° है। अन्य विकल्प इस गणना के अनुरूप नहीं हैं। 60° और 70° पहले से दिए गए हैं, और 80° घटाव के सही परिणाम नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "त्रिकोणात, कोनांची बेरीज 180° असते. जर एक कोन 60° आणि दुसरा 70° मोजत असेल, तर तिसरा कोन किती असेल?",
+          "choices": [
+            "50°",
+            "60°",
+            "70°",
+            "80°"
+          ],
+          "solution": "त्रिकोणात कोनांची बेरीज 180° असते. जर दोन कोन 60° आणि 70° असतील, तर तिसरा कोन 180° - 60° - 70° = 50° असेल. इतर विकल्प या गणनेशी जुळत नाहीत. 60° आणि 70° आधीच दिलेले आहेत, आणि 80° बेरजेचा चुकीचा निकाल आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the third angle with one of the given angles, not subtracting properly from 180°",
+        "Confuses the third angle with one of the given angles",
+        "Confuses the third angle with one of the given angles"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and straightforward. The third angle is 180° - 60° - 70° = 50°, making option 0 the correct answer. The author's reasoning for the distractors is plausible, as students might confuse the third angle with one of the given angles or make a subtraction error.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 13,
+          "pageStart": 25,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.9 Measuring Angles"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 14,
+          "pageStart": 28,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.9 Measuring Angles"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp102.pdf",
+          "ordinal": 15,
+          "pageStart": 33,
+          "pageEnd": 34,
+          "headingPath": [
+            "Chapter 2: Lines and angLes",
+            "2.9 Measuring Angles"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-19T19:19:08.460Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }
