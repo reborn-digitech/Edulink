@@ -52,7 +52,7 @@ export default async function BankTopicPage({
       </Link>
 
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <PageHeader title={topic.name} description={<>{t("appadmin.classN", { n: topic.classLevel })} · {topic.chapter}</>} />
+        <PageHeader title={topic.name} description={t("appadmin.classN", { n: topic.classLevel })} />
         <Button asChild icon={<PlusIcon weight="bold" />}>
           <Link href={`/appadmin/bank/${topic.id}/new`}>{t("appadmin.addQuestion")}</Link>
         </Button>

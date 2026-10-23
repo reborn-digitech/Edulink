@@ -66,7 +66,7 @@ describe("the question bank", () => {
     mockRouter.params = { topicId: "t1" };
     await mount({ [`GET ${TOPIC_PATH}`]: () => json(TOPIC) });
     expect(await screen.findByText("ZZ Fractions")).toBeTruthy();
-    expect(screen.getByText("Class 6 · Chapter 1")).toBeTruthy();
+    expect(screen.getByText("Class 6")).toBeTruthy();
     expect(screen.getByText("2 questions")).toBeTruthy();
     expect(screen.getByText("Level 2 · EN · HI · MR")).toBeTruthy();
     expect(screen.getByText("Level 3 · EN")).toBeTruthy();

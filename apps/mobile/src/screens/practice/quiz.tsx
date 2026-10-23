@@ -269,7 +269,7 @@ function Player({ began, refreshing, onRefresh, onFreshRun }: { began: PracticeB
     const reached = assignment ? level >= assignment.targetLevel : true;
     const back = () => router.back();
     return (
-      <Screen title={topic.name} description={topic.chapter}>
+      <Screen title={topic.name}>
         <Card>
           <View style={{ alignItems: "center", gap: th.space[2] }}>
             <Icon name={badge ? "medal" : "checkCircle"} size={48} weight="fill" color={badge ? th.accentStrong : th.ok} />
@@ -310,7 +310,7 @@ function Player({ began, refreshing, onRefresh, onFreshRun }: { began: PracticeB
   const total = question.totalCount || topic.questionCount;
 
   return (
-    <Screen title={topic.name} description={topic.chapter} refreshing={refreshing} onRefresh={onRefresh}>
+    <Screen title={topic.name} refreshing={refreshing} onRefresh={onRefresh}>
       <View style={{ gap: th.space[1] }}>
         <View style={{ flexDirection: "row", alignItems: "center", gap: th.space[1] }}>
           <Icon name="translate" size={16} color={th.fgMuted} weight="bold" />

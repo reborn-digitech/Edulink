@@ -137,7 +137,7 @@ function Chapter({ topicId, questionId }: { topicId: string; questionId: string 
 
   const d = query.data;
   const topic = d?.topic;
-  const heading = topic ? `${t("appadmin.classN", { n: topic.classLevel })} · ${topic.chapter}` : undefined;
+  const heading = topic ? t("appadmin.classN", { n: topic.classLevel }) : undefined;
   const question = questionId && d ? (d.questions.find((x) => x.id === questionId) ?? null) : null;
   const states = (
     <>

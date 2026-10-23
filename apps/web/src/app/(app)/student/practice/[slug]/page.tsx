@@ -45,7 +45,8 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       </Link>
 
       <div className="flex flex-wrap items-start justify-between gap-4">
-        <PageHeader title={mine?.name ?? topic.name} description={topic.chapter} />
+        {/* The title alone, no numbered chapter line (the owner, 23 Oct 2026). */}
+        <PageHeader title={mine?.name ?? topic.name} />
         <LanguageSwitch showLabel />
       </div>
 

@@ -101,7 +101,7 @@ export default async function BankPage({
                     <span className="min-w-0 flex-1">
                       <span className="block truncate text-sm font-medium text-fg">{topic.name}</span>
                       <span className="block truncate text-xs text-fg-muted">
-                        {t("appadmin.classN", { n: topic.classLevel })} · {topic.chapter}
+                        {t("appadmin.classN", { n: topic.classLevel })}
                       </span>
                     </span>
                     <span className="shrink-0 text-xs tabular-nums text-fg-muted">

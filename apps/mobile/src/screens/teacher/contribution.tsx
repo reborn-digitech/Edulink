@@ -190,7 +190,7 @@ function Editor({ topics, draftOn, existing }: { topics: Topic[]; draftOn: boole
           <>
             <Field label={t("gigs.topicSearch")} value={search} onChangeText={setSearch} autoCapitalize="none" />
             {matches.map((topic) => (
-              <Row key={topic.id} title={label(topic)} caption={topic.chapter} onPress={() => setDraft((d) => ({ ...d, topicId: topic.id }))} />
+              <Row key={topic.id} title={label(topic)} onPress={() => setDraft((d) => ({ ...d, topicId: topic.id }))} />
             ))}
           </>
         )}
