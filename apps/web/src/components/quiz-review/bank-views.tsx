@@ -233,7 +233,8 @@ export function BankChapterGroups({ data, base, t }: { data: QuizBankChapters; b
                     <tr key={c.topicId} className="border-t border-border">
                       <td className="py-2 pr-3">
                         <Link href={`${base}/chapter/${encodeURIComponent(c.slug)}`} className="inline-flex min-h-11 items-center text-accent-strong underline-offset-4 hover:underline">
-                          {c.number !== null ? `${c.number}. ${c.name}` : c.name}
+                          {/* The title alone (the owner, 23 Oct 2026): two books of one class share chapter numbers, so a number in front read as a duplicate; the rows keep their book order. */}
+                          {c.name}
                         </Link>
                         <span className="ml-2 inline-flex flex-wrap gap-1 align-middle">
                           {c.maker && (
